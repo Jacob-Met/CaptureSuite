@@ -1,0 +1,27 @@
+# SPDX-License-Identifier: GPL-3.0-only
+"""Unit tests for scaffolded plugin {{PLUGIN_ID}}."""
+
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "libs" / "python" / "capture_worker"))
+sys.path.insert(0, str(ROOT / "plugins" / "{{DIR_NAME}}"))
+
+from {{MODULE_NAME}} import {{CLASS_NAME}}  # noqa: E402
+
+
+def test_discover_advertises_schema() -> None:
+    worker = {{CLASS_NAME}}()
+    sources = worker.discover()
+    assert sources
+    assert sources[0].plugin_id == "{{PLUGIN_ID}}"
+    assert sources[0].streams[0].data_schema_id == "{{SCHEMA_ID}}"
+
+
+def test_config_schema_revision() -> None:
+    worker = {{CLASS_NAME}}()
+    schema = worker.config_schema("{{SOURCE_ID}}")
+    assert schema["schema_revision"] == "{{SCHEMA_REV}}"

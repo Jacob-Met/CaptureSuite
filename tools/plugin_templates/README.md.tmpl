@@ -1,0 +1,33 @@
+# {{DISPLAY_NAME}} ({{PLUGIN_ID}})
+
+Scaffolded by `tools/new_plugin.ps1`.
+
+| Field | Value |
+|-------|-------|
+| plugin_id | `{{PLUGIN_ID}}` |
+| family / modality | `{{FAMILY}}` / `{{MODALITY}}` |
+| data_schema_id | `{{SCHEMA_ID}}` |
+| language | {{LANG}} |
+| enable_env | `{{ENABLE_ENV}}` (set to `0` to force off) |
+
+## Enable
+
+1. Ensure this folder is under repo `plugins/`, or copy to
+   `%LOCALAPPDATA%\CaptureSuite\plugins\{{DIR_NAME}}\`.
+2. Restart `capture_daemon`.
+3. Rescan sources in the desktop UI.
+
+## Develop
+
+- Python SDK: `docs/plugins/02_python_quickstart.md`
+- Prompts: `docs/prompts/`
+- Spike checklist: `docs/design/VENDOR_SPIKE.md`
+
+{{EXTRA_SECTION}}
+
+## TODO
+
+- [ ] Replace placeholder identity (vendor/model/serial)
+- [ ] Wire real SDK read loop; preserve device timestamps
+- [ ] Fill `docs/design/adapters/<vendor>.md` if hardware
+- [ ] Mark analysis features `hardware_validated` only after bench parity

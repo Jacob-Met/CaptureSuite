@@ -7,7 +7,9 @@ Read before architectural or schema changes:
 
 Start with [`docs/design/README.md`](docs/design/README.md), which also lists what is deliberately left unspecified and why.
 
-Milestone 5 onward already has pinned decisions in `WORKER_HOST.md`, `VIDEO_PIPELINE.md`, `PREVIEW_TRANSPORT.md`, `CONFIGURATION_UI.md`, and `SETTINGS_REGISTRY.md`. Follow them rather than re-deciding; change them only with a stated reason recorded in the document.
+Milestone 5 onward already has pinned decisions in `WORKER_HOST.md`, `VIDEO_PIPELINE.md`, `PREVIEW_TRANSPORT.md`, `CONFIGURATION_UI.md`, `SETTINGS_REGISTRY.md`, and `PLUGIN_REGISTRY.md`. Follow them rather than re-deciding; change them only with a stated reason recorded in the document.
+
+**Adding hardware / modalities:** use [docs/prompts/](docs/prompts/) (copy-paste agent prompts), `.cursor/rules/add-acquisition-plugin.mdc`, and `tools/new_plugin.ps1`. Prefer plugins over daemon core edits.
 
 ## Core rules
 

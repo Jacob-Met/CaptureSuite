@@ -12,3 +12,12 @@ CaptureSuite acquires data through **plugins**. The daemon discovers them from
 | [05_manifest_reference.md](05_manifest_reference.md) | `plugin.json` fields |
 | [06_analysis_plugins.md](06_analysis_plugins.md) | Analysis loaders / features |
 | [07_testing_and_validation.md](07_testing_and_validation.md) | provisional → hardware_validated |
+
+## Scaffold + prompts
+
+```powershell
+.\tools\new_plugin.ps1 -PluginId "lab.force" -DisplayName "Force plate" -Family numeric -Modality force
+```
+
+Copy-paste Cursor/agent prompts: [docs/prompts/](../prompts/).
+Cursor rule: `.cursor/rules/add-acquisition-plugin.mdc`.

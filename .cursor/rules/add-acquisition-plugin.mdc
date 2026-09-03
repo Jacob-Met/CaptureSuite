@@ -1,0 +1,42 @@
+---
+description: Adding a new acquisition plugin, modality, vendor worker, LSL/Python device, or analysis schema
+alwaysApply: false
+---
+
+# Adding acquisition / analysis plugins
+
+Prefer **plugins** over editing daemon core. Never add vendor/modality switches to
+`control_server`, `session_package`, or `mcap_stream_writer` when a stream
+descriptor or `plugin.json` can carry the fact.
+
+## Mandatory path
+
+1. **Spike first** (real hardware): fill
+   [docs/design/VENDOR_SPIKE.md](../../docs/design/VENDOR_SPIKE.md) →
+   `docs/design/adapters/<vendor>.md`. Standalone probe only — no daemon wiring.
+2. **Scaffold**: `tools/new_plugin.ps1` (or copy `plugins/example_sine_py` /
+   `workers/stub`).
+3. **Manifest**: `plugins/<dir>/plugin.json` per
+   [PLUGIN_REGISTRY.md](../../docs/design/PLUGIN_REGISTRY.md). Daemon discovers
+   `{daemon_dir}/plugins/*/plugin.json`, `%LOCALAPPDATA%\CaptureSuite\plugins`,
+   `CAPTURE_PLUGIN_PATH`.
+4. **Contract**: stable `source_id` (not alias), versioned `data_schema_id`,
+   `nominal_rate_hz`, honest units, native timestamps (no resample), explicit gaps.
+5. **Prefer** `generic.numeric_batch/1` until a domain schema is justified.
+6. **Analysis** (if needed): loader + feature in
+   `libs/python/capture_analysis/.../plugins/manifest.yaml`.
+7. **Tests**: discover/config unit test under `tests/protocol/`; mark features
+   `provisional: true` until hardware_validated.
+
+## Do not
+
+- Hard-code `plugin_id` allowlists in UI (`state.py`) — use capabilities /
+  non-`sim.*` heuristics.
+- Put vendor SDK calls in `daemon/` or `libs/cpp/capture_storage/`.
+- Claim calibrated units or multi-device HW sync without spike evidence.
+- Edit GPL app code when an Apache plugin suffices (`capture_worker` SDK).
+
+## Copy-paste prompts
+
+See [docs/prompts/](../../docs/prompts/). Agent/human templates for spike,
+Python plugin, C++ worker, analysis schema, and LSL-only integration.

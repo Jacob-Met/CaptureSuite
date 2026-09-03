@@ -41,9 +41,15 @@ or **Start Selected**. Greyed buttons usually mean the daemon is not connected.
    `%LOCALAPPDATA%\CaptureSuite\plugins`).
 3. Restart the daemon — sources appear in the Capture rail.
 
-See [docs/plugins/](docs/plugins/) for the Python quickstart, LSL bridge, and
-C++ template. See [docs/design/PLUGIN_REGISTRY.md](docs/design/PLUGIN_REGISTRY.md)
-for the normative contract.
+Fast path:
+
+```powershell
+.\tools\new_plugin.ps1 -PluginId "lab.force" -DisplayName "Force plate" -Family numeric -Modality force
+```
+
+Then paste a template from [docs/prompts/](docs/prompts/) into Cursor.
+See [docs/plugins/](docs/plugins/) and
+[docs/design/PLUGIN_REGISTRY.md](docs/design/PLUGIN_REGISTRY.md).
 
 ## Docs
 

@@ -1,0 +1,130 @@
+# SPDX-License-Identifier: Apache-2.0
+"""{{DISPLAY_NAME}} acquisition plugin ({{PLUGIN_ID}}).
+
+Scaffolded by tools/new_plugin.ps1 - replace the generate loop with your device SDK.
+Emits {{SCHEMA_ID}} by default.
+"""
+
+from __future__ import annotations
+
+import math
+import threading
+import time
+from typing import Any
+
+from capture_protocol.generated.capture.v1 import source_pb2, worker_pb2
+from capture_worker.preview import build_trace_preview
+from capture_worker.transport import Transport
+from capture_worker.worker import Worker
+
+
+class {{CLASS_NAME}}(Worker):
+    plugin_version = "0.1.0"
+
+    def __init__(
+        self,
+        *,
+        plugin_id: str = "{{PLUGIN_ID}}",
+        worker_id: str = "{{DIR_NAME}}",
+        transport: Transport | None = None,
+    ) -> None:
+        super().__init__(plugin_id=plugin_id, worker_id=worker_id, transport=transport)
+        self._threads: dict[str, threading.Thread] = {}
+        self._stop = threading.Event()
+        self._rate_hz = 100.0
+        self._channels = 2
+
+    def discover(self) -> list[source_pb2.SourceInstance]:
+        src = source_pb2.SourceInstance()
+        src.source_id = "{{SOURCE_ID}}"
+        src.source_type = "{{PLUGIN_ID}}"
+        src.alias = "{{DISPLAY_NAME}}"
+        src.enabled = True
+        src.plugin_id = self.plugin_id
+        src.plugin_version = self.plugin_version
+        src.lifecycle_state = source_pb2.SOURCE_LIFECYCLE_DISCOVERED
+        src.metadata["hardware"] = "{{HW_CAP}}"
+        dev = src.physical_devices.add()
+        # TODO: set vendor/model/serial from the real device; never use alias as identity.
+        dev.vendor = "TODO_Vendor"
+        dev.model = "TODO_Model"
+        dev.serial = "TODO-SERIAL"
+        dev.stable_device_key = f"{self.plugin_id}.{dev.serial}"
+        src.physical_device_ids.append(dev.stable_device_key)
+        stream = src.streams.add()
+        stream.stream_id = "{{STREAM_ID}}"
+        stream.source_id = src.source_id
+        stream.modality = "{{MODALITY}}"
+        stream.data_schema_id = "{{SCHEMA_ID}}"
+        stream.nominal_rate_hz = self._rate_hz
+        stream.units = "a.u."  # TODO: SI units when calibrated
+        stream.stream_class = source_pb2.STREAM_CLASS_SAMPLED
+        stream.timestamp_source = source_pb2.TIMESTAMP_SOURCE_HOST_ARRIVAL  # TODO: DEVICE after spike
+        return [src]
+
+    def config_schema(self, source_id: str) -> dict[str, Any]:
+        return {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "schema_revision": "{{SCHEMA_REV}}",
+            "properties": {
+                "rate_hz": {"type": "number", "default": 100, "minimum": 1},
+                "channels": {
+                    "type": "integer",
+                    "default": 2,
+                    "minimum": 1,
+                    "maximum": 64,
+                },
+            },
+        }
+
+    def apply_config(self, source_id: str, document: dict[str, Any]) -> dict[str, Any]:
+        self._rate_hz = float(document.get("rate_hz", self._rate_hz))
+        self._channels = int(document.get("channels", self._channels))
+        return super().apply_config(
+            source_id, {"rate_hz": self._rate_hz, "channels": self._channels}
+        )
+
+    def start(self, source_id: str, start_req: worker_pb2.StartRequest) -> None:
+        self._stop.clear()
+        t = threading.Thread(target=self._run_source, args=(source_id,), daemon=True)
+        self._threads[source_id] = t
+        t.start()
+
+    def stop(self, source_id: str) -> None:
+        self._stop.set()
+        th = self._threads.pop(source_id, None)
+        if th is not None:
+            th.join(timeout=2.0)
+
+    def _run_source(self, source_id: str) -> None:
+        # TODO: replace this sine placeholder with SDK reads.
+        # Preserve native device timestamps; never resample; log gaps on disconnect.
+        t0 = time.perf_counter()
+        period = 1.0 / max(1.0, self._rate_hz)
+        names = [f"ch{i}" for i in range(self._channels)]
+        seq = 0
+        while not self._stop.is_set():
+            t = time.perf_counter() - t0
+            samples = [
+                math.sin(2 * math.pi * (1.0 + c) * t) for c in range(self._channels)
+            ]
+            seq += 1
+            self.emit_samples(
+                source_id,
+                samples,
+                channel_count=self._channels,
+                channel_names=names,
+                device_time_ns=[time.time_ns()],
+            )
+            frame = build_trace_preview(
+                source_id=source_id,
+                stream_id="{{STREAM_ID}}",
+                channel_names=names,
+                samples=samples,
+                points_per_channel=1,
+                session_time_ns=time.perf_counter_ns(),
+                sequence=seq,
+            )
+            self.emit_preview(frame)
+            time.sleep(period)

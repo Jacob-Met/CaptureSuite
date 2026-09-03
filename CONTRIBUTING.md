@@ -36,6 +36,8 @@ ctest --test-dir build/windows-release --output-on-failure
 3. Do not hard-code vendor logic in session/storage code.
 4. Run the license check: `python tools/check_licenses.py`.
 5. Update docs when behavior changes (`docs/design/`, `docs/plugins/`).
+6. For new devices: start from [docs/prompts/](docs/prompts/) and
+   `tools/new_plugin.ps1` rather than inventing a layout.
 
 ## Agent / Cursor notes
 
