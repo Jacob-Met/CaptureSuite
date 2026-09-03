@@ -1,0 +1,34 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package capture.v1;
+
+option csharp_namespace = "Capture.V1";
+
+message Project {
+  string project_id = 1;
+  string name = 2;
+  string description = 3;
+  map<string, string> metadata = 4;
+}
+
+message Participant {
+  string participant_id = 1;
+  string display_name = 2;  // optional; may be redacted in diagnostics
+  map<string, string> metadata = 3;
+}
+
+message Visit {
+  string visit_id = 1;
+  string label = 2;
+  string date_iso = 3;
+  map<string, string> metadata = 4;
+}
+
+message SessionIdentity {
+  string session_id = 1;
+  Project project = 2;
+  Participant participant = 3;
+  Visit visit = 4;
+  string session_name = 5;
+}

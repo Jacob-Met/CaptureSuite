@@ -1,0 +1,57 @@
+# Build
+build/
+cmake-build-*/
+out/
+.vs/
+
+# Machine-local CMake presets (copy from CMakeUserPresets.example.json)
+CMakeUserPresets.json
+CMakeUserPresets.local.json
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+*.egg-info/
+dist/
+.coverage
+htmlcov/
+uv.lock
+
+# IDE / OS
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+*.user
+Thumbs.db
+Desktop.ini
+
+# Local secrets / capture data
+*.mmsession/
+*.mkv
+.env
+credentials.json
+
+# Large third-party installers (download locally; see tools/gstreamer-installers/)
+tools/gstreamer-installers/*.msi
+tools/gstreamer-installers/*.log
+tools/gstreamer-installers/*.sha256sum
+
+# Extracted GStreamer / vendor SDKs (not committed)
+third_party/
+
+# Scratch logs
+*_err.txt
+*_out.txt
+daemon_*.txt
+worker_*.txt
+radar_worker_*.txt
+
+# Packaging artifacts
+*.zip
+*.spec
+release/

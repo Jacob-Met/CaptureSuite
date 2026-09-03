@@ -1,0 +1,33 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package capture.v1.data;
+
+import "capture/v1/common.proto";
+
+option csharp_namespace = "Capture.V1.Data";
+
+message ImuSensorSample {
+  string sensor_id = 1;
+  float qw = 2;
+  float qx = 3;
+  float qy = 4;
+  float qz = 5;
+  float accel_x = 6;
+  float accel_y = 7;
+  float accel_z = 8;
+  float gyro_x = 9;
+  float gyro_y = 10;
+  float gyro_z = 11;
+  float mag_x = 12;
+  float mag_y = 13;
+  float mag_z = 14;
+}
+
+// data_schema_id: imu.frame/1
+message ImuFrame {
+  capture.v1.TimingHeader timing = 1;
+  int64 frame_index = 2;
+  repeated ImuSensorSample sensors = 3;
+  uint32 quality_flags = 4;
+}

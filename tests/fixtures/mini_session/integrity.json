@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "1",
+  "files": [
+    {
+      "path": "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",
+      "sizeBytes": 128,
+      "sha256": "00",
+      "endSessionTimeNs": 10000000000
+    }
+  ]
+}

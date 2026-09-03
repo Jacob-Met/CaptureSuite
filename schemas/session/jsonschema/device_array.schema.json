@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "device_array.schema.json",
+  "title": "capture.v1.DeviceArray",
+  "type": "object",
+  "properties": {
+    "arrayId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "arrayType": {
+      "type": "string"
+    },
+    "members": {
+      "type": "array",
+      "items": {
+        "$ref": "array_member.schema.json"
+      }
+    },
+    "sharedProfile": {
+      "type": "string",
+      "contentEncoding": "base64"
+    },
+    "sharedProfileContentType": {
+      "type": "string"
+    },
+    "timingMode": {
+      "type": "string",
+      "enum": [
+        "TIMING_MODE_UNSPECIFIED",
+        "TIMING_MODE_SOFTWARE_COORDINATED",
+        "TIMING_MODE_HARDWARE_TRIGGERED",
+        "TIMING_MODE_HARDWARE_SYNC"
+      ]
+    },
+    "coordinateFrame": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true,
+  "unevaluatedProperties": true
+}

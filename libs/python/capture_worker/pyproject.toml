@@ -1,0 +1,22 @@
+# SPDX-License-Identifier: Apache-2.0
+[project]
+name = "capture-worker"
+version = "0.1.0"
+description = "CaptureSuite Python worker SDK (Apache-2.0)"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "capture-protocol",
+  "protobuf>=4.25,<5",
+  "mcap>=1.1",
+]
+
+[project.scripts]
+capture-worker = "capture_worker.cli:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["capture_worker*"]

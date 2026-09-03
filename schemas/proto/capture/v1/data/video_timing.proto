@@ -1,0 +1,25 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package capture.v1.data;
+
+import "capture/v1/common.proto";
+
+option csharp_namespace = "Capture.V1.Data";
+
+// data_schema_id: video.frame_timing/1 (VIDEO_PIPELINE.md)
+// Per-frame timing sidecar entry (not the encoded video itself).
+// Legacy M4 path also wrote this message under the older name
+// video.segment_index/1; readers should accept either schema id.
+message VideoFrameTiming {
+  capture.v1.TimingHeader timing = 1;
+  // Zero-based frame index within the current segment.
+  int64 frame_index = 2;
+  uint32 segment_index = 3;
+  int64 byte_offset_in_segment = 4;
+  uint32 quality_flags = 5;
+  // Presentation timestamp actually muxed into the MKV (session ns).
+  sint64 pts_ns = 6;
+  bool keyframe = 7;
+  uint32 encoded_bytes = 8;
+}

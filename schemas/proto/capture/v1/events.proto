@@ -1,0 +1,79 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package capture.v1;
+
+option csharp_namespace = "Capture.V1";
+
+message CheckpointRevision {
+  sint64 revised_at_session_time_ns = 1;
+  string reason = 2;
+  string revised_by = 3;
+  sint64 previous_effective_timestamp_ns = 4;
+  string previous_name = 5;
+}
+
+message Checkpoint {
+  string checkpoint_id = 1;
+  sint64 original_timestamp_ns = 2;
+  sint64 effective_timestamp_ns = 3;
+  string name = 4;
+  repeated string tags = 5;
+  map<string, string> structured_fields = 6;
+  string notes = 7;
+  string created_via = 8;  // ui, hotkey, foot_pedal, protocol
+  string created_by = 9;
+  bool timestamp_modified = 10;
+  string modification_reason = 11;
+  repeated CheckpointRevision revision_history = 12;
+}
+
+message Annotation {
+  string annotation_id = 1;
+  sint64 timestamp_ns = 2;
+  string category = 3;
+  string text = 4;
+  repeated string tags = 5;
+  string source_id = 6;  // empty = global
+  string created_via = 7;
+}
+
+message SyncAnchor {
+  string sync_anchor_id = 1;
+  sint64 timestamp_ns = 2;
+  repeated string modalities_targeted = 3;
+  string mechanism = 4;
+  map<string, string> metadata = 5;
+  string created_via = 6;
+}
+
+message ClockMapping {
+  string mapping_id = 1;
+  string source_id = 2;
+  string device_clock_id = 3;
+  sint64 valid_from_ns = 4;
+  optional sint64 valid_to_ns = 5;
+  double rate_ratio = 6;
+  sint64 offset_ns = 7;
+  int64 uncertainty_ns = 8;
+  string method = 9;  // weighted_least_squares
+  map<string, string> provenance = 10;
+}
+
+message ClockSample {
+  string source_id = 1;
+  string device_clock_id = 2;
+  int64 device_timestamp = 3;
+  string device_timestamp_unit = 4;
+  sint64 host_qpc_ns = 5;
+  sint64 session_time_ns = 6;
+}
+
+message StateChanged {
+  string entity = 1;  // session | source
+  string entity_id = 2;
+  string from_state = 3;
+  string to_state = 4;
+  sint64 session_time_ns = 5;
+  string reason = 6;
+}

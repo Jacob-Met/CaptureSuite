@@ -1,0 +1,27 @@
+[project]
+name = "capture-desktop"
+version = "0.1.0"
+description = "CaptureSuite PySide6 shell (Milestone 4)"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "capture-protocol",
+  "PySide6>=6.6,<7",
+]
+
+[project.optional-dependencies]
+analysis = [
+  "capture-analysis[analysis]",
+  "pyqtgraph>=0.13",
+  "numpy>=1.26",
+]
+
+[project.scripts]
+capture-desktop = "capture_desktop.main:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["capture_desktop*"]

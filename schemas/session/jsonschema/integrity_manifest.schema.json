@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "integrity_manifest.schema.json",
+  "title": "capture.v1.IntegrityManifest",
+  "type": "object",
+  "properties": {
+    "sessionId": {
+      "type": "string"
+    },
+    "sessionSchemaVersion": {
+      "type": "string"
+    },
+    "files": {
+      "type": "array",
+      "items": {
+        "$ref": "integrity_file_entry.schema.json"
+      }
+    }
+  },
+  "additionalProperties": true,
+  "unevaluatedProperties": true
+}

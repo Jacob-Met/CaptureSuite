@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "stream_descriptor.schema.json",
+  "title": "capture.v1.StreamDescriptor",
+  "type": "object",
+  "properties": {
+    "streamId": {
+      "type": "string"
+    },
+    "sourceId": {
+      "type": "string"
+    },
+    "sensorId": {
+      "type": "string"
+    },
+    "streamClass": {
+      "type": "string",
+      "enum": [
+        "STREAM_CLASS_UNSPECIFIED",
+        "STREAM_CLASS_SAMPLED",
+        "STREAM_CLASS_FRAME",
+        "STREAM_CLASS_ARRAY_FRAME",
+        "STREAM_CLASS_STRUCTURED",
+        "STREAM_CLASS_EVENT",
+        "STREAM_CLASS_BLOB"
+      ]
+    },
+    "modality": {
+      "type": "string"
+    },
+    "quantity": {
+      "type": "string"
+    },
+    "units": {
+      "type": "string"
+    },
+    "dimensions": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "minimum": 0
+      }
+    },
+    "nominalRateHz": {
+      "type": "number"
+    },
+    "timestampSource": {
+      "type": "string",
+      "enum": [
+        "TIMESTAMP_SOURCE_UNSPECIFIED",
+        "TIMESTAMP_SOURCE_DEVICE",
+        "TIMESTAMP_SOURCE_HOST_ARRIVAL",
+        "TIMESTAMP_SOURCE_SESSION_MAPPED"
+      ]
+    },
+    "dataSchemaId": {
+      "type": "string"
+    },
+    "dataSchemaVersion": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true,
+  "unevaluatedProperties": true
+}

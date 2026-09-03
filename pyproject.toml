@@ -1,0 +1,63 @@
+[project]
+name = "capturesuite"
+version = "0.1.0"
+description = "CaptureSuite multimodal capture platform"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "protobuf>=4.25,<5",
+  "grpcio-tools>=1.62,<1.63",
+  "jsonschema>=4.21",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "pytest-cov>=5.0",
+  "ruff>=0.6",
+]
+analysis = [
+  "numpy>=1.26",
+  "scipy>=1.11",
+  "pandas>=2.1",
+  "pyarrow>=14.0",
+  "matplotlib>=3.8",
+]
+
+[tool.uv.workspace]
+members = [
+  "libs/python/capture_protocol",
+  "libs/python/capture_session",
+  "libs/python/capture_analysis",
+  "libs/python/capture_worker",
+  "desktop",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = [
+  "libs/python/capture_protocol",
+  "libs/python/capture_session",
+  "libs/python/capture_analysis",
+  "libs/python/capture_worker",
+  "workers/python_host",
+  "plugins/example_sine_py",
+  "plugins/lsl_bridge",
+  "desktop",
+  "tools",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = [
+  "libs/python/capture_protocol/capture_protocol/generated",
+  "prototypes",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"

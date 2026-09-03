@@ -1,0 +1,32 @@
+{
+  "product": "Multimodal Capture Platform",
+  "capture_v1_sources": [
+    "Delsys Trigno EMG",
+    "Conventional video cameras",
+    "Xsens IMUs",
+    "Infineon BGT60TR13C radar"
+  ],
+  "multi_radar_required": true,
+  "post_capture_video_landmarks": true,
+  "full_analysis_suite_deferred": true,
+  "vicon": "later/special integration",
+  "architecture": {
+    "desktop_ui": "Python + PySide6/Qt",
+    "capture_daemon": "C++20",
+    "camera_worker": "C++ + GStreamer",
+    "delsys_worker": "Python official Delsys API initially",
+    "xsens_worker": "C++ exact SDK family",
+    "radar_worker": "C++ Infineon RDK",
+    "pose_worker": "Python",
+    "ipc": "versioned Protocol Buffers + local IPC",
+    "preview_transport": "shared memory"
+  },
+  "timing": {
+    "canonical": "signed int64 nanoseconds",
+    "preserve_native_timestamps": true,
+    "native_rates_preserved": true,
+    "capture_resampling": false
+  },
+  "checkpoint_semantics": "checkpoint closes/names the preceding section",
+  "packaging": "Windows installable executable with persistent settings and signed updates"
+}

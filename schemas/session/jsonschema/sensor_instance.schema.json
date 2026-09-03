@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sensor_instance.schema.json",
+  "title": "capture.v1.SensorInstance",
+  "type": "object",
+  "properties": {
+    "sensorId": {
+      "type": "string"
+    },
+    "parentSourceId": {
+      "type": "string"
+    },
+    "physical": {
+      "$ref": "physical_device.schema.json"
+    },
+    "alias": {
+      "type": "string"
+    },
+    "logicalSlotId": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true,
+  "unevaluatedProperties": true
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "capture.analysis_plugin_manifest/1",
+  "title": "Analysis plugin manifest",
+  "type": "object",
+  "required": ["manifestVersion", "loaders", "features", "plots", "jobs"],
+  "properties": {
+    "manifestVersion": { "type": "string", "const": "1.0.0" },
+    "loaders": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["schemaId", "entry"],
+        "properties": {
+          "schemaId": { "type": "string" },
+          "entry": { "type": "string", "description": "module:function" },
+          "materializePolicy": { "enum": ["stream", "materialize", "forbidden"] }
+        }
+      }
+    },
+    "features": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "schemaIds", "entry"],
+        "properties": {
+          "id": { "type": "string" },
+          "schemaIds": { "type": "array", "items": { "type": "string" } },
+          "entry": { "type": "string" },
+          "paramsSchema": { "type": "string" },
+          "provisional": { "type": "boolean", "default": false }
+        }
+      }
+    },
+    "plots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "entry"],
+        "properties": {
+          "id": { "type": "string" },
+          "entry": { "type": "string" },
+          "inputKinds": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "jobs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["command", "entry"],
+        "properties": {
+          "command": { "type": "string" },
+          "entry": { "type": "string" },
+          "dependsOn": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}

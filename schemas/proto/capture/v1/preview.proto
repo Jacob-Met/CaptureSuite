@@ -1,0 +1,101 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package capture.v1;
+
+option csharp_namespace = "Capture.V1";
+
+enum PreviewKind {
+  PREVIEW_KIND_UNSPECIFIED = 0;
+  PREVIEW_KIND_IMAGE_THUMBNAIL = 1;
+  PREVIEW_KIND_TRACE_SINGLE = 2;
+  PREVIEW_KIND_TRACE_BLOCK = 3;
+  PREVIEW_KIND_ORIENTATION = 4;
+  PREVIEW_KIND_VECTOR_PROFILE = 5;
+  PREVIEW_KIND_MATRIX_2D = 6;
+  PREVIEW_KIND_SCALAR_SERIES = 7;
+}
+
+enum PreviewDropPolicy {
+  PREVIEW_DROP_POLICY_UNSPECIFIED = 0;
+  PREVIEW_DROP_POLICY_LATEST_WINS = 1;
+}
+
+message PreviewDescriptor {
+  string source_id = 1;
+  PreviewKind kind = 2;
+  string shm_key = 3;
+  uint32 ring_slot_count = 4;  // always 3
+  uint32 max_payload_bytes = 5;
+  double max_rate_hz = 6;
+  PreviewDropPolicy drop_policy = 7;
+  string content_type = 8;  // image/jpeg, application/x-capture-trace, ...
+  uint32 selected_channel = 9;
+  map<string, string> metadata = 10;
+  // Channels the operator may choose between for a multi-sensor source.
+  repeated string available_channels = 11;
+  string stream_id = 12;
+  bool enabled = 13;
+}
+
+// One or more channels of decimated samples. Backs TRACE_SINGLE, TRACE_BLOCK,
+// SCALAR_SERIES and VECTOR_PROFILE, which differ in shape but not structure.
+message PreviewTrace {
+  repeated string channel_names = 1;
+  uint32 channel_count = 2;
+  uint32 points_per_channel = 3;
+  // Channel-major: channel c, point p lives at samples[c*points_per_channel+p].
+  repeated float samples = 4;
+  float display_min = 5;
+  float display_max = 6;
+  string units = 7;
+  // Native rate the worker decimated from, so the UI can label the axis.
+  double decimated_from_rate_hz = 8;
+}
+
+message PreviewImage {
+  bytes data = 1;
+  uint32 width = 2;
+  uint32 height = 3;
+  string pixel_format = 4;  // rgb24 | jpeg
+}
+
+message PreviewOrientation {
+  double qw = 1;
+  double qx = 2;
+  double qy = 3;
+  double qz = 4;
+  double accel_magnitude = 5;
+  double gyro_magnitude = 6;
+  string accel_units = 7;
+  string gyro_units = 8;
+}
+
+message PreviewMatrix {
+  uint32 rows = 1;
+  uint32 cols = 2;
+  // Row-major.
+  repeated float values = 3;
+  float display_min = 4;
+  float display_max = 5;
+  string row_axis = 6;
+  string col_axis = 7;
+}
+
+// A single preview update. Droppable and latest-wins: a gap in `sequence` is
+// expected and reported via `dropped_since_last` rather than hidden.
+message PreviewFrame {
+  string source_id = 1;
+  string stream_id = 2;
+  PreviewKind kind = 3;
+  sint64 session_time_ns = 4;
+  int64 sequence = 5;
+  int64 dropped_since_last = 6;
+  uint32 selected_channel = 7;
+  oneof payload {
+    PreviewTrace trace = 10;
+    PreviewImage image = 11;
+    PreviewOrientation orientation = 12;
+    PreviewMatrix matrix = 13;
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "schemaId": "capture.kinematics_columns/1",
+  "version": "1",
+  "columns": [
+    {
+      "name": "session_time_ns",
+      "arrowType": "int64",
+      "units": "ns",
+      "tier": "metadata",
+      "calibrated": true,
+      "description": "Master analysis grid timestamp",
+      "nullable": false
+    },
+    {
+      "name": "frame_index",
+      "arrowType": "int64",
+      "units": "1",
+      "tier": "metadata",
+      "calibrated": true,
+      "description": "Source pose frame index",
+      "nullable": false
+    },
+    {
+      "name": "theta_elbow_flex_L",
+      "arrowType": "float64",
+      "units": "deg",
+      "tier": "A",
+      "calibrated": false,
+      "description": "Left elbow flexion angle (shoulder-elbow-wrist)"
+    },
+    {
+      "name": "theta_elbow_flex_R",
+      "arrowType": "float64",
+      "units": "deg",
+      "tier": "A",
+      "calibrated": false,
+      "description": "Right elbow flexion angle"
+    },
+    {
+      "name": "theta_shoulder_elev_L",
+      "arrowType": "float64",
+      "units": "deg",
+      "tier": "A",
+      "calibrated": false,
+      "description": "Left shoulder elevation (elbow-shoulder-hip)"
+    },
+    {
+      "name": "theta_shoulder_elev_R",
+      "arrowType": "float64",
+      "units": "deg",
+      "tier": "A",
+      "calibrated": false,
+      "description": "Right shoulder elevation"
+    },
+    {
+      "name": "theta_shoulder_flex_L",
+      "arrowType": "float64",
+      "units": "deg",
+      "tier": "A",
+      "calibrated": false,
+      "description": "Left shoulder flexion in sagittal plane"
+    },
+    {
+      "name": "theta_shoulder_flex_R",
+      "arrowType": "float64",
+      "units": "deg",
+      "tier": "A",
+      "calibrated": false,
+      "description": "Right shoulder flexion in sagittal plane"
+    },
+    {
+      "name": "omega_elbow_flex_L",
+      "arrowType": "float64",
+      "units": "deg/s",
+      "tier": "A",
+      "calibrated": false,
+      "description": "Left elbow angular velocity"
+    },
+    {
+      "name": "omega_elbow_flex_R",
+      "arrowType": "float64",
+      "units": "deg/s",
+      "tier": "A",
+      "calibrated": false,
+      "description": "Right elbow angular velocity"
+    },
+    {
+      "name": "omega_shoulder_elev_L",
+      "arrowType": "float64",
+      "units": "deg/s",
+      "tier": "A",
+      "calibrated": false,
+      "description": "Left shoulder elevation angular velocity"
+    },
+    {
+      "name": "omega_shoulder_elev_R",
+      "arrowType": "float64",
+      "units": "deg/s",
+      "tier": "A",
+      "calibrated": false,
+      "description": "Right shoulder elevation angular velocity"
+    },
+    {
+      "name": "v_radial_upper_arm_L",
+      "arrowType": "float64",
+      "units": "m/s",
+      "tier": "A",
+      "calibrated": false,
+      "description": "Upper arm velocity projected onto radar LOS"
+    },
+    {
+      "name": "v_radial_upper_arm_R",
+      "arrowType": "float64",
+      "units": "m/s",
+      "tier": "A",
+      "calibrated": false,
+      "description": "Right upper arm radial velocity"
+    },
+    {
+      "name": "afr_elbow_L_deg",
+      "arrowType": "float64",
+      "units": "deg",
+      "tier": "A",
+      "calibrated": false,
+      "description": "Rolling angle fluctuation range — left elbow"
+    },
+    {
+      "name": "afr_elbow_R_deg",
+      "arrowType": "float64",
+      "units": "deg",
+      "tier": "A",
+      "calibrated": false,
+      "description": "Rolling AFR — right elbow"
+    },
+    {
+      "name": "valid_elbow_L",
+      "arrowType": "bool",
+      "units": "1",
+      "tier": "metadata",
+      "calibrated": true,
+      "description": "Left elbow angle valid this frame",
+      "nullable": false
+    },
+    {
+      "name": "valid_elbow_R",
+      "arrowType": "bool",
+      "units": "1",
+      "tier": "metadata",
+      "calibrated": true,
+      "description": "Right elbow angle valid",
+      "nullable": false
+    },
+    {
+      "name": "valid_shoulder_L",
+      "arrowType": "bool",
+      "units": "1",
+      "tier": "metadata",
+      "calibrated": true,
+      "description": "Left shoulder angle valid (requires hips)",
+      "nullable": false
+    },
+    {
+      "name": "valid_shoulder_R",
+      "arrowType": "bool",
+      "units": "1",
+      "tier": "metadata",
+      "calibrated": true,
+      "description": "Right shoulder angle valid",
+      "nullable": false
+    },
+    {
+      "name": "teacher_source",
+      "arrowType": "string",
+      "units": "1",
+      "tier": "metadata",
+      "calibrated": true,
+      "description": "video | video+imu",
+      "nullable": false
+    },
+    {
+      "name": "pose_model_id",
+      "arrowType": "string",
+      "units": "1",
+      "tier": "metadata",
+      "calibrated": true,
+      "description": "Pose backend used for teacher",
+      "nullable": false
+    },
+    {
+      "name": "activity_id",
+      "arrowType": "string",
+      "units": "1",
+      "tier": "metadata",
+      "calibrated": true,
+      "description": "Checkpoint activity tag when row is window-tagged"
+    },
+    {
+      "name": "px_per_cm",
+      "arrowType": "float64",
+      "units": "px/cm",
+      "tier": "metadata",
+      "calibrated": true,
+      "description": "Monocular scale when calibrated"
+    }
+  ]
+}

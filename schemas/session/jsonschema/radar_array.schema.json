@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "radar_array.schema.json",
+  "title": "capture.v1.RadarArray",
+  "type": "object",
+  "properties": {
+    "array": {
+      "$ref": "device_array.schema.json"
+    }
+  },
+  "additionalProperties": true,
+  "unevaluatedProperties": true
+}

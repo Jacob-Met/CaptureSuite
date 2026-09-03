@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use CaptureSuite in research, please cite it."
+title: CaptureSuite
+type: software
+authors:
+  - family-names: Contributors
+    name-particle: CaptureSuite
+abstract: >-
+  Windows-first multimodal research capture platform with a daemon, versioned
+  worker plugins, sealed session packages, and a PySide6 operator UI.
+license:
+  - GPL-3.0-only
+  - Apache-2.0
+version: 0.1.0
+date-released: "2026-09-02"
+repository-code: https://github.com/EXAMPLE/CaptureSuite

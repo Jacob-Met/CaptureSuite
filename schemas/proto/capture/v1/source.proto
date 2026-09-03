@@ -1,0 +1,112 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package capture.v1;
+
+import "capture/v1/common.proto";
+
+option csharp_namespace = "Capture.V1";
+
+enum SourceLifecycleState {
+  SOURCE_LIFECYCLE_UNSPECIFIED = 0;
+  SOURCE_LIFECYCLE_UNAVAILABLE = 1;
+  SOURCE_LIFECYCLE_DISCOVERED = 2;
+  SOURCE_LIFECYCLE_CONNECTED = 3;
+  SOURCE_LIFECYCLE_PAIRING = 4;
+  SOURCE_LIFECYCLE_CONFIGURED = 5;
+  SOURCE_LIFECYCLE_VALIDATED = 6;
+  SOURCE_LIFECYCLE_READY = 7;
+  SOURCE_LIFECYCLE_ARMED = 8;
+  SOURCE_LIFECYCLE_RECORDING = 9;
+  SOURCE_LIFECYCLE_STOPPING = 10;
+  SOURCE_LIFECYCLE_FINALIZED = 11;
+  SOURCE_LIFECYCLE_FAILED = 12;
+}
+
+enum StreamClass {
+  STREAM_CLASS_UNSPECIFIED = 0;
+  STREAM_CLASS_SAMPLED = 1;
+  STREAM_CLASS_FRAME = 2;
+  STREAM_CLASS_ARRAY_FRAME = 3;
+  STREAM_CLASS_STRUCTURED = 4;
+  STREAM_CLASS_EVENT = 5;
+  STREAM_CLASS_BLOB = 6;
+}
+
+enum TimestampSource {
+  TIMESTAMP_SOURCE_UNSPECIFIED = 0;
+  TIMESTAMP_SOURCE_DEVICE = 1;
+  TIMESTAMP_SOURCE_HOST_ARRIVAL = 2;
+  TIMESTAMP_SOURCE_SESSION_MAPPED = 3;
+}
+
+message PhysicalDevice {
+  string vendor = 1;
+  string model = 2;
+  string serial = 3;
+  string stable_device_key = 4;  // immutable hardware identity
+  string firmware = 5;
+  string connection_path = 6;
+  string driver_sdk_version = 7;
+  map<string, string> hardware_metadata = 8;
+}
+
+message LogicalSlot {
+  string slot_id = 1;
+  string role = 2;             // experimental role, stable across device swaps
+  string bound_device_key = 3;  // current physical binding; may change
+  string alias = 4;
+}
+
+message SensorInstance {
+  string sensor_id = 1;
+  string parent_source_id = 2;
+  PhysicalDevice physical = 3;
+  string alias = 4;
+  string logical_slot_id = 5;
+  map<string, string> metadata = 6;
+}
+
+message StreamDescriptor {
+  string stream_id = 1;
+  string source_id = 2;
+  string sensor_id = 3;  // empty if source-level
+  StreamClass stream_class = 4;
+  string modality = 5;           // emg, video, imu, radar, event, ...
+  string quantity = 6;
+  string units = 7;
+  repeated uint32 dimensions = 8;
+  double nominal_rate_hz = 9;
+  TimestampSource timestamp_source = 10;
+  string data_schema_id = 11;      // e.g. emg.batch/1
+  string data_schema_version = 12; // e.g. 1
+  map<string, string> metadata = 13;
+}
+
+message SourceInstance {
+  string source_id = 1;
+  string source_type = 2;  // camera|emg|imu|radar|event|sim.*
+  repeated string physical_device_ids = 3;
+  repeated PhysicalDevice physical_devices = 4;
+  string alias = 5;
+  string logical_role = 6;
+  bool enabled = 7;
+  string plugin_id = 8;
+  string plugin_version = 9;
+  bytes configuration = 10;
+  string configuration_content_type = 11;  // application/json
+  SourceLifecycleState lifecycle_state = 12;
+  repeated SensorInstance sensors = 13;
+  repeated StreamDescriptor streams = 14;
+  map<string, string> metadata = 15;
+}
+
+// Advertisement from a worker: what it can provide.
+message SourceManifest {
+  string plugin_id = 1;
+  string plugin_version = 2;
+  VersionInfo component = 3;
+  uint32 supported_operations = 4;
+  repeated SourceInstance sources = 5;
+  map<string, string> capabilities = 6;
+}

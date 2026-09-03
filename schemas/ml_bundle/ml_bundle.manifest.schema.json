@@ -1,0 +1,153 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ml_bundle.manifest.schema.json",
+  "title": "capture.ml_bundle/1",
+  "type": "object",
+  "required": [
+    "schemaId",
+    "bundleVersion",
+    "sourceJobIds",
+    "analysisGrids",
+    "window",
+    "targetColumns",
+    "inputFeatures",
+    "normalization"
+  ],
+  "properties": {
+    "schemaId": {
+      "type": "string",
+      "const": "capture.ml_bundle/1"
+    },
+    "bundleVersion": {
+      "type": "string"
+    },
+    "createdUtc": {
+      "type": "string"
+    },
+    "sourceJobIds": {
+      "type": "object",
+      "required": ["kinematics", "features"],
+      "properties": {
+        "kinematics": { "type": "string" },
+        "features": { "type": "string" },
+        "pose": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "sessionIds": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "analysisGrids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["gridId", "rateHz", "method", "sourceStreams"],
+        "properties": {
+          "gridId": { "type": "string" },
+          "rateHz": { "type": "number", "minimum": 0 },
+          "method": { "type": "string" },
+          "sourceStreams": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "params": {
+            "type": "object",
+            "additionalProperties": true
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "window": {
+      "type": "object",
+      "required": ["windowSec", "hopSec", "targetTime"],
+      "properties": {
+        "windowSec": { "type": "number", "minimum": 0.1 },
+        "hopSec": { "type": "number", "minimum": 0.01 },
+        "targetTime": {
+          "type": "string",
+          "enum": ["center", "end"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "targetColumns": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "inputFeatures": {
+      "type": "object",
+      "required": ["kind"],
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": ["range_doppler_stack", "range_profile_stack", "motion_energy"]
+        },
+        "shape": {
+          "type": "array",
+          "items": { "type": "integer" }
+        },
+        "radarStreamIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": true
+    },
+    "normalization": {
+      "type": "object",
+      "required": ["input", "target"],
+      "properties": {
+        "input": {
+          "type": "string",
+          "enum": ["per_session_zscore", "global_zscore", "none"]
+        },
+        "target": {
+          "type": "string",
+          "enum": ["raw_degrees", "standardize_train_fold", "none"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "folds": {
+      "type": "object",
+      "properties": {
+        "trainSubjects": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "valSubjects": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "testSubjects": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "windowIds": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "enum": ["train", "val", "test"]
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "activityCatalogVersion": {
+      "type": "string"
+    },
+    "tensorFormat": {
+      "type": "string",
+      "enum": ["npy_shards", "zarr", "parquet_blob"]
+    },
+    "sha256": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    }
+  },
+  "additionalProperties": true
+}

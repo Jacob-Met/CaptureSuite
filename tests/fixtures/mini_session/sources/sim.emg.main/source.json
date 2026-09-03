@@ -1,0 +1,6 @@
+{
+  "sourceId": "sim.emg.main",
+  "sourceType": "sim.emg",
+  "alias": "Sim_EMG_Main",
+  "pluginId": "sim.emg"
+}

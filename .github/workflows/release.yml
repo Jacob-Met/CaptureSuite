@@ -1,0 +1,54 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Setup MSVC
+        uses: ilammy/msvc-dev-cmd@v1
+      - name: Setup vcpkg
+        uses: lukka/run-vcpkg@v11
+        with:
+          vcpkgDirectory: ${{ github.workspace }}/vcpkg
+          vcpkgGitCommitId: "2024.12.16"
+      - name: Build
+        env:
+          VCPKG_ROOT: ${{ github.workspace }}/vcpkg
+        run: |
+          cmake --preset windows-release
+          cmake --build build/windows-release --target capture_daemon -j 4
+      - name: Stage zip
+        shell: pwsh
+        run: |
+          $ver = $env:GITHUB_REF_NAME
+          $out = "release/CaptureSuite-$ver-win64"
+          New-Item -ItemType Directory -Force -Path $out/daemon, $out/plugins | Out-Null
+          Copy-Item build/windows-release/daemon/capture_daemon.exe $out/daemon/
+          if (Test-Path plugins) { Copy-Item -Recurse plugins/* $out/plugins/ }
+          Copy-Item LICENSE, LICENSING.md, README.md, NOTICE $out/
+          Compress-Archive -Path $out -DestinationPath "CaptureSuite-$ver-win64.zip"
+      - name: PyInstaller desktop
+        shell: pwsh
+        run: |
+          pip install pyinstaller PySide6 "protobuf>=4.25,<5"
+          $env:PYTHONPATH = "libs/python/capture_protocol;libs/python/capture_session;desktop"
+          pyinstaller --noconfirm --onefile --name capture_desktop --paths desktop --paths libs/python/capture_protocol desktop/capture_desktop/__main__.py
+      - name: Upload release assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            CaptureSuite-*-win64.zip
+            dist/capture_desktop.exe
+          generate_release_notes: true

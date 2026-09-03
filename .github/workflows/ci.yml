@@ -1,0 +1,55 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  python:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install Python deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install "protobuf>=4.25,<5" "grpcio-tools>=1.62,<1.63" jsonschema pytest ruff mcap
+      - name: Proto drift check
+        run: |
+          python tools/gen_protos.py
+          git diff --exit-code -- libs/python/capture_protocol/capture_protocol/generated
+      - name: Ruff
+        run: |
+          ruff check libs/python/capture_protocol libs/python/capture_session libs/python/capture_analysis libs/python/capture_worker workers/python_host desktop/capture_desktop tools tests plugins/example_sine_py plugins/lsl_bridge
+      - name: License check
+        run: python tools/check_licenses.py --enforce-spdx
+      - name: Pytest
+        env:
+          QT_QPA_PLATFORM: offscreen
+        run: python -m pytest tests -q --ignore=tests/kill_tests
+
+  cmake:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup MSVC
+        uses: ilammy/msvc-dev-cmd@v1
+      - name: Setup vcpkg
+        uses: lukka/run-vcpkg@v11
+        with:
+          vcpkgDirectory: ${{ github.workspace }}/vcpkg
+          vcpkgGitCommitId: "2024.12.16"
+      - name: Configure
+        env:
+          VCPKG_ROOT: ${{ github.workspace }}/vcpkg
+        run: |
+          cmake --preset windows-release -DCAPTURE_WERROR=ON
+      - name: Build daemon + tests
+        run: |
+          cmake --build build/windows-release --target capture_daemon capture_core_tests -j 4
+      - name: CTest
+        run: |
+          ctest --test-dir build/windows-release --output-on-failure -C Release

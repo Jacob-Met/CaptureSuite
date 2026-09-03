@@ -1,0 +1,30 @@
+---
+description: What to update when a source configuration schema changes
+globs: workers/camera/src/worker_session.cpp,daemon/src/sim_engine.cpp,tests/protocol/test_daemon_e2e.py
+alwaysApply: false
+---
+
+# Bumping a schema revision touches four places
+
+Per [CONFIGURATION_UI.md](../../docs/design/CONFIGURATION_UI.md), a worker owns
+its configuration vocabulary and the UI refetches when `schema_revision`
+changes. Adding or removing a property means bumping the revision, and the
+revision string appears in more than one file. Missing one leaves the UI or the
+tests disagreeing with the worker.
+
+When changing a schema, update all of:
+
+1. The worker's schema and its `set_schema_revision` calls, in both
+   `get_config_schema` and `apply_config`.
+2. The daemon's static fallback in `SimEngine::get_config_schema`, which serves
+   sources that have no worker.
+3. The revision assertions in `tests/protocol/test_daemon_e2e.py`.
+4. The status section of [docs/design/README.md](../../docs/design/README.md).
+
+Never reuse a revision string for a changed shape. Existing revisions stay
+valid: a worker that reports `camera.gstreamer/1` must keep meaning what it
+meant, because on-disk presets reference it.
+
+Guard optional properties in tests. `capture_mode` is only advertised when the
+device reports usable modes, so assert on it conditionally or CI without a
+camera fails.

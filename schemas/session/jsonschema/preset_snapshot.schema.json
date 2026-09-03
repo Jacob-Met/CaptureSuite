@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "preset_snapshot.schema.json",
+  "title": "capture.v1.PresetSnapshot",
+  "type": "object",
+  "properties": {
+    "presetId": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "presetType": {
+      "type": "string"
+    },
+    "schemaVersion": {
+      "type": "string"
+    },
+    "presetVersion": {
+      "type": "string"
+    },
+    "createdUtc": {
+      "type": "string"
+    },
+    "updatedUtc": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "content": {
+      "type": "string",
+      "contentEncoding": "base64"
+    },
+    "contentType": {
+      "type": "string"
+    },
+    "compatibility": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true,
+  "unevaluatedProperties": true
+}

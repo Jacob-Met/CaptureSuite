@@ -1,0 +1,189 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package capture.v1;
+
+import "capture/v1/common.proto";
+import "capture/v1/source.proto";
+import "capture/v1/health.proto";
+import "capture/v1/preview.proto";
+
+option csharp_namespace = "Capture.V1";
+
+message IdentifyRequest {}
+message IdentifyReply {
+  SourceManifest manifest = 1;
+  ErrorInfo error = 2;
+}
+
+message DiscoverRequest {}
+message DiscoverReply {
+  repeated SourceInstance sources = 1;
+  ErrorInfo error = 2;
+}
+
+message ConnectRequest {
+  string source_id = 1;
+}
+message ConnectReply {
+  SourceInstance source = 1;
+  ErrorInfo error = 2;
+}
+
+message DisconnectRequest {
+  string source_id = 1;
+}
+message DisconnectReply {
+  ErrorInfo error = 1;
+}
+
+message ShutdownRequest {
+  string reason = 1;
+}
+message ShutdownReply {
+  ErrorInfo error = 1;
+}
+
+message PairRequest {
+  string source_id = 1;
+  bytes pairing_params = 2;
+}
+message PairReply {
+  SourceInstance source = 1;
+  ErrorInfo error = 2;
+}
+
+message UnpairRequest {
+  string source_id = 1;
+  string sensor_id = 2;
+}
+message UnpairReply {
+  ErrorInfo error = 1;
+}
+
+message CalibrateRequest {
+  string source_id = 1;
+  bytes calibration_params = 2;
+}
+message CalibrateReply {
+  ErrorInfo error = 1;
+}
+
+message GetCapabilitiesRequest {
+  string source_id = 1;
+}
+message GetCapabilitiesReply {
+  map<string, string> capabilities = 1;
+  uint32 supported_operations = 2;
+  ErrorInfo error = 3;
+}
+
+message GetConfigSchemaRequest {
+  string source_id = 1;
+}
+message GetConfigSchemaReply {
+  string schema_json = 1;
+  ErrorInfo error = 2;
+  // Current stored configuration document (JSON object), may be "{}".
+  string current_json = 3;
+  // Same as current until a worker reports a distinct effective document.
+  string effective_json = 4;
+  string schema_revision = 5;
+}
+
+message ApplyConfigRequest {
+  string source_id = 1;
+  bytes configuration = 2;
+  string content_type = 3;
+}
+message ApplyConfigReply {
+  SourceInstance source = 1;
+  ErrorInfo error = 2;
+  string requested_json = 3;
+  string effective_json = 4;
+  // Property names that differ between requested and effective.
+  repeated string coerced_fields = 5;
+  string schema_revision = 6;
+}
+
+message ValidateRequest {
+  string source_id = 1;
+}
+message ValidateReply {
+  bool ok = 1;
+  repeated string warnings = 2;
+  ErrorInfo error = 3;
+}
+
+message ArmRequest {
+  string source_id = 1;
+}
+message ArmReply {
+  ErrorInfo error = 1;
+}
+
+message StartRequest {
+  string source_id = 1;
+  sint64 session_t0_qpc_ns = 2;
+  string session_id = 3;
+  string session_package_path = 4;
+}
+message StartReply {
+  sint64 first_datum_session_time_ns = 1;
+  ErrorInfo error = 2;
+}
+
+message StopRequest {
+  string source_id = 1;
+}
+message StopReply {
+  ErrorInfo error = 1;
+}
+
+message RecoverRequest {
+  string source_id = 1;
+}
+message RecoverReply {
+  ErrorInfo error = 1;
+}
+
+message GetStreamDescriptorsRequest {
+  string source_id = 1;
+}
+message GetStreamDescriptorsReply {
+  repeated StreamDescriptor streams = 1;
+  ErrorInfo error = 2;
+}
+
+message GetHealthRequest {
+  string source_id = 1;
+}
+message GetHealthReply {
+  HealthSnapshot health = 1;
+  ErrorInfo error = 2;
+}
+
+message GetPreviewDescriptorRequest {
+  string source_id = 1;
+}
+message GetPreviewDescriptorReply {
+  PreviewDescriptor preview = 1;
+  ErrorInfo error = 2;
+}
+
+// Worker reports a sealed on-disk segment; daemon updates integrity/journal.
+message SegmentSealed {
+  string source_id = 1;
+  string stream_id = 2;
+  string path = 3;  // package-relative, forward slashes preferred
+  int64 size_bytes = 4;
+  string hash_blake3_hex = 5;
+  sint64 start_session_time_ns = 6;
+  sint64 end_session_time_ns = 7;
+  int64 actual_count = 8;
+  uint32 segment_index = 9;
+}
+
+message SegmentSealedAck {
+  ErrorInfo error = 1;
+}

@@ -1,0 +1,28 @@
+{
+  "plugin_id": "radar.ifx",
+  "plugin_version": "0.1.0",
+  "family": "radar",
+  "display_name": "Radar (Infineon)",
+  "executable": "capture_worker_radar.exe",
+  "isolation": "per_source",
+  "enable_by_default": true,
+  "enable_env": "CAPTURE_USE_RADAR_WORKER",
+  "exe_env": "CAPTURE_RADAR_WORKER_EXE",
+  "hardware": true,
+  "license": "GPL-3.0-only",
+  "requires": {
+    "env": ["IFX_RADAR_SDK_ROOT"]
+  },
+  "runtime": {
+    "path_prepend": ["${IFX_RADAR_SDK_ROOT}/libs/win32_x64"]
+  },
+  "capabilities": {
+    "families": "radar",
+    "hardware": "1",
+    "emits_arrays": "1"
+  },
+  "timeouts_ms": {
+    "spawn": 8000,
+    "enumerate": 20000
+  }
+}

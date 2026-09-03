@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "integrity_file_entry.schema.json",
+  "title": "capture.v1.IntegrityFileEntry",
+  "type": "object",
+  "properties": {
+    "path": {
+      "type": "string"
+    },
+    "sizeBytes": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "hashBlake3Hex": {
+      "type": "string"
+    },
+    "sourceId": {
+      "type": "string"
+    },
+    "streamId": {
+      "type": "string"
+    },
+    "startSessionTimeNs": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "endSessionTimeNs": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "expectedCount": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "actualCount": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "INTEGRITY_STATUS_UNSPECIFIED",
+        "INTEGRITY_STATUS_SEALED",
+        "INTEGRITY_STATUS_OPEN",
+        "INTEGRITY_STATUS_TRUNCATED_RECOVERED",
+        "INTEGRITY_STATUS_UNVERIFIED"
+      ]
+    }
+  },
+  "additionalProperties": true,
+  "unevaluatedProperties": true
+}

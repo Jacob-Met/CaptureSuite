@@ -1,0 +1,80 @@
+{
+  // ---- C++ -------------------------------------------------------------
+  // clangd is the single IntelliSense engine; cpptools is kept for debugging
+  // only. Running both produces two sets of contradictory diagnostics.
+  "C_Cpp.intelliSenseEngine": "disabled",
+  "C_Cpp.autocomplete": "disabled",
+  "C_Cpp.errorSquiggles": "disabled",
+  "clangd.arguments": [
+    "--compile-commands-dir=${workspaceFolder}/build/windows-release",
+    "--background-index",
+    "--header-insertion=never",
+    "--completion-style=detailed"
+  ],
+
+  // CMake Tools must never configure on its own: it would drop
+  // CAPTURE_ENABLE_CAMERA_WORKER and silently remove the capture_worker_camera
+  // target. Configure through the presets instead.
+  "cmake.configureOnOpen": false,
+  "cmake.configureOnEdit": false,
+  "cmake.automaticReconfigure": false,
+  "cmake.useCMakePresets": "always",
+
+  // ---- Python ----------------------------------------------------------
+  // pyproject.toml pins >=3.12,<3.13; the 3.14 install first on PATH is not
+  // a supported interpreter for this project.
+  "python.defaultInterpreterPath": "${env:LOCALAPPDATA}\\Programs\\Python\\Python312\\python.exe",
+  "python.terminal.activateEnvironment": false,
+  // Mirrors tool.pytest.ini_options.pythonpath, which the language server
+  // does not read.
+  "python.analysis.extraPaths": [
+    "libs/python/capture_protocol",
+    "libs/python/capture_session",
+    "libs/python/capture_analysis",
+    "workers/python_host",
+    "desktop",
+    "tools"
+  ],
+  "python.analysis.typeCheckingMode": "basic",
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestArgs": ["tests"],
+
+  // CI enforces `ruff check` only. `ruff format` would reformat 22 existing
+  // files, so it stays manual (Shift+Alt+F) rather than running on save and
+  // burying real changes in unrelated churn. Import sorting is safe to
+  // automate because I001 is one of the rules CI already fails on.
+  "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports.ruff": "explicit"
+    }
+  },
+
+  // ---- Workspace noise -------------------------------------------------
+  "files.watcherExclude": {
+    "**/build/**": true,
+    "**/third_party/gstreamer/**": true,
+    "**/.venv/**": true,
+    "**/__pycache__/**": true,
+    "**/.pytest_cache/**": true,
+    "**/.ruff_cache/**": true,
+    "**/.mypy_cache/**": true,
+    "**/*.mmsession/**": true
+  },
+  "search.exclude": {
+    "**/build/**": true,
+    "**/third_party/gstreamer/**": true,
+    "**/.venv/**": true,
+    "**/__pycache__/**": true,
+    "**/*.mmsession/**": true,
+    "**/*.mkv": true,
+    "libs/python/capture_protocol/capture_protocol/generated/**": true
+  },
+  "files.associations": {
+    "*.mdc": "markdown"
+  },
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true
+}

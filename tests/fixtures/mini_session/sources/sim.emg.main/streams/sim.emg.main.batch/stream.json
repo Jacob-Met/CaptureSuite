@@ -1,0 +1,10 @@
+{
+  "streamId": "sim.emg.main.batch",
+  "sourceId": "sim.emg.main",
+  "modality": "emg",
+  "units": "mV",
+  "dimensions": [8],
+  "nominalRateHz": 2000.0,
+  "dataSchemaId": "emg.batch/1",
+  "dataSchemaVersion": "1"
+}

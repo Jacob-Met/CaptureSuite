@@ -1,0 +1,26 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package capture.v1.data;
+
+import "capture/v1/common.proto";
+
+option csharp_namespace = "Capture.V1.Data";
+
+// data_schema_id: radar.frame/1
+message RadarFrame {
+  capture.v1.TimingHeader timing = 1;
+  int64 frame_index = 2;
+  string configuration_hash = 3;
+  uint32 num_rx = 4;
+  uint32 num_chirps = 5;
+  uint32 num_samples = 6;
+  // Layout of `payload`. Open vocabulary; add values rather than reinterpreting
+  // existing ones. BGT60TR13C records `uint16_le_raw_interleaved`: real-valued
+  // 12-bit ADC samples in chip transmission order, exactly as the SDK's raw
+  // frame API delivered them. `float32_le` is the SDK's deinterleaved cube
+  // (Rx x chirps x samples). Neither is complex I/Q — do not pair samples.
+  string sample_encoding = 7;  // uint16_le_raw_interleaved | float32_le
+  bytes payload = 8;
+  uint32 quality_flags = 9;
+}

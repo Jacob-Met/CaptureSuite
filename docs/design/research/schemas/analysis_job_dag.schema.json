@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "capture.analysis_job_dag/1",
+  "title": "Analysis job manifest DAG extensions",
+  "type": "object",
+  "properties": {
+    "dependsOnJobs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["jobId", "role"],
+        "properties": {
+          "jobId": { "type": "string" },
+          "role": { "type": "string", "description": "e.g. pose_teacher, radar_features" }
+        }
+      }
+    },
+    "pluginManifestVersion": { "type": "string" },
+    "pluginIds": { "type": "array", "items": { "type": "string" } },
+    "environmentHash": { "type": "string" },
+    "analysisGrids": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["gridId", "nominalRateHz", "method"],
+        "properties": {
+          "gridId": { "type": "string" },
+          "nominalRateHz": { "type": "number" },
+          "method": { "type": "string" },
+          "params": { "type": "object" },
+          "sourceStreams": { "type": "array", "items": { "type": "string" } },
+          "anchorIds": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}

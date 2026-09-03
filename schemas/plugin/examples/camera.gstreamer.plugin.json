@@ -1,0 +1,28 @@
+{
+  "plugin_id": "camera.gstreamer",
+  "plugin_version": "0.1.0",
+  "family": "camera",
+  "display_name": "Camera (GStreamer)",
+  "executable": "capture_worker_camera.exe",
+  "isolation": "per_source",
+  "enable_by_default": true,
+  "enable_env": "CAPTURE_USE_CAMERA_WORKER",
+  "exe_env": "CAPTURE_CAMERA_WORKER_EXE",
+  "hardware": true,
+  "license": "GPL-3.0-only",
+  "requires": {
+    "gstreamer": true,
+    "env": ["GSTREAMER_1_0_ROOT_MSVC_X86_64"]
+  },
+  "runtime": {
+    "path_prepend": ["${GSTREAMER_1_0_ROOT_MSVC_X86_64}/bin"]
+  },
+  "capabilities": {
+    "families": "camera",
+    "hardware": "1"
+  },
+  "timeouts_ms": {
+    "spawn": 25000,
+    "stop": 120000
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "source_instance.schema.json",
+  "title": "capture.v1.SourceInstance",
+  "type": "object",
+  "properties": {
+    "sourceId": {
+      "type": "string"
+    },
+    "sourceType": {
+      "type": "string"
+    },
+    "physicalDeviceIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "physicalDevices": {
+      "type": "array",
+      "items": {
+        "$ref": "physical_device.schema.json"
+      }
+    },
+    "alias": {
+      "type": "string"
+    },
+    "logicalRole": {
+      "type": "string"
+    },
+    "enabled": {
+      "type": "boolean"
+    },
+    "pluginId": {
+      "type": "string"
+    },
+    "pluginVersion": {
+      "type": "string"
+    },
+    "configuration": {
+      "type": "string",
+      "contentEncoding": "base64"
+    },
+    "configurationContentType": {
+      "type": "string"
+    },
+    "lifecycleState": {
+      "type": "string",
+      "enum": [
+        "SOURCE_LIFECYCLE_UNSPECIFIED",
+        "SOURCE_LIFECYCLE_UNAVAILABLE",
+        "SOURCE_LIFECYCLE_DISCOVERED",
+        "SOURCE_LIFECYCLE_CONNECTED",
+        "SOURCE_LIFECYCLE_PAIRING",
+        "SOURCE_LIFECYCLE_CONFIGURED",
+        "SOURCE_LIFECYCLE_VALIDATED",
+        "SOURCE_LIFECYCLE_READY",
+        "SOURCE_LIFECYCLE_ARMED",
+        "SOURCE_LIFECYCLE_RECORDING",
+        "SOURCE_LIFECYCLE_STOPPING",
+        "SOURCE_LIFECYCLE_FINALIZED",
+        "SOURCE_LIFECYCLE_FAILED"
+      ]
+    },
+    "sensors": {
+      "type": "array",
+      "items": {
+        "$ref": "sensor_instance.schema.json"
+      }
+    },
+    "streams": {
+      "type": "array",
+      "items": {
+        "$ref": "stream_descriptor.schema.json"
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true,
+  "unevaluatedProperties": true
+}

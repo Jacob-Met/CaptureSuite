@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://capturesuite.dev/schemas/plugin/plugin_manifest.schema.json",
+  "title": "CaptureSuitePluginManifest",
+  "description": "On-disk acquisition plugin manifest (plugin.json) discovered by the daemon PluginRegistry.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["plugin_id", "plugin_version", "family", "display_name", "executable"],
+  "properties": {
+    "plugin_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(\\.[a-z0-9_-]+)+$",
+      "description": "Stable namespaced id, e.g. camera.gstreamer, radar.ifx, lsl.bridge"
+    },
+    "plugin_version": { "type": "string", "minLength": 1 },
+    "family": {
+      "type": "string",
+      "minLength": 1,
+      "description": "UI / worker-id grouping: camera, radar, emg, imu, numeric, …"
+    },
+    "display_name": { "type": "string", "minLength": 1 },
+    "executable": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Relative path to worker executable or launcher script (from plugin dir)"
+    },
+    "args_template": {
+      "type": "string",
+      "default": "",
+      "description": "Optional extra args; daemon always appends --pipe --worker-id --plugin"
+    },
+    "isolation": {
+      "type": "string",
+      "enum": ["per_source", "shared", "in_process"],
+      "default": "per_source"
+    },
+    "enable_by_default": { "type": "boolean", "default": true },
+    "enable_env": {
+      "type": "string",
+      "description": "Optional env override (set to 0 to force off, 1 to force on)"
+    },
+    "exe_env": {
+      "type": "string",
+      "description": "Optional absolute-path override for the executable"
+    },
+    "hardware": { "type": "boolean", "default": true },
+    "license": { "type": "string", "default": "GPL-3.0-only" },
+    "homepage": { "type": "string" },
+    "requires": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "env": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Env vars that must be set for the plugin to enable"
+        },
+        "gstreamer": { "type": "boolean", "default": false }
+      }
+    },
+    "runtime": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path_prepend": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Directories prepended to PATH for the worker process (env expansion allowed)"
+        },
+        "env": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    },
+    "capabilities": {
+      "type": "object",
+      "additionalProperties": { "type": "string" },
+      "description": "Opaque capability flags (emits_arrays=1, families=camera, …)"
+    },
+    "timeouts_ms": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "spawn": { "type": "integer", "minimum": 100 },
+        "connect": { "type": "integer", "minimum": 100 },
+        "start": { "type": "integer", "minimum": 100 },
+        "stop": { "type": "integer", "minimum": 100 },
+        "enumerate": { "type": "integer", "minimum": 100 }
+      }
+    }
+  }
+}

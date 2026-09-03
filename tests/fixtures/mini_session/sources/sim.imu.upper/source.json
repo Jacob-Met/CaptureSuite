@@ -1,0 +1,6 @@
+{
+  "sourceId": "sim.imu.upper",
+  "sourceType": "sim.imu",
+  "alias": "Sim_IMU_UpperBody",
+  "pluginId": "sim.imu"
+}

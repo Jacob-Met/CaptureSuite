@@ -1,0 +1,17 @@
+{
+  "plugin_id": "lsl.bridge",
+  "plugin_version": "0.1.0",
+  "family": "numeric",
+  "display_name": "Lab Streaming Layer (LSL)",
+  "executable": "run_worker.cmd",
+  "isolation": "shared",
+  "enable_by_default": true,
+  "enable_env": "CAPTURE_USE_LSL_BRIDGE",
+  "hardware": true,
+  "license": "Apache-2.0",
+  "homepage": "https://labstreaminglayer.org/",
+  "capabilities": {
+    "families": "numeric",
+    "hardware": "1"
+  }
+}

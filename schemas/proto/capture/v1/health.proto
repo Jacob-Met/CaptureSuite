@@ -1,0 +1,113 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package capture.v1;
+
+import "capture/v1/common.proto";
+import "capture/v1/source.proto";
+
+option csharp_namespace = "Capture.V1";
+
+enum HealthLevel {
+  HEALTH_LEVEL_UNSPECIFIED = 0;
+  HEALTH_LEVEL_OK = 1;
+  HEALTH_LEVEL_WARNING = 2;
+  HEALTH_LEVEL_ERROR = 3;
+}
+
+enum GapCause {
+  GAP_CAUSE_UNSPECIFIED = 0;
+  GAP_CAUSE_DISCONNECT = 1;
+  GAP_CAUSE_SEQUENCE_LOSS = 2;
+  GAP_CAUSE_OVERLOAD_DROP = 3;
+  GAP_CAUSE_WRITER_ERROR = 4;
+  GAP_CAUSE_UNKNOWN = 5;
+}
+
+enum AlertLevel {
+  ALERT_LEVEL_UNSPECIFIED = 0;
+  ALERT_LEVEL_INFO = 1;
+  ALERT_LEVEL_WARNING = 2;
+  ALERT_LEVEL_CRITICAL = 3;
+}
+
+message OpenGap {
+  GapCause cause = 1;
+  sint64 start_session_time_ns = 2;
+  // end unset while open
+  optional sint64 end_session_time_ns = 3;
+  int64 estimated_lost_count = 4;
+}
+
+message GapEvent {
+  string source_id = 1;
+  string stream_id = 2;
+  GapCause cause = 3;
+  sint64 start_session_time_ns = 4;
+  optional sint64 end_session_time_ns = 5;
+  int64 estimated_lost_count = 6;
+  bool closed = 7;
+}
+
+message OverloadEvent {
+  string source_id = 1;
+  string stream_id = 2;
+  sint64 session_time_ns = 3;
+  double queue_occupancy = 4;  // 0..1
+  int64 dropped_count = 5;
+}
+
+message DiskStatus {
+  int64 free_bytes = 1;
+  int64 reserve_bytes = 2;
+  double write_mb_per_s = 3;
+  double estimated_remaining_minutes = 4;
+  AlertLevel headroom_level = 5;
+  bool writers_blocked = 6;
+}
+
+message HealthSnapshot {
+  string source_id = 1;
+  SourceLifecycleState lifecycle_state = 2;
+  HealthLevel health = 3;
+  bool connected = 4;
+  bool data_arriving = 5;
+  double measured_rate_hz = 6;
+  double expected_rate_hz = 7;
+  int64 dropped_count = 8;
+  int64 dropped_last_10s = 9;
+  bool write_ok = 10;
+  string current_segment = 11;
+  optional OpenGap open_gap = 12;
+  int32 gap_count = 13;
+  ErrorInfo last_error = 14;
+  optional double battery_percent = 15;
+  optional double signal_quality = 16;
+  sint64 session_time_ns = 17;
+  // Cumulative samples/frames written by an external worker for this source's
+  // record stream (includes the open segment). Daemon sample_count for
+  // external_segments streams reads this while recording; integrity.json is
+  // authoritative after SegmentSealed / finalize.
+  int64 recorded_sample_count = 18;
+}
+
+message Alert {
+  string alert_id = 1;
+  AlertLevel level = 2;
+  string source_id = 3;
+  string code = 4;
+  string message = 5;
+  sint64 session_time_ns = 6;
+  bool acknowledged = 7;
+}
+
+message LogEvent {
+  string level = 1;
+  string component = 2;
+  string event = 3;
+  string message = 4;
+  string session_id = 5;
+  string source_id = 6;
+  string stream_id = 7;
+  sint64 session_time_ns = 8;
+}

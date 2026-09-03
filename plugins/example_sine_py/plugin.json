@@ -1,0 +1,20 @@
+{
+  "plugin_id": "example.sine",
+  "plugin_version": "0.1.0",
+  "family": "numeric",
+  "display_name": "Example Sine (Python)",
+  "executable": "run_worker.cmd",
+  "isolation": "shared",
+  "enable_by_default": true,
+  "hardware": false,
+  "license": "Apache-2.0",
+  "capabilities": {
+    "families": "numeric",
+    "hardware": "0",
+    "isolation": "shared"
+  },
+  "timeouts_ms": {
+    "spawn": 15000,
+    "stop": 10000
+  }
+}

@@ -1,0 +1,20 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package capture.v1;
+
+option csharp_namespace = "Capture.V1";
+
+message PresetSnapshot {
+  string preset_id = 1;
+  string name = 2;
+  string preset_type = 3;  // device|naming|anatomy|spatial|radar_array|capture|checkpoint|hotkey|workspace|export
+  string schema_version = 4;
+  string preset_version = 5;
+  string created_utc = 6;
+  string updated_utc = 7;
+  string description = 8;
+  bytes content = 9;  // full content, never a reference only
+  string content_type = 10;
+  map<string, string> compatibility = 11;
+}

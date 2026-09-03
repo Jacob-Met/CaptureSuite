@@ -1,0 +1,10 @@
+{
+  "streamId": "sim.imu.upper.frames",
+  "sourceId": "sim.imu.upper",
+  "modality": "imu",
+  "units": "a.u.",
+  "dimensions": [3],
+  "nominalRateHz": 60.0,
+  "dataSchemaId": "imu.frame/1",
+  "dataSchemaVersion": "1"
+}

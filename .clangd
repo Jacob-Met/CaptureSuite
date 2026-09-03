@@ -1,0 +1,18 @@
+CompileFlags:
+  CompilationDatabase: build/windows-release
+  # The database records cl.exe invocations, so clangd runs in clang-cl mode and
+  # meets MSVC-only switches it has no equivalent for.
+  Add:
+    - -Wno-unknown-argument
+    - -Wno-unknown-warning-option
+    - -Wno-microsoft-include
+
+Diagnostics:
+  UnusedIncludes: None
+  MissingIncludes: None
+
+Index:
+  Background: Build
+
+InlayHints:
+  Enabled: false

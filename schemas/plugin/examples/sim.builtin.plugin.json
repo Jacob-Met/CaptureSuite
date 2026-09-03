@@ -1,0 +1,15 @@
+{
+  "plugin_id": "sim.builtin",
+  "plugin_version": "0.1.0",
+  "family": "sim",
+  "display_name": "Built-in Simulator",
+  "executable": "",
+  "isolation": "in_process",
+  "enable_by_default": true,
+  "hardware": false,
+  "license": "GPL-3.0-only",
+  "capabilities": {
+    "families": "sim",
+    "hardware": "0"
+  }
+}

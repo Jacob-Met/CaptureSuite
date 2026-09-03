@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "kinematics_columns.schema.json",
+  "title": "capture.kinematics_columns/1",
+  "description": "Column registry for kinematics.parquet teacher labels",
+  "type": "object",
+  "required": ["schemaId", "columns"],
+  "properties": {
+    "schemaId": {
+      "type": "string",
+      "const": "capture.kinematics_columns/1"
+    },
+    "version": {
+      "type": "string",
+      "default": "1"
+    },
+    "columns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "arrowType", "units", "tier", "calibrated"],
+        "properties": {
+          "name": { "type": "string" },
+          "arrowType": {
+            "type": "string",
+            "enum": ["int64", "float64", "bool", "string"]
+          },
+          "units": { "type": "string" },
+          "tier": {
+            "type": "string",
+            "enum": ["A", "B", "metadata"]
+          },
+          "calibrated": { "type": "boolean" },
+          "description": { "type": "string" },
+          "nullable": { "type": "boolean", "default": true }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

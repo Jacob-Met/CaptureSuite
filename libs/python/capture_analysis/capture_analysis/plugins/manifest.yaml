@@ -1,0 +1,120 @@
+manifestVersion: "1.0.0"
+
+streamHandlers:
+  - id: emg.batch
+    modality: emg
+    requiresMcap: true
+    entry: capture_analysis.plugins.handlers:handle_emg
+  - id: imu.frames
+    modality: imu
+    requiresMcap: true
+    entry: capture_analysis.plugins.handlers:handle_imu
+  - id: radar.frame
+    modality: radar
+    requiresMcap: true
+    entry: capture_analysis.plugins.handlers:handle_radar
+  - id: radar_doppler.frame
+    modality: radar_doppler
+    requiresMcap: true
+    entry: capture_analysis.plugins.handlers:handle_radar_doppler
+  - id: video.timing
+    modality: video
+    entry: capture_analysis.plugins.handlers:handle_video
+  - id: numeric.batch
+    modality: numeric
+    requiresMcap: true
+    entry: capture_analysis.plugins.handlers:handle_emg
+  - id: test.dummy.v1
+    modality: dummy_test
+    entry: capture_analysis.plugins.dummy:handle_dummy
+
+loaders:
+  - schemaId: emg.batch/1
+    entry: capture_analysis.loaders.emg:load_emg
+    materializePolicy: materialize
+  - schemaId: imu.frame/1
+    entry: capture_analysis.loaders.imu:load_imu
+    materializePolicy: materialize
+  - schemaId: radar.frame/1
+    entry: capture_analysis.loaders.radar_frame:iter_radar_frames
+    materializePolicy: stream
+  - schemaId: radar.doppler_frame/1
+    entry: capture_analysis.loaders.radar_doppler:iter_radar_doppler
+    materializePolicy: stream
+  - schemaId: video.timing/1
+    entry: capture_analysis.loaders.video:load_video_timing
+    materializePolicy: stream
+  - schemaId: generic.numeric_batch/1
+    entry: capture_analysis.loaders.numeric_batch:load_numeric_batch
+    materializePolicy: materialize
+
+features:
+  - id: emg.envelope.v1
+    schemaIds: [emg.batch/1]
+    entry: capture_analysis.features.emg:extract_emg_features
+  - id: imu.kinematics.v1
+    schemaIds: [imu.frame/1]
+    entry: capture_analysis.features.imu:extract_imu_features
+  - id: radar.rd_energy.v1
+    schemaIds: [radar.frame/1]
+    entry: capture_analysis.features.radar_frame:extract_radar_frame_features
+    provisional: true
+  - id: radar_doppler.mag.v1
+    schemaIds: [radar.doppler_frame/1]
+    entry: capture_analysis.features.radar_doppler:extract_radar_doppler_features
+    provisional: true
+  - id: video.timing_qc.v1
+    schemaIds: [video.timing/1]
+    entry: capture_analysis.features.video_qc:extract_video_qc
+  - id: numeric.basic.v1
+    schemaIds: [generic.numeric_batch/1]
+    entry: capture_analysis.features.numeric_batch:extract_numeric_batch_features
+    provisional: true
+  - id: test.dummy.feature.v1
+    schemaIds: [dummy.test/1]
+    entry: capture_analysis.plugins.dummy:extract_dummy_features
+    provisional: true
+
+plots:
+  - id: emg.channels.v1
+    entry: capture_analysis.plots.modality:plot_emg_channels
+    inputKinds: [loaded_emg]
+  - id: imu.accel.v1
+    entry: capture_analysis.plots.modality:plot_imu_accel
+    inputKinds: [loaded_imu]
+  - id: trace.series.v1
+    entry: capture_analysis.plots.modality:plot_series
+    inputKinds: [feature_parquet]
+  - id: sync.dashboard.v1
+    entry: capture_analysis.plots.sync_dashboard:plot_sync_dashboard
+    inputKinds: [sync_series]
+
+jobs:
+  - command: qc
+    entry: capture_analysis.jobs:run
+    dependsOn: []
+  - command: features
+    entry: capture_analysis.jobs:run
+    dependsOn: [qc]
+  - command: plots
+    entry: capture_analysis.jobs:run
+    dependsOn: [features]
+  - command: all
+    entry: capture_analysis.jobs:run
+    dependsOn: [qc]
+  - command: pose
+    entry: capture_analysis.jobs:run
+    dependsOn: [qc]
+    provisional: true
+  - command: kinematics
+    entry: capture_analysis.jobs:run
+    dependsOn: [pose]
+    provisional: true
+  - command: ml_bundle
+    entry: capture_analysis.jobs:run
+    dependsOn: [features, kinematics]
+    provisional: true
+  - command: eval
+    entry: capture_analysis.jobs:run
+    dependsOn: [ml_bundle]
+    provisional: true

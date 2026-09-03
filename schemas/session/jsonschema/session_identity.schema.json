@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "session_identity.schema.json",
+  "title": "capture.v1.SessionIdentity",
+  "type": "object",
+  "properties": {
+    "sessionId": {
+      "type": "string"
+    },
+    "project": {
+      "$ref": "project.schema.json"
+    },
+    "participant": {
+      "$ref": "participant.schema.json"
+    },
+    "visit": {
+      "$ref": "visit.schema.json"
+    },
+    "sessionName": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true,
+  "unevaluatedProperties": true
+}

@@ -1,0 +1,47 @@
+name: Hardware / plugin request
+description: Request support for a data-acquisition device or modality
+title: "[plugin] "
+labels: ["enhancement", "plugin"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Prefer contributing a plugin via the Python SDK or C++ stub when you can.
+        See `docs/plugins/`.
+  - type: input
+    id: device
+    attributes:
+      label: Device / vendor / model
+    validations:
+      required: true
+  - type: dropdown
+    id: modality
+    attributes:
+      label: Primary modality
+      options:
+        - EMG
+        - IMU
+        - Video / camera
+        - Radar
+        - Force / load cell
+        - EEG / biosignal
+        - Eye tracking
+        - Audio
+        - LSL outlet (generic)
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: sdk
+    attributes:
+      label: SDK / protocol notes
+      description: Public SDK docs, LSL support, serial/UDP protocol, sample rates, etc.
+    validations:
+      required: true
+  - type: textarea
+    id: willingness
+    attributes:
+      label: Can you help implement?
+      description: Hardware access, sample data, willingness to maintain a plugin.
+    validations:
+      required: false

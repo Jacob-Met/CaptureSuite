@@ -1,0 +1,38 @@
+{
+  "version": 6,
+  "configurePresets": [
+    {
+      "name": "local-env",
+      "hidden": true,
+      "environment": {
+        "VCPKG_ROOT": "$env{USERPROFILE}/vcpkg",
+        "GSTREAMER_1_0_ROOT_MSVC_X86_64": "${sourceDir}/third_party/gstreamer/gstreamer/1.0/msvc_x86_64",
+        "IFX_RADAR_SDK_ROOT": "$env{USERPROFILE}/Infineon/Tools/radar_sdk_3.6.5/radar_sdk"
+      },
+      "cacheVariables": {
+        "CAPTURE_ENABLE_CAMERA_WORKER": "ON",
+        "CAPTURE_ENABLE_RADAR_WORKER": "ON"
+      }
+    },
+    {
+      "name": "windows-debug-local",
+      "displayName": "Windows Debug (this machine)",
+      "inherits": ["windows-debug", "local-env"]
+    },
+    {
+      "name": "windows-release-local",
+      "displayName": "Windows Release (this machine)",
+      "inherits": ["windows-release", "local-env"]
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "windows-debug-local",
+      "configurePreset": "windows-debug-local"
+    },
+    {
+      "name": "windows-release-local",
+      "configurePreset": "windows-release-local"
+    }
+  ]
+}

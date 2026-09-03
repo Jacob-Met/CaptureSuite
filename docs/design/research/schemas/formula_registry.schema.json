@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "capture.formula_registry/1",
+  "title": "Kinematics and analysis formula registry",
+  "type": "object",
+  "required": ["registryVersion", "formulas"],
+  "properties": {
+    "registryVersion": { "type": "string" },
+    "formulas": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["formulaId", "tier", "entry", "outputColumn"],
+        "properties": {
+          "formulaId": { "type": "string" },
+          "tier": { "enum": ["A", "B"] },
+          "entry": { "type": "string", "description": "Python module:function" },
+          "outputColumn": { "type": "string" },
+          "inputColumns": { "type": "array", "items": { "type": "string" } },
+          "paramsSchema": { "type": "string" },
+          "units": { "type": "string" },
+          "calibrated": { "type": "boolean" },
+          "description": { "type": "string" }
+        }
+      }
+    }
+  }
+}

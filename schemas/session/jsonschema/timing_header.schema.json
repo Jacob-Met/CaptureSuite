@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "timing_header.schema.json",
+  "title": "capture.v1.TimingHeader",
+  "type": "object",
+  "properties": {
+    "sequenceNumber": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "deviceIndex": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "deviceTimestamp": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "deviceTimestampUnit": {
+      "type": "string"
+    },
+    "hostArrivalNs": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "sessionTimeNs": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "timestampUncertaintyNs": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "clockMappingId": {
+      "type": "string"
+    },
+    "qualityFlags": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": true,
+  "unevaluatedProperties": true
+}

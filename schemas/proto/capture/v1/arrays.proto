@@ -1,0 +1,52 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package capture.v1;
+
+option csharp_namespace = "Capture.V1";
+
+message Pose3D {
+  double x_m = 1;
+  double y_m = 2;
+  double z_m = 3;
+  // Quaternion w,x,y,z
+  double qw = 4;
+  double qx = 5;
+  double qy = 6;
+  double qz = 7;
+}
+
+enum TimingMode {
+  TIMING_MODE_UNSPECIFIED = 0;
+  // Only legal value until hardware validation in M6.
+  TIMING_MODE_SOFTWARE_COORDINATED = 1;
+  // Reserved for future validated modes — do not advertise until proven.
+  TIMING_MODE_HARDWARE_TRIGGERED = 2;
+  TIMING_MODE_HARDWARE_SYNC = 3;
+}
+
+message ArrayMember {
+  string source_id = 1;
+  string alias = 2;
+  bool enabled = 3;
+  Pose3D pose = 4;
+  string coordinate_frame = 5;
+  string calibration_ref = 6;
+  bytes profile_override = 7;
+  string profile_override_content_type = 8;
+}
+
+message DeviceArray {
+  string array_id = 1;
+  string name = 2;
+  string array_type = 3;  // radar | generic
+  repeated ArrayMember members = 4;
+  bytes shared_profile = 5;
+  string shared_profile_content_type = 6;
+  TimingMode timing_mode = 7;
+  string coordinate_frame = 8;
+}
+
+message RadarArray {
+  DeviceArray array = 1;
+}

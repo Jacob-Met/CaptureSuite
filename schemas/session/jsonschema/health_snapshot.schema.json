@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "health_snapshot.schema.json",
+  "title": "capture.v1.HealthSnapshot",
+  "type": "object",
+  "properties": {
+    "sourceId": {
+      "type": "string"
+    },
+    "lifecycleState": {
+      "type": "string",
+      "enum": [
+        "SOURCE_LIFECYCLE_UNSPECIFIED",
+        "SOURCE_LIFECYCLE_UNAVAILABLE",
+        "SOURCE_LIFECYCLE_DISCOVERED",
+        "SOURCE_LIFECYCLE_CONNECTED",
+        "SOURCE_LIFECYCLE_PAIRING",
+        "SOURCE_LIFECYCLE_CONFIGURED",
+        "SOURCE_LIFECYCLE_VALIDATED",
+        "SOURCE_LIFECYCLE_READY",
+        "SOURCE_LIFECYCLE_ARMED",
+        "SOURCE_LIFECYCLE_RECORDING",
+        "SOURCE_LIFECYCLE_STOPPING",
+        "SOURCE_LIFECYCLE_FINALIZED",
+        "SOURCE_LIFECYCLE_FAILED"
+      ]
+    },
+    "health": {
+      "type": "string",
+      "enum": [
+        "HEALTH_LEVEL_UNSPECIFIED",
+        "HEALTH_LEVEL_OK",
+        "HEALTH_LEVEL_WARNING",
+        "HEALTH_LEVEL_ERROR"
+      ]
+    },
+    "connected": {
+      "type": "boolean"
+    },
+    "dataArriving": {
+      "type": "boolean"
+    },
+    "measuredRateHz": {
+      "type": "number"
+    },
+    "expectedRateHz": {
+      "type": "number"
+    },
+    "droppedCount": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "droppedLast10s": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "writeOk": {
+      "type": "boolean"
+    },
+    "currentSegment": {
+      "type": "string"
+    },
+    "openGap": {
+      "$ref": "open_gap.schema.json"
+    },
+    "gapCount": {
+      "type": "integer"
+    },
+    "lastError": {
+      "$ref": "error_info.schema.json"
+    },
+    "batteryPercent": {
+      "type": "number"
+    },
+    "signalQuality": {
+      "type": "number"
+    },
+    "sessionTimeNs": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "recordedSampleCount": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    }
+  },
+  "additionalProperties": true,
+  "unevaluatedProperties": true
+}

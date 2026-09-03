@@ -1,0 +1,329 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package capture.v1;
+
+import "capture/v1/common.proto";
+import "capture/v1/source.proto";
+import "capture/v1/events.proto";
+import "capture/v1/project.proto";
+import "capture/v1/presets.proto";
+import "capture/v1/health.proto";
+import "capture/v1/preview.proto";
+
+option csharp_namespace = "Capture.V1";
+
+enum SessionState {
+  SESSION_STATE_UNSPECIFIED = 0;
+  SESSION_STATE_IDLE = 1;
+  SESSION_STATE_PREPARING = 2;
+  SESSION_STATE_ARMING = 3;
+  SESSION_STATE_RECORDING = 4;
+  SESSION_STATE_STOPPING = 5;
+  SESSION_STATE_FINALIZED = 6;
+  SESSION_STATE_RECOVERING = 7;
+  SESSION_STATE_FAILED = 8;
+}
+
+message CreateSessionRequest {
+  SessionIdentity identity = 1;
+  string package_parent_path = 2;
+  repeated PresetSnapshot presets = 3;
+}
+message CreateSessionReply {
+  string session_id = 1;
+  string package_path = 2;
+  SessionState state = 3;
+  ErrorInfo error = 4;
+}
+
+message OpenSessionRequest {
+  string package_path = 1;
+}
+message OpenSessionReply {
+  string session_id = 1;
+  SessionState state = 2;
+  bool recovered = 3;
+  ErrorInfo error = 4;
+  // Absolute package path after recover/open (read-only review attach).
+  string package_path = 5;
+}
+
+message FinalizeSessionRequest {
+  string session_id = 1;
+}
+message FinalizeSessionReply {
+  SessionState state = 1;
+  ErrorInfo error = 2;
+}
+
+message ListSourcesRequest {}
+message ListSourcesReply {
+  repeated SourceInstance sources = 1;
+  ErrorInfo error = 2;
+}
+
+// Re-enumerate cameras/radars after USB replug or a hung worker. Rejected
+// while Recording/Arming/Stopping. Stops rehearsal and tears down external
+// workers first so vendor handles are released before rediscovery.
+message RescanSourcesRequest {}
+message RescanSourcesReply {
+  repeated SourceInstance sources = 1;
+  ErrorInfo error = 2;
+}
+
+message SelectSourcesRequest {
+  repeated string source_ids = 1;
+}
+message SelectSourcesReply {
+  repeated string selected_source_ids = 1;
+  ErrorInfo error = 2;
+}
+
+message StartSelectedRequest {
+  repeated string source_ids = 1;
+}
+message StartSelectedReply {
+  SessionState state = 1;
+  sint64 t0_session_ns = 2;
+  ErrorInfo error = 3;
+}
+
+message StartAllReadyRequest {}
+message StartAllReadyReply {
+  SessionState state = 1;
+  sint64 t0_session_ns = 2;
+  repeated string started_source_ids = 3;
+  ErrorInfo error = 4;
+}
+
+// Marks an alert acknowledged in daemon-held attention state. Never mutates the
+// journal, gaps, or integrity manifest (OPERATIONS.md).
+message AcknowledgeAlertRequest {
+  string alert_id = 1;
+}
+message AcknowledgeAlertReply {
+  Alert alert = 1;
+  ErrorInfo error = 2;
+}
+
+message StopRehearsalRequest {}
+message StopRehearsalReply {
+  ErrorInfo error = 1;
+}
+
+message RequestStopRequest {}
+message RequestStopReply {
+  string confirmation_token = 1;
+  ErrorInfo error = 2;
+}
+
+message StopSessionRequest {
+  string confirmation_token = 1;
+}
+message StopSessionReply {
+  SessionState state = 1;
+  ErrorInfo error = 2;
+}
+
+message CreateCheckpointRequest {
+  string name = 1;  // may be empty; timestamp always captured immediately
+  repeated string tags = 2;
+  string created_via = 3;
+}
+message CreateCheckpointReply {
+  Checkpoint checkpoint = 1;
+  ErrorInfo error = 2;
+}
+
+message UpdateCheckpointRequest {
+  string checkpoint_id = 1;
+  optional string name = 2;
+  repeated string tags = 3;
+  optional string notes = 4;
+  map<string, string> structured_fields = 5;
+  optional sint64 effective_timestamp_ns = 6;
+  string modification_reason = 7;
+}
+message UpdateCheckpointReply {
+  Checkpoint checkpoint = 1;
+  ErrorInfo error = 2;
+}
+
+message AnnotateRequest {
+  string text = 1;
+  string category = 2;
+  repeated string tags = 3;
+  string source_id = 4;
+  string created_via = 5;
+}
+message AnnotateReply {
+  Annotation annotation = 1;
+  ErrorInfo error = 2;
+}
+
+message AddSyncAnchorRequest {
+  repeated string modalities_targeted = 1;
+  string mechanism = 2;
+  map<string, string> metadata = 3;
+  string created_via = 4;
+}
+message AddSyncAnchorReply {
+  SyncAnchor sync_anchor = 1;
+  ErrorInfo error = 2;
+}
+
+message PreflightCheck {
+  string check_id = 1;
+  string name = 2;
+  string status = 3;  // ok | warn | fail
+  string message = 4;
+  bool overridable = 5;
+  string override_reason = 6;
+}
+
+message RunPreflightRequest {
+  repeated string source_ids = 1;
+}
+message RunPreflightReply {
+  repeated PreflightCheck checks = 1;
+  bool ok = 2;
+  ErrorInfo error = 3;
+}
+
+message StartRehearsalRequest {
+  repeated string source_ids = 1;
+}
+message StartRehearsalReply {
+  ErrorInfo error = 1;
+}
+
+// Opts this connection in to unsolicited status frames (correlation_id 0):
+// StateChanged, HealthSnapshot, GapEvent, Alert, DiskStatus and PreviewFrame.
+message SubscribeStatusRequest {
+  bool include_preview = 1;
+  // 0 selects the daemon default of 1 Hz.
+  uint32 health_interval_ms = 2;
+  // Upper bound applied on top of each source's own preview rate; 0 means the
+  // per-source rate from PreviewDescriptor governs.
+  double preview_rate_limit_hz = 3;
+}
+message SubscribeStatusReply {
+  ErrorInfo error = 1;
+  uint32 health_interval_ms = 2;
+  bool preview_included = 3;
+}
+
+message ListPreviewDescriptorsRequest {
+  repeated string source_ids = 1;  // empty = all sources
+}
+message ListPreviewDescriptorsReply {
+  repeated PreviewDescriptor previews = 1;
+  ErrorInfo error = 2;
+}
+
+message SetPreviewConfigRequest {
+  string source_id = 1;
+  optional bool enabled = 2;
+  optional uint32 selected_channel = 3;
+}
+message SetPreviewConfigReply {
+  PreviewDescriptor preview = 1;
+  ErrorInfo error = 2;
+}
+
+// Per-source timeline lane: what was recorded and where the holes are.
+message LaneView {
+  string source_id = 1;
+  string stream_id = 2;
+  string modality = 3;
+  string alias = 4;
+  int64 sample_count = 5;
+  sint64 first_sample_session_ns = 6;
+  sint64 last_sample_session_ns = 7;
+  repeated GapEvent gaps = 8;
+  SourceLifecycleState lifecycle_state = 9;
+}
+
+// Everything a late-joining UI needs to draw the current session without
+// having observed the event stream from the start.
+message GetSessionViewRequest {}
+message GetSessionViewReply {
+  string session_id = 1;
+  string package_path = 2;
+  SessionState state = 3;
+  sint64 elapsed_session_ns = 4;
+  string t0_wall_clock_utc = 5;
+  repeated Checkpoint checkpoints = 6;
+  repeated Annotation annotations = 7;
+  repeated SyncAnchor sync_anchors = 8;
+  repeated LaneView lanes = 9;
+  repeated Alert alerts = 10;
+  DiskStatus disk = 11;
+  bool rehearsal_active = 12;
+  ErrorInfo error = 13;
+}
+
+message WorkerInfo {
+  string worker_id = 1;
+  string plugin_id = 2;
+  string plugin_version = 3;
+  bool connected = 4;
+  repeated string source_ids = 5;
+}
+
+message ListWorkersRequest {}
+message ListWorkersReply {
+  repeated WorkerInfo workers = 1;
+  ErrorInfo error = 2;
+}
+
+// Protocol ≥ 1.5 — installed acquisition plugins from PluginRegistry.
+message PluginInfo {
+  string plugin_id = 1;
+  string plugin_version = 2;
+  string family = 3;
+  string display_name = 4;
+  bool enabled = 5;
+  string disabled_reason = 6;
+  bool hardware = 7;
+  string isolation = 8;
+  map<string, string> capabilities = 9;
+}
+
+message ListPluginsRequest {}
+message ListPluginsReply {
+  repeated PluginInfo plugins = 1;
+  ErrorInfo error = 2;
+}
+
+// Milestone 2 introspection / fault injection (simulator and tests).
+message StreamSampleCount {
+  string stream_id = 1;
+  string source_id = 2;
+  sint64 sample_count = 3;
+  sint64 gap_count = 4;
+  sint64 open_gap_count = 5;
+}
+
+message GetRecordingStatsRequest {}
+message GetRecordingStatsReply {
+  SessionState state = 1;
+  sint64 elapsed_session_ns = 2;
+  sint64 total_samples = 3;
+  sint64 checkpoint_count = 4;
+  sint64 annotation_count = 5;
+  sint64 sync_anchor_count = 6;
+  repeated StreamSampleCount streams = 7;
+  ErrorInfo error = 8;
+}
+
+message InjectFaultRequest {
+  string source_id = 1;
+  // disconnect | reconnect | drop_burst
+  string fault_type = 2;
+  sint64 drop_count = 3;
+}
+message InjectFaultReply {
+  ErrorInfo error = 1;
+}

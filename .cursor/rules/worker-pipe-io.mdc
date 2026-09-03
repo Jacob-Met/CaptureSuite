@@ -1,0 +1,25 @@
+---
+description: Rules for reading the worker named pipe in the daemon
+globs: daemon/src/worker_host.cpp,daemon/src/camera_worker_bridge.cpp
+alwaysApply: false
+---
+
+# One reader at a time per worker pipe
+
+An RPC reply and unsolicited events (preview, health, `SegmentSealed`) arrive on
+the same pipe and share one `FrameDecoder`. `stash_unsolicited` silently drops
+message types it does not recognise, so if the event drain reads a `StopReply`
+first, the RPC caller never sees it and blocks for its entire timeout. That
+presented as `Stop` taking exactly 120 s while the worker had finished in 2.6 s.
+
+Every pipe read must hold `SpawnedWorker::io_mutex`:
+
+- `worker_rpc` takes it with `std::lock_guard` for the whole write-then-read.
+- `drain_events` takes it with `std::try_to_lock` and returns 0 when busy,
+  because preview is best-effort and must not block a control RPC.
+
+Do not add a third reader. If you need one, route it through `drain_events`
+rather than calling `read_frame` directly.
+
+Keep the lock per worker, not global: multi-camera Stop runs in parallel and a
+shared lock would serialise it.

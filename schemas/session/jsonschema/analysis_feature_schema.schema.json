@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "analysis_feature_schema.schema.json",
+  "title": "capture.analysis_feature_schema/1",
+  "type": "object",
+  "required": ["schemaId", "tables"],
+  "properties": {
+    "schemaId": {
+      "type": "string",
+      "const": "capture.analysis_feature_schema/1"
+    },
+    "tables": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["featureSchemaVersion", "columns"],
+        "properties": {
+          "featureSchemaVersion": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "columns": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["name", "units", "calibrated"],
+              "properties": {
+                "name": { "type": "string" },
+                "units": { "type": "string" },
+                "calibrated": { "type": "boolean" },
+                "description": { "type": "string" }
+              },
+              "additionalProperties": true
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

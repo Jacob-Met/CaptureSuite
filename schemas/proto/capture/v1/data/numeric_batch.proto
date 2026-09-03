@@ -1,0 +1,20 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package capture.v1.data;
+
+option csharp_namespace = "Capture.V1.Data";
+
+// data_schema_id: generic.numeric_batch/1
+// Vendor-agnostic interleaved numeric samples for arbitrary channel counts.
+message NumericBatch {
+  uint32 channel_count = 1;
+  string units = 2;
+  string dtype = 3;  // e.g. "f32"
+  repeated string channel_names = 4;
+  // Interleaved samples: length = channel_count * num_frames
+  // (frame-major: sample[f * channel_count + c]).
+  repeated double samples = 5;
+  // One device timestamp per sample frame / row.
+  repeated sint64 device_time_ns = 6;
+}

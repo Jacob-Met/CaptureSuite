@@ -1,0 +1,24 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package capture.v1.data;
+
+import "capture/v1/common.proto";
+
+option csharp_namespace = "Capture.V1.Data";
+
+// data_schema_id: radar.doppler/1
+message RadarDopplerFrame {
+  capture.v1.TimingHeader timing = 1;
+  int64 frame_index = 2;
+  string configuration_hash = 3;
+  uint32 num_samples = 4;
+  // complex_float32_le = interleaved I,Q float32 little-endian
+  string sample_encoding = 5;
+  bytes payload = 6;
+  uint32 quality_flags = 7;
+  // optional detector metadata for provenance (even when detector disabled)
+  bool motion_detected = 8;
+  // vendor ifx_Ltr11_Metadata_t.direction as int (0/1); semantics per SDK
+  int32 direction = 9;
+}

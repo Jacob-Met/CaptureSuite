@@ -1,0 +1,73 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package capture.v1;
+
+import "capture/v1/project.proto";
+
+option csharp_namespace = "Capture.V1";
+
+// On-disk manifest.json shape (protobuf canonical JSON).
+message SessionManifest {
+  string session_schema_version = 1;
+  string session_id = 2;
+  string state = 3;  // preparing|recording|finalized|finalized_recovered|failed
+  SessionIdentity identity = 4;
+  int64 t0_qpc_ticks = 5;
+  int64 qpc_frequency = 6;
+  string t0_wall_utc = 7;
+  int64 t0_uncertainty_ns = 8;
+  string created_utc = 9;
+  string finalized_utc = 10;
+  string app_version = 11;
+  string daemon_version = 12;
+  map<string, string> plugin_versions = 13;
+  map<string, string> sdk_versions = 14;
+  map<string, string> firmware_versions = 15;
+  repeated string source_ids = 16;
+}
+
+enum IntegrityStatus {
+  INTEGRITY_STATUS_UNSPECIFIED = 0;
+  INTEGRITY_STATUS_SEALED = 1;
+  INTEGRITY_STATUS_OPEN = 2;
+  INTEGRITY_STATUS_TRUNCATED_RECOVERED = 3;
+  INTEGRITY_STATUS_UNVERIFIED = 4;
+}
+
+message IntegrityFileEntry {
+  string path = 1;
+  int64 size_bytes = 2;
+  string hash_blake3_hex = 3;
+  string source_id = 4;
+  string stream_id = 5;
+  sint64 start_session_time_ns = 6;
+  sint64 end_session_time_ns = 7;
+  int64 expected_count = 8;
+  int64 actual_count = 9;
+  IntegrityStatus status = 10;
+}
+
+message IntegrityManifest {
+  string session_id = 1;
+  string session_schema_version = 2;
+  repeated IntegrityFileEntry files = 3;
+}
+
+enum RecoveryState {
+  RECOVERY_STATE_UNSPECIFIED = 0;
+  RECOVERY_STATE_NOT_NEEDED = 1;
+  RECOVERY_STATE_IN_PROGRESS = 2;
+  RECOVERY_STATE_COMPLETED = 3;
+  RECOVERY_STATE_FAILED = 4;
+}
+
+message RecoveryReport {
+  string session_id = 1;
+  RecoveryState state = 2;
+  repeated string trusted_paths = 3;
+  repeated string truncated_paths = 4;
+  repeated string missing_paths = 5;
+  repeated string unexpected_paths = 6;
+  string report_path = 7;
+}

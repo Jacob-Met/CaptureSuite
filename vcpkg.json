@@ -1,0 +1,17 @@
+{
+  "name": "capturesuite",
+  "version-string": "0.1.0",
+  "description": "CaptureSuite capture daemon and workers",
+  "dependencies": [
+    "protobuf",
+    {
+      "name": "mcap",
+      "features": ["lz4", "zstd"]
+    },
+    "spdlog",
+    "sqlite3",
+    "nlohmann-json",
+    "blake3",
+    "catch2"
+  ]
+}

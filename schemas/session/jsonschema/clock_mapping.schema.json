@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "clock_mapping.schema.json",
+  "title": "capture.v1.ClockMapping",
+  "type": "object",
+  "properties": {
+    "mappingId": {
+      "type": "string"
+    },
+    "sourceId": {
+      "type": "string"
+    },
+    "deviceClockId": {
+      "type": "string"
+    },
+    "validFromNs": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "validToNs": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "rateRatio": {
+      "type": "number"
+    },
+    "offsetNs": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "uncertaintyNs": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "method": {
+      "type": "string"
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true,
+  "unevaluatedProperties": true
+}

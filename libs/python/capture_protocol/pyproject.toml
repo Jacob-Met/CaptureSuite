@@ -1,0 +1,16 @@
+[project]
+name = "capture-protocol"
+version = "0.1.0"
+description = "CaptureSuite versioned IPC protocol (Python)"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "protobuf>=4.25,<5",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["capture_protocol*"]

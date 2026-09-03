@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "session_manifest.schema.json",
+  "title": "capture.v1.SessionManifest",
+  "type": "object",
+  "properties": {
+    "sessionSchemaVersion": {
+      "type": "string"
+    },
+    "sessionId": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "identity": {
+      "$ref": "session_identity.schema.json"
+    },
+    "t0QpcTicks": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "qpcFrequency": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "t0WallUtc": {
+      "type": "string"
+    },
+    "t0UncertaintyNs": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "createdUtc": {
+      "type": "string"
+    },
+    "finalizedUtc": {
+      "type": "string"
+    },
+    "appVersion": {
+      "type": "string"
+    },
+    "daemonVersion": {
+      "type": "string"
+    },
+    "pluginVersions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "sdkVersions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "firmwareVersions": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "sourceIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": true,
+  "unevaluatedProperties": true
+}

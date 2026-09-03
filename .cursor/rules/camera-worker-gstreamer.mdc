@@ -1,0 +1,37 @@
+---
+description: Media Foundation and GStreamer behaviour the camera worker depends on
+globs: workers/camera/**
+alwaysApply: false
+---
+
+# Camera worker pitfalls
+
+These were each found by debugging real hardware. Re-deriving them is expensive.
+
+## Device caps are not available in READY
+
+`mfvideosrc` opens the device on the READY→PAUSED transition, so a caps query in
+READY returns template ranges (`width=[1,32768]`), not real modes. Enumerating
+modes from that yields nothing. Read the device's native Media Foundation media
+types instead (`capture_mode.cpp`), and only fall back to a GStreamer probe in
+PAUSED.
+
+## Windows hides MJPEG on many UVC devices
+
+The Windows frame server transparently decodes MJPEG and advertises only raw
+types. On an MX Brio, `image/jpeg` caps fail with `Internal data stream error`
+even though the hardware produces MJPEG. Never prefer `image/jpeg` on bandwidth
+grounds; prefer raw, and pick NV12 first so the record branch's `videoconvert`
+becomes a passthrough.
+
+## Send EOS before NULL
+
+`splitmuxsink` and `matroskamux` only finalize the open fragment on EOS.
+Dropping straight to `GST_STATE_NULL` leaves a 0-byte `.mkv` beside a fully
+populated timing sidecar.
+
+## Never paper over a slow device
+
+A camera may deliver below the negotiated rate (auto-exposure lengthens
+integration time in dim light). Record what arrived; do not duplicate frames or
+retime to hit the nominal rate. The timing sidecar is the honest record.

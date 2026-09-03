@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "analysis_job.schema.json",
+  "title": "capture.analysis_job/1",
+  "type": "object",
+  "required": [
+    "schemaId",
+    "jobId",
+    "createdUtc",
+    "captureAnalysisVersion",
+    "sessionId",
+    "status"
+  ],
+  "properties": {
+    "schemaId": {
+      "type": "string",
+      "const": "capture.analysis_job/1"
+    },
+    "jobId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "createdUtc": {
+      "type": "string"
+    },
+    "captureAnalysisVersion": {
+      "type": "string"
+    },
+    "packagePath": {
+      "type": "string"
+    },
+    "sessionId": {
+      "type": "string"
+    },
+    "packageState": {
+      "type": "string"
+    },
+    "manifestSha256": {
+      "type": "string"
+    },
+    "timeRange": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "sourcesSelected": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "modalities": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "gapPolicy": {
+      "type": "string",
+      "enum": ["mask", "split", "fail"]
+    },
+    "gapSummary": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "analysisGrids": {
+      "type": "array",
+      "items": { "type": "object", "additionalProperties": true }
+    },
+    "syncAnchorsApplied": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "paramsDigest": {
+      "type": "string"
+    },
+    "tooling": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "featureTables": {
+      "type": "array",
+      "items": { "type": "object", "additionalProperties": true }
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["relativePath", "bytes", "sha256", "kind"],
+        "properties": {
+          "relativePath": { "type": "string" },
+          "bytes": { "type": "integer", "minimum": 0 },
+          "sha256": { "type": "string" },
+          "kind": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "errors": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["completed", "completed_with_warnings", "failed"]
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "logical_slot.schema.json",
+  "title": "capture.v1.LogicalSlot",
+  "type": "object",
+  "properties": {
+    "slotId": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "boundDeviceKey": {
+      "type": "string"
+    },
+    "alias": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true,
+  "unevaluatedProperties": true
+}

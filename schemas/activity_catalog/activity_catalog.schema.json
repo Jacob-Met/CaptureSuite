@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "activity_catalog.schema.json",
+  "title": "capture.activity_catalog/1",
+  "type": "object",
+  "required": ["schemaId", "catalogVersion", "activities"],
+  "properties": {
+    "schemaId": {
+      "type": "string",
+      "const": "capture.activity_catalog/1"
+    },
+    "catalogVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string"
+    },
+    "captureProtocolVersion": {
+      "type": "string"
+    },
+    "activities": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "activityId",
+          "displayName",
+          "durationS",
+          "side",
+          "jointsExercised"
+        ],
+        "properties": {
+          "activityId": {
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9_]*$"
+          },
+          "displayName": {
+            "type": "string"
+          },
+          "durationS": {
+            "type": "number",
+            "minimum": 5
+          },
+          "repetitionsExpected": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "side": {
+            "type": "string",
+            "enum": ["L", "R", "bilateral", "none"]
+          },
+          "jointsExercised": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "radarVisibilityNotes": {
+            "type": "string"
+          },
+          "minPoseDetectionRate": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "baseline",
+              "elbow",
+              "shoulder",
+              "wrist",
+              "compound",
+              "locomotion",
+              "posture",
+              "garment"
+            ]
+          },
+          "operatorScript": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": false
+}

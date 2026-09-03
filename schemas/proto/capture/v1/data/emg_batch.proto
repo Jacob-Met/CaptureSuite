@@ -1,0 +1,19 @@
+// SPDX-License-Identifier: Apache-2.0
+syntax = "proto3";
+
+package capture.v1.data;
+
+import "capture/v1/common.proto";
+
+option csharp_namespace = "Capture.V1.Data";
+
+// data_schema_id: emg.batch/1
+message EmgBatch {
+  capture.v1.TimingHeader timing = 1;
+  int64 first_sample_index = 2;
+  int32 sample_count = 3;
+  repeated string channel_ids = 4;
+  // Row-major float32 samples: channels x samples, length = channels * sample_count
+  bytes samples_f32_le = 5;
+  uint32 quality_flags = 6;
+}

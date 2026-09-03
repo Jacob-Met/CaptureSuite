@@ -1,0 +1,51 @@
+{
+  "generated_from": "build/generated/capture_v1.desc",
+  "messages": [
+    "capture.v1.SessionManifest",
+    "capture.v1.PhysicalDevice",
+    "capture.v1.SourceInstance",
+    "capture.v1.SensorInstance",
+    "capture.v1.StreamDescriptor",
+    "capture.v1.LogicalSlot",
+    "capture.v1.Checkpoint",
+    "capture.v1.Annotation",
+    "capture.v1.SyncAnchor",
+    "capture.v1.ClockMapping",
+    "capture.v1.DeviceArray",
+    "capture.v1.RadarArray",
+    "capture.v1.PresetSnapshot",
+    "capture.v1.IntegrityManifest",
+    "capture.v1.IntegrityFileEntry",
+    "capture.v1.GapEvent",
+    "capture.v1.HealthSnapshot",
+    "capture.v1.SessionIdentity",
+    "capture.v1.TimingHeader"
+  ],
+  "files": [
+    "analysis_feature_schema.schema.json",
+    "analysis_job.schema.json",
+    "annotation.schema.json",
+    "checkpoint.schema.json",
+    "clock_mapping.schema.json",
+    "device_array.schema.json",
+    "gap_event.schema.json",
+    "health_snapshot.schema.json",
+    "integrity_file_entry.schema.json",
+    "integrity_manifest.schema.json",
+    "logical_slot.schema.json",
+    "physical_device.schema.json",
+    "preset_snapshot.schema.json",
+    "radar_array.schema.json",
+    "sensor_instance.schema.json",
+    "session_identity.schema.json",
+    "session_manifest.schema.json",
+    "source_instance.schema.json",
+    "stream_descriptor.schema.json",
+    "sync_anchor.schema.json",
+    "timing_header.schema.json"
+  ],
+  "hand_maintained": [
+    "analysis_feature_schema.schema.json",
+    "analysis_job.schema.json"
+  ]
+}

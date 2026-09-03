@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "checkpoint.schema.json",
+  "title": "capture.v1.Checkpoint",
+  "type": "object",
+  "properties": {
+    "checkpointId": {
+      "type": "string"
+    },
+    "originalTimestampNs": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "effectiveTimestampNs": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "name": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "structuredFields": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "notes": {
+      "type": "string"
+    },
+    "createdVia": {
+      "type": "string"
+    },
+    "createdBy": {
+      "type": "string"
+    },
+    "timestampModified": {
+      "type": "boolean"
+    },
+    "modificationReason": {
+      "type": "string"
+    },
+    "revisionHistory": {
+      "type": "array",
+      "items": {
+        "$ref": "checkpoint_revision.schema.json"
+      }
+    }
+  },
+  "additionalProperties": true,
+  "unevaluatedProperties": true
+}
