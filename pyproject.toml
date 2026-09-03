@@ -6,7 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = [
   "protobuf>=4.25,<5",
-  "grpcio-tools>=1.62,<1.63",
+  "grpcio-tools>=1.62,<1.84",
   "jsonschema>=4.21",
 ]
 
