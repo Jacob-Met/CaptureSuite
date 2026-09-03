@@ -46,7 +46,7 @@ jobs:
           $env:PYTHONPATH = "libs/python/capture_protocol;libs/python/capture_session;desktop"
           pyinstaller --noconfirm --onefile --name capture_desktop --paths desktop --paths libs/python/capture_protocol desktop/capture_desktop/__main__.py
       - name: Upload release assets
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           files: |
             CaptureSuite-*-win64.zip
