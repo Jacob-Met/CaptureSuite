@@ -7,6 +7,13 @@ plugins, sealed session packages, and a PySide6 operator UI.
 > process + named-pipe based so other OSes can be added later without breaking
 > plugins.
 
+## Who it's for
+
+Researchers and lab engineers who need **structured multimodal capture** on Windows:
+a long-running daemon, drop-in worker plugins (C++ or Python), and **sealed session
+packages** for downstream QC / features / pose / ML — without rewriting the core
+capture path for every device.
+
 ## What you get
 
 - **Daemon** — QPC clock, session FSM, recovery, named-pipe control plane
@@ -14,6 +21,18 @@ plugins, sealed session packages, and a PySide6 operator UI.
 - **Sim** — develop and demo without hardware
 - **LSL bridge** — record any Lab Streaming Layer outlet with zero vendor code
 - **Analysis** — QC, features, pose/kinematics, ML bundle jobs on sealed packages
+
+## Architecture (sketch)
+
+```mermaid
+flowchart LR
+  UI[PySide6 operator UI] -->|named pipe| D[capture_daemon]
+  D --> P1[Worker plugins]
+  D --> LSL[LSL bridge]
+  D --> SIM[Sim workers]
+  D --> PKG[Sealed session packages]
+  PKG --> AN[Analysis / QC / ML jobs]
+```
 
 ## 60-second sim demo
 
@@ -61,6 +80,15 @@ See [docs/plugins/](docs/plugins/) and
 | Operators | [docs/operator/](docs/operator/) |
 | Agent / contributor rules | [AGENTS.md](AGENTS.md), [CONTRIBUTING.md](CONTRIBUTING.md) |
 
+## Development practice
+
+CaptureSuite is built as **AI-native research software**: architecture, plugin
+contracts, and release decisions are human-owned; day-to-day implementation uses
+coding agents against in-repo specs (`docs/spec`, `docs/design`), plugin prompts
+(`docs/prompts`), and contributor/agent rules (`AGENTS.md`). That is intentional
+engineering practice — not a claim that every line was typed by hand, and not a
+claim of autonomous “AI-built” product ownership by a model.
+
 ## License
 
 CaptureSuite application code is **GPL-3.0**. Schemas, the wire protocol
@@ -72,3 +100,10 @@ Details: [LICENSING.md](LICENSING.md).
 
 See [CITATION.cff](CITATION.cff). A Zenodo DOI will be added on the first
 tagged release.
+
+## Maintainer
+
+**Jacob Scott-Metoyer** ([@Jacob-Met](https://github.com/Jacob-Met)) — architecture
+and product direction. Independent research software (not an official product of
+any university lab unless separately stated).
+
