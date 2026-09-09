@@ -22,6 +22,22 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MAX_XML_BYTES = 8 * 1024 * 1024
+GITHUB_CONTEXT_KEYS = (
+    "GITHUB_ACTIONS",
+    "GITHUB_EVENT_NAME",
+    "GITHUB_SHA",
+    "GITHUB_REF",
+    "GITHUB_HEAD_REF",
+    "GITHUB_BASE_REF",
+    "GITHUB_RUN_ID",
+    "GITHUB_WORKFLOW_REF",
+)
+
+
+def github_context(env: dict[str, str] | None = None) -> dict[str, str]:
+    """Record public Actions ref provenance without environment/token sprawl."""
+    source = os.environ if env is None else env
+    return {key: source[key] for key in GITHUB_CONTEXT_KEYS if source.get(key)}
 
 
 def summarize(junit: Path, process_exit: int | None) -> dict:
@@ -154,6 +170,7 @@ def main() -> int:
     report["source_worktree_dirty"] = before["worktree_dirty"]
     report["source_tree_sha256"] = before["tree_sha256"]
     report["source_file_count"] = len(before["files"])
+    report["github"] = github_context(env)
     report["source_unchanged_during_test"] = before == after
     if before != after:
         report["problems"].append("Source changed while tests were running")

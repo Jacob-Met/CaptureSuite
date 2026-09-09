@@ -193,3 +193,23 @@ warning fails. Python contract tests cover changed inputs.
 Evidence: `docs/evidence/msvc-environment-portability-20260909.json`. This is
 same-author portability qualification, not hardware or whole-product validation.
 The exact candidate still requires hosted Windows rebuild before acceptance.
+
+
+## 2026-09-09 ? Native integration acceptance gate
+
+Prepared the next CI gate after the portable MSVC environment repair. Native
+Python fixtures now resolve the explicit hosted build, isolate app/session/log
+state, and only stop child processes they started. Crash recovery compares the
+SHA-256 of already sealed bytes before and after `session_doctor`. A dedicated
+native receipt runner rejects missing binaries, nonzero exit, invalid JUnit, any
+skipped native test, or source changes during the run. The CMake job builds
+`session_doctor` and runs this phase after ordinary CTest.
+
+Local contract/evaluator tests: **46 passed**. The complete ordinary Python phase
+passed **197** with the expected **six native-daemon skips**; a deliberately
+missing native build was rejected before daemon launch. Native state also sets
+`CAPTURE_TEST_SIM_ONLY=1`; the daemon checks it before Media Foundation camera
+enumeration, so this gate is designed not to touch physical webcams. This is not
+positive native execution. Hosted Windows execution of the exact published candidate is
+the remaining acceptance gate. See
+`docs/evidence/native-integration-gate-20260909.json`.

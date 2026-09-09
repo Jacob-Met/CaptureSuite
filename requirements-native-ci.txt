@@ -1,0 +1,4 @@
+# Minimal dependencies for built-daemon/native recovery integration tests.
+-e ./libs/python/capture_protocol
+-e ./libs/python/capture_session
+pytest>=8

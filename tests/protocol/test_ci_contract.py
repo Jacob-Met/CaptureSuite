@@ -19,8 +19,16 @@ def configured(tmp_path: Path) -> Path:
             "python -m pip install -r requirements-ci.txt\n"
             "python tools/check_ci_contract.py --check-environment\n"
             "ctest --no-tests=error\n"
+            "cmake --build x --target session_doctor -j 4\n"
+            "python -m pip install -r requirements-native-ci.txt\n"
+            "CAPTURE_TEST_BUILD_DIR: build/windows-release\n"
+            "python tools/run_native_ci_tests.py\n"
+            "build/evidence/native-*/\n"
         )
     (tmp_path / "requirements-ci.txt").write_text("\n".join(f"-e ./{m}" for m in contract.MEMBERS))
+    (tmp_path / "requirements-native-ci.txt").write_text(
+        "-e ./libs/python/capture_protocol\n-e ./libs/python/capture_session\npytest>=8\n"
+    )
     for member in contract.MEMBERS:
         folder = tmp_path / member.split("[", 1)[0]
         folder.mkdir(parents=True)
@@ -65,6 +73,28 @@ def test_missing_runtime_gates_are_rejected(configured, gate):
     p = configured / ".github/workflows/ci.yml"
     p.write_text(p.read_text().replace(gate, ""))
     assert contract.check(configured)
+
+
+@pytest.mark.parametrize(
+    "gate",
+    [
+        "session_doctor -j 4",
+        "python -m pip install -r requirements-native-ci.txt",
+        "CAPTURE_TEST_BUILD_DIR: build/windows-release",
+        "python tools/run_native_ci_tests.py",
+        "build/evidence/native-*/",
+    ],
+)
+def test_missing_native_integration_gate_is_rejected(configured, gate):
+    p = configured / ".github/workflows/ci.yml"
+    p.write_text(p.read_text().replace(gate, ""))
+    assert contract.check(configured)
+
+
+def test_native_dependency_file_cannot_drop_capture_session(configured):
+    p = configured / "requirements-native-ci.txt"
+    p.write_text(p.read_text().replace("-e ./libs/python/capture_session\n", ""))
+    assert any("capture_session" in error for error in contract.check(configured))
 
 
 def test_broken_import_is_reported_without_aborting_other_checks(monkeypatch):

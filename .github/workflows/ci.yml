@@ -68,11 +68,18 @@ jobs:
         run: |
           cmake --preset windows-release -DCAPTURE_WERROR=ON
       - name: Build daemon + tests
-        run: |
-          cmake --build build/windows-release --target capture_daemon capture_core_tests -j 4
+        run: cmake --build build/windows-release --target capture_daemon capture_core_tests session_doctor -j 4
       - name: CTest
-        run: |
-          ctest --test-dir build/windows-release --output-on-failure --no-tests=error --output-junit ctest-results.xml -C Release
+        run: ctest --test-dir build/windows-release --output-on-failure --no-tests=error --output-junit ctest-results.xml -C Release
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install native integration deps
+        run: python -m pip install -r requirements-native-ci.txt
+      - name: Native daemon + recovery integration
+        env:
+          CAPTURE_TEST_BUILD_DIR: build/windows-release
+        run: python tools/run_native_ci_tests.py
       - name: Preserve C++ diagnostic evidence
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
@@ -80,6 +87,7 @@ jobs:
           name: cpp-test-evidence
           path: |
             build/evidence/warning-boundary-*/
+            build/evidence/native-*/
             build/windows-release/vcpkg-manifest-install.log
             build/windows-release/CMakeFiles/CMakeConfigureLog.yaml
             build/windows-release/Testing/Temporary/*.log

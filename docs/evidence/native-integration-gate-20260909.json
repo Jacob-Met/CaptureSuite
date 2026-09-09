@@ -1,0 +1,72 @@
+{
+  "date_utc": "2026-09-09T23:07:40.117024+00:00",
+  "parent_commit": "94cf1ce64280f0f21a05484fce484d1dfb8b4a17",
+  "parent_hosted_acceptance": {
+    "run_id": 34410949516,
+    "status": "completed",
+    "conclusion": "success",
+    "python": "success",
+    "cmake_ctest": "success"
+  },
+  "scope": "Native daemon and crash-recovery CI integration using simulator-only sources and isolated test state",
+  "changes": [
+    "Require explicit hosted build binaries and bind their SHA-256 values into a native receipt",
+    "Use isolated per-test LOCALAPPDATA/session/log roots and stop only owned child processes",
+    "Force CAPTURE_TEST_SIM_ONLY so built-in Media Foundation camera enumeration cannot touch physical webcams",
+    "Verify sealed segment bytes before and after forced daemon death plus session_doctor recovery",
+    "Run six explicit simulator/core native tests with zero skips after CTest",
+    "Preserve native JUnit/log/source/binary evidence as hosted artifacts",
+    "Record allowlisted GitHub Actions ref provenance to distinguish PR merge SHAs from branch heads"
+  ],
+  "local_qualification": {
+    "contract_support_evidence_tests": "64 passed",
+    "full_python": {
+      "tests": 204,
+      "passed": 198,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 6
+    },
+    "lint": "pass",
+    "license": "pass",
+    "ci_contract": "pass",
+    "native_missing_build_negative_control": "rejected before daemon launch",
+    "source_unchanged_during_full_python": true
+  },
+  "native_positive_execution": "pending exact hosted Windows candidate; no local product binary was launched",
+  "native_test_scope": [
+    "tests/protocol/test_daemon_e2e.py::test_multi_modality_record_with_disconnect",
+    "tests/protocol/test_daemon_e2e.py::test_bad_stop_token_rejected",
+    "tests/protocol/test_daemon_e2e.py::test_config_schema_and_apply",
+    "tests/protocol/test_daemon_e2e.py::test_start_all_ready_and_acknowledge_alert",
+    "tests/protocol/test_daemon_e2e.py::test_concurrent_clients_served",
+    "tests/kill_tests/test_kill_preserves_sealed.py::test_kill_preserves_sealed_segment"
+  ],
+  "source_sha256": {
+    ".github/workflows/ci.yml": "272cb962395776a2648507792faeab2bfdd7f24ecdba59e3f2288b77bc45c114",
+    "daemon/src/sim_engine.cpp": "9e657d26bf63a4fa9fd4e9bf88b8b8f681134bebe393fdd3c8d089f1c8752373",
+    "docs/design/research/PROGRESS.md": "d19435a2089d01da359badd1832ac95fe8ffe17a367631e50e5c0b5e7cff33d8",
+    "requirements-native-ci.txt": "0b28352754e5691338a7bc6afaf495225d2472b67f87513491ecaa536c827093",
+    "tests/cpp/test_sim_engine.cpp": "924d452da93b46b7105a80b11d95d2d2375288f70c98dddc6693ac76611a1970",
+    "tests/kill_tests/test_kill_preserves_sealed.py": "0f1901475eec888531e14c5fadc29857007f0b52ed1b0cf350b89189778dec8d",
+    "tests/protocol/test_ci_contract.py": "09cfdada9669b3c5e07cf8e26a4844bb7f7043dfc02ead62ff4f36ac8598c765",
+    "tests/protocol/test_ci_evidence.py": "ccf8c6b71f71580b8e911977b543847a63af1660d4e11332c463cc2b114a80bd",
+    "tests/protocol/test_daemon_e2e.py": "81bdc167834a36599f5e36776eb087c7ad39d0e30cc3cad9eccfa9853873ca5d",
+    "tests/protocol/test_native_ci_runner.py": "292872efb3ab91a83ca399110fa00d242f14998f4160975616ad11d6e3567272",
+    "tests/protocol/test_native_support.py": "e6c10cf423496a606f00767f609e4a19637fdc66c556cf0928516846352f9693",
+    "tools/check_ci_contract.py": "c9b70d8ba1d885b4d2d473fa1eccd3cf9940cc9db8198abd93834a2314cfe048",
+    "tools/native_test_support.py": "6feadd149c435bba70669df91576018e631c6766733cd7f9214172322c91b20a",
+    "tools/run_ci_tests.py": "08a9d4786a6e768e0914ac5490d780c64c07f920b790dd16c5e0740bda9c2ac2",
+    "tools/run_native_ci_tests.py": "124b7ccabc7d7220d22ab785cb72dba9bc12cba54b324334eeb81b2c789e01cf"
+  },
+  "same_author_internal": true,
+  "hardware_exercised": false,
+  "participant_data_used": false,
+  "independent_external_review": false,
+  "limits": [
+    "Normal Python phase skips daemon-dependent tests without a native build; the dedicated native phase rejects any skip",
+    "Hosted GitHub execution is a second environment, not independent authorship",
+    "No physical-device, clinical-validity, performance, or customer-value claim",
+    "No default-branch merge or release at this checkpoint"
+  ]
+}

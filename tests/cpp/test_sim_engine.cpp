@@ -2,11 +2,15 @@
 #include <catch2/catch_test_macros.hpp>
 
 #include "capture_daemon/sim_engine.hpp"
+#include "capture/env.hpp"
 
 #include <chrono>
+#include <cstdlib>
 #include <filesystem>
+#include <optional>
 #include <string>
 #include <thread>
+#include <utility>
 #include <vector>
 
 #ifdef _WIN32
@@ -30,6 +34,31 @@ struct ComInit {
   }
 };
 
+struct ScopedEnv {
+  std::string name;
+  std::optional<std::string> old;
+
+  ScopedEnv(std::string key, const char* value)
+      : name(std::move(key)), old(capture::env::get(name.c_str())) {
+#ifdef _WIN32
+    _putenv_s(name.c_str(), value);
+#else
+    setenv(name.c_str(), value, 1);
+#endif
+  }
+  ~ScopedEnv() {
+#ifdef _WIN32
+    _putenv_s(name.c_str(), old ? old->c_str() : "");
+#else
+    if (old) {
+      setenv(name.c_str(), old->c_str(), 1);
+    } else {
+      unsetenv(name.c_str());
+    }
+#endif
+  }
+};
+
 std::string first_video_source(const capture::daemon::SimEngine& engine) {
   for (const auto& src : engine.sources()) {
     if (src.modality == "video") {
@@ -40,6 +69,21 @@ std::string first_video_source(const capture::daemon::SimEngine& engine) {
 }
 
 }  // namespace
+
+
+TEST_CASE("sim-only environment never exposes a physical camera source",
+          "[sim_engine][isolation]") {
+  ScopedEnv sim_only("CAPTURE_TEST_SIM_ONLY", "1");
+  capture::daemon::SimEngine engine;
+  bool saw_sim_camera = false;
+  for (const auto& source : engine.sources()) {
+    REQUIRE(source.source_type != "camera");
+    if (source.source_id == "sim.camera.sagittal") {
+      saw_sim_camera = true;
+    }
+  }
+  REQUIRE(saw_sim_camera);
+}
 
 TEST_CASE("multi-family sim records together with fault isolation",
           "[sim_engine]") {

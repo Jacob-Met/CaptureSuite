@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: GPL-3.0-only
 #include "capture_daemon/sim_engine.hpp"
 
+#include "capture/env.hpp"
 #include "capture/logging.hpp"
 #include "capture/storage/recovery.hpp"
 
@@ -340,8 +341,12 @@ void SimEngine::ensure_default_sources() {
   preview_slots_.clear();
   cameras_.clear();
 
-  // Real cameras first when available; otherwise a simulated camera source.
-  const auto cams = CameraCapture::enumerate();
+  // Real cameras first when available; native CI can require a simulator-only
+  // source set so tests never enumerate an operator's physical webcam.
+  std::vector<CameraDeviceInfo> cams;
+  if (!capture::env::enabled("CAPTURE_TEST_SIM_ONLY")) {
+    cams = CameraCapture::enumerate();
+  }
   if (!cams.empty()) {
     for (const auto& cam : cams) {
       SimSourceDesc src;

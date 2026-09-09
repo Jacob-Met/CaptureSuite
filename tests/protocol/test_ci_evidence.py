@@ -125,3 +125,27 @@ def test_snapshot_includes_new_and_deleted_source(tiny_repo):
     assert snapshot["files"]["input.txt"] is None
     assert snapshot["files"]["new.txt"] == hashlib.sha256(b"new input").hexdigest()
     assert source_snapshot(tiny_repo) == snapshot
+
+
+def test_github_context_is_allowlisted_and_absence_is_explicitly_empty():
+    from run_ci_tests import github_context
+
+    assert github_context({}) == {}
+    context = github_context(
+        {
+            "GITHUB_ACTIONS": "true",
+            "GITHUB_EVENT_NAME": "pull_request",
+            "GITHUB_SHA": "merge-sha",
+            "GITHUB_HEAD_REF": "candidate",
+            "GITHUB_BASE_REF": "main",
+            "GITHUB_TOKEN": "must-not-be-copied",
+            "UNRELATED": "private",
+        }
+    )
+    assert context == {
+        "GITHUB_ACTIONS": "true",
+        "GITHUB_EVENT_NAME": "pull_request",
+        "GITHUB_SHA": "merge-sha",
+        "GITHUB_HEAD_REF": "candidate",
+        "GITHUB_BASE_REF": "main",
+    }

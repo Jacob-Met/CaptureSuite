@@ -3,8 +3,8 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
-import os
 import subprocess
 import time
 from pathlib import Path
@@ -12,37 +12,22 @@ from pathlib import Path
 import pytest
 from capture_protocol.control_client import ControlClient
 from capture_session import assert_package_durable, load_integrity, load_manifest
+from native_test_support import binary_path, native_environment, stop_owned_process
 
 REPO = Path(__file__).resolve().parents[2]
-DAEMON = REPO / "build" / "windows-debug" / "daemon" / "capture_daemon.exe"
-DOCTOR = REPO / "build" / "windows-debug" / "tools" / "session_doctor" / "session_doctor.exe"
-
-
-def _kill_stray_daemons() -> None:
-    """instance.json is global — stray daemons steal clients. Own the slot."""
-    subprocess.run(
-        ["taskkill", "/F", "/IM", "capture_daemon.exe"],
-        capture_output=True,
-        check=False,
-    )
-    time.sleep(0.3)
+DAEMON = binary_path(REPO, "daemon/capture_daemon.exe")
+DOCTOR = binary_path(REPO, "tools/session_doctor/session_doctor.exe")
 
 
 @pytest.mark.skipif(not DAEMON.is_file(), reason="capture_daemon not built")
 @pytest.mark.skipif(not DOCTOR.is_file(), reason="session_doctor not built")
 def test_kill_preserves_sealed_segment(tmp_path: Path):
-    _kill_stray_daemons()
-    session_parent = tmp_path / "sessions"
-    session_parent.mkdir()
-    env = os.environ.copy()
-    env["CAPTURE_SESSION_PARENT"] = str(session_parent)
+    env = native_environment(tmp_path / "owned-native-state")
+    session_parent = Path(env["CAPTURE_SESSION_PARENT"])
     env["CAPTURE_TEST_ROTATE_BYTES"] = "8192"
-
-    log_dir = tmp_path / "logs"
-    log_dir.mkdir()
-    instance = Path(os.environ["LOCALAPPDATA"]) / "CaptureSuite" / "instance.json"
-    if instance.is_file():
-        instance.unlink()
+    log_dir = Path(env["CAPTURE_TEST_LOG_DIR"])
+    instance = Path(env["LOCALAPPDATA"]) / "CaptureSuite" / "instance.json"
+    assert not instance.exists()
 
     with (log_dir / "out.txt").open("w") as out, (log_dir / "err.txt").open("w") as err:
         proc = subprocess.Popen(
@@ -76,7 +61,7 @@ def test_kill_preserves_sealed_segment(tmp_path: Path):
                 pass
         time.sleep(0.05)
     else:
-        proc.kill()
+        stop_owned_process(proc)
         pytest.fail("daemon pipe not ready")
 
     package_path = None
@@ -89,8 +74,7 @@ def test_kill_preserves_sealed_segment(tmp_path: Path):
             package_path = created.package_path
             assert package_path
             assert Path(package_path).is_relative_to(session_parent), (
-                f"connected to wrong daemon; package={package_path} "
-                f"expected under {session_parent}"
+                f"connected to wrong daemon; package={package_path} expected under {session_parent}"
             )
             # High-rate sim streams only — rotate under CAPTURE_TEST_ROTATE_BYTES.
             sel = client.select_sources(["sim.emg.main", "sim.imu.upper", "sim.radar.1"])
@@ -109,17 +93,11 @@ def test_kill_preserves_sealed_segment(tmp_path: Path):
                 integrity_path = Path(package_path) / "integrity.json"
                 if integrity_path.is_file():
                     try:
-                        integrity = json.loads(
-                            integrity_path.read_text(encoding="utf-8")
-                        )
+                        integrity = json.loads(integrity_path.read_text(encoding="utf-8"))
                     except (OSError, json.JSONDecodeError):
                         time.sleep(0.1)
                         continue
-                    sealed = [
-                        f
-                        for f in integrity.get("files", [])
-                        if f.get("status") == "sealed"
-                    ]
+                    sealed = [f for f in integrity.get("files", []) if f.get("status") == "sealed"]
                     if sealed:
                         for f in sealed:
                             abs_path = Path(package_path) / f["path"]
@@ -128,6 +106,7 @@ def test_kill_preserves_sealed_segment(tmp_path: Path):
                             sealed_before[f["path"]] = {
                                 "size": abs_path.stat().st_size,
                                 "hash": f.get("hashBlake3Hex", ""),
+                                "sha256": hashlib.sha256(abs_path.read_bytes()).hexdigest(),
                             }
                         if sealed_before:
                             break
@@ -149,18 +128,21 @@ def test_kill_preserves_sealed_segment(tmp_path: Path):
             path = Path(package_path) / rel
             assert path.is_file()
             assert path.stat().st_size == meta["size"]
+            assert hashlib.sha256(path.read_bytes()).hexdigest() == meta["sha256"]
 
         doctor = subprocess.run(
             [str(DOCTOR), package_path],
             capture_output=True,
             text=True,
             check=False,
+            timeout=60,
         )
         assert doctor.returncode == 0, doctor.stderr
 
         for rel, meta in sealed_before.items():
             path = Path(package_path) / rel
             assert path.stat().st_size == meta["size"]
+            assert hashlib.sha256(path.read_bytes()).hexdigest() == meta["sha256"]
 
         manifest = load_manifest(package_path)
         assert manifest["state"] == "finalized_recovered"
@@ -169,8 +151,7 @@ def test_kill_preserves_sealed_segment(tmp_path: Path):
         integrity = load_integrity(package_path)
         assert integrity.get("files")
     finally:
-        if proc.poll() is None:
-            proc.kill()
+        stop_owned_process(proc)
 
 
 def ctypes_wait(pipe_name: str) -> bool:

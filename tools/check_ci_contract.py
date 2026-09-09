@@ -71,6 +71,16 @@ def check(root: Path) -> list[str]:
                 )
             if "--no-tests=error" not in text:
                 errors.append("ci.yml CTest must reject an empty test discovery")
+            if "session_doctor -j 4" not in text:
+                errors.append("ci.yml must build session_doctor before recovery integration")
+            if "python -m pip install -r requirements-native-ci.txt" not in text:
+                errors.append("ci.yml must install the native integration environment")
+            if "CAPTURE_TEST_BUILD_DIR: build/windows-release" not in text:
+                errors.append("ci.yml must bind native tests to the exact hosted build")
+            if "python tools/run_native_ci_tests.py" not in text:
+                errors.append("ci.yml must execute the zero-skip native integration runner")
+            if "build/evidence/native-*/" not in text:
+                errors.append("ci.yml must preserve native integration receipts")
     try:
         lines = (root / "requirements-ci.txt").read_text(encoding="utf-8").splitlines()
         entries = {line.strip() for line in lines if line.strip() and not line.startswith("#")}
@@ -82,6 +92,23 @@ def check(root: Path) -> list[str]:
                 errors.append(f"Missing workspace metadata: {path}")
     except OSError:
         errors.append("Cannot read requirements-ci.txt")
+    try:
+        native_lines = (
+            (root / "requirements-native-ci.txt").read_text(encoding="utf-8").splitlines()
+        )
+        native_entries = {
+            line.strip() for line in native_lines if line.strip() and not line.startswith("#")
+        }
+        for entry in (
+            "-e ./libs/python/capture_protocol",
+            "-e ./libs/python/capture_session",
+        ):
+            if entry not in native_entries:
+                errors.append(f"Missing native CI dependency: {entry}")
+        if not any(entry.startswith("pytest") for entry in native_entries):
+            errors.append("Native CI environment must include pytest")
+    except OSError:
+        errors.append("Cannot read requirements-native-ci.txt")
     return errors
 
 

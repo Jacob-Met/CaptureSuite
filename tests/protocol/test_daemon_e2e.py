@@ -5,7 +5,6 @@ from __future__ import annotations
 
 import ctypes
 import json
-import os
 import subprocess
 import time
 from pathlib import Path
@@ -13,82 +12,63 @@ from pathlib import Path
 import pytest
 from capture_protocol.control_client import ControlClient
 from capture_protocol.generated.capture.v1 import control_pb2
+from native_test_support import binary_path, native_environment, stop_owned_process
 
 
 def _pipe_ready(pipe_name: str, timeout_ms: int = 200) -> bool:
     """True when a client can connect to the named pipe (does not consume it)."""
     return bool(ctypes.windll.kernel32.WaitNamedPipeW(pipe_name, timeout_ms))
 
+
 REPO = Path(__file__).resolve().parents[2]
-DAEMON_CANDIDATES = [
-    REPO / "build" / "windows-debug" / "daemon" / "capture_daemon.exe",
-    REPO / "build" / "windows-debug" / "daemon" / "Debug" / "capture_daemon.exe",
-]
 
 
 def _daemon_path() -> Path | None:
-    for path in DAEMON_CANDIDATES:
-        if path.is_file():
-            return path
-    return None
+    target = binary_path(REPO, "daemon/capture_daemon.exe")
+    return target if target.is_file() else None
 
 
 @pytest.fixture(scope="module")
-def daemon_proc():
+def daemon_proc(tmp_path_factory):
     daemon = _daemon_path()
     if daemon is None:
         pytest.skip("capture_daemon.exe not built (run cmake --build)")
-
-    log_dir = REPO / "build" / "e2e"
-    log_dir.mkdir(parents=True, exist_ok=True)
-    stdout_path = log_dir / "daemon_stdout.txt"
-    stderr_path = log_dir / "daemon_stderr.txt"
-
-    with stdout_path.open("w", encoding="utf-8") as out, stderr_path.open(
-        "w", encoding="utf-8"
-    ) as err:
-        proc = subprocess.Popen(
-            [str(daemon)],
-            stdout=out,
-            stderr=err,
-            cwd=str(REPO),
-        )
-
-    instance = Path(os.environ["LOCALAPPDATA"]) / "CaptureSuite" / "instance.json"
-    pipe_name = None
-    deadline = time.time() + 15
-    while time.time() < deadline:
-        if proc.poll() is not None:
-            pytest.fail(
-                "daemon exited early:\n"
-                f"stdout={stdout_path.read_text(encoding='utf-8', errors='replace')}\n"
-                f"stderr={stderr_path.read_text(encoding='utf-8', errors='replace')}"
-            )
-        if instance.is_file():
-            try:
-                data = json.loads(instance.read_text(encoding="utf-8"))
-                candidate = data.get("control_pipe")
-                if candidate and data.get("instance_id") and _pipe_ready(candidate):
-                    pipe_name = candidate
-                    break
-            except (json.JSONDecodeError, OSError, KeyError):
-                pass
-        time.sleep(0.05)
-    else:
-        proc.kill()
-        pytest.fail(
-            "daemon did not publish a usable control pipe:\n"
-            f"stdout={stdout_path.read_text(encoding='utf-8', errors='replace')}\n"
-            f"stderr={stderr_path.read_text(encoding='utf-8', errors='replace')}"
-        )
-
-    yield pipe_name
-
-    proc.terminate()
-    try:
-        proc.wait(timeout=5)
-    except subprocess.TimeoutExpired:
-        proc.kill()
+    owned = tmp_path_factory.mktemp("native-daemon")
+    env = native_environment(owned)
+    instance = Path(env["LOCALAPPDATA"]) / "CaptureSuite" / "instance.json"
+    assert not instance.exists()
+    stdout_path = owned / "daemon_stdout.txt"
+    stderr_path = owned / "daemon_stderr.txt"
+    with (
+        stdout_path.open("w", encoding="utf-8") as out,
+        stderr_path.open("w", encoding="utf-8") as err,
+    ):
+        proc = subprocess.Popen([str(daemon)], stdout=out, stderr=err, cwd=REPO, env=env)
+        try:
+            pipe_name = None
+            deadline = time.monotonic() + 15
+            while time.monotonic() < deadline:
+                if proc.poll() is not None:
+                    pytest.fail(
+                        "daemon exited early:\n"
+                        f"stdout={stdout_path.read_text(encoding='utf-8', errors='replace')}\n"
+                        f"stderr={stderr_path.read_text(encoding='utf-8', errors='replace')}"
+                    )
+                if instance.is_file():
+                    try:
+                        data = json.loads(instance.read_text(encoding="utf-8"))
+                        candidate = data.get("control_pipe")
+                        if candidate and data.get("instance_id") and _pipe_ready(candidate):
+                            pipe_name = candidate
+                            break
+                    except (json.JSONDecodeError, OSError, KeyError):
+                        pass
+                time.sleep(0.05)
+            if pipe_name is None:
+                pytest.fail("daemon did not publish a usable pipe in its isolated test directory")
+            yield pipe_name
+        finally:
+            stop_owned_process(proc)
 
 
 def test_multi_modality_record_with_disconnect(daemon_proc):
@@ -110,8 +90,12 @@ def test_multi_modality_record_with_disconnect(daemon_proc):
         assert created.state == control_pb2.SESSION_STATE_PREPARING
 
         camera_id = next(
-            (s.source_id for s in sources.sources if "video" in {st.modality for st in s.streams}
-             or s.source_type in ("camera", "sim.camera")),
+            (
+                s.source_id
+                for s in sources.sources
+                if "video" in {st.modality for st in s.streams}
+                or s.source_type in ("camera", "sim.camera")
+            ),
             "sim.camera.sagittal",
         )
         selected = [
@@ -185,16 +169,12 @@ def test_config_schema_and_apply(daemon_proc):
         assert schema.schema_revision == "sim.emg/1"
         assert "gain" in doc["properties"]
 
-        applied = client.apply_config(
-            "sim.emg.main", {"gain": 2.0, "channel_count": 8}
-        )
+        applied = client.apply_config("sim.emg.main", {"gain": 2.0, "channel_count": 8})
         assert not applied.error.code
         assert applied.source.source_id == "sim.emg.main"
         assert json.loads(applied.effective_json)["channel_count"] == 8
 
-        rejected = client.apply_config(
-            "sim.emg.main", {"gain": 2.0, "channel_count": 32}
-        )
+        rejected = client.apply_config("sim.emg.main", {"gain": 2.0, "channel_count": 32})
         assert rejected.error.code == "VALIDATION_FAILED"
 
         radar = client.apply_config(
@@ -220,11 +200,7 @@ def test_camera_apply_config_proxied_when_worker_present(daemon_proc):
     with ControlClient(daemon_proc) as client:
         sources = client.list_sources()
         cam = next(
-            (
-                s
-                for s in sources.sources
-                if s.plugin_id == "camera.gstreamer" and s.enabled
-            ),
+            (s for s in sources.sources if s.plugin_id == "camera.gstreamer" and s.enabled),
             None,
         )
         if cam is None:
