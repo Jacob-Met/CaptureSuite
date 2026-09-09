@@ -11,7 +11,7 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Install Python deps
@@ -71,7 +71,7 @@ jobs:
         run: cmake --build build/windows-release --target capture_daemon capture_core_tests session_doctor -j 4
       - name: CTest
         run: ctest --test-dir build/windows-release --output-on-failure --no-tests=error --output-junit ctest-results.xml -C Release
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
       - name: Install native integration deps
