@@ -1,0 +1,73 @@
+{
+  "date_utc": "2026-09-09T23:59:25.695335+00:00",
+  "issue": "https://github.com/Jacob-Met/CaptureSuite/issues/8",
+  "base_main": "fcb731faa5f46df5a31215621365b039478283f8",
+  "candidate_commit": "bbc8588016672ba36afd99fe9ab99b657a3af96e",
+  "objective": "Measure whether a supported file-backed vcpkg binary cache materially reduces the dependency-heavy Windows Configure phase without weakening existing CI.",
+  "observed_baseline": [
+    {
+      "run_id": 34410949516,
+      "head": "94cf1ce64280f0f21a05484fce484d1dfb8b4a17",
+      "configure_seconds": 990.0,
+      "result": "full hosted CI success"
+    },
+    {
+      "run_id": 34415543635,
+      "head": "5aff494d1ef627689b63cf6d49e74078571e57cf",
+      "configure_seconds": 988.0,
+      "result": "full hosted CI success including native 6/6"
+    }
+  ],
+  "merged_main_verification": {
+    "run_id": 34417604745,
+    "head": "fcb731faa5f46df5a31215621365b039478283f8",
+    "python": "success",
+    "cmake_ctest_native": "success",
+    "native": "6/6, zero skips",
+    "ctest": "22/22"
+  },
+  "candidate_method": {
+    "provider": "vcpkg files provider",
+    "persistence": "actions/cache pinned to 55cc8345863c7cc4c66a329aec7e433d2d1c52a9 (v6.1.0)",
+    "cache_identity": [
+      "runner OS",
+      "MSVC toolset file version",
+      "actual vcpkg checkout commit",
+      "vcpkg.json hash"
+    ],
+    "restore_state": "explicit miss / partial / exact",
+    "package_feed_write": false
+  },
+  "predeclared_acceptance": {
+    "same_source_key_manifest_run_id": true,
+    "distinct_actions_attempts": true,
+    "cold_restore": "miss",
+    "warm_restore": "exact",
+    "warm_max_configure_ratio": 0.5,
+    "minimum_seconds_saved": 300.0,
+    "existing_ci_must_pass_both_attempts": true
+  },
+  "local_qualification": {
+    "cache_contract_tests": "83 passed",
+    "full_python": {
+      "tests": 239,
+      "passed": 233,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 6
+    },
+    "source_commit": "bbc8588016672ba36afd99fe9ab99b657a3af96e",
+    "source_worktree_dirty": false,
+    "source_tree_sha256": "808edddd95d1a41531c3d7646ed110f22b5640fc948523e41f33617181a888cc",
+    "source_unchanged_during_test": true,
+    "ruff": "pass",
+    "ci_contract": "pass"
+  },
+  "rejected_attempts_retained": true,
+  "hosted_benchmark": "PENDING \u2014 no cache speedup claim at this checkpoint",
+  "limits": [
+    "Cache performance does not establish product correctness.",
+    "Same-author tests are internal qualification; hosted Actions is a second environment, not independent authorship.",
+    "No physical hardware, participant data, clinical validity, customer value, release, package-feed write or spend is involved."
+  ]
+}
