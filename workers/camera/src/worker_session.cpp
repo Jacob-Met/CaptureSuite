@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-only
 #include "camera_worker/worker_session.hpp"
 
+#include "capture/env.hpp"
+
 #include "camera_worker/gst_pipeline.hpp"
 #include "camera_worker/uvc_controls.hpp"
 
@@ -29,8 +31,7 @@ WorkerSession::WorkerSession(std::string plugin_id)
 
 void WorkerSession::refresh_devices() {
   devices_ = enumerate_cameras();
-  const char* fake = std::getenv("CAPTURE_CAMERA_FAKE");
-  if (fake != nullptr && fake[0] != '\0' && fake[0] != '0') {
+  if (capture::env::enabled("CAPTURE_CAMERA_FAKE")) {
     CameraDevice d;
     d.source_id = "camera.fake";
     d.stable_device_key = "fake-videotestsrc";
@@ -143,9 +144,7 @@ bool WorkerSession::connect_source(const std::string& source_id,
   }
   std::string caps;
   std::string err;
-  const char* fake = std::getenv("CAPTURE_CAMERA_FAKE");
-  const bool use_fake =
-      fake != nullptr && fake[0] != '\0' && fake[0] != '0';
+  const bool use_fake = capture::env::enabled("CAPTURE_CAMERA_FAKE");
   if (use_fake) {
     caps = "video/x-raw,format=I420,width=640,height=480,framerate=30/1";
   } else if (!probe_device_open(*device, caps, err)) {

@@ -177,3 +177,19 @@ checks source immutability, and rejects output overwrite. Public maintainer name
 is Jacob Metoyer. No daemon, protocol, schema, hardware, patient-data or existing
 private research workflow was changed. Qualification receipts are recorded in
 `docs/evidence/offline-demo-20260909.json` after execution.
+
+
+## 2026-09-09 — MSVC environment portability preflight
+
+Hosted run `34406178247` advanced through vcpkg/configure and exposed an owned
+`C4996` under `/WX`: direct `getenv` in `radar_worker_bridge.cpp`. The same
+pattern existed in later daemon/test/camera paths, so the repair uses one
+header-only `capture::env` helper rather than waiting for serial hosted failures.
+A source preflight now rejects direct `getenv` in owned C/C++ while preserving a
+portable fallback in the helper itself. The MSVC warning-boundary probe compiles
+the helper, keeps generated headers external, and still proves an owned C4267
+warning fails. Python contract tests cover changed inputs.
+
+Evidence: `docs/evidence/msvc-environment-portability-20260909.json`. This is
+same-author portability qualification, not hardware or whole-product validation.
+The exact candidate still requires hosted Windows rebuild before acceptance.

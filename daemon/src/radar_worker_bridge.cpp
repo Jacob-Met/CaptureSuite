@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-only
 #include "capture_daemon/radar_worker_bridge.hpp"
 
+#include "capture/env.hpp"
+
 #include <cstdlib>
 #include <filesystem>
 
@@ -28,9 +30,9 @@ std::filesystem::path RadarWorkerBridge::resolve_ifx_runtime_dir() {
       return runtime;
     }
   }
-  if (const char* profile = std::getenv("USERPROFILE")) {
+  if (const auto profile = capture::env::get("USERPROFILE")) {
     const auto runtime =
-        std::filesystem::path(profile) / "Infineon" / "Tools" /
+        std::filesystem::path(*profile) / "Infineon" / "Tools" /
         "radar_sdk_3.6.5" / "radar_sdk" / "libs" / "win32_x64";
     if (std::filesystem::exists(runtime)) {
       return runtime;

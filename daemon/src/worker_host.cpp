@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-only
 #include "capture_daemon/worker_host.hpp"
 
+#include "capture/env.hpp"
+
 #include "capture/framing.hpp"
 #include "capture/logging.hpp"
 #include "capture_daemon/handshake.hpp"
@@ -275,9 +277,9 @@ bool WorkerHost::spawn(const std::filesystem::path& executable,
           }
         }
       }
-      if (const char* profile = std::getenv("USERPROFILE")) {
+      if (const auto profile = capture::env::get("USERPROFILE")) {
         const auto runtime =
-            std::filesystem::path(profile) / "Infineon" / "Tools" /
+            std::filesystem::path(*profile) / "Infineon" / "Tools" /
             "radar_sdk_3.6.5" / "radar_sdk" / "libs" / "win32_x64";
         if (std::filesystem::exists(runtime)) {
           return runtime;
@@ -315,11 +317,11 @@ bool WorkerHost::spawn(const std::filesystem::path& executable,
 
   // Optional worker stderr capture for CI diagnosis.
   HANDLE err_file = INVALID_HANDLE_VALUE;
-  if (const char* log = std::getenv("CAPTURE_WORKER_STDERR_LOG")) {
+  if (const auto log = capture::env::get("CAPTURE_WORKER_STDERR_LOG")) {
     SECURITY_ATTRIBUTES sa_log{};
     sa_log.nLength = sizeof(sa_log);
     sa_log.bInheritHandle = TRUE;
-    err_file = CreateFileA(log, GENERIC_WRITE, FILE_SHARE_READ, &sa_log,
+    err_file = CreateFileA(log->c_str(), GENERIC_WRITE, FILE_SHARE_READ, &sa_log,
                            CREATE_ALWAYS, FILE_ATTRIBUTE_NORMAL, nullptr);
     if (err_file != INVALID_HANDLE_VALUE) {
       si.dwFlags |= STARTF_USESTDHANDLES;

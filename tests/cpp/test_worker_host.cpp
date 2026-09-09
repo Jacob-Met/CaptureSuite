@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: GPL-3.0-only
 #include "capture_daemon/camera_worker_bridge.hpp"
+#include "capture/env.hpp"
 #include "capture_daemon/worker_host.hpp"
 #include "capture/storage/session_package.hpp"
 
@@ -73,11 +74,11 @@ TEST_CASE("worker host spawns camera worker Identify", "[worker_host][camera]") 
   REQUIRE(std::filesystem::exists(exe));
 
   // Worker needs GStreamer DLLs on PATH.
-  const char* gst = std::getenv("GSTREAMER_1_0_ROOT_MSVC_X86_64");
-  REQUIRE(gst != nullptr);
-  std::string path_env = std::string(gst) + "\\bin;";
-  if (const char* old = std::getenv("PATH")) {
-    path_env += old;
+  const auto gst = capture::env::get("GSTREAMER_1_0_ROOT_MSVC_X86_64");
+  REQUIRE(gst.has_value());
+  std::string path_env = *gst + "\\bin;";
+  if (const auto old = capture::env::get("PATH")) {
+    path_env += *old;
   }
   _putenv_s("PATH", path_env.c_str());
 
@@ -122,11 +123,11 @@ TEST_CASE("camera worker start/stop with videotestsrc",
                      "camera" / "capture_worker_camera.exe";
   REQUIRE(std::filesystem::exists(exe));
 
-  const char* gst = std::getenv("GSTREAMER_1_0_ROOT_MSVC_X86_64");
-  REQUIRE(gst != nullptr);
-  std::string path_env = std::string(gst) + "\\bin;";
-  if (const char* old = std::getenv("PATH")) {
-    path_env += old;
+  const auto gst = capture::env::get("GSTREAMER_1_0_ROOT_MSVC_X86_64");
+  REQUIRE(gst.has_value());
+  std::string path_env = *gst + "\\bin;";
+  if (const auto old = capture::env::get("PATH")) {
+    path_env += *old;
   }
   _putenv_s("PATH", path_env.c_str());
   _putenv_s("CAPTURE_CAMERA_FAKE", "1");
@@ -217,11 +218,11 @@ TEST_CASE("camera worker bridge seals into session package",
                      "camera" / "capture_worker_camera.exe";
   REQUIRE(std::filesystem::exists(exe));
 
-  const char* gst = std::getenv("GSTREAMER_1_0_ROOT_MSVC_X86_64");
-  REQUIRE(gst != nullptr);
-  std::string path_env = std::string(gst) + "\\bin;";
-  if (const char* old = std::getenv("PATH")) {
-    path_env += old;
+  const auto gst = capture::env::get("GSTREAMER_1_0_ROOT_MSVC_X86_64");
+  REQUIRE(gst.has_value());
+  std::string path_env = *gst + "\\bin;";
+  if (const auto old = capture::env::get("PATH")) {
+    path_env += *old;
   }
   _putenv_s("PATH", path_env.c_str());
   _putenv_s("CAPTURE_CAMERA_FAKE", "1");

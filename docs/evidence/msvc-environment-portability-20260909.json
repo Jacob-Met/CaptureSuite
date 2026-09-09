@@ -1,0 +1,66 @@
+{
+  "date_utc": "2026-09-09T22:11:28.727583+00:00",
+  "base_commit": "0e567b8e62aeff79c7e1597af44ffc84e1a2eaa9",
+  "hosted_failure": {
+    "workflow_run": 34406178247,
+    "job": "cmake",
+    "step": "Build daemon + tests",
+    "failure": "MSVC C4996 on direct getenv in daemon/src/radar_worker_bridge.cpp:31 under /WX",
+    "retained_log_sha256": "a6ebcb0ab2bdfe4c297a052d83c11d98fc1156cec66786b8ceae17e6c0b439d5"
+  },
+  "repair": {
+    "shared_header": "libs/cpp/capture_core/include/capture/env.hpp",
+    "direct_getenv_remaining_in_scanned_owned_cpp": 0,
+    "scanned_roots": [
+      "daemon",
+      "libs/cpp",
+      "workers",
+      "tools/session_doctor",
+      "tests/cpp"
+    ],
+    "camera_worker_also_repaired_before_its optional build path exposed the same warning": true
+  },
+  "qualification": {
+    "python_portability_tests": "3 passed",
+    "msvc_warning_boundary": {
+      "accepted": true,
+      "checks": [
+        {
+          "name": "configure",
+          "exit": 0,
+          "log_sha256": "5e1069de28ea31593644318ac19ca53383a8e2157edcc3b3d513900c0b895450"
+        },
+        {
+          "name": "control",
+          "exit": 0,
+          "log_sha256": "7281cd4bc662ee8389037bf64e365e2ae74b4d90deb26a94f88e43359f60360c"
+        },
+        {
+          "name": "generated_header",
+          "exit": 0,
+          "log_sha256": "ad95ed4f0a6cb4d5e2a13deef697071c8925bf6be9cf8bb30aa4245610d422a9"
+        },
+        {
+          "name": "env_helper",
+          "exit": 0,
+          "log_sha256": "3b0b89b147b3e4d2d9eeac5cc7e8fc2a0837ff8542676aaadf8d92ccfb2d7227"
+        },
+        {
+          "name": "owned_conversion",
+          "exit": 1,
+          "log_sha256": "215f39dbc303e07732d6bb54ff2b5422964a721d61001a394374dd127e015e51"
+        }
+      ],
+      "deprecated_env_access": [],
+      "scope": "Owned MSVC portability plus generated-header warning boundary; owned C4267 remains fatal"
+    },
+    "same_author_internal": true,
+    "hosted_rebuild_for_this_exact_commit": "pending after publication"
+  },
+  "limits": [
+    "No physical hardware exercised",
+    "No clinical or participant-data claim",
+    "No warning gate disabled",
+    "No default-branch merge or release"
+  ]
+}
