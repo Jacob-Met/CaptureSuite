@@ -15,6 +15,8 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+CACHE_ACTION_SHA = "55cc8345863c7cc4c66a329aec7e433d2d1c52a9"
+CACHE_OUTPUT = "steps.vcpkg-cache-key.outputs.binary-sources"
 PIN = re.compile(r"^\s*vcpkgGitCommitId:\s*[\"\']?([\w.-]+)[\"\']?\s*(?:#.*)?$", re.M)
 MEMBERS = (
     "libs/python/capture_protocol",
@@ -63,6 +65,7 @@ def check(root: Path) -> list[str]:
         if len(pins) != 1 or pins[0] != baseline:
             errors.append(f"{name}: one vcpkg commit pin must match builtin-baseline")
         if name == "ci.yml":
+            errors.extend(check_binary_cache_workflow(text))
             if "python -m pip install -r requirements-ci.txt" not in text:
                 errors.append("ci.yml must install the complete requirements-ci.txt environment")
             if "--check-environment" not in text:
@@ -109,6 +112,27 @@ def check(root: Path) -> list[str]:
             errors.append("Native CI environment must include pytest")
     except OSError:
         errors.append("Cannot read requirements-native-ci.txt")
+    return errors
+
+
+def check_binary_cache_workflow(text: str) -> list[str]:
+    """Reject the removed vcpkg GHA backend and incomplete replacement wiring."""
+    errors = []
+    active = "\n".join(line.split("#", 1)[0] for line in text.splitlines())
+    if "x-gha" in active:
+        errors.append("CI workflow must not configure the removed x-gha vcpkg backend")
+    if f"actions/cache@{CACHE_ACTION_SHA}" not in text:
+        errors.append("CI workflow must pin the qualified actions/cache release")
+    required = (
+        "id: vcpkg-cache-key",
+        '"binary-sources=clear;files,$cacheDir,readwrite"',
+        "path: ${{ steps.vcpkg-cache-key.outputs.cache-dir }}",
+        "hashFiles('vcpkg.json')",
+        f"VCPKG_BINARY_SOURCES: ${{{{ {CACHE_OUTPUT} }}}}",
+    )
+    for token in required:
+        if token not in text:
+            errors.append(f"Incomplete vcpkg binary-cache wiring: {token}")
     return errors
 
 

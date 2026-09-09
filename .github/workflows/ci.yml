@@ -60,11 +60,24 @@ jobs:
         with:
           vcpkgDirectory: ${{ github.workspace }}/vcpkg
           vcpkgGitCommitId: "4334d8b4c8916018600212ab4dd4bbdc343065d1" # 2025.09.17 (first release with mcap)
+      - name: Identify vcpkg binary cache
+        id: vcpkg-cache-key
+        shell: pwsh
+        run: $compiler = (Get-Command cl).Source; $toolset = (Get-Item $compiler).VersionInfo.FileVersion; $cacheDir = Join-Path $env:RUNNER_TEMP "vcpkg-binary-cache"; "toolset=$toolset" >> $env:GITHUB_OUTPUT; "cache-dir=$cacheDir" >> $env:GITHUB_OUTPUT; "binary-sources=clear;files,$cacheDir,readwrite" >> $env:GITHUB_OUTPUT
+      - name: Restore vcpkg binary cache
+        uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ${{ steps.vcpkg-cache-key.outputs.cache-dir }}
+          key: vcpkg-${{ runner.os }}-${{ steps.vcpkg-cache-key.outputs.toolset }}-${{ hashFiles('vcpkg.json') }}
+          restore-keys: |
+            vcpkg-${{ runner.os }}-${{ steps.vcpkg-cache-key.outputs.toolset }}-
       - name: Registry contract check
         run: python tools/check_ci_contract.py --vcpkg-root vcpkg
       - name: Configure
         env:
           VCPKG_ROOT: ${{ github.workspace }}/vcpkg
+          # Override the action-provided source with the supported files provider.
+          VCPKG_BINARY_SOURCES: ${{ steps.vcpkg-cache-key.outputs.binary-sources }}
         run: |
           cmake --preset windows-release -DCAPTURE_WERROR=ON
       - name: Build daemon + tests

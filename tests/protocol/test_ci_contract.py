@@ -16,6 +16,12 @@ def configured(tmp_path: Path) -> Path:
     for name in ("ci.yml", "release.yml"):
         (folder / name).write_text(
             f'vcpkgGitCommitId: "{SHA}" # version pin\n'
+            f"actions/cache@{contract.CACHE_ACTION_SHA}\n"
+            "id: vcpkg-cache-key\n"
+            '"binary-sources=clear;files,$cacheDir,readwrite"\n'
+            "path: ${{ steps.vcpkg-cache-key.outputs.cache-dir }}\n"
+            "key: ${{ hashFiles('vcpkg.json') }}\n"
+            "VCPKG_BINARY_SOURCES: ${{ steps.vcpkg-cache-key.outputs.binary-sources }}\n"
             "python -m pip install -r requirements-ci.txt\n"
             "python tools/check_ci_contract.py --check-environment\n"
             "ctest --no-tests=error\n"
@@ -195,3 +201,29 @@ def test_only_generated_proto_headers_are_external():
         "target_include_directories(capture_storage PUBLIC"
         in (root / "libs/cpp/capture_storage/CMakeLists.txt").read_text()
     )
+
+
+def test_real_workflow_uses_supported_file_binary_cache():
+    text = (contract.ROOT / ".github/workflows/ci.yml").read_text()
+    assert contract.check_binary_cache_workflow(text) == []
+
+
+@pytest.mark.parametrize(
+    "old,new,fragment",
+    [
+        (f"actions/cache@{contract.CACHE_ACTION_SHA}", "actions/cache@v0", "pin"),
+        ("clear;files,$cacheDir,readwrite", "clear;x-gha,readwrite", "x-gha"),
+        ("clear;files,$cacheDir,readwrite", "clear;files,$cacheDir,read", "binary-cache wiring"),
+        ("hashFiles('vcpkg.json')", "'constant-key'", "binary-cache wiring"),
+        (
+            "steps.vcpkg-cache-key.outputs.binary-sources",
+            "env.VCPKG_BINARY_SOURCES",
+            "binary-cache wiring",
+        ),
+    ],
+)
+def test_cache_contract_rejects_regressions(old, new, fragment):
+    text = (contract.ROOT / ".github/workflows/ci.yml").read_text()
+    assert old in text
+    errors = contract.check_binary_cache_workflow(text.replace(old, new))
+    assert any(fragment in error for error in errors)
