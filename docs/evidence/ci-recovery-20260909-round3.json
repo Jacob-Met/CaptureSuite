@@ -1,0 +1,74 @@
+{
+  "schema": "capturesuite.ci-recovery.v3",
+  "date_utc": "2026-09-09T21:18:17.583871+00:00",
+  "parent_commit": "8a38db8b57b286b665b2ebb1dc9d7b6182cf33ed",
+  "hosted_parent": {
+    "run": 34403789837,
+    "python": {
+      "passed": 151,
+      "skipped": 6,
+      "artifact_id": 10124556399,
+      "artifact_sha256": "519efe536bb74f689d84e9b83c5a23d0d19d3883c44c2c5af2a1db34892cfbf5"
+    },
+    "cpp": "configured and reached compilation; failed on generated protobuf C4267, not an application source error"
+  },
+  "candidate_python": {
+    "schema": "capturesuite.test-receipt.v1",
+    "accepted": true,
+    "process_exit": 0,
+    "counts": {
+      "tests": 178,
+      "passed": 172,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 6
+    },
+    "junit_sha256": "bb458fcdced205e746054a3e2fd042b24ab278810e49865ca273deccbb56d9f7",
+    "problems": [],
+    "scope": "Process and test-evidence consistency, not clinical validation",
+    "seconds": 12.548569200000202,
+    "created_at": "2026-09-09T21:16:54.790221+00:00",
+    "run_directory": "build/evidence/python-20260909T211641Z-8b8fc05d",
+    "log_sha256": "9aefdb053f634e770ce6e2abee89c06580439e289de875f8c3f26d62447f1246",
+    "source_commit": "8a38db8b57b286b665b2ebb1dc9d7b6182cf33ed",
+    "source_worktree_dirty": true,
+    "source_tree_sha256": "74bc6e8e528937db56959b19a251f359feeac3a7877a7b6f04072b387ce8ee70",
+    "source_file_count": 520,
+    "source_unchanged_during_test": true
+  },
+  "msvc_warning_boundary": {
+    "accepted": true,
+    "checks": [
+      {
+        "name": "configure",
+        "exit": 0,
+        "log_sha256": "b5cb435c9c659f65506548ce122fcea84a14b98ec0a6c062761c5115f797625b"
+      },
+      {
+        "name": "control",
+        "exit": 0,
+        "log_sha256": "1746d0dea2f2e557e617e8c771cbf7c6035d3a084153bad6bbae5d1573a009b1"
+      },
+      {
+        "name": "generated_header",
+        "exit": 0,
+        "log_sha256": "55056e02956570909b7e46a6838d7ff77d3985f155510e4cd6e9ccbbb28ad682"
+      },
+      {
+        "name": "owned_conversion",
+        "exit": 1,
+        "log_sha256": "bc79fd22f156700645c246849cff1151d46747e27fc0320ad4c32fdf570a37ad"
+      }
+    ],
+    "scope": "Only unmodified generated headers are external; owned C4267 remains fatal"
+  },
+  "warning_policy_change": "Only unmodified protoc generated include directory marked SYSTEM, consistent with generated target existing warning exclusions. Hand-written source/headers and /W4 /WX remain. Actual control/generated successes and owned C4267 compile failure are checked. This is a scoped external-header classification, not removal of application warning gates.",
+  "macos_analysis": "Separate pinned 8a38 analysis-only venv: 28 passed, one failed because pure export helper imports desktop Qt; investigation next, not a Mac analysis success claim.",
+  "authorship": "Same-author internal qualification and real additional environment execution; independent author review not performed",
+  "source_manifest_note": "The candidate working tree is explicitly dirty relative to parent; exact bytes and unchanged-during-test are included. The resulting Git commit receives its own hosted checks.",
+  "evidence_sha256": {
+    "round3-test-receipt.log": "5f5f92cf7b3e5c9455bf786e394cc622a30fe2017fba434119579d403ce17262",
+    "native-warning-boundary-retry.log": "8daee0ccf54733a2adf49fb1ea2a2af84ac91d3c5d7414c5e0ef0e5d8a901cc9",
+    "same-tests-baseline-candidate.json": "eb82a802138018702173d820d0cee110a7d9a1d7544df6818949e4d68b1ac3a0"
+  }
+}

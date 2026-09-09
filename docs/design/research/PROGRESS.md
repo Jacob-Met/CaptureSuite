@@ -5,6 +5,29 @@ Plan: [AUTONOMOUS_EXECUTION_PLAN.md](AUTONOMOUS_EXECUTION_PLAN.md)
 
 ---
 
+## 2026-09-09 — Compiler boundary and reliable test evidence
+
+The second hosted Python job passed **151 tests with six explicit daemon skips**.
+Its exact JUnit artifact was downloaded independently and its bytes/case counts
+verified. The second C++ run successfully resolved the registry and configured,
+then reached compilation and exposed C4267 inside unmodified generated protobuf
+map-accessor headers. Only that generated include directory is now `SYSTEM`;
+a real MSVC negative-build probe proves the same warning in owned source remains
+fatal. Its successful control/generated builds and expected failed owned build
+are retained rather than disabling application warnings.
+
+Added a reusable exit-aware Python test runner. It rejects progress-only success,
+native nonzero exit, inconsistent/missing JUnit, zero executed tests, and source
+changes during a run. Receipts distinguish a dirty working tree from its HEAD
+commit and bind the exact working-source bytes. The original pytest scope is not
+reduced. New negative cases include the observed native heap-corruption exit.
+
+The new cleanup regressions were also run against the original source: three
+failures were detected; the same eight cases all passed against the repair.
+Those fake-client results do not represent actual hardware qualification.
+Hosted compiler and native macOS analysis follow-up remain in progress until
+recorded otherwise; these notes are not a whole-product acceptance.
+
 ## 2026-09-09 — Follow-on CI recovery
 
 The first hosted candidate (`47fc348`, run `34402331931`) passed its Python job.

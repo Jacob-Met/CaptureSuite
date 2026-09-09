@@ -36,7 +36,7 @@ jobs:
       - name: Pytest
         env:
           QT_QPA_PLATFORM: offscreen
-        run: python -m pytest tests -q -ra --ignore=tests/kill_tests --junitxml=build/evidence/pytest.xml
+        run: python tools/run_ci_tests.py
       - name: Preserve Python test evidence
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
@@ -53,6 +53,8 @@ jobs:
       - uses: actions/checkout@v4
       - name: Setup MSVC
         uses: ilammy/msvc-dev-cmd@v1
+      - name: Qualify application warning boundary
+        run: python tools/check_cpp_warning_boundary.py
       - name: Setup vcpkg
         uses: lukka/run-vcpkg@v11
         with:
@@ -77,6 +79,7 @@ jobs:
         with:
           name: cpp-test-evidence
           path: |
+            build/evidence/warning-boundary-*/
             build/windows-release/vcpkg-manifest-install.log
             build/windows-release/CMakeFiles/CMakeConfigureLog.yaml
             build/windows-release/Testing/Temporary/*.log

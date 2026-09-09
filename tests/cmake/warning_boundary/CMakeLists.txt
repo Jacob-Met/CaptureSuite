@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: GPL-3.0-only
+cmake_minimum_required(VERSION 3.28)
+project(CaptureWarningBoundary LANGUAGES CXX)
+if(NOT MSVC)
+  message(FATAL_ERROR "This regression specifically qualifies MSVC C4267")
+endif()
+set(CAPTURE_WERROR ON)
+include("${CMAKE_CURRENT_LIST_DIR}/../../../cmake/CompilerWarnings.cmake")
+foreach(name control generated_header owned_conversion)
+  add_library(${name} OBJECT ${name}.cpp)
+  capture_set_warnings(${name})
+endforeach()
+target_include_directories(generated_header SYSTEM PRIVATE ${CMAKE_CURRENT_LIST_DIR}/generated)

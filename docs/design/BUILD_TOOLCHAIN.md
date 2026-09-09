@@ -165,3 +165,32 @@ Release tags run `.github/workflows/release.yml` to attach a win64 zip + PyInsta
 Test state isolation: the session fixture redirects application settings, registry,
 cache and child-process app-data paths to a pytest-owned temporary tree. UI smoke
 tests do not use the operator's actual saved preferences or active daemon record.
+
+
+### Exit-aware test receipts
+
+`python tools/run_ci_tests.py` runs the existing Python unit/UI suite into a new
+`build/evidence/python-...` directory. It retains the process exit, full log,
+JUnit case counts, hashes, source commit, dirty-worktree indicator and an exact
+working-source manifest. A native crash after 100% progress, missing or malformed
+JUnit, contradictory case counts, an empty/all-skipped run, or source mutation
+during the test cannot be reported as accepted. Skips stay separate from passes.
+This validates execution evidence, not device accuracy or scientific conclusions.
+
+### Generated headers and application warning policy
+
+The hosted compiler identified protobuf-generated map accessors returning
+`size_t` as `int`. The upstream v29.5 generator emits that conversion itself.
+The existing generated `.cc` target already exempts those vendor warnings; the
+corresponding generated include directory is now exported as `SYSTEM` so consumer
+targets have the same third-party boundary. No hand-written include directory,
+application `/W4 /WX`, or existing compiler warning helper is relaxed.
+
+`python tools/check_cpp_warning_boundary.py`, in an MSVC environment, verifies
+three real builds: a valid control succeeds, a consumer of the generated-header
+pattern succeeds, and the same implicit narrowing conversion in owned source
+fails with C4267. It preserves the expected failed compile log as evidence. This
+is a scoped generated-code compatibility decision, not a claim that warning-free
+compilation proves arbitrary inputs safe.
+
+Reference: https://cmake.org/cmake/help/latest/command/target_include_directories.html

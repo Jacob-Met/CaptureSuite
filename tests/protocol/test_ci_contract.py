@@ -149,3 +149,19 @@ def test_each_native_ci_check_fails_its_own_step():
             assert len(commands) == 1, (
                 f"Native command failures must not be masked by a later command: {step['name']}"
             )
+
+
+def test_only_generated_proto_headers_are_external():
+    root = contract.ROOT
+    text = (root / "libs/cpp/capture_proto/CMakeLists.txt").read_text()
+    assert (
+        "target_include_directories(capture_proto SYSTEM PUBLIC ${CAPTURE_PROTO_GEN_DIR})" in text
+    )
+    warnings = (root / "cmake/CompilerWarnings.cmake").read_text()
+    assert "/W4" in warnings and "/WX" in warnings and "CAPTURE_WERROR" in warnings
+    workflow = (root / ".github/workflows/ci.yml").read_text()
+    assert "python tools/check_cpp_warning_boundary.py" in workflow
+    assert (
+        "target_include_directories(capture_storage PUBLIC"
+        in (root / "libs/cpp/capture_storage/CMakeLists.txt").read_text()
+    )
