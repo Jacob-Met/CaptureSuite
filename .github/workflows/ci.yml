@@ -7,23 +7,27 @@ on:
 
 jobs:
   python:
-    runs-on: windows-latest
+    runs-on: windows-2022
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
       - name: Install Python deps
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install -r requirements-ci.txt
-          python -m pip check
+        run: python -m pip install -r requirements-ci.txt
+      - name: Dependency consistency
+        run: python -m pip check
       - name: CI contract check
         run: python tools/check_ci_contract.py --check-environment
+      - name: Generate Python protobuf bindings
+        run: python tools/gen_protos.py
       - name: Proto drift check
-        run: |
-          python tools/gen_protos.py
-          git diff --exit-code -- libs/python/capture_protocol/capture_protocol/generated
+        run: git diff --exit-code -- libs/python/capture_protocol/capture_protocol/generated
+      - name: Generate session schemas
+        run: python tools/gen_session_schemas.py
+      - name: Schema drift check
+        run: git diff --exit-code -- schemas/session/jsonschema
       - name: Ruff
         run: |
           ruff check libs/python/capture_protocol libs/python/capture_session libs/python/capture_analysis libs/python/capture_worker workers/python_host desktop/capture_desktop tools tests plugins/example_sine_py plugins/lsl_bridge
@@ -33,9 +37,18 @@ jobs:
         env:
           QT_QPA_PLATFORM: offscreen
         run: python -m pytest tests -q -ra --ignore=tests/kill_tests --junitxml=build/evidence/pytest.xml
+      - name: Preserve Python test evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: python-test-evidence
+          path: build/evidence/
+          if-no-files-found: warn
+          retention-days: 7
 
   cmake:
-    runs-on: windows-latest
+    runs-on: windows-2022
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - name: Setup MSVC
@@ -44,7 +57,9 @@ jobs:
         uses: lukka/run-vcpkg@v11
         with:
           vcpkgDirectory: ${{ github.workspace }}/vcpkg
-          vcpkgGitCommitId: "b322364f06308bdd24823f9d8f03fe0cc86fd46f" # 2024.12.16
+          vcpkgGitCommitId: "4334d8b4c8916018600212ab4dd4bbdc343065d1" # 2025.09.17 (first release with mcap)
+      - name: Registry contract check
+        run: python tools/check_ci_contract.py --vcpkg-root vcpkg
       - name: Configure
         env:
           VCPKG_ROOT: ${{ github.workspace }}/vcpkg
@@ -55,4 +70,16 @@ jobs:
           cmake --build build/windows-release --target capture_daemon capture_core_tests -j 4
       - name: CTest
         run: |
-          ctest --test-dir build/windows-release --output-on-failure --no-tests=error -C Release
+          ctest --test-dir build/windows-release --output-on-failure --no-tests=error --output-junit ctest-results.xml -C Release
+      - name: Preserve C++ diagnostic evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: cpp-test-evidence
+          path: |
+            build/windows-release/vcpkg-manifest-install.log
+            build/windows-release/CMakeFiles/CMakeConfigureLog.yaml
+            build/windows-release/Testing/Temporary/*.log
+            build/windows-release/ctest-results.xml
+          if-no-files-found: warn
+          retention-days: 7

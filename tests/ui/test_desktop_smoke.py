@@ -21,14 +21,6 @@ from capture_desktop.widgets_preview import (
     ScalarSparkline,
     TracePreview,
 )
-from PySide6.QtWidgets import QApplication
-
-
-@pytest.fixture(scope="module")
-def qapp():
-    app = QApplication.instance() or QApplication([])
-    theme.apply_theme(app, setting="dark")
-    return app
 
 
 def test_theme_tokens_dark_and_light():
@@ -101,3 +93,9 @@ def test_instance_json_path_documented():
     # Sanity: helper path matches ControlClient convention.
     path = Path(os.environ.get("LOCALAPPDATA", "")) / "CaptureSuite" / "instance.json"
     assert path.name == "instance.json"
+
+
+def test_ui_application_matches_process_singleton(qapp):
+    from PySide6.QtWidgets import QApplication
+
+    assert QApplication.instance() is qapp

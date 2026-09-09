@@ -13,19 +13,9 @@ os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 pytest.importorskip("PySide6")
 
-from capture_desktop import theme
 
 ROOT = Path(__file__).resolve().parents[2]
 FIXTURE = ROOT / "tests" / "fixtures" / "mini_session"
-
-
-@pytest.fixture(scope="module")
-def qapp():
-    from PySide6.QtWidgets import QApplication
-
-    app = QApplication.instance() or QApplication([])
-    theme.apply_theme(app, setting="dark")
-    return app
 
 
 def test_analysis_screen_no_plot_startfile(qapp):

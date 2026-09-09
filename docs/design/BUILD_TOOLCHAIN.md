@@ -57,13 +57,22 @@ The exception is contained rather than allowed to spread:
 A developer who never touches the camera worker therefore never installs GStreamer, and the core build stays reproducible from the manifest alone.
 
 The registry baseline is pinned in `vcpkg.json` to
-`b322364f06308bdd24823f9d8f03fe0cc86fd46f` (the verified `2024.12.16` commit).
+`4334d8b4c8916018600212ab4dd4bbdc343065d1` (the verified `2025.09.17` commit).
+The old `2024.12.16` registry lacks MCAP. The new pin is the first stable registry
+release after the official MCAP port was added; all seven direct dependencies
+and both MCAP compression features were checked. This explicit version change
+replaces an unusable baseline, not a request for a latest-version upgrade.
+
 Both CI and the tag-triggered release workflow use that full commit SHA: a version
 label is not a valid `vcpkgGitCommitId`. Upgrading the registry is a deliberate
 change to all three pins, not an implicit latest-version update.
 
 `python tools/check_ci_contract.py` verifies that these pins agree before a build.
 It checks this repository's configuration shape, not arbitrary workflow security.
+With `--vcpkg-root vcpkg`, it validates direct ports and requested features in the
+actual pinned registry checkout before CMake. Transitive resolution stays with
+vcpkg. `windows-2022` retains the documented VS 2022 toolchain rather than allowing
+`windows-latest` to silently select VS 2026.
 
 ### Complete Python test environment
 
@@ -151,3 +160,8 @@ uv run python tools/gen_session_schemas.py
 Optional job builds the camera plugin with `CAPTURE_CAMERA_FAKE=1` when GStreamer is available.
 
 Release tags run `.github/workflows/release.yml` to attach a win64 zip + PyInstaller desktop build.
+
+
+Test state isolation: the session fixture redirects application settings, registry,
+cache and child-process app-data paths to a pytest-owned temporary tree. UI smoke
+tests do not use the operator's actual saved preferences or active daemon record.

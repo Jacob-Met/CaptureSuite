@@ -5,6 +5,28 @@ Plan: [AUTONOMOUS_EXECUTION_PLAN.md](AUTONOMOUS_EXECUTION_PLAN.md)
 
 ---
 
+## 2026-09-09 — Follow-on CI recovery
+
+The first hosted candidate (`47fc348`, run `34402331931`) passed its Python job.
+Its C++ setup advanced past the repaired SHA pin but exposed a second blocker:
+the old registry predates the required MCAP port. The explicit new baseline is
+`4334d8b4c8916018600212ab4dd4bbdc343065d1` / `2025.09.17`, the first stable
+release after official MCAP inclusion. Direct ports and requested features were
+verified upstream; a new checker catches this class of omission before CMake.
+Windows CI is explicitly on the documented VS 2022 runner family.
+
+Two initial isolated-venv full test runs ended with native heap corruption at
+shutdown. Retained those failures rather than treating completed progress as a
+pass. UI tests now share one session-lifetime QApplication, clean up their widgets
+before application teardown, and use isolated application state. Three complete
+repeated native runs exited normally: **150 passed and six daemon-only skips in
+each**. This is a tested candidate improvement, not proof all native crash causes
+are ruled out. All existing UI assertions remain.
+
+CI also separates native commands into individual fail-fast steps and retains
+scoped test/configure diagnostics. The registry/platform follow-up still needs
+hosted C++ verification. See `docs/evidence/ci-recovery-20260909-round2.json`.
+
 ## 2026-09-09 — Current CI recovery qualification
 
 The September 1–3 milestone notes below are historical. The published main

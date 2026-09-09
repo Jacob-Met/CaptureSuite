@@ -85,6 +85,35 @@ def check(root: Path) -> list[str]:
     return errors
 
 
+def check_registry(root: Path, registry: Path) -> list[str]:
+    """Check direct port/features in the pinned checkout; vcpkg resolves transitives."""
+    errors = []
+    try:
+        manifest = json.loads((root / "vcpkg.json").read_text(encoding="utf-8"))
+        baseline = json.loads((registry / "versions/baseline.json").read_text(encoding="utf-8"))[
+            "default"
+        ]
+        for dependency in manifest["dependencies"]:
+            name = dependency if isinstance(dependency, str) else dependency["name"]
+            if not isinstance(name, str) or not re.fullmatch(r"[a-z0-9-]+", name):
+                errors.append("Invalid direct port name")
+                continue
+            if name not in baseline:
+                errors.append(f"Pinned registry does not contain required port: {name}")
+                continue
+            features = [] if isinstance(dependency, str) else dependency.get("features", [])
+            if features:
+                port_path = registry / "ports" / name / "vcpkg.json"
+                port = json.loads(port_path.read_text(encoding="utf-8"))
+                supported = set(port.get("features", {})) | {"core", "default"}
+                for feature in features:
+                    if feature not in supported:
+                        errors.append(f"Pinned port {name} lacks feature: {feature}")
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        errors.append(f"Cannot validate registry contents: {type(exc).__name__}")
+    return errors
+
+
 def check_environment() -> list[str]:
     errors = []
     for module in ENVIRONMENT:
@@ -98,8 +127,11 @@ def check_environment() -> list[str]:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check-environment", action="store_true")
+    parser.add_argument("--vcpkg-root", type=Path)
     args = parser.parse_args()
     errors = check(ROOT)
+    if args.vcpkg_root is not None:
+        errors.extend(check_registry(ROOT, args.vcpkg_root))
     if args.check_environment:
         errors.extend(check_environment())
     print(json.dumps({"accepted": not errors, "errors": errors}, indent=2))

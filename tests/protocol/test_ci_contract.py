@@ -79,3 +79,73 @@ def test_broken_import_is_reported_without_aborting_other_checks(monkeypatch):
     errors = contract.check_environment()
     assert len(errors) == 1 and "numpy" in errors[0]
     assert seen == list(contract.ENVIRONMENT)
+
+
+@pytest.fixture
+def registry_case(tmp_path):
+    root = tmp_path / "project"
+    registry = tmp_path / "registry"
+    root.mkdir()
+    (registry / "versions").mkdir(parents=True)
+    (registry / "ports/mcap").mkdir(parents=True)
+    (root / "vcpkg.json").write_text(
+        json.dumps({"dependencies": ["protobuf", {"name": "mcap", "features": ["lz4", "zstd"]}]})
+    )
+    (registry / "versions/baseline.json").write_text(
+        json.dumps({"default": {"protobuf": {"baseline": "5.29.5"}, "mcap": {"baseline": "2.0.2"}}})
+    )
+    (registry / "ports/mcap/vcpkg.json").write_text(
+        json.dumps({"features": {"lz4": {}, "zstd": {}}})
+    )
+    return root, registry
+
+
+def test_required_registry_ports_and_features(registry_case):
+    assert contract.check_registry(*registry_case) == []
+
+
+def test_historical_missing_mcap_is_caught_before_cmake(registry_case):
+    root, registry = registry_case
+    p = registry / "versions/baseline.json"
+    d = json.loads(p.read_text())
+    del d["default"]["mcap"]
+    p.write_text(json.dumps(d))
+    assert contract.check_registry(root, registry) == [
+        "Pinned registry does not contain required port: mcap"
+    ]
+
+
+def test_missing_port_feature_is_explicit(registry_case):
+    root, registry = registry_case
+    (registry / "ports/mcap/vcpkg.json").write_text('{"features": {"lz4": {}}}')
+    assert contract.check_registry(root, registry) == ["Pinned port mcap lacks feature: zstd"]
+
+
+def test_unreadable_registry_is_not_success(registry_case):
+    root, registry = registry_case
+    (registry / "versions/baseline.json").write_text("invalid")
+    assert contract.check_registry(root, registry)
+
+
+def test_port_paths_cannot_escape_registry(registry_case):
+    root, registry = registry_case
+    (root / "vcpkg.json").write_text('{"dependencies": ["../../private"]}')
+    assert contract.check_registry(root, registry) == ["Invalid direct port name"]
+
+
+def test_each_native_ci_check_fails_its_own_step():
+    import yaml
+
+    workflow = yaml.safe_load((contract.ROOT / ".github/workflows/ci.yml").read_text())
+    for job in workflow["jobs"].values():
+        for step in job["steps"]:
+            if "run" not in step:
+                continue
+            commands = [
+                line.strip()
+                for line in step["run"].splitlines()
+                if line.strip() and not line.lstrip().startswith("#")
+            ]
+            assert len(commands) == 1, (
+                f"Native command failures must not be masked by a later command: {step['name']}"
+            )
