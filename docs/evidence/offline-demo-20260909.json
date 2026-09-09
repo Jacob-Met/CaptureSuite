@@ -1,0 +1,19 @@
+{
+  "date": "2026-09-09",
+  "base_commit": "640b4cf2b8282f71e6f719fcabe9456969930bcc",
+  "python": "3.12",
+  "scope": "Offline fixture demonstration and documentation only; no production accounts, devices or research data",
+  "baseline_tests": 7,
+  "qualified_tests": 12,
+  "test_scope": "Phase-A QC, diagnostic bundle, and new offline demo tests only; not the full C++/GUI suite",
+  "command": "python -m pytest tests/analysis/test_phase_a_qc.py tests/analysis/test_offline_demo.py tests/protocol/test_diagnostic_bundle.py -q",
+  "qualified": true,
+  "log_sha256": "46c3fd9941dba9121ef0c5075c99a6e9bff0f89dd28230f5ef7349062b6b97af",
+  "source_sha256": {
+    "tools/demo_qc.py": "224c7fc504af01c1388b48818f9e1736ec0e5e30816b1baeccb6ebe76349bffc",
+    "tests/analysis/test_offline_demo.py": "9e21f77c460ad3ba599a2ca2126b89d1b21790ba43adb2f2edb37ed96c7f80bf"
+  },
+  "new_behavior": "Explicit synthetic offline evaluation entry point, no live effects, immutable source and no overwrite",
+  "author": "Jacob Metoyer with AI-assisted implementation",
+  "independent_external_review": false
+}

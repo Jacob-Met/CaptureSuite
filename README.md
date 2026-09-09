@@ -34,7 +34,27 @@ flowchart LR
   PKG --> AN[Analysis / QC / ML jobs]
 ```
 
-## 60-second sim demo
+## Inspect a synthetic QC result first
+
+After setting up the documented Python 3.12 analysis dependencies, run from the
+repository root (the parent directory must exist; choose a NEW output path):
+
+```powershell
+py -3.12 tools/demo_qc.py ../capturesuite-qc-demo
+```
+
+This runs the real offline QC engine against a copy of the bundled **synthetic**
+EMG/IMU mini-session. It needs no capture daemon, GUI, physical device, account,
+or patient data. The output contains `DEMO-RECEIPT.json` and an inspectable HTML
+and JSON report under
+`synthetic-demo.mmsession/processing/jobs/demo-qc/reports/`.
+
+The example checks original-fixture and copied raw-source hashes, rejects an
+existing output directory, and preserves failure output for diagnosis. It does
+not establish hardware performance, clinical validity, or full product readiness.
+Tests: `tests/analysis/test_offline_demo.py`.
+
+## Simulation walkthrough (after build prerequisites)
 
 ```powershell
 # Terminal 1 — build + daemon (once per machine: copy CMakeUserPresets.example.json)
@@ -103,7 +123,7 @@ tagged release.
 
 ## Maintainer
 
-**Jacob Scott-Metoyer** ([@Jacob-Met](https://github.com/Jacob-Met)) — architecture
+**[Jacob Metoyer](https://jacob-met.github.io/)** ([@Jacob-Met](https://github.com/Jacob-Met)) — architecture
 and product direction. Independent research software (not an official product of
 any university lab unless separately stated).
 

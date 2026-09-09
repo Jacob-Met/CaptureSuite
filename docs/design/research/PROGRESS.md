@@ -97,3 +97,13 @@ Plan: [AUTONOMOUS_EXECUTION_PLAN.md](AUTONOMOUS_EXECUTION_PLAN.md)
 ### 2026-09-01 — Phase 4 modality depth + Phase 5 pose sim teacher
 
 **Shipped:** Expanded Focus cards, preset library, radar array preset, vendor replay, sim pose teacher.
+
+
+## 2026-09-09 - Public evaluation entry point
+
+Added an offline synthetic QC demonstration in `tools/demo_qc.py` and regression
+tests. It reuses the existing analysis engine, copies the shipped mini-session,
+checks source immutability, and rejects output overwrite. Public maintainer name
+is Jacob Metoyer. No daemon, protocol, schema, hardware, patient-data or existing
+private research workflow was changed. Qualification receipts are recorded in
+`docs/evidence/offline-demo-20260909.json` after execution.
