@@ -8,7 +8,7 @@ import record_vcpkg_cache as recorder
 def env(hit="true"):
     return {
         "CAPTURE_VCPKG_CACHE_HIT": hit,
-        "CAPTURE_VCPKG_CACHE_KEY": "vcpkg-Windows-19.43.1-deadbeef",
+        "CAPTURE_VCPKG_CACHE_KEY": "vcpkg-Windows-19.43.1-" + "a" * 64,
         "CAPTURE_VCPKG_BINARY_SOURCES": r"clear;files,D:\a\_temp\vcpkg-binary-cache,readwrite",
         "GITHUB_ACTIONS": "true",
         "GITHUB_RUN_ID": "123",
@@ -40,6 +40,11 @@ def test_cache_hit_states_are_explicit(tmp_path, hit, expected):
         ("CAPTURE_VCPKG_BINARY_SOURCES", "clear;x-gha,readwrite"),
         ("CAPTURE_VCPKG_BINARY_SOURCES", r"files,D:\cache,readwrite"),
         ("CAPTURE_VCPKG_BINARY_SOURCES", r"clear;files,D:\cache,read"),
+        (
+            "CAPTURE_VCPKG_BINARY_SOURCES",
+            r"clear;files,D:\cache,readwrite;files,E:\other,readwrite",
+        ),
+        ("CAPTURE_VCPKG_BINARY_SOURCES", r"clear;files,relative\cache,readwrite"),
     ],
 )
 def test_invalid_cache_claims_are_rejected(tmp_path, field, value):

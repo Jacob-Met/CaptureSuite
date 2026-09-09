@@ -127,7 +127,11 @@ def check_binary_cache_workflow(text: str) -> list[str]:
         "id: vcpkg-cache-key",
         '"binary-sources=clear;files,$cacheDir,readwrite"',
         "path: ${{ steps.vcpkg-cache-key.outputs.cache-dir }}",
-        "hashFiles('vcpkg.json')",
+        (
+            "key: vcpkg-${{ runner.os }}-"
+            "${{ steps.vcpkg-cache-key.outputs.toolset }}-${{ hashFiles('vcpkg.json') }}"
+        ),
+        "vcpkg-${{ runner.os }}-${{ steps.vcpkg-cache-key.outputs.toolset }}-",
         f"VCPKG_BINARY_SOURCES: ${{{{ {CACHE_OUTPUT} }}}}",
         "id: vcpkg-binary-cache",
         "python tools/record_vcpkg_cache.py",

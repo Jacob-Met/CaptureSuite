@@ -7,6 +7,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import re
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -21,10 +22,13 @@ def build_receipt(root: Path, env: dict[str, str]) -> dict:
         raise ValueError("cache-hit must be empty, true, or false")
     key = env.get("CAPTURE_VCPKG_CACHE_KEY", "")
     sources = env.get("CAPTURE_VCPKG_BINARY_SOURCES", "")
-    if not key.startswith("vcpkg-Windows-") or not key.rsplit("-", 1)[-1]:
+    if not re.fullmatch(r"vcpkg-Windows-[0-9.]+-[0-9a-f]{64}", key):
         raise ValueError("cache key is missing its Windows/toolchain/manifest binding")
-    if not sources.startswith("clear;files,") or not sources.endswith(",readwrite"):
-        raise ValueError("binary sources must use one read-write files provider after clear")
+    match = re.fullmatch(r"clear;files,([A-Za-z]:[\\/][^;]+),readwrite", sources)
+    if match is None:
+        raise ValueError(
+            "binary sources must use one absolute read-write files provider after clear"
+        )
     manifest = (root / "vcpkg.json").read_bytes()
     return {
         "schema": "capturesuite.vcpkg-cache-receipt.v1",

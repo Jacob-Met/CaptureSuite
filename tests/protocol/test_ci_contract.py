@@ -21,7 +21,9 @@ def configured(tmp_path: Path) -> Path:
             "id: vcpkg-binary-cache\n"
             '"binary-sources=clear;files,$cacheDir,readwrite"\n'
             "path: ${{ steps.vcpkg-cache-key.outputs.cache-dir }}\n"
-            "key: ${{ hashFiles('vcpkg.json') }}\n"
+            "key: vcpkg-${{ runner.os }}-"
+            "${{ steps.vcpkg-cache-key.outputs.toolset }}-${{ hashFiles('vcpkg.json') }}\n"
+            "vcpkg-${{ runner.os }}-${{ steps.vcpkg-cache-key.outputs.toolset }}-\n"
             "VCPKG_BINARY_SOURCES: ${{ steps.vcpkg-cache-key.outputs.binary-sources }}\n"
             "python tools/record_vcpkg_cache.py\n"
             "build/evidence/vcpkg-cache-*.json\n"
