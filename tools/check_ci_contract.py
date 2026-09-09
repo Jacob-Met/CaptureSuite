@@ -129,6 +129,9 @@ def check_binary_cache_workflow(text: str) -> list[str]:
         "path: ${{ steps.vcpkg-cache-key.outputs.cache-dir }}",
         "hashFiles('vcpkg.json')",
         f"VCPKG_BINARY_SOURCES: ${{{{ {CACHE_OUTPUT} }}}}",
+        "id: vcpkg-binary-cache",
+        "python tools/record_vcpkg_cache.py",
+        "build/evidence/vcpkg-cache-*.json",
     )
     for token in required:
         if token not in text:

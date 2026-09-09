@@ -18,10 +18,13 @@ def configured(tmp_path: Path) -> Path:
             f'vcpkgGitCommitId: "{SHA}" # version pin\n'
             f"actions/cache@{contract.CACHE_ACTION_SHA}\n"
             "id: vcpkg-cache-key\n"
+            "id: vcpkg-binary-cache\n"
             '"binary-sources=clear;files,$cacheDir,readwrite"\n'
             "path: ${{ steps.vcpkg-cache-key.outputs.cache-dir }}\n"
             "key: ${{ hashFiles('vcpkg.json') }}\n"
             "VCPKG_BINARY_SOURCES: ${{ steps.vcpkg-cache-key.outputs.binary-sources }}\n"
+            "python tools/record_vcpkg_cache.py\n"
+            "build/evidence/vcpkg-cache-*.json\n"
             "python -m pip install -r requirements-ci.txt\n"
             "python tools/check_ci_contract.py --check-environment\n"
             "ctest --no-tests=error\n"
