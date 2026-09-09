@@ -21,19 +21,29 @@ def build_receipt(root: Path, env: dict[str, str]) -> dict:
     if raw_hit not in ("", "true", "false"):
         raise ValueError("cache-hit must be empty, true, or false")
     key = env.get("CAPTURE_VCPKG_CACHE_KEY", "")
+    commit = env.get("CAPTURE_VCPKG_COMMIT", "")
     sources = env.get("CAPTURE_VCPKG_BINARY_SOURCES", "")
-    if not re.fullmatch(r"vcpkg-Windows-[0-9.]+-[0-9a-f]{64}", key):
-        raise ValueError("cache key is missing its Windows/toolchain/manifest binding")
+    key_match = re.fullmatch(r"vcpkg-Windows-[0-9.]+-([0-9a-f]{40})-([0-9a-f]{64})", key)
+    if key_match is None:
+        raise ValueError("cache key is missing its Windows/toolchain/vcpkg/manifest binding")
+    if not re.fullmatch(r"[0-9a-f]{40}", commit) or key_match.group(1) != commit:
+        raise ValueError("cache key and actual vcpkg checkout commit must agree")
     match = re.fullmatch(r"clear;files,([A-Za-z]:[\\/][^;]+),readwrite", sources)
     if match is None:
         raise ValueError(
             "binary sources must use one absolute read-write files provider after clear"
         )
     manifest = (root / "vcpkg.json").read_bytes()
+    manifest_doc = json.loads(manifest)
+    if manifest_doc.get("builtin-baseline") != commit:
+        raise ValueError("actual vcpkg checkout commit must match builtin-baseline")
+    restore = {"": "miss", "false": "partial", "true": "exact"}[raw_hit]
     return {
         "schema": "capturesuite.vcpkg-cache-receipt.v1",
         "cache_hit": True if raw_hit == "true" else False if raw_hit == "false" else None,
+        "cache_restore": restore,
         "cache_key": key,
+        "vcpkg_commit": commit,
         "binary_source_kind": "files",
         "vcpkg_manifest_sha256": hashlib.sha256(manifest).hexdigest(),
         "github": github_context(env),

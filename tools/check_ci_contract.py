@@ -129,9 +129,15 @@ def check_binary_cache_workflow(text: str) -> list[str]:
         "path: ${{ steps.vcpkg-cache-key.outputs.cache-dir }}",
         (
             "key: vcpkg-${{ runner.os }}-"
-            "${{ steps.vcpkg-cache-key.outputs.toolset }}-${{ hashFiles('vcpkg.json') }}"
+            "${{ steps.vcpkg-cache-key.outputs.toolset }}-"
+            "${{ steps.vcpkg-cache-key.outputs.vcpkg-commit }}-${{ hashFiles('vcpkg.json') }}"
         ),
-        "vcpkg-${{ runner.os }}-${{ steps.vcpkg-cache-key.outputs.toolset }}-",
+        (
+            "vcpkg-${{ runner.os }}-${{ steps.vcpkg-cache-key.outputs.toolset }}-"
+            "${{ steps.vcpkg-cache-key.outputs.vcpkg-commit }}-"
+        ),
+        '"vcpkg-commit=$vcpkgCommit"',
+        "CAPTURE_VCPKG_COMMIT: ${{ steps.vcpkg-cache-key.outputs.vcpkg-commit }}",
         f"VCPKG_BINARY_SOURCES: ${{{{ {CACHE_OUTPUT} }}}}",
         "id: vcpkg-binary-cache",
         "python tools/record_vcpkg_cache.py",

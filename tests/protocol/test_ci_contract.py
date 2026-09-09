@@ -19,11 +19,14 @@ def configured(tmp_path: Path) -> Path:
             f"actions/cache@{contract.CACHE_ACTION_SHA}\n"
             "id: vcpkg-cache-key\n"
             "id: vcpkg-binary-cache\n"
+            '"vcpkg-commit=$vcpkgCommit"\n'
             '"binary-sources=clear;files,$cacheDir,readwrite"\n'
             "path: ${{ steps.vcpkg-cache-key.outputs.cache-dir }}\n"
-            "key: vcpkg-${{ runner.os }}-"
-            "${{ steps.vcpkg-cache-key.outputs.toolset }}-${{ hashFiles('vcpkg.json') }}\n"
-            "vcpkg-${{ runner.os }}-${{ steps.vcpkg-cache-key.outputs.toolset }}-\n"
+            "key: vcpkg-${{ runner.os }}-${{ steps.vcpkg-cache-key.outputs.toolset }}-"
+            "${{ steps.vcpkg-cache-key.outputs.vcpkg-commit }}-${{ hashFiles('vcpkg.json') }}\n"
+            "vcpkg-${{ runner.os }}-${{ steps.vcpkg-cache-key.outputs.toolset }}-"
+            "${{ steps.vcpkg-cache-key.outputs.vcpkg-commit }}-\n"
+            "CAPTURE_VCPKG_COMMIT: ${{ steps.vcpkg-cache-key.outputs.vcpkg-commit }}\n"
             "VCPKG_BINARY_SOURCES: ${{ steps.vcpkg-cache-key.outputs.binary-sources }}\n"
             "python tools/record_vcpkg_cache.py\n"
             "build/evidence/vcpkg-cache-*.json\n"
@@ -220,6 +223,11 @@ def test_real_workflow_uses_supported_file_binary_cache():
         ("clear;files,$cacheDir,readwrite", "clear;x-gha,readwrite", "x-gha"),
         ("clear;files,$cacheDir,readwrite", "clear;files,$cacheDir,read", "binary-cache wiring"),
         ("hashFiles('vcpkg.json')", "'constant-key'", "binary-cache wiring"),
+        (
+            "steps.vcpkg-cache-key.outputs.vcpkg-commit",
+            "env.UNBOUND_VCPKG",
+            "binary-cache wiring",
+        ),
         (
             "steps.vcpkg-cache-key.outputs.binary-sources",
             "env.VCPKG_BINARY_SOURCES",

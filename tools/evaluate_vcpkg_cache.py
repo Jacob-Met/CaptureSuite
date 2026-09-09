@@ -22,13 +22,13 @@ def evaluate(cold: dict, warm: dict) -> dict:
         if not isinstance(seconds, (int, float)) or isinstance(seconds, bool) or seconds <= 0:
             problems.append(f"{label}: configure_seconds must be positive")
     cr, wr = cold.get("receipt", {}), warm.get("receipt", {})
-    for field in ("cache_key", "vcpkg_manifest_sha256"):
+    for field in ("cache_key", "vcpkg_commit", "vcpkg_manifest_sha256"):
         if cr.get(field) != wr.get(field) or not cr.get(field):
             problems.append(f"cold/warm {field} must match")
-    if cr.get("cache_hit") is not False:
-        problems.append("cold run must record cache_hit=false")
-    if wr.get("cache_hit") is not True:
-        problems.append("warm run must record cache_hit=true")
+    if cr.get("cache_restore") != "miss" or cr.get("cache_hit") is not None:
+        problems.append("cold run must record a real cache miss")
+    if wr.get("cache_restore") != "exact" or wr.get("cache_hit") is not True:
+        problems.append("warm run must record an exact cache hit")
     cg, wg = cr.get("github", {}), wr.get("github", {})
     if cg.get("GITHUB_SHA") != wg.get("GITHUB_SHA") or not cg.get("GITHUB_SHA"):
         problems.append("cold/warm source SHA must match")
