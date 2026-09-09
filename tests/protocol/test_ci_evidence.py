@@ -138,6 +138,7 @@ def test_github_context_is_allowlisted_and_absence_is_explicitly_empty():
             "GITHUB_SHA": "merge-sha",
             "GITHUB_HEAD_REF": "candidate",
             "GITHUB_BASE_REF": "main",
+            "GITHUB_RUN_ATTEMPT": "2",
             "GITHUB_TOKEN": "must-not-be-copied",
             "UNRELATED": "private",
         }
@@ -148,6 +149,7 @@ def test_github_context_is_allowlisted_and_absence_is_explicitly_empty():
         "GITHUB_SHA": "merge-sha",
         "GITHUB_HEAD_REF": "candidate",
         "GITHUB_BASE_REF": "main",
+        "GITHUB_RUN_ATTEMPT": "2",
     }
 
 
