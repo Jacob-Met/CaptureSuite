@@ -16,7 +16,10 @@ jobs:
       - name: Install Python deps
         run: |
           python -m pip install --upgrade pip
-          pip install "protobuf>=4.25,<5" "grpcio-tools>=1.62,<1.63" jsonschema pytest ruff mcap
+          python -m pip install -r requirements-ci.txt
+          python -m pip check
+      - name: CI contract check
+        run: python tools/check_ci_contract.py --check-environment
       - name: Proto drift check
         run: |
           python tools/gen_protos.py
@@ -29,7 +32,7 @@ jobs:
       - name: Pytest
         env:
           QT_QPA_PLATFORM: offscreen
-        run: python -m pytest tests -q --ignore=tests/kill_tests
+        run: python -m pytest tests -q -ra --ignore=tests/kill_tests --junitxml=build/evidence/pytest.xml
 
   cmake:
     runs-on: windows-latest
@@ -41,7 +44,7 @@ jobs:
         uses: lukka/run-vcpkg@v11
         with:
           vcpkgDirectory: ${{ github.workspace }}/vcpkg
-          vcpkgGitCommitId: "2024.12.16"
+          vcpkgGitCommitId: "b322364f06308bdd24823f9d8f03fe0cc86fd46f" # 2024.12.16
       - name: Configure
         env:
           VCPKG_ROOT: ${{ github.workspace }}/vcpkg
@@ -52,4 +55,4 @@ jobs:
           cmake --build build/windows-release --target capture_daemon capture_core_tests -j 4
       - name: CTest
         run: |
-          ctest --test-dir build/windows-release --output-on-failure -C Release
+          ctest --test-dir build/windows-release --output-on-failure --no-tests=error -C Release

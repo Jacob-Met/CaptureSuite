@@ -16,8 +16,8 @@ import statistics
 import sys
 import threading
 import time
-from dataclasses import asdict, dataclass, field
-from datetime import datetime, timezone
+from dataclasses import dataclass, field
+from datetime import UTC, datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -177,13 +177,9 @@ def phase(
     s11 = BoardStats("ltr11")
     threads: list[threading.Thread] = []
     if tr13c:
-        threads.append(
-            threading.Thread(target=run_tr13c, args=(seconds, stop, s13), daemon=True)
-        )
+        threads.append(threading.Thread(target=run_tr13c, args=(seconds, stop, s13), daemon=True))
     if ltr11:
-        threads.append(
-            threading.Thread(target=run_ltr11, args=(seconds, stop, s11), daemon=True)
-        )
+        threads.append(threading.Thread(target=run_ltr11, args=(seconds, stop, s11), daemon=True))
     t0 = time.time()
     for t in threads:
         t.start()
@@ -226,7 +222,7 @@ def main() -> int:
 
     seconds = max(4.0, float(args.seconds))
     report = {
-        "stamp_utc": datetime.now(timezone.utc).isoformat(),
+        "stamp_utc": datetime.now(UTC).isoformat(),
         "sdk": get_version_full(),
         "fmcw_list": fmcw,
         "ltr11_list": ltr,
@@ -288,7 +284,7 @@ def main() -> int:
 
     out_dir = ROOT / "tools" / "vendor_spike" / "out"
     out_dir.mkdir(parents=True, exist_ok=True)
-    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    stamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
     path = out_dir / f"dual_radar_interference_{stamp}.json"
     path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     print(f"\nwrote {path}")

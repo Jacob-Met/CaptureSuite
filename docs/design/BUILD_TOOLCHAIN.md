@@ -56,13 +56,37 @@ The exception is contained rather than allowed to spread:
 
 A developer who never touches the camera worker therefore never installs GStreamer, and the core build stays reproducible from the manifest alone.
 
-Exact versions are pinned by the `builtin-baseline` field in `vcpkg.json`. Generate it once at bootstrap with:
+The registry baseline is pinned in `vcpkg.json` to
+`b322364f06308bdd24823f9d8f03fe0cc86fd46f` (the verified `2024.12.16` commit).
+Both CI and the tag-triggered release workflow use that full commit SHA: a version
+label is not a valid `vcpkgGitCommitId`. Upgrading the registry is a deliberate
+change to all three pins, not an implicit latest-version update.
+
+`python tools/check_ci_contract.py` verifies that these pins agree before a build.
+It checks this repository's configuration shape, not arbitrary workflow security.
+
+### Complete Python test environment
+
+From the repository root, in a fresh CPython 3.12 environment:
 
 ```powershell
-vcpkg x-update-baseline --add-initial-baseline
+python -m pip install -r requirements-ci.txt
+python -m pip check
+python tools/check_ci_contract.py --check-environment
+$env:QT_QPA_PLATFORM = "offscreen"
+python -m pytest tests -q -ra --ignore=tests/kill_tests
 ```
 
-Commit the resulting `vcpkg.json` and `vcpkg-configuration.json`. Upgrading a dependency means bumping the baseline deliberately in its own commit, never implicitly.
+The requirements install all five local workspace members together, including the
+analysis and desktop extras. CI explicitly imports those dependencies before tests
+so an absent optional library cannot make its test coverage disappear silently.
+Six daemon integration cases still require a built Windows executable; skipped
+cases are reported rather than counted as passes. The destructive-test directory
+remains outside this unit/UI job as before.
+
+Generated Python import rewrites and session JSON schemas explicitly use UTF-8
+with LF line endings on Windows as well as Linux. The existing byte-for-byte
+regeneration assertion is retained; it is not replaced by newline normalization.
 
 ## Protobuf code generation
 

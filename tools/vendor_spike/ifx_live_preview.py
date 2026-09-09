@@ -144,4 +144,4 @@ if __name__ == "__main__":
         raise SystemExit(main())
     except KeyboardInterrupt:
         print("stopped")
-        raise SystemExit(0)
+        raise SystemExit(0) from None

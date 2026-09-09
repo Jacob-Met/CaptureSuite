@@ -16,18 +16,16 @@ from capture_protocol.control_client import (  # noqa: E402
     ControlClient,
     parse_health_snapshot,
 )
-from capture_protocol.generated.capture.v1 import control_pb2  # noqa: E402
-from capture_protocol.generated.capture.v1 import health_pb2  # noqa: E402
+from capture_protocol.generated.capture.v1 import (  # noqa: E402
+    control_pb2,
+    health_pb2,
+)
 from capture_protocol.generated.capture.v1.common_pb2 import MessageType  # noqa: E402
 
 
 def _pick_sources(client: ControlClient, kill_family: str):
     sources = list(client.list_sources().sources)
-    cams = [
-        s
-        for s in sources
-        if s.source_type == "camera" and "brio" in (s.alias or "").lower()
-    ]
+    cams = [s for s in sources if s.source_type == "camera" and "brio" in (s.alias or "").lower()]
     if not cams:
         cams = [s for s in sources if s.source_type == "camera"][:1]
     radars = [s for s in sources if s.source_id.startswith("radar.")]
@@ -47,9 +45,7 @@ def _pick_sources(client: ControlClient, kill_family: str):
 def _pids_for_source(exe: str, source_id: str) -> list[int]:
     """Match worker PIDs whose command line carries the source_id / worker-id."""
     ps = (
-        "Get-CimInstance Win32_Process -Filter \"Name='"
-        + exe
-        + "'\" | "
+        "Get-CimInstance Win32_Process -Filter \"Name='" + exe + "'\" | "
         "Select-Object ProcessId,CommandLine | ConvertTo-Json -Compress"
     )
     proc = subprocess.run(
@@ -156,9 +152,7 @@ def main() -> int:
     reopen_victim_ok = True
     try:
         time.sleep(args.warmup_s)
-        before = {
-            s.source_id: s.sample_count for s in client.get_recording_stats().streams
-        }
+        before = {s.source_id: s.sample_count for s in client.get_recording_stats().streams}
         print("before", before)
 
         pids = _pids_for_source(exe, victim)
@@ -214,16 +208,10 @@ def main() -> int:
                 saw_disconnect_alert = True
                 print("view_alert", a.code, a.message)
 
-        after = {
-            s.source_id: s.sample_count for s in client.get_recording_stats().streams
-        }
+        after = {s.source_id: s.sample_count for s in client.get_recording_stats().streams}
         print("after", after)
         victim_gaps = next(
-            (
-                s.gap_count
-                for s in client.get_recording_stats().streams
-                if s.source_id == victim
-            ),
+            (s.gap_count for s in client.get_recording_stats().streams if s.source_id == victim),
             0,
         )
         print(
@@ -236,12 +224,7 @@ def main() -> int:
                 print("FAIL: survivor stalled", sid)
                 survivors_ok = False
 
-        fault_ok = (
-            victim_gaps >= 1
-            or saw_gap_event
-            or saw_worker_exit
-            or saw_disconnect_alert
-        )
+        fault_ok = victim_gaps >= 1 or saw_gap_event or saw_worker_exit or saw_disconnect_alert
         if not fault_ok:
             print("FAIL: no fault signal for victim after kill")
     finally:
@@ -295,8 +278,7 @@ def main() -> int:
                         reopen_survivors_ok = False
                 if live.get(victim, 0) <= 0:
                     print(
-                        "BLOCKER: victim did not reopen after kill "
-                        "(sticky USB/handle?) —",
+                        "BLOCKER: victim did not reopen after kill (sticky USB/handle?) —",
                         victim,
                     )
                     reopen_victim_ok = False

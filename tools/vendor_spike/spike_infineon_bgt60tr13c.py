@@ -41,10 +41,10 @@ def _require_sdk():
 
 
 def run_spike(*, seconds: float) -> dict:
+    import numpy as np
     from ifxradarsdk import get_version, get_version_full
     from ifxradarsdk.fmcw import DeviceFmcw
     from ifxradarsdk.fmcw.types import FmcwSequenceChirp, FmcwSimpleSequenceConfig
-    import numpy as np
 
     # Faster than the stock raw_data example (~3 Hz) so we can measure rate
     # and see fan motion in the range profile within a few seconds.
@@ -163,9 +163,7 @@ def run_spike(*, seconds: float) -> dict:
             "elapsed_s": elapsed_s,
             "measured_rate_hz": rate_hz,
             "first_sample_latency_ms": first_sample_latency_ms,
-            "interval_ms_p50": (
-                float(statistics.median(intervals_ms)) if intervals_ms else None
-            ),
+            "interval_ms_p50": (float(statistics.median(intervals_ms)) if intervals_ms else None),
             "interval_ms_p95": (
                 float(sorted(intervals_ms)[int(0.95 * (len(intervals_ms) - 1))])
                 if len(intervals_ms) >= 2
@@ -174,15 +172,9 @@ def run_spike(*, seconds: float) -> dict:
             "energy_mean": float(statistics.fmean(energy_series)) if energy_series else 0.0,
             "energy_cv": float(energy_cv),
             "peak_bin_mode": (
-                max(set(peak_bin_series), key=peak_bin_series.count)
-                if peak_bin_series
-                else None
+                max(set(peak_bin_series), key=peak_bin_series.count) if peak_bin_series else None
             ),
-            "payload_bytes_per_frame_est": int(
-                np.asarray(frame_contents[0]).nbytes
-            )
-            if seq
-            else 0,
+            "payload_bytes_per_frame_est": int(np.asarray(frame_contents[0]).nbytes) if seq else 0,
         }
         print(
             f"done frames={seq} rate={rate_hz:.2f} Hz "
@@ -229,8 +221,10 @@ Host had a fan pointed at the sensor during capture.
 
 1. Discovery: `DeviceFmcw()` opens the first attached FMCW board; UUID via `get_board_uuid()`.
 2. Threading: blocking `get_next_frame()` on the calling thread (poll model).
-3. Timestamps: SDK frame has no host QPC stamp in this spike — host `perf_counter_ns` at pull time only.
-4. Start/stop: `create_simple_sequence` → `set_acquisition_sequence` → `get_next_frame` loop; context manager tears down.
+3. Timestamps: SDK frame has no host QPC stamp in this spike.
+   Host `perf_counter_ns` is recorded at pull time only.
+4. Start/stop: `create_simple_sequence` → `set_acquisition_sequence` → `get_next_frame` loop.
+   The context manager tears down.
 5. Sync: not exercised — do not claim multi-radar hardware sync.
 """
     path.write_text(body, encoding="utf-8")

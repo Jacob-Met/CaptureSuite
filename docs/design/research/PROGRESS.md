@@ -5,6 +5,31 @@ Plan: [AUTONOMOUS_EXECUTION_PLAN.md](AUTONOMOUS_EXECUTION_PLAN.md)
 
 ---
 
+## 2026-09-09 — Current CI recovery qualification
+
+The September 1–3 milestone notes below are historical. The published main
+checkpoint `99b002a` still has failing whole-repository CI; its twelve offline-demo
+tests were not full application qualification.
+
+Current candidate: `presence/ci-recovery-20260909`, [issue #6](https://github.com/Jacob-Met/CaptureSuite/issues/6).
+Reproduced 60 lint findings and a Windows JSON-schema byte-regeneration failure.
+Fixed producer line endings without weakening the byte comparator; completed the
+existing lint scope, pinned the original intended vcpkg version by full SHA, and
+made the full Python dependency set explicit. Fixed cleanup that could suppress
+capture errors or leave a started session running when arrays metadata was absent.
+New fixtures cover these defects without contacting a daemon or physical device.
+
+Existing local CPython 3.12: **143 passed, six daemon-dependent skips**; lint,
+protobuf regeneration/drift, license checks and static CI contract passed.
+An isolated environment installed successfully and passed dependency/import checks,
+but its full pytest process exited with Windows heap corruption (0xc0000374) after
+reaching 100%. That failed run is retained and is not counted as a pass. Native
+cleanup diagnosis and hosted Windows C++ qualification remain in progress;
+no hosted/C++/hardware pass is claimed by the earlier local result. No release tag, DOI,
+publication deposit or physical capture is authorized or performed in this pass.
+
+See `docs/evidence/ci-recovery-20260909.json` for input pins and qualification scope.
+
 ## Current phase
 
 | Field | Value |

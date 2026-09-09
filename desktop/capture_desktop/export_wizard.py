@@ -124,7 +124,9 @@ class ExportWizard(QDialog):
         self.accept()
 
 
-def run_export(package_path: str, options: ExportOptions, *, repo_root: Path | None = None) -> tuple[int, str]:
+def run_export(
+    package_path: str, options: ExportOptions, *, repo_root: Path | None = None
+) -> tuple[int, str]:
     """Run tools/export_session.py; return (exit_code, combined_output_tail)."""
     root = repo_root or Path(__file__).resolve().parents[2]
     py = (

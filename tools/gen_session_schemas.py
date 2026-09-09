@@ -149,12 +149,10 @@ def main() -> int:
         GetMessageClass(msg_desc)
         schema = _message_to_schema(msg_desc)
         out_path = OUT_DIR / _schema_filename(full_name)
-        out_path.write_text(json.dumps(schema, indent=2) + "\n", encoding="utf-8")
+        out_path.write_text(json.dumps(schema, indent=2) + "\n", encoding="utf-8", newline="\n")
         written.append(out_path.name)
 
-    preserved = sorted(
-        name for name in PRESERVE_SCHEMAS if (OUT_DIR / name).is_file()
-    )
+    preserved = sorted(name for name in PRESERVE_SCHEMAS if (OUT_DIR / name).is_file())
     all_files = sorted(set(written) | set(preserved))
 
     index = {
@@ -163,7 +161,9 @@ def main() -> int:
         "files": all_files,
         "hand_maintained": preserved,
     }
-    (OUT_DIR / "index.json").write_text(json.dumps(index, indent=2) + "\n", encoding="utf-8")
+    (OUT_DIR / "index.json").write_text(
+        json.dumps(index, indent=2) + "\n", encoding="utf-8", newline="\n"
+    )
     print(f"Wrote {len(written)} schemas to {OUT_DIR}")
     return 0
 

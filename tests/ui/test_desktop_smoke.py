@@ -48,11 +48,11 @@ def test_theme_apply_switches_palette(qapp):
 
 
 def test_session_timeline_from_fixture(qapp):
-    from capture_session import load_review_summary
     from capture_desktop.widgets_session_timeline import (
         SessionTimelineWidget,
         timeline_from_review_summary,
     )
+    from capture_session import load_review_summary
 
     root = Path(__file__).resolve().parents[1] / "fixtures" / "mini_session"
     summary = load_review_summary(root)

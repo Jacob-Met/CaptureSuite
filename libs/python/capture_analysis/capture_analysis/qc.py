@@ -8,9 +8,10 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
+from capture_session.package_reader import ReviewSummary, load_review_summary
+
 from capture_analysis.discover import discover_streams
 from capture_analysis.types import StreamRef
-from capture_session.package_reader import ReviewSummary, load_review_summary
 
 
 @dataclass
@@ -113,8 +114,10 @@ def _stream_qc(ref: StreamRef) -> StreamQc:
     if not ref.mcap_paths and not ref.mkv_paths:
         warnings.append("no segment files under streams/*/segments/")
 
-    if ref.mkv_paths and not ref.timing_mcap_paths and not any(
-        "timing" in p.name for p in ref.mcap_paths
+    if (
+        ref.mkv_paths
+        and not ref.timing_mcap_paths
+        and not any("timing" in p.name for p in ref.mcap_paths)
     ):
         # timing may live beside mkv as *.timing.mcap already split out
         if not ref.timing_mcap_paths:
@@ -152,9 +155,7 @@ def collect_qc(package_root: str | Path) -> QcReport:
     if summary.state not in ("finalized", "finalized_recovered", ""):
         warnings.append(f"package state is {summary.state!r} (prefer finalized)")
     if summary.recovery_reports:
-        warnings.append(
-            f"recovery reports present: {', '.join(summary.recovery_reports)}"
-        )
+        warnings.append(f"recovery reports present: {', '.join(summary.recovery_reports)}")
     if summary.open_gap_count:
         warnings.append(f"{summary.open_gap_count} open gap(s) still listed")
     if summary.duration_ns <= 1:

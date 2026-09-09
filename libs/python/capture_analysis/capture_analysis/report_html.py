@@ -25,15 +25,15 @@ def render_qc_html(qc: dict[str, Any]) -> str:
         "</tr>"
         for s in (qc.get("streams") or [])
     )
-    warn_items = "".join(
-        f"<li>{escape(w)}</li>" for w in (qc.get("warnings") or [])
-    ) or "<li>(none)</li>"
+    warn_items = (
+        "".join(f"<li>{escape(w)}</li>" for w in (qc.get("warnings") or [])) or "<li>(none)</li>"
+    )
 
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>QC — {escape(str(qc.get('sessionId', '')))}</title>
+<title>QC — {escape(str(qc.get("sessionId", "")))}</title>
 <style>
 body {{ font-family: Segoe UI, sans-serif; margin: 24px; color: #222; }}
 h1 {{ font-size: 1.4rem; }}
@@ -49,14 +49,14 @@ th {{ background: #f4f4f4; }}
 <body>
 <h1>Analysis QC</h1>
 <p class="meta">
-session <b>{escape(str(qc.get('sessionId', '')))}</b> ·
-state <b>{escape(str(qc.get('packageState', '')))}</b> ·
-streams {int(qc.get('streamCount') or 0)} ·
-gaps open/closed {int(qc.get('openGapCount') or 0)}/{int(qc.get('closedGapCount') or 0)} ·
-checkpoints {int(qc.get('checkpointCount') or 0)}
+session <b>{escape(str(qc.get("sessionId", "")))}</b> ·
+state <b>{escape(str(qc.get("packageState", "")))}</b> ·
+streams {int(qc.get("streamCount") or 0)} ·
+gaps open/closed {int(qc.get("openGapCount") or 0)}/{int(qc.get("closedGapCount") or 0)} ·
+checkpoints {int(qc.get("checkpointCount") or 0)}
 </p>
-<p class="meta">package: {escape(str(qc.get('packagePath', '')))}</p>
-<p class="meta">manifest sha256: {escape(str(qc.get('manifestSha256', '')))}</p>
+<p class="meta">package: {escape(str(qc.get("packagePath", "")))}</p>
+<p class="meta">manifest sha256: {escape(str(qc.get("manifestSha256", "")))}</p>
 
 <h2>Sources</h2>
 <table>
@@ -66,7 +66,8 @@ checkpoints {int(qc.get('checkpointCount') or 0)}
 
 <h2>Streams</h2>
 <table>
-<tr><th>source</th><th>stream</th><th>modality</th><th>schema</th><th>rate Hz</th><th>units</th><th>mcap/mkv</th></tr>
+<tr><th>source</th><th>stream</th><th>modality</th><th>schema</th>
+<th>rate Hz</th><th>units</th><th>mcap/mkv</th></tr>
 {stream_rows or "<tr><td colspan='7'>(none)</td></tr>"}
 </table>
 

@@ -129,8 +129,16 @@ def add_spdx_headers() -> int:
                 insert_at += 1
             header = f"# {expected}\n"
             new = "".join(lines[:insert_at]) + header + "".join(lines[insert_at:])
-        elif path.suffix.lower() in {".cpp", ".hpp", ".h", ".c", ".cc"} or path.name == "CMakeLists.txt" or path.suffix.lower() == ".cmake":
-            header = f"// {expected}\n" if path.suffix.lower() != ".cmake" and path.name != "CMakeLists.txt" else f"# {expected}\n"
+        elif (
+            path.suffix.lower() in {".cpp", ".hpp", ".h", ".c", ".cc"}
+            or path.name == "CMakeLists.txt"
+            or path.suffix.lower() == ".cmake"
+        ):
+            header = (
+                f"// {expected}\n"
+                if path.suffix.lower() != ".cmake" and path.name != "CMakeLists.txt"
+                else f"# {expected}\n"
+            )
             if path.suffix.lower() in {".cmake"} or path.name == "CMakeLists.txt":
                 header = f"# {expected}\n"
             else:

@@ -9,7 +9,7 @@ import os
 import subprocess
 import sys
 import time
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -18,9 +18,7 @@ if not PY.is_file():
     PY = Path(sys.executable)
 
 REPORT_ROOT = (
-    Path(os.environ.get("LOCALAPPDATA", str(ROOT / ".debug_runs")))
-    / "CaptureSuite"
-    / "debug_runs"
+    Path(os.environ.get("LOCALAPPDATA", str(ROOT / ".debug_runs"))) / "CaptureSuite" / "debug_runs"
 )
 
 
@@ -69,9 +67,13 @@ def _restart_daemon() -> bool:
     """Hard reset daemon/workers when the control plane is wedged."""
     print("\n=== restart_daemon ===")
     subprocess.run(
-        ["cmd", "/c", "taskkill /F /IM capture_daemon.exe >nul 2>&1 "
-         "& taskkill /F /IM capture_worker_camera.exe >nul 2>&1 "
-         "& taskkill /F /IM capture_worker_radar.exe >nul 2>&1 & exit /b 0"],
+        [
+            "cmd",
+            "/c",
+            "taskkill /F /IM capture_daemon.exe >nul 2>&1 "
+            "& taskkill /F /IM capture_worker_camera.exe >nul 2>&1 "
+            "& taskkill /F /IM capture_worker_radar.exe >nul 2>&1 & exit /b 0",
+        ],
         check=False,
     )
     time.sleep(2.0)
@@ -79,9 +81,7 @@ def _restart_daemon() -> bool:
     err_path = ROOT / "daemon_premanual_err.txt"
     env = os.environ.copy()
     env["CAPTURE_WORKER_STDERR_LOG"] = str(ROOT / "worker_err.txt")
-    with log_path.open("w", encoding="utf-8") as out, err_path.open(
-        "w", encoding="utf-8"
-    ) as err:
+    with log_path.open("w", encoding="utf-8") as out, err_path.open("w", encoding="utf-8") as err:
         subprocess.Popen(
             [
                 "powershell",
@@ -164,7 +164,7 @@ def main() -> int:
     )
     args = ap.parse_args()
 
-    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    stamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
     out_dir = REPORT_ROOT / f"premanual_{stamp}"
     out_dir.mkdir(parents=True, exist_ok=True)
     results: list[dict] = []
@@ -205,11 +205,7 @@ def main() -> int:
     # Export short soak package when that step passed (may not be last label).
     soak_short = next((r for r in results if r["label"] == "soak_short"), None)
     if soak_short and soak_short["ok"]:
-        sessions = (
-            Path(os.environ.get("LOCALAPPDATA", ""))
-            / "CaptureSuite"
-            / "sessions"
-        )
+        sessions = Path(os.environ.get("LOCALAPPDATA", "")) / "CaptureSuite" / "sessions"
         pkgs = sorted(
             sessions.glob("soak-cam-radar-*.mmsession"),
             key=lambda p: p.stat().st_mtime,
@@ -276,11 +272,7 @@ def main() -> int:
         )
         results.append(entry)
         if entry["ok"]:
-            sessions = (
-                Path(os.environ.get("LOCALAPPDATA", ""))
-                / "CaptureSuite"
-                / "sessions"
-            )
+            sessions = Path(os.environ.get("LOCALAPPDATA", "")) / "CaptureSuite" / "sessions"
             pkgs = sorted(
                 sessions.glob("soak-cam-radar-*.mmsession"),
                 key=lambda p: p.stat().st_mtime,
@@ -336,7 +328,7 @@ def _copy_stderr_tails(out_dir: Path, results: list[dict]) -> None:
 def _write_report(out_dir: Path, results: list[dict]) -> Path:
     out_dir.mkdir(parents=True, exist_ok=True)
     payload = {
-        "generated_utc": datetime.now(timezone.utc).isoformat(),
+        "generated_utc": datetime.now(UTC).isoformat(),
         "results": results,
         "manual_handoff": [
             "Physical USB unplug of camera mid-record",
@@ -369,20 +361,16 @@ def _write_report(out_dir: Path, results: list[dict]) -> Path:
         "|---|---|---|",
     ]
     for r in results:
-        md_lines.append(
-            f"| {r['label']} | {'PASS' if r['ok'] else 'FAIL'} | {r['elapsed_s']} |"
-        )
+        md_lines.append(f"| {r['label']} | {'PASS' if r['ok'] else 'FAIL'} | {r['elapsed_s']} |")
     md_lines.extend(["", "## Manual handoff", ""])
     for item in payload["manual_handoff"]:
         md_lines.append(f"- {item}")
     if any(not r["ok"] for r in results):
-        md_lines.extend(
-            ["", "## Triage", "", f"See `{out_dir / 'stderr_tails'}` for log tails."]
-        )
+        md_lines.extend(["", "## Triage", "", f"See `{out_dir / 'stderr_tails'}` for log tails."])
     md_path = out_dir / "report.md"
     md_path.write_text("\n".join(md_lines) + "\n", encoding="utf-8")
     # Also publish a stable summary name for handoff.
-    summary = REPORT_ROOT / f"premanual_summary_{datetime.now(timezone.utc).strftime('%Y%m%d')}.md"
+    summary = REPORT_ROOT / f"premanual_summary_{datetime.now(UTC).strftime('%Y%m%d')}.md"
     summary.write_text("\n".join(md_lines) + "\n", encoding="utf-8")
     return md_path
 

@@ -15,9 +15,8 @@ from capture_analysis.types import GapMask, LoadedEmg, StreamRef
 def extract_dummy_features(
     loaded: LoadedEmg, gap_mask: GapMask, **_params: Any
 ) -> tuple[Any, dict[str, Any], float]:
-    import pandas as pd
-
     import numpy as np
+    import pandas as pd
 
     _ = gap_mask
     arr = np.asarray(loaded.X, dtype=np.float64)

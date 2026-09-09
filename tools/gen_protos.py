@@ -37,9 +37,7 @@ def _find_protoc() -> list[str]:
         # Invoke via python -m grpc_tools.protoc
         return [sys.executable, "-m", "grpc_tools.protoc"]
     except ImportError as exc:
-        raise SystemExit(
-            "No protoc found. Install grpcio-tools or set CAPTURE_PROTOC."
-        ) from exc
+        raise SystemExit("No protoc found. Install grpcio-tools or set CAPTURE_PROTOC.") from exc
 
 
 def _proto_files() -> list[Path]:
@@ -97,6 +95,7 @@ def main() -> int:
         '"""Generated protobuf modules. Do not edit by hand."""\n'
         "from __future__ import annotations\n",
         encoding="utf-8",
+        newline="\n",
     )
     print(f"Wrote Python bindings under {OUT_PY}")
     print(f"Wrote descriptor set {OUT_DESC}")
@@ -116,18 +115,22 @@ def _rewrite_imports(root: Path) -> None:
     for path in root.rglob("*_pb2.py"):
         text = path.read_text(encoding="utf-8")
         # Packages land as root/capture/v1/foo_pb2.py
-        rewritten = text.replace(
-            "from capture.v1 import ",
-            "from capture_protocol.generated.capture.v1 import ",
-        ).replace(
-            "from capture.v1.data import ",
-            "from capture_protocol.generated.capture.v1.data import ",
-        ).replace(
-            "import capture.v1.",
-            "import capture_protocol.generated.capture.v1.",
+        rewritten = (
+            text.replace(
+                "from capture.v1 import ",
+                "from capture_protocol.generated.capture.v1 import ",
+            )
+            .replace(
+                "from capture.v1.data import ",
+                "from capture_protocol.generated.capture.v1.data import ",
+            )
+            .replace(
+                "import capture.v1.",
+                "import capture_protocol.generated.capture.v1.",
+            )
         )
         if rewritten != text:
-            path.write_text(rewritten, encoding="utf-8")
+            path.write_text(rewritten, encoding="utf-8", newline="\n")
 
 
 if __name__ == "__main__":

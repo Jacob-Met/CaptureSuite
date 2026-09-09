@@ -4,7 +4,6 @@
 from __future__ import annotations
 
 import os
-import subprocess
 import sys
 import time
 from pathlib import Path
@@ -31,8 +30,14 @@ def main() -> int:
     )
     results = []
     steps = [
-        ("kill_camera_worker", [str(PY), "tools/probe_kill_worker_mid_record.py", "--kill", "camera"]),
-        ("kill_radar_worker", [str(PY), "tools/probe_kill_worker_mid_record.py", "--kill", "radar"]),
+        (
+            "kill_camera_worker",
+            [str(PY), "tools/probe_kill_worker_mid_record.py", "--kill", "camera"],
+        ),
+        (
+            "kill_radar_worker",
+            [str(PY), "tools/probe_kill_worker_mid_record.py", "--kill", "radar"],
+        ),
         ("inject_disconnect", [str(PY), "tools/probe_inject_disconnect.py"]),
         ("soak_5min", [str(PY), "tools/soak_camera_radar.py", "300"]),
     ]

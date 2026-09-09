@@ -10,13 +10,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[2]
 FIXTURE = ROOT / "tests" / "fixtures" / "mini_session"
 BUNDLED_MANIFEST = (
-    ROOT
-    / "libs"
-    / "python"
-    / "capture_analysis"
-    / "capture_analysis"
-    / "plugins"
-    / "manifest.yaml"
+    ROOT / "libs" / "python" / "capture_analysis" / "capture_analysis" / "plugins" / "manifest.yaml"
 )
 
 
@@ -35,7 +29,6 @@ def test_bundled_manifest_loads() -> None:
 
 def test_dummy_extractor_via_manifest_only(tmp_path: Path) -> None:
     import numpy as np
-
     from capture_analysis.plugins.dummy import extract_dummy_features
     from capture_analysis.plugins.registry import load_registry
     from capture_analysis.types import GapMask, LoadedEmg, StreamRef, TimeWindow

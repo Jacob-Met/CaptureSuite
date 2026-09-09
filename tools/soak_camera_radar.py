@@ -15,16 +15,28 @@ from capture_protocol.control_client import ControlClient  # noqa: E402
 from capture_protocol.generated.capture.v1 import control_pb2  # noqa: E402
 
 
+def _stop_recording(client: ControlClient) -> bool:
+    """Finalize or report refusal; never hide an exception from the capture loop."""
+    tok = client.request_stop()
+    if tok.error.code:
+        print("request_stop", tok.error.code, tok.error.message)
+        return False
+    stop = client.stop_session(tok.confirmation_token)
+    if stop.error.code:
+        print("stop_session", stop.error.code, stop.error.message)
+        return False
+    if stop.state != control_pb2.SESSION_STATE_FINALIZED:
+        print("expected FINALIZED, got", stop.state)
+        return False
+    return True
+
+
 def main() -> int:
     seconds = float(sys.argv[1]) if len(sys.argv) > 1 else 20.0
     client = ControlClient(timeout_s=60.0)
     client.connect()
     sources = list(client.list_sources().sources)
-    cams = [
-        s
-        for s in sources
-        if s.source_type == "camera" and "brio" in (s.alias or "").lower()
-    ]
+    cams = [s for s in sources if s.source_type == "camera" and "brio" in (s.alias or "").lower()]
     if not cams:
         cams = [s for s in sources if s.source_type == "camera"][:1]
     radars = [s for s in sources if s.source_id.startswith("radar.")]
@@ -68,14 +80,12 @@ def main() -> int:
         print("expected RECORDING, got", start.state)
         return 1
 
-    arrays_path = package / "arrays.json"
-    if not arrays_path.is_file():
-        print("FAIL: arrays.json missing at record start")
-        return 1
-
     saw_live = {sid: False for sid in ids}
     missing: list[str] = []
     try:
+        if not (package / "arrays.json").is_file():
+            print("FAIL: arrays.json missing at record start")
+            return 1
         t0 = time.time()
         while time.time() - t0 < seconds:
             stats = client.get_recording_stats()
@@ -90,17 +100,10 @@ def main() -> int:
 
         missing = [sid for sid, ok in saw_live.items() if not ok]
     finally:
-        tok = client.request_stop()
-        if tok.error.code:
-            print("request_stop", tok.error.code, tok.error.message)
-            return 1
-        stop = client.stop_session(tok.confirmation_token)
-        if stop.error.code:
-            print("stop_session", stop.error.code, stop.error.message)
-            return 1
-        if stop.state != control_pb2.SESSION_STATE_FINALIZED:
-            print("expected FINALIZED, got", stop.state)
-            return 1
+        stop_ok = _stop_recording(client)
+
+    if not stop_ok:
+        return 1
 
     if missing:
         print("FAIL: live sample_count stayed 0 for", missing)

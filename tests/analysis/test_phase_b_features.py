@@ -4,11 +4,9 @@
 from __future__ import annotations
 
 import json
-import math
 import shutil
 from pathlib import Path
 
-import numpy as np
 import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -35,9 +33,7 @@ def test_emg_analytic_rms_mav() -> None:
         fs_hz=fs,
         units="mV",
     )
-    stream = StreamRef(
-        "sim.emg.main", "batch", "emg", "emg.batch/1", fs, "mV", dimensions=(1,)
-    )
+    stream = StreamRef("sim.emg.main", "batch", "emg", "emg.batch/1", fs, "mV", dimensions=(1,))
     window = TimeWindow(0, int(1e9), "full")
     mask = GapMask(stream=stream, window=window, gaps=[], policy="mask")
     df, _meta, vf = extract_emg_features(loaded, mask, window_s=1.0, hop_s=1.0)
@@ -87,9 +83,8 @@ def _write_emg_imu_package(dest: Path) -> Path:
     for p in dest.rglob("*.mcap"):
         p.unlink()
 
-    from mcap.writer import Writer
-
     from capture_protocol.generated.capture.v1.data import emg_batch_pb2, imu_frame_pb2
+    from mcap.writer import Writer
 
     fs = 2000.0
     n = 400  # 0.2 s
@@ -120,12 +115,8 @@ def _write_emg_imu_package(dest: Path) -> Path:
     with emg_path.open("wb") as fh:
         w = Writer(fh)
         w.start(profile="", library="test")
-        sid = w.register_schema(
-            name="emg.batch/1", encoding="protobuf", data=b""
-        )
-        cid = w.register_channel(
-            topic="emg", message_encoding="protobuf", schema_id=sid
-        )
+        sid = w.register_schema(name="emg.batch/1", encoding="protobuf", data=b"")
+        cid = w.register_channel(topic="emg", message_encoding="protobuf", schema_id=sid)
         payload = emg.SerializeToString()
         w.add_message(channel_id=cid, log_time=0, data=payload, publish_time=0)
         w.finish()
@@ -136,7 +127,6 @@ def _write_emg_imu_package(dest: Path) -> Path:
     doc["dimensions"] = [2]
     stream_json.write_text(json.dumps(doc, indent=2), encoding="utf-8")
 
-    imu = imu_frame_pb2.ImuFrame()
     imu_path = (
         dest
         / "sources"
@@ -151,9 +141,7 @@ def _write_emg_imu_package(dest: Path) -> Path:
         w = Writer(fh)
         w.start(profile="", library="test")
         sid = w.register_schema(name="imu.frame/1", encoding="protobuf", data=b"")
-        cid = w.register_channel(
-            topic="imu", message_encoding="protobuf", schema_id=sid
-        )
+        cid = w.register_channel(topic="imu", message_encoding="protobuf", schema_id=sid)
         for i in range(30):
             msg = imu_frame_pb2.ImuFrame()
             msg.timing.session_time_ns = int(i * 1e9 / 60.0)
@@ -170,9 +158,7 @@ def _write_emg_imu_package(dest: Path) -> Path:
             s.qw = 1.0
             payload = msg.SerializeToString()
             t_ns = msg.timing.session_time_ns
-            w.add_message(
-                channel_id=cid, log_time=t_ns, data=payload, publish_time=t_ns
-            )
+            w.add_message(channel_id=cid, log_time=t_ns, data=payload, publish_time=t_ns)
         w.finish()
 
     # Fix duration in integrity
