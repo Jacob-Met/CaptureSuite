@@ -91,7 +91,6 @@ def test_qc_job_writes_manifest_and_reports(package: Path) -> None:
 
 def test_analysis_job_schema_validates(package: Path) -> None:
     import jsonschema
-
     from capture_analysis import JobParams, run
 
     result = run(package, JobParams(command="qc", overwrite_job_id="qc-schema"))

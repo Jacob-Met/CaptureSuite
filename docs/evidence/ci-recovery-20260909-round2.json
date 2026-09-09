@@ -1,0 +1,79 @@
+{
+  "schema": "capturesuite.ci-recovery.v2",
+  "date_utc": "2026-09-09T20:53:42.504359+00:00",
+  "previous_candidate": "47fc348c28cd2c11bd783a67367ab7f223195f85",
+  "original_base": "99b002a425dcafc551cae88565e4755c8fe762f8",
+  "first_hosted_run": {
+    "id": 34402331931,
+    "python": "passed, including full dependencies/imports, lint and pytest",
+    "cpp": "setup repaired; configure then failed because original 2024.12.16 registry has no mcap port"
+  },
+  "registry_change": {
+    "tag": "2025.09.17",
+    "commit": "4334d8b4c8916018600212ab4dd4bbdc343065d1",
+    "versions": {
+      "protobuf": {
+        "baseline": "5.29.5",
+        "port-version": 1
+      },
+      "mcap": {
+        "baseline": "2.0.2",
+        "port-version": 0
+      },
+      "spdlog": {
+        "baseline": "1.15.3",
+        "port-version": 0
+      },
+      "sqlite3": {
+        "baseline": "3.50.4",
+        "port-version": 0
+      },
+      "nlohmann-json": {
+        "baseline": "3.12.0",
+        "port-version": 1
+      },
+      "blake3": {
+        "baseline": "1.8.1",
+        "port-version": 0
+      },
+      "catch2": {
+        "baseline": "3.10.0",
+        "port-version": 0
+      }
+    },
+    "mcap_features": [
+      "lz4",
+      "zstd"
+    ],
+    "reason": "First stable release in retrieved upstream release history containing the official mcap port; 2024.12.16 definitively lacks required mcap and cannot configure. No custom overlay or missing-dependency bypass."
+  },
+  "platform": "windows-2022 for the documented MSVC 2022 toolchain",
+  "native_python": {
+    "environment": {
+      "PySide6": "6.11.2",
+      "shiboken6": "6.11.2",
+      "numpy": "2.5.3",
+      "scipy": "1.18.1",
+      "pyqtgraph": "0.14.0",
+      "pytest": "9.1.1",
+      "matplotlib": "3.11.1",
+      "protobuf": "4.25.9",
+      "grpcio-tools": "1.62.3",
+      "ruff": "0.16.6"
+    },
+    "repeated_full_runs": 3,
+    "each_passed": 150,
+    "each_skipped": 6,
+    "skip_reason": "daemon binary absent in isolated source tree",
+    "original_native_failure": "Two earlier clean-venv full runs ended with 0xc0000374 after 100% progress. Per-module and other full runs passed. Failure evidence retained.",
+    "changed": "Session-scoped QApplication and explicit widget teardown, isolated user app-data paths, original test assertions retained",
+    "certainty": "The revised full suite exited normally in all three observed repeats; this does not establish all native crash causes are eliminated."
+  },
+  "new_safeguards": [
+    "inspect actual pinned registry direct ports and features before CMake",
+    "each critical native command has its own CI step; a later success cannot mask its exit",
+    "preserve JUnit and CMake/vcpkg diagnostics as scoped seven-day artifacts",
+    "application state is test-owned rather than the operators saved state"
+  ],
+  "qualification_boundary": "Same-author internal qualification. Hosted execution is environmental replication, not independent test authorship. C++ build and hardware remain unqualified until run."
+}

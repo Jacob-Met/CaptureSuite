@@ -1,0 +1,23 @@
+{
+  "date_utc": "2026-09-09T21:16:38.205246+00:00",
+  "base_commit": "99b002a425dcafc551cae88565e4755c8fe762f8",
+  "baseline_source_sha256": "fc14c2478d3af414e5aea188439eb17b5b51477f9b79253e1ed78eb6c9a6d0cb",
+  "candidate_source_sha256": "76600b83dee7b4e3524902e327f8f0fe859a3af34741e9af083ddc7a919cde4c",
+  "test_file_sha256": "0feabc157c2feec1a684b1d300397807de67cba5b5d6e66612cb3b1ba4da650f",
+  "old_source": {
+    "passed": 5,
+    "failed": 3
+  },
+  "candidate_source": {
+    "passed": 8,
+    "failed": 0
+  },
+  "same_test_file": true,
+  "scope": "Synthetic fake-client recording cleanup regression; no daemon, hardware or real recording",
+  "authorship": "Same-author internal regression test; independent authorship not claimed",
+  "failures_detected": [
+    "Original runtime error hidden by stop refusal",
+    "Started recording not stopped when arrays metadata absent",
+    "Keyboard interrupt hidden by stop refusal"
+  ]
+}

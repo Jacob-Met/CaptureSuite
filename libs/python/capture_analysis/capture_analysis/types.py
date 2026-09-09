@@ -3,9 +3,10 @@
 
 from __future__ import annotations
 
+from collections.abc import Iterator
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Iterator
+from typing import Any
 
 
 @dataclass(frozen=True)
@@ -65,7 +66,10 @@ class GapMask:
         out: list[GapInterval] = []
         for g in self.gaps:
             end = g.end_session_ns if g.end_session_ns is not None else self.window.end_session_ns
-            if end < self.window.start_session_ns or g.start_session_ns > self.window.end_session_ns:
+            if (
+                end < self.window.start_session_ns
+                or g.start_session_ns > self.window.end_session_ns
+            ):
                 continue
             out.append(g)
         return out

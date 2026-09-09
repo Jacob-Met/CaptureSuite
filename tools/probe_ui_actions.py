@@ -25,7 +25,6 @@ sys.path[:0] = [
 ]
 
 from capture_protocol.control_client import ControlClient  # noqa: E402
-from capture_protocol.generated.capture.v1 import control_pb2  # noqa: E402
 
 
 def _ms(t0: float) -> float:
@@ -70,9 +69,7 @@ def run_rpc_matrix() -> list[StepResult]:
     if srcs is None:
         return results
     cams = [
-        s
-        for s in srcs.sources
-        if s.source_type == "camera" and "brio" in (s.alias or "").lower()
+        s for s in srcs.sources if s.source_type == "camera" and "brio" in (s.alias or "").lower()
     ]
     if not cams:
         cams = [s for s in srcs.sources if s.source_type == "camera"][:1]
@@ -170,10 +167,8 @@ def run_rpc_matrix() -> list[StepResult]:
 def run_qt_clicks() -> list[StepResult]:
     """Drive real MainWindow button slots offscreen."""
     os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
-    from PySide6.QtCore import QTimer
-    from PySide6.QtWidgets import QApplication
-
     from capture_desktop.app import MainWindow
+    from PySide6.QtWidgets import QApplication
 
     results: list[StepResult] = []
     app = QApplication.instance() or QApplication([])
@@ -183,15 +178,18 @@ def run_qt_clicks() -> list[StepResult]:
     while time.time() < deadline and not win.state.connected:
         app.processEvents()
         time.sleep(0.05)
-    results.append(
-        StepResult("qt_connect", win.state.connected, 0, win.state.status_line)
-    )
+    results.append(StepResult("qt_connect", win.state.connected, 0, win.state.status_line))
     if not win.state.connected:
         return results
 
     # Wait boot to leave list_sources / create_session.
     deadline = time.time() + 60.0
-    while time.time() < deadline and win._boot_stage not in ("ready", "rehearse", "select_sources", "subscribe"):
+    while time.time() < deadline and win._boot_stage not in (
+        "ready",
+        "rehearse",
+        "select_sources",
+        "subscribe",
+    ):
         app.processEvents()
         time.sleep(0.05)
     # Allow auto-rehearse boot to settle.

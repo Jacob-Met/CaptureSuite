@@ -7,7 +7,6 @@ from pathlib import Path
 from typing import Any
 
 import numpy as np
-
 from capture_analysis.plots.style import new_fig, save_fig, shade_gaps, to_seconds
 from capture_analysis.types import GapInterval, TimeWindow
 

@@ -5,10 +5,11 @@ from __future__ import annotations
 
 import importlib
 import json
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from functools import lru_cache
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
 
 from capture_analysis.types import StreamRef
 

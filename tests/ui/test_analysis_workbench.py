@@ -13,19 +13,9 @@ os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
 pytest.importorskip("PySide6")
 
-from capture_desktop import theme
 
 ROOT = Path(__file__).resolve().parents[2]
 FIXTURE = ROOT / "tests" / "fixtures" / "mini_session"
-
-
-@pytest.fixture(scope="module")
-def qapp():
-    from PySide6.QtWidgets import QApplication
-
-    app = QApplication.instance() or QApplication([])
-    theme.apply_theme(app, setting="dark")
-    return app
 
 
 def test_analysis_screen_no_plot_startfile(qapp):
@@ -42,7 +32,9 @@ def test_analysis_screen_no_plot_startfile(qapp):
     assert any("Pose" in t for t in labels)
     assert screen._extras is not None
     screen._command.setCurrentIndex(
-        next(i for i in range(screen._command.count()) if screen._command.itemData(i) == "ml_bundle")
+        next(
+            i for i in range(screen._command.count()) if screen._command.itemData(i) == "ml_bundle"
+        )
     )
     qapp.processEvents()
     assert screen._command.currentData() == "ml_bundle"
@@ -99,8 +91,9 @@ def test_job_writes_sync_series_json(tmp_path: Path) -> None:
     pytest.importorskip("matplotlib")
     pytest.importorskip("mcap")
 
-    from tests.analysis.test_phase_b_features import _write_emg_imu_package
     from capture_analysis import JobParams, run
+
+    from tests.analysis.test_phase_b_features import _write_emg_imu_package
 
     package = _write_emg_imu_package(tmp_path / "synth.mmsession")
     result = run(package, JobParams(command="all", overwrite_job_id="wb-sync-json"))

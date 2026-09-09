@@ -20,6 +20,7 @@ import shutil
 import struct
 import subprocess
 import sys
+from datetime import UTC
 from pathlib import Path
 
 try:
@@ -41,7 +42,7 @@ def _find_mkv_files(root: Path) -> list[Path]:
 
 
 def _deinterleave_hint(stream_json: dict) -> tuple[int, int, int]:
-    applied = (stream_json.get("applied") or stream_json.get("requested") or {})
+    applied = stream_json.get("applied") or stream_json.get("requested") or {}
     chirp = applied.get("chirp") or {}
     num_rx = int(stream_json.get("num_rx") or 3)
     num_chirps = int(applied.get("num_chirps") or stream_json.get("num_chirps") or 32)
@@ -77,9 +78,7 @@ def export_radar_mcaps(root: Path, out: Path, manifest: dict) -> None:
         dest_dir = radar_out / sid
         dest_dir.mkdir(parents=True, exist_ok=True)
         shutil.copy2(stream_json, dest_dir / "stream.json")
-        mcaps = list(stream_json.parent.glob("*.mcap")) + list(
-            stream_json.parent.glob("**/*.mcap")
-        )
+        mcaps = list(stream_json.parent.glob("*.mcap")) + list(stream_json.parent.glob("**/*.mcap"))
         entry = {
             "source_id": sid,
             "stream_json": str(dest_dir / "stream.json"),
@@ -301,7 +300,7 @@ def export_video(root: Path, out: Path, manifest: dict) -> None:
 
 def main(argv: list[str] | None = None) -> int:
     import argparse
-    from datetime import datetime, timezone
+    from datetime import datetime
 
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("package")
@@ -320,7 +319,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.out_dir:
         out = Path(args.out_dir).resolve()
     else:
-        stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+        stamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
         out = root / "exports" / stamp
     out.mkdir(parents=True, exist_ok=True)
 
@@ -390,8 +389,7 @@ def main(argv: list[str] | None = None) -> int:
             return 1
         # Prefer non-empty message/frame counts when present.
         radar_msgs = sum(
-            int(e.get("frame_count") or e.get("message_count") or 0)
-            for e in manifest["radar"]
+            int(e.get("frame_count") or e.get("message_count") or 0) for e in manifest["radar"]
         )
         imu_msgs = sum(int(e.get("message_count") or 0) for e in manifest["imu"])
         emg_msgs = sum(int(e.get("message_count") or 0) for e in manifest["emg"])

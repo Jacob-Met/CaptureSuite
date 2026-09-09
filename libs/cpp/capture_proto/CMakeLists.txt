@@ -61,7 +61,11 @@ endforeach()
 
 add_library(capture_proto STATIC ${CAPTURE_PROTO_GEN_SRCS})
 add_library(capture::proto ALIAS capture_proto)
-target_include_directories(capture_proto PUBLIC ${CAPTURE_PROTO_GEN_DIR})
+# These headers are unmodified protoc output, not hand-maintained CaptureSuite code.
+# The generator emits size_t -> int map-size accessors; /W4 applies to callers,
+# so classify only this generated directory as external. Hand-written headers
+# and sources retain /W4 /WX, verified by tools/check_cpp_warning_boundary.py.
+target_include_directories(capture_proto SYSTEM PUBLIC ${CAPTURE_PROTO_GEN_DIR})
 target_link_libraries(capture_proto PUBLIC protobuf::libprotobuf)
 capture_set_warnings(capture_proto)
 if(MSVC)

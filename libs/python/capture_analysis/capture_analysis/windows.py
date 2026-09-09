@@ -6,9 +6,9 @@ from __future__ import annotations
 from typing import Any
 
 import numpy as np
+from capture_session.package_reader import GapSummary, ReviewSummary
 
 from capture_analysis.types import GapInterval, GapMask, StreamRef, TimeWindow
-from capture_session.package_reader import GapSummary, ReviewSummary
 
 
 def full_window(summary: ReviewSummary) -> TimeWindow:
@@ -148,8 +148,7 @@ def enforce_gap_policy(gap_mask: GapMask, valid: np.ndarray) -> None:
         return
     if gap_mask.overlaps_window() and valid.size and not bool(np.all(valid)):
         raise RuntimeError(
-            f"gap_policy=fail: gaps overlap {gap_mask.stream.source_id}/"
-            f"{gap_mask.stream.stream_id}"
+            f"gap_policy=fail: gaps overlap {gap_mask.stream.source_id}/{gap_mask.stream.stream_id}"
         )
 
 

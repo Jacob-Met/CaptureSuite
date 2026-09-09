@@ -40,9 +40,9 @@ def extract_radar_frame_features(
         times.append(item.t_ns)
         energy.append(e)
         peak_bin.append(int(np.argmax(profile)))
-        if mid_cube is None or abs(item.t_ns - (window.start_session_ns + window.end_session_ns) // 2) < abs(
-            mid_t - (window.start_session_ns + window.end_session_ns) // 2
-        ):
+        if mid_cube is None or abs(
+            item.t_ns - (window.start_session_ns + window.end_session_ns) // 2
+        ) < abs(mid_t - (window.start_session_ns + window.end_session_ns) // 2):
             mid_cube = item.cube
             mid_t = item.t_ns
         if derived_dir is not None and store_rd_every_n_frames > 0:
@@ -74,7 +74,9 @@ def extract_radar_frame_features(
     )
     if derived_dir is not None and mid_cube is not None:
         derived_dir.mkdir(parents=True, exist_ok=True)
-        np.save(derived_dir / "range_profile_mid.npy", np.mean(mid_cube.astype(np.float64), axis=(0, 1)))
+        np.save(
+            derived_dir / "range_profile_mid.npy", np.mean(mid_cube.astype(np.float64), axis=(0, 1))
+        )
 
     meta = [
         {"name": "t_ns", "units": "ns", "calibrated": True},

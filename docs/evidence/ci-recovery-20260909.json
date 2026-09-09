@@ -1,0 +1,61 @@
+{
+  "schema": "capturesuite.ci-recovery.v1",
+  "date_utc": "2026-09-09T20:37:29.664699+00:00",
+  "base_commit": "99b002a425dcafc551cae88565e4755c8fe762f8",
+  "native_issue": 6,
+  "candidate_branch": "presence/ci-recovery-20260909",
+  "authoring": "AI-assisted implementation; same-author internal tests, not independent review",
+  "baseline": {
+    "lint_findings": 60,
+    "python_passed": 118,
+    "python_failed": 1,
+    "python_skipped": 6,
+    "failing_test": "test_session_schemas_match_regeneration",
+    "newline_evidence": {
+      "head_crlf": 0,
+      "generated_crlf": 35,
+      "head_lf": 35,
+      "generated_lf": 35,
+      "normalized_content_equal": true
+    }
+  },
+  "candidate": {
+    "python_passed": 143,
+    "python_failed": 0,
+    "python_skipped": 6,
+    "skips_reason": "capture_daemon.exe not built",
+    "lint": "passed, same original scope and rules",
+    "protobuf_drift": "passed, no generated schema/source content changes",
+    "license_spdx": "passed",
+    "ci_contract": "passed",
+    "hosted_ci": "pending",
+    "cpp_ctest": "not yet run",
+    "clean_environment": "Isolated installation and pip/import checks passed. Full pytest reached 100% but process exited 3221226356 (0xc0000374); qualification remains failed pending native cleanup diagnosis."
+  },
+  "regression_scope": [
+    "version-label versus full commit pin and cross-workflow agreement",
+    "required analysis/UI imports and local workspace dependencies",
+    "exact LF generation plus repeated unchanged-input generation",
+    "capture exception and interrupt preserved even when stop refuses",
+    "missing arrays after start still finalizes",
+    "stop errors cannot become success"
+  ],
+  "vcpkg": {
+    "tag": "2024.12.16",
+    "commit": "b322364f06308bdd24823f9d8f03fe0cc86fd46f",
+    "source": "https://api.github.com/repos/microsoft/vcpkg/git/ref/tags/2024.12.16"
+  },
+  "evidence_sha256": {
+    "base-ruff.json": "9a79beffcb6fccea6dce9946020ac8e55b2e4c023cb5318dda770de7384aceb7",
+    "base-pytest.log": "e2acd4a6c1706176a8f6b197a75e17db320180ed051b30fb37d36b828b3a6c57",
+    "candidate-local-checks.json": "cd7ca5ea884e10ae8e4071f979263488a45ba00c20634d891d970b2883084bab",
+    "candidate-pytest.log": "1958b7322ed32836ca754ac3186f32fdb90546a44302c189907cbf90ff35be59",
+    "clean-env-receipt.json": "d20947b2ef5953e75f9dfeb94bd39a2dd8c026af3aff646e9904b567ea04823d"
+  },
+  "limitations": [
+    "No physical hardware or participant data",
+    "No clinical or research-result validation",
+    "No release tag or DOI",
+    "Full Windows C++ build and hosted CI pending"
+  ]
+}

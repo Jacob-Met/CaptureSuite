@@ -8,6 +8,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
+
 class SessionPackageError(RuntimeError):
     pass
 
@@ -107,9 +108,7 @@ def load_review_summary(package_root: str | Path) -> ReviewSummary:
         raise SessionPackageError(f"missing manifest: {manifest_path}")
     manifest = _load_json(manifest_path)
     identity = manifest.get("identity") or {}
-    session_id = str(
-        manifest.get("sessionId") or identity.get("sessionId") or root.stem
-    )
+    session_id = str(manifest.get("sessionId") or identity.get("sessionId") or root.stem)
     state = str(manifest.get("state") or "")
     integrity_files: list[dict[str, Any]] = []
     integrity_path = root / "integrity.json"
@@ -144,10 +143,14 @@ def load_review_summary(package_root: str | Path) -> ReviewSummary:
         except json.JSONDecodeError:
             arrays = None
 
-    recovery_reports = sorted(
-        str(p.relative_to(root)).replace("\\", "/")
-        for p in (root / "recovery").glob("report_*.json")
-    ) if (root / "recovery").is_dir() else []
+    recovery_reports = (
+        sorted(
+            str(p.relative_to(root)).replace("\\", "/")
+            for p in (root / "recovery").glob("report_*.json")
+        )
+        if (root / "recovery").is_dir()
+        else []
+    )
 
     duration_ns = 0
     for f in integrity_files:
@@ -166,9 +169,7 @@ def load_review_summary(package_root: str | Path) -> ReviewSummary:
         session_id=session_id,
         state=state,
         t0_wall_utc=str(manifest.get("t0WallUtc") or manifest.get("t0_wall_utc") or ""),
-        finalized_utc=str(
-            manifest.get("finalizedUtc") or manifest.get("finalized_utc") or ""
-        ),
+        finalized_utc=str(manifest.get("finalizedUtc") or manifest.get("finalized_utc") or ""),
         source_ids=source_ids or list(manifest.get("sourceIds") or []),
         checkpoints=checkpoints,
         annotations=annotations,

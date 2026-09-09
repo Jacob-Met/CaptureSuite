@@ -22,9 +22,8 @@ def _write_pose_package(dest: Path) -> Path:
     for p in dest.rglob("*.mcap"):
         p.unlink()
 
-    from mcap.writer import Writer
-
     from capture_protocol.generated.capture.v1.data import video_timing_pb2
+    from mcap.writer import Writer
 
     cam_dir = dest / "sources" / "sim.camera.main"
     stream_dir = cam_dir / "streams" / "sim.camera.main.timing"
@@ -66,12 +65,8 @@ def _write_pose_package(dest: Path) -> Path:
     with timing_path.open("wb") as fh:
         w = Writer(fh)
         w.start(profile="", library="test")
-        sid = w.register_schema(
-            name="video.timing/1", encoding="protobuf", data=b""
-        )
-        cid = w.register_channel(
-            topic="video_timing", message_encoding="protobuf", schema_id=sid
-        )
+        sid = w.register_schema(name="video.timing/1", encoding="protobuf", data=b"")
+        cid = w.register_channel(topic="video_timing", message_encoding="protobuf", schema_id=sid)
         for i in range(10):
             msg = video_timing_pb2.VideoFrameTiming()
             msg.timing.session_time_ns = int(i * 1e9 / 30.0)
@@ -98,9 +93,8 @@ def _write_pose_package(dest: Path) -> Path:
 
 
 def _add_camera_stream(dest: Path, source_id: str, *, n_frames: int = 10) -> None:
-    from mcap.writer import Writer
-
     from capture_protocol.generated.capture.v1.data import video_timing_pb2
+    from mcap.writer import Writer
 
     cam_dir = dest / "sources" / source_id
     stream_dir = cam_dir / "streams" / f"{source_id}.timing"
@@ -140,9 +134,7 @@ def _add_camera_stream(dest: Path, source_id: str, *, n_frames: int = 10) -> Non
         w = Writer(fh)
         w.start(profile="", library="test")
         sid = w.register_schema(name="video.timing/1", encoding="protobuf", data=b"")
-        cid = w.register_channel(
-            topic="video_timing", message_encoding="protobuf", schema_id=sid
-        )
+        cid = w.register_channel(topic="video_timing", message_encoding="protobuf", schema_id=sid)
         for i in range(n_frames):
             msg = video_timing_pb2.VideoFrameTiming()
             msg.timing.session_time_ns = int(i * 1e9 / 30.0)

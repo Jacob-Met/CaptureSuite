@@ -9,6 +9,7 @@ from pathlib import Path
 from typing import Any
 
 import numpy as np
+from capture_session.package_reader import ReviewSummary
 
 from capture_analysis.features.emg import extract_emg_features
 from capture_analysis.features.imu import extract_imu_features
@@ -21,7 +22,6 @@ from capture_analysis.loaders.imu import load_imu
 from capture_analysis.loaders.video import load_video_timing
 from capture_analysis.plots.modality import plot_emg_channels, plot_imu_accel, plot_series
 from capture_analysis.types import GapMask, StreamRef, TimeWindow
-from capture_session.package_reader import ReviewSummary
 
 
 def _hash_file(path: Path) -> str:

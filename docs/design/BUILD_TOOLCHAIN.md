@@ -56,13 +56,46 @@ The exception is contained rather than allowed to spread:
 
 A developer who never touches the camera worker therefore never installs GStreamer, and the core build stays reproducible from the manifest alone.
 
-Exact versions are pinned by the `builtin-baseline` field in `vcpkg.json`. Generate it once at bootstrap with:
+The registry baseline is pinned in `vcpkg.json` to
+`4334d8b4c8916018600212ab4dd4bbdc343065d1` (the verified `2025.09.17` commit).
+The old `2024.12.16` registry lacks MCAP. The new pin is the first stable registry
+release after the official MCAP port was added; all seven direct dependencies
+and both MCAP compression features were checked. This explicit version change
+replaces an unusable baseline, not a request for a latest-version upgrade.
+
+Both CI and the tag-triggered release workflow use that full commit SHA: a version
+label is not a valid `vcpkgGitCommitId`. Upgrading the registry is a deliberate
+change to all three pins, not an implicit latest-version update.
+
+`python tools/check_ci_contract.py` verifies that these pins agree before a build.
+It checks this repository's configuration shape, not arbitrary workflow security.
+With `--vcpkg-root vcpkg`, it validates direct ports and requested features in the
+actual pinned registry checkout before CMake. Transitive resolution stays with
+vcpkg. `windows-2022` retains the documented VS 2022 toolchain rather than allowing
+`windows-latest` to silently select VS 2026.
+
+### Complete Python test environment
+
+From the repository root, in a fresh CPython 3.12 environment:
 
 ```powershell
-vcpkg x-update-baseline --add-initial-baseline
+python -m pip install -r requirements-ci.txt
+python -m pip check
+python tools/check_ci_contract.py --check-environment
+$env:QT_QPA_PLATFORM = "offscreen"
+python -m pytest tests -q -ra --ignore=tests/kill_tests
 ```
 
-Commit the resulting `vcpkg.json` and `vcpkg-configuration.json`. Upgrading a dependency means bumping the baseline deliberately in its own commit, never implicitly.
+The requirements install all five local workspace members together, including the
+analysis and desktop extras. CI explicitly imports those dependencies before tests
+so an absent optional library cannot make its test coverage disappear silently.
+Six daemon integration cases still require a built Windows executable; skipped
+cases are reported rather than counted as passes. The destructive-test directory
+remains outside this unit/UI job as before.
+
+Generated Python import rewrites and session JSON schemas explicitly use UTF-8
+with LF line endings on Windows as well as Linux. The existing byte-for-byte
+regeneration assertion is retained; it is not replaced by newline normalization.
 
 ## Protobuf code generation
 
@@ -127,3 +160,37 @@ uv run python tools/gen_session_schemas.py
 Optional job builds the camera plugin with `CAPTURE_CAMERA_FAKE=1` when GStreamer is available.
 
 Release tags run `.github/workflows/release.yml` to attach a win64 zip + PyInstaller desktop build.
+
+
+Test state isolation: the session fixture redirects application settings, registry,
+cache and child-process app-data paths to a pytest-owned temporary tree. UI smoke
+tests do not use the operator's actual saved preferences or active daemon record.
+
+
+### Exit-aware test receipts
+
+`python tools/run_ci_tests.py` runs the existing Python unit/UI suite into a new
+`build/evidence/python-...` directory. It retains the process exit, full log,
+JUnit case counts, hashes, source commit, dirty-worktree indicator and an exact
+working-source manifest. A native crash after 100% progress, missing or malformed
+JUnit, contradictory case counts, an empty/all-skipped run, or source mutation
+during the test cannot be reported as accepted. Skips stay separate from passes.
+This validates execution evidence, not device accuracy or scientific conclusions.
+
+### Generated headers and application warning policy
+
+The hosted compiler identified protobuf-generated map accessors returning
+`size_t` as `int`. The upstream v29.5 generator emits that conversion itself.
+The existing generated `.cc` target already exempts those vendor warnings; the
+corresponding generated include directory is now exported as `SYSTEM` so consumer
+targets have the same third-party boundary. No hand-written include directory,
+application `/W4 /WX`, or existing compiler warning helper is relaxed.
+
+`python tools/check_cpp_warning_boundary.py`, in an MSVC environment, verifies
+three real builds: a valid control succeeds, a consumer of the generated-header
+pattern succeeds, and the same implicit narrowing conversion in owned source
+fails with C4267. It preserves the expected failed compile log as evidence. This
+is a scoped generated-code compatibility decision, not a claim that warning-free
+compilation proves arbitrary inputs safe.
+
+Reference: https://cmake.org/cmake/help/latest/command/target_include_directories.html

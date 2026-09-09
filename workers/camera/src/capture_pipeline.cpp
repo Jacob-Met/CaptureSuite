@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-only
 #include "camera_worker/capture_pipeline.hpp"
 
+#include "capture/env.hpp"
+
 #include "capture/storage/hash.hpp"
 #include "capture/v1/data/video_timing.pb.h"
 
@@ -239,8 +241,7 @@ std::string CapturePipeline::probe_preferred_encoder() {
   // Probing costs a pipeline round-trip per candidate, and the answer cannot
   // change while the process lives.
   static const std::string cached = []() -> std::string {
-    const char* fake = std::getenv("CAPTURE_CAMERA_FAKE");
-    const bool use_fake = fake != nullptr && fake[0] != '\0' && fake[0] != '0';
+    const bool use_fake = capture::env::enabled("CAPTURE_CAMERA_FAKE");
     if (use_fake && encoder_usable("x264enc")) {
       return "x264enc";
     }
@@ -262,9 +263,9 @@ bool CapturePipeline::choose_encoder(std::string& error) {
   // Config preference first; CAPTURE_CAMERA_ENCODER is a developer override.
   std::string pref = opts_.encoder_preference;
   if (pref.empty() || pref == "auto") {
-    const char* env = std::getenv("CAPTURE_CAMERA_ENCODER");
-    if (env != nullptr && env[0] != '\0' && std::strcmp(env, "auto") != 0) {
-      pref = env;
+    const auto env = capture::env::get("CAPTURE_CAMERA_ENCODER");
+    if (env.has_value() && !env->empty() && *env != "auto") {
+      pref = *env;
     }
   }
   if (!pref.empty() && pref != "auto") {
@@ -290,8 +291,7 @@ bool CapturePipeline::build_pipeline(std::string& error) {
   pipeline_ = gst_pipeline_new("camera-capture");
   GstElement* src = nullptr;
   std::string src_media_type = "video/x-raw";
-  const char* fake = std::getenv("CAPTURE_CAMERA_FAKE");
-  if (fake != nullptr && fake[0] != '\0' && fake[0] != '0') {
+  if (capture::env::enabled("CAPTURE_CAMERA_FAKE")) {
     src = gst_element_factory_make("videotestsrc", "src");
     if (src) {
       g_object_set(src, "is-live", TRUE, "pattern", 0, "horizontal-speed", 1,

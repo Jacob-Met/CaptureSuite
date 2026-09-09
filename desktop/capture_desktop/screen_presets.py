@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import json
 
+from capture_session.registry import PRESET_TYPES
 from PySide6.QtWidgets import (
     QComboBox,
     QDialog,
@@ -19,8 +20,6 @@ from PySide6.QtWidgets import (
     QVBoxLayout,
     QWidget,
 )
-
-from capture_session.registry import PRESET_TYPES
 
 from . import theme
 from .persistence import DesktopPersistence

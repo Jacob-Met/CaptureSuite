@@ -3,6 +3,7 @@ find_package(Catch2 CONFIG REQUIRED)
 
 add_executable(capture_core_tests
   test_clock.cpp
+  test_env.cpp
   test_framing.cpp
   test_session_fsm.cpp
   test_source_fsm.cpp

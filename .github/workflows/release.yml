@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   release:
-    runs-on: windows-latest
+    runs-on: windows-2022
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -22,7 +22,7 @@ jobs:
         uses: lukka/run-vcpkg@v11
         with:
           vcpkgDirectory: ${{ github.workspace }}/vcpkg
-          vcpkgGitCommitId: "2024.12.16"
+          vcpkgGitCommitId: "4334d8b4c8916018600212ab4dd4bbdc343065d1" # 2025.09.17 (first release with mcap)
       - name: Build
         env:
           VCPKG_ROOT: ${{ github.workspace }}/vcpkg

@@ -14,23 +14,13 @@ pytest.importorskip("PySide6")
 
 os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
 
-from capture_session.registry import AppRegistry
-from PySide6.QtWidgets import QApplication
-
-from capture_desktop import theme
 from capture_desktop.screen_presets import PresetLibraryDialog
 from capture_desktop.state import CaptureState, SourceRow
 from capture_desktop.widgets_modality_expanded import (
     expanded_detail_lines,
     expanded_honesty_footer,
 )
-
-
-@pytest.fixture(scope="module")
-def qapp():
-    app = QApplication.instance() or QApplication([])
-    theme.apply_theme(app, setting="dark")
-    return app
+from capture_session.registry import AppRegistry
 
 
 def _row(**kwargs) -> SourceRow:

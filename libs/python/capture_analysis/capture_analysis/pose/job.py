@@ -10,12 +10,12 @@ from pathlib import Path
 from typing import Any
 
 import numpy as np
+from capture_session.package_reader import ReviewSummary
 
 from capture_analysis.discover import discover_streams
 from capture_analysis.loaders.video import load_video_timing
 from capture_analysis.types import StreamRef, TimeWindow
 from capture_analysis.windows import build_gap_mask, gaps_to_intervals, validity_mask
-from capture_session.package_reader import ReviewSummary
 
 BODY_JOINT_COUNT = 25
 DEFAULT_MODEL_ID = "sim_teacher_v1"
@@ -103,9 +103,7 @@ def run_pose_job(
     sources_filter = list(sources_filter or [])
     streams = _video_streams(package_root, sources_filter)
     if not streams:
-        raise RuntimeError(
-            "pose job requires at least one video.timing stream in the package"
-        )
+        raise RuntimeError("pose job requires at least one video.timing stream in the package")
 
     all_gaps = gaps_to_intervals(summary)
     tables: list[dict[str, Any]] = []

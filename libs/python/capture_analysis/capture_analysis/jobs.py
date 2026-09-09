@@ -9,23 +9,23 @@ import platform
 import shutil
 import sys
 import threading
+from collections.abc import Callable
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any
+
+from capture_session.package_reader import load_review_summary
 
 from capture_analysis.pipeline import run_features_and_plots
 from capture_analysis.qc import QcReport, collect_qc
 from capture_analysis.report_html import render_qc_html
 from capture_analysis.version import __version__
 from capture_analysis.windows import resolve_window
-from capture_session.package_reader import load_review_summary
 
 ProgressFn = Callable[[str, float], None]
 
-SCHEMA_DIR = (
-    Path(__file__).resolve().parents[4] / "schemas" / "session" / "jsonschema"
-)
+SCHEMA_DIR = Path(__file__).resolve().parents[4] / "schemas" / "session" / "jsonschema"
 
 
 @dataclass
@@ -66,9 +66,7 @@ class JobResult:
 
 
 def _canonical_json(obj: Any) -> bytes:
-    return json.dumps(obj, sort_keys=True, separators=(",", ":"), ensure_ascii=True).encode(
-        "utf-8"
-    )
+    return json.dumps(obj, sort_keys=True, separators=(",", ":"), ensure_ascii=True).encode("utf-8")
 
 
 def _params_digest(params: JobParams) -> str:
@@ -78,7 +76,7 @@ def _params_digest(params: JobParams) -> str:
 def _job_id(params: JobParams) -> str:
     if params.overwrite_job_id:
         return params.overwrite_job_id
-    stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    stamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
     return f"{stamp}_{_params_digest(params)[:8]}"
 
 
@@ -161,8 +159,7 @@ def run(
     allowed = {"qc", "features", "plots", "all", "pose", "kinematics", "ml_bundle", "eval"}
     if params.command not in allowed:
         raise NotImplementedError(
-            f"command {params.command!r} not supported yet "
-            f"(supported: {sorted(allowed)})"
+            f"command {params.command!r} not supported yet (supported: {sorted(allowed)})"
         )
 
     tick("start", 0.0)
@@ -333,7 +330,7 @@ def run(
         manifest: dict[str, Any] = {
             "schemaId": "capture.analysis_job/1",
             "jobId": job_id,
-            "createdUtc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "createdUtc": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
             "captureAnalysisVersion": __version__,
             "pluginManifestVersion": fp_extra.get("pluginManifestVersion")
             or plugin_reg.manifest_version,
@@ -346,9 +343,7 @@ def run(
                 "mode": window.label,
                 "startSessionNs": window.start_session_ns,
                 "endSessionNs": window.end_session_ns,
-                "checkpointIds": (
-                    [params.checkpoint_section] if params.checkpoint_section else []
-                ),
+                "checkpointIds": ([params.checkpoint_section] if params.checkpoint_section else []),
             },
             "sourcesSelected": sources,
             "modalities": modalities,
@@ -392,9 +387,7 @@ def run(
 
         tick("manifest", 0.9)
         man_path = work / "job_manifest.json"
-        man_path.write_text(
-            json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8"
-        )
+        man_path.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
         outputs.append(
             {
                 "relativePath": "job_manifest.json",
@@ -404,9 +397,7 @@ def run(
             }
         )
         manifest["outputs"] = outputs
-        man_path.write_text(
-            json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8"
-        )
+        man_path.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
         log_lines.append(f"status={status}")
         log_lines.append(f"feature_tables={len(feature_tables)}")
@@ -437,7 +428,7 @@ def run(
         fail_manifest = {
             "schemaId": "capture.analysis_job/1",
             "jobId": job_id,
-            "createdUtc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "createdUtc": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
             "captureAnalysisVersion": __version__,
             "packagePath": str(root),
             "sessionId": qc_dict.get("sessionId", ""),
@@ -452,9 +443,7 @@ def run(
                 encoding="utf-8",
             )
             (work / "logs").mkdir(parents=True, exist_ok=True)
-            (work / "logs" / "job.log").write_text(
-                "\n".join(log_lines) + "\n", encoding="utf-8"
-            )
+            (work / "logs" / "job.log").write_text("\n".join(log_lines) + "\n", encoding="utf-8")
             if work != job_dir and work.exists():
                 if job_dir.exists():
                     shutil.rmtree(job_dir)

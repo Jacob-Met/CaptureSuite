@@ -24,7 +24,9 @@ def main() -> int:
     client = ControlClient()
     client.connect()
     sources = client.list_sources()
-    radar = [s for s in sources.sources if s.source_type == "radar" or s.source_id.startswith("radar.")]
+    radar = [
+        s for s in sources.sources if s.source_type == "radar" or s.source_id.startswith("radar.")
+    ]
     sim_radar = [s for s in sources.sources if s.source_id.startswith("sim.radar")]
 
     print(f"{len(radar)} real radar source(s), {len(sim_radar)} sim radar source(s)\n")
