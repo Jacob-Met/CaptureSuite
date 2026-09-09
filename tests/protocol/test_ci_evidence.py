@@ -149,3 +149,38 @@ def test_github_context_is_allowlisted_and_absence_is_explicitly_empty():
         "GITHUB_HEAD_REF": "candidate",
         "GITHUB_BASE_REF": "main",
     }
+
+
+def test_snapshot_ignores_tool_managed_vcpkg_checkout(tiny_repo):
+    import subprocess
+
+    from run_ci_tests import source_snapshot
+
+    (tiny_repo / ".gitignore").write_text("/vcpkg/\n")
+    subprocess.run(["git", "add", ".gitignore"], cwd=tiny_repo, check=True)
+    subprocess.run(["git", "commit", "-qm", "ignore tool checkout"], cwd=tiny_repo, check=True)
+    before = source_snapshot(tiny_repo)
+    tool = tiny_repo / "vcpkg"
+    tool.mkdir()
+    (tool / "sentinel.txt").write_text("tool-managed checkout")
+    after = source_snapshot(tiny_repo)
+    assert after == before
+    assert not after["worktree_dirty"]
+    assert "vcpkg/sentinel.txt" not in after["files"]
+
+
+def test_snapshot_still_detects_source_edit_with_ignored_tool_checkout(tiny_repo):
+    import subprocess
+
+    from run_ci_tests import source_snapshot
+
+    (tiny_repo / ".gitignore").write_text("/vcpkg/\n")
+    subprocess.run(["git", "add", ".gitignore"], cwd=tiny_repo, check=True)
+    subprocess.run(["git", "commit", "-qm", "ignore tool checkout"], cwd=tiny_repo, check=True)
+    (tiny_repo / "vcpkg").mkdir()
+    (tiny_repo / "vcpkg/tool.txt").write_text("ignored")
+    before = source_snapshot(tiny_repo)
+    (tiny_repo / "input.txt").write_text("real source edit")
+    after = source_snapshot(tiny_repo)
+    assert before["tree_sha256"] != after["tree_sha256"]
+    assert after["worktree_dirty"]
