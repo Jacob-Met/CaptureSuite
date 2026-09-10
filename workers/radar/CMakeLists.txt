@@ -50,7 +50,10 @@ if(TARGET capture_daemon)
       COMMAND ${CMAKE_COMMAND} -E copy_if_different
               "${_dll}"
               "$<TARGET_FILE_DIR:capture_daemon>/workers/radar/"
-      COMMENT "Copy Infineon runtime DLL to workers/radar"
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different
+              "${_dll}"
+              "$<TARGET_FILE_DIR:capture_daemon>/plugins/radar_infineon/"
+      COMMENT "Copy Infineon runtime DLL into both radar package locations"
     )
   endforeach()
   foreach(_dep abseil_dll blake3 libprotobuf lz4 zstd)
@@ -58,7 +61,10 @@ if(TARGET capture_daemon)
       COMMAND ${CMAKE_COMMAND} -E copy_if_different
               "$<TARGET_FILE_DIR:capture_worker_radar>/${_dep}.dll"
               "$<TARGET_FILE_DIR:capture_daemon>/workers/radar/"
-      COMMENT "Copy ${_dep}.dll next to capture_daemon"
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different
+              "$<TARGET_FILE_DIR:capture_worker_radar>/${_dep}.dll"
+              "$<TARGET_FILE_DIR:capture_daemon>/plugins/radar_infineon/"
+      COMMENT "Copy ${_dep}.dll into both radar package locations"
     )
   endforeach()
 endif()
