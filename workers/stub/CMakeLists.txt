@@ -4,8 +4,14 @@ if(NOT TARGET capture_proto)
   return()
 endif()
 
+if(WIN32)
+  set(CAPTURE_STUB_SOURCE main.cpp)
+else()
+  set(CAPTURE_STUB_SOURCE main_posix.cpp)
+endif()
+
 add_executable(capture_worker_stub
-  main.cpp
+  ${CAPTURE_STUB_SOURCE}
 )
 target_link_libraries(capture_worker_stub PRIVATE
   capture_core
