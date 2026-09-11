@@ -71,7 +71,6 @@ require_cmd() {
 
 require_cmd git
 require_cmd cmake
-require_cmd ninja
 require_cmd xcrun
 
 python_cmd=""
@@ -148,7 +147,6 @@ echo "repo=$(git rev-parse HEAD 2>/dev/null || echo UNKNOWN)"
 echo "host=$(sw_vers -productVersion) $(uname -m)"
 echo "compiler=$(xcrun clang++ --version | head -n 1)"
 echo "cmake=$cmake_version"
-echo "ninja=$(ninja --version)"
 echo "python=$("$python_cmd" --version 2>&1)"
 echo "vcpkg_root=$VCPKG_ROOT"
 echo "vcpkg_baseline=$baseline"

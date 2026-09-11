@@ -42,7 +42,7 @@
       "name": "macos-arm64-base",
       "displayName": "macOS Apple Silicon base",
       "hidden": true,
-      "generator": "Ninja",
+      "generator": "Unix Makefiles",
       "cacheVariables": {
         "VCPKG_TARGET_TRIPLET": "arm64-osx",
         "CMAKE_OSX_ARCHITECTURES": "arm64",

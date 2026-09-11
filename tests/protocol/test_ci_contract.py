@@ -15,7 +15,7 @@ def _write_macos_bootstrap_contract(root: Path) -> None:
             {
                 "name": "macos-arm64-base",
                 "hidden": True,
-                "generator": "Ninja",
+                "generator": "Unix Makefiles",
                 "cacheVariables": {
                     "VCPKG_TARGET_TRIPLET": "arm64-osx",
                     "CMAKE_OSX_ARCHITECTURES": "arm64",

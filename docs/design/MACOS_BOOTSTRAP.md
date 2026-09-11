@@ -34,7 +34,7 @@ The Mac was not reachable to the CS-MAC-A worker when this candidate was authore
 
 Both inherit a hidden `macos-arm64-base` that fixes:
 
-- generator: Ninja;
+- generator: Unix Makefiles (from the Xcode command-line toolchain);
 - `VCPKG_TARGET_TRIPLET=arm64-osx`;
 - `CMAKE_OSX_ARCHITECTURES=arm64`;
 - vcpkg toolchain: `$VCPKG_ROOT/scripts/buildsystems/vcpkg.cmake`;
@@ -75,7 +75,6 @@ The bootstrap requires:
 
 - Darwin on `arm64`;
 - CMake 3.28+;
-- Ninja;
 - Git;
 - Xcode command-line tools (`xcrun` / AppleClang);
 - CPython 3.12.x.

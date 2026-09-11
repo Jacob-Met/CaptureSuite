@@ -67,8 +67,8 @@ def check_macos_bootstrap_contract(root: Path) -> list[str]:
     if not isinstance(base, dict):
         errors.append("Missing macos-arm64-base configure preset")
     else:
-        if base.get("generator") != "Ninja":
-            errors.append("macos-arm64-base must use Ninja")
+        if base.get("generator") != "Unix Makefiles":
+            errors.append("macos-arm64-base must use Unix Makefiles")
         if base.get("toolchainFile") != "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake":
             errors.append("macos-arm64-base must use the VCPKG_ROOT toolchain")
         cache = base.get("cacheVariables", {})
