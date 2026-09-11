@@ -337,7 +337,9 @@ bool WorkerHost::spawn(const std::filesystem::path& executable,
   out.plugin_id = plugin_id;
   out.pipe_name = worker_pipe_name(instance_id_, worker_id);
 
-  if (out.pipe_name.size() >= sizeof(sockaddr_un::sun_path)) {
+  sockaddr_un address{};
+  address.sun_family = AF_UNIX;
+  if (out.pipe_name.size() >= sizeof(address.sun_path)) {
     error = "worker Unix socket path is too long";
     return false;
   }
@@ -352,8 +354,6 @@ bool WorkerHost::spawn(const std::filesystem::path& executable,
     return false;
   }
   configure_socket_no_sigpipe(listener);
-  sockaddr_un address{};
-  address.sun_family = AF_UNIX;
   std::memcpy(address.sun_path, out.pipe_name.c_str(), out.pipe_name.size() + 1);
   if (bind(listener, reinterpret_cast<sockaddr*>(&address), sizeof(address)) != 0) {
     (void)close(listener);
