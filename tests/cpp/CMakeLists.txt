@@ -11,6 +11,7 @@ add_executable(capture_core_tests
   test_session_package.cpp
   test_recovery.cpp
   test_logging.cpp
+  test_storage_portability.cpp
   test_worker_host.cpp
   ${CMAKE_SOURCE_DIR}/daemon/src/sim_engine.cpp
   ${CMAKE_SOURCE_DIR}/daemon/src/camera_capture.cpp
