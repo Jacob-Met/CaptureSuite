@@ -10,7 +10,7 @@ set -euo pipefail
 
 usage() {
   cat <<'EOF'
-Usage: ./scripts/bootstrap-macos.sh [--release] [--configure-only] [--provision-vcpkg]
+Usage: bash scripts/bootstrap-macos.sh [--release] [--configure-only] [--provision-vcpkg]
 
 Defaults:
   preset: macos-arm64-debug
