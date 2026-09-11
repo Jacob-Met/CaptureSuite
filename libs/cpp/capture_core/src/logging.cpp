@@ -18,6 +18,8 @@
 #define NOMINMAX
 #endif
 #include <Windows.h>
+#else
+#include <unistd.h>
 #endif
 
 namespace capture::log {
@@ -195,7 +197,7 @@ void init(const Options& opts) {
 #ifdef _WIN32
   g_pid = static_cast<uint32_t>(GetCurrentProcessId());
 #else
-  g_pid = 0;
+  g_pid = static_cast<uint32_t>(getpid());
 #endif
   rebuild_logger_unlocked();
 }
