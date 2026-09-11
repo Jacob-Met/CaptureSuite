@@ -90,7 +90,8 @@ TEST_CASE("DiskWatchdog threshold transitions remain deterministic",
   watchdog.poll();
   watchdog.poll();
 
-  REQUIRE(levels == std::vector<std::string>{"warning", "critical", "hard_floor"});
+  const std::vector<std::string> expected{"warning", "critical", "hard_floor"};
+  REQUIRE(levels == expected);
   REQUIRE(watchdog.at_hard_floor());
 
   watchdog.set_free_bytes_override(capture::storage::kDiskReserveBytes + 1);
