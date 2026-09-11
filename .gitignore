@@ -1,5 +1,7 @@
 # Build
 build/
+# run-vcpkg manages a nested checkout here; it is tool state, not source.
+/vcpkg/
 cmake-build-*/
 out/
 .vs/
