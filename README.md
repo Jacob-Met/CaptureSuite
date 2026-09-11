@@ -98,16 +98,7 @@ See [docs/plugins/](docs/plugins/) and
 | Implementation decisions | [docs/design/](docs/design/) |
 | Plugin authors | [docs/plugins/](docs/plugins/) |
 | Operators | [docs/operator/](docs/operator/) |
-| Agent / contributor rules | [AGENTS.md](AGENTS.md), [CONTRIBUTING.md](CONTRIBUTING.md) |
-
-## Development practice
-
-CaptureSuite is built as **AI-native research software**: architecture, plugin
-contracts, and release decisions are human-owned; day-to-day implementation uses
-coding agents against in-repo specs (`docs/spec`, `docs/design`), plugin prompts
-(`docs/prompts`), and contributor/agent rules (`AGENTS.md`). That is intentional
-engineering practice — not a claim that every line was typed by hand, and not a
-claim of autonomous “AI-built” product ownership by a model.
+| Contributor rules | [AGENTS.md](AGENTS.md), [CONTRIBUTING.md](CONTRIBUTING.md) |
 
 ## License
 
@@ -123,7 +114,6 @@ tagged release.
 
 ## Maintainer
 
-**[Jacob Metoyer](https://jacob-met.github.io/)** ([@Jacob-Met](https://github.com/Jacob-Met)) — architecture
+**[Jacob Metoyer](https://jacobmetoyer.com/)** ([@Jacob-Met](https://github.com/Jacob-Met)) — architecture
 and product direction. Independent research software (not an official product of
 any university lab unless separately stated).
-
