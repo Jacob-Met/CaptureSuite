@@ -41,6 +41,7 @@ TEST_CASE("structured log emits required JSON fields", "[logging]") {
   REQUIRE(j.contains("qpc_ns"));
   REQUIRE(j.contains("pid"));
   REQUIRE(j["qpc_ns"].get<int64_t>() > 0);
+  REQUIRE(j["pid"].get<int64_t>() > 0);
 
   std::error_code ec;
   std::filesystem::remove_all(dir, ec);
