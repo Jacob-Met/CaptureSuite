@@ -33,6 +33,62 @@ from .widgets_preview import (
 )
 
 
+def _is_camera_source(src: SourceRow) -> bool:
+    return (
+        src.is_real_camera
+        or src.modality == "video"
+        or src.source_type in ("camera", "sim.camera")
+    )
+
+
+def showcase_camera_source(state: CaptureState) -> SourceRow | None:
+    """Best already-selected camera for the presentation shortcut."""
+    cameras = [src for src in state.selected_sources() if _is_camera_source(src)]
+    if not cameras:
+        return None
+    return max(cameras, key=lambda src: (src.is_real_camera, src.enabled))
+
+
+def showcase_radar_source(state: CaptureState) -> SourceRow | None:
+    """Best already-selected radar; hardware wins over sim/replay."""
+    radars = [
+        src
+        for src in state.selected_sources()
+        if src.modality in ("radar", "radar_doppler")
+        or src.source_type in ("radar", "sim.radar")
+        or src.is_hardware_radar
+    ]
+    if not radars:
+        return None
+    return max(radars, key=lambda src: (src.is_hardware_radar, src.enabled))
+
+
+def showcase_status_text(state: CaptureState) -> str:
+    """Truthful one-line boundary for the Camera/Radar/Shared Live walkthrough."""
+    camera = showcase_camera_source(state)
+    radar = showcase_radar_source(state)
+    camera_state = (
+        f"Camera: {'hardware' if camera.is_real_camera else 'sim/replay'}"
+        if camera is not None
+        else "Camera: not selected"
+    )
+    radar_state = (
+        f"Radar: {'hardware' if radar.is_hardware_radar else 'sim/replay'}"
+        if radar is not None
+        else "Radar: not selected"
+    )
+    if state.recording:
+        transport = "recording"
+    elif state.rehearsal_active:
+        transport = "rehearsal preview only"
+    else:
+        transport = "not recording"
+    return (
+        f"{camera_state} | {radar_state} | Shared Live: {transport}; "
+        "software-coordinated view, not hardware sync"
+    )
+
+
 def panel(title: str | None = None) -> tuple[QFrame, QVBoxLayout]:
     frame = QFrame()
     frame.setObjectName("Panel")
@@ -654,6 +710,39 @@ class CaptureScreen(QWidget):
         self._honesty_strip.setWordWrap(True)
         root.addWidget(self._honesty_strip)
 
+        self._showcase_bar = QFrame()
+        self._showcase_bar.setObjectName("Card")
+        showcase_row = QHBoxLayout(self._showcase_bar)
+        showcase_row.setContentsMargins(10, 6, 10, 6)
+        showcase_row.setSpacing(6)
+        showcase_label = QLabel("QUICK VIEW")
+        showcase_label.setObjectName("Faint")
+        showcase_label.setFont(theme.ui(7, bold=True))
+        self._btn_showcase_camera = QPushButton("Camera")
+        self._btn_showcase_camera.setObjectName("Ghost")
+        self._btn_showcase_camera.setToolTip("Focus the already-selected camera source.")
+        self._btn_showcase_radar = QPushButton("Radar")
+        self._btn_showcase_radar.setObjectName("Ghost")
+        self._btn_showcase_radar.setToolTip("Focus the already-selected radar source.")
+        self._btn_showcase_shared = QPushButton("Shared Live")
+        self._btn_showcase_shared.setObjectName("Ghost")
+        self._btn_showcase_shared.setToolTip(
+            "Show all selected sources in Grid; this does not imply hardware synchronization."
+        )
+        self._showcase_status = QLabel("")
+        self._showcase_status.setObjectName("Dim")
+        self._showcase_status.setFont(theme.ui(8))
+        self._showcase_status.setWordWrap(True)
+        self._btn_showcase_camera.clicked.connect(self._showcase_camera)
+        self._btn_showcase_radar.clicked.connect(self._showcase_radar)
+        self._btn_showcase_shared.clicked.connect(self._showcase_shared)
+        showcase_row.addWidget(showcase_label)
+        showcase_row.addWidget(self._btn_showcase_camera)
+        showcase_row.addWidget(self._btn_showcase_radar)
+        showcase_row.addWidget(self._btn_showcase_shared)
+        showcase_row.addWidget(self._showcase_status, 1)
+        root.addWidget(self._showcase_bar)
+
         self._array_card = QWidget()
         self._array_card.setVisible(False)
         array_row = QHBoxLayout(self._array_card)
@@ -685,6 +774,26 @@ class CaptureScreen(QWidget):
 
     def focus_checkpoint(self, checkpoint_id: str) -> None:
         self._dock.focus_checkpoint(checkpoint_id)
+
+    def _showcase_focus(self, source: SourceRow | None) -> None:
+        if source is None:
+            return
+        self._on_focus(source.source_id)
+        if self.view_mode() != 1:
+            self.set_view_mode(1)
+
+    def _showcase_camera(self) -> None:
+        self._showcase_focus(showcase_camera_source(self._state))
+
+    def _showcase_radar(self) -> None:
+        self._showcase_focus(showcase_radar_source(self._state))
+
+    def _showcase_shared(self) -> None:
+        camera = showcase_camera_source(self._state)
+        radar = showcase_radar_source(self._state)
+        if camera is None or radar is None:
+            return
+        self.set_view_mode(2)
 
     def _build_rail(self) -> QWidget:
         frame, body = panel("Sources")
@@ -824,6 +933,13 @@ class CaptureScreen(QWidget):
             for card in self._cards:
                 card.refresh(self._state)
         self._dock.refresh(self._state)
+
+        camera = showcase_camera_source(self._state)
+        radar = showcase_radar_source(self._state)
+        self._btn_showcase_camera.setEnabled(camera is not None)
+        self._btn_showcase_radar.setEnabled(radar is not None)
+        self._btn_showcase_shared.setEnabled(camera is not None and radar is not None)
+        self._showcase_status.setText(showcase_status_text(self._state))
 
         alert = self._state.highest_unacked_alert()
         if alert is None:

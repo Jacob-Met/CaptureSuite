@@ -45,3 +45,26 @@ path to capture stderr.
 | No hardware sources | Plugin enabled? SDK env set? See Setup → plugins |
 | LNK1168 on build | Stop daemon/workers before linking |
 | Camera worker missing | Use local CMake preset with GStreamer |
+
+## Camera + radar showcase
+
+The Capture tab now has a small **QUICK VIEW** strip for an operator or reviewer who
+wants to inspect the existing multimodal path without changing capture semantics:
+
+1. **Camera** focuses the best already-selected camera source. Hardware is preferred
+   over sim/replay when both are selected.
+2. **Radar** focuses the best already-selected radar source. Hardware is preferred
+   over sim/replay when both are selected.
+3. **Shared Live** switches to the existing Grid view only when both a selected
+   camera and a selected radar are present. It does not add a new acquisition mode.
+
+The strip states whether each chosen source is hardware or sim/replay and whether
+the session is recording, rehearsal-preview-only, or not recording. **Shared Live is
+a software-coordinated view, not evidence of hardware synchronization.** Radar
+timestamps remain host-arrival timestamps with the uncertainty documented in
+`docs/design/RADAR_PIPELINE.md`; use recorded sync anchors for analysis that needs
+cross-modal alignment.
+
+If either camera or radar is not selected, the corresponding shortcut and Shared
+Live fail closed instead of fabricating a simultaneous view. Source selection and
+recording controls remain the normal CaptureSuite controls.
