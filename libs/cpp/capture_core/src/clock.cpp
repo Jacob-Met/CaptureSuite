@@ -1,8 +1,14 @@
 // SPDX-License-Identifier: GPL-3.0-only
 #include "capture/clock.hpp"
 
+#ifdef _WIN32
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
+#else
+#include <chrono>
+#include <ctime>
+#include <ratio>
+#endif
 
 #include <algorithm>
 #include <iomanip>
@@ -17,20 +23,53 @@
 namespace capture {
 namespace {
 
+constexpr int64_t kNanosecondsPerSecond = 1'000'000'000LL;
+constexpr uint64_t kFiletimeUnixEpochOffset100ns = 116444736000000000ULL;
+
 int64_t query_frequency() {
+#ifdef _WIN32
   LARGE_INTEGER freq{};
   if (!QueryPerformanceFrequency(&freq) || freq.QuadPart <= 0) {
     throw std::runtime_error("QueryPerformanceFrequency failed");
   }
   return static_cast<int64_t>(freq.QuadPart);
+#else
+  // std::chrono::steady_clock is exposed as nanosecond ticks. Keeping an
+  // explicit frequency preserves the existing qpc_* session schema semantics.
+  return kNanosecondsPerSecond;
+#endif
 }
 
 int64_t query_counter() {
+#ifdef _WIN32
   LARGE_INTEGER counter{};
   if (!QueryPerformanceCounter(&counter)) {
     throw std::runtime_error("QueryPerformanceCounter failed");
   }
   return static_cast<int64_t>(counter.QuadPart);
+#else
+  return std::chrono::duration_cast<std::chrono::nanoseconds>(
+             std::chrono::steady_clock::now().time_since_epoch())
+      .count();
+#endif
+}
+
+std::string format_utc_ms(std::time_t seconds, int64_t millis) {
+  std::tm tm{};
+#ifdef _WIN32
+  gmtime_s(&tm, &seconds);
+#else
+  if (gmtime_r(&seconds, &tm) == nullptr) {
+    throw std::runtime_error("gmtime_r failed");
+  }
+#endif
+  std::ostringstream oss;
+  oss << std::setfill('0') << std::setw(4) << tm.tm_year + 1900 << '-'
+      << std::setw(2) << tm.tm_mon + 1 << '-' << std::setw(2) << tm.tm_mday
+      << 'T' << std::setw(2) << tm.tm_hour << ':' << std::setw(2) << tm.tm_min
+      << ':' << std::setw(2) << tm.tm_sec << '.' << std::setw(3) << millis
+      << 'Z';
+  return oss.str();
 }
 
 }  // namespace
@@ -82,6 +121,7 @@ int64_t SessionClock::now_monotonic_ns() const {
 }
 
 WallAnchor SessionClock::read_wall_utc() {
+#ifdef _WIN32
   FILETIME ft{};
   GetSystemTimePreciseAsFileTime(&ft);
   ULARGE_INTEGER uli{};
@@ -100,6 +140,28 @@ WallAnchor SessionClock::read_wall_utc() {
   anchor.filetime_utc = uli.QuadPart;
   anchor.iso_utc = oss.str();
   return anchor;
+#else
+  using clock = std::chrono::system_clock;
+  using hundred_ns = std::chrono::duration<int64_t, std::ratio<1, 10000000>>;
+
+  const auto now = clock::now();
+  const auto since_unix_100ns =
+      std::chrono::duration_cast<hundred_ns>(now.time_since_epoch()).count();
+  if (since_unix_100ns < 0) {
+    throw std::runtime_error("system clock predates Unix epoch");
+  }
+
+  const auto since_unix_ms =
+      std::chrono::duration_cast<std::chrono::milliseconds>(now.time_since_epoch());
+  const int64_t millis = since_unix_ms.count() % 1000;
+  const std::time_t seconds = clock::to_time_t(now);
+
+  WallAnchor anchor;
+  anchor.filetime_utc =
+      kFiletimeUnixEpochOffset100ns + static_cast<uint64_t>(since_unix_100ns);
+  anchor.iso_utc = format_utc_ms(seconds, millis);
+  return anchor;
+#endif
 }
 
 T0 SessionClock::establish_t0() {
