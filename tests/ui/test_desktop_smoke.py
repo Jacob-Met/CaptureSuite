@@ -99,3 +99,36 @@ def test_ui_application_matches_process_singleton(qapp):
     from PySide6.QtWidgets import QApplication
 
     assert QApplication.instance() is qapp
+
+
+def test_transport_controls_grouped_for_showcase(qapp):
+    from capture_desktop.app import MainWindow
+    from PySide6.QtWidgets import QPushButton, QWidget
+
+    window = MainWindow(auto_connect=False)
+    try:
+        transport = window.findChild(QWidget, "TransportBar")
+        session_row = window.findChild(QWidget, "TransportSessionRow")
+        action_row = window.findChild(QWidget, "TransportActionRow")
+        assert transport is not None
+        assert transport.layout().count() == 2
+        assert session_row is not None
+        assert action_row is not None
+
+        session_buttons = {button.text() for button in session_row.findChildren(QPushButton)}
+        action_buttons = {button.text() for button in action_row.findChildren(QPushButton)}
+        assert session_buttons == {
+            "Create Session", "Open Session", "Select", "Preflight", "Rescan",
+            "Rehearse", "Stop Rehearse", "Stop",
+        }
+        assert action_buttons == {
+            "Start Selected", "Start All Ready", "Checkpoint", "Annotation",
+            "Sync Event", "Logs",
+        }
+        assert window.btn_start.objectName() == "Primary"
+        assert window.btn_stop.objectName() == "Danger"
+        assert window.btn_start_all.objectName() == "Ghost"
+        assert window.btn_stop_rehearse.objectName() == "Ghost"
+    finally:
+        window.link.stop()
+        window.close()

@@ -239,13 +239,26 @@ class MainWindow(QMainWindow):
 
     def _build_transport(self) -> QWidget:
         frame = QWidget()
+        frame.setObjectName("TransportBar")
         frame.setStyleSheet(
             f"background: {theme.PANEL.name()};"
             f"border-bottom: 1px solid {theme.BORDER.name()};"
         )
-        row = QHBoxLayout(frame)
-        row.setContentsMargins(10, 8, 10, 8)
+        outer = QVBoxLayout(frame)
+        outer.setContentsMargins(10, 6, 10, 6)
+        outer.setSpacing(5)
+
+        session_row = QWidget()
+        session_row.setObjectName("TransportSessionRow")
+        row = QHBoxLayout(session_row)
+        row.setContentsMargins(0, 0, 0, 0)
         row.setSpacing(7)
+
+        action_row = QWidget()
+        action_row.setObjectName("TransportActionRow")
+        actions = QHBoxLayout(action_row)
+        actions.setContentsMargins(0, 0, 0, 0)
+        actions.setSpacing(7)
 
         self.btn_create = QPushButton("Create Session")
         self.btn_create.clicked.connect(self._on_create_session)
@@ -264,12 +277,18 @@ class MainWindow(QMainWindow):
         self.btn_rehearse = QPushButton("Rehearse")
         self.btn_rehearse.clicked.connect(self._on_rehearse)
         self.btn_stop_rehearse = QPushButton("Stop Rehearse")
+        self.btn_stop_rehearse.setObjectName("Ghost")
         self.btn_stop_rehearse.clicked.connect(self._on_stop_rehearse)
+
         self.btn_start = QPushButton("Start Selected")
         self.btn_start.setObjectName("Primary")
+        self.btn_start.setToolTip("Start recording the currently selected ready sources")
         self.btn_start.clicked.connect(self._on_start)
         self.btn_start_all = QPushButton("Start All Ready")
+        self.btn_start_all.setObjectName("Ghost")
+        self.btn_start_all.setToolTip("Alternative: start every source currently ready")
         self.btn_start_all.clicked.connect(self._on_start_all)
+
         self.btn_checkpoint = QPushButton("Checkpoint")
         self.btn_checkpoint.clicked.connect(self._on_checkpoint)
         self.btn_annotate = QPushButton("Annotation")
@@ -287,6 +306,7 @@ class MainWindow(QMainWindow):
 
         self.btn_stop = QPushButton("Stop")
         self.btn_stop.setObjectName("Danger")
+        self.btn_stop.setToolTip("Stop the active recording session")
         self.btn_stop.clicked.connect(self._on_stop)
 
         for w in (
@@ -297,6 +317,16 @@ class MainWindow(QMainWindow):
             self.btn_rescan,
             self.btn_rehearse,
             self.btn_stop_rehearse,
+        ):
+            row.addWidget(w)
+
+        row.addStretch(1)
+        row.addWidget(self._timer_label)
+        row.addWidget(self._rec_label)
+        row.addSpacing(8)
+        row.addWidget(self.btn_stop)
+
+        for w in (
             self.btn_start,
             self.btn_start_all,
             self.btn_checkpoint,
@@ -304,12 +334,11 @@ class MainWindow(QMainWindow):
             self.btn_sync,
             self.btn_logs,
         ):
-            row.addWidget(w)
-        row.addStretch(1)
-        row.addWidget(self._timer_label)
-        row.addWidget(self._rec_label)
-        row.addSpacing(8)
-        row.addWidget(self.btn_stop)
+            actions.addWidget(w)
+        actions.addStretch(1)
+
+        outer.addWidget(session_row)
+        outer.addWidget(action_row)
         return frame
 
     def _build_status_bar(self) -> QWidget:
