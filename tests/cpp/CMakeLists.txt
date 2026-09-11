@@ -56,3 +56,30 @@ endif()
 include(CTest)
 include(Catch)
 catch_discover_tests(capture_core_tests)
+
+# POSIX/macOS worker-host portability can be qualified independently of the
+# Windows-only daemon/control/camera sources. This target intentionally covers
+# only the E-lane substrate: process ownership, Unix worker channel, Hello and
+# Identify against the generic stub worker.
+if(NOT WIN32 AND TARGET capture_worker_stub)
+  add_executable(capture_worker_host_posix_tests
+    test_worker_host_posix.cpp
+    ${CMAKE_SOURCE_DIR}/daemon/src/handshake.cpp
+    ${CMAKE_SOURCE_DIR}/daemon/src/process_security.cpp
+    ${CMAKE_SOURCE_DIR}/daemon/src/worker_host_posix.cpp
+  )
+  target_include_directories(capture_worker_host_posix_tests PRIVATE
+    ${CMAKE_SOURCE_DIR}/daemon/include
+  )
+  target_link_libraries(capture_worker_host_posix_tests PRIVATE
+    capture_core
+    capture_proto
+    Catch2::Catch2WithMain
+  )
+  add_dependencies(capture_worker_host_posix_tests capture_worker_stub)
+  target_compile_definitions(capture_worker_host_posix_tests PRIVATE
+    "CAPTURE_BINARY_DIR=R\"(${CMAKE_BINARY_DIR})\""
+  )
+  capture_set_warnings(capture_worker_host_posix_tests)
+  catch_discover_tests(capture_worker_host_posix_tests)
+endif()
