@@ -15,7 +15,7 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-PIN = re.compile(r"^\s*vcpkgGitCommitId:\s*[\"\']?([\w.-]+)[\"\']?\s*(?:#.*)?$", re.M)
+PIN = re.compile(r"^\s*vcpkgGitCommitId:\s*[\"']?([\w.-]+)[\"']?\s*(?:#.*)?$", re.M)
 MEMBERS = (
     "libs/python/capture_protocol",
     "libs/python/capture_session",
@@ -42,6 +42,94 @@ ENVIRONMENT = (
     "pytest",
     "ruff",
 )
+
+
+def check_macos_bootstrap_contract(root: Path) -> list[str]:
+    """Check the bounded Apple-silicon bootstrap without requiring a Mac host."""
+    errors: list[str] = []
+    try:
+        presets = json.loads((root / "CMakePresets.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError, TypeError) as exc:
+        return [f"Cannot read CMakePresets.json for macOS bootstrap: {type(exc).__name__}"]
+
+    configure = {
+        item.get("name"): item
+        for item in presets.get("configurePresets", [])
+        if isinstance(item, dict) and isinstance(item.get("name"), str)
+    }
+    builds = {
+        item.get("name"): item
+        for item in presets.get("buildPresets", [])
+        if isinstance(item, dict) and isinstance(item.get("name"), str)
+    }
+
+    base = configure.get("macos-arm64-base")
+    if not isinstance(base, dict):
+        errors.append("Missing macos-arm64-base configure preset")
+    else:
+        if base.get("generator") != "Unix Makefiles":
+            errors.append("macos-arm64-base must use Unix Makefiles")
+        if base.get("toolchainFile") != "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake":
+            errors.append("macos-arm64-base must use the VCPKG_ROOT toolchain")
+        cache = base.get("cacheVariables", {})
+        expected = {
+            "VCPKG_TARGET_TRIPLET": "arm64-osx",
+            "CMAKE_OSX_ARCHITECTURES": "arm64",
+            "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+            "CAPTURE_ENABLE_CAMERA_WORKER": "OFF",
+            "CAPTURE_ENABLE_RADAR_WORKER": "OFF",
+        }
+        if not isinstance(cache, dict):
+            errors.append("macos-arm64-base cacheVariables must be an object")
+        else:
+            for key, value in expected.items():
+                if cache.get(key) != value:
+                    errors.append(f"macos-arm64-base {key} must be {value}")
+
+    for mode, build_type in (("debug", "Debug"), ("release", "Release")):
+        name = f"macos-arm64-{mode}"
+        preset = configure.get(name)
+        if not isinstance(preset, dict):
+            errors.append(f"Missing {name} configure preset")
+            continue
+        inherits = preset.get("inherits")
+        if inherits != "macos-arm64-base" and not (
+            isinstance(inherits, list) and "macos-arm64-base" in inherits
+        ):
+            errors.append(f"{name} must inherit macos-arm64-base")
+        expected_dir = f"${{sourceDir}}/build/{name}"
+        if preset.get("binaryDir") != expected_dir:
+            errors.append(f"{name} binaryDir must be {expected_dir}")
+        cache = preset.get("cacheVariables", {})
+        if not isinstance(cache, dict) or cache.get("CMAKE_BUILD_TYPE") != build_type:
+            errors.append(f"{name} CMAKE_BUILD_TYPE must be {build_type}")
+        build = builds.get(name)
+        if not isinstance(build, dict) or build.get("configurePreset") != name:
+            errors.append(f"Missing matching {name} build preset")
+
+    try:
+        script = (root / "scripts" / "bootstrap-macos.sh").read_text(encoding="utf-8")
+    except OSError:
+        errors.append("Missing scripts/bootstrap-macos.sh")
+    else:
+        required_markers = (
+            "uname -s",
+            "uname -m",
+            '"builtin-baseline"',
+            "VCPKG_ROOT",
+            "bootstrap-vcpkg.sh",
+            'cmake --preset "$preset"',
+            'cmake --build --preset "$preset"',
+            "--provision-vcpkg",
+            "refusing to reset an existing checkout",
+        )
+        for marker in required_markers:
+            if marker not in script:
+                errors.append(f"bootstrap-macos.sh missing guard/action: {marker}")
+        if "brew install" in script or "port install" in script:
+            errors.append("bootstrap-macos.sh must not mutate system package managers")
+
+    return errors
 
 
 def check(root: Path) -> list[str]:
@@ -109,6 +197,7 @@ def check(root: Path) -> list[str]:
             errors.append("Native CI environment must include pytest")
     except OSError:
         errors.append("Cannot read requirements-native-ci.txt")
+    errors.extend(check_macos_bootstrap_contract(root))
     return errors
 
 

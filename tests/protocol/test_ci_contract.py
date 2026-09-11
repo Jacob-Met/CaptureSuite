@@ -8,6 +8,57 @@ import pytest
 SHA = "b322364f06308bdd24823f9d8f03fe0cc86fd46f"
 
 
+def _write_macos_bootstrap_contract(root: Path) -> None:
+    presets = {
+        "version": 6,
+        "configurePresets": [
+            {
+                "name": "macos-arm64-base",
+                "hidden": True,
+                "generator": "Unix Makefiles",
+                "cacheVariables": {
+                    "VCPKG_TARGET_TRIPLET": "arm64-osx",
+                    "CMAKE_OSX_ARCHITECTURES": "arm64",
+                    "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+                    "CAPTURE_ENABLE_CAMERA_WORKER": "OFF",
+                    "CAPTURE_ENABLE_RADAR_WORKER": "OFF",
+                },
+                "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
+            },
+            {
+                "name": "macos-arm64-debug",
+                "inherits": "macos-arm64-base",
+                "binaryDir": "${sourceDir}/build/macos-arm64-debug",
+                "cacheVariables": {"CMAKE_BUILD_TYPE": "Debug"},
+            },
+            {
+                "name": "macos-arm64-release",
+                "inherits": "macos-arm64-base",
+                "binaryDir": "${sourceDir}/build/macos-arm64-release",
+                "cacheVariables": {"CMAKE_BUILD_TYPE": "Release"},
+            },
+        ],
+        "buildPresets": [
+            {"name": "macos-arm64-debug", "configurePreset": "macos-arm64-debug"},
+            {"name": "macos-arm64-release", "configurePreset": "macos-arm64-release"},
+        ],
+    }
+    (root / "CMakePresets.json").write_text(json.dumps(presets))
+    scripts = root / "scripts"
+    scripts.mkdir(parents=True, exist_ok=True)
+    (scripts / "bootstrap-macos.sh").write_text(
+        "uname -s\n"
+        "uname -m\n"
+        'python -c \'print("builtin-baseline")\'\n'
+        "VCPKG_ROOT=/tmp/vcpkg\n"
+        "bootstrap-vcpkg.sh\n"
+        'cmake --preset "$preset"\n'
+        'cmake --build --preset "$preset"\n'
+        "--provision-vcpkg\n"
+        "refusing to reset an existing checkout\n"
+    )
+
+
 @pytest.fixture
 def configured(tmp_path: Path) -> Path:
     (tmp_path / "vcpkg.json").write_text(json.dumps({"builtin-baseline": SHA}))
@@ -33,6 +84,7 @@ def configured(tmp_path: Path) -> Path:
         folder = tmp_path / member.split("[", 1)[0]
         folder.mkdir(parents=True)
         (folder / "pyproject.toml").write_text("[project]\n")
+    _write_macos_bootstrap_contract(tmp_path)
     return tmp_path
 
 
@@ -95,6 +147,20 @@ def test_native_dependency_file_cannot_drop_capture_session(configured):
     p = configured / "requirements-native-ci.txt"
     p.write_text(p.read_text().replace("-e ./libs/python/capture_session\n", ""))
     assert any("capture_session" in error for error in contract.check(configured))
+
+
+def test_macos_triplet_drift_is_rejected(configured):
+    path = configured / "CMakePresets.json"
+    presets = json.loads(path.read_text())
+    base = next(p for p in presets["configurePresets"] if p["name"] == "macos-arm64-base")
+    base["cacheVariables"]["VCPKG_TARGET_TRIPLET"] = "x64-windows"
+    path.write_text(json.dumps(presets))
+    assert any("VCPKG_TARGET_TRIPLET" in error for error in contract.check(configured))
+
+
+def test_macos_bootstrap_script_cannot_disappear(configured):
+    (configured / "scripts/bootstrap-macos.sh").unlink()
+    assert any("bootstrap-macos.sh" in error for error in contract.check(configured))
 
 
 def test_broken_import_is_reported_without_aborting_other_checks(monkeypatch):
