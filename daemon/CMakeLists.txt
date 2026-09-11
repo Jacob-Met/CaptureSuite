@@ -4,6 +4,12 @@ if(NOT TARGET capture_proto)
   return()
 endif()
 
+if(WIN32)
+  set(CAPTURE_WORKER_HOST_SOURCE src/worker_host.cpp)
+else()
+  set(CAPTURE_WORKER_HOST_SOURCE src/worker_host_posix.cpp)
+endif()
+
 add_executable(capture_daemon
   src/main.cpp
   src/sim_engine.cpp
@@ -15,7 +21,7 @@ add_executable(capture_daemon
   src/handshake.cpp
   src/control_server.cpp
   src/process_security.cpp
-  src/worker_host.cpp
+  ${CAPTURE_WORKER_HOST_SOURCE}
 )
 target_include_directories(capture_daemon PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/include
