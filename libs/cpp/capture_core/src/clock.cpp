@@ -23,8 +23,10 @@
 namespace capture {
 namespace {
 
+#ifndef _WIN32
 constexpr int64_t kNanosecondsPerSecond = 1'000'000'000LL;
 constexpr uint64_t kFiletimeUnixEpochOffset100ns = 116444736000000000ULL;
+#endif
 
 int64_t query_frequency() {
 #ifdef _WIN32
@@ -54,15 +56,12 @@ int64_t query_counter() {
 #endif
 }
 
+#ifndef _WIN32
 std::string format_utc_ms(std::time_t seconds, int64_t millis) {
   std::tm tm{};
-#ifdef _WIN32
-  gmtime_s(&tm, &seconds);
-#else
   if (gmtime_r(&seconds, &tm) == nullptr) {
     throw std::runtime_error("gmtime_r failed");
   }
-#endif
   std::ostringstream oss;
   oss << std::setfill('0') << std::setw(4) << tm.tm_year + 1900 << '-'
       << std::setw(2) << tm.tm_mon + 1 << '-' << std::setw(2) << tm.tm_mday
@@ -71,6 +70,7 @@ std::string format_utc_ms(std::time_t seconds, int64_t millis) {
       << 'Z';
   return oss.str();
 }
+#endif
 
 }  // namespace
 
