@@ -94,7 +94,7 @@ class RadarMotionFeaturizer:
         if not np.isfinite(x).all():
             raise ValueError("range-Doppler matrix contains NaN or Inf")
 
-        # Preview matrices are expected to be magnitude-like. Guard tiny negative
+        # Preview matrices are expected to be magnitude-like.  Guard any tiny negative
         # renderer/transform noise, then remove a robust frame floor so stationary DC
         # clutter does not dominate centroids.
         mag = np.maximum(x, 0.0)

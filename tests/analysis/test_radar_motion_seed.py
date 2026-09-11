@@ -58,28 +58,17 @@ def test_shuffle_negative_control_is_worse() -> None:
     test = generate_synthetic_sequence(200, phase=1.5, range_bias=0.04, seed=2)
     x = iter_stacked_features(train.frames, history)
     xt = iter_stacked_features(test.frames, history)
-    good = fit_ridge_model(
-        x,
-        train.targets,
-        target_names=train.target_names,
-        history=history,
-        alpha=0.2,
-    )
+    good = fit_ridge_model(x, train.targets, target_names=train.target_names, history=history, alpha=0.2)
     good_hat = np.vstack([list(good.predict(v).values()) for v in xt])
     good_rmse = float(np.sqrt(np.mean((good_hat[:, 0] - test.targets[:, 0]) ** 2)))
 
     shuffled = train.targets.copy()
     np.random.default_rng(7).shuffle(shuffled, axis=0)
-    bad = fit_ridge_model(
-        x,
-        shuffled,
-        target_names=train.target_names,
-        history=history,
-        alpha=0.2,
-    )
+    bad = fit_ridge_model(x, shuffled, target_names=train.target_names, history=history, alpha=0.2)
     bad_hat = np.vstack([list(bad.predict(v).values()) for v in xt])
     bad_rmse = float(np.sqrt(np.mean((bad_hat[:, 0] - test.targets[:, 0]) ** 2)))
     assert bad_rmse > good_rmse * 1.10
+
 
 
 def test_descriptor_normalizes_preview_geometry() -> None:
@@ -87,12 +76,11 @@ def test_descriptor_normalizes_preview_geometry() -> None:
     b = generate_synthetic_sequence(80, rows=48, cols=64, phase=0.7, seed=11)
     fa = RadarMotionFeaturizer(history=4)
     fb = RadarMotionFeaturizer(history=4)
-    pa = np.asarray(
-        [[d.peak_range_norm, d.peak_doppler_norm] for d in [fa.push(frame)[0] for frame in a.frames]]
-    )
-    pb = np.asarray(
-        [[d.peak_range_norm, d.peak_doppler_norm] for d in [fb.push(frame)[0] for frame in b.frames]]
-    )
+    # Use fresh featurizers per sequence; compare the normalized physical peak tracks.
+    fa.reset()
+    fb.reset()
+    pa = np.asarray([[d.peak_range_norm, d.peak_doppler_norm] for d in [fa.push(frame)[0] for frame in a.frames]])
+    pb = np.asarray([[d.peak_range_norm, d.peak_doppler_norm] for d in [fb.push(frame)[0] for frame in b.frames]])
     assert float(np.mean(np.abs(pa[:, 0] - pb[:, 0]))) < 0.035
     assert float(np.mean(np.abs(pa[:, 1] - pb[:, 1]))) < 0.06
 

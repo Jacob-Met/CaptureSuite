@@ -62,18 +62,14 @@ def synthetic_gate(output_model: Path | None = None) -> int:
 
     # Changed-input control: descriptor axes are normalized, so a different preview
     # matrix geometry should preserve the directly observable range/radial latents.
-    geometry_test = generate_synthetic_sequence(
-        280, rows=48, cols=64, noise=0.04, phase=2.1, range_bias=0.03, seed=51
-    )
+    geometry_test = generate_synthetic_sequence(280, rows=48, cols=64, noise=0.04, phase=2.1, range_bias=0.03, seed=51)
     x_geometry = iter_stacked_features(geometry_test.frames, history)
     geometry_hat = np.vstack([list(model.predict(x).values()) for x in x_geometry])
     geometry_rmse = _rmse(geometry_test.targets, geometry_hat)
 
     # Stress evidence, not a green gate: materially noisier input exposes how quickly
     # a synthetic kinematic prior becomes brittle even while direct motion proxies remain.
-    noise_stress = generate_synthetic_sequence(
-        280, rows=32, cols=32, noise=0.07, phase=1.1, range_bias=0.11, seed=53
-    )
+    noise_stress = generate_synthetic_sequence(280, rows=32, cols=32, noise=0.07, phase=1.1, range_bias=0.11, seed=53)
     x_stress = iter_stacked_features(noise_stress.frames, history)
     stress_hat = np.vstack([list(model.predict(x).values()) for x in x_stress])
     stress_rmse = _rmse(noise_stress.targets, stress_hat)
@@ -121,35 +117,20 @@ def synthetic_gate(output_model: Path | None = None) -> int:
 
     result = {
         "schema": "capture.radar_motion_seed_qualification/1",
-        "status": "PASS"
-        if all([pass_mechanics, pass_shuffle, pass_flip, pass_latency, pass_geometry])
-        else "FAIL",
+        "status": "PASS" if all([pass_mechanics, pass_shuffle, pass_flip, pass_latency, pass_geometry]) else "FAIL",
         "evidence_ceiling": "SYNTHETIC_ONLY_NOT_HARDWARE_VALIDATION",
         "history_frames": history,
         "synthetic_holdout_rmse": dict(zip(target_names, [float(v) for v in rmse], strict=True)),
-        "shuffled_label_rmse": dict(
-            zip(target_names, [float(v) for v in mutant_rmse], strict=True)
-        ),
-        "doppler_flip_rmse": dict(
-            zip(target_names, [float(v) for v in flipped_rmse], strict=True)
-        ),
-        "changed_geometry_holdout_rmse": dict(
-            zip(target_names, [float(v) for v in geometry_rmse], strict=True)
-        ),
-        "high_noise_stress_rmse": dict(
-            zip(target_names, [float(v) for v in stress_rmse], strict=True)
-        ),
+        "shuffled_label_rmse": dict(zip(target_names, [float(v) for v in mutant_rmse], strict=True)),
+        "doppler_flip_rmse": dict(zip(target_names, [float(v) for v in flipped_rmse], strict=True)),
+        "changed_geometry_holdout_rmse": dict(zip(target_names, [float(v) for v in geometry_rmse], strict=True)),
+        "high_noise_stress_rmse": dict(zip(target_names, [float(v) for v in stress_rmse], strict=True)),
         "negative_controls": {
             "shuffled_labels_rejected": pass_shuffle,
             "doppler_sign_flip_rejected": pass_flip,
             "changed_geometry_direct_latents_pass": pass_geometry,
         },
-        "latency_ms": {
-            "median": median,
-            "p95": p95,
-            "20hz_budget": 50.0,
-            "gate": 10.0,
-        },
+        "latency_ms": {"median": median, "p95": p95, "20hz_budget": 50.0, "gate": 10.0},
         "model": {
             "type": "ridge_seed",
             "training_evidence": model.training_evidence,
@@ -226,17 +207,13 @@ def live_attach(model_path: Path | None, seconds: float) -> int:
         }
         if prediction is not None:
             out["kinematics"] = {
-                "label": "HARDWARE_VALIDATED"
-                if model.hardware_validated
-                else "PROVISIONAL_MODEL_OUTPUT",
+                "label": "HARDWARE_VALIDATED" if model.hardware_validated else "PROVISIONAL_MODEL_OUTPUT",
                 "values": prediction,
             }
         print(json.dumps(out, sort_keys=True))
 
     if not count:
-        print(
-            "NO_RD_PREVIEW_FRAMES: attach-only mode requires an already-running range_doppler preview"
-        )
+        print("NO_RD_PREVIEW_FRAMES: attach-only mode requires an already-running range_doppler preview")
         return 3
     print(
         json.dumps(
@@ -255,16 +232,10 @@ def live_attach(model_path: Path | None, seconds: float) -> int:
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser()
     mode = p.add_mutually_exclusive_group(required=True)
-    mode.add_argument(
-        "--synthetic", action="store_true", help="run deterministic synthetic qualification"
-    )
-    mode.add_argument(
-        "--live-attach", action="store_true", help="attach read-only to existing RD preview"
-    )
+    mode.add_argument("--synthetic", action="store_true", help="run deterministic synthetic qualification")
+    mode.add_argument("--live-attach", action="store_true", help="attach read-only to existing RD preview")
     p.add_argument("--model", type=Path, help="optional ridge .npz model")
-    p.add_argument(
-        "--write-synthetic-model", type=Path, help="write synthetic-only fixture model"
-    )
+    p.add_argument("--write-synthetic-model", type=Path, help="write synthetic-only fixture model")
     p.add_argument("--seconds", type=float, default=10.0, help="live attach duration")
     args = p.parse_args(argv)
     if args.synthetic:
