@@ -33,22 +33,25 @@ python tools/probe_radar_motion_seed.py --live-attach --seconds 10
 
 This produces only provisional motion descriptors. No learned kinematics are emitted unless `--model` is supplied.
 
-## Qualification observed before branch publication
+## Qualification of the pinned seed bytes
 
-On the isolated seed workspace:
+The final isolated seed bytes were requalified after their Git blobs were pinned to the branch:
 
 - unit/negative-control tests: **5/5 PASS**;
-- synthetic held-out range RMSE: about **0.0017 normalized units**;
-- synthetic held-out radial-velocity RMSE: about **0.011 normalized units**;
-- changed 48×64 preview-geometry range RMSE: about **0.0116**;
-- changed 48×64 preview-geometry radial-velocity RMSE: about **0.0181**;
+- synthetic held-out range RMSE: **0.00165 normalized units**;
+- synthetic held-out radial-velocity RMSE: **0.0110 normalized units**;
+- synthetic joint-angle stand-in RMSE: **2.04°**;
+- synthetic joint-velocity stand-in RMSE: **1.32°/s**;
+- changed 48×64 preview-geometry range RMSE: **0.0116**;
+- changed 48×64 preview-geometry radial-velocity RMSE: **0.0181**;
 - shuffled-label control: rejected;
 - Doppler-sign-flip control: rejected;
-- end-to-end descriptor + ridge inference p95: about **0.27 ms** in the qualification environment versus a **50 ms** 20 Hz frame budget.
+- end-to-end descriptor + ridge inference median: **0.170 ms**;
+- end-to-end descriptor + ridge inference p95: **0.212 ms** versus a **50 ms** 20 Hz frame budget.
 
 Those numbers are synthetic mechanics evidence only. They are not accuracy estimates for a person in front of the BGT60TR13C.
 
-A deliberately harsher synthetic noise case raised the joint-angle stand-in RMSE to roughly **36.7°** while the direct range/radial proxies degraded much less. Preserve that as negative evidence: kinematic quality is sensitive to domain shift and will require real paired teacher data, richer RD-window features, and held-out hardware evaluation.
+A deliberately harsher synthetic noise case raised the joint-angle stand-in RMSE to roughly **36.75°** and radial-velocity RMSE to roughly **0.0679 normalized units**. Preserve that as negative evidence: kinematic quality is sensitive to domain shift and will require real paired teacher data, richer RD-window features, and held-out hardware evaluation.
 
 ## What should happen next with real paired data
 
