@@ -60,8 +60,12 @@ bool write_all(int fd, const std::vector<uint8_t>& data) {
   return true;
 }
 
-bool read_frame(int fd, capture::Frame& frame) {
-  capture::FrameDecoder decoder;
+// Decoder must outlive the connection: HelloAck and Identify often arrive in
+// one recv(); a per-call decoder would pop HelloAck and drop Identify bytes.
+bool read_frame(int fd, capture::FrameDecoder& decoder, capture::Frame& frame) {
+  if (decoder.pop(frame)) {
+    return true;
+  }
   std::vector<uint8_t> chunk(64 * 1024);
   for (;;) {
     ssize_t got = 0;
@@ -120,6 +124,7 @@ int main(int argc, char** argv) {
     std::fprintf(stderr, "stub: failed to connect to %s\n", pipe_name.c_str());
     return 1;
   }
+  capture::FrameDecoder decoder;
 
   capture::v1::Hello hello;
   hello.mutable_protocol()->set_major(1);
@@ -149,7 +154,7 @@ int main(int argc, char** argv) {
   }
 
   capture::Frame ack_frame;
-  if (!read_frame(channel, ack_frame) ||
+  if (!read_frame(channel, decoder, ack_frame) ||
       ack_frame.message_type !=
           static_cast<uint32_t>(capture::v1::MESSAGE_TYPE_HELLO_ACK)) {
     (void)close(channel);
@@ -164,7 +169,7 @@ int main(int argc, char** argv) {
   }
 
   capture::Frame id_req_frame;
-  if (!read_frame(channel, id_req_frame) ||
+  if (!read_frame(channel, decoder, id_req_frame) ||
       id_req_frame.message_type !=
           static_cast<uint32_t>(capture::v1::MESSAGE_TYPE_IDENTIFY)) {
     (void)close(channel);
@@ -202,7 +207,7 @@ int main(int argc, char** argv) {
   // Stay alive until the host closes the socket or terminates us.
   for (;;) {
     capture::Frame ignored;
-    if (!read_frame(channel, ignored)) {
+    if (!read_frame(channel, decoder, ignored)) {
       break;
     }
   }
