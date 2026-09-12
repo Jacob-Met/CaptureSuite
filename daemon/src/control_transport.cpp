@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: GPL-3.0-only
 #include "capture_daemon/control_transport.hpp"
 
+#include "capture/env.hpp"
+
 #ifdef _WIN32
 #include "capture_daemon/process_security.hpp"
 
@@ -174,24 +176,24 @@ std::filesystem::path control_instance_path(std::string& error) {
   free(local);
   return dir / "instance.json";
 #elif defined(__APPLE__)
-  const char* home = std::getenv("HOME");
-  if (home == nullptr || *home == '\0') {
+  const auto home = capture::env::get("HOME");
+  if (!home.has_value() || home->empty()) {
     error = "HOME not set";
     return {};
   }
-  return std::filesystem::path(home) / "Library" / "Application Support" /
+  return std::filesystem::path(*home) / "Library" / "Application Support" /
          "CaptureSuite" / "instance.json";
 #else
-  const char* state = std::getenv("XDG_STATE_HOME");
-  if (state != nullptr && *state != '\0') {
-    return std::filesystem::path(state) / "CaptureSuite" / "instance.json";
+  const auto state = capture::env::get("XDG_STATE_HOME");
+  if (state.has_value() && !state->empty()) {
+    return std::filesystem::path(*state) / "CaptureSuite" / "instance.json";
   }
-  const char* home = std::getenv("HOME");
-  if (home == nullptr || *home == '\0') {
+  const auto home = capture::env::get("HOME");
+  if (!home.has_value() || home->empty()) {
     error = "HOME not set";
     return {};
   }
-  return std::filesystem::path(home) / ".local" / "state" / "CaptureSuite" /
+  return std::filesystem::path(*home) / ".local" / "state" / "CaptureSuite" /
          "instance.json";
 #endif
 }
