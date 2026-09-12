@@ -14,9 +14,24 @@ add_executable(capture_daemon
   src/plugin_registry.cpp
   src/handshake.cpp
   src/control_server.cpp
+  src/control_transport.cpp
   src/process_security.cpp
   src/worker_host.cpp
 )
+
+# Bounded Mac/CI proof that the portable control transport TU compiles without
+# requiring the full Win32 daemon graph to succeed first.
+add_library(capture_control_transport STATIC
+  src/control_transport.cpp
+)
+target_include_directories(capture_control_transport PUBLIC
+  ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+target_link_libraries(capture_control_transport PUBLIC capture_core)
+if(WIN32)
+  target_link_libraries(capture_control_transport PRIVATE Advapi32)
+endif()
+capture_set_warnings(capture_control_transport)
 target_include_directories(capture_daemon PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
