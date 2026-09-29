@@ -112,14 +112,30 @@ class AppRegistry:
 
     def open(self) -> RegistryOpenResult:
         self.path.parent.mkdir(parents=True, exist_ok=True)
+        if self.path.exists():
+            read_only_uri = f"{self.path.resolve().as_uri()}?mode=ro"
+            self._con = sqlite3.connect(read_only_uri, uri=True)
+            self._con.row_factory = sqlite3.Row
+            current = self._current_version()
+            if current > REGISTRY_SCHEMA_VERSION:
+                self.read_only = True
+                self.schema_version = current
+                self.open_message = (
+                    f"registry schema {current} is newer than this build "
+                    f"({REGISTRY_SCHEMA_VERSION}); opened read-only"
+                )
+                return RegistryOpenResult(True, current, self.open_message)
+            self._con.close()
+            self._con = None
+
         self._con = sqlite3.connect(self.path)
         self._con.row_factory = sqlite3.Row
-        self._con.execute("PRAGMA journal_mode=WAL")
-        self._con.execute("PRAGMA foreign_keys=ON")
-        self._con.execute("PRAGMA synchronous=NORMAL")
-
         current = self._current_version()
         if current > REGISTRY_SCHEMA_VERSION:
+            self._con.close()
+            read_only_uri = f"{self.path.resolve().as_uri()}?mode=ro"
+            self._con = sqlite3.connect(read_only_uri, uri=True)
+            self._con.row_factory = sqlite3.Row
             self.read_only = True
             self.schema_version = current
             self.open_message = (
@@ -127,6 +143,10 @@ class AppRegistry:
                 f"({REGISTRY_SCHEMA_VERSION}); opened read-only"
             )
             return RegistryOpenResult(True, current, self.open_message)
+
+        self._con.execute("PRAGMA journal_mode=WAL")
+        self._con.execute("PRAGMA foreign_keys=ON")
+        self._con.execute("PRAGMA synchronous=NORMAL")
 
         if current < REGISTRY_SCHEMA_VERSION:
             self._migrate(current)
