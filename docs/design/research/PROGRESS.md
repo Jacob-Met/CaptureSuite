@@ -5,6 +5,13 @@ Plan: [AUTONOMOUS_EXECUTION_PLAN.md](AUTONOMOUS_EXECUTION_PLAN.md)
 
 ---
 
+## 2026-09-29 — Newer registry schema read-only enforcement
+
+`AppRegistry.open()` now detects existing schema versions through a read-only
+SQLite connection before applying WAL/configuration PRAGMAs. Newer-schema
+registries retain that read-only connection; focused Windows tests verify direct
+SQL writes fail and opening/closing leaves the database bytes unchanged.
+
 ## 2026-09-09 — Compiler boundary and reliable test evidence
 
 The second hosted Python job passed **151 tests with six explicit daemon skips**.
