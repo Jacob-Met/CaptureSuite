@@ -29,6 +29,39 @@ except ImportError:  # pragma: no cover
     np = None  # type: ignore
 
 
+ALL_MODALITIES = ("radar", "video", "emg", "imu")
+
+
+def _parse_modalities(value: str | None) -> frozenset[str]:
+    """Parse the --modalities option.
+
+    None (flag absent) preserves the legacy behavior: export everything.
+    Raises ValueError on unknown names or an explicitly empty selection.
+    """
+    if value is None:
+        return frozenset(ALL_MODALITIES)
+    parts = [p.strip().lower() for p in value.split(",")]
+    unknown = sorted({p for p in parts if p and p not in ALL_MODALITIES})
+    if unknown:
+        raise ValueError(
+            "unknown modalities: %s (choose from %s)"
+            % (", ".join(unknown), ",".join(ALL_MODALITIES))
+        )
+    chosen = frozenset(p for p in parts if p)
+    if not chosen:
+        raise ValueError(
+            "empty modality selection is rejected: omit --modalities to export all"
+        )
+    return chosen
+
+
+def _imu_emg_specs_for(modalities: frozenset[str] | None) -> tuple[str, ...]:
+    """IMU/EMG kinds to attempt for the selection (pure helper, unit-tested)."""
+    if modalities is None:
+        return ("imu", "emg")
+    return tuple(k for k in ("imu", "emg") if k in modalities)
+
+
 def _load_json(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -148,8 +181,14 @@ def export_radar_mcaps(root: Path, out: Path, manifest: dict) -> None:
         manifest.setdefault("radar", []).append(entry)
 
 
-def export_imu_emg(root: Path, out: Path, manifest: dict) -> None:
-    """Decode sim/vendor IMU and EMG MCAP into lightweight JSONL summaries."""
+def export_imu_emg(
+    root: Path, out: Path, manifest: dict, modalities: frozenset[str] | None = None
+) -> None:
+    """Decode sim/vendor IMU and EMG MCAP into lightweight JSONL summaries.
+
+    When *modalities* is given, only the selected kinds are attempted, so an
+    EMG-only export never emits IMU output and vice versa.
+    """
     try:
         from mcap.reader import make_reader
     except ImportError:
@@ -178,7 +217,10 @@ def export_imu_emg(root: Path, out: Path, manifest: dict) -> None:
     if not sources_root.is_dir():
         return
 
+    wanted = set(_imu_emg_specs_for(modalities))
     for kind, schema_needle, decoder, out_name, manifest_key in specs:
+        if kind not in wanted:
+            continue
         kind_out = out / kind
         for src_dir in sorted(p for p in sources_root.iterdir() if p.is_dir()):
             mcaps = sorted(src_dir.rglob("*.mcap"))
@@ -310,12 +352,24 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="fail if a finalized package yields zero exportable streams",
     )
+    ap.add_argument(
+        "--modalities",
+        default=None,
+        metavar="LIST",
+        help="comma-separated subset of radar,video,emg,imu to export "
+        "(default: all four; an explicitly empty selection is rejected)",
+    )
     args = ap.parse_args(argv)
 
     root = Path(args.package).resolve()
     if not root.exists():
         print("package not found:", root)
         return 1
+    # Validate the selection before creating any output.
+    try:
+        modalities = _parse_modalities(args.modalities)
+    except ValueError as exc:
+        ap.error(str(exc))
     if args.out_dir:
         out = Path(args.out_dir).resolve()
     else:
@@ -326,6 +380,7 @@ def main(argv: list[str] | None = None) -> int:
     manifest: dict = {
         "package": str(root),
         "export_schema": "capture.export_manifest/1",
+        "modalities": sorted(modalities),
         "radar": [],
         "video": [],
         "imu": [],
@@ -355,9 +410,12 @@ def main(argv: list[str] | None = None) -> int:
         if reports:
             manifest["recovery_report"] = str(reports[-1].relative_to(root))
 
-    export_radar_mcaps(root, out, manifest)
-    export_video(root, out, manifest)
-    export_imu_emg(root, out, manifest)
+    if "radar" in modalities:
+        export_radar_mcaps(root, out, manifest)
+    if "video" in modalities:
+        export_video(root, out, manifest)
+    if "imu" in modalities or "emg" in modalities:
+        export_imu_emg(root, out, manifest, modalities)
 
     man_path = out / "export_manifest.json"
     man_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
