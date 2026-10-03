@@ -3,8 +3,13 @@
 
 from __future__ import annotations
 
+import importlib.util
 import json
+import sys
+import types
 from pathlib import Path
+
+import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
 FIXTURE = ROOT / "tests" / "fixtures" / "mini_session"
@@ -35,12 +40,6 @@ def test_export_writes_manifest_and_sidecar(tmp_path: Path) -> None:
 # T68 (D064) modality-selection tests — muse-coord-a8b9, 2026-10-01.
 # Verifies that export modality selections control actual modality output.
 # ---------------------------------------------------------------------------
-
-import importlib.util
-import sys
-import types
-
-import pytest
 
 
 def _load_export_session():
