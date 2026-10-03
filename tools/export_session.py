@@ -44,8 +44,7 @@ def _parse_modalities(value: str | None) -> frozenset[str]:
     unknown = sorted({p for p in parts if p and p not in ALL_MODALITIES})
     if unknown:
         raise ValueError(
-            "unknown modalities: %s (choose from %s)"
-            % (", ".join(unknown), ",".join(ALL_MODALITIES))
+            f"unknown modalities: {', '.join(unknown)} (choose from {','.join(ALL_MODALITIES)})"
         )
     chosen = frozenset(p for p in parts if p)
     if not chosen:
