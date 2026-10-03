@@ -86,4 +86,4 @@ Streaming loader → frame features → optional RD `.npy` in `derived/radar/`. 
 
 - [RADAR_PIPELINE.md](../RADAR_PIPELINE.md)
 - [adapters/infineon_bgt60tr13c.md](../adapters/infineon_bgt60tr13c.md)
-- [capture_worker_radar](../../workers/radar/)
+- [capture_worker_radar](../../../workers/radar/)

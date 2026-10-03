@@ -3,7 +3,7 @@
 Research date: **2026-09-01**  
 Status: **Architecture decision record**
 
-**Problem:** [`pipeline.py`](../../libs/python/capture_analysis/capture_analysis/pipeline.py) hard-codes modality dispatch. Third-party extractors require fork.
+**Problem:** [`pipeline.py`](../../../libs/python/capture_analysis/capture_analysis/pipeline.py) hard-codes modality dispatch. Third-party extractors require fork.
 
 **Decision:** **In-tree YAML manifest** as primary registry + optional **setuptools entry points** for external lab plugins. Version: `analysis_plugin_manifest/1`.
 
@@ -107,7 +107,7 @@ Extended schema: [schemas/analysis_job_dag.schema.json](schemas/analysis_job_dag
 
 ## 5. AnalysisGrid engine
 
-Replace stub [`grids.py`](../../libs/python/capture_analysis/capture_analysis/grids.py):
+Replace stub [`grids.py`](../../../libs/python/capture_analysis/capture_analysis/grids.py):
 
 | Method | Use |
 |--------|-----|

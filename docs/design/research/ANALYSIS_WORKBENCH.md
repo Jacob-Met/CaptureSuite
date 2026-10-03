@@ -61,7 +61,7 @@ Jobs disabled until prerequisites exist (DAG — see [ANALYSIS_PLUGIN_ARCHITECTU
 | Range–Doppler heatmaps | **PyQtGraph ImageItem** or matplotlib imshow in FigureCanvas | RD maps need responsive zoom |
 | Sync dashboard (multi-lane) | **PyQtGraph** grid | Replace static PNG |
 | Orientation cube | Existing **QPainter** widget (reuse preview) | Consistency with capture |
-| Printable reports / batch figures | **matplotlib** ([plots/style.py](../../libs/python/capture_analysis/capture_analysis/plots/style.py)) | Reproducible PDF/HTML |
+| Printable reports / batch figures | **matplotlib** ([plots/style.py](../../../libs/python/capture_analysis/capture_analysis/plots/style.py)) | Reproducible PDF/HTML |
 | Future 3D skeleton | **Qt3D or vtk** (deferred) | Phase D+ overlay review |
 
 **Decision:** Dual stack — **PyQtGraph for interactive Analysis tab**; **matplotlib for job artifacts** written to disk. Share color tokens from [DESIGN_SYSTEM.md](../DESIGN_SYSTEM.md).
@@ -173,4 +173,4 @@ Location: Analysis tab sub-panel “Mappings” — loads anatomical + spatial p
 
 - [ANALYSIS_SCOPE_SEMANTICS.md](ANALYSIS_SCOPE_SEMANTICS.md)
 - [FUTURE_ANALYSIS_NOTES.md](../../../docs/spec/FUTURE_ANALYSIS_NOTES.md)
-- [screen_analysis.py](../../desktop/capture_desktop/screen_analysis.py)
+- [screen_analysis.py](../../../desktop/capture_desktop/screen_analysis.py)

@@ -1,7 +1,7 @@
 # Analysis scope semantics
 
 Research date: **2026-09-01**  
-Maps UI scope picker → [`JobParams`](../../libs/python/capture_analysis/capture_analysis/jobs.py) + `job_manifest.json`.
+Maps UI scope picker → [`JobParams`](../../../libs/python/capture_analysis/capture_analysis/jobs.py) + `job_manifest.json`.
 
 **Constraint:** Native rates preserved in raw; scope only limits **job time window**, never rewrites sources.
 

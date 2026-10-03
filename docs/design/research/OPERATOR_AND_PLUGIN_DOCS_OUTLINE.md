@@ -56,7 +56,7 @@ Screenshots in light + dark theme.
 | Regression | Frozen parquet hash optional |
 | Hardware | Tagged `hardware_validated` in manifest |
 
-Same bar as [tests/analysis/test_phase_b_features.py](../../tests/analysis/test_phase_b_features.py).
+Same bar as [tests/analysis/test_phase_b_features.py](../../../tests/analysis/test_phase_b_features.py).
 
 ---
 

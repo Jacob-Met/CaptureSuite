@@ -4,7 +4,7 @@ The full analysis suite is intentionally deferred.
 
 However, capture/storage must preserve enough information to support it later.
 
-**Radar-to-kinematics ML track:** see [`docs/PROJECT_OUTLINE.md`](../../docs/PROJECT_OUTLINE.md) and [`DATA_COLLECTION_PROTOCOL.md`](../docs/design/DATA_COLLECTION_PROTOCOL.md). Capture sessions for that track require radar + video + sync anchors + activity checkpoint tags even before analysis jobs exist.
+**Radar-to-kinematics ML track:** see [`docs/PROJECT_OUTLINE.md`](../../docs/PROJECT_OUTLINE.md) and [`DATA_COLLECTION_PROTOCOL.md`](../design/DATA_COLLECTION_PROTOCOL.md). Capture sessions for that track require radar + video + sync anchors + activity checkpoint tags even before analysis jobs exist.
 
 ## Future analysis must operate on
 
@@ -31,7 +31,7 @@ However, capture/storage must preserve enough information to support it later.
 - checkpoint/trial summaries
 - extracted features
 - ML-ready matrices/sequences
-- radar–kinematics aligned windows (`ml_bundle` — see [ANALYSIS.md](../docs/design/ANALYSIS.md) Phase E)
+- radar–kinematics aligned windows (`ml_bundle` — see [ANALYSIS.md](../design/ANALYSIS.md) Phase E)
 - kinematic teacher labels (`kinematics.parquet` — Phase D2)
 - external graphing tables
 - reports
@@ -85,7 +85,7 @@ Custom nonstandard regions need manual associations.
 | Document | Purpose |
 |----------|---------|
 | [PROJECT_OUTLINE.md](../../docs/PROJECT_OUTLINE.md) | Radar-to-kinematics research master index |
-| [DATA_COLLECTION_PROTOCOL.md](../docs/design/DATA_COLLECTION_PROTOCOL.md) | Multimodal capture protocol |
-| [KINEMATICS_PIPELINE.md](../docs/design/KINEMATICS_PIPELINE.md) | Teacher label pipeline |
-| [ANALYSIS.md](../docs/design/ANALYSIS.md) | Offline analysis phases D–F |
+| [DATA_COLLECTION_PROTOCOL.md](../design/DATA_COLLECTION_PROTOCOL.md) | Multimodal capture protocol |
+| [KINEMATICS_PIPELINE.md](../design/KINEMATICS_PIPELINE.md) | Teacher label pipeline |
+| [ANALYSIS.md](../design/ANALYSIS.md) | Offline analysis phases D–F |
 | [RadarKinematicsML/SPEC.md](../../RadarKinematicsML/SPEC.md) | Linux training specification |

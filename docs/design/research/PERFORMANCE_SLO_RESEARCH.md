@@ -81,4 +81,4 @@ Lab: soak scripts nightly optional; not gating PR.
 
 - [OPERATIONS.md](../OPERATIONS.md)
 - [ANALYSIS.md](../ANALYSIS.md)
-- [tools/soak_multi_cam.py](../../tools/soak_multi_cam.py)
+- [tools/soak_multi_cam.py](../../../tools/soak_multi_cam.py)

@@ -100,4 +100,4 @@ Phase B: timing QC only. Phase D: segment-indexed decode → pose registry. See 
 
 - [VIDEO_PIPELINE.md](../VIDEO_PIPELINE.md)
 - [PREVIEW_TRANSPORT.md](../PREVIEW_TRANSPORT.md)
-- [capture_worker_camera](../../workers/camera/)
+- [capture_worker_camera](../../../workers/camera/)

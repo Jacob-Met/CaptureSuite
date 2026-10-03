@@ -252,7 +252,7 @@ Parallel to Capture V1 product milestones. **Not** in the V1 installer scope. Ma
 | **R4** | P3 Train | RadarKinematicsML trained model + model_card | R3 + Linux GPU env |
 | **R5** | P4 Evaluate | Held-out eval reports (Phase F) | R4 |
 
-Immediate operator priority: **R1** — follow [`DATA_COLLECTION_PROTOCOL.md`](../docs/design/DATA_COLLECTION_PROTOCOL.md) and activity catalog [`schemas/activity_catalog/1.json`](../schemas/activity_catalog/1.json).
+Immediate operator priority: **R1** — follow [`DATA_COLLECTION_PROTOCOL.md`](../design/DATA_COLLECTION_PROTOCOL.md) and activity catalog [`schemas/activity_catalog/1.json`](../../schemas/activity_catalog/1.json).
 
 ## Milestone 14 — Capture V1 Release Qualification
 
