@@ -1,6 +1,6 @@
 # Windows CI recovery in CaptureSuite
 
-**Published:** 2026-10-03  
+**Published:** 2026-10-04  
 **Project:** [CaptureSuite](https://github.com/Jacob-Met/CaptureSuite), independent research software.  
 **Evidence:** [merged PR #7](https://github.com/Jacob-Met/CaptureSuite/pull/7) · [hosted Windows run #34415543635](https://github.com/Jacob-Met/CaptureSuite/actions/runs/34415543635)
 
