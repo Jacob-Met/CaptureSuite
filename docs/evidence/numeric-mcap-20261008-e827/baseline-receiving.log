@@ -1,0 +1,106 @@
+Reviewed package: /workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/__init__.py
+Fixture: real self-describing protobuf MCAP; native writer schema name
+test_actual_payload_budget_is_not_hidden_by_small_descriptor (__main__.NumericReceiving.test_actual_payload_budget_is_not_hidden_by_small_descriptor) ... ERROR
+test_durationless_public_job_admits_small_native_recording (__main__.NumericReceiving.test_durationless_public_job_admits_small_native_recording) ... FAIL
+test_durationless_public_job_reports_small_budget_refusal (__main__.NumericReceiving.test_durationless_public_job_reports_small_budget_refusal) ... ok
+test_finite_large_values_keep_finite_mean_and_rms (__main__.NumericReceiving.test_finite_large_values_keep_finite_mean_and_rms) ... /workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/features/numeric_batch.py:55: RuntimeWarning: overflow encountered in square
+  row[f"{name}_rms"] = float(np.sqrt(np.mean(np.square(col)))) if col.size else 0.0
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/numpy/_core/_methods.py:134: RuntimeWarning: overflow encountered in reduce
+  ret = umr_sum(arr, axis, dtype, out, keepdims, where=where)
+FAIL
+test_missing_rate_refuses_to_invent_timebase (__main__.NumericReceiving.test_missing_rate_refuses_to_invent_timebase) ... ERROR
+test_native_mcap_segments_are_anchored_sorted_and_clipped_together (__main__.NumericReceiving.test_native_mcap_segments_are_anchored_sorted_and_clipped_together) ... ERROR
+test_partial_device_timestamps_are_rejected (__main__.NumericReceiving.test_partial_device_timestamps_are_rejected) ... ERROR
+test_partial_frame_payload_is_rejected (__main__.NumericReceiving.test_partial_frame_payload_is_rejected) ... ERROR
+test_public_checkpoint_job_exports_exact_native_bounds_math_and_metadata (__main__.NumericReceiving.test_public_checkpoint_job_exports_exact_native_bounds_math_and_metadata) ... FAIL
+
+======================================================================
+ERROR: test_actual_payload_budget_is_not_hidden_by_small_descriptor (__main__.NumericReceiving.test_actual_payload_budget_is_not_hidden_by_small_descriptor)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric-review/test_numeric_receiving.py", line 285, in test_actual_payload_budget_is_not_hidden_by_small_descriptor
+    load_numeric_batch(self.stream(), TimeWindow(5_000_000_000, 5_000_001_024), max_ram_bytes=2 * MIB)
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py", line 79, in load_numeric_batch
+    return LoadedEmg(
+           ^^^^^^^^^^
+TypeError: LoadedEmg.__init__() got an unexpected keyword argument 'stream'
+
+======================================================================
+ERROR: test_missing_rate_refuses_to_invent_timebase (__main__.NumericReceiving.test_missing_rate_refuses_to_invent_timebase)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric-review/test_numeric_receiving.py", line 271, in test_missing_rate_refuses_to_invent_timebase
+    load_numeric_batch(self.stream(), TimeWindow(0, 7_000_000_000), max_ram_bytes=8 * MIB)
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py", line 79, in load_numeric_batch
+    return LoadedEmg(
+           ^^^^^^^^^^
+TypeError: LoadedEmg.__init__() got an unexpected keyword argument 'stream'
+
+======================================================================
+ERROR: test_native_mcap_segments_are_anchored_sorted_and_clipped_together (__main__.NumericReceiving.test_native_mcap_segments_are_anchored_sorted_and_clipped_together)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric-review/test_numeric_receiving.py", line 187, in test_native_mcap_segments_are_anchored_sorted_and_clipped_together
+    loaded = load_numeric_batch(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py", line 79, in load_numeric_batch
+    return LoadedEmg(
+           ^^^^^^^^^^
+TypeError: LoadedEmg.__init__() got an unexpected keyword argument 'stream'
+
+======================================================================
+ERROR: test_partial_device_timestamps_are_rejected (__main__.NumericReceiving.test_partial_device_timestamps_are_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric-review/test_numeric_receiving.py", line 308, in test_partial_device_timestamps_are_rejected
+    load_numeric_batch(self.stream(), TimeWindow(0, 7_000_000_000), max_ram_bytes=8 * MIB)
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py", line 79, in load_numeric_batch
+    return LoadedEmg(
+           ^^^^^^^^^^
+TypeError: LoadedEmg.__init__() got an unexpected keyword argument 'stream'
+
+======================================================================
+ERROR: test_partial_frame_payload_is_rejected (__main__.NumericReceiving.test_partial_frame_payload_is_rejected)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric-review/test_numeric_receiving.py", line 297, in test_partial_frame_payload_is_rejected
+    load_numeric_batch(self.stream(), TimeWindow(0, 7_000_000_000), max_ram_bytes=8 * MIB)
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py", line 79, in load_numeric_batch
+    return LoadedEmg(
+           ^^^^^^^^^^
+TypeError: LoadedEmg.__init__() got an unexpected keyword argument 'stream'
+
+======================================================================
+FAIL: test_durationless_public_job_admits_small_native_recording (__main__.NumericReceiving.test_durationless_public_job_admits_small_native_recording)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric-review/test_numeric_receiving.py", line 249, in test_durationless_public_job_admits_small_native_recording
+    frame, _relative = self.assert_feature_table(result)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric-review/test_numeric_receiving.py", line 172, in assert_feature_table
+    self.assertEqual(len(tables), 1, result.manifest)
+AssertionError: 0 != 1 : {'schemaId': 'capture.analysis_job/1', 'jobId': '20261008T102331Z_4936148c', 'createdUtc': '2026-10-08T10:23:31Z', 'captureAnalysisVersion': '0.1.0', 'pluginManifestVersion': '1.0.0', 'pluginIds': ['emg.envelope.v1', 'imu.kinematics.v1', 'radar.rd_energy.v1', 'radar_doppler.mag.v1', 'video.timing_qc.v1', 'numeric.basic.v1', 'test.dummy.feature.v1'], 'packagePath': '/tmp/numeric-receiving-ct_3bia3/native.mmsession', 'sessionId': 'independent-numeric-receiving', 'packageState': 'finalized', 'manifestSha256': '063c1237017d9b1a7315770f0b2558b50774148e4f3dbab0633075f26c9b86a5', 'timeRange': {'mode': 'full', 'startSessionNs': -4611686018427387903, 'endSessionNs': 4611686018427387903, 'checkpointIds': []}, 'sourcesSelected': ['sim.numeric.force'], 'modalities': ['emg'], 'gapPolicy': 'mask', 'gapSummary': {'open': 0, 'closed': 0, 'maskedNs': 0, 'validFraction': None}, 'analysisGrids': [], 'syncAnchorsApplied': {'applied': False, 'anchors': []}, 'paramsDigest': '4936148c938ce15c105a7d71b815366ae3da2d7c43b6fd4a99868a288a4cd742', 'tooling': {'python': '3.12.14', 'platform': 'Linux-6.18.44-x86_64-with-glibc2.39', 'captureAnalysis': '0.1.0', 'numpy': '2.3.5', 'scipy': '1.17.0', 'pandas': '2.2.3', 'matplotlib': '3.10.8'}, 'featureTables': [], 'poseTables': [], 'poseModelId': None, 'kinematicsRows': None, 'poseJobId': None, 'mlBundleWindowCount': None, 'evalWindowCount': None, 'outputs': [{'relativePath': 'reports/qc.json', 'bytes': 1054, 'sha256': 'ba4625676ad9006bbbc74e005ff74a94a331005c0ade421ab20e8bd5d6f047d0', 'kind': 'qc_json'}, {'relativePath': 'reports/qc.html', 'bytes': 1548, 'sha256': '1ca45bf2b1cfb40f9c7d307e8f9c6ecd857ed9aacb3399e9cdc8247c4de1b2e2', 'kind': 'qc_html'}, {'relativePath': 'params.json', 'bytes': 242, 'sha256': '6a584c78040dc748872932b5b95d3e5d4423e8415f4b0f422f185f2a30e6c2aa', 'kind': 'params'}, {'relativePath': 'job_manifest.json', 'bytes': 2503, 'sha256': 'e7d1dde06ec65b5b2d627f9cf1a8120cf0bbc8504e4daf8ce6367089446e5a61', 'kind': 'manifest'}, {'relativePath': 'logs/job.log', 'bytes': 178, 'sha256': '673a7ce8f2202c201efca7c955bf59d9ca5cb4bdd656b80295d24cd4fdf9b898', 'kind': 'log'}], 'warnings': ['package duration_ns is unknown/zero — analysis uses an open time window (integrity entries lack endSessionTimeNs)', 'sim.numeric.force/force_signals: sim.numeric.force/force_signals would allocate ~858.99 GiB (limit 0.01 GiB); narrow --start-ns/--end-ns or raise --max-ram-bytes'], 'errors': [], 'status': 'completed_with_warnings'}
+
+======================================================================
+FAIL: test_finite_large_values_keep_finite_mean_and_rms (__main__.NumericReceiving.test_finite_large_values_keep_finite_mean_and_rms)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric-review/test_numeric_receiving.py", line 323, in test_finite_large_values_keep_finite_mean_and_rms
+    self.assertTrue(np.isfinite(frame[["force_mean", "force_rms"]].to_numpy()).all())
+AssertionError: np.False_ is not true
+
+======================================================================
+FAIL: test_public_checkpoint_job_exports_exact_native_bounds_math_and_metadata (__main__.NumericReceiving.test_public_checkpoint_job_exports_exact_native_bounds_math_and_metadata)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric-review/test_numeric_receiving.py", line 222, in test_public_checkpoint_job_exports_exact_native_bounds_math_and_metadata
+    frame, relative = self.assert_feature_table(result)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric-review/test_numeric_receiving.py", line 172, in assert_feature_table
+    self.assertEqual(len(tables), 1, result.manifest)
+AssertionError: 0 != 1 : {'schemaId': 'capture.analysis_job/1', 'jobId': '20261008T102331Z_3bbcdbea', 'createdUtc': '2026-10-08T10:23:31Z', 'captureAnalysisVersion': '0.1.0', 'pluginManifestVersion': '1.0.0', 'pluginIds': ['emg.envelope.v1', 'imu.kinematics.v1', 'radar.rd_energy.v1', 'radar_doppler.mag.v1', 'video.timing_qc.v1', 'numeric.basic.v1', 'test.dummy.feature.v1'], 'packagePath': '/tmp/numeric-receiving-svgwpayl/native.mmsession', 'sessionId': 'independent-numeric-receiving', 'packageState': 'finalized', 'manifestSha256': '063c1237017d9b1a7315770f0b2558b50774148e4f3dbab0633075f26c9b86a5', 'timeRange': {'mode': 'cp:trial', 'startSessionNs': 5080000000, 'endSessionNs': 6600000000, 'checkpointIds': ['trial']}, 'sourcesSelected': ['sim.numeric.force'], 'modalities': ['emg'], 'gapPolicy': 'mask', 'gapSummary': {'open': 0, 'closed': 0, 'maskedNs': 0, 'validFraction': None}, 'analysisGrids': [], 'syncAnchorsApplied': {'applied': False, 'anchors': []}, 'paramsDigest': '3bbcdbea6154f4861eb7d911435944ba21c8ef775e0658dd9d6297051d4db73c', 'tooling': {'python': '3.12.14', 'platform': 'Linux-6.18.44-x86_64-with-glibc2.39', 'captureAnalysis': '0.1.0', 'numpy': '2.3.5', 'scipy': '1.17.0', 'pandas': '2.2.3', 'matplotlib': '3.10.8'}, 'featureTables': [], 'poseTables': [], 'poseModelId': None, 'kinematicsRows': None, 'poseJobId': None, 'mlBundleWindowCount': None, 'evalWindowCount': None, 'outputs': [{'relativePath': 'reports/qc.json', 'bytes': 935, 'sha256': '76d3d58e8b5041322c6adbfaf469dda33dd873c400de912b27c84ec4f1e15bb5', 'kind': 'qc_json'}, {'relativePath': 'reports/qc.html', 'bytes': 1439, 'sha256': '11766220cc3c03cdda4f598bcc96c721bf78916ef73c41dcdea0079def87fcb8', 'kind': 'qc_html'}, {'relativePath': 'params.json', 'bytes': 245, 'sha256': '43c08333b2e216225ad845ae6da0e57e87b7e796d9ff149225788eec7e877cbd', 'kind': 'params'}, {'relativePath': 'job_manifest.json', 'bytes': 2195, 'sha256': '67f3e5b212807647e91debf3e42ffdf382aed59c6825252bf4f7a4eebfca3a40', 'kind': 'manifest'}, {'relativePath': 'logs/job.log', 'bytes': 164, 'sha256': '8c79be0dca0951958e914f7c5cf26edb4432dd76211038f4cb0920508e1ec7b4', 'kind': 'log'}], 'warnings': [], 'errors': [], 'status': 'completed'}
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.107s
+
+FAILED (failures=3, errors=5)

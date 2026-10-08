@@ -1,0 +1,5 @@
+{
+  "originalTestSha256": "cf1cb5405ea70206a12948d2ed491a5de679eef9bcc003741e44112de3a7f1bc",
+  "nativeTestSha256": "7ea17b163076315202f235b1a646918bdffbfede95349c57675ef730706794a1",
+  "adaptation": "Import sorting and line wrapping only; identical import set and all non-import AST nodes. Original tested bytes and baseline/candidate logs retained. Native current-source CI is the final acceptance gate."
+}

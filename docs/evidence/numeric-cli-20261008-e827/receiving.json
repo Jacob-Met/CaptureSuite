@@ -1,0 +1,526 @@
+{
+  "repository": "Jacob-Met/CaptureSuite",
+  "coordination_issue": 43,
+  "receiver": "estate-e82707f2bc62/runtime_discovery",
+  "base": "52203f5ceedfa0da8f1813e700a41ec8c364263e",
+  "candidate_frozen_by_author": true,
+  "independent_test_path": "tests/analysis/test_numeric_cli_receiving.py",
+  "candidate_production": [
+    {
+      "path": "libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py",
+      "sha256": "7c84c0425c1b9b821df711f4c40ea89ac13f267dbe6472922eb41a9263e4835c",
+      "git_blob": "668e5397d6a603d8665fe639b3218128bbda72c2"
+    },
+    {
+      "path": "libs/python/capture_analysis/capture_analysis/features/numeric_batch.py",
+      "sha256": "ecdeb88ca4dd093b973294a53954e9fa0e5d6b4b908225a52d097ef70c7d2154",
+      "git_blob": "77f19ccb048c93c0f4fca460eef0502180b37717"
+    },
+    {
+      "path": "libs/python/capture_analysis/capture_analysis/plugins/registry.py",
+      "sha256": "33a4d07600db8b116fbd46b67492f62129df513df5b66a2c455dced0b2a9dc69",
+      "git_blob": "3c582e1ab0de2b22956ac47fb628227eacdd1faf"
+    },
+    {
+      "path": "libs/python/capture_analysis/capture_analysis/plugins/manifest.yaml",
+      "sha256": "1efe3ee2d9eeeeac03c2c03c582edf0119c9abd6d214dfdca3d827fa10a5c048",
+      "git_blob": "0628968ee3965170b486306f974c81dd4eb84a53"
+    },
+    {
+      "path": "libs/python/capture_analysis/capture_analysis/plugins/numeric.py",
+      "sha256": "52af47aa89660425d60a3c8fe92ba90f9194b04aa3054b16b4d586a2883c9b79",
+      "git_blob": "32ca72e440ea0d06a7798c7b1b58d03e3aee6b65"
+    }
+  ],
+  "baseline": {
+    "variant": "baseline-v1",
+    "started_utc": "2026-10-08T10:27:22.401659+00:00",
+    "finished_utc": "2026-10-08T10:27:35.771523+00:00",
+    "tests_run": 7,
+    "failures": 5,
+    "errors": 0,
+    "test_sha256": "5d5e7105330d31c8f8e9cbb624641808703a719d62a3674ad69faf1f08d18f22",
+    "source_unchanged_during_receiving": true,
+    "schema_validator_available": false,
+    "clean_strict_success_qualified": false,
+    "passing_methods": 2,
+    "all_retained_raw_and_metadata_hashes_match": true,
+    "processes": [
+      {
+        "case": "test_all_creates_distinct_numeric_tables_and_figures",
+        "exit_code": 2,
+        "manifest_status": "completed_with_warnings",
+        "manifest_warnings": [
+          "manifest schema validation: No module named 'jsonschema'"
+        ],
+        "raw_preserved": true
+      },
+      {
+        "case": "test_case_only_stream_ids_keep_distinct_paths_and_gap_provenance",
+        "exit_code": 2,
+        "manifest_status": "completed_with_warnings",
+        "manifest_warnings": [
+          "manifest schema validation: No module named 'jsonschema'"
+        ],
+        "raw_preserved": true
+      },
+      {
+        "case": "test_features_source_selection_keeps_sibling_outputs_independent",
+        "exit_code": 2,
+        "manifest_status": "completed_with_warnings",
+        "manifest_warnings": [
+          "manifest schema validation: No module named 'jsonschema'"
+        ],
+        "raw_preserved": true
+      },
+      {
+        "case": "test_missing_package_is_a_hard_cli_failure_without_a_job",
+        "exit_code": 1,
+        "job_created": false
+      },
+      {
+        "case": "test_plots_command_produces_real_numeric_figures_and_series",
+        "exit_code": 2,
+        "manifest_status": "completed_with_warnings",
+        "manifest_warnings": [
+          "manifest schema validation: No module named 'jsonschema'"
+        ],
+        "raw_preserved": true
+      },
+      {
+        "case": "test_qc_html_inventory_and_manifest_are_available_without_features",
+        "exit_code": 2,
+        "manifest_status": "completed_with_warnings",
+        "manifest_warnings": [
+          "manifest schema validation: No module named 'jsonschema'"
+        ],
+        "raw_preserved": true,
+        "existing_manifest_self_digest_matches": false,
+        "existing_log_listed_in_persisted_manifest": false
+      },
+      {
+        "case": "test_refused_stream_is_reported_and_strict_warnings_changes_exit",
+        "exit_code": 0,
+        "manifest_status": "completed_with_warnings",
+        "manifest_warnings": [
+          "manifest schema validation: No module named 'jsonschema'"
+        ],
+        "raw_preserved": true
+      },
+      {
+        "case": "test_refused_stream_is_reported_and_strict_warnings_changes_exit",
+        "exit_code": 2,
+        "manifest_status": "completed_with_warnings",
+        "manifest_warnings": [
+          "manifest schema validation: No module named 'jsonschema'"
+        ],
+        "raw_preserved": true
+      }
+    ],
+    "source_file_sha256": {
+      "AGENTS.md": "525164ca1f3b9e68561434ab110ba17ed65843a20c23f4c1385fde33f1863a74",
+      "docs/design/ANALYSIS.md": "eead8ce99eff3688a6598dfb3ec07b5f66335116d926fed476aa2b73e2a83e82",
+      "docs/design/research/schemas/analysis_plugin_manifest.schema.json": "502646cd627b5106ecad1843c512e9f16280187e5b48421c09e5e89a812553b8",
+      "libs/python/capture_analysis/capture_analysis/__init__.py": "14cfe6dccd33a0bda74fac3c9339e1a37a3538b2110a8ae6e307801b776eb43a",
+      "libs/python/capture_analysis/capture_analysis/discover.py": "344ee5d7cb0f5e95ac7524a0c1141b0a293bb9445e2bd4789c6736f39cfcb90d",
+      "libs/python/capture_analysis/capture_analysis/eval/__init__.py": "54661df9ed7d7e0d4b1c2ab5941f107ceb608e4fdfaff810014ef5fad1431fe1",
+      "libs/python/capture_analysis/capture_analysis/eval/job.py": "a7f2a43c2fc3723c471e42a5532465dc5cfa44d4411c6cf581bba6910603fc57",
+      "libs/python/capture_analysis/capture_analysis/features/__init__.py": "3cdd6c626b6da12b8df56d8ddf35fca27c0a744865965ec01dd89d47da476fa1",
+      "libs/python/capture_analysis/capture_analysis/features/emg.py": "11f8f8350464b7c7c079353ca649b4c4aad2580ef8d355fe741c025c262b168e",
+      "libs/python/capture_analysis/capture_analysis/features/imu.py": "246bfd1cc3ce72afa0680537062b6795e22b8a06ba6301503d7489a4440c6849",
+      "libs/python/capture_analysis/capture_analysis/features/io.py": "c677d209292cca790ccdf1a64ba834f71a078ccce31ea57452e67ece358822ca",
+      "libs/python/capture_analysis/capture_analysis/features/numeric_batch.py": "df48baa8eac38e1bcdb38411758b7f803507ab27b4a97fba18c86042cfd33c76",
+      "libs/python/capture_analysis/capture_analysis/features/radar_doppler.py": "cffc0ecbb8053fbc2244850c1927469366f4ae93b5439e4d194de2065877fa5c",
+      "libs/python/capture_analysis/capture_analysis/features/radar_frame.py": "f85c5fe5e2db68606f68e36a42a0c8f323086f0b1e7f233c0ddefa24cdccb443",
+      "libs/python/capture_analysis/capture_analysis/features/video_qc.py": "0e25c50e01fc2da47bc7b510d68ba3e72aba33d3e1c79c57b727f5c55c723e27",
+      "libs/python/capture_analysis/capture_analysis/grids.py": "936c5404783145f7a2bc4c13df22d3b85612bcb227115bba74f0b78a11c0c483",
+      "libs/python/capture_analysis/capture_analysis/jobs.py": "1f58a18fbddf620f304d4521e693d1d26508a8871ad373bc47630da7dd38dcc2",
+      "libs/python/capture_analysis/capture_analysis/kinematics/__init__.py": "50a0f7fd39648abf269fc549d2c17eb48b1dc9add10ebdb76edc1935d6f80160",
+      "libs/python/capture_analysis/capture_analysis/kinematics/compute.py": "6e3ca19bfda0c02877f5d778f0c1191b5aebad605373732ef182bd714dd7f086",
+      "libs/python/capture_analysis/capture_analysis/kinematics/job.py": "d676e84f54aa1ae2b0f998c2cb37c4e02541c1fd0e3464e38e9865c0049a7239",
+      "libs/python/capture_analysis/capture_analysis/kinematics/registry.py": "1e53fb9da4c6a2743bc1a3f0e687d94599cf995d33f2a2555e0ce5ebc3966d48",
+      "libs/python/capture_analysis/capture_analysis/loaders/__init__.py": "2d51c509baf3c0b5c33360637d12e5ce3c7507a859e4f37030f2c3d711ef0b3d",
+      "libs/python/capture_analysis/capture_analysis/loaders/base.py": "696093b31f22d2bef32fc2962c7a11249a590a0b4d776c40cef4edcbc1e48a97",
+      "libs/python/capture_analysis/capture_analysis/loaders/emg.py": "86eb7114be689cdbd2edd76affa2994e7278714916692a35381abd02ba9d599a",
+      "libs/python/capture_analysis/capture_analysis/loaders/imu.py": "5ea4747145bf5588974dfd72c834766436c5a2bc0d58d34ace0f8ef403b310d6",
+      "libs/python/capture_analysis/capture_analysis/loaders/mcap_iter.py": "03a418e7689840e378665aac92c42769dd14ba2c88a821a5cbf0cee80766540c",
+      "libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py": "0b6c78bf936e3bade378c6b0061aa94a8f11f536ade52b1d687f156d13780296",
+      "libs/python/capture_analysis/capture_analysis/loaders/radar_doppler.py": "4942d08eb47229839e339ce7f2f8a64aee7e5fab44bac77029fcd7a3e3e490c1",
+      "libs/python/capture_analysis/capture_analysis/loaders/radar_frame.py": "d071f9d95b371798974698fd0caa1fc4c865a85fb772232fd43e7227b15fad2b",
+      "libs/python/capture_analysis/capture_analysis/loaders/video.py": "3c3e873ab641904a39ca649dac39072f11948031d068cc21ee459e996d1fc185",
+      "libs/python/capture_analysis/capture_analysis/ml_bundle/__init__.py": "e785a2e3bf65852018d811b38ecbaf6ff9c479648025789145218809dd50d8a1",
+      "libs/python/capture_analysis/capture_analysis/ml_bundle/job.py": "c14c74760e20c818ce5e2428d0b03a8a949899b0bba6c46e37fa8fd797631c75",
+      "libs/python/capture_analysis/capture_analysis/pipeline.py": "e8c0152040ba5b5f3f37ac53fb5188bac9dd9aaf0d5816d6a718be505c20898c",
+      "libs/python/capture_analysis/capture_analysis/plots/modality.py": "c9b1159ce1535fbddb4895d1acdf0115f88919aa3cc51ad964e5771d975995dd",
+      "libs/python/capture_analysis/capture_analysis/plots/style.py": "231e7b1c998f4349d5859295007235ffd41848f12fbb7819193bec9630cd3942",
+      "libs/python/capture_analysis/capture_analysis/plots/sync_dashboard.py": "6f9e0c64193688eb841565729b9d1e9a64136779e892419acabdc81591afd3d5",
+      "libs/python/capture_analysis/capture_analysis/plugins/__init__.py": "c511d4b9cd1cda042b781b06fbb02d2d99004de214735d6daeb459d6e41381fe",
+      "libs/python/capture_analysis/capture_analysis/plugins/dummy.py": "facf059d247bca44f2697383e12cc1296b1d1d12bede1196f4a52a1352d60495",
+      "libs/python/capture_analysis/capture_analysis/plugins/handlers.py": "9be2e1820529b94e54d06790d53aa94cf658f982efb4063c6b64f9d07acc4b2e",
+      "libs/python/capture_analysis/capture_analysis/plugins/manifest.yaml": "365bce8a7193e1407a684d4c3ee5dc1690c296f1b8bcb625076076cd8bea2eb3",
+      "libs/python/capture_analysis/capture_analysis/plugins/registry.py": "5ba10f5b58c102a98943d2225903c1d9f874aa5921a50319e159f6bd4d537351",
+      "libs/python/capture_analysis/capture_analysis/pose/__init__.py": "d58a03cae86259b2cb0ecd0a5ce2347c6824f14cfea6871c94d76acc3541a380",
+      "libs/python/capture_analysis/capture_analysis/pose/job.py": "1f4c44f443c07e22e8c9ca877232c6780c4b1da7834d5565b82cf547b2f4c439",
+      "libs/python/capture_analysis/capture_analysis/qc.py": "cf18c7e044e8e00227f486836d75effd48d8afb862d847add2aa9bc36c062f4b",
+      "libs/python/capture_analysis/capture_analysis/report_html.py": "bb9a3c3627be6916c4f9babbb508e48adeef12b6118964625f01e9ecb5b08e2c",
+      "libs/python/capture_analysis/capture_analysis/types.py": "e7996d02483f69265a2ef2ec0b28078c86f4f479daa53e38faf8b4a62645d02c",
+      "libs/python/capture_analysis/capture_analysis/version.py": "9e25143344b110699f68b6acdbef49576fc91c2cbda34956d7e2cb85bbbc4ae3",
+      "libs/python/capture_analysis/capture_analysis/windows.py": "af40235d55341d2a6b11d7f67a0195779676301fa822b2bd05240d138ee28c50",
+      "libs/python/capture_analysis/pyproject.toml": "84cd96465e48439bdd81f5fa126fea5da11ee7587b488bfaaa67a4cd8f760c75",
+      "libs/python/capture_session/capture_session/__init__.py": "da530f86c0d1d584862868ddba9f7087ccf5dfbddd64dd1e577337ecfd776419",
+      "libs/python/capture_session/capture_session/app_paths.py": "363e4522240e2356cac7492589cb207a798bc1af6031139bd1fa94890f1c4bfd",
+      "libs/python/capture_session/capture_session/package_reader.py": "9a1d9e6e7d24341a083cee602af9538413e948f3369b22660e484356e3d34eb1",
+      "libs/python/capture_session/capture_session/registry.py": "66d23eedee2eef44c6b301e2e865948e75345ded95fe26d0f93098a4cfa8fd32",
+      "libs/python/capture_session/capture_session/settings_store.py": "7719524a1f106cc54befcd21088810f9ec28f0160c8e88f60c374e1545fdb98d",
+      "libs/python/capture_session/pyproject.toml": "3484887da96d4a2f32de8471b537d849f077b195c729ff0cc29307681e8d4895",
+      "schemas/session/jsonschema/analysis_job.schema.json": "0f16c96cb79596f25e05f2a80545b42d080570adbcb84faaf5db5904f35b0ab1",
+      "tools/run_analysis.py": "445dbd638cee0c765dd3a6d7c3c4e0d00298e9cc0df4978c7bd39b843f79d938"
+    }
+  },
+  "candidate": {
+    "variant": "candidate-v1",
+    "started_utc": "2026-10-08T10:29:21.335532+00:00",
+    "finished_utc": "2026-10-08T10:29:35.686199+00:00",
+    "tests_run": 7,
+    "failures": 0,
+    "errors": 0,
+    "test_sha256": "5d5e7105330d31c8f8e9cbb624641808703a719d62a3674ad69faf1f08d18f22",
+    "source_unchanged_during_receiving": true,
+    "schema_validator_available": false,
+    "clean_strict_success_qualified": false,
+    "passing_methods": 7,
+    "all_retained_raw_and_metadata_hashes_match": true,
+    "processes": [
+      {
+        "case": "test_all_creates_distinct_numeric_tables_and_figures",
+        "exit_code": 2,
+        "manifest_status": "completed_with_warnings",
+        "manifest_warnings": [
+          "manifest schema validation: No module named 'jsonschema'"
+        ],
+        "raw_preserved": true
+      },
+      {
+        "case": "test_case_only_stream_ids_keep_distinct_paths_and_gap_provenance",
+        "exit_code": 2,
+        "manifest_status": "completed_with_warnings",
+        "manifest_warnings": [
+          "manifest schema validation: No module named 'jsonschema'"
+        ],
+        "raw_preserved": true
+      },
+      {
+        "case": "test_features_source_selection_keeps_sibling_outputs_independent",
+        "exit_code": 2,
+        "manifest_status": "completed_with_warnings",
+        "manifest_warnings": [
+          "manifest schema validation: No module named 'jsonschema'"
+        ],
+        "raw_preserved": true
+      },
+      {
+        "case": "test_missing_package_is_a_hard_cli_failure_without_a_job",
+        "exit_code": 1,
+        "job_created": false
+      },
+      {
+        "case": "test_plots_command_produces_real_numeric_figures_and_series",
+        "exit_code": 2,
+        "manifest_status": "completed_with_warnings",
+        "manifest_warnings": [
+          "manifest schema validation: No module named 'jsonschema'"
+        ],
+        "raw_preserved": true
+      },
+      {
+        "case": "test_qc_html_inventory_and_manifest_are_available_without_features",
+        "exit_code": 2,
+        "manifest_status": "completed_with_warnings",
+        "manifest_warnings": [
+          "manifest schema validation: No module named 'jsonschema'"
+        ],
+        "raw_preserved": true,
+        "existing_manifest_self_digest_matches": false,
+        "existing_log_listed_in_persisted_manifest": false
+      },
+      {
+        "case": "test_refused_stream_is_reported_and_strict_warnings_changes_exit",
+        "exit_code": 0,
+        "manifest_status": "completed_with_warnings",
+        "manifest_warnings": [
+          "sampler.a/voltage: numeric samples must contain channel_count \u00d7 whole frames",
+          "manifest schema validation: No module named 'jsonschema'"
+        ],
+        "raw_preserved": true
+      },
+      {
+        "case": "test_refused_stream_is_reported_and_strict_warnings_changes_exit",
+        "exit_code": 2,
+        "manifest_status": "completed_with_warnings",
+        "manifest_warnings": [
+          "sampler.a/voltage: numeric samples must contain channel_count \u00d7 whole frames",
+          "manifest schema validation: No module named 'jsonschema'"
+        ],
+        "raw_preserved": true
+      }
+    ],
+    "source_file_sha256": {
+      "AGENTS.md": "525164ca1f3b9e68561434ab110ba17ed65843a20c23f4c1385fde33f1863a74",
+      "docs/design/ANALYSIS.md": "eead8ce99eff3688a6598dfb3ec07b5f66335116d926fed476aa2b73e2a83e82",
+      "docs/design/research/schemas/analysis_plugin_manifest.schema.json": "502646cd627b5106ecad1843c512e9f16280187e5b48421c09e5e89a812553b8",
+      "libs/python/capture_analysis/capture_analysis/__init__.py": "14cfe6dccd33a0bda74fac3c9339e1a37a3538b2110a8ae6e307801b776eb43a",
+      "libs/python/capture_analysis/capture_analysis/discover.py": "344ee5d7cb0f5e95ac7524a0c1141b0a293bb9445e2bd4789c6736f39cfcb90d",
+      "libs/python/capture_analysis/capture_analysis/eval/__init__.py": "54661df9ed7d7e0d4b1c2ab5941f107ceb608e4fdfaff810014ef5fad1431fe1",
+      "libs/python/capture_analysis/capture_analysis/eval/job.py": "a7f2a43c2fc3723c471e42a5532465dc5cfa44d4411c6cf581bba6910603fc57",
+      "libs/python/capture_analysis/capture_analysis/features/__init__.py": "3cdd6c626b6da12b8df56d8ddf35fca27c0a744865965ec01dd89d47da476fa1",
+      "libs/python/capture_analysis/capture_analysis/features/emg.py": "11f8f8350464b7c7c079353ca649b4c4aad2580ef8d355fe741c025c262b168e",
+      "libs/python/capture_analysis/capture_analysis/features/imu.py": "246bfd1cc3ce72afa0680537062b6795e22b8a06ba6301503d7489a4440c6849",
+      "libs/python/capture_analysis/capture_analysis/features/io.py": "c677d209292cca790ccdf1a64ba834f71a078ccce31ea57452e67ece358822ca",
+      "libs/python/capture_analysis/capture_analysis/features/numeric_batch.py": "ecdeb88ca4dd093b973294a53954e9fa0e5d6b4b908225a52d097ef70c7d2154",
+      "libs/python/capture_analysis/capture_analysis/features/radar_doppler.py": "cffc0ecbb8053fbc2244850c1927469366f4ae93b5439e4d194de2065877fa5c",
+      "libs/python/capture_analysis/capture_analysis/features/radar_frame.py": "f85c5fe5e2db68606f68e36a42a0c8f323086f0b1e7f233c0ddefa24cdccb443",
+      "libs/python/capture_analysis/capture_analysis/features/video_qc.py": "0e25c50e01fc2da47bc7b510d68ba3e72aba33d3e1c79c57b727f5c55c723e27",
+      "libs/python/capture_analysis/capture_analysis/grids.py": "936c5404783145f7a2bc4c13df22d3b85612bcb227115bba74f0b78a11c0c483",
+      "libs/python/capture_analysis/capture_analysis/jobs.py": "1f58a18fbddf620f304d4521e693d1d26508a8871ad373bc47630da7dd38dcc2",
+      "libs/python/capture_analysis/capture_analysis/kinematics/__init__.py": "50a0f7fd39648abf269fc549d2c17eb48b1dc9add10ebdb76edc1935d6f80160",
+      "libs/python/capture_analysis/capture_analysis/kinematics/compute.py": "6e3ca19bfda0c02877f5d778f0c1191b5aebad605373732ef182bd714dd7f086",
+      "libs/python/capture_analysis/capture_analysis/kinematics/job.py": "d676e84f54aa1ae2b0f998c2cb37c4e02541c1fd0e3464e38e9865c0049a7239",
+      "libs/python/capture_analysis/capture_analysis/kinematics/registry.py": "1e53fb9da4c6a2743bc1a3f0e687d94599cf995d33f2a2555e0ce5ebc3966d48",
+      "libs/python/capture_analysis/capture_analysis/loaders/__init__.py": "2d51c509baf3c0b5c33360637d12e5ce3c7507a859e4f37030f2c3d711ef0b3d",
+      "libs/python/capture_analysis/capture_analysis/loaders/base.py": "696093b31f22d2bef32fc2962c7a11249a590a0b4d776c40cef4edcbc1e48a97",
+      "libs/python/capture_analysis/capture_analysis/loaders/emg.py": "86eb7114be689cdbd2edd76affa2994e7278714916692a35381abd02ba9d599a",
+      "libs/python/capture_analysis/capture_analysis/loaders/imu.py": "5ea4747145bf5588974dfd72c834766436c5a2bc0d58d34ace0f8ef403b310d6",
+      "libs/python/capture_analysis/capture_analysis/loaders/mcap_iter.py": "03a418e7689840e378665aac92c42769dd14ba2c88a821a5cbf0cee80766540c",
+      "libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py": "7c84c0425c1b9b821df711f4c40ea89ac13f267dbe6472922eb41a9263e4835c",
+      "libs/python/capture_analysis/capture_analysis/loaders/radar_doppler.py": "4942d08eb47229839e339ce7f2f8a64aee7e5fab44bac77029fcd7a3e3e490c1",
+      "libs/python/capture_analysis/capture_analysis/loaders/radar_frame.py": "d071f9d95b371798974698fd0caa1fc4c865a85fb772232fd43e7227b15fad2b",
+      "libs/python/capture_analysis/capture_analysis/loaders/video.py": "3c3e873ab641904a39ca649dac39072f11948031d068cc21ee459e996d1fc185",
+      "libs/python/capture_analysis/capture_analysis/ml_bundle/__init__.py": "e785a2e3bf65852018d811b38ecbaf6ff9c479648025789145218809dd50d8a1",
+      "libs/python/capture_analysis/capture_analysis/ml_bundle/job.py": "c14c74760e20c818ce5e2428d0b03a8a949899b0bba6c46e37fa8fd797631c75",
+      "libs/python/capture_analysis/capture_analysis/pipeline.py": "e8c0152040ba5b5f3f37ac53fb5188bac9dd9aaf0d5816d6a718be505c20898c",
+      "libs/python/capture_analysis/capture_analysis/plots/modality.py": "c9b1159ce1535fbddb4895d1acdf0115f88919aa3cc51ad964e5771d975995dd",
+      "libs/python/capture_analysis/capture_analysis/plots/style.py": "231e7b1c998f4349d5859295007235ffd41848f12fbb7819193bec9630cd3942",
+      "libs/python/capture_analysis/capture_analysis/plots/sync_dashboard.py": "6f9e0c64193688eb841565729b9d1e9a64136779e892419acabdc81591afd3d5",
+      "libs/python/capture_analysis/capture_analysis/plugins/__init__.py": "c511d4b9cd1cda042b781b06fbb02d2d99004de214735d6daeb459d6e41381fe",
+      "libs/python/capture_analysis/capture_analysis/plugins/dummy.py": "facf059d247bca44f2697383e12cc1296b1d1d12bede1196f4a52a1352d60495",
+      "libs/python/capture_analysis/capture_analysis/plugins/handlers.py": "9be2e1820529b94e54d06790d53aa94cf658f982efb4063c6b64f9d07acc4b2e",
+      "libs/python/capture_analysis/capture_analysis/plugins/manifest.yaml": "1efe3ee2d9eeeeac03c2c03c582edf0119c9abd6d214dfdca3d827fa10a5c048",
+      "libs/python/capture_analysis/capture_analysis/plugins/numeric.py": "52af47aa89660425d60a3c8fe92ba90f9194b04aa3054b16b4d586a2883c9b79",
+      "libs/python/capture_analysis/capture_analysis/plugins/registry.py": "33a4d07600db8b116fbd46b67492f62129df513df5b66a2c455dced0b2a9dc69",
+      "libs/python/capture_analysis/capture_analysis/pose/__init__.py": "d58a03cae86259b2cb0ecd0a5ce2347c6824f14cfea6871c94d76acc3541a380",
+      "libs/python/capture_analysis/capture_analysis/pose/job.py": "1f4c44f443c07e22e8c9ca877232c6780c4b1da7834d5565b82cf547b2f4c439",
+      "libs/python/capture_analysis/capture_analysis/qc.py": "cf18c7e044e8e00227f486836d75effd48d8afb862d847add2aa9bc36c062f4b",
+      "libs/python/capture_analysis/capture_analysis/report_html.py": "bb9a3c3627be6916c4f9babbb508e48adeef12b6118964625f01e9ecb5b08e2c",
+      "libs/python/capture_analysis/capture_analysis/types.py": "e7996d02483f69265a2ef2ec0b28078c86f4f479daa53e38faf8b4a62645d02c",
+      "libs/python/capture_analysis/capture_analysis/version.py": "9e25143344b110699f68b6acdbef49576fc91c2cbda34956d7e2cb85bbbc4ae3",
+      "libs/python/capture_analysis/capture_analysis/windows.py": "af40235d55341d2a6b11d7f67a0195779676301fa822b2bd05240d138ee28c50",
+      "libs/python/capture_analysis/pyproject.toml": "84cd96465e48439bdd81f5fa126fea5da11ee7587b488bfaaa67a4cd8f760c75",
+      "libs/python/capture_session/capture_session/__init__.py": "da530f86c0d1d584862868ddba9f7087ccf5dfbddd64dd1e577337ecfd776419",
+      "libs/python/capture_session/capture_session/app_paths.py": "363e4522240e2356cac7492589cb207a798bc1af6031139bd1fa94890f1c4bfd",
+      "libs/python/capture_session/capture_session/package_reader.py": "9a1d9e6e7d24341a083cee602af9538413e948f3369b22660e484356e3d34eb1",
+      "libs/python/capture_session/capture_session/registry.py": "66d23eedee2eef44c6b301e2e865948e75345ded95fe26d0f93098a4cfa8fd32",
+      "libs/python/capture_session/capture_session/settings_store.py": "7719524a1f106cc54befcd21088810f9ec28f0160c8e88f60c374e1545fdb98d",
+      "libs/python/capture_session/pyproject.toml": "3484887da96d4a2f32de8471b537d849f077b195c729ff0cc29307681e8d4895",
+      "schemas/session/jsonschema/analysis_job.schema.json": "0f16c96cb79596f25e05f2a80545b42d080570adbcb84faaf5db5904f35b0ab1",
+      "tests/analysis/test_numeric_cli_receiving.py": "5d5e7105330d31c8f8e9cbb624641808703a719d62a3674ad69faf1f08d18f22",
+      "tools/run_analysis.py": "445dbd638cee0c765dd3a6d7c3c4e0d00298e9cc0df4978c7bd39b843f79d938"
+    }
+  },
+  "artifact_observations": [
+    {
+      "case": "test_all_creates_distinct_numeric_tables_and_figures",
+      "job_manifest_sha256": "14e5f823f6ee0fd4574f73f76025e6f5ce9b61679860558033ce335ba7c173a8",
+      "feature_tables": [
+        {
+          "relativePath": "features/numeric/source-73616d706c65722e61/stream-666f726365/windows.parquet",
+          "sourceId": "sampler.a",
+          "streamId": "force",
+          "rows": 5,
+          "validFraction": 1.0
+        },
+        {
+          "relativePath": "features/numeric/source-73616d706c65722e61/stream-766f6c74616765/windows.parquet",
+          "sourceId": "sampler.a",
+          "streamId": "voltage",
+          "rows": 5,
+          "validFraction": 1.0
+        },
+        {
+          "relativePath": "features/numeric/source-73616d706c65722e62/stream-74656d7065726174757265/windows.parquet",
+          "sourceId": "sampler.b",
+          "streamId": "temperature",
+          "rows": 5,
+          "validFraction": 1.0
+        }
+      ],
+      "figures": [
+        {
+          "bytes": 55426,
+          "kind": "figure",
+          "relativePath": "figures/numeric/source-73616d706c65722e61/stream-666f726365/channel_0.png",
+          "sha256": "3d66598605ad9ac3613cb33abe1a59bf43de21f41605e24ab55f3792dd93b7e0"
+        },
+        {
+          "bytes": 56299,
+          "kind": "figure",
+          "relativePath": "figures/numeric/source-73616d706c65722e61/stream-766f6c74616765/channel_0.png",
+          "sha256": "cdecba802980588a244247ec00912e9bd3e1611176b15fac1db159d965767ab4"
+        },
+        {
+          "bytes": 56203,
+          "kind": "figure",
+          "relativePath": "figures/numeric/source-73616d706c65722e62/stream-74656d7065726174757265/channel_0.png",
+          "sha256": "93c366170a86f62af3bd4366f5ad95e7777f7206f55f61dbfeea7c45e8763962"
+        },
+        {
+          "bytes": 151649,
+          "kind": "figure",
+          "relativePath": "figures/sync_dashboard.png",
+          "sha256": "4c04cda688a60163f11f37ec983aae2896b1b9b512ae6705297356ef3fe644a8"
+        }
+      ],
+      "persisted_log_listing_present": false
+    },
+    {
+      "case": "test_case_only_stream_ids_keep_distinct_paths_and_gap_provenance",
+      "job_manifest_sha256": "2098c74fddd22cfd8da30a434a9e517d7fdea76072e4f8de004df677226e4597",
+      "feature_tables": [
+        {
+          "relativePath": "features/numeric/source-73616d706c65722e61/stream-41/windows.parquet",
+          "sourceId": "sampler.a",
+          "streamId": "A",
+          "rows": 5,
+          "validFraction": 0.8333333333333334
+        },
+        {
+          "relativePath": "features/numeric/source-73616d706c65722e61/stream-61/windows.parquet",
+          "sourceId": "sampler.a",
+          "streamId": "a",
+          "rows": 5,
+          "validFraction": 1.0
+        },
+        {
+          "relativePath": "features/numeric/source-73616d706c65722e62/stream-74656d7065726174757265/windows.parquet",
+          "sourceId": "sampler.b",
+          "streamId": "temperature",
+          "rows": 5,
+          "validFraction": 1.0
+        }
+      ],
+      "figures": [
+        {
+          "bytes": 56211,
+          "kind": "figure",
+          "relativePath": "figures/numeric/source-73616d706c65722e61/stream-41/channel_0.png",
+          "sha256": "b24d5435159788c48c3f73d67a115f244ad9d9da62a8bf5bbc93dfb0634e0984"
+        },
+        {
+          "bytes": 54384,
+          "kind": "figure",
+          "relativePath": "figures/numeric/source-73616d706c65722e61/stream-61/channel_0.png",
+          "sha256": "7fe8b1eb6a28a47bc26cf9446f3c13377ffe4ba3768b145a7d5bc225d754e0e9"
+        },
+        {
+          "bytes": 56203,
+          "kind": "figure",
+          "relativePath": "figures/numeric/source-73616d706c65722e62/stream-74656d7065726174757265/channel_0.png",
+          "sha256": "93c366170a86f62af3bd4366f5ad95e7777f7206f55f61dbfeea7c45e8763962"
+        },
+        {
+          "bytes": 152983,
+          "kind": "figure",
+          "relativePath": "figures/sync_dashboard.png",
+          "sha256": "22a60015a0c97da46fd4c7af3b97ea4517be24ac43d5f2ab343bb4d9aadfe296"
+        }
+      ],
+      "persisted_log_listing_present": false
+    }
+  ],
+  "boundaries": [
+    "Synthetic but actual protobuf NumericBatch MCAP; actual tools/run_analysis.py subprocesses and unmodified handlers/jobs/writers/plotters.",
+    "Local default index could not install jsonschema. Both exact repository schemas remain present; only exact missing-validator warning is permitted by explicit local flag.",
+    "Native default requires jsonschema and both schema files; hosted clean strict-success result remains pending.",
+    "Existing manifest self-digest/size mismatch, missing persisted log output entry, and lack of figure links in QC HTML are inherited current-main behavior.",
+    "Existing plot_series displays time relative to first sample while labeling session time; no absolute-axis repair claim.",
+    "No hardware, installed estate-host, export, or native per-source coverage aggregation claim. Per-stream coverage is checked from persisted feature schema."
+  ],
+  "author_freeze_receipt_sha256": "fda2c8a77d90fc57993d0778aa991bd05eb77eb7f1a613c205b75c8b683f36c3",
+  "successor_pending": "Hosted CI on the final six-file numeric source and unchanged seven-method CLI test.",
+  "final_axis_followup": {
+    "source_hydration": {
+      "base": "52203f5ceedfa0da8f1813e700a41ec8c364263e",
+      "candidate_production": [
+        {
+          "path": "libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py",
+          "sha256": "7c84c0425c1b9b821df711f4c40ea89ac13f267dbe6472922eb41a9263e4835c",
+          "git_blob": "668e5397d6a603d8665fe639b3218128bbda72c2"
+        },
+        {
+          "path": "libs/python/capture_analysis/capture_analysis/features/numeric_batch.py",
+          "sha256": "ecdeb88ca4dd093b973294a53954e9fa0e5d6b4b908225a52d097ef70c7d2154",
+          "git_blob": "77f19ccb048c93c0f4fca460eef0502180b37717"
+        },
+        {
+          "path": "libs/python/capture_analysis/capture_analysis/plugins/registry.py",
+          "sha256": "33a4d07600db8b116fbd46b67492f62129df513df5b66a2c455dced0b2a9dc69",
+          "git_blob": "3c582e1ab0de2b22956ac47fb628227eacdd1faf"
+        },
+        {
+          "path": "libs/python/capture_analysis/capture_analysis/plugins/manifest.yaml",
+          "sha256": "1efe3ee2d9eeeeac03c2c03c582edf0119c9abd6d214dfdca3d827fa10a5c048",
+          "git_blob": "0628968ee3965170b486306f974c81dd4eb84a53"
+        },
+        {
+          "path": "libs/python/capture_analysis/capture_analysis/plugins/numeric.py",
+          "sha256": "75b55cb453095ad5470ce2532b65d3dce771e6a2f8ad1e46a538b4291fa4cf93",
+          "git_blob": "d8adbc1d90dbfdeac0cd9179c95f027532c1a5d4"
+        },
+        {
+          "path": "libs/python/capture_analysis/capture_analysis/plots/modality.py",
+          "sha256": "bc3aa15ee79d50280a6c9d6aa144fe0519f85dd2c74a0cfa99323f7d57ecd28d",
+          "git_blob": "1de343cc2e11e663501ba190441325d5637d1492"
+        }
+      ],
+      "stable_during_copy": true,
+      "prior_four_non_plot_production_files_unchanged": true,
+      "source_current_main_for_other_selected_paths": true,
+      "independent_test_sha256": "5d5e7105330d31c8f8e9cbb624641808703a719d62a3674ad69faf1f08d18f22"
+    },
+    "receipt_relative_path": "axis-followup.json",
+    "receipt_sha256": "fcfdc9fc7ae9e31271baffa8201772a821c0c182098912323d9ddc5150b6c13d",
+    "test_methods_run": 1,
+    "failed_methods": 0,
+    "unchanged_complete_suite_test_sha256": "5d5e7105330d31c8f8e9cbb624641808703a719d62a3674ad69faf1f08d18f22",
+    "full_final_source_hosted_ci": "pending",
+    "visual_check": {
+      "accepted": true,
+      "method": "Direct view of both actual unmodified native PNG outputs",
+      "figures": [
+        {
+          "sourceId": "sampler.a",
+          "streamId": "A",
+          "validFraction": 0.8333333333333334,
+          "relativePath": "figures/numeric/source-73616d706c65722e61/stream-41/channel_0.png",
+          "sha256": "b4361d4b23731e8b140fb7896fcb4f91a38da305759aefc0f0f139aea32948f1",
+          "axis_label": "Time since first retained sample (s)",
+          "origin_label": "First retained session_time_ns=1000000000",
+          "visual_pass": true,
+          "gap_shading_visible": true,
+          "absolute_axis_claim": false
+        },
+        {
+          "sourceId": "sampler.a",
+          "streamId": "a",
+          "validFraction": 1.0,
+          "relativePath": "figures/numeric/source-73616d706c65722e61/stream-61/channel_0.png",
+          "sha256": "ce9b431900e810a2f8842533696d8485488bdc878e25b4d51011d58091dc1a4d",
+          "axis_label": "Time since first retained sample (s)",
+          "origin_label": "First retained session_time_ns=1000000000",
+          "visual_pass": true,
+          "gap_shading_visible": false,
+          "absolute_axis_claim": false
+        }
+      ]
+    }
+  }
+}

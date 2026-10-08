@@ -1,0 +1,13 @@
+{
+  "sha256": {
+    "loaders/numeric_batch.py": "7c84c0425c1b9b821df711f4c40ea89ac13f267dbe6472922eb41a9263e4835c",
+    "features/numeric_batch.py": "ecdeb88ca4dd093b973294a53954e9fa0e5d6b4b908225a52d097ef70c7d2154",
+    "plugins/registry.py": "33a4d07600db8b116fbd46b67492f62129df513df5b66a2c455dced0b2a9dc69",
+    "plugins/manifest.yaml": "1efe3ee2d9eeeeac03c2c03c582edf0119c9abd6d214dfdca3d827fa10a5c048",
+    "plugins/numeric.py": "52af47aa89660425d60a3c8fe92ba90f9194b04aa3054b16b4d586a2883c9b79",
+    "windows.py": "af40235d55341d2a6b11d7f67a0195779676301fa822b2bd05240d138ee28c50"
+  },
+  "test_sha256": "cf1cb5405ea70206a12948d2ed491a5de679eef9bcc003741e44112de3a7f1bc",
+  "exit_code": 0,
+  "source_unchanged_during_run": true
+}

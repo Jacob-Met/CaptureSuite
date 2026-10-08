@@ -1,0 +1,31 @@
+test_known_gap_masks_samples_and_fail_policy_refuses (test_numeric_batch_pipeline.NumericFeatureTests.test_known_gap_masks_samples_and_fail_policy_refuses) ... ok
+test_large_and_small_finite_values_have_finite_correct_reductions (test_numeric_batch_pipeline.NumericFeatureTests.test_large_and_small_finite_values_have_finite_correct_reductions) ... ok
+test_public_feature_shape_and_rate_are_validated (test_numeric_batch_pipeline.NumericFeatureTests.test_public_feature_shape_and_rate_are_validated) ... ok
+test_split_does_not_bridge_a_gap_without_samples (test_numeric_batch_pipeline.NumericFeatureTests.test_split_does_not_bridge_a_gap_without_samples) ... ok
+test_actual_batch_guard_does_not_trust_descriptor_density (test_numeric_batch_pipeline.NumericLoaderTests.test_actual_batch_guard_does_not_trust_descriptor_density) ... ok
+test_actual_budget_accumulates_across_batches (test_numeric_batch_pipeline.NumericLoaderTests.test_actual_budget_accumulates_across_batches) ... ok
+test_backward_device_times_are_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_backward_device_times_are_refused) ... ok
+test_changing_layout_is_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_changing_layout_is_refused) ... ok
+test_empty_and_outside_window_return_valid_public_result (test_numeric_batch_pipeline.NumericLoaderTests.test_empty_and_outside_window_return_valid_public_result) ... ok
+test_impossible_budget_refuses_before_iteration (test_numeric_batch_pipeline.NumericLoaderTests.test_impossible_budget_refuses_before_iteration) ... ok
+test_incomplete_frame_is_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_incomplete_frame_is_refused) ... ok
+test_invalid_channel_names_are_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_invalid_channel_names_are_refused) ... ok
+test_json_device_timestamp_overflow_is_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_json_device_timestamp_overflow_is_refused) ... ok
+test_json_schema_alias_and_generated_channel_names (test_numeric_batch_pipeline.NumericLoaderTests.test_json_schema_alias_and_generated_channel_names) ... ok
+test_json_types_are_not_silently_coerced (test_numeric_batch_pipeline.NumericLoaderTests.test_json_types_are_not_silently_coerced) ... ok
+test_missing_native_times_use_rate_and_mark_interpolation (test_numeric_batch_pipeline.NumericLoaderTests.test_missing_native_times_use_rate_and_mark_interpolation) ... ok
+test_native_worker_schema_decodes_channels_units_and_session_time (test_numeric_batch_pipeline.NumericLoaderTests.test_native_worker_schema_decodes_channels_units_and_session_time) ... ok
+test_nonfinite_samples_are_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_nonfinite_samples_are_refused) ... ok
+test_other_schema_is_not_decoded_as_numeric (test_numeric_batch_pipeline.NumericLoaderTests.test_other_schema_is_not_decoded_as_numeric) ... ok
+test_partial_device_times_are_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_partial_device_times_are_refused) ... ok
+test_rate_is_required_and_finite (test_numeric_batch_pipeline.NumericLoaderTests.test_rate_is_required_and_finite) ... ok
+test_session_timestamp_overflow_is_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_session_timestamp_overflow_is_refused) ... ok
+test_unpaired_timestamps_are_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_unpaired_timestamps_are_refused) ... ok
+test_durationless_two_stream_package_writes_real_numeric_artifacts (test_numeric_batch_pipeline.NumericPipelineTests.test_durationless_two_stream_package_writes_real_numeric_artifacts) ... ok
+test_non_numeric_modality_routes_remain_available (test_numeric_batch_pipeline.NumericPipelineTests.test_non_numeric_modality_routes_remain_available) ... ok
+test_schema_route_precedes_descriptive_modality (test_numeric_batch_pipeline.NumericPipelineTests.test_schema_route_precedes_descriptive_modality) ... ok
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.736s
+
+OK

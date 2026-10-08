@@ -1,0 +1,12 @@
+{
+  "base_commit": "d3edda561322a80bfc1491ae4f4c7b0bb94943ea",
+  "scoped_files_verified_unchanged_at": "c43b2819b149e1e87d7f957d8b3583881c29ffb4",
+  "sha256": {
+    "loaders/numeric_batch.py": "0b6c78bf936e3bade378c6b0061aa94a8f11f536ade52b1d687f156d13780296",
+    "features/numeric_batch.py": "df48baa8eac38e1bcdb38411758b7f803507ab27b4a97fba18c86042cfd33c76",
+    "plugins/handlers.py": "9be2e1820529b94e54d06790d53aa94cf658f982efb4063c6b64f9d07acc4b2e",
+    "plugins/registry.py": "5ba10f5b58c102a98943d2225903c1d9f874aa5921a50319e159f6bd4d537351",
+    "test_numeric_receiving.py": "cf1cb5405ea70206a12948d2ed491a5de679eef9bcc003741e44112de3a7f1bc"
+  },
+  "exit_code": 1
+}
