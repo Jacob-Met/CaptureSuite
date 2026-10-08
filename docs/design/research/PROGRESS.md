@@ -982,3 +982,25 @@ GNU linker-wrapped cases, Windows, complete Mac UI/daemon, x86_64 or notarizatio
 Native artifact paths, exact hashes, recipient usage, raw qualification and
 independent review are in
 [the receiving packet](../../receiving/macos-session-doctor-5f566b5ec8ef/README.md).
+
+
+### 2026-10-08 — Selected feature-column handoff (#78), author work in progress
+
+Owner `estate-03ac6e86ba72 / mac_production` claimed an additive retained Analysis
+table exporter: ordered exact columns, CSV/Parquet, unchanged original rows and
+scientific metadata, exact job/parameter/schema copies and actual input/output
+hashes in a new external directory. Existing feature writers and full CSV mirrors,
+raw export, desktop, job execution and other active owners are unchanged.
+
+Current-source Mac baseline `9c44354c` produced three healthy feature tables from
+real synthetic MCAP and preserved raw hashes; the selected-column entrypoint was
+actually absent. Exact source/input receipts and files are in the unique
+`docs/evidence/feature-table-export-03ac6e86ba72/` packet. Mac and scratch reached
+ENOSPC before the first implementation file write. Unqualified source checkpoint
+`8ba467cf` preserved continuity; author work moved to a separate Windows stage.
+
+Library, CLI, guide and maintained tests are authored; native qualification and
+independent receiving are still pending at this entry. The independent Windows
+consumer contract was frozen before candidate inspection. The supported Python
+3.12 task-local runtime/dependency setup is isolated from global installation.
+No package adoption, scientific validation or integration is claimed here.

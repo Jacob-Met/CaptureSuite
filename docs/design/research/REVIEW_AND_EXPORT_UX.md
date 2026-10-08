@@ -155,3 +155,20 @@ different selections. Default exports still use the package's `exports/` folder.
 
 The receiving record is in
 [`docs/evidence/export-selection-20261008/`](../../evidence/export-selection-20261008/).
+
+
+## Selected feature-table exports (2026-10-08, #78)
+
+A retained Analysis job may be exported as an explicitly selected, ordered set of
+feature columns. Existing full Parquet/CSV job outputs remain the source. The
+native `tools/export_feature_table.py` workflow reads all rows in original order,
+writes a new directory outside the session package, and carries exact original
+job/parameter/feature-schema records with versioned selected schema and hashes.
+It validates retained output identity and column metadata before writing, and
+does not rerun analysis or alter scientific status. CSV consumers must use the
+recorded Arrow types, null/quoted-string rules and multiline parser setting.
+Unsupported CSV types require Parquet. See [the workflow guide](../../FEATURE_TABLE_EXPORT.md).
+
+This is an additive Analysis data-handoff decision. Existing Review raw/structural
+exports, Analysis figure export, job execution and feature extraction retain their
+established contracts.
