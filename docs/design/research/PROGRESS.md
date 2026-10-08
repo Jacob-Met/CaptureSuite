@@ -592,3 +592,22 @@ all 12 raw package hashes per CLI run are preserved. Exact-head hosted gates
 remain pending. Raw results, source pins, CLI input/output hashes and receiving
 source equivalence are in
 `../../evidence/qc-gap-details-ultra-20b27c2e-20261008/`.
+
+
+### 2026-10-08 — Add actual GStreamer camera qualification
+
+The additive Native camera worker workflow enables the real Windows camera
+target with the pinned official GStreamer 1.24.13 MSVC SDK. A test-only absolute
+executable selector reuses the existing three camera cases for the original,
+plugin and legacy layouts. The receiving runner requires all three cases in
+each layout, exact worker/DLL identity, an actual missing plugin-local protobuf
+loader refusal, exact restoration, and unchanged source/SDK/binaries.
+
+The SDK is administratively extracted into a fresh hosted-runner directory;
+there is no product installation or machine/user environment change. Existing
+CI, CMake test registration, worker production source and runtime resolver
+ownership are preserved. Portable acceptance controls and independent source
+review precede hosted Windows execution; they do not establish a native camera
+pass. Physical devices and automatic manifest resolution remain outside this
+gate. Scope, reproduction and retained-evidence rules are in
+`../../qualification/camera-native-dd84679589d8/README.md`.
