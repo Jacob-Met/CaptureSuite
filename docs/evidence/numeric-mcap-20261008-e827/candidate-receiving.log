@@ -1,0 +1,16 @@
+Reviewed package: /workspace/scratch/e82707f2bc62/capturesuite-numeric/candidate/libs/python/capture_analysis/capture_analysis/__init__.py
+Fixture: real self-describing protobuf MCAP; native writer schema name
+test_actual_payload_budget_is_not_hidden_by_small_descriptor (__main__.NumericReceiving.test_actual_payload_budget_is_not_hidden_by_small_descriptor) ... ok
+test_durationless_public_job_admits_small_native_recording (__main__.NumericReceiving.test_durationless_public_job_admits_small_native_recording) ... ok
+test_durationless_public_job_reports_small_budget_refusal (__main__.NumericReceiving.test_durationless_public_job_reports_small_budget_refusal) ... ok
+test_finite_large_values_keep_finite_mean_and_rms (__main__.NumericReceiving.test_finite_large_values_keep_finite_mean_and_rms) ... ok
+test_missing_rate_refuses_to_invent_timebase (__main__.NumericReceiving.test_missing_rate_refuses_to_invent_timebase) ... ok
+test_native_mcap_segments_are_anchored_sorted_and_clipped_together (__main__.NumericReceiving.test_native_mcap_segments_are_anchored_sorted_and_clipped_together) ... ok
+test_partial_device_timestamps_are_rejected (__main__.NumericReceiving.test_partial_device_timestamps_are_rejected) ... ok
+test_partial_frame_payload_is_rejected (__main__.NumericReceiving.test_partial_frame_payload_is_rejected) ... ok
+test_public_checkpoint_job_exports_exact_native_bounds_math_and_metadata (__main__.NumericReceiving.test_public_checkpoint_job_exports_exact_native_bounds_math_and_metadata) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.139s
+
+OK

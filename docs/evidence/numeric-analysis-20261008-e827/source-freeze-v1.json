@@ -1,0 +1,32 @@
+{
+  "libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py": {
+    "bytes": 7139,
+    "sha256": "7c84c0425c1b9b821df711f4c40ea89ac13f267dbe6472922eb41a9263e4835c",
+    "gitBlob": "668e5397d6a603d8665fe639b3218128bbda72c2"
+  },
+  "libs/python/capture_analysis/capture_analysis/features/numeric_batch.py": {
+    "bytes": 4030,
+    "sha256": "ecdeb88ca4dd093b973294a53954e9fa0e5d6b4b908225a52d097ef70c7d2154",
+    "gitBlob": "77f19ccb048c93c0f4fca460eef0502180b37717"
+  },
+  "libs/python/capture_analysis/capture_analysis/plugins/registry.py": {
+    "bytes": 5389,
+    "sha256": "33a4d07600db8b116fbd46b67492f62129df513df5b66a2c455dced0b2a9dc69",
+    "gitBlob": "3c582e1ab0de2b22956ac47fb628227eacdd1faf"
+  },
+  "libs/python/capture_analysis/capture_analysis/plugins/manifest.yaml": {
+    "bytes": 3876,
+    "sha256": "1efe3ee2d9eeeeac03c2c03c582edf0119c9abd6d214dfdca3d827fa10a5c048",
+    "gitBlob": "0628968ee3965170b486306f974c81dd4eb84a53"
+  },
+  "libs/python/capture_analysis/capture_analysis/plugins/numeric.py": {
+    "bytes": 3202,
+    "sha256": "52af47aa89660425d60a3c8fe92ba90f9194b04aa3054b16b4d586a2883c9b79",
+    "gitBlob": "32ca72e440ea0d06a7798c7b1b58d03e3aee6b65"
+  },
+  "tests/analysis/test_numeric_batch_pipeline.py": {
+    "bytes": 19230,
+    "sha256": "43369bd0fea48d2c8b7dee1d8128b3bb131b508b7b0a14512fc457fcfdb0ba3c",
+    "gitBlob": "9485adb27d02ab88e65d87576a06b86869a0360b"
+  }
+}
