@@ -1,9 +1,33 @@
+## 2026-10-08 — independent framing-view receiving accepted
+
+Integration receiver `integration-72ac1419` preserved the separate `capture_peer` decision
+and exact native outputs under `docs/evidence/framing-view-lifetime-72ac1419/peer/`.
+Peer accepted source commit `4359c21f3da93ed863de617331edfc853cf8385d`; its own 27-test
+replay and 20-case view/diagnostic matrix pass, and both predecessor active-handler
+failures independently reproduce. Product framing and tests are unchanged. The companion
+Windows gates and GitHub publication remain pending because content creation is still
+secondary-rate-limited; no failed registration was represented as a published claim.
+
 # Agent progress log
 
 Agents: **read at session start, update at session end.**  
 Plan: [AUTONOMOUS_EXECUTION_PLAN.md](AUTONOMOUS_EXECUTION_PLAN.md)
 
 ---
+
+## 2026-10-08 — Retained framing exception recovery (integration-72ac1419)
+
+Independent receiving of PR #35 found that an active or saved FrameError retained
+an exported memoryview and made the documented decoder reset raise BufferError.
+The isolated successor releases only the parser-owned view on every decode exit;
+wire fields, payload ownership, caller-owned views and error diagnostics remain intact.
+Exact predecessor 65b76c9 plus 11 new controls: 9 failed / 18 passed. Same actual package,
+Mac Python 3.12.8 / protobuf 4.25.9 and candidate: 27 passed; strict Ruff/diff-check passed.
+Source bytes, raw failures and replay are in
+`docs/evidence/framing-view-lifetime-72ac1419/README.md`.
+This is an isolated qualified companion pending independent receiving and its own
+supported Windows CI. GitHub comment creation remains temporarily rate-limited;
+no review publication, source integration, named-pipe or hardware pass is claimed.
 
 ## 2026-10-08 — Incremental protocol error propagation
 
