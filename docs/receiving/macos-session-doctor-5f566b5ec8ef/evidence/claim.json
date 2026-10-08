@@ -1,0 +1,11 @@
+{
+  "repository": "Jacob-Met/CaptureSuite",
+  "canonical_base": "d43bdea867d6198a707a5f55e29216c76054517e",
+  "claim": {
+    "key": "claim:CaptureSuite:canonical-mac-session-doctor:20261008:5f566b5ec8ef",
+    "seq": 4294,
+    "event_id": "cev_580eaeffb259433bbcef47d2",
+    "event_hash": "9cdedf50f47c92c85cf78e90830dc87fd61526c4d585695ae1a09d99a034de91"
+  },
+  "text": "New distinct current-canonical portable receiver, not a takeover of CaptureSuite Mac port or whole project. Source base d43bdea867d6198a707a5f55e29216c76054517e already enables portable non-Windows core/proto/storage/session_doctor. Own only new /Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef immutable source/build/package/evidence and additive docs/receiving/macos-session-doctor-5f566b5ec8ef plus required progress note. Build and qualify a separately named current-canonical arm64 Mac receiver with installed dependencies and pinned MCAP headers; use private authored synthetic session fixtures, preserve exact source and runtime dependencies, provide concrete invocation and limitations. Do not change current product/core/storage/recovery, Mac presets/bootstrap/daemon/transport/worker/camera/Qt, analysis, schemas, services, installed defaults or any historical worktree. A source compile defect requires fresh coordination before any repair. Fresh issue15 comments end at completed Linux R3 receiver6058937943; its Linux source/receiver ownership is preserved. Bounded native GoalStore code_claims search has no CaptureSuite row; whole-project goals goal_de901abd5e3b4c208dab and goal_0761c9a34ac14c1eb99b remain outcome_unknown, no replay or disposition. Exact retained audit and live files show /Users/Shared/hamon-cs22503/source has unmerged recovery blobc10a6b23 and older atomic blob1295addd; existing native-build session_doctor SHA0baf4c20e9759f294ad4822f44b236cf8c87e53f50e80c0052f0420c42528512 stays untouched and is not superseded. Current receiver target uses merged R3 atomic/recovery blobs d51815e9/96900b38 instead. Mac current CMake4.2.3/Ninja1.13.2/AppleClang21 and installed protobuf36.2/spdlog/BLAKE3/Catch2/nlohmann/SQLite/zstd/lz4 are observed; no system package installation or previous task relaunch is planned. Actor is external chatgpt:5f566b5ec8ef:mac_continuity, not a resident Za."
+}

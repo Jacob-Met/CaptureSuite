@@ -1,0 +1,39 @@
+Test project /Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/build
+      Start  1: FrameDecoder reassembles split reads
+ 1/17 Test  #1: FrameDecoder reassembles split reads ..........................   Passed    0.03 sec
+      Start  2: SessionClock QPC frequency is positive
+ 2/17 Test  #2: SessionClock QPC frequency is positive ........................   Passed    0.03 sec
+      Start  3: SessionClock establish_t0 and session time advances
+ 3/17 Test  #3: SessionClock establish_t0 and session time advances ...........   Passed    0.04 sec
+      Start  4: arm timeout none returns to preparing
+ 4/17 Test  #4: arm timeout none returns to preparing .........................   Passed    0.03 sec
+      Start  5: atomic_write_text replaces existing file and leaves no temp
+ 5/17 Test  #5: atomic_write_text replaces existing file and leaves no temp ...   Passed    0.03 sec
+      Start  6: bad magic rejects frame
+ 6/17 Test  #6: bad magic rejects frame .......................................   Passed    0.03 sec
+      Start  7: disconnect during recording stays recording with error
+ 7/17 Test  #7: disconnect during recording stays recording with error ........   Passed    0.03 sec
+      Start  8: disk watchdog reports free bytes and honours override
+ 8/17 Test  #8: disk watchdog reports free bytes and honours override .........   Passed    0.03 sec
+      Start  9: encode/decode CSP1 frame round-trip
+ 9/17 Test  #9: encode/decode CSP1 frame round-trip ...........................   Passed    0.03 sec
+      Start 10: environment helper preserves values and absence
+10/17 Test #10: environment helper preserves values and absence ...............   Passed    0.03 sec
+      Start 11: illegal session transitions rejected
+11/17 Test #11: illegal session transitions rejected ..........................   Passed    0.03 sec
+      Start 12: qpc_delta_to_ns round-trip sanity
+12/17 Test #12: qpc_delta_to_ns round-trip sanity .............................   Passed    0.03 sec
+      Start 13: session happy path to finalized
+13/17 Test #13: session happy path to finalized ...............................   Passed    0.03 sec
+      Start 14: source path to ready and record
+14/17 Test #14: source path to ready and record ...............................   Passed    0.03 sec
+      Start 15: structured log emits required JSON fields
+15/17 Test #15: structured log emits required JSON fields .....................   Passed    0.04 sec
+      Start 16: capture_storage_fixture_isolation
+16/17 Test #16: capture_storage_fixture_isolation .............................   Passed    0.05 sec
+      Start 17: capture_session_doctor_portable
+17/17 Test #17: capture_session_doctor_portable ...............................   Passed    0.27 sec
+
+100% tests passed, 0 tests failed out of 17
+
+Total Test time (real) =   0.83 sec
