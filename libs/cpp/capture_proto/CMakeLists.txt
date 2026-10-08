@@ -4,7 +4,12 @@ if(NOT CAPTURE_PROTOBUF_FOUND)
   return()
 endif()
 
-find_package(protobuf CONFIG REQUIRED)
+# vcpkg ships protobufConfig.cmake; Debian/Ubuntu ship only CMake's FindProtobuf
+# module, which also defines protobuf::libprotobuf.
+find_package(protobuf CONFIG QUIET)
+if(NOT TARGET protobuf::libprotobuf)
+  find_package(Protobuf REQUIRED)
+endif()
 
 set(CAPTURE_PROTO_ROOT "${CMAKE_SOURCE_DIR}/schemas/proto")
 set(CAPTURE_PROTO_GEN_DIR "${CMAKE_CURRENT_BINARY_DIR}/generated")

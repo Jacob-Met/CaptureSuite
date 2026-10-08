@@ -1,0 +1,301 @@
+{
+  "schema": "capturesuite-linux-port-revision-receipt/v1",
+  "recorded_at_utc": "2026-10-08T08:38:09.293Z",
+  "contributor": "estate-68e476e98b77/project_delivery",
+  "pull_request": "https://github.com/Jacob-Met/CaptureSuite/pull/36",
+  "source": {
+    "base": "742dd7dc0455cc8c060db06123c8432d919e93eb",
+    "superseded_local_commit": "c1415d9ff25644e84b49ae8719e01053829692f9",
+    "superseded_published_commit": "16eb17faacff1b211005fdfdbc7f33fac9b122b6",
+    "superseded_tree": "7d45290f4af57d25816417cba78ad7bc29e396bf",
+    "historical_receipt": "docs/evidence/linux-port-68e476e98b77.json",
+    "revision_binding": "This receipt binds reviewed/tested file bytes below. Final local/published commits and identical tree are recorded in the retained receiving manifest and PR.",
+    "changed_files_excluding_self": [
+      {
+        "path": "libs/cpp/capture_storage/src/atomic_file.cpp",
+        "sha256": "c52acfb5577b251300ca9f9d6fcf4d92c365df12ed2d3ca67054c5a7980ba5c3"
+      },
+      {
+        "path": "tests/cpp/test_atomic_file_posix.cpp",
+        "sha256": "2ebf59f5b4c6beea3a59dd9ca19ebce4d194fc454c815b250373983294f4b383"
+      },
+      {
+        "path": "tests/cpp/CMakeLists.txt",
+        "sha256": "f1d0604cf028611c81d5b91fbca662eee5788738b26edd2550e97ad6cc4332de"
+      },
+      {
+        "path": "docs/BUILDING-LINUX.md",
+        "sha256": "8d08f182449ae52d36ac188dbe46a09090c3a22de4694f25ff20e0eae09fd999"
+      },
+      {
+        "path": "docs/design/research/PROGRESS.md",
+        "sha256": "50e4cdb8c4b0a60d57a569e521dbd15750345b80e7ed2eb3f3d8a0cdbbbaae33"
+      }
+    ]
+  },
+  "problem": {
+    "independent_control": "Original writable manifest FILE close returns EOF/EIO after real close",
+    "old_cli_exit": 0,
+    "expected_cli_exit": 2,
+    "old_manifest_replaced": true,
+    "old_binary_sha256": "46c1e7c36d258c4e2fddbfad5d322cd7b4f50d43ff945cf321bf0f20e13dfce6",
+    "cause": "ofstream destructor close result was not observed before reopening a read-only descriptor for fsync"
+  },
+  "repair": {
+    "implementation": "Keep one POSIX writable descriptor across bounded write loop, fsync and checked close before rename",
+    "handles": [
+      "short writes",
+      "EINTR from write or fsync",
+      "zero-progress write failure",
+      "write/fsync/close failure preserves prior target and removes own temporary file",
+      "no retry of close error",
+      "explicit target-replaced uncertainty on directory sync/close failure"
+    ],
+    "windows_branch": "source behavior preserved",
+    "technical_basis": "https://cdn.kernel.org/doc/html/latest/filesystems/vfs.html#handling-errors-during-writeback",
+    "rationale": "Linux writeback errors are tracked per open file description; retaining the original writer preserves its observation boundary."
+  },
+  "author_verification": {
+    "native_build": {
+      "command": "TMPDIR=/home/jacob/capturesuite-revision2-evidence-68e476e98b77/compiler-tmp CAPTURE_BUILD_JOBS=1 /home/jacob/capturesuite-port-68e476e98b77/scripts/build-linux.sh /home/jacob/capturesuite-port-68e476e98b77 debug",
+      "exit_code": 0,
+      "ctest_passed": 17,
+      "ctest_failed": 0,
+      "log": "build-entrypoint.log"
+    },
+    "strict_native_durability": {
+      "flags": [
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-Wl,--wrap=write",
+        "-Wl,--wrap=fsync",
+        "-Wl,--wrap=close"
+      ],
+      "passed": 10,
+      "failed": 0,
+      "compile_log": "revised-writer-compile.log",
+      "run_log": "revised-writer-tests.log"
+    },
+    "expanded_descriptor_control_against_original": {
+      "passed": 3,
+      "failed": 7,
+      "interpretation": "The original iostream writes occur inside the C++ standard library and bypass executable linker-wrapped write calls. These expanded contract failures are not seven independent data-loss bugs; the unchanged independent FILE/descriptor close interposer proves the actual ignored writer-close error."
+    },
+    "scratch_failure": {
+      "log": "original-writer-compile.log",
+      "result": "GCC temporary assembly write failed with Disk quota exceeded under /tmp",
+      "recovery": "Compiler TMPDIR set to an exclusive own home evidence subdirectory; no shared cleanup, build relocation or runtime change"
+    }
+  },
+  "independent_review": {
+    "reviewer": "estate-68e476e98b77/integration_review",
+    "status": "reviewed_posix_writer_close_blocker_resolved_native_receiving_qualified",
+    "receipt_sha256": "269d4bb47973527a97711d5493fdcfbc258d7effeb63afd85450e90370f2c2fa",
+    "final_archive_sha256": "4e172c772590d67298836f45adedf07db6598f05117db45e2d128b2a9768e96b",
+    "original_failed_archive_sha256": "e575dbaf0f76fdf395063e8b75cc64561f3c35b6c0a10c086337a6f499876af2",
+    "revised_cases_passed": 3,
+    "controls": {
+      "original_writer_close": {
+        "case": "original_writer_comparator",
+        "binary_sha256": "46c1e7c36d258c4e2fddbfad5d322cd7b4f50d43ff945cf321bf0f20e13dfce6",
+        "passed": false,
+        "expected_cli_exit": 2,
+        "actual_cli_exit": 0,
+        "manifest_state": "finalized_recovered",
+        "manifest_before_sha256": "29285c0f1617fb468dca2f28502001fa09fdbc27a3a4ecbfb0a8e0e1c78d7c8b",
+        "manifest_after_sha256": "7978dbbd2516b1415e2e983dd13dc041fb0afc96065492806fc3a05b66357fe7",
+        "raw_mcap_count": 2,
+        "raw_mcap_unchanged": true,
+        "temporary_files": 0,
+        "reports": 1,
+        "fault_count": 1
+      },
+      "repaired_writer_close": {
+        "case": "reviewer_revised_writer",
+        "binary_sha256": "8104af6502590eceff5daf6c57d3f768bb431463104c40a958942d94927cbcf4",
+        "passed": true,
+        "expected_cli_exit": 2,
+        "actual_cli_exit": 2,
+        "manifest_state": "recording",
+        "manifest_before_sha256": "df6f2cec5156b98b3caff458e68fe0d5154a0a46e77e3c03b044050d38bebdc7",
+        "manifest_after_sha256": "df6f2cec5156b98b3caff458e68fe0d5154a0a46e77e3c03b044050d38bebdc7",
+        "raw_mcap_count": 2,
+        "raw_mcap_unchanged": true,
+        "temporary_files": 0,
+        "reports": 1,
+        "fault_count": 1
+      },
+      "repaired_normal_and_parent_fsync": [
+        {
+          "exit_code": 0,
+          "manifest_after_sha256": "afa649d7c6b165b2cd8ad7bf7f8f0835a512439ea375a0bf5a2b4e585c089ed8",
+          "manifest_before_sha256": "54a3e6f5c353eac761379f8039ba371be846e88ab10b3a09bcd06807a770c649",
+          "manifest_state": "finalized_recovered",
+          "name": "no_fault",
+          "passed": true,
+          "raw_mcap_count": 2,
+          "raw_mcap_unchanged": true,
+          "reports": 1,
+          "temporary_files": 0
+        },
+        {
+          "exit_code": 2,
+          "manifest_after_sha256": "08df0bb23396255ce6cc5491a9d1d8d723b33d4ba608b213ed25685fde0378ca",
+          "manifest_before_sha256": "4f2191b707781cbff74383812a37cb42a53077f16d21bbae9c9dd56c324e9223",
+          "manifest_state": "finalized_recovered",
+          "name": "manifest_parent_fsync_eio",
+          "passed": true,
+          "raw_mcap_count": 2,
+          "raw_mcap_unchanged": true,
+          "reports": 1,
+          "temporary_files": 0
+        }
+      ],
+      "compared_writer_control_sources_unchanged": true,
+      "source_pins": [
+        {
+          "path": "writer_close_fault.cpp",
+          "sha256": "3911f08f5bb4246d8f1d1a88b229adbcb4b3cf2cb8470c243de824fdba780935"
+        },
+        {
+          "path": "session_doctor_writer_regression.cmake",
+          "sha256": "84ddc3c1f7b6ea256cb638fefbe3f94eaaea9d0cbd7ae1ee4096ad18b5dbc2bf"
+        },
+        {
+          "path": "manifest_fsync_fault.cpp",
+          "sha256": "32801aea2c6c6417af722ae6bd869cd3f892b26d11880259cf3c68cec7488b71"
+        },
+        {
+          "path": "session_doctor_durability_recheck.cmake",
+          "sha256": "6d77303eef149df977939da5a581c58b65396722a76e950c43126905dbee8c85"
+        }
+      ],
+      "compiler_flags": [
+        "-std=c++20",
+        "-shared",
+        "-fPIC",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-ldl"
+      ]
+    },
+    "fixture": {
+      "origin": "tests/fixtures/mini_session at original exact source tree",
+      "changed_input": "Fresh private recording copies with accurate sealed MCAP hashes/sizes, preserving raw bytes; finalization durability is isolated from separately owned tail/CRC logic.",
+      "frozen_raw_files": [
+        {
+          "path": "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",
+          "sha256": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649",
+          "sizeBytes": 28,
+          "status": "sealed"
+        },
+        {
+          "path": "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+          "sha256": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649",
+          "sizeBytes": 28,
+          "status": "sealed"
+        }
+      ]
+    },
+    "execution_uid": 1000
+  },
+  "receiving": {
+    "user_binary": "/home/jacob/capturesuite-receiver-68e476e98b77-r2/bin/session_doctor",
+    "binary_sha256": "8104af6502590eceff5daf6c57d3f768bb431463104c40a958942d94927cbcf4",
+    "bytes": 7727072,
+    "uid": 1000,
+    "gid": 1000,
+    "mode": "0755",
+    "ordinary_user_invoked": true,
+    "canonical_archive": "/srv/hamon-estate/capturesuite/receiving-68e476e98b77-r2",
+    "original_receiver_preserved": true,
+    "permission_correction": "New exclusive user receiver avoids protected original estate ancestor; its permissions and runtime defaults remain unchanged"
+  },
+  "ci_at_recording": {
+    "original_head": "16eb17faacff1b211005fdfdbc7f33fac9b122b6",
+    "original_workflow_run": 37745511499,
+    "original_python": "success",
+    "original_windows_cmake": "success",
+    "revised_head": "requires publication and its own CI; not inferred from original"
+  },
+  "limitations": [
+    "Linux portable libraries and synthetic session_doctor fixtures only",
+    "Real devices, power-loss durability, full daemon/desktop and macOS unqualified by these controls",
+    "Whole-tree GCC WERROR still blocked by inherited logging.cpp warning; project-default build and strict revised durability test passed",
+    "Recovery may retain a report before a manifest persistence failure; no whole-package rollback is claimed",
+    "Existing issue15 scanner/CRC/Python and historical macOS work preserved"
+  ],
+  "evidence_directory": "/home/jacob/capturesuite-revision2-evidence-68e476e98b77",
+  "artifacts": [
+    {
+      "path": "REVIEW.md",
+      "bytes": 9304,
+      "sha256": "1d68aad418d7415efe02f69eb3dc409bcaf00b69594a0bef433da89d9814e6ed"
+    },
+    {
+      "path": "build-entrypoint.log",
+      "bytes": 4634,
+      "sha256": "5a02a6584be7cd315ac07c1ce8690f8265b6013465569b4485e415417c66101a"
+    },
+    {
+      "path": "independent-review-final.tar.gz",
+      "bytes": 28373,
+      "sha256": "4e172c772590d67298836f45adedf07db6598f05117db45e2d128b2a9768e96b"
+    },
+    {
+      "path": "independent-review-original.tar.gz",
+      "bytes": 12788,
+      "sha256": "e575dbaf0f76fdf395063e8b75cc64561f3c35b6c0a10c086337a6f499876af2"
+    },
+    {
+      "path": "original-atomic-file.cpp",
+      "bytes": 3636,
+      "sha256": "679f15779ec27a0377b5ff44ffb37a92a8bb2286a234b37d2b25638d4584388a"
+    },
+    {
+      "path": "original-writer-compile-retry.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "original-writer-compile.log",
+      "bytes": 429,
+      "sha256": "9c424dfb5cffe9329820487856941f9361a3d69b1745805841169253465ad4bb"
+    },
+    {
+      "path": "original-writer-tests",
+      "bytes": 140472,
+      "sha256": "2326981d2c66d920e2285f0449dfd73c8e0a0fc02e872c6990ca6f8534387ad4"
+    },
+    {
+      "path": "original-writer-tests.log",
+      "bytes": 792,
+      "sha256": "e2b9412b17fe7aa59c6ea94213c88add81f48b1cbd5e66c50855767ede09f757"
+    },
+    {
+      "path": "review-receipt.json",
+      "bytes": 8179,
+      "sha256": "269d4bb47973527a97711d5493fdcfbc258d7effeb63afd85450e90370f2c2fa"
+    },
+    {
+      "path": "revised-writer-compile.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "revised-writer-tests",
+      "bytes": 139920,
+      "sha256": "e8e4301e9d0336f7971a0ce23e4122b7b3c933c9e0bc46c8194b4ccc67a91e74"
+    },
+    {
+      "path": "revised-writer-tests.log",
+      "bytes": 483,
+      "sha256": "74cf6aaa3e708125a81fbc2349889644e8523a0f174f606f43a7d1b4f4c358c4"
+    }
+  ]
+}
