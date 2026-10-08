@@ -1,0 +1,68 @@
+test_fail_policy_accepts_healthy_stream_when_only_sibling_is_interrupted (test_stream_gap_scope.StreamGapScopeTests.test_fail_policy_accepts_healthy_stream_when_only_sibling_is_interrupted) ... ERROR
+test_healthy_feature_values_keep_all_samples_despite_a_sibling_gap (test_stream_gap_scope.StreamGapScopeTests.test_healthy_feature_values_keep_all_samples_despite_a_sibling_gap) ... FAIL
+test_matching_gap_still_masks_samples_and_rejects_fail_policy (test_stream_gap_scope.StreamGapScopeTests.test_matching_gap_still_masks_samples_and_rejects_fail_policy) ... ok
+test_other_sources_and_nonoverlapping_gaps_preserve_valid_samples (test_stream_gap_scope.StreamGapScopeTests.test_other_sources_and_nonoverlapping_gaps_preserve_valid_samples) ... ok
+test_recorded_gap_does_not_mask_another_stream_from_the_same_source (test_stream_gap_scope.StreamGapScopeTests.test_recorded_gap_does_not_mask_another_stream_from_the_same_source) ... FAIL
+test_source_wide_gap_still_masks_all_streams_of_that_source (test_stream_gap_scope.StreamGapScopeTests.test_source_wide_gap_still_masks_all_streams_of_that_source) ... ok
+test_targeted_open_gap_does_not_remove_the_rest_of_a_sibling_stream (test_stream_gap_scope.StreamGapScopeTests.test_targeted_open_gap_does_not_remove_the_rest_of_a_sibling_stream) ... FAIL
+test_unspecified_source_and_stream_keep_existing_global_gap_behavior (test_stream_gap_scope.StreamGapScopeTests.test_unspecified_source_and_stream_keep_existing_global_gap_behavior) ... ok
+
+======================================================================
+ERROR: test_fail_policy_accepts_healthy_stream_when_only_sibling_is_interrupted (test_stream_gap_scope.StreamGapScopeTests.test_fail_policy_accepts_healthy_stream_when_only_sibling_is_interrupted)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-stream-gaps/baseline-final/tests/analysis/test_stream_gap_scope.py", line 160, in test_fail_policy_accepts_healthy_stream_when_only_sibling_is_interrupted
+    frame, _, fraction = extract_emg_features(
+                         ^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-stream-gaps/baseline-final/libs/python/capture_analysis/capture_analysis/features/emg.py", line 35, in extract_emg_features
+    enforce_gap_policy(gap_mask, valid)
+  File "/workspace/scratch/e82707f2bc62/capturesuite-stream-gaps/baseline-final/libs/python/capture_analysis/capture_analysis/windows.py", line 150, in enforce_gap_policy
+    raise RuntimeError(
+RuntimeError: gap_policy=fail: gaps overlap source.shared/healthy
+
+======================================================================
+FAIL: test_healthy_feature_values_keep_all_samples_despite_a_sibling_gap (test_stream_gap_scope.StreamGapScopeTests.test_healthy_feature_values_keep_all_samples_despite_a_sibling_gap)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-stream-gaps/baseline-final/tests/analysis/test_stream_gap_scope.py", line 149, in test_healthy_feature_values_keep_all_samples_despite_a_sibling_gap
+    self.assertEqual(fraction, 1.0)
+AssertionError: 0.6666666666666666 != 1.0
+
+======================================================================
+FAIL: test_recorded_gap_does_not_mask_another_stream_from_the_same_source (test_stream_gap_scope.StreamGapScopeTests.test_recorded_gap_does_not_mask_another_stream_from_the_same_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-stream-gaps/baseline-final/tests/analysis/test_stream_gap_scope.py", line 131, in test_recorded_gap_does_not_mask_another_stream_from_the_same_source
+    self.assert_mask(
+  File "/workspace/scratch/e82707f2bc62/capturesuite-stream-gaps/baseline-final/tests/analysis/test_stream_gap_scope.py", line 67, in assert_mask
+    self.assertEqual(validity_mask(TIMES, mask).tolist(), expected)
+AssertionError: Lists differ: [True, True, False, False, True, True] != [True, True, True, True, True, True]
+
+First differing element 2:
+False
+True
+
+- [True, True, False, False, True, True]
++ [True, True, True, True, True, True]
+
+======================================================================
+FAIL: test_targeted_open_gap_does_not_remove_the_rest_of_a_sibling_stream (test_stream_gap_scope.StreamGapScopeTests.test_targeted_open_gap_does_not_remove_the_rest_of_a_sibling_stream)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-stream-gaps/baseline-final/tests/analysis/test_stream_gap_scope.py", line 168, in test_targeted_open_gap_does_not_remove_the_rest_of_a_sibling_stream
+    self.assert_mask(stream(), [recorded], [True] * 6)
+  File "/workspace/scratch/e82707f2bc62/capturesuite-stream-gaps/baseline-final/tests/analysis/test_stream_gap_scope.py", line 67, in assert_mask
+    self.assertEqual(validity_mask(TIMES, mask).tolist(), expected)
+AssertionError: Lists differ: [True, True, False, False, False, False] != [True, True, True, True, True, True]
+
+First differing element 2:
+False
+True
+
+- [True, True, False, False, False, False]
++ [True, True, True, True, True, True]
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.005s
+
+FAILED (failures=3, errors=1)

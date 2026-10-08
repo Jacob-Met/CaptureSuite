@@ -84,3 +84,29 @@ The formatted test again passes all eight methods locally; its raw output is
 `formatted-candidate.log`. Production source is unchanged. The child commit still
 requires its own native workflow result; the failed predecessor is not counted
 as a successful hosted run.
+
+## Native JUnit receiving follow-up
+
+Run `37756406356`, Python job `113241936725`, passed Ruff and license checks.
+Pytest 9.1.1 then reported 227 passing test methods, 24 passing subtests and six
+explicit daemon-unavailable skips, with process exit 0. The unchanged strict
+receipt checker rejected the JUnit report as invalid (`ValueError`), so the native
+gate failed. `initial-junit-rejection.log` retains that test/receipt output through
+wrapper exit 1. The JUnit and uploaded archive hashes are recorded in the manifest.
+The artifact file reference was issued, but its signed download returned HTTP 403
+in this runtime; no locally observed XML counts are claimed.
+
+The [pytest 9.1.1 JUnit implementation](https://github.com/pytest-dev/pytest/blob/9.1.1/src/_pytest/junitxml.py)
+counts passed reports and reuses reporters for the same test node, while CaptureSuite's checker requires
+declared counts to match actual testcase elements. Removed the new test's eight
+`unittest.subTest` reporting contexts to use ordinary test-method reporting. Every
+original input, loop body and assertion is preserved, verified by comparing ASTs
+after stripping only those contexts. A failed assertion now ends its method, as
+in an ordinary unittest test. The receipt checker and workflow remain unchanged.
+
+Current test blob: `7b239c2ac7c002164732eeded969c628464e61df`. This exact test was
+rerun against the untouched original production source in a separate baseline
+directory: four methods pass, three fail and one errors. Against the unchanged
+candidate production source, all eight methods pass. Raw outputs are
+`final-baseline.log` and `final-candidate.log`. All earlier failures and receipts
+remain available. The next hosted run must establish native receipt acceptance.

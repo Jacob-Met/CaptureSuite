@@ -20,6 +20,65 @@
   },
   "identity": "estate-e82707f2bc62 / runtime_discovery",
   "issue": "https://github.com/Jacob-Met/CaptureSuite/issues/40",
+  "junit_followup": {
+    "artifact_id": 11540965094,
+    "artifact_retrieval": "GitHub returned a file reference; its signed download returned HTTP403 in this runtime. XML bytes were not locally inspected.",
+    "artifact_sha256": "19714995c7dec79a5b16c887263e977b73e24b7ae7b5a1092dc2a35736ee35c7",
+    "compatibility_change": "Remove eight unittest.subTest reporting contexts only. Every original loop, input and assertion remains; AST equality after stripping only those With nodes was verified. Ordinary failed assertions now stop their method.",
+    "diagnostic_log": {
+      "bytes": 5426,
+      "git_blob": "b1f63ef9cb0900f8120efc35ccf528171c3ab84d",
+      "sha256": "9e879a5a39912af125c2ed82e7d2663395a53676db52c38089cfbcf20932c24b"
+    },
+    "diagnostic_log_kind": "Unmodified native Python test and rejected receipt excerpt through wrapper exit1.",
+    "final_paired_runs": {
+      "baseline": {
+        "errored": 1,
+        "exit_code": 1,
+        "failed": 3,
+        "methods_run": 8,
+        "passed": 4,
+        "raw_log": {
+          "bytes": 5506,
+          "git_blob": "a429273782e1f4fc9def9bf7872677d3f32b4d85",
+          "sha256": "6c2fc98dabac764b22545d994b85fdc5888b496792135221c33338e0ae768f49"
+        }
+      },
+      "candidate": {
+        "errored": 0,
+        "exit_code": 0,
+        "failed": 0,
+        "methods_run": 8,
+        "passed": 8,
+        "raw_log": {
+          "bytes": 1572,
+          "git_blob": "c65f41f5492d43520fb68ee433ae7c0ba1e853db",
+          "sha256": "94b47fdf6de2daea00b6fe1e6d443f87e34dd673240b52ad132b0c3705aba562"
+        }
+      },
+      "same_test_bytes": true
+    },
+    "final_test": {
+      "bytes": 8511,
+      "git_blob": "7b239c2ac7c002164732eeded969c628464e61df",
+      "sha256": "748c0c943958ffe0c90bbe2e760ae688b548290b5427b4a6ded3ed0e5db8bbab"
+    },
+    "hosted_followup": "pending",
+    "input_head": "1208f4ce4a917541cac76434bd46f8e33726a4c5",
+    "native_receipt_accepted": false,
+    "native_receipt_problem": "JUnit unavailable or invalid: ValueError",
+    "original_junit_sha256": "c4d5f7efadb37cb164c4c39bf84667afddc1fbeb11646cbe9e65a8a942aff72b",
+    "production_unchanged": true,
+    "pytest_process_exit": 0,
+    "pytest_reported_passed_methods": 227,
+    "pytest_reported_passed_subtests": 24,
+    "pytest_reported_skipped_methods": 6,
+    "pytest_version": "9.1.1",
+    "python_conclusion": "failure",
+    "python_job_id": 113241936725,
+    "runner_and_workflow_unchanged": true,
+    "workflow_run_id": 37756406356
+  },
   "limits": [
     "Focused native analysis execution only; no local pytest or Ruff installed.",
     "Existing hosted CI and independent receiving are pending at this snapshot.",

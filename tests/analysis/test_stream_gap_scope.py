@@ -128,14 +128,9 @@ class StreamGapScopeTests(unittest.TestCase):
             self.assertEqual(len(references), 3)
             for representation in [summary.gaps, gaps_to_intervals(summary)]:
                 for ref in references:
-                    with self.subTest(
-                        representation=type(representation[0]).__name__,
-                        source=ref.source_id,
-                        stream=ref.stream_id,
-                    ):
-                        self.assert_mask(
-                            ref, representation, expected[(ref.source_id, ref.stream_id)]
-                        )
+                    self.assert_mask(
+                        ref, representation, expected[(ref.source_id, ref.stream_id)]
+                    )
             after = {
                 path.relative_to(package).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
                 for path in package.rglob("*")
@@ -145,68 +140,62 @@ class StreamGapScopeTests(unittest.TestCase):
 
     def test_healthy_feature_values_keep_all_samples_despite_a_sibling_gap(self):
         for recorded in [gap(), summary_gap(gap())]:
-            with self.subTest(representation=type(recorded).__name__):
-                loaded = loaded_samples()
-                original = loaded.X.copy()
-                mask = build_gap_mask(stream(), WINDOW, [recorded])
-                frame, _, fraction = extract_emg_features(
-                    loaded, mask, window_s=6.0, hop_s=6.0
-                )
-                self.assertEqual(fraction, 1.0)
-                self.assertEqual(len(frame), 1)
-                self.assertEqual(frame.iloc[0]["valid_fraction"], 1.0)
-                self.assertAlmostEqual(frame.iloc[0]["amplitude_rms"], math.sqrt(91 / 6))
-                self.assertAlmostEqual(frame.iloc[0]["amplitude_mav"], 3.5)
-                np.testing.assert_array_equal(loaded.X, original)
-                np.testing.assert_array_equal(loaded.t_sample_ns, TIMES)
+            loaded = loaded_samples()
+            original = loaded.X.copy()
+            mask = build_gap_mask(stream(), WINDOW, [recorded])
+            frame, _, fraction = extract_emg_features(
+                loaded, mask, window_s=6.0, hop_s=6.0
+            )
+            self.assertEqual(fraction, 1.0)
+            self.assertEqual(len(frame), 1)
+            self.assertEqual(frame.iloc[0]["valid_fraction"], 1.0)
+            self.assertAlmostEqual(frame.iloc[0]["amplitude_rms"], math.sqrt(91 / 6))
+            self.assertAlmostEqual(frame.iloc[0]["amplitude_mav"], 3.5)
+            np.testing.assert_array_equal(loaded.X, original)
+            np.testing.assert_array_equal(loaded.t_sample_ns, TIMES)
 
     def test_fail_policy_accepts_healthy_stream_when_only_sibling_is_interrupted(self):
         for recorded in [gap(), summary_gap(gap())]:
-            with self.subTest(representation=type(recorded).__name__):
-                mask = build_gap_mask(stream(), WINDOW, [recorded], policy="fail")
-                frame, _, fraction = extract_emg_features(
-                    loaded_samples(), mask, window_s=6.0, hop_s=6.0
-                )
-                self.assertEqual(fraction, 1.0)
-                self.assertEqual(len(frame), 1)
+            mask = build_gap_mask(stream(), WINDOW, [recorded], policy="fail")
+            frame, _, fraction = extract_emg_features(
+                loaded_samples(), mask, window_s=6.0, hop_s=6.0
+            )
+            self.assertEqual(fraction, 1.0)
+            self.assertEqual(len(frame), 1)
 
     def test_targeted_open_gap_does_not_remove_the_rest_of_a_sibling_stream(self):
         for recorded in [gap(end=None), summary_gap(gap(end=None))]:
-            with self.subTest(representation=type(recorded).__name__):
-                self.assert_mask(stream(), [recorded], [True] * 6)
-                self.assert_mask(
-                    stream(name="interrupted"),
-                    [recorded],
-                    [True, True, False, False, False, False],
-                )
+            self.assert_mask(stream(), [recorded], [True] * 6)
+            self.assert_mask(
+                stream(name="interrupted"),
+                [recorded],
+                [True, True, False, False, False, False],
+            )
 
     def test_source_wide_gap_still_masks_all_streams_of_that_source(self):
         for recorded in [gap(name=""), summary_gap(gap(name=""))]:
             for name in ["healthy", "interrupted"]:
-                with self.subTest(representation=type(recorded).__name__, stream=name):
-                    self.assert_mask(
-                        stream(name=name),
-                        [recorded],
-                        [True, True, False, False, True, True],
-                    )
-                    self.assert_mask(stream("source.other", name), [recorded], [True] * 6)
+                self.assert_mask(
+                    stream(name=name),
+                    [recorded],
+                    [True, True, False, False, True, True],
+                )
+                self.assert_mask(stream("source.other", name), [recorded], [True] * 6)
 
     def test_unspecified_source_and_stream_keep_existing_global_gap_behavior(self):
         for recorded in [gap(source="", name=""), summary_gap(gap(source="", name=""))]:
             for source in ["source.shared", "source.other"]:
-                with self.subTest(representation=type(recorded).__name__, source=source):
-                    self.assert_mask(
-                        stream(source), [recorded], [True, True, False, False, True, True]
-                    )
+                self.assert_mask(
+                    stream(source), [recorded], [True, True, False, False, True, True]
+                )
 
     def test_matching_gap_still_masks_samples_and_rejects_fail_policy(self):
         for recorded in [gap(name="healthy"), summary_gap(gap(name="healthy"))]:
-            with self.subTest(representation=type(recorded).__name__):
-                mask = self.assert_mask(
-                    stream(), [recorded], [True, True, False, False, True, True], policy="fail"
-                )
-                with self.assertRaisesRegex(RuntimeError, "gap_policy=fail"):
-                    enforce_gap_policy(mask, validity_mask(TIMES, mask))
+            mask = self.assert_mask(
+                stream(), [recorded], [True, True, False, False, True, True], policy="fail"
+            )
+            with self.assertRaisesRegex(RuntimeError, "gap_policy=fail"):
+                enforce_gap_policy(mask, validity_mask(TIMES, mask))
 
     def test_other_sources_and_nonoverlapping_gaps_preserve_valid_samples(self):
         recorded = [
@@ -215,8 +204,7 @@ class StreamGapScopeTests(unittest.TestCase):
             gap(name="healthy", start=6 * SECOND, end=7 * SECOND),
         ]
         for representation in [recorded, list(map(summary_gap, recorded))]:
-            with self.subTest(representation=type(representation[0]).__name__):
-                self.assert_mask(stream(), representation, [True] * 6)
+            self.assert_mask(stream(), representation, [True] * 6)
 
 
 if __name__ == "__main__":
