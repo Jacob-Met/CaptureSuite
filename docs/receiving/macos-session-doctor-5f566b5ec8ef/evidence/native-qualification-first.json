@@ -1,0 +1,82 @@
+{
+  "schema": "capturesuite.canonical-mac-portable-qualification/1",
+  "started_utc": "2026-10-08T14:44:16.480141+00:00",
+  "canonical_base": "d43bdea867d6198a707a5f55e29216c76054517e",
+  "native_source": "/Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/source",
+  "host": {
+    "system": "macOS-26.6.2-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "macos": "26.6.2"
+  },
+  "source_before": {
+    "input_errors": [],
+    "git_status": "",
+    "commit": "6a1a32e6240dc89892f340f241b03ef25a8ac8fc"
+  },
+  "disk_free_before": 6855696384,
+  "phases": [
+    {
+      "name": "configure",
+      "argv": [
+        "/opt/homebrew/bin/cmake",
+        "-S",
+        "/Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/source",
+        "-B",
+        "/Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/build",
+        "-G",
+        "Ninja",
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DCMAKE_CXX_COMPILER=/usr/bin/clang++",
+        "-DCMAKE_PREFIX_PATH=/opt/homebrew;/Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/source/cmake/linux-shims",
+        "-DCAPTURE_BUILD_TESTS=ON",
+        "-DCAPTURE_ENABLE_CAMERA_WORKER=OFF",
+        "-DCAPTURE_ENABLE_RADAR_WORKER=OFF",
+        "-DCAPTURE_WERROR=OFF"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 1.8394528749631718,
+      "log_sha256": "b88bce99fd97032c704385d0057850f6678ae664a99d2d8eee0bc3c14d837fb0"
+    },
+    {
+      "name": "build",
+      "argv": [
+        "/opt/homebrew/bin/cmake",
+        "--build",
+        "/Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/build",
+        "--parallel",
+        "2"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 24.93568420910742,
+      "log_sha256": "1ae8c97c0854dc87207368c8e43b9cf17ab4187c69a9dab52a850759fb5ace14"
+    },
+    {
+      "name": "ctest",
+      "argv": [
+        "/opt/homebrew/bin/ctest",
+        "--test-dir",
+        "/Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/build",
+        "--output-on-failure",
+        "--no-tests=error",
+        "--output-junit",
+        "/Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/evidence/native-ctest.xml"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 0.8756445420440286,
+      "log_sha256": "db48edfaeab0a4020072ce6080a855b6daced660a50f014bed63b91236ecfd80"
+    }
+  ],
+  "source_after": {
+    "input_errors": [],
+    "git_status": "",
+    "commit": "6a1a32e6240dc89892f340f241b03ef25a8ac8fc"
+  },
+  "disk_free_after": 6734348288,
+  "finished_utc": "2026-10-08T14:44:44.258237+00:00",
+  "binary": {
+    "path": "/Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/build/tools/session_doctor/session_doctor",
+    "size": 700192,
+    "sha256": "4bb8872c854d0c344150c806d55674b4d0b6743355982552b6b494f785a19ce3",
+    "mode": "0o755"
+  }
+}

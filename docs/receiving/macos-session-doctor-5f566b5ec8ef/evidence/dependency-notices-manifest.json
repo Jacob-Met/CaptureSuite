@@ -1,0 +1,88 @@
+{
+  "files": [
+    {
+      "path": "CaptureSuite/LICENSE",
+      "origin": "Jacob-Met/CaptureSuite@d43bdea867d6198a707a5f55e29216c76054517e:LICENSE",
+      "size": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+      "git_blob_sha": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7"
+    },
+    {
+      "path": "mcap/LICENSE",
+      "origin": "foxglove/mcap@b2953496735e7b89d5b2ea58be73abed85317c5f:LICENSE",
+      "size": 1077,
+      "sha256": "da11235665c17d4c1634072dae92b8ba1b38d6fdde2ccf19a6bbede33253f58d",
+      "git_blob_sha": "0aa593ea8c2888c2015f0aec7e6d6a1c42cfeba1"
+    },
+    {
+      "path": "spdlog/LICENSE",
+      "origin": "/opt/homebrew/Cellar/spdlog/1.17.0/LICENSE",
+      "size": 1323,
+      "sha256": "d678c20826e1392578508e1c78649a1e3c31bda05ef4388d967dbd654461b140",
+      "git_blob_sha": "4b1b23357f9685fb6b6291aa33489fc9fe1c122c"
+    },
+    {
+      "path": "fmt/LICENSE",
+      "origin": "/opt/homebrew/Cellar/fmt/12.2.0/LICENSE",
+      "size": 1094,
+      "sha256": "a65fcc5a1095fc33cc37e4fff69366e49d7e92f613558a2b95ed1b70e33758b4",
+      "git_blob_sha": "795fdaec8f2ce6fcc97bbb15d1a6ac073af7bd17"
+    },
+    {
+      "path": "protobuf/LICENSE",
+      "origin": "/opt/homebrew/Cellar/protobuf/36.2/LICENSE",
+      "size": 1732,
+      "sha256": "6e5e117324afd944dcf67f36cf329843bc1a92229a8cd9bb573d7a83130fea7d",
+      "git_blob_sha": "19b305b00060a774a9180fb916c14b49edb2008f"
+    },
+    {
+      "path": "abseil/LICENSE",
+      "origin": "/opt/homebrew/Cellar/abseil/20260817.0/LICENSE",
+      "size": 11361,
+      "sha256": "c79a7fea0e3cac04cd43f20e7b648e5a0ff8fa5344e644b0ee09ca1162b62747",
+      "git_blob_sha": "ccd61dcfe3dbcdf77a72794d7794b1e112a39e0b"
+    },
+    {
+      "path": "zstd/LICENSE",
+      "origin": "/opt/homebrew/Cellar/zstd/1.5.7_1/LICENSE",
+      "size": 1549,
+      "sha256": "7055266497633c9025b777c78eb7235af13922117480ed5c674677adc381c9d8",
+      "git_blob_sha": "75800288cc243f164b9d130f125e2ffae28f8e39"
+    },
+    {
+      "path": "zstd/COPYING",
+      "origin": "/opt/homebrew/Cellar/zstd/1.5.7_1/COPYING",
+      "size": 18091,
+      "sha256": "f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505",
+      "git_blob_sha": "ecbc0593737be657aef92e3adcf3bcbd6fdb812e"
+    },
+    {
+      "path": "lz4/LICENSE",
+      "origin": "/opt/homebrew/Cellar/lz4/1.10.0/LICENSE",
+      "size": 646,
+      "sha256": "4bc9c403f6b679cc076dee210e0e21c27b4e8f6d3fb43d85364c76657bfaaac5",
+      "git_blob_sha": "ba8a2900f8b180fefc0c16f8a35076ef290c9492"
+    },
+    {
+      "path": "blake3/LICENSE_A2",
+      "origin": "https://github.com/BLAKE3-team/BLAKE3/blob/f3149ec5bb5449af877ba20377a11008ff499fa2/LICENSE_A2",
+      "size": 11361,
+      "sha256": "00fcc7a934ddbc9ece2a7cc063ac788e284b703b1d705ccbba72d462aa97921e",
+      "git_blob_sha": "d512ca94d0ca6bf6a7272b16c83f51b7045902ca"
+    },
+    {
+      "path": "blake3/LICENSE_A2LLVM",
+      "origin": "https://github.com/BLAKE3-team/BLAKE3/blob/f3149ec5bb5449af877ba20377a11008ff499fa2/LICENSE_A2LLVM",
+      "size": 12267,
+      "sha256": "a5695f57ea0c221e0e8b7d784ff774c35e88c3d3270353646a925880bb3492cc",
+      "git_blob_sha": "8d11bec0e86f88276b155cd3214a3de45cdafeb7"
+    },
+    {
+      "path": "blake3/LICENSE_CC0",
+      "origin": "https://github.com/BLAKE3-team/BLAKE3/blob/f3149ec5bb5449af877ba20377a11008ff499fa2/LICENSE_CC0",
+      "size": 7048,
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+      "git_blob_sha": "0e259d42c996742e9e3cba14c677129b2c1b6311"
+    }
+  ]
+}

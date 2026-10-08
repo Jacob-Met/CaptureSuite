@@ -1,0 +1,49 @@
+{
+  "observed_utc": "2026-10-08T15:18:58.894739+00:00",
+  "scope": "Read-only current hash comparison; no execution, Git trust change or worktree modification.",
+  "files": [
+    {
+      "path": "/Users/Shared/hamon-cs22503/source/libs/cpp/capture_storage/src/atomic_file.cpp",
+      "size": 4041,
+      "initial_sha256": "13fee2eb49029c07a79a7cb4e59982f32998aae6fbbe3e89e9997b809dd851f0",
+      "current_sha256": "13fee2eb49029c07a79a7cb4e59982f32998aae6fbbe3e89e9997b809dd851f0",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/Shared/hamon-cs22503/source/libs/cpp/capture_storage/src/recovery.cpp",
+      "size": 49556,
+      "initial_sha256": "875b8a3c1dd4ba540d3c7eb2e64a87cd948208c2f0d1deaa5f9a5ad08fe91192",
+      "current_sha256": "875b8a3c1dd4ba540d3c7eb2e64a87cd948208c2f0d1deaa5f9a5ad08fe91192",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/Shared/hamon-cs22503/source/CMakeLists.txt",
+      "size": 1270,
+      "initial_sha256": "e52e451afa076a0da1bec472fa147f13087f6f95f3e0292fcd7790b5146da344",
+      "current_sha256": "e52e451afa076a0da1bec472fa147f13087f6f95f3e0292fcd7790b5146da344",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/Shared/hamon-cs22503/source/CMakePresets.json",
+      "size": 1200,
+      "initial_sha256": "df70630fbf8886a53565377ab5c21894b0567f666d9f7ae9455ffc826d6f76e5",
+      "current_sha256": "df70630fbf8886a53565377ab5c21894b0567f666d9f7ae9455ffc826d6f76e5",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/Shared/hamon-cs22503/source/tools/session_doctor/main.cpp",
+      "size": 737,
+      "initial_sha256": "bf44c1bdcc86cec2acc1b2ce79a02301705bc801fa73672ed0c1b9f6ddf08831",
+      "current_sha256": "bf44c1bdcc86cec2acc1b2ce79a02301705bc801fa73672ed0c1b9f6ddf08831",
+      "unchanged": true
+    },
+    {
+      "path": "/Users/Shared/hamon-cs22503/native-build/tools/session_doctor/session_doctor",
+      "size": 3123808,
+      "initial_sha256": "0baf4c20e9759f294ad4822f44b236cf8c87e53f50e80c0052f0420c42528512",
+      "current_sha256": "0baf4c20e9759f294ad4822f44b236cf8c87e53f50e80c0052f0420c42528512",
+      "unchanged": true
+    }
+  ],
+  "all_unchanged": true
+}
