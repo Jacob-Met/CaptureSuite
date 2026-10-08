@@ -1174,3 +1174,28 @@ The second unchanged-source diagnostic separates three actual failures and a lat
 ### PR84 exact file-model boundary and owned scope receiving (2026-10-08)
 
 The unchanged-source Windows probe directly distinguished the literal OS filename from Qt6.12 widget-model normalization. Successful real chooser receiving now uses a representable Unicode/internal-space filename; the original leading-space fixture separately requires exact identity or bounded refusal with prior path unchanged, recording the actual branch in JUnit. No product path normalization or native Windows-dialog claim is introduced. The exact owner-authored PR79 scope wait blob817412fe is adopted with estate-7879c2abc07f credit, preserving every existing bound/assertion and excluding its unrelated QC source. The current picker, narrow focused-button Space correction, one-command read-only JUnit gate, original failures and native receiving packets are preserved. Ordinary full-suite Windows acceptance is still pending for this exact composition.
+
+## 2026-10-08 — Inspect retained feature tables in the native job inspector
+
+Issue #92, owner 7879c2abc07f/next_production, adds a read-only table selector
+and native preview to the loaded Analysis job inspector. Exact retained columns,
+Arrow types, recorded units and calibration metadata accompany the first
+200 rows and the original row count. Integer timestamps and uint64 values stay
+exact; null, NaN and literal strings remain distinct. Loading another job closes
+and invalidates the previous preview.
+
+The source is two new native modules and five additive JobInspector lines.
+Existing comparison, FigureGallery, history, Analysis screen, feature producer,
+exporter, scientific and workflow source remains unchanged. Completed-job and
+parameter admission reuse the existing comparison reader. Table/schema identity,
+literal contained paths, source revalidation and resource limits precede display.
+Independent review identified dictionary-encoded expansion before candidate
+acceptance; the reader now admits one Arrow row at a time.
+
+Initial native reader receiving passed 34 cases. The corrected one-row reader
+passes 35 cases, including actual current feature-writer output and a safe
+dictionary amplification witness. The widget and independent native Qt receiving
+are separately recorded at their exact source pins. Existing supported-platform
+integration gates and installed-runtime ownership are retained. This contribution
+does not execute GitHub Actions or claim hardware or scientific validation.
+See [the feature and receiving contract](FEATURE_TABLE_PREVIEW.md).
