@@ -1,0 +1,20 @@
+{
+  "created_utc": "2026-10-08T13:37:37.126933+00:00",
+  "archive": "/Users/me/capturesuite-checkpoint-18a24bf0c281/numeric-composition-0ed1/native-packet.tar.gz",
+  "bytes": 444619,
+  "sha256": "15e947f9f675d8d91b551b6d47b24346ce34ce52bd7adfe94bcdbd78b3a468f4",
+  "base64_chunks": 10,
+  "payload_files": 73,
+  "payload_bytes": 1374096,
+  "manifest_sha256": "f3e4f5345c5db943662c6d88a7ae715387ce28b30ff0edb25fb202076f63b576",
+  "all_payload_hashes_verified": true,
+  "local_archive": "native-packet.tar.gz",
+  "github_tree_comparison": {
+    "tree": "b8990a709744eab58b25b875596c79d0865cce4a",
+    "source_files_per_snapshot": 812,
+    "snapshots": 4,
+    "all_original_paths_modes_blobs_match": true,
+    "only_executed_delta": "frozen windows.py candidate blob aaafd8db78f82a5a56178135dbed5bfd4f45c634"
+  },
+  "transfer": "ten explicit base64 chunks; archive and all 73 payload members verified locally"
+}

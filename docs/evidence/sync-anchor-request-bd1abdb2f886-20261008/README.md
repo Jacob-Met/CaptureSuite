@@ -254,3 +254,61 @@ The machine-readable [package summary](current-finalizer-package.json) pins
 member counts, current source identities and test counts. This composition
 does not implement or qualify timestamp alignment, raw MCAP decoding on Mac,
 physical hardware, installed adoption or whole-application behavior.
+
+
+## Current external-prediction composition — 58157fdc1b83
+
+Main advanced again through PR65 after the prior exact-head review. This composition
+preserves every current-parent leaf except the declared refusal, scope documentation
+and this progress entry. In the shared runner, PR65 adds exactly
+`prediction_path=params.extra.get("prediction_path")` to the existing eval dispatch.
+That argument remains byte-for-byte intact. Removing the same accepted six-line
+refusal and restoring the old manifest flag returns current-parent runner
+`ad0a551e90e5d06ec38a9218277efa24b0030c75` exactly. Neither the new prediction
+algorithm nor its tests, schema, CLI or upstream progress entry is changed.
+
+The new bounded native receiving passes all **17 existing admission tests** and
+**three actual eval groups**. A small, explicitly authored Parquet bundle exercises
+the identity default and the external prediction API through the real job runner.
+The known two-unit angle offset produces MAE/RMSE 2, while the unchanged velocity
+produces zero error. Every declared output byte count and SHA-256 is checked,
+including the preserved final log inventory. A requested alignment is refused before
+an absent prediction file can be read, before progress and before replacing the
+previous successful external job. Original source inputs and raw package files stay
+unchanged. Scoped Ruff passes; all **115 receiving source files** remain unchanged.
+
+This execution uses the already installed Python 3.13.7 stack and remains advisory:
+the package declares Python >=3.12,<3.13. It neither decodes MCAP nor executes the
+external owner's complete sensor pipeline. No dependency installation, shared
+checkout change, model-training result or runtime adoption is implied. The new
+supported Python 3.12/Windows hosted gates and exact-head independent review must
+pass before integration. The earlier 66-pass/one-skip finalizer receiving and both
+previous evidence archives retain their original source identities.
+
+The complete additional source, unchanged test, authored inputs, actual eval jobs,
+JUnit/logs and receiver are sealed in [current-predictions-evidence.tar.gz](current-predictions-evidence.tar.gz).
+Its [package receipt](current-predictions-package.json) records 467,110
+bytes, SHA-256 `00a696359054e4025356f7c8b7d75e24043cc7176720206c26429914e1a878cf`, Git blob
+`0767d2388dadf9b0d3b3baf9750d335ab019b89c`, 414 hashed entries plus MANIFEST.
+Six test-created symbolic links are retained only as inert metadata. The archive
+was read back internally as regular files; this is native archive byte verification,
+not a claim of remote binary-content retrieval. Qualification SHA-256 is
+`49c11dd27ad0e262ea45db94d72efed29cfcab7dcba856e60be32ea01013ebc4`.
+
+
+## Current publication parent — 9c44354cb101
+
+The final source composition also preserves the subsequently merged checkpoint
+section and camera work in current main `9c44354cb101c76beff79265de0040b6839d249f`.
+The complete new checkpoint scope text remains intact, with only the same existing
+sync-anchor availability clarification inserted under Sync anchors. The shared
+runner is unchanged from the qualified 58157 composition; current `windows.py`,
+checkpoint/UI tests, camera implementation/workflow/tests and all upstream evidence
+remain exact. The progress entry is inserted before a stable existing heading so
+future appended work is independent of this entry.
+
+The native 17-test/three-eval-group packet remains pinned to its actual 58157 parent.
+It is not relabeled as execution of the new checkpoint or camera source. The full
+supported hosted test run receives this current tree, including the unchanged
+17 admission tests. Both previous independent reviews retain their original heads;
+final exact-head review and current hosted gates are required before integration.

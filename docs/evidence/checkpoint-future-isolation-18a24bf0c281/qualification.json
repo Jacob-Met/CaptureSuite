@@ -1,0 +1,1293 @@
+{
+  "archive": {
+    "bytes": 109132,
+    "members": 201,
+    "path": "raw-receiving-evidence.tar.xz",
+    "sha256": "ad515465d4209c39875a9167965ffff8fd5dde60657367b175d81b1b696dbf33"
+  },
+  "candidate_overlay": {
+    "baseline_receiving_commit": "1efa5f5162358d4c4915ece2db7394c06a2e40d1",
+    "candidate": {
+      "bytes": 5714,
+      "git_blob": "aaafd8db78f82a5a56178135dbed5bfd4f45c634",
+      "sha256": "5cf401b7b7d201225c966b804cfff39c3f6d59669da7e488dd68c4253a829c32"
+    },
+    "original": {
+      "bytes": 5618,
+      "git_blob": "80bea6bd69365a48c5b204c26d054b8ae179437a",
+      "sha256": "af40235d55341d2a6b11d7f67a0195779676301fa822b2bd05240d138ee28c50"
+    },
+    "owner_commit": "4fcd0aa4319b6594af637af8644c187fcbff3cf5",
+    "path": "libs/python/capture_analysis/capture_analysis/windows.py",
+    "preserved_upstream_files": 667
+  },
+  "checks_per_run": 26,
+  "created_utc": "2026-10-08T12:49:42.154637+00:00",
+  "decision": "accept frozen resolver for offline persisted-package future-isolation boundary",
+  "excluded_setup_run": "baseline-v1",
+  "independent_method_count": 1,
+  "limits": [
+    "Controlled synthetic offline IMU packages; no live capture or daemon, native scope-picker rendering, hardware fidelity or scientific-formula validation.",
+    "No production edits and no repeat of the author30-case suite.",
+    "Source replay requires canonical Git blobs; see intake diagnostics for preserved checkout representation errors."
+  ],
+  "packages_per_run": 4,
+  "receiving_commit": "ca52be3dd56356eed3081b2653a77380f72c8642",
+  "runs": {
+    "baseline-v1": {
+      "application_modules": [
+        {
+          "git_blob": "67a4fb257b771af771edb4010e573ceeab86a51f",
+          "module": "capture_analysis",
+          "path": "libs/python/capture_analysis/capture_analysis/__init__.py",
+          "sha256": "14cfe6dccd33a0bda74fac3c9339e1a37a3538b2110a8ae6e307801b776eb43a"
+        },
+        {
+          "git_blob": "d5c4fa7e06ac6e9139ebfc78fade90a3df5e451a",
+          "module": "capture_analysis.discover",
+          "path": "libs/python/capture_analysis/capture_analysis/discover.py",
+          "sha256": "344ee5d7cb0f5e95ac7524a0c1141b0a293bb9445e2bd4789c6736f39cfcb90d"
+        },
+        {
+          "git_blob": "e52dc3839105744e19193f8fc8067b818389a20b",
+          "module": "capture_analysis.features",
+          "path": "libs/python/capture_analysis/capture_analysis/features/__init__.py",
+          "sha256": "3cdd6c626b6da12b8df56d8ddf35fca27c0a744865965ec01dd89d47da476fa1"
+        },
+        {
+          "git_blob": "7f7536500a63ddc8b06774b8da65df8d56cd4f2b",
+          "module": "capture_analysis.features.emg",
+          "path": "libs/python/capture_analysis/capture_analysis/features/emg.py",
+          "sha256": "11f8f8350464b7c7c079353ca649b4c4aad2580ef8d355fe741c025c262b168e"
+        },
+        {
+          "git_blob": "0ee47b3d579e4c3732634958dda21ae724beca9e",
+          "module": "capture_analysis.features.imu",
+          "path": "libs/python/capture_analysis/capture_analysis/features/imu.py",
+          "sha256": "246bfd1cc3ce72afa0680537062b6795e22b8a06ba6301503d7489a4440c6849"
+        },
+        {
+          "git_blob": "b998063a5036b73a67b773f70c193b1f9827c248",
+          "module": "capture_analysis.features.io",
+          "path": "libs/python/capture_analysis/capture_analysis/features/io.py",
+          "sha256": "c677d209292cca790ccdf1a64ba834f71a078ccce31ea57452e67ece358822ca"
+        },
+        {
+          "git_blob": "ee20f7314cb1af4512901d6009f73e3dddf9025c",
+          "module": "capture_analysis.features.radar_doppler",
+          "path": "libs/python/capture_analysis/capture_analysis/features/radar_doppler.py",
+          "sha256": "cffc0ecbb8053fbc2244850c1927469366f4ae93b5439e4d194de2065877fa5c"
+        },
+        {
+          "git_blob": "e798dee0fb72dd261b504a99ac76f815515dda9e",
+          "module": "capture_analysis.features.radar_frame",
+          "path": "libs/python/capture_analysis/capture_analysis/features/radar_frame.py",
+          "sha256": "f85c5fe5e2db68606f68e36a42a0c8f323086f0b1e7f233c0ddefa24cdccb443"
+        },
+        {
+          "git_blob": "fa73c80d39a0d699f80d7e877b37167cf8b48b6a",
+          "module": "capture_analysis.features.video_qc",
+          "path": "libs/python/capture_analysis/capture_analysis/features/video_qc.py",
+          "sha256": "0e25c50e01fc2da47bc7b510d68ba3e72aba33d3e1c79c57b727f5c55c723e27"
+        },
+        {
+          "git_blob": "7badee5cdf5a4b30a283e0dcbb2c5d85fb787489",
+          "module": "capture_analysis.jobs",
+          "path": "libs/python/capture_analysis/capture_analysis/jobs.py",
+          "sha256": "e7e9dda44eb014d18192563f1e2c0ae78cece850fbc853b0be3919daaf5ee276"
+        },
+        {
+          "git_blob": "eb6fae21d4bb79055f8d1af1528e846020f21459",
+          "module": "capture_analysis.loaders",
+          "path": "libs/python/capture_analysis/capture_analysis/loaders/__init__.py",
+          "sha256": "2d51c509baf3c0b5c33360637d12e5ce3c7507a859e4f37030f2c3d711ef0b3d"
+        },
+        {
+          "git_blob": "941a6aa3cea6777f90534ea634cccf8fdd319a3f",
+          "module": "capture_analysis.loaders.base",
+          "path": "libs/python/capture_analysis/capture_analysis/loaders/base.py",
+          "sha256": "696093b31f22d2bef32fc2962c7a11249a590a0b4d776c40cef4edcbc1e48a97"
+        },
+        {
+          "git_blob": "c35d22af7bdeea570e6ae45a713428627e90894c",
+          "module": "capture_analysis.loaders.emg",
+          "path": "libs/python/capture_analysis/capture_analysis/loaders/emg.py",
+          "sha256": "86eb7114be689cdbd2edd76affa2994e7278714916692a35381abd02ba9d599a"
+        },
+        {
+          "git_blob": "8823f04bd089789ca4cbff6602154bf066d4161d",
+          "module": "capture_analysis.loaders.imu",
+          "path": "libs/python/capture_analysis/capture_analysis/loaders/imu.py",
+          "sha256": "5ea4747145bf5588974dfd72c834766436c5a2bc0d58d34ace0f8ef403b310d6"
+        },
+        {
+          "git_blob": "b61ca0a914e4d3909790839774327aa5824c1b71",
+          "module": "capture_analysis.loaders.mcap_iter",
+          "path": "libs/python/capture_analysis/capture_analysis/loaders/mcap_iter.py",
+          "sha256": "03a418e7689840e378665aac92c42769dd14ba2c88a821a5cbf0cee80766540c"
+        },
+        {
+          "git_blob": "fc87bfb7fbbeb98ad8d5d11b3438b2d04882de6c",
+          "module": "capture_analysis.loaders.radar_doppler",
+          "path": "libs/python/capture_analysis/capture_analysis/loaders/radar_doppler.py",
+          "sha256": "4942d08eb47229839e339ce7f2f8a64aee7e5fab44bac77029fcd7a3e3e490c1"
+        },
+        {
+          "git_blob": "a44af5392ba2b5b8b64de685f42772b141f1b8b1",
+          "module": "capture_analysis.loaders.radar_frame",
+          "path": "libs/python/capture_analysis/capture_analysis/loaders/radar_frame.py",
+          "sha256": "d071f9d95b371798974698fd0caa1fc4c865a85fb772232fd43e7227b15fad2b"
+        },
+        {
+          "git_blob": "6a192cd5999b45df08c666b9dad21dc29cf91824",
+          "module": "capture_analysis.loaders.video",
+          "path": "libs/python/capture_analysis/capture_analysis/loaders/video.py",
+          "sha256": "3c3e873ab641904a39ca649dac39072f11948031d068cc21ee459e996d1fc185"
+        },
+        {
+          "git_blob": "8113ab4cb51678a122bbb702a23f2200c9333233",
+          "module": "capture_analysis.pipeline",
+          "path": "libs/python/capture_analysis/capture_analysis/pipeline.py",
+          "sha256": "e8c0152040ba5b5f3f37ac53fb5188bac9dd9aaf0d5816d6a718be505c20898c"
+        },
+        {
+          "git_blob": "85073e330e6aaf617864a0730011e689251ecea9",
+          "module": "capture_analysis.plots.modality",
+          "path": "libs/python/capture_analysis/capture_analysis/plots/modality.py",
+          "sha256": "c9b1159ce1535fbddb4895d1acdf0115f88919aa3cc51ad964e5771d975995dd"
+        },
+        {
+          "git_blob": "3725e840e5eb046accea79d4b6376f902392dac8",
+          "module": "capture_analysis.plots.style",
+          "path": "libs/python/capture_analysis/capture_analysis/plots/style.py",
+          "sha256": "231e7b1c998f4349d5859295007235ffd41848f12fbb7819193bec9630cd3942"
+        },
+        {
+          "git_blob": "828204e998a46b9571b3a2b3ba08acd9fc6caa31",
+          "module": "capture_analysis.plots.sync_dashboard",
+          "path": "libs/python/capture_analysis/capture_analysis/plots/sync_dashboard.py",
+          "sha256": "6f9e0c64193688eb841565729b9d1e9a64136779e892419acabdc81591afd3d5"
+        },
+        {
+          "git_blob": "39c9c93eab1f5abf65ea73299c34b05ec184dd63",
+          "module": "capture_analysis.plugins",
+          "path": "libs/python/capture_analysis/capture_analysis/plugins/__init__.py",
+          "sha256": "c511d4b9cd1cda042b781b06fbb02d2d99004de214735d6daeb459d6e41381fe"
+        },
+        {
+          "git_blob": "03c8589064dfc4c6cfec6e4d00b7f46b10014414",
+          "module": "capture_analysis.plugins.handlers",
+          "path": "libs/python/capture_analysis/capture_analysis/plugins/handlers.py",
+          "sha256": "9be2e1820529b94e54d06790d53aa94cf658f982efb4063c6b64f9d07acc4b2e"
+        },
+        {
+          "git_blob": "e7334bedfcba51052a7f039f66c74ff288840831",
+          "module": "capture_analysis.plugins.registry",
+          "path": "libs/python/capture_analysis/capture_analysis/plugins/registry.py",
+          "sha256": "5ba10f5b58c102a98943d2225903c1d9f874aa5921a50319e159f6bd4d537351"
+        },
+        {
+          "git_blob": "7221b26a129b7915a42fed900908a04eae213454",
+          "module": "capture_analysis.qc",
+          "path": "libs/python/capture_analysis/capture_analysis/qc.py",
+          "sha256": "cf18c7e044e8e00227f486836d75effd48d8afb862d847add2aa9bc36c062f4b"
+        },
+        {
+          "git_blob": "a0bb34d71fe03a4426ef0479619fa8d22a7bc8fa",
+          "module": "capture_analysis.report_html",
+          "path": "libs/python/capture_analysis/capture_analysis/report_html.py",
+          "sha256": "bb9a3c3627be6916c4f9babbb508e48adeef12b6118964625f01e9ecb5b08e2c"
+        },
+        {
+          "git_blob": "2adf26816e0ef9e84e6763cf8bbff69d64697949",
+          "module": "capture_analysis.types",
+          "path": "libs/python/capture_analysis/capture_analysis/types.py",
+          "sha256": "e7996d02483f69265a2ef2ec0b28078c86f4f479daa53e38faf8b4a62645d02c"
+        },
+        {
+          "git_blob": "d04b8cc1dd9271ca3ccf836d97436d9a961417c6",
+          "module": "capture_analysis.version",
+          "path": "libs/python/capture_analysis/capture_analysis/version.py",
+          "sha256": "9e25143344b110699f68b6acdbef49576fc91c2cbda34956d7e2cb85bbbc4ae3"
+        },
+        {
+          "git_blob": "80bea6bd69365a48c5b204c26d054b8ae179437a",
+          "module": "capture_analysis.windows",
+          "path": "libs/python/capture_analysis/capture_analysis/windows.py",
+          "sha256": "af40235d55341d2a6b11d7f67a0195779676301fa822b2bd05240d138ee28c50"
+        },
+        {
+          "git_blob": "0e7ab2cf8689d3adbc689c283e8a23d12607b2d0",
+          "module": "capture_protocol",
+          "path": "libs/python/capture_protocol/capture_protocol/__init__.py",
+          "sha256": "556f474a3d740adc03c40426acde432ab7a394b947f8268bd90eecc7832dff8a"
+        },
+        {
+          "git_blob": "2542cda6bdb6a83d4334336f34d92f80040bc4a0",
+          "module": "capture_protocol.constants",
+          "path": "libs/python/capture_protocol/capture_protocol/constants.py",
+          "sha256": "7f187edf873cd13f55bc09ff7972785797eb488d74dd5befcb395fc928a71d72"
+        },
+        {
+          "git_blob": "9dd5021b815b31ab02eaaa814210525ebb543862",
+          "module": "capture_protocol.framing",
+          "path": "libs/python/capture_protocol/capture_protocol/framing.py",
+          "sha256": "3ff7c7284d9907a2ad516c83fab383a4151996da3f2d5a1d27e24d7c7575d92e"
+        },
+        {
+          "git_blob": "16ae7d90a122b4973139c563ac0f72efa061b1de",
+          "module": "capture_protocol.generated",
+          "path": "libs/python/capture_protocol/capture_protocol/generated/__init__.py",
+          "sha256": "1fac8216894ce1a1b5362de3b59398fbd78f005a59636aea9f074951bed5c1d7"
+        },
+        {
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "module": "capture_protocol.generated.capture",
+          "path": "libs/python/capture_protocol/capture_protocol/generated/capture/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "module": "capture_protocol.generated.capture.v1",
+          "path": "libs/python/capture_protocol/capture_protocol/generated/capture/v1/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "git_blob": "66031212a0da44800dcc671b0d4bf0cd39e71f06",
+          "module": "capture_protocol.generated.capture.v1.common_pb2",
+          "path": "libs/python/capture_protocol/capture_protocol/generated/capture/v1/common_pb2.py",
+          "sha256": "6736e3b86b3c8749d34065794da1c880772ce69e2f248fdd2febd003f083bbd3"
+        },
+        {
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "module": "capture_protocol.generated.capture.v1.data",
+          "path": "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "git_blob": "54bbf93dc638cdab95f49744ea7e0b43fefad374",
+          "module": "capture_protocol.generated.capture.v1.data.imu_frame_pb2",
+          "path": "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/imu_frame_pb2.py",
+          "sha256": "4a2048d2a737362bf26b99166e95c457d1492fcfba8848c894fe4d2748ff9f51"
+        },
+        {
+          "git_blob": "9386e73b3c1eecb683d9d0ca98ad415268e307af",
+          "module": "capture_protocol.handshake",
+          "path": "libs/python/capture_protocol/capture_protocol/handshake.py",
+          "sha256": "63f740c992edf8812f666b79f9cd866d9ea33e65e5b310a5ebda2f5ef98ac115"
+        },
+        {
+          "git_blob": "894e3c152a98b6e804de90122572afbcd929b3da",
+          "module": "capture_session",
+          "path": "libs/python/capture_session/capture_session/__init__.py",
+          "sha256": "da530f86c0d1d584862868ddba9f7087ccf5dfbddd64dd1e577337ecfd776419"
+        },
+        {
+          "git_blob": "46332cea7c62dd44247b219937ae6c8fbc747017",
+          "module": "capture_session.app_paths",
+          "path": "libs/python/capture_session/capture_session/app_paths.py",
+          "sha256": "363e4522240e2356cac7492589cb207a798bc1af6031139bd1fa94890f1c4bfd"
+        },
+        {
+          "git_blob": "91fbf913c5af8489968425d7ceac51c04233d3e0",
+          "module": "capture_session.package_reader",
+          "path": "libs/python/capture_session/capture_session/package_reader.py",
+          "sha256": "9a1d9e6e7d24341a083cee602af9538413e948f3369b22660e484356e3d34eb1"
+        },
+        {
+          "git_blob": "c1d7799e1d2099424221b2f4af216a43a972c67a",
+          "module": "capture_session.registry",
+          "path": "libs/python/capture_session/capture_session/registry.py",
+          "sha256": "809b26ce8d8efc0559a3854cf85ea74b4e486fcd77d253ebfa76bade64b0a8d1"
+        },
+        {
+          "git_blob": "41b99cdaa78011d3d9b753c3131f32c72af9699f",
+          "module": "capture_session.settings_store",
+          "path": "libs/python/capture_session/capture_session/settings_store.py",
+          "sha256": "7719524a1f106cc54befcd21088810f9ec28f0160c8e88f60c374e1545fdb98d"
+        }
+      ],
+      "checks_passed": 21,
+      "checks_total": 26,
+      "classification": "reviewer fixture error",
+      "dependency_versions": {
+        "jsonschema": "4.26.0",
+        "matplotlib": "3.11.2",
+        "mcap": "1.5.0",
+        "numpy": "2.5.3",
+        "pandas": "3.0.6",
+        "protobuf": "4.25.9",
+        "pyarrow": "25.0.1",
+        "scipy": "1.18.1"
+      },
+      "driver_sha256": "d88eb2a870d6950a872b823a6789b0a6c7318c1cb791015e786e4d3f1127daa2",
+      "failures": [
+        "reference: selected closed interval",
+        "future_marker: selected closed interval",
+        "future_data: selected closed interval",
+        "inside_data: selected closed interval",
+        "inside-data sensitivity control"
+      ],
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "process": {
+        "command": [
+          "/Users/me/capturesuite-independent-checkpoint-18a24bf0c281/venv/bin/python",
+          "-B",
+          "/Users/me/capturesuite-independent-checkpoint-18a24bf0c281/receive_closed_section_isolation.py",
+          "--source",
+          "/Users/me/capturesuite-independent-checkpoint-18a24bf0c281/baseline",
+          "--manifest",
+          "/Users/me/capturesuite-independent-checkpoint-18a24bf0c281/baseline-manifest.json",
+          "--output",
+          "/Users/me/capturesuite-independent-checkpoint-18a24bf0c281/evidence/baseline-v1",
+          "--label",
+          "upstream-72c15d6b"
+        ],
+        "driver_commit": "606a11477a9534b341f1797f0f9f05222001cf80",
+        "driver_sha256": "d88eb2a870d6950a872b823a6789b0a6c7318c1cb791015e786e4d3f1127daa2",
+        "duration_seconds": 14.875618934631348,
+        "exit_code": 1,
+        "isolated_environment": {
+          "MPLCONFIGDIR": "/Users/me/capturesuite-independent-checkpoint-18a24bf0c281/cache/matplotlib",
+          "PYTHONDONTWRITEBYTECODE": "1",
+          "XDG_CACHE_HOME": "/Users/me/capturesuite-independent-checkpoint-18a24bf0c281/cache/xdg",
+          "cleared": [
+            "PYTHONPATH",
+            "PYTHONHOME"
+          ]
+        }
+      },
+      "python": "3.12.8 (main, Dec  3 2024, 18:42:41) [Clang 16.0.0 (clang-1600.0.26.4)]",
+      "result": "failed",
+      "source_files_verified_before_after": 668,
+      "variants": {
+        "future_data": {
+          "csv": {
+            "bytes": 310,
+            "sha256": "8b0a3479b10471473685a2182d0977abd8a2d482ccdd7b28ed019e5e05ea97b4"
+          },
+          "feature_rows": 1,
+          "first_feature_ns": 0,
+          "last_feature_ns": 0,
+          "parquet": {
+            "bytes": 8108,
+            "sha256": "485e2246577210f56ce136a5b036890f376e22a22972dff60ecb9ecd42809073"
+          },
+          "raw_files_unchanged": 8,
+          "window": {
+            "checkpointIds": [
+              "B"
+            ],
+            "endSessionNs": 0,
+            "mode": "cp:B",
+            "startSessionNs": 0
+          }
+        },
+        "future_marker": {
+          "csv": {
+            "bytes": 310,
+            "sha256": "8b0a3479b10471473685a2182d0977abd8a2d482ccdd7b28ed019e5e05ea97b4"
+          },
+          "feature_rows": 1,
+          "first_feature_ns": 0,
+          "last_feature_ns": 0,
+          "parquet": {
+            "bytes": 8108,
+            "sha256": "485e2246577210f56ce136a5b036890f376e22a22972dff60ecb9ecd42809073"
+          },
+          "raw_files_unchanged": 8,
+          "window": {
+            "checkpointIds": [
+              "B"
+            ],
+            "endSessionNs": 0,
+            "mode": "cp:B",
+            "startSessionNs": 0
+          }
+        },
+        "inside_data": {
+          "csv": {
+            "bytes": 310,
+            "sha256": "8b0a3479b10471473685a2182d0977abd8a2d482ccdd7b28ed019e5e05ea97b4"
+          },
+          "feature_rows": 1,
+          "first_feature_ns": 0,
+          "last_feature_ns": 0,
+          "parquet": {
+            "bytes": 8108,
+            "sha256": "485e2246577210f56ce136a5b036890f376e22a22972dff60ecb9ecd42809073"
+          },
+          "raw_files_unchanged": 8,
+          "window": {
+            "checkpointIds": [
+              "B"
+            ],
+            "endSessionNs": 0,
+            "mode": "cp:B",
+            "startSessionNs": 0
+          }
+        },
+        "reference": {
+          "csv": {
+            "bytes": 310,
+            "sha256": "8b0a3479b10471473685a2182d0977abd8a2d482ccdd7b28ed019e5e05ea97b4"
+          },
+          "feature_rows": 1,
+          "first_feature_ns": 0,
+          "last_feature_ns": 0,
+          "parquet": {
+            "bytes": 8108,
+            "sha256": "485e2246577210f56ce136a5b036890f376e22a22972dff60ecb9ecd42809073"
+          },
+          "raw_files_unchanged": 8,
+          "window": {
+            "checkpointIds": [
+              "B"
+            ],
+            "endSessionNs": 0,
+            "mode": "cp:B",
+            "startSessionNs": 0
+          }
+        }
+      }
+    },
+    "baseline-v2": {
+      "application_modules": [
+        {
+          "git_blob": "67a4fb257b771af771edb4010e573ceeab86a51f",
+          "module": "capture_analysis",
+          "path": "libs/python/capture_analysis/capture_analysis/__init__.py",
+          "sha256": "14cfe6dccd33a0bda74fac3c9339e1a37a3538b2110a8ae6e307801b776eb43a"
+        },
+        {
+          "git_blob": "d5c4fa7e06ac6e9139ebfc78fade90a3df5e451a",
+          "module": "capture_analysis.discover",
+          "path": "libs/python/capture_analysis/capture_analysis/discover.py",
+          "sha256": "344ee5d7cb0f5e95ac7524a0c1141b0a293bb9445e2bd4789c6736f39cfcb90d"
+        },
+        {
+          "git_blob": "e52dc3839105744e19193f8fc8067b818389a20b",
+          "module": "capture_analysis.features",
+          "path": "libs/python/capture_analysis/capture_analysis/features/__init__.py",
+          "sha256": "3cdd6c626b6da12b8df56d8ddf35fca27c0a744865965ec01dd89d47da476fa1"
+        },
+        {
+          "git_blob": "7f7536500a63ddc8b06774b8da65df8d56cd4f2b",
+          "module": "capture_analysis.features.emg",
+          "path": "libs/python/capture_analysis/capture_analysis/features/emg.py",
+          "sha256": "11f8f8350464b7c7c079353ca649b4c4aad2580ef8d355fe741c025c262b168e"
+        },
+        {
+          "git_blob": "0ee47b3d579e4c3732634958dda21ae724beca9e",
+          "module": "capture_analysis.features.imu",
+          "path": "libs/python/capture_analysis/capture_analysis/features/imu.py",
+          "sha256": "246bfd1cc3ce72afa0680537062b6795e22b8a06ba6301503d7489a4440c6849"
+        },
+        {
+          "git_blob": "b998063a5036b73a67b773f70c193b1f9827c248",
+          "module": "capture_analysis.features.io",
+          "path": "libs/python/capture_analysis/capture_analysis/features/io.py",
+          "sha256": "c677d209292cca790ccdf1a64ba834f71a078ccce31ea57452e67ece358822ca"
+        },
+        {
+          "git_blob": "ee20f7314cb1af4512901d6009f73e3dddf9025c",
+          "module": "capture_analysis.features.radar_doppler",
+          "path": "libs/python/capture_analysis/capture_analysis/features/radar_doppler.py",
+          "sha256": "cffc0ecbb8053fbc2244850c1927469366f4ae93b5439e4d194de2065877fa5c"
+        },
+        {
+          "git_blob": "e798dee0fb72dd261b504a99ac76f815515dda9e",
+          "module": "capture_analysis.features.radar_frame",
+          "path": "libs/python/capture_analysis/capture_analysis/features/radar_frame.py",
+          "sha256": "f85c5fe5e2db68606f68e36a42a0c8f323086f0b1e7f233c0ddefa24cdccb443"
+        },
+        {
+          "git_blob": "fa73c80d39a0d699f80d7e877b37167cf8b48b6a",
+          "module": "capture_analysis.features.video_qc",
+          "path": "libs/python/capture_analysis/capture_analysis/features/video_qc.py",
+          "sha256": "0e25c50e01fc2da47bc7b510d68ba3e72aba33d3e1c79c57b727f5c55c723e27"
+        },
+        {
+          "git_blob": "7badee5cdf5a4b30a283e0dcbb2c5d85fb787489",
+          "module": "capture_analysis.jobs",
+          "path": "libs/python/capture_analysis/capture_analysis/jobs.py",
+          "sha256": "e7e9dda44eb014d18192563f1e2c0ae78cece850fbc853b0be3919daaf5ee276"
+        },
+        {
+          "git_blob": "eb6fae21d4bb79055f8d1af1528e846020f21459",
+          "module": "capture_analysis.loaders",
+          "path": "libs/python/capture_analysis/capture_analysis/loaders/__init__.py",
+          "sha256": "2d51c509baf3c0b5c33360637d12e5ce3c7507a859e4f37030f2c3d711ef0b3d"
+        },
+        {
+          "git_blob": "941a6aa3cea6777f90534ea634cccf8fdd319a3f",
+          "module": "capture_analysis.loaders.base",
+          "path": "libs/python/capture_analysis/capture_analysis/loaders/base.py",
+          "sha256": "696093b31f22d2bef32fc2962c7a11249a590a0b4d776c40cef4edcbc1e48a97"
+        },
+        {
+          "git_blob": "c35d22af7bdeea570e6ae45a713428627e90894c",
+          "module": "capture_analysis.loaders.emg",
+          "path": "libs/python/capture_analysis/capture_analysis/loaders/emg.py",
+          "sha256": "86eb7114be689cdbd2edd76affa2994e7278714916692a35381abd02ba9d599a"
+        },
+        {
+          "git_blob": "8823f04bd089789ca4cbff6602154bf066d4161d",
+          "module": "capture_analysis.loaders.imu",
+          "path": "libs/python/capture_analysis/capture_analysis/loaders/imu.py",
+          "sha256": "5ea4747145bf5588974dfd72c834766436c5a2bc0d58d34ace0f8ef403b310d6"
+        },
+        {
+          "git_blob": "b61ca0a914e4d3909790839774327aa5824c1b71",
+          "module": "capture_analysis.loaders.mcap_iter",
+          "path": "libs/python/capture_analysis/capture_analysis/loaders/mcap_iter.py",
+          "sha256": "03a418e7689840e378665aac92c42769dd14ba2c88a821a5cbf0cee80766540c"
+        },
+        {
+          "git_blob": "fc87bfb7fbbeb98ad8d5d11b3438b2d04882de6c",
+          "module": "capture_analysis.loaders.radar_doppler",
+          "path": "libs/python/capture_analysis/capture_analysis/loaders/radar_doppler.py",
+          "sha256": "4942d08eb47229839e339ce7f2f8a64aee7e5fab44bac77029fcd7a3e3e490c1"
+        },
+        {
+          "git_blob": "a44af5392ba2b5b8b64de685f42772b141f1b8b1",
+          "module": "capture_analysis.loaders.radar_frame",
+          "path": "libs/python/capture_analysis/capture_analysis/loaders/radar_frame.py",
+          "sha256": "d071f9d95b371798974698fd0caa1fc4c865a85fb772232fd43e7227b15fad2b"
+        },
+        {
+          "git_blob": "6a192cd5999b45df08c666b9dad21dc29cf91824",
+          "module": "capture_analysis.loaders.video",
+          "path": "libs/python/capture_analysis/capture_analysis/loaders/video.py",
+          "sha256": "3c3e873ab641904a39ca649dac39072f11948031d068cc21ee459e996d1fc185"
+        },
+        {
+          "git_blob": "8113ab4cb51678a122bbb702a23f2200c9333233",
+          "module": "capture_analysis.pipeline",
+          "path": "libs/python/capture_analysis/capture_analysis/pipeline.py",
+          "sha256": "e8c0152040ba5b5f3f37ac53fb5188bac9dd9aaf0d5816d6a718be505c20898c"
+        },
+        {
+          "git_blob": "85073e330e6aaf617864a0730011e689251ecea9",
+          "module": "capture_analysis.plots.modality",
+          "path": "libs/python/capture_analysis/capture_analysis/plots/modality.py",
+          "sha256": "c9b1159ce1535fbddb4895d1acdf0115f88919aa3cc51ad964e5771d975995dd"
+        },
+        {
+          "git_blob": "3725e840e5eb046accea79d4b6376f902392dac8",
+          "module": "capture_analysis.plots.style",
+          "path": "libs/python/capture_analysis/capture_analysis/plots/style.py",
+          "sha256": "231e7b1c998f4349d5859295007235ffd41848f12fbb7819193bec9630cd3942"
+        },
+        {
+          "git_blob": "828204e998a46b9571b3a2b3ba08acd9fc6caa31",
+          "module": "capture_analysis.plots.sync_dashboard",
+          "path": "libs/python/capture_analysis/capture_analysis/plots/sync_dashboard.py",
+          "sha256": "6f9e0c64193688eb841565729b9d1e9a64136779e892419acabdc81591afd3d5"
+        },
+        {
+          "git_blob": "39c9c93eab1f5abf65ea73299c34b05ec184dd63",
+          "module": "capture_analysis.plugins",
+          "path": "libs/python/capture_analysis/capture_analysis/plugins/__init__.py",
+          "sha256": "c511d4b9cd1cda042b781b06fbb02d2d99004de214735d6daeb459d6e41381fe"
+        },
+        {
+          "git_blob": "03c8589064dfc4c6cfec6e4d00b7f46b10014414",
+          "module": "capture_analysis.plugins.handlers",
+          "path": "libs/python/capture_analysis/capture_analysis/plugins/handlers.py",
+          "sha256": "9be2e1820529b94e54d06790d53aa94cf658f982efb4063c6b64f9d07acc4b2e"
+        },
+        {
+          "git_blob": "e7334bedfcba51052a7f039f66c74ff288840831",
+          "module": "capture_analysis.plugins.registry",
+          "path": "libs/python/capture_analysis/capture_analysis/plugins/registry.py",
+          "sha256": "5ba10f5b58c102a98943d2225903c1d9f874aa5921a50319e159f6bd4d537351"
+        },
+        {
+          "git_blob": "7221b26a129b7915a42fed900908a04eae213454",
+          "module": "capture_analysis.qc",
+          "path": "libs/python/capture_analysis/capture_analysis/qc.py",
+          "sha256": "cf18c7e044e8e00227f486836d75effd48d8afb862d847add2aa9bc36c062f4b"
+        },
+        {
+          "git_blob": "a0bb34d71fe03a4426ef0479619fa8d22a7bc8fa",
+          "module": "capture_analysis.report_html",
+          "path": "libs/python/capture_analysis/capture_analysis/report_html.py",
+          "sha256": "bb9a3c3627be6916c4f9babbb508e48adeef12b6118964625f01e9ecb5b08e2c"
+        },
+        {
+          "git_blob": "2adf26816e0ef9e84e6763cf8bbff69d64697949",
+          "module": "capture_analysis.types",
+          "path": "libs/python/capture_analysis/capture_analysis/types.py",
+          "sha256": "e7996d02483f69265a2ef2ec0b28078c86f4f479daa53e38faf8b4a62645d02c"
+        },
+        {
+          "git_blob": "d04b8cc1dd9271ca3ccf836d97436d9a961417c6",
+          "module": "capture_analysis.version",
+          "path": "libs/python/capture_analysis/capture_analysis/version.py",
+          "sha256": "9e25143344b110699f68b6acdbef49576fc91c2cbda34956d7e2cb85bbbc4ae3"
+        },
+        {
+          "git_blob": "80bea6bd69365a48c5b204c26d054b8ae179437a",
+          "module": "capture_analysis.windows",
+          "path": "libs/python/capture_analysis/capture_analysis/windows.py",
+          "sha256": "af40235d55341d2a6b11d7f67a0195779676301fa822b2bd05240d138ee28c50"
+        },
+        {
+          "git_blob": "0e7ab2cf8689d3adbc689c283e8a23d12607b2d0",
+          "module": "capture_protocol",
+          "path": "libs/python/capture_protocol/capture_protocol/__init__.py",
+          "sha256": "556f474a3d740adc03c40426acde432ab7a394b947f8268bd90eecc7832dff8a"
+        },
+        {
+          "git_blob": "2542cda6bdb6a83d4334336f34d92f80040bc4a0",
+          "module": "capture_protocol.constants",
+          "path": "libs/python/capture_protocol/capture_protocol/constants.py",
+          "sha256": "7f187edf873cd13f55bc09ff7972785797eb488d74dd5befcb395fc928a71d72"
+        },
+        {
+          "git_blob": "9dd5021b815b31ab02eaaa814210525ebb543862",
+          "module": "capture_protocol.framing",
+          "path": "libs/python/capture_protocol/capture_protocol/framing.py",
+          "sha256": "3ff7c7284d9907a2ad516c83fab383a4151996da3f2d5a1d27e24d7c7575d92e"
+        },
+        {
+          "git_blob": "16ae7d90a122b4973139c563ac0f72efa061b1de",
+          "module": "capture_protocol.generated",
+          "path": "libs/python/capture_protocol/capture_protocol/generated/__init__.py",
+          "sha256": "1fac8216894ce1a1b5362de3b59398fbd78f005a59636aea9f074951bed5c1d7"
+        },
+        {
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "module": "capture_protocol.generated.capture",
+          "path": "libs/python/capture_protocol/capture_protocol/generated/capture/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "module": "capture_protocol.generated.capture.v1",
+          "path": "libs/python/capture_protocol/capture_protocol/generated/capture/v1/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "git_blob": "66031212a0da44800dcc671b0d4bf0cd39e71f06",
+          "module": "capture_protocol.generated.capture.v1.common_pb2",
+          "path": "libs/python/capture_protocol/capture_protocol/generated/capture/v1/common_pb2.py",
+          "sha256": "6736e3b86b3c8749d34065794da1c880772ce69e2f248fdd2febd003f083bbd3"
+        },
+        {
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "module": "capture_protocol.generated.capture.v1.data",
+          "path": "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "git_blob": "54bbf93dc638cdab95f49744ea7e0b43fefad374",
+          "module": "capture_protocol.generated.capture.v1.data.imu_frame_pb2",
+          "path": "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/imu_frame_pb2.py",
+          "sha256": "4a2048d2a737362bf26b99166e95c457d1492fcfba8848c894fe4d2748ff9f51"
+        },
+        {
+          "git_blob": "9386e73b3c1eecb683d9d0ca98ad415268e307af",
+          "module": "capture_protocol.handshake",
+          "path": "libs/python/capture_protocol/capture_protocol/handshake.py",
+          "sha256": "63f740c992edf8812f666b79f9cd866d9ea33e65e5b310a5ebda2f5ef98ac115"
+        },
+        {
+          "git_blob": "894e3c152a98b6e804de90122572afbcd929b3da",
+          "module": "capture_session",
+          "path": "libs/python/capture_session/capture_session/__init__.py",
+          "sha256": "da530f86c0d1d584862868ddba9f7087ccf5dfbddd64dd1e577337ecfd776419"
+        },
+        {
+          "git_blob": "46332cea7c62dd44247b219937ae6c8fbc747017",
+          "module": "capture_session.app_paths",
+          "path": "libs/python/capture_session/capture_session/app_paths.py",
+          "sha256": "363e4522240e2356cac7492589cb207a798bc1af6031139bd1fa94890f1c4bfd"
+        },
+        {
+          "git_blob": "91fbf913c5af8489968425d7ceac51c04233d3e0",
+          "module": "capture_session.package_reader",
+          "path": "libs/python/capture_session/capture_session/package_reader.py",
+          "sha256": "9a1d9e6e7d24341a083cee602af9538413e948f3369b22660e484356e3d34eb1"
+        },
+        {
+          "git_blob": "c1d7799e1d2099424221b2f4af216a43a972c67a",
+          "module": "capture_session.registry",
+          "path": "libs/python/capture_session/capture_session/registry.py",
+          "sha256": "809b26ce8d8efc0559a3854cf85ea74b4e486fcd77d253ebfa76bade64b0a8d1"
+        },
+        {
+          "git_blob": "41b99cdaa78011d3d9b753c3131f32c72af9699f",
+          "module": "capture_session.settings_store",
+          "path": "libs/python/capture_session/capture_session/settings_store.py",
+          "sha256": "7719524a1f106cc54befcd21088810f9ec28f0160c8e88f60c374e1545fdb98d"
+        }
+      ],
+      "checks_passed": 19,
+      "checks_total": 26,
+      "classification": "product receiving",
+      "dependency_versions": {
+        "jsonschema": "4.26.0",
+        "matplotlib": "3.11.2",
+        "mcap": "1.5.0",
+        "numpy": "2.5.3",
+        "pandas": "3.0.6",
+        "protobuf": "4.25.9",
+        "pyarrow": "25.0.1",
+        "scipy": "1.18.1"
+      },
+      "driver_sha256": "0779ae505ae3b784177960504185f0276215c4b853969a222316167f142f08d2",
+      "failures": [
+        "reference: selected closed interval",
+        "future_marker: selected closed interval",
+        "future_data: selected closed interval",
+        "inside_data: selected closed interval",
+        "future_marker: completed-section output invariant",
+        "future_data: completed-section output invariant",
+        "inside-data sensitivity control"
+      ],
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "process": {
+        "command": [
+          "/Users/me/capturesuite-independent-checkpoint-18a24bf0c281/venv/bin/python",
+          "-B",
+          "/Users/me/capturesuite-independent-checkpoint-18a24bf0c281/receive_closed_section_isolation.py",
+          "--source",
+          "/Users/me/capturesuite-independent-checkpoint-18a24bf0c281/baseline",
+          "--manifest",
+          "/Users/me/capturesuite-independent-checkpoint-18a24bf0c281/baseline-manifest.json",
+          "--output",
+          "/Users/me/capturesuite-independent-checkpoint-18a24bf0c281/evidence/baseline-v2",
+          "--label",
+          "upstream-72c15d6b"
+        ],
+        "driver_commit": "251a69414a9f406d0689e7ce0305c9aeee396a5c",
+        "driver_sha256": "0779ae505ae3b784177960504185f0276215c4b853969a222316167f142f08d2",
+        "duration_seconds": 2.680732011795044,
+        "exit_code": 1,
+        "isolated_environment": {
+          "MPLCONFIGDIR": "/Users/me/capturesuite-independent-checkpoint-18a24bf0c281/cache/matplotlib",
+          "PYTHONDONTWRITEBYTECODE": "1",
+          "XDG_CACHE_HOME": "/Users/me/capturesuite-independent-checkpoint-18a24bf0c281/cache/xdg",
+          "cleared": [
+            "PYTHONPATH",
+            "PYTHONHOME"
+          ]
+        }
+      },
+      "python": "3.12.8 (main, Dec  3 2024, 18:42:41) [Clang 16.0.0 (clang-1600.0.26.4)]",
+      "result": "failed",
+      "source_files_verified_before_after": 668,
+      "variants": {
+        "future_data": {
+          "csv": {
+            "bytes": 3535,
+            "sha256": "e6fea4ad00a801aa3733d6ce073a6b83a5531b898768c6b5374dab175e18a18f"
+          },
+          "feature_rows": 29,
+          "first_feature_ns": 6091666666,
+          "last_feature_ns": 8891666666,
+          "parquet": {
+            "bytes": 8895,
+            "sha256": "be917e1cfe8113f7cec650adb65847e28d3ff301fddca473af406a83cbfa61a9"
+          },
+          "raw_files_unchanged": 8,
+          "window": {
+            "checkpointIds": [
+              "B"
+            ],
+            "endSessionNs": 9000000000,
+            "mode": "cp:B",
+            "startSessionNs": 6000000000
+          }
+        },
+        "future_marker": {
+          "csv": {
+            "bytes": 6962,
+            "sha256": "22089bd856a3ad01d4d29f5610ae372d718806a03c7e5bb191442a44418b6182"
+          },
+          "feature_rows": 59,
+          "first_feature_ns": 6091666666,
+          "last_feature_ns": 11891666666,
+          "parquet": {
+            "bytes": 9761,
+            "sha256": "901b8c4e150ddca65fead7e77ce868803d001b9d1f3a45a8ae9f02c1ec0dd7f8"
+          },
+          "raw_files_unchanged": 8,
+          "window": {
+            "checkpointIds": [
+              "B"
+            ],
+            "endSessionNs": 12000000000,
+            "mode": "cp:B",
+            "startSessionNs": 6000000000
+          }
+        },
+        "inside_data": {
+          "csv": {
+            "bytes": 3515,
+            "sha256": "32076c55479a2f1aaff502ee10ddb2ea7cb230aae75a813d685a9cce9387f5fa"
+          },
+          "feature_rows": 29,
+          "first_feature_ns": 6091666666,
+          "last_feature_ns": 8891666666,
+          "parquet": {
+            "bytes": 8944,
+            "sha256": "23feb6f96ac24294949eacf441ce94293d45090898d393f0559d33409221cb09"
+          },
+          "raw_files_unchanged": 8,
+          "window": {
+            "checkpointIds": [
+              "B"
+            ],
+            "endSessionNs": 9000000000,
+            "mode": "cp:B",
+            "startSessionNs": 6000000000
+          }
+        },
+        "reference": {
+          "csv": {
+            "bytes": 3515,
+            "sha256": "32076c55479a2f1aaff502ee10ddb2ea7cb230aae75a813d685a9cce9387f5fa"
+          },
+          "feature_rows": 29,
+          "first_feature_ns": 6091666666,
+          "last_feature_ns": 8891666666,
+          "parquet": {
+            "bytes": 8944,
+            "sha256": "23feb6f96ac24294949eacf441ce94293d45090898d393f0559d33409221cb09"
+          },
+          "raw_files_unchanged": 8,
+          "window": {
+            "checkpointIds": [
+              "B"
+            ],
+            "endSessionNs": 9000000000,
+            "mode": "cp:B",
+            "startSessionNs": 6000000000
+          }
+        }
+      }
+    },
+    "candidate-v2": {
+      "application_modules": [
+        {
+          "git_blob": "67a4fb257b771af771edb4010e573ceeab86a51f",
+          "module": "capture_analysis",
+          "path": "libs/python/capture_analysis/capture_analysis/__init__.py",
+          "sha256": "14cfe6dccd33a0bda74fac3c9339e1a37a3538b2110a8ae6e307801b776eb43a"
+        },
+        {
+          "git_blob": "d5c4fa7e06ac6e9139ebfc78fade90a3df5e451a",
+          "module": "capture_analysis.discover",
+          "path": "libs/python/capture_analysis/capture_analysis/discover.py",
+          "sha256": "344ee5d7cb0f5e95ac7524a0c1141b0a293bb9445e2bd4789c6736f39cfcb90d"
+        },
+        {
+          "git_blob": "e52dc3839105744e19193f8fc8067b818389a20b",
+          "module": "capture_analysis.features",
+          "path": "libs/python/capture_analysis/capture_analysis/features/__init__.py",
+          "sha256": "3cdd6c626b6da12b8df56d8ddf35fca27c0a744865965ec01dd89d47da476fa1"
+        },
+        {
+          "git_blob": "7f7536500a63ddc8b06774b8da65df8d56cd4f2b",
+          "module": "capture_analysis.features.emg",
+          "path": "libs/python/capture_analysis/capture_analysis/features/emg.py",
+          "sha256": "11f8f8350464b7c7c079353ca649b4c4aad2580ef8d355fe741c025c262b168e"
+        },
+        {
+          "git_blob": "0ee47b3d579e4c3732634958dda21ae724beca9e",
+          "module": "capture_analysis.features.imu",
+          "path": "libs/python/capture_analysis/capture_analysis/features/imu.py",
+          "sha256": "246bfd1cc3ce72afa0680537062b6795e22b8a06ba6301503d7489a4440c6849"
+        },
+        {
+          "git_blob": "b998063a5036b73a67b773f70c193b1f9827c248",
+          "module": "capture_analysis.features.io",
+          "path": "libs/python/capture_analysis/capture_analysis/features/io.py",
+          "sha256": "c677d209292cca790ccdf1a64ba834f71a078ccce31ea57452e67ece358822ca"
+        },
+        {
+          "git_blob": "ee20f7314cb1af4512901d6009f73e3dddf9025c",
+          "module": "capture_analysis.features.radar_doppler",
+          "path": "libs/python/capture_analysis/capture_analysis/features/radar_doppler.py",
+          "sha256": "cffc0ecbb8053fbc2244850c1927469366f4ae93b5439e4d194de2065877fa5c"
+        },
+        {
+          "git_blob": "e798dee0fb72dd261b504a99ac76f815515dda9e",
+          "module": "capture_analysis.features.radar_frame",
+          "path": "libs/python/capture_analysis/capture_analysis/features/radar_frame.py",
+          "sha256": "f85c5fe5e2db68606f68e36a42a0c8f323086f0b1e7f233c0ddefa24cdccb443"
+        },
+        {
+          "git_blob": "fa73c80d39a0d699f80d7e877b37167cf8b48b6a",
+          "module": "capture_analysis.features.video_qc",
+          "path": "libs/python/capture_analysis/capture_analysis/features/video_qc.py",
+          "sha256": "0e25c50e01fc2da47bc7b510d68ba3e72aba33d3e1c79c57b727f5c55c723e27"
+        },
+        {
+          "git_blob": "7badee5cdf5a4b30a283e0dcbb2c5d85fb787489",
+          "module": "capture_analysis.jobs",
+          "path": "libs/python/capture_analysis/capture_analysis/jobs.py",
+          "sha256": "e7e9dda44eb014d18192563f1e2c0ae78cece850fbc853b0be3919daaf5ee276"
+        },
+        {
+          "git_blob": "eb6fae21d4bb79055f8d1af1528e846020f21459",
+          "module": "capture_analysis.loaders",
+          "path": "libs/python/capture_analysis/capture_analysis/loaders/__init__.py",
+          "sha256": "2d51c509baf3c0b5c33360637d12e5ce3c7507a859e4f37030f2c3d711ef0b3d"
+        },
+        {
+          "git_blob": "941a6aa3cea6777f90534ea634cccf8fdd319a3f",
+          "module": "capture_analysis.loaders.base",
+          "path": "libs/python/capture_analysis/capture_analysis/loaders/base.py",
+          "sha256": "696093b31f22d2bef32fc2962c7a11249a590a0b4d776c40cef4edcbc1e48a97"
+        },
+        {
+          "git_blob": "c35d22af7bdeea570e6ae45a713428627e90894c",
+          "module": "capture_analysis.loaders.emg",
+          "path": "libs/python/capture_analysis/capture_analysis/loaders/emg.py",
+          "sha256": "86eb7114be689cdbd2edd76affa2994e7278714916692a35381abd02ba9d599a"
+        },
+        {
+          "git_blob": "8823f04bd089789ca4cbff6602154bf066d4161d",
+          "module": "capture_analysis.loaders.imu",
+          "path": "libs/python/capture_analysis/capture_analysis/loaders/imu.py",
+          "sha256": "5ea4747145bf5588974dfd72c834766436c5a2bc0d58d34ace0f8ef403b310d6"
+        },
+        {
+          "git_blob": "b61ca0a914e4d3909790839774327aa5824c1b71",
+          "module": "capture_analysis.loaders.mcap_iter",
+          "path": "libs/python/capture_analysis/capture_analysis/loaders/mcap_iter.py",
+          "sha256": "03a418e7689840e378665aac92c42769dd14ba2c88a821a5cbf0cee80766540c"
+        },
+        {
+          "git_blob": "fc87bfb7fbbeb98ad8d5d11b3438b2d04882de6c",
+          "module": "capture_analysis.loaders.radar_doppler",
+          "path": "libs/python/capture_analysis/capture_analysis/loaders/radar_doppler.py",
+          "sha256": "4942d08eb47229839e339ce7f2f8a64aee7e5fab44bac77029fcd7a3e3e490c1"
+        },
+        {
+          "git_blob": "a44af5392ba2b5b8b64de685f42772b141f1b8b1",
+          "module": "capture_analysis.loaders.radar_frame",
+          "path": "libs/python/capture_analysis/capture_analysis/loaders/radar_frame.py",
+          "sha256": "d071f9d95b371798974698fd0caa1fc4c865a85fb772232fd43e7227b15fad2b"
+        },
+        {
+          "git_blob": "6a192cd5999b45df08c666b9dad21dc29cf91824",
+          "module": "capture_analysis.loaders.video",
+          "path": "libs/python/capture_analysis/capture_analysis/loaders/video.py",
+          "sha256": "3c3e873ab641904a39ca649dac39072f11948031d068cc21ee459e996d1fc185"
+        },
+        {
+          "git_blob": "8113ab4cb51678a122bbb702a23f2200c9333233",
+          "module": "capture_analysis.pipeline",
+          "path": "libs/python/capture_analysis/capture_analysis/pipeline.py",
+          "sha256": "e8c0152040ba5b5f3f37ac53fb5188bac9dd9aaf0d5816d6a718be505c20898c"
+        },
+        {
+          "git_blob": "85073e330e6aaf617864a0730011e689251ecea9",
+          "module": "capture_analysis.plots.modality",
+          "path": "libs/python/capture_analysis/capture_analysis/plots/modality.py",
+          "sha256": "c9b1159ce1535fbddb4895d1acdf0115f88919aa3cc51ad964e5771d975995dd"
+        },
+        {
+          "git_blob": "3725e840e5eb046accea79d4b6376f902392dac8",
+          "module": "capture_analysis.plots.style",
+          "path": "libs/python/capture_analysis/capture_analysis/plots/style.py",
+          "sha256": "231e7b1c998f4349d5859295007235ffd41848f12fbb7819193bec9630cd3942"
+        },
+        {
+          "git_blob": "828204e998a46b9571b3a2b3ba08acd9fc6caa31",
+          "module": "capture_analysis.plots.sync_dashboard",
+          "path": "libs/python/capture_analysis/capture_analysis/plots/sync_dashboard.py",
+          "sha256": "6f9e0c64193688eb841565729b9d1e9a64136779e892419acabdc81591afd3d5"
+        },
+        {
+          "git_blob": "39c9c93eab1f5abf65ea73299c34b05ec184dd63",
+          "module": "capture_analysis.plugins",
+          "path": "libs/python/capture_analysis/capture_analysis/plugins/__init__.py",
+          "sha256": "c511d4b9cd1cda042b781b06fbb02d2d99004de214735d6daeb459d6e41381fe"
+        },
+        {
+          "git_blob": "03c8589064dfc4c6cfec6e4d00b7f46b10014414",
+          "module": "capture_analysis.plugins.handlers",
+          "path": "libs/python/capture_analysis/capture_analysis/plugins/handlers.py",
+          "sha256": "9be2e1820529b94e54d06790d53aa94cf658f982efb4063c6b64f9d07acc4b2e"
+        },
+        {
+          "git_blob": "e7334bedfcba51052a7f039f66c74ff288840831",
+          "module": "capture_analysis.plugins.registry",
+          "path": "libs/python/capture_analysis/capture_analysis/plugins/registry.py",
+          "sha256": "5ba10f5b58c102a98943d2225903c1d9f874aa5921a50319e159f6bd4d537351"
+        },
+        {
+          "git_blob": "7221b26a129b7915a42fed900908a04eae213454",
+          "module": "capture_analysis.qc",
+          "path": "libs/python/capture_analysis/capture_analysis/qc.py",
+          "sha256": "cf18c7e044e8e00227f486836d75effd48d8afb862d847add2aa9bc36c062f4b"
+        },
+        {
+          "git_blob": "a0bb34d71fe03a4426ef0479619fa8d22a7bc8fa",
+          "module": "capture_analysis.report_html",
+          "path": "libs/python/capture_analysis/capture_analysis/report_html.py",
+          "sha256": "bb9a3c3627be6916c4f9babbb508e48adeef12b6118964625f01e9ecb5b08e2c"
+        },
+        {
+          "git_blob": "2adf26816e0ef9e84e6763cf8bbff69d64697949",
+          "module": "capture_analysis.types",
+          "path": "libs/python/capture_analysis/capture_analysis/types.py",
+          "sha256": "e7996d02483f69265a2ef2ec0b28078c86f4f479daa53e38faf8b4a62645d02c"
+        },
+        {
+          "git_blob": "d04b8cc1dd9271ca3ccf836d97436d9a961417c6",
+          "module": "capture_analysis.version",
+          "path": "libs/python/capture_analysis/capture_analysis/version.py",
+          "sha256": "9e25143344b110699f68b6acdbef49576fc91c2cbda34956d7e2cb85bbbc4ae3"
+        },
+        {
+          "git_blob": "aaafd8db78f82a5a56178135dbed5bfd4f45c634",
+          "module": "capture_analysis.windows",
+          "path": "libs/python/capture_analysis/capture_analysis/windows.py",
+          "sha256": "5cf401b7b7d201225c966b804cfff39c3f6d59669da7e488dd68c4253a829c32"
+        },
+        {
+          "git_blob": "0e7ab2cf8689d3adbc689c283e8a23d12607b2d0",
+          "module": "capture_protocol",
+          "path": "libs/python/capture_protocol/capture_protocol/__init__.py",
+          "sha256": "556f474a3d740adc03c40426acde432ab7a394b947f8268bd90eecc7832dff8a"
+        },
+        {
+          "git_blob": "2542cda6bdb6a83d4334336f34d92f80040bc4a0",
+          "module": "capture_protocol.constants",
+          "path": "libs/python/capture_protocol/capture_protocol/constants.py",
+          "sha256": "7f187edf873cd13f55bc09ff7972785797eb488d74dd5befcb395fc928a71d72"
+        },
+        {
+          "git_blob": "9dd5021b815b31ab02eaaa814210525ebb543862",
+          "module": "capture_protocol.framing",
+          "path": "libs/python/capture_protocol/capture_protocol/framing.py",
+          "sha256": "3ff7c7284d9907a2ad516c83fab383a4151996da3f2d5a1d27e24d7c7575d92e"
+        },
+        {
+          "git_blob": "16ae7d90a122b4973139c563ac0f72efa061b1de",
+          "module": "capture_protocol.generated",
+          "path": "libs/python/capture_protocol/capture_protocol/generated/__init__.py",
+          "sha256": "1fac8216894ce1a1b5362de3b59398fbd78f005a59636aea9f074951bed5c1d7"
+        },
+        {
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "module": "capture_protocol.generated.capture",
+          "path": "libs/python/capture_protocol/capture_protocol/generated/capture/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "module": "capture_protocol.generated.capture.v1",
+          "path": "libs/python/capture_protocol/capture_protocol/generated/capture/v1/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "git_blob": "66031212a0da44800dcc671b0d4bf0cd39e71f06",
+          "module": "capture_protocol.generated.capture.v1.common_pb2",
+          "path": "libs/python/capture_protocol/capture_protocol/generated/capture/v1/common_pb2.py",
+          "sha256": "6736e3b86b3c8749d34065794da1c880772ce69e2f248fdd2febd003f083bbd3"
+        },
+        {
+          "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "module": "capture_protocol.generated.capture.v1.data",
+          "path": "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/__init__.py",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "git_blob": "54bbf93dc638cdab95f49744ea7e0b43fefad374",
+          "module": "capture_protocol.generated.capture.v1.data.imu_frame_pb2",
+          "path": "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/imu_frame_pb2.py",
+          "sha256": "4a2048d2a737362bf26b99166e95c457d1492fcfba8848c894fe4d2748ff9f51"
+        },
+        {
+          "git_blob": "9386e73b3c1eecb683d9d0ca98ad415268e307af",
+          "module": "capture_protocol.handshake",
+          "path": "libs/python/capture_protocol/capture_protocol/handshake.py",
+          "sha256": "63f740c992edf8812f666b79f9cd866d9ea33e65e5b310a5ebda2f5ef98ac115"
+        },
+        {
+          "git_blob": "894e3c152a98b6e804de90122572afbcd929b3da",
+          "module": "capture_session",
+          "path": "libs/python/capture_session/capture_session/__init__.py",
+          "sha256": "da530f86c0d1d584862868ddba9f7087ccf5dfbddd64dd1e577337ecfd776419"
+        },
+        {
+          "git_blob": "46332cea7c62dd44247b219937ae6c8fbc747017",
+          "module": "capture_session.app_paths",
+          "path": "libs/python/capture_session/capture_session/app_paths.py",
+          "sha256": "363e4522240e2356cac7492589cb207a798bc1af6031139bd1fa94890f1c4bfd"
+        },
+        {
+          "git_blob": "91fbf913c5af8489968425d7ceac51c04233d3e0",
+          "module": "capture_session.package_reader",
+          "path": "libs/python/capture_session/capture_session/package_reader.py",
+          "sha256": "9a1d9e6e7d24341a083cee602af9538413e948f3369b22660e484356e3d34eb1"
+        },
+        {
+          "git_blob": "c1d7799e1d2099424221b2f4af216a43a972c67a",
+          "module": "capture_session.registry",
+          "path": "libs/python/capture_session/capture_session/registry.py",
+          "sha256": "809b26ce8d8efc0559a3854cf85ea74b4e486fcd77d253ebfa76bade64b0a8d1"
+        },
+        {
+          "git_blob": "41b99cdaa78011d3d9b753c3131f32c72af9699f",
+          "module": "capture_session.settings_store",
+          "path": "libs/python/capture_session/capture_session/settings_store.py",
+          "sha256": "7719524a1f106cc54befcd21088810f9ec28f0160c8e88f60c374e1545fdb98d"
+        }
+      ],
+      "checks_passed": 26,
+      "checks_total": 26,
+      "classification": "product receiving",
+      "dependency_versions": {
+        "jsonschema": "4.26.0",
+        "matplotlib": "3.11.2",
+        "mcap": "1.5.0",
+        "numpy": "2.5.3",
+        "pandas": "3.0.6",
+        "protobuf": "4.25.9",
+        "pyarrow": "25.0.1",
+        "scipy": "1.18.1"
+      },
+      "driver_sha256": "0779ae505ae3b784177960504185f0276215c4b853969a222316167f142f08d2",
+      "failures": [],
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "process": {
+        "baseline_receiving_commit": "1efa5f5162358d4c4915ece2db7394c06a2e40d1",
+        "candidate_source_commit": "e188fabb2e82ef353206768baa429c8aecab7731",
+        "command": [
+          "/Users/me/capturesuite-independent-checkpoint-18a24bf0c281/venv/bin/python",
+          "-B",
+          "/Users/me/capturesuite-independent-checkpoint-18a24bf0c281/receive_closed_section_isolation.py",
+          "--source",
+          "/Users/me/capturesuite-independent-checkpoint-18a24bf0c281/candidate",
+          "--manifest",
+          "/Users/me/capturesuite-independent-checkpoint-18a24bf0c281/candidate-manifest.json",
+          "--output",
+          "/Users/me/capturesuite-independent-checkpoint-18a24bf0c281/evidence/candidate-v2",
+          "--label",
+          "owner-4fcd0aa"
+        ],
+        "driver_commit": "251a69414a9f406d0689e7ce0305c9aeee396a5c",
+        "driver_sha256": "0779ae505ae3b784177960504185f0276215c4b853969a222316167f142f08d2",
+        "duration_seconds": 2.2091948986053467,
+        "exit_code": 0,
+        "isolated_environment": {
+          "MPLCONFIGDIR": "/Users/me/capturesuite-independent-checkpoint-18a24bf0c281/cache/matplotlib",
+          "PYTHONDONTWRITEBYTECODE": "1",
+          "XDG_CACHE_HOME": "/Users/me/capturesuite-independent-checkpoint-18a24bf0c281/cache/xdg",
+          "cleared": [
+            "PYTHONPATH",
+            "PYTHONHOME"
+          ]
+        }
+      },
+      "python": "3.12.8 (main, Dec  3 2024, 18:42:41) [Clang 16.0.0 (clang-1600.0.26.4)]",
+      "result": "passed",
+      "source_files_verified_before_after": 668,
+      "variants": {
+        "future_data": {
+          "csv": {
+            "bytes": 4654,
+            "sha256": "b858bafe27fa54841d68952020c13168f6b042c2192c81cd2f4c78e92081cff6"
+          },
+          "feature_rows": 39,
+          "first_feature_ns": 2091666666,
+          "last_feature_ns": 5891666666,
+          "parquet": {
+            "bytes": 9262,
+            "sha256": "13aa0d6205336c35cfa2d0b92aa5c9d32ced8a8f6b798af2d116b0636103a0a6"
+          },
+          "raw_files_unchanged": 8,
+          "window": {
+            "checkpointIds": [
+              "B"
+            ],
+            "endSessionNs": 6000000000,
+            "mode": "cp:B",
+            "startSessionNs": 2000000000
+          }
+        },
+        "future_marker": {
+          "csv": {
+            "bytes": 4654,
+            "sha256": "b858bafe27fa54841d68952020c13168f6b042c2192c81cd2f4c78e92081cff6"
+          },
+          "feature_rows": 39,
+          "first_feature_ns": 2091666666,
+          "last_feature_ns": 5891666666,
+          "parquet": {
+            "bytes": 9262,
+            "sha256": "13aa0d6205336c35cfa2d0b92aa5c9d32ced8a8f6b798af2d116b0636103a0a6"
+          },
+          "raw_files_unchanged": 8,
+          "window": {
+            "checkpointIds": [
+              "B"
+            ],
+            "endSessionNs": 6000000000,
+            "mode": "cp:B",
+            "startSessionNs": 2000000000
+          }
+        },
+        "inside_data": {
+          "csv": {
+            "bytes": 4641,
+            "sha256": "3c72f90f1d55259249d44674b4f485ed4eb83652eb4a77edd863cd035ebbce2c"
+          },
+          "feature_rows": 39,
+          "first_feature_ns": 2091666666,
+          "last_feature_ns": 5891666666,
+          "parquet": {
+            "bytes": 9274,
+            "sha256": "de355d0ad8bece471e4182cd808e92a9de9baf73558a95d26fd6dab2bfeb09de"
+          },
+          "raw_files_unchanged": 8,
+          "window": {
+            "checkpointIds": [
+              "B"
+            ],
+            "endSessionNs": 6000000000,
+            "mode": "cp:B",
+            "startSessionNs": 2000000000
+          }
+        },
+        "reference": {
+          "csv": {
+            "bytes": 4654,
+            "sha256": "b858bafe27fa54841d68952020c13168f6b042c2192c81cd2f4c78e92081cff6"
+          },
+          "feature_rows": 39,
+          "first_feature_ns": 2091666666,
+          "last_feature_ns": 5891666666,
+          "parquet": {
+            "bytes": 9262,
+            "sha256": "13aa0d6205336c35cfa2d0b92aa5c9d32ced8a8f6b798af2d116b0636103a0a6"
+          },
+          "raw_files_unchanged": 8,
+          "window": {
+            "checkpointIds": [
+              "B"
+            ],
+            "endSessionNs": 6000000000,
+            "mode": "cp:B",
+            "startSessionNs": 2000000000
+          }
+        }
+      }
+    }
+  },
+  "upstream_commit": "72c15d6b623e217291a824e4e4808a385df896a9",
+  "upstream_tree": "221cf5c7bb3c3392a7c4186ba0bcf5a8664135d1",
+  "valid_product_runs": [
+    "baseline-v2",
+    "candidate-v2"
+  ]
+}

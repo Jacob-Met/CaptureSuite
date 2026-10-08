@@ -1,0 +1,108 @@
+{
+  "source_commit": "0ed1ccaa023a5327495565d59e1dd0b28b2ee5bd",
+  "source_tree": "b8990a709744eab58b25b875596c79d0865cce4a",
+  "files": 812,
+  "normalizations": [
+    {
+      "variant": "baseline",
+      "path": ".cursor/hooks/stop-capture-processes.ps1",
+      "checkout_sha256": "9ce051293d3cebd98a94103155ad1cfbc9c72ffb5b695768b4f96299d8b03198",
+      "canonical_sha256": "76d5f0fd7960f9825713ffdfcf5cfd24d1697f1ee1920dc4477f1dc8fdc1004e"
+    },
+    {
+      "variant": "baseline",
+      "path": "plugins/example_sine_py/run_worker.cmd",
+      "checkout_sha256": "513a1f90f0e8160bb2e4829ac12e3d8795044ac885dfeb0ee4eb288cbfc0bfa1",
+      "canonical_sha256": "6f4d6561219a252689ac4fcedf80baa3590c2687ee5e92c7c05bef642c13a4e8"
+    },
+    {
+      "variant": "baseline",
+      "path": "plugins/lsl_bridge/run_worker.cmd",
+      "checkout_sha256": "ededbb3e56d0f046ad536914ddea599fbe29465eb9f95029c8040308029cb92c",
+      "canonical_sha256": "0be217958d15e6b365a703ac7d70fb539b95d6281fb8ef275f416a117e5ed36b"
+    },
+    {
+      "variant": "baseline",
+      "path": "scripts/dev-env.ps1",
+      "checkout_sha256": "604ef0fa03d4558ef94f263481be8609dff8acd06185959316a61a47f1669a30",
+      "canonical_sha256": "e0d8ad357a59c80e09fdb9c4b9db0b7441bea7c0051b06022b28f3ae9ab81425"
+    },
+    {
+      "variant": "baseline",
+      "path": "tools/gstreamer-installers/install-gstreamer.ps1",
+      "checkout_sha256": "f1c6a7dd3a9cc3ee05b6f9304fea8d99682a8b8e6170375bb5ec147bc0074b3c",
+      "canonical_sha256": "8c5da568e758ae4c7c04ed027b481ac43a1de12de5df8740f0a94552ae56454e"
+    },
+    {
+      "variant": "baseline",
+      "path": "tools/new_plugin.ps1",
+      "checkout_sha256": "3f50e422f972133c785b49938d6dbd07ceefe1b3deba31e0f74275ba036d1ea6",
+      "canonical_sha256": "12057eb6a0843e32d44d21a3e480684bd126fa880121bdaef48898842d5f2608"
+    },
+    {
+      "variant": "baseline",
+      "path": "tools/run-daemon-gstreamer.ps1",
+      "checkout_sha256": "bc7aedcedc29317215ed01f03c405462f9c8434920dba96fb561b0b392c2e7b2",
+      "canonical_sha256": "912850c65e08032045d7da514928f142e2cac728e0e96fc2890d7c8724f188f5"
+    },
+    {
+      "variant": "baseline",
+      "path": "tools/run-demo.ps1",
+      "checkout_sha256": "a3796b4b23756129e3e2030a3fba7c5e10f2a64ede2449d57e99de3027c335eb",
+      "canonical_sha256": "f95c255e76a1076382dfc90ed95ceabbb09edb741f9161fc3bbb3a72169afe0b"
+    },
+    {
+      "variant": "candidate",
+      "path": ".cursor/hooks/stop-capture-processes.ps1",
+      "checkout_sha256": "9ce051293d3cebd98a94103155ad1cfbc9c72ffb5b695768b4f96299d8b03198",
+      "canonical_sha256": "76d5f0fd7960f9825713ffdfcf5cfd24d1697f1ee1920dc4477f1dc8fdc1004e"
+    },
+    {
+      "variant": "candidate",
+      "path": "plugins/example_sine_py/run_worker.cmd",
+      "checkout_sha256": "513a1f90f0e8160bb2e4829ac12e3d8795044ac885dfeb0ee4eb288cbfc0bfa1",
+      "canonical_sha256": "6f4d6561219a252689ac4fcedf80baa3590c2687ee5e92c7c05bef642c13a4e8"
+    },
+    {
+      "variant": "candidate",
+      "path": "plugins/lsl_bridge/run_worker.cmd",
+      "checkout_sha256": "ededbb3e56d0f046ad536914ddea599fbe29465eb9f95029c8040308029cb92c",
+      "canonical_sha256": "0be217958d15e6b365a703ac7d70fb539b95d6281fb8ef275f416a117e5ed36b"
+    },
+    {
+      "variant": "candidate",
+      "path": "scripts/dev-env.ps1",
+      "checkout_sha256": "604ef0fa03d4558ef94f263481be8609dff8acd06185959316a61a47f1669a30",
+      "canonical_sha256": "e0d8ad357a59c80e09fdb9c4b9db0b7441bea7c0051b06022b28f3ae9ab81425"
+    },
+    {
+      "variant": "candidate",
+      "path": "tools/gstreamer-installers/install-gstreamer.ps1",
+      "checkout_sha256": "f1c6a7dd3a9cc3ee05b6f9304fea8d99682a8b8e6170375bb5ec147bc0074b3c",
+      "canonical_sha256": "8c5da568e758ae4c7c04ed027b481ac43a1de12de5df8740f0a94552ae56454e"
+    },
+    {
+      "variant": "candidate",
+      "path": "tools/new_plugin.ps1",
+      "checkout_sha256": "3f50e422f972133c785b49938d6dbd07ceefe1b3deba31e0f74275ba036d1ea6",
+      "canonical_sha256": "12057eb6a0843e32d44d21a3e480684bd126fa880121bdaef48898842d5f2608"
+    },
+    {
+      "variant": "candidate",
+      "path": "tools/run-daemon-gstreamer.ps1",
+      "checkout_sha256": "bc7aedcedc29317215ed01f03c405462f9c8434920dba96fb561b0b392c2e7b2",
+      "canonical_sha256": "912850c65e08032045d7da514928f142e2cac728e0e96fc2890d7c8724f188f5"
+    },
+    {
+      "variant": "candidate",
+      "path": "tools/run-demo.ps1",
+      "checkout_sha256": "a3796b4b23756129e3e2030a3fba7c5e10f2a64ede2449d57e99de3027c335eb",
+      "canonical_sha256": "f95c255e76a1076382dfc90ed95ceabbb09edb741f9161fc3bbb3a72169afe0b"
+    }
+  ],
+  "overlay": {
+    "path": "libs/python/capture_analysis/capture_analysis/windows.py",
+    "sha256": "5cf401b7b7d201225c966b804cfff39c3f6d59669da7e488dd68c4253a829c32",
+    "git_blob": "aaafd8db78f82a5a56178135dbed5bfd4f45c634"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "source_commit": "4fcd0aa4319b6594af637af8644c187fcbff3cf5",
+  "base": "72c15d6b623e217291a824e4e4808a385df896a9",
+  "window_git_blob": "aaafd8db78f82a5a56178135dbed5bfd4f45c634",
+  "window_sha256": "5cf401b7b7d201225c966b804cfff39c3f6d59669da7e488dd68c4253a829c32",
+  "test_sha256": "f08db026af80f802b0c8a491095e86bcd3436945def56f0d2f4899e2c22c368f",
+  "files": [
+    {
+      "path": "libs/python/capture_analysis/capture_analysis/windows.py",
+      "bytes": 5714,
+      "sha256": "5cf401b7b7d201225c966b804cfff39c3f6d59669da7e488dd68c4253a829c32",
+      "git_blob": "aaafd8db78f82a5a56178135dbed5bfd4f45c634"
+    },
+    {
+      "path": "tests/analysis/test_checkpoint_sections.py",
+      "bytes": 15085,
+      "sha256": "f08db026af80f802b0c8a491095e86bcd3436945def56f0d2f4899e2c22c368f",
+      "git_blob": "7dfc0ad216f9b4ed512ee3b33c3b65ba44895727"
+    }
+  ],
+  "native_boundary": "Full pinned authored source plus frozen windows.py and test; documentation is retained in the local source commit but is not an execution dependency."
+}

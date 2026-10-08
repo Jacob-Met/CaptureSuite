@@ -22,51 +22,6 @@ bytes remain unchanged during execution, and scoped Ruff passes. Independent
 receiving and the existing supported Windows CI remain separate integration gates.
 No inference service, physical capture, smoothing or calibration result is claimed.
 
-
-
-## 2026-10-08 — Refuse unsupported sync-anchor requests (#63)
-
-The offline job API now rejects `apply_sync_anchors=True` with an explicit
-`NotImplementedError` before progress callbacks, review/QC reads, output creation
-or replacement of a saved job. Default/false requests retain existing behavior and
-truthfully record that anchor offsets were not applied. The scope design keeps its
-future alignment contract and now distinguishes that contract from current
-availability; recorded anchors remain available to package review and QC.
-
-An actual copied synthetic session exposed the original false provenance: two QC
-jobs recognized the same anchor at 250,000,000 ns, but the requested flag alone
-changed the saved manifest to `applied:true` with no applied-anchor record. The
-paired 17-case suite changes from 6 passed / 11 failed to 17 passed. The candidate
-also passes 42 existing QC, destination, replacement and CLI cases; one existing
-Windows junction case is explicitly skipped on macOS. Scoped Ruff passes, and the
-107 paired source files plus original 97 inputs remain unchanged during execution.
-
-This native comparison uses the already installed Python 3.13.7 scientific stack
-and is advisory source execution: the package requires Python >=3.12,<3.13. The
-existing hosted Python 3.12/Windows gates and independent exact-source review remain
-separate integration requirements. This change does not implement or qualify
-feature timestamp alignment, MCAP decoding, desktop controls or hardware capture.
-
-The isolated preparation retained a transient storage failure and a rejected stale
-scope-document packet. The final document preserves the complete newly landed
-time-picker text. PR46 retains inventory/finalization ownership; its existing
-replacement, callback and failure-publication paths are unchanged. Source pins,
-original failures, real-job artifacts and receipts are retained in
-[the receiving record](../../evidence/sync-anchor-request-bd1abdb2f886-20261008/README.md).
-
-Current finalizer composition: the same two-hunk refusal now receives actual
-main `70f34e3b982523b544a9370d2316a1b69d79bd70`, retaining PR46's corrected
-final log/manifest inventory and failed-attempt publication. The unchanged
-17-case negative comparator still has 6 passes and 11 failures. The composed
-candidate passes 66 tests with one native Windows-only skip, including all
-seven newly merged output-provenance controls; scoped Ruff passes and all
-109 files in each isolated source variant remain unchanged. These are advisory
-Python 3.13.7 source results. The existing supported Python 3.12/Windows workflow,
-including the real numeric CLI/MCAP cases, and exact-source independent review
-remain separate integration gates. The earlier source, failures and evidence
-archive remain intact; the current-finalizer archive records all actual artifacts
-and records test-created links only as inert metadata.
-
 ## 2026-10-08 — Windows atomic writer reserves owned temporary files
 
 Contributor `estate-6267db2cfc6e` prepared the repair for issue51/PR52. Windows
@@ -145,6 +100,39 @@ Current receiving also preserves the producer's writer-close revision
 receiver above remains bound to retained original `16eb17f` atomic source; it
 does not claim qualification of the revised writer. See the packet CURRENT.md
 for the exact companion composition and current fixture replay.
+
+## 2026-10-08 — Analyze the section closed by a captured checkpoint
+
+Contributor `18a24bf0c281 / estate_product`, issue #54: selecting a captured
+checkpoint now resolves the preceding effective checkpoint (or session time
+zero) through the selected checkpoint. The final marker no longer selects the
+tail. Existing timestamp aliases, exact integers, stable ties, inclusive point
+sections and gap helpers are preserved. A persisted negative first marker
+reports invalid inverted bounds without clamping or rewriting the recording.
+
+The same frozen native Python 3.12.8 test file changes from **25 failed / 5
+passed** on the original implementation to **30 passed** on source `4fcd0aa`.
+Ten real CLI cases per implementation check synthetic protobuf MCAP through
+Parquet/CSV output; all eight raw files in every invocation remain exact. The
+candidate also passes **19 existing QC/features/stream-gap checks**, scoped
+Ruff and the existing license checker. Two upstream protobuf deprecation
+warnings remain recorded. Independent future-marker/data invariance and
+inside-section sensitivity receiving passes **26 checks** on the same
+production blob, with its original failures retained separately.
+
+`ANALYSIS.md` records the explicit decision reconciling the captured-checkpoint
+session contract with an older research tagged-start example. Scope UI #53 and
+history #55 keep their owned files. Actual native figures contain the correct
+selected samples; their existing elapsed-axis label discrepancy was retained
+and handed to the current plot/scope owners without editing plot source.
+
+Exact source pins, complete native logs/fixtures/artifacts, actual PNGs and
+byte-preservation receipts are in
+[`docs/evidence/checkpoint-sections-18a24bf0c281/README.md`](../../evidence/checkpoint-sections-18a24bf0c281/README.md).
+The distinct independent review is in
+[`checkpoint-future-isolation-18a24bf0c281`](../../evidence/checkpoint-future-isolation-18a24bf0c281/README.md).
+This is bounded native offline receiving; supported Windows CI, desktop
+composition and physical acquisition retain their separate acceptance gates.
 
 ## 2026-10-08 — Preserve prior analysis jobs on failed replacement
 
@@ -766,6 +754,44 @@ remain pending. Raw results, source pins, CLI input/output hashes and receiving
 source equivalence are in
 `../../evidence/qc-gap-details-ultra-20b27c2e-20261008/`.
 
+
+### 2026-10-08 — Add actual GStreamer camera qualification
+
+The additive Native camera worker workflow enables the real Windows camera
+target with the pinned official GStreamer 1.24.13 MSVC SDK. A test-only absolute
+executable selector reuses the existing three camera cases for the original,
+plugin and legacy layouts. The receiving runner requires all three cases in
+each layout, exact worker/DLL identity, an actual missing plugin-local protobuf
+loader refusal, exact restoration, and unchanged source/SDK/binaries.
+
+The SDK is administratively extracted into a fresh hosted-runner directory;
+there is no product installation or machine/user environment change. Existing
+CI, CMake test registration, worker production source and runtime resolver
+ownership are preserved. Portable acceptance controls and independent source
+review precede hosted Windows execution; they do not establish a native camera
+pass. Physical devices and automatic manifest resolution remain outside this
+gate. Scope, reproduction and retained-evidence rules are in
+`../../qualification/camera-native-dd84679589d8/README.md`.
+
+
+### 2026-10-08 — Receive the first actual Windows camera build
+
+The first dedicated camera run (37782737763, actual checkout
+`ea99de704be6f9fe5b272be3ff0043680cd89d88`) verified the SDK, passed the 13
+portable controls and configured the real camera target. Compilation then
+rejected an integer `gboolean` comparison with C++ `TRUE` under MSVC /W4 /WX
+(C4805 promoted to C2220). The one-line repair interprets the existing
+`gst_element_link_many` result by its zero/nonzero value; the encoder probe
+flow and strict warning gate remain intact. Native camera cases did not run.
+
+The standard C++ gate passed 26 CTest and six native daemon/recovery cases.
+Standard Python exited zero with 383 passed and six skipped, but its JUnit
+declared 448 tests for 389 case entries: 59 successful subtests inflated the
+aggregate. The new camera controls now use the same variant loops and assertions
+as ordinary unittest cases. A focused pytest 9.1.1 replay reproduces the original
+72-versus-13 mismatch and receives the successor's 13-versus-13 report with the
+unchanged shared checker. The next hosted run must qualify both narrow repairs.
+
 ## 2026-10-08 — Desktop analysis time scope (estate-234cae4aee53)
 
 Issue #53 adds the missing operator path from the sealed-session header to the
@@ -834,3 +860,99 @@ active worker. Supported-platform CI and independent receiving are recorded
 separately in the accompanying feature evidence; local Linux Qt is not Windows,
 hardware or installed-app qualification. See [figure export](FIGURE_EXPORT.md)
 for the operator workflow, bundle fields and explicit resource/failure bounds.
+
+
+
+## 2026-10-08 — Refuse unsupported sync-anchor requests (#63)
+
+The offline job API now rejects `apply_sync_anchors=True` with an explicit
+`NotImplementedError` before progress callbacks, review/QC reads, output creation
+or replacement of a saved job. Default/false requests retain existing behavior and
+truthfully record that anchor offsets were not applied. The scope design keeps its
+future alignment contract and now distinguishes that contract from current
+availability; recorded anchors remain available to package review and QC.
+
+An actual copied synthetic session exposed the original false provenance: two QC
+jobs recognized the same anchor at 250,000,000 ns, but the requested flag alone
+changed the saved manifest to `applied:true` with no applied-anchor record. The
+paired 17-case suite changes from 6 passed / 11 failed to 17 passed. The candidate
+also passes 42 existing QC, destination, replacement and CLI cases; one existing
+Windows junction case is explicitly skipped on macOS. Scoped Ruff passes, and the
+107 paired source files plus original 97 inputs remain unchanged during execution.
+
+This native comparison uses the already installed Python 3.13.7 scientific stack
+and is advisory source execution: the package requires Python >=3.12,<3.13. The
+existing hosted Python 3.12/Windows gates and independent exact-source review remain
+separate integration requirements. This change does not implement or qualify
+feature timestamp alignment, MCAP decoding, desktop controls or hardware capture.
+
+The isolated preparation retained a transient storage failure and a rejected stale
+scope-document packet. The final document preserves the complete newly landed
+time-picker text. PR46 retains inventory/finalization ownership; its existing
+replacement, callback and failure-publication paths are unchanged. Source pins,
+original failures, real-job artifacts and receipts are retained in
+[the receiving record](../../evidence/sync-anchor-request-bd1abdb2f886-20261008/README.md).
+
+Current finalizer composition: the same two-hunk refusal now receives actual
+main `70f34e3b982523b544a9370d2316a1b69d79bd70`, retaining PR46's corrected
+final log/manifest inventory and failed-attempt publication. The unchanged
+17-case negative comparator still has 6 passes and 11 failures. The composed
+candidate passes 66 tests with one native Windows-only skip, including all
+seven newly merged output-provenance controls; scoped Ruff passes and all
+109 files in each isolated source variant remain unchanged. These are advisory
+Python 3.13.7 source results. The existing supported Python 3.12/Windows workflow,
+including the real numeric CLI/MCAP cases, and exact-source independent review
+remain separate integration gates. The earlier source, failures and evidence
+archive remain intact; the current-finalizer archive records all actual artifacts
+and records test-created links only as inert metadata.
+
+Current external-prediction composition: the same refusal now receives actual main
+`58157fdc1b83a12bb4856ef14b0498cf524a1087`. The newly merged optional
+`prediction_path` eval dispatch is preserved exactly. All 17 existing admission
+controls pass, as do three bounded real eval groups: the unchanged identity default,
+an authored source-bound external prediction input with known errors and verified
+output inventory, and refusal before an absent prediction input or saved-job
+replacement. Scoped Ruff passes and all 115 receiving source files remain unchanged.
+This is still advisory Python 3.13 source execution. It does not decode MCAP or
+replace the upstream owner's full pipeline qualification; supported hosted gates
+must accept the current composition before integration. The previous finalizer
+receiving and both earlier archives remain untouched.
+
+The published source additionally preserves checkpoint and camera integration from
+main `9c44354cb101c76beff79265de0040b6839d249f`. The shared job runner remains
+byte-identical to the qualified external-prediction composition; the newer
+checkpoint resolver and its expanded scope documentation are retained in full.
+The native 115-file packet remains pinned to its actual 58157 parent. The complete
+current composition requires its own supported hosted qualification before merge.
+
+
+## 2026-10-08 — External prediction evaluation (chatgpt-566d51f04b31-mac)
+
+Issue #57 owns the optional source-bound prediction input on the existing eval
+job. Base e43da3b8 has an intentional identity-teacher simulation. The retained
+five Phase 5/6 tests pass on that base; the new actual-pipeline receiver has
+26 expected feature/refusal failures and one unchanged simulation control pass.
+Native Python 3.12.8 uses the existing analysis dependencies without installation.
+
+Implementation is limited to eval input/scoring/figures, optional CLI dispatch,
+the versioned input contract and tests/docs. #46 retains job publication and
+inventory; #49 and #53–56 retain their numerical/UI/kinematics scopes. Source
+qualification is complete: 158 analysis tests pass and the single native Windows
+junction test is skipped on macOS. Scoped Ruff and the license check pass. PNG
+and Poppler-rendered PDF outputs are readable; a literal model-label rendering
+failure was retained and corrected. The original 26-failure baseline, first
+candidate, line-wrap-only AST checks and final native logs are preserved.
+Independent receiving, source review and supported hosted gates remain pending;
+no model training, held-out design, hardware or clinical result is claimed.
+
+
+Receiving correction: root source review found a half-ULP Pearson centering
+error for two nearly equal reversed samples. The exact native examples at 1.0
+and 180.0 both reproduced correlation 0 instead of -1; an ordinary two-point
+control passed. Translating each normalized series before mean subtraction
+preserves the small offsets without losing overflow resistance. The same two
+regressions now pass, as does a finite +/-1e308 identity control. The corrected
+full analysis suite passes **161 tests**, with the same native Windows junction
+skip and two retained protobuf deprecation warnings. Source matching, masks,
+MAE/RMSE, units and default identity simulation are unchanged. Independent
+receiving and supported hosted gates still remain separate pending gates.

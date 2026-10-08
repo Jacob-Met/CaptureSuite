@@ -1,0 +1,21 @@
+{
+  "archive": "current-predictions-evidence.tar.gz",
+  "boundary": "Python3.13 is outside declared >=3.12,<3.13. Original66/1 finalizer receiving is retained. Supported Python3.12/Windows full CI is required on this composition. The authored sealed-bundle receiver exercises actual eval API forwarding; it does not decode MCAP or execute the external owner's full sensor pipeline. No installation or shared source/runtime change.",
+  "bytes": 467110,
+  "driver_sha256": "bdc2969f4b67dde0f8bdc1a14dc8fc5aa1c7acc51f80c067a493d0918a732aed",
+  "eval_groups": 3,
+  "git_blob": "0767d2388dadf9b0d3b3baf9750d335ab019b89c",
+  "inert_links": 6,
+  "manifest_entries": 414,
+  "manifest_sha256": "147d95c8b59a98c605e7656ee7c48cad0a1adaf1b94be4649bded0b7fa5d9d5a",
+  "previous_accepted_head": "440061b1ac0e71cf8d5f8e32fd2fb92a202f7602",
+  "qualification_sha256": "49c11dd27ad0e262ea45db94d72efed29cfcab7dcba856e60be32ea01013ebc4",
+  "regular_members": 415,
+  "ruff_passed": true,
+  "sha256": "00a696359054e4025356f7c8b7d75e24043cc7176720206c26429914e1a878cf",
+  "source_files": 115,
+  "source_parent": "58157fdc1b83a12bb4856ef14b0498cf524a1087",
+  "source_parent_tree": "51c711928a28dc02e100fcdea44cd34512318113",
+  "source_unchanged": true,
+  "tests": 17
+}

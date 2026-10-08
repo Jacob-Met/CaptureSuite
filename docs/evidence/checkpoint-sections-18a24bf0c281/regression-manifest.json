@@ -1,0 +1,499 @@
+{
+  "files": [
+    {
+      "path": "regression/junit.xml",
+      "bytes": 8574,
+      "sha256": "78b2998ba1760775a69629a8936d380a34a81b02fd8a6e5679fc952822e25909"
+    },
+    {
+      "path": "regression/licenses.log",
+      "bytes": 17,
+      "sha256": "7bcb47df08917b40ea6dc57be21749a0311e7197c5d26ca0df66e0d9f516bcba"
+    },
+    {
+      "path": "regression/pytest-tmp/test_analysis_job_schema_valid0/mini.mmsession/events/annotations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "regression/pytest-tmp/test_analysis_job_schema_valid0/mini.mmsession/events/checkpoints.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "regression/pytest-tmp/test_analysis_job_schema_valid0/mini.mmsession/events/sync_anchors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "regression/pytest-tmp/test_analysis_job_schema_valid0/mini.mmsession/integrity.json",
+      "bytes": 227,
+      "sha256": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556"
+    },
+    {
+      "path": "regression/pytest-tmp/test_analysis_job_schema_valid0/mini.mmsession/manifest.json",
+      "bytes": 235,
+      "sha256": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380"
+    },
+    {
+      "path": "regression/pytest-tmp/test_analysis_job_schema_valid0/mini.mmsession/processing/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "regression/pytest-tmp/test_analysis_job_schema_valid0/mini.mmsession/processing/jobs/qc-schema/job_manifest.json",
+      "bytes": 2422,
+      "sha256": "8330d75c721482296ba6b4423ce3d728b82c18ca36355003e56fc6289fb12b2a"
+    },
+    {
+      "path": "regression/pytest-tmp/test_analysis_job_schema_valid0/mini.mmsession/processing/jobs/qc-schema/logs/job.log",
+      "bytes": 218,
+      "sha256": "2ca2a7c375ee262a9834420afd4ce463dde4893e196ad387931102ddfc4fdcc7"
+    },
+    {
+      "path": "regression/pytest-tmp/test_analysis_job_schema_valid0/mini.mmsession/processing/jobs/qc-schema/params.json",
+      "bytes": 246,
+      "sha256": "8cd7f8d7de569b263925f30022c2a4a60ba25f31a7432b1e33c616ee5fa72840"
+    },
+    {
+      "path": "regression/pytest-tmp/test_analysis_job_schema_valid0/mini.mmsession/processing/jobs/qc-schema/reports/qc.html",
+      "bytes": 1668,
+      "sha256": "ae16f1a738efd7eb5438ce8cb79c31f0074a0676ae8151d4c7d9b39df6623586"
+    },
+    {
+      "path": "regression/pytest-tmp/test_analysis_job_schema_valid0/mini.mmsession/processing/jobs/qc-schema/reports/qc.json",
+      "bytes": 1340,
+      "sha256": "a1daee7cef38e851cfdb216686197c897fbcb0a0f31ebdbd66f04cac79bf3cbf"
+    },
+    {
+      "path": "regression/pytest-tmp/test_analysis_job_schema_valid0/mini.mmsession/sources/sim.emg.main/health/gaps.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "regression/pytest-tmp/test_analysis_job_schema_valid0/mini.mmsession/sources/sim.emg.main/source.json",
+      "bytes": 112,
+      "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10"
+    },
+    {
+      "path": "regression/pytest-tmp/test_analysis_job_schema_valid0/mini.mmsession/sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",
+      "bytes": 28,
+      "sha256": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649"
+    },
+    {
+      "path": "regression/pytest-tmp/test_analysis_job_schema_valid0/mini.mmsession/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json",
+      "bytes": 216,
+      "sha256": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1"
+    },
+    {
+      "path": "regression/pytest-tmp/test_analysis_job_schema_valid0/mini.mmsession/sources/sim.imu.upper/source.json",
+      "bytes": 118,
+      "sha256": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8"
+    },
+    {
+      "path": "regression/pytest-tmp/test_analysis_job_schema_valid0/mini.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+      "bytes": 28,
+      "sha256": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649"
+    },
+    {
+      "path": "regression/pytest-tmp/test_analysis_job_schema_valid0/mini.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "bytes": 219,
+      "sha256": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+    },
+    {
+      "path": "regression/pytest-tmp/test_cli_qc0/mini.mmsession/events/annotations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "regression/pytest-tmp/test_cli_qc0/mini.mmsession/events/checkpoints.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "regression/pytest-tmp/test_cli_qc0/mini.mmsession/events/sync_anchors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "regression/pytest-tmp/test_cli_qc0/mini.mmsession/integrity.json",
+      "bytes": 227,
+      "sha256": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556"
+    },
+    {
+      "path": "regression/pytest-tmp/test_cli_qc0/mini.mmsession/manifest.json",
+      "bytes": 235,
+      "sha256": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380"
+    },
+    {
+      "path": "regression/pytest-tmp/test_cli_qc0/mini.mmsession/processing/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "regression/pytest-tmp/test_cli_qc0/mini.mmsession/processing/jobs/cli-qc/job_manifest.json",
+      "bytes": 2400,
+      "sha256": "909d1b8f80bf4d72488fad905f179aa72c17fda5885c2f709e7079b14f284f13"
+    },
+    {
+      "path": "regression/pytest-tmp/test_cli_qc0/mini.mmsession/processing/jobs/cli-qc/logs/job.log",
+      "bytes": 196,
+      "sha256": "66dee810a6b3a7fdae79db231a838b5998d9487e8b27da238e378ca0e43fa09c"
+    },
+    {
+      "path": "regression/pytest-tmp/test_cli_qc0/mini.mmsession/processing/jobs/cli-qc/params.json",
+      "bytes": 243,
+      "sha256": "a21a36d4d852de46c3902b1a85c3ae5da31144f87c55678c8b547b76bafdef7c"
+    },
+    {
+      "path": "regression/pytest-tmp/test_cli_qc0/mini.mmsession/processing/jobs/cli-qc/reports/qc.html",
+      "bytes": 1649,
+      "sha256": "65634bc99d2f8966e6056c8cc26b112621d2ee0670490a6810ed0a8807441d8d"
+    },
+    {
+      "path": "regression/pytest-tmp/test_cli_qc0/mini.mmsession/processing/jobs/cli-qc/reports/qc.json",
+      "bytes": 1321,
+      "sha256": "61dd50ecea8fed8e113b34cd0033c75b314b0a01eeee8a2cf3fc2bc22cae6f8a"
+    },
+    {
+      "path": "regression/pytest-tmp/test_cli_qc0/mini.mmsession/sources/sim.emg.main/health/gaps.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "regression/pytest-tmp/test_cli_qc0/mini.mmsession/sources/sim.emg.main/source.json",
+      "bytes": 112,
+      "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10"
+    },
+    {
+      "path": "regression/pytest-tmp/test_cli_qc0/mini.mmsession/sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",
+      "bytes": 28,
+      "sha256": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649"
+    },
+    {
+      "path": "regression/pytest-tmp/test_cli_qc0/mini.mmsession/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json",
+      "bytes": 216,
+      "sha256": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1"
+    },
+    {
+      "path": "regression/pytest-tmp/test_cli_qc0/mini.mmsession/sources/sim.imu.upper/source.json",
+      "bytes": 118,
+      "sha256": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8"
+    },
+    {
+      "path": "regression/pytest-tmp/test_cli_qc0/mini.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+      "bytes": 28,
+      "sha256": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649"
+    },
+    {
+      "path": "regression/pytest-tmp/test_cli_qc0/mini.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "bytes": 219,
+      "sha256": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+    },
+    {
+      "path": "regression/pytest-tmp/test_discover_streams_reads_de0/mini.mmsession/events/annotations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "regression/pytest-tmp/test_discover_streams_reads_de0/mini.mmsession/events/checkpoints.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "regression/pytest-tmp/test_discover_streams_reads_de0/mini.mmsession/events/sync_anchors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "regression/pytest-tmp/test_discover_streams_reads_de0/mini.mmsession/integrity.json",
+      "bytes": 227,
+      "sha256": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556"
+    },
+    {
+      "path": "regression/pytest-tmp/test_discover_streams_reads_de0/mini.mmsession/manifest.json",
+      "bytes": 235,
+      "sha256": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380"
+    },
+    {
+      "path": "regression/pytest-tmp/test_discover_streams_reads_de0/mini.mmsession/processing/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "regression/pytest-tmp/test_discover_streams_reads_de0/mini.mmsession/sources/sim.emg.main/health/gaps.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "regression/pytest-tmp/test_discover_streams_reads_de0/mini.mmsession/sources/sim.emg.main/source.json",
+      "bytes": 112,
+      "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10"
+    },
+    {
+      "path": "regression/pytest-tmp/test_discover_streams_reads_de0/mini.mmsession/sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",
+      "bytes": 28,
+      "sha256": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649"
+    },
+    {
+      "path": "regression/pytest-tmp/test_discover_streams_reads_de0/mini.mmsession/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json",
+      "bytes": 216,
+      "sha256": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1"
+    },
+    {
+      "path": "regression/pytest-tmp/test_discover_streams_reads_de0/mini.mmsession/sources/sim.imu.upper/source.json",
+      "bytes": 118,
+      "sha256": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8"
+    },
+    {
+      "path": "regression/pytest-tmp/test_discover_streams_reads_de0/mini.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+      "bytes": 28,
+      "sha256": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649"
+    },
+    {
+      "path": "regression/pytest-tmp/test_discover_streams_reads_de0/mini.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "bytes": 219,
+      "sha256": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/events/annotations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/events/checkpoints.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/events/sync_anchors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/integrity.json",
+      "bytes": 224,
+      "sha256": "cf47ef0995d246842c45481e7c756c8376eb0664446f80c77514538e73efef2a"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/manifest.json",
+      "bytes": 235,
+      "sha256": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/processing/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/processing/jobs/phase-b-all/features/_schema.json",
+      "bytes": 2880,
+      "sha256": "c80f7d1e05378bf2399098e9887fc463edda22e366236eab3e9b1b0526d1f0f0"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/processing/jobs/phase-b-all/features/emg/sim.emg.main/windows.csv",
+      "bytes": 498,
+      "sha256": "132e389419ee223b77da04dcd986962c85446ae768d581eee52e3e239261e575"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/processing/jobs/phase-b-all/features/emg/sim.emg.main/windows.parquet",
+      "bytes": 7411,
+      "sha256": "736edc12fa3ae8724eccc666d8c151101f50de9bbe3f9c7e5299e6f0c74ac11d"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/processing/jobs/phase-b-all/features/imu/sim.imu.upper/windows.csv",
+      "bytes": 628,
+      "sha256": "62212faf4179e9050c4d7a2e3530a461c70d0e56b227138e31b0c273bb21a277"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/processing/jobs/phase-b-all/features/imu/sim.imu.upper/windows.parquet",
+      "bytes": 7645,
+      "sha256": "ff4ca0fbfed45e13e95f73d03d8ba56ce0f8305868012ecb5101df277a449ba9"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/processing/jobs/phase-b-all/figures/emg_sim.emg.main_channels.png",
+      "bytes": 82426,
+      "sha256": "0961af65674b1077f03e011a7b23fb692d1c050be27d085a5f2eb7d2b4d7f1aa"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/processing/jobs/phase-b-all/figures/imu_sim.imu.upper_accel.png",
+      "bytes": 21913,
+      "sha256": "282c630dbe7794d48ada84a4696202c30d158345d89a917fef48cffe6eb3e2ff"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/processing/jobs/phase-b-all/figures/sync_dashboard.png",
+      "bytes": 33337,
+      "sha256": "38b0a02367f37e8f6ee0993d173883268ae3ca65cb07ba8071a2bbdbe0bf6a2b"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/processing/jobs/phase-b-all/figures/sync_dashboard_series.json",
+      "bytes": 1960,
+      "sha256": "1e93b6ec76a78014cb138b69e5dd9b51b0077df715fdde67ad3ab01070684c5d"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/processing/jobs/phase-b-all/job_manifest.json",
+      "bytes": 4540,
+      "sha256": "e966307e0571f9f7dfe7c7e6219a7fb3179d91919d78f08764ec80231835f497"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/processing/jobs/phase-b-all/logs/job.log",
+      "bytes": 222,
+      "sha256": "b3db011dccd033a883b0f847eb4aecb95260a72b37a18c0ab43557a3571ecdda"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/processing/jobs/phase-b-all/params.json",
+      "bytes": 249,
+      "sha256": "ebf536ec30078ea11aa20fb31ec2bd19d1f2dad7bfdfc823d42f9a60a327196d"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/processing/jobs/phase-b-all/reports/qc.html",
+      "bytes": 1669,
+      "sha256": "57d00b1145c8b44132045cc7068d07865d52e35b34526517cad58c09054068ad"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/processing/jobs/phase-b-all/reports/qc.json",
+      "bytes": 1339,
+      "sha256": "228606842041ed8d9372825ad59e2d16e8980d3885b1de54526b5cb9f109fd75"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/sources/sim.emg.main/health/gaps.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/sources/sim.emg.main/source.json",
+      "bytes": 112,
+      "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",
+      "bytes": 1057,
+      "sha256": "6f214fd5190bf05c1f660e4b5f23ee3739388f4ca3002560b78ad43600027334"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json",
+      "bytes": 223,
+      "sha256": "ac8e1e05a5047dca047319750a2ee6a95400e3ffde1089d174cf1edc53b99d70"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/sources/sim.imu.upper/source.json",
+      "bytes": 118,
+      "sha256": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+      "bytes": 1641,
+      "sha256": "19f618a46af7662ee52e5e10a873ed880011312e5e64213400fc8ba0fadc2bd4"
+    },
+    {
+      "path": "regression/pytest-tmp/test_job_all_on_synthetic_mcap0/synth.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "bytes": 219,
+      "sha256": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+    },
+    {
+      "path": "regression/pytest-tmp/test_qc_job_writes_manifest_an0/mini.mmsession/events/annotations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "regression/pytest-tmp/test_qc_job_writes_manifest_an0/mini.mmsession/events/checkpoints.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "regression/pytest-tmp/test_qc_job_writes_manifest_an0/mini.mmsession/events/sync_anchors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "regression/pytest-tmp/test_qc_job_writes_manifest_an0/mini.mmsession/integrity.json",
+      "bytes": 227,
+      "sha256": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556"
+    },
+    {
+      "path": "regression/pytest-tmp/test_qc_job_writes_manifest_an0/mini.mmsession/manifest.json",
+      "bytes": 235,
+      "sha256": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380"
+    },
+    {
+      "path": "regression/pytest-tmp/test_qc_job_writes_manifest_an0/mini.mmsession/processing/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "regression/pytest-tmp/test_qc_job_writes_manifest_an0/mini.mmsession/processing/jobs/qc-test/job_manifest.json",
+      "bytes": 2420,
+      "sha256": "f4b58354e32d14fac0947a6e15b69aa3736054db43d89091872a3ab8c26b2c09"
+    },
+    {
+      "path": "regression/pytest-tmp/test_qc_job_writes_manifest_an0/mini.mmsession/processing/jobs/qc-test/logs/job.log",
+      "bytes": 216,
+      "sha256": "0b770f6d6e6730bc9e996050c5ed380b9e1b2071aa261dd84d436a9a0f4453fa"
+    },
+    {
+      "path": "regression/pytest-tmp/test_qc_job_writes_manifest_an0/mini.mmsession/processing/jobs/qc-test/params.json",
+      "bytes": 244,
+      "sha256": "76065c7da0816e4e23e412f04a1afb92096d5ef6b1623686eff53c77c7f568df"
+    },
+    {
+      "path": "regression/pytest-tmp/test_qc_job_writes_manifest_an0/mini.mmsession/processing/jobs/qc-test/reports/qc.html",
+      "bytes": 1668,
+      "sha256": "f51c0c2e2205b0ee0bc4fc010171f36f4de5613e9aec85a7fa2f8e6f56acb635"
+    },
+    {
+      "path": "regression/pytest-tmp/test_qc_job_writes_manifest_an0/mini.mmsession/processing/jobs/qc-test/reports/qc.json",
+      "bytes": 1340,
+      "sha256": "9f0e04ccd316274a789e2c6a961b8684827ed7fecfbbfb7e8bd90d167e530fdd"
+    },
+    {
+      "path": "regression/pytest-tmp/test_qc_job_writes_manifest_an0/mini.mmsession/sources/sim.emg.main/health/gaps.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "regression/pytest-tmp/test_qc_job_writes_manifest_an0/mini.mmsession/sources/sim.emg.main/source.json",
+      "bytes": 112,
+      "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10"
+    },
+    {
+      "path": "regression/pytest-tmp/test_qc_job_writes_manifest_an0/mini.mmsession/sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",
+      "bytes": 28,
+      "sha256": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649"
+    },
+    {
+      "path": "regression/pytest-tmp/test_qc_job_writes_manifest_an0/mini.mmsession/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json",
+      "bytes": 216,
+      "sha256": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1"
+    },
+    {
+      "path": "regression/pytest-tmp/test_qc_job_writes_manifest_an0/mini.mmsession/sources/sim.imu.upper/source.json",
+      "bytes": 118,
+      "sha256": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8"
+    },
+    {
+      "path": "regression/pytest-tmp/test_qc_job_writes_manifest_an0/mini.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+      "bytes": 28,
+      "sha256": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649"
+    },
+    {
+      "path": "regression/pytest-tmp/test_qc_job_writes_manifest_an0/mini.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "bytes": 219,
+      "sha256": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+    },
+    {
+      "path": "regression/pytest.log",
+      "bytes": 862,
+      "sha256": "a3a9d86f5d6ed38e85c74cb964d041d14289fe0da6ecf0d18f1b410bbcfb365b"
+    },
+    {
+      "path": "regression/receiving-run.json",
+      "bytes": 2001,
+      "sha256": "d59700b6c392701e1ff646046fe4f1d751bfcf62cea013c3e0654aeedbeb2a26"
+    },
+    {
+      "path": "regression/ruff.log",
+      "bytes": 19,
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    }
+  ]
+}

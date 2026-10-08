@@ -1,0 +1,21 @@
+const fs=require("node:fs"),path=require("node:path"),cp=require("node:child_process"),crypto=require("node:crypto");
+const root="/Users/me/capturesuite-checkpoint-18a24bf0c281",pin="72c15d6b623e217291a824e4e4808a385df896a9";
+const label=process.argv[2];if(!["baseline","candidate"].includes(label))throw new Error("Choose baseline or candidate");
+const repo=label==="baseline"?root+"/repository":root+"/candidate",out=root+"/evidence/"+label,python=root+"/venv/bin/python";
+if(fs.existsSync(out))throw new Error("Evidence already exists: "+out);fs.mkdirSync(out,{recursive:true});
+const digest=(name,b)=>crypto.createHash(name).update(b).digest("hex"),blob=b=>digest("sha1",Buffer.concat([Buffer.from("blob "+b.length+"\0"),b]));
+const expectedWindow=label==="baseline"?"80bea6bd69365a48c5b204c26d054b8ae179437a":JSON.parse(fs.readFileSync(root+"/candidate-freeze.json","utf8")).window_git_blob;
+const expectedTest="f08db026af80f802b0c8a491095e86bcd3436945def56f0d2f4899e2c22c368f";
+const tracked=cp.execFileSync("/usr/bin/git",["-C",root+"/repository","ls-tree","-r","-l",pin],{encoding:"utf8"}).trim().split("\n").map(line=>{const [meta,p]=line.split("\t");const [mode,type,sha,bytes]=meta.trim().split(/\s+/);return {path:p,mode,git_blob:sha,git_bytes:Number(bytes)}});
+function inventory(){const files=tracked.map(item=>{const b=fs.readFileSync(path.join(repo,item.path)),expected=item.path==="libs/python/capture_analysis/capture_analysis/windows.py"?expectedWindow:item.git_blob;let canonical=b,eol=false;if(blob(canonical)!==expected&&/\.(ps1|cmd)$/.test(item.path)){canonical=Buffer.from(b.toString("utf8").replaceAll("\r\n","\n"));eol=true;}if(blob(canonical)!==expected)throw new Error("Source mismatch: "+item.path);return {...item,expected_git_blob:expected,worktree_bytes:b.length,worktree_sha256:digest("sha256",b),repository_eol_conversion:eol};});const test=fs.readFileSync(repo+"/tests/analysis/test_checkpoint_sections.py");if(digest("sha256",test)!==expectedTest)throw new Error("Test source changed");files.push({path:"tests/analysis/test_checkpoint_sections.py",worktree_bytes:test.length,worktree_sha256:digest("sha256",test),git_blob:blob(test)});return files;}
+const before=inventory(),env={...process.env,PYTHONDONTWRITEBYTECODE:"1",PYTHONPATH:[repo+"/libs/python/capture_analysis",repo+"/libs/python/capture_session",repo+"/libs/python/capture_protocol"].join(":"),MPLBACKEND:"Agg",MPLCONFIGDIR:out+"/mpl"};
+const probe=cp.spawnSync(python,["-c","import sys,json,platform,capture_analysis.windows as w,capture_analysis.jobs as j,capture_session.package_reader as r; print(json.dumps({'python':sys.version,'platform':platform.platform(),'windows':w.__file__,'jobs':j.__file__,'reader':r.__file__}))"],{cwd:repo,env,encoding:"utf8"});
+if(probe.status!==0)throw new Error("Import failed: "+probe.stderr);const runtime=JSON.parse(probe.stdout);if(!runtime.windows.startsWith(repo+"/")||!runtime.jobs.startsWith(repo+"/")||!runtime.reader.startsWith(repo+"/"))throw new Error("Import escaped selected source");
+const args=["-m","pytest","tests/analysis/test_checkpoint_sections.py","-q","--basetemp",out+"/pytest-tmp","--junitxml",out+"/junit.xml","-o","junit_logging=all"];
+const started=new Date().toISOString(),run=cp.spawnSync(python,args,{cwd:repo,env,encoding:"utf8",timeout:300000,maxBuffer:20*1024*1024}),finished=new Date().toISOString();
+fs.writeFileSync(out+"/pytest.log",(run.stdout||"")+(run.stderr||""));
+const after=inventory();if(JSON.stringify(before)!==JSON.stringify(after))throw new Error("Source changed during run");
+const report={label,current_main:pin,source_tree:"221cf5c7bb3c3392a7c4186ba0bcf5a8664135d1",window_git_blob:expectedWindow,test_sha256:expectedTest,started,finished,command:python,args,cwd:repo,runtime,exit_code:run.status,signal:run.signal,error:run.error?String(run.error):null,source_before:before,source_after:after,source_unchanged:true};
+fs.writeFileSync(out+"/receiving-run.json",JSON.stringify(report,null,2)+"\n");
+console.log(JSON.stringify({...report,source_before:undefined,source_after:undefined,authored_files:before.length,summary:(run.stdout||"").split("\n").slice(-30)}));
+if(run.status===null)process.exit(1);

@@ -1,0 +1,17 @@
+{
+  "python": "3.12.8 (main, Dec  3 2024, 18:42:41) [Clang 16.0.0 (clang-1600.0.26.4)]",
+  "executable": "/Users/me/capturesuite-checkpoint-18a24bf0c281/venv/bin/python",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "environment_freeze_sha256": "5620c7bf53cd067e068122e2b72632eeed64dfdef2c7329f6cbe4aefaaf9e535",
+  "packages": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "pyarrow": "25.0.1",
+    "mcap": "1.5.0",
+    "protobuf": "4.25.9",
+    "matplotlib": "3.11.2",
+    "jsonschema": "4.26.0"
+  },
+  "reuse": "existing isolated Python 3.12 environment; no install or dependency change",
+  "source_receiving": "actual CLI sys.path and receipt-only import observer bind 49 current application modules per run"
+}

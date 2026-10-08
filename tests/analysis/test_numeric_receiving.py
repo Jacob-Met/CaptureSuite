@@ -216,7 +216,8 @@ class NumericReceiving(unittest.TestCase):
         raw_before = hash_sources_tree(self.root)
         result = run(
             self.root,
-            JobParams(command="features", checkpoint_section="trial", max_ram_bytes=8 * MIB),
+            # The rest checkpoint closes the preceding 5.08s to 6.6s section.
+            JobParams(command="features", checkpoint_section="rest", max_ram_bytes=8 * MIB),
         )
         frame, relative = self.assert_feature_table(result)
         self.assertEqual(len(frame), 1)
