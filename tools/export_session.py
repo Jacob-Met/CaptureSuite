@@ -11,6 +11,10 @@ Produces:
 
 Usage:
   python tools/export_session.py path/to/session.mmsession [out_dir]
+  python tools/export_session.py path/to/session.mmsession out_dir --modalities imu,emg
+
+The destination must be new or empty. Existing exports are preserved, so changing
+the selected modalities cannot mix stale files into the new export.
 """
 
 from __future__ import annotations
@@ -20,6 +24,7 @@ import shutil
 import struct
 import subprocess
 import sys
+from contextlib import ExitStack
 from datetime import UTC
 from pathlib import Path
 
@@ -27,6 +32,42 @@ try:
     import numpy as np
 except ImportError:  # pragma: no cover
     np = None  # type: ignore
+
+
+ALL_MODALITIES = ("radar", "video", "emg", "imu")
+
+
+class ExportOutputError(OSError):
+    """A selected stream could not be written to the export destination."""
+
+
+def _parse_modalities(value: str | None) -> frozenset[str]:
+    """Parse the --modalities option.
+
+    None (flag absent) preserves the legacy behavior: export everything.
+    Raises ValueError on unknown names or an explicitly empty selection.
+    """
+    if value is None:
+        return frozenset(ALL_MODALITIES)
+    parts = [p.strip().lower() for p in value.split(",")]
+    unknown = sorted({p for p in parts if p and p not in ALL_MODALITIES})
+    if unknown:
+        raise ValueError(
+            f"unknown modalities: {', '.join(unknown)} (choose from {','.join(ALL_MODALITIES)})"
+        )
+    chosen = frozenset(p for p in parts if p)
+    if not chosen:
+        raise ValueError(
+            "empty modality selection is rejected: omit --modalities to export all"
+        )
+    return chosen
+
+
+def _imu_emg_specs_for(modalities: frozenset[str] | None) -> tuple[str, ...]:
+    """IMU/EMG kinds to attempt for the selection (pure helper, unit-tested)."""
+    if modalities is None:
+        return ("imu", "emg")
+    return tuple(k for k in ("imu", "emg") if k in modalities)
 
 
 def _load_json(path: Path) -> dict:
@@ -148,8 +189,14 @@ def export_radar_mcaps(root: Path, out: Path, manifest: dict) -> None:
         manifest.setdefault("radar", []).append(entry)
 
 
-def export_imu_emg(root: Path, out: Path, manifest: dict) -> None:
-    """Decode sim/vendor IMU and EMG MCAP into lightweight JSONL summaries."""
+def export_imu_emg(
+    root: Path, out: Path, manifest: dict, modalities: frozenset[str] | None = None
+) -> None:
+    """Decode sim/vendor IMU and EMG MCAP into lightweight JSONL summaries.
+
+    When *modalities* is given, only the selected kinds are attempted, so an
+    EMG-only export never emits IMU output and vice versa.
+    """
     try:
         from mcap.reader import make_reader
     except ImportError:
@@ -161,6 +208,17 @@ def export_imu_emg(root: Path, out: Path, manifest: dict) -> None:
             return make_reader(mf)
         except Exception:
             return None
+
+    def _read_messages(mcap_path: Path):
+        # Keep the existing input-read tolerance scoped to input consumption.
+        # Consumer output errors must never be mistaken for unreadable input.
+        try:
+            with mcap_path.open("rb") as mf:
+                reader = _safe_reader(mf)
+                if reader is not None:
+                    yield from reader.iter_messages()
+        except OSError:
+            return
 
     proto_root = Path(__file__).resolve().parents[1] / "libs" / "python" / "capture_protocol"
     if str(proto_root) not in sys.path:
@@ -178,69 +236,61 @@ def export_imu_emg(root: Path, out: Path, manifest: dict) -> None:
     if not sources_root.is_dir():
         return
 
+    wanted = set(_imu_emg_specs_for(modalities))
     for kind, schema_needle, decoder, out_name, manifest_key in specs:
+        if kind not in wanted:
+            continue
         kind_out = out / kind
         for src_dir in sorted(p for p in sources_root.iterdir() if p.is_dir()):
             mcaps = sorted(src_dir.rglob("*.mcap"))
             if not mcaps:
                 continue
-            # Match by source id prefix or by schema name inside the first mcap.
-            name_hint = kind in src_dir.name.lower()
-            if not name_hint:
-                try:
-                    with mcaps[0].open("rb") as mf:
-                        reader = _safe_reader(mf)
-                        if reader is None:
-                            continue
-                        for schema, _ch, _msg in reader.iter_messages():
-                            sname = schema.name if schema else ""
-                            if schema_needle in sname:
-                                name_hint = True
-                            break
-                except OSError:
-                    continue
-            if not name_hint:
-                continue
-
             dest = kind_out / src_dir.name
-            dest.mkdir(parents=True, exist_ok=True)
             jsonl = dest / out_name
             count = 0
-            with jsonl.open("w", encoding="utf-8") as fh:
-                for mcap_path in mcaps:
-                    try:
-                        with mcap_path.open("rb") as mf:
-                            reader = _safe_reader(mf)
-                            if reader is None:
+            # A source can advertise multiple stream schemas. Its ID and its
+            # first message do not identify every modality it contains.
+            # Open an output only after a matching message was decoded, so
+            # unrelated streams do not leave empty modality artifacts behind.
+            try:
+                with ExitStack() as outputs:
+                    fh = None
+                    for mcap_path in mcaps:
+                        for schema, _ch, message in _read_messages(mcap_path):
+                            sname = schema.name if schema else ""
+                            if schema_needle not in sname:
                                 continue
-                            for schema, _ch, message in reader.iter_messages():
-                                sname = schema.name if schema else ""
-                                if schema_needle not in sname:
-                                    continue
-                                msg = decoder()
-                                msg.ParseFromString(message.data)
-                                if kind == "imu":
-                                    row = {
-                                        "sequence": msg.timing.sequence_number,
-                                        "session_time_ns": msg.timing.session_time_ns,
-                                        "sensor_count": len(msg.sensors),
-                                        "sensors": [s.sensor_id for s in msg.sensors],
-                                        "accel_z0": (
-                                            msg.sensors[0].accel_z if msg.sensors else None
-                                        ),
-                                    }
-                                else:
-                                    row = {
-                                        "sequence": msg.timing.sequence_number,
-                                        "session_time_ns": msg.timing.session_time_ns,
-                                        "channel_ids": list(msg.channel_ids),
-                                        "sample_count": msg.sample_count,
-                                        "bytes": len(msg.samples_f32_le),
-                                    }
-                                fh.write(json.dumps(row) + "\n")
-                                count += 1
-                    except OSError:
-                        continue
+                            msg = decoder()
+                            msg.ParseFromString(message.data)
+                            if kind == "imu":
+                                row = {
+                                    "sequence": msg.timing.sequence_number,
+                                    "session_time_ns": msg.timing.session_time_ns,
+                                    "sensor_count": len(msg.sensors),
+                                    "sensors": [s.sensor_id for s in msg.sensors],
+                                    "accel_z0": (
+                                        msg.sensors[0].accel_z if msg.sensors else None
+                                    ),
+                                }
+                            else:
+                                row = {
+                                    "sequence": msg.timing.sequence_number,
+                                    "session_time_ns": msg.timing.session_time_ns,
+                                    "channel_ids": list(msg.channel_ids),
+                                    "sample_count": msg.sample_count,
+                                    "bytes": len(msg.samples_f32_le),
+                                }
+                            if fh is None:
+                                dest.mkdir(parents=True, exist_ok=True)
+                                fh = outputs.enter_context(jsonl.open("w", encoding="utf-8"))
+                            fh.write(json.dumps(row) + "\n")
+                            count += 1
+            except OSError as exc:
+                raise ExportOutputError(
+                    f"Could not write {kind.upper()} summary for source {src_dir.name!r}: "
+                    f"{exc.strerror or str(exc)}. Choose a writable destination with enough "
+                    "free space and a shorter path."
+                ) from exc
             if count == 0:
                 continue
             manifest.setdefault(manifest_key, []).append(
@@ -310,22 +360,40 @@ def main(argv: list[str] | None = None) -> int:
         action="store_true",
         help="fail if a finalized package yields zero exportable streams",
     )
+    ap.add_argument(
+        "--modalities",
+        default=None,
+        metavar="LIST",
+        help="comma-separated subset of radar,video,emg,imu to export "
+        "(default: all four; an explicitly empty selection is rejected)",
+    )
     args = ap.parse_args(argv)
 
     root = Path(args.package).resolve()
     if not root.exists():
         print("package not found:", root)
         return 1
+    # Validate the selection before creating any output.
+    try:
+        modalities = _parse_modalities(args.modalities)
+    except ValueError as exc:
+        ap.error(str(exc))
     if args.out_dir:
         out = Path(args.out_dir).resolve()
     else:
         stamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
         out = root / "exports" / stamp
+    if out.exists() and (not out.is_dir() or any(out.iterdir())):
+        ap.error(
+            "destination must be a new or empty directory; choose another folder "
+            "to preserve existing files and keep selected streams separate"
+        )
     out.mkdir(parents=True, exist_ok=True)
 
     manifest: dict = {
         "package": str(root),
         "export_schema": "capture.export_manifest/1",
+        "modalities": sorted(modalities),
         "radar": [],
         "video": [],
         "imu": [],
@@ -355,9 +423,16 @@ def main(argv: list[str] | None = None) -> int:
         if reports:
             manifest["recovery_report"] = str(reports[-1].relative_to(root))
 
-    export_radar_mcaps(root, out, manifest)
-    export_video(root, out, manifest)
-    export_imu_emg(root, out, manifest)
+    if "radar" in modalities:
+        export_radar_mcaps(root, out, manifest)
+    if "video" in modalities:
+        export_video(root, out, manifest)
+    if "imu" in modalities or "emg" in modalities:
+        try:
+            export_imu_emg(root, out, manifest, modalities)
+        except ExportOutputError as exc:
+            print(f"FAIL export: {exc}", file=sys.stderr)
+            return 1
 
     man_path = out / "export_manifest.json"
     man_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")

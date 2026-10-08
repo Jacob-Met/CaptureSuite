@@ -1,0 +1,98 @@
+{
+  "schema": "capturesuite.test-receipt.v1",
+  "accepted": true,
+  "process_exit": 0,
+  "counts": {
+    "tests": 59,
+    "passed": 59,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "junit_sha256": "223406e22027a10191090a0274f8baf23ac1379de9f02f8115262c72d424492f",
+  "problems": [],
+  "scope": "Selective export and analysis after independent output-failure correction; no Windows daemon/hardware qualification",
+  "source_commit": "f81ce452ece2efc2345eda8bdf6d477a93adc6a9",
+  "source_tree_sha256": "676056adf5e0e2052f9f7b8b9bcf9765f50738cea2ba7abfeda8d572ce5c48f9",
+  "source_worktree_dirty": false,
+  "source_unchanged_during_test": true,
+  "created_at": "2026-10-08T09:11:55.824433+00:00",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+  "dependencies": {
+    "PySide6": "6.11.2",
+    "mcap": "1.5.0",
+    "protobuf": "4.25.9",
+    "numpy": "2.5.3",
+    "pytest": "9.1.1",
+    "ruff": "0.16.10",
+    "grpcio-tools": "1.62.3"
+  },
+  "checks": [
+    {
+      "name": "analysis",
+      "command": [
+        "/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python",
+        "-m",
+        "pytest",
+        "tests/analysis",
+        "-p",
+        "no:cacheprovider",
+        "-q",
+        "-ra",
+        "--basetemp=/dev/shm/capturesuite-234cae4aee53/analysis-r2",
+        "--junitxml=/dev/shm/capturesuite-234cae4aee53/final-r2/analysis.xml"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "ruff",
+      "command": [
+        "/workspace/scratch/234cae4aee53/capturesuite-venv/bin/ruff",
+        "check",
+        "--no-cache",
+        "libs/python/capture_protocol",
+        "libs/python/capture_session",
+        "libs/python/capture_analysis",
+        "libs/python/capture_worker",
+        "workers/python_host",
+        "desktop/capture_desktop",
+        "tools",
+        "tests",
+        "plugins/example_sine_py",
+        "plugins/lsl_bridge"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "license",
+      "command": [
+        "/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python",
+        "tools/check_licenses.py",
+        "--enforce-spdx"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "ci-contract",
+      "command": [
+        "/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python",
+        "tools/check_ci_contract.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "generated-drift",
+      "command": [
+        "git",
+        "diff",
+        "--exit-code",
+        "--",
+        "libs/python/capture_protocol/capture_protocol/generated",
+        "schemas/session/jsonschema"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "previous_candidate": "6866ebdccc76bdc1827aa0d68c8d9ec9ac5edbb9 rejected by independent output-failure review"
+}

@@ -1,0 +1,7 @@
+{
+  "status": "invalid environment-only attempt",
+  "process_exit": 120,
+  "log_bytes": 0,
+  "reason": "Cloud overlay reached ENOSPC before usable pytest output/JUnit was produced. This invocation is not counted as an executed test result.",
+  "recovery": "Removed only our reproducible duplicate worktrees/full bundle and106485587bytes of our venv bytecode; kept dependency source files. Reruns use private /dev/shm temp/artifacts and PYTHONDONTWRITEBYTECODE=1."
+}

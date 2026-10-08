@@ -15,6 +15,39 @@ Plan: [AUTONOMOUS_EXECUTION_PLAN.md](AUTONOMOUS_EXECUTION_PLAN.md)
 
 ---
 
+## 2026-10-08 — Selective export receiving
+
+Independent receiving of T68 / PR #30 at `69e6cb7` uses the real protobuf MCAP
+reader/writer, CPython 3.12 and PySide6, including a native export wizard. Twelve
+new behavioral cases retain **seven failures and five passing controls** on the
+original candidate. They reproduce omitted later IMU streams under neutral
+source IDs and mixed old/new output when a destination is reused.
+
+The qualified successor scans the actual message schemas, creates EMG/IMU
+outputs only after matching decoded messages, and rejects nonempty destinations
+before writes. Existing empty destinations, timestamps, source bytes and
+requested-versus-actual provenance are covered. **31 export tests and all 59
+analysis tests pass**, with no skips. The whole configured Ruff and license
+checks pass; protobuf/session-schema regeneration has no byte drift.
+
+Independent lead review rejected initial source `a00e0df` / `6866ebd`: moving
+lazy output creation into the tolerated input-read handler could hide a write
+failure. A real 3890-character destination reproduced success with a missing
+selected stream; untouched PR #30 failed as expected. Correction `f81ce45`
+keeps input reads in a streaming generator and makes output creation, writing
+and close failures actionable and fatal before a success manifest is written.
+Six portable cases retain four initial failures and two unchanged input-read
+controls. Lead reran the real path-limit case: exit 1, no manifest and unchanged
+raw hashes. The final clean/unchanged source passes all 59 analysis cases.
+
+The full repository suite on Linux still fails during collection with the same
+four pre-existing `msvcrt` import errors on current main and the successor.
+Windows CI/native daemon qualification remains a separate acceptance gate; no
+hardware, installed app, release or native Linux-port acceptance is claimed.
+The original T68 and Linux portability owners retain their respective scopes.
+Exact source pins, negative evidence and replay commands are retained under
+[`docs/evidence/export-selection-20261008/`](../../evidence/export-selection-20261008/).
+
 ## 2026-10-08 — Retained framing exception recovery (integration-72ac1419)
 
 Independent receiving of PR #35 found that an active or saved FrameError retained
