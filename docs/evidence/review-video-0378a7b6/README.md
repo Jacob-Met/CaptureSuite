@@ -52,3 +52,8 @@ python -m pytest tests/test_review_video_model.py tests/ui -q
 ```
 
 The small committed MKV fixtures need no generator or new test dependency. Historical evidence drivers intentionally preserve absolute native receiving paths and exact observation order. Existing full Windows Python and C++/native workflow gates and expected-head/current-main receiving are required separately before integration; local UI results do not replace them. No hardware, real-recording codec matrix, session alignment, installed-application performance or onscreen GPU-video claim is made.
+
+
+## Final viewer-local keyboard successor
+
+The SHA pins and 151-case result above are the initial qualified source. Later actual MainWindow receiving exposed the existing global checkpoint Space shortcut consuming the new focused Play button. The final viewer adds a narrow override only for unmodified Space on its three native buttons; no app shortcut source is changed. The original failure, final pins, 24 passing native cases and shortcut countercontrols are in [the keyboard correction record](keyboard-correction/README.md). Previous decoder/lifecycle and independent receipts retain their exact historical pins. Full hosted gates must receive this successor before merge.

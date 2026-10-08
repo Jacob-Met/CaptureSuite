@@ -1,0 +1,9 @@
+{
+  "at": "2026-10-08T20:03:31Z",
+  "source": "e9728100b7c27b175b04e0fc776f8d9984713698",
+  "actual_main_window": true,
+  "focused_play": true,
+  "playback": "StoppedState",
+  "checkpoint_hits": 1,
+  "video_source_sha256": "3d89f1f8453a3d18d2776574941a2c6197f3be59e8df3a7a278f3b5c400134d9"
+}

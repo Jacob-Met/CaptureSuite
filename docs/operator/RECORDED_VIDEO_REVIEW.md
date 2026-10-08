@@ -24,3 +24,5 @@ The inventory reflects files discovered when the package was opened. It is not a
 - **Playback waiting for media:** pause or reload the selected segment to retry.
 
 A failed selection or package load clears the previous media controls and picture. Reload does not repair a recording or alter its raw bytes. Only finalized and finalized-recovered packages are admitted to this viewer.
+
+With a video button focused, Space activates Play/Pause, Reload selected or the Recorded video disclosure. Other application shortcuts retain their usual behavior.

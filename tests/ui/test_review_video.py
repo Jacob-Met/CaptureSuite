@@ -182,3 +182,81 @@ def test_hiding_and_keyboard_controls_do_not_autoplay(qapp, tmp_path):
     qapp.processEvents()
     assert video._player.playbackState() != QMediaPlayer.PlaybackState.PlayingState
     screen.close()
+
+
+def test_actual_main_window_video_buttons_keep_space_activation(qapp, tmp_path, monkeypatch):
+    from capture_desktop.app import MainWindow
+    from PySide6.QtGui import QKeySequence, QShortcut
+
+    for key in ("LOCALAPPDATA", "APPDATA", "XDG_CONFIG_HOME", "XDG_DATA_HOME", "XDG_CACHE_HOME"):
+        directory = tmp_path / key.lower()
+        directory.mkdir()
+        monkeypatch.setenv(key, str(directory))
+    package = tmp_path / "video.mmsession"
+    shutil.copytree(FIXTURE, package)
+    before = _hashes(package)
+    window = MainWindow(auto_connect=False)
+    checkpoint_hits = []
+    modified_hits = []
+    window._on_checkpoint = lambda: checkpoint_hits.append("checkpoint")
+    modified = QShortcut(QKeySequence("Ctrl+Space"), window)
+    modified.setContext(Qt.ShortcutContext.ApplicationShortcut)
+    modified.activated.connect(lambda: modified_hits.append("modified"))
+    try:
+        window.state.package_path = str(package)
+        window.state.review_mode = True
+        window.review.load_package(str(package))
+        window.tabs.setCurrentWidget(window.review)
+        window.resize(1280, 1000)
+        window.show()
+        window.activateWindow()
+        qapp.setActiveWindow(window)
+        video = window.review._recorded_video
+        video._toggle.setFocus()
+        QTest.keyClick(video._toggle, Qt.Key.Key_Space)
+        assert video._body.isVisible()
+        video._choice.setCurrentIndex(1)
+        _wait(qapp, lambda: video._ready, "application segment ready")
+
+        video._play.setFocus()
+        assert qapp.focusWidget() is video._play
+        QTest.keyClick(video._play, Qt.Key.Key_Space)
+        _wait(qapp, lambda: _color(video, 0), "application keyboard Play")
+        QTest.keyClick(video._play, Qt.Key.Key_Space)
+        assert video._player.playbackState() == QMediaPlayer.PlaybackState.PausedState
+
+        previous = video._player
+        video._reload.setFocus()
+        QTest.keyClick(video._reload, Qt.Key.Key_Space)
+        assert video._player is not previous
+        _wait(qapp, lambda: video._ready, "application keyboard reload")
+        assert video._player.playbackState() == QMediaPlayer.PlaybackState.StoppedState
+        assert video._player.position() == 0
+        video._play.setFocus()
+        QTest.keyClick(video._play, Qt.Key.Key_Space)
+        _wait(qapp, lambda: _color(video, 0), "application restarted video")
+        video._toggle.setFocus()
+        QTest.keyClick(video._toggle, Qt.Key.Key_Space)
+        assert not video._body.isVisible()
+        assert video._player.playbackState() == QMediaPlayer.PlaybackState.PausedState
+        QTest.keyClick(video._toggle, Qt.Key.Key_Space)
+        assert video._body.isVisible()
+        assert video._player.playbackState() == QMediaPlayer.PlaybackState.PausedState
+        assert checkpoint_hits == []
+
+        # The local exception does not claim other keys, modifiers or controls.
+        video._play.setFocus()
+        QTest.keyClick(video._play, Qt.Key.Key_C)
+        assert checkpoint_hits == ["checkpoint"]
+        QTest.keyClick(video._play, Qt.Key.Key_Space, Qt.KeyboardModifier.ControlModifier)
+        assert modified_hits == ["modified"]
+        assert checkpoint_hits == ["checkpoint"]
+        window.review._streams.setFocus()
+        QTest.keyClick(window.review._streams, Qt.Key.Key_Space)
+        assert checkpoint_hits == ["checkpoint", "checkpoint"]
+        assert _hashes(package) == before
+    finally:
+        window.link.stop()
+        window.close()
+        window.deleteLater()
+        qapp.processEvents()

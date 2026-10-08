@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from PySide6.QtCore import Qt, QUrl
+from PySide6.QtCore import QEvent, Qt, QUrl
 from PySide6.QtMultimedia import QMediaPlayer
 from PySide6.QtMultimediaWidgets import QVideoWidget
 from PySide6.QtWidgets import (
@@ -96,7 +96,22 @@ class RecordedVideoReview(QWidget):
         self._reload.clicked.connect(self._open_selected)
         self._play.clicked.connect(self._play_pause)
         self._seek.valueChanged.connect(self._seek_to)
+        for button in (self._play, self._reload, self._toggle):
+            button.installEventFilter(self)
         self.reset()
+
+    def eventFilter(self, watched, event) -> bool:  # noqa: N802
+        # The application's checkpoint Space shortcut must not consume a focused
+        # native video button's activation. Other controls/keys keep their routing.
+        if (
+            watched in (self._play, self._reload, self._toggle)
+            and event.type() == QEvent.Type.ShortcutOverride
+            and event.key() == Qt.Key.Key_Space
+            and event.modifiers() == Qt.KeyboardModifier.NoModifier
+        ):
+            event.accept()
+            return True
+        return super().eventFilter(watched, event)
 
     @staticmethod
     def _label(text: str) -> QLabel:

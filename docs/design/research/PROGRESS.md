@@ -1126,3 +1126,12 @@ unchanged. Existing supported hosted Windows Python and C++/native gates and fin
 current-main receiving remain required before integration. See
 [operator steps](../../operator/RECORDED_VIDEO_REVIEW.md) and
 [full evidence and limits](../../evidence/review-video-0378a7b6/README.md).
+
+Follow-up actual MainWindow receiving found the existing global checkpoint Space
+shortcut consuming the new focused Play button. The original failure is retained.
+A narrow viewer-local unmodified-Space override on its three buttons now passes
+24 native model/video/desktop cases, including actual application toggle/play/
+pause/reload, C and Ctrl+Space countercontrols, outside-viewer checkpoint routing
+and unchanged raw fixtures. The original 151-case and independent lifecycle receipts
+remain at their historical source pins. App shortcut source and PR84 ownership
+remain untouched; final hosted gates are required on this corrected successor.

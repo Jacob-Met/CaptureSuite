@@ -188,3 +188,10 @@ separate ownership and behavior.
 actual-decoder qualification, independent stale-signal receiving and the explicit
 GPU-screenshot limitation are retained in
 [the receiving record](../../evidence/review-video-0378a7b6/README.md).
+
+A subsequent actual MainWindow receiver showed its existing global checkpoint
+Space shortcut intercepting focused video-button activation. The viewer therefore
+accepts unmodified Space ShortcutOverride only on its own Play, Reload and
+disclosure buttons. Native button activation proceeds normally; other keys,
+modifiers, controls and the application shortcut implementation remain unchanged.
+The exact before/after witness is in the receiving record's keyboard correction.
