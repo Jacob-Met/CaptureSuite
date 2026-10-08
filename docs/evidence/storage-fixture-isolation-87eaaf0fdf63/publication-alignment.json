@@ -1,0 +1,55 @@
+{
+  "schema": "capturesuite-fixture-publication-alignment/v1",
+  "receiver": "estate-87eaaf0fdf63/integration",
+  "publication_parent": "7a570db487a10b5b9f30fa9be7fc5c5396611d36",
+  "publication_base_tree": "992d47113468e2f89091888f3ed213c4ce6ca314",
+  "qualified_producer_parent": "05a6b6bd02f05efd2c7380ea4ee8f92942609d4b",
+  "qualified_producer_tree": "e94c68e129f51c60f184dde24888a78cdaaa3e37",
+  "qualified_local_companion": "18546eb50b147125b49a73152e0052324131c947",
+  "qualified_local_tree": "89fa460d8d16066b7aace1cc83aaa30692c20b23",
+  "unchanged_qualified_production": [
+    {
+      "path": "libs/cpp/capture_storage/src/atomic_file.cpp",
+      "git_blob": "ede151f1b0c65829017d1626ee5913af649e4fc6",
+      "sha256": "c52acfb5577b251300ca9f9d6fcf4d92c365df12ed2d3ca67054c5a7980ba5c3"
+    },
+    {
+      "path": "libs/cpp/capture_storage/src/disk_watchdog.cpp",
+      "git_blob": "718425f933703fdee920762de1dc115931950aad",
+      "sha256": "d2781ecb8a9a31f9aceeb0b053ab1b9ea9d9c73ea43c0a2266bb9e62b2ac3068"
+    },
+    {
+      "path": "libs/cpp/capture_storage/include/capture/storage/atomic_file.hpp",
+      "git_blob": "971e9e11555f2e1f614b563e9cd34998412bab22",
+      "sha256": "2fbcbfc04eab2d0f42913223f4a477b5122523d54080e268351a4d7edee0e3e9"
+    },
+    {
+      "path": "libs/cpp/capture_storage/include/capture/storage/disk_watchdog.hpp",
+      "git_blob": "bc6c1ef947bd4e417ca220a983bee1ac8b04f14d",
+      "sha256": "c71a6dc077d7dab898f1740fd63b3ed3e632a0648dbe0044d8d08ea8899aedc0"
+    }
+  ],
+  "unchanged_qualified_fixture_paths": [
+    {
+      "path": "tests/cmake/portable_storage/fixture_isolation.cmake",
+      "sha256": "ad04e619453d94a10e04d5a11bc4155d6f6f62c47dbbe5b2f3e958f151f89a27",
+      "git_blob": "d0762d52b73ef8df127b81e7a6d5e3084c88eacd"
+    },
+    {
+      "path": "tests/cpp/CMakeLists.txt",
+      "sha256": "fb6abc76a769b8af1fce9f40b93fdecc0ab1e88ee991536e78dec02497cbb484",
+      "git_blob": "f9f7bcc3727446f56f9cd65b24ebc17fee04718b"
+    },
+    {
+      "path": "tests/cpp/test_storage_posix.cpp",
+      "sha256": "daab7555a3834319346db06caee40a5280c7a045ffe645f58a5a806832620393",
+      "git_blob": "514ac79df732038fe9ed0b47b34121a337e21fbd"
+    }
+  ],
+  "mainline_alignment": "Current producer merge adds independent Python framing and its additive progress entry. It does not change qualified C++ sources, fixture, CMake registration context or CMake receiver.",
+  "unrelated_inherited_leaves": 542,
+  "full_cmake_build": false,
+  "windows_companion_qualified": false,
+  "merged": false,
+  "deployed": false
+}

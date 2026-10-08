@@ -1,0 +1,392 @@
+Start testing: Oct 08 10:34 UTC
+----------------------------------------------------------
+1/19 Testing: SessionClock QPC frequency is positive
+1/19 Test: SessionClock QPC frequency is positive
+Command: "/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp/capture_core_tests" "SessionClock QPC frequency is positive"
+Directory: /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp
+"SessionClock QPC frequency is positive" start time: Oct 08 10:34 UTC
+Output:
+----------------------------------------------------------
+Filters: "SessionClock QPC frequency is positive"
+Randomness seeded to: 3864679570
+===============================================================================
+All tests passed (2 assertions in 1 test case)
+
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"SessionClock QPC frequency is positive" end time: Oct 08 10:34 UTC
+"SessionClock QPC frequency is positive" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/19 Testing: SessionClock establish_t0 and session time advances
+2/19 Test: SessionClock establish_t0 and session time advances
+Command: "/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp/capture_core_tests" "SessionClock establish_t0 and session time advances"
+Directory: /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp
+"SessionClock establish_t0 and session time advances" start time: Oct 08 10:34 UTC
+Output:
+----------------------------------------------------------
+Filters: "SessionClock establish_t0 and session time advances"
+Randomness seeded to: 5982961
+===============================================================================
+All tests passed (4 assertions in 1 test case)
+
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"SessionClock establish_t0 and session time advances" end time: Oct 08 10:34 UTC
+"SessionClock establish_t0 and session time advances" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/19 Testing: qpc_delta_to_ns round-trip sanity
+3/19 Test: qpc_delta_to_ns round-trip sanity
+Command: "/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp/capture_core_tests" "qpc_delta_to_ns round-trip sanity"
+Directory: /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp
+"qpc_delta_to_ns round-trip sanity" start time: Oct 08 10:34 UTC
+Output:
+----------------------------------------------------------
+Filters: "qpc_delta_to_ns round-trip sanity"
+Randomness seeded to: 4272049254
+===============================================================================
+All tests passed (1 assertion in 1 test case)
+
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"qpc_delta_to_ns round-trip sanity" end time: Oct 08 10:34 UTC
+"qpc_delta_to_ns round-trip sanity" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/19 Testing: environment helper preserves values and absence
+4/19 Test: environment helper preserves values and absence
+Command: "/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp/capture_core_tests" "environment helper preserves values and absence"
+Directory: /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp
+"environment helper preserves values and absence" start time: Oct 08 10:34 UTC
+Output:
+----------------------------------------------------------
+Filters: "environment helper preserves values and absence"
+Randomness seeded to: 650854119
+===============================================================================
+All tests passed (8 assertions in 1 test case)
+
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"environment helper preserves values and absence" end time: Oct 08 10:34 UTC
+"environment helper preserves values and absence" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/19 Testing: encode/decode CSP1 frame round-trip
+5/19 Test: encode/decode CSP1 frame round-trip
+Command: "/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp/capture_core_tests" "encode/decode CSP1 frame round-trip"
+Directory: /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp
+"encode/decode CSP1 frame round-trip" start time: Oct 08 10:34 UTC
+Output:
+----------------------------------------------------------
+Filters: "encode/decode CSP1 frame round-trip"
+Randomness seeded to: 1194344994
+===============================================================================
+All tests passed (5 assertions in 1 test case)
+
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"encode/decode CSP1 frame round-trip" end time: Oct 08 10:34 UTC
+"encode/decode CSP1 frame round-trip" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/19 Testing: FrameDecoder reassembles split reads
+6/19 Test: FrameDecoder reassembles split reads
+Command: "/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp/capture_core_tests" "FrameDecoder reassembles split reads"
+Directory: /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp
+"FrameDecoder reassembles split reads" start time: Oct 08 10:34 UTC
+Output:
+----------------------------------------------------------
+Filters: "FrameDecoder reassembles split reads"
+Randomness seeded to: 3417073802
+===============================================================================
+All tests passed (4 assertions in 1 test case)
+
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"FrameDecoder reassembles split reads" end time: Oct 08 10:34 UTC
+"FrameDecoder reassembles split reads" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/19 Testing: bad magic rejects frame
+7/19 Test: bad magic rejects frame
+Command: "/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp/capture_core_tests" "bad magic rejects frame"
+Directory: /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp
+"bad magic rejects frame" start time: Oct 08 10:34 UTC
+Output:
+----------------------------------------------------------
+Filters: "bad magic rejects frame"
+Randomness seeded to: 3243516323
+===============================================================================
+All tests passed (1 assertion in 1 test case)
+
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"bad magic rejects frame" end time: Oct 08 10:34 UTC
+"bad magic rejects frame" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/19 Testing: session happy path to finalized
+8/19 Test: session happy path to finalized
+Command: "/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp/capture_core_tests" "session happy path to finalized"
+Directory: /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp
+"session happy path to finalized" start time: Oct 08 10:34 UTC
+Output:
+----------------------------------------------------------
+Filters: "session happy path to finalized"
+Randomness seeded to: 4189680958
+===============================================================================
+All tests passed (12 assertions in 1 test case)
+
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"session happy path to finalized" end time: Oct 08 10:34 UTC
+"session happy path to finalized" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/19 Testing: illegal session transitions rejected
+9/19 Test: illegal session transitions rejected
+Command: "/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp/capture_core_tests" "illegal session transitions rejected"
+Directory: /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp
+"illegal session transitions rejected" start time: Oct 08 10:34 UTC
+Output:
+----------------------------------------------------------
+Filters: "illegal session transitions rejected"
+Randomness seeded to: 3493059078
+===============================================================================
+All tests passed (3 assertions in 1 test case)
+
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"illegal session transitions rejected" end time: Oct 08 10:34 UTC
+"illegal session transitions rejected" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/19 Testing: arm timeout none returns to preparing
+10/19 Test: arm timeout none returns to preparing
+Command: "/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp/capture_core_tests" "arm timeout none returns to preparing"
+Directory: /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp
+"arm timeout none returns to preparing" start time: Oct 08 10:34 UTC
+Output:
+----------------------------------------------------------
+Filters: "arm timeout none returns to preparing"
+Randomness seeded to: 582295733
+===============================================================================
+All tests passed (4 assertions in 1 test case)
+
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"arm timeout none returns to preparing" end time: Oct 08 10:34 UTC
+"arm timeout none returns to preparing" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/19 Testing: source path to ready and record
+11/19 Test: source path to ready and record
+Command: "/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp/capture_core_tests" "source path to ready and record"
+Directory: /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp
+"source path to ready and record" start time: Oct 08 10:34 UTC
+Output:
+----------------------------------------------------------
+Filters: "source path to ready and record"
+Randomness seeded to: 1631083403
+===============================================================================
+All tests passed (9 assertions in 1 test case)
+
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"source path to ready and record" end time: Oct 08 10:34 UTC
+"source path to ready and record" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/19 Testing: disconnect during recording stays recording with error
+12/19 Test: disconnect during recording stays recording with error
+Command: "/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp/capture_core_tests" "disconnect during recording stays recording with error"
+Directory: /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp
+"disconnect during recording stays recording with error" start time: Oct 08 10:34 UTC
+Output:
+----------------------------------------------------------
+Filters: "disconnect during recording stays recording with error"
+Randomness seeded to: 51054826
+===============================================================================
+All tests passed (15 assertions in 1 test case)
+
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"disconnect during recording stays recording with error" end time: Oct 08 10:34 UTC
+"disconnect during recording stays recording with error" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/19 Testing: structured log emits required JSON fields
+13/19 Test: structured log emits required JSON fields
+Command: "/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp/capture_core_tests" "structured log emits required JSON fields"
+Directory: /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp
+"structured log emits required JSON fields" start time: Oct 08 10:34 UTC
+Output:
+----------------------------------------------------------
+Filters: "structured log emits required JSON fields"
+Randomness seeded to: 730906234
+===============================================================================
+All tests passed (13 assertions in 1 test case)
+
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"structured log emits required JSON fields" end time: Oct 08 10:34 UTC
+"structured log emits required JSON fields" time elapsed: 00:00:00
+----------------------------------------------------------
+
+14/19 Testing: atomic_write_text replaces existing file and leaves no temp
+14/19 Test: atomic_write_text replaces existing file and leaves no temp
+Command: "/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp/capture_core_tests" "atomic_write_text replaces existing file and leaves no temp"
+Directory: /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp
+"atomic_write_text replaces existing file and leaves no temp" start time: Oct 08 10:34 UTC
+Output:
+----------------------------------------------------------
+Filters: "atomic_write_text replaces existing file and leaves no temp"
+Randomness seeded to: 1340163328
+===============================================================================
+All tests passed (6 assertions in 1 test case)
+
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"atomic_write_text replaces existing file and leaves no temp" end time: Oct 08 10:34 UTC
+"atomic_write_text replaces existing file and leaves no temp" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/19 Testing: disk watchdog reports free bytes and honours override
+15/19 Test: disk watchdog reports free bytes and honours override
+Command: "/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp/capture_core_tests" "disk watchdog reports free bytes and honours override"
+Directory: /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp
+"disk watchdog reports free bytes and honours override" start time: Oct 08 10:34 UTC
+Output:
+----------------------------------------------------------
+Filters: "disk watchdog reports free bytes and honours override"
+Randomness seeded to: 2234433272
+===============================================================================
+All tests passed (5 assertions in 1 test case)
+
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"disk watchdog reports free bytes and honours override" end time: Oct 08 10:34 UTC
+"disk watchdog reports free bytes and honours override" time elapsed: 00:00:00
+----------------------------------------------------------
+
+16/19 Testing: capture_storage_fixture_isolation
+16/19 Test: capture_storage_fixture_isolation
+Command: "/usr/bin/cmake" "-DSTORAGE_TESTS=/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp/capture_core_tests" "-DTEST_ROOT=/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp/storage-fixture-isolation" "-P" "/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/tests/cmake/portable_storage/fixture_isolation.cmake"
+Directory: /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp
+"capture_storage_fixture_isolation" start time: Oct 08 10:34 UTC
+Output:
+----------------------------------------------------------
+-- Storage test preserves unrelated temporary files
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"capture_storage_fixture_isolation" end time: Oct 08 10:34 UTC
+"capture_storage_fixture_isolation" time elapsed: 00:00:00
+----------------------------------------------------------
+
+17/19 Testing: capture_session_doctor_portable
+17/19 Test: capture_session_doctor_portable
+Command: "/usr/bin/cmake" "-DSESSION_DOCTOR=/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tools/session_doctor/session_doctor" "-DSOURCE_DIR=/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository" "-DTEST_ROOT=/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp/portable-session-doctor" "-P" "/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/tests/cmake/portable_storage/session_doctor.cmake"
+Directory: /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp
+"capture_session_doctor_portable" start time: Oct 08 10:34 UTC
+Output:
+----------------------------------------------------------
+-- session_doctor portable fixture checks passed
+<end of output>
+Test time =   0.10 sec
+----------------------------------------------------------
+Test Passed.
+"capture_session_doctor_portable" end time: Oct 08 10:34 UTC
+"capture_session_doctor_portable" time elapsed: 00:00:00
+----------------------------------------------------------
+
+18/19 Testing: capture_atomic_file_posix_durability
+18/19 Test: capture_atomic_file_posix_durability
+Command: "/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp/capture_atomic_file_posix_tests"
+Directory: /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp
+"capture_atomic_file_posix_durability" start time: Oct 08 10:34 UTC
+Output:
+----------------------------------------------------------
+PASS replacement syncs file and parent directory
+PASS file sync failure preserves previous target
+PASS directory sync failure reports uncertain durability
+PASS interrupted file sync is retried
+PASS write failure preserves previous target
+PASS zero-progress write fails without looping
+PASS writer close failure preserves previous target
+PASS interrupted writer close is not retried
+PASS short writes retain every byte
+PASS interrupted write is retried
+durability_cases=10 failures=0
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"capture_atomic_file_posix_durability" end time: Oct 08 10:34 UTC
+"capture_atomic_file_posix_durability" time elapsed: 00:00:00
+----------------------------------------------------------
+
+19/19 Testing: capture_atomic_file_posix_identity
+19/19 Test: capture_atomic_file_posix_identity
+Command: "/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp/capture_atomic_file_posix_identity_tests"
+Directory: /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/tests/cpp
+"capture_atomic_file_posix_identity" start time: Oct 08 10:34 UTC
+Output:
+----------------------------------------------------------
+PASS retained temp symlink does not overwrite sealed file
+PASS retained temp hardlink does not overwrite sealed file
+PASS temp symlink to destination cannot become published manifest
+PASS temp hardlink to destination preserves its old inode
+PASS ordinary retained temp file remains untouched
+PASS exclusive writable close-on-exec inode and ordinary umask
+PASS partial writes complete
+PASS interrupted write retries
+PASS interrupted directory sync retries
+PASS exclusive-name collision retries
+PASS ENOSPC preserves old manifest
+PASS zero-byte write refuses and preserves old manifest
+PASS close error preserves old manifest
+PASS rename error preserves old manifest
+PASS empty payload and long Unicode basename
+identity_cases=15 failures=0
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"capture_atomic_file_posix_identity" end time: Oct 08 10:34 UTC
+"capture_atomic_file_posix_identity" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 08 10:34 UTC

@@ -1,0 +1,144 @@
+F.............F..........................                                [100%]
+=================================== FAILURES ===================================
+___________________ test_export_writes_manifest_and_sidecar ____________________
+
+tmp_path = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/candidate-final-tmp/test_export_writes_manifest_an0')
+
+    def test_export_writes_manifest_and_sidecar(tmp_path: Path) -> None:
+>       from capture_desktop.export_wizard import ExportOptions, run_export
+
+tests/analysis/test_export_sidecar.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    # SPDX-License-Identifier: GPL-3.0-only
+    """Export wizard for sealed session packages."""
+    
+    from __future__ import annotations
+    
+    import json
+    import os
+    import subprocess
+    import sys
+    from dataclasses import dataclass
+    from pathlib import Path
+    
+>   from PySide6.QtWidgets import (
+        QCheckBox,
+        QDialog,
+        QDialogButtonBox,
+        QFileDialog,
+        QFormLayout,
+        QLabel,
+        QLineEdit,
+        QMessageBox,
+        QVBoxLayout,
+        QWidget,
+    )
+E   ModuleNotFoundError: No module named 'PySide6'
+
+desktop/capture_desktop/export_wizard.py:13: ModuleNotFoundError
+___________________ test_dummy_stream_handler_writes_parquet ___________________
+
+tmp_path = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/candidate-final-tmp/test_dummy_stream_handler_writ0')
+
+    def test_dummy_stream_handler_writes_parquet(tmp_path: Path) -> None:
+        from capture_analysis.plugins.handlers import HandlerContext
+        from capture_analysis.plugins.registry import load_registry
+        from capture_analysis.types import StreamRef, TimeWindow
+        from capture_session.package_reader import load_review_summary
+    
+        reg = load_registry(BUNDLED_MANIFEST)
+        ref = StreamRef(
+            "dummy.src",
+            "dummy.stream",
+            "dummy_test",
+            "dummy.test/1",
+            1.0,
+            "a.u.",
+        )
+        handler = reg.stream_handler_for(ref)
+        assert handler is not None
+    
+        summary = load_review_summary(FIXTURE)
+        work = tmp_path / "job"
+        work.mkdir()
+        outputs: list = []
+        schema_doc = {"schemaId": "capture.analysis_feature_schema/1", "tables": {}}
+        ctx = HandlerContext(
+            root=FIXTURE,
+            work=work,
+            summary=summary,
+            window=TimeWindow(0, summary.duration_ns or 1, "full"),
+            gap_policy="mask",
+            max_ram_bytes=2**30,
+            do_features=True,
+            do_plots=False,
+            all_gaps=[],
+            outputs=outputs,
+            warnings=[],
+            schema_doc=schema_doc,
+            feature_tables=[],
+            sync_series=[],
+        )
+        from capture_analysis.windows import build_gap_mask, gaps_to_intervals
+    
+        gaps = gaps_to_intervals(summary)
+        gap_mask = build_gap_mask(ref, ctx.window, gaps, policy="mask")
+>       handler(ref, gap_mask, ctx)
+
+tests/analysis/test_plugin_registry.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+libs/python/capture_analysis/capture_analysis/plugins/dummy.py:42: in handle_dummy
+    write_feature_table(
+libs/python/capture_analysis/capture_analysis/features/io.py:25: in write_feature_table
+    df.to_parquet(path, index=False)
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/pandas/core/frame.py:3113: in to_parquet
+    return to_parquet(
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/pandas/io/parquet.py:476: in to_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+engine = 'auto'
+
+    def get_engine(engine: str) -> BaseImpl:
+        """return our implementation"""
+        if engine == "auto":
+            engine = get_option("io.parquet.engine")
+    
+        if engine == "auto":
+            # try engines in this order
+            engine_classes = [PyArrowImpl, FastParquetImpl]
+    
+            error_msgs = ""
+            for engine_class in engine_classes:
+                try:
+                    return engine_class()
+                except ImportError as err:
+                    error_msgs += "\n - " + str(err)
+    
+>           raise ImportError(
+                "Unable to find a usable engine; "
+                "tried using: 'pyarrow', 'fastparquet'.\n"
+                "A suitable version of "
+                "pyarrow or fastparquet is required for parquet "
+                "support.\n"
+                "Trying to import the above resulted in these errors:"
+                f"{error_msgs}"
+            )
+E           ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E           A suitable version of pyarrow or fastparquet is required for parquet support.
+E           Trying to import the above resulted in these errors:
+E            - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E            - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/pandas/io/parquet.py:67: ImportError
+=========================== short test summary info ============================
+SKIPPED [2] tests/analysis/test_pose_job.py:17: could not import 'mcap': No module named 'mcap'
+SKIPPED [1] tests/analysis/test_phase_b_features.py:18: could not import 'mcap': No module named 'mcap'
+FAILED tests/analysis/test_export_sidecar.py::test_export_writes_manifest_and_sidecar
+FAILED tests/analysis/test_plugin_registry.py::test_dummy_stream_handler_writes_parquet
+2 failed, 39 passed, 3 skipped in 2.79s

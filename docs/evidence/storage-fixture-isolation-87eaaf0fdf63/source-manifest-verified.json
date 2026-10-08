@@ -1,0 +1,116 @@
+[
+  {
+    "path": "AGENTS.md",
+    "sha": "9ac6683ba4805e210143e5a33e7782da55af0d15",
+    "size": 3932,
+    "sha256": "525164ca1f3b9e68561434ab110ba17ed65843a20c23f4c1385fde33f1863a74"
+  },
+  {
+    "path": "CMakeLists.txt",
+    "sha": "8d5da4419dcaa3c9ed23173f40c22440815dc15e",
+    "size": 1746,
+    "sha256": "6b7bbb235e2bfc3588084bddb484df303ec7b93f588425a6dd67244525938f87"
+  },
+  {
+    "path": "CMakePresets.json",
+    "sha": "dfafa2e6e351a1d4b758e53e1ac95cb4b1f643c6",
+    "size": 2253,
+    "sha256": "46e947d2287d58710b7ae456cc9e88280cbe434e88e70e733d981813913b1d2a"
+  },
+  {
+    "path": "cmake/CaptureProtobuf.cmake",
+    "sha": "8af02dd2504815968c1b9adb702e74366d1a38ce",
+    "size": 766,
+    "sha256": "753a1d7f3041039002363b456eca08bf42a3df6d3cba61ac6b177010e0012d51"
+  },
+  {
+    "path": "cmake/CompilerWarnings.cmake",
+    "sha": "eb182f0e2566f00787ab836dc62f92b85e5ba4c5",
+    "size": 434,
+    "sha256": "91e124a89d77adbc27151d790a1da0f778427d71c5bb9cc39ef61ef724d55e48"
+  },
+  {
+    "path": "docs/design/README.md",
+    "sha": "eaf766a9de2084c4e4548456fbff1ffe1f8a5928",
+    "size": 10563,
+    "sha256": "8ae923174af77e18cff42668987fbd2438541c61d5cdaf7de7387bb8aaa29a6e"
+  },
+  {
+    "path": "docs/design/research/AUTONOMOUS_EXECUTION_PLAN.md",
+    "sha": "77d4576009f677f62b301bd6d352d9b40328c471",
+    "size": 16211,
+    "sha256": "656719f9c19a97a5683ad2e67bf29e43641fbc65bbc90430fe7f650498b9ddb0"
+  },
+  {
+    "path": "docs/design/research/PROGRESS.md",
+    "sha": "168e9678c2a45fd0357867f267d95ad627d488db",
+    "size": 12827,
+    "sha256": "abb7ca2f597cf6e0c98576f3e414ed9923f03dd9b583735fde63cf0953fd6201"
+  },
+  {
+    "path": "libs/cpp/capture_core/include/capture/clock.hpp",
+    "sha": "8798c43e3b10adc61d14b1ea7f44cc124b460cad",
+    "size": 1340,
+    "sha256": "dd6e4af30cd863ae079b116f56503bbd2e3c56a498ba20ce208a3440efedc9fd"
+  },
+  {
+    "path": "libs/cpp/capture_core/src/clock.cpp",
+    "sha": "852e22f3e85f0431bd52d9db6583903d88326da4",
+    "size": 5833,
+    "sha256": "b558f737730f05b82635443b3f9b36da9c6253fe5dee5401ddec8ef7528fb78a"
+  },
+  {
+    "path": "libs/cpp/capture_proto/CMakeLists.txt",
+    "sha": "2d94fcb425c0855ebe4d3ad55d140a01e58d403f",
+    "size": 3165,
+    "sha256": "3574332240a8701f38636e54512bb100e24e04ea42e7594ff64347f9915a7d1f"
+  },
+  {
+    "path": "libs/cpp/capture_storage/include/capture/storage/atomic_file.hpp",
+    "sha": "971e9e11555f2e1f614b563e9cd34998412bab22",
+    "size": 828,
+    "sha256": "2fbcbfc04eab2d0f42913223f4a477b5122523d54080e268351a4d7edee0e3e9"
+  },
+  {
+    "path": "libs/cpp/capture_storage/include/capture/storage/disk_watchdog.hpp",
+    "sha": "bc6c1ef947bd4e417ca220a983bee1ac8b04f14d",
+    "size": 1085,
+    "sha256": "c71a6dc077d7dab898f1740fd63b3ed3e632a0648dbe0044d8d08ea8899aedc0"
+  },
+  {
+    "path": "libs/cpp/capture_storage/src/atomic_file.cpp",
+    "sha": "0fadb72fd907580605f296ff6df0b6c981c48108",
+    "size": 3636,
+    "sha256": "679f15779ec27a0377b5ff44ffb37a92a8bb2286a234b37d2b25638d4584388a"
+  },
+  {
+    "path": "libs/cpp/capture_storage/src/disk_watchdog.cpp",
+    "sha": "718425f933703fdee920762de1dc115931950aad",
+    "size": 1854,
+    "sha256": "d2781ecb8a9a31f9aceeb0b053ab1b9ea9d9c73ea43c0a2266bb9e62b2ac3068"
+  },
+  {
+    "path": "scripts/build-linux.sh",
+    "sha": "30a27f5b8707a2b87907f40a230239b70c6a359a",
+    "size": 2116,
+    "sha256": "b27bfa332d0cbd5f672d890c1f4d16ce42d46be6c25dff9e39c99c7870c74f91"
+  },
+  {
+    "path": "tests/cpp/CMakeLists.txt",
+    "sha": "71988d9ba377702974c3e1a3a5b250a30e36b112",
+    "size": 3065,
+    "sha256": "4ddb7ca8f5bec18658330f2b9959d48c887abb1e39759c973a67d728f8d7a33e"
+  },
+  {
+    "path": "tests/cpp/test_atomic_file_posix.cpp",
+    "sha": "3fbd67b64f8a994cb29b724ed1157e915159ac6b",
+    "size": 4697,
+    "sha256": "5cb2735c6ff6ffd0f70ff997c11fb3230de9272c1a5b8706630994e636ae6587"
+  },
+  {
+    "path": "tests/cpp/test_storage_posix.cpp",
+    "sha": "85e062fc57941d260e499c15e2f90565b7f82dfe",
+    "size": 1689,
+    "sha256": "ed258c80f90397c54fa86404c2c8526b5c5283698910b79bdddfc6fff2afea1b"
+  }
+]

@@ -1,0 +1,13 @@
+{
+  "repository": "Jacob-Met/CaptureSuite",
+  "receiving_base": "a1b3c966bc8df46fd8160d3854c30a9e03c6a478",
+  "primary_tree": "afd26ca94b2bfd2762e4ec9c1be5dfb5e5a22bd7",
+  "truncated": false,
+  "primary_entries": 688,
+  "candidate_closure_files": 100,
+  "all_baseline_blobs_match": true,
+  "all_unowned_blobs_match": true,
+  "unowned_blobs": 98,
+  "framing_current_blob": "9dd5021b815b31ab02eaaa814210525ebb543862",
+  "mismatches": []
+}

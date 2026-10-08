@@ -1,0 +1,187 @@
+{
+  "schema": "capturesuite.windows-atomic-native-receiving.v1",
+  "receiver": "estate-6267db2cfc6e/runtime_access",
+  "basis": "Manual inspection of source-bound hosted Windows job logs and independent read-only API metadata, with an offline log index as an aid.",
+  "verdict": "Native receiving accepts the exact tested candidate checkpoint; current-main composition is a separate root/authority gate.",
+  "baseline": {
+    "run_id": 37770868596,
+    "run_attempt": 1,
+    "cmake_job_id": 113289825828,
+    "head_sha": "c1bc438ea07492a303f89cea5deb242efeb6f8e9",
+    "checkout_sha": "e4a8f294ab66ee6af9a4f91fcf9f70a7528f3362",
+    "checkout_tree_sha": "462ebfecaf9fcd14d96eb75ab527798d81ba5ad2",
+    "base_sha": "72c15d6b623e217291a824e4e4808a385df896a9",
+    "workflow_conclusion": "failure",
+    "build_conclusion": "success",
+    "ctest": {
+      "tests": 29,
+      "passed": 25,
+      "failed": 4,
+      "skipped": 0,
+      "step_exit": 1,
+      "exit_basis": "GitHub's CTest step printed Process completed with exit code 1; no distinct underlying ctest-process exit value is claimed."
+    },
+    "native_integration": {
+      "executed": false,
+      "step_conclusion": "skipped",
+      "reason": "CTest failed; downstream native integration did not execute."
+    },
+    "valid_preservation_negative_control": true
+  },
+  "candidate": {
+    "run_id": 37771818309,
+    "run_attempt": 1,
+    "cmake_job_id": 113292992549,
+    "head_sha": "62c56178820e4248bc4013c21f33f44cc1dce2fe",
+    "checkout_sha": "2f070f27390018ed5ac3945d75c7df4fb6a4278e",
+    "checkout_tree_sha": "d0e411c755875dc44126b60e6f8c3381012a6b84",
+    "base_sha": "72c15d6b623e217291a824e4e4808a385df896a9",
+    "workflow_conclusion": "success",
+    "build_conclusion": "success",
+    "ctest": {
+      "tests": 29,
+      "passed": 29,
+      "failed": 0,
+      "skipped": 0
+    },
+    "native_integration": {
+      "tests": 6,
+      "passed": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "process_exit": 0,
+      "accepted": true,
+      "source_worktree_dirty": true,
+      "source_unchanged_during_test": true,
+      "source_tree_sha256": "76f5f48f73c41940c3298486ab238d1b490cbffeef32820cff4c0fdc0350692c",
+      "receipt_file": "candidate-37771818309-attempt-1/native-receipt-from-log.json"
+    },
+    "passing_output_limit": "CTest --output-on-failure suppresses successful per-assertion output. Exact case names and terminal CTest outcomes are visible; individual passing assertion counts are not claimed.",
+    "symlink_skip_interpretation": {
+      "conclusion": "The Passed CTest row supports execution of the symlink preservation assertions, not an unreported privilege skip.",
+      "basis": "Independent repo_frontier source review of tagged Catch2 v3.10.0: AllTestsSkippedExitCode=4; a sole skipped case returns4; catch_discover_tests applies SKIP_RETURN_CODE4. Frozen local registration creates one named case per CTest test and has no override.",
+      "limits": "Source-supported inference from actual CTest outcome. Installed Catch helper bytes and per-case JUnit XML were not independently downloaded."
+    }
+  },
+  "platform": {
+    "os": "Microsoft Windows Server 2022",
+    "compiler": "MSVC 19.44.35229.0",
+    "configuration": "windows-release",
+    "capture_werror": true,
+    "catch2_version": "3.10.0"
+  },
+  "cases": [
+    {
+      "name": "Windows atomic write preserves a raw-file hardlink at the old temp name",
+      "source_line": 147,
+      "baseline_ctest_id": 11,
+      "candidate_ctest_id": 8,
+      "baseline_assertions": {
+        "total": 29,
+        "passed": 25,
+        "failed": 4
+      },
+      "baseline_outcome": "Raw sentinel bytes changed to the new manifest JSON; manifest identity matched the raw file and the existing alias disappeared.",
+      "candidate_ctest": "passed"
+    },
+    {
+      "name": "Windows atomic publication failure preserves a prior-target temp hardlink",
+      "source_line": 187,
+      "baseline_ctest_id": 10,
+      "candidate_ctest_id": 23,
+      "baseline_assertions": {
+        "total": 20,
+        "passed": 15,
+        "failed": 5
+      },
+      "baseline_outcome": "Prior revision 1 bytes changed to revision 2. The held target opened successfully, but the original writer returned published=true with an empty error. The alias disappeared.",
+      "candidate_ctest": "passed"
+    },
+    {
+      "name": "Windows atomic write preserves an ordinary file at the old temp name",
+      "source_line": 215,
+      "baseline_ctest_id": 27,
+      "candidate_ctest_id": 5,
+      "baseline_assertions": {
+        "total": 19,
+        "passed": 16,
+        "failed": 3
+      },
+      "baseline_outcome": "The existing ordinary sibling path disappeared; its original file identity was reused as the manifest.",
+      "candidate_ctest": "passed"
+    },
+    {
+      "name": "Windows atomic write preserves a raw-file symlink at the old temp name",
+      "source_line": 252,
+      "baseline_ctest_id": 7,
+      "candidate_ctest_id": 10,
+      "baseline_assertions": {
+        "total": 30,
+        "passed": 25,
+        "failed": 5
+      },
+      "baseline_outcome": "CreateSymbolicLinkW succeeded with error 0. Raw sentinel bytes changed to the new manifest JSON, and the published manifest was itself a symlink to that raw file.",
+      "candidate_ctest": "passed"
+    }
+  ],
+  "sources": {
+    "baseline_atomic_file_blob": "e192b9bac50f9a1f1ed35d57f2da60e9488fbb73",
+    "candidate_atomic_file_blob": "d51815e9f95ec6e3cf1b319386efb44b5bb4ac94",
+    "frozen_test_blob": "43fe28c3ec2ed49872b59dcc87407cece56466e5",
+    "frozen_test_sha256": "485af6482c6b14fc7c187b45cc366af547bf0a1fe2c0651c8b68c8d25e854cfb",
+    "cmake_blob": "7ce82c0a97098feef2691a675725ee31e4f92f01",
+    "workflow_blob": "9c08a4d38d435169f402511c934d1c59701082cf"
+  },
+  "python": {
+    "baseline_job": 113289825469,
+    "candidate_job": 113292992950,
+    "each": {
+      "tests": 309,
+      "passed": 303,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 6,
+      "process_exit": 0,
+      "accepted": true,
+      "source_file_count": 670,
+      "source_worktree_dirty": false,
+      "source_unchanged_during_test": true
+    },
+    "skip_reason": "All six explicit skips are daemon-not-built cases in the separate Python job.",
+    "receipt_paths": [
+      "baseline-37770868596-attempt-1/python-receipts-from-log.json",
+      "candidate-37771818309-attempt-1/python-receipts-from-log.json"
+    ]
+  },
+  "raw_logs": {
+    "baseline": {
+      "path": "baseline-37770868596-attempt-1/cmake-job.raw.log",
+      "bytes": 269767,
+      "sha256": "809457135fe38d9c0a060bccb449c9a14818193199da149776b38128c3459ba0"
+    },
+    "candidate": {
+      "path": "candidate-37771818309-attempt-1/ctest-index/cmake-job.raw.log",
+      "bytes": 312071,
+      "sha256": "337e8a83b7347f401070c22680da6d5e1485780776918111bc86a6e2cc15a0c7"
+    }
+  },
+  "indices": {
+    "baseline": "baseline-37770868596-attempt-1/ctest-index-v2/index.json",
+    "candidate": "candidate-37771818309-attempt-1/ctest-index/index.json",
+    "scope": "Every actual CTest row is retained; the index never declares corruption automatically.",
+    "parser_revision": "The first baseline index safely rejected failed rows because actual CTest had no whitespace before ***Failed. The one regex separator was relaxed, the initial rejected index was retained, and six negative parser controls passed again. Manual failure expansion review established the defect separately."
+  },
+  "limits": [
+    "No native JUnit XML was independently materialized; no artifact access-control workaround was attempted. CTest rows and native receipt were read from complete job logs.",
+    "Native source snapshot was dirty at entry and unchanged during its six tests; this is not a clean-worktree claim for that phase.",
+    "No new local Windows run, physical hardware test, crash/power-loss qualification, or deployment is claimed.",
+    "This receipt binds exact baseline/candidate checkpoints. New main composition must preserve reviewed source inputs and receive any necessary additional gates."
+  ],
+  "received_at_utc": "2026-10-08 12:22:53 UTC",
+  "indexer_sha256": "80840b63b769b98145de4adc561bc30caff0673eda1f66eb73b01ebb055255e2",
+  "index_hashes": {
+    "baseline": "f2ecd3dab3783f06d9dca3005fe1ccff7523f16f93e0bdd2c598cd1d6a5ec19f",
+    "candidate": "63aac4b2e0596cbee3df58cd420bd739442ee0f524b7249959064f1eaa577246"
+  }
+}

@@ -1,0 +1,179 @@
+{
+  "schema": "capturesuite-catch2-skip-semantics-source-review-v1",
+  "reviewed_utc": "2026-10-08T12:23:32.644860+00:00",
+  "reviewer": "estate-6267db2cfc6e/repo_frontier",
+  "method": "Read-only primary tagged source review and existing candidate CMake raw-log inspection; no new test execution.",
+  "catch2": {
+    "version": "3.10.0",
+    "observed_annotated_tag": "5af20cabb990f36f1671a6a95aef0e6a4cb2573d",
+    "tag_points_to_commit": "25319fd3047c6bdcf3c0170e76fa526c77f99ca9",
+    "tag_api_url": "https://api.github.com/repos/catchorg/Catch2/git/tags/5af20cabb990f36f1671a6a95aef0e6a4cb2573d",
+    "source_content_hashes": [
+      {
+        "path": "src/catch2/catch_session.cpp",
+        "tagged_url": "https://github.com/catchorg/Catch2/blob/v3.10.0/src/catch2/catch_session.cpp",
+        "bytes": 13322,
+        "git_blob_sha1": "7542447b9fa374c5064cd4c2b25f75f2d3b498d4",
+        "sha256": "a71132b3013c519908f1d23e6b4f9d729f0c5a2db2c6a8aefd796a0f46b70357",
+        "reviewed_lines": [
+          341,
+          342,
+          343,
+          344
+        ]
+      },
+      {
+        "path": "extras/CatchAddTests.cmake",
+        "tagged_url": "https://github.com/catchorg/Catch2/blob/v3.10.0/extras/CatchAddTests.cmake",
+        "bytes": 8751,
+        "git_blob_sha1": "90fbd5e313b68c91c57ccf70ee6afef861f9f0dd",
+        "sha256": "5e2651254c440a618a48abc0ba6b225d38232a3d9957ca6802478e88627636e7",
+        "reviewed_lines": [
+          173,
+          174,
+          175,
+          176,
+          177,
+          178,
+          179,
+          180,
+          181,
+          182,
+          183,
+          184,
+          185,
+          186,
+          187,
+          188,
+          189
+        ]
+      },
+      {
+        "path": "extras/Catch.cmake",
+        "tagged_url": "https://github.com/catchorg/Catch2/blob/v3.10.0/extras/Catch.cmake",
+        "bytes": 15248,
+        "git_blob_sha1": "fcdebd60a5f87d7a9b6809e47992344548d79962",
+        "sha256": "03798ca12892d152291ec23f68d9c1248df9bb0bf3682555be72eee202ce094b",
+        "reviewed_lines": [
+          207,
+          208,
+          209
+        ]
+      },
+      {
+        "path": "src/catch2/catch_session.hpp",
+        "tagged_url": "https://github.com/catchorg/Catch2/blob/v3.10.0/src/catch2/catch_session.hpp",
+        "bytes": 2084,
+        "git_blob_sha1": "23fc6f80cea7ab5e7cc36aa2f61c2194a35be702",
+        "sha256": "4f576658254ce93436e28e1ddbb23b5fd313c2835ffeb7320acfdcc526175ba9",
+        "reviewed_lines": [
+          23
+        ]
+      },
+      {
+        "path": "src/catch2/catch_config.hpp",
+        "tagged_url": "https://github.com/catchorg/Catch2/blob/v3.10.0/src/catch2/catch_config.hpp",
+        "bytes": 5317,
+        "git_blob_sha1": "b7b1315ebf120a105b44b82ccd1a20e97da9edf8",
+        "sha256": "1274a33f54b9a7118e659a59ffcd49a43c12557c14076b7e784ae8f529f7847f",
+        "reviewed_lines": [
+          60
+        ]
+      },
+      {
+        "path": "src/catch2/internal/catch_run_context.cpp",
+        "tagged_url": "https://github.com/catchorg/Catch2/blob/v3.10.0/src/catch2/internal/catch_run_context.cpp",
+        "bytes": 36097,
+        "git_blob_sha1": "d1cec82c88587ba2b71c4d42003b45ec12e0628e",
+        "sha256": "15979a4f0f1c25df2af4af6a8f510d70882b1d3422b93ac9e57e356d55465f77",
+        "reviewed_lines": [
+          323,
+          324,
+          325,
+          753,
+          754,
+          755,
+          756,
+          757
+        ]
+      },
+      {
+        "path": "src/catch2/catch_config.cpp",
+        "tagged_url": "https://github.com/catchorg/Catch2/blob/v3.10.0/src/catch2/catch_config.cpp",
+        "bytes": 10799,
+        "git_blob_sha1": "352c1f424a1ac7fa2eb0b5fb938304b862215d2e",
+        "sha256": "5f5cd24984b71720c85b13422d34cab3ec8534e67b0f7943866750d49c0675d8",
+        "reviewed_lines": [
+          196
+        ]
+      },
+      {
+        "path": "src/catch2/internal/catch_main.cpp",
+        "tagged_url": "https://github.com/catchorg/Catch2/blob/v3.10.0/src/catch2/internal/catch_main.cpp",
+        "bytes": 1413,
+        "git_blob_sha1": "adabdb573ff928b272455fc38da599f347107ac1",
+        "sha256": "e3f32ef7677225cc8fb5658544088c3e6456f2bc9613cdd99e2381e4a61f1070",
+        "reviewed_lines": [
+          36,
+          37,
+          38,
+          39,
+          40
+        ]
+      },
+      {
+        "path": "src/catch2/catch_totals.cpp",
+        "tagged_url": "https://github.com/catchorg/Catch2/blob/v3.10.0/src/catch2/catch_totals.cpp",
+        "bytes": 1939,
+        "git_blob_sha1": "bd1954fb9e38e6b9f3fd52f882be0ac6520af7a1",
+        "sha256": "9f4e14eec9439d5da724c1e6c55ded3aa6bfd323b35ab092aafa48c7ee6411e3",
+        "reviewed_lines": [
+          52,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62
+        ]
+      }
+    ]
+  },
+  "project_inputs": [
+    {
+      "path": "source/candidate/tests/cpp/CMakeLists.txt",
+      "bytes": 3776,
+      "sha256": "e29ab4a5ab82cef91492317ee43d5ed99f866816af5facd1b10d2616f7ab6d0a"
+    },
+    {
+      "path": "source/candidate/tests/cpp/test_atomic_file_windows.cpp",
+      "bytes": 9852,
+      "sha256": "485af6482c6b14fc7c187b45cc366af547bf0a1fe2c0651c8b68c8d25e854cfb"
+    },
+    {
+      "path": "root-candidate-cmake.raw.log",
+      "bytes": 312071,
+      "sha256": "337e8a83b7347f401070c22680da6d5e1485780776918111bc86a6e2cc15a0c7"
+    }
+  ],
+  "chain": [
+    "Candidate log records catch2:x64-windows@3.10.0 and source download from the v3.10.0 tag.",
+    "Pinned project CMake links Catch2::Catch2WithMain and calls catch_discover_tests(capture_core_tests) without EXTRA_ARGS, custom properties, or SKIP_IS_FAILURE.",
+    "Catch2WithMain runs the default Catch Session; allowZeroTests defaults to false, and zeroTestsCountAsSuccess returns that setting.",
+    "ExplicitSkip increments skipped assertion counts; Totals::delta marks that case skipped even if earlier assertions passed.",
+    "CatchAddTests registers one exact named Catch test case per CTest test. For that sole skipped case, Session returns AllTestsSkippedExitCode, defined as 4.",
+    "Catch.cmake adds SKIP_RETURN_CODE 4; CatchAddTests applies the property to each registered test. The CMake property marks that return as skipped/Not Run, not Passed.",
+    "Existing candidate raw log has all four exact preservation rows Passed, including the raw-file symlink case at ordinal 10; the complete 29-row CTest summary has zero failures."
+  ],
+  "conclusion": "The candidate symlink CTest Passed row supports an inference that its preservation assertions executed rather than taking the sole ERROR_PRIVILEGE_NOT_HELD SKIP path. This is an inference from observed CTest status and primary framework/registration semantics, not direct per-assertion passing output.",
+  "cmake_property_primary_source": "https://cmake.org/cmake/help/latest/prop_test/SKIP_RETURN_CODE.html",
+  "limits": [
+    "Installed hosted Catch helper/library bytes were not independently downloaded or hashed; the hosted version/source-tag observation is the dependency binding.",
+    "Individual passing-assertion counts and underlying CTest JUnit artifacts were not independently downloaded.",
+    "This review does not create a new native run or replace the baseline/candidate native receipts."
+  ]
+}

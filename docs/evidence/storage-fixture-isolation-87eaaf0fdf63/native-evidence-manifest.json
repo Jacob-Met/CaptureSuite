@@ -1,0 +1,82 @@
+{
+  "baseline-result.json": {
+    "bytes": 2285,
+    "sha256": "cb57101ce5485d1bb7f156a643e6d1ff15d7627d83e0652bee176f59875dba2a"
+  },
+  "baseline.stderr.txt": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "baseline.stdout.txt": {
+    "bytes": 189,
+    "sha256": "a7bf81fc7c312c94e2bfbffeeb27c474c4d361f8a74c99f2cef20a3b9513ca71"
+  },
+  "candidate-compile.stderr.txt": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "candidate-compile.stdout.txt": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "candidate-storage-suite.stderr.txt": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "candidate-storage-suite.stdout.txt": {
+    "bytes": 182,
+    "sha256": "8ee74fc058770614e850389d5ba79bcf24cfa89d13d2804c219e48f7afd48e75"
+  },
+  "cmake-candidate.stderr.txt": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "cmake-candidate.stdout.txt": {
+    "bytes": 52,
+    "sha256": "e3116b33c6b1b9bd491e6f9a15b94b6949a25fdb9cd4c12affe7c512435ddc96"
+  },
+  "cmake-original.stderr.txt": {
+    "bytes": 296,
+    "sha256": "239cbb660585e7e62944cb1ac0b35625c94b0cb68b0b0c1f6c62a7a2f7e24467"
+  },
+  "cmake-original.stdout.txt": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "original-compile.stderr.txt": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "original-compile.stdout.txt": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "repair-result.json": {
+    "bytes": 4521,
+    "sha256": "ddb454445ab918e12b8855164582f540d89dea1faa0dadc046d0758029e770a5"
+  },
+  "version-catch2.stderr.txt": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "version-catch2.stdout.txt": {
+    "bytes": 6,
+    "sha256": "4e99e7eac21c2b71a97139cacca695d98c93fbd7dd26505f04f5271809ac4b94"
+  },
+  "version-cmake.stderr.txt": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "version-cmake.stdout.txt": {
+    "bytes": 90,
+    "sha256": "a24e1ae7f8f715ef1f0121cd749052d73c6a4315dba5bb885c584553d826eb79"
+  },
+  "version-compiler.stderr.txt": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "version-compiler.stdout.txt": {
+    "bytes": 239,
+    "sha256": "ac55452791ddd9d6e55f5e1f3dbcd5ee40f34b0b55ae18baade542748b008022"
+  }
+}

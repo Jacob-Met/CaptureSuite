@@ -1,0 +1,28 @@
+{
+  "schema": "capturesuite-fixture-hosted-gate/v1",
+  "run": 37756929537,
+  "url": "https://github.com/Jacob-Met/CaptureSuite/actions/runs/37756929537",
+  "head": "0dcee1ca5165f260c0cfb7bea3c02e364c959538",
+  "actual_checkout": "ca577a2755bb8f0adbaf4d4466a14ddd2ab222fe",
+  "checkout_tree": "04219699e07206bc01c6459ac1d2069671541972",
+  "checkout_parents": [
+    "7a570db487a10b5b9f30fa9be7fc5c5396611d36",
+    "0dcee1ca5165f260c0cfb7bea3c02e364c959538"
+  ],
+  "conclusion": "success",
+  "completed": "2026-10-08T09:47:56Z",
+  "windows_ctest": {
+    "pass": 26,
+    "fail": 0,
+    "fixture_isolation_pass": true
+  },
+  "native_daemon_and_recovery": {
+    "pass": 6,
+    "skip": 0
+  },
+  "python": {
+    "pass": 208,
+    "skip": 6
+  },
+  "scope": "Executed old companion tree. This is not a run of the later mainline composition."
+}

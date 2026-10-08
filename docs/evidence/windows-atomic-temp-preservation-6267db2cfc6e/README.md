@@ -44,3 +44,32 @@ Acceptance requires successfully compiled and executed preservation assertion fa
 The builds may overlap only after the original run has a bound immutable checkout and its CMake checkout has completed. A completed Python job from the same run/attempt can support a scheduling inference when live CMake logs are unavailable. Native acceptance still requires the CMake job's own checkout and actual test evidence; the Python inference never substitutes for it.
 
 These are direct-library checks on disposable authored bytes. The existing native daemon/recovery suite supplies integration coverage; the new controls do not themselves run a recovery CLI against valid MCAP or exercise physical capture. Write/flush/close error handling and the bounded temporary-name collision loop also received source review; the four controls do not inject each of those failure modes.
+
+## Received native checkpoints and current-main integration
+
+Original checkpoint `c1bc438ea07492a303f89cea5deb242efeb6f8e9` was received
+from workflow 37770868596: successful warning/configuration/build gates, then
+25 CTest passes and four actual preservation failures, zero skips. The
+native daemon integration step did not execute after that CTest failure.
+
+Repaired checkpoint `62c56178820e4248bc4013c21f33f44cc1dce2fe` was received
+from workflow 37771818309: 29 CTest passes, including all four unchanged
+Windows controls, plus six native daemon/recovery passes, no native skips.
+Both checkpoint Python jobs passed 303 tests with six daemon-not-built skips.
+The native receipt records a dirty worktree at entry and unchanged working
+source during execution; the Python receipts record clean, unchanged source.
+
+The exact full native job logs and independent receiving are retained here:
+
+- [Original CMake job log](receiving/baseline-cmake.log)
+- [Repaired CMake job log](receiving/candidate-cmake.log)
+- [Independent native receiving](receiving/native-receiving.json)
+- [Tagged Catch2 skip-semantics review](receiving/catch2-skip-review.json)
+
+These files describe those two exact checkpoints. They do not claim a run
+of the subsequent composition onto main `e43da3b855475c8aacf815c201fa03eddaeec0f1`.
+That main adds PR42's private-temporary-directory fixture. The composed
+CMake list preserves the frozen Windows source entry and the new aggregate
+fixture. Its one additional supported workflow must execute the four
+individual Windows controls and `capture_storage_fixture_isolation`, followed
+by the ordinary native/Python gates. The original defect control is complete.

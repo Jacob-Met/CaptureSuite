@@ -1,0 +1,7 @@
+{
+  "chunk_id": "dcb087",
+  "wall_time_seconds": 0.000029985,
+  "exit_code": 0,
+  "original_token_count": 135,
+  "output": "PASS absolute path preserves binary payload and truncates old bytes\nPASS temp reopen refusal preserves original\nPASS temp close refusal preserves original\nPASS parent open refusal preserves original\nPASS real rename refusal preserves existing directory\nPASS two directory interruptions are retried\nPASS directory sync error retains disclosed replacement\nPASS directory close error retains disclosed replacement\nPASS relative target syncs current directory\nPASS missing parent refuses without creating target\nindependent_cases=10 failures=0\n"
+}

@@ -1,0 +1,5 @@
+CMake Error at /home/jacob/capturesuite-review-87eaaf0fdf63/candidate/tests/cmake/portable_storage/fixture_isolation.cmake:30 (message):
+  Storage test deleted another invocation's receipt; retained
+  /home/jacob/capturesuite-review-87eaaf0fdf63/cmake-original-fixture-92a8df95bfdd0ecb828bd1d7
+
+
