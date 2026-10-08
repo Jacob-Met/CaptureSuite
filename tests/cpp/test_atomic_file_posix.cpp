@@ -23,7 +23,7 @@ enum class Fault {
 Fault fault = Fault::none;
 int sync_calls = 0;
 int write_calls = 0;
-int close_calls = 0;
+int writer_close_calls = 0;
 int writer_fd = -1;
 bool synced_writer = false;
 
@@ -31,7 +31,7 @@ void reset(Fault next = Fault::none) {
   fault = next;
   sync_calls = 0;
   write_calls = 0;
-  close_calls = 0;
+  writer_close_calls = 0;
   writer_fd = -1;
   synced_writer = false;
 }
@@ -78,7 +78,9 @@ extern "C" ssize_t __wrap_write(int fd, const void* buffer, std::size_t count) {
 
 extern "C" int __real_close(int fd);
 extern "C" int __wrap_close(int fd) {
-  ++close_calls;
+  // The parent directory has its own descriptor and legitimate cleanup.
+  // Count every attempted close of the writer fd, including unsafe retries.
+  if (fd == writer_fd) ++writer_close_calls;
   const int flags = ::fcntl(fd, F_GETFL);
   const bool writable = flags >= 0 && (flags & O_ACCMODE) != O_RDONLY;
   const int result = __real_close(fd);
@@ -194,7 +196,7 @@ int main() {
             "writer error incorrectly reported success");
     require(error.find(diagnostic) != std::string::npos,
             "writer failure diagnostic is missing");
-    require(close_calls == 1, "writer close was skipped or retried");
+    require(writer_close_calls == 1, "writer close was skipped or retried");
     require(capture::storage::read_text_file(path, error) == "before",
             "writer failure replaced previous target");
     require(!std::filesystem::exists(path.string() + ".tmp"),
