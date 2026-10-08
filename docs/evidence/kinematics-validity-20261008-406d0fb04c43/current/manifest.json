@@ -1,0 +1,51 @@
+{
+  "schema": "hamon.kinematics_current_receiving/1",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 2326,
+      "sha256": "2f30a83ae457cc0727556a4a1bd3e5f3ba23a6998401843ffd71b2cfe2902122"
+    },
+    {
+      "path": "junit.xml",
+      "bytes": 394,
+      "sha256": "93341a607911bd56c6cb23d9649887b8297bb9d82c9438f6b063b82a661ba26b"
+    },
+    {
+      "path": "process.log",
+      "bytes": 1055,
+      "sha256": "383abcee2d38a430b4d6fd69f47f1b087fed0de62617fc05def4ab6bb4c49fb1"
+    },
+    {
+      "path": "receipt.json",
+      "bytes": 38997,
+      "sha256": "db8ed2311cb5c4a5550a8a597591805db4e13cb0fe55776c67144fe7602d9091"
+    },
+    {
+      "path": "receive-current-seam.cjs",
+      "bytes": 2926,
+      "sha256": "1670596ae4bde6a7f025266fa540e3248d7110095557b3e9b6f1438f14245e35"
+    },
+    {
+      "path": "source-manifest.json",
+      "bytes": 34778,
+      "sha256": "985369a108d4feb04b3eff9999714d6cd36d054cdb075a6b5f255564ad595cbc"
+    },
+    {
+      "path": "test-artifact-manifest.json",
+      "bytes": 5971,
+      "sha256": "46883a462de1344b35f2d241ee0c5f309de4f314221ead90bd53060f1cc7ba10"
+    },
+    {
+      "path": "test-artifacts.tar.gz",
+      "bytes": 10240,
+      "sha256": "f5a7643db14cfd8bcfb83731de5a131d142616f7e80fd2e41adecae8997fbfc3"
+    }
+  ],
+  "readback": {
+    "allNativeReceiptBytesMatch": true,
+    "junitMatchesNativeReceipt": true,
+    "all25NativeArtifactsMatch": true,
+    "nativeDiskFull": "Package assembled locally from read-only native exports after successful execution; original source and results retained unchanged."
+  }
+}

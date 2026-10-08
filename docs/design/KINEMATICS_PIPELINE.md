@@ -83,6 +83,30 @@ Aligned with Kobayashi / [paper_landmarks.py](../../../UrologyMoCap/paper_landma
 
 Hips (23, 24) are required for shoulder metrics. Missing hip → shoulder angles masked, not extrapolated.
 
+### Implemented landmark validity
+
+The non-simulated computation uses the body indices above and checks each
+required landmark against `min_confidence` (default 0.25). Coordinates and
+confidence must be finite, and the angle's geometry must be defined. Validity
+is independent for each side and joint:
+
+| Measurement | Required landmarks | Missing or unusable evidence |
+|---|---|---|
+| Elbow flexion | Same-side shoulder, elbow, wrist | Elbow flag false; angle masked |
+| Shoulder elevation and flexion | Same-side shoulder, elbow, hip | Shoulder flag false; angles masked |
+
+A missing wrist leaves usable shoulder geometry available. A missing hip leaves
+usable elbow geometry available. Confidence from unrelated body points does not
+invalidate a usable limb. Unsupported skeleton mappings are not inferred.
+
+Only an explicit `sim_` model ID selects the existing synthetic fixture angles.
+An incomplete non-simulated pose retains its model identity and missing values.
+At an invalid angle's frame, its angular velocity and rolling AFR also remain
+NaN; surrounding samples cannot make that missing frame appear measured. The
+existing calculations for complete valid inputs and explicit sim teachers are
+unchanged. This validity rule does not qualify a pose backend or implement the
+planned smoothing, IMU fusion, or physical calibration steps.
+
 Full export contract: [KINEMATICS_EXPORT.md](../../../UrologyMoCap/docs/KINEMATICS_EXPORT.md).
 
 ---

@@ -34,52 +34,55 @@ def _angle_deg(a: np.ndarray, b: np.ndarray, c: np.ndarray) -> float:
     return math.degrees(math.acos(cos))
 
 
-def _joint_xyz(frame_df: Any, joint_index: int) -> np.ndarray | None:
+def _joint_xyz(
+    frame_df: Any, joint_index: int, *, min_confidence: float
+) -> np.ndarray | None:
     row = frame_df.loc[frame_df["joint_index"] == joint_index]
     if row.empty:
         return None
     r = row.iloc[0]
-    if float(r.get("confidence", 0) or 0) < 0.25:
+    confidence = float(r.get("confidence", 0) or 0)
+    if not math.isfinite(confidence) or not confidence >= min_confidence:
         return None
-    return np.array([float(r["x"]), float(r["y"]), float(r.get("z", 0) or 0)])
+    xyz = np.array([float(r["x"]), float(r["y"]), float(r.get("z", 0) or 0)])
+    return xyz if np.isfinite(xyz).all() else None
 
 
-def _landmarks_wide_enough(landmarks_df: Any) -> bool:
-    idx = set(int(x) for x in landmarks_df["joint_index"].unique())
-    needed = {_MP["L_shoulder"], _MP["L_elbow"], _MP["L_wrist"], _MP["L_hip"]}
-    return needed.issubset(idx)
-
-
-def _compute_frame_angles(frame_df: Any) -> dict[str, float]:
-    if not _landmarks_wide_enough(frame_df):
-        return {}
-
-    ls = _joint_xyz(frame_df, _MP["L_shoulder"])
-    le = _joint_xyz(frame_df, _MP["L_elbow"])
-    lw = _joint_xyz(frame_df, _MP["L_wrist"])
-    lh = _joint_xyz(frame_df, _MP["L_hip"])
-    rs = _joint_xyz(frame_df, _MP["R_shoulder"])
-    re = _joint_xyz(frame_df, _MP["R_elbow"])
-    rw = _joint_xyz(frame_df, _MP["R_wrist"])
-    rh = _joint_xyz(frame_df, _MP["R_hip"])
-    if any(v is None for v in (ls, le, lw, lh, rs, re, rw, rh)):
-        return {}
-
+def _compute_frame_angles(frame_df: Any, *, min_confidence: float) -> dict[str, float]:
     out: dict[str, float] = {}
-    out["theta_elbow_flex_L"] = _angle_deg(ls, le, lw)  # type: ignore[arg-type]
-    out["theta_elbow_flex_R"] = _angle_deg(rs, re, rw)  # type: ignore[arg-type]
-    out["theta_shoulder_elev_L"] = _angle_deg(le, ls, lh)  # type: ignore[arg-type]
-    out["theta_shoulder_elev_R"] = _angle_deg(re, rs, rh)  # type: ignore[arg-type]
-    # Sagittal flexion proxy: angle between shoulder-elbow vector and vertical.
-    for side, elbow, shoulder in (("L", le, ls), ("R", re, rs)):
-        vec = elbow - shoulder  # type: ignore[operator]
+    for side in ("L", "R"):
+        joints = {
+            name: _joint_xyz(
+                frame_df, _MP[f"{side}_{name}"], min_confidence=min_confidence
+            )
+            for name in ("shoulder", "elbow", "wrist", "hip")
+        }
+        shoulder, elbow = joints["shoulder"], joints["elbow"]
+        if shoulder is None or elbow is None:
+            continue
+
+        wrist = joints["wrist"]
+        if wrist is not None:
+            angle = _angle_deg(shoulder, elbow, wrist)
+            if math.isfinite(angle):
+                out[f"theta_elbow_flex_{side}"] = angle
+
+        hip = joints["hip"]
+        if hip is None:
+            continue
+        elevation = _angle_deg(elbow, shoulder, hip)
+        # Sagittal flexion proxy: shoulder-elbow vector versus vertical.
+        vec = elbow - shoulder
         vertical = np.array([0.0, -1.0, 0.0])
         nv = float(np.linalg.norm(vec))
         if nv < 1e-9:
-            out[f"theta_shoulder_flex_{side}"] = float("nan")
+            flexion = float("nan")
         else:
             cos = float(np.clip(np.dot(vec, vertical) / nv, -1.0, 1.0))
-            out[f"theta_shoulder_flex_{side}"] = math.degrees(math.acos(cos))
+            flexion = math.degrees(math.acos(cos))
+        if math.isfinite(elevation) and math.isfinite(flexion):
+            out[f"theta_shoulder_elev_{side}"] = elevation
+            out[f"theta_shoulder_flex_{side}"] = flexion
     return out
 
 
@@ -108,30 +111,32 @@ def landmarks_to_kinematics(
     reg = load_registry()
     col_order = [str(c["name"]) for c in reg.get("columns") or []]
 
-    use_sim = pose_model_id.startswith("sim_") or not _landmarks_wide_enough(landmarks_df)
+    use_sim = pose_model_id.startswith("sim_")
     frames = landmarks_df.groupby(["session_time_ns", "frame_index"], sort=True)
 
     rows: list[dict[str, Any]] = []
     for (t_ns, fi), frame_df in frames:
-        mean_conf = float(frame_df["confidence"].mean()) if "confidence" in frame_df else 0.0
         if use_sim:
+            mean_conf = float(frame_df["confidence"].mean()) if "confidence" in frame_df else 0.0
             angles = _sim_angles(int(t_ns))
-            valid_elbow = mean_conf >= min_confidence
-            valid_shoulder = valid_elbow
+            validity = {
+                f"valid_{joint}_{side}": mean_conf >= min_confidence
+                for joint in ("elbow", "shoulder") for side in ("L", "R")
+            }
         else:
-            angles = _compute_frame_angles(frame_df)
-            valid_elbow = bool(angles) and mean_conf >= min_confidence
-            valid_shoulder = valid_elbow and _landmarks_wide_enough(frame_df)
+            angles = _compute_frame_angles(frame_df, min_confidence=min_confidence)
+            validity = {
+                f"valid_{joint}_{side}": f"theta_{joint}_{kind}_{side}" in angles
+                for joint, kind in (("elbow", "flex"), ("shoulder", "elev"))
+                for side in ("L", "R")
+            }
 
         row: dict[str, Any] = {
             "session_time_ns": int(t_ns),
             "frame_index": int(fi),
             "teacher_source": teacher_source,
             "pose_model_id": pose_model_id,
-            "valid_elbow_L": valid_elbow,
-            "valid_elbow_R": valid_elbow,
-            "valid_shoulder_L": valid_shoulder,
-            "valid_shoulder_R": valid_shoulder,
+            **validity,
         }
         for name in col_order:
             if name in row:
@@ -165,6 +170,9 @@ def landmarks_to_kinematics(
             continue
         theta = df[theta_col].to_numpy(dtype=np.float64)
         omega = np.gradient(theta, dt_s)
+        if not use_sim:
+            # A central difference can be finite even when its center is missing.
+            omega[~np.isfinite(theta)] = float("nan")
         df[col] = omega
 
     # Rolling AFR on elbow angles (11-frame window when enough samples).
@@ -175,6 +183,8 @@ def landmarks_to_kinematics(
         if col in df.columns and len(df) >= win:
             roll = df[col].rolling(win, center=True, min_periods=1)
             df[afr] = roll.max() - roll.min()
+            if not use_sim:
+                df.loc[df[col].isna(), afr] = float("nan")
 
     return df[col_order]
 
