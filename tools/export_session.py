@@ -480,4 +480,8 @@ def main(argv: list[str] | None = None) -> int:
 
 
 if __name__ == "__main__":
+    # Windows pipes may use a legacy encoding. Escape unrepresentable status
+    # text without changing the filesystem paths or failing a completed export.
+    if sys.stdout is not None:
+        sys.stdout.reconfigure(errors="backslashreplace")
     raise SystemExit(main())

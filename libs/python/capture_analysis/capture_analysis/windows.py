@@ -99,15 +99,16 @@ def build_gap_mask(
     *,
     policy: str = "mask",
 ) -> GapMask:
+    """Keep matching gaps; empty source/stream IDs retain their broader scope."""
     intervals: list[GapInterval] = []
     for g in gaps:
+        if g.source_id and g.source_id != stream.source_id:
+            continue
+        if g.stream_id and g.stream_id != stream.stream_id:
+            continue
         if isinstance(g, GapInterval):
-            if g.source_id and g.source_id != stream.source_id:
-                continue
             intervals.append(g)
         else:
-            if g.source_id and g.source_id != stream.source_id:
-                continue
             intervals.append(
                 GapInterval(
                     source_id=g.source_id,

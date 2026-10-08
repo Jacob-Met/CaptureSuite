@@ -1,5 +1,11 @@
 # Selective export receiving — 2026-10-08
 
+**Hosted Windows follow-up:** PR #45's first Python run exposed a Unicode
+status-print failure through cp1252 stdout after valid export writes. The
+narrow CLI repair and real child-process regression pass all 60 analysis cases
+at `8794bea09f25dc3525d0c273fef2d8b277704afd`. The failed hosted artifacts and
+the remaining Windows acceptance gate are retained in [r3](r3/README.md).
+
 **Latest source acceptance:** `f81ce452ece2efc2345eda8bdf6d477a93adc6a9`, with
 59 analysis cases and an independent real output-failure rerun. The initial
 `a00e0df` / `6866ebd` candidate was rejected during independent review because it

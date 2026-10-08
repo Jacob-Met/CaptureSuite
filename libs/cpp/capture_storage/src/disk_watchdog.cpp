@@ -1,8 +1,12 @@
 // SPDX-License-Identifier: GPL-3.0-only
 #include "capture/storage/disk_watchdog.hpp"
 
+#ifdef _WIN32
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
+#else
+#include <system_error>
+#endif
 
 namespace capture::storage {
 
@@ -16,12 +20,21 @@ int64_t DiskWatchdog::free_bytes() const {
       return *override_;
     }
   }
+#ifdef _WIN32
   ULARGE_INTEGER free_bytes_available{};
   if (!GetDiskFreeSpaceExW(path_.wstring().c_str(), &free_bytes_available,
                            nullptr, nullptr)) {
     return -1;
   }
   return static_cast<int64_t>(free_bytes_available.QuadPart);
+#else
+  std::error_code ec;
+  const auto info = std::filesystem::space(path_, ec);
+  if (ec) {
+    return -1;
+  }
+  return static_cast<int64_t>(info.available);
+#endif
 }
 
 bool DiskWatchdog::at_hard_floor() const {

@@ -7,7 +7,10 @@
 
 namespace capture::storage {
 
-// Write bytes to path via path.tmp then atomic replace.
+// Write bytes to path via path.tmp then atomic replace (one writer per path).
+// On POSIX, success requires syncing both the temp file and parent directory.
+// If directory sync fails after replacement, returns false with an explicit
+// diagnostic; the destination already contains the complete new bytes.
 bool atomic_write_bytes(const std::filesystem::path& path,
                         std::string_view bytes, std::string& error);
 

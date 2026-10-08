@@ -123,6 +123,20 @@ def test_real_mcap_selection_preserves_input_and_timestamps(package: Path, selec
     assert _hash_files(package) == before
 
 
+def test_unicode_destination_with_legacy_pipe_encoding(package: Path, monkeypatch) -> None:
+    """A Windows-style output pipe must not fail after writing valid export files."""
+    _write_mcap(package / "sources/device-17/streams/mixed/segments/000.mcap", ("emg", "imu"))
+    before = _hash_files(package)
+    out = package.parent / "selected output 雪"
+    monkeypatch.setenv("PYTHONIOENCODING", "cp1252:strict")
+    result = _export(package, out, ("emg", "imu"))
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert "wrote " in result.stdout
+    assert r"\u96ea" in result.stdout
+    _assert_selected(out, ("emg", "imu"))
+    assert _hash_files(package) == before
+
+
 @pytest.mark.parametrize("layout", ["separate-streams", "multiplexed"])
 @pytest.mark.parametrize("selected", [("imu",), ("emg", "imu")])
 def test_selected_modality_can_follow_another_schema(package: Path, layout, selected) -> None:

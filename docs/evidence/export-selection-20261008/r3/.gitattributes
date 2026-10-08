@@ -1,0 +1,3 @@
+# Preserve the exact hosted artifact bytes bound by the receipt hashes.
+windows-first/pytest.log -text
+windows-first/pytest.xml -text

@@ -1,0 +1,37 @@
+{
+  "schema": "capturesuite.test-receipt.v1",
+  "accepted": true,
+  "process_exit": 0,
+  "counts": {
+    "tests": 68,
+    "passed": 68,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "junit_sha256": "ff60f65f0a2eb7b405ae09a43bac7b335320a4528de533e7528d5850bbd34e22",
+  "problems": [],
+  "scope": "Process and test-evidence consistency, not clinical validation",
+  "source_commit": "e73ea7641dbb55a74d7c8c2d021cab2cfd5af045",
+  "source_worktree_dirty": false,
+  "source_tree_sha256": "017f72842eeaa71cad089826308747d69cba48517efb81a81a549a6674fbdb6e",
+  "source_unchanged_during_test": true,
+  "source_file_count": 614,
+  "command": [
+    "/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python",
+    "-m",
+    "pytest",
+    "tests/analysis",
+    "-q",
+    "-ra",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=/dev/shm/capturesuite-234cae4aee53/r3-composed/tmp",
+    "--junitxml=/dev/shm/capturesuite-234cae4aee53/r3-composed/analysis.xml"
+  ],
+  "runtime": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "created_at": "2026-10-08T10:13:32.979256+00:00",
+  "seconds": 6.384331414999906,
+  "log_sha256": "055128a2fb41ab390abd462d404b7e3be35c89ff34a43529aa9cfc292e8b8d39",
+  "base_main": "52203f5ceedfa0da8f1813e700a41ec8c364263e"
+}
