@@ -5,6 +5,34 @@ Plan: [AUTONOMOUS_EXECUTION_PLAN.md](AUTONOMOUS_EXECUTION_PLAN.md)
 
 ---
 
+## 2026-10-08 — Writer-close review repair and user receiving (estate-68e476e98b77)
+
+Independent review of PR36 found an additional actual-process durability
+blocker: an injected error from the original `ofstream` writer's close was
+ignored, so `session_doctor` returned success and replaced the manifest. The
+POSIX path now retains one writable descriptor through short/interrupted-safe
+writes, `fsync`, and checked close; zero-progress writes fail, close is not
+retried, and all writer failures preserve the old target. Windows source
+behavior and the separately owned recovery scanner remain unchanged.
+
+The revised native entrypoint passes all **17 CTest tests** and its strict
+standalone durability executable passes **10/10 cases**. The unchanged
+independent process regression now returns exit 2 for writer-close EIO,
+preserves the recording manifest exactly, leaves no temp file and prints no
+false success. Normal success and parent-fsync EIO after rename also pass;
+both frozen MCAP files remain byte-identical in all three cases. Original
+failed receiver and reviewer reproducers are preserved with hashes.
+
+An ordinary-user receiving copy is retained at
+`/home/jacob/capturesuite-receiver-68e476e98b77-r2/bin/session_doctor` (UID1000,
+mode0755), SHA-256 `8104af6502590eceff5daf6c57d3f768bb431463104c40a958942d94927cbcf4`.
+This resolves access through the original protected estate archive without
+changing its ancestor permissions or any service/default. A later compiler
+scratch quota failure is retained; assigning compiler TMPDIR to this lane's
+own evidence directory allowed the bounded build to finish without cleanup.
+Original-head Windows and Python CI passed; revised-head CI remains a separate
+integration gate. See `docs/evidence/linux-port-68e476e98b77-r2.json`.
+
 ## 2026-10-08 — Linux portable build receiving (estate-68e476e98b77)
 
 Received the retained Linux C++/CMake donor `e3270d84` onto current public main

@@ -76,7 +76,7 @@ if(TARGET session_doctor)
 endif()
 
 if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
-  # Exercise actual file I/O with deterministic fsync failures, without adding
+  # Exercise actual file I/O with write/fsync/close failures, without adding
   # test-only hooks to the production storage API.
   add_executable(capture_atomic_file_posix_tests
     test_atomic_file_posix.cpp
@@ -85,7 +85,8 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
   target_include_directories(capture_atomic_file_posix_tests PRIVATE
     ${CMAKE_SOURCE_DIR}/libs/cpp/capture_storage/include
   )
-  target_link_options(capture_atomic_file_posix_tests PRIVATE "-Wl,--wrap=fsync")
+  target_link_options(capture_atomic_file_posix_tests PRIVATE
+    "-Wl,--wrap=write" "-Wl,--wrap=fsync" "-Wl,--wrap=close")
   capture_set_warnings(capture_atomic_file_posix_tests)
   add_test(NAME capture_atomic_file_posix_durability
            COMMAND capture_atomic_file_posix_tests)

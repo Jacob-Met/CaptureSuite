@@ -5,8 +5,10 @@
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
 #else
+#include <algorithm>
 #include <cerrno>
 #include <fcntl.h>
+#include <limits>
 #include <system_error>
 #include <unistd.h>
 #endif
@@ -20,9 +22,6 @@ bool atomic_write_bytes(const std::filesystem::path& path,
                         std::string_view bytes, std::string& error) {
 #ifdef _WIN32
   const auto tmp = path.wstring() + L".tmp";
-#else
-  const auto tmp = path.string() + ".tmp";
-#endif
   {
     std::ofstream out(tmp, std::ios::binary | std::ios::trunc);
     if (!out) {
@@ -36,7 +35,6 @@ bool atomic_write_bytes(const std::filesystem::path& path,
       return false;
     }
   }
-#ifdef _WIN32
   if (!MoveFileExW(tmp.c_str(), path.wstring().c_str(),
                    MOVEFILE_REPLACE_EXISTING | MOVEFILE_WRITE_THROUGH)) {
     error = "MoveFileEx failed during atomic write";
@@ -44,6 +42,7 @@ bool atomic_write_bytes(const std::filesystem::path& path,
     return false;
   }
 #else
+  const auto tmp = path.string() + ".tmp";
   const auto remove_temp = [&] {
     std::error_code ignored;
     std::filesystem::remove(tmp, ignored);
@@ -61,19 +60,38 @@ bool atomic_write_bytes(const std::filesystem::path& path,
            std::error_code(code, std::generic_category()).message();
   };
 
-  // A failed temp sync must not replace the last durable target.
-  const int fd = ::open(tmp.c_str(), O_RDONLY | O_CLOEXEC);
+  // Keep the writer's file description through write, fsync and close so
+  // writeback errors cannot be lost by closing and reopening the temp file.
+  const int fd = ::open(tmp.c_str(), O_WRONLY | O_CREAT | O_TRUNC | O_CLOEXEC,
+                        0666);
   if (fd < 0) {
-    error = io_error("failed to open temp file for sync: ");
-    remove_temp();
+    error = io_error("failed to open temp file for atomic write: ");
     return false;
   }
+  std::size_t written = 0;
+  const auto max_write =
+      static_cast<std::size_t>(std::numeric_limits<ssize_t>::max());
+  while (written < bytes.size()) {
+    const auto count = ::write(fd, bytes.data() + written,
+                               std::min(bytes.size() - written, max_write));
+    if (count < 0 && errno == EINTR) continue;
+    if (count <= 0) {
+      error = count == 0 ? "failed to write temp file: no progress"
+                         : io_error("failed to write temp file: ");
+      ::close(fd);
+      remove_temp();
+      return false;
+    }
+    written += static_cast<std::size_t>(count);
+  }
+  // Every writer failure must preserve the last durable target.
   if (!sync_fd(fd)) {
     error = io_error("failed to sync temp file: ");
     ::close(fd);
     remove_temp();
     return false;
   }
+  // A close error is terminal; do not retry a potentially reused descriptor.
   if (::close(fd) != 0) {
     error = io_error("failed to close synced temp file: ");
     remove_temp();
