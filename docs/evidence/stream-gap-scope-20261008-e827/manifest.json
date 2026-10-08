@@ -1,0 +1,475 @@
+{
+  "baseline_commit": "d3edda561322a80bfc1491ae4f4c7b0bb94943ea",
+  "baseline_production": {
+    "bytes": 5552,
+    "git_blob": "79abc9135e104b38451beb72276d75628bbcfaac",
+    "sha256": "1d9f8f761c62f19173aeb1bfef081c7cfeb12c5265c2f65d0099f576a4fdd5d6"
+  },
+  "baseline_tree": "8a60162a0f8416dde74d1649a0033175f3e90f4f",
+  "candidate_production": {
+    "bytes": 5618,
+    "git_blob": "80bea6bd69365a48c5b204c26d054b8ae179437a",
+    "sha256": "af40235d55341d2a6b11d7f67a0195779676301fa822b2bd05240d138ee28c50"
+  },
+  "command": "PYTHONPATH=libs/python/capture_analysis:libs/python/capture_session python3 -m unittest discover -s tests/analysis -p test_stream_gap_scope.py -v",
+  "environment": {
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+    "python": "3.12.14"
+  },
+  "identity": "estate-e82707f2bc62 / runtime_discovery",
+  "issue": "https://github.com/Jacob-Met/CaptureSuite/issues/40",
+  "limits": [
+    "Focused native analysis execution only; no local pytest or Ruff installed.",
+    "Existing hosted CI and independent receiving are pending at this snapshot.",
+    "No daemon, physical hardware, schema, exporter, raw-data or workflow change."
+  ],
+  "production_path": "libs/python/capture_analysis/capture_analysis/windows.py",
+  "publication_base_tree": "befabb7f507780a2e4d720ac0ae841327c352df8",
+  "publication_parent": "c43b2819b149e1e87d7f957d8b3583881c29ffb4",
+  "runs": {
+    "baseline": {
+      "errored_subtests": 2,
+      "exit_code": 1,
+      "failed_subtests": 6,
+      "failing_methods": 4,
+      "methods_run": 8,
+      "passing_methods": 4,
+      "raw_log": {
+        "bytes": 11493,
+        "git_blob": "0e6c063261bdcbf201c3c9256d23d5d3fdc6863a",
+        "sha256": "9208129ba6b95a6ffc628ed121f8ef729229f54e089ab8ec0688b09ffb83ffcc"
+      }
+    },
+    "candidate": {
+      "exit_code": 0,
+      "failing_methods": 0,
+      "methods_run": 8,
+      "passing_methods": 8,
+      "raw_log": {
+        "bytes": 1572,
+        "git_blob": "60a10f5013351d32e566f2182f4a03d1bfaba242",
+        "sha256": "af17dfd97dae7aed35ad12d40376d90a312e8c5f430c47e6769289c13f92c883"
+      }
+    }
+  },
+  "same_test_bytes_at_both_stages": true,
+  "snapshot_kind": "focused source and execution evidence before hosted CI and independent acceptance",
+  "test": {
+    "bytes": 9453,
+    "git_blob": "c160b2f5faebf6e97b5b0817e06303f1a607b183",
+    "sha256": "cb75b372962f93b2b6443dd42d22c088adc2bec73535a5d951ea1cbab8a6accd"
+  },
+  "test_path": "tests/analysis/test_stream_gap_scope.py",
+  "verified_baseline_files": [
+    {
+      "bytes": 3932,
+      "git_blob": "9ac6683ba4805e210143e5a33e7782da55af0d15",
+      "path": "AGENTS.md",
+      "sha256": "525164ca1f3b9e68561434ab110ba17ed65843a20c23f4c1385fde33f1863a74"
+    },
+    {
+      "bytes": 12560,
+      "git_blob": "79df37199d36d3635208fba6a298e14f55a06411",
+      "path": "docs/design/ANALYSIS.md",
+      "sha256": "eead8ce99eff3688a6598dfb3ec07b5f66335116d926fed476aa2b73e2a83e82"
+    },
+    {
+      "bytes": 6860,
+      "git_blob": "540edf7d09bbd04b01511a25f7d7b1e51f68ddb1",
+      "path": "docs/design/TIMING.md",
+      "sha256": "02d7e8b9a6ebe1e8e2a45c91ec9069011e4a8ade483c60edeb50011f75ce083e"
+    },
+    {
+      "bytes": 12306,
+      "git_blob": "e927fa6ad1bb726566370fcf201970ee182e9510",
+      "path": "docs/design/research/PROGRESS.md",
+      "sha256": "664cc28c2c9eed743e19e375ae60f2ca9efd733f147cb7e95522293944c71021"
+    },
+    {
+      "bytes": 497,
+      "git_blob": "67a4fb257b771af771edb4010e573ceeab86a51f",
+      "path": "libs/python/capture_analysis/capture_analysis/__init__.py",
+      "sha256": "14cfe6dccd33a0bda74fac3c9339e1a37a3538b2110a8ae6e307801b776eb43a"
+    },
+    {
+      "bytes": 4023,
+      "git_blob": "d5c4fa7e06ac6e9139ebfc78fade90a3df5e451a",
+      "path": "libs/python/capture_analysis/capture_analysis/discover.py",
+      "sha256": "344ee5d7cb0f5e95ac7524a0c1141b0a293bb9445e2bd4789c6736f39cfcb90d"
+    },
+    {
+      "bytes": 154,
+      "git_blob": "140fcb2784c4b73ddf69d21ddccfdcc8191cc0aa",
+      "path": "libs/python/capture_analysis/capture_analysis/eval/__init__.py",
+      "sha256": "54661df9ed7d7e0d4b1c2ab5941f107ceb608e4fdfaff810014ef5fad1431fe1"
+    },
+    {
+      "bytes": 3984,
+      "git_blob": "95d40a6c28aabcdc311c18e3e195627f29ceb1a7",
+      "path": "libs/python/capture_analysis/capture_analysis/eval/job.py",
+      "sha256": "a7f2a43c2fc3723c471e42a5532465dc5cfa44d4411c6cf581bba6910603fc57"
+    },
+    {
+      "bytes": 66,
+      "git_blob": "e52dc3839105744e19193f8fc8067b818389a20b",
+      "path": "libs/python/capture_analysis/capture_analysis/features/__init__.py",
+      "sha256": "3cdd6c626b6da12b8df56d8ddf35fca27c0a744865965ec01dd89d47da476fa1"
+    },
+    {
+      "bytes": 3072,
+      "git_blob": "7f7536500a63ddc8b06774b8da65df8d56cd4f2b",
+      "path": "libs/python/capture_analysis/capture_analysis/features/emg.py",
+      "sha256": "11f8f8350464b7c7c079353ca649b4c4aad2580ef8d355fe741c025c262b168e"
+    },
+    {
+      "bytes": 2605,
+      "git_blob": "0ee47b3d579e4c3732634958dda21ae724beca9e",
+      "path": "libs/python/capture_analysis/capture_analysis/features/imu.py",
+      "sha256": "246bfd1cc3ce72afa0680537062b6795e22b8a06ba6301503d7489a4440c6849"
+    },
+    {
+      "bytes": 1409,
+      "git_blob": "b998063a5036b73a67b773f70c193b1f9827c248",
+      "path": "libs/python/capture_analysis/capture_analysis/features/io.py",
+      "sha256": "c677d209292cca790ccdf1a64ba834f71a078ccce31ea57452e67ece358822ca"
+    },
+    {
+      "bytes": 2104,
+      "git_blob": "a9a667633f886adf4fe89cfd35eb94eeabad399f",
+      "path": "libs/python/capture_analysis/capture_analysis/features/numeric_batch.py",
+      "sha256": "df48baa8eac38e1bcdb38411758b7f803507ab27b4a97fba18c86042cfd33c76"
+    },
+    {
+      "bytes": 2289,
+      "git_blob": "ee20f7314cb1af4512901d6009f73e3dddf9025c",
+      "path": "libs/python/capture_analysis/capture_analysis/features/radar_doppler.py",
+      "sha256": "cffc0ecbb8053fbc2244850c1927469366f4ae93b5439e4d194de2065877fa5c"
+    },
+    {
+      "bytes": 3323,
+      "git_blob": "e798dee0fb72dd261b504a99ac76f815515dda9e",
+      "path": "libs/python/capture_analysis/capture_analysis/features/radar_frame.py",
+      "sha256": "f85c5fe5e2db68606f68e36a42a0c8f323086f0b1e7f233c0ddefa24cdccb443"
+    },
+    {
+      "bytes": 1766,
+      "git_blob": "fa73c80d39a0d699f80d7e877b37167cf8b48b6a",
+      "path": "libs/python/capture_analysis/capture_analysis/features/video_qc.py",
+      "sha256": "0e25c50e01fc2da47bc7b510d68ba3e72aba33d3e1c79c57b727f5c55c723e27"
+    },
+    {
+      "bytes": 1007,
+      "git_blob": "2e03f79d9317d2d97b721321130a9a5e6212b111",
+      "path": "libs/python/capture_analysis/capture_analysis/grids.py",
+      "sha256": "936c5404783145f7a2bc4c13df22d3b85612bcb227115bba74f0b78a11c0c483"
+    },
+    {
+      "bytes": 15887,
+      "git_blob": "5c8d1d5503de6f47663fa3e4399e13d91f0a808a",
+      "path": "libs/python/capture_analysis/capture_analysis/jobs.py",
+      "sha256": "1f58a18fbddf620f304d4521e693d1d26508a8871ad373bc47630da7dd38dcc2"
+    },
+    {
+      "bytes": 178,
+      "git_blob": "aaf360b8a0085f89b95cd976857f0933596098a7",
+      "path": "libs/python/capture_analysis/capture_analysis/kinematics/__init__.py",
+      "sha256": "50a0f7fd39648abf269fc549d2c17eb48b1dc9add10ebdb76edc1935d6f80160"
+    },
+    {
+      "bytes": 6899,
+      "git_blob": "928751e9c861e2b0da298214269e57111f492865",
+      "path": "libs/python/capture_analysis/capture_analysis/kinematics/compute.py",
+      "sha256": "6e3ca19bfda0c02877f5d778f0c1191b5aebad605373732ef182bd714dd7f086"
+    },
+    {
+      "bytes": 4523,
+      "git_blob": "fb8be113d8699427072f6dbcdae222a37738ac18",
+      "path": "libs/python/capture_analysis/capture_analysis/kinematics/job.py",
+      "sha256": "d676e84f54aa1ae2b0f998c2cb37c4e02541c1fd0e3464e38e9865c0049a7239"
+    },
+    {
+      "bytes": 1155,
+      "git_blob": "a28cfd708c90552401fb0b3157c60f713a06e14f",
+      "path": "libs/python/capture_analysis/capture_analysis/kinematics/registry.py",
+      "sha256": "1e53fb9da4c6a2743bc1a3f0e687d94599cf995d33f2a2555e0ce5ebc3966d48"
+    },
+    {
+      "bytes": 361,
+      "git_blob": "eb6fae21d4bb79055f8d1af1528e846020f21459",
+      "path": "libs/python/capture_analysis/capture_analysis/loaders/__init__.py",
+      "sha256": "2d51c509baf3c0b5c33360637d12e5ce3c7507a859e4f37030f2c3d711ef0b3d"
+    },
+    {
+      "bytes": 2461,
+      "git_blob": "941a6aa3cea6777f90534ea634cccf8fdd319a3f",
+      "path": "libs/python/capture_analysis/capture_analysis/loaders/base.py",
+      "sha256": "696093b31f22d2bef32fc2962c7a11249a590a0b4d776c40cef4edcbc1e48a97"
+    },
+    {
+      "bytes": 3089,
+      "git_blob": "c35d22af7bdeea570e6ae45a713428627e90894c",
+      "path": "libs/python/capture_analysis/capture_analysis/loaders/emg.py",
+      "sha256": "86eb7114be689cdbd2edd76affa2994e7278714916692a35381abd02ba9d599a"
+    },
+    {
+      "bytes": 2773,
+      "git_blob": "8823f04bd089789ca4cbff6602154bf066d4161d",
+      "path": "libs/python/capture_analysis/capture_analysis/loaders/imu.py",
+      "sha256": "5ea4747145bf5588974dfd72c834766436c5a2bc0d58d34ace0f8ef403b310d6"
+    },
+    {
+      "bytes": 1196,
+      "git_blob": "b61ca0a914e4d3909790839774327aa5824c1b71",
+      "path": "libs/python/capture_analysis/capture_analysis/loaders/mcap_iter.py",
+      "sha256": "03a418e7689840e378665aac92c42769dd14ba2c88a821a5cbf0cee80766540c"
+    },
+    {
+      "bytes": 3473,
+      "git_blob": "f361d6e1afce8c836a13f2211b8fe8cb7442e30d",
+      "path": "libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py",
+      "sha256": "0b6c78bf936e3bade378c6b0061aa94a8f11f536ade52b1d687f156d13780296"
+    },
+    {
+      "bytes": 1539,
+      "git_blob": "fc87bfb7fbbeb98ad8d5d11b3438b2d04882de6c",
+      "path": "libs/python/capture_analysis/capture_analysis/loaders/radar_doppler.py",
+      "sha256": "4942d08eb47229839e339ce7f2f8a64aee7e5fab44bac77029fcd7a3e3e490c1"
+    },
+    {
+      "bytes": 1828,
+      "git_blob": "a44af5392ba2b5b8b64de685f42772b141f1b8b1",
+      "path": "libs/python/capture_analysis/capture_analysis/loaders/radar_frame.py",
+      "sha256": "d071f9d95b371798974698fd0caa1fc4c865a85fb772232fd43e7227b15fad2b"
+    },
+    {
+      "bytes": 2200,
+      "git_blob": "6a192cd5999b45df08c666b9dad21dc29cf91824",
+      "path": "libs/python/capture_analysis/capture_analysis/loaders/video.py",
+      "sha256": "3c3e873ab641904a39ca649dac39072f11948031d068cc21ee459e996d1fc185"
+    },
+    {
+      "bytes": 179,
+      "git_blob": "619d634ebf6fcc82a7871ad9c463660a24fd65ae",
+      "path": "libs/python/capture_analysis/capture_analysis/ml_bundle/__init__.py",
+      "sha256": "e785a2e3bf65852018d811b38ecbaf6ff9c479648025789145218809dd50d8a1"
+    },
+    {
+      "bytes": 9419,
+      "git_blob": "59c2e4df46aa041e48aaf7184a3dd0ba345aff6d",
+      "path": "libs/python/capture_analysis/capture_analysis/ml_bundle/job.py",
+      "sha256": "c14c74760e20c818ce5e2428d0b03a8a949899b0bba6c46e37fa8fd797631c75"
+    },
+    {
+      "bytes": 5262,
+      "git_blob": "8113ab4cb51678a122bbb702a23f2200c9333233",
+      "path": "libs/python/capture_analysis/capture_analysis/pipeline.py",
+      "sha256": "e8c0152040ba5b5f3f37ac53fb5188bac9dd9aaf0d5816d6a718be505c20898c"
+    },
+    {
+      "bytes": 2393,
+      "git_blob": "85073e330e6aaf617864a0730011e689251ecea9",
+      "path": "libs/python/capture_analysis/capture_analysis/plots/modality.py",
+      "sha256": "c9b1159ce1535fbddb4895d1acdf0115f88919aa3cc51ad964e5771d975995dd"
+    },
+    {
+      "bytes": 1249,
+      "git_blob": "3725e840e5eb046accea79d4b6376f902392dac8",
+      "path": "libs/python/capture_analysis/capture_analysis/plots/style.py",
+      "sha256": "231e7b1c998f4349d5859295007235ffd41848f12fbb7819193bec9630cd3942"
+    },
+    {
+      "bytes": 1149,
+      "git_blob": "828204e998a46b9571b3a2b3ba08acd9fc6caa31",
+      "path": "libs/python/capture_analysis/capture_analysis/plots/sync_dashboard.py",
+      "sha256": "6f9e0c64193688eb841565729b9d1e9a64136779e892419acabdc81591afd3d5"
+    },
+    {
+      "bytes": 225,
+      "git_blob": "39c9c93eab1f5abf65ea73299c34b05ec184dd63",
+      "path": "libs/python/capture_analysis/capture_analysis/plugins/__init__.py",
+      "sha256": "c511d4b9cd1cda042b781b06fbb02d2d99004de214735d6daeb459d6e41381fe"
+    },
+    {
+      "bytes": 1618,
+      "git_blob": "0152651c271234bf38252bed51efda3a3fc19c0f",
+      "path": "libs/python/capture_analysis/capture_analysis/plugins/dummy.py",
+      "sha256": "facf059d247bca44f2697383e12cc1296b1d1d12bede1196f4a52a1352d60495"
+    },
+    {
+      "bytes": 10646,
+      "git_blob": "03c8589064dfc4c6cfec6e4d00b7f46b10014414",
+      "path": "libs/python/capture_analysis/capture_analysis/plugins/handlers.py",
+      "sha256": "9be2e1820529b94e54d06790d53aa94cf658f982efb4063c6b64f9d07acc4b2e"
+    },
+    {
+      "bytes": 3832,
+      "git_blob": "e4b1792b4cf9f2f8f5c63bb8375c4d80f6f58818",
+      "path": "libs/python/capture_analysis/capture_analysis/plugins/manifest.yaml",
+      "sha256": "365bce8a7193e1407a684d4c3ee5dc1690c296f1b8bcb625076076cd8bea2eb3"
+    },
+    {
+      "bytes": 4834,
+      "git_blob": "e7334bedfcba51052a7f039f66c74ff288840831",
+      "path": "libs/python/capture_analysis/capture_analysis/plugins/registry.py",
+      "sha256": "5ba10f5b58c102a98943d2225903c1d9f874aa5921a50319e159f6bd4d537351"
+    },
+    {
+      "bytes": 156,
+      "git_blob": "108be2956adfed6328f397d88a3b61ebada0ac48",
+      "path": "libs/python/capture_analysis/capture_analysis/pose/__init__.py",
+      "sha256": "d58a03cae86259b2cb0ecd0a5ce2347c6824f14cfea6871c94d76acc3541a380"
+    },
+    {
+      "bytes": 6262,
+      "git_blob": "1a1a3f2436b0ac8decc551f84e76fa6c4c6e602d",
+      "path": "libs/python/capture_analysis/capture_analysis/pose/job.py",
+      "sha256": "1f4c44f443c07e22e8c9ca877232c6780c4b1da7834d5565b82cf547b2f4c439"
+    },
+    {
+      "bytes": 6979,
+      "git_blob": "7221b26a129b7915a42fed900908a04eae213454",
+      "path": "libs/python/capture_analysis/capture_analysis/qc.py",
+      "sha256": "cf18c7e044e8e00227f486836d75effd48d8afb862d847add2aa9bc36c062f4b"
+    },
+    {
+      "bytes": 2655,
+      "git_blob": "a0bb34d71fe03a4426ef0479619fa8d22a7bc8fa",
+      "path": "libs/python/capture_analysis/capture_analysis/report_html.py",
+      "sha256": "bb9a3c3627be6916c4f9babbb508e48adeef12b6118964625f01e9ecb5b08e2c"
+    },
+    {
+      "bytes": 3428,
+      "git_blob": "2adf26816e0ef9e84e6763cf8bbff69d64697949",
+      "path": "libs/python/capture_analysis/capture_analysis/types.py",
+      "sha256": "e7996d02483f69265a2ef2ec0b28078c86f4f479daa53e38faf8b4a62645d02c"
+    },
+    {
+      "bytes": 62,
+      "git_blob": "d04b8cc1dd9271ca3ccf836d97436d9a961417c6",
+      "path": "libs/python/capture_analysis/capture_analysis/version.py",
+      "sha256": "9e25143344b110699f68b6acdbef49576fc91c2cbda34956d7e2cb85bbbc4ae3"
+    },
+    {
+      "bytes": 5552,
+      "git_blob": "79abc9135e104b38451beb72276d75628bbcfaac",
+      "path": "libs/python/capture_analysis/capture_analysis/windows.py",
+      "sha256": "1d9f8f761c62f19173aeb1bfef081c7cfeb12c5265c2f65d0099f576a4fdd5d6"
+    },
+    {
+      "bytes": 677,
+      "git_blob": "6db8b1158b14da660128d7ac0ceacb45b8eb9924",
+      "path": "libs/python/capture_analysis/pyproject.toml",
+      "sha256": "84cd96465e48439bdd81f5fa126fea5da11ee7587b488bfaaa67a4cd8f760c75"
+    },
+    {
+      "bytes": 2412,
+      "git_blob": "894e3c152a98b6e804de90122572afbcd929b3da",
+      "path": "libs/python/capture_session/capture_session/__init__.py",
+      "sha256": "da530f86c0d1d584862868ddba9f7087ccf5dfbddd64dd1e577337ecfd776419"
+    },
+    {
+      "bytes": 561,
+      "git_blob": "46332cea7c62dd44247b219937ae6c8fbc747017",
+      "path": "libs/python/capture_session/capture_session/app_paths.py",
+      "sha256": "363e4522240e2356cac7492589cb207a798bc1af6031139bd1fa94890f1c4bfd"
+    },
+    {
+      "bytes": 6331,
+      "git_blob": "91fbf913c5af8489968425d7ceac51c04233d3e0",
+      "path": "libs/python/capture_session/capture_session/package_reader.py",
+      "sha256": "9a1d9e6e7d24341a083cee602af9538413e948f3369b22660e484356e3d34eb1"
+    },
+    {
+      "bytes": 13046,
+      "git_blob": "fc1c4124b300526a0882ae03beff81ae301adf21",
+      "path": "libs/python/capture_session/capture_session/registry.py",
+      "sha256": "66d23eedee2eef44c6b301e2e865948e75345ded95fe26d0f93098a4cfa8fd32"
+    },
+    {
+      "bytes": 4622,
+      "git_blob": "41b99cdaa78011d3d9b753c3131f32c72af9699f",
+      "path": "libs/python/capture_session/capture_session/settings_store.py",
+      "sha256": "7719524a1f106cc54befcd21088810f9ec28f0160c8e88f60c374e1545fdb98d"
+    },
+    {
+      "bytes": 389,
+      "git_blob": "c83450d780e97e5bd90feb48cef140917b6e47ff",
+      "path": "libs/python/capture_session/pyproject.toml",
+      "sha256": "3484887da96d4a2f32de8471b537d849f077b195c729ff0cc29307681e8d4895"
+    },
+    {
+      "bytes": 1233,
+      "git_blob": "52491c6beebc4b17983fc66bb8765154c33cf6d8",
+      "path": "pyproject.toml",
+      "sha256": "0cb8de1ab3dfbfed84ff16b35f3c89c6440180183ee5851d5d80da83622e53d0"
+    },
+    {
+      "bytes": 2679,
+      "git_blob": "431d818649fbecc2ba4a814cb19e0a81b3cb1cb5",
+      "path": "schemas/proto/capture/v1/health.proto",
+      "sha256": "4888b25c2b527b3161efa391b009eabb9ead1fd568c8ce25ffaa96f235e9bbce"
+    },
+    {
+      "bytes": 914,
+      "git_blob": "3220405e13c712578bb6902560307e2b7f0e56aa",
+      "path": "schemas/session/jsonschema/gap_event.schema.json",
+      "sha256": "8b6fc4cb71aace5a97c76cf2ea2afb72af325adfa653967c97b2873bf63fe479"
+    },
+    {
+      "bytes": 1110,
+      "git_blob": "745df50432d441bb075bc91e06252edeb456d431",
+      "path": "tests/analysis/test_export_sidecar.py",
+      "sha256": "1048e80431de478b0823e813c59985042a70bff528bcedb18d93fa331c9a2649"
+    },
+    {
+      "bytes": 8414,
+      "git_blob": "ee62938fce9cfcb318f647b070d03b23463e1c90",
+      "path": "tests/analysis/test_kinematics_ml_bundle.py",
+      "sha256": "7b93bbe85208f53aa3f0b4f2b2a2069c9091fbd816b2eae4ba3eae6c2dea1d0c"
+    },
+    {
+      "bytes": 1889,
+      "git_blob": "7395a37b420f91bc3d425ccd718786299bfff9d3",
+      "path": "tests/analysis/test_offline_demo.py",
+      "sha256": "9e21f77c460ad3ba599a2ca2126b89d1b21790ba43adb2f2edb37ed96c7f80bf"
+    },
+    {
+      "bytes": 4085,
+      "git_blob": "26ba50397f91d3ab4ba1ea04fcd56130afba83f5",
+      "path": "tests/analysis/test_phase_a_qc.py",
+      "sha256": "0be539a3d593e1cf144f4b7f871af90082feaa19a4ac8f234f53a2b232c8cc07"
+    },
+    {
+      "bytes": 7727,
+      "git_blob": "653956c584ba077b2c93afc0585a1bfa9690a2d7",
+      "path": "tests/analysis/test_phase_b_features.py",
+      "sha256": "60916848e6aa8b270a5ccd7e9bcbeed59450f12eadc3ee10f1a7c52e617e704d"
+    },
+    {
+      "bytes": 3594,
+      "git_blob": "cbe5cedff9c83d42606fb357c8f66c024bc7f9b5",
+      "path": "tests/analysis/test_plugin_registry.py",
+      "sha256": "f567f641fa48307f6799e2d511c8747632083e07b0cf2ac61c7b738675a7e4b8"
+    },
+    {
+      "bytes": 7964,
+      "git_blob": "a62eebfa37acf625c6a480a5f55275ac91164194",
+      "path": "tests/analysis/test_pose_job.py",
+      "sha256": "85a5cb024c9f734c3b057a2d47c42bf22eb5c6ad9b1147c63e115e323b3e4951"
+    },
+    {
+      "bytes": 1773,
+      "git_blob": "ad9b61fd8e9c1c3d74f91710d4e82dd7d899e6b4",
+      "path": "tests/conftest.py",
+      "sha256": "f669618fad17e906c91df7a1e9393fc7a54f458c6d62a4385436ba2622beca0e"
+    },
+    {
+      "bytes": 4702,
+      "git_blob": "643a985615ba7ffec5150739d6a612ee98e55c02",
+      "path": "tools/run_analysis.py",
+      "sha256": "445dbd638cee0c765dd3a6d7c3c4e0d00298e9cc0df4978c7bd39b843f79d938"
+    }
+  ]
+}
