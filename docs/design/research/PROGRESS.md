@@ -149,6 +149,23 @@ failures independently reproduce. Product framing and tests are unchanged. The c
 Windows gates and GitHub publication remain pending because content creation is still
 secondary-rate-limited; no failed registration was represented as a published claim.
 
+## 2026-10-08 — Newer-schema registry receiving (estate-234cae4aee53)
+
+Receives original Shinogi PR #23 at `c5854a8c5b8a33da8d9f20dd5970f6c14ad597f6`.
+Its registry implementation and existing regression remain byte-identical. Future
+schema detection uses a real read-only SQLite connection before mutating PRAGMAs;
+supported registries retain creation, migration and ordinary writes.
+
+Independent real SQLite receiving covers URI-sensitive filenames, public readers
+and write guards, a committed WAL tail held by another connection, and migration
+of an existing empty database. On main `c43b281`, three new cases fail and five
+controls pass; the composed donor and receiving tests pass all nine cases on
+Python 3.12.14. Ruff and source whitespace checks pass. The complete database
+bytes (and live WAL bytes in the WAL case) remain unchanged by accepted reads.
+No operator database or saved application state is used. Original prior reviews
+remain attributed; current Windows CI and source integration are separate gates.
+See `docs/evidence/registry-readonly-234cae4aee53/README.md` for exact source and replay.
+
 # Agent progress log
 
 Agents: **read at session start, update at session end.**  
@@ -189,6 +206,13 @@ incompatible newer protoc and left generated source bytes unchanged. Initial
 compiler-selection failures and the original red result are retained.
 See `docs/evidence/framing-rejection-20261008.json` for exact source hashes,
 commands, environment and the remaining acceptance boundary.
+
+## 2026-09-29 — Newer registry schema read-only enforcement
+
+`AppRegistry.open()` now detects existing schema versions through a read-only
+SQLite connection before applying WAL/configuration PRAGMAs. Newer-schema
+registries retain that read-only connection; focused Windows tests verify direct
+SQL writes fail and opening/closing leaves the database bytes unchanged.
 
 ## 2026-09-09 — Compiler boundary and reliable test evidence
 

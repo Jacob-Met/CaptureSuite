@@ -1,0 +1,170 @@
+{
+  "schema": "capturesuite-fixture-pinned-main-alignment/v1",
+  "timestamp": "2026-10-08T10:57:48.334952+00:00",
+  "receiver": "estate-87eaaf0fdf63/integration",
+  "native_prior_commit": "de5f6c04f29a9822fb9339412ad4ea5f71e14c49",
+  "native_prior_tree": "c52dceae9d5fcdc9a339dabe9e29cae1c0296717",
+  "qualified_native_source_tree": "c84a6a10251b0259380d65c318793d7d45778929",
+  "qualified_native_accepted_base": "ac52c3ca7164a6ab457d11a8a1448957093eb592",
+  "pinned_accepted_main": "6b22d61260bff5b8304c33c48ed74366e08b414b",
+  "pinned_accepted_main_tree": "7b544a0b0ac87160f636b41dbb70fb07be2cfce0",
+  "incoming": [
+    {
+      "path": "docs/design/research/PROGRESS.md",
+      "status": "modified",
+      "git_blob": "ce2d9ae7861671f3409bb7132c6092fc37fd0a2b"
+    },
+    {
+      "path": "docs/evidence/registry-readonly-234cae4aee53/README.md",
+      "status": "added",
+      "git_blob": "81fda3639beffb98ec2487b7042c21647e803d43"
+    },
+    {
+      "path": "docs/evidence/registry-readonly-234cae4aee53/baseline.log",
+      "status": "added",
+      "git_blob": "61e9e74410750ba6c398bc0c2ac5823628f4c426"
+    },
+    {
+      "path": "docs/evidence/registry-readonly-234cae4aee53/baseline.xml",
+      "status": "added",
+      "git_blob": "ab3f6d8f81c4e9272077e5855d47228ce83e6f2c"
+    },
+    {
+      "path": "docs/evidence/registry-readonly-234cae4aee53/candidate.log",
+      "status": "added",
+      "git_blob": "6b94dc0b8ec0daf4f502286b227bd9cccca490dd"
+    },
+    {
+      "path": "docs/evidence/registry-readonly-234cae4aee53/candidate.xml",
+      "status": "added",
+      "git_blob": "8afcba174b8840584dec10997c99be3ab5b4b42e"
+    },
+    {
+      "path": "docs/evidence/registry-readonly-234cae4aee53/peer-result.json",
+      "status": "added",
+      "git_blob": "66aa6fe8cad8fa9a8fb00b64705edd1e00c1e735"
+    },
+    {
+      "path": "docs/evidence/registry-readonly-234cae4aee53/peer-script.txt",
+      "status": "added",
+      "git_blob": "5add2697ded880e3cb9c13059907c5a1eee31742"
+    },
+    {
+      "path": "docs/evidence/registry-readonly-234cae4aee53/receipt.json",
+      "status": "added",
+      "git_blob": "cf1beefefc529bc8c7a993dad589b1bb87a34313"
+    },
+    {
+      "path": "libs/python/capture_session/capture_session/registry.py",
+      "status": "modified",
+      "git_blob": "c1d7799e1d2099424221b2f4af216a43a972c67a"
+    },
+    {
+      "path": "tests/protocol/test_registry_readonly_receiving.py",
+      "status": "added",
+      "git_blob": "99ec41e27c799a85fbb0d6586a5198fb54a293de"
+    },
+    {
+      "path": "tests/protocol/test_settings_registry.py",
+      "status": "modified",
+      "git_blob": "3972c736dbbf03574195594a26cf94c8238bcf74"
+    }
+  ],
+  "merge_conflicts": [],
+  "qualified_source_files": [
+    {
+      "path": "tests/cpp/test_storage_posix.cpp",
+      "git_blob": "514ac79df732038fe9ed0b47b34121a337e21fbd",
+      "sha256": "daab7555a3834319346db06caee40a5280c7a045ffe645f58a5a806832620393"
+    },
+    {
+      "path": "tests/cmake/portable_storage/fixture_isolation.cmake",
+      "git_blob": "d0762d52b73ef8df127b81e7a6d5e3084c88eacd",
+      "sha256": "ad04e619453d94a10e04d5a11bc4155d6f6f62c47dbbe5b2f3e958f151f89a27"
+    },
+    {
+      "path": "tests/cpp/CMakeLists.txt",
+      "git_blob": "8d5ef5ec95a8c17d37eeebc27de3d355fe1ce5e6",
+      "sha256": "3011b2ac0bfa321fb41a5ff9558fd4f7a431979ed4d9cf81f73f0c4fa93dda82"
+    },
+    {
+      "path": "libs/cpp/capture_storage/src/atomic_file.cpp",
+      "git_blob": "e192b9bac50f9a1f1ed35d57f2da60e9488fbb73",
+      "sha256": "912700935decf0bdf9cc4eee5bcd3f7d5aadfddf70d16de7a2cc0a5168ac8fec"
+    },
+    {
+      "path": "libs/cpp/capture_storage/src/disk_watchdog.cpp",
+      "git_blob": "718425f933703fdee920762de1dc115931950aad",
+      "sha256": "d2781ecb8a9a31f9aceeb0b053ab1b9ea9d9c73ea43c0a2266bb9e62b2ac3068"
+    },
+    {
+      "path": "tests/cpp/test_atomic_file_posix.cpp",
+      "git_blob": "55f7e8a7a5414e682082f82f47ce9c65b7c6bb96",
+      "sha256": "ea35516f3f6c81f6701c356cab57c6d55fd0e8e273a8a771599a5f982bee2ef9"
+    },
+    {
+      "path": "tests/cpp/test_atomic_file_posix_identity.cpp",
+      "git_blob": "bb6b239ab5baf27db910ff53acd260a320732b09",
+      "sha256": "347f85f5087c674199120d196c3457ae688fe698c2fd6fde119a307cc9fc9702"
+    },
+    {
+      "path": "scripts/build-linux.sh",
+      "git_blob": "30a27f5b8707a2b87907f40a230239b70c6a359a",
+      "sha256": "b27bfa332d0cbd5f672d890c1f4d16ce42d46be6c25dff9e39c99c7870c74f91"
+    }
+  ],
+  "all_incoming_blobs_preserved": true,
+  "complete_upstream_progress_suffix_preserved": true,
+  "all_cpp_cmake_build_inputs_unchanged": true,
+  "native_build_repeated": false,
+  "native_qualification_carried_by_input_equality": {
+    "ctest_pass": 19,
+    "ctest_fail": 0,
+    "original_receipt": "mainline-native/qualification.json"
+  },
+  "scope": "Inherited PR47 Python registry/tests/evidence only; this alignment is not a fresh native build or hosted run.",
+  "publication_held": true,
+  "public_head_unchanged": "0dcee1ca5165f260c0cfb7bea3c02e364c959538",
+  "native_r3_branch_and_checkpoint_preserved": true,
+  "runs": [
+    {
+      "name": "fetch-pinned-main",
+      "command": [
+        "git",
+        "fetch",
+        "--no-tags",
+        "https://github.com/Jacob-Met/CaptureSuite.git",
+        "6b22d61260bff5b8304c33c48ed74366e08b414b"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "create-own-r4-worktree",
+      "command": [
+        "git",
+        "worktree",
+        "add",
+        "-b",
+        "estate/87eaaf0fdf63-storage-fixture-r4",
+        "/home/jacob/capturesuite-review-87eaaf0fdf63/r4-mainline/repository",
+        "de5f6c04f29a9822fb9339412ad4ea5f71e14c49"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "merge-pinned-registry-main",
+      "command": [
+        "git",
+        "-c",
+        "user.name=HAMON estate receiver 87eaaf0fdf63",
+        "-c",
+        "user.email=estate-87eaaf0fdf63@hamon.invalid",
+        "merge",
+        "--no-commit",
+        "--no-ff",
+        "6b22d61260bff5b8304c33c48ed74366e08b414b"
+      ],
+      "exit_code": 0
+    }
+  ]
+}

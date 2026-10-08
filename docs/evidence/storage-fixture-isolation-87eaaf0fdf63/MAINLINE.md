@@ -1,5 +1,17 @@
 # Mainline receiving of the storage fixture repair
 
+## Later accepted-main alignment
+
+The next native merge receives pinned main 6b22d61260bff5b8304c33c48ed74366e08b414b
+(tree 7b544a0b0ac87160f636b41dbb70fb07be2cfce0), including accepted registry PR47.
+Its twelve incoming paths are Python registry/tests, their receipts and progress.
+All incoming blobs and the complete upstream progress suffix are preserved.
+Every C++/CMake/build input remains identical to the qualified revision below.
+No native build was repeated and no later main was chased.
+PINNED-MAIN-ALIGNMENT.json records exact source correspondence and ownership.
+The existing nineteen-case native result below remains a run at its original
+source tree, and a fresh hosted gate remains a publication-stage requirement.
+
 ## Current composition
 
 This revision composes the fixture companion from PR42 at

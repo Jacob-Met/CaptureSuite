@@ -1,0 +1,44 @@
+{
+  "schema": "capturesuite.registry-readonly-receiving/1",
+  "base": "c43b2819b149e1e87d7f957d8b3583881c29ffb4",
+  "donor": "c5854a8c5b8a33da8d9f20dd5970f6c14ad597f6",
+  "python": "3.12.14",
+  "sqlite": "3.53.1",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+  "source": [
+    {
+      "path": "libs/python/capture_session/capture_session/registry.py",
+      "bytes": 13989,
+      "sha256": "809b26ce8d8efc0559a3854cf85ea74b4e486fcd77d253ebfa76bade64b0a8d1",
+      "git_blob": "c1d7799e1d2099424221b2f4af216a43a972c67a"
+    },
+    {
+      "path": "tests/protocol/test_settings_registry.py",
+      "bytes": 4765,
+      "sha256": "840f4110417a40400faba05ff6c3f75cae8300892d201e70d2d034d0f3ae6951",
+      "git_blob": "3972c736dbbf03574195594a26cf94c8238bcf74"
+    },
+    {
+      "path": "tests/protocol/test_registry_readonly_receiving.py",
+      "bytes": 4112,
+      "sha256": "185c956548ff7097d65705b2de94edb0e0047f9d522fea02b043aa817639a65e",
+      "git_blob": "99ec41e27c799a85fbb0d6586a5198fb54a293de"
+    }
+  ],
+  "baseline": {
+    "failed": 3,
+    "passed": 5,
+    "log": "baseline.log",
+    "junit": "baseline.xml",
+    "note": "Receiving source automatically formatted after this baseline; behavior unchanged."
+  },
+  "candidate": {
+    "failed": 0,
+    "passed": 9,
+    "log": "candidate.log",
+    "junit": "candidate.xml"
+  },
+  "ruff": "passed",
+  "source_whitespace": "passed",
+  "scope": "Isolated real SQLite fixtures; no operator database or installed app."
+}
