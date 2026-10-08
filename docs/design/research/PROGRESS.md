@@ -789,3 +789,35 @@ active worker. Supported-platform CI and independent receiving are recorded
 separately in the accompanying feature evidence; local Linux Qt is not Windows,
 hardware or installed-app qualification. See [figure export](FIGURE_EXPORT.md)
 for the operator workflow, bundle fields and explicit resource/failure bounds.
+
+
+## 2026-10-08 — External prediction evaluation (chatgpt-566d51f04b31-mac)
+
+Issue #57 owns the optional source-bound prediction input on the existing eval
+job. Base e43da3b8 has an intentional identity-teacher simulation. The retained
+five Phase 5/6 tests pass on that base; the new actual-pipeline receiver has
+26 expected feature/refusal failures and one unchanged simulation control pass.
+Native Python 3.12.8 uses the existing analysis dependencies without installation.
+
+Implementation is limited to eval input/scoring/figures, optional CLI dispatch,
+the versioned input contract and tests/docs. #46 retains job publication and
+inventory; #49 and #53–56 retain their numerical/UI/kinematics scopes. Source
+qualification is complete: 158 analysis tests pass and the single native Windows
+junction test is skipped on macOS. Scoped Ruff and the license check pass. PNG
+and Poppler-rendered PDF outputs are readable; a literal model-label rendering
+failure was retained and corrected. The original 26-failure baseline, first
+candidate, line-wrap-only AST checks and final native logs are preserved.
+Independent receiving, source review and supported hosted gates remain pending;
+no model training, held-out design, hardware or clinical result is claimed.
+
+
+Receiving correction: root source review found a half-ULP Pearson centering
+error for two nearly equal reversed samples. The exact native examples at 1.0
+and 180.0 both reproduced correlation 0 instead of -1; an ordinary two-point
+control passed. Translating each normalized series before mean subtraction
+preserves the small offsets without losing overflow resistance. The same two
+regressions now pass, as does a finite +/-1e308 identity control. The corrected
+full analysis suite passes **161 tests**, with the same native Windows junction
+skip and two retained protobuf deprecation warnings. Source matching, masks,
+MAE/RMSE, units and default identity simulation are unchanged. Independent
+receiving and supported hosted gates still remain separate pending gates.
