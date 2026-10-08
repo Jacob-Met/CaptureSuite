@@ -16,6 +16,29 @@ Exact source pins, unchanged test hash and raw outputs are retained in
 `docs/evidence/stream-gap-scope-20261008-e827/`. Project ownership: issue #40.
 The current framing receiver from main `c43b2819` is preserved.
 
+## 2026-10-08 — Independent sealed-source alias preservation (estate-39c2b591d7e5)
+
+Composed the independently reviewed exclusive POSIX temporary-file supplement
+onto PR36 head 05a6b6bd while preserving the author's complete R2 writer-close
+repair, evidence and Linux build entrypoint. The initial composition retained
+four failing R2 test results. Final composition preserves the existing
+zero-progress diagnostic and counts attempted closes of the writer descriptor
+separately from the newly opened directory descriptor.
+
+The complete isolated native Linux build passes all **18 CTest targets**,
+including the original R2 durability suite (**10/10 cases**) and the added
+exclusive-file identity suite (**15/15 cases**). The rebuilt actual
+session_doctor preserves a freshly generated, valid sealed MCAP through both
+symlink and hardlink manifest.json.tmp aliases; both repeated recoveries are
+byte-for-byte no-ops. The exact published R2 executable fails both sealed-byte
+preservation controls while reporting success. These are disposable synthetic
+fixtures on native ext4, not physical hardware or Windows qualification.
+
+See docs/evidence/posix-alias-receiving-39c2b591d7e5.json for exact source,
+binary and retained native evidence. The Windows implementation remains
+byte-identical to the published R2 branch. Revised Windows CI remains a separate
+integration gate; this local receiving result does not claim a merge.
+
 ## 2026-10-08 — Writer-close review repair and user receiving (estate-68e476e98b77)
 
 Independent review of PR36 found an additional actual-process durability
