@@ -173,9 +173,37 @@ class FigureGallery(QWidget):
         figures_dir = job_dir / "figures"
         if not figures_dir.is_dir():
             return
-        for png in sorted(figures_dir.glob("*.png")):
-            if png.name == "sync_dashboard.png":
+        try:
+            figures_root = figures_dir.resolve(strict=True)
+        except (OSError, RuntimeError):
+            return
+        for png in sorted(figures_dir.rglob("*.png")):
+            relative = png.relative_to(figures_dir)
+            if relative == Path("sync_dashboard.png"):
                 continue
+            try:
+                if not png.is_file() or not png.resolve(strict=True).is_relative_to(figures_root):
+                    continue
+            except (OSError, RuntimeError):
+                continue
+            parts = list(relative.with_suffix("").parts)
+            parts[-1] = parts[-1].replace("_", " ")
+            if (
+                len(parts) == 4
+                and parts[0] == "numeric"
+                and parts[1].startswith("source-")
+                and parts[2].startswith("stream-")
+            ):
+                try:
+                    source = bytes.fromhex(parts[1][7:]).decode("utf-8")
+                    stream = bytes.fromhex(parts[2][7:]).decode("utf-8")
+                except (ValueError, UnicodeError):
+                    pass
+                else:
+                    parts = [source, stream, parts[-1]]
+            title = " / ".join(parts)
+            if len(relative.parts) == 1:
+                title = title[:24]
             scroll = QScrollArea()
             scroll.setWidgetResizable(True)
             img = QLabel()
@@ -186,7 +214,8 @@ class FigureGallery(QWidget):
             else:
                 img.setText(f"Could not load {png.name}")
             scroll.setWidget(img)
-            self._tabs.addTab(scroll, png.stem.replace("_", " ")[:24])
+            index = self._tabs.addTab(scroll, title)
+            self._tabs.setTabToolTip(index, relative.as_posix())
 
 
 class JobInspector(QWidget):

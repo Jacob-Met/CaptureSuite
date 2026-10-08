@@ -1174,3 +1174,68 @@ The second unchanged-source diagnostic separates three actual failures and a lat
 ### PR84 exact file-model boundary and owned scope receiving (2026-10-08)
 
 The unchanged-source Windows probe directly distinguished the literal OS filename from Qt6.12 widget-model normalization. Successful real chooser receiving now uses a representable Unicode/internal-space filename; the original leading-space fixture separately requires exact identity or bounded refusal with prior path unchanged, recording the actual branch in JUnit. No product path normalization or native Windows-dialog claim is introduced. The exact owner-authored PR79 scope wait blob817412fe is adopted with estate-7879c2abc07f credit, preserving every existing bound/assertion and excluding its unrelated QC source. The current picker, narrow focused-button Space correction, one-command read-only JUnit gate, original failures and native receiving packets are preserved. Ordinary full-suite Windows acceptance is still pending for this exact composition.
+
+## 2026-10-08 — Compose saved analysis with the merged scope controls
+
+Worker `estate-401c5d17da79`, issue #55: receiving on main `3e3ecc5`
+preserves the merged #53/#58 scope controls and normalized package identity
+while adding saved-result history. The current screen treats its retained
+thread handle as busy from scheduled start through the existing cleanup.
+One actual QApplication/QTimer journey passes 24 checks with two real
+numeric-feature jobs: saved exact ranges, disabled/restored controls,
+read-only reopening, same-package scope retention, and refusal to repaint
+a different package after a queued completion. The original 14/19 results
+below keep their original inputs; Windows CI and the separately owned
+nested-numeric gallery repair remain distinct. Exact source, the startup
+negative control and current receipts are in
+[current scope receiving](../../evidence/analysis-history-401c5d17da79/current-scope/README.md).
+
+## 2026-10-08 — Reopen saved analysis in the native workbench
+
+Worker `estate-401c5d17da79`, issue #55: the Analysis tab now lists retained
+completed and failed jobs from its selected package. Explicit Open loads the
+existing gallery and inspector; native read-only Parameters, Log and Manifest
+tabs expose saved diagnostics. Refresh does not rerun analysis. Package changes
+clear the old view, and late results remain attached to their original package.
+Unavailable/malformed/foreign jobs remain visible with a refusal reason.
+
+Authored source `37443f0` passes all 14 focused and retained native UI tests,
+including actual successful and failed analysis QThreads. Independent receiving
+passes 19 checks through the real QApplication event loop: retained real figures,
+same-name jobs in different sessions, stale selection refusal, late completion
+and exact saved/raw byte preservation. The original worker, signal wiring,
+thread cleanup, gallery, inspector and job formats are preserved. The separately
+owned #53/#54 scope controls and #46 provenance writer are outside this change.
+
+Earlier manual-event-pump crashes/stalls and an empty receipt caused by transient
+filesystem exhaustion are retained as non-accepting harness outcomes. The same
+first candidate passed its genuine application-event-loop control; no native
+cleanup defect is inferred from those manual-pump observations. Qualification is
+native Linux Qt/Python 3.12, not a Windows CI, full-product or hardware claim.
+Exact source pins, raw logs, independent methods and reviewed native frames are
+in [the receiving evidence](../../evidence/analysis-history-401c5d17da79/README.md).
+
+
+
+## 2026-10-08 — Show retained nested numeric figures in the native gallery (401c5d17da79)
+
+Issue #64 completes the desktop presentation path for the numeric PNG layout
+already produced by merged #49. The gallery now discovers nested saved PNGs,
+shows readable source/stream/channel identities and exact path tooltips, and
+retains legacy flat labels, native image pixels and the linked Sync dashboard.
+Resolved external PNG links and directories named as images are excluded while
+valid sibling figures remain visible. The selected-export owner's construction,
+clear and loaded-job hooks, saved-history runtime, handlers and job formats are
+unchanged.
+
+The independent real negative fixture retained two numeric channel PNGs while
+the old gallery showed only Sync. Final source f2c8b88 passes seven native Qt
+tests and fifteen checks against those exact retained numeric outputs plus a
+real legacy EMG/IMU job. Raw/saved hashes and executed source bytes remain exact.
+The initial six-case receipt, its real-output run, and the subsequent external
+PNG-link failure are retained separately from final qualification. Three actual
+native frames were reviewed with the existing original-resolution scrolling.
+Source pins, methods, limits and exact receipts are in
+docs/evidence/nested-figure-gallery-401c5d17da79/README.md.
+Full hosted Windows acceptance and current owner integration remain separate.
+

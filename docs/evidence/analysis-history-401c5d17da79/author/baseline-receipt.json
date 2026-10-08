@@ -1,0 +1,34 @@
+{
+  "source_commit": "72c15d6b623e217291a824e4e4808a385df896a9",
+  "source_tree": "221cf5c7bb3c3392a7c4186ba0bcf5a8664135d1",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "qt_platform": "offscreen",
+  "actual_job_status": "completed",
+  "retained_job": "/dev/shm/capturesuite-history-401c5d17da79/evidence/baseline-saved.mmsession/processing/jobs/retained-qc",
+  "baseline": "feature absent: reopening a package leaves gallery/inspector unbound",
+  "existing_inspector_manual_control": true,
+  "raw_unchanged": true,
+  "buttons": [
+    "Use open session",
+    "Browse\u2026",
+    "Run",
+    "Cancel",
+    "Open job folder",
+    "Open QC report (HTML)",
+    "Save mapping preset"
+  ],
+  "raw_sha256": {
+    "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "events/checkpoints.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "integrity.json": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556",
+    "manifest.json": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380",
+    "sources/sim.emg.main/health/gaps.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sources/sim.emg.main/source.json": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10",
+    "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649",
+    "sources/sim.emg.main/streams/sim.emg.main.batch/stream.json": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1",
+    "sources/sim.imu.upper/source.json": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8",
+    "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649",
+    "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+  }
+}

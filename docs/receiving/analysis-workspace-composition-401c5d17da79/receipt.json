@@ -1,0 +1,152 @@
+{
+  "checks": [
+    {
+      "name": "actual source-filtered retained jobs contain nested numeric figures",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "history binds the retained job to the gallery and comparison inspector",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "retained parameters can be opened from the history-loaded inspector",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "run owns the source snapshot and disables history before thread startup",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "starting an actual job clears all previously loaded result associations",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "future source selection refresh cannot re-enable busy history controls",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "the real persisted job used the selected source snapshot",
+      "passed": true,
+      "details": {
+        "job": "20261008T201756Z_9b785559",
+        "params_sources": [
+          "sampler.b"
+        ]
+      }
+    },
+    {
+      "name": "written output does not release busy controls before QThread cleanup",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "package change clears history, figures and comparison while resetting sources",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "late source-filtered completion stays unbound to the current package",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "real worker completed without a failure dialog",
+      "passed": true,
+      "details": []
+    },
+    {
+      "name": "returning to the original package reopens the actual late result",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "comparison reads the current producer's exact source parameters",
+      "passed": true,
+      "details": {
+        "/command": [
+          "\"all\"",
+          "\"features\""
+        ],
+        "/overwriteJobId": [
+          "\"retained-a\"",
+          "null"
+        ],
+        "/sources/0": [
+          "\"sampler.a\"",
+          "\"sampler.b\""
+        ]
+      }
+    },
+    {
+      "name": "opening another retained job clears the previous comparison dialog",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "reopened nested gallery identifies exactly the selected-source figures",
+      "passed": true,
+      "details": [
+        "numeric/source-73616d706c65722e61/stream-666f726365/channel_0.png",
+        "numeric/source-73616d706c65722e61/stream-766f6c74616765/channel_0.png"
+      ]
+    },
+    {
+      "name": "both reopened image widgets retain the exact actual saved pixels",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "gallery navigation preserves the independent future source choice",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "the replacement inspector opens only its own parameter source",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "another package switch clears the current comparison and gallery together",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "all saved jobs and raw bytes remain unchanged through history and comparison",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "receiving view actions never start a second analysis job",
+      "passed": true,
+      "details": null
+    }
+  ],
+  "passed": 21,
+  "failed": 0,
+  "worker_calls": [
+    {
+      "package": "/dev/shm/hamon-401c5d17da79-capture-a2c/native-v1/tmp/test_sources_history_compariso0/first μ.mmsession",
+      "params": {
+        "command": "features",
+        "gapPolicy": "mask",
+        "maxRamBytes": 2147483648,
+        "startSessionNs": null,
+        "endSessionNs": null,
+        "sources": [
+          "sampler.b"
+        ],
+        "applySyncAnchors": false,
+        "overwriteJobId": null,
+        "checkpointSection": null,
+        "extra": {}
+      }
+    }
+  ],
+  "methodology": "Real numeric MCAP jobs and QThread; receiver holds only the return of an already-persisted real feature job. Native Qt event loop, unchanged source chooser and history Open buttons, unchanged comparison read action."
+}

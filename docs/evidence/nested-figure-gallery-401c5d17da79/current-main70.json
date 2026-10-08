@@ -1,0 +1,73 @@
+{
+  "current_parent": "70f34e3b982523b544a9370d2316a1b69d79bd70",
+  "current_tree": "1537621f793d5d5c9b331f3c4d37a79a4af824b7",
+  "original_author_head": "ca4009e9154c60bcaa7a7447a74010735bbbf99d",
+  "original_runtime_head": "f2c8b88f16f82517bd8fce118bacf63704b0a1f5",
+  "merge_base": "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e",
+  "merge_method": "Native git merge-tree with explicitly verified canonical merge base; true current and authored commits remain the merge parents.",
+  "merge_base_verification": {
+    "source": "GitHub compare 3e3ecc5...70f34e3",
+    "status": "ahead",
+    "ahead_by": 11,
+    "behind_by": 0,
+    "merge_base_commit": "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e"
+  },
+  "shallow_boundaries": [
+    "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e",
+    "70f34e3b982523b544a9370d2316a1b69d79bd70"
+  ],
+  "conflicts_resolved": [
+    {
+      "path": "docs/design/research/PROGRESS.md",
+      "rule": "Preserve the entire current document byte-for-byte, then append the exact owned entry.",
+      "current_blob": "80a94151bf978fb077bc323dfdf223a91dbe3254",
+      "resolved_blob": "b39d239a7e2262d268f7881c375e2d87652b78c9",
+      "owned_entry_sha256": "f47036c03099077053fa8502677d1246217840e7afa6bc3b8da493e91d09880b"
+    }
+  ],
+  "gallery": {
+    "current_blob": "2d6cbf65e20a9ec813254f380b51cebe203647b4",
+    "authored_blob": "3a7291ccd69d94d3b93402ab33d96639f2847149",
+    "combined_blob": "28e907de7c7c9a7945249796b61b325853f6de88",
+    "combined_sha256": "002327b8e6303412269c0ca8c4a105d9e8eeb96491eec0836e39ce199e2c18fd",
+    "preserved_export_additions": 5
+  },
+  "unchanged_export_modules": {
+    "desktop/capture_desktop/analysis_figure_export.py": "3c7b5c2be3639b6086551eb8d2dda18aa1507b44",
+    "desktop/capture_desktop/widgets_figure_export.py": "de619492f9b360608c58ecd04002def52be5f7a0"
+  },
+  "original_receipts": "Original 7 native tests, 15 retained-output checks and 10 independent history checks remain pinned to c3837c72 on their recorded pre-export inputs; they are not relabeled as current-composition acceptance.",
+  "current_receiving": {
+    "qualified_runtime_tree": "fc62b7c016d6be53dd017094a99f6c89cca8a172",
+    "gallery_candidate_head": "75445bc38e0f3287691772d43d5ce392c90a1883",
+    "history_published_commit": "6cfe01672fd66b5b598cf73eb4502456ec333b35",
+    "history_screen_blob": "6893f119593f8ff6551167efcb1939d014a081e6",
+    "passed": 14,
+    "failed": 0,
+    "exit_code": 0,
+    "method": "QApplication.exec/QTimer, two real Saved analysis Open clicks around the existing result-clear hook, actual current gallery/export classes and original PNG pixels; no pipeline, export write or fixture creation",
+    "limits": "Changed current export/gallery constructor, load and clear composition only; no export write, numerical/pipeline computation, owner direct-gallery suite, complete history/scope suite, Windows MainWindow or installed-product result. This is an actual Linux Qt component run.",
+    "runtime": {
+      "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+      "pyside6": "6.11.2"
+    },
+    "durable_packet": "/Users/me/hamon/estate-401c5d17da79/capturesuite-gallery-current70-independent",
+    "exact_files": {
+      "receipt.json": "2c98e64001176a3fc913ebd0379ef7e7412d0a4d1f4dd03b72efeb4bebef9db0",
+      "receive_history_gallery_current_final.py": "7cad1bbcfc46239137366a3a6fc3e26d4c3419e4d544eed057c06f6e2ad4da5d",
+      "current-module-inputs-sealed.json": "502c6065bb866b385476f15657f16ce7b081067c5457128c6e35eedae0330401",
+      "CHECKPOINT.json": "6d2b586a833e3bd9d76b14a9b4a67bef1e09c29f82476e68cd7ecdfbaa13da0f"
+    },
+    "reviewed_frame": {
+      "history-numeric-current-export.png": {
+        "bytes": 202367,
+        "height": 820,
+        "sha256": "943128f143e6348c9bb1c59d5f329c36486f249bf78d5ad64157ebdc71613fb2",
+        "width": 1280
+      }
+    },
+    "source_note": "This metadata-only successor preserves every qualified runtime and test byte. Current acceptance belongs to the recorded effective runtime tree, including the separate PR71 history input."
+  },
+  "source_tree_before_metadata": "38a94b0817d8976ad4b8f19665f85c68f753e237",
+  "receiving_candidate_head": "75445bc38e0f3287691772d43d5ce392c90a1883"
+}

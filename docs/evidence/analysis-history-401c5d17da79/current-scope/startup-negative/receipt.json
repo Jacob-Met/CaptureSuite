@@ -1,0 +1,33 @@
+{
+  "canonical_parent": "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e",
+  "runtime_tree": "07d78241dca691015bb3e4d8d260b109672b7de0",
+  "screen_git_blob": "ee2db9acacdc92d3aa8ba0bfe12f638e9418f9b4",
+  "checks": [
+    {
+      "name": "screen, header and history use one normalized package identity",
+      "passed": true
+    },
+    {
+      "name": "real header selection enables the composed Analysis screen with exact bounds",
+      "passed": true
+    },
+    {
+      "name": "real feature worker disables saved-history actions while running",
+      "passed": false
+    }
+  ],
+  "errors": [
+    "Traceback (most recent call last):\n  File \"/dev/shm/hamon-401c5d17da79-capture-history-pr/scope-current-seam/check_scope_history.py\", line 151, in tick\n    check(\"real feature worker disables saved-history actions while running\",\n  File \"/dev/shm/hamon-401c5d17da79-capture-history-pr/scope-current-seam/check_scope_history.py\", line 54, in check\n    assert condition, name\n           ^^^^^^^^^\nAssertionError: real feature worker disables saved-history actions while running\n"
+  ],
+  "method": "QApplication.exec/QTimer; actual SessionHeader and AnalysisScreen, two real QThread/MCAP feature jobs",
+  "method_sha256": "44c24508e4e4aa9d14d1771be486bb953f8b3719652183c2e9d7c3bb81ac2b17",
+  "source_inputs_sha256": "3d76e4d458693e38756479d37fe325301e5ed9eda01ee4945e913f93e6206557",
+  "scope": "One changed scope/history boundary. No Windows MainWindow, full-suite, nested-image repair or installed-release claim.",
+  "event_loop_exit": 0,
+  "pyside6": "6.11.2",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "source_unchanged": true,
+  "passed": 2,
+  "failed": 1,
+  "exit_code": 1
+}

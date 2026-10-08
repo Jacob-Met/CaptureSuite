@@ -1,0 +1,34 @@
+{
+  "schema": "capturesuite.test-receipt.v1",
+  "accepted": true,
+  "process_exit": 0,
+  "counts": {
+    "tests": 561,
+    "passed": 555,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 6
+  },
+  "junit_sha256": "024d03bebc15c2640a86fc8309a8a1cc2ad411f87a000f404b0ef846f0f10764",
+  "problems": [],
+  "scope": "Process and test-evidence consistency, not clinical validation",
+  "seconds": 296.77340969999995,
+  "created_at": "2026-10-08T18:47:47.824177+00:00",
+  "run_directory": "build/evidence/python-20261008T184250Z-e1bb4f7d",
+  "log_sha256": "2a6e81ac2871463414d40e41de21c2e62b93497289601fe13ae3529aa9b6a935",
+  "source_commit": "f17f811366bc9915e0f001b42d9df86afc353213",
+  "source_worktree_dirty": false,
+  "source_tree_sha256": "e265754e62a900bd080b409d4fa720d570003c24e6d06fb5136cf9275856a446",
+  "source_file_count": 1142,
+  "github": {
+    "GITHUB_ACTIONS": "true",
+    "GITHUB_EVENT_NAME": "pull_request",
+    "GITHUB_SHA": "f17f811366bc9915e0f001b42d9df86afc353213",
+    "GITHUB_REF": "refs/pull/71/merge",
+    "GITHUB_HEAD_REF": "work/analysis-history-401c5d17da79",
+    "GITHUB_BASE_REF": "main",
+    "GITHUB_RUN_ID": "37826104818",
+    "GITHUB_WORKFLOW_REF": "Jacob-Met/CaptureSuite/.github/workflows/ci.yml@refs/pull/71/merge"
+  },
+  "source_unchanged_during_test": true
+}

@@ -1,0 +1,23 @@
+This plugin does not support propagateSizeHints()
+fresh screen reopens real prior A result into native gallery and inspector True
+package switch clears prior result and both launch targets True
+This plugin does not support propagateSizeHints()
+same basename in B resolves B figures and metadata only True
+malformed-manifest is visibly unavailable and refuses Open without replacing B True
+missing-manifest is visibly unavailable and refuses Open without replacing B True
+foreign-session is visibly unavailable and refuses Open without replacing B True
+foreign-directory is visibly unavailable and refuses Open without replacing B True
+unavailable-row actions leave every saved byte unchanged True
+Open revalidates a cached row after its manifest disappears True
+refused cached Open preserves all bytes after the controlled rename True
+This plugin does not support propagateSizeHints()
+real QThread QC completed and persisted before receiving release True
+prior-package real completion cannot bind current B gallery or inspector True
+prior-package result is explicitly retained for later inspection True
+current B saved result reopens after actual Qt thread completion True
+returning to A explicitly opens the genuinely completed late QC True
+late delivery and later reopenings perform no persisted writes True
+all captured raw data remains unchanged True
+no Qt error dialog or native worker failure True
+frozen source bytes remained exact throughout native receiving True
+{"pass": true, "checks": 19, "seconds": 0.9143500069985748, "code": 0}

@@ -1,0 +1,207 @@
+{
+  "method": "QApplication.exec with QTimer scheduling; retained real jobs; no writer or pipeline runs",
+  "canonical_base": "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "pyside6": "6.11.2",
+  "exit": 0,
+  "elapsed_seconds": 0.836,
+  "checks": [
+    {
+      "name": "numeric: exact saved figure tabs",
+      "passed": true
+    },
+    {
+      "name": "numeric: exact path identity",
+      "passed": true
+    },
+    {
+      "name": "numeric: all native image pixels equal saved PNGs",
+      "passed": true
+    },
+    {
+      "name": "numeric: native linked series count",
+      "passed": true
+    },
+    {
+      "name": "numeric: saved plot samples remain exact",
+      "passed": true
+    },
+    {
+      "name": "numeric: selected native PNG is visible",
+      "passed": true
+    },
+    {
+      "name": "legacy: exact saved figure tabs",
+      "passed": true
+    },
+    {
+      "name": "legacy: exact path identity",
+      "passed": true
+    },
+    {
+      "name": "legacy: all native image pixels equal saved PNGs",
+      "passed": true
+    },
+    {
+      "name": "legacy: native linked series count",
+      "passed": true
+    },
+    {
+      "name": "legacy: saved plot samples remain exact",
+      "passed": true
+    },
+    {
+      "name": "legacy: both linked plot widgets are visible",
+      "passed": true
+    },
+    {
+      "name": "legacy: selected flat PNG is visible",
+      "passed": true
+    },
+    {
+      "name": "all saved and raw package bytes remain exact",
+      "passed": true
+    },
+    {
+      "name": "all executed gallery/source bytes remain exact",
+      "passed": true
+    }
+  ],
+  "passed": 15,
+  "failures": [],
+  "observed": {
+    "numeric": {
+      "job": "/dev/shm/hamon-401c5d17da79-capture-history-pr/latest-boundary/numeric-run/numeric.mmsession/processing/jobs/retained-numeric",
+      "tabs": [
+        "Sync",
+        "lsl / numeric.stream / channel 0",
+        "lsl / numeric.stream / channel 1"
+      ],
+      "tooltips": [
+        "numeric/source-6c736c/stream-6e756d657269632e73747265616d/channel_0.png",
+        "numeric/source-6c736c/stream-6e756d657269632e73747265616d/channel_1.png"
+      ],
+      "linked_series_count": 1,
+      "saved_png_sizes": [
+        [
+          1650,
+          420
+        ],
+        [
+          1650,
+          420
+        ]
+      ]
+    },
+    "legacy": {
+      "job": "/dev/shm/hamon-401c5d17da79-capturesuite-receiving/fixtures-native/package-a.mmsession/processing/jobs/retained-prior",
+      "tabs": [
+        "Sync",
+        "emg sim.emg.main channel",
+        "imu sim.imu.upper accel"
+      ],
+      "tooltips": [
+        "emg_sim.emg.main_channels.png",
+        "imu_sim.imu.upper_accel.png"
+      ],
+      "linked_series_count": 2,
+      "saved_png_sizes": [
+        [
+          1650,
+          540
+        ],
+        [
+          1650,
+          450
+        ]
+      ]
+    }
+  },
+  "source_hashes": {
+    "/dev/shm/capturesuite-gallery-401c5d17da79/source/desktop/capture_desktop/widgets_analysis_plots.py": "852c9059d01fac9ba38edbe228e0920e8cf3298bb8e1a9d6610b148f6d1e7ffb",
+    "/dev/shm/capturesuite-gallery-401c5d17da79/source/desktop/capture_desktop/theme.py": "c77f24e1afeb06400385bd0d535800f13dc15d972891e1ff8af504cbe5c818f3",
+    "/dev/shm/capturesuite-gallery-401c5d17da79/source/tests/ui/test_analysis_nested_gallery.py": "90477416f3efc70b436759eb56348d600b2b5b84f2f7f46ec6b4129c690b9d0a"
+  },
+  "package_hashes_before_and_after": {
+    "numeric": {
+      "manifest.json": "399b408a7bcb1cbee8062a926f52b2ceff553fdbf4504d92a629b83898eb4b60",
+      "processing/jobs/retained-numeric/features/_schema.json": "ea7b96fa667e83b0379515745ee23e659bd640497378b04c267da593d584e264",
+      "processing/jobs/retained-numeric/features/numeric/source-6c736c/stream-6e756d657269632e73747265616d/windows.csv": "9cae194fe5eabbdd3d804b734e609ea732d05f9b5885f6e51dcea9f5840230fe",
+      "processing/jobs/retained-numeric/features/numeric/source-6c736c/stream-6e756d657269632e73747265616d/windows.parquet": "b25e995662e343e5660be848fac61eac15dd63d904ea1fa8d4b58fe66dc68b84",
+      "processing/jobs/retained-numeric/figures/numeric/source-6c736c/stream-6e756d657269632e73747265616d/channel_0.png": "255a352977baf12c5714f71c327cac9ec6fe96377378e7d789433de6335bc73a",
+      "processing/jobs/retained-numeric/figures/numeric/source-6c736c/stream-6e756d657269632e73747265616d/channel_1.png": "ae7fd0d484e1dd7756a3a0c599de8aea09ede34d0ad1644775c0b95bce3f6195",
+      "processing/jobs/retained-numeric/figures/sync_dashboard.png": "e801135335d3a6e50353d82b039a14217f7fe6f931a1f9daa1f37de3ab0e6b02",
+      "processing/jobs/retained-numeric/figures/sync_dashboard_series.json": "1bc0a860646508a6001aed0d312d42338f8b2e9c93592cf5adc7dbeab2277554",
+      "processing/jobs/retained-numeric/job_manifest.json": "32dd2883bc55717ef813f36930eed5598124f27fa2a9a7a9817e750cd59bcb6d",
+      "processing/jobs/retained-numeric/logs/job.log": "7edc38094b8619545017aa8f12c4d0179ab43474343e25d483918f32d48b778a",
+      "processing/jobs/retained-numeric/params.json": "962d5067fb396fca7a5d207bae2aeff4ea16f3218396824de0da670f16b67dc3",
+      "processing/jobs/retained-numeric/reports/qc.html": "43b9cfbc29c185464e85873ac6c4bfd45a0fa3d45f259d7ea59dcae9464625e5",
+      "processing/jobs/retained-numeric/reports/qc.json": "6a7e1c4191f43ce87c04344f81d4b4ffa61b2fa383de413650bdcc02a21b3ba2",
+      "sources/lsl/streams/numeric/segments/000000.mcap": "f3df8e3cc95f76462c502935aad5abafd4392ed3224c239775650c5b49bcd18f",
+      "sources/lsl/streams/numeric/stream.json": "1adfb22cb81843c0e5bef319c9c2268ea2746e930232f6d89e154d133e0fa885"
+    },
+    "legacy": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "2fb4194b22d4b1c373f25f9ecab51d0c80e14f42a52f53293fd727ce5418f140",
+      "manifest.json": "6cc54886cc63fa1263a4077fec322454fdfa133a408836a75451fd77eb7c5243",
+      "processing/jobs/late-baseline-actual-qc/job_manifest.json": "bbb88191cb522d3314139b6ebcb4cd2e6b8aa6c6b7df362d0653a0a75dcba7bc",
+      "processing/jobs/late-baseline-actual-qc/logs/job.log": "59f307f1af8f7e20fe908e17afdf3047f6d7eda3d04d2d7e5153f258b6377d37",
+      "processing/jobs/late-baseline-actual-qc/params.json": "88f55fe8dddb0794c98f693dd21fdd7764a6bac45203e11ba52eab3ebaa40fc3",
+      "processing/jobs/late-baseline-actual-qc/reports/qc.html": "db815562d270dc133bce019f0c0791bea4e9af52fc62ce7107a41ea6a8485d20",
+      "processing/jobs/late-baseline-actual-qc/reports/qc.json": "2a1addc8accb001643f81a4b1061458f8fa27de6ffcc157fbed5ddb837c9cf27",
+      "processing/jobs/late-candidate-actual-qc/job_manifest.json": "d63428766698ba71d56f9797340cc2e4f870cded0e04708b98ee991200e5d88e",
+      "processing/jobs/late-candidate-actual-qc/logs/job.log": "c2b223c3686c245380c6b3788d45deb8f4a56ca9d420039af2ff598f6eb66cc1",
+      "processing/jobs/late-candidate-actual-qc/params.json": "9aad1ac26d07fdbf51e882ad70c97ae15942b3057755083b0a8b063506d23fe8",
+      "processing/jobs/late-candidate-actual-qc/reports/qc.html": "db815562d270dc133bce019f0c0791bea4e9af52fc62ce7107a41ea6a8485d20",
+      "processing/jobs/late-candidate-actual-qc/reports/qc.json": "2a1addc8accb001643f81a4b1061458f8fa27de6ffcc157fbed5ddb837c9cf27",
+      "processing/jobs/late-native-candidate-qc/job_manifest.json": "995796fd6b5f52e89ea25a0c45fd769b6352b5f2b1d8984b250971c691ad8658",
+      "processing/jobs/late-native-candidate-qc/logs/job.log": "b9c0d4a5e6fc748c0a4b60187926f7e9885a2a386a7ed8e85c37a261e053a87d",
+      "processing/jobs/late-native-candidate-qc/params.json": "e09345ba9ebd7b6f59a9b70cff3af7406c1424237cb5e27a05a80f755b270cb9",
+      "processing/jobs/late-native-candidate-qc/reports/qc.html": "2917196a7446847355f7443ab5bde8be96dbc71e2b48927f4e60fe064affce6e",
+      "processing/jobs/late-native-candidate-qc/reports/qc.json": "2d98f837e78a3866402a3f4f9dc765a262168f36d8fe8b2235e02ee17efd3551",
+      "processing/jobs/retained-prior/features/_schema.json": "c80f7d1e05378bf2399098e9887fc463edda22e366236eab3e9b1b0526d1f0f0",
+      "processing/jobs/retained-prior/features/emg/sim.emg.main/windows.csv": "0c9b8016e1295976eb10eabdb913efff752cf9936bf4a7cab1d3107a85ca97ff",
+      "processing/jobs/retained-prior/features/emg/sim.emg.main/windows.parquet": "c5d6d1727acd151ca0b1430eecb0dd0491fe2863a9f7c163d7524bfed584e60f",
+      "processing/jobs/retained-prior/features/imu/sim.imu.upper/windows.csv": "62212faf4179e9050c4d7a2e3530a461c70d0e56b227138e31b0c273bb21a277",
+      "processing/jobs/retained-prior/features/imu/sim.imu.upper/windows.parquet": "ff4ca0fbfed45e13e95f73d03d8ba56ce0f8305868012ecb5101df277a449ba9",
+      "processing/jobs/retained-prior/figures/emg_sim.emg.main_channels.png": "4c7a4aee76c4895cf99e38874de271e83a52c0e7389093c14a93344e9dc43853",
+      "processing/jobs/retained-prior/figures/imu_sim.imu.upper_accel.png": "8cc603bf604d8925ba13be2c77e0bd8d8f8efbce9529e7d459a449fd61e6a8a4",
+      "processing/jobs/retained-prior/figures/sync_dashboard.png": "bda125c256b17dbd688ec825c2a5b9b8542f346ce95209faf15efadad5c78d48",
+      "processing/jobs/retained-prior/figures/sync_dashboard_series.json": "ba1181c30b0a3ab1b26b716e56bf0787f2e67aa4178cd511f0106486d04aa8e6",
+      "processing/jobs/retained-prior/job_manifest.json": "21471f1ee0cae441202b4b704c6cd1359558ac1bf27f077668508eb1368ae6e7",
+      "processing/jobs/retained-prior/logs/job.log": "3cf99c71a0e4e3046b791ad2c04e388adfe452959b315d8dd5df6d278a5aaf63",
+      "processing/jobs/retained-prior/params.json": "9c0e1ab18949727f29352f1a602ae65d74db48f8453a49faa72fbc95c518b35b",
+      "processing/jobs/retained-prior/reports/qc.html": "db815562d270dc133bce019f0c0791bea4e9af52fc62ce7107a41ea6a8485d20",
+      "processing/jobs/retained-prior/reports/qc.json": "2a1addc8accb001643f81a4b1061458f8fa27de6ffcc157fbed5ddb837c9cf27",
+      "sources/sim.emg.main/health/gaps.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sources/sim.emg.main/source.json": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10",
+      "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap": "6f3b9bd4ce01238f122649a1139a290ea6193893938a95f3ac61dd61a447d997",
+      "sources/sim.emg.main/streams/sim.emg.main.batch/stream.json": "5307697f957309eaca816fa0e20c4799c900e2598a8acf66a59928aa83b305b2",
+      "sources/sim.imu.upper/source.json": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "c477a0e0865086fbb4154c977def4d93ea5fb38cc098a4862c45b21b966014c9",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+    }
+  },
+  "frames": {
+    "numeric-channel.png": {
+      "bytes": 39590,
+      "sha256": "24dc1f0a7372d5faa63bfaf63b3d3c78ef623f06129958391016893f3f2dfc82",
+      "width": 1200,
+      "height": 820
+    },
+    "legacy-linked-plots.png": {
+      "bytes": 50152,
+      "sha256": "ebb6d1914c041ef2717f4498203635350d37a84a369b996bb24360b5e7d8352b",
+      "width": 1200,
+      "height": 820
+    },
+    "legacy-flat-figure.png": {
+      "bytes": 27026,
+      "sha256": "b6431cac7a7ec09e4f53e476274ada0f6a92e1e400f9ca4fe6e920ddaac612c5",
+      "width": 1200,
+      "height": 820
+    }
+  }
+}

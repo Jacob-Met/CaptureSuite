@@ -1,0 +1,13 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "[Reading last 5 lines (total: 85 lines)]\n\n  \"receipt_directory\": \"C:\\\\Users\\\\minec\\\\hamon-cs80-receiving-e46e74cdc4f4\\\\native-20261008T171644Z\",\r\n  \"time_utc\": \"2026-10-08T17:16:44Z\"\r\n}\r\nRECEIPT_SHA256=a47567302f0e0b5b3cf2b205527856aaa1d1a5d48e87ba4d2c22d20027afab48\r\n\n✅ Process completed with exit code 0 (runtime: 0.32s)"
+    },
+    {
+      "type": "text",
+      "text": "\n[executed on device: DESKTOP-LA7CMTA (42ad330c-bb9a-4d2f-bcb4-6efeb4c6583e)]"
+    }
+  ],
+  "isError": false
+}

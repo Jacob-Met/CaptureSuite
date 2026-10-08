@@ -1,0 +1,28 @@
+{
+  "baseline": "72c15d6b623e217291a824e4e4808a385df896a9",
+  "previous_candidate": "c0b5530c03cce3e42a0430e5411cddf1df716e19",
+  "commit": "37443f0d4d5ffa684b5423d58501856cadbe0655",
+  "tree": "3b3184b931a2aaf91beec36c953bff909a77f2f5",
+  "inputs": {
+    "desktop/capture_desktop/analysis_history.py": {
+      "sha256": "2e0db8cee59ef268d3c91ea0beac7d761d83a3003862841cc9d7f1782fd3543c",
+      "bytes": 6375
+    },
+    "desktop/capture_desktop/widgets_analysis_history.py": {
+      "sha256": "a3b77c87483c1412b50de7ddde1498f6bfd3968002fc3ac3bfa474a2477d9bc4",
+      "bytes": 8458
+    },
+    "desktop/capture_desktop/screen_analysis.py": {
+      "sha256": "98a704e31b14497e012fe5618ad47cc8a772bd2d59775826d71a5bdf41533211",
+      "bytes": 16407
+    },
+    "tests/ui/test_analysis_history.py": {
+      "sha256": "48175547922125c308fa49bbb84149e3dac8903902e7cc64fa7c15b4ca40eccd",
+      "bytes": 10465
+    }
+  },
+  "runtime": "/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python",
+  "focused_and_retained_tests": "14 passed in3.21s; no skips",
+  "worker_and_thread_cleanup_ast_identical_to_baseline": true,
+  "correction": "Refresh failed retained jobs in the failure slot; successful completion already refreshes there. Restore original thread-finished cleanup, eliminating added filesystem work after releasing worker references. Native worker and signal wiring are unchanged."
+}

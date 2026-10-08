@@ -1,0 +1,51 @@
+{
+  "schema": "capturesuite.pr80.receiving-manifest.v1",
+  "parent": "bd390a9d497e567cd868ba4029b74bbd509b4a78",
+  "candidate_test": {
+    "path": "tests/ui/test_analysis_nested_gallery.py",
+    "bytes": 7291,
+    "sha256": "566ff56a05014d47ffd887976751c06f259957a908ec34528725a039269b434f"
+  },
+  "files": [
+    {
+      "path": "INDEPENDENT_RECEIVING.md",
+      "bytes": 6052,
+      "sha256": "af5efd32ff6d8b8b972ba6402d7a577352ce526e06238ee3d80dda2f68342aaf"
+    },
+    {
+      "path": "github-job-113430762650.log",
+      "bytes": 57921,
+      "sha256": "e9bbc99cb596b4016de2cfa7ab0729d8daff846e6e97459a8f2dec11af93a074"
+    },
+    {
+      "path": "native/receipt.json",
+      "bytes": 2981,
+      "sha256": "a47567302f0e0b5b3cf2b205527856aaa1d1a5d48e87ba4d2c22d20027afab48"
+    },
+    {
+      "path": "native/receive_windows_links.py",
+      "bytes": 6850,
+      "sha256": "314a5b53ec2ac56a05a57f0ff6ba7e29a7f49a048ec5ab65adf1c160e5cfba9b"
+    },
+    {
+      "path": "native/process-start.json",
+      "bytes": 3884,
+      "sha256": "cc83122ed2544831ffb0dea3910912fd3c202eb32517e264bd68156dcd1fc781"
+    },
+    {
+      "path": "native/process-completion.json",
+      "bytes": 575,
+      "sha256": "dac63725d0a8d3b95f778d6e2caed853c4a855389ba766b3343924c5b38683fe"
+    },
+    {
+      "path": "test_analysis_nested_gallery.original.py",
+      "bytes": 7142,
+      "sha256": "727340556a0d8e4178b62157ba9680a59d1c43158abb1bf979b21be8c98c591f"
+    },
+    {
+      "path": "native/source-payload.json",
+      "bytes": 15282,
+      "sha256": "21da53dd248c0b45863ccccc0b3fb4fc88a995a4cc774f805adab7ec6baabd69"
+    }
+  ]
+}

@@ -1,0 +1,83 @@
+{
+  "runtime": "facb4af1d9277d88c233a54520b33d3c79cee174",
+  "runtime_tree": "09b512fc4a7ae7cc6098f4fc82d40667aa2e748f",
+  "parents": [
+    "a2c89957c2cfe6fd5347d4ac317982449d3baa3a",
+    "c2e1d9c176ec058218e59e0cc8db07f62db1fd98",
+    "837fa1fbf2c5ad471cbb3924c212fc08d0e0f0ed"
+  ],
+  "tested_head": "5b693a54f3323c6c7604f6ecd2feb6cf9c6040b1",
+  "tested_tree": "31ad49114bffb0ff6d4a0b419e632f8e15cd2cb9",
+  "checks": 21,
+  "test_sha256": "418df81218407151318f17ab3e1da8d3b7eacc0e8664ed7cfe1dc3daf6732476",
+  "files": {
+    "README.md": {
+      "sha256": "07f6549eb51d0dc1fb5c991633f1c9f97953e26a80433229e42bcbccaf8032ca",
+      "bytes": 4202
+    },
+    "RUNTIME-CANDIDATE.json": {
+      "sha256": "8090e42bc1457ec3dbd1095db07ebb683eb5880135744abd258358b1cfb3a2f3",
+      "bytes": 51170
+    },
+    "TEST-CANDIDATE.json": {
+      "sha256": "c6443602f53091e28224f9a85dd9692481f0fc5178702c0be9c717e9b359f134",
+      "bytes": 37002
+    },
+    "composed-history-gallery.png": {
+      "sha256": "04130f67c888849466fdc25f18260648c62fb339d229eb0ff46ad11707a19a0a",
+      "bytes": 281310
+    },
+    "composition-review.json": {
+      "sha256": "329b4f5fa20251ff31e2458065c02ddfd01a6ccd2c9e75f6785691b5ea25bf88",
+      "bytes": 10391
+    },
+    "fixture-manifest.json": {
+      "sha256": "7fc6f8c2d7718562a9e0625b0bbf8ffb891688c4e4e75f12fe4c474ca8d62740",
+      "bytes": 13878
+    },
+    "junit.xml": {
+      "sha256": "7c348019fc742475d8bfb24722e57b4548d48ed8b08aeda513a4f6c4c0115b7b",
+      "bytes": 408
+    },
+    "native-runtime-probe.json": {
+      "sha256": "ac81e84bfde112b303c3bed6f7964a73eaf473ed5bd06c5221f640408265956a",
+      "bytes": 621
+    },
+    "process-completion.json": {
+      "sha256": "d2199fc855888a262f557418a0ba0cdcb3febc912d39a086a55db76d9a42c1dc",
+      "bytes": 216
+    },
+    "process-start.json": {
+      "sha256": "d70ac67599f8f07c670c73a934df5c6072d7586d5e943c817cf629a4ac6aac13",
+      "bytes": 613
+    },
+    "qualify-v1.py.txt": {
+      "sha256": "a98d50ae985c5da85aa00ef3c631d99d0a516ef79f14c6052b38b61dc1db9f2f",
+      "bytes": 2878
+    },
+    "real-mcap-fixtures.tar.gz": {
+      "sha256": "097d9cc548e94fce29b76d26bffb461138dc061d20db1a13e60416efa7412a9f",
+      "bytes": 301329
+    },
+    "receipt.json": {
+      "sha256": "57841ef966130e011b6c50ba715d01b4fb46dbd4d3032ecd9e40c8ec8a461881",
+      "bytes": 4298
+    },
+    "stderr.log": {
+      "sha256": "146a7f2a3b7922bbe193f123dcd79dd55f6b2e5fba6f944b628e08469479cd8f",
+      "bytes": 400
+    },
+    "stdout.log": {
+      "sha256": "9cf2ff1ac21ae90d8b7406ad2058d18c2e142033652f526e2078f940d7abe908",
+      "bytes": 871
+    },
+    "test-authored.json": {
+      "sha256": "fbca570292a9efa9e41dd39043138e16f03406e6da39ea947b164bfd3f335bf3",
+      "bytes": 297
+    },
+    "visual-review.json": {
+      "sha256": "d80725716cb1b1f9bd58541e7f2130f0d98f2d0e1bd43498429c6763985bdbe0",
+      "bytes": 533
+    }
+  }
+}

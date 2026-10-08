@@ -1,0 +1,16 @@
+{
+  "command": [
+    "/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python",
+    "/dev/shm/capturesuite-gallery-401c5d17da79/methods/receive_retained_gallery.py",
+    "--source-root",
+    "/dev/shm/capturesuite-gallery-401c5d17da79/source",
+    "--numeric-job",
+    "/dev/shm/hamon-401c5d17da79-capture-history-pr/latest-boundary/numeric-run/numeric.mmsession/processing/jobs/retained-numeric",
+    "--legacy-job",
+    "/dev/shm/hamon-401c5d17da79-capturesuite-receiving/fixtures-native/package-a.mmsession/processing/jobs/retained-prior"
+  ],
+  "process_exit": 0,
+  "process_seconds": 2.071,
+  "stderr": "This plugin does not support propagateSizeHints()\nThis plugin does not support propagateSizeHints()\nThis plugin does not support propagateSizeHints()\nThis plugin does not support propagateSizeHints()\nThis plugin does not support propagateSizeHints()\n",
+  "stdout_format": "JSON receipt and PNG frames, preserved separately"
+}

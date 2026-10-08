@@ -1,0 +1,27 @@
+import pathlib,subprocess,json,hashlib,os,time
+r=pathlib.Path('/dev/shm/hamon-401c5d17da79-capture-a2c');g=r/'source.git';source=r/'source'
+def git(*a,input=None):return subprocess.check_output(['git','--git-dir',str(g),*a],input=input)
+runtime='facb4af1d9277d88c233a54520b33d3c79cee174'
+test='tests/ui/test_analysis_workspace_composition.py';data=(source/test).read_bytes()
+git('read-tree',runtime)
+blob=git('hash-object','-w','--stdin',input=data).decode().strip()
+git('update-index','--add','--cacheinfo','100644',blob,test)
+tree=git('write-tree').decode().strip()
+head=git('-c','user.name=estate-401c5d17da79/production_discovery','-c','user.email=estate-401c5d17da79@hamon.local',
+ 'commit-tree',tree,'-p',runtime,input=b'Receive the composed analysis workspace through native Qt\n\nExercise real source-filtered MCAP output, held QThread completion across a package switch, saved-result reopen, parameter comparison and exact nested image pixels. Keep all production bytes fixed.\n').decode().strip()
+git('update-ref','refs/heads/integration/analysis-workspace-a2c-401c5d17da79',head)
+out=r/'native-v1';out.mkdir()
+manifest={str(p.relative_to(source)):hashlib.sha256(p.read_bytes()).hexdigest() for p in source.rglob('*') if p.is_file()}
+(r/'TEST-CANDIDATE.json').write_text(json.dumps({'head':head,'tree':tree,'runtime':runtime,'test_blob':blob,'test_sha256':hashlib.sha256(data).hexdigest(),'sources':manifest},indent=2)+'\n')
+env=dict(os.environ);env.update(PYTHONDONTWRITEBYTECODE='1',QT_QPA_PLATFORM='offscreen',MPLBACKEND='Agg',
+ MPLCONFIGDIR=str(out/'mpl-cache'),CAPTURE_ANALYSIS_COMPOSITION_EVIDENCE=str(out/'evidence'),
+ PYTHONPATH=os.pathsep.join([str(source),str(source/'desktop')]+[str(p) for p in (source/'libs/python').iterdir() if p.is_dir()]))
+argv=['/home/jacob/hamon-capture-composition-f5c5ccd6-tools/venv/bin/python','-B','-m','pytest',test,'-q','-s','--maxfail=1','-p','no:cacheprovider','--basetemp='+str(out/'tmp'),'--junitxml='+str(out/'junit.xml')]
+started=time.time()
+with (out/'stdout.log').open('x') as stdout,(out/'stderr.log').open('x') as stderr:
+ proc=subprocess.Popen(argv,cwd=source,env=env,stdout=stdout,stderr=stderr)
+ (out/'process-start.json').write_text(json.dumps({'pid':proc.pid,'head':head,'tree':tree,'runtime':runtime,'argv':argv,'source_files':len(manifest)},indent=2)+'\n')
+ status=proc.wait(timeout=240)
+after={str(p.relative_to(source)):hashlib.sha256(p.read_bytes()).hexdigest() for p in source.rglob('*') if p.is_file()}
+(out/'process-completion.json').write_text(json.dumps({'exit':status,'seconds':time.time()-started,'source_unchanged':manifest==after,'added':sorted(set(after)-set(manifest)),'changed':[p for p in manifest if manifest[p]!=after.get(p)],'head':head,'tree':tree},indent=2)+'\n')
+print(json.dumps({'head':head,'tree':tree,'exit':status,'seconds':time.time()-started,'source_unchanged':manifest==after}))

@@ -1,0 +1,105 @@
+{
+  "canonical_main": "e43da3b855475c8aacf815c201fa03eddaeec0f1",
+  "author_source": "37443f0d4d5ffa684b5423d58501856cadbe0655",
+  "composition_tree": "ba5b4b925b00ecb17895a8c8ad29410e787f97dc",
+  "source_inputs_sha256": "c41b5857ca1cca774d85298827c8f63a85dada025e2e326b51ce96de08e0ab0e",
+  "runner_sha256": "469b3e3fd0403e420c847e1e4c11525b968055447aa2ecdd1024714e2c12039e",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+  "checks": [
+    {
+      "name": "current QC producer loaded from pinned source",
+      "passed": true
+    },
+    {
+      "name": "current HTML producer loaded from pinned source",
+      "passed": true
+    },
+    {
+      "name": "current producer emits capture.analysis_qc/2",
+      "passed": true
+    },
+    {
+      "name": "native gap precision retained in generated result",
+      "passed": true
+    },
+    {
+      "name": "current generated report includes the recorded gap",
+      "passed": true
+    },
+    {
+      "name": "package selection offers saved result without opening it",
+      "passed": true
+    },
+    {
+      "name": "explicit native Open selects the current result",
+      "passed": true
+    },
+    {
+      "name": "existing inspector receives current result provenance",
+      "passed": true
+    },
+    {
+      "name": "existing report action is available for the retained current report",
+      "passed": true
+    },
+    {
+      "name": "native result details dialog opens",
+      "passed": true
+    },
+    {
+      "name": "saved parameters and provenance remain read-only",
+      "passed": true
+    },
+    {
+      "name": "browsing starts no computation thread",
+      "passed": true
+    },
+    {
+      "name": "all generated package and job bytes stay unchanged while browsing",
+      "passed": true
+    },
+    {
+      "name": "actual QApplication event loop returned successfully",
+      "passed": true
+    }
+  ],
+  "scope": "One current-QC/2 to saved-history reader boundary; no worker-thread, Windows, daemon or hardware acceptance.",
+  "pyside6": "6.11.2",
+  "package_hashes": {
+    "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "events/checkpoints.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "integrity.json": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556",
+    "manifest.json": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380",
+    "processing/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "processing/jobs/current-qc/job_manifest.json": "7c0164de00779c92c16a5b2c31426d94e22abefcced4d16b365967c17be33486",
+    "processing/jobs/current-qc/logs/job.log": "d23058fcc8ab19137ea84b2c90a830a43f2017e969eb953ca38e210f2fec02b8",
+    "processing/jobs/current-qc/params.json": "6b1de8a12a547c74d1477f29c2c67df457f1ad54ab7f7865d39ad17199791f35",
+    "processing/jobs/current-qc/reports/qc.html": "eb41423403c4ea2049d50278c69fced1d37dde4b85aa76482fbe82ffdc7c75e9",
+    "processing/jobs/current-qc/reports/qc.json": "4bbe314029c3387541b5ad25fdc12268780fc0b31c1e343d5b8690a5e98560d9",
+    "sources/sim.emg.main/health/gaps.jsonl": "95cece59eed92129190c27703443c363d3b5ec0ff407b406678708dec899e090",
+    "sources/sim.emg.main/source.json": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10",
+    "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649",
+    "sources/sim.emg.main/streams/sim.emg.main.batch/stream.json": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1",
+    "sources/sim.imu.upper/source.json": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8",
+    "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649",
+    "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+  },
+  "artifact_schema": "capture.analysis_qc/2",
+  "artifact_gap": {
+    "cause": "transport_loss",
+    "closed": true,
+    "durationNs": "1000000002",
+    "durationStatus": "known",
+    "endSessionTimeNs": "2000000003",
+    "estimatedLostCount": "3",
+    "sourceId": "sim.emg.main",
+    "startSessionTimeNs": "1000000001",
+    "streamId": "sim.emg.main.batch"
+  },
+  "source_unchanged": true,
+  "exit_code": 0,
+  "passed": 14,
+  "failed": 0
+}

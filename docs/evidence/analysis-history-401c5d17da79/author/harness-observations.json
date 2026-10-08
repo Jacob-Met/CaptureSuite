@@ -1,0 +1,23 @@
+{
+  "schema": "capturesuite.history.harness-observations.v1",
+  "first_author_combined": {
+    "outcome": "Six focused cases completed, then process exited139 under manual processEvents/QTest.qWait; original output was retained in tool transcript only. No raw-file pass is claimed."
+  },
+  "isolated_author_manual": {
+    "outcome": "Child exited-6. Pytest fixture teardown ran while first-time pandas import was still active in the worker after the15-second polling deadline.",
+    "raw_log": "thread-isolated.log"
+  },
+  "author_native_loop": {
+    "outcome": "Unchanged production bytes passed the isolated real worker through QEventLoop in2.19s and all seven original focused cases in2.61s.",
+    "raw_logs": [
+      "thread-event-loop.log",
+      "author-focused-2.log"
+    ]
+  },
+  "transient_enospc": {
+    "outcome": "Shared tmpfs filled during an attempted combined run/receipt write; stdout/XML/process files were zero-length. No retained test result exists for that attempt. No files outside this lane were removed or changed."
+  },
+  "independent_manual_and_native": {
+    "outcome": "See independent exact raw logs: c0b5530 manual pumping exited139 after15 checks, whereas its genuine QApplication.exec control passed5 checks. Corrected37443 manual pumping stalled after15 checks and was stopped(exit130); its full QApplication.exec/QTimer state machine passed19 checks. The manual outcomes are harness limitations and are not treated as proof of a native application defect."
+  }
+}

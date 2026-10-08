@@ -1,0 +1,346 @@
+{
+  "schema": "hamon.capture-history-publication-freshness.v1",
+  "repository": "Jacob-Met/CaptureSuite",
+  "qualified_parent": "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e",
+  "latest_observed_main": "d43bdea867d6198a707a5f55e29216c76054517e",
+  "source_url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/compare/3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e...d43bdea867d6198a707a5f55e29216c76054517e",
+  "compare_html_url": "https://github.com/Jacob-Met/CaptureSuite/compare/3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e...d43bdea867d6198a707a5f55e29216c76054517e",
+  "base_commit": "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e",
+  "merge_base_commit": "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e",
+  "status": "ahead",
+  "ahead_by": 3,
+  "behind_by": 0,
+  "total_commits": 3,
+  "commits": [
+    {
+      "sha": "0dd591b41bea35ce0639bba312d6f56b77f68088",
+      "parents": [
+        "e43da3b855475c8aacf815c201fa03eddaeec0f1"
+      ],
+      "message": "Preserve missing pose evidence in kinematic labels\n\nMask non-simulated landmarks by each joint's required finite geometry and confidence instead of selecting synthetic fallback angles. Retain independent limb validity and NaN velocity/AFR values at invalid frames, with unchanged complete-geometry and explicit-sim Parquet bytes.\n\nReceive the frozen 21-test native author result, independent four-workflow/36-assertion CLI review, and one current-QC/report CLI composition check. Preserve all 777 unrelated current-main leaves and the complete current progress log. Existing supported Windows CI remains required before merge.\n\nCloses #56"
+    },
+    {
+      "sha": "711e8ec22d462b7588e52727cf3d6524d7524c7a",
+      "parents": [
+        "0dd591b41bea35ce0639bba312d6f56b77f68088",
+        "284d168d7614e2465bafba1092d8cbe4b6e13b40"
+      ],
+      "message": "Merge current main and retain both kinematics and storage progress entries\n\nPreserve all37 frozen non-PROGRESS contribution leaves and all815 unrelated current-main leaves. Resolve only the concurrent PROGRESS prepend, retaining the exact current log plus the original1527-byte entry. Runtime, regression tests and receiving evidence are unchanged."
+    },
+    {
+      "sha": "d43bdea867d6198a707a5f55e29216c76054517e",
+      "parents": [
+        "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e",
+        "711e8ec22d462b7588e52727cf3d6524d7524c7a"
+      ],
+      "message": "Preserve missing pose evidence in kinematic labels\n\nKeep absent or invalid non-simulated pose geometry masked independently for each elbow and shoulder. Preserve complete-input and explicit-simulation math; only explicit sim_ models select fixture equations.\n\nQualified source head 711e8ec22d462b7588e52727cf3d6524d7524c7a with the current desktop scope and Windows atomic-write changes in actual CI checkout dc9ab33f4b3f3aefbb6308bbffb4e3f041d4b524, tree fea0e03773742d330963b89e0ceb72a22c7ad495. Windows run 37786404581 passed 400 Python tests with six missing-daemon skips, all 30 CTests, and all six separate native daemon/recovery cases without skips. All existing workflow gates remain unchanged.\n\nIndependent real CLI receiving passed 4/4 cases and36 assertions; baseline complete geometry and explicit sim Parquet bytes remain exact. All37 non-progress contribution leaves, all current unrelated leaves and the complete prior progress log were received from current3e3ecc5e. Original negative evidence and both CI generations are preserved. No installed release or physical measurement claim.\n\nCloses #56."
+    }
+  ],
+  "files": [
+    {
+      "filename": "docs/design/KINEMATICS_PIPELINE.md",
+      "status": "modified",
+      "sha": "4206818b8834c56db530ca939b04cfe59e73aff6",
+      "additions": 24,
+      "deletions": 0,
+      "changes": 24
+    },
+    {
+      "filename": "docs/design/research/PROGRESS.md",
+      "status": "modified",
+      "sha": "36b05b80604935e3c70d1f076be5150e8639c164",
+      "additions": 24,
+      "deletions": 0,
+      "changes": 24
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/README.md",
+      "status": "added",
+      "sha": "5eee94afdfc2af12ad806fb816c3a9bf7f56f480",
+      "additions": 113,
+      "deletions": 0,
+      "changes": 113
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/author-receipt.json",
+      "status": "added",
+      "sha": "c51c2acc07ef57aae579c908f1fe3c31bb4b472c",
+      "additions": 60,
+      "deletions": 0,
+      "changes": 60
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/baseline-native-readback.json",
+      "status": "added",
+      "sha": "2110facf1a59ad9c1656aed76a09fad3cf8496cf",
+      "additions": 7,
+      "deletions": 0,
+      "changes": 7
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/baseline-runtime.tar.gz",
+      "status": "added",
+      "sha": "e973cff1bb0a0bffd768bf9fcef5400834ab2280",
+      "additions": 0,
+      "deletions": 0,
+      "changes": 0
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/baseline-source-manifest.json",
+      "status": "added",
+      "sha": "90416594a540a5227a70071b7597c87b291ff8de",
+      "additions": 812,
+      "deletions": 0,
+      "changes": 812
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/baseline-tests.json",
+      "status": "added",
+      "sha": "dc03cfdffaabb0209fd855482e78abb21179a658",
+      "additions": 298,
+      "deletions": 0,
+      "changes": 298
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/baseline-tests.log",
+      "status": "added",
+      "sha": "16860275d5331b2398cf48b0a2dca14601534df8",
+      "additions": 289,
+      "deletions": 0,
+      "changes": 289
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/baseline-tests.xml",
+      "status": "added",
+      "sha": "ed4db6467dd4d1410cc51e45097269ced09ef5c6",
+      "additions": 232,
+      "deletions": 0,
+      "changes": 232
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/candidate-native-readback.json",
+      "status": "added",
+      "sha": "369ab414496f49d86b28afa8a7a78b6b1e7a4e92",
+      "additions": 12,
+      "deletions": 0,
+      "changes": 12
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/candidate-source-manifest.json",
+      "status": "added",
+      "sha": "4fb157009d615aef9c7e000355df2d1750d56392",
+      "additions": 35,
+      "deletions": 0,
+      "changes": 35
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/candidate-tests.json",
+      "status": "added",
+      "sha": "15e3c7ebfc9af89e52f7d9ad5c31aaac0bf22d9f",
+      "additions": 301,
+      "deletions": 0,
+      "changes": 301
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/candidate-tests.log",
+      "status": "added",
+      "sha": "c124b9b2ffcbebd9cc3e5f87ac061017abf78741",
+      "additions": 12,
+      "deletions": 0,
+      "changes": 12
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/candidate-tests.xml",
+      "status": "added",
+      "sha": "6c202590a276a097c6b037d7939dce273fc5aaf2",
+      "additions": 1,
+      "deletions": 0,
+      "changes": 1
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/environment.json",
+      "status": "added",
+      "sha": "345664d3eb842ccc52018d36bd81cd9e892463ff",
+      "additions": 19,
+      "deletions": 0,
+      "changes": 19
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/manifest.json",
+      "status": "added",
+      "sha": "e96529b2c4475276c8483ca62414875ff049b596",
+      "additions": 100,
+      "deletions": 0,
+      "changes": 100
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/product.patch",
+      "status": "added",
+      "sha": "5f5581fb530ed1ee5f45ae89116dd772b2c00ca8",
+      "additions": 430,
+      "deletions": 0,
+      "changes": 430
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/static-checks.json",
+      "status": "added",
+      "sha": "fb1093707700a5fbbc746d7fcb3d4d6a29f6f0c6",
+      "additions": 28,
+      "deletions": 0,
+      "changes": 28
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/test-artifact-manifest.json",
+      "status": "added",
+      "sha": "b84b3cbc9bc474efa700cc7e1d632b162628ef1a",
+      "additions": 1665,
+      "deletions": 0,
+      "changes": 1665
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/test-artifacts.tar.gz",
+      "status": "added",
+      "sha": "692f10a8452e12ef0060177a89648ba0e247e9fc",
+      "additions": 0,
+      "deletions": 0,
+      "changes": 0
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/test_kinematics_validity.py",
+      "status": "added",
+      "sha": "7cf66857bcbeb9b72851ad53ce7c08f97d528fc8",
+      "additions": 202,
+      "deletions": 0,
+      "changes": 202
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/current/README.md",
+      "status": "added",
+      "sha": "5e3b6e546922665e6639b3a4f49c837983fc56f5",
+      "additions": 43,
+      "deletions": 0,
+      "changes": 43
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/current/junit.xml",
+      "status": "added",
+      "sha": "e574c6fab6ed3890ac856040421e2a576f385607",
+      "additions": 1,
+      "deletions": 0,
+      "changes": 1
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/current/manifest.json",
+      "status": "added",
+      "sha": "741306eabe2798bdc0927e34773cf9f7478b312a",
+      "additions": 51,
+      "deletions": 0,
+      "changes": 51
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/current/process.log",
+      "status": "added",
+      "sha": "7e1ead8287c87a8d972a2cf50390981926c5dd1a",
+      "additions": 12,
+      "deletions": 0,
+      "changes": 12
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/current/receipt.json",
+      "status": "added",
+      "sha": "75d0d3aee60e47679da6672ee3e9c8ec07b16d8f",
+      "additions": 300,
+      "deletions": 0,
+      "changes": 300
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/current/receive-current-seam.cjs",
+      "status": "added",
+      "sha": "cdc7717acd47e6776ca9c1afc100e429cc6e5ea9",
+      "additions": 16,
+      "deletions": 0,
+      "changes": 16
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/current/source-manifest.json",
+      "status": "added",
+      "sha": "6cb4dfce021abbeaff5e7e1b36f10c5822c9cdb6",
+      "additions": 818,
+      "deletions": 0,
+      "changes": 818
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/current/test-artifact-manifest.json",
+      "status": "added",
+      "sha": "4747226f7cb788048bdf0593ad3f82911da0b4eb",
+      "additions": 130,
+      "deletions": 0,
+      "changes": 130
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/current/test-artifacts.tar.gz",
+      "status": "added",
+      "sha": "30a23f4ce7066ac1db085ea21179b763f3ad0829",
+      "additions": 0,
+      "deletions": 0,
+      "changes": 0
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/independent/README.md",
+      "status": "added",
+      "sha": "355804bd71cd836250a57126b3fee28a47f233be",
+      "additions": 13,
+      "deletions": 0,
+      "changes": 13
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/independent/independent-cli-artifacts.tar.gz",
+      "status": "added",
+      "sha": "739fc581cae5561014b45049f225a2d4abdc2a6f",
+      "additions": 0,
+      "deletions": 0,
+      "changes": 0
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/independent/manifest.json",
+      "status": "added",
+      "sha": "b58ee77faebd30f53581475d4f4a931cf54c64e6",
+      "additions": 30,
+      "deletions": 0,
+      "changes": 30
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/independent/receiving.json",
+      "status": "added",
+      "sha": "4e63e2efd9e71728329abf66fe283597ee8ee815",
+      "additions": 59,
+      "deletions": 0,
+      "changes": 59
+    },
+    {
+      "filename": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/independent/source-review.json",
+      "status": "added",
+      "sha": "bbfb3c062188f4287388741cfd526d07249f5177",
+      "additions": 26,
+      "deletions": 0,
+      "changes": 26
+    },
+    {
+      "filename": "libs/python/capture_analysis/capture_analysis/kinematics/compute.py",
+      "status": "modified",
+      "sha": "fb8be59b00e15d9c264aad0983cf75a757c9e210",
+      "additions": 53,
+      "deletions": 43,
+      "changes": 96
+    },
+    {
+      "filename": "tests/analysis/test_kinematics_validity.py",
+      "status": "added",
+      "sha": "7cf66857bcbeb9b72851ad53ce7c08f97d528fc8",
+      "additions": 202,
+      "deletions": 0,
+      "changes": 202
+    }
+  ],
+  "decision": "Retain the qualified actual 3e3 parent. This later merge changes only the kinematics compute implementation, its tests/design/evidence and shared progress. The accepted 24-check native journey exercised numeric features; no desktop/history/scope or numeric-feature source changed. These receipts do not claim complete d43 acceptance."
+}

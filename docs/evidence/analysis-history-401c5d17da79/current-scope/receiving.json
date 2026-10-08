@@ -1,0 +1,37 @@
+{
+  "schema": "hamon.current-scope-history-receiving.v1",
+  "canonical_parent": "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e",
+  "runtime_tree": "167bbac3bba862cc1532d954fe2d503e561a00df",
+  "screen_git_blob": "6893f119593f8ff6551167efcb1939d014a081e6",
+  "screen_sha256": "1475764b8453ed870174fcaf98bc02370db76b5001c4175feb93263ad33d5b70",
+  "receiver_sha256": "c45eb2b2b02b8c9423565d811ae7782eff576b1313bf5cef366c4af8bf4e3802",
+  "process_exit_code": 0,
+  "seconds": 3.534,
+  "checks_passed": 24,
+  "checks_failed": 0,
+  "source_files": 142,
+  "source_bytes_unchanged": true,
+  "raw_package_bytes_unchanged": true,
+  "frame_sha256": "c8ec0afb810a76da3254e035cdac3a5e0ec46097976743e1917e672441a550f5",
+  "visual_review": "The current native scope picker and saved-history row are legible together. The very long private package path wraps and clips in the existing narrow left control column; this is not a complete layout or Windows MainWindow acceptance.",
+  "startup_control": {
+    "source_blob": "ee2db9acacdc92d3aa8ba0bfe12f638e9418f9b4",
+    "runtime_tree": "07d78241dca691015bb3e4d8d260b109672b7de0",
+    "method_sha256": "44c24508e4e4aa9d14d1771be486bb953f8b3719652183c2e9d7c3bb81ac2b17",
+    "passed_before_stop": 2,
+    "failed": 1,
+    "receipt": "startup-negative/receipt.json"
+  },
+  "receiver_adjustments": [
+    "Accept the existing completed_with_warnings status only with both exact expected fixture metadata warnings and exact saved range.",
+    "Explicitly verify Run/history controls restore after each completed worker.",
+    "Emit complete receipt and native PNG in stdout so artifact transport is independent of the native journey."
+  ],
+  "nonaccepting_continuation": {
+    "method_sha256": "1f7029cb84c999feed1b5b636d65551a75938f5875d09bbff20065aa9d1cc0b2",
+    "cause": "ENOSPC while writing frame/receipt and supervisor artifacts",
+    "receipt_bytes": 0,
+    "native_outcome": "not accepted; no complete result claimed"
+  },
+  "qualification_limits": "Original 14 tests / 19 checks remain on 37443 and 72c15; QC/2 remains e43; current numeric nested-gallery limitation remains separate. No full Windows, MainWindow, daemon, hardware or installed-release acceptance."
+}

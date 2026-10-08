@@ -1,0 +1,599 @@
+﻿2026-10-08T16:50:45.4210704Z Current runner version: '2.337.0'
+2026-10-08T16:50:45.4235214Z ##[group]Runner Image Provisioner
+2026-10-08T16:50:45.4236031Z Hosted Compute Agent
+2026-10-08T16:50:45.4236535Z Version: 20261002.596
+2026-10-08T16:50:45.4237079Z Commit: c3d12f3313a95f25162a1503be624f3b0617f8c0
+2026-10-08T16:50:45.4237775Z Build Date: 2026-10-02T22:28:27Z
+2026-10-08T16:50:45.4238411Z Worker ID: {c48cee9f-7b8e-4cb1-bcca-a69b9e2ada57}
+2026-10-08T16:50:45.4239079Z Region: westus3
+2026-10-08T16:50:45.4239558Z Cloud: Azure
+2026-10-08T16:50:45.4240008Z ##[endgroup]
+2026-10-08T16:50:45.4241269Z ##[group]Operating System
+2026-10-08T16:50:45.4241838Z Microsoft Windows Server 2022
+2026-10-08T16:50:45.4242379Z 10.0.20348
+2026-10-08T16:50:45.4242837Z Datacenter
+2026-10-08T16:50:45.4243281Z ##[endgroup]
+2026-10-08T16:50:45.4243751Z ##[group]Runner Image
+2026-10-08T16:50:45.4244264Z Image: windows-2022
+2026-10-08T16:50:45.4244751Z Version: 20261004.326.1
+2026-10-08T16:50:45.4246129Z Included Software: https://github.com/actions/runner-images/blob/win22/20261004.326/images/windows/Windows2022-Readme.md
+2026-10-08T16:50:45.4247563Z Image Release: https://github.com/actions/runner-images/releases/tag/win22%2F20261004.326
+2026-10-08T16:50:45.4248387Z ##[endgroup]
+2026-10-08T16:50:45.4249484Z ##[group]GITHUB_TOKEN Permissions
+2026-10-08T16:50:45.4251349Z Contents: read
+2026-10-08T16:50:45.4251876Z Metadata: read
+2026-10-08T16:50:45.4252337Z Packages: read
+2026-10-08T16:50:45.4252808Z ##[endgroup]
+2026-10-08T16:50:45.4254837Z Secret source: Actions
+2026-10-08T16:50:45.4255652Z Cache mode: write
+2026-10-08T16:50:45.4256266Z Prepare workflow directory
+2026-10-08T16:50:45.4637236Z Prepare all required actions
+2026-10-08T16:50:45.4706258Z Getting action download info
+2026-10-08T16:50:45.8292788Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-08T16:50:45.9735031Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-08T16:50:46.1907980Z Download action repository 'actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a' (SHA:043fb46d1a93c77aae656e7c1c64a875d1fc6a0a)
+2026-10-08T16:50:46.4118396Z Complete job name: python
+2026-10-08T16:50:46.5862269Z ##[group]Run actions/checkout@v4
+2026-10-08T16:50:46.5863342Z with:
+2026-10-08T16:50:46.5863730Z   repository: Jacob-Met/CaptureSuite
+2026-10-08T16:50:46.5867344Z   token: ***
+2026-10-08T16:50:46.5867696Z   ssh-strict: true
+2026-10-08T16:50:46.5868056Z   ssh-user: git
+2026-10-08T16:50:46.5868421Z   persist-credentials: true
+2026-10-08T16:50:46.5868824Z   clean: true
+2026-10-08T16:50:46.5869201Z   sparse-checkout-cone-mode: true
+2026-10-08T16:50:46.5869648Z   fetch-depth: 1
+2026-10-08T16:50:46.5870012Z   fetch-tags: false
+2026-10-08T16:50:46.5870381Z   show-progress: true
+2026-10-08T16:50:46.5870748Z   lfs: false
+2026-10-08T16:50:46.5871089Z   submodules: false
+2026-10-08T16:50:46.5871466Z   set-safe-directory: true
+2026-10-08T16:50:46.5871895Z   allow-unsafe-pr-checkout: false
+2026-10-08T16:50:46.5872586Z ##[endgroup]
+2026-10-08T16:50:46.7297989Z Syncing repository: Jacob-Met/CaptureSuite
+2026-10-08T16:50:46.7299624Z ##[group]Getting Git version info
+2026-10-08T16:50:46.7300292Z Working directory is 'D:\a\CaptureSuite\CaptureSuite'
+2026-10-08T16:50:46.8126119Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-10-08T16:50:47.1225306Z git version 2.56.0.windows.1
+2026-10-08T16:50:47.1283004Z ##[endgroup]
+2026-10-08T16:50:47.1302763Z Temporarily overriding HOME='D:\a\_temp\f684de22-d6ff-46f2-bc9a-b7e627ea0749' before making global git config changes
+2026-10-08T16:50:47.1304173Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-08T16:50:47.1321247Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\CaptureSuite\CaptureSuite
+2026-10-08T16:50:47.1871905Z Deleting the contents of 'D:\a\CaptureSuite\CaptureSuite'
+2026-10-08T16:50:47.1876833Z ##[group]Initializing the repository
+2026-10-08T16:50:47.1886461Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\CaptureSuite\CaptureSuite
+2026-10-08T16:50:47.2676056Z Initialized empty Git repository in D:/a/CaptureSuite/CaptureSuite/.git/
+2026-10-08T16:50:47.2719501Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/Jacob-Met/CaptureSuite
+2026-10-08T16:50:47.3297906Z ##[endgroup]
+2026-10-08T16:50:47.3299446Z ##[group]Disabling automatic garbage collection
+2026-10-08T16:50:47.3306146Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+2026-10-08T16:50:47.3604666Z ##[endgroup]
+2026-10-08T16:50:47.3606096Z ##[group]Setting up auth
+2026-10-08T16:50:47.3616747Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-10-08T16:50:47.3917773Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-10-08T16:50:48.6925271Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-08T16:50:48.7229471Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-10-08T16:50:49.4066511Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-08T16:50:49.4365311Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-10-08T16:50:49.9086410Z [command]"C:\Program Files\Git\bin\git.exe" config --local http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+2026-10-08T16:50:49.9396564Z ##[endgroup]
+2026-10-08T16:50:49.9397418Z ##[group]Fetching the repository
+2026-10-08T16:50:49.9413113Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +e0a45debe5e2a331ba5aee242ac985c9f604b31b:refs/remotes/pull/80/merge
+2026-10-08T16:50:51.5200194Z From https://github.com/Jacob-Met/CaptureSuite
+2026-10-08T16:50:51.5201120Z  * [new ref]         e0a45debe5e2a331ba5aee242ac985c9f604b31b -> pull/80/merge
+2026-10-08T16:50:51.5237919Z ##[endgroup]
+2026-10-08T16:50:51.5238551Z ##[group]Determining the checkout info
+2026-10-08T16:50:51.5240905Z ##[endgroup]
+2026-10-08T16:50:51.5249927Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+2026-10-08T16:50:51.5703410Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+2026-10-08T16:50:51.5992781Z ##[group]Checking out the ref
+2026-10-08T16:50:51.6001697Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force refs/remotes/pull/80/merge
+2026-10-08T16:50:51.8495563Z Note: switching to 'refs/remotes/pull/80/merge'.
+2026-10-08T16:50:51.8496969Z 
+2026-10-08T16:50:51.8497202Z You are in 'detached HEAD' state. You can look around, make experimental
+2026-10-08T16:50:51.8497853Z changes and commit them, and you can discard any commits you make in this
+2026-10-08T16:50:51.8498297Z state without impacting any branches by switching back to a branch.
+2026-10-08T16:50:51.8498569Z 
+2026-10-08T16:50:51.8498757Z If you want to create a new branch to retain commits you create, you may
+2026-10-08T16:50:51.8499287Z do so (now or later) by using -c with the switch command. Example:
+2026-10-08T16:50:51.8499518Z 
+2026-10-08T16:50:51.8499683Z   git switch -c <new-branch-name>
+2026-10-08T16:50:51.8499980Z 
+2026-10-08T16:50:51.8500113Z Or undo this operation with:
+2026-10-08T16:50:51.8500337Z 
+2026-10-08T16:50:51.8500412Z   git switch -
+2026-10-08T16:50:51.8500524Z 
+2026-10-08T16:50:51.8500716Z Turn off this advice by setting config variable advice.detachedHead to false
+2026-10-08T16:50:51.8502017Z 
+2026-10-08T16:50:51.8502353Z HEAD is now at e0a45de Merge bd390a9d497e567cd868ba4029b74bbd509b4a78 into 3cbb5300bdc79c157370d1b3e599a6c82752d54a
+2026-10-08T16:50:51.8569008Z ##[endgroup]
+2026-10-08T16:50:51.8951186Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+2026-10-08T16:50:51.9228557Z e0a45debe5e2a331ba5aee242ac985c9f604b31b
+2026-10-08T16:50:51.9660730Z ##[group]Run actions/setup-python@v5
+2026-10-08T16:50:51.9661100Z with:
+2026-10-08T16:50:51.9661305Z   python-version: 3.12
+2026-10-08T16:50:51.9661521Z   check-latest: false
+2026-10-08T16:50:51.9663804Z   token: ***
+2026-10-08T16:50:51.9664015Z   update-environment: true
+2026-10-08T16:50:51.9664253Z   allow-prereleases: false
+2026-10-08T16:50:51.9664463Z   freethreaded: false
+2026-10-08T16:50:51.9664664Z ##[endgroup]
+2026-10-08T16:50:52.1208694Z ##[group]Installed versions
+2026-10-08T16:50:52.1475222Z (node:3692) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-08T16:50:52.1476062Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-08T16:50:52.1477324Z Successfully set up CPython (3.12.10)
+2026-10-08T16:50:52.1478342Z ##[endgroup]
+2026-10-08T16:50:52.1779601Z ##[group]Run python -m pip install -r requirements-ci.txt
+2026-10-08T16:50:52.1780185Z [36;1mpython -m pip install -r requirements-ci.txt[0m
+2026-10-08T16:50:52.1880845Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-08T16:50:52.1881210Z env:
+2026-10-08T16:50:52.1881485Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:50:52.1881949Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-10-08T16:50:52.1882374Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:50:52.1882752Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:50:52.1883119Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:50:52.1883446Z ##[endgroup]
+2026-10-08T16:51:04.5928818Z Obtaining file:///D:/a/CaptureSuite/CaptureSuite/libs/python/capture_protocol (from -r requirements-ci.txt (line 3))
+2026-10-08T16:51:04.5955827Z   Installing build dependencies: started
+2026-10-08T16:51:07.4378324Z   Installing build dependencies: finished with status 'done'
+2026-10-08T16:51:07.4395020Z   Checking if build backend supports build_editable: started
+2026-10-08T16:51:08.0311464Z   Checking if build backend supports build_editable: finished with status 'done'
+2026-10-08T16:51:08.0336471Z   Getting requirements to build editable: started
+2026-10-08T16:51:08.5557979Z   Getting requirements to build editable: finished with status 'done'
+2026-10-08T16:51:08.5583430Z   Preparing editable metadata (pyproject.toml): started
+2026-10-08T16:51:08.8619437Z   Preparing editable metadata (pyproject.toml): finished with status 'done'
+2026-10-08T16:51:08.8658661Z Obtaining file:///D:/a/CaptureSuite/CaptureSuite/libs/python/capture_session (from -r requirements-ci.txt (line 4))
+2026-10-08T16:51:08.8682170Z   Installing build dependencies: started
+2026-10-08T16:51:10.3876651Z   Installing build dependencies: finished with status 'done'
+2026-10-08T16:51:10.3890170Z   Checking if build backend supports build_editable: started
+2026-10-08T16:51:10.8391878Z   Checking if build backend supports build_editable: finished with status 'done'
+2026-10-08T16:51:10.8416051Z   Getting requirements to build editable: started
+2026-10-08T16:51:11.4285325Z   Getting requirements to build editable: finished with status 'done'
+2026-10-08T16:51:11.4311638Z   Preparing editable metadata (pyproject.toml): started
+2026-10-08T16:51:11.7329200Z   Preparing editable metadata (pyproject.toml): finished with status 'done'
+2026-10-08T16:51:11.7368252Z Obtaining file:///D:/a/CaptureSuite/CaptureSuite/libs/python/capture_analysis
+2026-10-08T16:51:11.7392097Z   Installing build dependencies: started
+2026-10-08T16:51:13.4070984Z   Installing build dependencies: finished with status 'done'
+2026-10-08T16:51:13.4087585Z   Checking if build backend supports build_editable: started
+2026-10-08T16:51:13.8575081Z   Checking if build backend supports build_editable: finished with status 'done'
+2026-10-08T16:51:13.8594270Z   Getting requirements to build editable: started
+2026-10-08T16:51:14.3634119Z   Getting requirements to build editable: finished with status 'done'
+2026-10-08T16:51:14.3660495Z   Preparing editable metadata (pyproject.toml): started
+2026-10-08T16:51:14.6781798Z   Preparing editable metadata (pyproject.toml): finished with status 'done'
+2026-10-08T16:51:14.6826638Z Obtaining file:///D:/a/CaptureSuite/CaptureSuite/libs/python/capture_worker (from -r requirements-ci.txt (line 6))
+2026-10-08T16:51:14.6856662Z   Installing build dependencies: started
+2026-10-08T16:51:16.2021425Z   Installing build dependencies: finished with status 'done'
+2026-10-08T16:51:16.2036229Z   Checking if build backend supports build_editable: started
+2026-10-08T16:51:16.6559278Z   Checking if build backend supports build_editable: finished with status 'done'
+2026-10-08T16:51:16.6579338Z   Getting requirements to build editable: started
+2026-10-08T16:51:17.3108610Z   Getting requirements to build editable: finished with status 'done'
+2026-10-08T16:51:17.3135594Z   Preparing editable metadata (pyproject.toml): started
+2026-10-08T16:51:17.6163231Z   Preparing editable metadata (pyproject.toml): finished with status 'done'
+2026-10-08T16:51:17.6200017Z Obtaining file:///D:/a/CaptureSuite/CaptureSuite/desktop
+2026-10-08T16:51:17.6227847Z   Installing build dependencies: started
+2026-10-08T16:51:19.2715518Z   Installing build dependencies: finished with status 'done'
+2026-10-08T16:51:19.2731070Z   Checking if build backend supports build_editable: started
+2026-10-08T16:51:19.7477364Z   Checking if build backend supports build_editable: finished with status 'done'
+2026-10-08T16:51:19.7501439Z   Getting requirements to build editable: started
+2026-10-08T16:51:20.2406903Z   Getting requirements to build editable: finished with status 'done'
+2026-10-08T16:51:20.2432036Z   Preparing editable metadata (pyproject.toml): started
+2026-10-08T16:51:20.5394154Z   Preparing editable metadata (pyproject.toml): finished with status 'done'
+2026-10-08T16:51:21.2896826Z Collecting grpcio-tools<1.63,>=1.62 (from -r requirements-ci.txt (line 8))
+2026-10-08T16:51:21.4686549Z   Downloading grpcio_tools-1.62.3-cp312-cp312-win_amd64.whl.metadata (6.4 kB)
+2026-10-08T16:51:21.5122615Z Collecting mcap<2,>=1.1 (from -r requirements-ci.txt (line 9))
+2026-10-08T16:51:21.5252590Z   Downloading mcap-1.5.0-py3-none-any.whl.metadata (380 bytes)
+2026-10-08T16:51:21.5765987Z Collecting pytest>=8 (from -r requirements-ci.txt (line 10))
+2026-10-08T16:51:21.5882604Z   Downloading pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
+2026-10-08T16:51:21.6393655Z Collecting pytest-cov>=5 (from -r requirements-ci.txt (line 11))
+2026-10-08T16:51:21.6519523Z   Downloading pytest_cov-7.1.0-py3-none-any.whl.metadata (32 kB)
+2026-10-08T16:51:22.0072657Z Collecting ruff<1,>=0.6 (from -r requirements-ci.txt (line 12))
+2026-10-08T16:51:22.0192780Z   Downloading ruff-0.16.10-py3-none-win_amd64.whl.metadata (21 kB)
+2026-10-08T16:51:22.1782091Z Collecting protobuf<5,>=4.25 (from capture-protocol==0.1.0->-r requirements-ci.txt (line 3))
+2026-10-08T16:51:22.1902237Z   Downloading protobuf-4.25.9-cp310-abi3-win_amd64.whl.metadata (541 bytes)
+2026-10-08T16:51:22.2403335Z Collecting jsonschema>=4.21 (from capture-session==0.1.0->-r requirements-ci.txt (line 4))
+2026-10-08T16:51:22.2521524Z   Downloading jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+2026-10-08T16:51:22.3568641Z Collecting pyyaml>=6.0 (from capture-analysis==0.1.0)
+2026-10-08T16:51:22.3692664Z   Downloading pyyaml-6.0.3-cp312-cp312-win_amd64.whl.metadata (2.4 kB)
+2026-10-08T16:51:22.4280253Z Collecting PySide6<7,>=6.6 (from capture-desktop==0.1.0)
+2026-10-08T16:51:22.4435080Z   Downloading pyside6-6.12.0-cp310-abi3-win_amd64.whl.metadata (5.7 kB)
+2026-10-08T16:51:22.6476574Z Collecting numpy>=1.26 (from capture-analysis==0.1.0)
+2026-10-08T16:51:22.6599066Z   Downloading numpy-2.5.3-cp312-cp312-win_amd64.whl.metadata (6.6 kB)
+2026-10-08T16:51:22.7980134Z Collecting scipy>=1.11 (from capture-analysis==0.1.0)
+2026-10-08T16:51:22.8099680Z   Downloading scipy-1.18.1-cp312-cp312-win_amd64.whl.metadata (61 kB)
+2026-10-08T16:51:22.9850602Z Collecting pandas>=2.1 (from capture-analysis==0.1.0)
+2026-10-08T16:51:22.9989992Z   Downloading pandas-3.0.6-cp312-cp312-win_amd64.whl.metadata (19 kB)
+2026-10-08T16:51:23.1243634Z Collecting pyarrow>=14.0 (from capture-analysis==0.1.0)
+2026-10-08T16:51:23.1370593Z   Downloading pyarrow-25.0.1-cp312-cp312-win_amd64.whl.metadata (3.0 kB)
+2026-10-08T16:51:23.2860625Z Collecting matplotlib>=3.8 (from capture-analysis==0.1.0)
+2026-10-08T16:51:23.2985490Z   Downloading matplotlib-3.11.2-cp312-cp312-win_amd64.whl.metadata (80 kB)
+2026-10-08T16:51:23.3576988Z Collecting pyqtgraph>=0.13 (from capture-desktop==0.1.0)
+2026-10-08T16:51:23.3693447Z   Downloading pyqtgraph-0.14.0-py3-none-any.whl.metadata (1.5 kB)
+2026-10-08T16:51:23.8781000Z Collecting grpcio>=1.62.3 (from grpcio-tools<1.63,>=1.62->-r requirements-ci.txt (line 8))
+2026-10-08T16:51:23.8906757Z   Downloading grpcio-1.84.0-cp312-cp312-win_amd64.whl.metadata (3.9 kB)
+2026-10-08T16:51:24.1078733Z Collecting setuptools (from grpcio-tools<1.63,>=1.62->-r requirements-ci.txt (line 8))
+2026-10-08T16:51:24.1101210Z   Using cached setuptools-84.0.0-py3-none-any.whl.metadata (6.6 kB)
+2026-10-08T16:51:24.1854323Z Collecting lz4 (from mcap<2,>=1.1->-r requirements-ci.txt (line 9))
+2026-10-08T16:51:24.2079294Z   Downloading lz4-4.4.5-cp312-cp312-win_amd64.whl.metadata (3.9 kB)
+2026-10-08T16:51:24.3143002Z Collecting zstandard (from mcap<2,>=1.1->-r requirements-ci.txt (line 9))
+2026-10-08T16:51:24.3270067Z   Downloading zstandard-0.25.0-cp312-cp312-win_amd64.whl.metadata (3.3 kB)
+2026-10-08T16:51:24.4183664Z Collecting PySide6_Essentials==6.12.0 (from PySide6<7,>=6.6->capture-desktop==0.1.0)
+2026-10-08T16:51:24.4307372Z   Downloading pyside6_essentials-6.12.0-cp310-abi3-win_amd64.whl.metadata (3.9 kB)
+2026-10-08T16:51:24.4967692Z Collecting PySide6_Addons==6.12.0 (from PySide6<7,>=6.6->capture-desktop==0.1.0)
+2026-10-08T16:51:24.5138828Z   Downloading pyside6_addons-6.12.0-cp310-abi3-win_amd64.whl.metadata (4.4 kB)
+2026-10-08T16:51:24.5525805Z Collecting PySide6_WebEngine==6.12.0.140 (from PySide6<7,>=6.6->capture-desktop==0.1.0)
+2026-10-08T16:51:24.5650645Z   Downloading pyside6_webengine-6.12.0.140-cp310-abi3-win_amd64.whl.metadata (3.7 kB)
+2026-10-08T16:51:24.6200213Z Collecting PySide6_Pdf==6.12.0.140 (from PySide6<7,>=6.6->capture-desktop==0.1.0)
+2026-10-08T16:51:24.6356152Z   Downloading pyside6_pdf-6.12.0.140-cp310-abi3-win_amd64.whl.metadata (3.6 kB)
+2026-10-08T16:51:24.7101447Z Collecting shiboken6==6.12.0 (from PySide6_Essentials==6.12.0->PySide6<7,>=6.6->capture-desktop==0.1.0)
+2026-10-08T16:51:24.7229983Z   Downloading shiboken6-6.12.0-cp310-abi3-win_amd64.whl.metadata (2.6 kB)
+2026-10-08T16:51:24.7454640Z Requirement already satisfied: colorama>=0.4 in C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\site-packages (from pytest>=8->-r requirements-ci.txt (line 10)) (0.4.6)
+2026-10-08T16:51:24.7722488Z Collecting iniconfig>=1.0.1 (from pytest>=8->-r requirements-ci.txt (line 10))
+2026-10-08T16:51:24.7929052Z   Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+2026-10-08T16:51:24.8340805Z Requirement already satisfied: packaging>=22 in C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\site-packages (from pytest>=8->-r requirements-ci.txt (line 10)) (26.3)
+2026-10-08T16:51:24.8659814Z Collecting pluggy<2,>=1.5 (from pytest>=8->-r requirements-ci.txt (line 10))
+2026-10-08T16:51:24.8774992Z   Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+2026-10-08T16:51:24.9297225Z Collecting pygments>=2.7.2 (from pytest>=8->-r requirements-ci.txt (line 10))
+2026-10-08T16:51:24.9417418Z   Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+2026-10-08T16:51:25.3804181Z Collecting coverage>=7.10.6 (from coverage[toml]>=7.10.6->pytest-cov>=5->-r requirements-ci.txt (line 11))
+2026-10-08T16:51:25.3929090Z   Downloading coverage-7.16.2-cp312-cp312-win_amd64.whl.metadata (8.4 kB)
+2026-10-08T16:51:25.4407924Z Collecting typing-extensions~=4.12 (from grpcio>=1.62.3->grpcio-tools<1.63,>=1.62->-r requirements-ci.txt (line 8))
+2026-10-08T16:51:25.4527706Z   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+2026-10-08T16:51:25.5025726Z Collecting attrs>=22.2.0 (from jsonschema>=4.21->capture-session==0.1.0->-r requirements-ci.txt (line 4))
+2026-10-08T16:51:25.5154041Z   Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+2026-10-08T16:51:25.5541607Z Collecting jsonschema-specifications>=2023.03.6 (from jsonschema>=4.21->capture-session==0.1.0->-r requirements-ci.txt (line 4))
+2026-10-08T16:51:25.5657900Z   Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+2026-10-08T16:51:25.6073574Z Collecting referencing>=0.28.4 (from jsonschema>=4.21->capture-session==0.1.0->-r requirements-ci.txt (line 4))
+2026-10-08T16:51:25.6189884Z   Downloading referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+2026-10-08T16:51:25.8852887Z Collecting rpds-py>=0.25.0 (from jsonschema>=4.21->capture-session==0.1.0->-r requirements-ci.txt (line 4))
+2026-10-08T16:51:25.8978468Z   Downloading rpds_py-2026.9.1-cp312-cp312-win_amd64.whl.metadata (4.2 kB)
+2026-10-08T16:51:25.9861700Z Collecting contourpy>=1.0.1 (from matplotlib>=3.8->capture-analysis==0.1.0)
+2026-10-08T16:51:25.9986353Z   Downloading contourpy-1.4.0-cp312-cp312-win_amd64.whl.metadata (3.8 kB)
+2026-10-08T16:51:26.0340343Z Collecting cycler>=0.10 (from matplotlib>=3.8->capture-analysis==0.1.0)
+2026-10-08T16:51:26.0455973Z   Downloading cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+2026-10-08T16:51:26.2135635Z Collecting fonttools>=4.28.2 (from matplotlib>=3.8->capture-analysis==0.1.0)
+2026-10-08T16:51:26.2275515Z   Downloading fonttools-4.66.1-cp312-cp312-win_amd64.whl.metadata (132 kB)
+2026-10-08T16:51:26.3310203Z Collecting kiwisolver>=1.3.1 (from matplotlib>=3.8->capture-analysis==0.1.0)
+2026-10-08T16:51:26.3434832Z   Downloading kiwisolver-1.5.1-cp312-cp312-win_amd64.whl.metadata (5.2 kB)
+2026-10-08T16:51:26.5872104Z Collecting pillow>=9 (from matplotlib>=3.8->capture-analysis==0.1.0)
+2026-10-08T16:51:26.5993637Z   Downloading pillow-12.3.0-cp312-cp312-win_amd64.whl.metadata (9.3 kB)
+2026-10-08T16:51:26.6514750Z Collecting pyparsing>=3 (from matplotlib>=3.8->capture-analysis==0.1.0)
+2026-10-08T16:51:26.6681488Z   Downloading pyparsing-3.3.3-py3-none-any.whl.metadata (5.9 kB)
+2026-10-08T16:51:26.7051576Z Collecting python-dateutil>=2.7 (from matplotlib>=3.8->capture-analysis==0.1.0)
+2026-10-08T16:51:26.7172438Z   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+2026-10-08T16:51:26.7647437Z Collecting tzdata (from pandas>=2.1->capture-analysis==0.1.0)
+2026-10-08T16:51:26.7764751Z   Downloading tzdata-2026.5-py2.py3-none-any.whl.metadata (1.4 kB)
+2026-10-08T16:51:26.8258537Z Collecting six>=1.5 (from python-dateutil>=2.7->matplotlib>=3.8->capture-analysis==0.1.0)
+2026-10-08T16:51:26.8372725Z   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+2026-10-08T16:51:26.8748841Z Downloading grpcio_tools-1.62.3-cp312-cp312-win_amd64.whl (1.1 MB)
+2026-10-08T16:51:26.9167792Z    ---------------------------------------- 1.1/1.1 MB 16.8 MB/s  0:00:00
+2026-10-08T16:51:26.9284310Z Downloading mcap-1.5.0-py3-none-any.whl (21 kB)
+2026-10-08T16:51:26.9562615Z Downloading ruff-0.16.10-py3-none-win_amd64.whl (10.6 MB)
+2026-10-08T16:51:27.0549875Z    ---------------------------------------- 10.6/10.6 MB 109.8 MB/s  0:00:00
+2026-10-08T16:51:27.0670344Z Downloading protobuf-4.25.9-cp310-abi3-win_amd64.whl (413 kB)
+2026-10-08T16:51:27.0989149Z Downloading pyside6-6.12.0-cp310-abi3-win_amd64.whl (578 kB)
+2026-10-08T16:51:27.1208106Z    ---------------------------------------- 579.0/579.0 kB 10.2 MB/s  0:00:00
+2026-10-08T16:51:27.1333297Z Downloading pyside6_addons-6.12.0-cp310-abi3-win_amd64.whl (40.5 MB)
+2026-10-08T16:51:27.5991511Z    ---------------------------------------- 40.5/40.5 MB 88.9 MB/s  0:00:00
+2026-10-08T16:51:27.6120065Z Downloading pyside6_essentials-6.12.0-cp310-abi3-win_amd64.whl (82.2 MB)
+2026-10-08T16:51:29.0049725Z    ---------------------------------------- 82.2/82.2 MB 58.9 MB/s  0:00:01
+2026-10-08T16:51:29.0178617Z Downloading pyside6_pdf-6.12.0.140-cp310-abi3-win_amd64.whl (3.0 MB)
+2026-10-08T16:51:29.0575481Z    ---------------------------------------- 3.0/3.0 MB 57.9 MB/s  0:00:00
+2026-10-08T16:51:29.0701377Z Downloading pyside6_webengine-6.12.0.140-cp310-abi3-win_amd64.whl (131.7 MB)
+2026-10-08T16:51:30.9886666Z    ---------------------------------------- 131.7/131.7 MB 68.9 MB/s  0:00:01
+2026-10-08T16:51:31.0008561Z Downloading shiboken6-6.12.0-cp310-abi3-win_amd64.whl (1.3 MB)
+2026-10-08T16:51:31.0264678Z    ---------------------------------------- 1.3/1.3 MB 62.7 MB/s  0:00:00
+2026-10-08T16:51:31.0383065Z Downloading pytest-9.1.1-py3-none-any.whl (386 kB)
+2026-10-08T16:51:31.0681171Z Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+2026-10-08T16:51:31.0929234Z Downloading pytest_cov-7.1.0-py3-none-any.whl (22 kB)
+2026-10-08T16:51:31.1223989Z Downloading coverage-7.16.2-cp312-cp312-win_amd64.whl (226 kB)
+2026-10-08T16:51:31.1515779Z Downloading grpcio-1.84.0-cp312-cp312-win_amd64.whl (5.3 MB)
+2026-10-08T16:51:31.2012189Z    ---------------------------------------- 5.3/5.3 MB 108.5 MB/s  0:00:00
+2026-10-08T16:51:31.2129905Z Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+2026-10-08T16:51:31.2363197Z Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+2026-10-08T16:51:31.2628390Z Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)
+2026-10-08T16:51:31.2891005Z Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+2026-10-08T16:51:31.3172588Z Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+2026-10-08T16:51:31.3437370Z Downloading matplotlib-3.11.2-cp312-cp312-win_amd64.whl (9.3 MB)
+2026-10-08T16:51:31.4219448Z    ---------------------------------------- 9.3/9.3 MB 116.5 MB/s  0:00:00
+2026-10-08T16:51:31.4340992Z Downloading contourpy-1.4.0-cp312-cp312-win_amd64.whl (234 kB)
+2026-10-08T16:51:31.4632119Z Downloading cycler-0.12.1-py3-none-any.whl (8.3 kB)
+2026-10-08T16:51:31.4904053Z Downloading fonttools-4.66.1-cp312-cp312-win_amd64.whl (2.5 MB)
+2026-10-08T16:51:31.5357126Z    ---------------------------------------- 2.5/2.5 MB 69.5 MB/s  0:00:00
+2026-10-08T16:51:31.5479268Z Downloading kiwisolver-1.5.1-cp312-cp312-win_amd64.whl (70 kB)
+2026-10-08T16:51:31.5790967Z Downloading numpy-2.5.3-cp312-cp312-win_amd64.whl (12.6 MB)
+2026-10-08T16:51:31.6817146Z    ---------------------------------------- 12.6/12.6 MB 111.9 MB/s  0:00:00
+2026-10-08T16:51:31.6939421Z Downloading pandas-3.0.6-cp312-cp312-win_amd64.whl (9.7 MB)
+2026-10-08T16:51:31.7607179Z    ---------------------------------------- 9.7/9.7 MB 149.2 MB/s  0:00:00
+2026-10-08T16:51:31.7732072Z Downloading pillow-12.3.0-cp312-cp312-win_amd64.whl (7.2 MB)
+2026-10-08T16:51:31.8274667Z    ---------------------------------------- 7.2/7.2 MB 151.4 MB/s  0:00:00
+2026-10-08T16:51:31.8409263Z Downloading pyarrow-25.0.1-cp312-cp312-win_amd64.whl (28.0 MB)
+2026-10-08T16:51:32.2777783Z    ---------------------------------------- 28.0/28.0 MB 63.2 MB/s  0:00:00
+2026-10-08T16:51:32.2897793Z Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+2026-10-08T16:51:32.3158487Z    ---------------------------------------- 1.3/1.3 MB 61.8 MB/s  0:00:00
+2026-10-08T16:51:32.3274457Z Downloading pyparsing-3.3.3-py3-none-any.whl (126 kB)
+2026-10-08T16:51:32.3551552Z Downloading pyqtgraph-0.14.0-py3-none-any.whl (1.9 MB)
+2026-10-08T16:51:32.3877193Z    ---------------------------------------- 1.9/1.9 MB 53.6 MB/s  0:00:00
+2026-10-08T16:51:32.3997012Z Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+2026-10-08T16:51:32.4252537Z Downloading pyyaml-6.0.3-cp312-cp312-win_amd64.whl (154 kB)
+2026-10-08T16:51:32.4564743Z Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+2026-10-08T16:51:32.4800948Z Downloading rpds_py-2026.9.1-cp312-cp312-win_amd64.whl (222 kB)
+2026-10-08T16:51:32.5131821Z Downloading scipy-1.18.1-cp312-cp312-win_amd64.whl (36.7 MB)
+2026-10-08T16:51:33.7326562Z    ---------------------------------------- 36.7/36.7 MB 29.9 MB/s  0:00:01
+2026-10-08T16:51:33.7442041Z Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+2026-10-08T16:51:33.7742839Z Downloading lz4-4.4.5-cp312-cp312-win_amd64.whl (99 kB)
+2026-10-08T16:51:33.7918994Z Using cached setuptools-84.0.0-py3-none-any.whl (818 kB)
+2026-10-08T16:51:33.8053697Z Downloading tzdata-2026.5-py2.py3-none-any.whl (347 kB)
+2026-10-08T16:51:33.8327219Z Downloading zstandard-0.25.0-cp312-cp312-win_amd64.whl (506 kB)
+2026-10-08T16:51:34.5914778Z Building wheels for collected packages: capture-protocol, capture-session, capture-analysis, capture-worker, capture-desktop
+2026-10-08T16:51:34.6063343Z   Building editable for capture-protocol (pyproject.toml): started
+2026-10-08T16:51:34.9856995Z   Building editable for capture-protocol (pyproject.toml): finished with status 'done'
+2026-10-08T16:51:34.9894284Z   Created wheel for capture-protocol: filename=capture_protocol-0.1.0-0.editable-py3-none-any.whl size=7398 sha256=e368858667717cc180090825f7f3ab1fa1e23e25e5756a891601dcdc67f5d7ee
+2026-10-08T16:51:34.9896196Z   Stored in directory: C:\Users\runneradmin\AppData\Local\Temp\pip-ephem-wheel-cache-fvasdsq4\wheels\be\38\74\adf0f9a8f0ba8d26599b299cff33b892a58ed35959c9e09acd
+2026-10-08T16:51:34.9936777Z   Building editable for capture-session (pyproject.toml): started
+2026-10-08T16:51:35.3098376Z   Building editable for capture-session (pyproject.toml): finished with status 'done'
+2026-10-08T16:51:35.3132901Z   Created wheel for capture-session: filename=capture_session-0.1.0-0.editable-py3-none-any.whl size=2863 sha256=9e88e25ab3d85c76e38f3d731bb21f9cb9b211a47c8f980927dd8a307ed589b3
+2026-10-08T16:51:35.3134298Z   Stored in directory: C:\Users\runneradmin\AppData\Local\Temp\pip-ephem-wheel-cache-fvasdsq4\wheels\49\8f\6e\163bd066522d89fdd0906cf22a1687ebc628821c7980903be9
+2026-10-08T16:51:35.3174025Z   Building editable for capture-analysis (pyproject.toml): started
+2026-10-08T16:51:35.6657221Z   Building editable for capture-analysis (pyproject.toml): finished with status 'done'
+2026-10-08T16:51:35.6690723Z   Created wheel for capture-analysis: filename=capture_analysis-0.1.0-0.editable-py3-none-any.whl size=3050 sha256=fa5f2e8ac509a025fb23323052b2c24f0d04d3b6cc5e423370f967abd2768ea8
+2026-10-08T16:51:35.6692838Z   Stored in directory: C:\Users\runneradmin\AppData\Local\Temp\pip-ephem-wheel-cache-fvasdsq4\wheels\f4\d1\58\14e4976a0c15c2c470fc12f9a2873cc8c4bc7bd989766b97b4
+2026-10-08T16:51:35.6732539Z   Building editable for capture-worker (pyproject.toml): started
+2026-10-08T16:51:36.0254279Z   Building editable for capture-worker (pyproject.toml): finished with status 'done'
+2026-10-08T16:51:36.0300549Z   Created wheel for capture-worker: filename=capture_worker-0.1.0-0.editable-py3-none-any.whl size=7659 sha256=ca8ac44cab11d18ad97b9171e0323568bdb5a3b5a8f5bb5d79066270550b89a4
+2026-10-08T16:51:36.0303136Z   Stored in directory: C:\Users\runneradmin\AppData\Local\Temp\pip-ephem-wheel-cache-fvasdsq4\wheels\91\10\bd\b56fd1c22822b4cd753ca217f259119db33a4fa54b26c297ee
+2026-10-08T16:51:36.0344057Z   Building editable for capture-desktop (pyproject.toml): started
+2026-10-08T16:51:36.3640418Z   Building editable for capture-desktop (pyproject.toml): finished with status 'done'
+2026-10-08T16:51:36.3673458Z   Created wheel for capture-desktop: filename=capture_desktop-0.1.0-0.editable-py3-none-any.whl size=3184 sha256=8b53cfefe44d9af141c6a24c8f15da59501c54ffa2d59c9c3afe6e750cc4c744
+2026-10-08T16:51:36.3674825Z   Stored in directory: C:\Users\runneradmin\AppData\Local\Temp\pip-ephem-wheel-cache-fvasdsq4\wheels\04\f4\80\083223dba330947d948f2d768e3de9f1e54ae638d0a391d614
+2026-10-08T16:51:36.3696959Z Successfully built capture-protocol capture-session capture-analysis capture-worker capture-desktop
+2026-10-08T16:51:36.5258190Z Installing collected packages: zstandard, tzdata, typing-extensions, six, shiboken6, setuptools, ruff, rpds-py, pyyaml, pyparsing, pygments, pyarrow, protobuf, pluggy, pillow, numpy, lz4, kiwisolver, iniconfig, fonttools, cycler, coverage, attrs, scipy, referencing, python-dateutil, pytest, PySide6_Essentials, pyqtgraph, mcap, grpcio, contourpy, capture-protocol, pytest-cov, PySide6_Pdf, PySide6_Addons, pandas, matplotlib, jsonschema-specifications, grpcio-tools, capture-worker, PySide6_WebEngine, jsonschema, PySide6, capture-session, capture-desktop, capture-analysis
+2026-10-08T16:52:29.0810050Z 
+2026-10-08T16:52:29.0857484Z Successfully installed PySide6-6.12.0 PySide6_Addons-6.12.0 PySide6_Essentials-6.12.0 PySide6_Pdf-6.12.0.140 PySide6_WebEngine-6.12.0.140 attrs-26.1.0 capture-analysis-0.1.0 capture-desktop-0.1.0 capture-protocol-0.1.0 capture-session-0.1.0 capture-worker-0.1.0 contourpy-1.4.0 coverage-7.16.2 cycler-0.12.1 fonttools-4.66.1 grpcio-1.84.0 grpcio-tools-1.62.3 iniconfig-2.3.1 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 kiwisolver-1.5.1 lz4-4.4.5 matplotlib-3.11.2 mcap-1.5.0 numpy-2.5.3 pandas-3.0.6 pillow-12.3.0 pluggy-1.6.0 protobuf-4.25.9 pyarrow-25.0.1 pygments-2.21.0 pyparsing-3.3.3 pyqtgraph-0.14.0 pytest-9.1.1 pytest-cov-7.1.0 python-dateutil-2.9.0.post0 pyyaml-6.0.3 referencing-0.37.0 rpds-py-2026.9.1 ruff-0.16.10 scipy-1.18.1 setuptools-84.0.0 shiboken6-6.12.0 six-1.17.0 typing-extensions-4.16.0 tzdata-2026.5 zstandard-0.25.0
+2026-10-08T16:52:30.0781156Z ##[group]Run python -m pip check
+2026-10-08T16:52:30.0781564Z [36;1mpython -m pip check[0m
+2026-10-08T16:52:30.0827396Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-08T16:52:30.0827747Z env:
+2026-10-08T16:52:30.0828036Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:30.0828470Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-10-08T16:52:30.0828920Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:30.0829310Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:30.0829700Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:30.0830013Z ##[endgroup]
+2026-10-08T16:52:30.7411991Z No broken requirements found.
+2026-10-08T16:52:30.8959645Z ##[group]Run python tools/check_ci_contract.py --check-environment
+2026-10-08T16:52:30.8960165Z [36;1mpython tools/check_ci_contract.py --check-environment[0m
+2026-10-08T16:52:30.8997547Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-08T16:52:30.8997890Z env:
+2026-10-08T16:52:30.8998157Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:30.8998600Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-10-08T16:52:30.8999029Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:30.8999433Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:30.8999811Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:30.9000113Z ##[endgroup]
+2026-10-08T16:52:37.4814647Z Matplotlib is building the font cache; this may take a moment.
+2026-10-08T16:52:48.5529827Z {
+2026-10-08T16:52:48.5530630Z   "accepted": true,
+2026-10-08T16:52:48.5530964Z   "errors": []
+2026-10-08T16:52:48.5531251Z }
+2026-10-08T16:52:48.8316375Z ##[group]Run python tools/gen_protos.py
+2026-10-08T16:52:48.8316738Z [36;1mpython tools/gen_protos.py[0m
+2026-10-08T16:52:48.8354027Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-08T16:52:48.8354370Z env:
+2026-10-08T16:52:48.8354631Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:48.8355073Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-10-08T16:52:48.8355485Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:48.8356531Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:48.8356918Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:48.8357231Z ##[endgroup]
+2026-10-08T16:52:49.2497027Z Running: C:\hostedtoolcache\windows\Python\3.12.10\x64\python.exe -m grpc_tools.protoc --proto_path=D:\a\CaptureSuite\CaptureSuite\schemas\proto --python_out=D:\a\CaptureSuite\CaptureSuite\libs\python\capture_protocol\capture_protocol\generated --descriptor_set_out=D:\a\CaptureSuite\CaptureSuite\build\generated\capture_v1.desc --include_imports --proto_path=C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\site-packages\grpc_tools\_proto capture/v1/arrays.proto capture/v1/common.proto capture/v1/control.proto capture/v1/data/emg_batch.proto capture/v1/data/imu_frame.proto capture/v1/data/numeric_batch.proto capture/v1/data/radar_doppler.proto capture/v1/data/radar_frame.proto capture/v1/data/video_timing.proto capture/v1/events.proto capture/v1/health.proto capture/v1/presets.proto capture/v1/preview.proto capture/v1/project.proto capture/v1/source.proto capture/v1/storage.proto capture/v1/worker.proto
+2026-10-08T16:52:49.2500265Z Wrote Python bindings under D:\a\CaptureSuite\CaptureSuite\libs\python\capture_protocol\capture_protocol\generated
+2026-10-08T16:52:49.2500882Z Wrote descriptor set D:\a\CaptureSuite\CaptureSuite\build\generated\capture_v1.desc
+2026-10-08T16:52:49.3866842Z ##[group]Run git diff --exit-code -- libs/python/capture_protocol/capture_protocol/generated
+2026-10-08T16:52:49.3867581Z [36;1mgit diff --exit-code -- libs/python/capture_protocol/capture_protocol/generated[0m
+2026-10-08T16:52:49.3906065Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-08T16:52:49.3906392Z env:
+2026-10-08T16:52:49.3906651Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:49.3907096Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-10-08T16:52:49.3907525Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:49.3907900Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:49.3908275Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:49.3908572Z ##[endgroup]
+2026-10-08T16:52:49.8536960Z ##[group]Run python tools/gen_session_schemas.py
+2026-10-08T16:52:49.8537404Z [36;1mpython tools/gen_session_schemas.py[0m
+2026-10-08T16:52:49.8573794Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-08T16:52:49.8574125Z env:
+2026-10-08T16:52:49.8574394Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:49.8574840Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-10-08T16:52:49.8575254Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:49.8575627Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:49.8576018Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:49.8576313Z ##[endgroup]
+2026-10-08T16:52:50.1655942Z Wrote 19 schemas to D:\a\CaptureSuite\CaptureSuite\schemas\session\jsonschema
+2026-10-08T16:52:50.2705441Z ##[group]Run git diff --exit-code -- schemas/session/jsonschema
+2026-10-08T16:52:50.2705945Z [36;1mgit diff --exit-code -- schemas/session/jsonschema[0m
+2026-10-08T16:52:50.2744480Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-08T16:52:50.2744804Z env:
+2026-10-08T16:52:50.2745066Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:50.2745507Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-10-08T16:52:50.2745933Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:50.2746323Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:50.2746690Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:50.2747144Z ##[endgroup]
+2026-10-08T16:52:50.6124294Z ##[group]Run ruff check libs/python/capture_protocol libs/python/capture_session libs/python/capture_analysis libs/python/capture_worker workers/python_host desktop/capture_desktop tools tests plugins/example_sine_py plugins/lsl_bridge
+2026-10-08T16:52:50.6127128Z [36;1mruff check libs/python/capture_protocol libs/python/capture_session libs/python/capture_analysis libs/python/capture_worker workers/python_host desktop/capture_desktop tools tests plugins/example_sine_py plugins/lsl_bridge[0m
+2026-10-08T16:52:50.6165969Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-08T16:52:50.6166304Z env:
+2026-10-08T16:52:50.6166577Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:50.6167022Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-10-08T16:52:50.6167450Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:50.6167897Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:50.6168275Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:50.6168576Z ##[endgroup]
+2026-10-08T16:52:50.9507474Z All checks passed!
+2026-10-08T16:52:51.0467145Z ##[group]Run python tools/check_licenses.py --enforce-spdx
+2026-10-08T16:52:51.0467642Z [36;1mpython tools/check_licenses.py --enforce-spdx[0m
+2026-10-08T16:52:51.0505180Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-08T16:52:51.0505524Z env:
+2026-10-08T16:52:51.0505805Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:51.0506257Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-10-08T16:52:51.0506691Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:51.0507082Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:51.0507466Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:51.0507790Z ##[endgroup]
+2026-10-08T16:52:51.6388610Z license check OK
+2026-10-08T16:52:51.7422932Z ##[group]Run python tools/run_ci_tests.py
+2026-10-08T16:52:51.7423311Z [36;1mpython tools/run_ci_tests.py[0m
+2026-10-08T16:52:51.7460266Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-08T16:52:51.7460604Z env:
+2026-10-08T16:52:51.7460875Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:51.7461329Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-10-08T16:52:51.7461760Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:51.7462153Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:51.7462535Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:52:51.7462862Z   QT_QPA_PLATFORM: offscreen
+2026-10-08T16:52:51.7463086Z ##[endgroup]
+2026-10-08T16:57:06.8819185Z ........................................................................ [ 13%]
+2026-10-08T16:57:06.8820214Z ........................................................................ [ 26%]
+2026-10-08T16:57:06.8820823Z ........................................................................ [ 39%]
+2026-10-08T16:57:06.8821418Z ........................................................................ [ 52%]
+2026-10-08T16:57:06.8822019Z ..........................................................ssssss........ [ 65%]
+2026-10-08T16:57:06.8822618Z ........................................................................ [ 78%]
+2026-10-08T16:57:06.8823216Z ........................................................................ [ 91%]
+2026-10-08T16:57:06.8823848Z ..............F.................................                         [100%]
+2026-10-08T16:57:06.8824442Z ================================== FAILURES ===================================
+2026-10-08T16:57:06.8825129Z _______ test_png_discovery_refuses_external_file_links_and_directories ________
+2026-10-08T16:57:06.8826081Z 
+2026-10-08T16:57:06.8826482Z qapp = <PySide6.QtWidgets.QApplication(0x1f1ed3c6790) at 0x000001F1EF1CC300>
+2026-10-08T16:57:06.8827572Z tmp_path = WindowsPath('C:/Users/runneradmin/AppData/Local/Temp/pytest-of-runneradmin/pytest-0/test_png_discovery_refuses_ext0')
+2026-10-08T16:57:06.8828428Z 
+2026-10-08T16:57:06.8828819Z     def test_png_discovery_refuses_external_file_links_and_directories(qapp, tmp_path):
+2026-10-08T16:57:06.8829690Z         from capture_desktop.widgets_analysis_plots import FigureGallery
+2026-10-08T16:57:06.8830321Z     
+2026-10-08T16:57:06.8830658Z         job = tmp_path / "job"
+2026-10-08T16:57:06.8831098Z         outside = tmp_path / "external.png"
+2026-10-08T16:57:06.8831591Z         _png(outside, "#aa1122")
+2026-10-08T16:57:06.8832101Z         _png(job / "figures/nested/good.png", "#22aa55")
+2026-10-08T16:57:06.8832687Z         foreign = job / "figures/foreign.png"
+2026-10-08T16:57:06.8833207Z         try:
+2026-10-08T16:57:06.8833618Z             foreign.symlink_to(outside)
+2026-10-08T16:57:06.8834311Z         except OSError as exc:
+2026-10-08T16:57:06.8835145Z             pytest.skip(f"This filesystem cannot create the symlink fixture: {exc}")
+2026-10-08T16:57:06.8836246Z         (job / "figures/not_a_file.png").mkdir()
+2026-10-08T16:57:06.8836988Z         before = _hashes(tmp_path)
+2026-10-08T16:57:06.8837462Z         gallery = FigureGallery()
+2026-10-08T16:57:06.8837914Z         gallery.load_job_dir(job)
+2026-10-08T16:57:06.8838515Z         assert _titles(gallery) == ["Sync", "nested / good"]
+2026-10-08T16:57:06.8839311Z         assert _color(gallery, 1) == "#22aa55"
+2026-10-08T16:57:06.8840245Z         assert gallery._tabs.tabToolTip(1) == "nested/good.png"
+2026-10-08T16:57:06.8840888Z >       assert foreign.readlink() == outside
+2026-10-08T16:57:06.8846486Z E       AssertionError: assert WindowsPath('//?/C:/Users/runneradmin/AppData/Local/Temp/pytest-of-runneradmin/pytest-0/test_png_discovery_refuses_ext0/external.png') == WindowsPath('C:/Users/runneradmin/AppData/Local/Temp/pytest-of-runneradmin/pytest-0/test_png_discovery_refuses_ext0/external.png')
+2026-10-08T16:57:06.8849960Z E        +  where WindowsPath('//?/C:/Users/runneradmin/AppData/Local/Temp/pytest-of-runneradmin/pytest-0/test_png_discovery_refuses_ext0/external.png') = readlink()
+2026-10-08T16:57:06.8852238Z E        +    where readlink = WindowsPath('C:/Users/runneradmin/AppData/Local/Temp/pytest-of-runneradmin/pytest-0/test_png_discovery_refuses_ext0/job/figures/foreign.png').readlink
+2026-10-08T16:57:06.8853361Z 
+2026-10-08T16:57:06.8853673Z tests\ui\test_analysis_nested_gallery.py:176: AssertionError
+2026-10-08T16:57:06.8854389Z ============================== warnings summary ===============================
+2026-10-08T16:57:06.8855004Z <frozen importlib._bootstrap>:488
+2026-10-08T16:57:06.8856564Z   <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.MessageMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+2026-10-08T16:57:06.8857903Z 
+2026-10-08T16:57:06.8858082Z <frozen importlib._bootstrap>:488
+2026-10-08T16:57:06.8859635Z   <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.ScalarMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+2026-10-08T16:57:06.8861035Z 
+2026-10-08T16:57:06.8861457Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+2026-10-08T16:57:06.8862237Z =========================== short test summary info ===========================
+2026-10-08T16:57:06.8863082Z SKIPPED [1] tests\protocol\test_daemon_e2e.py:74: capture_daemon.exe not built (run cmake --build)
+2026-10-08T16:57:06.8864187Z SKIPPED [1] tests\protocol\test_daemon_e2e.py:148: capture_daemon.exe not built (run cmake --build)
+2026-10-08T16:57:06.8865313Z SKIPPED [1] tests\protocol\test_daemon_e2e.py:161: capture_daemon.exe not built (run cmake --build)
+2026-10-08T16:57:06.8866650Z SKIPPED [1] tests\protocol\test_daemon_e2e.py:196: capture_daemon.exe not built (run cmake --build)
+2026-10-08T16:57:06.8867745Z SKIPPED [1] tests\protocol\test_daemon_e2e.py:238: capture_daemon.exe not built (run cmake --build)
+2026-10-08T16:57:06.8868829Z SKIPPED [1] tests\protocol\test_daemon_e2e.py:262: capture_daemon.exe not built (run cmake --build)
+2026-10-08T16:57:06.8872055Z FAILED tests/ui/test_analysis_nested_gallery.py::test_png_discovery_refuses_external_file_links_and_directories - AssertionError: assert WindowsPath('//?/C:/Users/runneradmin/AppData/Local/Temp/pytest-of-runneradmin/pytest-0/test_png_discovery_refuses_ext0/external.png') == WindowsPath('C:/Users/runneradmin/AppData/Local/Temp/pytest-of-runneradmin/pytest-0/test_png_discovery_refuses_ext0/external.png')
+2026-10-08T16:57:06.8875727Z  +  where WindowsPath('//?/C:/Users/runneradmin/AppData/Local/Temp/pytest-of-runneradmin/pytest-0/test_png_discovery_refuses_ext0/external.png') = readlink()
+2026-10-08T16:57:06.8877750Z  +    where readlink = WindowsPath('C:/Users/runneradmin/AppData/Local/Temp/pytest-of-runneradmin/pytest-0/test_png_discovery_refuses_ext0/job/figures/foreign.png').readlink
+2026-10-08T16:57:06.8879242Z 1 failed, 545 passed, 6 skipped, 2 warnings in 252.87s (0:04:12)
+2026-10-08T16:57:06.8879693Z 
+2026-10-08T16:57:06.8879877Z {
+2026-10-08T16:57:06.8880315Z   "schema": "capturesuite.test-receipt.v1",
+2026-10-08T16:57:06.8880851Z   "accepted": false,
+2026-10-08T16:57:06.8881281Z   "process_exit": 1,
+2026-10-08T16:57:06.8881680Z   "counts": {
+2026-10-08T16:57:06.8882043Z     "tests": 552,
+2026-10-08T16:57:06.8882431Z     "passed": 545,
+2026-10-08T16:57:06.8882819Z     "failures": 1,
+2026-10-08T16:57:06.8883235Z     "errors": 0,
+2026-10-08T16:57:06.8883611Z     "skipped": 6
+2026-10-08T16:57:06.8883937Z   },
+2026-10-08T16:57:06.8884526Z   "junit_sha256": "fd1f28dde83c47406527a10c298ff5bf1e704ab1a3ca40a3d33fb0241a2fffdc",
+2026-10-08T16:57:06.8885237Z   "problems": [
+2026-10-08T16:57:06.8885640Z     "Test process did not exit successfully",
+2026-10-08T16:57:06.8887198Z     "JUnit contains failing or errored cases"
+2026-10-08T16:57:06.8887765Z   ],
+2026-10-08T16:57:06.8888254Z   "scope": "Process and test-evidence consistency, not clinical validation",
+2026-10-08T16:57:06.8888833Z   "seconds": 253.92585270000006,
+2026-10-08T16:57:06.8889252Z   "created_at": "2026-10-08T16:57:06.415339+00:00",
+2026-10-08T16:57:06.8890002Z   "run_directory": "build/evidence/python-20261008T165252Z-6c42a44d",
+2026-10-08T16:57:06.8890850Z   "log_sha256": "a601ba62345c015d526826c931beca8abfc843473918ae5d1aa2aa0f433026cb",
+2026-10-08T16:57:06.8891667Z   "source_commit": "e0a45debe5e2a331ba5aee242ac985c9f604b31b",
+2026-10-08T16:57:06.8892332Z   "source_worktree_dirty": false,
+2026-10-08T16:57:06.8893052Z   "source_tree_sha256": "8c6145c31f582402cceb023450a81f949dee5318c6fc2a5675cc30662dc576ff",
+2026-10-08T16:57:06.8893797Z   "source_file_count": 1078,
+2026-10-08T16:57:06.8894182Z   "github": {
+2026-10-08T16:57:06.8894515Z     "GITHUB_ACTIONS": "true",
+2026-10-08T16:57:06.8894923Z     "GITHUB_EVENT_NAME": "pull_request",
+2026-10-08T16:57:06.8895447Z     "GITHUB_SHA": "e0a45debe5e2a331ba5aee242ac985c9f604b31b",
+2026-10-08T16:57:06.8895982Z     "GITHUB_REF": "refs/pull/80/merge",
+2026-10-08T16:57:06.8896497Z     "GITHUB_HEAD_REF": "fix/nested-figure-gallery-401c5d17da79",
+2026-10-08T16:57:06.8897008Z     "GITHUB_BASE_REF": "main",
+2026-10-08T16:57:06.8897391Z     "GITHUB_RUN_ID": "37811945519",
+2026-10-08T16:57:06.8898100Z     "GITHUB_WORKFLOW_REF": "Jacob-Met/CaptureSuite/.github/workflows/ci.yml@refs/pull/80/merge"
+2026-10-08T16:57:06.8898759Z   },
+2026-10-08T16:57:06.8899075Z   "source_unchanged_during_test": true
+2026-10-08T16:57:06.8899498Z }
+2026-10-08T16:57:06.9848395Z ##[error]Process completed with exit code 1.
+2026-10-08T16:57:07.0036104Z ##[group]Run actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+2026-10-08T16:57:07.0036904Z with:
+2026-10-08T16:57:07.0037158Z   name: python-test-evidence
+2026-10-08T16:57:07.0037447Z   path: build/evidence/
+2026-10-08T16:57:07.0037719Z   if-no-files-found: warn
+2026-10-08T16:57:07.0037979Z   retention-days: 7
+2026-10-08T16:57:07.0038224Z   compression-level: 6
+2026-10-08T16:57:07.0038466Z   overwrite: false
+2026-10-08T16:57:07.0038715Z   include-hidden-files: false
+2026-10-08T16:57:07.0039005Z   archive: true
+2026-10-08T16:57:07.0039227Z env:
+2026-10-08T16:57:07.0039529Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:57:07.0040014Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-10-08T16:57:07.0040483Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:57:07.0040918Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:57:07.0041444Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T16:57:07.0041797Z ##[endgroup]
+2026-10-08T16:57:07.3032101Z With the provided path, there will be 281 files uploaded
+2026-10-08T16:57:07.3037874Z Artifact name is valid!
+2026-10-08T16:57:07.3039356Z Root directory input is valid!
+2026-10-08T16:57:07.6773011Z Uploading artifact: python-test-evidence.zip
+2026-10-08T16:57:07.6813636Z Beginning upload of artifact content to blob storage
+2026-10-08T16:57:08.7447249Z Uploaded bytes 1611429
+2026-10-08T16:57:08.7998008Z Finished uploading artifact content to blob storage!
+2026-10-08T16:57:08.7998831Z SHA256 digest of uploaded artifact is c3fd2500eb66af941ef46da3122874708f4e7e63f57e8f84b6f574e41d024803
+2026-10-08T16:57:08.7999596Z Finalizing artifact upload
+2026-10-08T16:57:09.2066199Z Artifact python-test-evidence successfully finalized. Artifact ID 11565362992
+2026-10-08T16:57:09.2067745Z Artifact python-test-evidence has been successfully uploaded! Final size is 1611429 bytes. Artifact ID is 11565362992
+2026-10-08T16:57:09.2074217Z Artifact download URL: https://github.com/Jacob-Met/CaptureSuite/actions/runs/37811945519/artifacts/11565362992
+2026-10-08T16:57:09.2437949Z Post job cleanup.
+2026-10-08T16:57:09.4240855Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-10-08T16:57:09.4526401Z git version 2.56.0.windows.1
+2026-10-08T16:57:09.4593752Z Temporarily overriding HOME='D:\a\_temp\11603373-95fe-4eee-b492-c96a5fd1a03e' before making global git config changes
+2026-10-08T16:57:09.4595041Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-08T16:57:09.4606417Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\CaptureSuite\CaptureSuite
+2026-10-08T16:57:09.4961465Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-10-08T16:57:09.5294071Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-10-08T16:57:10.0194822Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-08T16:57:10.0466446Z http.https://github.com/.extraheader
+2026-10-08T16:57:10.0515565Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all http.https://github.com/.extraheader
+2026-10-08T16:57:10.0851234Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-10-08T16:57:10.5998072Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-08T16:57:10.6333783Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-10-08T16:57:11.1760191Z Cleaning up orphan processes
+2026-10-08T16:57:11.2116929Z Terminate orphan process: pid (7996) (vctip)
+2026-10-08T16:57:11.2240138Z Terminate orphan process: pid (6124) (MSBuild)
+2026-10-08T16:57:11.2496129Z Terminate orphan process: pid (5492) (conhost)
+2026-10-08T16:57:11.2621801Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

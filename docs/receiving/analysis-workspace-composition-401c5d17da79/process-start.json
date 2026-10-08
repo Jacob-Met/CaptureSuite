@@ -1,0 +1,21 @@
+{
+  "pid": 1247741,
+  "head": "5b693a54f3323c6c7604f6ecd2feb6cf9c6040b1",
+  "tree": "31ad49114bffb0ff6d4a0b419e632f8e15cd2cb9",
+  "runtime": "facb4af1d9277d88c233a54520b33d3c79cee174",
+  "argv": [
+    "/home/jacob/hamon-capture-composition-f5c5ccd6-tools/venv/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "tests/ui/test_analysis_workspace_composition.py",
+    "-q",
+    "-s",
+    "--maxfail=1",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=/dev/shm/hamon-401c5d17da79-capture-a2c/native-v1/tmp",
+    "--junitxml=/dev/shm/hamon-401c5d17da79-capture-a2c/native-v1/junit.xml"
+  ],
+  "source_files": 293
+}

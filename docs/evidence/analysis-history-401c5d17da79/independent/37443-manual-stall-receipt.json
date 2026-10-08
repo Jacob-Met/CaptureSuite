@@ -1,0 +1,10 @@
+{
+  "schema": "capturesuite.history.receiving.manual-loop-stall.v1",
+  "candidate": "37443f0d4d5ffa684b5423d58501856cadbe0655",
+  "method_sha256": "b46094d3d823145aa07aa088371c6a63343ee7c5d8a06b254c6a4669f8c52da8",
+  "last_completed_assertion": "actual QThread QC result exists before deferred delivery",
+  "assertions_completed": 15,
+  "outcome": "Manual processEvents/QTest.qWait did not return to Python after release. Receiver process was stopped with Ctrl-C through its exact session; exit130. This is a non-accepting harness outcome, not a claimed native-application failure.",
+  "source_change": "history refresh moved out of thread cleanup, worker/cleanup AST match canonical baseline",
+  "log_sha256": "3e4b3290f4d02af0cf1a6461560532dffcfb8cea4c5d5349da1d49113ba48e30"
+}
