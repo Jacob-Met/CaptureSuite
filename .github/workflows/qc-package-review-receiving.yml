@@ -1,0 +1,66 @@
+name: qc-package-review-receiving
+
+on:
+  pull_request:
+    paths:
+      - "libs/python/capture_analysis/**"
+      - "libs/python/capture_session/**"
+      - "tools/review_qc_packages.py"
+      - "tests/analysis/test_qc_package_review_receiving_7879.py"
+      - "tools/check_qc_package_review_index_7879.mjs"
+      - "tests/fixtures/mini_session/**"
+      - "requirements-ci.txt"
+      - "pyproject.toml"
+      - ".github/workflows/qc-package-review-receiving.yml"
+  push:
+    branches: [main, master]
+    paths:
+      - "libs/python/capture_analysis/**"
+      - "libs/python/capture_session/**"
+      - "tools/review_qc_packages.py"
+      - "tests/analysis/test_qc_package_review_receiving_7879.py"
+      - "tools/check_qc_package_review_index_7879.mjs"
+      - "tests/fixtures/mini_session/**"
+      - "requirements-ci.txt"
+      - "pyproject.toml"
+      - ".github/workflows/qc-package-review-receiving.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: qc-package-review-receiving-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  receive-native-cli:
+    runs-on: windows-2022
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.12"
+      - name: Install only the existing native CI dependency set
+        run: python -m pip install -r requirements-ci.txt
+      - name: Verify native dependency consistency
+        run: python -m pip check
+      - name: Lint the independently frozen Python consumer
+        run: ruff check tests/analysis/test_qc_package_review_receiving_7879.py
+      - name: Receive actual native QC, real CLI and available installed browser
+        env:
+          QT_QPA_PLATFORM: offscreen
+          CAPTURE_QC_RECEIVING_OUTPUT: ${{ runner.temp }}/qc-package-review-7879-${{ github.run_id }}-${{ github.run_attempt }}
+          PYTHONIOENCODING: utf-8
+        run: >-
+          python -m pytest -q -s
+          tests/analysis/test_qc_package_review_receiving_7879.py
+      - name: Preserve only bounded authored receiving files
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: qc-package-review-receiving-${{ github.run_id }}
+          path: ${{ runner.temp }}/qc-package-review-7879-${{ github.run_id }}-${{ github.run_attempt }}
+          if-no-files-found: warn
+          retention-days: 14
+          compression-level: 6
