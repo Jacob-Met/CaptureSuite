@@ -48,39 +48,84 @@ def _chosen(control, monkeypatch, filename):
 
 
 def _real_choose(control, filename: Path | None):
-    """Drive the actual Qt file dialog; never replace getOpenFileName."""
+    """Drive the actual Qt file dialog with literal names and bounded cleanup."""
+    from PySide6.QtWidgets import QLineEdit
+
     previous = QApplication.testAttribute(Qt.ApplicationAttribute.AA_DontUseNativeDialogs)
     QApplication.setAttribute(Qt.ApplicationAttribute.AA_DontUseNativeDialogs, True)
     selected = []
     failures = []
     started = time.monotonic()
+    attempted = False
+    driver = QTimer()
+    watchdog = QTimer()
+
+    def unwind(reason):
+        if not failures:
+            failures.append(reason)
+        # A failed accept can enter a second modal loop. Close that message
+        # before the file dialog, so both nested loops return to the assertion.
+        for widget in QApplication.topLevelWidgets():
+            if isinstance(widget, QMessageBox) and widget.isVisible():
+                widget.reject()
+        for widget in QApplication.topLevelWidgets():
+            if isinstance(widget, QFileDialog) and widget.isVisible():
+                widget.reject()
+
+    def check_deadline():
+        active = QApplication.activeModalWidget()
+        if isinstance(active, QMessageBox):
+            unwind(f"Unexpected file-dialog message: {active.text()}")
+        elif time.monotonic() - started >= 5:
+            unwind("The actual Qt file dialog did not complete within five seconds.")
 
     def finish():
-        dialog = QApplication.activeModalWidget()
-        if not isinstance(dialog, QFileDialog):
-            if time.monotonic() - started < 5:
-                QTimer.singleShot(10, finish)
+        nonlocal attempted
+        try:
+            active = QApplication.activeModalWidget()
+            if failures or attempted or not isinstance(active, QFileDialog):
                 return
-            failures.append("The actual Qt file dialog did not appear.")
-            return
-        if filename is None:
-            selected.append(None)
-            dialog.reject()
-        else:
-            dialog.setDirectory(str(filename.parent))
-            dialog.selectFile(str(filename))
-            selected.extend(dialog.selectedFiles())
-            dialog.accept()
+            if filename is None:
+                attempted = True
+                driver.stop()
+                selected.append(None)
+                active.reject()
+                return
 
-    QTimer.singleShot(0, finish)
+            edit = active.findChild(QLineEdit, "fileNameEdit")
+            if edit is None:
+                return
+            active.setDirectory(str(filename.parent))
+            # QFileDialog.selectFile strips leading spaces on Windows Qt 6.12.
+            # Quoted filename entry is Qt's literal-name input syntax; retain
+            # the significant spaces in the fixture and verify before accepting.
+            assert '"' not in filename.name
+            edit.setText(f'"{filename.name}"')
+            actual = active.selectedFiles()
+            assert len(actual) == 1 and Path(actual[0]) == filename, (
+                f"Qt selected {actual!r}, expected literal path {str(filename)!r}"
+            )
+            selected.extend(actual)
+            attempted = True
+            driver.stop()
+            active.accept()
+        except Exception as exc:
+            unwind(f"Actual Qt file choice failed: {exc!r}")
+
+    driver.timeout.connect(finish)
+    watchdog.timeout.connect(check_deadline)
+    driver.start(10)
+    watchdog.start(25)
     try:
         control._choose_button.click()
     finally:
+        driver.stop()
+        watchdog.stop()
         QApplication.setAttribute(
             Qt.ApplicationAttribute.AA_DontUseNativeDialogs, previous
         )
-    assert not failures
-    assert len(selected) == 1
+    assert not failures, failures
+    assert attempted and len(selected) == 1
     return selected[0]
 
 
@@ -121,6 +166,23 @@ def test_actual_qt_file_choice_cancel_and_reselection(extras, tmp_path):
     newer = _real_choose(control, second)
     assert Path(newer).samefile(second)
     assert extras.build_extra("eval")["prediction_path"] == newer
+
+
+def test_actual_qt_file_choice_error_unwinds_without_replacing_path(
+    extras, monkeypatch, tmp_path
+):
+    control = _external(extras)
+    kept = tmp_path / "kept.json"
+    kept.write_text("{}")
+    with monkeypatch.context() as patch:
+        _chosen(control, patch, kept)
+    # The failing attempt uses the real Qt dialog after the seed hook is gone.
+    started = time.monotonic()
+    with pytest.raises(AssertionError, match="file.dialog"):
+        _real_choose(control, tmp_path / "does-not-exist.json")
+    assert time.monotonic() - started < 6
+    assert QApplication.activeModalWidget() is None
+    assert control._path.text() == str(kept)
 
 
 def test_clear_keeps_external_and_moves_keyboard_focus_to_choose(extras, monkeypatch, tmp_path):

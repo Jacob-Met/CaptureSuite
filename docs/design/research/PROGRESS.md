@@ -1019,3 +1019,8 @@ case is a supported Windows CI gate, explicitly skipped on Mac. No Windows
 hardware, OS-native dialog, model authorship or scientific efficacy claim is
 made from the local fixture evidence. Independent receiving and hosted results
 are recorded separately with their exact source identities.
+
+
+### PR84 Windows chooser receiving correction (2026-10-08)
+
+The first ordinary Windows gate timed out before JUnit. An isolated unchanged-source full-order diagnostic identified the actual Qt test helper stripping a significant leading filename space, then waiting inside a file-not-found QMessageBox. Production chooser behavior is unchanged. The helper now uses verified literal filename entry and independent bounded modal cleanup, with an actual missing-file unwind regression. The normal 300-second runner and selection remain exact; a read-only post-Pytest step prints and checks the actual named MainWindow and chooser JUnit cases. Original failure and diagnostic evidence are preserved in `docs/evidence/analysis-predictions-windows-correction-6e5752b49b6f/`; supported Windows acceptance remains pending until that actual successor gate completes.
