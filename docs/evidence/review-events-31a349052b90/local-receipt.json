@@ -1,0 +1,61 @@
+{
+  "schema": "capturesuite.review-events-local.v1",
+  "worker": "estate-31a349052b90/product_execution",
+  "observed_parent": "9c44354cb101c76beff79265de0040b6839d249f",
+  "observed_tree": "50cd83ef270467490b15f74639413d238aaa15c6",
+  "model_run": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 /workspace/scratch/ae0a1ea0b247/venv-production/bin/python -B -m pytest tests/test_review_event_model.py -q -ra -p no:cacheprovider --basetemp=/dev/shm/hamon-31a349052b90/capturesuite-review-events-31a349052b90/model-temp",
+    "cwd": "/dev/shm/hamon-31a349052b90/capturesuite-review-events-31a349052b90",
+    "result": {
+      "chunk_id": "309e41",
+      "wall_time_seconds": 0.219067021,
+      "exit_code": 0,
+      "original_token_count": 25,
+      "output": ".......................                                                  [100%]\n23 passed in 0.08s\n"
+    },
+    "executed_model_file": "baseline/review_events_model_initial.py",
+    "executed_test_file": "baseline/test_review_event_model_initial.py",
+    "later_change": "Model line wrapping only. Test line wrapping and removal of unused pathlib import plus an unrelated cwd-path absence assertion; no record-semantic assertion changed."
+  },
+  "local_qt_executions": 0,
+  "supported_windows_probe": {
+    "device": "42ad330c-bb9a-4d2f-bcb4-6efeb4c6583e",
+    "command": "$capturePython = Join-Path $env:LOCALAPPDATA 'Programs\\Python\\Python312\\python.exe'; if (Test-Path -LiteralPath $capturePython) { & $capturePython -B -c 'import sys,os,shutil,importlib.util,json; print(json.dumps({\"executable\":sys.executable,\"version\":sys.version,\"PySide6\":str(importlib.util.find_spec(\"PySide6\")),\"pytest\":str(importlib.util.find_spec(\"pytest\")),\"temp\":os.environ.get(\"TEMP\"),\"temp_free\":shutil.disk_usage(os.environ[\"TEMP\"]).free}))'; exit $LASTEXITCODE } else { Write-Output \"Documented Python312 executable absent: $capturePython\"; exit 2 }",
+    "start_result": {
+      "content": [
+        {
+          "type": "text",
+          "text": "Process started with PID 24044 (shell: powershell)\nInitial output:\nDocumented Python312 executable absent: C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\r\n"
+        },
+        {
+          "type": "text",
+          "text": "\n[executed on device: DESKTOP-LA7CMTA (42ad330c-bb9a-4d2f-bcb4-6efeb4c6583e)]"
+        }
+      ],
+      "isError": false
+    },
+    "completion": {
+      "content": [
+        {
+          "type": "text",
+          "text": "[Reading 2 new lines (total: 2 lines)]\n\nDocumented Python312 executable absent: C:\\Windows\\system32\\config\\systemprofile\\AppData\\Local\\Programs\\Python\\Python312\\python.exe\r\n\n✅ Process completed with exit code 2 (runtime: 0.19s)"
+        },
+        {
+          "type": "text",
+          "text": "\n[executed on device: DESKTOP-LA7CMTA (42ad330c-bb9a-4d2f-bcb4-6efeb4c6583e)]"
+        }
+      ],
+      "isError": false
+    },
+    "disposition": "The documented LOCALAPPDATA Python312 path is absent in this executor's system account. No search of other user accounts, runtime change, install or widget execution followed."
+  },
+  "cloud_qt_availability": "Python3.12.14 primary runtime and the existing read-only pytest venv both report no PySide6. No installation was attempted.",
+  "source_stage_failure": {
+    "command_kind": "write authored test sources to own staging",
+    "exit_code": 1,
+    "output": "Traceback (most recent call last):\n  File \"<string>\", line 5, in <module>\n  File \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/pathlib.py\", line 1037, in write_bytes\n    return f.write(view)\n           ^^^^^^^^^^^^^\nOSError: [Errno 28] No space left on device\n",
+    "disposition": "No Qt execution occurred. In-memory authored sources remain complete; on-disk test files may be partial and are not publication inputs."
+  },
+  "native_boundary": "23 executed model checks. The original-screen negative control and six real Qt methods are authored but not yet executed at this checkpoint; the supported Windows CI will retain their actual outcomes.",
+  "custody_note": "One initial syntax-only staging write used a minimal desktop package marker. It was replaced with authentic Git blob 48777bd before any model test execution. Publication inputs come from complete in-memory source, not partially written staging files."
+}

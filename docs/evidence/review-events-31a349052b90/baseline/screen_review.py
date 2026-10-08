@@ -10,15 +10,12 @@ from PySide6.QtWidgets import (
     QListWidget,
     QListWidgetItem,
     QPushButton,
-    QTabWidget,
     QVBoxLayout,
     QWidget,
 )
 
 from . import theme
-from .review_events import checkpoint_time
 from .state import CaptureState, fmt_time
-from .widgets_review_events import ReviewEventBrowser
 
 
 class ReviewScreen(QWidget):
@@ -91,14 +88,7 @@ class ReviewScreen(QWidget):
             col.addWidget(lab)
             col.addWidget(widget, 1)
             lists.addLayout(col, 1)
-        overview = QWidget()
-        overview.setLayout(lists)
-        self._review_tabs = QTabWidget()
-        self._review_tabs.setObjectName("ReviewViews")
-        self._review_tabs.addTab(overview, "Overview")
-        self._events = ReviewEventBrowser()
-        self._review_tabs.addTab(self._events, "Events")
-        root.addWidget(self._review_tabs, 1)
+        root.addLayout(lists, 1)
 
         actions = QHBoxLayout()
         self._btn_export = QPushButton("Export…")
@@ -112,29 +102,17 @@ class ReviewScreen(QWidget):
         root.addLayout(actions)
 
     def load_package(self, package_path: str, *, recovered: bool = False) -> None:
-        self._package = ""
+        self._package = package_path
         self._path_label.setText(package_path)
-        self._btn_export.setEnabled(False)
-        self._events.clear()
-        self._streams.clear()
-        self._gaps.clear()
-        self._checkpoints.clear()
-        self._recovered_banner.setVisible(False)
-        for card in (
-            self._card_session, self._card_sources, self._card_gaps, self._card_checkpoints,
-        ):
-            card.setText("—")
+        self._btn_export.setEnabled(bool(package_path))
         try:
             from capture_session import load_review_summary
 
             summary = load_review_summary(package_path)
-            self._events.set_summary(summary)
         except Exception as exc:  # noqa: BLE001
             self._banner.setText(f"Could not load package: {exc}")
             return
 
-        self._package = package_path
-        self._btn_export.setEnabled(bool(package_path))
         recover_note = ""
         if recovered or summary.recovery_reports:
             recover_note = " · recovered"
@@ -193,9 +171,10 @@ class ReviewScreen(QWidget):
         self._checkpoints.clear()
         for cp in summary.checkpoints:
             name = cp.get("name") or cp.get("checkpointId") or "(unnamed)"
-            ts, _basis = checkpoint_time(cp)
-            time_label = f"{ts} ns" if ts is not None else "Unavailable time"
-            self._checkpoints.addItem(QListWidgetItem(f"{time_label}  {name}"))
+            ts = int(cp.get("effectiveTimestampNs") or cp.get("originalTimestampNs") or 0)
+            self._checkpoints.addItem(
+                QListWidgetItem(f"{fmt_time(ts / 1e9)}  {name}")
+            )
 
     def _emit_export(self) -> None:
         if self._package:

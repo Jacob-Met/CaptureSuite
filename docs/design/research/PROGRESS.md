@@ -1,3 +1,27 @@
+## 2026-10-08 — Search and inspect recorded Review events
+
+Worker `estate-31a349052b90 / product_execution`, issue #76: Review's existing
+reader returns annotations and full checkpoint metadata that its compact lists
+do not expose. A native Events subtab now provides kind/source/literal-text
+filters, exact nanosecond ordering and full read-only selected-record details.
+Duplicate events, unknown fields, original/effective timestamp distinctions and
+the reader's separate gap closure/end facts remain explicit. Loading another or
+failed package clears stale data; filters do not change raw records or scopes.
+
+The isolated Python 3.12 receiver passed 23 model checks, including real authored
+package reads with all physical bytes preserved. Both original executed bodies
+and the later formatting-only model bridge are retained. PySide6 was absent from
+the available cloud runtime; one documented Windows Python-path probe returned
+exit 2 in the remote executor's system account. Shared-memory staging then
+returned ENOSPC. No install, user-profile search or repeated runtime probe followed.
+
+Six native Qt consumers and an exact original-screen negative are prepared for
+the project's existing supported Windows workflow. Actual target execution,
+native PNG inspection and independent receiving remain pending at this source
+checkpoint. The unchanged package reader, capture/daemon, shared timeline/app,
+analysis algorithms, export and workflow definitions retain their owners.
+Evidence: `docs/evidence/review-events-31a349052b90/`.
+
 ## 2026-10-08 — Preserve missing pose evidence in kinematic labels
 
 Worker `estate-406d0fb04c43 / production`, issue #56: non-simulated pose tables

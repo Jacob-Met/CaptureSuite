@@ -188,3 +188,25 @@ App
 - [FUTURE_ANALYSIS_NOTES.md](../../../docs/spec/FUTURE_ANALYSIS_NOTES.md)
 - [screen_capture.py](../../../desktop/capture_desktop/screen_capture.py)
 - [COMPETITIVE_AUDIT.md](COMPETITIVE_AUDIT.md)
+
+## Decision 2026-10-08: Read-only recorded-event detail in Review
+
+**Reason:** The existing reader returns annotations and full checkpoint metadata,
+but the original Review screen presents only compact gap/checkpoint labels.
+Researchers need to find recorded notes and inspect their original context
+without opening package JSON files by hand.
+
+Review now retains its Overview and adds an Events subtab with a native table,
+kind/source/literal-text filters and a read-only selected-record pane. This is
+progressive disclosure within the existing Review tab. It does not replace the
+shared timeline or move capture, analysis or export controls.
+
+The event table preserves exact session nanoseconds and full loaded
+checkpoint/annotation details. Gap details identify the existing reader
+projection. Loaded and visible counts remain distinct, unavailable fields remain
+explicit, and filters produce no capture-completeness or scientific verdict.
+See [the operator guide](../../REVIEW_EVENTS.md).
+
+**Files:** new `review_events.py` and `widgets_review_events.py`, with narrow
+construction/load/reset hooks in `screen_review.py`. Package readers, schemas,
+shared app/header/timeline, capture and analysis paths remain unchanged.
