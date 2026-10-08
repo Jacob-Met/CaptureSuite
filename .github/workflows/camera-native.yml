@@ -1,0 +1,103 @@
+# SPDX-License-Identifier: GPL-3.0-only
+name: Native camera worker
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/camera-native.yml"
+      - "tools/prepare_camera_ci.ps1"
+      - "tools/qualify_camera_ci.py"
+      - "tools/run_ci_tests.py"
+      - "tests/protocol/test_camera_ci_qualification.py"
+      - "workers/camera/**"
+      - "plugins/camera_gstreamer/**"
+      - "daemon/**"
+      - "libs/cpp/**"
+      - "schemas/proto/**"
+      - "cmake/**"
+      - "tests/cpp/**"
+      - "CMakeLists.txt"
+      - "CMakePresets.json"
+      - "vcpkg.json"
+  push:
+    branches: [main, master]
+    paths:
+      - ".github/workflows/camera-native.yml"
+      - "tools/prepare_camera_ci.ps1"
+      - "tools/qualify_camera_ci.py"
+      - "tools/run_ci_tests.py"
+      - "tests/protocol/test_camera_ci_qualification.py"
+      - "workers/camera/**"
+      - "plugins/camera_gstreamer/**"
+      - "daemon/**"
+      - "libs/cpp/**"
+      - "schemas/proto/**"
+      - "cmake/**"
+      - "tests/cpp/**"
+      - "CMakeLists.txt"
+      - "CMakePresets.json"
+      - "vcpkg.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: native-camera-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  camera:
+    name: Real GStreamer worker and packaged layouts
+    runs-on: windows-2022
+    timeout-minutes: 60
+    defaults:
+      run:
+        shell: pwsh
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.12"
+      - name: Check camera receipt acceptance controls
+        run: python -m unittest discover -s tests/protocol -p test_camera_ci_qualification.py -v
+      - name: Set up MSVC
+        uses: ilammy/msvc-dev-cmd@0b201ec74fa43914dc39ae48a89fd1d8cb592756 # v1
+      - name: Prepare the pinned official GStreamer SDK
+        run: |
+          $sdk = Join-Path $env:RUNNER_TEMP "capturesuite-camera-sdk-${{ github.run_id }}-${{ github.run_attempt }}"
+          $evidence = Join-Path $env:GITHUB_WORKSPACE "build/evidence/camera-sdk"
+          ./tools/prepare_camera_ci.ps1 -SdkDirectory $sdk -EvidenceDirectory $evidence
+          $receipt = Get-Content -LiteralPath (Join-Path $evidence "manifest.json") -Raw | ConvertFrom-Json
+          if (-not $receipt.accepted) { throw "SDK preparation was not accepted." }
+          "GSTREAMER_1_0_ROOT_MSVC_X86_64=$($receipt.gstreamer_root)" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
+          (Join-Path $receipt.gstreamer_root "bin") | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+      - name: Set up the existing pinned vcpkg registry
+        uses: lukka/run-vcpkg@b1a0dd252f06b9e25b3c022a9a03bd7a427fb6a2 # v11.6
+        with:
+          vcpkgDirectory: ${{ github.workspace }}/vcpkg
+          vcpkgGitCommitId: "4334d8b4c8916018600212ab4dd4bbdc343065d1"
+      - name: Check the existing registry contract
+        run: python tools/check_ci_contract.py --vcpkg-root vcpkg
+      - name: Configure the actual camera worker
+        env:
+          VCPKG_ROOT: ${{ github.workspace }}/vcpkg
+        run: cmake --preset windows-release -B build/camera-native -DCAPTURE_ENABLE_CAMERA_WORKER=ON -DCAPTURE_WERROR=ON
+      - name: Build the actual worker, daemon and native cases
+        run: cmake --build build/camera-native --target capture_worker_camera capture_daemon capture_core_tests -j 4
+      - name: Receive the original, plugin and legacy workers
+        run: python tools/qualify_camera_ci.py --build-dir build/camera-native --sdk-manifest build/evidence/camera-sdk/manifest.json
+      - name: Preserve native camera evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: native-camera-evidence
+          path: |
+            build/evidence/camera-sdk/
+            build/evidence/camera-native-*/
+            build/camera-native/vcpkg-manifest-install.log
+            build/camera-native/CMakeFiles/CMakeConfigureLog.yaml
+            build/camera-native/CMakeCache.txt
+          if-no-files-found: warn
+          retention-days: 7

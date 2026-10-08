@@ -1,0 +1,6 @@
+{
+  "collected_at": "2026-10-08T12:46:04.707073+00:00",
+  "source_commit": "4fcd0aa4319b6594af637af8644c187fcbff3cf5",
+  "current_main": "72c15d6b623e217291a824e4e4808a385df896a9",
+  "snapshot_policy": "All regular native receipt, JUnit, stdout, synthetic package raw files and derived outputs are retained. Reproducible Matplotlib caches, empty state directories and pytest convenience symlinks are excluded. Nothing in the original evidence or source was removed or edited."
+}

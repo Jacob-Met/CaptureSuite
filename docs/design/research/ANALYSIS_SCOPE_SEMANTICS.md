@@ -24,11 +24,16 @@ Multiple modes compose: e.g. section **and** source subset.
 ## 2. Checkpoint section resolution
 
 The current desktop and CLI share `checkpoint_section_window`: load the recorded
-checkpoints, sort by their effective timestamp, and resolve the selected checkpoint
-through the next checkpoint (or the recorded session end for the last checkpoint).
+checkpoints, stably sort by their effective timestamp, and resolve the section from
+the preceding checkpoint (or session time zero for the first checkpoint) through
+the selected checkpoint. The selected checkpoint closes the section; it does not
+name the following interval or an implicit trailing section through session end.
+Timestamp aliases, the existing missing-timestamp fallback, and explicit zero
+timestamps retain the backend's existing behavior. Open gaps remain in the mask.
 The desktop passes the stable checkpoint ID and shows it alongside repeated display
-names. The picker displays the backend's exact resolved bounds, including its
-existing fallback when a package omits its duration. Open gaps remain in the mask.
+names. The picker displays the backend's exact resolved bounds. It requires a
+positive-duration selection; nonpositive or unresolved sections remain unavailable
+with a Time range fallback.
 The current backend also accepts checkpoint names. If a different checkpoint's
 name shadows the selected ID, that section is explicitly unavailable in the
 desktop, with an explanation and Time range fallback. The UI does not offer the
@@ -42,6 +47,16 @@ If section incomplete: warn in QC; `gap_policy=fail` fails job if gap overlaps s
 ---
 
 ## 3. Sync anchors
+
+**Current availability (2026-10-08):** Anchor-based alignment is not implemented in
+`jobs.run`. A request with `apply_sync_anchors=True` raises `NotImplementedError`
+before progress callbacks, analysis reads, output creation or replacement of a saved
+job. The default/false request runs the existing analysis without anchor offsets and records
+`syncAnchorsApplied: {applied: false, anchors: []}`; recorded anchors remain available
+to package review and QC. This is not evidence of cross-stream alignment.
+
+The following table retains the intended alignment contract for a future
+implementation; accepting the request alone does not satisfy it.
 
 | Flag | Behavior |
 |------|----------|

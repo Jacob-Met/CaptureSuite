@@ -1,0 +1,681 @@
+{
+  "observed_utc": "2026-10-08T14:42:43.514019+00:00",
+  "canonical_base": "d43bdea867d6198a707a5f55e29216c76054517e",
+  "native_commit": "6a1a32e6240dc89892f340f241b03ef25a8ac8fc",
+  "git_status": "",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "size": 3932,
+      "mode": "100644",
+      "git_blob_sha": "9ac6683ba4805e210143e5a33e7782da55af0d15",
+      "sha256": "525164ca1f3b9e68561434ab110ba17ed65843a20c23f4c1385fde33f1863a74"
+    },
+    {
+      "path": "CMakeLists.txt",
+      "size": 1746,
+      "mode": "100644",
+      "git_blob_sha": "8d5da4419dcaa3c9ed23173f40c22440815dc15e",
+      "sha256": "6b7bbb235e2bfc3588084bddb484df303ec7b93f588425a6dd67244525938f87"
+    },
+    {
+      "path": "CMakePresets.json",
+      "size": 2253,
+      "mode": "100644",
+      "git_blob_sha": "dfafa2e6e351a1d4b758e53e1ac95cb4b1f643c6",
+      "sha256": "46e947d2287d58710b7ae456cc9e88280cbe434e88e70e733d981813913b1d2a"
+    },
+    {
+      "path": "LICENSE",
+      "size": 35149,
+      "mode": "100644",
+      "git_blob_sha": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "path": "README.md",
+      "size": 4582,
+      "mode": "100644",
+      "git_blob_sha": "14bae7a2f91a88431cf1bca94a0cb8efdbef4aa7",
+      "sha256": "0ea3c41ee6af89971f06acb4077d5065fee7465ccfdfd13ac2a00f1c431b4620"
+    },
+    {
+      "path": "cmake/CaptureProtobuf.cmake",
+      "size": 766,
+      "mode": "100644",
+      "git_blob_sha": "8af02dd2504815968c1b9adb702e74366d1a38ce",
+      "sha256": "753a1d7f3041039002363b456eca08bf42a3df6d3cba61ac6b177010e0012d51"
+    },
+    {
+      "path": "cmake/CompilerWarnings.cmake",
+      "size": 434,
+      "mode": "100644",
+      "git_blob_sha": "eb182f0e2566f00787ab836dc62f92b85e5ba4c5",
+      "sha256": "91e124a89d77adbc27151d790a1da0f778427d71c5bb9cc39ef61ef724d55e48"
+    },
+    {
+      "path": "cmake/FindGStreamer.cmake",
+      "size": 2488,
+      "mode": "100644",
+      "git_blob_sha": "9a907b1d620c72b315f644b24d03edc9534aecc2",
+      "sha256": "27e76cde610886d9f0f21c80b20ddff0b12453f53cd64d169176cfa736b4cb27"
+    },
+    {
+      "path": "cmake/FindInfineonRadar.cmake",
+      "size": 2873,
+      "mode": "100644",
+      "git_blob_sha": "dc314675d2e5203c65bbdc610ec27fb7c869c435",
+      "sha256": "bde924e0d46870a3d5e9192a438f6a31ad7466e5555417c346bd44edfdaa9ce6"
+    },
+    {
+      "path": "cmake/linux-shims/unofficial-mcap/unofficial-mcapConfig.cmake",
+      "size": 856,
+      "mode": "100644",
+      "git_blob_sha": "e5d2039ab2c5d76446c694751e94c90e45a4a12c",
+      "sha256": "bd9e56246490dfed7ef6ed01794103b69c5b5831fd2e2ea0875e2fb615a8ebf5"
+    },
+    {
+      "path": "cmake/linux-shims/unofficial-sqlite3/unofficial-sqlite3Config.cmake",
+      "size": 401,
+      "mode": "100644",
+      "git_blob_sha": "27465119af56bda3a4770dab77bba903c8328313",
+      "sha256": "4e696e8bcb6272ecaefa0ea17ea8235f466b861d7436b9da6fdf8d925b867bb2"
+    },
+    {
+      "path": "libs/cpp/capture_core/CMakeLists.txt",
+      "size": 510,
+      "mode": "100644",
+      "git_blob_sha": "fc9c644d63836c1d943aeebf84c474762a6c943c",
+      "sha256": "b7c06abbdac55362a4dbb914bb7fe532b0d7f70a7f6adfd8275de72516dd8b61"
+    },
+    {
+      "path": "libs/cpp/capture_core/include/capture/clock.hpp",
+      "size": 1340,
+      "mode": "100644",
+      "git_blob_sha": "8798c43e3b10adc61d14b1ea7f44cc124b460cad",
+      "sha256": "dd6e4af30cd863ae079b116f56503bbd2e3c56a498ba20ce208a3440efedc9fd"
+    },
+    {
+      "path": "libs/cpp/capture_core/include/capture/env.hpp",
+      "size": 758,
+      "mode": "100644",
+      "git_blob_sha": "487e49f9be3721877078a0f7dbba2dc33c2b28ea",
+      "sha256": "126613decca8f79d929e683ec377882efae76fbcb08b104f5793b69ac09e68de"
+    },
+    {
+      "path": "libs/cpp/capture_core/include/capture/framing.hpp",
+      "size": 1204,
+      "mode": "100644",
+      "git_blob_sha": "0484098dbab9356d569fa8d8bca56fa1bece208a",
+      "sha256": "9616559dd78065e71a77088d054865abc594566b0287fcdecdd67e29d62fd434"
+    },
+    {
+      "path": "libs/cpp/capture_core/include/capture/logging.hpp",
+      "size": 1511,
+      "mode": "100644",
+      "git_blob_sha": "e0becdf4a16df8ba50307e3a872cc46199d47186",
+      "sha256": "985622912c08344744159defd6ac2251999cc886619638f520fec09a275999e6"
+    },
+    {
+      "path": "libs/cpp/capture_core/include/capture/recording_buffer.hpp",
+      "size": 1625,
+      "mode": "100644",
+      "git_blob_sha": "4a79b787d8b4e9a4eb596425f5b0ce9461dd71b5",
+      "sha256": "21abbc5561ec464287d3591641d47b0ea28c320b4491ae6762cc70667fc05dbe"
+    },
+    {
+      "path": "libs/cpp/capture_core/include/capture/session_fsm.hpp",
+      "size": 1275,
+      "mode": "100644",
+      "git_blob_sha": "f1897ff9a88af8595f836d6ae1b5a660681823b6",
+      "sha256": "3bde3ff2811684a4ab9818398080cb4dffc0426a19b363cd7ba4ab7907a6cb60"
+    },
+    {
+      "path": "libs/cpp/capture_core/include/capture/source_fsm.hpp",
+      "size": 1522,
+      "mode": "100644",
+      "git_blob_sha": "93d8dc211f061b5da9d0475b4410af91cc0357ef",
+      "sha256": "c6b58b11daaf57cbd42bf1facc04b4951692530572e8df6aed09f0a23fcd7ae5"
+    },
+    {
+      "path": "libs/cpp/capture_core/include/capture/version.hpp",
+      "size": 240,
+      "mode": "100644",
+      "git_blob_sha": "a3124766845272bc4d95b0cb2e437fa2ebd07d1f",
+      "sha256": "cce279f24b013a45334d388411f3f1e00e53e58cb00d0ef8fe424fbaad3567f6"
+    },
+    {
+      "path": "libs/cpp/capture_core/src/clock.cpp",
+      "size": 5833,
+      "mode": "100644",
+      "git_blob_sha": "852e22f3e85f0431bd52d9db6583903d88326da4",
+      "sha256": "b558f737730f05b82635443b3f9b36da9c6253fe5dee5401ddec8ef7528fb78a"
+    },
+    {
+      "path": "libs/cpp/capture_core/src/framing.cpp",
+      "size": 2806,
+      "mode": "100644",
+      "git_blob_sha": "73e62212ed18224d75f125d600b5cd42e8bb190a",
+      "sha256": "3930e7083f0ec4de8a524842f41164cc2a359e17adef39bf4b4c25b6208770b2"
+    },
+    {
+      "path": "libs/cpp/capture_core/src/logging.cpp",
+      "size": 6853,
+      "mode": "100644",
+      "git_blob_sha": "ec20643f697bbbdc37a9a15b98519482d2626363",
+      "sha256": "dddd7841492ae62485e6c842c3d71d444d3bac2073aecc8b951c5a32a1c5e37d"
+    },
+    {
+      "path": "libs/cpp/capture_core/src/recording_buffer.cpp",
+      "size": 2493,
+      "mode": "100644",
+      "git_blob_sha": "9867e9aa4411b47517e54e8893123ab104885483",
+      "sha256": "80260f41bd62908b881315e68e9e0d53ece568943c35d8b71785c3d22babcf08"
+    },
+    {
+      "path": "libs/cpp/capture_core/src/session_fsm.cpp",
+      "size": 3213,
+      "mode": "100644",
+      "git_blob_sha": "f3220df9011adee97b765473af633c211bebf49f",
+      "sha256": "7c196973c6ae7fb35c51b1acd4089453c181723b029279f71bc19be32715d158"
+    },
+    {
+      "path": "libs/cpp/capture_core/src/source_fsm.cpp",
+      "size": 4455,
+      "mode": "100644",
+      "git_blob_sha": "caa3461741f3fe8b5f7a02252e003fe8379c5d19",
+      "sha256": "e75a65f40c74aebee9ab2b94fa8f35402768eb6540d008d71286a4e6bc2d930a"
+    },
+    {
+      "path": "libs/cpp/capture_core/src/version.cpp",
+      "size": 179,
+      "mode": "100644",
+      "git_blob_sha": "281f0c791be6e293b90aa74424291fd68e42aaee",
+      "sha256": "48abf97dd7465ef868fae2482750010736a82a7133f95d8144400c2cb1413a04"
+    },
+    {
+      "path": "libs/cpp/capture_proto/CMakeLists.txt",
+      "size": 3165,
+      "mode": "100644",
+      "git_blob_sha": "2d94fcb425c0855ebe4d3ad55d140a01e58d403f",
+      "sha256": "3574332240a8701f38636e54512bb100e24e04ea42e7594ff64347f9915a7d1f"
+    },
+    {
+      "path": "libs/cpp/capture_storage/CMakeLists.txt",
+      "size": 1135,
+      "mode": "100644",
+      "git_blob_sha": "75acac9fbd00a6386df77aa8588dc5c2d2c00e1a",
+      "sha256": "a94f5c8b94efa778b3f754d2f689f2ded344ab35a8abf85193b0055451cb46b9"
+    },
+    {
+      "path": "libs/cpp/capture_storage/include/capture/storage/atomic_file.hpp",
+      "size": 1175,
+      "mode": "100644",
+      "git_blob_sha": "86738c28bd5ff7449f50fa6d48def8478486a5a3",
+      "sha256": "9b4c91f6b8b7123b89124e8d705cf0432a0b695427a110e27cf68f882cceb6e7"
+    },
+    {
+      "path": "libs/cpp/capture_storage/include/capture/storage/disk_watchdog.hpp",
+      "size": 1085,
+      "mode": "100644",
+      "git_blob_sha": "bc6c1ef947bd4e417ca220a983bee1ac8b04f14d",
+      "sha256": "c71a6dc077d7dab898f1740fd63b3ed3e632a0648dbe0044d8d08ea8899aedc0"
+    },
+    {
+      "path": "libs/cpp/capture_storage/include/capture/storage/hash.hpp",
+      "size": 351,
+      "mode": "100644",
+      "git_blob_sha": "8fc363d6f087e4f200993b4f91793aa6440b4c55",
+      "sha256": "b668c5e0b8339b29fb79ba721d2df147a8baf34f5883fa88b48bbee4a44930d1"
+    },
+    {
+      "path": "libs/cpp/capture_storage/include/capture/storage/journal.hpp",
+      "size": 1063,
+      "mode": "100644",
+      "git_blob_sha": "2175a4573da63fa5f11a58225037b5448e0ca103",
+      "sha256": "2b605488bedfb79832d795eb782ced3e6a9e5b305a99a0147e1b0cbfc9386d24"
+    },
+    {
+      "path": "libs/cpp/capture_storage/include/capture/storage/mcap_stream_writer.hpp",
+      "size": 3772,
+      "mode": "100644",
+      "git_blob_sha": "37122e4416fa62ccc778899cd59675f9b0e54f0f",
+      "sha256": "6a0d30f38230a5a57e9b432e2d642f1d83f84380f8bc58ecf574f9aecad95110"
+    },
+    {
+      "path": "libs/cpp/capture_storage/include/capture/storage/recovery.hpp",
+      "size": 522,
+      "mode": "100644",
+      "git_blob_sha": "67ec14e8a84511d1cc493cee724f2c2ad27c930e",
+      "sha256": "7e9a93aee36df1509b2acdc26032fff82e60eadc2f76ae21e659b651c720613a"
+    },
+    {
+      "path": "libs/cpp/capture_storage/include/capture/storage/session_package.hpp",
+      "size": 5757,
+      "mode": "100644",
+      "git_blob_sha": "069cc4aa7a94b4096d36d58b00a71de38f782990",
+      "sha256": "dbcc3fa85d8ae23520d31ebc93759bc63ed5086a18df8704dfbc71c20ae3400a"
+    },
+    {
+      "path": "libs/cpp/capture_storage/include/capture/storage/video_writer.hpp",
+      "size": 1146,
+      "mode": "100644",
+      "git_blob_sha": "f4b019970ddc92c0f774f5589ffa30fdb442a6b7",
+      "sha256": "4916bbf9e32ee5c95962faa2c9a850327f1372a1c9c25a7acb33f78d12ad437f"
+    },
+    {
+      "path": "libs/cpp/capture_storage/src/atomic_file.cpp",
+      "size": 7784,
+      "mode": "100644",
+      "git_blob_sha": "d51815e9f95ec6e3cf1b319386efb44b5bb4ac94",
+      "sha256": "e5f67fb5c83c73b7a31503f1689303737cd00b48ae764553127b5a3c68be12f6"
+    },
+    {
+      "path": "libs/cpp/capture_storage/src/disk_watchdog.cpp",
+      "size": 1854,
+      "mode": "100644",
+      "git_blob_sha": "718425f933703fdee920762de1dc115931950aad",
+      "sha256": "d2781ecb8a9a31f9aceeb0b053ab1b9ea9d9c73ea43c0a2266bb9e62b2ac3068"
+    },
+    {
+      "path": "libs/cpp/capture_storage/src/hash.cpp",
+      "size": 1446,
+      "mode": "100644",
+      "git_blob_sha": "0f5a22cf8456b69ad34c57ecdb3f90c473f7a2e6",
+      "sha256": "177d3bc1ed0d20b6f601b6a7538ab3f50b6a803925d96471b07ed5712ac30940"
+    },
+    {
+      "path": "libs/cpp/capture_storage/src/journal.cpp",
+      "size": 4018,
+      "mode": "100644",
+      "git_blob_sha": "af412e722bb877907f8776d70c097799be41459f",
+      "sha256": "36dd6497f4c6ef9486d30cd848c3234cfdba014e28c5cfe6c8de8c3dd4b3056a"
+    },
+    {
+      "path": "libs/cpp/capture_storage/src/mcap_impl.cpp",
+      "size": 94,
+      "mode": "100644",
+      "git_blob_sha": "6bedec1f189d70ea12c29e847ba8f0069471b3cd",
+      "sha256": "ea6ebdb3cd032aeff4ca863621caf4fddd98f232bfa5c477a75f72a4cca764fe"
+    },
+    {
+      "path": "libs/cpp/capture_storage/src/mcap_stream_writer.cpp",
+      "size": 11686,
+      "mode": "100644",
+      "git_blob_sha": "7c695635b17b44532aea29f2e575e2cd0a821d02",
+      "sha256": "88e0e60971e24da4c900df07c4c577d56b3230f68557e01a964848602f2d1b49"
+    },
+    {
+      "path": "libs/cpp/capture_storage/src/recovery.cpp",
+      "size": 10870,
+      "mode": "100644",
+      "git_blob_sha": "96900b3854569112638ebb6750ada9f3190040df",
+      "sha256": "edcdd4a66845bb3270022afb5a90f02a95ab2610ac2a628ae6ec78490bc847d0"
+    },
+    {
+      "path": "libs/cpp/capture_storage/src/session_package.cpp",
+      "size": 20331,
+      "mode": "100644",
+      "git_blob_sha": "4b9579fac871b70795a9a8a7dfe7d8c67e1e5760",
+      "sha256": "edd538bfb9e89bd6fd4611490a8e32c80b8337ff9fceeca4221642fef9362e75"
+    },
+    {
+      "path": "schemas/proto/README.md",
+      "size": 337,
+      "mode": "100644",
+      "git_blob_sha": "f802d5b6cf9952a34f353d303ed210fb1a4090ef",
+      "sha256": "1411f195c911b26e016d478428225b174035357e040c222946fe486185fa32e4"
+    },
+    {
+      "path": "schemas/proto/capture/v1/arrays.proto",
+      "size": 1151,
+      "mode": "100644",
+      "git_blob_sha": "c5b55de37045dc8e799dc4cf8bef556db0e964f1",
+      "sha256": "06360f104803070dff7de92fa40401466d3a68e564dbe96aca839ec4fef7db50"
+    },
+    {
+      "path": "schemas/proto/capture/v1/common.proto",
+      "size": 6090,
+      "mode": "100644",
+      "git_blob_sha": "c38e56ac40c188633c9a865451580f329738be29",
+      "sha256": "a9f403a8835b0620eaedef1fdec7bfed09d3f649397b55b12900fe83c5a541d9"
+    },
+    {
+      "path": "schemas/proto/capture/v1/control.proto",
+      "size": 7970,
+      "mode": "100644",
+      "git_blob_sha": "c92be1245457aeab42651c480a4acf87e375e2d7",
+      "sha256": "7a4b9ad274badc40e0139a7554164183a54ff511fce1ef780305d90642688d84"
+    },
+    {
+      "path": "schemas/proto/capture/v1/data/emg_batch.proto",
+      "size": 490,
+      "mode": "100644",
+      "git_blob_sha": "cfe8b3e6d242a5157d1a48904ff0ddb1a87a4784",
+      "sha256": "6eaed7210149c82877476cb391d73624b1bb25f7f4b2f822745224e79a743dc6"
+    },
+    {
+      "path": "schemas/proto/capture/v1/data/imu_frame.proto",
+      "size": 651,
+      "mode": "100644",
+      "git_blob_sha": "dedf652d7296e75c25b4ffc6008157a0eb72a005",
+      "sha256": "44c5b700c7e976b3c092b77ae49e21b383899d053d16f55e06b7bc59e2e38ff1"
+    },
+    {
+      "path": "schemas/proto/capture/v1/data/numeric_batch.proto",
+      "size": 628,
+      "mode": "100644",
+      "git_blob_sha": "ec43fd3406130ed2d6743de09e0076dd55f16639",
+      "sha256": "068b62f517b057b448aec26c507b05044f1e9d25c91318657671558fcc8de07b"
+    },
+    {
+      "path": "schemas/proto/capture/v1/data/radar_doppler.proto",
+      "size": 699,
+      "mode": "100644",
+      "git_blob_sha": "a9d7c291dd4e1e9d4e306294c9ccaca7a972c3b6",
+      "sha256": "99d1549779e8ab294c6ed80e1341efc1cd612b2c13eef59fe51f32da7679d6f1"
+    },
+    {
+      "path": "schemas/proto/capture/v1/data/radar_frame.proto",
+      "size": 904,
+      "mode": "100644",
+      "git_blob_sha": "b9bcba12f1f23cc87dc9403409a937d2965e0e1f",
+      "sha256": "844921a2bbc1732d2e3811d85d1d1863ade60346c2897dd6ef1bede3e9ac3156"
+    },
+    {
+      "path": "schemas/proto/capture/v1/data/video_timing.proto",
+      "size": 801,
+      "mode": "100644",
+      "git_blob_sha": "25d1618ec84d2b69b3856999bb0cd8714a16b720",
+      "sha256": "717aff65762679bd4363c2c8df38c18047e6012816feb63b56f9e00a6e9e7514"
+    },
+    {
+      "path": "schemas/proto/capture/v1/events.proto",
+      "size": 1909,
+      "mode": "100644",
+      "git_blob_sha": "c7f5943e568552803d53dd322d51cce1e361f4ab",
+      "sha256": "ac91ca3d1c2806342ebc5c63512b78d1e2bd1c0c7386b3bbe1f78d5049cc2072"
+    },
+    {
+      "path": "schemas/proto/capture/v1/health.proto",
+      "size": 2679,
+      "mode": "100644",
+      "git_blob_sha": "431d818649fbecc2ba4a814cb19e0a81b3cb1cb5",
+      "sha256": "4888b25c2b527b3161efa391b009eabb9ead1fd568c8ce25ffaa96f235e9bbce"
+    },
+    {
+      "path": "schemas/proto/capture/v1/presets.proto",
+      "size": 574,
+      "mode": "100644",
+      "git_blob_sha": "36ad3689aa9af4a90661d84a295bc3f8495483cb",
+      "sha256": "55adc5f64d26df5b03bed14505a213fbb3ed6925861156b0cfa6e525dd67b461"
+    },
+    {
+      "path": "schemas/proto/capture/v1/preview.proto",
+      "size": 2688,
+      "mode": "100644",
+      "git_blob_sha": "fba83363cf291255f13c96335e38826a003a5a1b",
+      "sha256": "ac74cd566c62b517298a228f1487103e72b6fe959eece920bc3951dc3e927c5b"
+    },
+    {
+      "path": "schemas/proto/capture/v1/project.proto",
+      "size": 684,
+      "mode": "100644",
+      "git_blob_sha": "fe6e0b493683ec4f26f8c29f854eef34b7b362e9",
+      "sha256": "5ba4dfc4158458707b28aee6cf0a01e86798c156ae0499414be314906589c555"
+    },
+    {
+      "path": "schemas/proto/capture/v1/source.proto",
+      "size": 3092,
+      "mode": "100644",
+      "git_blob_sha": "263f77bdad4210a2def3eaee28354aaebd7664ae",
+      "sha256": "5f353365bbff5fec722cf3dafc8585afeded5153ce6cd9abcb29326cc9982425"
+    },
+    {
+      "path": "schemas/proto/capture/v1/storage.proto",
+      "size": 1894,
+      "mode": "100644",
+      "git_blob_sha": "f141fcc0b185b5328a1aa5c89cc6c77e202b7030",
+      "sha256": "4b7ac9342b0497428708299075e615698dc62846e22d0a76f7213841aec51cf1"
+    },
+    {
+      "path": "schemas/proto/capture/v1/worker.proto",
+      "size": 3747,
+      "mode": "100644",
+      "git_blob_sha": "6614ea6b3588abfaf9ef26db04de7c22b3d3b9f7",
+      "sha256": "8ae3774630330103a86137d3d7bea09f35997470d66b2829489089f4a3f7ff6d"
+    },
+    {
+      "path": "tests/cmake/portable_storage/fixture_isolation.cmake",
+      "size": 1745,
+      "mode": "100644",
+      "git_blob_sha": "d0762d52b73ef8df127b81e7a6d5e3084c88eacd",
+      "sha256": "ad04e619453d94a10e04d5a11bc4155d6f6f62c47dbbe5b2f3e958f151f89a27"
+    },
+    {
+      "path": "tests/cmake/portable_storage/session_doctor.cmake",
+      "size": 3852,
+      "mode": "100644",
+      "git_blob_sha": "e503895519cca82d42a6ab358fa232be70e1af7c",
+      "sha256": "afc37e9f36b94309b807e46c8f0fc3b338c458448a83e2f7ec2a08386e8bedbe"
+    },
+    {
+      "path": "tests/cpp/CMakeLists.txt",
+      "size": 4061,
+      "mode": "100644",
+      "git_blob_sha": "ae5b8e9f89870fe4098686a701a3a30cda438f79",
+      "sha256": "78d008caac4721076791b3d1303ceca8dac97070c8dbd12cb5a0df8bd9edd446"
+    },
+    {
+      "path": "tests/cpp/test_atomic_file_posix.cpp",
+      "size": 8933,
+      "mode": "100644",
+      "git_blob_sha": "55f7e8a7a5414e682082f82f47ce9c65b7c6bb96",
+      "sha256": "ea35516f3f6c81f6701c356cab57c6d55fd0e8e273a8a771599a5f982bee2ef9"
+    },
+    {
+      "path": "tests/cpp/test_atomic_file_posix_identity.cpp",
+      "size": 9708,
+      "mode": "100644",
+      "git_blob_sha": "bb6b239ab5baf27db910ff53acd260a320732b09",
+      "sha256": "347f85f5087c674199120d196c3457ae688fe698c2fd6fde119a307cc9fc9702"
+    },
+    {
+      "path": "tests/cpp/test_atomic_file_windows.cpp",
+      "size": 9852,
+      "mode": "100644",
+      "git_blob_sha": "43fe28c3ec2ed49872b59dcc87407cece56466e5",
+      "sha256": "485af6482c6b14fc7c187b45cc366af547bf0a1fe2c0651c8b68c8d25e854cfb"
+    },
+    {
+      "path": "tests/cpp/test_clock.cpp",
+      "size": 996,
+      "mode": "100644",
+      "git_blob_sha": "c63845c8d064700e1ef20730e7b2bb58b1f3cb3e",
+      "sha256": "8dd2a640ff75ce79baef468093558f5eee77a6c4fd2f993bab0e9a6b49237a67"
+    },
+    {
+      "path": "tests/cpp/test_env.cpp",
+      "size": 833,
+      "mode": "100644",
+      "git_blob_sha": "1c04a9096a55d6e999bb6f33058d7f37e3373f20",
+      "sha256": "26be1962f3d7b460618c401928c3938402fe70bc656dfbcde9a0bfb112d6410e"
+    },
+    {
+      "path": "tests/cpp/test_framing.cpp",
+      "size": 1274,
+      "mode": "100644",
+      "git_blob_sha": "2bb2e2c1f08b0b64c099744eb2b34392678e732b",
+      "sha256": "5a90ac7cedfcca0eeff7668253491557ac7ead96860b217642444efeddf3dc57"
+    },
+    {
+      "path": "tests/cpp/test_logging.cpp",
+      "size": 1469,
+      "mode": "100644",
+      "git_blob_sha": "4296e08f46e6494bfe9defb64045a30effb49767",
+      "sha256": "eb5f1ec38441b86d3c62941505b0f1240a191afac5e9ebb7f2f27561a71d5cc1"
+    },
+    {
+      "path": "tests/cpp/test_recovery.cpp",
+      "size": 2955,
+      "mode": "100644",
+      "git_blob_sha": "9664cb56222706e68cd098356daa3c01000ea54f",
+      "sha256": "7cf1003bb0d420179ed685201d687987d5047f6a5a10fe9b7458dbb3ef94156e"
+    },
+    {
+      "path": "tests/cpp/test_session_fsm.cpp",
+      "size": 1568,
+      "mode": "100644",
+      "git_blob_sha": "db8308c51c871fe796c632f5288aed118ba771a7",
+      "sha256": "7d22f716da0a897ef35649411b1e2774ca4b37346788d517a55d26e1ba1640c3"
+    },
+    {
+      "path": "tests/cpp/test_session_package.cpp",
+      "size": 3993,
+      "mode": "100644",
+      "git_blob_sha": "500129fe02aa67f010c723f78deca98df59966b5",
+      "sha256": "94e0d8a428768f2234d302257fac54e79854f3ebfc21207359f92cf7bce412e7"
+    },
+    {
+      "path": "tests/cpp/test_sim_engine.cpp",
+      "size": 5906,
+      "mode": "100644",
+      "git_blob_sha": "3df04153c00cf9880c8725eb44d5fd3a5585e88e",
+      "sha256": "924d452da93b46b7105a80b11d95d2d2375288f70c98dddc6693ac76611a1970"
+    },
+    {
+      "path": "tests/cpp/test_source_fsm.cpp",
+      "size": 1715,
+      "mode": "100644",
+      "git_blob_sha": "b16545c7347d8d49b2d8b1f7b007a25644e4f9f3",
+      "sha256": "a67f55fd179461b4402d00c4f795f16e14bb3e373bab83f7d2b1a2385baaf098"
+    },
+    {
+      "path": "tests/cpp/test_storage_posix.cpp",
+      "size": 2734,
+      "mode": "100644",
+      "git_blob_sha": "514ac79df732038fe9ed0b47b34121a337e21fbd",
+      "sha256": "daab7555a3834319346db06caee40a5280c7a045ffe645f58a5a806832620393"
+    },
+    {
+      "path": "tests/cpp/test_worker_host.cpp",
+      "size": 11683,
+      "mode": "100644",
+      "git_blob_sha": "874b2a2053c03d2da0a403899f7d22599f00a722",
+      "sha256": "0df83120ed7085387896618ef6606db60179207e5e5b5c74549faab425e99bf7"
+    },
+    {
+      "path": "tests/fixtures/mini_session/events/annotations.json",
+      "size": 3,
+      "mode": "100644",
+      "git_blob_sha": "fe51488c7066f6687ef680d6bfaa4f7768ef205c",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "tests/fixtures/mini_session/events/checkpoints.json",
+      "size": 3,
+      "mode": "100644",
+      "git_blob_sha": "fe51488c7066f6687ef680d6bfaa4f7768ef205c",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "tests/fixtures/mini_session/events/sync_anchors.json",
+      "size": 3,
+      "mode": "100644",
+      "git_blob_sha": "fe51488c7066f6687ef680d6bfaa4f7768ef205c",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "tests/fixtures/mini_session/integrity.json",
+      "size": 227,
+      "mode": "100644",
+      "git_blob_sha": "d10093b866427fcaed78a85e60e600d8657a86a7",
+      "sha256": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556"
+    },
+    {
+      "path": "tests/fixtures/mini_session/manifest.json",
+      "size": 235,
+      "mode": "100644",
+      "git_blob_sha": "800dab5b41774bc043ebdee4714195770e75229b",
+      "sha256": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380"
+    },
+    {
+      "path": "tests/fixtures/mini_session/processing/.gitkeep",
+      "size": 0,
+      "mode": "100644",
+      "git_blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/fixtures/mini_session/sources/sim.emg.main/health/gaps.jsonl",
+      "size": 0,
+      "mode": "100644",
+      "git_blob_sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "tests/fixtures/mini_session/sources/sim.emg.main/source.json",
+      "size": 112,
+      "mode": "100644",
+      "git_blob_sha": "9528c95289b4b1b49d11d412b5ab2e3d019b4066",
+      "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10"
+    },
+    {
+      "path": "tests/fixtures/mini_session/sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",
+      "size": 28,
+      "mode": "100644",
+      "git_blob_sha": "320ce3607fadf57d05cf506987d045cf5b62ad9f",
+      "sha256": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649"
+    },
+    {
+      "path": "tests/fixtures/mini_session/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json",
+      "size": 216,
+      "mode": "100644",
+      "git_blob_sha": "12c4db8831572fc4ab3db9ba5f784fa236078e5f",
+      "sha256": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1"
+    },
+    {
+      "path": "tests/fixtures/mini_session/sources/sim.imu.upper/source.json",
+      "size": 118,
+      "mode": "100644",
+      "git_blob_sha": "fcc248c52b8319f5e7fd0067763b74640f0040dd",
+      "sha256": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8"
+    },
+    {
+      "path": "tests/fixtures/mini_session/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+      "size": 28,
+      "mode": "100644",
+      "git_blob_sha": "320ce3607fadf57d05cf506987d045cf5b62ad9f",
+      "sha256": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649"
+    },
+    {
+      "path": "tests/fixtures/mini_session/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "size": 219,
+      "mode": "100644",
+      "git_blob_sha": "9c634d4af594372063fcc612331ba338ae95f8c9",
+      "sha256": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+    },
+    {
+      "path": "tools/session_doctor/CMakeLists.txt",
+      "size": 230,
+      "mode": "100644",
+      "git_blob_sha": "f2ae86414a8da98bbbf3fde5d5b4508729871cbf",
+      "sha256": "b90608806aad8ad1acd75d174677569b85af2784333dd7cb1c01586a0c879869"
+    },
+    {
+      "path": "tools/session_doctor/main.cpp",
+      "size": 737,
+      "mode": "100644",
+      "git_blob_sha": "067cce0d81101b5964e20c465669526bc7c39278",
+      "sha256": "bf44c1bdcc86cec2acc1b2ce79a02301705bc801fa73672ed0c1b9f6ddf08831"
+    },
+    {
+      "path": "vcpkg.json",
+      "size": 395,
+      "mode": "100644",
+      "git_blob_sha": "782814bd953d9630a67f8ba37b9eca30761139ca",
+      "sha256": "e7554965950795541ab98bca74dad474880b7ae0393f5d6ebe4c21a03f727359"
+    }
+  ],
+  "hydration_correction": "Initial strict Base64 decode rejected transport line breaks before completing source write. Original helper/output retained. Corrected helper strips only encoded whitespace, verifies every source blob and size before writes, and requires pre-existing partial files to match exactly."
+}

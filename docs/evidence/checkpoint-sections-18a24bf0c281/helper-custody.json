@@ -1,0 +1,9 @@
+{
+  "source_commit": "4fcd0aa4319b6594af637af8644c187fcbff3cf5",
+  "current_main": "72c15d6b623e217291a824e4e4808a385df896a9",
+  "unchanged_prefix_bytes": 1905,
+  "unchanged_prefix_sha256": "4b5f779fe30f98ba45399d057624615a6d1258d16252cf21011c98b1f2e7771d",
+  "unchanged_suffix_after_gaps_marker_bytes": 2963,
+  "unchanged_suffix_after_gaps_marker_sha256": "c721caf20b12093407df4b6d91fed20c7a3ca939d412f11037024e45bf4ff707",
+  "note": "Existing window resolution, timestamp/ID helpers, gap scoping and downstream helpers are byte-identical outside the checkpoint function."
+}

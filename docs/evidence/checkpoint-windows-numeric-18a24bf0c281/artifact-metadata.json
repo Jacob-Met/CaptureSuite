@@ -1,0 +1,19 @@
+{
+  "id": 11557661798,
+  "name": "python-test-evidence",
+  "size_in_bytes": 1605021,
+  "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/actions/artifacts/11557661798",
+  "archive_download_url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/actions/artifacts/11557661798/zip",
+  "expired": false,
+  "created_at": "2026-10-08T14:34:57Z",
+  "expires_at": "2026-10-15T14:34:56Z",
+  "updated_at": "2026-10-08T14:34:57Z",
+  "digest": "sha256:e5973d8f613aada28a41d0054f4cccd77c2618f81bdb1fee3e5fafbb4eabf9d4",
+  "workflow_run": {
+    "id": 37792726943,
+    "repository_id": 1355538217,
+    "head_repository_id": 1355538217,
+    "head_branch": "work/capture-checkpoint-sections-18a24bf0-20261008",
+    "head_sha": "fef2d0307645de3e3a67592e2778bd560b9dfa69"
+  }
+}

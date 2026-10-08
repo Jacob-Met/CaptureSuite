@@ -1,0 +1,90 @@
+{
+  "checkpoints": [
+    {
+      "checkpointId": "finish",
+      "name": "Finish",
+      "originalTimestampNs": "7000000000"
+    },
+    {
+      "checkpointId": "trial",
+      "name": "Trial closed",
+      "originalTimestampNs": "5000000000"
+    },
+    {
+      "checkpointId": "warmup",
+      "name": "Warmup",
+      "originalTimestampNs": "2000000000"
+    }
+  ],
+  "selected_checkpoint": "trial",
+  "descriptive_modality": "emg",
+  "wire_schema": "generic.numeric_batch/1",
+  "mcap_schema": "capture.v1.data.NumericBatch",
+  "nominal_rate_hz": 10,
+  "frames": 81,
+  "frame_values": "index i at session timestamp i * 100000000 ns",
+  "batches": [
+    {
+      "indices": [
+        0,
+        39
+      ],
+      "log_time": 0,
+      "native_origin": 9000000000
+    },
+    {
+      "indices": [
+        40,
+        80
+      ],
+      "log_time": 4000000000,
+      "native_origin": 17000000000
+    }
+  ],
+  "expected_closed_window": [
+    2000000000,
+    5000000000
+  ],
+  "original_following_window": [
+    5000000000,
+    7000000000
+  ],
+  "raw_files": {
+    "events/annotations.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "events/checkpoints.json": {
+      "bytes": 311,
+      "sha256": "aabf4af316fb30e87c3aa8cd36a3e15ec59f9458909934e00ab45bf9854ffa6c"
+    },
+    "events/sync_anchors.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "integrity.json": {
+      "bytes": 437,
+      "sha256": "2d5ca6a3b0680dcf05a9f435571055a66e1b74d98dfd571fea9ac6a4d597e9b6"
+    },
+    "manifest.json": {
+      "bytes": 230,
+      "sha256": "472c5347c4c16601669f6bdd7158fbbe54545d254374fac21099a5697b7e7fd7"
+    },
+    "sources/sampler.section/health/gaps.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "sources/sampler.section/source.json": {
+      "bytes": 36,
+      "sha256": "deef6d73057198b5c02c09fe5fe518bfa9bb441d0b6b7d54f5c2ea173f9d34db"
+    },
+    "sources/sampler.section/streams/emg.evidence/segments/000000.mcap": {
+      "bytes": 1799,
+      "sha256": "94e53746486a066c6eedb7fd854f21c01a54b8bcadd17e90720caa3103d0a0b4"
+    },
+    "sources/sampler.section/streams/emg.evidence/stream.json": {
+      "bytes": 330,
+      "sha256": "cb5aef1d98e6d4f626cc597293c4807d800f19229ccbb061186cbd11fe8eb56e"
+    }
+  }
+}

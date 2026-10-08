@@ -1,0 +1,9 @@
+{
+  "driver_commit": "606a11477a9534b341f1797f0f9f05222001cf80",
+  "driver_sha256": "d88eb2a870d6950a872b823a6789b0a6c7318c1cb791015e786e4d3f1127daa2",
+  "baseline_receipt": "evidence/baseline-v1/receiving-receipt.json",
+  "classification": "reviewer fixture error, not a product regression",
+  "cause": "The initial fixture used unrecognized originalSessionTimeNs/effectiveSessionTimeNs. Canonical checkpoint.schema.json and resolver use originalTimestampNs/effectiveTimestampNs. Missing recognized fields resolved all markers to0. Bounds and inside-data sensitivity correctly rejected this fixture.",
+  "correction": "Only two fixture dictionary keys are renamed. Production source, checks, timing, data, and expected interval are unchanged.",
+  "canonical_schema_git_blob": "290c505abab0c84203e471d599f7f21c1d146e9b"
+}

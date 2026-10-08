@@ -1,0 +1,16 @@
+{
+  "command": [
+    "/Users/me/capturesuite-independent-checkpoint-18a24bf0c281/venv/bin/python",
+    "-m",
+    "pip",
+    "install",
+    "--only-binary=:all:",
+    "--no-deps",
+    "-r",
+    "/Users/me/capturesuite-independent-checkpoint-18a24bf0c281/dependency-pins.txt"
+  ],
+  "returncode": 0,
+  "python": "3.12.8 (main, Dec  3 2024, 18:42:41) [Clang 16.0.0 (clang-1600.0.26.4)]",
+  "isolated_pip_cache": "/Users/me/capturesuite-independent-checkpoint-18a24bf0c281/cache/pip",
+  "no_editable_links_to_owner": true
+}

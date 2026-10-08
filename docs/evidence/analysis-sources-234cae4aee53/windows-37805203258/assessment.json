@@ -1,0 +1,116 @@
+{
+  "archive": {
+    "bytes": 1592975,
+    "entries": 280,
+    "path": "/Users/me/Developer/capturesuite-scope-receiving-234cae4aee53/build/evidence/analysis-sources-234cae4aee53/windows-37805203258/python-test-evidence.zip",
+    "sha256": "1d0ce2f51c2c8918493dd0b49825d7afd211f9c694f25f80bbb631888d1013c9"
+  },
+  "checkout": "c65afe1a7099bbbee1c4a8363fe5c5ddc4950e38",
+  "cmake": {
+    "conclusion": "success",
+    "job_id": 113407565053,
+    "status": "completed"
+  },
+  "follows": "Isolated frozen-source diagnostic37809372315 changes only workflow observation and passes; its result does not rewrite this failed run.",
+  "head": "866702923c97743ce80fb86b8d96d180068fc52b",
+  "job_id": 113407564712,
+  "job_log": {
+    "raw_bytes": 51758,
+    "raw_sha256": "ccabb5a0d2d47e7f1edd11135cd779eb1c2d2dd58ad5708fb7f4a3ba93f73a03",
+    "stored_gzip_sha256": "48662c327b7c77e11f4a81ec2a3c5f4c8f3189547888c5a28545b438cfc6e845"
+  },
+  "ordering_note": "The 468 outcomes, 485-test accepted parent and 11 added cases put the next derived case at existing scope MainWindow (index469), before first source-picker case (index470). This is a derived sequence, not a Windows-emitted case identity or stack. It does not attribute the timeout to the modal helper.",
+  "parent_control": {
+    "checkout": "1ba60a5a302a4944628e576ffbc7ab3f28026c1d",
+    "counts": {
+      "passed": 479,
+      "skipped": 6,
+      "total": 485
+    },
+    "job_id": 113384183664,
+    "pytest_seconds": 279.68,
+    "run_id": 37798514385,
+    "tree": "51c711928a28dc02e100fcdea44cd34512318113",
+    "wrapper_seconds": 280.488
+  },
+  "parents": [
+    "58157fdc1b83a12bb4856ef14b0498cf524a1087",
+    "866702923c97743ce80fb86b8d96d180068fc52b"
+  ],
+  "partial_outcomes": 468,
+  "receipt": {
+    "accepted": false,
+    "counts": null,
+    "created_at": "2026-10-08T16:06:42.222750+00:00",
+    "github": {
+      "GITHUB_ACTIONS": "true",
+      "GITHUB_BASE_REF": "main",
+      "GITHUB_EVENT_NAME": "pull_request",
+      "GITHUB_HEAD_REF": "estate/234cae4aee53-analysis-sources",
+      "GITHUB_REF": "refs/pull/75/merge",
+      "GITHUB_RUN_ID": "37805203258",
+      "GITHUB_SHA": "c65afe1a7099bbbee1c4a8363fe5c5ddc4950e38",
+      "GITHUB_WORKFLOW_REF": "Jacob-Met/CaptureSuite/.github/workflows/ci.yml@refs/pull/75/merge"
+    },
+    "junit_sha256": null,
+    "log_sha256": "9b27e11403c1f510a8c6e8452670bd4dcb81a03adba278ec83128e5c0a13bccb",
+    "problems": [
+      "Test process did not exit successfully",
+      "JUnit unavailable or invalid: FileNotFoundError"
+    ],
+    "process_exit": null,
+    "run_directory": "build/evidence/python-20261008T160141Z-c2351eb8",
+    "schema": "capturesuite.test-receipt.v1",
+    "scope": "Process and test-evidence consistency, not clinical validation",
+    "seconds": 300.0074796,
+    "source_commit": "c65afe1a7099bbbee1c4a8363fe5c5ddc4950e38",
+    "source_file_count": 969,
+    "source_tree_sha256": "856261d10704035c33032852c44582ae61e5172411e4960a4f5b13127a546f2d",
+    "source_unchanged_during_test": true,
+    "source_worktree_dirty": false
+  },
+  "retained_entries": [
+    {
+      "archive_path": "python-20261008T160141Z-c2351eb8/pytest.log",
+      "bytes": 522,
+      "retained_name": "pytest.log",
+      "sha256": "9b27e11403c1f510a8c6e8452670bd4dcb81a03adba278ec83128e5c0a13bccb"
+    },
+    {
+      "archive_path": "python-20261008T160141Z-c2351eb8/receipt.json",
+      "bytes": 1239,
+      "retained_name": "receipt.json",
+      "sha256": "8c0bcd471bf5fd5c76697649b4be6f2e58ad36dd35148d15520ad40928f995e2"
+    },
+    {
+      "archive_path": "python-20261008T160141Z-c2351eb8/source-manifest.json",
+      "bytes": 127304,
+      "retained_name": "source-manifest.json",
+      "sha256": "5aa2848a1c54aa00189e19c37796bcd5f008860a09ff33ab5d80ecfcd5902a15"
+    }
+  ],
+  "run_id": 37805203258,
+  "run_url": "https://github.com/Jacob-Met/CaptureSuite/actions/runs/37805203258",
+  "schema": "capturesuite.analysis-sources.windows-receiving.v1",
+  "selected_archive": {
+    "bytes": 48025,
+    "sha256": "e8b43b8aa2f4d7e12b3c7ac93016014c48495a8b0fe4da78ecccd9a4fb723bdf"
+  },
+  "selected_evidence_note": "selected-evidence.tar.gz retains exact unmodified pytest.log, receipt.json and source-manifest.json bytes from the verified archive. No JUnit was emitted.",
+  "source_equality": {
+    "crlf": [
+      ".cursor/hooks/stop-capture-processes.ps1",
+      "plugins/example_sine_py/run_worker.cmd",
+      "plugins/lsl_bridge/run_worker.cmd",
+      "scripts/dev-env.ps1",
+      "tools/gstreamer-installers/install-gstreamer.ps1",
+      "tools/new_plugin.ps1",
+      "tools/run-daemon-gstreamer.ps1",
+      "tools/run-demo.ps1"
+    ],
+    "errors": [],
+    "exact": 961
+  },
+  "status": "Python process timed out at the unchanged 300-second deadline; no JUnit or accepted result.",
+  "tree": "eb7f8fa94e33ddf3e08e9e9a477ac55d473f1553"
+}

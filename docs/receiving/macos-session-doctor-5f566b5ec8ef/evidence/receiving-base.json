@@ -1,0 +1,491 @@
+{
+  "canonical_base": "d43bdea867d6198a707a5f55e29216c76054517e",
+  "receiving_base": "70f34e3b982523b544a9370d2316a1b69d79bd70",
+  "receiving_tree": "1537621f793d5d5c9b331f3c4d37a79a4af824b7",
+  "complete_receiving_leaf_count": 919,
+  "truncated": false,
+  "qualified_inputs": [
+    {
+      "path": "AGENTS.md",
+      "mode": "100644",
+      "sha": "9ac6683ba4805e210143e5a33e7782da55af0d15"
+    },
+    {
+      "path": "CMakeLists.txt",
+      "mode": "100644",
+      "sha": "8d5da4419dcaa3c9ed23173f40c22440815dc15e"
+    },
+    {
+      "path": "CMakePresets.json",
+      "mode": "100644",
+      "sha": "dfafa2e6e351a1d4b758e53e1ac95cb4b1f643c6"
+    },
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "sha": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "sha": "14bae7a2f91a88431cf1bca94a0cb8efdbef4aa7"
+    },
+    {
+      "path": "cmake/CaptureProtobuf.cmake",
+      "mode": "100644",
+      "sha": "8af02dd2504815968c1b9adb702e74366d1a38ce"
+    },
+    {
+      "path": "cmake/CompilerWarnings.cmake",
+      "mode": "100644",
+      "sha": "eb182f0e2566f00787ab836dc62f92b85e5ba4c5"
+    },
+    {
+      "path": "cmake/FindGStreamer.cmake",
+      "mode": "100644",
+      "sha": "9a907b1d620c72b315f644b24d03edc9534aecc2"
+    },
+    {
+      "path": "cmake/FindInfineonRadar.cmake",
+      "mode": "100644",
+      "sha": "dc314675d2e5203c65bbdc610ec27fb7c869c435"
+    },
+    {
+      "path": "cmake/linux-shims/unofficial-mcap/unofficial-mcapConfig.cmake",
+      "mode": "100644",
+      "sha": "e5d2039ab2c5d76446c694751e94c90e45a4a12c"
+    },
+    {
+      "path": "cmake/linux-shims/unofficial-sqlite3/unofficial-sqlite3Config.cmake",
+      "mode": "100644",
+      "sha": "27465119af56bda3a4770dab77bba903c8328313"
+    },
+    {
+      "path": "libs/cpp/capture_core/CMakeLists.txt",
+      "mode": "100644",
+      "sha": "fc9c644d63836c1d943aeebf84c474762a6c943c"
+    },
+    {
+      "path": "libs/cpp/capture_core/include/capture/clock.hpp",
+      "mode": "100644",
+      "sha": "8798c43e3b10adc61d14b1ea7f44cc124b460cad"
+    },
+    {
+      "path": "libs/cpp/capture_core/include/capture/env.hpp",
+      "mode": "100644",
+      "sha": "487e49f9be3721877078a0f7dbba2dc33c2b28ea"
+    },
+    {
+      "path": "libs/cpp/capture_core/include/capture/framing.hpp",
+      "mode": "100644",
+      "sha": "0484098dbab9356d569fa8d8bca56fa1bece208a"
+    },
+    {
+      "path": "libs/cpp/capture_core/include/capture/logging.hpp",
+      "mode": "100644",
+      "sha": "e0becdf4a16df8ba50307e3a872cc46199d47186"
+    },
+    {
+      "path": "libs/cpp/capture_core/include/capture/recording_buffer.hpp",
+      "mode": "100644",
+      "sha": "4a79b787d8b4e9a4eb596425f5b0ce9461dd71b5"
+    },
+    {
+      "path": "libs/cpp/capture_core/include/capture/session_fsm.hpp",
+      "mode": "100644",
+      "sha": "f1897ff9a88af8595f836d6ae1b5a660681823b6"
+    },
+    {
+      "path": "libs/cpp/capture_core/include/capture/source_fsm.hpp",
+      "mode": "100644",
+      "sha": "93d8dc211f061b5da9d0475b4410af91cc0357ef"
+    },
+    {
+      "path": "libs/cpp/capture_core/include/capture/version.hpp",
+      "mode": "100644",
+      "sha": "a3124766845272bc4d95b0cb2e437fa2ebd07d1f"
+    },
+    {
+      "path": "libs/cpp/capture_core/src/clock.cpp",
+      "mode": "100644",
+      "sha": "852e22f3e85f0431bd52d9db6583903d88326da4"
+    },
+    {
+      "path": "libs/cpp/capture_core/src/framing.cpp",
+      "mode": "100644",
+      "sha": "73e62212ed18224d75f125d600b5cd42e8bb190a"
+    },
+    {
+      "path": "libs/cpp/capture_core/src/logging.cpp",
+      "mode": "100644",
+      "sha": "ec20643f697bbbdc37a9a15b98519482d2626363"
+    },
+    {
+      "path": "libs/cpp/capture_core/src/recording_buffer.cpp",
+      "mode": "100644",
+      "sha": "9867e9aa4411b47517e54e8893123ab104885483"
+    },
+    {
+      "path": "libs/cpp/capture_core/src/session_fsm.cpp",
+      "mode": "100644",
+      "sha": "f3220df9011adee97b765473af633c211bebf49f"
+    },
+    {
+      "path": "libs/cpp/capture_core/src/source_fsm.cpp",
+      "mode": "100644",
+      "sha": "caa3461741f3fe8b5f7a02252e003fe8379c5d19"
+    },
+    {
+      "path": "libs/cpp/capture_core/src/version.cpp",
+      "mode": "100644",
+      "sha": "281f0c791be6e293b90aa74424291fd68e42aaee"
+    },
+    {
+      "path": "libs/cpp/capture_proto/CMakeLists.txt",
+      "mode": "100644",
+      "sha": "2d94fcb425c0855ebe4d3ad55d140a01e58d403f"
+    },
+    {
+      "path": "libs/cpp/capture_storage/CMakeLists.txt",
+      "mode": "100644",
+      "sha": "75acac9fbd00a6386df77aa8588dc5c2d2c00e1a"
+    },
+    {
+      "path": "libs/cpp/capture_storage/include/capture/storage/atomic_file.hpp",
+      "mode": "100644",
+      "sha": "86738c28bd5ff7449f50fa6d48def8478486a5a3"
+    },
+    {
+      "path": "libs/cpp/capture_storage/include/capture/storage/disk_watchdog.hpp",
+      "mode": "100644",
+      "sha": "bc6c1ef947bd4e417ca220a983bee1ac8b04f14d"
+    },
+    {
+      "path": "libs/cpp/capture_storage/include/capture/storage/hash.hpp",
+      "mode": "100644",
+      "sha": "8fc363d6f087e4f200993b4f91793aa6440b4c55"
+    },
+    {
+      "path": "libs/cpp/capture_storage/include/capture/storage/journal.hpp",
+      "mode": "100644",
+      "sha": "2175a4573da63fa5f11a58225037b5448e0ca103"
+    },
+    {
+      "path": "libs/cpp/capture_storage/include/capture/storage/mcap_stream_writer.hpp",
+      "mode": "100644",
+      "sha": "37122e4416fa62ccc778899cd59675f9b0e54f0f"
+    },
+    {
+      "path": "libs/cpp/capture_storage/include/capture/storage/recovery.hpp",
+      "mode": "100644",
+      "sha": "67ec14e8a84511d1cc493cee724f2c2ad27c930e"
+    },
+    {
+      "path": "libs/cpp/capture_storage/include/capture/storage/session_package.hpp",
+      "mode": "100644",
+      "sha": "069cc4aa7a94b4096d36d58b00a71de38f782990"
+    },
+    {
+      "path": "libs/cpp/capture_storage/include/capture/storage/video_writer.hpp",
+      "mode": "100644",
+      "sha": "f4b019970ddc92c0f774f5589ffa30fdb442a6b7"
+    },
+    {
+      "path": "libs/cpp/capture_storage/src/atomic_file.cpp",
+      "mode": "100644",
+      "sha": "d51815e9f95ec6e3cf1b319386efb44b5bb4ac94"
+    },
+    {
+      "path": "libs/cpp/capture_storage/src/disk_watchdog.cpp",
+      "mode": "100644",
+      "sha": "718425f933703fdee920762de1dc115931950aad"
+    },
+    {
+      "path": "libs/cpp/capture_storage/src/hash.cpp",
+      "mode": "100644",
+      "sha": "0f5a22cf8456b69ad34c57ecdb3f90c473f7a2e6"
+    },
+    {
+      "path": "libs/cpp/capture_storage/src/journal.cpp",
+      "mode": "100644",
+      "sha": "af412e722bb877907f8776d70c097799be41459f"
+    },
+    {
+      "path": "libs/cpp/capture_storage/src/mcap_impl.cpp",
+      "mode": "100644",
+      "sha": "6bedec1f189d70ea12c29e847ba8f0069471b3cd"
+    },
+    {
+      "path": "libs/cpp/capture_storage/src/mcap_stream_writer.cpp",
+      "mode": "100644",
+      "sha": "7c695635b17b44532aea29f2e575e2cd0a821d02"
+    },
+    {
+      "path": "libs/cpp/capture_storage/src/recovery.cpp",
+      "mode": "100644",
+      "sha": "96900b3854569112638ebb6750ada9f3190040df"
+    },
+    {
+      "path": "libs/cpp/capture_storage/src/session_package.cpp",
+      "mode": "100644",
+      "sha": "4b9579fac871b70795a9a8a7dfe7d8c67e1e5760"
+    },
+    {
+      "path": "schemas/proto/README.md",
+      "mode": "100644",
+      "sha": "f802d5b6cf9952a34f353d303ed210fb1a4090ef"
+    },
+    {
+      "path": "schemas/proto/capture/v1/arrays.proto",
+      "mode": "100644",
+      "sha": "c5b55de37045dc8e799dc4cf8bef556db0e964f1"
+    },
+    {
+      "path": "schemas/proto/capture/v1/common.proto",
+      "mode": "100644",
+      "sha": "c38e56ac40c188633c9a865451580f329738be29"
+    },
+    {
+      "path": "schemas/proto/capture/v1/control.proto",
+      "mode": "100644",
+      "sha": "c92be1245457aeab42651c480a4acf87e375e2d7"
+    },
+    {
+      "path": "schemas/proto/capture/v1/data/emg_batch.proto",
+      "mode": "100644",
+      "sha": "cfe8b3e6d242a5157d1a48904ff0ddb1a87a4784"
+    },
+    {
+      "path": "schemas/proto/capture/v1/data/imu_frame.proto",
+      "mode": "100644",
+      "sha": "dedf652d7296e75c25b4ffc6008157a0eb72a005"
+    },
+    {
+      "path": "schemas/proto/capture/v1/data/numeric_batch.proto",
+      "mode": "100644",
+      "sha": "ec43fd3406130ed2d6743de09e0076dd55f16639"
+    },
+    {
+      "path": "schemas/proto/capture/v1/data/radar_doppler.proto",
+      "mode": "100644",
+      "sha": "a9d7c291dd4e1e9d4e306294c9ccaca7a972c3b6"
+    },
+    {
+      "path": "schemas/proto/capture/v1/data/radar_frame.proto",
+      "mode": "100644",
+      "sha": "b9bcba12f1f23cc87dc9403409a937d2965e0e1f"
+    },
+    {
+      "path": "schemas/proto/capture/v1/data/video_timing.proto",
+      "mode": "100644",
+      "sha": "25d1618ec84d2b69b3856999bb0cd8714a16b720"
+    },
+    {
+      "path": "schemas/proto/capture/v1/events.proto",
+      "mode": "100644",
+      "sha": "c7f5943e568552803d53dd322d51cce1e361f4ab"
+    },
+    {
+      "path": "schemas/proto/capture/v1/health.proto",
+      "mode": "100644",
+      "sha": "431d818649fbecc2ba4a814cb19e0a81b3cb1cb5"
+    },
+    {
+      "path": "schemas/proto/capture/v1/presets.proto",
+      "mode": "100644",
+      "sha": "36ad3689aa9af4a90661d84a295bc3f8495483cb"
+    },
+    {
+      "path": "schemas/proto/capture/v1/preview.proto",
+      "mode": "100644",
+      "sha": "fba83363cf291255f13c96335e38826a003a5a1b"
+    },
+    {
+      "path": "schemas/proto/capture/v1/project.proto",
+      "mode": "100644",
+      "sha": "fe6e0b493683ec4f26f8c29f854eef34b7b362e9"
+    },
+    {
+      "path": "schemas/proto/capture/v1/source.proto",
+      "mode": "100644",
+      "sha": "263f77bdad4210a2def3eaee28354aaebd7664ae"
+    },
+    {
+      "path": "schemas/proto/capture/v1/storage.proto",
+      "mode": "100644",
+      "sha": "f141fcc0b185b5328a1aa5c89cc6c77e202b7030"
+    },
+    {
+      "path": "schemas/proto/capture/v1/worker.proto",
+      "mode": "100644",
+      "sha": "6614ea6b3588abfaf9ef26db04de7c22b3d3b9f7"
+    },
+    {
+      "path": "tests/cmake/portable_storage/fixture_isolation.cmake",
+      "mode": "100644",
+      "sha": "d0762d52b73ef8df127b81e7a6d5e3084c88eacd"
+    },
+    {
+      "path": "tests/cmake/portable_storage/session_doctor.cmake",
+      "mode": "100644",
+      "sha": "e503895519cca82d42a6ab358fa232be70e1af7c"
+    },
+    {
+      "path": "tests/cpp/CMakeLists.txt",
+      "mode": "100644",
+      "sha": "ae5b8e9f89870fe4098686a701a3a30cda438f79"
+    },
+    {
+      "path": "tests/cpp/test_atomic_file_posix.cpp",
+      "mode": "100644",
+      "sha": "55f7e8a7a5414e682082f82f47ce9c65b7c6bb96"
+    },
+    {
+      "path": "tests/cpp/test_atomic_file_posix_identity.cpp",
+      "mode": "100644",
+      "sha": "bb6b239ab5baf27db910ff53acd260a320732b09"
+    },
+    {
+      "path": "tests/cpp/test_atomic_file_windows.cpp",
+      "mode": "100644",
+      "sha": "43fe28c3ec2ed49872b59dcc87407cece56466e5"
+    },
+    {
+      "path": "tests/cpp/test_clock.cpp",
+      "mode": "100644",
+      "sha": "c63845c8d064700e1ef20730e7b2bb58b1f3cb3e"
+    },
+    {
+      "path": "tests/cpp/test_env.cpp",
+      "mode": "100644",
+      "sha": "1c04a9096a55d6e999bb6f33058d7f37e3373f20"
+    },
+    {
+      "path": "tests/cpp/test_framing.cpp",
+      "mode": "100644",
+      "sha": "2bb2e2c1f08b0b64c099744eb2b34392678e732b"
+    },
+    {
+      "path": "tests/cpp/test_logging.cpp",
+      "mode": "100644",
+      "sha": "4296e08f46e6494bfe9defb64045a30effb49767"
+    },
+    {
+      "path": "tests/cpp/test_recovery.cpp",
+      "mode": "100644",
+      "sha": "9664cb56222706e68cd098356daa3c01000ea54f"
+    },
+    {
+      "path": "tests/cpp/test_session_fsm.cpp",
+      "mode": "100644",
+      "sha": "db8308c51c871fe796c632f5288aed118ba771a7"
+    },
+    {
+      "path": "tests/cpp/test_session_package.cpp",
+      "mode": "100644",
+      "sha": "500129fe02aa67f010c723f78deca98df59966b5"
+    },
+    {
+      "path": "tests/cpp/test_sim_engine.cpp",
+      "mode": "100644",
+      "sha": "3df04153c00cf9880c8725eb44d5fd3a5585e88e"
+    },
+    {
+      "path": "tests/cpp/test_source_fsm.cpp",
+      "mode": "100644",
+      "sha": "b16545c7347d8d49b2d8b1f7b007a25644e4f9f3"
+    },
+    {
+      "path": "tests/cpp/test_storage_posix.cpp",
+      "mode": "100644",
+      "sha": "514ac79df732038fe9ed0b47b34121a337e21fbd"
+    },
+    {
+      "path": "tests/cpp/test_worker_host.cpp",
+      "mode": "100644",
+      "sha": "874b2a2053c03d2da0a403899f7d22599f00a722"
+    },
+    {
+      "path": "tests/fixtures/mini_session/events/annotations.json",
+      "mode": "100644",
+      "sha": "fe51488c7066f6687ef680d6bfaa4f7768ef205c"
+    },
+    {
+      "path": "tests/fixtures/mini_session/events/checkpoints.json",
+      "mode": "100644",
+      "sha": "fe51488c7066f6687ef680d6bfaa4f7768ef205c"
+    },
+    {
+      "path": "tests/fixtures/mini_session/events/sync_anchors.json",
+      "mode": "100644",
+      "sha": "fe51488c7066f6687ef680d6bfaa4f7768ef205c"
+    },
+    {
+      "path": "tests/fixtures/mini_session/integrity.json",
+      "mode": "100644",
+      "sha": "d10093b866427fcaed78a85e60e600d8657a86a7"
+    },
+    {
+      "path": "tests/fixtures/mini_session/manifest.json",
+      "mode": "100644",
+      "sha": "800dab5b41774bc043ebdee4714195770e75229b"
+    },
+    {
+      "path": "tests/fixtures/mini_session/processing/.gitkeep",
+      "mode": "100644",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "tests/fixtures/mini_session/sources/sim.emg.main/health/gaps.jsonl",
+      "mode": "100644",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "tests/fixtures/mini_session/sources/sim.emg.main/source.json",
+      "mode": "100644",
+      "sha": "9528c95289b4b1b49d11d412b5ab2e3d019b4066"
+    },
+    {
+      "path": "tests/fixtures/mini_session/sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",
+      "mode": "100644",
+      "sha": "320ce3607fadf57d05cf506987d045cf5b62ad9f"
+    },
+    {
+      "path": "tests/fixtures/mini_session/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json",
+      "mode": "100644",
+      "sha": "12c4db8831572fc4ab3db9ba5f784fa236078e5f"
+    },
+    {
+      "path": "tests/fixtures/mini_session/sources/sim.imu.upper/source.json",
+      "mode": "100644",
+      "sha": "fcc248c52b8319f5e7fd0067763b74640f0040dd"
+    },
+    {
+      "path": "tests/fixtures/mini_session/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+      "mode": "100644",
+      "sha": "320ce3607fadf57d05cf506987d045cf5b62ad9f"
+    },
+    {
+      "path": "tests/fixtures/mini_session/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "mode": "100644",
+      "sha": "9c634d4af594372063fcc612331ba338ae95f8c9"
+    },
+    {
+      "path": "tools/session_doctor/CMakeLists.txt",
+      "mode": "100644",
+      "sha": "f2ae86414a8da98bbbf3fde5d5b4508729871cbf"
+    },
+    {
+      "path": "tools/session_doctor/main.cpp",
+      "mode": "100644",
+      "sha": "067cce0d81101b5964e20c465669526bc7c39278"
+    },
+    {
+      "path": "vcpkg.json",
+      "mode": "100644",
+      "sha": "782814bd953d9630a67f8ba37b9eca30761139ca"
+    }
+  ],
+  "qualified_input_changes": [],
+  "progress_base_git_blob": "80a94151bf978fb077bc323dfdf223a91dbe3254"
+}

@@ -1,0 +1,89 @@
+{
+  "repository": "Jacob-Met/CaptureSuite",
+  "commit": "72c15d6b623e217291a824e4e4808a385df896a9",
+  "tree": "221cf5c7bb3c3392a7c4186ba0bcf5a8664135d1",
+  "canonical_blobs_verified": 668,
+  "canonical_bytes": 3390222,
+  "local_materialization_commit": "8076b56c99dbf4083fd23a02e4d761d309ecfc40",
+  "initial_strict_archive_blob_check": "refused checkout CRLF bytes for the eight listed Windows scripts",
+  "archive_checkout_conversions": [
+    {
+      "path": ".cursor/hooks/stop-capture-processes.ps1",
+      "expected_bytes": 1419,
+      "bytes": 1461,
+      "expected_blob": "b8c372e08eda9dc271c3bbf4572c036494f3e3b3",
+      "actual_blob": "af7bed5139556fcdbac79b3eca0699dc4a176551",
+      "crlf": 42,
+      "lf": 42
+    },
+    {
+      "path": "plugins/example_sine_py/run_worker.cmd",
+      "expected_bytes": 603,
+      "bytes": 618,
+      "expected_blob": "484e82624368692768d0122076e832f9b30219bf",
+      "actual_blob": "dff347cb19e982d0632fbcf7177250c3bb931c59",
+      "crlf": 15,
+      "lf": 15
+    },
+    {
+      "path": "plugins/lsl_bridge/run_worker.cmd",
+      "expected_bytes": 363,
+      "bytes": 371,
+      "expected_blob": "c80a72fb0edeb44031dd27feb551bb2549f34563",
+      "actual_blob": "3177d0c20aa36d90c6c32901555ba1785df46be2",
+      "crlf": 8,
+      "lf": 8
+    },
+    {
+      "path": "scripts/dev-env.ps1",
+      "expected_bytes": 1930,
+      "bytes": 1981,
+      "expected_blob": "dad8f9e88d418c3c8bdc66b82a498dcd332c36d0",
+      "actual_blob": "de915b5266a63e2001033237784414cd991c6864",
+      "crlf": 51,
+      "lf": 51
+    },
+    {
+      "path": "tools/gstreamer-installers/install-gstreamer.ps1",
+      "expected_bytes": 2971,
+      "bytes": 3051,
+      "expected_blob": "ac17d58c3a5df741ca1e39c7c4d606667101b068",
+      "actual_blob": "dd8f06d1dae4c1a7b868620bf29207bdd30b20b6",
+      "crlf": 80,
+      "lf": 80
+    },
+    {
+      "path": "tools/new_plugin.ps1",
+      "expected_bytes": 5129,
+      "bytes": 5290,
+      "expected_blob": "e0f62e0b96f480869c59ed544d81dcbd570d6d8b",
+      "actual_blob": "550edcf8eceeda77abe936559b4d71d55762491b",
+      "crlf": 161,
+      "lf": 161
+    },
+    {
+      "path": "tools/run-daemon-gstreamer.ps1",
+      "expected_bytes": 2749,
+      "bytes": 2824,
+      "expected_blob": "e87b421d0023dd4f3397a7cf42ffb8f3c29464e3",
+      "actual_blob": "580af0ff1ce15e3fb3f6a07cc3e006368dcad68c",
+      "crlf": 75,
+      "lf": 75
+    },
+    {
+      "path": "tools/run-demo.ps1",
+      "expected_bytes": 1259,
+      "bytes": 1295,
+      "expected_blob": "efd87ea6d3f038693b7a06afc4d0ab64da114725",
+      "actual_blob": "8ae823fd06b928c1f9a2ab88f62722e1cc7ec221",
+      "crlf": 36,
+      "lf": 36
+    }
+  ],
+  "resolution": "Only exact CRLF-to-LF conversions that matched the expected Git blob were accepted; all668 canonical blobs were then verified.",
+  "preserved_original_log_blobs": [
+    "docs/evidence/stream-gap-scope-20261008-e827/initial-ci-lint.log",
+    "docs/evidence/stream-gap-scope-20261008-e827/initial-junit-rejection.log"
+  ],
+  "final_local_tree_equals_public_tree": true
+}

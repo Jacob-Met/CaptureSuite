@@ -1,0 +1,93 @@
+{
+  "repository": "Jacob-Met/CaptureSuite",
+  "contributor": "estate-18a24bf0c281",
+  "scope_issue": 54,
+  "publication_parent": "d43bdea867d6198a707a5f55e29216c76054517e",
+  "publication_parent_tree": "fea0e03773742d330963b89e0ceb72a22c7ad495",
+  "production": {
+    "source_commit": "4fcd0aa4319b6594af637af8644c187fcbff3cf5",
+    "path": "libs/python/capture_analysis/capture_analysis/windows.py",
+    "git_blob": "aaafd8db78f82a5a56178135dbed5bfd4f45c634",
+    "sha256": "5cf401b7b7d201225c966b804cfff39c3f6d59669da7e488dd68c4253a829c32",
+    "behavior": "Recorded checkpoints close and name the preceding section; first starts at session zero, final ends at its own timestamp. No raw, schema, alias, stable tie, inclusive boundary or gap-helper rewrite."
+  },
+  "author": {
+    "evidence_head": "8ec8e78ae5d5d16a9ddc1c2d0eaee0959bd75687",
+    "packet_files": 33,
+    "packet_bytes": 1348853,
+    "packet_sha256": "e4fc14a19ad156d0c0ec60f104718de39da6ce39eb26ec2678b7bd5828774409",
+    "authored_cases": {
+      "baseline_pass": 5,
+      "baseline_fail": 25,
+      "candidate_pass": 30
+    },
+    "existing_checks": 19,
+    "actual_cli_calls_per_baseline_and_candidate": 10
+  },
+  "independent": {
+    "evidence": "d698581251100b50c56edd4413963fdc6f32ef99",
+    "packet_files": 18,
+    "packet_bytes": 969369,
+    "packet_sha256": "a91f26c47cc038552437c18a2a414182e9f57a3cdf05eada6a60319c45ccb6c9",
+    "method_count": 1,
+    "checks": 26,
+    "baseline_pass": 19,
+    "baseline_fail": 7,
+    "candidate_pass": 26,
+    "scope": "Four actual persisted packages through public feature run, CSV/Parquet outputs, future checkpoint/data isolation and in-section sensitivity."
+  },
+  "numeric": {
+    "source_parent": "0ed1ccaa023a5327495565d59e1dd0b28b2ee5bd",
+    "evidence": "d5267ce79878d0ec6c22f16c8875ddce02f0a330",
+    "files": 17,
+    "actual_strict_cli_calls": 2,
+    "baseline": {
+      "window_ns": [
+        5000000000,
+        7000000000
+      ],
+      "retained_samples": 21,
+      "feature_rows": 3,
+      "checks_passed": 8,
+      "closed_section_checks_failed": 5
+    },
+    "candidate": {
+      "window_ns": [
+        2000000000,
+        5000000000
+      ],
+      "retained_samples": 31,
+      "feature_rows": 5,
+      "checks_passed": 13
+    },
+    "source_blobs_before_after": 812,
+    "executed_app_modules": 49,
+    "raw_files_preserved_each": 9,
+    "non_self_output_digests_verified_each": 9,
+    "initial_manifest_self_digest_checker_error": "Retained; corrected only read-only assessment scope, measured physical manifest hash separately, no CLI/source rerun."
+  },
+  "desktop_composition": {
+    "source_parent": "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e",
+    "source": "6878dcce23a3f439642312d845996746d5d2921c",
+    "evidence": "ddc8de7503eba2943a921d1cf9205da82b4a8fa4",
+    "files": 5,
+    "test_change": "Exactly three lines select section-two and its ID while retaining the existing [50000001,150000001] interval assertions and actual Qt/QThread/MCAP checks.",
+    "documentation": "Align current section-resolution description with the captured-checkpoint Decision; preserve all historical receipts.",
+    "native_qt_execution": false,
+    "reason": "PySide6 unavailable in four inspected runtimes; AST, exact substitutions, diff and source-identity checks passed. The stale original assertion was identified statically, not counted as an observed native failure.",
+    "coordination_comment": 6061548913
+  },
+  "current_parent_review": {
+    "from": "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e",
+    "to": "d43bdea867d6198a707a5f55e29216c76054517e",
+    "production_change": "kinematics/compute.py landmark validity, imported only in the kinematics command branch; no windows/jobs/CLI/numeric/features/plugin/desktop source changes.",
+    "new_test_and_evidence": "Retained exactly with the new KINEMATICS_PIPELINE and PROGRESS entries.",
+    "native_rerun": false
+  },
+  "documentation_integration": "Own ANALYSIS and PROGRESS sections are pure insertions; removing each insertion reconstructs the full current-parent document byte-for-byte.",
+  "retained_limits": [
+    "Original IMU plot helper shows window-relative x values with a session-time label; the separate numeric handler provides an explicit elapsed-axis label. No plot source is changed here.",
+    "Original manifest self-entry digest limitation remains; physical output hashes and non-self artifact verification are separate.",
+    "No hardware acquisition, installed desktop, full Windows native qualification or whole-project clean claim. Repository CI remains the supported Windows gate."
+  ]
+}

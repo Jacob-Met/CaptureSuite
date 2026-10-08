@@ -1,0 +1,11 @@
+.                                                                        [100%]
+=============================== warnings summary ===============================
+tests/analysis/test_external_predictions.py::test_real_pose_kinematics_bundle_to_external_eval
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.MessageMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+
+tests/analysis/test_external_predictions.py::test_real_pose_kinematics_bundle_to_external_eval
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.ScalarMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/out/ml-bundle-metadata-evidence/landed-evaluator-receiving/pytest.xml -
+1 passed, 2 warnings in 1.74s

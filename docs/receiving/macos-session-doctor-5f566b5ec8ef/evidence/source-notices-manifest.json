@@ -1,0 +1,34 @@
+{
+  "canonical_base": "d43bdea867d6198a707a5f55e29216c76054517e",
+  "purpose": "Exact project licensing and notices for the included source; no compiled source or runtime changes.",
+  "files": [
+    {
+      "path": "source/LICENSING.md",
+      "size": 1728,
+      "sha256": "a407df01c4c285fdb2a36e14254e769a614c1a1bd6f53caaacf184b2b13f05e3",
+      "git_blob_sha": "44df160df06a04305cc457c4bf296552e5c38c80",
+      "mode": "100644"
+    },
+    {
+      "path": "source/NOTICE",
+      "size": 178,
+      "sha256": "6a915a367aa42d3d4da1056494568e81cbe40b9c4334e216048aa819fd5c08d4",
+      "git_blob_sha": "8cf2966222285708edcab8bee8a309878d3fb5d0",
+      "mode": "100644"
+    },
+    {
+      "path": "source/schemas/LICENSE",
+      "size": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "git_blob_sha": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "mode": "100644"
+    },
+    {
+      "path": "source/schemas/NOTICE",
+      "size": 115,
+      "sha256": "78581010fab3d185adf35edb8c7459bbabcb6efa5327d893307dfcddf1f1fef0",
+      "git_blob_sha": "12b0bd20065311a681549056f9b8f87712779f0d",
+      "mode": "100644"
+    }
+  ]
+}

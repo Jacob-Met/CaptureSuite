@@ -76,11 +76,35 @@ def _choose(qapp, picker, requested: set[str], *, accept: bool = True) -> set[st
     picker._mode.setCurrentIndex(picker._mode.findData("selected"))
     offered = set()
     errors = []
+    operated = False
+    poll = QTimer()
+    deadline = QTimer()
+    deadline.setSingleShot(True)
+
+    def target_dialog():
+        dialog = qapp.activeModalWidget()
+        return dialog if isinstance(dialog, QDialog) and dialog.parentWidget() is picker else None
+
+    def timed_out():
+        errors.append(AssertionError("Recorded-source chooser did not finish within 5 seconds"))
+        dialog = target_dialog()
+        if dialog is not None:
+            dialog.reject()
 
     def operate():
-        dialog = qapp.activeModalWidget()
+        nonlocal operated
+        dialog = target_dialog()
+        if dialog is None:
+            # QTest may deliver the initial timer before its real click opens
+            # the modal. Keep this owned timer alive until that dialog exists.
+            poll.setInterval(10)
+            return
+        poll.stop()
+        operated = True
+        if errors:
+            dialog.reject()
+            return
         try:
-            assert isinstance(dialog, QDialog)
             rows = dialog.findChild(QListWidget)
             assert rows is not None
             for i in range(rows.count()):
@@ -94,19 +118,55 @@ def _choose(qapp, picker, requested: set[str], *, accept: bool = True) -> set[st
                 assert (item.checkState() == Qt.CheckState.Checked) == desired
             assert requested <= offered
             buttons = dialog.findChild(QDialogButtonBox)
+            assert buttons is not None
             kind = (QDialogButtonBox.StandardButton.Ok if accept
                     else QDialogButtonBox.StandardButton.Cancel)
             QTest.mouseClick(buttons.button(kind), Qt.MouseButton.LeftButton)
         except BaseException as exc:
             errors.append(exc)
-            if isinstance(dialog, QDialog):
-                dialog.reject()
+            dialog.reject()
 
-    QTimer.singleShot(0, operate)
-    QTest.mouseClick(picker._choose, Qt.MouseButton.LeftButton)
+    poll.timeout.connect(operate)
+    deadline.timeout.connect(timed_out)
+    poll.start(0)
+    deadline.start(5000)
+    try:
+        QTest.mouseClick(picker._choose, Qt.MouseButton.LeftButton)
+    finally:
+        poll.stop()
+        deadline.stop()
     if errors:
         raise errors[0]
+    assert operated, "Recorded-source chooser did not open"
     return offered
+
+
+def test_chooser_tolerates_timer_delivery_before_click(qapp, tmp_path: Path, monkeypatch):
+    from PySide6 import QtTest
+
+    package = _package(tmp_path / "early chooser.mmsession")
+    screen = _screen(qapp, package)
+    picker = screen._sources
+    real = QtTest.QTest
+    delivered = []
+
+    class Driver:
+        @staticmethod
+        def mouseClick(widget, *args, **kwargs):
+            if widget is picker._choose:
+                qapp.processEvents()
+                delivered.append(qapp.activeModalWidget() is None)
+            return real.mouseClick(widget, *args, **kwargs)
+
+        keyClick = staticmethod(real.keyClick)
+
+    monkeypatch.setattr(QtTest, "QTest", Driver)
+    try:
+        assert _choose(qapp, picker, {"sampler.b"}) == {"sampler.a", "sampler.b"}
+        assert delivered == [True]
+        assert picker.selected_ids == ("sampler.b",)
+    finally:
+        _close(qapp, screen)
 
 
 def _warning_timer(qapp):

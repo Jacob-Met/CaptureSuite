@@ -1,0 +1,9 @@
+{
+  "verified_at": "2026-10-08T12:46:04.701880+00:00",
+  "authored_files_per_fixture": 669,
+  "only_differing_executed_source": "libs/python/capture_analysis/capture_analysis/windows.py",
+  "candidate_sha256": "5cf401b7b7d201225c966b804cfff39c3f6d59669da7e488dd68c4253a829c32",
+  "baseline_sha256": "af40235d55341d2a6b11d7f67a0195779676301fa822b2bd05240d138ee28c50",
+  "raw_custody": "Complete before/after inventories are retained in each native archive.",
+  "native_boundary": "Pinned main72c15 plus windows.py and frozen test. Documentation remains bound to local source4fcd0aa and is not an execution dependency."
+}

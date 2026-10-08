@@ -1,0 +1,869 @@
+{
+  "files": [
+    {
+      "path": "candidate/junit.xml",
+      "bytes": 14279,
+      "sha256": "9c7fe2d479e924f1e258c3cd7fcc261d376dc53f229c76c63534ed0c210be724"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select0/receiving.json",
+      "bytes": 2818,
+      "sha256": "1f13655c12e436701fcb2290ef6dd0c82dbe34b3322d08bf8186062e57ffee5a"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select0/sections.mmsession/events/annotations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select0/sections.mmsession/events/checkpoints.json",
+      "bytes": 506,
+      "sha256": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select0/sections.mmsession/events/sync_anchors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select0/sections.mmsession/integrity.json",
+      "bytes": 292,
+      "sha256": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select0/sections.mmsession/manifest.json",
+      "bytes": 235,
+      "sha256": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select0/sections.mmsession/processing/jobs/checkpoint-receiving/features/_schema.json",
+      "bytes": 1469,
+      "sha256": "ff6deedbfe26e1d9709890d1377d1e85a2b12d05f11137741704c0ce12b0f4e4"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select0/sections.mmsession/processing/jobs/checkpoint-receiving/features/imu/sim.imu.upper/windows.csv",
+      "bytes": 1209,
+      "sha256": "d174acc7e761777395bc1cd341c43b427e446899995a4ea24ac36b0e1b97881f"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select0/sections.mmsession/processing/jobs/checkpoint-receiving/features/imu/sim.imu.upper/windows.parquet",
+      "bytes": 7883,
+      "sha256": "4aae5ea73dc121d8cd38e79829f44c3c46921ee9c2a2cc493df06dcd6af2099c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select0/sections.mmsession/processing/jobs/checkpoint-receiving/job_manifest.json",
+      "bytes": 3194,
+      "sha256": "073c7712d9a01845f786c5799e66a462427db4a895b34c5ee78ca63b807c393e"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select0/sections.mmsession/processing/jobs/checkpoint-receiving/logs/job.log",
+      "bytes": 238,
+      "sha256": "8bd874a71fc96ffba8d920adcda8e7f1adde592cf99506cd82cab616c696c4a2"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select0/sections.mmsession/processing/jobs/checkpoint-receiving/params.json",
+      "bytes": 267,
+      "sha256": "842485345dbcc879f1e33903d5ff69ac480e4697bad9779afbad50dda5d14ff8"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select0/sections.mmsession/processing/jobs/checkpoint-receiving/reports/qc.html",
+      "bytes": 1508,
+      "sha256": "2e6a34e92f5d3a099f18a112b3907a0184bec0f5c71754d0d63ac1cb690318e1"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select0/sections.mmsession/processing/jobs/checkpoint-receiving/reports/qc.json",
+      "bytes": 1004,
+      "sha256": "c91cea5ab5adc6867c9fc34bb9be27e967622b48ddd079b4d4207ccdd6641b93"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select0/sections.mmsession/sources/sim.imu.upper/source.json",
+      "bytes": 86,
+      "sha256": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select0/sections.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+      "bytes": 3349,
+      "sha256": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select0/sections.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "bytes": 227,
+      "sha256": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select1/receiving.json",
+      "bytes": 2853,
+      "sha256": "6777185d50a60c6e0dd9148b353b55de55e9462f88786899e3138e61cec2cd3d"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select1/sections.mmsession/events/annotations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select1/sections.mmsession/events/checkpoints.json",
+      "bytes": 506,
+      "sha256": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select1/sections.mmsession/events/sync_anchors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select1/sections.mmsession/integrity.json",
+      "bytes": 292,
+      "sha256": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select1/sections.mmsession/manifest.json",
+      "bytes": 235,
+      "sha256": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select1/sections.mmsession/processing/jobs/checkpoint-receiving/features/_schema.json",
+      "bytes": 1469,
+      "sha256": "fe3b6bf78e02c16fa95a1f7a499dcc51f4c92b4919fb490257b16faaa37405d9"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select1/sections.mmsession/processing/jobs/checkpoint-receiving/features/imu/sim.imu.upper/windows.csv",
+      "bytes": 1770,
+      "sha256": "c87c78b47958994b5b7416ab4eec94e6ae83285b5fcbd88553400eee9b314a13"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select1/sections.mmsession/processing/jobs/checkpoint-receiving/features/imu/sim.imu.upper/windows.parquet",
+      "bytes": 8030,
+      "sha256": "83135b46967e0219a1222cffc82673500f9e7e69d692d4f0bd5c6a1c23b7e3d8"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select1/sections.mmsession/processing/jobs/checkpoint-receiving/figures/imu_sim.imu.upper_accel.png",
+      "bytes": 34094,
+      "sha256": "d0704a71f552cf90365a8a5453f8183d834c6039c951dd88f094e54693cbea53"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select1/sections.mmsession/processing/jobs/checkpoint-receiving/figures/sync_dashboard.png",
+      "bytes": 25223,
+      "sha256": "29c498df6596a6e87b3b5abfc4e9a4e442ed9bf13a51acf29eb9d2861e1afc06"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select1/sections.mmsession/processing/jobs/checkpoint-receiving/figures/sync_dashboard_series.json",
+      "bytes": 1446,
+      "sha256": "0519c09323b5d0d1d221c768e55e6e6f9095a061f80be0a4f6a6117194a39405"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select1/sections.mmsession/processing/jobs/checkpoint-receiving/job_manifest.json",
+      "bytes": 3832,
+      "sha256": "6a97afef72f55ae9ca18c342017e042440befc124457aefc26a1756e6c59634c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select1/sections.mmsession/processing/jobs/checkpoint-receiving/logs/job.log",
+      "bytes": 233,
+      "sha256": "86e4de7051aeedfb796055e9826e2f3d8f7a9221412e73d00c60a9a459c5623e"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select1/sections.mmsession/processing/jobs/checkpoint-receiving/params.json",
+      "bytes": 275,
+      "sha256": "a23e31bcb6cd629c5f56b60aa506e74419aa32fd8a082ae99f6e78cadddd511c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select1/sections.mmsession/processing/jobs/checkpoint-receiving/reports/qc.html",
+      "bytes": 1508,
+      "sha256": "46ebcda4ba1365ee126fc7c7280341e6e69c35474df3ac9b5ba3a8c522d895f6"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select1/sections.mmsession/processing/jobs/checkpoint-receiving/reports/qc.json",
+      "bytes": 1004,
+      "sha256": "71cb11c04952510f96dd15090c2454ccdd7edef16ca8c29da8f3daf585e8e720"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select1/sections.mmsession/sources/sim.imu.upper/source.json",
+      "bytes": 86,
+      "sha256": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select1/sections.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+      "bytes": 3349,
+      "sha256": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select1/sections.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "bytes": 227,
+      "sha256": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select2/receiving.json",
+      "bytes": 2835,
+      "sha256": "cab5960ca5630c4594acd462e20c3e5a207fbf93c13b7f6e1f6e3e5daee9f24e"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select2/sections.mmsession/events/annotations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select2/sections.mmsession/events/checkpoints.json",
+      "bytes": 506,
+      "sha256": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select2/sections.mmsession/events/sync_anchors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select2/sections.mmsession/integrity.json",
+      "bytes": 292,
+      "sha256": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select2/sections.mmsession/manifest.json",
+      "bytes": 235,
+      "sha256": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select2/sections.mmsession/processing/jobs/checkpoint-receiving/features/_schema.json",
+      "bytes": 1469,
+      "sha256": "ff6deedbfe26e1d9709890d1377d1e85a2b12d05f11137741704c0ce12b0f4e4"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select2/sections.mmsession/processing/jobs/checkpoint-receiving/features/imu/sim.imu.upper/windows.csv",
+      "bytes": 1240,
+      "sha256": "603b6dadf3e04f361db1a7a747076956b02a19e360f4fdda06f4911ab68c8983"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select2/sections.mmsession/processing/jobs/checkpoint-receiving/features/imu/sim.imu.upper/windows.parquet",
+      "bytes": 7857,
+      "sha256": "64f65fb812d2512e7842594cf3c6ee27d98fa52acb811b8d219fa0d0dd6eaaeb"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select2/sections.mmsession/processing/jobs/checkpoint-receiving/job_manifest.json",
+      "bytes": 3203,
+      "sha256": "604316c3c8b9b7cd88446e1fbfe1d446d368787515d05715f5cb684a503d0aea"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select2/sections.mmsession/processing/jobs/checkpoint-receiving/logs/job.log",
+      "bytes": 238,
+      "sha256": "27b108895285533d7c8db6692e0e6dfe47a4029c833e922b4039b649619c00ee"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select2/sections.mmsession/processing/jobs/checkpoint-receiving/params.json",
+      "bytes": 267,
+      "sha256": "452b347ef9dbc27255325077444866944ed096e8d3b1576cb8a78d42bf013f5e"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select2/sections.mmsession/processing/jobs/checkpoint-receiving/reports/qc.html",
+      "bytes": 1508,
+      "sha256": "74ba198d8d8a942c112ae752b5d0cf11a863c25522f3e4b38eed83c8333fa2db"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select2/sections.mmsession/processing/jobs/checkpoint-receiving/reports/qc.json",
+      "bytes": 1004,
+      "sha256": "386d7fd8b7e7457641d3de5eae08c0c4de78cd65e635ae7b65d3f52bcfac7d76"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select2/sections.mmsession/sources/sim.imu.upper/source.json",
+      "bytes": 86,
+      "sha256": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select2/sections.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+      "bytes": 3349,
+      "sha256": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select2/sections.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "bytes": 227,
+      "sha256": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select3/receiving.json",
+      "bytes": 2793,
+      "sha256": "6b05ad6f5a86aca25e1aec14eca9aad810e849bf4a476a88933ce450b5ddce8a"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select3/sections.mmsession/events/annotations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select3/sections.mmsession/events/checkpoints.json",
+      "bytes": 506,
+      "sha256": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select3/sections.mmsession/events/sync_anchors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select3/sections.mmsession/integrity.json",
+      "bytes": 292,
+      "sha256": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select3/sections.mmsession/manifest.json",
+      "bytes": 235,
+      "sha256": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select3/sections.mmsession/processing/jobs/checkpoint-receiving/features/_schema.json",
+      "bytes": 1468,
+      "sha256": "f342eb90223b1c8f70ded986c23803d3b8bf5e4353009f48c19abd3a1c686790"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select3/sections.mmsession/processing/jobs/checkpoint-receiving/features/imu/sim.imu.upper/windows.csv",
+      "bytes": 222,
+      "sha256": "584743ae66a9207325dfff07be9760f6cca240e56b6affd42e4b608f3bbfca1e"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select3/sections.mmsession/processing/jobs/checkpoint-receiving/features/imu/sim.imu.upper/windows.parquet",
+      "bytes": 7532,
+      "sha256": "495ac0116b7077e8b12936460f3bf082acb866721e8c5db282c06e1ea0e0e93c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select3/sections.mmsession/processing/jobs/checkpoint-receiving/job_manifest.json",
+      "bytes": 3179,
+      "sha256": "ce798f26cb33975f0b72e32d5c4b528e0771836754b990a1945b04d1c9189e8f"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select3/sections.mmsession/processing/jobs/checkpoint-receiving/logs/job.log",
+      "bytes": 238,
+      "sha256": "d2aaa95155da7127ff8a784289926c0b0b4998824f9348fe9781d933e34dc2e6"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select3/sections.mmsession/processing/jobs/checkpoint-receiving/params.json",
+      "bytes": 265,
+      "sha256": "12c97f8d27e12d91e958a54b9c1693086b870216b1b1bfafa566e256533f46e5"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select3/sections.mmsession/processing/jobs/checkpoint-receiving/reports/qc.html",
+      "bytes": 1508,
+      "sha256": "bb4ef68270f4b729c4ec5ca29495f3f1560f2eba539abc137ee0bc4351f75e6f"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select3/sections.mmsession/processing/jobs/checkpoint-receiving/reports/qc.json",
+      "bytes": 1004,
+      "sha256": "ca5392dc711b9a278fc95193d7305cea24c1d22c041fa546ca50973177f8dd6e"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select3/sections.mmsession/sources/sim.imu.upper/source.json",
+      "bytes": 86,
+      "sha256": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select3/sections.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+      "bytes": 3349,
+      "sha256": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select3/sections.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "bytes": 227,
+      "sha256": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select4/receiving.json",
+      "bytes": 2825,
+      "sha256": "3725b3393075683a20f54c3e190092ebf58a94b5211244d923615ff7b7918651"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select4/sections.mmsession/events/annotations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select4/sections.mmsession/events/checkpoints.json",
+      "bytes": 506,
+      "sha256": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select4/sections.mmsession/events/sync_anchors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select4/sections.mmsession/integrity.json",
+      "bytes": 292,
+      "sha256": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select4/sections.mmsession/manifest.json",
+      "bytes": 235,
+      "sha256": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select4/sections.mmsession/processing/jobs/checkpoint-receiving/features/_schema.json",
+      "bytes": 1468,
+      "sha256": "f342eb90223b1c8f70ded986c23803d3b8bf5e4353009f48c19abd3a1c686790"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select4/sections.mmsession/processing/jobs/checkpoint-receiving/features/imu/sim.imu.upper/windows.csv",
+      "bytes": 233,
+      "sha256": "97f55d4b457528d0774dfe661ad05cdb07ff27b40f432a53833f3b328d2b7168"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select4/sections.mmsession/processing/jobs/checkpoint-receiving/features/imu/sim.imu.upper/windows.parquet",
+      "bytes": 7532,
+      "sha256": "bc0297f522c2de43a85d4c0ecd051a1a4d7d10c75db56742bb6d51529d404556"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select4/sections.mmsession/processing/jobs/checkpoint-receiving/job_manifest.json",
+      "bytes": 3195,
+      "sha256": "5b30f1337d54a06ca74d7684236eae361146ca8eccbdc5e2a446f5da9f626cab"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select4/sections.mmsession/processing/jobs/checkpoint-receiving/logs/job.log",
+      "bytes": 238,
+      "sha256": "e51aeeb839feb8f9c7880d88f484a68673239e7ce108f3225f7645f6c5df59e5"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select4/sections.mmsession/processing/jobs/checkpoint-receiving/params.json",
+      "bytes": 264,
+      "sha256": "83c371bd5f351a47553b90be229b7fcc7b69a37bce0ee098566ae5b9210f96e5"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select4/sections.mmsession/processing/jobs/checkpoint-receiving/reports/qc.html",
+      "bytes": 1508,
+      "sha256": "354772fb2b41ae03264008fcac036f3f8cc3c4efb0813c61dfb2a0bda1a96abd"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select4/sections.mmsession/processing/jobs/checkpoint-receiving/reports/qc.json",
+      "bytes": 1004,
+      "sha256": "f53b2826301a92748414a3c194fcb8014d88ce787b96ba1de92561070d61b68d"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select4/sections.mmsession/sources/sim.imu.upper/source.json",
+      "bytes": 86,
+      "sha256": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select4/sections.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+      "bytes": 3349,
+      "sha256": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select4/sections.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "bytes": 227,
+      "sha256": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select5/receiving.json",
+      "bytes": 2834,
+      "sha256": "4e6ec56fdda1b8ad5938761a825dee45ec679cc3aa0b38afd431ad588872e668"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select5/sections.mmsession/events/annotations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select5/sections.mmsession/events/checkpoints.json",
+      "bytes": 548,
+      "sha256": "447da0b4217af847323d0a350b4725847a2fd5bcd064e5e0578608816ca61a03"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select5/sections.mmsession/events/sync_anchors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select5/sections.mmsession/integrity.json",
+      "bytes": 292,
+      "sha256": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select5/sections.mmsession/manifest.json",
+      "bytes": 235,
+      "sha256": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select5/sections.mmsession/processing/jobs/checkpoint-receiving/features/_schema.json",
+      "bytes": 1469,
+      "sha256": "ff6deedbfe26e1d9709890d1377d1e85a2b12d05f11137741704c0ce12b0f4e4"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select5/sections.mmsession/processing/jobs/checkpoint-receiving/features/imu/sim.imu.upper/windows.csv",
+      "bytes": 1240,
+      "sha256": "02916b3613dc3c3fd464fdcfc532491d0bd8f78d10a67b2c3ea34e06cf4b1d7f"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select5/sections.mmsession/processing/jobs/checkpoint-receiving/features/imu/sim.imu.upper/windows.parquet",
+      "bytes": 7883,
+      "sha256": "572f14fd77879021bd5d3b1f83ce259ede3b58c2f52b78f58135127710c911ac"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select5/sections.mmsession/processing/jobs/checkpoint-receiving/job_manifest.json",
+      "bytes": 3201,
+      "sha256": "f339904f6c2c47b17211334649d74490f4004817436a70b7cbbd28753a43c45c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select5/sections.mmsession/processing/jobs/checkpoint-receiving/logs/job.log",
+      "bytes": 238,
+      "sha256": "5096d9c40766903bb2814d62291e981fcf3e28406127d47d3f2f9c98b256c438"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select5/sections.mmsession/processing/jobs/checkpoint-receiving/params.json",
+      "bytes": 266,
+      "sha256": "4592603d114d8fbf47c9c7728dccf262445ba3d5a8808b3981a03c4c2e3a321b"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select5/sections.mmsession/processing/jobs/checkpoint-receiving/reports/qc.html",
+      "bytes": 1508,
+      "sha256": "8eaf8d50cfca64ecde7ba702c2160be26850440005a16dce8d83481b319575d9"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select5/sections.mmsession/processing/jobs/checkpoint-receiving/reports/qc.json",
+      "bytes": 1004,
+      "sha256": "f2b954ba7fc2a839fbf7eaff7d6fa6bbf81a41b8e925d5aaf676d75d3f351ad4"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select5/sections.mmsession/sources/sim.imu.upper/source.json",
+      "bytes": 86,
+      "sha256": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select5/sections.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+      "bytes": 3349,
+      "sha256": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select5/sections.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "bytes": 227,
+      "sha256": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select6/receiving.json",
+      "bytes": 2750,
+      "sha256": "d6a77ce4bb32ee2cfc7a2e45175436f474e69f404702133fb9345e4b8e6d98a3"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select6/sections.mmsession/events/annotations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select6/sections.mmsession/events/checkpoints.json",
+      "bytes": 506,
+      "sha256": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select6/sections.mmsession/events/sync_anchors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select6/sections.mmsession/integrity.json",
+      "bytes": 292,
+      "sha256": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select6/sections.mmsession/manifest.json",
+      "bytes": 235,
+      "sha256": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select6/sections.mmsession/processing/jobs/checkpoint-receiving/features/_schema.json",
+      "bytes": 1469,
+      "sha256": "fd557a9a2367c85f2780bd67d4fe6328ca3241810ce92593c2a1bf9bb13516e7"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select6/sections.mmsession/processing/jobs/checkpoint-receiving/features/imu/sim.imu.upper/windows.csv",
+      "bytes": 4389,
+      "sha256": "82027a3321b15dcfda38d7e1352b0a89174c53d66e1fff7cfc31b041129f4633"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select6/sections.mmsession/processing/jobs/checkpoint-receiving/features/imu/sim.imu.upper/windows.parquet",
+      "bytes": 8926,
+      "sha256": "81e7aa256a763d2c3594a067d070a9482eb97f47fbc7322785a5e79a3762db77"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select6/sections.mmsession/processing/jobs/checkpoint-receiving/job_manifest.json",
+      "bytes": 3169,
+      "sha256": "e60d31b72d8d84388ce913edd07fbe807cbd63761ff95a2d2fa6e539d2a60640"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select6/sections.mmsession/processing/jobs/checkpoint-receiving/logs/job.log",
+      "bytes": 238,
+      "sha256": "2a790f042e02b9e98e9a881f8cc8eb56c36b964c45591ec2f0da4e9b76ac1df0"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select6/sections.mmsession/processing/jobs/checkpoint-receiving/params.json",
+      "bytes": 263,
+      "sha256": "8bd6e7e8fa5530ea1a4e92475affa2e1e0b62da9f5eb487b35fe74c68f62cda5"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select6/sections.mmsession/processing/jobs/checkpoint-receiving/reports/qc.html",
+      "bytes": 1508,
+      "sha256": "53615beeeb02e2446c2104e1c6aa45aa8b7c934b4d77b03d0ffea13de0f8f5a9"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select6/sections.mmsession/processing/jobs/checkpoint-receiving/reports/qc.json",
+      "bytes": 1004,
+      "sha256": "7e093456984f96256ee828b710a9d4d221c8748f80264c34c8f07c7824dba7ac"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select6/sections.mmsession/sources/sim.imu.upper/source.json",
+      "bytes": 86,
+      "sha256": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select6/sections.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+      "bytes": 3349,
+      "sha256": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select6/sections.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "bytes": 227,
+      "sha256": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select7/receiving.json",
+      "bytes": 2760,
+      "sha256": "28856979cd04182de3678426c5ac20dc5ea91de701d3744d774bebebf5297f31"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select7/sections.mmsession/events/annotations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select7/sections.mmsession/events/checkpoints.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select7/sections.mmsession/events/sync_anchors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select7/sections.mmsession/integrity.json",
+      "bytes": 292,
+      "sha256": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select7/sections.mmsession/manifest.json",
+      "bytes": 235,
+      "sha256": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select7/sections.mmsession/processing/jobs/checkpoint-receiving/features/_schema.json",
+      "bytes": 1469,
+      "sha256": "fd557a9a2367c85f2780bd67d4fe6328ca3241810ce92593c2a1bf9bb13516e7"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select7/sections.mmsession/processing/jobs/checkpoint-receiving/features/imu/sim.imu.upper/windows.csv",
+      "bytes": 4389,
+      "sha256": "82027a3321b15dcfda38d7e1352b0a89174c53d66e1fff7cfc31b041129f4633"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select7/sections.mmsession/processing/jobs/checkpoint-receiving/features/imu/sim.imu.upper/windows.parquet",
+      "bytes": 8926,
+      "sha256": "81e7aa256a763d2c3594a067d070a9482eb97f47fbc7322785a5e79a3762db77"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select7/sections.mmsession/processing/jobs/checkpoint-receiving/job_manifest.json",
+      "bytes": 3169,
+      "sha256": "1ade3c7c6f44c2219dc955663525f5450bacd0512105a5556a77749933611d80"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select7/sections.mmsession/processing/jobs/checkpoint-receiving/logs/job.log",
+      "bytes": 238,
+      "sha256": "db447d33b4e08fb61f37406963d8f1fa5dd9dba8017a672fecba52a58dd437e6"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select7/sections.mmsession/processing/jobs/checkpoint-receiving/params.json",
+      "bytes": 263,
+      "sha256": "8bd6e7e8fa5530ea1a4e92475affa2e1e0b62da9f5eb487b35fe74c68f62cda5"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select7/sections.mmsession/processing/jobs/checkpoint-receiving/reports/qc.html",
+      "bytes": 1508,
+      "sha256": "398ec8c893f64a7524f0c0f7dd2bd67b7e05081d3f646b5b2942703cc9e4f409"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select7/sections.mmsession/processing/jobs/checkpoint-receiving/reports/qc.json",
+      "bytes": 1004,
+      "sha256": "c6e8d24dce7ff84cce055f8911b12e2fd7fd846a4c66ce27e15b22053fe86f18"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select7/sections.mmsession/sources/sim.imu.upper/source.json",
+      "bytes": 86,
+      "sha256": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select7/sections.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+      "bytes": 3349,
+      "sha256": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select7/sections.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "bytes": 227,
+      "sha256": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select8/receiving.json",
+      "bytes": 2842,
+      "sha256": "64c923a8e4fff44ee7cb600b30949161eb6607fde50a3dc58676d18e349b55cd"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select8/sections.mmsession/events/annotations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select8/sections.mmsession/events/checkpoints.json",
+      "bytes": 506,
+      "sha256": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select8/sections.mmsession/events/sync_anchors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select8/sections.mmsession/integrity.json",
+      "bytes": 292,
+      "sha256": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select8/sections.mmsession/manifest.json",
+      "bytes": 235,
+      "sha256": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select8/sections.mmsession/processing/jobs/checkpoint-receiving/features/_schema.json",
+      "bytes": 1469,
+      "sha256": "8db54edc1fc45f9a04978677219ea443d40aa3752a5d01f9c0879f91a0246578"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select8/sections.mmsession/processing/jobs/checkpoint-receiving/features/imu/sim.imu.upper/windows.csv",
+      "bytes": 710,
+      "sha256": "9310227aea069cb19e87822102562dd6c4dc8000cc8b5bc8c2a2a2f94814a4c7"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select8/sections.mmsession/processing/jobs/checkpoint-receiving/features/imu/sim.imu.upper/windows.parquet",
+      "bytes": 7700,
+      "sha256": "d07b6d72a9306b933b9e1dff461313a2e248d48013513bbc17ba4c849fa02147"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select8/sections.mmsession/processing/jobs/checkpoint-receiving/job_manifest.json",
+      "bytes": 3179,
+      "sha256": "21e0830ecf63e6e1cff955f84b3aef83856349b137b62cbcc98cea3a62131ee1"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select8/sections.mmsession/processing/jobs/checkpoint-receiving/logs/job.log",
+      "bytes": 238,
+      "sha256": "ded573cd667e11cb3156317287648761fa7137a334e1c4230536b583d54cb23b"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select8/sections.mmsession/processing/jobs/checkpoint-receiving/params.json",
+      "bytes": 275,
+      "sha256": "10fa38e6e5fa45a1bf6fd353656ccfa95975a62bb654c1fac0c5a2f36edc242c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select8/sections.mmsession/processing/jobs/checkpoint-receiving/reports/qc.html",
+      "bytes": 1508,
+      "sha256": "5107fbb6f5530d4d76d85a182ba1c7a9a3e10496c7e734015b258d5d9e98be51"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select8/sections.mmsession/processing/jobs/checkpoint-receiving/reports/qc.json",
+      "bytes": 1004,
+      "sha256": "d62386d5138fdd20a0054dfd2015ec2b1a70fcab1464d2119936bd9b2d266fcb"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select8/sections.mmsession/sources/sim.imu.upper/source.json",
+      "bytes": 86,
+      "sha256": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select8/sections.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+      "bytes": 3349,
+      "sha256": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_emits_the_select8/sections.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "bytes": 227,
+      "sha256": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_reports_an_inver0/receiving.json",
+      "bytes": 2613,
+      "sha256": "7af321c8568fd08d7ecaa374158de42e0ccfed51d85bbf2e8be5c2600c437a1f"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_reports_an_inver0/signed.mmsession/events/annotations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_reports_an_inver0/signed.mmsession/events/checkpoints.json",
+      "bytes": 73,
+      "sha256": "3fdd9fd16835ac048e068558f55c4780df31bcea632a64331d7ed859a0d14616"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_reports_an_inver0/signed.mmsession/events/sync_anchors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_reports_an_inver0/signed.mmsession/integrity.json",
+      "bytes": 292,
+      "sha256": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_reports_an_inver0/signed.mmsession/manifest.json",
+      "bytes": 235,
+      "sha256": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_reports_an_inver0/signed.mmsession/processing/jobs/negative-receiving/job_manifest.json",
+      "bytes": 1192,
+      "sha256": "bc7c429a6452c82453ad4a3dbbb70fef01a297d658a5ea58b590661150f679f7"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_reports_an_inver0/signed.mmsession/processing/jobs/negative-receiving/logs/job.log",
+      "bytes": 283,
+      "sha256": "9a6ac9d013f266699883d345698954012e21d4927468371f146bf54a4d5a2e00"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_reports_an_inver0/signed.mmsession/processing/jobs/negative-receiving/params.json",
+      "bytes": 271,
+      "sha256": "b0a637fd9868c275622eb55a8a88d60dff646508febe999beb987dd1d7fd1146"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_reports_an_inver0/signed.mmsession/processing/jobs/negative-receiving/reports/qc.html",
+      "bytes": 1506,
+      "sha256": "ae17153bd766dff733ed16c8759348d0dc360bfdbe6c657a86f2b3e0da58da9c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_reports_an_inver0/signed.mmsession/processing/jobs/negative-receiving/reports/qc.json",
+      "bytes": 1002,
+      "sha256": "716ef289b532e3afce3a2cb7d5ae72c027261cee1672d4f35bb00e27b98b845a"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_reports_an_inver0/signed.mmsession/sources/sim.imu.upper/source.json",
+      "bytes": 86,
+      "sha256": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_reports_an_inver0/signed.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+      "bytes": 3349,
+      "sha256": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c"
+    },
+    {
+      "path": "candidate/pytest-tmp/test_real_cli_reports_an_inver0/signed.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "bytes": 227,
+      "sha256": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    {
+      "path": "candidate/pytest.log",
+      "bytes": 1011,
+      "sha256": "908c188c1f7c77a5349aa6173a407c305130495f4544bc3e17d1beee888453e7"
+    },
+    {
+      "path": "candidate/receiving-run.json",
+      "bytes": 565865,
+      "sha256": "c5553245046b21a2ca823e1d7d2978614af7d5f691d16b494a2412f21f4502b9"
+    }
+  ]
+}

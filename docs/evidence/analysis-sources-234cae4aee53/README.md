@@ -76,3 +76,14 @@ The controlled check with the actual repository working directory and an
 absolute stdin filename rejects that same source and accepts the restored
 original spacing. The parsed Python AST is identical; no product or lifecycle
 source changed. No Python runtime or MainWindow pass is claimed from that run.
+
+
+## Windows receiving and modal test scheduling
+
+The first Windows run failed before pytest on native import spacing; its original evidence remains above. Run 37805203258 then passed lint but reached the existing 300-second test deadline. Its partial outcomes cannot identify an exact executing case. The raw log, receipt and source manifest are retained under `windows-37805203258/`; no JUnit or pass is claimed for that run.
+
+A separate diagnostic branch changes only pytest verbosity, durations and 45-second stack reporting while retaining the 300-second limit. Run 37809372315 passes 490 tests with six daemon skips in 193.59 pytest seconds (194.36 wrapper seconds). All source-picker jobs and the full MainWindow case pass; the source snapshot is unchanged. CMake is deliberately skipped only on that diagnostic push, so this is positive Windows Python evidence and not a substitute for the normal complete PR gate. Two existing scope plot cases take 68.93s and 63.12s and pass after trace samples show Matplotlib layout work. No timeout cause or application lifecycle repair is inferred.
+
+`diagnostic-37809372315/selected-evidence.tar.gz` preserves the exact received JUnit, log, receipt and source-manifest bytes. Both original full workflow ZIPs remain at their recorded native custody paths, with archive digests. The Windows MainWindow PNG is retained, but all application text renders as missing-glyph boxes in that offscreen runtime; it qualifies execution/layout only. The separately recorded Linux presentation is readable.
+
+Root's independent actual Qt receiver demonstrated a distinct scheduling flaw in the original test helper: delivery of its single zero timer before the real click left the later modal without an operator. The original source and negative receipt are retained under `modal-scheduling/`. The repaired helper owns a timer that retries until this picker's modal exists, stops before operating its controls, bounds a stalled interaction with a targeted five-second rescue, and stops both timers on every return. The same ordinary and forced-early Qt interactions pass without the independent watchdog. One actual-screen regression retains that scheduling challenge. Production picker/screen hashes stay unchanged. The final normal Windows gate receives the repaired test and current main composition.

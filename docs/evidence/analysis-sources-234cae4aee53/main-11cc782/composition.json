@@ -1,0 +1,49 @@
+{
+  "schema": "capturesuite.analysis-sources.composition.v1",
+  "composed_main": "11cc78297d8d214407aea693548af4de855d61da",
+  "main_tree": "2704707993e09393fa6b7d8f319ff0b58d6a2dfc",
+  "previous_received_main": "3cbb5300bdc79c157370d1b3e599a6c82752d54a",
+  "prior_public_head": "866702923c97743ce80fb86b8d96d180068fc52b",
+  "reason": "PR77 landed ML-bundle metadata after the main3c composition was prepared.",
+  "inspected_runtime_delta": "ml_bundle/job.py metadata now describes unnormalized values, integer hop timing and nearest feature/median target values. The source picker already refuses subsets for ml_bundle; no source-selection consumer or desktop source file changed.",
+  "added_tests": "test_ml_bundle_metadata.py plus source/evidence documentation; all retained from main.",
+  "production_sha256": {
+    "desktop/capture_desktop/widgets_analysis_sources.py": "be4c05cbf9b0c801176668933d3bb60204f5c94ce8fea3f85da176575d42c99f",
+    "desktop/capture_desktop/screen_analysis.py": "24c0bef14f448fc7c1e72e9d4f97067deaa6e991bb1f8a0baeba9b33aa34adc1"
+  },
+  "test_git_blob": "b7d2e381d4a1f47465c9ced7e35923eea0668872",
+  "final_union_gate": "Ordinary full Windows CI required; the earlier diagnostic remains separate.",
+  "verification": "All current main leaves outside the one owned screen overlap and PROGRESS must retain exact mode/type/blob IDs. Current main's PROGRESS text remains the exact prefix of the composed text.",
+  "native_limit": "No new native checkout is claimed after the recorded ENOSPC merge failure. All composition uses immutable Git leaf maps and content hashes.",
+  "all_leaf_verification": {
+    "current_main_leaves": 1070,
+    "current_main_unmodified_leaves": 1068,
+    "owned_overlapping_paths": [
+      "desktop/capture_desktop/screen_analysis.py",
+      "docs/design/research/PROGRESS.md"
+    ],
+    "prior_own_delta_preserved": true,
+    "accepted_test_blob": "b7d2e381d4a1f47465c9ced7e35923eea0668872",
+    "errors": [],
+    "hash_controls": {
+      "empty": true,
+      "abc": true,
+      "base": "51c711928a28dc02e100fcdea44cd34512318113",
+      "native": "eb7f8fa94e33ddf3e08e9e9a477ac55d473f1553",
+      "main3": "4af105896633559b35823a7aa2710dc30b2f1740",
+      "main11": "2704707993e09393fa6b7d8f319ff0b58d6a2dfc"
+    }
+  },
+  "independent_peer_files": [
+    {
+      "path": "docs/evidence/analysis-sources-234cae4aee53/modal-scheduling/early_timer_repaired_peer.py",
+      "sha": "e4d1617a05b18963fe80aa7de29fdd0b21b47c72",
+      "bytes": 23979
+    },
+    {
+      "path": "docs/evidence/analysis-sources-234cae4aee53/modal-scheduling/early_timer_repaired_peer_receipt.json",
+      "sha": "758025289622d8689652d2ffe9786f5cdb4788f3",
+      "bytes": 4256
+    }
+  ]
+}
