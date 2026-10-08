@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="26" skipped="3" tests="44" time="2.922" timestamp="2026-10-08T18:57:34.731018+09:00" hostname="05aaedaf3e50"><testcase classname="" name="tests.analysis.test_kinematics_ml_bundle" time="0.000"><skipped message="collection skipped">('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline/tests/analysis/test_pose_job.py', 17, "Skipped: could not import 'mcap': No module named 'mcap'")</skipped></testcase><testcase classname="" name="tests.analysis.test_phase_b_features" time="0.000"><skipped message="collection skipped">('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline/tests/analysis/test_phase_b_features.py', 18, "Skipped: could not import 'mcap': No module named 'mcap'")</skipped></testcase><testcase classname="" name="tests.analysis.test_pose_job" time="0.000"><skipped message="collection skipped">('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline/tests/analysis/test_pose_job.py', 17, "Skipped: could not import 'mcap': No module named 'mcap'")</skipped></testcase><testcase classname="tests.analysis.test_export_sidecar" name="test_export_writes_manifest_and_sidecar" time="0.003"><failure message="ModuleNotFoundError: No module named 'PySide6'">tmp_path = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_export_writes_manifest_an0')
+
+    def test_export_writes_manifest_and_sidecar(tmp_path: Path) -&gt; None:
+&gt;       from capture_desktop.export_wizard import ExportOptions, run_export
+
+tests/analysis/test_export_sidecar.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    # SPDX-License-Identifier: GPL-3.0-only
+    """Export wizard for sealed session packages."""
+    
+    from __future__ import annotations
+    
+    import json
+    import os
+    import subprocess
+    import sys
+    from dataclasses import dataclass
+    from pathlib import Path
+    
+&gt;   from PySide6.QtWidgets import (
+        QCheckBox,
+        QDialog,
+        QDialogButtonBox,
+        QFileDialog,
+        QFormLayout,
+        QLabel,
+        QLineEdit,
+        QMessageBox,
+        QVBoxLayout,
+        QWidget,
+    )
+E   ModuleNotFoundError: No module named 'PySide6'
+
+desktop/capture_desktop/export_wizard.py:13: ModuleNotFoundError</failure></testcase><testcase classname="tests.analysis.test_offline_demo" name="test_offline_demo_emits_reports_and_preserves_original" time="0.091" /><testcase classname="tests.analysis.test_offline_demo" name="test_existing_output_is_preserved" time="0.002" /><testcase classname="tests.analysis.test_offline_demo" name="test_output_cannot_be_under_fixture" time="0.001" /><testcase classname="tests.analysis.test_offline_demo" name="test_engine_failure_preserves_original" time="0.006" /><testcase classname="tests.analysis.test_offline_demo" name="test_missing_output_parent_reports_failure" time="0.002" /><testcase classname="tests.analysis.test_phase_a_qc" name="test_discover_streams_reads_descriptor_rate_and_units" time="0.002" /><testcase classname="tests.analysis.test_phase_a_qc" name="test_require_rate_fails_when_missing" time="0.000" /><testcase classname="tests.analysis.test_phase_a_qc" name="test_ram_guard_trips" time="0.000" /><testcase classname="tests.analysis.test_phase_a_qc" name="test_qc_job_writes_manifest_and_reports" time="0.012" /><testcase classname="tests.analysis.test_phase_a_qc" name="test_analysis_job_schema_validates" time="0.018" /><testcase classname="tests.analysis.test_phase_a_qc" name="test_cli_qc" time="0.943" /><testcase classname="tests.analysis.test_plugin_registry" name="test_bundled_manifest_loads" time="0.023" /><testcase classname="tests.analysis.test_plugin_registry" name="test_dummy_extractor_via_manifest_only" time="0.023" /><testcase classname="tests.analysis.test_plugin_registry" name="test_dummy_stream_handler_writes_parquet" time="0.020"><failure message="ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.&#10;A suitable version of pyarrow or fastparquet is required for parquet support.&#10;Trying to import the above resulted in these errors:&#10; - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.&#10; - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.">tmp_path = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_dummy_stream_handler_writ0')
+
+    def test_dummy_stream_handler_writes_parquet(tmp_path: Path) -&gt; None:
+        from capture_analysis.plugins.handlers import HandlerContext
+        from capture_analysis.plugins.registry import load_registry
+        from capture_analysis.types import StreamRef, TimeWindow
+        from capture_session.package_reader import load_review_summary
+    
+        reg = load_registry(BUNDLED_MANIFEST)
+        ref = StreamRef(
+            "dummy.src",
+            "dummy.stream",
+            "dummy_test",
+            "dummy.test/1",
+            1.0,
+            "a.u.",
+        )
+        handler = reg.stream_handler_for(ref)
+        assert handler is not None
+    
+        summary = load_review_summary(FIXTURE)
+        work = tmp_path / "job"
+        work.mkdir()
+        outputs: list = []
+        schema_doc = {"schemaId": "capture.analysis_feature_schema/1", "tables": {}}
+        ctx = HandlerContext(
+            root=FIXTURE,
+            work=work,
+            summary=summary,
+            window=TimeWindow(0, summary.duration_ns or 1, "full"),
+            gap_policy="mask",
+            max_ram_bytes=2**30,
+            do_features=True,
+            do_plots=False,
+            all_gaps=[],
+            outputs=outputs,
+            warnings=[],
+            schema_doc=schema_doc,
+            feature_tables=[],
+            sync_series=[],
+        )
+        from capture_analysis.windows import build_gap_mask, gaps_to_intervals
+    
+        gaps = gaps_to_intervals(summary)
+        gap_mask = build_gap_mask(ref, ctx.window, gaps, policy="mask")
+&gt;       handler(ref, gap_mask, ctx)
+
+tests/analysis/test_plugin_registry.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+libs/python/capture_analysis/capture_analysis/plugins/dummy.py:42: in handle_dummy
+    write_feature_table(
+libs/python/capture_analysis/capture_analysis/features/io.py:25: in write_feature_table
+    df.to_parquet(path, index=False)
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/pandas/core/frame.py:3113: in to_parquet
+    return to_parquet(
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/pandas/io/parquet.py:476: in to_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+engine = 'auto'
+
+    def get_engine(engine: str) -&gt; BaseImpl:
+        """return our implementation"""
+        if engine == "auto":
+            engine = get_option("io.parquet.engine")
+    
+        if engine == "auto":
+            # try engines in this order
+            engine_classes = [PyArrowImpl, FastParquetImpl]
+    
+            error_msgs = ""
+            for engine_class in engine_classes:
+                try:
+                    return engine_class()
+                except ImportError as err:
+                    error_msgs += "\n - " + str(err)
+    
+&gt;           raise ImportError(
+                "Unable to find a usable engine; "
+                "tried using: 'pyarrow', 'fastparquet'.\n"
+                "A suitable version of "
+                "pyarrow or fastparquet is required for parquet "
+                "support.\n"
+                "Trying to import the above resulted in these errors:"
+                f"{error_msgs}"
+            )
+E           ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E           A suitable version of pyarrow or fastparquet is required for parquet support.
+E           Trying to import the above resulted in these errors:
+E            - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E            - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/pandas/io/parquet.py:67: ImportError</failure></testcase><testcase classname="tests.analysis.test_plugin_registry" name="test_pipeline_uses_registry_not_modality_elif" time="0.001" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_closed_gap_is_attributed_in_json_and_source_status" time="0.002"><failure message="AssertionError: assert 'capture.analysis_qc/1' == 'capture.analysis_qc/2'&#10;  &#10;  - capture.analysis_qc/2&#10;  ?                     ^&#10;  + capture.analysis_qc/1&#10;  ?                     ^">package = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_closed_gap_is_attributed_0/gaps.mmsession')
+
+    def test_closed_gap_is_attributed_in_json_and_source_status(package: Path) -&gt; None:
+        write_gaps(package, gap())
+        qc = collect_qc(package).to_dict()
+&gt;       assert qc["schemaId"] == "capture.analysis_qc/2"
+E       AssertionError: assert 'capture.analysis_qc/1' == 'capture.analysis_qc/2'
+E         
+E         - capture.analysis_qc/2
+E         ?                     ^
+E         + capture.analysis_qc/1
+E         ?                     ^
+
+tests/analysis/test_qc_gap_details.py:94: AssertionError</failure></testcase><testcase classname="tests.analysis.test_qc_gap_details" name="test_duration_requires_a_closed_consistent_interval[2-5-True-3-known]" time="0.002"><failure message="KeyError: 'gaps'">package = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_duration_requires_a_close0/gaps.mmsession')
+start = 2, end = 5, closed = True, duration = '3', status = 'known'
+
+    @pytest.mark.parametrize(
+        ("start", "end", "closed", "duration", "status"),
+        [
+            (2, 5, True, "3", "known"),
+            (0, 0, True, "0", "known"),
+            (-1, 1, True, "2", "known"),
+            (2**63 - 2, 2**63 - 1, True, "1", "known"),
+            (2, None, False, None, "open"),
+            (2, None, True, None, "missing_end"),
+            (2, 5, False, None, "open"),
+            (5, 2, True, None, "end_before_start"),
+        ],
+    )
+    def test_duration_requires_a_closed_consistent_interval(
+        package: Path, start, end, closed, duration, status
+    ) -&gt; None:
+        write_gaps(package, gap(startSessionTimeNs=str(start),
+                                endSessionTimeNs=None if end is None else str(end), closed=closed))
+&gt;       detail = collect_qc(package).to_dict()["gaps"][0]
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'gaps'
+
+tests/analysis/test_qc_gap_details.py:119: KeyError</failure></testcase><testcase classname="tests.analysis.test_qc_gap_details" name="test_duration_requires_a_closed_consistent_interval[0-0-True-0-known]" time="0.003"><failure message="KeyError: 'gaps'">package = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_duration_requires_a_close1/gaps.mmsession')
+start = 0, end = 0, closed = True, duration = '0', status = 'known'
+
+    @pytest.mark.parametrize(
+        ("start", "end", "closed", "duration", "status"),
+        [
+            (2, 5, True, "3", "known"),
+            (0, 0, True, "0", "known"),
+            (-1, 1, True, "2", "known"),
+            (2**63 - 2, 2**63 - 1, True, "1", "known"),
+            (2, None, False, None, "open"),
+            (2, None, True, None, "missing_end"),
+            (2, 5, False, None, "open"),
+            (5, 2, True, None, "end_before_start"),
+        ],
+    )
+    def test_duration_requires_a_closed_consistent_interval(
+        package: Path, start, end, closed, duration, status
+    ) -&gt; None:
+        write_gaps(package, gap(startSessionTimeNs=str(start),
+                                endSessionTimeNs=None if end is None else str(end), closed=closed))
+&gt;       detail = collect_qc(package).to_dict()["gaps"][0]
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'gaps'
+
+tests/analysis/test_qc_gap_details.py:119: KeyError</failure></testcase><testcase classname="tests.analysis.test_qc_gap_details" name="test_duration_requires_a_closed_consistent_interval[-1-1-True-2-known]" time="0.004"><failure message="KeyError: 'gaps'">package = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_duration_requires_a_close2/gaps.mmsession')
+start = -1, end = 1, closed = True, duration = '2', status = 'known'
+
+    @pytest.mark.parametrize(
+        ("start", "end", "closed", "duration", "status"),
+        [
+            (2, 5, True, "3", "known"),
+            (0, 0, True, "0", "known"),
+            (-1, 1, True, "2", "known"),
+            (2**63 - 2, 2**63 - 1, True, "1", "known"),
+            (2, None, False, None, "open"),
+            (2, None, True, None, "missing_end"),
+            (2, 5, False, None, "open"),
+            (5, 2, True, None, "end_before_start"),
+        ],
+    )
+    def test_duration_requires_a_closed_consistent_interval(
+        package: Path, start, end, closed, duration, status
+    ) -&gt; None:
+        write_gaps(package, gap(startSessionTimeNs=str(start),
+                                endSessionTimeNs=None if end is None else str(end), closed=closed))
+&gt;       detail = collect_qc(package).to_dict()["gaps"][0]
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'gaps'
+
+tests/analysis/test_qc_gap_details.py:119: KeyError</failure></testcase><testcase classname="tests.analysis.test_qc_gap_details" name="test_duration_requires_a_closed_consistent_interval[9223372036854775806-9223372036854775807-True-1-known]" time="0.003"><failure message="KeyError: 'gaps'">package = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_duration_requires_a_close3/gaps.mmsession')
+start = 9223372036854775806, end = 9223372036854775807, closed = True
+duration = '1', status = 'known'
+
+    @pytest.mark.parametrize(
+        ("start", "end", "closed", "duration", "status"),
+        [
+            (2, 5, True, "3", "known"),
+            (0, 0, True, "0", "known"),
+            (-1, 1, True, "2", "known"),
+            (2**63 - 2, 2**63 - 1, True, "1", "known"),
+            (2, None, False, None, "open"),
+            (2, None, True, None, "missing_end"),
+            (2, 5, False, None, "open"),
+            (5, 2, True, None, "end_before_start"),
+        ],
+    )
+    def test_duration_requires_a_closed_consistent_interval(
+        package: Path, start, end, closed, duration, status
+    ) -&gt; None:
+        write_gaps(package, gap(startSessionTimeNs=str(start),
+                                endSessionTimeNs=None if end is None else str(end), closed=closed))
+&gt;       detail = collect_qc(package).to_dict()["gaps"][0]
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'gaps'
+
+tests/analysis/test_qc_gap_details.py:119: KeyError</failure></testcase><testcase classname="tests.analysis.test_qc_gap_details" name="test_duration_requires_a_closed_consistent_interval[2-None-False-None-open]" time="0.002"><failure message="KeyError: 'gaps'">package = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_duration_requires_a_close4/gaps.mmsession')
+start = 2, end = None, closed = False, duration = None, status = 'open'
+
+    @pytest.mark.parametrize(
+        ("start", "end", "closed", "duration", "status"),
+        [
+            (2, 5, True, "3", "known"),
+            (0, 0, True, "0", "known"),
+            (-1, 1, True, "2", "known"),
+            (2**63 - 2, 2**63 - 1, True, "1", "known"),
+            (2, None, False, None, "open"),
+            (2, None, True, None, "missing_end"),
+            (2, 5, False, None, "open"),
+            (5, 2, True, None, "end_before_start"),
+        ],
+    )
+    def test_duration_requires_a_closed_consistent_interval(
+        package: Path, start, end, closed, duration, status
+    ) -&gt; None:
+        write_gaps(package, gap(startSessionTimeNs=str(start),
+                                endSessionTimeNs=None if end is None else str(end), closed=closed))
+&gt;       detail = collect_qc(package).to_dict()["gaps"][0]
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'gaps'
+
+tests/analysis/test_qc_gap_details.py:119: KeyError</failure></testcase><testcase classname="tests.analysis.test_qc_gap_details" name="test_duration_requires_a_closed_consistent_interval[2-None-True-None-missing_end]" time="0.002"><failure message="KeyError: 'gaps'">package = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_duration_requires_a_close5/gaps.mmsession')
+start = 2, end = None, closed = True, duration = None, status = 'missing_end'
+
+    @pytest.mark.parametrize(
+        ("start", "end", "closed", "duration", "status"),
+        [
+            (2, 5, True, "3", "known"),
+            (0, 0, True, "0", "known"),
+            (-1, 1, True, "2", "known"),
+            (2**63 - 2, 2**63 - 1, True, "1", "known"),
+            (2, None, False, None, "open"),
+            (2, None, True, None, "missing_end"),
+            (2, 5, False, None, "open"),
+            (5, 2, True, None, "end_before_start"),
+        ],
+    )
+    def test_duration_requires_a_closed_consistent_interval(
+        package: Path, start, end, closed, duration, status
+    ) -&gt; None:
+        write_gaps(package, gap(startSessionTimeNs=str(start),
+                                endSessionTimeNs=None if end is None else str(end), closed=closed))
+&gt;       detail = collect_qc(package).to_dict()["gaps"][0]
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'gaps'
+
+tests/analysis/test_qc_gap_details.py:119: KeyError</failure></testcase><testcase classname="tests.analysis.test_qc_gap_details" name="test_duration_requires_a_closed_consistent_interval[2-5-False-None-open]" time="0.002"><failure message="KeyError: 'gaps'">package = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_duration_requires_a_close6/gaps.mmsession')
+start = 2, end = 5, closed = False, duration = None, status = 'open'
+
+    @pytest.mark.parametrize(
+        ("start", "end", "closed", "duration", "status"),
+        [
+            (2, 5, True, "3", "known"),
+            (0, 0, True, "0", "known"),
+            (-1, 1, True, "2", "known"),
+            (2**63 - 2, 2**63 - 1, True, "1", "known"),
+            (2, None, False, None, "open"),
+            (2, None, True, None, "missing_end"),
+            (2, 5, False, None, "open"),
+            (5, 2, True, None, "end_before_start"),
+        ],
+    )
+    def test_duration_requires_a_closed_consistent_interval(
+        package: Path, start, end, closed, duration, status
+    ) -&gt; None:
+        write_gaps(package, gap(startSessionTimeNs=str(start),
+                                endSessionTimeNs=None if end is None else str(end), closed=closed))
+&gt;       detail = collect_qc(package).to_dict()["gaps"][0]
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'gaps'
+
+tests/analysis/test_qc_gap_details.py:119: KeyError</failure></testcase><testcase classname="tests.analysis.test_qc_gap_details" name="test_duration_requires_a_closed_consistent_interval[5-2-True-None-end_before_start]" time="0.002"><failure message="KeyError: 'gaps'">package = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_duration_requires_a_close7/gaps.mmsession')
+start = 5, end = 2, closed = True, duration = None, status = 'end_before_start'
+
+    @pytest.mark.parametrize(
+        ("start", "end", "closed", "duration", "status"),
+        [
+            (2, 5, True, "3", "known"),
+            (0, 0, True, "0", "known"),
+            (-1, 1, True, "2", "known"),
+            (2**63 - 2, 2**63 - 1, True, "1", "known"),
+            (2, None, False, None, "open"),
+            (2, None, True, None, "missing_end"),
+            (2, 5, False, None, "open"),
+            (5, 2, True, None, "end_before_start"),
+        ],
+    )
+    def test_duration_requires_a_closed_consistent_interval(
+        package: Path, start, end, closed, duration, status
+    ) -&gt; None:
+        write_gaps(package, gap(startSessionTimeNs=str(start),
+                                endSessionTimeNs=None if end is None else str(end), closed=closed))
+&gt;       detail = collect_qc(package).to_dict()["gaps"][0]
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'gaps'
+
+tests/analysis/test_qc_gap_details.py:119: KeyError</failure></testcase><testcase classname="tests.analysis.test_qc_gap_details" name="test_native_writer_keys_and_directory_source_fallback" time="0.002"><failure message="KeyError: 'gaps'">package = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_native_writer_keys_and_di0/gaps.mmsession')
+
+    def test_native_writer_keys_and_directory_source_fallback(package: Path) -&gt; None:
+        write_gaps(package, {"stream_id": STREAM, "cause": "WRITER_ERROR",
+                             "start_session_time_ns": 10, "end_session_time_ns": 20})
+&gt;       detail = collect_qc(package).to_dict()["gaps"][0]
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'gaps'
+
+tests/analysis/test_qc_gap_details.py:130: KeyError</failure></testcase><testcase classname="tests.analysis.test_qc_gap_details" name="test_causes_and_overlapping_records_are_preserved_separately" time="0.002"><failure message="KeyError: 'gaps'">package = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_causes_and_overlapping_re0/gaps.mmsession')
+
+    def test_causes_and_overlapping_records_are_preserved_separately(package: Path) -&gt; None:
+        causes = ["GAP_CAUSE_DISCONNECT", "GAP_CAUSE_SEQUENCE_LOSS", "GAP_CAUSE_OVERLOAD_DROP",
+                  "GAP_CAUSE_WRITER_ERROR", "GAP_CAUSE_UNKNOWN", "GAP_CAUSE_UNSPECIFIED"]
+        write_gaps(package, *(gap(cause=c, estimatedLostCount=str(2**53 + i))
+                              for i, c in enumerate(causes)))
+        qc = collect_qc(package).to_dict()
+&gt;       assert [row["cause"] for row in qc["gaps"]] == causes
+                                        ^^^^^^^^^^
+E       KeyError: 'gaps'
+
+tests/analysis/test_qc_gap_details.py:145: KeyError</failure></testcase><testcase classname="tests.analysis.test_qc_gap_details" name="test_gap_cannot_downgrade_an_existing_failed_source" time="0.002" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_gap_source_without_a_discovered_stream_is_still_visible" time="0.002"><failure message="KeyError: 'gaps'">package = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_gap_source_without_a_disc0/gaps.mmsession')
+
+    def test_gap_source_without_a_discovered_stream_is_still_visible(package: Path) -&gt; None:
+        write_gaps(package, gap(sourceId="missing.sensor", streamId=""), source="missing.sensor")
+        qc = collect_qc(package).to_dict()
+&gt;       assert qc["gaps"][0]["sourceId"] == "missing.sensor"
+               ^^^^^^^^^^
+E       KeyError: 'gaps'
+
+tests/analysis/test_qc_gap_details.py:163: KeyError</failure></testcase><testcase classname="tests.analysis.test_qc_gap_details" name="test_no_gap_control_remains_green" time="0.002"><failure message="KeyError: 'gaps'">package = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_no_gap_control_remains_gr0/gaps.mmsession')
+
+    def test_no_gap_control_remains_green(package: Path) -&gt; None:
+        qc = collect_qc(package).to_dict()
+&gt;       assert qc["gaps"] == []
+               ^^^^^^^^^^
+E       KeyError: 'gaps'
+
+tests/analysis/test_qc_gap_details.py:172: KeyError</failure></testcase><testcase classname="tests.analysis.test_qc_gap_details" name="test_html_keeps_nanosecond_precision[2000000000-4500000000-expected0]" time="0.003"><failure message="StopIteration">package = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_html_keeps_nanosecond_pre0/gaps.mmsession')
+start = 2000000000, end = 4500000000
+expected = ['2.000000000', '4.500000000', '2.500000000']
+
+    @pytest.mark.parametrize(
+        ("start", "end", "expected"),
+        [
+            (2_000_000_000, 4_500_000_000, ["2.000000000", "4.500000000", "2.500000000"]),
+            (-1, 1, ["-0.000000001", "0.000000001", "0.000000002"]),
+            (2**63 - 2, 2**63 - 1, ["9223372036.854775806", "9223372036.854775807", "0.000000001"]),
+        ],
+    )
+    def test_html_keeps_nanosecond_precision(package: Path, start, end, expected) -&gt; None:
+        write_gaps(package, gap(startSessionTimeNs=str(start), endSessionTimeNs=str(end)))
+&gt;       row = gap_html_row(collect_qc(package).to_dict())
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/analysis/test_qc_gap_details.py:189: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+qc = {'schemaId': 'capture.analysis_qc/1', 'packagePath': '/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-fi...est_html_keeps_nanosecond_pre0/gaps.mmsession', 'sessionId': 'mini-analysis-fixture', 'packageState': 'finalized', ...}
+cause = 'DISCONNECT'
+
+    def gap_html_row(qc: dict, cause: str = "DISCONNECT") -&gt; list[str]:
+        parsed = TableRows()
+        parsed.feed(render_qc_html(qc))
+&gt;       return next(row for row in parsed.rows if cause in row)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+tests/analysis/test_qc_gap_details.py:88: StopIteration</failure></testcase><testcase classname="tests.analysis.test_qc_gap_details" name="test_html_keeps_nanosecond_precision[-1-1-expected1]" time="0.003"><failure message="StopIteration">package = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_html_keeps_nanosecond_pre1/gaps.mmsession')
+start = -1, end = 1, expected = ['-0.000000001', '0.000000001', '0.000000002']
+
+    @pytest.mark.parametrize(
+        ("start", "end", "expected"),
+        [
+            (2_000_000_000, 4_500_000_000, ["2.000000000", "4.500000000", "2.500000000"]),
+            (-1, 1, ["-0.000000001", "0.000000001", "0.000000002"]),
+            (2**63 - 2, 2**63 - 1, ["9223372036.854775806", "9223372036.854775807", "0.000000001"]),
+        ],
+    )
+    def test_html_keeps_nanosecond_precision(package: Path, start, end, expected) -&gt; None:
+        write_gaps(package, gap(startSessionTimeNs=str(start), endSessionTimeNs=str(end)))
+&gt;       row = gap_html_row(collect_qc(package).to_dict())
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/analysis/test_qc_gap_details.py:189: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+qc = {'schemaId': 'capture.analysis_qc/1', 'packagePath': '/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-fi...est_html_keeps_nanosecond_pre1/gaps.mmsession', 'sessionId': 'mini-analysis-fixture', 'packageState': 'finalized', ...}
+cause = 'DISCONNECT'
+
+    def gap_html_row(qc: dict, cause: str = "DISCONNECT") -&gt; list[str]:
+        parsed = TableRows()
+        parsed.feed(render_qc_html(qc))
+&gt;       return next(row for row in parsed.rows if cause in row)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+tests/analysis/test_qc_gap_details.py:88: StopIteration</failure></testcase><testcase classname="tests.analysis.test_qc_gap_details" name="test_html_keeps_nanosecond_precision[9223372036854775806-9223372036854775807-expected2]" time="0.002"><failure message="StopIteration">package = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_html_keeps_nanosecond_pre2/gaps.mmsession')
+start = 9223372036854775806, end = 9223372036854775807
+expected = ['9223372036.854775806', '9223372036.854775807', '0.000000001']
+
+    @pytest.mark.parametrize(
+        ("start", "end", "expected"),
+        [
+            (2_000_000_000, 4_500_000_000, ["2.000000000", "4.500000000", "2.500000000"]),
+            (-1, 1, ["-0.000000001", "0.000000001", "0.000000002"]),
+            (2**63 - 2, 2**63 - 1, ["9223372036.854775806", "9223372036.854775807", "0.000000001"]),
+        ],
+    )
+    def test_html_keeps_nanosecond_precision(package: Path, start, end, expected) -&gt; None:
+        write_gaps(package, gap(startSessionTimeNs=str(start), endSessionTimeNs=str(end)))
+&gt;       row = gap_html_row(collect_qc(package).to_dict())
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/analysis/test_qc_gap_details.py:189: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+qc = {'schemaId': 'capture.analysis_qc/1', 'packagePath': '/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-fi...est_html_keeps_nanosecond_pre2/gaps.mmsession', 'sessionId': 'mini-analysis-fixture', 'packageState': 'finalized', ...}
+cause = 'DISCONNECT'
+
+    def gap_html_row(qc: dict, cause: str = "DISCONNECT") -&gt; list[str]:
+        parsed = TableRows()
+        parsed.feed(render_qc_html(qc))
+&gt;       return next(row for row in parsed.rows if cause in row)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+tests/analysis/test_qc_gap_details.py:88: StopIteration</failure></testcase><testcase classname="tests.analysis.test_qc_gap_details" name="test_html_unknown_duration_is_never_displayed_as_zero[None-False]" time="0.003"><failure message="StopIteration">package = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_html_unknown_duration_is_0/gaps.mmsession')
+end = None, closed = False
+
+    @pytest.mark.parametrize(("end", "closed"), [(None, False), (None, True), (1, True), (5, False)])
+    def test_html_unknown_duration_is_never_displayed_as_zero(package: Path, end, closed) -&gt; None:
+        write_gaps(package, gap(startSessionTimeNs="2", endSessionTimeNs=end, closed=closed))
+&gt;       row = gap_html_row(collect_qc(package).to_dict())
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/analysis/test_qc_gap_details.py:196: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+qc = {'schemaId': 'capture.analysis_qc/1', 'packagePath': '/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-fi...est_html_unknown_duration_is_0/gaps.mmsession', 'sessionId': 'mini-analysis-fixture', 'packageState': 'finalized', ...}
+cause = 'DISCONNECT'
+
+    def gap_html_row(qc: dict, cause: str = "DISCONNECT") -&gt; list[str]:
+        parsed = TableRows()
+        parsed.feed(render_qc_html(qc))
+&gt;       return next(row for row in parsed.rows if cause in row)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+tests/analysis/test_qc_gap_details.py:88: StopIteration</failure></testcase><testcase classname="tests.analysis.test_qc_gap_details" name="test_html_unknown_duration_is_never_displayed_as_zero[None-True]" time="0.002"><failure message="StopIteration">package = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_html_unknown_duration_is_1/gaps.mmsession')
+end = None, closed = True
+
+    @pytest.mark.parametrize(("end", "closed"), [(None, False), (None, True), (1, True), (5, False)])
+    def test_html_unknown_duration_is_never_displayed_as_zero(package: Path, end, closed) -&gt; None:
+        write_gaps(package, gap(startSessionTimeNs="2", endSessionTimeNs=end, closed=closed))
+&gt;       row = gap_html_row(collect_qc(package).to_dict())
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/analysis/test_qc_gap_details.py:196: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+qc = {'schemaId': 'capture.analysis_qc/1', 'packagePath': '/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-fi...est_html_unknown_duration_is_1/gaps.mmsession', 'sessionId': 'mini-analysis-fixture', 'packageState': 'finalized', ...}
+cause = 'DISCONNECT'
+
+    def gap_html_row(qc: dict, cause: str = "DISCONNECT") -&gt; list[str]:
+        parsed = TableRows()
+        parsed.feed(render_qc_html(qc))
+&gt;       return next(row for row in parsed.rows if cause in row)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+tests/analysis/test_qc_gap_details.py:88: StopIteration</failure></testcase><testcase classname="tests.analysis.test_qc_gap_details" name="test_html_unknown_duration_is_never_displayed_as_zero[1-True]" time="0.003"><failure message="StopIteration">package = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_html_unknown_duration_is_2/gaps.mmsession')
+end = 1, closed = True
+
+    @pytest.mark.parametrize(("end", "closed"), [(None, False), (None, True), (1, True), (5, False)])
+    def test_html_unknown_duration_is_never_displayed_as_zero(package: Path, end, closed) -&gt; None:
+        write_gaps(package, gap(startSessionTimeNs="2", endSessionTimeNs=end, closed=closed))
+&gt;       row = gap_html_row(collect_qc(package).to_dict())
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/analysis/test_qc_gap_details.py:196: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+qc = {'schemaId': 'capture.analysis_qc/1', 'packagePath': '/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-fi...est_html_unknown_duration_is_2/gaps.mmsession', 'sessionId': 'mini-analysis-fixture', 'packageState': 'finalized', ...}
+cause = 'DISCONNECT'
+
+    def gap_html_row(qc: dict, cause: str = "DISCONNECT") -&gt; list[str]:
+        parsed = TableRows()
+        parsed.feed(render_qc_html(qc))
+&gt;       return next(row for row in parsed.rows if cause in row)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+tests/analysis/test_qc_gap_details.py:88: StopIteration</failure></testcase><testcase classname="tests.analysis.test_qc_gap_details" name="test_html_unknown_duration_is_never_displayed_as_zero[5-False]" time="0.003"><failure message="StopIteration">package = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_html_unknown_duration_is_3/gaps.mmsession')
+end = 5, closed = False
+
+    @pytest.mark.parametrize(("end", "closed"), [(None, False), (None, True), (1, True), (5, False)])
+    def test_html_unknown_duration_is_never_displayed_as_zero(package: Path, end, closed) -&gt; None:
+        write_gaps(package, gap(startSessionTimeNs="2", endSessionTimeNs=end, closed=closed))
+&gt;       row = gap_html_row(collect_qc(package).to_dict())
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/analysis/test_qc_gap_details.py:196: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+qc = {'schemaId': 'capture.analysis_qc/1', 'packagePath': '/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-fi...est_html_unknown_duration_is_3/gaps.mmsession', 'sessionId': 'mini-analysis-fixture', 'packageState': 'finalized', ...}
+cause = 'DISCONNECT'
+
+    def gap_html_row(qc: dict, cause: str = "DISCONNECT") -&gt; list[str]:
+        parsed = TableRows()
+        parsed.feed(render_qc_html(qc))
+&gt;       return next(row for row in parsed.rows if cause in row)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       StopIteration
+
+tests/analysis/test_qc_gap_details.py:88: StopIteration</failure></testcase><testcase classname="tests.analysis.test_qc_gap_details" name="test_html_escapes_recorded_identifiers_and_cause" time="0.002"><failure message="KeyError: 'gaps'">package = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_html_escapes_recorded_ide0/gaps.mmsession')
+
+    def test_html_escapes_recorded_identifiers_and_cause(package: Path) -&gt; None:
+        source = '&lt;img src=x onerror="fail()"&gt;'
+        stream = '&lt;script&gt;fail()&lt;/script&gt;'
+        cause = 'unexpected &lt;cause&gt; &amp; "quoted"'
+        write_gaps(package, gap(sourceId=source, streamId=stream, cause=cause))
+        qc = collect_qc(package).to_dict()
+        html = render_qc_html(qc)
+&gt;       assert qc["gaps"][0]["sourceId"] == source
+               ^^^^^^^^^^
+E       KeyError: 'gaps'
+
+tests/analysis/test_qc_gap_details.py:208: KeyError</failure></testcase><testcase classname="tests.analysis.test_qc_gap_details" name="test_legacy_html_distinguishes_missing_details_from_no_gaps" time="0.002"><failure message="assert 'Gap details are not available' in '&lt;!DOCTYPE html&gt;\n&lt;html lang=&quot;en&quot;&gt;\n&lt;head&gt;\n&lt;meta charset=&quot;utf-8&quot;/&gt;\n&lt;title&gt;QC — mini-analysis-fixture&lt;/title&gt;\n&lt;style...d&gt;60.0&lt;/td&gt;&lt;td&gt;a.u.&lt;/td&gt;&lt;td&gt;1/0&lt;/td&gt;&lt;/tr&gt;\n&lt;/table&gt;\n\n&lt;h2&gt;Warnings&lt;/h2&gt;\n&lt;ul&gt;&lt;li&gt;(none)&lt;/li&gt;&lt;/ul&gt;\n&lt;/body&gt;\n&lt;/html&gt;\n'">package = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_legacy_html_distinguishes0/gaps.mmsession')
+
+    def test_legacy_html_distinguishes_missing_details_from_no_gaps(package: Path) -&gt; None:
+        old = collect_qc(package).to_dict()
+        old.pop("gaps", None)
+        old["schemaId"] = "capture.analysis_qc/1"
+        old["closedGapCount"] = 2
+        html = render_qc_html(old)
+&gt;       assert "Gap details are not available" in html
+E       assert 'Gap details are not available' in '&lt;!DOCTYPE html&gt;\n&lt;html lang="en"&gt;\n&lt;head&gt;\n&lt;meta charset="utf-8"/&gt;\n&lt;title&gt;QC — mini-analysis-fixture&lt;/title&gt;\n&lt;style...d&gt;60.0&lt;/td&gt;&lt;td&gt;a.u.&lt;/td&gt;&lt;td&gt;1/0&lt;/td&gt;&lt;/tr&gt;\n&lt;/table&gt;\n\n&lt;h2&gt;Warnings&lt;/h2&gt;\n&lt;ul&gt;&lt;li&gt;(none)&lt;/li&gt;&lt;/ul&gt;\n&lt;/body&gt;\n&lt;/html&gt;\n'
+
+tests/analysis/test_qc_gap_details.py:223: AssertionError</failure></testcase><testcase classname="tests.analysis.test_qc_gap_details" name="test_native_job_binds_report_bytes_and_preserves_all_raw_inputs" time="0.012"><failure message="AssertionError: assert 'completed' == 'completed_with_warnings'&#10;  &#10;  - completed_with_warnings&#10;  + completed">package = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_native_job_binds_report_b0/gaps.mmsession')
+
+    def test_native_job_binds_report_bytes_and_preserves_all_raw_inputs(package: Path) -&gt; None:
+        write_gaps(package, gap())
+        before = raw_hashes(package)
+        result = run(package, JobParams(command="qc", overwrite_job_id="gap-details"))
+        assert raw_hashes(package) == before
+&gt;       assert result.status == "completed_with_warnings"
+E       AssertionError: assert 'completed' == 'completed_with_warnings'
+E         
+E         - completed_with_warnings
+E         + completed
+
+tests/analysis/test_qc_gap_details.py:233: AssertionError</failure></testcase><testcase classname="tests.analysis.test_qc_gap_details" name="test_actual_cli_emits_gap_details_and_preserves_inputs" time="0.678"><failure message="AssertionError: job_id=cli-gap-details&#10;  status=completed&#10;  dir=/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_actual_cli_emits_gap_deta0/gaps.mmsession/processing/jobs/cli-gap-details&#10;  streams=2 gaps_open=0 gaps_closed=1 warnings=0&#10;  &#10;assert 0 == 2&#10; +  where 0 = CompletedProcess(args=['/workspace/scratch/20b27c2ea29e/workers/estate-production/venv/bin/python', '/dev/shm/ultra-20...gap_deta0/gaps.mmsession/processing/jobs/cli-gap-details\nstreams=2 gaps_open=0 gaps_closed=1 warnings=0\n', stderr='').returncode">package = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_actual_cli_emits_gap_deta0/gaps.mmsession')
+
+    def test_actual_cli_emits_gap_details_and_preserves_inputs(package: Path) -&gt; None:
+        write_gaps(package, gap())
+        before = raw_hashes(package)
+        proc = subprocess.run(
+            [sys.executable, str(ROOT / "tools/run_analysis.py"), "qc", str(package),
+             "--overwrite-job-id", "cli-gap-details", "--strict-warnings"],
+            cwd=ROOT, capture_output=True, text=True, timeout=30,
+        )
+&gt;       assert proc.returncode == 2, proc.stdout + proc.stderr
+E       AssertionError: job_id=cli-gap-details
+E         status=completed
+E         dir=/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp/test_actual_cli_emits_gap_deta0/gaps.mmsession/processing/jobs/cli-gap-details
+E         streams=2 gaps_open=0 gaps_closed=1 warnings=0
+E         
+E       assert 0 == 2
+E        +  where 0 = CompletedProcess(args=['/workspace/scratch/20b27c2ea29e/workers/estate-production/venv/bin/python', '/dev/shm/ultra-20...gap_deta0/gaps.mmsession/processing/jobs/cli-gap-details\nstreams=2 gaps_open=0 gaps_closed=1 warnings=0\n', stderr='').returncode
+
+tests/analysis/test_qc_gap_details.py:251: AssertionError</failure></testcase></testsuite></testsuites>

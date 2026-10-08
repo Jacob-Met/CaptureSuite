@@ -1,0 +1,10 @@
+{
+  "baseline": {
+    "cmd": "TMPDIR=/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-system-tmp PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages:/workspace/scratch/20b27c2ea29e/workers/estate-production/venv/lib/python3.12/site-packages:/workspace/scratch/20b27c2ea29e/workers/runtime-integration/product-discovery/canvaspilot/venv/lib/python3.12/site-packages MPLCONFIGDIR=/workspace/scratch/20b27c2ea29e/workers/estate-production/capturesuite-evidence/mpl-cache /workspace/scratch/20b27c2ea29e/workers/estate-production/venv/bin/python -m pytest -q tests/analysis -ra -p no:cacheprovider --basetemp /dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp --junitxml /dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-analysis.xml > /dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-analysis.log 2>&1",
+    "cwd": "/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline"
+  },
+  "candidate": {
+    "cmd": "TMPDIR=/dev/shm/ultra-20b27c2e-estate-production-capture-qc/candidate-system-tmp PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages:/workspace/scratch/20b27c2ea29e/workers/estate-production/venv/lib/python3.12/site-packages:/workspace/scratch/20b27c2ea29e/workers/runtime-integration/product-discovery/canvaspilot/venv/lib/python3.12/site-packages MPLCONFIGDIR=/workspace/scratch/20b27c2ea29e/workers/estate-production/capturesuite-evidence/mpl-cache /workspace/scratch/20b27c2ea29e/workers/estate-production/venv/bin/python -m pytest -q tests/analysis -ra -p no:cacheprovider --basetemp /dev/shm/ultra-20b27c2e-estate-production-capture-qc/candidate-final-tmp --junitxml /dev/shm/ultra-20b27c2e-estate-production-capture-qc/candidate-analysis.xml > /dev/shm/ultra-20b27c2e-estate-production-capture-qc/candidate-analysis.log 2>&1",
+    "cwd": "/workspace/scratch/20b27c2ea29e/workers/estate-production/capturesuite"
+  }
+}

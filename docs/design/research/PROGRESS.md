@@ -513,3 +513,38 @@ merged without changing the camera source or either fixture. The final combined
 Linux collection passed 1/1 tests and 17/17 native checks. New-head hosted Windows
 qualification is pending; actual camera/vcpkg/GStreamer receiving remains open.
 See docs/evidence/camera-packaging-20261008/receiving-final-integration.json.
+
+
+## 2026-10-08 — Offline QC gap attribution (ultra-20b27c2e)
+
+QC now retains a versioned per-record gap inventory in `capture.analysis_qc/2`
+and displays source, stream, cause, closure, native session times, duration and
+reported loss count in the existing HTML report. Existing count/inventory fields
+remain available. Decimal strings and integer-only formatting preserve native
+nanoseconds; open, missing-end and reversed intervals have explicit unknown
+durations. Every listed gap makes its reported source at least `warn`, while an
+existing `fail` remains dominant. This asks for coverage review and does not
+invent a new device-failure or planned-pause classification.
+
+An actual CLI control on the copied mini-session reproduced a closed 2.5-second
+DISCONNECT whose source was still `ok` and whose QC had no warning or interval
+details. The paired candidate CLI now warns that source, displays the exact
+interval and loss estimate, and leaves all raw input hashes unchanged. The
+healthy no-gap control remains `ok`; with `--strict-warnings` it exits 0, while
+the gap case exits 2. Both use the project's Python 3.12 package and existing
+installed libraries; no substitute implementation, dependency installation,
+C++ build, recording or hardware access is involved.
+
+The frozen 25-case regression suite changes from **24 failed / 1 passed** to
+**25 passed**. The entire existing `tests/analysis` directory plus those cases
+changes from **26 failed / 15 passed / 3 skipped** to **2 failed / 39 passed /
+3 skipped**. Both remaining failures require absent PySide6 or Parquet support;
+the three pre-existing module skips require absent MCAP. These are retained
+qualification limits, not a whole-analysis or hosted-Windows pass. Scoped Ruff,
+license checks and `git diff --check` pass. Independent receiving adds **7 passed**
+with the current protocol framing dependency; the original gap CLI challenge
+still fails while its no-gap control passes. All 98 unowned receiving files and
+all 12 raw package hashes per CLI run are preserved. Exact-head hosted gates
+remain pending. Raw results, source pins, CLI input/output hashes and receiving
+source equivalence are in
+`../../evidence/qc-gap-details-ultra-20b27c2e-20261008/`.

@@ -1,0 +1,92 @@
+{
+  "review_source_closure_sha256": "6596a1fef0b004d1879d8275c2e18f349969930bba5213771562039780f6772f",
+  "harness_sha256": "9131bec9582e80daec244f481eeb2f2cd2117d7f058676f5ae4eb41f594d02fc",
+  "versions": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "distributions": {
+      "pytest": "9.1.1",
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "pandas": "2.2.3",
+      "matplotlib": "3.10.8",
+      "PyYAML": "6.0.3",
+      "jsonschema": "4.26.0"
+    }
+  },
+  "runs": [
+    {
+      "label": "candidate",
+      "command": [
+        "/workspace/scratch/20b27c2ea29e/workers/estate-production/venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--capture=sys",
+        "--basetemp",
+        "/workspace/scratch/20b27c2ea29e/workers/runtime-integration/capture-review/temp/candidate",
+        "--junitxml",
+        "/workspace/scratch/20b27c2ea29e/workers/runtime-integration/capture-review/candidate-result.xml",
+        "/workspace/scratch/20b27c2ea29e/workers/runtime-integration/capture-review/test_independent_capture_receiving.py"
+      ],
+      "returncode": 0,
+      "seconds": 3.331,
+      "counts": {
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "aborted": null,
+      "log_sha256": "acd695113482189d691dcfb1883f33943b623f98a137c6e88c739cd2df230054",
+      "xml_sha256": "70f6b9f3bc694edfa5a00083d0b04ef2127e96928451346c0859628a3314fcf5"
+    },
+    {
+      "label": "baseline",
+      "command": [
+        "/workspace/scratch/20b27c2ea29e/workers/estate-production/venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--capture=sys",
+        "--basetemp",
+        "/workspace/scratch/20b27c2ea29e/workers/runtime-integration/capture-review/temp/baseline",
+        "--junitxml",
+        "/workspace/scratch/20b27c2ea29e/workers/runtime-integration/capture-review/baseline-result.xml",
+        "/workspace/scratch/20b27c2ea29e/workers/runtime-integration/capture-review/test_independent_capture_receiving.py",
+        "-k",
+        "actual_cli_renders_gap or actual_cli_no_gap_positive_control"
+      ],
+      "returncode": 1,
+      "seconds": 2.662,
+      "counts": {
+        "tests": 2,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0
+      },
+      "aborted": null,
+      "log_sha256": "be5036c066d8ecbebe8746e4d12220becf8f74ea840d991078e063c03a29d3fb",
+      "xml_sha256": "4e631009b56d1bc0950792ea5c1fbbc64d98de67f567a559b3ba501f8389cb90"
+    }
+  ],
+  "limits": {
+    "namespace_abort_bytes": 20971520,
+    "child_file_bytes": 3145728,
+    "timeout_seconds": 60
+  },
+  "environment": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPATH": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages:/workspace/scratch/20b27c2ea29e/workers/estate-production/venv/lib/python3.12/site-packages:/workspace/scratch/20b27c2ea29e/workers/runtime-integration/product-discovery/canvaspilot/venv/lib/python3.12/site-packages",
+    "TMPDIR": "/workspace/scratch/20b27c2ea29e/workers/runtime-integration/capture-review/temp",
+    "MPLCONFIGDIR": "/workspace/scratch/20b27c2ea29e/workers/runtime-integration/capture-review/mpl-config",
+    "OPENBLAS_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "peak_namespace_allocated_bytes": 1912832,
+  "frozen_candidate_closure_unchanged": true,
+  "owner_source_unchanged": true
+}

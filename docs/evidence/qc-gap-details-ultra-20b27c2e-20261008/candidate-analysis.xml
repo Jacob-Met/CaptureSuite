@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="3" tests="44" time="2.793" timestamp="2026-10-08T18:57:34.733594+09:00" hostname="05aaedaf3e50"><testcase classname="" name="tests.analysis.test_kinematics_ml_bundle" time="0.000"><skipped message="collection skipped">('/workspace/scratch/20b27c2ea29e/workers/estate-production/capturesuite/tests/analysis/test_pose_job.py', 17, "Skipped: could not import 'mcap': No module named 'mcap'")</skipped></testcase><testcase classname="" name="tests.analysis.test_phase_b_features" time="0.000"><skipped message="collection skipped">('/workspace/scratch/20b27c2ea29e/workers/estate-production/capturesuite/tests/analysis/test_phase_b_features.py', 18, "Skipped: could not import 'mcap': No module named 'mcap'")</skipped></testcase><testcase classname="" name="tests.analysis.test_pose_job" time="0.000"><skipped message="collection skipped">('/workspace/scratch/20b27c2ea29e/workers/estate-production/capturesuite/tests/analysis/test_pose_job.py', 17, "Skipped: could not import 'mcap': No module named 'mcap'")</skipped></testcase><testcase classname="tests.analysis.test_export_sidecar" name="test_export_writes_manifest_and_sidecar" time="0.003"><failure message="ModuleNotFoundError: No module named 'PySide6'">tmp_path = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/candidate-final-tmp/test_export_writes_manifest_an0')
+
+    def test_export_writes_manifest_and_sidecar(tmp_path: Path) -&gt; None:
+&gt;       from capture_desktop.export_wizard import ExportOptions, run_export
+
+tests/analysis/test_export_sidecar.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    # SPDX-License-Identifier: GPL-3.0-only
+    """Export wizard for sealed session packages."""
+    
+    from __future__ import annotations
+    
+    import json
+    import os
+    import subprocess
+    import sys
+    from dataclasses import dataclass
+    from pathlib import Path
+    
+&gt;   from PySide6.QtWidgets import (
+        QCheckBox,
+        QDialog,
+        QDialogButtonBox,
+        QFileDialog,
+        QFormLayout,
+        QLabel,
+        QLineEdit,
+        QMessageBox,
+        QVBoxLayout,
+        QWidget,
+    )
+E   ModuleNotFoundError: No module named 'PySide6'
+
+desktop/capture_desktop/export_wizard.py:13: ModuleNotFoundError</failure></testcase><testcase classname="tests.analysis.test_offline_demo" name="test_offline_demo_emits_reports_and_preserves_original" time="0.090" /><testcase classname="tests.analysis.test_offline_demo" name="test_existing_output_is_preserved" time="0.002" /><testcase classname="tests.analysis.test_offline_demo" name="test_output_cannot_be_under_fixture" time="0.000" /><testcase classname="tests.analysis.test_offline_demo" name="test_engine_failure_preserves_original" time="0.007" /><testcase classname="tests.analysis.test_offline_demo" name="test_missing_output_parent_reports_failure" time="0.002" /><testcase classname="tests.analysis.test_phase_a_qc" name="test_discover_streams_reads_descriptor_rate_and_units" time="0.002" /><testcase classname="tests.analysis.test_phase_a_qc" name="test_require_rate_fails_when_missing" time="0.000" /><testcase classname="tests.analysis.test_phase_a_qc" name="test_ram_guard_trips" time="0.000" /><testcase classname="tests.analysis.test_phase_a_qc" name="test_qc_job_writes_manifest_and_reports" time="0.011" /><testcase classname="tests.analysis.test_phase_a_qc" name="test_analysis_job_schema_validates" time="0.016" /><testcase classname="tests.analysis.test_phase_a_qc" name="test_cli_qc" time="0.846" /><testcase classname="tests.analysis.test_plugin_registry" name="test_bundled_manifest_loads" time="0.012" /><testcase classname="tests.analysis.test_plugin_registry" name="test_dummy_extractor_via_manifest_only" time="0.012" /><testcase classname="tests.analysis.test_plugin_registry" name="test_dummy_stream_handler_writes_parquet" time="0.013"><failure message="ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.&#10;A suitable version of pyarrow or fastparquet is required for parquet support.&#10;Trying to import the above resulted in these errors:&#10; - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.&#10; - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.">tmp_path = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/candidate-final-tmp/test_dummy_stream_handler_writ0')
+
+    def test_dummy_stream_handler_writes_parquet(tmp_path: Path) -&gt; None:
+        from capture_analysis.plugins.handlers import HandlerContext
+        from capture_analysis.plugins.registry import load_registry
+        from capture_analysis.types import StreamRef, TimeWindow
+        from capture_session.package_reader import load_review_summary
+    
+        reg = load_registry(BUNDLED_MANIFEST)
+        ref = StreamRef(
+            "dummy.src",
+            "dummy.stream",
+            "dummy_test",
+            "dummy.test/1",
+            1.0,
+            "a.u.",
+        )
+        handler = reg.stream_handler_for(ref)
+        assert handler is not None
+    
+        summary = load_review_summary(FIXTURE)
+        work = tmp_path / "job"
+        work.mkdir()
+        outputs: list = []
+        schema_doc = {"schemaId": "capture.analysis_feature_schema/1", "tables": {}}
+        ctx = HandlerContext(
+            root=FIXTURE,
+            work=work,
+            summary=summary,
+            window=TimeWindow(0, summary.duration_ns or 1, "full"),
+            gap_policy="mask",
+            max_ram_bytes=2**30,
+            do_features=True,
+            do_plots=False,
+            all_gaps=[],
+            outputs=outputs,
+            warnings=[],
+            schema_doc=schema_doc,
+            feature_tables=[],
+            sync_series=[],
+        )
+        from capture_analysis.windows import build_gap_mask, gaps_to_intervals
+    
+        gaps = gaps_to_intervals(summary)
+        gap_mask = build_gap_mask(ref, ctx.window, gaps, policy="mask")
+&gt;       handler(ref, gap_mask, ctx)
+
+tests/analysis/test_plugin_registry.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+libs/python/capture_analysis/capture_analysis/plugins/dummy.py:42: in handle_dummy
+    write_feature_table(
+libs/python/capture_analysis/capture_analysis/features/io.py:25: in write_feature_table
+    df.to_parquet(path, index=False)
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/pandas/util/_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/pandas/core/frame.py:3113: in to_parquet
+    return to_parquet(
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/pandas/io/parquet.py:476: in to_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+engine = 'auto'
+
+    def get_engine(engine: str) -&gt; BaseImpl:
+        """return our implementation"""
+        if engine == "auto":
+            engine = get_option("io.parquet.engine")
+    
+        if engine == "auto":
+            # try engines in this order
+            engine_classes = [PyArrowImpl, FastParquetImpl]
+    
+            error_msgs = ""
+            for engine_class in engine_classes:
+                try:
+                    return engine_class()
+                except ImportError as err:
+                    error_msgs += "\n - " + str(err)
+    
+&gt;           raise ImportError(
+                "Unable to find a usable engine; "
+                "tried using: 'pyarrow', 'fastparquet'.\n"
+                "A suitable version of "
+                "pyarrow or fastparquet is required for parquet "
+                "support.\n"
+                "Trying to import the above resulted in these errors:"
+                f"{error_msgs}"
+            )
+E           ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E           A suitable version of pyarrow or fastparquet is required for parquet support.
+E           Trying to import the above resulted in these errors:
+E            - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E            - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/pandas/io/parquet.py:67: ImportError</failure></testcase><testcase classname="tests.analysis.test_plugin_registry" name="test_pipeline_uses_registry_not_modality_elif" time="0.001" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_closed_gap_is_attributed_in_json_and_source_status" time="0.002" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_duration_requires_a_closed_consistent_interval[2-5-True-3-known]" time="0.002" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_duration_requires_a_closed_consistent_interval[0-0-True-0-known]" time="0.002" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_duration_requires_a_closed_consistent_interval[-1-1-True-2-known]" time="0.002" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_duration_requires_a_closed_consistent_interval[9223372036854775806-9223372036854775807-True-1-known]" time="0.002" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_duration_requires_a_closed_consistent_interval[2-None-False-None-open]" time="0.002" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_duration_requires_a_closed_consistent_interval[2-None-True-None-missing_end]" time="0.002" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_duration_requires_a_closed_consistent_interval[2-5-False-None-open]" time="0.002" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_duration_requires_a_closed_consistent_interval[5-2-True-None-end_before_start]" time="0.002" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_native_writer_keys_and_directory_source_fallback" time="0.002" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_causes_and_overlapping_records_are_preserved_separately" time="0.002" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_gap_cannot_downgrade_an_existing_failed_source" time="0.002" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_gap_source_without_a_discovered_stream_is_still_visible" time="0.002" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_no_gap_control_remains_green" time="0.002" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_html_keeps_nanosecond_precision[2000000000-4500000000-expected0]" time="0.002" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_html_keeps_nanosecond_precision[-1-1-expected1]" time="0.003" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_html_keeps_nanosecond_precision[9223372036854775806-9223372036854775807-expected2]" time="0.002" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_html_unknown_duration_is_never_displayed_as_zero[None-False]" time="0.002" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_html_unknown_duration_is_never_displayed_as_zero[None-True]" time="0.002" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_html_unknown_duration_is_never_displayed_as_zero[1-True]" time="0.002" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_html_unknown_duration_is_never_displayed_as_zero[5-False]" time="0.003" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_html_escapes_recorded_identifiers_and_cause" time="0.002" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_legacy_html_distinguishes_missing_details_from_no_gaps" time="0.002" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_native_job_binds_report_bytes_and_preserves_all_raw_inputs" time="0.012" /><testcase classname="tests.analysis.test_qc_gap_details" name="test_actual_cli_emits_gap_details_and_preserves_inputs" time="0.789" /></testsuite></testsuites>
