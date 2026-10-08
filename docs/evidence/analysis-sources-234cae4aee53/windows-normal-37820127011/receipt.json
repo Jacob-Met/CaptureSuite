@@ -1,0 +1,311 @@
+{
+  "schema": "capturesuite.normal-run-receiving.v1",
+  "run_id": 37820127011,
+  "python_job_id": 113458700529,
+  "native_job_id": 113458700816,
+  "qualified_head": "86ef1035136e89d25327671544a8635fc5f3900d",
+  "tested_synthetic_merge": "d08a27ba0b147b9b7e4c0a5c30f9b56205add44a",
+  "tested_and_actual_merge_tree": "6db730722413523f2d54d2feccdec622a6e2908d",
+  "actual_merge": "6ef303bbcf019d32288723a7741b99ce36003fd5",
+  "actual_merge_parents": [
+    "11cc78297d8d214407aea693548af4de855d61da",
+    "86ef1035136e89d25327671544a8635fc5f3900d"
+  ],
+  "issue_62": {
+    "state": "closed",
+    "reason": "completed",
+    "closed_at": "2026-10-08T18:48:01Z"
+  },
+  "results": {
+    "python": {
+      "artifact": {
+        "artifact_id": 11569102903,
+        "bytes": 1624472,
+        "sha256": "61927abac7743720d508158e09edb399422ecece921b075dff8628da25709729"
+      },
+      "receipt": {
+        "schema": "capturesuite.test-receipt.v1",
+        "accepted": true,
+        "process_exit": 0,
+        "counts": {
+          "tests": 565,
+          "passed": 559,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 6
+        },
+        "junit_sha256": "a5e1af6bab56a5e182fd807e9719b82798505c0aa6444e05a25f6162f1b2be65",
+        "problems": [],
+        "scope": "Process and test-evidence consistency, not clinical validation",
+        "seconds": 299.56333129999996,
+        "created_at": "2026-10-08T18:00:57.180030+00:00",
+        "run_directory": "build/evidence/python-20261008T175556Z-2ddcc792",
+        "log_sha256": "94da647437273f9511d45f3e9e742a1b7cb4a613984bbae69012a315ff853666",
+        "source_commit": "d08a27ba0b147b9b7e4c0a5c30f9b56205add44a",
+        "source_worktree_dirty": false,
+        "source_tree_sha256": "1abcaed8c125e68f34f96975e652ccfab7caaa974e96245dc63de4b1365d24f4",
+        "source_file_count": 1137,
+        "github": {
+          "GITHUB_ACTIONS": "true",
+          "GITHUB_EVENT_NAME": "pull_request",
+          "GITHUB_SHA": "d08a27ba0b147b9b7e4c0a5c30f9b56205add44a",
+          "GITHUB_REF": "refs/pull/75/merge",
+          "GITHUB_HEAD_REF": "estate/234cae4aee53-analysis-sources",
+          "GITHUB_BASE_REF": "main",
+          "GITHUB_RUN_ID": "37820127011",
+          "GITHUB_WORKFLOW_REF": "Jacob-Met/CaptureSuite/.github/workflows/ci.yml@refs/pull/75/merge"
+        },
+        "source_unchanged_during_test": true
+      },
+      "counts_recomputed_from_junit": {
+        "tests": 565,
+        "passed": 559,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 6
+      },
+      "scope_cases": [
+        {
+          "classname": "tests.ui.test_analysis_sources",
+          "name": "test_operator_can_choose_exact_recorded_sources",
+          "seconds": "0.098",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.ui.test_analysis_sources",
+          "name": "test_chooser_tolerates_timer_delivery_before_click",
+          "seconds": "0.088",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.ui.test_analysis_sources",
+          "name": "test_source_choice_reaches_real_thread_job_and_mcap_outputs[None]",
+          "seconds": "0.232",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.ui.test_analysis_sources",
+          "name": "test_source_choice_reaches_real_thread_job_and_mcap_outputs[sampler.a]",
+          "seconds": "0.198",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.ui.test_analysis_sources",
+          "name": "test_source_choice_reaches_real_thread_job_and_mcap_outputs[sampler.b]",
+          "seconds": "0.191",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.ui.test_analysis_sources",
+          "name": "test_empty_selected_sources_never_become_all_sources",
+          "seconds": "0.109",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.ui.test_analysis_sources",
+          "name": "test_vanished_selection_stays_invalid_and_is_rechecked_at_launch[False]",
+          "seconds": "0.097",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.ui.test_analysis_sources",
+          "name": "test_vanished_selection_stays_invalid_and_is_rechecked_at_launch[True]",
+          "seconds": "0.109",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.ui.test_analysis_sources",
+          "name": "test_cancel_command_limits_and_package_identity",
+          "seconds": "0.139",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.ui.test_analysis_sources",
+          "name": "test_unreadable_inventory_refuses_explicit_subset",
+          "seconds": "0.090",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.ui.test_analysis_sources",
+          "name": "test_worker_refuses_a_subset_for_a_nonconsuming_command",
+          "seconds": "0.027",
+          "outcome": "passed"
+        },
+        {
+          "classname": "tests.ui.test_analysis_sources",
+          "name": "test_application_sources_survive_timer_and_review_navigation",
+          "seconds": "0.455",
+          "outcome": "passed"
+        }
+      ]
+    },
+    "native": {
+      "artifact": {
+        "artifact_id": 11569309376,
+        "bytes": 290404,
+        "sha256": "74fcf7f6c42d2d13baf96177a8e7989308647fff046b1530d45dd90ae36109bd"
+      },
+      "receipt": {
+        "schema": "capturesuite.native-test-receipt.v1",
+        "accepted": true,
+        "process_exit": 0,
+        "counts": {
+          "tests": 6,
+          "passed": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "9eec5878281a532a6b59d2611c03600127dcce76f4676f06f2df00d7e39415aa",
+        "problems": [],
+        "scope": "Process and test-evidence consistency, not clinical validation",
+        "seconds": 5.540286400000014,
+        "created_at": "2026-10-08T18:13:49.206020+00:00",
+        "run_directory": "build/evidence/native-20261008T181343Z-9bf5cbfb",
+        "binary_build": "build/windows-release",
+        "binaries": [
+          {
+            "path": "daemon/capture_daemon.exe",
+            "bytes": 1605632,
+            "sha256": "647ccc9119a6dfb03a922cae9b146ab6f70c77b509aed6f916afcf9df8f68098"
+          },
+          {
+            "path": "tools/session_doctor/session_doctor.exe",
+            "bytes": 494080,
+            "sha256": "15bd5a5628fdd2df73fe651eb3674e75d6d27d3a3f184cb2e944b89293f662d1"
+          }
+        ],
+        "test_scope": [
+          "tests/protocol/test_daemon_e2e.py::test_multi_modality_record_with_disconnect",
+          "tests/protocol/test_daemon_e2e.py::test_bad_stop_token_rejected",
+          "tests/protocol/test_daemon_e2e.py::test_config_schema_and_apply",
+          "tests/protocol/test_daemon_e2e.py::test_start_all_ready_and_acknowledge_alert",
+          "tests/protocol/test_daemon_e2e.py::test_concurrent_clients_served",
+          "tests/kill_tests/test_kill_preserves_sealed.py::test_kill_preserves_sealed_segment"
+        ],
+        "source_commit": "d08a27ba0b147b9b7e4c0a5c30f9b56205add44a",
+        "source_worktree_dirty": true,
+        "github": {
+          "GITHUB_ACTIONS": "true",
+          "GITHUB_EVENT_NAME": "pull_request",
+          "GITHUB_SHA": "d08a27ba0b147b9b7e4c0a5c30f9b56205add44a",
+          "GITHUB_REF": "refs/pull/75/merge",
+          "GITHUB_HEAD_REF": "estate/234cae4aee53-analysis-sources",
+          "GITHUB_BASE_REF": "main",
+          "GITHUB_RUN_ID": "37820127011",
+          "GITHUB_WORKFLOW_REF": "Jacob-Met/CaptureSuite/.github/workflows/ci.yml@refs/pull/75/merge"
+        },
+        "source_tree_sha256": "d9512b38d0d683c9bd498100aae0017d3421339119e208c88ae96268fcac57d2",
+        "source_unchanged_during_test": true,
+        "log_sha256": "017ecb39bb1845d91a589711b377460c6c96174f4534fd18a568c6b243219639"
+      },
+      "counts_recomputed_from_junit": {
+        "tests": 6,
+        "passed": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "scope_cases": [],
+      "ctest": {
+        "tests": 30,
+        "passed": 30,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "seconds": "5"
+      }
+    }
+  },
+  "source_comparison": {
+    "common_files": 1137,
+    "different_common_file_hashes": [],
+    "only_python": [],
+    "only_native": [
+      "vcpkg/"
+    ],
+    "native_extra_value": null,
+    "explanation": "The native build adds vcpkg/. source_snapshot records this directory as null and truthfully reports the worktree dirty; all 1,137 common source-file digests match the clean Python snapshot. Both runners record source unchanged during their tests."
+  },
+  "scope_source_hashes": {
+    "desktop/capture_desktop/widgets_analysis_sources.py": "be4c05cbf9b0c801176668933d3bb60204f5c94ce8fea3f85da176575d42c99f",
+    "desktop/capture_desktop/screen_analysis.py": "24c0bef14f448fc7c1e72e9d4f97067deaa6e991bb1f8a0baeba9b33aa34adc1",
+    "tests/ui/test_analysis_sources.py": "db5430b670eafcbfb8fe5c05b3abffe31ab9eb5fc4bdcae043615dc921532d29"
+  },
+  "local_receiving_driver_history": {
+    "initial_result": "An initial local artifact-inspection assertion required both snapshots to be clean and exited with AssertionError on the native dirty flag. The corrected receiver retains this difference and explicitly verifies the sole added vcpkg/ directory. No CI failure or product repair is inferred."
+  },
+  "presentation": {
+    "png": "python/analysis-sources-234cae4aee53/windows-mainwindow.png",
+    "visually_inspected": true,
+    "finding": "Missing-glyph boxes throughout the offscreen Windows screenshot. Functional MainWindow receiving passed; readable Windows font presentation is not claimed."
+  },
+  "custody": {
+    "download_route": "Supported GitHub workflow-artifact download followed by ordinary cloud HTTPS transfer; both full ZIP digests and lengths matched immutable artifact metadata. No Mac retry.",
+    "selected_archive": "selected-evidence.tar.gz.b64",
+    "selected_archive_decoded_bytes": 142713,
+    "selected_archive_sha256": "f5de41bc8733ce9abc18f1686edcd9bd4eb9dd65a4d495d6b7c68fb1f246ea97",
+    "members": [
+      {
+        "path": "native/evidence/native-20261008T181343Z-9bf5cbfb/pytest.log",
+        "bytes": 793,
+        "sha256": "017ecb39bb1845d91a589711b377460c6c96174f4534fd18a568c6b243219639"
+      },
+      {
+        "path": "native/evidence/native-20261008T181343Z-9bf5cbfb/pytest.xml",
+        "bytes": 922,
+        "sha256": "9eec5878281a532a6b59d2611c03600127dcce76f4676f06f2df00d7e39415aa"
+      },
+      {
+        "path": "native/evidence/native-20261008T181343Z-9bf5cbfb/receipt.json",
+        "bytes": 2164,
+        "sha256": "529a35c52de44de682f2fc716b65b0f80670f053530002583ff02f25b89a818d"
+      },
+      {
+        "path": "native/evidence/native-20261008T181343Z-9bf5cbfb/source-manifest.json",
+        "bytes": 152842,
+        "sha256": "adda49c841ee7b4855f80ef65dcf5d1ee1c2f13710826b9fb3dbebd127642f7f"
+      },
+      {
+        "path": "native/windows-release/Testing/Temporary/LastTest.log",
+        "bytes": 32923,
+        "sha256": "32e492da872064c713ad316245507e0b0a92d1462f7e156003fd0035fa8aee8d"
+      },
+      {
+        "path": "native/windows-release/ctest-results.xml",
+        "bytes": 13052,
+        "sha256": "1c45720c5fa4d4238298deb852d25b429013439af556a628dd91c9e1ed70a122"
+      },
+      {
+        "path": "python/analysis-sources-234cae4aee53/windows-mainwindow.png",
+        "bytes": 15923,
+        "sha256": "8a79ad1d9d2d66054e27ac521a95a5c842b2db0ea664b1861e5332a410eca711"
+      },
+      {
+        "path": "python/python-20261008T175556Z-2ddcc792/pytest.log",
+        "bytes": 2071,
+        "sha256": "94da647437273f9511d45f3e9e742a1b7cb4a613984bbae69012a315ff853666"
+      },
+      {
+        "path": "python/python-20261008T175556Z-2ddcc792/pytest.xml",
+        "bytes": 79632,
+        "sha256": "a5e1af6bab56a5e182fd807e9719b82798505c0aa6444e05a25f6162f1b2be65"
+      },
+      {
+        "path": "python/python-20261008T175556Z-2ddcc792/receipt.json",
+        "bytes": 1293,
+        "sha256": "24abf39c0ed9c02d6fa207b62328e144d8a77ff0c28e60fbd8787d1beeb049d8"
+      },
+      {
+        "path": "python/python-20261008T175556Z-2ddcc792/source-manifest.json",
+        "bytes": 152823,
+        "sha256": "b074cada6be1adcd234b1f1c44b957656cba7e37fb5028333fa95c2da344cb9e"
+      }
+    ],
+    "full_zip_locations": [
+      "/dev/shm/capturesuite-normal-37820127011-234cae4aee53/python.zip",
+      "/dev/shm/capturesuite-normal-37820127011-234cae4aee53/native.zip"
+    ]
+  },
+  "native_checkout_qualifier": "The older Mac checkout was interrupted by ENOSPC and remains partially materialized and unqualified. These hosted results make no new clean Mac checkout claim."
+}

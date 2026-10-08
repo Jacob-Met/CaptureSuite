@@ -1,0 +1,15 @@
+# Normal Windows receiving — PR #75
+
+Run [37820127011](https://github.com/Jacob-Met/CaptureSuite/actions/runs/37820127011) completed successfully at authored head `86ef1035136e89d25327671544a8635fc5f3900d`. GitHub tested synthetic merge `d08a27ba0b147b9b7e4c0a5c30f9b56205add44a`; its tree `6db730722413523f2d54d2feccdec622a6e2908d` is also the actual PR #75 merge tree at `6ef303bbcf019d32288723a7741b99ce36003fd5`. The actual merge parents are `11cc78297d8d214407aea693548af4de855d61da` and the authored head. Issue #62 closed as completed at 18:48:01Z on 2026-10-08.
+
+- Python job 113458700529: **559 passed, 6 skipped; 565 total**. All 12 source-picker cases passed, including the real MainWindow case (0.455s). Pytest reported 298.51s; the unchanged runner measured 299.563s against its 300s limit. This evidence does not diagnose the earlier timeout or increase that limit.
+- CMake job 113458700816: **30/30 CTest cases** and **6/6 native daemon/recovery integration cases** passed. Ruff/license checks and the ordinary workflow passed. No additional test run was used for this artifact intake.
+- The clean Python source snapshot contains 1,137 files. Native build setup records a dirty worktree and one extra `vcpkg/` directory (null hash), with every one of the 1,137 common source-file SHA256 values identical. Both runners recorded source unchanged during testing. The three accepted picker/screen/test hashes match exactly.
+
+The initial local artifact inspection wrongly asserted both snapshots were clean and failed on the native dirty flag. The corrected receiver explicitly checks the sole directory addition; this was an artifact-reader assertion, not a CI failure or application defect. The original native receipt remains exact.
+
+`selected-evidence.tar.gz.b64` decodes to a 142,713-byte gzip archive, SHA256 `f5de41bc8733ce9abc18f1686edcd9bd4eb9dd65a4d495d6b7c68fb1f246ea97`. It preserves 11 exact raw members from the two immutable ZIPs: both JUnit/log/receipt/source-manifest sets, CTest XML/log, and the MainWindow PNG. The full ZIP byte counts and digests, member digests and recomputed counts are in `receipt.json`. `receive_artifacts.py` is the exact successfully executed standard-library receiver; it performs no application tests. `github-metadata.json` binds the normal run and artifact IDs. The full original ZIPs remain separately retained in the recorded cloud paths.
+
+The inspected normal Windows screenshot has missing-glyph boxes throughout its offscreen text, as did the diagnostic screenshot. Functional MainWindow receiving passed; readable Windows font presentation is **not** claimed. Earlier Linux screenshots retain their separate identities. The interrupted older Mac checkout is still partially materialized and unqualified; this receipt makes no clean Mac checkpoint claim.
+
+The earlier failed lint run, timeout, diagnostic-only passing run, original/repaired modal-helper controls and native storage failures remain in adjacent evidence directories with their original source and run identities.

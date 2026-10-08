@@ -1,0 +1,338 @@
+{
+  "run": {
+    "id": 37820127011,
+    "html_url": "https://github.com/Jacob-Met/CaptureSuite/actions/runs/37820127011",
+    "event": "pull_request",
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "86ef1035136e89d25327671544a8635fc5f3900d",
+    "head_branch": "estate/234cae4aee53-analysis-sources",
+    "created_at": "2026-10-08T17:54:06Z",
+    "updated_at": "2026-10-08T18:13:55Z",
+    "run_attempt": 1
+  },
+  "artifacts": [
+    {
+      "id": 11569309376,
+      "name": "cpp-test-evidence",
+      "size_in_bytes": 290404,
+      "digest": "sha256:74fcf7f6c42d2d13baf96177a8e7989308647fff046b1530d45dd90ae36109bd",
+      "expired": false,
+      "created_at": "2026-10-08T18:13:50Z",
+      "updated_at": "2026-10-08T18:13:50Z",
+      "workflow_run": {
+        "id": 37820127011,
+        "repository_id": 1355538217,
+        "head_repository_id": 1355538217,
+        "head_branch": "estate/234cae4aee53-analysis-sources",
+        "head_sha": "86ef1035136e89d25327671544a8635fc5f3900d"
+      }
+    },
+    {
+      "id": 11569102903,
+      "name": "python-test-evidence",
+      "size_in_bytes": 1624472,
+      "digest": "sha256:61927abac7743720d508158e09edb399422ecece921b075dff8628da25709729",
+      "expired": false,
+      "created_at": "2026-10-08T18:01:00Z",
+      "updated_at": "2026-10-08T18:01:00Z",
+      "workflow_run": {
+        "id": 37820127011,
+        "repository_id": 1355538217,
+        "head_repository_id": 1355538217,
+        "head_branch": "estate/234cae4aee53-analysis-sources",
+        "head_sha": "86ef1035136e89d25327671544a8635fc5f3900d"
+      }
+    }
+  ],
+  "jobs": [
+    {
+      "id": 113458700529,
+      "name": "python",
+      "head_sha": "86ef1035136e89d25327671544a8635fc5f3900d",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-08T17:54:09Z",
+      "completed_at": "2026-10-08T18:01:05Z",
+      "html_url": "https://github.com/Jacob-Met/CaptureSuite/actions/runs/37820127011/job/113458700529",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-08T17:54:10Z",
+          "completed_at": "2026-10-08T17:54:11Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-08T17:54:11Z",
+          "completed_at": "2026-10-08T17:54:16Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-08T17:54:16Z",
+          "completed_at": "2026-10-08T17:54:17Z"
+        },
+        {
+          "name": "Install Python deps",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-08T17:54:17Z",
+          "completed_at": "2026-10-08T17:55:45Z"
+        },
+        {
+          "name": "Dependency consistency",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-08T17:55:45Z",
+          "completed_at": "2026-10-08T17:55:46Z"
+        },
+        {
+          "name": "CI contract check",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-08T17:55:46Z",
+          "completed_at": "2026-10-08T17:55:52Z"
+        },
+        {
+          "name": "Generate Python protobuf bindings",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-08T17:55:52Z",
+          "completed_at": "2026-10-08T17:55:53Z"
+        },
+        {
+          "name": "Proto drift check",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-08T17:55:53Z",
+          "completed_at": "2026-10-08T17:55:53Z"
+        },
+        {
+          "name": "Generate session schemas",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-08T17:55:53Z",
+          "completed_at": "2026-10-08T17:55:54Z"
+        },
+        {
+          "name": "Schema drift check",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-08T17:55:54Z",
+          "completed_at": "2026-10-08T17:55:54Z"
+        },
+        {
+          "name": "Ruff",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-08T17:55:54Z",
+          "completed_at": "2026-10-08T17:55:55Z"
+        },
+        {
+          "name": "License check",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-08T17:55:55Z",
+          "completed_at": "2026-10-08T17:55:56Z"
+        },
+        {
+          "name": "Pytest",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-08T17:55:56Z",
+          "completed_at": "2026-10-08T18:00:57Z"
+        },
+        {
+          "name": "Preserve Python test evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-08T18:00:57Z",
+          "completed_at": "2026-10-08T18:01:00Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27,
+          "started_at": "2026-10-08T18:01:00Z",
+          "completed_at": "2026-10-08T18:01:00Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 28,
+          "started_at": "2026-10-08T18:01:00Z",
+          "completed_at": "2026-10-08T18:01:02Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29,
+          "started_at": "2026-10-08T18:01:02Z",
+          "completed_at": "2026-10-08T18:01:02Z"
+        }
+      ]
+    },
+    {
+      "id": 113458700816,
+      "name": "cmake",
+      "head_sha": "86ef1035136e89d25327671544a8635fc5f3900d",
+      "status": "completed",
+      "conclusion": "success",
+      "started_at": "2026-10-08T17:54:09Z",
+      "completed_at": "2026-10-08T18:13:54Z",
+      "html_url": "https://github.com/Jacob-Met/CaptureSuite/actions/runs/37820127011/job/113458700816",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-08T17:54:09Z",
+          "completed_at": "2026-10-08T17:54:11Z"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-08T17:54:11Z",
+          "completed_at": "2026-10-08T17:54:18Z"
+        },
+        {
+          "name": "Setup MSVC",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-08T17:54:18Z",
+          "completed_at": "2026-10-08T17:54:27Z"
+        },
+        {
+          "name": "Qualify application warning boundary",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-08T17:54:27Z",
+          "completed_at": "2026-10-08T17:54:47Z"
+        },
+        {
+          "name": "Setup vcpkg",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-08T17:54:47Z",
+          "completed_at": "2026-10-08T17:55:05Z"
+        },
+        {
+          "name": "Registry contract check",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-08T17:55:05Z",
+          "completed_at": "2026-10-08T17:55:06Z"
+        },
+        {
+          "name": "Configure",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-08T17:55:06Z",
+          "completed_at": "2026-10-08T18:10:44Z"
+        },
+        {
+          "name": "Build daemon + tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-08T18:10:44Z",
+          "completed_at": "2026-10-08T18:13:16Z"
+        },
+        {
+          "name": "CTest",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-08T18:13:16Z",
+          "completed_at": "2026-10-08T18:13:23Z"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-08T18:13:23Z",
+          "completed_at": "2026-10-08T18:13:23Z"
+        },
+        {
+          "name": "Install native integration deps",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-08T18:13:23Z",
+          "completed_at": "2026-10-08T18:13:42Z"
+        },
+        {
+          "name": "Native daemon + recovery integration",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-08T18:13:42Z",
+          "completed_at": "2026-10-08T18:13:49Z"
+        },
+        {
+          "name": "Preserve C++ diagnostic evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-08T18:13:49Z",
+          "completed_at": "2026-10-08T18:13:51Z"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25,
+          "started_at": "2026-10-08T18:13:51Z",
+          "completed_at": "2026-10-08T18:13:51Z"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 26,
+          "started_at": "2026-10-08T18:13:51Z",
+          "completed_at": "2026-10-08T18:13:53Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27,
+          "started_at": "2026-10-08T18:13:53Z",
+          "completed_at": "2026-10-08T18:13:53Z"
+        }
+      ]
+    }
+  ]
+}

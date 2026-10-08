@@ -1096,3 +1096,10 @@ history/selection/completion, backend jobs/pipeline, galleries and raw storage
 remain with their current owners. The ownership fence is coordinated in #55 and
 HAMON #140. Details: ANALYSIS_SOURCE_SELECTION.md and
 docs/evidence/analysis-sources-234cae4aee53/.
+
+
+## 2026-10-08 — PR #75 normal Windows source-subset receiving complete
+
+PR #75 merged at `6ef303bbcf019d32288723a7741b99ce36003fd5`, actual tree `6db730722413523f2d54d2feccdec622a6e2908d`, matching the tested synthetic merge `d08a27ba` for authored head `86ef1035`. Issue #62 is completed. Normal run 37820127011 passed: Python 559 + 6 skipped (565 total, all 12 source-picker cases including MainWindow), CTest 30/30 and native integration 6/6. Final raw selected artifacts, hash-bound source maps and corrected artifact receiver are preserved under `docs/evidence/analysis-sources-234cae4aee53/windows-normal-37820127011/`; no runtime edit or rerun accompanied this receipt.
+
+All 1,137 common Python/native source hashes match. Native build setup adds only `vcpkg/` and truthfully records dirty=true; this is retained explicitly. The offscreen Windows screenshot still has missing glyphs, so readable Windows font presentation remains unqualified. The older Mac checkout remains partially materialized after ENOSPC. Prior negative and diagnostic evidence retains its original identities.
