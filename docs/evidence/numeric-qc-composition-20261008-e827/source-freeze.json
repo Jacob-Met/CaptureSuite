@@ -1,0 +1,79 @@
+{
+  "created_at": "2026-10-08T12:23:45.063013+00:00",
+  "repository": "Jacob-Met/CaptureSuite",
+  "current_main": "fae29ddcbc0380b7d7e307130093bc5d66bf2f90",
+  "previous_test": {
+    "path": "/dev/shm/e827-numeric-cli-qc-successor/test_numeric_cli_receiving-prior.py",
+    "bytes": 22454,
+    "git_blob": "b3c91a705d9ec1ec8adbefee2f19b164197b33a5",
+    "sha256": "5d5e7105330d31c8f8e9cbb624641808703a719d62a3674ad69faf1f08d18f22"
+  },
+  "successor_test": {
+    "path": "/dev/shm/e827-numeric-cli-qc-successor/test_numeric_cli_receiving.py",
+    "bytes": 23532,
+    "git_blob": "9d1bc393b23ed30e52cab2e6f65e8ac7a96018d8",
+    "sha256": "cde85c2220a9428dd6509a0ab2e5e94253370772ea1152dfc072479b1c973e6a"
+  },
+  "only_one_test_method_changed": true,
+  "other_six_methods_and_helpers_byte_identical": true,
+  "production": [
+    {
+      "path": "libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py",
+      "git_blob": "668e5397d6a603d8665fe639b3218128bbda72c2",
+      "sha256": "7c84c0425c1b9b821df711f4c40ea89ac13f267dbe6472922eb41a9263e4835c"
+    },
+    {
+      "path": "libs/python/capture_analysis/capture_analysis/features/numeric_batch.py",
+      "git_blob": "77f19ccb048c93c0f4fca460eef0502180b37717",
+      "sha256": "ecdeb88ca4dd093b973294a53954e9fa0e5d6b4b908225a52d097ef70c7d2154"
+    },
+    {
+      "path": "libs/python/capture_analysis/capture_analysis/plugins/registry.py",
+      "git_blob": "3c582e1ab0de2b22956ac47fb628227eacdd1faf",
+      "sha256": "33a4d07600db8b116fbd46b67492f62129df513df5b66a2c455dced0b2a9dc69"
+    },
+    {
+      "path": "libs/python/capture_analysis/capture_analysis/plugins/manifest.yaml",
+      "git_blob": "0628968ee3965170b486306f974c81dd4eb84a53",
+      "sha256": "1efe3ee2d9eeeeac03c2c03c582edf0119c9abd6d214dfdca3d827fa10a5c048"
+    },
+    {
+      "path": "libs/python/capture_analysis/capture_analysis/plugins/numeric.py",
+      "git_blob": "d8adbc1d90dbfdeac0cd9179c95f027532c1a5d4",
+      "sha256": "75b55cb453095ad5470ce2532b65d3dce771e6a2f8ad1e46a538b4291fa4cf93"
+    },
+    {
+      "path": "libs/python/capture_analysis/capture_analysis/plots/modality.py",
+      "git_blob": "1de343cc2e11e663501ba190441325d5637d1492",
+      "sha256": "bc3aa15ee79d50280a6c9d6aa144fe0519f85dd2c74a0cfa99323f7d57ecd28d"
+    }
+  ],
+  "selected_source_files": 59,
+  "source_unchanged_between_and_during_runs": true,
+  "prior": {
+    "tests": 1,
+    "failures": 1,
+    "errors": 0,
+    "skips": 0
+  },
+  "successor": {
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0
+  },
+  "gap_warning": "sampler.a: 1 recorded gap(s); see gap details",
+  "expected_native_gap_exit": 2,
+  "expected_native_gap_status": "completed_with_warnings",
+  "qc_schema": "capture.analysis_qc/2",
+  "qc_scope": {
+    "sourceId": "sampler.a",
+    "streamId": "A",
+    "other_source_traffic": "ok"
+  },
+  "raw_inputs_preserved_both_runs": true,
+  "local_validator_available": false,
+  "explicit_local_validator_exception": "Only the known missing-jsonschema warning; full hosted schema gate remains required.",
+  "scope": "Test-only successor for upstream QC PR50; no numeric production change or optional full local replay.",
+  "old_receipts_preserved": true
+}

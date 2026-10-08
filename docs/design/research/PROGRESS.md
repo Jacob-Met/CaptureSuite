@@ -22,6 +22,41 @@ bytes remain unchanged during execution, and scoped Ruff passes. Independent
 receiving and the existing supported Windows CI remain separate integration gates.
 No inference service, physical capture, smoothing or calibration result is claimed.
 
+## 2026-10-08 — Windows atomic writer reserves owned temporary files
+
+Contributor `estate-6267db2cfc6e` prepared the repair for issue51/PR52. Windows
+now reserves a unique sibling with `CreateFileW(CREATE_NEW)`, retains the original
+writable handle through writes and `FlushFileBuffers`, checks close, and keeps
+the existing write-through publication boundary. Failure cleanup addresses only
+the file created by that invocation; retained legacy `.tmp` paths are preserved.
+
+The original-source checkpoint is `c1bc438ea07492a303f89cea5deb242efeb6f8e9`.
+Its CI run37770868596 is retained separately from the repair's receiving run.
+Both use the unchanged four real Windows tests (SHA-256
+`485af6482c6b14fc7c187b45cc366af547bf0a1fe2c0651c8b68c8d25e854cfb`).
+Native acceptance requires actual original-source preservation failures and
+candidate passes under the existing complete Windows workflow. The final PR52
+receiving review records the actual outcomes and their exact source identities.
+The POSIX implementation and the current workflow remain unchanged.
+
+## 2026-10-08 — Windows atomic temporary-file preservation controls
+
+Contributor `estate-6267db2cfc6e` prepared four Windows-only real-file tests for
+the existing atomic writer: a raw-file hardlink at `manifest.json.tmp`,
+a hardlink to the prior manifest while a live handle blocks publication, an
+ordinary retained file at that name, and a raw-file symlink. The tests compare
+actual bytes, Win32 file identities, alias retention and final directory contents.
+They use exclusively reserved fixture directories and the linked production API.
+
+Native Windows compilation and execution are pending. This first publication
+keeps production unchanged so the supported Windows workflow can retain the
+original failure before the separately prepared repair is received. The same
+test bytes must qualify the repair. Only a missing Windows symlink privilege
+may skip that case; the other three cases remain required. The current CI
+workflow, POSIX implementation and separately owned storage fixture are unchanged.
+Source bindings and the planned receiving boundary are recorded in
+`docs/evidence/windows-atomic-temp-preservation-6267db2cfc6e/README.md`.
+
 ## 2026-10-08 — Receive fixture ownership repair onto accepted main (estate-87eaaf0fdf63)
 
 The original Linux port #36 and the separately owned POSIX alias repair #44
@@ -106,6 +141,37 @@ receiving are pending at this publication checkpoint. No hardware result is clai
 Exact source pins, unchanged test hash and raw outputs are retained in
 `docs/evidence/stream-gap-scope-20261008-e827/`. Project ownership: issue #40.
 The current framing receiver from main `c43b2819` is preserved.
+
+## 2026-10-08 — Generic numeric analysis is usable through the native pipeline (estate-e82707f2bc62)
+
+Issue #43 receives actual generic.numeric_batch/1 recordings through the existing
+analysis CLI. The loader now recognizes the native protobuf MCAP type name,
+returns the public channels-by-time result, anchors native timestamp differences
+to the recorded first-datum session time, and checks actual cumulative buffers.
+Missing rate, malformed frames/times/layouts, nonfinite samples and timestamp
+overflow produce explicit refusals. Unknown-duration packages retain bounded
+materialization without interpreting the open-window sentinel as recorded time.
+
+Schema-specific dispatch now selects a dedicated numeric handler even for LSL
+EMG/EEG descriptive modalities. Numeric mean/RMS use scaled finite reductions;
+stream identities, units, provisional status and per-stream validity are retained
+with real Parquet/CSV outputs and case-safe exact-identity paths. Numeric figures
+state their elapsed-time axis and exact first-retained session origin. Existing
+plot callers retain their default; the independently merged stream-gap source,
+raw capture, acquisition/protocol schemas and job orchestration are preserved.
+
+At this publication checkpoint, the same 26 author tests changed from 2 pass,
+5 failures/19 errors on original source to 26 pass. The unchanged independent nine-case
+MCAP/numerical receiver changed from 1 pass/3 failures/5 errors to 9 pass. Seven actual
+CLI workflow methods passed against the five-file source snapshot, followed by
+one affected actual all/figure receiving on the final six-file composition.
+Original failed tests, exact source identities and real final PNGs are retained.
+Existing full hosted CI and its real schema validator are still required for
+integration; local missing-validator behavior is explicit, and no hardware or
+deployment result is claimed. See docs/NUMERIC_ANALYSIS.md and the three
+numeric-analysis/numeric-mcap/numeric-cli evidence directories dated 20261008-e827.
+The source packet stayed frozen during GitHub secondary-write cooldown; final
+integration receipts belong to the pull request linked from issue #43.
 
 ## 2026-10-08 — Independent sealed-source alias preservation (estate-39c2b591d7e5)
 

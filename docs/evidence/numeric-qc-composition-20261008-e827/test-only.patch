@@ -1,0 +1,28 @@
+--- a/tests/analysis/test_numeric_cli_receiving.py
++++ b/tests/analysis/test_numeric_cli_receiving.py
+@@ -413,7 +413,24 @@
+     def test_case_only_stream_ids_keep_distinct_paths_and_gap_provenance(self) -> None:
+         package = make_package(self.case_dir / "session.mmsession", case_twins=True)
+         proc, job, manifest = self.invoke(package, "all", "cli-case-twins", "--strict-warnings")
+-        self.assert_healthy(proc, manifest)
++        gap_warning = "sampler.a: 1 recorded gap(s); see gap details"
++        expected_warnings = [gap_warning]
++        if not VALIDATOR_AVAILABLE:
++            expected_warnings.append(VALIDATOR_WARNING)
++        self.assertEqual(manifest["warnings"], expected_warnings)
++        self.assertEqual(manifest["status"], "completed_with_warnings")
++        self.assertEqual(proc.returncode, 2, proc.stdout + proc.stderr)
++        self.assertIn("status=completed_with_warnings\n", proc.stdout)
++        qc = json.loads((job / "reports" / "qc.json").read_text())
++        self.assertEqual(qc["schemaId"], "capture.analysis_qc/2")
++        self.assertEqual(qc["warnings"], [gap_warning])
++        self.assertEqual(qc["trafficLights"], {"sampler.a": "warn", "sampler.b": "ok"})
++        self.assertEqual((qc["openGapCount"], qc["closedGapCount"]), (0, 1))
++        self.assertEqual([
++            (gap["sourceId"], gap["streamId"], gap["startSessionTimeNs"],
++             gap["endSessionTimeNs"], gap["cause"], gap["closed"])
++            for gap in qc["gaps"]
++        ], [("sampler.a", "A", "1500000000", "1950000000", "DISCONNECT", True)])
+         self.assert_artifacts(job, manifest)
+         tables = self.tables_by_identity(job, manifest)
+         self.assertEqual(set(tables), {
