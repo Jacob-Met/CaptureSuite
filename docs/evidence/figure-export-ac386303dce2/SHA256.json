@@ -1,0 +1,195 @@
+{
+  "schema": "capturesuite.receiving-file-manifest/1",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 8643,
+      "digests": [
+        {
+          "algorithm": "SHA-256",
+          "value": "6aab51f76c1ec7178d128d0878d171881332589be100930884fd8393b5822e7d"
+        }
+      ]
+    },
+    {
+      "path": "author/author-first-combined.xml",
+      "bytes": 12225,
+      "digests": [
+        {
+          "algorithm": "SHA-256",
+          "value": "89c060f034c6776ee6b2516d5c5e2a6d63f4e6963fb345b7764a6fc4b5ed610b"
+        }
+      ]
+    },
+    {
+      "path": "author/author-qualified.xml",
+      "bytes": 6756,
+      "digests": [
+        {
+          "algorithm": "SHA-256",
+          "value": "68777458462ede5462929702a6c05deede1a746651f5b60ad9f94cb9474e6485"
+        }
+      ]
+    },
+    {
+      "path": "author/author-receipt.json",
+      "bytes": 1926,
+      "digests": [
+        {
+          "algorithm": "SHA-256",
+          "value": "8d2e3992dc44c53e17cf917030a65068f4fdb33c19fc33fe94c6b1c07ec92085"
+        }
+      ]
+    },
+    {
+      "path": "author/author-tests.xml",
+      "bytes": 5263,
+      "digests": [
+        {
+          "algorithm": "SHA-256",
+          "value": "0f03e02932e8c327797230c8eebfd0c8c643320768951fe8e993e601f6169a75"
+        }
+      ]
+    },
+    {
+      "path": "author/baseline-absence.json",
+      "bytes": 315,
+      "digests": [
+        {
+          "algorithm": "SHA-256",
+          "value": "cee70a52b3a1fa1bed45c1599c2f9889c757475cbc8e7441757cb941993619a5"
+        }
+      ]
+    },
+    {
+      "path": "author/current-main-feature.log",
+      "bytes": 934,
+      "digests": [
+        {
+          "algorithm": "SHA-256",
+          "value": "43c23c0e8b1773f9f20cf907606404efc81800d343e25351e328390a779528c2"
+        }
+      ]
+    },
+    {
+      "path": "author/current-main-feature.xml",
+      "bytes": 6756,
+      "digests": [
+        {
+          "algorithm": "SHA-256",
+          "value": "fe6cf5dbeda57c966157ea53c02056960a111feec9c479ea070c05589d72a0eb"
+        }
+      ]
+    },
+    {
+      "path": "author/current-main-interrupted.json",
+      "bytes": 540,
+      "digests": [
+        {
+          "algorithm": "SHA-256",
+          "value": "3a6c84821be0286864e2ee9ef02b0daf44a92ba467c1e116d8e4f9b213a6fcdf"
+        }
+      ]
+    },
+    {
+      "path": "author/dialog-disabled-qualified.png",
+      "bytes": 58888,
+      "digests": [
+        {
+          "algorithm": "SHA-256",
+          "value": "1be11fffb8bc5117acedd9f1f0510dcbbfc4a4ae2f93907f53dc93f14d293ac7"
+        }
+      ]
+    },
+    {
+      "path": "author/native-preview-export.zip",
+      "bytes": 122291,
+      "digests": [
+        {
+          "algorithm": "SHA-256",
+          "value": "5d786263a1cae61d1614e294f803ca59cb95b2fad9cd0861ed780e0967fbea93"
+        }
+      ]
+    },
+    {
+      "path": "author/runtime.json",
+      "bytes": 827,
+      "digests": [
+        {
+          "algorithm": "SHA-256",
+          "value": "174041cc97b6d1b0f56238c1390221629ed4de49a06f4c7bc850b5f5b2111c13"
+        }
+      ]
+    },
+    {
+      "path": "author/scope-diagnostic.log",
+      "bytes": 9420,
+      "digests": [
+        {
+          "algorithm": "SHA-256",
+          "value": "a49ad3062c5bec5fc1a9dc02cb73cfd3572b2ee1072e33f83fc28a2eff56f8d8"
+        }
+      ]
+    },
+    {
+      "path": "author/scope-original-control.log",
+      "bytes": 8443,
+      "digests": [
+        {
+          "algorithm": "SHA-256",
+          "value": "80af7df39ea0fc8ae02914623fa236b44fceceba684afb04ed105a4376af3ae2"
+        }
+      ]
+    },
+    {
+      "path": "author/source-freeze.json",
+      "bytes": 1204,
+      "digests": [
+        {
+          "algorithm": "SHA-256",
+          "value": "fb139b6fdf54b67d07c946e5d2c05785d506f3d8882e900ee25e9d635e5e48db"
+        }
+      ]
+    },
+    {
+      "path": "root_receiving/REVIEW.md",
+      "bytes": 4554,
+      "digests": [
+        {
+          "algorithm": "SHA-256",
+          "value": "11955ab4abf4ee2ba6d6eb4afcc46b87f719ff09b66b134c8e6984b4e551ec0a"
+        }
+      ]
+    },
+    {
+      "path": "root_receiving/independent-receiving.json.gz",
+      "bytes": 102357,
+      "digests": [
+        {
+          "algorithm": "SHA-256",
+          "value": "5e9964e2df5b75f79edeb8dd599dcd7a5af408faa22f51f0791860489af1f1ed"
+        }
+      ]
+    },
+    {
+      "path": "root_receiving/source-binding-v1.json",
+      "bytes": 2453,
+      "digests": [
+        {
+          "algorithm": "SHA-256",
+          "value": "da73abcbfa2a25f662258cecd2dcc30b12714c1170dfc2d585a623929f802b33"
+        }
+      ]
+    },
+    {
+      "path": "root_receiving/test_independent_figure_export.py",
+      "bytes": 14381,
+      "digests": [
+        {
+          "algorithm": "SHA-256",
+          "value": "6d43689fcda5979c26611c0f8d0fcac5b14fe9da67673a7fa780126d07cf397e"
+        }
+      ]
+    }
+  ]
+}

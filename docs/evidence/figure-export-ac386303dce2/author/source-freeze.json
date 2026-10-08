@@ -1,0 +1,46 @@
+{
+  "base": "e43da3b855475c8aacf815c201fa03eddaeec0f1",
+  "artifacts": [
+    {
+      "path": "desktop/capture_desktop/analysis_figure_export.py",
+      "bytes": 14037,
+      "digests": [
+        {
+          "algorithm": "SHA-256",
+          "value": "cf510ab0f9693ed6961623099be30921eb64ee1d435d00c954ef229334ffb471"
+        }
+      ]
+    },
+    {
+      "path": "desktop/capture_desktop/widgets_figure_export.py",
+      "bytes": 13246,
+      "digests": [
+        {
+          "algorithm": "SHA-256",
+          "value": "a918adbb80e73c220e46e0923fa6ff86a7c2ab336c2832aacbc39a2821df72d6"
+        }
+      ]
+    },
+    {
+      "path": "desktop/capture_desktop/widgets_analysis_plots.py",
+      "bytes": 9617,
+      "digests": [
+        {
+          "algorithm": "SHA-256",
+          "value": "86bf46e07f9978cb3403b88c485107bad9c7110e3ee5b0722fa7e97f697d1db7"
+        }
+      ]
+    },
+    {
+      "path": "tests/ui/test_analysis_figure_export.py",
+      "bytes": 20322,
+      "digests": [
+        {
+          "algorithm": "SHA-256",
+          "value": "5d11472f2b710982daa0149dd4adaeb92b64727df5ebd63710a30c3d435e102d"
+        }
+      ]
+    }
+  ],
+  "composedBase": "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e"
+}

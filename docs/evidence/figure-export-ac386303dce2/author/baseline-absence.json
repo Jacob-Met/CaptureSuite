@@ -1,0 +1,9 @@
+{
+  "baseCommit": "e43da3b855475c8aacf815c201fa03eddaeec0f1",
+  "sourcePath": "desktop/capture_desktop/widgets_analysis_plots.py",
+  "sourceSha256": "85c73f881ee7d60ef2f868f7ff73fc57c0a4ef99a717f7f5015534db23e1ab86",
+  "qtVersion": "6.11.2",
+  "visible": true,
+  "buttons": [],
+  "exportCapabilityPresent": false
+}
