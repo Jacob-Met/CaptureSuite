@@ -122,7 +122,7 @@ bool encoder_usable(const char* name) {
   g_object_set(sink, "sync", FALSE, nullptr);
   gst_bin_add_many(GST_BIN(pipeline), src, conv, enc, sink, nullptr);
 
-  bool ok = gst_element_link_many(src, conv, enc, sink, nullptr) == TRUE;
+  bool ok = gst_element_link_many(src, conv, enc, sink, nullptr) != 0;
   if (ok && gst_element_set_state(pipeline, GST_STATE_PLAYING) !=
                 GST_STATE_CHANGE_FAILURE) {
     GstBus* bus = gst_element_get_bus(GST_ELEMENT(pipeline));

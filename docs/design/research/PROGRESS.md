@@ -611,3 +611,22 @@ review precede hosted Windows execution; they do not establish a native camera
 pass. Physical devices and automatic manifest resolution remain outside this
 gate. Scope, reproduction and retained-evidence rules are in
 `../../qualification/camera-native-dd84679589d8/README.md`.
+
+
+### 2026-10-08 — Receive the first actual Windows camera build
+
+The first dedicated camera run (37782737763, actual checkout
+`ea99de704be6f9fe5b272be3ff0043680cd89d88`) verified the SDK, passed the 13
+portable controls and configured the real camera target. Compilation then
+rejected an integer `gboolean` comparison with C++ `TRUE` under MSVC /W4 /WX
+(C4805 promoted to C2220). The one-line repair interprets the existing
+`gst_element_link_many` result by its zero/nonzero value; the encoder probe
+flow and strict warning gate remain intact. Native camera cases did not run.
+
+The standard C++ gate passed 26 CTest and six native daemon/recovery cases.
+Standard Python exited zero with 383 passed and six skipped, but its JUnit
+declared 448 tests for 389 case entries: 59 successful subtests inflated the
+aggregate. The new camera controls now use the same variant loops and assertions
+as ordinary unittest cases. A focused pytest 9.1.1 replay reproduces the original
+72-versus-13 mismatch and receives the successor's 13-versus-13 report with the
+unchanged shared checker. The next hosted run must qualify both narrow repairs.

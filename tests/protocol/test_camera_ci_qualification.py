@@ -55,6 +55,9 @@ def sdk_metadata() -> dict:
 
 
 class CameraReceiptControls(unittest.TestCase):
+    # Keep variant loops as ordinary unittest cases: the shared JUnit receiver
+    # requires aggregate counts to match actual testcase elements.
+
     def setUp(self):
         self.directory = tempfile.TemporaryDirectory(prefix="camera-receipt-unit-")
         self.addCleanup(self.directory.cleanup)
@@ -73,73 +76,66 @@ class CameraReceiptControls(unittest.TestCase):
 
     def test_zero_or_wrong_camera_selection_is_rejected(self):
         for kind in ("zero", "missing", "duplicate", "substitute", "extra"):
-            with self.subTest(kind=kind):
-                root = native_xml()
-                cases = root.findall("TestCase")
-                if kind == "zero":
-                    for case in cases:
-                        root.remove(case)
-                    root.find("OverallResultsCases").set("successes", "0")
-                elif kind == "missing":
-                    root.remove(cases[-1])
-                elif kind == "duplicate":
-                    cases[-1].set("name", cases[0].get("name"))
-                elif kind == "substitute":
-                    cases[-1].set("name", "worker host spawns stub with Hello and Identify")
-                else:
-                    root.append(copy.deepcopy(cases[0]))
-                self.assertFalse(self.evaluate(root)["accepted"])
+            root = native_xml()
+            cases = root.findall("TestCase")
+            if kind == "zero":
+                for case in cases:
+                    root.remove(case)
+                root.find("OverallResultsCases").set("successes", "0")
+            elif kind == "missing":
+                root.remove(cases[-1])
+            elif kind == "duplicate":
+                cases[-1].set("name", cases[0].get("name"))
+            elif kind == "substitute":
+                cases[-1].set("name", "worker host spawns stub with Hello and Identify")
+            else:
+                root.append(copy.deepcopy(cases[0]))
+            self.assertFalse(self.evaluate(root)["accepted"], f"selection variant: {kind}")
 
     def test_nonzero_timeout_and_noninteger_exits_are_rejected(self):
         for code in (1, -1, 3221225781, None, False, 0.0, "0"):
-            with self.subTest(code=code):
-                self.assertFalse(self.evaluate(code=code)["accepted"])
+            self.assertFalse(self.evaluate(code=code)["accepted"], f"process exit: {code!r}")
 
     def test_per_case_failure_or_skip_cannot_hide_behind_success_totals(self):
         for attribute, value in (("success", "false"), ("skips", "1"), ("skips", "-1")):
-            with self.subTest(attribute=attribute, value=value):
-                root = native_xml()
-                root.find("TestCase/OverallResult").set(attribute, value)
-                self.assertFalse(self.evaluate(root)["accepted"])
+            root = native_xml()
+            root.find("TestCase/OverallResult").set(attribute, value)
+            self.assertFalse(self.evaluate(root)["accepted"], f"{attribute}={value}")
 
     def test_failure_exception_and_skip_nodes_are_rejected(self):
         for tag in ("Failure", "Exception", "FatalErrorCondition", "Skip", "Expression"):
-            with self.subTest(tag=tag):
-                root = native_xml()
-                ET.SubElement(root.find("TestCase"), tag, {"success": "false"})
-                self.assertFalse(self.evaluate(root)["accepted"])
+            root = native_xml()
+            ET.SubElement(root.find("TestCase"), tag, {"success": "false"})
+            self.assertFalse(self.evaluate(root)["accepted"], f"failure node: {tag}")
 
     def test_failed_expected_failure_and_skipped_totals_are_rejected(self):
         for tag in ("OverallResultsCases", "OverallResults"):
             for attribute in ("failures", "expectedFailures", "skips"):
-                with self.subTest(tag=tag, attribute=attribute):
-                    root = native_xml()
-                    root.find(tag).set(attribute, "1")
-                    self.assertFalse(self.evaluate(root)["accepted"])
+                root = native_xml()
+                root.find(tag).set(attribute, "1")
+                self.assertFalse(self.evaluate(root)["accepted"], f"{tag}.{attribute}")
         root = native_xml()
         root.find("OverallResults").set("successes", "0")
         self.assertFalse(self.evaluate(root)["accepted"])
 
     def test_missing_duplicate_and_malformed_count_evidence_is_rejected(self):
         for kind in ("missing", "duplicate", "negative", "fraction", "wrong_cases"):
-            with self.subTest(kind=kind):
-                root = native_xml()
-                counts = root.find("OverallResultsCases")
-                if kind == "missing":
-                    del counts.attrib["skips"]
-                elif kind == "duplicate":
-                    root.append(copy.deepcopy(counts))
-                else:
-                    counts.set("successes", {"negative": "-3", "fraction": "3.0",
-                                            "wrong_cases": "37"}[kind])
-                self.assertFalse(self.evaluate(root)["accepted"])
+            root = native_xml()
+            counts = root.find("OverallResultsCases")
+            if kind == "missing":
+                del counts.attrib["skips"]
+            elif kind == "duplicate":
+                root.append(copy.deepcopy(counts))
+            else:
+                counts.set("successes", {"negative": "-3", "fraction": "3.0",
+                                        "wrong_cases": "37"}[kind])
+            self.assertFalse(self.evaluate(root)["accepted"], f"count variant: {kind}")
 
     def test_truncated_unrelated_and_entity_xml_is_rejected(self):
         for raw in (b"<Catch2TestRun", b"<testsuite tests='3'/>",
                     b"<!DOCTYPE x [<!ENTITY y 'unsafe'>]><Catch2TestRun/>"):
-            with self.subTest(raw=raw):
-                self.path.write_bytes(raw)
-                self.assertFalse(camera.evaluate_xml(self.path, 0)["accepted"])
+            self.path.write_bytes(raw)
+            self.assertFalse(camera.evaluate_xml(self.path, 0)["accepted"], f"XML: {raw!r}")
         self.path.write_bytes(ET.tostring(native_xml()))
         with patch.object(camera, "MAX_XML_BYTES", 16):
             self.assertFalse(camera.evaluate_xml(self.path, 0)["accepted"])
@@ -180,12 +176,11 @@ class CameraReceiptControls(unittest.TestCase):
             lambda x: x["probe"].update(output="GStreamer 1.24.13.1"),
             lambda x: x["probe"].update(output="not GStreamer 1.24.13"),
         )
-        for change in changes:
-            with self.subTest(change=change):
-                value = sdk_metadata()
-                change(value)
-                with self.assertRaises((ValueError, TypeError, KeyError)):
-                    camera.validate_sdk_metadata(value)
+        for index, change in enumerate(changes):
+            value = sdk_metadata()
+            change(value)
+            with self.assertRaises((ValueError, TypeError, KeyError), msg=f"SDK variant {index}"):
+                camera.validate_sdk_metadata(value)
 
     def test_sdk_manifest_binds_logs_and_complete_binary_files(self):
         base = Path(self.directory.name)
@@ -233,10 +228,9 @@ class CameraReceiptControls(unittest.TestCase):
             original_name = value["extractions"][0]["log"]
             for escaped in ("../repository/" + original_name,
                             str(unrelated_root / original_name)):
-                with self.subTest(escaped=escaped):
-                    value["extractions"][0]["log"] = escaped
-                    with self.assertRaises(ValueError):
-                        inspect()
+                value["extractions"][0]["log"] = escaped
+                with self.assertRaises(ValueError):
+                    inspect()
             value["extractions"][0]["log"] = original_name
             self.assertEqual(inspect()[0], sdk.resolve())
             # A newly added plugin cannot hide outside the recorded subset.
@@ -291,10 +285,9 @@ class CameraReceiptControls(unittest.TestCase):
     def test_invalid_pe_bytes_cannot_supply_binary_identity(self):
         path = Path(self.directory.name) / "invalid-parser-input.bin"
         for raw in (b"not PE", b"MZ" + b"\0" * 62):
-            with self.subTest(raw=raw):
-                path.write_bytes(raw)
-                with self.assertRaises((ValueError, struct.error)):
-                    camera.pe_identity(path)
+            path.write_bytes(raw)
+            with self.assertRaises((ValueError, struct.error)):
+                camera.pe_identity(path)
         raw = bytearray(64)
         raw[:2] = b"MZ"
         struct.pack_into("<I", raw, 0x3C, 0xFFFFFFFF)
