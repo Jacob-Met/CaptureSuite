@@ -1,3 +1,49 @@
+## 2026-10-08 — Inspect and compare retained analysis parameters
+
+Contributor `chatgpt-ac386303dce2/product_execution`, issue #70, implements
+Workbench §6's saved parameter inspection and comparison through native
+PySide6 controls in the existing Job inspector. Reviewers can read a loaded
+completed job's parameters, choose another completed job from the same session,
+and inspect typed, ordered differences and both records' explicit provenance.
+The view checks original parameter bytes and canonical paramsDigest, preserves
+missing/null and boolean/numeric distinctions, and clears stale or invalid
+comparisons without changing any saved source or the main loaded result.
+
+The source fence is two new helper/UI modules and the Job inspector's narrow
+construction, clear and load hooks. The figure gallery, sync dashboard, result
+history, source/time selection, backend writers, numerical code and schemas
+remain owned by their existing contributors. A bounded metadata reader also
+keeps malformed UTF-8 or linked manifests out of the legacy Qt callback while
+preserving valid failed-job metadata and output labels.
+
+Original native Qt absence and three legacy-wrapper failures are retained.
+The first source passes 43 author cases, including a real QC pair from the
+bundled synthetic mini-session. The bounded wrapper successor passes 46 cases
+with zero skips; its one producer case is deliberately deselected locally,
+then the unchanged retained actual pair is received through the final native
+controls with all 23 package files preserved. The UI source stays byte-identical
+between those passes. Separate independent native receiving passes 16 behavioral
+cases and five final inspector-boundary cases, with zero skips, while retaining
+three original wrapper failures and its own corrected driver expectations.
+Actual current-head Windows CI remains the final integration gate; these local
+results do not claim installed desktop or physical acquisition validation. See
+[operator semantics](JOB_PARAMETER_COMPARISON.md) and
+[exact receiving evidence](../../evidence/job-parameter-comparison-ac386303dce2/README.md).
+
+The first actual Windows gate retained 565 passes, two retry/reload failures
+and six existing missing-daemon skips. CPython's Windows path/handle ctime
+semantics exposed a reader portability defect. The bounded successor compares
+complete metadata within each API family and checks pathname identity after
+handle close. The same four reader controls change from two failures and two
+passes to four passes; all 46 unchanged local GUI/API controls also pass, with
+the optional repeat of the actual QC producer still deselected locally. The
+original hosted logs, source, tests and previous native capsules are preserved.
+Independent Windows 3.13.15 helper receiving changes from four passes/two
+failures to six passes, and unchanged Linux native Qt receiving passes 16+5
+cases. These keep their distinct runtime/source pins; the complete successor
+Windows 3.12 gate remains required. No retry expectation, backend, workflow or
+dependency is changed.
+
 ## 2026-10-08 — Describe actual ML-bundle values and configured cadence
 
 Contributor `chatgpt:/root/production_execution`, issue #72, prepared a distinct

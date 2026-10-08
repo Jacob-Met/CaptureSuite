@@ -17,6 +17,8 @@ from PySide6.QtWidgets import (
 )
 
 from . import theme
+from .analysis_job_comparison import JobParameterError, read_job_manifest
+from .widgets_analysis_comparison import JobParameterBar
 from .widgets_figure_export import FigureExportBar
 
 try:
@@ -202,6 +204,8 @@ class JobInspector(QWidget):
         self._meta.setWordWrap(True)
         self._meta.setFont(theme.mono(8))
         layout.addWidget(self._meta)
+        self._parameters = JobParameterBar()
+        layout.addWidget(self._parameters)
         scroll = QScrollArea()
         scroll.setWidgetResizable(True)
         self._outputs_host = QWidget()
@@ -213,6 +217,7 @@ class JobInspector(QWidget):
 
     def clear(self) -> None:
         self._meta.setText("No job loaded")
+        self._parameters.clear()
         while self._outputs_layout.count():
             item = self._outputs_layout.takeAt(0)
             w = item.widget()
@@ -222,14 +227,19 @@ class JobInspector(QWidget):
 
     def load_job_dir(self, job_dir: Path) -> None:
         self.clear()
+        self._parameters.load_job_dir(job_dir)
         manifest_path = job_dir / "job_manifest.json"
         if not manifest_path.is_file():
             self._meta.setText(f"No job_manifest.json in {job_dir}")
             return
         try:
-            manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-        except (json.JSONDecodeError, OSError) as exc:
+            manifest = read_job_manifest(job_dir)
+        except (JobParameterError, OSError) as exc:
             self._meta.setText(f"manifest error: {exc}")
+            return
+        outputs = manifest.get("outputs") or []
+        if not isinstance(outputs, list) or any(not isinstance(row, dict) for row in outputs):
+            self._meta.setText("manifest error: invalid output inventory")
             return
         job_id = manifest.get("jobId", "?")
         status = manifest.get("status", "?")
@@ -239,7 +249,6 @@ class JobInspector(QWidget):
             f"job_id={job_id}\nstatus={status}\ngap_policy={gap}\n"
             f"plugin_manifest={plug}\npath={job_dir}"
         )
-        outputs = manifest.get("outputs") or []
         self._outputs_layout.takeAt(self._outputs_layout.count() - 1)
         if not outputs:
             empty = QLabel("(no outputs recorded)")

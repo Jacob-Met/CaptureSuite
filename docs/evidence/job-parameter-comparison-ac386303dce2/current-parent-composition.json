@@ -1,0 +1,747 @@
+{
+  "schema": "capture.job_parameter_comparison.current_parent_composition/1",
+  "original_baseline": "30de2119699d49d6108fc57f2816b7c32615f7eb",
+  "author_capsule_intake_parent": "58157fdc1b83a12bb4856ef14b0498cf524a1087",
+  "current_parent": "a2fd6c58ccc97c7262b97570a85d8aae8dfb978c",
+  "current_parent_tree": "9cb6f200bece07bbed86b166d659026fcfaf632f",
+  "current_parent_leaves": 1050,
+  "materialized_unchanged_non_evidence_count": 583,
+  "intended_existing_changes": [
+    "desktop/capture_desktop/widgets_analysis_plots.py",
+    "docs/design/research/PROGRESS.md"
+  ],
+  "missing_non_evidence": [],
+  "complete_parent_progress_preserved_as_exact_suffix": true,
+  "frozen_runtime_and_test": [
+    {
+      "path": "desktop/capture_desktop/analysis_job_comparison.py",
+      "bytes": 12523,
+      "sha256": "db744e872ed3f4dfa7d1bd253aa1e4610032e973e31f91a001cc964a0b139948",
+      "git_blob_sha1": "ec2f2695a3982bf262bea58b4e8f39cd0f74303f"
+    },
+    {
+      "path": "desktop/capture_desktop/widgets_analysis_comparison.py",
+      "bytes": 14400,
+      "sha256": "bd0adca471711350b45702bf7c625b28c348321be43c6eaecd047da33304fc1d",
+      "git_blob_sha1": "e770b14c04fe2e36e98a08913ac8f42baa05e980"
+    },
+    {
+      "path": "desktop/capture_desktop/widgets_analysis_plots.py",
+      "bytes": 10075,
+      "sha256": "3d9e2a5843acf530fbffd4dcb42bccff71822801ce0df0c037a72a3d6e7d07da",
+      "git_blob_sha1": "8938b536f13479a424ffb3cd913a4f3364de8d32"
+    },
+    {
+      "path": "tests/ui/test_analysis_job_comparison.py",
+      "bytes": 17558,
+      "sha256": "81e931c5dfe9cd67b3f38117e4e2fd08d1a3b8c395c46cc02ce28839541fbfe0",
+      "git_blob_sha1": "26b8fe1772fb66552f20a22c00fe53c6e689edbb"
+    }
+  ],
+  "carried_parent_delta": [
+    {
+      "path": ".github/workflows/camera-native.yml",
+      "status": "added",
+      "sha": "931eedfb75258d616a64c18fe26bcf02d9942d9d"
+    },
+    {
+      "path": "docs/design/ANALYSIS.md",
+      "status": "modified",
+      "sha": "13fbc44f76c819edf38b028747fcdf8be6f39a16"
+    },
+    {
+      "path": "docs/design/research/ANALYSIS_SCOPE_SEMANTICS.md",
+      "status": "modified",
+      "sha": "68cea4077c84eb0bb4451dec815e9f7053478e43"
+    },
+    {
+      "path": "docs/design/research/PROGRESS.md",
+      "status": "modified",
+      "sha": "e37395f1ac8971758192605ff9389942ae918025"
+    },
+    {
+      "path": "docs/evidence/checkpoint-desktop-compatibility-18a24bf0c281/README.md",
+      "status": "added",
+      "sha": "1645100142b0d188de7ca7150eb8c444c556a05f"
+    },
+    {
+      "path": "docs/evidence/checkpoint-desktop-compatibility-18a24bf0c281/assessment.json",
+      "status": "added",
+      "sha": "643288ec7b2f82861207f54a908b4f838476b15a"
+    },
+    {
+      "path": "docs/evidence/checkpoint-desktop-compatibility-18a24bf0c281/runtime-availability.json",
+      "status": "added",
+      "sha": "a309050a8a3025fffe2d9e0b6bb9ce34238a29b1"
+    },
+    {
+      "path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/README.md",
+      "status": "added",
+      "sha": "40b68d71bdf0a715fe36e67e4e0b2687e77e1321"
+    },
+    {
+      "path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/baseline-source-manifest.json",
+      "status": "added",
+      "sha": "59df1a34a44d3141693352201cf9b99efed7c4bb"
+    },
+    {
+      "path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/candidate-source-manifest.json",
+      "status": "added",
+      "sha": "934396f7e12fc8cad7069080857704b950a26952"
+    },
+    {
+      "path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/dependency-pins.txt",
+      "status": "added",
+      "sha": "c52a56b1f3a8285a9795049f97d5cbea65b247bb"
+    },
+    {
+      "path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/environment-check.txt",
+      "status": "added",
+      "sha": "c688d8ccdad82420475fc31cb40020cccfeeef2b"
+    },
+    {
+      "path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/environment-install.json",
+      "status": "added",
+      "sha": "38bfe23038be2f393c365ca6793a48adcde3f9b6"
+    },
+    {
+      "path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/environment-install.log",
+      "status": "added",
+      "sha": "f05d1af73b948151e7022463b258d1ccd1a39c78"
+    },
+    {
+      "path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/independent-environment-freeze.txt",
+      "status": "added",
+      "sha": "cc60921870b425c6036bb17eb5b5263c2a754e2e"
+    },
+    {
+      "path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/intake-errors/archive-git-byte-mismatch-v1.json",
+      "status": "added",
+      "sha": "17ca41c595d9ee6b356583b8caf3c655877d09cd"
+    },
+    {
+      "path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/intake-errors/checkpoint-field-names-v1.json",
+      "status": "added",
+      "sha": "49a0a06a2ea5df5c6832d12eca1e5231c696b9d4"
+    },
+    {
+      "path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/intake-errors/git-log-normalization-v1.json",
+      "status": "added",
+      "sha": "c6381a39397fe4676dce93fc628b48dfa97461b6"
+    },
+    {
+      "path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/intake-errors/git-log-normalization-v2.json",
+      "status": "added",
+      "sha": "a241496e899b02089b47e69d90e840838929125d"
+    },
+    {
+      "path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/intake-errors/receive_closed_section_isolation_v1.py",
+      "status": "added",
+      "sha": "d80568bdbac9d488c84720577f88f6b70f2d1ddf"
+    },
+    {
+      "path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/publication-path-map.json",
+      "status": "added",
+      "sha": "99a3c0f9c512a9c7a53e9e7df45236adcaacbe2e"
+    },
+    {
+      "path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/qualification.json",
+      "status": "added",
+      "sha": "53b2212bb89828bbcff28275082fa435e2a8f486"
+    },
+    {
+      "path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/raw-receiving-evidence.tar.xz",
+      "status": "added",
+      "sha": "b14bc9c195078165abd33b20bfd36198962660b5"
+    },
+    {
+      "path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/raw-receiving-manifest.json",
+      "status": "added",
+      "sha": "572eecd87865f4d26466b308b93d05baa57bd70a"
+    },
+    {
+      "path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/receive_closed_section_isolation.py",
+      "status": "added",
+      "sha": "b04449f05c0b217dd705ddd52a3172b5e00c1251"
+    },
+    {
+      "path": "docs/evidence/checkpoint-numeric-composition-18a24bf0c281/README.md",
+      "status": "added",
+      "sha": "483ae5b8caa558f286097427d5342470ce5198b7"
+    },
+    {
+      "path": "docs/evidence/checkpoint-numeric-composition-18a24bf0c281/drivers/assess.py",
+      "status": "added",
+      "sha": "dc73e6da09833d110374765558b4beb85e969ab5"
+    },
+    {
+      "path": "docs/evidence/checkpoint-numeric-composition-18a24bf0c281/drivers/collect.py",
+      "status": "added",
+      "sha": "8d2b581de92f3ae45ef832b2094cf0692536001d"
+    },
+    {
+      "path": "docs/evidence/checkpoint-numeric-composition-18a24bf0c281/drivers/observer/sitecustomize.py",
+      "status": "added",
+      "sha": "a0d6676c81d8c268c12b1f7b60569d218babbcdc"
+    },
+    {
+      "path": "docs/evidence/checkpoint-numeric-composition-18a24bf0c281/drivers/receive.py",
+      "status": "added",
+      "sha": "5cc6bed723013cb224098bf08bf0332bbe770a9d"
+    },
+    {
+      "path": "docs/evidence/checkpoint-numeric-composition-18a24bf0c281/environment-current.txt",
+      "status": "added",
+      "sha": "565da1a943b4006c5bd26f2d1580da9261e12f80"
+    },
+    {
+      "path": "docs/evidence/checkpoint-numeric-composition-18a24bf0c281/figures/baseline-numeric.png",
+      "status": "added",
+      "sha": "496989ae11d9f4c6c4d802203f34c5933459e2ac"
+    },
+    {
+      "path": "docs/evidence/checkpoint-numeric-composition-18a24bf0c281/figures/candidate-numeric.png",
+      "status": "added",
+      "sha": "bd4771e98501507623ea92681ac6569adae0a0ff"
+    },
+    {
+      "path": "docs/evidence/checkpoint-numeric-composition-18a24bf0c281/final-assessment.json",
+      "status": "added",
+      "sha": "31cf4c49cb56375b477efbac5855c7d059e2d4d1"
+    },
+    {
+      "path": "docs/evidence/checkpoint-numeric-composition-18a24bf0c281/fixture-definition.json",
+      "status": "added",
+      "sha": "6ccff247ad4bd32cdaa3954e7eca042a0b096b2f"
+    },
+    {
+      "path": "docs/evidence/checkpoint-numeric-composition-18a24bf0c281/native-packet-manifest.json",
+      "status": "added",
+      "sha": "b1ba282e634992476fb9dcb20a6ea3b61adcf290"
+    },
+    {
+      "path": "docs/evidence/checkpoint-numeric-composition-18a24bf0c281/native-packet.tar.gz",
+      "status": "added",
+      "sha": "4104aa0199a4a63de69ef7020251f65db257e134"
+    },
+    {
+      "path": "docs/evidence/checkpoint-numeric-composition-18a24bf0c281/runner.log",
+      "status": "added",
+      "sha": "13351a0aabfd091d2bff014262f341fb2f915a2e"
+    },
+    {
+      "path": "docs/evidence/checkpoint-numeric-composition-18a24bf0c281/runtime-identity.json",
+      "status": "added",
+      "sha": "bd2de687392a3963e01a1a0c5b90c36bab6cfaf6"
+    },
+    {
+      "path": "docs/evidence/checkpoint-numeric-composition-18a24bf0c281/source-intake.json",
+      "status": "added",
+      "sha": "b0d916d9ee62fc90a07fc06fe42f47a97c398fc8"
+    },
+    {
+      "path": "docs/evidence/checkpoint-numeric-composition-18a24bf0c281/summary.json",
+      "status": "added",
+      "sha": "36d9d877bc52189a57a5f52fbc0ac5c22a9026f5"
+    },
+    {
+      "path": "docs/evidence/checkpoint-numeric-composition-18a24bf0c281/transfer-receipt.json",
+      "status": "added",
+      "sha": "47bebd5d1c5cf59fd4a7a2b17e1db830e13dad1c"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/README.md",
+      "status": "added",
+      "sha": "46c51dd999a069ba3045f27741dede1109d3a6a5"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/baseline-manifest.json",
+      "status": "added",
+      "sha": "2bf11809cff9c99b13e378aee25fc99275c20fed"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/baseline-native.tar.gz",
+      "status": "added",
+      "sha": "24f2acca7a99d582d5fe10f3eddc486b9466b13d"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/candidate-freeze.json",
+      "status": "added",
+      "sha": "05af85af6a8f6c2c1733848d7791c4014cb643c7"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/candidate-manifest.json",
+      "status": "added",
+      "sha": "b254081c8a3495725164e46567cb11723fd3ee73"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/candidate-native.tar.gz",
+      "status": "added",
+      "sha": "78ad5d5e0191745bf212f6ec87f49268ff375c93"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/cli-comparison.json",
+      "status": "added",
+      "sha": "422509336d792ec952851dd360266f1e15fd0f50"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/collect.py",
+      "status": "added",
+      "sha": "0ed25aec8254e0c23666160bf6c415531047dbe5"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/collection.json",
+      "status": "added",
+      "sha": "90615f988ad7e3d1e1767c6d22dfd398142d3970"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/environment-check.txt",
+      "status": "added",
+      "sha": "c688d8ccdad82420475fc31cb40020cccfeeef2b"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/environment-freeze.txt",
+      "status": "added",
+      "sha": "565da1a943b4006c5bd26f2d1580da9261e12f80"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/environment-install.json",
+      "status": "added",
+      "sha": "213e4f67cac273cff5b80dd57a8464ed7d5e4cc9"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/evidence-transfer.json",
+      "status": "added",
+      "sha": "7a8b14d5cbfcc09303bd04f94ff375e34a8d113a"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/figures/baseline-imu.png",
+      "status": "added",
+      "sha": "d478d34b336cf24a9e47f6835181b09387290468"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/figures/baseline-sync.png",
+      "status": "added",
+      "sha": "a34ffaa95ff37e5cac0cfdeb57df85a7f2e256c5"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/figures/candidate-imu.png",
+      "status": "added",
+      "sha": "8cd33356061ef5ad29dc867725dce55cae662589"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/figures/candidate-sync.png",
+      "status": "added",
+      "sha": "fb306a17a437fa1fe5138629b6b60c55dc98690b"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/helper-custody.json",
+      "status": "added",
+      "sha": "125c7cc4e77230b1e333244145eef277dc19a542"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/packet-manifest.json",
+      "status": "added",
+      "sha": "29f3a212cfde17cf85cd516c8f84931778399fef"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/prepare.cjs",
+      "status": "added",
+      "sha": "ef1f516b74b5a03826ff8b59d6053fadd3173956"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/receive.cjs",
+      "status": "added",
+      "sha": "73143bbdc5016eba83afbf690dcdea198f367ca2"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/regression-manifest.json",
+      "status": "added",
+      "sha": "0464ad731d19782a2e6704943e423e2bce0c3d55"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/regression-native.tar.gz",
+      "status": "added",
+      "sha": "4ef15cfb1eb000fc206e69baa2e13a2e2efe9742"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/regression.cjs",
+      "status": "added",
+      "sha": "40c5e7dda158d286afb282ca37525f838d81871b"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/root-current-main-integration.json",
+      "status": "added",
+      "sha": "3b95713d9cdee1cd10a1b22f24ec7bc64803b3f7"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/run-summary.json",
+      "status": "added",
+      "sha": "e6ad406691fa8c3026ddec562e3a837d39066fb3"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/source-custody-summary.json",
+      "status": "added",
+      "sha": "1329d686b45b713a3335fddbc464e6fac2e4c674"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/source-intake.json",
+      "status": "added",
+      "sha": "3d6179bc0c8c1dc943117bd08587771c4bf8bf0d"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/source-transfer.json",
+      "status": "added",
+      "sha": "a06a4565a569fbb27c236b1a6510d6475f4033d1"
+    },
+    {
+      "path": "docs/evidence/checkpoint-sections-18a24bf0c281/visual-receiving.json",
+      "status": "added",
+      "sha": "e3e862f1dbb62a4625ba712d9044942529098552"
+    },
+    {
+      "path": "docs/evidence/checkpoint-windows-numeric-18a24bf0c281/README.md",
+      "status": "added",
+      "sha": "0ff87c63a565a8d4e269eb817dd4d23834eb1f0b"
+    },
+    {
+      "path": "docs/evidence/checkpoint-windows-numeric-18a24bf0c281/adaptation-receipt.json",
+      "status": "added",
+      "sha": "77a1fe8f06638b4565275884717ac557283c6622"
+    },
+    {
+      "path": "docs/evidence/checkpoint-windows-numeric-18a24bf0c281/adaptation.patch",
+      "status": "added",
+      "sha": "162ff0e72a53eae78c6a7c7a498054c2edb36652"
+    },
+    {
+      "path": "docs/evidence/checkpoint-windows-numeric-18a24bf0c281/artifact-metadata.json",
+      "status": "added",
+      "sha": "b62388498807dfd009a2d746d61f2eb96ef14549"
+    },
+    {
+      "path": "docs/evidence/checkpoint-windows-numeric-18a24bf0c281/artifact-transfer-limit.json",
+      "status": "added",
+      "sha": "aa9b022d4baad7282e564e1644e581516a54e13b"
+    },
+    {
+      "path": "docs/evidence/checkpoint-windows-numeric-18a24bf0c281/checkout.json",
+      "status": "added",
+      "sha": "ef6b30bf5a5c40d233a579299a7836c996142958"
+    },
+    {
+      "path": "docs/evidence/checkpoint-windows-numeric-18a24bf0c281/failed-manifest.json",
+      "status": "added",
+      "sha": "afb077469d627d39b683add5f20dc8f84c782279"
+    },
+    {
+      "path": "docs/evidence/checkpoint-windows-numeric-18a24bf0c281/job-113364093148.log",
+      "status": "added",
+      "sha": "14b64ec718935ee1f196ce23275851fd1bd5aacc"
+    },
+    {
+      "path": "docs/evidence/checkpoint-windows-numeric-18a24bf0c281/job-steps.json",
+      "status": "added",
+      "sha": "b266b40bd3d8be4d1d28caf847b870a59951941b"
+    },
+    {
+      "path": "docs/evidence/checkpoint-windows-numeric-18a24bf0c281/source-manifest.json",
+      "status": "added",
+      "sha": "bc485d4df737f04cee37be2c7c15df0ef8f114b5"
+    },
+    {
+      "path": "docs/evidence/checkpoint-windows-numeric-18a24bf0c281/source/.github/workflows/ci.yml",
+      "status": "added",
+      "sha": "9c08a4d38d435169f402511c934d1c59701082cf"
+    },
+    {
+      "path": "docs/evidence/checkpoint-windows-numeric-18a24bf0c281/source/AGENTS.md",
+      "status": "added",
+      "sha": "9ac6683ba4805e210143e5a33e7782da55af0d15"
+    },
+    {
+      "path": "docs/evidence/checkpoint-windows-numeric-18a24bf0c281/source/libs/python/capture_analysis/capture_analysis/features/numeric_batch.py",
+      "status": "added",
+      "sha": "77f19ccb048c93c0f4fca460eef0502180b37717"
+    },
+    {
+      "path": "docs/evidence/checkpoint-windows-numeric-18a24bf0c281/source/libs/python/capture_analysis/capture_analysis/windows.py",
+      "status": "added",
+      "sha": "aaafd8db78f82a5a56178135dbed5bfd4f45c634"
+    },
+    {
+      "path": "docs/evidence/checkpoint-windows-numeric-18a24bf0c281/source/tests/analysis/test_numeric_receiving.py",
+      "status": "added",
+      "sha": "cee5571f3802a2ca452f4591afc2fd4c86c6beba"
+    },
+    {
+      "path": "docs/evidence/checkpoint-windows-numeric-18a24bf0c281/workflow-run.json",
+      "status": "added",
+      "sha": "95ddae62bb55f7191afbc927a67084ffa7e1b07f"
+    },
+    {
+      "path": "docs/qualification/camera-native-dd84679589d8/README.md",
+      "status": "added",
+      "sha": "de80d329ce1fca7cd541430ab125425d4bf986d2"
+    },
+    {
+      "path": "libs/python/capture_analysis/capture_analysis/windows.py",
+      "status": "modified",
+      "sha": "aaafd8db78f82a5a56178135dbed5bfd4f45c634"
+    },
+    {
+      "path": "tests/analysis/test_checkpoint_sections.py",
+      "status": "added",
+      "sha": "7dfc0ad216f9b4ed512ee3b33c3b65ba44895727"
+    },
+    {
+      "path": "tests/analysis/test_numeric_receiving.py",
+      "status": "modified",
+      "sha": "d2d80dca85375acd58c4970e0c9490ee662c75f9"
+    },
+    {
+      "path": "tests/cpp/test_worker_host.cpp",
+      "status": "modified",
+      "sha": "bdb2ceb0b8fbacdbe17f3ca0b30fa758aa9e1e53"
+    },
+    {
+      "path": "tests/protocol/test_camera_ci_qualification.py",
+      "status": "added",
+      "sha": "8b6d019f2b3f651bbbcef0bebc27682b4b3503d6"
+    },
+    {
+      "path": "tests/ui/test_analysis_scope.py",
+      "status": "modified",
+      "sha": "2ee653a05e27e8586e74439d2bdc9eccf06505ef"
+    },
+    {
+      "path": "tools/prepare_camera_ci.ps1",
+      "status": "added",
+      "sha": "e3c31d1aa615638fc81e11480bbcc1ef7975c9be"
+    },
+    {
+      "path": "tools/qualify_camera_ci.py",
+      "status": "added",
+      "sha": "46552b5ae2e668221281b4ebe2adfa54af2eff89"
+    },
+    {
+      "path": "workers/camera/src/capture_pipeline.cpp",
+      "status": "modified",
+      "sha": "2616b3b1644a570c39e0967460b0a78caee54b03"
+    }
+  ],
+  "preservation": "Publication is created from the complete current-parent Git tree, preserving all unrelated leaves including upstream evidence, modes and types. Local materialization ancestry is not publication ancestry.",
+  "receiving_limits": "The frozen comparison source is unchanged. Original native receiving and retained QC producer attribution remain distinct from current-parent intake and the required actual published-head Windows CI. No extra local producer run is claimed.",
+  "camera_workflow": "The new upstream camera-native workflow is preserved exactly. Its path filter does not select this comparison-only contribution; the existing full CI workflow remains unchanged.",
+  "intermediate_parent": {
+    "current_parent": "9c44354cb101c76beff79265de0040b6839d249f",
+    "current_parent_tree": "50cd83ef270467490b15f74639413d238aaa15c6",
+    "current_parent_leaves": 1012
+  },
+  "final_documentation_only_delta": [
+    {
+      "path": "docs/design/research/PROGRESS.md",
+      "status": "modified",
+      "sha": "b9f368902d2bfc949c32e1d759af8d48d1405967"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/BUILD.md",
+      "status": "added",
+      "sha": "dd6c80589e90909b127507ebf5d47e6b07deee02"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/NOTICE.md",
+      "status": "added",
+      "sha": "9f8b25ac483fe730bc42485db71e72ee97df3a48"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/README.md",
+      "status": "added",
+      "sha": "d6d99cfdbaf885dca86a4164dea6fd45369e946a"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/archive-receiving-final.json",
+      "status": "added",
+      "sha": "9cbcd1c64a79e4e51d1df7017a596f8c73e3f020"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/archive-receiving.json",
+      "status": "added",
+      "sha": "3fe7e731af0bb3a97aec4df83b4539e86849c0e7"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/claim.json",
+      "status": "added",
+      "sha": "a4b64c689ae051f5a8cc5ff54cd0692700f80adc"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/coordination-review.json",
+      "status": "added",
+      "sha": "cbb134398249295782ea98f1ce0ef5fbb1010488"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/dependency-notices-manifest.json",
+      "status": "added",
+      "sha": "247223c55387ea0395962a15fe94c8c15dc40869"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/helper-header-correspondence.json",
+      "status": "added",
+      "sha": "da8e7f1f9fd2bbebba0f81650c54f6804d7d998e"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/historical-receiver-custody.json",
+      "status": "added",
+      "sha": "15cfcb6a585b589b2e3d57d97bd71bc8b858dfe0"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/hydration-initial-tool-output.json",
+      "status": "added",
+      "sha": "eb5003edd4338e836f5bc018fd2278642eab40c8"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/mcap-clone.log",
+      "status": "added",
+      "sha": "fad9ad5303248b606774366373014224296e13f4"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/mcap-source.json",
+      "status": "added",
+      "sha": "b5341444a93a79e00906322cb9d5145d1ae5cfe5"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/native-build.log",
+      "status": "added",
+      "sha": "d98d8adefe1a12dde71ceaa411857d2fef153a05"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/native-configure.log",
+      "status": "added",
+      "sha": "fb295180593e938ab7988f9e00d40c3ab44976b9"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/native-ctest.log",
+      "status": "added",
+      "sha": "e17890e1c96e2b7d2270e8b0ec2d5e3795c47bac"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/native-ctest.xml",
+      "status": "added",
+      "sha": "8719e75bb9df4da529930aed8ac13c9d332a4a26"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/native-qualification-first.json",
+      "status": "added",
+      "sha": "010eec622bea6cd76df70d5e88e92a76d4847b00"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/receiver-dependency-replay.json",
+      "status": "added",
+      "sha": "8f9c87ec002c2813215c06367433999019031cdb"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/receiver-process-first.json",
+      "status": "added",
+      "sha": "892d705865739468e1e5b3603d15de50c09dd34e"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/receiving-base.json",
+      "status": "added",
+      "sha": "b149c91fff06cd262e20d58645fb1c372e0dbcb9"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/runtime-package-commands.log",
+      "status": "added",
+      "sha": "72f11267d0683c8adf0cb34ee68ad5814332c34b"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/runtime-package-initial-tool-output.json",
+      "status": "added",
+      "sha": "46718c7b37f43be869a7b101c6c907cef3d47bad"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/runtime-package.json",
+      "status": "added",
+      "sha": "1f18e2276c2061d0f873ce1bc79d25bf94913419"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/source-inputs.json",
+      "status": "added",
+      "sha": "72f60cddd7b0abfaa2faf70683c547309458dcd4"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/source-notices-manifest.json",
+      "status": "added",
+      "sha": "c96b753465a98ccedb0e272ce9cdf8485bc8c13b"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/package-README.md",
+      "status": "added",
+      "sha": "732dad4b2f2193d1776d1f56b846f6af436abfd1"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/scripts/assemble-local-runtime-corrected.py",
+      "status": "added",
+      "sha": "f3a114e48d9f9c3a76bf9e9b5b279317bbd16467"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/scripts/assemble-local-runtime.py",
+      "status": "added",
+      "sha": "84b4c3a847145182bfd2e571291ef5ec02075ca4"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/scripts/complete-source-notices.py",
+      "status": "added",
+      "sha": "da22f1abd8981595a9698dd18bee5ff62571d1dc"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/scripts/finalize-native-receiver.py",
+      "status": "added",
+      "sha": "49f040616e0f95306d0d1b633c7a376632a298b5"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/scripts/freeze-publication.py",
+      "status": "added",
+      "sha": "499d304783cad1b1fe5edb868d451787f3f5ce1a"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/scripts/hydrate-source-corrected.py",
+      "status": "added",
+      "sha": "942e31d8aa39427103a598b82dffd3ca66b568dc"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/scripts/hydrate-source.py",
+      "status": "added",
+      "sha": "269fb5f9b88277492acb3cb86012c62591355773"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/scripts/prepare-mcap.py",
+      "status": "added",
+      "sha": "85898a5609f420b9aabef50cc5f9e170e760d277"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/scripts/qualify-missing-dependency-replay.py",
+      "status": "added",
+      "sha": "877377fd6191b417d77cc442cf9ae8cef2d02212"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/scripts/qualify-native-portable.py",
+      "status": "added",
+      "sha": "db2dd32c8c2cef2121e1de4b4b2a7047a3a0b862"
+    },
+    {
+      "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/scripts/qualify-relocated-receiver.py",
+      "status": "added",
+      "sha": "81a9a121c0f76de20cc97e539b00138bb4e17d13"
+    }
+  ],
+  "materialization_policy": "Runtime source and ordinary design documents are materialized for receiving; unrelated docs/evidence and new docs/receiving packages are carried through the exact canonical Git tree without unnecessary runtime/package extraction.",
+  "independent_receiving": {
+    "contributor": "chatgpt-ac386303dce2/root",
+    "disposition": "Frozen comparison source accepted for publication; actual published-head Windows CI is separate.",
+    "capsule": "root/independent-receiving.json.gz",
+    "sha256": "19d2dac40035df242baa25c057e5fe2b21b2fdcead118aa8991d2238f4a1e704",
+    "members": 37,
+    "raw_bytes": 551509
+  }
+}
