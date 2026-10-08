@@ -1,0 +1,56 @@
+{
+  "repository": "Jacob-Met/CaptureSuite",
+  "pull_request": 68,
+  "reviewer": "estate_runtime",
+  "status": "bounded composition accepted; merge authority retained by root",
+  "tested": {
+    "feature": "cd1a2c4ba00f722e69c9e1bc992850bed8a5385d",
+    "parent": "70f34e3b982523b544a9370d2316a1b69d79bd70",
+    "checkout": "427766ed4beee603ea2e3eadcaceee9f7f76a538",
+    "tree": "53a055761cd91359819445f392efc71da8e9099a",
+    "leaves": 1004,
+    "feature_exact": 89,
+    "composed_docs": 2,
+    "unrelated_exact": 913,
+    "run_id": 37796872973,
+    "python": {
+      "job": 113378503488,
+      "result": "477 passed, 6 skipped, 2 warnings",
+      "decoded_log_bytes": 54108,
+      "sha256": "c261886ab5574f5270d6fc4fdc08f98b059d537050027fd1fb2c888800f78d9c"
+    },
+    "cmake": {
+      "job": 113378503111,
+      "result": "30 CTest passed; 6 native integration passed, 2 warnings",
+      "decoded_log_bytes": 312298,
+      "sha256": "02ea8b52c39f783a55eed68caf9b2b07e73aea9eb6c105b99346638837124282"
+    }
+  },
+  "static_extension": {
+    "parent": "58157fdc1b83a12bb4856ef14b0498cf524a1087",
+    "tree": "51c711928a28dc02e100fcdea44cd34512318113",
+    "parent_leaves": 922,
+    "expected_composed_tree": "e7754d3bf2e93ac0b17cb05833f8a744c2833a3b",
+    "expected_composed_leaves": 1007,
+    "feature_exact": 89,
+    "composed_docs": 2,
+    "unrelated_exact": 916,
+    "execution_claimed": false,
+    "assessment": "extension581/assessment.json"
+  },
+  "invariants": [
+    "All non-document feature leaves retain exact modes and Git blobs",
+    "Exact feature document subtraction reproduces the relevant parent bytes",
+    "All unrelated parent leaves remain exact",
+    "Optional external-evaluation dispatch leaves checkpoint all/features/plots closure unchanged"
+  ],
+  "limits": [
+    "Hosted results belong to427/70f, not581",
+    "Current expected composition is static until root binds actual merge",
+    "No native product rerun, CI rerun, PR mutation or production operation",
+    "Complete decoded CI text preserved, not artifact ZIP or raw transport custody"
+  ],
+  "original_evidence_commit": "af3dd8546b37e1385890b02f3efef3a8a5f4103f",
+  "custody_device": "0e3d582f-e25b-44b2-8418-9639fc4e4e33",
+  "custody_root": "/Users/me/capture-pr68-current-parent-review-18a24bf0c281-runtime"
+}

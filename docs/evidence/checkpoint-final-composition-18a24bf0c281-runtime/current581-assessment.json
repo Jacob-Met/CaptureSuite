@@ -1,0 +1,71 @@
+{
+  "all_features_plots_dispatch_and_window_resolution_unchanged": true,
+  "baseline_tested_main": "70f34e3b982523b544a9370d2316a1b69d79bd70",
+  "changed_paths": [
+    "docs/design/ANALYSIS.md",
+    "docs/design/research/PROGRESS.md",
+    "libs/python/capture_analysis/capture_analysis/eval/job.py",
+    "libs/python/capture_analysis/capture_analysis/eval/predictions.py",
+    "libs/python/capture_analysis/capture_analysis/jobs.py",
+    "schemas/eval/predictions.schema.json",
+    "tests/analysis/test_external_predictions.py",
+    "tools/run_analysis.py"
+  ],
+  "ci": {
+    "actual_checkout": "427766ed4beee603ea2e3eadcaceee9f7f76a538",
+    "actual_first_parent": "70f34e3b982523b544a9370d2316a1b69d79bd70",
+    "current581_execution_claimed": false,
+    "no_rerun": true
+  },
+  "cli_only_eval_argument_and_optional_extra_added": true,
+  "current_leaf_count": 922,
+  "current_main": "58157fdc1b83a12bb4856ef14b0498cf524a1087",
+  "current_tree": "51c711928a28dc02e100fcdea44cd34512318113",
+  "decision": "Accept bounded source closure on581; preserve70f hosted execution identity",
+  "default_eval_body_ast_exact": true,
+  "default_eval_tail_byte_exact": true,
+  "documentation": [
+    {
+      "current581_git_blob": "077afcf3943762479d98b39a9f45b72b414007e1",
+      "exit": 0,
+      "expected_composed_bytes": 23706,
+      "expected_composed_git_blob": "13fbc44f76c819edf38b028747fcdf8be6f39a16",
+      "expected_composed_sha256": "dd6ab9d789990961a4419306ff1b26b8cc8ab4720e33a447a0be78016dbd30ba",
+      "feature_git_blob": "5204c4e87998e4eeefe7c590e74d0d7cada166a9",
+      "method": "git merge-file -p feature old current581",
+      "nature": "local static composition; no new GitHub synthetic checkout was available in the observed PR response",
+      "old_git_blob": "91c80bb367fab6a55c52eafbd164ad6827eced48",
+      "path": "docs/design/ANALYSIS.md",
+      "subtract_exact_feature_insertion_reproduces581": true
+    },
+    {
+      "current581_git_blob": "355e8a311c4f7c44fda8e5447258a797cc5a58ee",
+      "exit": 0,
+      "expected_composed_bytes": 51831,
+      "expected_composed_git_blob": "a6fb020a5276a05105ffd2305d06a16621e6e070",
+      "expected_composed_sha256": "3cb855d3019410a3b74fca9d50b5b5489a4aa2917a764e27df6dc870fb5ac1d6",
+      "feature_git_blob": "8d5b994454969421aa7d36f63f51889ff8a65601",
+      "method": "git merge-file -p feature old current581",
+      "nature": "local static composition; no new GitHub synthetic checkout was available in the observed PR response",
+      "old_git_blob": "36b05b80604935e3c70d1f076be5150e8639c164",
+      "path": "docs/design/research/PROGRESS.md",
+      "subtract_exact_feature_insertion_reproduces581": true
+    }
+  ],
+  "expected_composed_leaves": 1007,
+  "expected_composed_tree": "e7754d3bf2e93ac0b17cb05833f8a744c2833a3b",
+  "external_import_guard": "prediction_path is not None inside run_eval_job",
+  "jobs_only_one_eval_argument_added": true,
+  "limits": [
+    "No external-prediction numerical/scientific requalification or native suite run.",
+    "Expected581 composition is calculated locally; root must bind the eventual actual merge tree.",
+    "No production source, PR head, or live app changed."
+  ],
+  "observed_pr": {
+    "base": "d43bdea867d6198a707a5f55e29216c76054517e",
+    "head": "cd1a2c4ba00f722e69c9e1bc992850bed8a5385d",
+    "merge_commit": "427766ed4beee603ea2e3eadcaceee9f7f76a538",
+    "mergeable": null
+  },
+  "source_manifest": "source-manifest.json"
+}

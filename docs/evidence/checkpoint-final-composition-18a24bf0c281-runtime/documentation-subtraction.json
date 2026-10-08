@@ -1,0 +1,30 @@
+[
+  {
+    "feature_and_synthetic_insertion_occurrences": 1,
+    "feature_git_blob": "5204c4e87998e4eeefe7c590e74d0d7cada166a9",
+    "feature_without_exact_insertion_equals_old": true,
+    "inserted_bytes": 3069,
+    "inserted_lines": 55,
+    "insertion_path": "proof/ANALYSIS.md.feature-insertion.bin",
+    "insertion_sha256": "1dea50db0f81ad9ab6b82b6d4c733d9bff6d748155735523b74f2e0f5afe8bee",
+    "main_git_blob": "eb7581d18dd914c783324964f59adf7a94747ccd",
+    "old_git_blob": "91c80bb367fab6a55c52eafbd164ad6827eced48",
+    "path": "docs/design/ANALYSIS.md",
+    "synthetic_git_blob": "62d9b9bb53c60e6d6bea275633693f2f9d566661",
+    "synthetic_without_exact_insertion_equals_main": true
+  },
+  {
+    "feature_and_synthetic_insertion_occurrences": 1,
+    "feature_git_blob": "8d5b994454969421aa7d36f63f51889ff8a65601",
+    "feature_without_exact_insertion_equals_old": true,
+    "inserted_bytes": 2118,
+    "inserted_lines": 33,
+    "insertion_path": "proof/PROGRESS.md.feature-insertion.bin",
+    "insertion_sha256": "bcd1d4c8887bd1566d327cc126f4c5e65f0c82055382a88a575d61983467945c",
+    "main_git_blob": "80a94151bf978fb077bc323dfdf223a91dbe3254",
+    "old_git_blob": "36b05b80604935e3c70d1f076be5150e8639c164",
+    "path": "docs/design/research/PROGRESS.md",
+    "synthetic_git_blob": "e4e257fd05f6134b3897b5f2e570f58ee3dfe1f4",
+    "synthetic_without_exact_insertion_equals_main": true
+  }
+]

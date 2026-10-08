@@ -1,0 +1,287 @@
+{
+  "actual_checkout": "427766ed4beee603ea2e3eadcaceee9f7f76a538",
+  "actual_checkout_parents": [
+    "70f34e3b982523b544a9370d2316a1b69d79bd70",
+    "cd1a2c4ba00f722e69c9e1bc992850bed8a5385d"
+  ],
+  "actual_checkout_tree": "53a055761cd91359819445f392efc71da8e9099a",
+  "jobs": [
+    {
+      "bom_preserved": true,
+      "bytes": 54108,
+      "checkout_lines": [
+        "2026-10-08T14:58:36.0112409Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +427766ed4beee603ea2e3eadcaceee9f7f76a538:refs/remotes/pull/68/merge",
+        "2026-10-08T14:58:37.7933400Z  * [new ref]         427766ed4beee603ea2e3eadcaceee9f7f76a538 -> pull/68/merge",
+        "2026-10-08T14:58:38.2358349Z 427766ed4beee603ea2e3eadcaceee9f7f76a538",
+        "2026-10-08T15:05:20.2811137Z   \"source_commit\": \"427766ed4beee603ea2e3eadcaceee9f7f76a538\",",
+        "2026-10-08T15:05:20.2813596Z     \"GITHUB_SHA\": \"427766ed4beee603ea2e3eadcaceee9f7f76a538\","
+      ],
+      "commands": [
+        "python tools/run_ci_tests.py"
+      ],
+      "conclusion": "success",
+      "crlf_sequences": 563,
+      "decoded_unicode_characters": 54106,
+      "job_id": 113378503488,
+      "name": "python",
+      "path": "ci/job-113378503488.decoded.log",
+      "run_id": 37796872973,
+      "sha256": "c261886ab5574f5270d6fc4fdc08f98b059d537050027fd1fb2c888800f78d9c",
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/setup-python@v5",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Install Python deps",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Dependency consistency",
+          "number": 5,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "CI contract check",
+          "number": 6,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Generate Python protobuf bindings",
+          "number": 7,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Proto drift check",
+          "number": 8,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Generate session schemas",
+          "number": 9,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Schema drift check",
+          "number": 10,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Ruff",
+          "number": 11,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "License check",
+          "number": 12,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Pytest",
+          "number": 13,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Preserve Python test evidence",
+          "number": 14,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@v5",
+          "number": 27,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 28,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 29,
+          "status": "completed"
+        }
+      ],
+      "summary_lines": [
+        "2026-10-08T15:05:20.2802136Z 477 passed, 6 skipped, 2 warnings in 288.89s (0:04:48)"
+      ],
+      "url": "https://github.com/Jacob-Met/CaptureSuite/actions/runs/37796872973/job/113378503488"
+    },
+    {
+      "bom_preserved": true,
+      "bytes": 312298,
+      "checkout_lines": [
+        "2026-10-08T14:58:38.1789767Z [command]\"C:\\Program Files\\Git\\bin\\git.exe\" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +427766ed4beee603ea2e3eadcaceee9f7f76a538:refs/remotes/pull/68/merge",
+        "2026-10-08T14:58:40.3167209Z  * [new ref]         427766ed4beee603ea2e3eadcaceee9f7f76a538 -> pull/68/merge",
+        "2026-10-08T14:58:40.7920934Z 427766ed4beee603ea2e3eadcaceee9f7f76a538",
+        "2026-10-08T14:59:24.3611088Z 427766ed4beee603ea2e3eadcaceee9f7f76a538",
+        "2026-10-08T14:59:24.3652817Z Checking whether vcpkg's repository is updated to commit id '427766ed4beee603ea2e3eadcaceee9f7f76a538' ...",
+        "2026-10-08T14:59:24.3655089Z Current commit id of vcpkg: '427766ed4beee603ea2e3eadcaceee9f7f76a538'.",
+        "2026-10-08T15:20:05.0996563Z   \"source_commit\": \"427766ed4beee603ea2e3eadcaceee9f7f76a538\",",
+        "2026-10-08T15:20:05.0998190Z     \"GITHUB_SHA\": \"427766ed4beee603ea2e3eadcaceee9f7f76a538\","
+      ],
+      "commands": [
+        "python tools/check_cpp_warning_boundary.py",
+        "python tools/check_ci_contract.py --vcpkg-root vcpkg",
+        "cmake --preset windows-release -DCAPTURE_WERROR=ON",
+        "cmake --build build/windows-release --target capture_daemon capture_core_tests session_doctor -j 4",
+        "ctest --test-dir build/windows-release --output-on-failure --no-tests=error --output-junit ctest-results.xml -C Release",
+        "python tools/run_native_ci_tests.py"
+      ],
+      "conclusion": "success",
+      "crlf_sequences": 2070,
+      "decoded_unicode_characters": 312278,
+      "job_id": 113378503111,
+      "name": "cmake",
+      "path": "ci/job-113378503111.decoded.log",
+      "run_id": 37796872973,
+      "sha256": "02ea8b52c39f783a55eed68caf9b2b07e73aea9eb6c105b99346638837124282",
+      "status": "completed",
+      "steps": [
+        {
+          "conclusion": "success",
+          "name": "Set up job",
+          "number": 1,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/checkout@v4",
+          "number": 2,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Setup MSVC",
+          "number": 3,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Qualify application warning boundary",
+          "number": 4,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Setup vcpkg",
+          "number": 5,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Registry contract check",
+          "number": 6,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Configure",
+          "number": 7,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Build daemon + tests",
+          "number": 8,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "CTest",
+          "number": 9,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Run actions/setup-python@v5",
+          "number": 10,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Install native integration deps",
+          "number": 11,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Native daemon + recovery integration",
+          "number": 12,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Preserve C++ diagnostic evidence",
+          "number": 13,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/setup-python@v5",
+          "number": 25,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Post Run actions/checkout@v4",
+          "number": 26,
+          "status": "completed"
+        },
+        {
+          "conclusion": "success",
+          "name": "Complete job",
+          "number": 27,
+          "status": "completed"
+        }
+      ],
+      "summary_lines": [
+        "2026-10-08T15:19:35.9948342Z 100% tests passed, 0 tests failed out of 30",
+        "2026-10-08T15:20:05.0978405Z 6 passed, 2 warnings in 4.01s"
+      ],
+      "url": "https://github.com/Jacob-Met/CaptureSuite/actions/runs/37796872973/job/113378503111"
+    }
+  ],
+  "no_native_test_execution": true,
+  "no_rerun_requested": true,
+  "pr_metadata_observation": {
+    "base_sha": "d43bdea867d6198a707a5f55e29216c76054517e",
+    "head_sha": "cd1a2c4ba00f722e69c9e1bc992850bed8a5385d",
+    "merge_commit_sha": "427766ed4beee603ea2e3eadcaceee9f7f76a538",
+    "mergeable": true,
+    "mergeable_state": "clean",
+    "note": "The observed PR base.sha remains d43; qualification uses the independently retrieved actual synthetic commit parents70f+cd1 and logged checkout427."
+  },
+  "run_id": 37796872973,
+  "scope": "Complete decoded job text supplied by GitHub connector, re-encoded as UTF-8 without newline normalization; not raw transport/ZIP artifact custody."
+}

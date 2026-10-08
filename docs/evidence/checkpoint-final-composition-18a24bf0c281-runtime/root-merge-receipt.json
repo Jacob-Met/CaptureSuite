@@ -1,0 +1,67 @@
+{
+  "schema": "capture-checkpoint-postmerge-receipt/1",
+  "merge": "e91ab9d1e93c002c1948131168edcfe1322f1b2b",
+  "tree": "e7754d3bf2e93ac0b17cb05833f8a744c2833a3b",
+  "parents": [
+    "58157fdc1b83a12bb4856ef14b0498cf524a1087",
+    "cd1a2c4ba00f722e69c9e1bc992850bed8a5385d"
+  ],
+  "qualified": 91,
+  "unrelated_preserved": 916,
+  "total": 1007,
+  "issue_closed": true,
+  "tested_checkout": "427766ed4beee603ea2e3eadcaceee9f7f76a538",
+  "tested_parent": "70f34e3b982523b544a9370d2316a1b69d79bd70",
+  "later_parent_review": "Static581 extension, no rerun claim",
+  "verified_at": "2026-10-08T16:09:59.646Z",
+  "owner": "estate-18a24bf0c281",
+  "pull_request": 68,
+  "issue": 54,
+  "source_head": "cd1a2c4ba00f722e69c9e1bc992850bed8a5385d",
+  "ci": {
+    "run": 37796872973,
+    "conclusion": "success",
+    "python": {
+      "job": 113378503488,
+      "passed": 477,
+      "skipped": 6,
+      "warnings": 2,
+      "decoded_log_bytes": 54108,
+      "decoded_log_sha256": "c261886ab5574f5270d6fc4fdc08f98b059d537050027fd1fb2c888800f78d9c"
+    },
+    "cmake": {
+      "job": 113378503111,
+      "ctest_passed": 30,
+      "ctest_total": 30,
+      "native_integration_passed": 6,
+      "warnings": 2,
+      "decoded_log_bytes": 312298,
+      "decoded_log_sha256": "02ea8b52c39f783a55eed68caf9b2b07e73aea9eb6c105b99346638837124282"
+    }
+  },
+  "frozen_review": {
+    "native_commit": "87222bcfcb7975722839176a72e1049d87ebf195",
+    "original_evidence_commit": "af3dd8546b37e1385890b02f3efef3a8a5f4103f",
+    "packet_bytes": 502967,
+    "packet_sha256": "0fab37452e50918011d9cdb80fc2be19fef3763128b8de96652dd623bf116b62",
+    "paths": 9,
+    "root_packet_verification": "All decoded bytes/SHA256/Git blob/modes matched before custody publication.",
+    "rewritten_after_merge": false
+  },
+  "scope": {
+    "qualified_feature_paths": 91,
+    "exact_feature_paths": 89,
+    "composed_documents": 2,
+    "unrelated_actual_parent_leaves": 916,
+    "actual_merge_leaves": 1007,
+    "artifact_branch_additions": 10,
+    "artifact_branch_expected_leaves": 1017,
+    "production_changes_in_artifact_branch": 0
+  },
+  "limits": [
+    "Windows execution is exact427/70f; the581 advance is separately bounded static review.",
+    "Original failed Windows run and signed-URL ZIP-transfer failure remain in merged source evidence.",
+    "Native reviewed documents, logs and source inputs were not rewritten or rerun after actual merge.",
+    "This record changes no deployment, installed desktop, participant data, hardware acquisition or scientific result."
+  ]
+}
