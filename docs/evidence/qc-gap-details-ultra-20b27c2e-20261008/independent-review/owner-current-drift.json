@@ -1,0 +1,17 @@
+[
+  {
+    "path": "libs/python/capture_analysis/capture_analysis/qc.py",
+    "owner_blob": "530b86af1247599c127e2d0c3fa5e4d7d12169f6",
+    "current_blob": "7221b26a129b7915a42fed900908a04eae213454"
+  },
+  {
+    "path": "libs/python/capture_analysis/capture_analysis/report_html.py",
+    "owner_blob": "bb8032024cfce30c6fe9a2bd2c13b0d2cbc2d102",
+    "current_blob": "a0bb34d71fe03a4426ef0479619fa8d22a7bc8fa"
+  },
+  {
+    "path": "libs/python/capture_protocol/capture_protocol/framing.py",
+    "owner_blob": "40c9d03573a5f6d7c2ab3191a5af44e24ec1783e",
+    "current_blob": "9dd5021b815b31ab02eaaa814210525ebb543862"
+  }
+]

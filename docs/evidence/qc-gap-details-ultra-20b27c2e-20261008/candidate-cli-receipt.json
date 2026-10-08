@@ -1,0 +1,408 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "versions": {
+    "pytest": "9.1.1",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "pandas": "2.2.3",
+    "matplotlib": "3.10.8",
+    "PyYAML": "6.0.3",
+    "jsonschema": "4.26.0",
+    "protobuf": null,
+    "mcap": null,
+    "pyarrow": null,
+    "PySide6": null
+  },
+  "cases": {
+    "no_gap": {
+      "command": [
+        "/workspace/scratch/20b27c2ea29e/workers/estate-production/venv/bin/python",
+        "/workspace/scratch/20b27c2ea29e/workers/estate-production/capturesuite/tools/run_analysis.py",
+        "qc",
+        "/dev/shm/ultra-20b27c2e-estate-production-capture-qc/candidate-witness-no_gap.mmsession",
+        "--overwrite-job-id",
+        "gap-review",
+        "--strict-warnings"
+      ],
+      "cwd": "/workspace/scratch/20b27c2ea29e/workers/estate-production/capturesuite",
+      "exit_code": 0,
+      "stdout": "job_id=gap-review\nstatus=completed\ndir=/dev/shm/ultra-20b27c2e-estate-production-capture-qc/candidate-witness-no_gap.mmsession/processing/jobs/gap-review\nstreams=2 gaps_open=0 gaps_closed=0 warnings=0\n",
+      "stderr": "",
+      "qc": {
+        "annotationCount": 0,
+        "checkpointCount": 0,
+        "closedGapCount": 0,
+        "durationNs": 10000000000,
+        "gaps": [],
+        "integrityFileCount": 1,
+        "manifestSha256": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380",
+        "openGapCount": 0,
+        "packagePath": "/dev/shm/ultra-20b27c2e-estate-production-capture-qc/candidate-witness-no_gap.mmsession",
+        "packageState": "finalized",
+        "recoveryReports": [],
+        "schemaId": "capture.analysis_qc/2",
+        "sessionId": "mini-analysis-fixture",
+        "sourceCount": 2,
+        "streamCount": 2,
+        "streams": [
+          {
+            "dataSchemaId": "emg.batch/1",
+            "mcapSegments": 1,
+            "mkvSegments": 0,
+            "modality": "emg",
+            "nominalRateHz": 2000.0,
+            "rateOk": true,
+            "sourceId": "sim.emg.main",
+            "streamId": "sim.emg.main.batch",
+            "timingSegments": 0,
+            "units": "mV",
+            "warnings": []
+          },
+          {
+            "dataSchemaId": "imu.frame/1",
+            "mcapSegments": 1,
+            "mkvSegments": 0,
+            "modality": "imu",
+            "nominalRateHz": 60.0,
+            "rateOk": true,
+            "sourceId": "sim.imu.upper",
+            "streamId": "sim.imu.upper.frames",
+            "timingSegments": 0,
+            "units": "a.u.",
+            "warnings": []
+          }
+        ],
+        "syncAnchorCount": 0,
+        "trafficLights": {
+          "sim.emg.main": "ok",
+          "sim.imu.upper": "ok"
+        },
+        "warnings": []
+      },
+      "job_manifest": {
+        "analysisGrids": [],
+        "captureAnalysisVersion": "0.1.0",
+        "createdUtc": "2026-10-08T10:01:29Z",
+        "errors": [],
+        "evalWindowCount": null,
+        "featureTables": [],
+        "gapPolicy": "mask",
+        "gapSummary": {
+          "closed": 0,
+          "maskedNs": 0,
+          "open": 0,
+          "validFraction": null
+        },
+        "jobId": "gap-review",
+        "kinematicsRows": null,
+        "manifestSha256": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380",
+        "mlBundleWindowCount": null,
+        "modalities": [
+          "emg",
+          "imu"
+        ],
+        "outputs": [
+          {
+            "bytes": 1317,
+            "kind": "qc_json",
+            "relativePath": "reports/qc.json",
+            "sha256": "5e80cf267abbc381e0f0d9034caeb533007f7dfc24ad5ce2e9a7c0f82f817075"
+          },
+          {
+            "bytes": 2233,
+            "kind": "qc_html",
+            "relativePath": "reports/qc.html",
+            "sha256": "bbde54478ac518ae7a36a5990ab65b0b407947fe1d69225f4f6b60d93e52f9ee"
+          },
+          {
+            "bytes": 247,
+            "kind": "params",
+            "relativePath": "params.json",
+            "sha256": "b3761b47e3c880be918209d57035e1f052bb5919ab0e4e59750b65f852210e3b"
+          },
+          {
+            "bytes": 2208,
+            "kind": "manifest",
+            "relativePath": "job_manifest.json",
+            "sha256": "3c120f40ad3380327bf14526df65837c160c06288b210f9979a499e6bfee87dd"
+          }
+        ],
+        "packagePath": "/dev/shm/ultra-20b27c2e-estate-production-capture-qc/candidate-witness-no_gap.mmsession",
+        "packageState": "finalized",
+        "paramsDigest": "1231ec06a011827cb639199beed3f8a5154dd7a0b27607587c350b22bf43808c",
+        "pluginIds": [
+          "emg.envelope.v1",
+          "imu.kinematics.v1",
+          "radar.rd_energy.v1",
+          "radar_doppler.mag.v1",
+          "video.timing_qc.v1",
+          "numeric.basic.v1",
+          "test.dummy.feature.v1"
+        ],
+        "pluginManifestVersion": "1.0.0",
+        "poseJobId": null,
+        "poseModelId": null,
+        "poseTables": [],
+        "schemaId": "capture.analysis_job/1",
+        "sessionId": "mini-analysis-fixture",
+        "sourcesSelected": [
+          "sim.emg.main",
+          "sim.imu.upper"
+        ],
+        "status": "completed",
+        "syncAnchorsApplied": {
+          "anchors": [],
+          "applied": false
+        },
+        "timeRange": {
+          "checkpointIds": [],
+          "endSessionNs": 10000000000,
+          "mode": "full",
+          "startSessionNs": 0
+        },
+        "tooling": {
+          "captureAnalysis": "0.1.0",
+          "matplotlib": "3.10.8",
+          "numpy": "2.3.5",
+          "pandas": "2.2.3",
+          "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+          "python": "3.12.14",
+          "scipy": "1.17.0"
+        },
+        "warnings": []
+      },
+      "raw_before": {
+        "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "events/checkpoints.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "integrity.json": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556",
+        "manifest.json": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380",
+        "sources/sim.emg.main/health/gaps.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sources/sim.emg.main/source.json": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10",
+        "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649",
+        "sources/sim.emg.main/streams/sim.emg.main.batch/stream.json": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1",
+        "sources/sim.imu.upper/source.json": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8",
+        "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649",
+        "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+      },
+      "raw_after": {
+        "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "events/checkpoints.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "integrity.json": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556",
+        "manifest.json": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380",
+        "sources/sim.emg.main/health/gaps.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sources/sim.emg.main/source.json": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10",
+        "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649",
+        "sources/sim.emg.main/streams/sim.emg.main.batch/stream.json": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1",
+        "sources/sim.imu.upper/source.json": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8",
+        "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649",
+        "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+      },
+      "same_input_bytes_as_baseline": true
+    },
+    "closed_gap": {
+      "command": [
+        "/workspace/scratch/20b27c2ea29e/workers/estate-production/venv/bin/python",
+        "/workspace/scratch/20b27c2ea29e/workers/estate-production/capturesuite/tools/run_analysis.py",
+        "qc",
+        "/dev/shm/ultra-20b27c2e-estate-production-capture-qc/candidate-witness-closed_gap.mmsession",
+        "--overwrite-job-id",
+        "gap-review",
+        "--strict-warnings"
+      ],
+      "cwd": "/workspace/scratch/20b27c2ea29e/workers/estate-production/capturesuite",
+      "exit_code": 2,
+      "stdout": "job_id=gap-review\nstatus=completed_with_warnings\ndir=/dev/shm/ultra-20b27c2e-estate-production-capture-qc/candidate-witness-closed_gap.mmsession/processing/jobs/gap-review\nstreams=2 gaps_open=0 gaps_closed=1 warnings=1\n",
+      "stderr": "",
+      "qc": {
+        "annotationCount": 0,
+        "checkpointCount": 0,
+        "closedGapCount": 1,
+        "durationNs": 10000000000,
+        "gaps": [
+          {
+            "cause": "DISCONNECT",
+            "closed": true,
+            "durationNs": "2500000000",
+            "durationStatus": "known",
+            "endSessionTimeNs": "4500000000",
+            "estimatedLostCount": "5000",
+            "sourceId": "sim.emg.main",
+            "startSessionTimeNs": "2000000000",
+            "streamId": "sim.emg.main.batch"
+          }
+        ],
+        "integrityFileCount": 1,
+        "manifestSha256": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380",
+        "openGapCount": 0,
+        "packagePath": "/dev/shm/ultra-20b27c2e-estate-production-capture-qc/candidate-witness-closed_gap.mmsession",
+        "packageState": "finalized",
+        "recoveryReports": [],
+        "schemaId": "capture.analysis_qc/2",
+        "sessionId": "mini-analysis-fixture",
+        "sourceCount": 2,
+        "streamCount": 2,
+        "streams": [
+          {
+            "dataSchemaId": "emg.batch/1",
+            "mcapSegments": 1,
+            "mkvSegments": 0,
+            "modality": "emg",
+            "nominalRateHz": 2000.0,
+            "rateOk": true,
+            "sourceId": "sim.emg.main",
+            "streamId": "sim.emg.main.batch",
+            "timingSegments": 0,
+            "units": "mV",
+            "warnings": []
+          },
+          {
+            "dataSchemaId": "imu.frame/1",
+            "mcapSegments": 1,
+            "mkvSegments": 0,
+            "modality": "imu",
+            "nominalRateHz": 60.0,
+            "rateOk": true,
+            "sourceId": "sim.imu.upper",
+            "streamId": "sim.imu.upper.frames",
+            "timingSegments": 0,
+            "units": "a.u.",
+            "warnings": []
+          }
+        ],
+        "syncAnchorCount": 0,
+        "trafficLights": {
+          "sim.emg.main": "warn",
+          "sim.imu.upper": "ok"
+        },
+        "warnings": [
+          "sim.emg.main: 1 recorded gap(s); see gap details"
+        ]
+      },
+      "job_manifest": {
+        "analysisGrids": [],
+        "captureAnalysisVersion": "0.1.0",
+        "createdUtc": "2026-10-08T10:01:30Z",
+        "errors": [],
+        "evalWindowCount": null,
+        "featureTables": [],
+        "gapPolicy": "mask",
+        "gapSummary": {
+          "closed": 1,
+          "maskedNs": 0,
+          "open": 0,
+          "validFraction": null
+        },
+        "jobId": "gap-review",
+        "kinematicsRows": null,
+        "manifestSha256": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380",
+        "mlBundleWindowCount": null,
+        "modalities": [
+          "emg",
+          "imu"
+        ],
+        "outputs": [
+          {
+            "bytes": 1705,
+            "kind": "qc_json",
+            "relativePath": "reports/qc.json",
+            "sha256": "14b11349086647c87995fcffd0ea25d50386b78eaab7156a23aed41b9e04cec7"
+          },
+          {
+            "bytes": 2395,
+            "kind": "qc_html",
+            "relativePath": "reports/qc.html",
+            "sha256": "be21f3662924608d4106c10b8bec7c100bb9c64ae42778528e0790f15c49c003"
+          },
+          {
+            "bytes": 247,
+            "kind": "params",
+            "relativePath": "params.json",
+            "sha256": "b3761b47e3c880be918209d57035e1f052bb5919ab0e4e59750b65f852210e3b"
+          },
+          {
+            "bytes": 2284,
+            "kind": "manifest",
+            "relativePath": "job_manifest.json",
+            "sha256": "72eded0beb6346f804833bffa88928fa9e72e49ce2bbf21ef57729f555360e16"
+          }
+        ],
+        "packagePath": "/dev/shm/ultra-20b27c2e-estate-production-capture-qc/candidate-witness-closed_gap.mmsession",
+        "packageState": "finalized",
+        "paramsDigest": "1231ec06a011827cb639199beed3f8a5154dd7a0b27607587c350b22bf43808c",
+        "pluginIds": [
+          "emg.envelope.v1",
+          "imu.kinematics.v1",
+          "radar.rd_energy.v1",
+          "radar_doppler.mag.v1",
+          "video.timing_qc.v1",
+          "numeric.basic.v1",
+          "test.dummy.feature.v1"
+        ],
+        "pluginManifestVersion": "1.0.0",
+        "poseJobId": null,
+        "poseModelId": null,
+        "poseTables": [],
+        "schemaId": "capture.analysis_job/1",
+        "sessionId": "mini-analysis-fixture",
+        "sourcesSelected": [
+          "sim.emg.main",
+          "sim.imu.upper"
+        ],
+        "status": "completed_with_warnings",
+        "syncAnchorsApplied": {
+          "anchors": [],
+          "applied": false
+        },
+        "timeRange": {
+          "checkpointIds": [],
+          "endSessionNs": 10000000000,
+          "mode": "full",
+          "startSessionNs": 0
+        },
+        "tooling": {
+          "captureAnalysis": "0.1.0",
+          "matplotlib": "3.10.8",
+          "numpy": "2.3.5",
+          "pandas": "2.2.3",
+          "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+          "python": "3.12.14",
+          "scipy": "1.17.0"
+        },
+        "warnings": [
+          "sim.emg.main: 1 recorded gap(s); see gap details"
+        ]
+      },
+      "raw_before": {
+        "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "events/checkpoints.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "integrity.json": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556",
+        "manifest.json": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380",
+        "sources/sim.emg.main/health/gaps.jsonl": "96e9f2eea59e619e125234b63b6a3fe58a0473eeca47574ba59c73bf1974ec68",
+        "sources/sim.emg.main/source.json": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10",
+        "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649",
+        "sources/sim.emg.main/streams/sim.emg.main.batch/stream.json": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1",
+        "sources/sim.imu.upper/source.json": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8",
+        "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649",
+        "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+      },
+      "raw_after": {
+        "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "events/checkpoints.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "integrity.json": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556",
+        "manifest.json": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380",
+        "sources/sim.emg.main/health/gaps.jsonl": "96e9f2eea59e619e125234b63b6a3fe58a0473eeca47574ba59c73bf1974ec68",
+        "sources/sim.emg.main/source.json": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10",
+        "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649",
+        "sources/sim.emg.main/streams/sim.emg.main.batch/stream.json": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1",
+        "sources/sim.imu.upper/source.json": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8",
+        "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649",
+        "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+      },
+      "same_input_bytes_as_baseline": true
+    }
+  }
+}

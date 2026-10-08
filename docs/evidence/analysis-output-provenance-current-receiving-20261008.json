@@ -181,5 +181,65 @@
     "log_sha256": "616a94af15425b0b5f8b7ab415af29ebbe70348305529e92247cd9c678f0d069"
   },
   "supported_windows_gate": "Pending for the new exact published head",
-  "native_evidence_directory": "/Users/me/Developer/capturesuite-analysis-current-receiving-20261008/out/provenance-receiving-evidence"
+  "native_evidence_directory": "/Users/me/Developer/capturesuite-analysis-current-receiving-20261008/out/provenance-receiving-evidence",
+  "subsequent_main_receiving": {
+    "main": "e43da3b855475c8aacf815c201fa03eddaeec0f1",
+    "received_owners": [
+      "PR50 QC gap collector/HTML renderer",
+      "PR42 portable fixture isolation"
+    ],
+    "method": "Ordinary merge; resolve only analysis/progress documentation by retaining both additions. Reviewed runtime and seven-test bytes unchanged.",
+    "native_receiving": {
+      "schema": "capture.provenance-main-e43-receiving/1",
+      "current_main": "e43da3b855475c8aacf815c201fa03eddaeec0f1",
+      "previous_published_head": "8cba7e9e00a81e714d9faf24fccbf66c3b8156a3",
+      "reason": "Receive newly landed QC collector/HTML renderer dependency and portable fixture main; finalization and revised seven receivers unchanged",
+      "command": [
+        "/Users/me/Developer/capturesuite-analysis-provenance-20261008/.venv-analysis/bin/python",
+        "-m",
+        "pytest",
+        "tests/analysis/test_job_output_provenance.py",
+        "tests/analysis/test_job_replacement.py",
+        "tests/analysis/test_job_failure_cli.py",
+        "tests/analysis/test_phase_a_qc.py",
+        "tests/analysis/test_qc_gap_details.py",
+        "-q",
+        "--basetemp",
+        "/Users/me/Developer/capturesuite-analysis-current-receiving-20261008/out/provenance-receiving-evidence/main-e43-focused-fixtures",
+        "--junitxml",
+        "/Users/me/Developer/capturesuite-analysis-current-receiving-20261008/out/provenance-receiving-evidence/main-e43-focused.xml"
+      ],
+      "exit_code": 0,
+      "tests": 49,
+      "failures": [],
+      "skips": 0,
+      "source_before": {
+        "libs/python/capture_analysis/capture_analysis/jobs.py": "004db43bc2fa362e657de2c280c39644056d970551330488524bca5019452bc6",
+        "libs/python/capture_analysis/capture_analysis/qc.py": "f24e0593a3723311d41054aef40b56c4bb46d4f3ba5ef4b01afcae3a6cc4440a",
+        "libs/python/capture_analysis/capture_analysis/report_html.py": "f2c89c7faf6e4edc265540140272396b4195eb5aed9edf05c4912aac74286f03",
+        "tests/analysis/test_job_output_provenance.py": "9f041284a595312cd7d75fc36a959d16205bb4cebf6f90bf0f098ef574bf8d0f",
+        "tests/analysis/test_job_replacement.py": "e4480546d7e0653d3ad40cf52ad3f1489499c3810c9814f84145e1000b2b9ebd",
+        "tests/analysis/test_job_failure_cli.py": "77f62b52bc01b6325c2349f6482d407465869587ecc3380c01303e0398b226f6",
+        "tests/analysis/test_phase_a_qc.py": "0be539a3d593e1cf144f4b7f871af90082feaa19a4ac8f234f53a2b232c8cc07",
+        "tests/analysis/test_qc_gap_details.py": "9c6942a27fd37c01262d388e0834bdd49154a430b20cdf294791d6007e98f690"
+      },
+      "source_after": {
+        "libs/python/capture_analysis/capture_analysis/jobs.py": "004db43bc2fa362e657de2c280c39644056d970551330488524bca5019452bc6",
+        "libs/python/capture_analysis/capture_analysis/qc.py": "f24e0593a3723311d41054aef40b56c4bb46d4f3ba5ef4b01afcae3a6cc4440a",
+        "libs/python/capture_analysis/capture_analysis/report_html.py": "f2c89c7faf6e4edc265540140272396b4195eb5aed9edf05c4912aac74286f03",
+        "tests/analysis/test_job_output_provenance.py": "9f041284a595312cd7d75fc36a959d16205bb4cebf6f90bf0f098ef574bf8d0f",
+        "tests/analysis/test_job_replacement.py": "e4480546d7e0653d3ad40cf52ad3f1489499c3810c9814f84145e1000b2b9ebd",
+        "tests/analysis/test_job_failure_cli.py": "77f62b52bc01b6325c2349f6482d407465869587ecc3380c01303e0398b226f6",
+        "tests/analysis/test_phase_a_qc.py": "0be539a3d593e1cf144f4b7f871af90082feaa19a4ac8f234f53a2b232c8cc07",
+        "tests/analysis/test_qc_gap_details.py": "9c6942a27fd37c01262d388e0834bdd49154a430b20cdf294791d6007e98f690"
+      },
+      "log_sha256": "4a232a76e67836d7d4c1e6cbbfa2eb42e91f15da61cb882e67a7e20576b23985",
+      "junit_sha256": "9901f574a31a5e5b396ecfa796d2263ce2a177b7e0ee237ed302e1303ff5d5b8",
+      "runner_sha256": "48920cc7e7e5e6e483d5df67847b6c4c94177d53116848b041e373acc2f05f98"
+    },
+    "native_receipt_sha256": "dcd23f59634e2809e80cd62ec54bb45a5bc688ddd04dd77df93b616ab84e1466",
+    "initial_execution_block": "The first command did not start because zsh could not create a temporary here-document on a full filesystem. No test outcome is attributed to that invocation.",
+    "capacity_recovery": "Removed only two owned reconstructible staged-source placements after completed SPDX checks; all native evidence and environments retained.",
+    "windows_gate": "New exact published head still requires supported Windows CI"
+  }
 }

@@ -4,12 +4,11 @@
 from __future__ import annotations
 
 import hashlib
-from collections import Counter
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Any
 
-from capture_session.package_reader import GapSummary, ReviewSummary, load_review_summary
+from capture_session.package_reader import ReviewSummary, load_review_summary
 
 from capture_analysis.discover import discover_streams
 from capture_analysis.types import StreamRef
@@ -45,54 +44,6 @@ class StreamQc:
         }
 
 
-@dataclass(frozen=True)
-class GapQc:
-    source_id: str
-    stream_id: str
-    cause: str
-    start_session_time_ns: int
-    end_session_time_ns: int | None
-    closed: bool
-    estimated_lost_count: int
-
-    def to_dict(self) -> dict[str, Any]:
-        end = self.end_session_time_ns
-        duration: int | None = None
-        if end is not None and end < self.start_session_time_ns:
-            status = "end_before_start"
-        elif not self.closed:
-            status = "open"
-        elif end is None:
-            status = "missing_end"
-        else:
-            status = "known"
-            duration = end - self.start_session_time_ns
-        # Decimal strings retain the native integers in JSON/JavaScript consumers.
-        return {
-            "sourceId": self.source_id,
-            "streamId": self.stream_id,
-            "cause": self.cause,
-            "startSessionTimeNs": str(self.start_session_time_ns),
-            "endSessionTimeNs": str(end) if end is not None else None,
-            "closed": self.closed,
-            "estimatedLostCount": str(self.estimated_lost_count),
-            "durationNs": str(duration) if duration is not None else None,
-            "durationStatus": status,
-        }
-
-
-def _gap_qc(gap: GapSummary) -> GapQc:
-    return GapQc(
-        source_id=gap.source_id,
-        stream_id=gap.stream_id,
-        cause=gap.cause,
-        start_session_time_ns=gap.start_session_time_ns,
-        end_session_time_ns=gap.end_session_time_ns,
-        closed=gap.closed,
-        estimated_lost_count=gap.estimated_lost_count,
-    )
-
-
 @dataclass
 class QcReport:
     package_path: str
@@ -112,11 +63,10 @@ class QcReport:
     integrity_file_count: int
     warnings: list[str] = field(default_factory=list)
     traffic_lights: dict[str, str] = field(default_factory=dict)  # source_id -> ok|warn|fail
-    gaps: list[GapQc] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
         return {
-            "schemaId": "capture.analysis_qc/2",
+            "schemaId": "capture.analysis_qc/1",
             "packagePath": self.package_path,
             "sessionId": self.session_id,
             "packageState": self.package_state,
@@ -134,7 +84,6 @@ class QcReport:
             "streams": [s.to_dict() for s in self.streams],
             "warnings": list(self.warnings),
             "trafficLights": dict(self.traffic_lights),
-            "gaps": [gap.to_dict() for gap in self.gaps],
         }
 
 
@@ -232,14 +181,6 @@ def collect_qc(package_root: str | Path) -> QcReport:
     for s in streams:
         warnings.extend(f"{s.source_id}/{s.stream_id}: {w}" for w in s.warnings)
 
-    gaps = [_gap_qc(gap) for gap in summary.gaps]
-    for source_id, count in sorted(Counter(gap.source_id for gap in gaps).items()):
-        # A listed gap needs coverage review, including an unknown cause. It does
-        # not establish a new device-failure classification or replace a failure.
-        if traffic.get(source_id) != "fail":
-            traffic[source_id] = "warn"
-        warnings.append(f"{source_id}: {count} recorded gap(s); see gap details")
-
     return QcReport(
         package_path=str(root.resolve()),
         session_id=summary.session_id,
@@ -258,5 +199,4 @@ def collect_qc(package_root: str | Path) -> QcReport:
         integrity_file_count=len(summary.integrity_files),
         warnings=warnings,
         traffic_lights=traffic,
-        gaps=gaps,
     )

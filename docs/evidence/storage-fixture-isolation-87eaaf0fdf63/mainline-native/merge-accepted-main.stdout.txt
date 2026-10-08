@@ -1,0 +1,2 @@
+Auto-merging docs/design/research/PROGRESS.md
+Auto-merging tests/cpp/CMakeLists.txt

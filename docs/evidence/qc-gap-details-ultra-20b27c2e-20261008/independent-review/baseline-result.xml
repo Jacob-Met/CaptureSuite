@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="2" time="2.091" timestamp="2026-10-08T19:32:53.817330+09:00" hostname="05aaedaf3e50"><testcase classname="test_independent_capture_receiving" name="test_actual_cli_renders_gap_and_binds_unchanged_raw_inputs" time="0.732"><failure message="AssertionError: job_id=independent-gap&#10;  status=completed&#10;  dir=/workspace/scratch/20b27c2ea29e/workers/runtime-integration/capture-review/temp/baseline/test_actual_cli_renders_gap_an0/independent.mmsession/processing/jobs/independent-gap&#10;  streams=2 gaps_open=0 gaps_closed=1 warnings=0&#10;  &#10;assert 0 == 2&#10; +  where 0 = CompletedProcess(args=['/workspace/scratch/20b27c2ea29e/workers/estate-production/venv/bin/python', '/workspace/scratc...n0/independent.mmsession/processing/jobs/independent-gap\nstreams=2 gaps_open=0 gaps_closed=1 warnings=0\n', stderr='').returncode">package = PosixPath('/workspace/scratch/20b27c2ea29e/workers/runtime-integration/capture-review/temp/baseline/test_actual_cli_renders_gap_an0/independent.mmsession')
+
+    def test_actual_cli_renders_gap_and_binds_unchanged_raw_inputs(package: Path) -&gt; None:
+        record = gap(cause='FUTURE&lt;&amp;"cause', startSessionTimeNs="9223372036854775806",
+                     endSessionTimeNs="9223372036854775807")
+        write_gaps(package, A, [record])
+        result, qc, html, manifest = invoke_cli(package, "independent-gap", strict=True)
+&gt;       assert result.returncode == 2, result.stdout
+E       AssertionError: job_id=independent-gap
+E         status=completed
+E         dir=/workspace/scratch/20b27c2ea29e/workers/runtime-integration/capture-review/temp/baseline/test_actual_cli_renders_gap_an0/independent.mmsession/processing/jobs/independent-gap
+E         streams=2 gaps_open=0 gaps_closed=1 warnings=0
+E         
+E       assert 0 == 2
+E        +  where 0 = CompletedProcess(args=['/workspace/scratch/20b27c2ea29e/workers/estate-production/venv/bin/python', '/workspace/scratc...n0/independent.mmsession/processing/jobs/independent-gap\nstreams=2 gaps_open=0 gaps_closed=1 warnings=0\n', stderr='').returncode
+
+test_independent_capture_receiving.py:289: AssertionError</failure></testcase><testcase classname="test_independent_capture_receiving" name="test_actual_cli_no_gap_positive_control" time="0.732" /></testsuite></testsuites>

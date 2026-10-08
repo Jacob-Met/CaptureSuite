@@ -1,0 +1,293 @@
+{
+  "repository": "Jacob-Met/CaptureSuite",
+  "branch_identity": "ultra-20b27c2e-20261008",
+  "state": "locally_qualified_with_independent_receiving_pending_publication_and_hosted_gates",
+  "source": {
+    "repository": "Jacob-Met/CaptureSuite",
+    "receiving_base": "a1b3c966bc8df46fd8160d3854c30a9e03c6a478",
+    "receiving_tree": "afd26ca94b2bfd2762e4ec9c1be5dfb5e5a22bd7",
+    "state": "locally_qualified_with_independent_receiving_pending_publication_and_hosted_gates",
+    "entries": [
+      {
+        "repository_path": "libs/python/capture_analysis/capture_analysis/qc.py",
+        "local_path": "/workspace/scratch/20b27c2ea29e/workers/estate-production/capturesuite/libs/python/capture_analysis/capture_analysis/qc.py",
+        "bytes": 9187,
+        "sha256": "f24e0593a3723311d41054aef40b56c4bb46d4f3ba5ef4b01afcae3a6cc4440a",
+        "git_blob_sha": "530b86af1247599c127e2d0c3fa5e4d7d12169f6",
+        "original_git_blob_sha": "7221b26a129b7915a42fed900908a04eae213454",
+        "mode": "100644"
+      },
+      {
+        "repository_path": "libs/python/capture_analysis/capture_analysis/report_html.py",
+        "local_path": "/workspace/scratch/20b27c2ea29e/workers/estate-production/capturesuite/libs/python/capture_analysis/capture_analysis/report_html.py",
+        "bytes": 4716,
+        "sha256": "f2c89c7faf6e4edc265540140272396b4195eb5aed9edf05c4912aac74286f03",
+        "git_blob_sha": "bb8032024cfce30c6fe9a2bd2c13b0d2cbc2d102",
+        "original_git_blob_sha": "a0bb34d71fe03a4426ef0479619fa8d22a7bc8fa",
+        "mode": "100644"
+      },
+      {
+        "repository_path": "tests/analysis/test_qc_gap_details.py",
+        "local_path": "/workspace/scratch/20b27c2ea29e/workers/estate-production/capturesuite/tests/analysis/test_qc_gap_details.py",
+        "bytes": 10085,
+        "sha256": "9c6942a27fd37c01262d388e0834bdd49154a430b20cdf294791d6007e98f690",
+        "git_blob_sha": "593ca17abe543b579e4930d36e4b900c54ce0bb8",
+        "original_git_blob_sha": null,
+        "mode": "100644"
+      },
+      {
+        "repository_path": "docs/design/ANALYSIS.md",
+        "local_path": "/workspace/scratch/20b27c2ea29e/workers/estate-production/capturesuite/docs/design/ANALYSIS.md",
+        "bytes": 15263,
+        "sha256": "030336032811af6385c13827552fe01d8c69c4918aa118d0a7001ee229fd20e4",
+        "git_blob_sha": "a9891aff5ed11ab7165add42d2aceb643e071067",
+        "original_git_blob_sha": "79df37199d36d3635208fba6a298e14f55a06411",
+        "mode": "100644"
+      },
+      {
+        "repository_path": "docs/design/research/PROGRESS.md",
+        "local_path": "/dev/shm/ultra-20b27c2e-estate-production-capture-qc/publication/PROGRESS.md",
+        "mode": "100644",
+        "bytes": 19707,
+        "sha256": "f300e3dbf03cf6b906be9d5a4e16db4487614c787a7e2fafc69c3b133b9c2333",
+        "git_blob_sha": "96d6407541d781dbc4c57f5b11876552f30fbb7a",
+        "original_git_blob_sha": "0a068389fc6b50b63057a84f356483a772175124"
+      }
+    ],
+    "preservation": "The exact current a1b3c966 PROGRESS bytes precede only the owned append. Publisher must refresh and compose if main advances. Production, test and ANALYSIS.md pins are unchanged after independent review.",
+    "progress_exact_prefix_preserved": true,
+    "progress_append_local_path": "/dev/shm/ultra-20b27c2e-estate-production-capture-qc/publication/progress-append.md"
+  },
+  "runtime": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "versions": {
+      "pytest": "9.1.1",
+      "numpy": "2.3.5",
+      "scipy": "1.17.0",
+      "pandas": "2.2.3",
+      "matplotlib": "3.10.8",
+      "PyYAML": "6.0.3",
+      "jsonschema": "4.26.0",
+      "protobuf": null,
+      "mcap": null,
+      "pyarrow": null,
+      "PySide6": null
+    },
+    "installed_dependencies_reused_only": true,
+    "commands": {
+      "baseline": {
+        "cmd": "TMPDIR=/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-system-tmp PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages:/workspace/scratch/20b27c2ea29e/workers/estate-production/venv/lib/python3.12/site-packages:/workspace/scratch/20b27c2ea29e/workers/runtime-integration/product-discovery/canvaspilot/venv/lib/python3.12/site-packages MPLCONFIGDIR=/workspace/scratch/20b27c2ea29e/workers/estate-production/capturesuite-evidence/mpl-cache /workspace/scratch/20b27c2ea29e/workers/estate-production/venv/bin/python -m pytest -q tests/analysis -ra -p no:cacheprovider --basetemp /dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-final-tmp --junitxml /dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-analysis.xml > /dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline-analysis.log 2>&1",
+        "cwd": "/dev/shm/ultra-20b27c2e-estate-production-capture-qc/baseline"
+      },
+      "candidate": {
+        "cmd": "TMPDIR=/dev/shm/ultra-20b27c2e-estate-production-capture-qc/candidate-system-tmp PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages:/workspace/scratch/20b27c2ea29e/workers/estate-production/venv/lib/python3.12/site-packages:/workspace/scratch/20b27c2ea29e/workers/runtime-integration/product-discovery/canvaspilot/venv/lib/python3.12/site-packages MPLCONFIGDIR=/workspace/scratch/20b27c2ea29e/workers/estate-production/capturesuite-evidence/mpl-cache /workspace/scratch/20b27c2ea29e/workers/estate-production/venv/bin/python -m pytest -q tests/analysis -ra -p no:cacheprovider --basetemp /dev/shm/ultra-20b27c2e-estate-production-capture-qc/candidate-final-tmp --junitxml /dev/shm/ultra-20b27c2e-estate-production-capture-qc/candidate-analysis.xml > /dev/shm/ultra-20b27c2e-estate-production-capture-qc/candidate-analysis.log 2>&1",
+        "cwd": "/workspace/scratch/20b27c2ea29e/workers/estate-production/capturesuite"
+      }
+    }
+  },
+  "final_full_analysis": {
+    "baseline": {
+      "exit_code": 1,
+      "summary": "26 failed, 15 passed, 3 skipped in 2.92s",
+      "counts": {
+        "all_cases": 44,
+        "all_failures": 26,
+        "all_errors": 0,
+        "all_skipped": 3,
+        "new_cases": 25,
+        "new_failures": 24,
+        "new_errors": 0,
+        "new_skipped": 0
+      },
+      "raw_log": "baseline-analysis.log",
+      "junit": "baseline-analysis.xml"
+    },
+    "candidate": {
+      "exit_code": 1,
+      "summary": "2 failed, 39 passed, 3 skipped in 2.79s",
+      "counts": {
+        "all_cases": 44,
+        "all_failures": 2,
+        "all_errors": 0,
+        "all_skipped": 3,
+        "new_cases": 25,
+        "new_failures": 0,
+        "new_errors": 0,
+        "new_skipped": 0
+      },
+      "raw_log": "candidate-analysis.log",
+      "junit": "candidate-analysis.xml"
+    }
+  },
+  "inherited_environment_limits": {
+    "failures": {
+      "tests/analysis/test_export_sidecar.py::test_export_writes_manifest_and_sidecar": "PySide6 not installed",
+      "tests/analysis/test_plugin_registry.py::test_dummy_stream_handler_writes_parquet": "PyArrow/Fastparquet not installed"
+    },
+    "skipped_modules": [
+      "tests/analysis/test_phase_b_features.py",
+      "tests/analysis/test_pose_job.py",
+      "tests/analysis/test_kinematics_ml_bundle.py (imports skipped pose fixture)"
+    ],
+    "skip_cause": "MCAP not installed; existing importorskip unchanged",
+    "not_claimed": [
+      "full analysis pass",
+      "hosted Windows pass",
+      "native platform/hardware pass",
+      "deployment"
+    ]
+  },
+  "cli_receipt": "candidate-cli-receipt.json",
+  "baseline_reproduction": "baseline-reproduction.json",
+  "receiving_source_equivalence": "receiving-equivalence.json",
+  "transport": {
+    "patch_sha256": "0ae680080f027c2fa95c26fd779c831ba65375b33980900dc7326ebf64c07a83",
+    "source_paths_exact": 5,
+    "original_git_blobs_verified": 4,
+    "unowned_sibling_preserved": true,
+    "runs": [
+      {
+        "command": [
+          "git",
+          "apply",
+          "--check",
+          "/workspace/scratch/20b27c2ea29e/workers/estate-production/capturesuite-packet/review.patch"
+        ],
+        "cwd": "/workspace/scratch/20b27c2ea29e/workers/estate-production/capturesuite-apply-receiver",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "git",
+          "apply",
+          "/workspace/scratch/20b27c2ea29e/workers/estate-production/capturesuite-packet/review.patch"
+        ],
+        "cwd": "/workspace/scratch/20b27c2ea29e/workers/estate-production/capturesuite-apply-receiver",
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    ],
+    "scope": "Git transport of the five-path patch against exact receiving original bytes; full remote-tree preservation remains a publication gate.",
+    "earlier_attempt": "Preparing a tmpfs receiver stopped on ENOSPC before any git command. The owned scratch receiver above completed normally.",
+    "historical_source_pins": [
+      {
+        "repository_path": "libs/python/capture_analysis/capture_analysis/qc.py",
+        "sha256": "f24e0593a3723311d41054aef40b56c4bb46d4f3ba5ef4b01afcae3a6cc4440a",
+        "git_blob_sha": "530b86af1247599c127e2d0c3fa5e4d7d12169f6"
+      },
+      {
+        "repository_path": "libs/python/capture_analysis/capture_analysis/report_html.py",
+        "sha256": "f2c89c7faf6e4edc265540140272396b4195eb5aed9edf05c4912aac74286f03",
+        "git_blob_sha": "bb8032024cfce30c6fe9a2bd2c13b0d2cbc2d102"
+      },
+      {
+        "repository_path": "tests/analysis/test_qc_gap_details.py",
+        "sha256": "9c6942a27fd37c01262d388e0834bdd49154a430b20cdf294791d6007e98f690",
+        "git_blob_sha": "593ca17abe543b579e4930d36e4b900c54ce0bb8"
+      },
+      {
+        "repository_path": "docs/design/ANALYSIS.md",
+        "sha256": "030336032811af6385c13827552fe01d8c69c4918aa118d0a7001ee229fd20e4",
+        "git_blob_sha": "a9891aff5ed11ab7165add42d2aceb643e071067"
+      },
+      {
+        "repository_path": "docs/design/research/PROGRESS.md",
+        "sha256": "9ac50cd28f1d2fb0a9f03bc19e7e8634bf9dabd5eb632cf2b321cde9069fae50",
+        "git_blob_sha": "079eb9952aa6b882ddbd0d3fb51dca29151cb9fb"
+      }
+    ],
+    "final_documentation_change": "After the successful transport check, only the owned PROGRESS append changed to record the independent review and align the evidence link. The tested patch and raw receipt remain exact historical artifacts; publication must verify the final document and full remote tree."
+  },
+  "verification_notes": {
+    "ruff": "Scoped --no-cache check passed against two production files and test module.",
+    "license": "Repository check_licenses.py passed; evidence Python SPDX retained.",
+    "diff": "git diff --check passed after exact PROGRESS append normalization.",
+    "storage": "Initial full candidate launch stopped before collection when default temporary directories were unusable. Retained candidate-analysis-initial-storage.log; final paired run used owned TMPDIR. Tmpfs receiver preparation later failed before git; equivalent bounded scratch receiver succeeded."
+  },
+  "tested_composition": {
+    "author_full_suite_base": "d3edda561322a80bfc1491ae4f4c7b0bb94943ea",
+    "unchanged_analysis_related_paths": 77,
+    "independent_receiving_base": "a1b3c966bc8df46fd8160d3854c30a9e03c6a478",
+    "independent_closure_files": 100,
+    "independent_unowned_files_preserved": 98,
+    "current_framing_git_blob": "9dd5021b815b31ab02eaaa814210525ebb543862",
+    "full_analysis_directory_rerun_with_current_framing": false
+  },
+  "independent_review": {
+    "publication_manifest_sha256": "896b756518999d4b117ca5d0b1e79ec4f98de0b18d3266cf438ceee187238891",
+    "readme": "independent-review/REVIEW.md",
+    "execution_receipt": "independent-review/execution-receipt.json",
+    "harness_sha256": "9131bec9582e80daec244f481eeb2f2cd2117d7f058676f5ae4eb41f594d02fc",
+    "closure_sha256": "6596a1fef0b004d1879d8275c2e18f349969930bba5213771562039780f6772f",
+    "candidate": {
+      "label": "candidate",
+      "command": [
+        "/workspace/scratch/20b27c2ea29e/workers/estate-production/venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--capture=sys",
+        "--basetemp",
+        "/workspace/scratch/20b27c2ea29e/workers/runtime-integration/capture-review/temp/candidate",
+        "--junitxml",
+        "/workspace/scratch/20b27c2ea29e/workers/runtime-integration/capture-review/candidate-result.xml",
+        "/workspace/scratch/20b27c2ea29e/workers/runtime-integration/capture-review/test_independent_capture_receiving.py"
+      ],
+      "returncode": 0,
+      "seconds": 3.331,
+      "counts": {
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "aborted": null,
+      "log_sha256": "acd695113482189d691dcfb1883f33943b623f98a137c6e88c739cd2df230054",
+      "xml_sha256": "70f6b9f3bc694edfa5a00083d0b04ef2127e96928451346c0859628a3314fcf5"
+    },
+    "baseline_cli_control": {
+      "label": "baseline",
+      "command": [
+        "/workspace/scratch/20b27c2ea29e/workers/estate-production/venv/bin/python",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--capture=sys",
+        "--basetemp",
+        "/workspace/scratch/20b27c2ea29e/workers/runtime-integration/capture-review/temp/baseline",
+        "--junitxml",
+        "/workspace/scratch/20b27c2ea29e/workers/runtime-integration/capture-review/baseline-result.xml",
+        "/workspace/scratch/20b27c2ea29e/workers/runtime-integration/capture-review/test_independent_capture_receiving.py",
+        "-k",
+        "actual_cli_renders_gap or actual_cli_no_gap_positive_control"
+      ],
+      "returncode": 1,
+      "seconds": 2.662,
+      "counts": {
+        "tests": 2,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0
+      },
+      "aborted": null,
+      "log_sha256": "be5036c066d8ecbebe8746e4d12220becf8f74ea840d991078e063c03a29d3fb",
+      "xml_sha256": "4e631009b56d1bc0950792ea5c1fbbc64d98de67f567a559b3ba501f8389cb90"
+    },
+    "owner_source_unchanged": true,
+    "current_framing_preserved": true,
+    "full_raw_hashes_per_cli_run": 12
+  },
+  "raw_evidence_policy": "All selected prior/final author and independent logs, JUnit reports, CLI receipts, baseline sources, harnesses and emitted HTML are published byte-for-byte. No run is relabeled as another execution.",
+  "storage_handoff": {
+    "final_metadata_directory": "/dev/shm/ultra-20b27c2e-estate-production-capture-qc/publication",
+    "reason": "Shared overlay had zero available bytes; author and reviewer raw evidence remain in scratch. Root can publish directly from the explicit manifest paths.",
+    "reclaimed_only_completed_owned_pytest_fixtures": true
+  }
+}

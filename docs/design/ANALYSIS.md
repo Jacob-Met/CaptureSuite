@@ -77,6 +77,43 @@ fixed path above; its own checksum belongs in an external delivery receipt.
 Finalize the log before serializing either a successful or failed job manifest.
 On success, the returned `JobResult.manifest` matches the stored JSON document.
 
+## QC gap review
+
+`reports/qc.json` uses `capture.analysis_qc/2`. Version 2 retains every version 1
+field and adds a `gaps` array. Each entry projects one parsed `GapSummary` from
+the package's `sources/*/health/gaps.jsonl`; records retain their source and
+stream identity, cause, and order. Overlapping records remain separate.
+
+| Gap field | Meaning |
+|---|---|
+| `sourceId`, `streamId`, `cause` | Values from the existing package reader. Its source-directory fallback applies when a record omits its source ID. Empty stream IDs retain source-wide scope. Causes remain verbatim, including native short names and protocol enum names. |
+| `startSessionTimeNs` | Signed decimal string in the native session timebase. Negative times retain their sign. |
+| `endSessionTimeNs` | Signed decimal string, or `null` when no end is available. |
+| `closed` | The reader's recorded closure state; an available end alone does not override an explicitly open record. |
+| `estimatedLostCount` | Signed decimal string preserving the reader's reported estimate and source-defined unit. No samples-per-second conversion is inferred. |
+| `durationNs` | Decimal string for `end - start` only when the gap is closed, an end exists, and the end is not before the start; otherwise `null`. A known zero duration is `"0"`. |
+| `durationStatus` | `known`, `open`, `missing_end`, or `end_before_start`. A reversed interval takes precedence over open status. |
+
+Decimal strings preserve integers beyond JavaScript's exact numeric range. The
+HTML report displays seconds with nine fractional digits using integer
+arithmetic and names the reason an interval duration is unknown. Older QC
+dictionaries without the array render an explicit unavailable-details message.
+All recorded identifiers and causes are escaped as text.
+
+A listed gap makes its reported source at least `warn`, including sources with
+no discovered stream. Existing `fail` status remains dominant. This means the
+recorded coverage needs review; it does not assign a new device-failure
+classification. The current canonical causes describe disconnect, sequence
+loss, overload drop, writer error, unknown, or unspecified events, with no
+planned-pause classification. Other cause strings are preserved for review.
+
+This report is package-wide, as are the existing QC counts; feature-window and
+source selections do not filter its gap inventory. It does not combine
+intervals into total downtime or claim complete coverage from an empty list.
+The existing reader's defaults and malformed-line handling are unchanged; this
+addition does not validate or repair the raw gap ledger. Raw streams, timestamps,
+feature gap masks, and job-manifest version remain unchanged.
+
 ## Memory / streaming
 
 | Stream | Rule |

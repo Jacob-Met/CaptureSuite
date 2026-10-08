@@ -1,25 +1,46 @@
-## 2026-10-08 — Receive final output provenance on preserved analysis jobs
+## 2026-10-08 — Receive fixture ownership repair onto accepted main (estate-87eaaf0fdf63)
 
-Receive the landed PR48 replacement contract before completing PR46. The only
-production delta now finalizes the successful diagnostic log before serializing
-the manifest, and removes the impossible self-manifest checksum. The stored
-inventory agrees with the returned result and final artifact bytes. PR48's
-portable destination guards, unique attempts, failed-record handling, previous
-result restoration and CLI/UI recovery notes remain unchanged.
+The original Linux port #36 and the separately owned POSIX alias repair #44
+are now accepted on main `ac52c3ca7164a6ab457d11a8a1448957093eb592`.
+The fixture companion from #42 is composed onto that source. It retains the
+reviewed unique-directory fixture and adds only its CTest registration to the
+current test build. All accepted production, durability and alias-receiver
+bytes remain unchanged. The complete current upstream progress log follows
+unchanged after this lane's two blocks.
 
-The original seven provenance receivers on landed main gave two passes, four
-remaining successful-inventory failures and one obsolete completion-callback
-expectation. The updated receiver preserves the previous completed revision and
-checks both its inventory and the separately retained failed attempt. With the
-same updated tests, native Python 3.12.8 receiving improves from **19 passed,
-5 failed** to **24 passed, 0 skipped**. This includes the owner's nine replacement
-fault controls, two actual CLI failure controls and six existing QC controls.
+The historical receiving results below remain pinned to their recorded source.
+Current mainline qualification, composition hashes and hosted gate results are
+recorded in `docs/evidence/storage-fixture-isolation-87eaaf0fdf63/MAINLINE.md`
+and the PR. No claim of hardware or power-cut qualification is added.
 
-The previously qualified PR46 head and all negative evidence remain in custody;
-its Windows CI does not qualify this new composition. Exact-head supported
-Windows CI remains pending. The separately prepared job-ID candidate was
-superseded by the landed owner and is not included. See
-`docs/evidence/analysis-output-provenance-current-receiving-20261008.json`.
+## 2026-10-08 — Preserve concurrent storage-test evidence (estate-87eaaf0fdf63)
+
+Independent receiving of Linux-port PR #36 found that its new atomic-storage
+test deleted an unrelated invocation's receipt under the shared temporary
+directory while reporting all six assertions passed. The counterexample ran
+against the exact published source with real Catch2 and disposable private
+temporary data on the ThinkPad; no existing worktree or capture was changed.
+
+The test now atomically reserves a unique directory and cleans up only that
+owned path through a scoped fixture. A CMake receiving case runs the actual
+test with a retained sibling receipt and checks its bytes and fixture cleanup.
+The unchanged original fails this receiving case; the corrected candidate
+passes it plus the two native storage tests (11 assertions) under strict GCC
+warnings. The production atomic-file and disk-watchdog sources are unchanged.
+
+The independent review also passed ten actual POSIX atomic-write boundary
+cases, including open/close errors, binary and relative paths, real rename
+refusal and interrupted directory sync. These qualify the stated local
+storage boundary; they do not constitute a full native build, Windows or
+hardware acceptance. Source pins and raw failures are retained in
+`docs/evidence/storage-fixture-isolation-87eaaf0fdf63/`. This companion is
+prepared for the existing PR #36 owner; it has not been merged or deployed.
+
+Current receiving also preserves the producer's writer-close revision
+`05a6b6bd02f05efd2c7380ea4ee8f92942609d4b`. The independent ten-case
+receiver above remains bound to retained original `16eb17f` atomic source; it
+does not claim qualification of the revised writer. See the packet CURRENT.md
+for the exact companion composition and current fixture replay.
 
 ## 2026-10-08 — Preserve prior analysis jobs on failed replacement
 
@@ -43,6 +64,34 @@ scratch-loss disclosure are recorded in
 Composition update: main `ac52c3ca` adds the separately received POSIX sealed-recording
 repair. The job-preservation production, tests, and initial receiving evidence remain
 byte-identical; hosted CI qualifies this new combined repository tree.
+
+## 2026-10-08 — Receive final output provenance on preserved analysis jobs
+
+Receive the landed PR48 replacement contract before completing PR46. The only
+production delta now finalizes the successful diagnostic log before serializing
+the manifest, and removes the impossible self-manifest checksum. The stored
+inventory agrees with the returned result and final artifact bytes. PR48's
+portable destination guards, unique attempts, failed-record handling, previous
+result restoration and CLI/UI recovery notes remain unchanged.
+
+The original seven provenance receivers on landed main gave two passes, four
+remaining successful-inventory failures and one obsolete completion-callback
+expectation. The updated receiver preserves the previous completed revision and
+checks both its inventory and the separately retained failed attempt. With the
+same updated tests, native Python 3.12.8 receiving improves from **19 passed,
+5 failed** to **24 passed, 0 skipped**. This includes the owner's nine replacement
+fault controls, two actual CLI failure controls and six existing QC controls.
+
+After receiving PR50's QC collector/HTML changes and PR42's fixture isolation,
+the unchanged finalization source passes all **49** focused controls, including
+the landed QC gap cases, with no skips. Both owners' source and documentation
+remain intact.
+
+The previously qualified PR46 head and all negative evidence remain in custody;
+its Windows CI does not qualify this new composition. Exact-head supported
+Windows CI remains pending. The separately prepared job-ID candidate was
+superseded by the landed owner and is not included. See
+`docs/evidence/analysis-output-provenance-current-receiving-20261008.json`.
 
 ## 2026-10-08 — Scope recorded analysis gaps to their stream (estate-e82707f2bc62)
 
@@ -536,3 +585,38 @@ merged without changing the camera source or either fixture. The final combined
 Linux collection passed 1/1 tests and 17/17 native checks. New-head hosted Windows
 qualification is pending; actual camera/vcpkg/GStreamer receiving remains open.
 See docs/evidence/camera-packaging-20261008/receiving-final-integration.json.
+
+
+## 2026-10-08 — Offline QC gap attribution (ultra-20b27c2e)
+
+QC now retains a versioned per-record gap inventory in `capture.analysis_qc/2`
+and displays source, stream, cause, closure, native session times, duration and
+reported loss count in the existing HTML report. Existing count/inventory fields
+remain available. Decimal strings and integer-only formatting preserve native
+nanoseconds; open, missing-end and reversed intervals have explicit unknown
+durations. Every listed gap makes its reported source at least `warn`, while an
+existing `fail` remains dominant. This asks for coverage review and does not
+invent a new device-failure or planned-pause classification.
+
+An actual CLI control on the copied mini-session reproduced a closed 2.5-second
+DISCONNECT whose source was still `ok` and whose QC had no warning or interval
+details. The paired candidate CLI now warns that source, displays the exact
+interval and loss estimate, and leaves all raw input hashes unchanged. The
+healthy no-gap control remains `ok`; with `--strict-warnings` it exits 0, while
+the gap case exits 2. Both use the project's Python 3.12 package and existing
+installed libraries; no substitute implementation, dependency installation,
+C++ build, recording or hardware access is involved.
+
+The frozen 25-case regression suite changes from **24 failed / 1 passed** to
+**25 passed**. The entire existing `tests/analysis` directory plus those cases
+changes from **26 failed / 15 passed / 3 skipped** to **2 failed / 39 passed /
+3 skipped**. Both remaining failures require absent PySide6 or Parquet support;
+the three pre-existing module skips require absent MCAP. These are retained
+qualification limits, not a whole-analysis or hosted-Windows pass. Scoped Ruff,
+license checks and `git diff --check` pass. Independent receiving adds **7 passed**
+with the current protocol framing dependency; the original gap CLI challenge
+still fails while its no-gap control passes. All 98 unowned receiving files and
+all 12 raw package hashes per CLI run are preserved. Exact-head hosted gates
+remain pending. Raw results, source pins, CLI input/output hashes and receiving
+source equivalence are in
+`../../evidence/qc-gap-details-ultra-20b27c2e-20261008/`.

@@ -1,0 +1,204 @@
+{
+  "checkout": "/dev/shm/ultra-20b27c2e-estate-production-capture-qc/final-receiving/candidate",
+  "command": [
+    "/workspace/scratch/20b27c2ea29e/workers/estate-production/venv/bin/python",
+    "/dev/shm/ultra-20b27c2e-estate-production-capture-qc/final-receiving/candidate/tools/run_analysis.py",
+    "qc",
+    "/dev/shm/ultra-20b27c2e-estate-production-capture-qc/final-receiving/temp/candidate/test_actual_cli_renders_gap_an0/independent.mmsession",
+    "--overwrite-job-id",
+    "independent-gap",
+    "--strict-warnings"
+  ],
+  "returncode": 2,
+  "stdout": "job_id=independent-gap\nstatus=completed_with_warnings\ndir=/dev/shm/ultra-20b27c2e-estate-production-capture-qc/final-receiving/temp/candidate/test_actual_cli_renders_gap_an0/independent.mmsession/processing/jobs/independent-gap\nstreams=2 gaps_open=0 gaps_closed=1 warnings=1\n",
+  "stderr": "",
+  "raw_before": {
+    "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "events/checkpoints.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "integrity.json": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556",
+    "manifest.json": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380",
+    "sources/sim.emg.main/health/gaps.jsonl": "932c638b5fd5a0c9ee1a2e982fe8fbe0dd0ec5eea1c7d029f17943383e01f218",
+    "sources/sim.emg.main/source.json": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10",
+    "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649",
+    "sources/sim.emg.main/streams/sim.emg.main.batch/stream.json": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1",
+    "sources/sim.imu.upper/source.json": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8",
+    "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649",
+    "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+  },
+  "raw_after": {
+    "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "events/checkpoints.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "integrity.json": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556",
+    "manifest.json": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380",
+    "sources/sim.emg.main/health/gaps.jsonl": "932c638b5fd5a0c9ee1a2e982fe8fbe0dd0ec5eea1c7d029f17943383e01f218",
+    "sources/sim.emg.main/source.json": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10",
+    "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649",
+    "sources/sim.emg.main/streams/sim.emg.main.batch/stream.json": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1",
+    "sources/sim.imu.upper/source.json": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8",
+    "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649",
+    "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+  },
+  "raw_unchanged": true,
+  "qc": {
+    "annotationCount": 0,
+    "checkpointCount": 0,
+    "closedGapCount": 1,
+    "durationNs": 9223372036854775807,
+    "gaps": [
+      {
+        "cause": "FUTURE<&\"cause",
+        "closed": true,
+        "durationNs": "1",
+        "durationStatus": "known",
+        "endSessionTimeNs": "9223372036854775807",
+        "estimatedLostCount": "9007199254740993",
+        "sourceId": "sim.emg.main",
+        "startSessionTimeNs": "9223372036854775806",
+        "streamId": "sim.emg.main.batch"
+      }
+    ],
+    "integrityFileCount": 1,
+    "manifestSha256": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380",
+    "openGapCount": 0,
+    "packagePath": "/dev/shm/ultra-20b27c2e-estate-production-capture-qc/final-receiving/temp/candidate/test_actual_cli_renders_gap_an0/independent.mmsession",
+    "packageState": "finalized",
+    "recoveryReports": [],
+    "schemaId": "capture.analysis_qc/2",
+    "sessionId": "mini-analysis-fixture",
+    "sourceCount": 2,
+    "streamCount": 2,
+    "streams": [
+      {
+        "dataSchemaId": "emg.batch/1",
+        "mcapSegments": 1,
+        "mkvSegments": 0,
+        "modality": "emg",
+        "nominalRateHz": 2000.0,
+        "rateOk": true,
+        "sourceId": "sim.emg.main",
+        "streamId": "sim.emg.main.batch",
+        "timingSegments": 0,
+        "units": "mV",
+        "warnings": []
+      },
+      {
+        "dataSchemaId": "imu.frame/1",
+        "mcapSegments": 1,
+        "mkvSegments": 0,
+        "modality": "imu",
+        "nominalRateHz": 60.0,
+        "rateOk": true,
+        "sourceId": "sim.imu.upper",
+        "streamId": "sim.imu.upper.frames",
+        "timingSegments": 0,
+        "units": "a.u.",
+        "warnings": []
+      }
+    ],
+    "syncAnchorCount": 0,
+    "trafficLights": {
+      "sim.emg.main": "warn",
+      "sim.imu.upper": "ok"
+    },
+    "warnings": [
+      "sim.emg.main: 1 recorded gap(s); see gap details"
+    ]
+  },
+  "html_sha256": "a936d5df3a3c8fae56e153b8c83e19de64960581c5fcc40335e527b0ea7f3bf7",
+  "job_manifest": {
+    "analysisGrids": [],
+    "captureAnalysisVersion": "0.1.0",
+    "createdUtc": "2026-10-08T11:05:10Z",
+    "errors": [],
+    "evalWindowCount": null,
+    "featureTables": [],
+    "gapPolicy": "mask",
+    "gapSummary": {
+      "closed": 1,
+      "maskedNs": 0,
+      "open": 0,
+      "validFraction": null
+    },
+    "jobId": "independent-gap",
+    "kinematicsRows": null,
+    "manifestSha256": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380",
+    "mlBundleWindowCount": null,
+    "modalities": [
+      "emg",
+      "imu"
+    ],
+    "outputs": [
+      {
+        "bytes": 1785,
+        "kind": "qc_json",
+        "relativePath": "reports/qc.json",
+        "sha256": "72d6a65dd4a951058d848363a527c4dc2d0b73eb17f2250ce8ef6f22933e0bb8"
+      },
+      {
+        "bytes": 2487,
+        "kind": "qc_html",
+        "relativePath": "reports/qc.html",
+        "sha256": "a936d5df3a3c8fae56e153b8c83e19de64960581c5fcc40335e527b0ea7f3bf7"
+      },
+      {
+        "bytes": 252,
+        "kind": "params",
+        "relativePath": "params.json",
+        "sha256": "bafa04c992cbd5f7b4c9a36c5d0c7efe7e624ca3b448339329a6cb3f015d7f8c"
+      },
+      {
+        "bytes": 2343,
+        "kind": "manifest",
+        "relativePath": "job_manifest.json",
+        "sha256": "083288a885eb909c50a78b69351acdd187e706107554b23d5c6a1be5c5d8b716"
+      }
+    ],
+    "packagePath": "/dev/shm/ultra-20b27c2e-estate-production-capture-qc/final-receiving/temp/candidate/test_actual_cli_renders_gap_an0/independent.mmsession",
+    "packageState": "finalized",
+    "paramsDigest": "ae62f796a91446a9c16f09c34c4759ea1605622fb715a7aebba40a2305e8c5e4",
+    "pluginIds": [
+      "emg.envelope.v1",
+      "imu.kinematics.v1",
+      "radar.rd_energy.v1",
+      "radar_doppler.mag.v1",
+      "video.timing_qc.v1",
+      "numeric.basic.v1",
+      "test.dummy.feature.v1"
+    ],
+    "pluginManifestVersion": "1.0.0",
+    "poseJobId": null,
+    "poseModelId": null,
+    "poseTables": [],
+    "schemaId": "capture.analysis_job/1",
+    "sessionId": "mini-analysis-fixture",
+    "sourcesSelected": [
+      "sim.emg.main",
+      "sim.imu.upper"
+    ],
+    "status": "completed_with_warnings",
+    "syncAnchorsApplied": {
+      "anchors": [],
+      "applied": false
+    },
+    "timeRange": {
+      "checkpointIds": [],
+      "endSessionNs": 9223372036854775807,
+      "mode": "full",
+      "startSessionNs": 0
+    },
+    "tooling": {
+      "captureAnalysis": "0.1.0",
+      "matplotlib": "3.10.8",
+      "numpy": "2.3.5",
+      "pandas": "2.2.3",
+      "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+      "python": "3.12.14",
+      "scipy": "1.17.0"
+    },
+    "warnings": [
+      "sim.emg.main: 1 recorded gap(s); see gap details"
+    ]
+  }
+}

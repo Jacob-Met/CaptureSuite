@@ -1,0 +1,128 @@
+{
+  "schema": "capturesuite-independent-fixture-repair/v1",
+  "uid": 1000,
+  "versions": {
+    "compiler": "g++ (Ubuntu 15.2.0-16ubuntu1) 15.2.0\nCopyright (C) 2025 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.",
+    "cmake": "cmake version 4.2.3\n\nCMake suite maintained and supported by Kitware (kitware.com/cmake).",
+    "catch2": "3.7.1"
+  },
+  "source_head": "16eb17faacff1b211005fdfdbc7f33fac9b122b6",
+  "candidate_hashes": {
+    "tests/cpp/test_storage_posix.cpp": {
+      "sha256": "daab7555a3834319346db06caee40a5280c7a045ffe645f58a5a806832620393",
+      "bytes": 2734
+    },
+    "tests/cpp/CMakeLists.txt": {
+      "sha256": "fb595a88886734e9119a2e0be1eb4afee064485e3865d8393c9e70521e605d4b",
+      "bytes": 3350
+    },
+    "tests/cmake/portable_storage/fixture_isolation.cmake": {
+      "sha256": "ad04e619453d94a10e04d5a11bc4155d6f6f62c47dbbe5b2f3e958f151f89a27",
+      "bytes": 1745
+    }
+  },
+  "binary_sha256": "37c2dfc14b1cf33f3dde1783197708ead05e51f8a0a612815726ea3c3b83c25b",
+  "runs": [
+    {
+      "name": "version-compiler",
+      "command": [
+        "g++",
+        "--version"
+      ],
+      "exit_code": 0,
+      "seconds": 0.012067556381225586,
+      "stdout_path": "version-compiler.stdout.txt",
+      "stderr_path": "version-compiler.stderr.txt"
+    },
+    {
+      "name": "version-cmake",
+      "command": [
+        "cmake",
+        "--version"
+      ],
+      "exit_code": 0,
+      "seconds": 0.12798476219177246,
+      "stdout_path": "version-cmake.stdout.txt",
+      "stderr_path": "version-cmake.stderr.txt"
+    },
+    {
+      "name": "version-catch2",
+      "command": [
+        "pkg-config",
+        "--modversion",
+        "catch2"
+      ],
+      "exit_code": 0,
+      "seconds": 0.018561124801635742,
+      "stdout_path": "version-catch2.stdout.txt",
+      "stderr_path": "version-catch2.stderr.txt"
+    },
+    {
+      "name": "candidate-compile",
+      "command": [
+        "g++",
+        "-std=c++20",
+        "-Wall",
+        "-Wextra",
+        "-Wpedantic",
+        "-Werror",
+        "-I",
+        "/home/jacob/capturesuite-review-87eaaf0fdf63/candidate/libs/cpp/capture_storage/include",
+        "/home/jacob/capturesuite-review-87eaaf0fdf63/candidate/tests/cpp/test_storage_posix.cpp",
+        "/home/jacob/capturesuite-review-87eaaf0fdf63/candidate/libs/cpp/capture_storage/src/atomic_file.cpp",
+        "/home/jacob/capturesuite-review-87eaaf0fdf63/candidate/libs/cpp/capture_storage/src/disk_watchdog.cpp",
+        "-lCatch2Main",
+        "-lCatch2",
+        "-pthread",
+        "-o",
+        "/home/jacob/capturesuite-review-87eaaf0fdf63/candidate-storage-tests"
+      ],
+      "exit_code": 0,
+      "seconds": 6.978449821472168,
+      "stdout_path": "candidate-compile.stdout.txt",
+      "stderr_path": "candidate-compile.stderr.txt"
+    },
+    {
+      "name": "cmake-original",
+      "command": [
+        "cmake",
+        "-DSTORAGE_TESTS=/home/jacob/capturesuite-review-87eaaf0fdf63/original-storage-tests",
+        "-DTEST_ROOT=/home/jacob/capturesuite-review-87eaaf0fdf63/cmake-original-fixture",
+        "-P",
+        "/home/jacob/capturesuite-review-87eaaf0fdf63/candidate/tests/cmake/portable_storage/fixture_isolation.cmake"
+      ],
+      "exit_code": 1,
+      "seconds": 0.18745923042297363,
+      "stdout_path": "cmake-original.stdout.txt",
+      "stderr_path": "cmake-original.stderr.txt"
+    },
+    {
+      "name": "candidate-storage-suite",
+      "command": [
+        "/home/jacob/capturesuite-review-87eaaf0fdf63/candidate-storage-tests",
+        "[storage]"
+      ],
+      "exit_code": 0,
+      "seconds": 0.005148172378540039,
+      "stdout_path": "candidate-storage-suite.stdout.txt",
+      "stderr_path": "candidate-storage-suite.stderr.txt"
+    },
+    {
+      "name": "cmake-candidate",
+      "command": [
+        "cmake",
+        "-DSTORAGE_TESTS=/home/jacob/capturesuite-review-87eaaf0fdf63/candidate-storage-tests",
+        "-DTEST_ROOT=/home/jacob/capturesuite-review-87eaaf0fdf63/cmake-candidate-fixture",
+        "-P",
+        "/home/jacob/capturesuite-review-87eaaf0fdf63/candidate/tests/cmake/portable_storage/fixture_isolation.cmake"
+      ],
+      "exit_code": 0,
+      "seconds": 0.057917118072509766,
+      "stdout_path": "cmake-candidate.stdout.txt",
+      "stderr_path": "cmake-candidate.stderr.txt"
+    }
+  ],
+  "baseline_refused": true,
+  "candidate_pass": true,
+  "timestamp": 1791447291.0954955
+}

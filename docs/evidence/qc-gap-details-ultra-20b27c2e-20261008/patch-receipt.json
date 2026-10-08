@@ -1,0 +1,33 @@
+{
+  "patch_sha256": "0ae680080f027c2fa95c26fd779c831ba65375b33980900dc7326ebf64c07a83",
+  "source_paths_exact": 5,
+  "original_git_blobs_verified": 4,
+  "unowned_sibling_preserved": true,
+  "runs": [
+    {
+      "command": [
+        "git",
+        "apply",
+        "--check",
+        "/workspace/scratch/20b27c2ea29e/workers/estate-production/capturesuite-packet/review.patch"
+      ],
+      "cwd": "/workspace/scratch/20b27c2ea29e/workers/estate-production/capturesuite-apply-receiver",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "apply",
+        "/workspace/scratch/20b27c2ea29e/workers/estate-production/capturesuite-packet/review.patch"
+      ],
+      "cwd": "/workspace/scratch/20b27c2ea29e/workers/estate-production/capturesuite-apply-receiver",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "scope": "Git transport of the five-path patch against exact receiving original bytes; full remote-tree preservation remains a publication gate.",
+  "earlier_attempt": "Preparing a tmpfs receiver stopped on ENOSPC before any git command. The owned scratch receiver above completed normally."
+}

@@ -1,0 +1,242 @@
+{
+  "schema": "capturesuite-current-fixture-receiving/v1",
+  "receiver": "estate-87eaaf0fdf63/integration",
+  "timestamp": "2026-10-08T09:09:03.748691+00:00",
+  "base": "05a6b6bd02f05efd2c7380ea4ee8f92942609d4b",
+  "base_tree": "e94c68e129f51c60f184dde24888a78cdaaa3e37",
+  "source_files": [
+    {
+      "path": "docs/design/research/PROGRESS.md",
+      "sha256": "dd36a47c1d69214cf549faa98e808705b48e3f23e56a71aa90a1348ff613dc70",
+      "git_blob": "2acd4e43494576b44affbfc3b6dc7958d92f5db8"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/README.md",
+      "sha256": "e88c9c7fb1e855c30fc429357337d3a0ff5919c1a109de978c2ef354e0eb1989",
+      "git_blob": "68f53534c726fa408a3e7f36df362b2cc3dd3d7e"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native-evidence-manifest.json",
+      "sha256": "314c23e2bb27d69dfb2ba7a42a362b3c634dcd044591bd13aa555b743ca71027",
+      "git_blob": "f1da6336dd502dcde241ad2eb4ede07b06683b33"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/baseline-result.json",
+      "sha256": "cb57101ce5485d1bb7f156a643e6d1ff15d7627d83e0652bee176f59875dba2a",
+      "git_blob": "289585c0b4eeebf9b82a177da30da9385d714d4e"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/baseline.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/baseline.stdout.txt",
+      "sha256": "a7bf81fc7c312c94e2bfbffeeb27c474c4d361f8a74c99f2cef20a3b9513ca71",
+      "git_blob": "cbc094718e40b8ee8e0403add6009d72d74ec38d"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/candidate-compile.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/candidate-compile.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/candidate-storage-suite.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/candidate-storage-suite.stdout.txt",
+      "sha256": "8ee74fc058770614e850389d5ba79bcf24cfa89d13d2804c219e48f7afd48e75",
+      "git_blob": "c6d3cc1815ca6e7ab2800c90b63d1cbf313098dc"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/cmake-candidate.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/cmake-candidate.stdout.txt",
+      "sha256": "e3116b33c6b1b9bd491e6f9a15b94b6949a25fdb9cd4c12affe7c512435ddc96",
+      "git_blob": "8fc968759fe93457aa50aaecdc8ce2b43037610c"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/cmake-original.stderr.txt",
+      "sha256": "239cbb660585e7e62944cb1ac0b35625c94b0cb68b0b0c1f6c62a7a2f7e24467",
+      "git_blob": "5618d9822ded8f125d55f7c806b3e79e57af0e5a"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/cmake-original.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/original-compile.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/original-compile.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/repair-result.json",
+      "sha256": "ddb454445ab918e12b8855164582f540d89dea1faa0dadc046d0758029e770a5",
+      "git_blob": "e93ba72a7b936d69671615a011f15b8d5461d6e9"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/version-catch2.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/version-catch2.stdout.txt",
+      "sha256": "4e99e7eac21c2b71a97139cacca695d98c93fbd7dd26505f04f5271809ac4b94",
+      "git_blob": "a76ccff2a6e0d561f35467c9321be8c26885fe12"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/version-cmake.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/version-cmake.stdout.txt",
+      "sha256": "a24e1ae7f8f715ef1f0121cd749052d73c6a4315dba5bb885c584553d826eb79",
+      "git_blob": "19eaad503154ee3abb5f491a2fa7b8979eb8a59d"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/version-compiler.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/version-compiler.stdout.txt",
+      "sha256": "ac55452791ddd9d6e55f5e1f3dbcd5ee40f34b0b55ae18baade542748b008022",
+      "git_blob": "08251a01aea75d39a288b2b48fef9e430fb8ae81"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/original/test_storage_posix.cpp",
+      "sha256": "ed258c80f90397c54fa86404c2c8526b5c5283698910b79bdddfc6fff2afea1b",
+      "git_blob": "85e062fc57941d260e499c15e2f90565b7f82dfe"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/receiver-compile.json",
+      "sha256": "75f9695948692194e567d9535a80bd4eba7d0ef0669deb8fd96d72dd2c6bb34e",
+      "git_blob": "f617d875eb94fc7bb4d38a383bc9dce91648f5f1"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/receiver-run.json",
+      "sha256": "740543ec219224c24a718b43eb8ec146933db960ba26561180324478d0a66e78",
+      "git_blob": "5d328988a7ddd31e60b766cf97e2423d8a7d41fd"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/receiver_atomic.cpp",
+      "sha256": "173be098fa6916a5296bf3ab737b0d5ac1b69eebade61b43f9ae3190bfda25f5",
+      "git_blob": "42058d551985f69f709560c80991222795428ff3"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/replay.sh",
+      "sha256": "f2ce4938be312e40771d2c5d192a0d5c1fbac9c242fdc1979590addebedfc12f",
+      "git_blob": "1e888ad7443f4d7ddbd7270aae8b1e0be7dd95cb"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/source-manifest-verified.json",
+      "sha256": "8073b4d301d43af5a09f4e184ede12712f188da09ed3c8e23ec83f06170a6a11",
+      "git_blob": "d3fd58b0a025a827c69098cc804d3ba299afe3f4"
+    },
+    {
+      "path": "tests/cmake/portable_storage/fixture_isolation.cmake",
+      "sha256": "ad04e619453d94a10e04d5a11bc4155d6f6f62c47dbbe5b2f3e958f151f89a27",
+      "git_blob": "d0762d52b73ef8df127b81e7a6d5e3084c88eacd"
+    },
+    {
+      "path": "tests/cpp/CMakeLists.txt",
+      "sha256": "fb6abc76a769b8af1fce9f40b93fdecc0ab1e88ee991536e78dec02497cbb484",
+      "git_blob": "f9f7bcc3727446f56f9cd65b24ebc17fee04718b"
+    },
+    {
+      "path": "tests/cpp/test_storage_posix.cpp",
+      "sha256": "daab7555a3834319346db06caee40a5280c7a045ffe645f58a5a806832620393",
+      "git_blob": "514ac79df732038fe9ed0b47b34121a337e21fbd"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/original/atomic_file.cpp",
+      "sha256": "679f15779ec27a0377b5ff44ffb37a92a8bb2286a234b37d2b25638d4584388a",
+      "git_blob": "0fadb72fd907580605f296ff6df0b6c981c48108"
+    },
+    {
+      "path": "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/CURRENT.md",
+      "sha256": "074ddbb78c52f4a1a14b9359e1185ae15a20887f85aee959cd543960830754c2",
+      "git_blob": "4a45d68cc7b042faaddaf2483bf8280510c3bb2b"
+    }
+  ],
+  "replay_directory": "/home/jacob/capturesuite-review-87eaaf0fdf63/r2-replay-tmp/capturesuite-review-87ea.8b0tNc",
+  "replay_stdout": "Retaining replay output at /home/jacob/capturesuite-review-87eaaf0fdf63/r2-replay-tmp/capturesuite-review-87ea.8b0tNc\nCAPTURESUITE_STORAGE_RECEIVING_PASSED /home/jacob/capturesuite-review-87eaaf0fdf63/r2-replay-tmp/capturesuite-review-87ea.8b0tNc\n",
+  "runs": [
+    {
+      "name": "clean-before",
+      "command": [
+        "git",
+        "status",
+        "--porcelain"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "fetch-current",
+      "command": [
+        "git",
+        "fetch",
+        "--no-tags",
+        "--depth=2",
+        "origin",
+        "05a6b6bd02f05efd2c7380ea4ee8f92942609d4b"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "From https://github.com/Jacob-Met/CaptureSuite\n * branch            05a6b6bd02f05efd2c7380ea4ee8f92942609d4b -> FETCH_HEAD\n"
+    },
+    {
+      "name": "current-tree",
+      "command": [
+        "git",
+        "rev-parse",
+        "05a6b6bd02f05efd2c7380ea4ee8f92942609d4b^{tree}"
+      ],
+      "exit_code": 0,
+      "stdout": "e94c68e129f51c60f184dde24888a78cdaaa3e37\n",
+      "stderr": ""
+    },
+    {
+      "name": "current-branch",
+      "command": [
+        "git",
+        "checkout",
+        "-b",
+        "estate/87eaaf0fdf63-storage-fixture-r2",
+        "05a6b6bd02f05efd2c7380ea4ee8f92942609d4b"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "Switched to a new branch 'estate/87eaaf0fdf63-storage-fixture-r2'\n"
+    },
+    {
+      "name": "current-replay",
+      "command": [
+        "bash",
+        "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/replay.sh"
+      ],
+      "exit_code": 0,
+      "stdout": "Retaining replay output at /home/jacob/capturesuite-review-87eaaf0fdf63/r2-replay-tmp/capturesuite-review-87ea.8b0tNc\nCAPTURESUITE_STORAGE_RECEIVING_PASSED /home/jacob/capturesuite-review-87eaaf0fdf63/r2-replay-tmp/capturesuite-review-87ea.8b0tNc\n",
+      "stderr": ""
+    }
+  ]
+}
