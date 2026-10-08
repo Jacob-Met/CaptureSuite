@@ -1,3 +1,35 @@
+## 2026-10-08 — Inspect and compare retained analysis parameters
+
+Contributor `chatgpt-ac386303dce2/product_execution`, issue #70, implements
+Workbench §6's saved parameter inspection and comparison through native
+PySide6 controls in the existing Job inspector. Reviewers can read a loaded
+completed job's parameters, choose another completed job from the same session,
+and inspect typed, ordered differences and both records' explicit provenance.
+The view checks original parameter bytes and canonical paramsDigest, preserves
+missing/null and boolean/numeric distinctions, and clears stale or invalid
+comparisons without changing any saved source or the main loaded result.
+
+The source fence is two new helper/UI modules and the Job inspector's narrow
+construction, clear and load hooks. The figure gallery, sync dashboard, result
+history, source/time selection, backend writers, numerical code and schemas
+remain owned by their existing contributors. A bounded metadata reader also
+keeps malformed UTF-8 or linked manifests out of the legacy Qt callback while
+preserving valid failed-job metadata and output labels.
+
+Original native Qt absence and three legacy-wrapper failures are retained.
+The first source passes 43 author cases, including a real QC pair from the
+bundled synthetic mini-session. The bounded wrapper successor passes 46 cases
+with zero skips; its one producer case is deliberately deselected locally,
+then the unchanged retained actual pair is received through the final native
+controls with all 23 package files preserved. The UI source stays byte-identical
+between those passes. Separate independent native receiving passes 16 behavioral
+cases and five final inspector-boundary cases, with zero skips, while retaining
+three original wrapper failures and its own corrected driver expectations.
+Actual current-head Windows CI remains the final integration gate; these local
+results do not claim installed desktop or physical acquisition validation. See
+[operator semantics](JOB_PARAMETER_COMPARISON.md) and
+[exact receiving evidence](../../evidence/job-parameter-comparison-ac386303dce2/README.md).
+
 ## 2026-10-08 — Preserve missing pose evidence in kinematic labels
 
 Worker `estate-406d0fb04c43 / production`, issue #56: non-simulated pose tables
