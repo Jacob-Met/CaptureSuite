@@ -1,0 +1,103 @@
+{
+  "claim": "Windows successor source/preflight; ordinary acceptance pending",
+  "source_screen": {
+    "blob": "83bd8e5f642fb389dcd1a5f4b5820bfba0140086",
+    "sha256": "c3285b0fdd6c67dbe80f38cbce843f8aa3a8623f1d1e0a10b5c33d3c109a24c2"
+  },
+  "tests_blob": "6573e5998aa49fc4f99579d45c97d7374cd391ec",
+  "observer_blob": "742d3e1fe90a6dbe6cd768badb843bd836b1367a",
+  "ci_blob": "1067e9944ce4836d8cd1673442687333ef7ad564",
+  "scope": {
+    "path": "tests/ui/test_analysis_scope.py",
+    "git_blob": "817412fe4352c527ad7da8406269ac67cede1709",
+    "owner": "estate-7879c2abc07f",
+    "pr": 79,
+    "owner_head": "7f5548fb12e040f45d7e1f5867d511dc33a618ac",
+    "preimage_blob": "2ee653a05e27e8586e74439d2bdc9eccf06505ef",
+    "only_delta": "Two 1 ms time.sleep calls and one comment; inverse equals exact current preimage.",
+    "original_timeout_preserved_seconds": 120,
+    "ordinary_gate": {
+      "run": 37821319011,
+      "job": 113462781924,
+      "checkout": "c062c338df1a2e11e927ab9efb189c062f0ea189",
+      "passed": 559,
+      "skipped": 6,
+      "seconds": 102.7499045,
+      "process_exit": 0,
+      "junit_sha256": "d154115183f9d92751a047022db5c4f6e027ba12b8e4c64249f003572ff6ded8"
+    },
+    "receiving_comments": [
+      6067513793,
+      6067559494,
+      6067573862
+    ],
+    "no_other_pr79_path_adopted": true
+  },
+  "observer_preflight": {
+    "observer_sha256": "c3df198f02b51e2f44b3adcdbe15e23dd015a27cc11b088f559cf48129ccbbae",
+    "fixtures": [
+      {
+        "case": "exact-selection",
+        "accepted": true
+      },
+      {
+        "case": "bounded-refusal",
+        "accepted": true
+      },
+      {
+        "case": "skipped-main",
+        "accepted": false
+      },
+      {
+        "case": "duplicate-main",
+        "accepted": false
+      },
+      {
+        "case": "bad-hash",
+        "accepted": false
+      },
+      {
+        "case": "missing-counter",
+        "accepted": false
+      },
+      {
+        "case": "missing-property",
+        "accepted": false
+      },
+      {
+        "case": "wrong-branch",
+        "accepted": false
+      }
+    ],
+    "claim": "in-memory observation/assertion preflight only; no Windows execution"
+  },
+  "logs": [
+    {
+      "job": 113498048445,
+      "run": 37831595597,
+      "gzip_bytes": 35382,
+      "gzip_sha256": "dc850b544f50278dbca87f6c5b245b54f85250697b7893686a8ef1795b7111e5",
+      "raw_bytes": 269777,
+      "raw_sha256": "b15aa1c400aa45e415e0ba52860be52aa8ddcd64ccfadffcd538e8d67f9880f6",
+      "git_blob": "06d8d3adaa1158dbc569447005f60df44214558e"
+    },
+    {
+      "job": 113500634388,
+      "run": 37832352721,
+      "gzip_bytes": 25063,
+      "gzip_sha256": "df7662caa116a704b84ff228471f9b541b56a81cc12a470a605895b2807e8dfb",
+      "raw_bytes": 153989,
+      "raw_sha256": "550f14707f0e41e4761818dc6df0883c26cf3720784ec42b992e132632847a28",
+      "git_blob": "539d6c0dcad942a457866f9a8fe68f99cf8861de"
+    },
+    {
+      "job": 113502868940,
+      "run": 37833005840,
+      "gzip_bytes": 25098,
+      "gzip_sha256": "757af17411c8a6054183a4d04f3e329a335bb5ee41ef898532e3838a3d6bc541",
+      "raw_bytes": 156287,
+      "raw_sha256": "dbbdf22850b1d6a9574e87f98bcc7b48b4e43d6ab8b76dff35f364803eb5df19",
+      "git_blob": "8684bdf88163a9487f3c2916e80e561eb58d87d2"
+    }
+  ]
+}
