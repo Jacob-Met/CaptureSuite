@@ -1,0 +1,333 @@
+{
+  "cases": {
+    "baseline-current-union": {
+      "checks": [
+        {
+          "commit": "11cc78297d8d214407aea693548af4de855d61da",
+          "name": "current_main_is_real_ancestor",
+          "pass": true
+        },
+        {
+          "commit": "8747cb95bfb2ac91aa4f1ff604ad677f3597fa12",
+          "name": "history_pr71_is_real_ancestor",
+          "pass": true
+        },
+        {
+          "commit": "837fa1fbf2c5ad471cbb3924c212fc08d0e0f0ed",
+          "name": "gallery_pr80_is_real_ancestor",
+          "pass": true
+        },
+        {
+          "name": "real_analysis_thread_disables_saved_history",
+          "pass": true
+        },
+        {
+          "job_id": "20261008T192538Z_7a3b10f5",
+          "name": "real_range_job_completes_into_saved_history",
+          "pass": true,
+          "status": "completed"
+        },
+        {
+          "name": "tracked_source_unchanged_during_receiver",
+          "pass": true
+        }
+      ],
+      "elapsed_seconds": 23.844812933937646,
+      "failed": 0,
+      "original_receipt_bytes": 486426,
+      "original_receipt_path": "native-full/baseline-current-union/receipt.json",
+      "original_receipt_sha256": "52bac82718aff3ca086011f2d6fed9a710dedcacd96ee8ba59a67dc15d9511ec",
+      "passed": 6,
+      "runtime": {
+        "packages": {
+          "PySide6": "6.12.0",
+          "matplotlib": "3.11.2",
+          "mcap": "1.5.0",
+          "numpy": "2.5.3",
+          "pyarrow": "25.0.1",
+          "scipy": "1.18.1"
+        },
+        "python": "3.12.15 (main, Oct  3 2026, 01:03:07) [Clang 22.1.3 ]",
+        "qt": "6.12.0"
+      },
+      "setup_error": "Traceback (most recent call last):\n  File \"/dev/shm/f5c5-capture-receive-history-gallery.py\", line 183, in <module>\n    params[\"start_session_ns\"] == 1500000000\n    ~~~~~~^^^^^^^^^^^^^^^^^^^^\nKeyError: 'start_session_ns'\n",
+      "source_head": "9d90abb574f7fbadc85f323e73b4b268acc0f5b3",
+      "source_tracked_files": 1175,
+      "source_tree": "7eee55fbe0b28011edf3aa5bb33f9ad409ca444e",
+      "source_unchanged": true,
+      "warnings": []
+    },
+    "baseline-current-union-v2": {
+      "checks": [
+        {
+          "commit": "11cc78297d8d214407aea693548af4de855d61da",
+          "name": "current_main_is_real_ancestor",
+          "pass": true
+        },
+        {
+          "commit": "8747cb95bfb2ac91aa4f1ff604ad677f3597fa12",
+          "name": "history_pr71_is_real_ancestor",
+          "pass": true
+        },
+        {
+          "commit": "837fa1fbf2c5ad471cbb3924c212fc08d0e0f0ed",
+          "name": "gallery_pr80_is_real_ancestor",
+          "pass": true
+        },
+        {
+          "name": "real_analysis_thread_disables_saved_history",
+          "pass": true
+        },
+        {
+          "job_id": "20261008T192915Z_7a3b10f5",
+          "name": "real_range_job_completes_into_saved_history",
+          "pass": true,
+          "status": "completed"
+        },
+        {
+          "name": "current_job_provenance_preserves_scope_and_sync_refusal_contract",
+          "pass": true
+        },
+        {
+          "expected": [
+            "numeric/source-73616d706c65722e61/stream-666f726365/channel_0.png",
+            "numeric/source-73616d706c65722e61/stream-766f6c74616765/channel_0.png",
+            "numeric/source-73616d706c65722e62/stream-74656d7065726174757265/channel_0.png"
+          ],
+          "name": "real_nested_artifacts_reach_history_gallery",
+          "observed": [
+            "numeric/source-73616d706c65722e61/stream-666f726365/channel_0.png",
+            "numeric/source-73616d706c65722e61/stream-766f6c74616765/channel_0.png",
+            "numeric/source-73616d706c65722e62/stream-74656d7065726174757265/channel_0.png"
+          ],
+          "pass": true
+        },
+        {
+          "name": "nested_png_pixels_decode",
+          "pass": true
+        },
+        {
+          "name": "reopening_saved_nested_results_releases_old_qt_pages",
+          "pass": false,
+          "qt_figure_page_counts": [
+            3,
+            6,
+            9,
+            12
+          ],
+          "replaced_pages_still_alive": 9
+        },
+        {
+          "name": "reopen_keeps_scope_and_exact_job_association",
+          "pass": true
+        },
+        {
+          "name": "history_details_keep_exact_saved_params_read_only",
+          "pass": true
+        },
+        {
+          "name": "export_source_tracks_same_nested_job",
+          "pass": true,
+          "recorded_figure_count": 4,
+          "selected_job": "20261008T192915Z_7a3b10f5"
+        },
+        {
+          "name": "native_figure_export_starts_real_thread",
+          "pass": true
+        },
+        {
+          "name": "exported_nested_png_bytes_match_saved_artifacts",
+          "pass": true,
+          "zip_members": [
+            "figures/numeric/source-73616d706c65722e61/stream-666f726365/channel_0.png",
+            "figures/numeric/source-73616d706c65722e61/stream-766f6c74616765/channel_0.png",
+            "figures/numeric/source-73616d706c65722e62/stream-74656d7065726174757265/channel_0.png",
+            "figures/sync_dashboard.png",
+            "manifest.json",
+            "source/job_manifest.json",
+            "source/params.json"
+          ],
+          "zip_sha256": "57ffb80dbe929224c1ead869593dddc66257e4a4e7e608a6c5b089a06dcfa404"
+        },
+        {
+          "name": "history_reopen_invalidates_finished_export_dialog",
+          "pass": true
+        },
+        {
+          "name": "browsing_details_reopen_export_leave_source_unchanged",
+          "pass": true
+        },
+        {
+          "name": "package_switch_releases_pages_and_saved_export_identity",
+          "pass": false,
+          "retained_pages_after_switch": 15
+        },
+        {
+          "name": "tracked_source_unchanged_during_receiver",
+          "pass": true
+        }
+      ],
+      "elapsed_seconds": 16.88017563393805,
+      "failed": 2,
+      "original_receipt_bytes": 490596,
+      "original_receipt_path": "native-full/baseline-current-union-v2/receipt.json",
+      "original_receipt_sha256": "1e47ddb26664ac7cf469f02b75530d6ec9a1e2167673e09fd76eb93c76fba2ed",
+      "passed": 16,
+      "runtime": {
+        "packages": {
+          "PySide6": "6.12.0",
+          "matplotlib": "3.11.2",
+          "mcap": "1.5.0",
+          "numpy": "2.5.3",
+          "pyarrow": "25.0.1",
+          "scipy": "1.18.1"
+        },
+        "python": "3.12.15 (main, Oct  3 2026, 01:03:07) [Clang 22.1.3 ]",
+        "qt": "6.12.0"
+      },
+      "setup_error": null,
+      "source_head": "9d90abb574f7fbadc85f323e73b4b268acc0f5b3",
+      "source_tracked_files": 1175,
+      "source_tree": "7eee55fbe0b28011edf3aa5bb33f9ad409ca444e",
+      "source_unchanged": true,
+      "warnings": []
+    },
+    "candidate-current-union": {
+      "checks": [
+        {
+          "commit": "11cc78297d8d214407aea693548af4de855d61da",
+          "name": "current_main_is_real_ancestor",
+          "pass": true
+        },
+        {
+          "commit": "8747cb95bfb2ac91aa4f1ff604ad677f3597fa12",
+          "name": "history_pr71_is_real_ancestor",
+          "pass": true
+        },
+        {
+          "commit": "837fa1fbf2c5ad471cbb3924c212fc08d0e0f0ed",
+          "name": "gallery_pr80_is_real_ancestor",
+          "pass": true
+        },
+        {
+          "name": "real_analysis_thread_disables_saved_history",
+          "pass": true
+        },
+        {
+          "job_id": "20261008T194803Z_7a3b10f5",
+          "name": "real_range_job_completes_into_saved_history",
+          "pass": true,
+          "status": "completed"
+        },
+        {
+          "name": "current_job_provenance_preserves_scope_and_sync_refusal_contract",
+          "pass": true
+        },
+        {
+          "expected": [
+            "numeric/source-73616d706c65722e61/stream-666f726365/channel_0.png",
+            "numeric/source-73616d706c65722e61/stream-766f6c74616765/channel_0.png",
+            "numeric/source-73616d706c65722e62/stream-74656d7065726174757265/channel_0.png"
+          ],
+          "name": "real_nested_artifacts_reach_history_gallery",
+          "observed": [
+            "numeric/source-73616d706c65722e61/stream-666f726365/channel_0.png",
+            "numeric/source-73616d706c65722e61/stream-766f6c74616765/channel_0.png",
+            "numeric/source-73616d706c65722e62/stream-74656d7065726174757265/channel_0.png"
+          ],
+          "pass": true
+        },
+        {
+          "name": "nested_png_pixels_decode",
+          "pass": true
+        },
+        {
+          "name": "reopening_saved_nested_results_releases_old_qt_pages",
+          "pass": true,
+          "qt_figure_page_counts": [
+            3,
+            3,
+            3,
+            3
+          ],
+          "replaced_pages_still_alive": 0
+        },
+        {
+          "name": "reopen_keeps_scope_and_exact_job_association",
+          "pass": true
+        },
+        {
+          "name": "history_details_keep_exact_saved_params_read_only",
+          "pass": true
+        },
+        {
+          "name": "export_source_tracks_same_nested_job",
+          "pass": true,
+          "recorded_figure_count": 4,
+          "selected_job": "20261008T194803Z_7a3b10f5"
+        },
+        {
+          "name": "native_figure_export_starts_real_thread",
+          "pass": true
+        },
+        {
+          "name": "exported_nested_png_bytes_match_saved_artifacts",
+          "pass": true,
+          "zip_members": [
+            "figures/numeric/source-73616d706c65722e61/stream-666f726365/channel_0.png",
+            "figures/numeric/source-73616d706c65722e61/stream-766f6c74616765/channel_0.png",
+            "figures/numeric/source-73616d706c65722e62/stream-74656d7065726174757265/channel_0.png",
+            "figures/sync_dashboard.png",
+            "manifest.json",
+            "source/job_manifest.json",
+            "source/params.json"
+          ],
+          "zip_sha256": "cbb04bb7e7dbc115c8cd56645d08c18916322bbc680a52805dfbb57219c96052"
+        },
+        {
+          "name": "history_reopen_invalidates_finished_export_dialog",
+          "pass": true
+        },
+        {
+          "name": "browsing_details_reopen_export_leave_source_unchanged",
+          "pass": true
+        },
+        {
+          "name": "package_switch_releases_pages_and_saved_export_identity",
+          "pass": true,
+          "retained_pages_after_switch": 0
+        },
+        {
+          "name": "tracked_source_unchanged_during_receiver",
+          "pass": true
+        }
+      ],
+      "elapsed_seconds": 52.7794144829968,
+      "failed": 0,
+      "original_receipt_bytes": 490951,
+      "original_receipt_path": "native-full/candidate-current-union/receipt.json",
+      "original_receipt_sha256": "d068da83beb5c30320566e486b463a915d538fa0ba2ec852407bd88effa1d49a",
+      "passed": 18,
+      "runtime": {
+        "packages": {
+          "PySide6": "6.12.0",
+          "matplotlib": "3.11.2",
+          "mcap": "1.5.0",
+          "numpy": "2.5.3",
+          "pyarrow": "25.0.1",
+          "scipy": "1.18.1"
+        },
+        "python": "3.12.15 (main, Oct  3 2026, 01:03:07) [Clang 22.1.3 ]",
+        "qt": "6.12.0"
+      },
+      "setup_error": null,
+      "source_head": "a5e6e7ed4052a71c22c3d385d562f4de1263a7aa",
+      "source_tracked_files": 1176,
+      "source_tree": "fa4d573334b06ce2879dfb6542de7489780e2c52",
+      "source_unchanged": true,
+      "warnings": []
+    }
+  },
+  "original_records_retained": true,
+  "schema": "capturesuite.gallery_lifetime_receiving_projection.v1"
+}

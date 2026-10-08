@@ -1,0 +1,14 @@
+{
+  "command": [
+    "/home/jacob/hamon-capture-composition-f5c5ccd6-tools/venv/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "tests/ui/test_analysis_gallery_lifetime.py",
+    "-q",
+    "-ra",
+    "--junitxml=/home/jacob/hamon-capture-composition-f5c5ccd6-proof/candidate-lifetime-unit.xml"
+  ],
+  "exit": 0,
+  "elapsed_seconds": 20.281431191018783
+}
