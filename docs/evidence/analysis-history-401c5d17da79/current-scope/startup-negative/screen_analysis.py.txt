@@ -328,7 +328,7 @@ class AnalysisScreen(QWidget):
         )
 
     def _sync_enabled(self) -> None:
-        busy = self._thread is not None
+        busy = self._thread is not None and self._thread.isRunning()
         locked = self._recording_locked()
         has_pkg = self._summary is not None
         scope_error = self._scope_error()

@@ -1,0 +1,214 @@
+{
+  "canonical_main": "0ed1ccaa023a5327495565d59e1dd0b28b2ee5bd",
+  "author_source": "37443f0d4d5ffa684b5423d58501856cadbe0655",
+  "runtime_tree": "210832e8a07ccc6dff8ead12e9bf45dde3b31652",
+  "checks": [
+    {
+      "name": "current accepted numeric pipeline creates two real channel figures",
+      "passed": true
+    },
+    {
+      "name": "history explicitly selects the retained numeric job",
+      "passed": true
+    },
+    {
+      "name": "inspector receives that saved manifest",
+      "passed": true
+    },
+    {
+      "name": "history gallery presents both existing numeric channel figures",
+      "passed": false
+    },
+    {
+      "name": "unchanged direct gallery reproduces the same omitted numeric figures",
+      "passed": true
+    },
+    {
+      "name": "native history browsing starts no computation thread",
+      "passed": true
+    },
+    {
+      "name": "native viewing preserves every generated and captured byte",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "method_sha256": "c6d9c3aaf73e1cfef62c86dc36491440d3d6c6001996f149e2b978c97e2959d8",
+  "source_inputs_sha256": "2c9e35a372b29e6f4d93e5dd7a844b09fe49129fbf89a5c6e569f984aedaee6b",
+  "figure_paths": [
+    "figures/numeric/source-6c736c/stream-6e756d657269632e73747265616d/channel_0.png",
+    "figures/numeric/source-6c736c/stream-6e756d657269632e73747265616d/channel_1.png"
+  ],
+  "job_manifest": {
+    "analysisGrids": [],
+    "captureAnalysisVersion": "0.1.0",
+    "createdUtc": "2026-10-08T13:22:43Z",
+    "errors": [],
+    "evalWindowCount": null,
+    "featureTables": [
+      {
+        "featureSchemaVersion": 1,
+        "relativePath": "features/numeric/source-6c736c/stream-6e756d657269632e73747265616d/windows.parquet",
+        "rows": 3
+      }
+    ],
+    "gapPolicy": "mask",
+    "gapSummary": {
+      "closed": 0,
+      "maskedNs": 0,
+      "open": 0,
+      "validFraction": null
+    },
+    "jobId": "retained-numeric",
+    "kinematicsRows": null,
+    "manifestSha256": "399b408a7bcb1cbee8062a926f52b2ceff553fdbf4504d92a629b83898eb4b60",
+    "mlBundleWindowCount": null,
+    "modalities": [
+      "eeg"
+    ],
+    "outputs": [
+      {
+        "bytes": 254,
+        "kind": "params",
+        "relativePath": "params.json",
+        "sha256": "962d5067fb396fca7a5d207bae2aeff4ea16f3218396824de0da670f16b67dc3"
+      },
+      {
+        "bytes": 1127,
+        "kind": "qc_json",
+        "relativePath": "reports/qc.json",
+        "sha256": "6a7e1c4191f43ce87c04344f81d4b4ffa61b2fa383de413650bdcc02a21b3ba2"
+      },
+      {
+        "bytes": 2214,
+        "kind": "qc_html",
+        "relativePath": "reports/qc.html",
+        "sha256": "43b9cfbc29c185464e85873ac6c4bfd45a0fa3d45f259d7ea59dcae9464625e5"
+      },
+      {
+        "bytes": 5358,
+        "kind": "feature_parquet",
+        "relativePath": "features/numeric/source-6c736c/stream-6e756d657269632e73747265616d/windows.parquet",
+        "sha256": "b25e995662e343e5660be848fac61eac15dd63d904ea1fa8d4b58fe66dc68b84"
+      },
+      {
+        "bytes": 307,
+        "kind": "feature_csv",
+        "relativePath": "features/numeric/source-6c736c/stream-6e756d657269632e73747265616d/windows.csv",
+        "sha256": "9cae194fe5eabbdd3d804b734e609ea732d05f9b5885f6e51dcea9f5840230fe"
+      },
+      {
+        "bytes": 38048,
+        "kind": "figure",
+        "relativePath": "figures/numeric/source-6c736c/stream-6e756d657269632e73747265616d/channel_0.png",
+        "sha256": "255a352977baf12c5714f71c327cac9ec6fe96377378e7d789433de6335bc73a"
+      },
+      {
+        "bytes": 38330,
+        "kind": "figure",
+        "relativePath": "figures/numeric/source-6c736c/stream-6e756d657269632e73747265616d/channel_1.png",
+        "sha256": "ae7fd0d484e1dd7756a3a0c599de8aea09ede34d0ad1644775c0b95bce3f6195"
+      },
+      {
+        "bytes": 2691,
+        "kind": "feature_schema",
+        "relativePath": "features/_schema.json",
+        "sha256": "ea7b96fa667e83b0379515745ee23e659bd640497378b04c267da593d584e264"
+      },
+      {
+        "bytes": 32213,
+        "kind": "figure",
+        "relativePath": "figures/sync_dashboard.png",
+        "sha256": "e801135335d3a6e50353d82b039a14217f7fe6f931a1f9daa1f37de3ab0e6b02"
+      },
+      {
+        "bytes": 540,
+        "kind": "sync_series",
+        "relativePath": "figures/sync_dashboard_series.json",
+        "sha256": "1bc0a860646508a6001aed0d312d42338f8b2e9c93592cf5adc7dbeab2277554"
+      },
+      {
+        "bytes": 4166,
+        "kind": "manifest",
+        "relativePath": "job_manifest.json",
+        "sha256": "a3fa5a3115667361cbaa2ad0b701b50f37a9096b8f5391f9bd7f846bce2447ae"
+      }
+    ],
+    "packagePath": "/dev/shm/hamon-401c5d17da79-capture-history-pr/latest-boundary/numeric-run/numeric.mmsession",
+    "packageState": "sealed",
+    "paramsDigest": "fbbd87f4d0bdf05be752987d8e20dfb29df32e3da588706e698f21aa5567f604",
+    "pluginIds": [
+      "emg.envelope.v1",
+      "imu.kinematics.v1",
+      "radar.rd_energy.v1",
+      "radar_doppler.mag.v1",
+      "video.timing_qc.v1",
+      "numeric.basic.v1",
+      "test.dummy.feature.v1"
+    ],
+    "pluginManifestVersion": "1.0.0",
+    "poseJobId": null,
+    "poseModelId": null,
+    "poseTables": [],
+    "schemaId": "capture.analysis_job/1",
+    "sessionId": "history.numeric.current",
+    "sourcesSelected": [
+      "lsl"
+    ],
+    "status": "completed_with_warnings",
+    "syncAnchorsApplied": {
+      "anchors": [],
+      "applied": false
+    },
+    "timeRange": {
+      "checkpointIds": [],
+      "endSessionNs": 4611686018427387903,
+      "mode": "full",
+      "startSessionNs": -4611686018427387903
+    },
+    "tooling": {
+      "captureAnalysis": "0.1.0",
+      "matplotlib": "3.11.2",
+      "numpy": "2.5.3",
+      "pandas": "3.0.6",
+      "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+      "python": "3.12.14",
+      "scipy": "1.18.1"
+    },
+    "warnings": [
+      "package state is 'sealed' (prefer finalized)",
+      "package duration_ns is unknown/zero \u2014 analysis uses an open time window (integrity entries lack endSessionTimeNs)"
+    ]
+  },
+  "history_gallery_tabs": [
+    "Sync"
+  ],
+  "direct_gallery_tabs": [
+    "Sync"
+  ],
+  "event_loop_exit": 0,
+  "pyside6": "6.11.2",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "package_hashes": {
+    "manifest.json": "399b408a7bcb1cbee8062a926f52b2ceff553fdbf4504d92a629b83898eb4b60",
+    "processing/jobs/retained-numeric/features/_schema.json": "ea7b96fa667e83b0379515745ee23e659bd640497378b04c267da593d584e264",
+    "processing/jobs/retained-numeric/features/numeric/source-6c736c/stream-6e756d657269632e73747265616d/windows.csv": "9cae194fe5eabbdd3d804b734e609ea732d05f9b5885f6e51dcea9f5840230fe",
+    "processing/jobs/retained-numeric/features/numeric/source-6c736c/stream-6e756d657269632e73747265616d/windows.parquet": "b25e995662e343e5660be848fac61eac15dd63d904ea1fa8d4b58fe66dc68b84",
+    "processing/jobs/retained-numeric/figures/numeric/source-6c736c/stream-6e756d657269632e73747265616d/channel_0.png": "255a352977baf12c5714f71c327cac9ec6fe96377378e7d789433de6335bc73a",
+    "processing/jobs/retained-numeric/figures/numeric/source-6c736c/stream-6e756d657269632e73747265616d/channel_1.png": "ae7fd0d484e1dd7756a3a0c599de8aea09ede34d0ad1644775c0b95bce3f6195",
+    "processing/jobs/retained-numeric/figures/sync_dashboard.png": "e801135335d3a6e50353d82b039a14217f7fe6f931a1f9daa1f37de3ab0e6b02",
+    "processing/jobs/retained-numeric/figures/sync_dashboard_series.json": "1bc0a860646508a6001aed0d312d42338f8b2e9c93592cf5adc7dbeab2277554",
+    "processing/jobs/retained-numeric/job_manifest.json": "32dd2883bc55717ef813f36930eed5598124f27fa2a9a7a9817e750cd59bcb6d",
+    "processing/jobs/retained-numeric/logs/job.log": "7edc38094b8619545017aa8f12c4d0179ab43474343e25d483918f32d48b778a",
+    "processing/jobs/retained-numeric/params.json": "962d5067fb396fca7a5d207bae2aeff4ea16f3218396824de0da670f16b67dc3",
+    "processing/jobs/retained-numeric/reports/qc.html": "43b9cfbc29c185464e85873ac6c4bfd45a0fa3d45f259d7ea59dcae9464625e5",
+    "processing/jobs/retained-numeric/reports/qc.json": "6a7e1c4191f43ce87c04344f81d4b4ffa61b2fa383de413650bdcc02a21b3ba2",
+    "sources/lsl/streams/numeric/segments/000000.mcap": "f3df8e3cc95f76462c502935aad5abafd4392ed3224c239775650c5b49bcd18f",
+    "sources/lsl/streams/numeric/stream.json": "1adfb22cb81843c0e5bef319c9c2268ea2746e930232f6d89e154d133e0fa885"
+  },
+  "fixture_helper_sha256": "43369bd0fea48d2c8b7dee1d8128b3bb131b508b7b0a14512fc457fcfdb0ba3c",
+  "source_unchanged": true,
+  "exit_code": 1,
+  "passed": 6,
+  "failed": 1
+}

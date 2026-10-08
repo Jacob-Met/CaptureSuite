@@ -24,7 +24,8 @@ capture path for every device.
 - **Plugins** — drop in a `plugin.json` + worker executable (C++ or Python SDK)
 - **Sim** — develop and demo without hardware
 - **LSL bridge** — record any Lab Streaming Layer outlet with zero vendor code
-- **Analysis** — QC, features, pose/kinematics, ML bundle jobs on sealed packages
+- **Analysis** — QC, features, pose/kinematics, ML bundle jobs on sealed packages;
+  reopen saved results with their parameters, logs and output inventory
 
 ## Architecture (sketch)
 
@@ -57,6 +58,11 @@ The example checks original-fixture and copied raw-source hashes, rejects an
 existing output directory, and preserves failure output for diagnosis. It does
 not establish hardware performance, clinical validity, or full product readiness.
 Tests: `tests/analysis/test_offline_demo.py`.
+
+To inspect that saved job in the desktop, select its `.mmsession` package in
+**Analysis**, choose `demo-qc` under **Saved analysis**, then **Open saved result**.
+The [operator guide](docs/operator/README.md#open-saved-analysis) describes the
+gallery, inspector and read-only result details.
 
 ## Simulation walkthrough (after build prerequisites)
 

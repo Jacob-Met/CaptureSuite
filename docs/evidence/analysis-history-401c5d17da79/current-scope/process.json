@@ -1,0 +1,19 @@
+{
+  "command": [
+    "/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python",
+    "-B",
+    "/dev/shm/hamon-401c5d17da79-capture-history-pr/scope-current-seam/check_scope_history_qualified.py",
+    "--source",
+    "/dev/shm/hamon-401c5d17da79-capture-history-pr/scope-current-seam/receiving-source-candidate",
+    "--inputs",
+    "/dev/shm/hamon-401c5d17da79-capture-history-pr/scope-current-seam/candidate-source-inputs.json",
+    "--output",
+    "/dev/shm/hamon-401c5d17da79-capture-history-pr/scope-current-seam/native-scope-qualified"
+  ],
+  "exit_code": 0,
+  "seconds": 3.534,
+  "free_before": 11571200,
+  "free_after": 13574144,
+  "stdout_sha256": "aab4b265957f5404474d87c430bb03167b3514fb8fb05399e23cf5534f4b9c70",
+  "stderr_sha256": "bcd516d5e9014bd0f43bf526bc701b744bbd4ea9c35d16fdd65e6fde7b0270d5"
+}

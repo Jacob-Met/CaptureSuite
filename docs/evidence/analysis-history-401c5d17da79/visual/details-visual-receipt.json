@@ -1,0 +1,13 @@
+{
+  "source_commit": "37443f0d4d5ffa684b5423d58501856cadbe0655",
+  "saved_fixture_author": "independent current-main QC/2 receiver",
+  "package": "/dev/shm/hamon-401c5d17da79-capture-history-pr/current-boundary/current-run/current QC saved.mmsession",
+  "qt_platform": "offscreen",
+  "screens": {
+    "details-parameters.png": "b5bb8407c06e29a89f47739358c8492d211be803a20e2ef164b00b70e3953484",
+    "details-log.png": "b33e93d0026b163744737283234116d9332c4790dffc3cfd0caecad2d4935686"
+  },
+  "saved_bytes_unchanged": true,
+  "no_worker_started": true,
+  "result": "Native details visually captured; read-only boundaries passed."
+}

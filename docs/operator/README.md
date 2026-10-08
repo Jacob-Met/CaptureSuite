@@ -19,6 +19,33 @@ Or manually:
 3. Status bar shows **Connected · instance …**
 4. **Create Session** → select sim sources → **Rehearse** or **Start Selected**
 
+## Open saved analysis
+
+In **Analysis**, use **Browse…** or **Use open session** to select a `.mmsession`
+package. **Saved analysis** lists its retained completed and failed jobs, with
+their recorded status. Choose a job and click **Open saved result** to load its
+existing figures and output inventory into the gallery and job inspector.
+Selecting a different item in the list keeps the current result open until you
+explicitly open the selected one.
+
+**Result details…** opens read-only **Parameters**, **Log** and **Manifest** tabs
+for the currently displayed result. Failed jobs can be useful here: their saved
+log explains the failure even when no figures were produced. Missing parameters
+or logs are identified in their respective tabs. Long logs show their final
+256 KiB, with the truncation stated; the JSON viewer accepts files up to 4 MiB.
+
+Use **Refresh** to discover jobs written since the package was selected. Opening,
+refreshing and reading details do not rerun analysis or change any package files.
+Changing packages clears the previous package's result and details window. If an
+earlier job completes after a package change, its result stays with the original
+package; select that package to open it.
+
+An **unavailable** row includes the reason it cannot be opened, such as a missing
+manifest, unsupported job schema or mismatched session identity. A package copy
+can retain the original absolute path in its manifest; the viewer reads the job
+directory inside the package you selected. It does not follow job-directory
+links into another package.
+
 ## Why are buttons greyed out?
 
 | State | Enabled actions |
