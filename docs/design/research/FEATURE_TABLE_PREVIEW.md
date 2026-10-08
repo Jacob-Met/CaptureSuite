@@ -2,7 +2,7 @@
 
 ## Researcher workflow
 
-The Analysis job inspector includes a feature-table selector and **Preview table**.
+The Analysis job inspector includes a feature-table selector and **Preview retained feature table…**.
 Choose a table listed by the loaded completed job, then open its native read-only
 preview. The table retains physical column and row order. It shows at most the
 first 200 rows, with the original total row count and the preview limit displayed

@@ -1,0 +1,287 @@
+{
+  "schema": "capture.feature-preview-custody/1",
+  "issue": "https://github.com/Jacob-Met/CaptureSuite/issues/92",
+  "owner": "7879c2abc07f",
+  "source": {
+    "baseline_commit": "9e9204f76b105426b0affaa74733175c052f27ba",
+    "baseline_tree": "a1b37ec1ab291a90cb2a383aa8f50b797ac09932",
+    "qualified_commit": "9aa4fd1d913e1be5a8cc8908149826ec2f6f59e7",
+    "qualified_tree": "ae2bf0a6d98fae911f08beecef3ac25c029c02af",
+    "qualified_sole_parent": "9e9204f76b105426b0affaa74733175c052f27ba",
+    "composition_base_commit": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+    "composition_base_tree": "d1af33caaf7154e83def1dab035920907d417e8d",
+    "composed_commit": "618ef768a519cce60b74d18cdab4375203e65c58",
+    "composed_tree": "3660f0b33a5770a873c133b4760afbe6cccc295a",
+    "ordered_composed_parents": [
+      "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+      "9aa4fd1d913e1be5a8cc8908149826ec2f6f59e7"
+    ],
+    "qualified_owned_files": [
+      {
+        "path": "desktop/capture_desktop/analysis_feature_preview.py",
+        "mode": "100644",
+        "base_preimage_sha": null,
+        "base_state": "absent",
+        "created_git_sha": "c5dcb1940bec48cea119299d5244e3fce6e88d1f",
+        "bytes": 17056,
+        "sha256": "2fb44dc46de9badab1dced0060e1f31bb1caacf0e004fdf50fe13bff11643862",
+        "content_readback_exact": true
+      },
+      {
+        "path": "desktop/capture_desktop/widgets_analysis_feature_preview.py",
+        "mode": "100644",
+        "base_preimage_sha": null,
+        "base_state": "absent",
+        "created_git_sha": "90bda5d4524c77b2f4d69df2872c79c479d57502",
+        "bytes": 21199,
+        "sha256": "6749f65454aff91742df6f0099484c1f3b1bb4f1f0f48688263eb2b55538f3ab",
+        "content_readback_exact": true
+      },
+      {
+        "path": "desktop/capture_desktop/widgets_analysis_plots.py",
+        "mode": "100644",
+        "base_preimage_sha": "8938b536f13479a424ffb3cd913a4f3364de8d32",
+        "base_state": "existing",
+        "created_git_sha": "2a75debea5f2480992b3dad831cadd1f93a8b384",
+        "bytes": 10297,
+        "sha256": "19a9939a1f226a4037d833b7ddf314e77b6a12f4365bb9e4bcb06cc0d93da3f3",
+        "content_readback_exact": true
+      },
+      {
+        "path": "docs/design/research/FEATURE_TABLE_PREVIEW.md",
+        "mode": "100644",
+        "base_preimage_sha": null,
+        "base_state": "absent",
+        "created_git_sha": "350a7a1d96dd2adf0cdc763b28cdef88c76cfd6b",
+        "bytes": 8375,
+        "sha256": "9908d4a84c47796abb177826cdfdafe444c2be1522b2a79786f2f098997d044a",
+        "content_readback_exact": true
+      },
+      {
+        "path": "docs/design/research/PROGRESS.md",
+        "mode": "100644",
+        "base_preimage_sha": "a8bd0bd47815fa20108cd37ee3ff57e85e9a92a4",
+        "base_state": "existing",
+        "created_git_sha": "35c1e420bd436d25fad7139b5344bd5fad1af6e6",
+        "bytes": 75878,
+        "sha256": "594903c75a824a65fbbe6c7883e59c86911dac7e2a49bfceb01f019cb3498ad2",
+        "content_readback_exact": true
+      },
+      {
+        "path": "tests/ui/test_analysis_feature_preview.py",
+        "mode": "100644",
+        "base_preimage_sha": null,
+        "base_state": "absent",
+        "created_git_sha": "2c24de06d909c40c47b4fed2ddab2572618b8c9f",
+        "bytes": 13695,
+        "sha256": "4d3864989967e6fa7ac745552fd0b0fdd22de90fbb6028658b677aac48e79615",
+        "content_readback_exact": true
+      },
+      {
+        "path": "tests/ui/test_analysis_feature_preview_widget.py",
+        "mode": "100644",
+        "base_preimage_sha": null,
+        "base_state": "absent",
+        "created_git_sha": "ee68d580a03f7005a3225feb2e9303e4d85c9d88",
+        "bytes": 18749,
+        "sha256": "8a5411719027e23e1ed3d6a057e30d600875f861ce59f43a28f4f00f594d51db",
+        "content_readback_exact": true
+      }
+    ],
+    "composed_progress": {
+      "path": "docs/design/research/PROGRESS.md",
+      "git_blob": "0322cea9683a5006d8a454763c44a8cfbdcd0d51",
+      "bytes": 79933,
+      "sha256": "674b99ba48432f18b796396addd01d00bd46d5b920d5b709a2dc1b0d9cfd912a",
+      "preserved_current_prefix_bytes": 76964,
+      "exact_authored_suffix_bytes": 1584,
+      "separate_qualification_note_bytes": 1385
+    },
+    "selected_native_source_files": 321,
+    "selected_manifest_sha256": "162be863e445300d1c16eb5eb4bd61e6607263979af72861184e60ca2d34db0c",
+    "complete_qualified_leaves": 1213,
+    "complete_composed_leaves": 1285,
+    "unrelated_current_leaves_preserved": 1278,
+    "executed_source_paths_exact": 67,
+    "root_commit_and_tree_readbacks": true,
+    "independent_git_directory_derivation": true
+  },
+  "final_custody_documentation_correction": {
+    "path": "docs/design/research/FEATURE_TABLE_PREVIEW.md",
+    "mode": "100644",
+    "original_blob": "350a7a1d96dd2adf0cdc763b28cdef88c76cfd6b",
+    "git_blob": "4ad15779e5cd6bcc41b1b81c5cd7d847e6b14bef",
+    "bytes": 8395,
+    "sha256": "e553631006d66cb15a963a35b5f8060b64dc7d1e1df4411668b09586adefb304",
+    "change": "Replace only the abbreviated button label with Preview retained feature table…",
+    "root_full_content_readback_exact": true,
+    "executable_or_test_changes": false
+  },
+  "final_custody_projection": {
+    "matching_files": 318,
+    "total_files": 321,
+    "expected_unexecuted_differences": [
+      "desktop/capture_desktop/screen_review.py",
+      "docs/design/research/PROGRESS.md",
+      "docs/design/research/FEATURE_TABLE_PREVIEW.md"
+    ],
+    "executed_project_paths_exact": 67
+  },
+  "final_receiving": {
+    "author": {
+      "passed": 90,
+      "failed": 0,
+      "skipped": 0,
+      "elapsed_seconds": 20.111585492966697,
+      "receipt_sha256": "3b23593401919059f38609c4c1f8646ed65f76a3ca0975bbb3fcd859c1b77667",
+      "source_files": 321,
+      "source_snapshots_exact": true
+    },
+    "independent": {
+      "passed": 21,
+      "failed": 0,
+      "skipped": 0,
+      "receipt_sha256": "91b24d4a3036f0e76508eb49b093496baa8d3cad4f19feb3ba21cfb691b3c24a",
+      "frozen_consumer_unchanged": true
+    },
+    "actual_workbench": {
+      "passed": true,
+      "actual_qc_job": "20261008T215331Z_57fbeb84",
+      "receipt_sha256": "48feba499d4fd8809c834e7d14cce2fb3643e8c6a2e8e35655534d783cdd8990",
+      "raw_files_conserved": 12,
+      "prior_retained_job_files_conserved": 7,
+      "new_qc_job_files": 5,
+      "actual_import_origin_count": 67,
+      "receiver_only_correction": "Accept an already-deleted Qt dialog as closed before calling isVisible; exact one-line correction reviewed, original failure preserved."
+    },
+    "ceiling": "Native Linux component and actual AnalysisScreen controls at the exact qualified 9e-based source; not a Windows, full application, hardware, installed adoption or scientific gate."
+  },
+  "gate_count_policy": "The authored phases overlap; preserve individual 34/6/35/6/90/6/90 results without summation. The 21 independent groups and real workbench run are separately identified.",
+  "evidence": [
+    {
+      "path": "author-native-evidence.json",
+      "git_blob": "d4fbf8407d0b9dd842a6dc3482882a950e59e57b",
+      "bytes": 2070234,
+      "sha256": "22b64e9051ae83142e9fa7227f98625a1575203d136833a834963279e14db370",
+      "archive": {
+        "bytes": 1442849,
+        "sha256": "702f7e541784c0aba3b5e1b091ec71c39480b766be8dbe59a4311c2e1fab15b7",
+        "members": 458,
+        "decoded_member_bytes": 4207409
+      },
+      "manifest": {
+        "bytes": 127697,
+        "sha256": "a450488088937a4f5db883ac236dd4adfef564cd9767cad4a49ea4488348d209"
+      },
+      "summary": {
+        "bytes": 6248,
+        "sha256": "4f246b5ebd91343f23742a1990126afa3c8500c2b4bff825f5e08d568d2e374d"
+      },
+      "full_content_readback_exact": true,
+      "encoding": "UTF-8 JSON envelope; archive.base64"
+    },
+    {
+      "path": "independent-native-receiving.json",
+      "git_blob": "3f38b10488827d8abe7183e4cfe65f4f2f9a4a7f",
+      "bytes": 1711576,
+      "sha256": "64f42d61d534757477e121823cf604199736f85915f1eb1e984b6e6f877edef8",
+      "archive": {
+        "bytes": 1283025,
+        "sha256": "5d86d03ebcb4f573d2c6779214c3b9b104a9d2034749b82c121f28a65e35a247",
+        "members": 801
+      },
+      "manifest": {
+        "bytes": 248803,
+        "sha256": "db3757974e86f4c22ac867b1a658a927e4e8073a792f4fe3fcb4d3e0bc9bd06b"
+      },
+      "full_content_readback_exact": true,
+      "encoding": "UTF-8 JSON envelope; archive.base64"
+    },
+    {
+      "path": "README.md",
+      "bytes": 12640,
+      "sha256": "a0dd0bfc3a2e3701a9186a10fe0747e719cd88ff257d21b9fe559c50ef5f4026",
+      "git_blob": "8a575650a7c972c0a6cb876883ae90ede5537ead",
+      "full_content_readback_exact": true
+    },
+    {
+      "path": "reviews.json",
+      "bytes": 111893,
+      "sha256": "34a67dcb8526a7e4ce55cc403e49fc60a7694e24a5ff4a03af55ab6cfc220c26",
+      "git_blob": "bfdb6132c64e290ea0347214bdbaf7ec2ba5af76",
+      "full_content_readback_exact": true
+    }
+  ],
+  "review_documents": [
+    {
+      "name": "root-review.json",
+      "bytes": 8793,
+      "sha256": "f5bfa7d3a6c9ca4897149f65180a684124499879f6b5b1db64c77f878d6fb065",
+      "git_blob": "0f2f0f275c1e36d4b359c4c4e555c31fb2b04aab"
+    },
+    {
+      "name": "independent-current-composition-review.json",
+      "bytes": 68379,
+      "sha256": "35b66125b4d586487ab6c42221d17c083bf62107a17a687781248afedcfa7ffa",
+      "git_blob": "37f36efdf78d07f57f7e52657be3ac3f2309bf81"
+    },
+    {
+      "name": "independent-paired-packet-receiving-next-production.json",
+      "bytes": 9107,
+      "sha256": "ac7692cf88ca6708682628152948e51b37547ae96a0a8062633368c86662c5f5",
+      "git_blob": "126e9165919850261c7d4bd73064d835cfa9040b"
+    },
+    {
+      "name": "independent-author-packet-review.json",
+      "bytes": 10449,
+      "sha256": "5951e53e98592676edb3ed64ef476d476159341d4e5633391b50ef5a343d6d9e",
+      "git_blob": "0585ce0efb9c9562823ca8874ec41e85fa0c0b57"
+    },
+    {
+      "name": "author-packet-originals-receiving-next-production.json",
+      "bytes": 6173,
+      "sha256": "adcbdcc98a076d1ff322471c1ff97abc3d98799ecb7e69e7f306c3345d2445a2",
+      "git_blob": "a4ace87330239a3bcc4f691715a575bf7c39e806"
+    }
+  ],
+  "authority": {
+    "no_actions": "https://github.com/Jacob-Met/hamon/issues/143#issuecomment-6067592767",
+    "direct_native_integration": "https://github.com/Jacob-Met/hamon/issues/143#issuecomment-6069904551",
+    "current_dispatcher_and_migration_boundary": "https://github.com/Jacob-Met/hamon/issues/140#issuecomment-6070395002"
+  },
+  "workflow_preflight": {
+    "observed_utc": "2026-10-08T22:32:59Z",
+    "main": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+    "new_branch_absent": true,
+    "matching_pull_requests": 0,
+    "complete_workflow_count": 3,
+    "workflows": [
+      {
+        "path": ".github/workflows/ci.yml",
+        "git_blob": "1067e9944ce4836d8cd1673442687333ef7ad564",
+        "events": "pull_request; push on main/master"
+      },
+      {
+        "path": ".github/workflows/camera-native.yml",
+        "git_blob": "931eedfb75258d616a64c18fe26bcf02d9942d9d",
+        "events": "path-scoped pull_request; path-scoped push on main/master; explicit workflow_dispatch"
+      },
+      {
+        "path": ".github/workflows/release.yml",
+        "git_blob": "079f99fe630d135933f3c2c725f49874c2d66d1c",
+        "events": "push tags v*"
+      }
+    ],
+    "decision": "New non-main, non-tag, non-PR custody branch does not match automatic triggers. Required workflow definitions and gates remain unchanged."
+  },
+  "limitations": [
+    "Actual runs are tied to the exact 9e-based selected source; the later composition is static receiving, not another test execution.",
+    "Linux native component and actual AnalysisScreen controls are qualified. Windows/full application and installed adoption are not yet claimed.",
+    "No physical capture, scientific validation or process-wide peak-memory bound is claimed.",
+    "Direct LA7 native receiving and integration are authorized by the newer instruction. Existing Windows runtime/access have been refreshed; owner and equivalent gate checks are underway.",
+    "No workflow dispatch, PR/main update or other action that starts GitHub Actions is authorized under the active hold."
+  ],
+  "custody_branch": "receiving/feature-table-preview-7879c2abc07f-20261008",
+  "evidence_prefix": "docs/evidence/feature-table-preview-7879c2abc07f/",
+  "self_reference_rule": "The final custody commit/ref and post-publication Actions observations are recorded in the issue checkpoint; the manifest does not attempt to hash itself."
+}
