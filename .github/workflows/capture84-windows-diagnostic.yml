@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: e548c4fc1d86e5762deb27fe1e82d6fd494ddf7b
+          ref: e3cab7a612cecf5c049c0e60ddc8679726978fb1
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
@@ -25,7 +25,7 @@ jobs:
           python tools/gen_protos.py
           python tools/gen_session_schemas.py
           git diff --exit-code
-      - name: Observe unchanged suite with a bounded diagnostic process
+      - name: Receive corrected chooser and keyboard on exact current composition
         shell: pwsh
         env:
           QT_QPA_PLATFORM: offscreen
@@ -40,7 +40,7 @@ jobs:
           root = pathlib.Path.cwd()
           out = root / "build/evidence/prediction-input-windows-diagnostic"
           out.mkdir(parents=True, exist_ok=False)
-          expected = "e548c4fc1d86e5762deb27fe1e82d6fd494ddf7b"
+          expected = "e3cab7a612cecf5c049c0e60ddc8679726978fb1"
           before = source_snapshot(root)
           assert before["commit"] == expected and not before["worktree_dirty"]
           (out / "source-before.json").write_text(json.dumps(before, indent=2)+"\n", encoding="utf-8")
@@ -53,7 +53,8 @@ jobs:
           env["PYTHONDONTWRITEBYTECODE"] = "1"
           env["PYTHONPATH"] = str(out) + os.pathsep + str(root)
           env["PYTEST_PLUGINS"] = "capture_prediction_observer"
-          command = [sys.executable, "-u", "-B", "-m", "pytest", "tests", "-vv", "-s",
+          command = [sys.executable, "-u", "-B", "-m", "pytest", "tests/ui/test_analysis_predictions.py",
+                     "tests/protocol/test_ci_contract.py", "-vv", "-s",
                      "-o", "faulthandler_timeout=20", "--ignore=tests/kill_tests",
                      "--junitxml="+str(out / "pytest.xml")]
           started=time.monotonic()
