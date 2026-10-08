@@ -1,0 +1,60 @@
+{
+  "historicalMain": "3cbb5300bdc79c157370d1b3e599a6c82752d54a",
+  "currentMain": "6ef303bbcf019d32288723a7741b99ce36003fd5",
+  "screenBaseBlob": "db197c9c65ae70565678f209f6ecbd72779169b5",
+  "screenKeyboardBlob": "83bd8e5f642fb389dcd1a5f4b5820bfba0140086",
+  "rootScreenInverseExact": true,
+  "currentProgressPrefixExact": true,
+  "ownProgressSuffixCharacters": 3292,
+  "testBlob": "3947b593dfa2e4b499268ad984a2bcc0d4856844",
+  "testSha256": "7f00dfb87af554e500681dd953326df85636e682269e809020f7ace5f060a61e",
+  "runtimeAcceptance": "pending ordinary Windows current-composition execution",
+  "scopeWait": "Original6ef scope test retained pending its active owner; focused source receiving only",
+  "sources": {
+    "correctedSourceScreen": {
+      "blob": "83bd8e5f642fb389dcd1a5f4b5820bfba0140086",
+      "sha256": "c3285b0fdd6c67dbe80f38cbce843f8aa3a8623f1d1e0a10b5c33d3c109a24c2"
+    },
+    "tests": {
+      "blob": "3947b593dfa2e4b499268ad984a2bcc0d4856844",
+      "sha256": "7f00dfb87af554e500681dd953326df85636e682269e809020f7ace5f060a61e"
+    },
+    "junitObserver": {
+      "blob": "09fe01c8b049c6853b2346fafff23a08d0838c8d",
+      "sha256": "ee579cf1ada53a65c1bde137df2cd7db42f6d633c9a7365da069c3abb9838dc4"
+    },
+    "ci": "1067e9944ce4836d8cd1673442687333ef7ad564"
+  },
+  "junitSyntheticReceipt": {
+    "synthetic_only": true,
+    "in_memory_file_fixtures": true,
+    "results": [
+      {
+        "fixture": "valid",
+        "accepted": true,
+        "pass": true
+      },
+      {
+        "fixture": "skipped-main",
+        "accepted": false,
+        "pass": true
+      },
+      {
+        "fixture": "duplicate-main",
+        "accepted": false,
+        "pass": true
+      },
+      {
+        "fixture": "hash-mismatch",
+        "accepted": false,
+        "pass": true
+      },
+      {
+        "fixture": "missing-countercontrol",
+        "accepted": false,
+        "pass": true
+      }
+    ],
+    "source_sha256": "ee579cf1ada53a65c1bde137df2cd7db42f6d633c9a7365da069c3abb9838dc4"
+  }
+}

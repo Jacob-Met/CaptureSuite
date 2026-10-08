@@ -18,6 +18,7 @@ from PySide6.QtWidgets import (
 )
 
 from . import theme
+from .widgets_analysis_predictions import EvaluationInput
 
 
 def list_job_ids(package: Path, *, require_rel: str | None = None) -> list[str]:
@@ -47,6 +48,7 @@ class AnalysisJobExtras(QWidget):
 
         self._box = QGroupBox("Job dependencies")
         form = QFormLayout(self._box)
+        self._dependency_form = form
         self._pose_job = QComboBox()
         self._pose_job.setEditable(True)
         self._kin_job = QComboBox()
@@ -67,6 +69,7 @@ class AnalysisJobExtras(QWidget):
         win_row.addWidget(QLabel("Hop s"))
         win_row.addWidget(self._hop_sec)
         form.addRow("ML windows", win_row)
+        self._non_eval_rows = (self._pose_job, self._kin_job, self._feat_job, win_row)
         root.addWidget(self._box)
 
         hint = QLabel(
@@ -78,8 +81,12 @@ class AnalysisJobExtras(QWidget):
         hint.setFont(theme.ui(8))
         root.addWidget(hint)
 
+        self._evaluation = EvaluationInput()
+        root.addWidget(self._evaluation)
+
     def set_package(self, package: str) -> None:
         self._package = package
+        self._evaluation.set_package(package)
         self.refresh()
 
     def refresh(self) -> None:
@@ -127,9 +134,15 @@ class AnalysisJobExtras(QWidget):
         self._bundle_job.setEnabled(need_bundle)
         self._window_sec.setEnabled(need_win)
         self._hop_sec.setEnabled(need_win)
+        for row in self._non_eval_rows:
+            self._dependency_form.setRowVisible(row, command != "eval")
         self.setVisible(
             command in ("pose", "kinematics", "ml_bundle", "eval")
         )
+        self._evaluation.set_command(command)
+
+    def set_eval_busy(self, busy: bool) -> None:
+        self._evaluation.set_busy(busy)
 
     def build_extra(self, command: str) -> dict:
         extra: dict = {}
@@ -150,6 +163,7 @@ class AnalysisJobExtras(QWidget):
             bid = self._bundle_job.currentText().strip()
             if bid:
                 extra["ml_bundle_job_id"] = bid
+            extra.update(self._evaluation.extra())
         return extra
 
     def validate_for(self, command: str) -> str | None:
@@ -163,6 +177,8 @@ class AnalysisJobExtras(QWidget):
                 return "Select a features job (radar preferred)."
         if command == "eval" and not extra.get("ml_bundle_job_id"):
             return "Select an ml_bundle job."
+        if command == "eval":
+            return self._evaluation.validate()
         return None
 
 

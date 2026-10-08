@@ -1,0 +1,104 @@
+{
+  "scope": "Read-only current-parent source admission; no execution replay",
+  "source_commit": "4987c99c49751461a6b53a90ce9c43e39062ad59",
+  "source_tree": "2d418e2094fae2caa59b17be66e1e7524ace66f0",
+  "parent": "3cbb5300bdc79c157370d1b3e599a6c82752d54a",
+  "parent_tree": "4af105896633559b35823a7aa2710dc30b2f1740",
+  "parent_git_api_inventory_exact": true,
+  "parent_leaves": 1057,
+  "source_leaves": 1060,
+  "unchanged_parent_leaves": 1053,
+  "changed_existing_paths": [
+    "desktop/capture_desktop/screen_analysis.py",
+    "desktop/capture_desktop/widgets_analysis_jobs.py",
+    "docs/design/ANALYSIS.md",
+    "docs/design/research/PROGRESS.md"
+  ],
+  "added_paths": [
+    "desktop/capture_desktop/widgets_analysis_predictions.py",
+    "docs/design/research/EXTERNAL_EVALUATION_WORKBENCH.md",
+    "tests/ui/test_analysis_predictions.py"
+  ],
+  "planned_paths_exact": [
+    "desktop/capture_desktop/screen_analysis.py",
+    "desktop/capture_desktop/widgets_analysis_jobs.py",
+    "desktop/capture_desktop/widgets_analysis_predictions.py",
+    "docs/design/ANALYSIS.md",
+    "docs/design/research/EXTERNAL_EVALUATION_WORKBENCH.md",
+    "docs/design/research/PROGRESS.md",
+    "tests/ui/test_analysis_predictions.py"
+  ],
+  "accepted_983_runtime_test_guide_exact": {
+    "desktop/capture_desktop/widgets_analysis_predictions.py": {
+      "bytes": 5591,
+      "sha256": "d865031e313b0c1aed23a2cb0beeb20441a96d380f0b3652458107ba4a6e2435",
+      "git_blob": "0e47254965e7da4428f9e2f0b3a2d75f1e92a433"
+    },
+    "desktop/capture_desktop/widgets_analysis_jobs.py": {
+      "bytes": 6995,
+      "sha256": "a012ac150e1301a630417cd78238c050093206f94f073e6e0ee4c90f22b81b62",
+      "git_blob": "8f65859da5b4bebf8e7a4b1cd9cba60432fc2972"
+    },
+    "desktop/capture_desktop/screen_analysis.py": {
+      "bytes": 17960,
+      "sha256": "a62e7e9ae63c658205531ef51844f4a68a64c738ce1de6083f93a4e9a5ddbc94",
+      "git_blob": "b169ab728babf879701ccbb084f959ee02ae4155"
+    },
+    "tests/ui/test_analysis_predictions.py": {
+      "bytes": 20960,
+      "sha256": "e87f63a19639d40785d922b3e78d27b8487feb51a3c3c46d89ea6184f7facbe2",
+      "git_blob": "94d9b13131785f88990509e622a7e504fa9047ad"
+    },
+    "docs/design/research/EXTERNAL_EVALUATION_WORKBENCH.md": {
+      "bytes": 4655,
+      "sha256": "8e619f78cfa53b4447e50389a38f89a6b01cd4ac10710cc24bdd6def3d4c6b99",
+      "git_blob": "30f9c1c043f2a5e222d34691b7520e8262f8302f"
+    }
+  },
+  "current_parent_document_prefixes_preserved": true,
+  "document_additions": {
+    "docs/design/ANALYSIS.md": "\n### Native workbench: supplied prediction files\n\nIn the Analysis tab, select **Eval report**, the source **ML bundle job**, and\n**External predictions file** under **Evaluation input**. **Choose…** selects\nthe JSON file; **Run** sends that explicit choice through the existing job\nworker and evaluator. Empty or unavailable external choices block the run and\nnever select the identity simulation. **Identity teacher (simulation)** remains\nthe explicit default for fixture checks.\n\nThe control column scrolls at smaller window sizes. The workbench preserves a\nchoice after dialog cancellation and clears it when a different session is\nopened. A running job captures its request, disables the evaluation-input controls, and offers the\nexisting cancellation action. The evaluator retains the bytes it receives when\nthe job executes; selecting a file does not freeze its contents.\n\nSee [Evaluate a predictions file in Analysis](research/EXTERNAL_EVALUATION_WORKBENCH.md)\nfor the operator flow, file-choice behavior and retained report/figure paths.\n",
+    "docs/design/research/PROGRESS.md": "\n## 2026-10-08 — Native external-prediction evaluation (#69; HAMON 6e5752b49b6f)\n\nThe native Analysis workbench now exposes the existing #57/PR65 evaluator with\nan explicit **Evaluation input** choice. **Identity teacher (simulation)**\nretains the original default. **External predictions file** offers a native\nfile chooser, literal read-only path, Clear and actionable missing-file errors.\nIt sends the ordinary prediction_path job extra without replacing evaluator\nadmission, source binding, scoring, schema or publication. Source and raw files\nremain read-only. See [the operator guide](EXTERNAL_EVALUATION_WORKBENCH.md).\n\nChooser cancellation preserves the current choice. A new session clears the\nfile; command/mode changes preserve it within the same session. Revision checks\nretire file dialogs whose context changed while they were open. The worker\ncaptures scalar request values, while the evaluator admits and retains the\nactual input bytes when it runs. No file-byte snapshot or trained-model\nexecution is implied by a selection.\n\nNative receiving exposed two separate workbench findings. The first candidate\nclipped its new controls under vertical pressure, so the unchanged control\ncolumn now lives in a native scroll area. Keyboard controls, wrapped text and\nRun/Cancel remain reachable without forcing a taller Analysis window. An\nindependent held-worker check also proved the parent's Run/Cancel state used\nisRunning before thread.start and never resynchronized. The shared screen hunk\nnow treats a reserved worker as busy and rejects any duplicate start while it\nis reserved; the existing worker/cancellation/job lifecycle is unchanged.\n\nThe original absence capture, functional source, clipped images, inherited busy\ncounterexample and receiver-only corrections remain distinct in qualification.\nLocal Python 3.12.8 / PySide6 6.11.2 receiving uses actual Qt dialogs and QThreads,\nreal external/identity/refused jobs, retained-file and output-inventory checks,\nand keyboard reachability at 1100×700 and 1280×960. The actual MainWindow imports\nWindows named-pipe APIs before its auto_connect=False guard, so its minimum-size\ncase is a supported Windows CI gate, explicitly skipped on Mac. No Windows\nhardware, OS-native dialog, model authorship or scientific efficacy claim is\nmade from the local fixture evidence. Independent receiving and hosted results\nare recorded separately with their exact source identities.\n"
+  },
+  "unowned_imports_admitted": 66,
+  "changed_dependencies": [
+    {
+      "path": "libs/python/capture_analysis/capture_analysis/windows.py",
+      "original_git_blob": "80bea6bd69365a48c5b204c26d054b8ae179437a",
+      "current_git_blob": "aaafd8db78f82a5a56178135dbed5bfd4f45c634",
+      "unchanged": false
+    },
+    {
+      "path": "libs/python/capture_analysis/capture_analysis/jobs.py",
+      "original_git_blob": "ad0a551e90e5d06ec38a9218277efa24b0030c75",
+      "current_git_blob": "dd25dd3d6cc4b583f0fe6cfb352fba10be22352b",
+      "unchanged": false
+    }
+  ],
+  "actual_false_anchor_full_session_jobs": 6,
+  "dependency_admission_sha256": "a4b2840bc489a69599b6d7f5bbb98a6778801a07fd38e4f6bfd32b48a7419b00",
+  "unchanged_archives": [
+    {
+      "path": "capturesuite69-functional-receiving.tar.gz",
+      "bytes": 743543,
+      "sha256": "8efa28046febd1fbadadefaf0cb35229e9cc4cefa6b621bd9c2d35f979c7737f",
+      "git_blob": "b0a4782f81edf51f0980526e3984a5e6871c91d5"
+    },
+    {
+      "path": "capturesuite69-original-counterexamples.tar.gz",
+      "bytes": 552335,
+      "sha256": "c3050c15d7552d63ce5281e483e22b72d37bbdabd41a955135dbab4dd15b8a31",
+      "git_blob": "6878567567242d4f97a9f88ef4cc55cab6d36266"
+    },
+    {
+      "path": "capturesuite69-successor-receiving.tar.gz",
+      "bytes": 1504813,
+      "sha256": "9327437bb919a80e7550df14f9b1ba950cb8b806a1e4c1c7cd764281130abca3",
+      "git_blob": "68b4e67d992bc7836a78dd2e9a1ea8b7c35dcbd9"
+    }
+  ],
+  "script_sha256": "4a1e1a5ac0e9341e1069db7c214af726c7f2a9ac1b6c7c787aabd5a7ed7750ce",
+  "actual_accepted_source_execution": "983641cc270db34be0711d554cd2c82608cb0b8c",
+  "actual_windows_full_shell_execution": "pending hosted CI",
+  "passed": true
+}

@@ -1,0 +1,68 @@
+{
+  "schema": "capturesuite.pr87_diagnostic_capsule/1",
+  "first_head": "33c6fb3409970941521bd37d236ddda4d3bed581",
+  "first_tree": "0426265ad9d834f205bcece47eb6d69c94672905",
+  "first_run_id": 37829510696,
+  "archive": {
+    "path": "first-ci-evidence.tar.gz",
+    "bytes": 68167,
+    "sha256": "847566053aae5c9623fb3832b09fa18ad0ab3459e56eb319f2495db90f41b2ec",
+    "members": 13,
+    "expanded_bytes": 459778
+  },
+  "files": {
+    "first-python-job.log": {
+      "bytes": 51861,
+      "sha256": "97fa945196a580be7bf67adecf3ef17ca37ffb2f1b447a574d1b3d1cd4c9785b"
+    },
+    "first-cpp-job.log": {
+      "bytes": 312288,
+      "sha256": "29576e3f88b0937dfaed038125c7177be47251b94e86a1f28b7cf28bbebca1ea"
+    },
+    "main-python-control.log": {
+      "bytes": 53054,
+      "sha256": "6606c6ee7accbfb7b7afe7d1239d7c0fe4d0a9a39f4d757e68833acdd88c8b5d"
+    },
+    "first-python-receipt.json": {
+      "bytes": 1246,
+      "sha256": "1c655bd858c10c4af56dddf3b0af45ba8ba587aac223bf189c9bc769aa324493"
+    },
+    "first-final-jobs.json": {
+      "bytes": 10635,
+      "sha256": "1e52d929595237b0eb0968bca2058fba48fecb0c0a97897971dc843090cc5e6e"
+    },
+    "first-api-artifacts.json": {
+      "bytes": 1830,
+      "sha256": "a10940d3376353fd929052c8ab22dc688cb16477605a787d8d94701089f06e1f"
+    },
+    "first-gate.json": {
+      "bytes": 4501,
+      "sha256": "4a3ccb13d08ca116c6ae91a5da7f071f38c6b464e27a8a11783ee6dd56a2b672"
+    },
+    "first-gate-v2.json": {
+      "bytes": 7429,
+      "sha256": "df2d92cfa7fcd7a750f25aad7c29a2324d4b21a70bb134267a458e4100ab5416"
+    },
+    "diagnostic-proposal/run_ci_tests.original.py": {
+      "bytes": 7416,
+      "sha256": "08a9d4786a6e768e0914ac5490d780c64c07f920b790dd16c5e0740bda9c2ac2"
+    },
+    "diagnostic-proposal/run_ci_tests.py": {
+      "bytes": 7443,
+      "sha256": "a35a6bb9b5293db46201857a5590b45ad77243f646a5cf729112f8130710d776"
+    },
+    "diagnostic-proposal/diagnostic.patch": {
+      "bytes": 272,
+      "sha256": "fca694cf321cbb6157f282ae5f330ae400598ee6af0a224f85955bb2699e762f"
+    },
+    "diagnostic-proposal/proposal.json": {
+      "bytes": 726,
+      "sha256": "e8cb56e7b0ef1432e17e512a78a81407df1e3852ce0945fd9642c9330e568372"
+    },
+    "diagnostic-proposal/scoped-static.json": {
+      "bytes": 1077,
+      "sha256": "42c76d2f67f3f6f11e7970152c6b66dbff157708fd5e54cdcc9e224a569ecb9b"
+    }
+  },
+  "scope": "Retained original failed quiet Windows Python gate, successful independent C++ gate, earlier main control, and reviewed verbosity-only proposal. All archive members reopened and compared exactly. No artifact ZIP download or new execution."
+}

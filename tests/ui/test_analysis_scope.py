@@ -127,6 +127,8 @@ def test_selected_scope_reaches_real_thread_job_and_mcap_outputs(qapp, tmp_path:
         until = time.monotonic() + 120
         while screen._thread is not None and time.monotonic() < until:
             QTest.qWait(20)
+            # Give the Python worker execution time as well as pumping Qt events.
+            time.sleep(0.001)
         assert screen._thread is None, "real analysis thread did not finish"
         assert not dialogs, dialogs
         assert screen._last_job_dir, screen._log.toPlainText()
@@ -158,6 +160,7 @@ def test_selected_scope_reaches_real_thread_job_and_mcap_outputs(qapp, tmp_path:
             # can otherwise leak a plotting thread into the next test.
             while screen._thread is not None:
                 QTest.qWait(20)
+                time.sleep(0.001)
         timer.stop()
         _close_widgets(qapp, header, screen)
 

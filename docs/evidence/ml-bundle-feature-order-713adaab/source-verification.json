@@ -1,0 +1,32 @@
+{
+  "source_preservation": true,
+  "producer_sha256": "ed67d94ded834d63599797bbd8efb7b26f125bd216f52bcb7f01febb928922ce",
+  "free_bytes": 4749832192,
+  "prior_wrapper": "One direct read/style tool process exited1 with no captured stdout/stderr. Its reason is unconfirmed; this file-backed check is the recorded authority.",
+  "checks": [
+    {
+      "args": [
+        "-m",
+        "ruff",
+        "check",
+        "libs/python/capture_analysis/capture_analysis/ml_bundle/job.py",
+        "tests/analysis/test_ml_bundle_feature_order.py"
+      ],
+      "exit": 0,
+      "stdout": "All checks passed!\n",
+      "stderr": ""
+    },
+    {
+      "args": [
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "tests/analysis/test_ml_bundle_feature_order.py"
+      ],
+      "exit": 0,
+      "stdout": "1 file already formatted\n",
+      "stderr": ""
+    }
+  ]
+}

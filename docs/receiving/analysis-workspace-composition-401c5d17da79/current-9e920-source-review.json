@@ -1,0 +1,40 @@
+{
+  "schema": "capture.analysis-current-source-composition/1",
+  "recorded_at": "2026-10-08T21:00:15.467595+00:00",
+  "qualified_native": "8bd83e18f12d1082c21b9cfcbe3d2e9cedf717a3",
+  "qualified_published": "5c7200a61fafa29ae4881e9274c82c2af24a714f",
+  "current_main": "9e9204f76b105426b0affaa74733175c052f27ba",
+  "current_tree": "a1b37ec1ab291a90cb2a383aa8f50b797ac09932",
+  "parents": [
+    "5c7200a61fafa29ae4881e9274c82c2af24a714f",
+    "9e9204f76b105426b0affaa74733175c052f27ba"
+  ],
+  "resolved": [
+    {
+      "path": "desktop/capture_desktop/screen_analysis.py",
+      "bytes": 21408,
+      "sha256": "a2b87b92bf0dd7de31a28ca47fc7e1e3b0a53662b6f17831a6cd8726b26a2e4a",
+      "git_blob": "b312929bca3cb5758ca857c3c51318b46ffb6f52"
+    },
+    {
+      "path": "docs/design/research/PROGRESS.md",
+      "bytes": 78286,
+      "sha256": "5339ca6f783b26a74f2e82efcd5ae301d941e4bbbc21ea9b0a5e4427c61b4f4c",
+      "git_blob": "3007e06ecf19c2cc5e8cc81b2ac5f58ae2ebe997"
+    },
+    {
+      "path": "tools/run_ci_tests.py",
+      "bytes": 7443,
+      "sha256": "058acad972ebf04c737fd1d97dae4f17b5f60a4dd050b30f48d0915773eb49cd",
+      "git_blob": "358ae41879427e03331699bf563d709407b20a41"
+    }
+  ],
+  "decision": [
+    "Preserve the exact current busy block, including the external-prediction set_eval_busy hook. The shared retained-thread predicate matches both branches. All history hooks remain in the automatic merge.",
+    "Keep the complete current PROGRESS document, then the exact 3992-byte history/gallery append from the qualified composition.",
+    "The runner merges automatically. Its complete current bytes, including verbose progress and duration reporting, are unchanged after replacing only timeout=600 with timeout=300.",
+    "Keep current native Space button handling, control-scroll container, external prediction mode, literal chooser and named Windows workbench verifier. No production behavior is intentionally removed."
+  ],
+  "source_verification": "Both merged Python sources parse. Complete leaf/mode readback and current hosted Windows receiving remain required.",
+  "prior_native": "21/21 on the separately pinned a2c composition. The original source and test bytes, receipts and observed inspector row overlap stay preserved; no new native run is asserted for this current merge."
+}

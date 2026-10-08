@@ -1,0 +1,83 @@
+{
+  "status": "accepted-source-preservation",
+  "source_head": "4987c99c49751461a6b53a90ce9c43e39062ad59",
+  "source_tree": "2d418e2094fae2caa59b17be66e1e7524ace66f0",
+  "parent": "3cbb5300bdc79c157370d1b3e599a6c82752d54a",
+  "parent_tree": "4af105896633559b35823a7aa2710dc30b2f1740",
+  "parent_leaves": 1057,
+  "source_leaves": 1060,
+  "unchanged_parent_leaves": 1053,
+  "changed": {
+    "desktop/capture_desktop/screen_analysis.py": {
+      "before": {
+        "mode": "100644",
+        "sha": "78905bbde5de536dad125b6e4e48a475e9b14272"
+      },
+      "after": {
+        "mode": "100644",
+        "sha": "b169ab728babf879701ccbb084f959ee02ae4155"
+      }
+    },
+    "desktop/capture_desktop/widgets_analysis_jobs.py": {
+      "before": {
+        "mode": "100644",
+        "sha": "c4d2f4513032d744f1f8066f0c887cda71d9b911"
+      },
+      "after": {
+        "mode": "100644",
+        "sha": "8f65859da5b4bebf8e7a4b1cd9cba60432fc2972"
+      }
+    },
+    "desktop/capture_desktop/widgets_analysis_predictions.py": {
+      "before": null,
+      "after": {
+        "mode": "100644",
+        "sha": "0e47254965e7da4428f9e2f0b3a2d75f1e92a433"
+      }
+    },
+    "docs/design/ANALYSIS.md": {
+      "before": {
+        "mode": "100644",
+        "sha": "13fbc44f76c819edf38b028747fcdf8be6f39a16"
+      },
+      "after": {
+        "mode": "100644",
+        "sha": "d24f789bbf3e2797dac019526ce042dae0a827f9"
+      }
+    },
+    "docs/design/research/EXTERNAL_EVALUATION_WORKBENCH.md": {
+      "before": null,
+      "after": {
+        "mode": "100644",
+        "sha": "30f9c1c043f2a5e222d34691b7520e8262f8302f"
+      }
+    },
+    "docs/design/research/PROGRESS.md": {
+      "before": {
+        "mode": "100644",
+        "sha": "928ec029f5a6e289c87ea32cd00b55c978b9af92"
+      },
+      "after": {
+        "mode": "100644",
+        "sha": "7f4f3157dc01812054f6d404b39fcfc3cde29f69"
+      }
+    },
+    "tests/ui/test_analysis_predictions.py": {
+      "before": null,
+      "after": {
+        "mode": "100644",
+        "sha": "94d9b13131785f88990509e622a7e504fa9047ad"
+      }
+    }
+  },
+  "accepted_983_files": {
+    "desktop/capture_desktop/screen_analysis.py": "a62e7e9ae63c658205531ef51844f4a68a64c738ce1de6083f93a4e9a5ddbc94",
+    "desktop/capture_desktop/widgets_analysis_jobs.py": "a012ac150e1301a630417cd78238c050093206f94f073e6e0ee4c90f22b81b62",
+    "desktop/capture_desktop/widgets_analysis_predictions.py": "d865031e313b0c1aed23a2cb0beeb20441a96d380f0b3652458107ba4a6e2435",
+    "docs/design/research/EXTERNAL_EVALUATION_WORKBENCH.md": "8e619f78cfa53b4447e50389a38f89a6b01cd4ac10710cc24bdd6def3d4c6b99",
+    "tests/ui/test_analysis_predictions.py": "e87f63a19639d40785d922b3e78d27b8487feb51a3c3c46d89ea6184f7facbe2"
+  },
+  "current_documentation_prefixes_preserved": true,
+  "windows_mainwindow_execution": "pending hosted Windows CI",
+  "worktree_clean": true
+}
