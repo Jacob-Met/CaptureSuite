@@ -5,6 +5,34 @@ Plan: [AUTONOMOUS_EXECUTION_PLAN.md](AUTONOMOUS_EXECUTION_PLAN.md)
 
 ---
 
+## 2026-10-08 — Linux portable build receiving (estate-68e476e98b77)
+
+Received the retained Linux C++/CMake donor `e3270d84` onto current public main
+`742dd7dc`, with the donor patch hash and missing bundle prerequisite recorded.
+The isolated native build now produces core/protocol/storage libraries and
+`session_doctor`. The documented entrypoint and all **17 CTest tests pass** on
+the ThinkPad Linux toolchain, including actual process checks on disposable
+synthetic finalized/recovery fixtures. This remains portable-library
+qualification; existing macOS A–H, daemon/desktop and hardware work is separate.
+
+A native real-file regression found three donor durability failures: temporary
+and directory `fsync` errors were reported as success, and `EINTR` was ignored.
+The same four-case executable now passes after propagating failures, preserving
+the old target before rename, and reporting post-rename durability uncertainty.
+It also passes a standalone `-Wall -Wextra -Wpedantic -Werror` build. Python and
+existing MCAP recovery scanner/CRC candidates were left untouched.
+
+Retained limitations/failures: the whole-tree GCC WERROR probe still exposes a
+pre-existing logging format-truncation warning; the portable preset uses the
+project default WERROR=OFF. A root-filesystem ENOSPC interrupted archiving and
+two source writes. Only this lane's reproducible outputs moved to tmpfs; the
+two zero-length files were restored from exact inputs before the successful
+build. No estate-wide cleanup or service change was performed by this lane.
+
+See `docs/BUILDING-LINUX.md` and `docs/evidence/linux-port-68e476e98b77.json` for
+source, dependency, test and receiving boundaries. This source receipt does not
+claim a Windows CI, macOS, full-product or hardware pass.
+
 ## 2026-09-09 — Compiler boundary and reliable test evidence
 
 The second hosted Python job passed **151 tests with six explicit daemon skips**.

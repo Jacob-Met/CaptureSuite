@@ -7,6 +7,10 @@ plugins, sealed session packages, and a PySide6 operator UI.
 > process + named-pipe based so other OSes can be added later without breaking
 > plugins.
 
+Linux developers can build and test the portable core/storage libraries and
+`session_doctor`; see [Building on Linux](docs/BUILDING-LINUX.md) for the exact
+scope and native checks.
+
 ## Who it's for
 
 Researchers and lab engineers who need **structured multimodal capture** on Windows:
