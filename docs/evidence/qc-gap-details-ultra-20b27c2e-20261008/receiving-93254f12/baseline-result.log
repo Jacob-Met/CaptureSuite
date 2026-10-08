@@ -1,0 +1,24 @@
+F.                                                                       [100%]
+=================================== FAILURES ===================================
+__________ test_actual_cli_renders_gap_and_binds_unchanged_raw_inputs __________
+
+package = PosixPath('/dev/shm/ultra-20b27c2e-estate-production-capture-qc/final-receiving/temp/baseline/test_actual_cli_renders_gap_an0/independent.mmsession')
+
+    def test_actual_cli_renders_gap_and_binds_unchanged_raw_inputs(package: Path) -> None:
+        record = gap(cause='FUTURE<&"cause', startSessionTimeNs="9223372036854775806",
+                     endSessionTimeNs="9223372036854775807")
+        write_gaps(package, A, [record])
+        result, qc, html, manifest = invoke_cli(package, "independent-gap", strict=True)
+>       assert result.returncode == 2, result.stdout
+E       AssertionError: job_id=independent-gap
+E         status=completed
+E         dir=/dev/shm/ultra-20b27c2e-estate-production-capture-qc/final-receiving/temp/baseline/test_actual_cli_renders_gap_an0/independent.mmsession/processing/jobs/independent-gap
+E         streams=2 gaps_open=0 gaps_closed=1 warnings=0
+E         
+E       assert 0 == 2
+E        +  where 0 = CompletedProcess(args=['/workspace/scratch/20b27c2ea29e/workers/estate-production/venv/bin/python', '/dev/shm/ultra-20...n0/independent.mmsession/processing/jobs/independent-gap\nstreams=2 gaps_open=0 gaps_closed=1 warnings=0\n', stderr='').returncode
+
+test_independent_capture_receiving.py:289: AssertionError
+=========================== short test summary info ============================
+FAILED test_independent_capture_receiving.py::test_actual_cli_renders_gap_and_binds_unchanged_raw_inputs
+1 failed, 1 passed, 5 deselected in 2.48s

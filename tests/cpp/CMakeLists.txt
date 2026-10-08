@@ -66,6 +66,12 @@ include(CTest)
 include(Catch)
 catch_discover_tests(capture_core_tests)
 
+add_test(NAME capture_storage_fixture_isolation
+  COMMAND ${CMAKE_COMMAND}
+    "-DSTORAGE_TESTS=$<TARGET_FILE:capture_core_tests>"
+    "-DTEST_ROOT=${CMAKE_CURRENT_BINARY_DIR}/storage-fixture-isolation"
+    -P ${CMAKE_SOURCE_DIR}/tests/cmake/portable_storage/fixture_isolation.cmake)
+
 if(TARGET session_doctor)
   add_test(NAME capture_session_doctor_portable
     COMMAND ${CMAKE_COMMAND}

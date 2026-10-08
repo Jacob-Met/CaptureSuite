@@ -1,0 +1,129 @@
+{
+  "repository": "Jacob-Met/CaptureSuite",
+  "source_receipt_sha256": "e93b6ebd912bec341e6cb44faf5f5ac7c5bb6f3a1b3496cb807dbe3d59da62fa",
+  "record_type": "Repository-relative publication summary of the receiving preflight; raw replay traces are separate, unchanged files.",
+  "receiving_base": "93254f1293390b2acc6c746237ada4575f777a9e",
+  "receiving_tree": "6219a0bda3e312c0643fe16fb5b7dc7d0a73fecf",
+  "complete_primary_tree_url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/trees/6219a0bda3e312c0643fe16fb5b7dc7d0a73fecf?recursive=1",
+  "complete_tree_entries": 742,
+  "complete_tree_blobs": 602,
+  "tested_receiving_base": "6b22d61260bff5b8304c33c48ed74366e08b414b",
+  "tested_receiving_tree": "7b544a0b0ac87160f636b41dbb70fb07be2cfce0",
+  "source_closure": {
+    "path": "source-closure.json",
+    "sha256": "4f0e31de4923634a94f122709c89894538ed41f131f48f9193b95b118e7f5d6a",
+    "baseline_files": 100,
+    "unowned_candidate_files": 98,
+    "all_current_baseline_references_identical_to_tested_receiving": true
+  },
+  "changed_dependencies_qualified": [
+    {
+      "path": "libs/python/capture_analysis/capture_analysis/windows.py",
+      "old": "79abc9135e104b38451beb72276d75628bbcfaac",
+      "current": "80bea6bd69365a48c5b204c26d054b8ae179437a"
+    },
+    {
+      "path": "libs/python/capture_session/capture_session/registry.py",
+      "old": "fc1c4124b300526a0882ae03beff81ae301adf21",
+      "current": "c1d7799e1d2099424221b2f4af216a43a972c67a"
+    }
+  ],
+  "current_framing_git_blob": "9dd5021b815b31ab02eaaa814210525ebb543862",
+  "later_camera_merge_outside_closure": true,
+  "instructions_blob": "9ac6683ba4805e210143e5a33e7782da55af0d15",
+  "applicable_instructions_unchanged": true,
+  "original_edited_paths": [
+    {
+      "repository_path": "libs/python/capture_analysis/capture_analysis/qc.py",
+      "original_git_blob_sha": "7221b26a129b7915a42fed900908a04eae213454",
+      "git_blob_sha": "530b86af1247599c127e2d0c3fa5e4d7d12169f6",
+      "sha256": "f24e0593a3723311d41054aef40b56c4bb46d4f3ba5ef4b01afcae3a6cc4440a"
+    },
+    {
+      "repository_path": "libs/python/capture_analysis/capture_analysis/report_html.py",
+      "original_git_blob_sha": "a0bb34d71fe03a4426ef0479619fa8d22a7bc8fa",
+      "git_blob_sha": "bb8032024cfce30c6fe9a2bd2c13b0d2cbc2d102",
+      "sha256": "f2c89c7faf6e4edc265540140272396b4195eb5aed9edf05c4912aac74286f03"
+    },
+    {
+      "repository_path": "tests/analysis/test_qc_gap_details.py",
+      "original_git_blob_sha": null,
+      "git_blob_sha": "593ca17abe543b579e4930d36e4b900c54ce0bb8",
+      "sha256": "9c6942a27fd37c01262d388e0834bdd49154a430b20cdf294791d6007e98f690"
+    },
+    {
+      "repository_path": "docs/design/ANALYSIS.md",
+      "original_git_blob_sha": "79df37199d36d3635208fba6a298e14f55a06411",
+      "git_blob_sha": "a9891aff5ed11ab7165add42d2aceb643e071067",
+      "sha256": "030336032811af6385c13827552fe01d8c69c4918aa118d0a7001ee229fd20e4"
+    },
+    {
+      "repository_path": "docs/design/research/PROGRESS.md",
+      "original_git_blob_sha": "75d0565c10d86285a96069a89c8f7b425eb5ba0d",
+      "git_blob_sha": "2e0ada20629a5b6eb793b937c04304695368486e",
+      "sha256": "a454e7ae34ec413a63532d64f96ae8d81a66b0421b488b1c082b9b3b4a00f149"
+    }
+  ],
+  "receiving_progress_prefix_git_blob": "75d0565c10d86285a96069a89c8f7b425eb5ba0d",
+  "receiving_progress_append_sha256": "2fa88e9d0ba3969f8216849bf78ac714ae1f6e68dfb337c4ca386903aa8caf0b",
+  "receiving_progress_final_sha256": "a454e7ae34ec413a63532d64f96ae8d81a66b0421b488b1c082b9b3b4a00f149",
+  "execution_receipt": {
+    "path": "execution-receipt.json",
+    "sha256": "4a16d546e04831cc436c2565108cb3637eac403a8db346ee83fca78d697c4b03"
+  },
+  "candidate_result": {
+    "tests": 7,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "baseline_result": {
+    "tests": 2,
+    "failures": 1,
+    "errors": 0,
+    "skipped": 0
+  },
+  "cli_receipts": [
+    {
+      "path": "evidence/candidate/independent-gap.json",
+      "sha256": "d02453e6af9df464f4ee9a630d4d3544171eb1c8c826b1431d96f123515f3b94",
+      "returncode": 2,
+      "raw_file_count": 12,
+      "raw_unchanged": true,
+      "html_sha256": "a936d5df3a3c8fae56e153b8c83e19de64960581c5fcc40335e527b0ea7f3bf7"
+    },
+    {
+      "path": "evidence/candidate/independent-no-gap.json",
+      "sha256": "e431b9f876138cb11f698c0fa695b8aa7edce8e33ebba6b57043ec619eb0461e",
+      "returncode": 0,
+      "raw_file_count": 12,
+      "raw_unchanged": true,
+      "html_sha256": "405697dff5128c2c4dbc83ea744c8662a06e3f9e3cd029dd993047fc67882ba8"
+    },
+    {
+      "path": "evidence/baseline/independent-gap.json",
+      "sha256": "1c8e93b8f2f6e43919addd87800d6c5f9c2156d87fd2eeb42656c40814cbbfd9",
+      "returncode": 0,
+      "raw_file_count": 12,
+      "raw_unchanged": true,
+      "html_sha256": "5022d7a98f383748e6f795fd177af80d7db3b0e129fef159b6b3be5c43e54823"
+    },
+    {
+      "path": "evidence/baseline/independent-no-gap.json",
+      "sha256": "a63f4ec01fc3bbeeaf4b822cebf04238ac4054d39cd5690b75964dcef9c20cc7",
+      "returncode": 0,
+      "raw_file_count": 12,
+      "raw_unchanged": true,
+      "html_sha256": "b43b193187dbe6034810573f83780aa72d50df6412bc00a425f4939099add256"
+    }
+  ],
+  "harness": {
+    "path": "../independent-review/test_independent_capture_receiving.py",
+    "sha256": "9131bec9582e80daec244f481eeb2f2cd2117d7f058676f5ae4eb41f594d02fc",
+    "authorship": "Unchanged independently authored harness replayed by the author on current source; this is not a second independent review."
+  },
+  "accepted46_manifest_sha256": "796b01ac7a3caf540c310254e5900c8ac304ee69c195fa8e9e3ea976a141e13d",
+  "accepted46_entries_unchanged": true,
+  "new_supplement_paths": 12,
+  "scope": "Current native offline QC receiving. No whole-analysis, hosted Windows, CMake, physical acquisition, deployment or installed-app adoption pass is claimed by this replay."
+}

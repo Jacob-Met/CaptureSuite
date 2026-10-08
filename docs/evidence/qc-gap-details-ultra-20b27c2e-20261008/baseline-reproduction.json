@@ -1,0 +1,69 @@
+{
+  "base": "d3edda561322a80bfc1491ae4f4c7b0bb94943ea",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "fixtureGap": {
+    "sourceId": "sim.emg.main",
+    "streamId": "sim.emg.main.batch",
+    "cause": "DISCONNECT",
+    "startSessionTimeNs": "2000000000",
+    "endSessionTimeNs": "4500000000",
+    "closed": true,
+    "estimatedLostCount": "5000"
+  },
+  "observations": {
+    "no_gap": {
+      "trafficLights": {
+        "sim.emg.main": "ok",
+        "sim.imu.upper": "ok"
+      },
+      "openGapCount": 0,
+      "closedGapCount": 0,
+      "warnings": [],
+      "hasGapDetails": false,
+      "htmlContainsDisconnect": false,
+      "cliExitCode": 0,
+      "rawHashesBeforeAndAfter": {
+        "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "events/checkpoints.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "integrity.json": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556",
+        "manifest.json": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380",
+        "sources/sim.emg.main/health/gaps.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "sources/sim.emg.main/source.json": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10",
+        "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649",
+        "sources/sim.emg.main/streams/sim.emg.main.batch/stream.json": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1",
+        "sources/sim.imu.upper/source.json": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8",
+        "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649",
+        "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+      }
+    },
+    "closed_gap": {
+      "trafficLights": {
+        "sim.emg.main": "ok",
+        "sim.imu.upper": "ok"
+      },
+      "openGapCount": 0,
+      "closedGapCount": 1,
+      "warnings": [],
+      "hasGapDetails": false,
+      "htmlContainsDisconnect": false,
+      "cliExitCode": 0,
+      "rawHashesBeforeAndAfter": {
+        "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "events/checkpoints.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "integrity.json": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556",
+        "manifest.json": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380",
+        "sources/sim.emg.main/health/gaps.jsonl": "96e9f2eea59e619e125234b63b6a3fe58a0473eeca47574ba59c73bf1974ec68",
+        "sources/sim.emg.main/source.json": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10",
+        "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649",
+        "sources/sim.emg.main/streams/sim.emg.main.batch/stream.json": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1",
+        "sources/sim.imu.upper/source.json": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8",
+        "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649",
+        "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+      }
+    }
+  },
+  "scope": "Native Python collect_qc, renderer, and actual run_analysis.py qc; copied synthetic fixture only.",
+  "environmentLimit": "The base environment does not include jsonschema; native job validation records that warning. Gap collection, report output, and raw preservation are exercised without a replacement implementation."
+}

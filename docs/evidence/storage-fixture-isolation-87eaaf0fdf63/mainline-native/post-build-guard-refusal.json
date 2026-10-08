@@ -1,0 +1,80 @@
+{
+  "schema": "capturesuite-native-guard-refusal/v1",
+  "native_build_exit": 0,
+  "original_runner_exit": 1,
+  "refusal": "AssertionError: .cursor/hooks/stop-capture-processes.ps1",
+  "location": "r3-prepare-build.py line72, raw Git-blob guard after successful full native build",
+  "reason": "Inherited checkout declares text eol=crlf; the initial raw-byte guard omitted that Git normalization.",
+  "resolution": "Every composed leaf matches its exact raw Git blob, or an explicitly declared CRLF checkout form that normalizes exactly. Archived raw logs retain their exact committed bytes; all compiled fixture/storage/CMake bytes match raw blobs. Unstaged diff is empty. No build rerun or source repair.",
+  "second_guard_refusal": "AssertionError: docs/evidence/stream-gap-scope-20261008-e827/initial-ci-lint.log; blanket Git normalization would alter an exact inherited raw log. Corrected by accepting exact raw Git blobs before declared checkout normalization.",
+  "raw_normalized_differences": [
+    {
+      "path": ".cursor/hooks/stop-capture-processes.ps1",
+      "raw_blob": "af7bed5139556fcdbac79b3eca0699dc4a176551",
+      "normalized_blob": "b8c372e08eda9dc271c3bbf4572c036494f3e3b3",
+      "attributes": ".cursor/hooks/stop-capture-processes.ps1: text: set\n.cursor/hooks/stop-capture-processes.ps1: eol: crlf",
+      "crlf_lines": 42
+    },
+    {
+      "path": "plugins/example_sine_py/run_worker.cmd",
+      "raw_blob": "dff347cb19e982d0632fbcf7177250c3bb931c59",
+      "normalized_blob": "484e82624368692768d0122076e832f9b30219bf",
+      "attributes": "plugins/example_sine_py/run_worker.cmd: text: set\nplugins/example_sine_py/run_worker.cmd: eol: crlf",
+      "crlf_lines": 15
+    },
+    {
+      "path": "plugins/lsl_bridge/run_worker.cmd",
+      "raw_blob": "3177d0c20aa36d90c6c32901555ba1785df46be2",
+      "normalized_blob": "c80a72fb0edeb44031dd27feb551bb2549f34563",
+      "attributes": "plugins/lsl_bridge/run_worker.cmd: text: set\nplugins/lsl_bridge/run_worker.cmd: eol: crlf",
+      "crlf_lines": 8
+    },
+    {
+      "path": "scripts/dev-env.ps1",
+      "raw_blob": "de915b5266a63e2001033237784414cd991c6864",
+      "normalized_blob": "dad8f9e88d418c3c8bdc66b82a498dcd332c36d0",
+      "attributes": "scripts/dev-env.ps1: text: set\nscripts/dev-env.ps1: eol: crlf",
+      "crlf_lines": 51
+    },
+    {
+      "path": "tools/gstreamer-installers/install-gstreamer.ps1",
+      "raw_blob": "dd8f06d1dae4c1a7b868620bf29207bdd30b20b6",
+      "normalized_blob": "ac17d58c3a5df741ca1e39c7c4d606667101b068",
+      "attributes": "tools/gstreamer-installers/install-gstreamer.ps1: text: set\ntools/gstreamer-installers/install-gstreamer.ps1: eol: crlf",
+      "crlf_lines": 80
+    },
+    {
+      "path": "tools/new_plugin.ps1",
+      "raw_blob": "550edcf8eceeda77abe936559b4d71d55762491b",
+      "normalized_blob": "e0f62e0b96f480869c59ed544d81dcbd570d6d8b",
+      "attributes": "tools/new_plugin.ps1: text: set\ntools/new_plugin.ps1: eol: crlf",
+      "crlf_lines": 161
+    },
+    {
+      "path": "tools/run-daemon-gstreamer.ps1",
+      "raw_blob": "580af0ff1ce15e3fb3f6a07cc3e006368dcad68c",
+      "normalized_blob": "e87b421d0023dd4f3397a7cf42ffb8f3c29464e3",
+      "attributes": "tools/run-daemon-gstreamer.ps1: text: set\ntools/run-daemon-gstreamer.ps1: eol: crlf",
+      "crlf_lines": 75
+    },
+    {
+      "path": "tools/run-demo.ps1",
+      "raw_blob": "8ae823fd06b928c1f9a2ab88f62722e1cc7ec221",
+      "normalized_blob": "efd87ea6d3f038693b7a06afc4d0ab64da114725",
+      "attributes": "tools/run-demo.ps1: text: set\ntools/run-demo.ps1: eol: crlf",
+      "crlf_lines": 36
+    }
+  ],
+  "transport_preflights": [
+    {
+      "error": "ReferenceError: CMAKE_COMMAND is not defined",
+      "native_mutation_attempted": false,
+      "resolution": "Extracted the exact already-reviewed CMake block."
+    },
+    {
+      "error": "SyntaxError: Invalid or unexpected token",
+      "native_mutation_attempted": false,
+      "resolution": "Separated the prose payload from the outer JavaScript script template."
+    }
+  ]
+}
