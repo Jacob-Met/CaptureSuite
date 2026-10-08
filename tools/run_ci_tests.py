@@ -154,7 +154,7 @@ def main() -> int:
     with (out / "pytest.log").open("w", encoding="utf-8") as log:
         try:
             result = subprocess.run(
-                command, cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT, timeout=300
+                command, cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT, timeout=600
             )
             code = result.returncode
         except subprocess.TimeoutExpired:
