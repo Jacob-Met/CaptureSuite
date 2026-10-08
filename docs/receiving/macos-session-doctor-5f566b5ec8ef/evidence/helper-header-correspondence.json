@@ -1,0 +1,93 @@
+{
+  "purpose": "Repository SPDX declarations on publication copies; executed originals and runtime are preserved.",
+  "files": [
+    {
+      "path": "scripts/hydrate-source.py",
+      "original_native_path": "/Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/hydrate-source.py",
+      "original_sha256": "af4f2227f73d5056612da1d18f7f5a90c5f093b9d8f020982c5e019bb1224629",
+      "published_sha256": "28bf5695cd85b18ff94e33b8975e740a826cdae34748a0fc22b53aa4cedb7638",
+      "header_added": true,
+      "ast_identical": true
+    },
+    {
+      "path": "scripts/hydrate-source-corrected.py",
+      "original_native_path": "/Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/hydrate-source-corrected.py",
+      "original_sha256": "b2adec603739a71495b8a3983ed620ee4d288de8c54b26ac8ce6ed807309aec5",
+      "published_sha256": "71c98954a4ad9d59e9616b066b77728db387c5212e36bce966c5f15c76a6f81c",
+      "header_added": true,
+      "ast_identical": true
+    },
+    {
+      "path": "scripts/prepare-mcap.py",
+      "original_native_path": "/Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/prepare-mcap.py",
+      "original_sha256": "daeb3f4e77d04a4df6810b4a7782df318a440d6383c184bd2aab76e7c3abe247",
+      "published_sha256": "5cffa945871f5ead4590d2854c727dc4cf303f5ae6d51200cf19e8a4216ddcb3",
+      "header_added": true,
+      "ast_identical": true
+    },
+    {
+      "path": "scripts/qualify-native-portable.py",
+      "original_native_path": "/Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/qualify-native-portable.py",
+      "original_sha256": "f1babfc3b8b658877b8b9883060f7d3090452d630ae7e31b24f2c92339c7b7c0",
+      "published_sha256": "df886c984b67bea6cf509cf5b9594981de460e17db349f731b761ea812d15935",
+      "header_added": true,
+      "ast_identical": true
+    },
+    {
+      "path": "scripts/assemble-local-runtime.py",
+      "original_native_path": "/Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/assemble-local-runtime.py",
+      "original_sha256": "a9d75edb28e23560b98d15f3eecb948a37b122d3c54c6fa93a04efc61d8ed49d",
+      "published_sha256": "4357d6c53bc509b2b13ac9679821a2bb24777f2c646a452fb5de9f44c68c491a",
+      "header_added": true,
+      "ast_identical": true
+    },
+    {
+      "path": "scripts/assemble-local-runtime-corrected.py",
+      "original_native_path": "/Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/assemble-local-runtime-corrected.py",
+      "original_sha256": "c9991e8c88e968b4fe762485e2dc21171f662ca3605f2ef0ddd15f76fa159371",
+      "published_sha256": "32d135feb2189e92c98ebbe094e84789c6d43f289210f2f2a0eb482dfbde5b82",
+      "header_added": true,
+      "ast_identical": true
+    },
+    {
+      "path": "scripts/qualify-relocated-receiver.py",
+      "original_native_path": "/Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/qualify-relocated-receiver.py",
+      "original_sha256": "0e667a21a3e5c36eb8b7136580930b862d2ddb3597c08a1b287ac1ea1df2353e",
+      "published_sha256": "88c4533e15c5ed6a6a8ae497f4e685296e082ea30c069b451fae5d11e678fc77",
+      "header_added": true,
+      "ast_identical": true
+    },
+    {
+      "path": "scripts/qualify-missing-dependency-replay.py",
+      "original_native_path": "/Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/qualify-missing-dependency-replay.py",
+      "original_sha256": "381feed04dbd0c4bf37fbedf28bcd0007b0505027f372600b1a96fdf9a35983f",
+      "published_sha256": "c06d4714b8ef7aa2afa8e1b5dc6325b26754cc81a3a7c7ea8309f278964a87cf",
+      "header_added": true,
+      "ast_identical": true
+    },
+    {
+      "path": "scripts/finalize-native-receiver.py",
+      "original_native_path": "/Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/finalize-native-receiver.py",
+      "original_sha256": "0668d53e7b564e1426982f6029bd3796c2ada1fc8c61e75910ca32275c8dc46c",
+      "published_sha256": "c5e4ae26b17217b656be84e34c06fcda971615a1cf9d73dbdb164ba5b092444d",
+      "header_added": true,
+      "ast_identical": true
+    },
+    {
+      "path": "scripts/complete-source-notices.py",
+      "original_native_path": "/Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/complete-source-notices.py",
+      "original_sha256": "d8ad8a5ebfe6de28f33116a4ca15beb95ec7a78007c70392881efe01dad83727",
+      "published_sha256": "d8ad8a5ebfe6de28f33116a4ca15beb95ec7a78007c70392881efe01dad83727",
+      "header_added": false,
+      "ast_identical": true
+    },
+    {
+      "path": "scripts/freeze-publication.py",
+      "original_native_path": "/Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/freeze-publication.py",
+      "original_sha256": "ef9c1be42253fdc0de64a67237525bc574f103e8d0c92fe12f2975873d2d21ac",
+      "published_sha256": "ef9c1be42253fdc0de64a67237525bc574f103e8d0c92fe12f2975873d2d21ac",
+      "header_added": false,
+      "ast_identical": true
+    }
+  ]
+}

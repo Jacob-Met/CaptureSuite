@@ -892,3 +892,29 @@ full analysis suite passes **161 tests**, with the same native Windows junction
 skip and two retained protobuf deprecation warnings. Source matching, masks,
 MAE/RMSE, units and default identity simulation are unchanged. Independent
 receiving and supported hosted gates still remain separate pending gates.
+
+
+## 2026-10-08 — Canonical Mac session-doctor receiver (5f566b5ec8ef)
+
+Built and received the already-merged portable C++ session doctor from exact
+`d43bdea867d6198a707a5f55e29216c76054517e` on macOS 26.6.2 arm64. Configure,
+Release build and all 17 available native CTest cases passed. The 96 qualified
+inputs remain unchanged on receiving base `70f34e3b982523b544a9370d2316a1b69d79bd70`.
+No product, preset, bootstrap, worker, daemon or schema implementation changes
+were needed; the historical Mac port and Linux R3 receiver retain their scopes.
+
+The received package keeps its executable and 86 local libraries together.
+Actual relocation traced all 87 non-system images to the copied directory;
+CLI controls preserve sealed/finalized data, exercise authored tail recovery,
+and retain the original helper filename failure plus its focused loader replay.
+Independent review verified all 87 original/copied files and 1,245 local load
+edges. The final 2,393,685-byte archive includes exact source inputs and project/
+dependency notices; all 246 extracted files match, and the extracted tool runs.
+The first archive and its source-notice correction are both retained.
+
+Six pinned files in the older Mac receiver remain byte-identical. No real
+recordings or hardware were accessed. Mac evidence does not include the Linux
+GNU linker-wrapped cases, Windows, complete Mac UI/daemon, x86_64 or notarization.
+Native artifact paths, exact hashes, recipient usage, raw qualification and
+independent review are in
+[the receiving packet](../../receiving/macos-session-doctor-5f566b5ec8ef/README.md).

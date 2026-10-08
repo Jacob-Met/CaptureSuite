@@ -1,0 +1,32 @@
+{
+  "schema": "capturesuite.canonical-mac-dependency-replay/1",
+  "observed_utc": "2026-10-08T14:52:55.125724+00:00",
+  "prior_receipt_sha256": "723c60ca71de246895790e6d4993f5cfe0cf0156c96c10e31752966917e072d9",
+  "correction": "The original seven receiver controls passed. Its eighth control failed before moving or launching because it assumed the Homebrew symlink filename rather than the exact resolved filename in runtime-package.json. This replay selects the single pinned BLAKE3 file from that unchanged manifest and executes only that remaining control.",
+  "binary_sha256": "401f7ef7eb1212799c00ff7bdb22ac48a31bf6feb22a17b3a4fefcfc8e485772",
+  "library": {
+    "path": "lib/libblake3.1.8.7.dylib",
+    "size": 68880,
+    "sha256": "3ce17ab0574c0e18aa681a44a8ca8206e1278f4441aabb3bd9c3d2084449658b",
+    "mode": "100755",
+    "load_commands": {
+      "loads": [
+        "/usr/lib/libSystem.B.dylib"
+      ],
+      "rpaths": [],
+      "identity": "@rpath/libblake3.1.8.7.dylib"
+    }
+  },
+  "passed": true,
+  "withheld": {
+    "exit": -6,
+    "stdout": "",
+    "stderr": "dyld[39727]: Library not loaded: @executable_path/../lib/libblake3.1.8.7.dylib\n  Referenced from: <6DF1D872-C044-30BB-994D-A250B50EC8A1> /Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/receiving-process-controls/Session Doctor \u96ea/bin/session_doctor\n  Reason: tried: '/Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/receiving-process-controls/Session Doctor \u96ea/lib/libblake3.1.8.7.dylib' (no such file)\n"
+  },
+  "restored": {
+    "exit": 0,
+    "stdout": "Usage: session_doctor <path-to-session.mmsession>\n",
+    "stderr": ""
+  },
+  "package_errors_after": []
+}
