@@ -101,8 +101,8 @@ def _real_choose(control, filename: Path | None):
                 return
 
             # Existing fixtures are selected through the actual file view.
-            # QFileSystemModel path lookup can trim significant leading spaces
-            # on Windows; enumerating and clicking its literal row avoids that.
+            # Match the model's literal filename; never accept a normalized
+            # substitute. Some Qt widget models cannot represent every OS name.
             if filename.is_file() and not row_clicked:
                 for view in active.findChildren(QAbstractItemView):
                     if not view.isVisible() or view.objectName() not in ("listView", "treeView"):
@@ -199,7 +199,7 @@ def test_empty_external_choice_is_explicit_and_actionable(extras):
 
 def test_actual_qt_file_choice_cancel_and_reselection(extras, tmp_path):
     control = _external(extras)
-    first = tmp_path / " first prediction .json"
+    first = tmp_path / "first prediction café .json"
     second = tmp_path / "second prediction.json"
     first.write_text("{}", encoding="utf-8")
     second.write_text("{}", encoding="utf-8")
@@ -212,6 +212,41 @@ def test_actual_qt_file_choice_cancel_and_reselection(extras, tmp_path):
     newer = _real_choose(control, second)
     assert Path(newer).samefile(second)
     assert extras.build_extra("eval")["prediction_path"] == newer
+
+
+def test_actual_qt_leading_space_is_exact_or_refuses_without_replacing_path(
+    extras, tmp_path, record_property
+):
+    control = _external(extras)
+    kept = tmp_path / "kept prediction.json"
+    literal = tmp_path / " first prediction .json"
+    kept.write_text("{}", encoding="utf-8")
+    literal.write_text("{}", encoding="utf-8")
+    previous = _real_choose(control, kept)
+    assert control._path.text() == previous
+    started = time.monotonic()
+    try:
+        selected = _real_choose(control, literal)
+    except AssertionError as exc:
+        # Qt 6.12's Windows widget model was observed dropping this leading
+        # space despite the literal OS file existing. Refusal must be bounded
+        # and leave the previously admitted path untouched.
+        assert time.monotonic() - started < 6
+        assert "file dialog" in str(exc) or "file choice" in str(exc)
+        assert QApplication.activeModalWidget() is None
+        assert control._path.text() == previous
+        assert extras.build_extra("eval")["prediction_path"] == previous
+        branch = "bounded-refusal"
+    else:
+        assert Path(selected) == literal
+        assert Path(selected).samefile(literal)
+        assert Path(selected).name == literal.name
+        assert control._path.text() == selected
+        assert extras.build_extra("eval")["prediction_path"] == selected
+        branch = "exact-selection"
+    assert literal.name in os.listdir(tmp_path)
+    record_property("literal_file_choice", branch)
+    print(f"Literal leading-space Qt widget choice: {branch}", flush=True)
 
 
 def test_actual_qt_file_choice_error_unwinds_without_replacing_path(

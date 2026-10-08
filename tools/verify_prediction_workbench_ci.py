@@ -41,6 +41,7 @@ def main() -> None:
         "test_actual_qt_file_choice_cancel_and_reselection",
         "test_actual_qt_file_choice_error_unwinds_without_replacing_path",
         "test_analysis_button_space_overrides_only_its_application_shortcut",
+        "test_actual_qt_leading_space_is_exact_or_refuses_without_replacing_path",
     )
     for name in required:
         matching = [case for case in cases if case.get("name") == name]
@@ -49,6 +50,16 @@ def main() -> None:
             matching[0].find(tag) is not None
             for tag in ("skipped", "failure", "error")
         ), f"Required Windows case did not pass: {name}"
+
+
+    literal = next(
+        case for case in cases
+        if case.get("name") ==
+        "test_actual_qt_leading_space_is_exact_or_refuses_without_replacing_path"
+    )
+    branch = literal.findall("./properties/property[@name='literal_file_choice']")
+    assert len(branch) == 1
+    assert branch[0].get("value") in ("exact-selection", "bounded-refusal")
 
 
 if __name__ == "__main__":
