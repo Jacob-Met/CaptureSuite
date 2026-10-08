@@ -392,3 +392,74 @@ python tools/run_analysis.py eval <package> \
 ```
 
 Training-side eval protocol: [RadarKinematicsML/SPEC.md](../../../RadarKinematicsML/SPEC.md).
+
+
+### Decision 2026-10-08: evaluate externally supplied predictions
+
+The shipped identity-teacher simulation remains the default Phase F smoke path.
+A trained-model execution adapter is still separate work. To make existing model
+outputs usable now, the same job accepts a versioned, source-bound prediction file:
+
+```bash
+python tools/run_analysis.py eval /path/to/session.mmsession \
+  --ml-bundle-job bundle-job-id \
+  --predictions /path/to/predictions.json
+```
+
+The input uses [capture.eval_predictions/1](../../schemas/eval/predictions.schema.json):
+
+```json
+{
+  "schemaId": "capture.eval_predictions/1",
+  "modelId": "my-model-run-17",
+  "windowsSha256": "<sha256 of ml_bundle/windows.parquet>",
+  "manifestSha256": "<sha256 of ml_bundle/manifest.json>",
+  "predictions": [
+    {
+      "window_id": "w00000",
+      "session_time_ns": 500000000,
+      "values": {
+        "theta_elbow_flex_L": 31.25,
+        "omega_elbow_flex_L": null
+      }
+    }
+  ]
+}
+```
+
+Compute both hashes from the exact selected job files. Include every bundle
+window once and every manifest target in each row. The example lists two targets;
+a bundle with additional targets requires those too. Rows can be reordered:
+the evaluator joins by window ID and requires the exact signed-64-bit integer
+timestamp. JSON floating-point timestamps, Boolean numeric aliases, duplicate
+keys/IDs, missing or foreign windows/targets, and mismatched digests are refused.
+The bundle must name this session and its own windows digest must match.
+The three input files are each limited to 64 MiB; this is a file-size admission
+limit, not a bound on decompressed Parquet memory.
+
+Use finite numbers for predictions and explicit JSON null when a prediction is
+unavailable. Each target is scored only where the bundle's non-null Boolean
+valid_mask is true and both values are finite. Exclusion counts partition
+invalid windows, unavailable teacher values and missing predictions; excluded
+errors remain NaN in Parquet. MAE/RMSE are unavailable (null) when no pair can
+be scored. Pearson correlation is null with a reason for fewer than two pairs
+or a constant series. Residual arithmetic outside finite float64 is refused.
+Units come from the existing numeric kinematics registry; no unit conversion or
+new angle/velocity formula is introduced.
+
+External jobs retain the exact prediction input and source-bundle manifest,
+source/registry digests, paired teacher/prediction/error rows, JSON metrics and
+per-target PNG/PDF scatter-and-residual figures under eval/. The usual gallery
+can display PNG figures. Residual time is elapsed from the exact minimum
+retained session timestamp; integer subtraction occurs before conversion to
+seconds. Input and raw source files are read without modification, and the
+existing job runner owns failure retention and output publication.
+
+The artifact says evaluationMode: external_predictions, has no identity
+baseline, and names the caller's model label. Provisional status remains
+mandatory. A label and matching hashes establish which supplied values were
+compared; they do not establish model authorship, inference correctness,
+held-out participants, calibration, teacher accuracy or clinical validity.
+Without --predictions, the prior identity_teacher_sim behavior is preserved.
+
+Verification: python -m pytest tests/analysis/test_external_predictions.py.
