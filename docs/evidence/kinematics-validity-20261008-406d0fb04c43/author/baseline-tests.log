@@ -1,0 +1,289 @@
+.FFFFFFFFFF.F                                                            [100%]
+=================================== FAILURES ===================================
+______ test_missing_hips_mask_shoulders_without_replacing_elbow_geometry _______
+
+    def test_missing_hips_mask_shoulders_without_replacing_elbow_geometry() -> None:
+        landmarks = _landmarks()
+        landmarks = landmarks.loc[~landmarks["joint_index"].isin([23, 24])]
+        table = _compute(landmarks)
+        assert table[["valid_elbow_L", "valid_elbow_R"]].all().all()
+>       assert not table[["valid_shoulder_L", "valid_shoulder_R"]].any().any()
+E       assert not np.True_
+E        +  where np.True_ = any()
+E        +    where any = valid_shoulder_L    True\nvalid_shoulder_R    True\ndtype: bool.any
+E        +      where valid_shoulder_L    True\nvalid_shoulder_R    True\ndtype: bool = any()
+E        +        where any =    valid_shoulder_L  valid_shoulder_R\n0              True              True\n1              True              True\n2              True              True\n3              True              True\n4              True              True.any
+
+tests/analysis/test_kinematics_validity.py:79: AssertionError
+_______ test_frame_dropout_masks_only_dependent_joint_and_derived_labels _______
+
+    def test_frame_dropout_masks_only_dependent_joint_and_derived_labels() -> None:
+        landmarks = _landmarks()
+        landmarks = landmarks.loc[
+            ~((landmarks["frame_index"] == 2) & (landmarks["joint_index"] == 15))
+        ]
+        table = _compute(landmarks)
+>       _assert_right_limb_valid(table)
+
+tests/analysis/test_kinematics_validity.py:94: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+table =    session_time_ns  frame_index  ...  activity_id  px_per_cm
+0       1000000007            0  ...         None        ...     3  ...         None        NaN
+4       1133333339            4  ...         None        NaN
+
+[5 rows x 24 columns]
+
+    def _assert_right_limb_valid(table: pd.DataFrame) -> None:
+>       assert table["valid_elbow_R"].all()
+E       assert np.False_
+E        +  where np.False_ = all()
+E        +    where all = 0     True\n1     True\n2    False\n3     True\n4     True\nName: valid_elbow_R, dtype: bool.all
+
+tests/analysis/test_kinematics_validity.py:57: AssertionError
+___________ test_unusable_landmark_never_makes_a_valid_angle[x-nan] ____________
+
+field = 'x', value = nan
+
+    @pytest.mark.parametrize("field,value", [
+        ("x", float("nan")),
+        ("y", float("inf")),
+        ("confidence", float("nan")),
+        ("confidence", float("inf")),
+        ("confidence", 0.1),
+    ])
+    def test_unusable_landmark_never_makes_a_valid_angle(field: str, value: float) -> None:
+        landmarks = _landmarks()
+        landmarks.loc[landmarks["joint_index"] == 15, field] = value
+        table = _compute(landmarks)
+        _assert_right_limb_valid(table)
+        assert table["valid_shoulder_L"].all()
+>       assert not table["valid_elbow_L"].any()
+E       assert not np.True_
+E        +  where np.True_ = any()
+E        +    where any = 0    True\n1    True\n2    True\n3    True\n4    True\nName: valid_elbow_L, dtype: bool.any
+
+tests/analysis/test_kinematics_validity.py:115: AssertionError
+___________ test_unusable_landmark_never_makes_a_valid_angle[y-inf] ____________
+
+field = 'y', value = inf
+
+    @pytest.mark.parametrize("field,value", [
+        ("x", float("nan")),
+        ("y", float("inf")),
+        ("confidence", float("nan")),
+        ("confidence", float("inf")),
+        ("confidence", 0.1),
+    ])
+    def test_unusable_landmark_never_makes_a_valid_angle(field: str, value: float) -> None:
+        landmarks = _landmarks()
+        landmarks.loc[landmarks["joint_index"] == 15, field] = value
+        table = _compute(landmarks)
+        _assert_right_limb_valid(table)
+        assert table["valid_shoulder_L"].all()
+>       assert not table["valid_elbow_L"].any()
+E       assert not np.True_
+E        +  where np.True_ = any()
+E        +    where any = 0    True\n1    True\n2    True\n3    True\n4    True\nName: valid_elbow_L, dtype: bool.any
+
+tests/analysis/test_kinematics_validity.py:115: AssertionError
+_______ test_unusable_landmark_never_makes_a_valid_angle[confidence-nan] _______
+
+field = 'confidence', value = nan
+
+    @pytest.mark.parametrize("field,value", [
+        ("x", float("nan")),
+        ("y", float("inf")),
+        ("confidence", float("nan")),
+        ("confidence", float("inf")),
+        ("confidence", 0.1),
+    ])
+    def test_unusable_landmark_never_makes_a_valid_angle(field: str, value: float) -> None:
+        landmarks = _landmarks()
+        landmarks.loc[landmarks["joint_index"] == 15, field] = value
+        table = _compute(landmarks)
+        _assert_right_limb_valid(table)
+        assert table["valid_shoulder_L"].all()
+>       assert not table["valid_elbow_L"].any()
+E       assert not np.True_
+E        +  where np.True_ = any()
+E        +    where any = 0    True\n1    True\n2    True\n3    True\n4    True\nName: valid_elbow_L, dtype: bool.any
+
+tests/analysis/test_kinematics_validity.py:115: AssertionError
+_______ test_unusable_landmark_never_makes_a_valid_angle[confidence-inf] _______
+
+field = 'confidence', value = inf
+
+    @pytest.mark.parametrize("field,value", [
+        ("x", float("nan")),
+        ("y", float("inf")),
+        ("confidence", float("nan")),
+        ("confidence", float("inf")),
+        ("confidence", 0.1),
+    ])
+    def test_unusable_landmark_never_makes_a_valid_angle(field: str, value: float) -> None:
+        landmarks = _landmarks()
+        landmarks.loc[landmarks["joint_index"] == 15, field] = value
+        table = _compute(landmarks)
+        _assert_right_limb_valid(table)
+        assert table["valid_shoulder_L"].all()
+>       assert not table["valid_elbow_L"].any()
+E       assert not np.True_
+E        +  where np.True_ = any()
+E        +    where any = 0    True\n1    True\n2    True\n3    True\n4    True\nName: valid_elbow_L, dtype: bool.any
+
+tests/analysis/test_kinematics_validity.py:115: AssertionError
+_______ test_unusable_landmark_never_makes_a_valid_angle[confidence-0.1] _______
+
+field = 'confidence', value = 0.1
+
+    @pytest.mark.parametrize("field,value", [
+        ("x", float("nan")),
+        ("y", float("inf")),
+        ("confidence", float("nan")),
+        ("confidence", float("inf")),
+        ("confidence", 0.1),
+    ])
+    def test_unusable_landmark_never_makes_a_valid_angle(field: str, value: float) -> None:
+        landmarks = _landmarks()
+        landmarks.loc[landmarks["joint_index"] == 15, field] = value
+        table = _compute(landmarks)
+>       _assert_right_limb_valid(table)
+
+tests/analysis/test_kinematics_validity.py:113: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+table =    session_time_ns  frame_index  ...  activity_id  px_per_cm
+0       1000000007            0  ...         None        ...     3  ...         None        NaN
+4       1133333339            4  ...         None        NaN
+
+[5 rows x 24 columns]
+
+    def _assert_right_limb_valid(table: pd.DataFrame) -> None:
+>       assert table["valid_elbow_R"].all()
+E       assert np.False_
+E        +  where np.False_ = all()
+E        +    where all = 0    False\n1    False\n2    False\n3    False\n4    False\nName: valid_elbow_R, dtype: bool.all
+
+tests/analysis/test_kinematics_validity.py:57: AssertionError
+______________ test_coincident_joint_masks_only_undefined_angles _______________
+
+    def test_coincident_joint_masks_only_undefined_angles() -> None:
+        landmarks = _landmarks()
+        landmarks.loc[landmarks["joint_index"] == 15, ["x", "y", "z"]] = JOINTS[13]
+        table = _compute(landmarks)
+        _assert_right_limb_valid(table)
+        assert table["valid_shoulder_L"].all()
+>       assert not table["valid_elbow_L"].any()
+E       assert not np.True_
+E        +  where np.True_ = any()
+E        +    where any = 0    True\n1    True\n2    True\n3    True\n4    True\nName: valid_elbow_L, dtype: bool.any
+
+tests/analysis/test_kinematics_validity.py:126: AssertionError
+_________ test_confidence_is_per_required_landmark_not_whole_body_mean _________
+
+    def test_confidence_is_per_required_landmark_not_whole_body_mean() -> None:
+        landmarks = _landmarks()
+        landmarks["confidence"] = 0.75
+        unrelated = pd.DataFrame([
+            {"session_time_ns": 1_000_000_007 + frame * 33_333_333,
+             "frame_index": frame, "joint_index": joint,
+             "x": 0.0, "y": 0.0, "z": 0.0, "confidence": 0.0}
+            for frame in range(5) for joint in range(25) if joint not in JOINTS
+        ])
+        table = _compute(pd.concat([landmarks, unrelated], ignore_index=True))
+>       assert table.filter(like="valid_").all().all()
+E       AssertionError: assert np.False_
+E        +  where np.False_ = all()
+E        +    where all = valid_elbow_L       False\nvalid_elbow_R       False\nvalid_shoulder_L    False\nvalid_shoulder_R    False\ndtype: bool.all
+E        +      where valid_elbow_L       False\nvalid_elbow_R       False\nvalid_shoulder_L    False\nvalid_shoulder_R    False\ndtype: bool = all()
+E        +        where all =    valid_elbow_L  valid_elbow_R  valid_shoulder_L  valid_shoulder_R\n0          False          False             False ...          False             False             False\n4          False          False             False             False.all
+E        +          where    valid_elbow_L  valid_elbow_R  valid_shoulder_L  valid_shoulder_R\n0          False          False             False ...          False             False             False\n4          False          False             False             False = filter(like='valid_')
+E        +            where filter =    session_time_ns  frame_index  ...  activity_id  px_per_cm\n0       1000000007            0  ...         None        ...     3  ...         None        NaN\n4       1133333339            4  ...         None        NaN\n\n[5 rows x 24 columns].filter
+
+tests/analysis/test_kinematics_validity.py:140: AssertionError
+______ test_custom_confidence_threshold_applies_to_each_required_landmark ______
+
+    def test_custom_confidence_threshold_applies_to_each_required_landmark() -> None:
+        landmarks = _landmarks()
+        landmarks.loc[landmarks["joint_index"] == 15, "confidence"] = 0.7
+        table = _compute(landmarks, min_confidence=0.8)
+        _assert_right_limb_valid(table)
+        assert table["valid_shoulder_L"].all()
+>       assert not table["valid_elbow_L"].any()
+E       assert not np.True_
+E        +  where np.True_ = any()
+E        +    where any = 0    True\n1    True\n2    True\n3    True\n4    True\nName: valid_elbow_L, dtype: bool.any
+
+tests/analysis/test_kinematics_validity.py:150: AssertionError
+______ test_sparse_non_sim_pose_cli_retains_missing_data_and_source_bytes ______
+
+tmp_path = PosixPath('/Users/me/hamon-native-406d0fb04c43/capturesuite-kinematics/evidence/baseline-cases/test_sparse_non_sim_pose_cli_r0')
+
+    def test_sparse_non_sim_pose_cli_retains_missing_data_and_source_bytes(tmp_path: Path) -> None:
+        package = _write_pose_package(tmp_path / "session.mmsession")
+        pose_dir = package / "processing" / "jobs" / "pose-recorded" / "pose" / "camera-fixture"
+        pose_dir.mkdir(parents=True)
+        landmarks = _landmarks()
+        landmarks = landmarks.loc[landmarks["joint_index"] == 15]
+        landmarks.to_parquet(pose_dir / "landmarks.parquet", index=False)
+        (pose_dir / "model_card.json").write_text(json.dumps({"model_id": MODEL}), encoding="utf-8")
+        (pose_dir.parents[1] / "job_manifest.json").write_text(
+            json.dumps({"schemaId": "capture.analysis_job/1", "jobId": "pose-recorded",
+                        "status": "completed", "command": "pose"}), encoding="utf-8"
+        )
+        originals = {
+            p.relative_to(package).as_posix(): hashlib.sha256(p.read_bytes()).hexdigest()
+            for p in package.rglob("*") if p.is_file()
+        }
+        env = os.environ.copy()
+        env["PYTHONDONTWRITEBYTECODE"] = "1"
+        env["PYTHONPATH"] = os.pathsep.join(str(ROOT / part) for part in (
+            "libs/python/capture_analysis", "libs/python/capture_session",
+            "libs/python/capture_protocol", "libs/python/capture_protocol/capture_protocol/generated",
+        ))
+        command = [sys.executable, str(ROOT / "tools/run_analysis.py"), "kinematics", str(package),
+                   "--pose-job", "pose-recorded", "--overwrite-job-id", "kin-receiving"]
+        result = subprocess.run(
+            command, env=env, capture_output=True, text=True, timeout=30, check=False
+        )
+        assert result.returncode == 0, result.stdout + result.stderr
+        job = package / "processing" / "jobs" / "kin-receiving"
+        table = pd.read_parquet(job / "kinematics" / "kinematics.parquet")
+        qc = json.loads((job / "kinematics" / "kinematics_qc.json").read_text(encoding="utf-8"))
+        assert qc["provisional"] is False
+        assert qc["poseModelIds"] == [MODEL]
+        assert table["session_time_ns"].tolist() == landmarks["session_time_ns"].tolist()
+>       assert not table.filter(like="valid_").any().any()
+E       AssertionError: assert not np.True_
+E        +  where np.True_ = any()
+E        +    where any = valid_elbow_L       True\nvalid_elbow_R       True\nvalid_shoulder_L    True\nvalid_shoulder_R    True\ndtype: bool.any
+E        +      where valid_elbow_L       True\nvalid_elbow_R       True\nvalid_shoulder_L    True\nvalid_shoulder_R    True\ndtype: bool = any()
+E        +        where any =    valid_elbow_L  valid_elbow_R  valid_shoulder_L  valid_shoulder_R\n0           True           True              True ...           True              True              True\n4           True           True              True              True.any
+E        +          where    valid_elbow_L  valid_elbow_R  valid_shoulder_L  valid_shoulder_R\n0           True           True              True ...           True              True              True\n4           True           True              True              True = filter(like='valid_')
+E        +            where filter =    session_time_ns  frame_index  ...  activity_id  px_per_cm\n0       1000000007            0  ...         None        ...     3  ...         None        NaN\n4       1133333339            4  ...         None        NaN\n\n[5 rows x 24 columns].filter
+
+tests/analysis/test_kinematics_validity.py:198: AssertionError
+=============================== warnings summary ===============================
+tests/analysis/test_kinematics_validity.py::test_sparse_non_sim_pose_cli_retains_missing_data_and_source_bytes
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.MessageMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+
+tests/analysis/test_kinematics_validity.py::test_sparse_non_sim_pose_cli_retains_missing_data_and_source_bytes
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.ScalarMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/me/hamon-native-406d0fb04c43/capturesuite-kinematics/evidence/baseline-tests.xml -
+=========================== short test summary info ============================
+FAILED tests/analysis/test_kinematics_validity.py::test_missing_hips_mask_shoulders_without_replacing_elbow_geometry
+FAILED tests/analysis/test_kinematics_validity.py::test_frame_dropout_masks_only_dependent_joint_and_derived_labels
+FAILED tests/analysis/test_kinematics_validity.py::test_unusable_landmark_never_makes_a_valid_angle[x-nan]
+FAILED tests/analysis/test_kinematics_validity.py::test_unusable_landmark_never_makes_a_valid_angle[y-inf]
+FAILED tests/analysis/test_kinematics_validity.py::test_unusable_landmark_never_makes_a_valid_angle[confidence-nan]
+FAILED tests/analysis/test_kinematics_validity.py::test_unusable_landmark_never_makes_a_valid_angle[confidence-inf]
+FAILED tests/analysis/test_kinematics_validity.py::test_unusable_landmark_never_makes_a_valid_angle[confidence-0.1]
+FAILED tests/analysis/test_kinematics_validity.py::test_coincident_joint_masks_only_undefined_angles
+FAILED tests/analysis/test_kinematics_validity.py::test_confidence_is_per_required_landmark_not_whole_body_mean
+FAILED tests/analysis/test_kinematics_validity.py::test_custom_confidence_threshold_applies_to_each_required_landmark
+FAILED tests/analysis/test_kinematics_validity.py::test_sparse_non_sim_pose_cli_retains_missing_data_and_source_bytes
+11 failed, 2 passed, 2 warnings in 12.71s
+

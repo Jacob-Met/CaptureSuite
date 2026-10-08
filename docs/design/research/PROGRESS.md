@@ -1,42 +1,26 @@
-## 2026-10-08 — Compose saved analysis with the merged scope controls
+## 2026-10-08 — Preserve missing pose evidence in kinematic labels
 
-Worker `estate-401c5d17da79`, issue #55: receiving on main `3e3ecc5`
-preserves the merged #53/#58 scope controls and normalized package identity
-while adding saved-result history. The current screen treats its retained
-thread handle as busy from scheduled start through the existing cleanup.
-One actual QApplication/QTimer journey passes 24 checks with two real
-numeric-feature jobs: saved exact ranges, disabled/restored controls,
-read-only reopening, same-package scope retention, and refusal to repaint
-a different package after a queued completion. The original 14/19 results
-below keep their original inputs; Windows CI and the separately owned
-nested-numeric gallery repair remain distinct. Exact source, the startup
-negative control and current receipts are in
-[current scope receiving](../../evidence/analysis-history-401c5d17da79/current-scope/README.md).
+Worker `estate-406d0fb04c43 / production`, issue #56: non-simulated pose tables
+previously fell back to synthetic angles when required body landmarks were
+absent. The real Parquet-to-kinematics CLI could therefore complete with invented
+values and valid flags. A missing landmark on one side also invalidated usable
+geometry on the other, and finite central differences or rolling ranges could
+hide an invalid center frame.
 
-## 2026-10-08 — Reopen saved analysis in the native workbench
+The bounded computation repair selects synthetic values only for explicit sim
+model IDs. It checks each required landmark's confidence and finite coordinates,
+keeps independent elbow/shoulder validity, and masks undefined angle, velocity
+and AFR values at missing frames. Existing valid-input calculations, sim behavior,
+model identity, schemas, pose backends and job publication are preserved.
 
-Worker `estate-401c5d17da79`, issue #55: the Analysis tab now lists retained
-completed and failed jobs from its selected package. Explicit Open loads the
-existing gallery and inspector; native read-only Parameters, Log and Manifest
-tabs expose saved diagnostics. Refresh does not rerun analysis. Package changes
-clear the old view, and late results remain attached to their original package.
-Unavailable/malformed/foreign jobs remain visible with a refusal reason.
-
-Authored source `37443f0` passes all 14 focused and retained native UI tests,
-including actual successful and failed analysis QThreads. Independent receiving
-passes 19 checks through the real QApplication event loop: retained real figures,
-same-name jobs in different sessions, stale selection refusal, late completion
-and exact saved/raw byte preservation. The original worker, signal wiring,
-thread cleanup, gallery, inspector and job formats are preserved. The separately
-owned #53/#54 scope controls and #46 provenance writer are outside this change.
-
-Earlier manual-event-pump crashes/stalls and an empty receipt caused by transient
-filesystem exhaustion are retained as non-accepting harness outcomes. The same
-first candidate passed its genuine application-event-loop control; no native
-cleanup defect is inferred from those manual-pump observations. Qualification is
-native Linux Qt/Python 3.12, not a Windows CI, full-product or hardware claim.
-Exact source pins, raw logs, independent methods and reviewed native frames are
-in [the receiving evidence](../../evidence/analysis-history-401c5d17da79/README.md).
+On native macOS arm64 with the declared Python 3.12 science dependencies, the
+same 13 focused tests retain 11 original failures and two passing controls;
+the repair passes all 13 plus eight original pose/kinematics/ML consumers, with
+zero skips. The real CLI writes masked Parquet and truthful detection rates
+while preserving every original package and input-pose byte. All selected source
+bytes remain unchanged during execution, and scoped Ruff passes. Independent
+receiving and the existing supported Windows CI remain separate integration gates.
+No inference service, physical capture, smoothing or calibration result is claimed.
 
 ## 2026-10-08 — Windows atomic writer reserves owned temporary files
 
@@ -139,6 +123,44 @@ scratch-loss disclosure are recorded in
 Composition update: main `ac52c3ca` adds the separately received POSIX sealed-recording
 repair. The job-preservation production, tests, and initial receiving evidence remain
 byte-identical; hosted CI qualifies this new combined repository tree.
+
+## 2026-10-08 — Receive final output provenance on preserved analysis jobs
+
+Receive the landed PR48 replacement contract before completing PR46. The only
+production delta now finalizes the successful diagnostic log before serializing
+the manifest, and removes the impossible self-manifest checksum. The stored
+inventory agrees with the returned result and final artifact bytes. PR48's
+portable destination guards, unique attempts, failed-record handling, previous
+result restoration and CLI/UI recovery notes remain unchanged.
+
+The original seven provenance receivers on landed main gave two passes, four
+remaining successful-inventory failures and one obsolete completion-callback
+expectation. The updated receiver preserves the previous completed revision and
+checks both its inventory and the separately retained failed attempt. With the
+same updated tests, native Python 3.12.8 receiving improves from **19 passed,
+5 failed** to **24 passed, 0 skipped**. This includes the owner's nine replacement
+fault controls, two actual CLI failure controls and six existing QC controls.
+
+After receiving PR50's QC collector/HTML changes and PR42's fixture isolation,
+the unchanged finalization source passes all **49** focused controls, including
+the landed QC gap cases, with no skips. Both owners' source and documentation
+remain intact.
+
+Receiving the later PR49 numeric pipeline gave **48 passed and one diagnostic
+StopIteration** across seven provenance and 42 numeric controls. Its new CLI
+receiver assumed the old self-manifest row existed only to record that row's
+known checksum mismatch. Make this diagnostic optional, retain a null comparison
+when absent, and record the actual manifest file's external SHA. All existing
+assertions and all numeric runtime source remain unchanged. The affected actual
+CLI case then passed **1/1**, with retained output bytes and source hashes; the
+other 48 cases were not replayed. Independent review verified the diagnostic
+delta and all 87 unchanged assertion/call expressions.
+
+The previously qualified PR46 head and all negative evidence remain in custody;
+its Windows CI does not qualify this new composition. Exact-head supported
+Windows CI remains pending. The separately prepared job-ID candidate was
+superseded by the landed owner and is not included. See
+`docs/evidence/analysis-output-provenance-current-receiving-20261008.json`.
 
 ## 2026-10-08 — Scope recorded analysis gaps to their stream (estate-e82707f2bc62)
 
@@ -737,3 +759,74 @@ independently accepts the repaired checkpoint picker at `3625449`; the original
 identity failure and corrected rerun are retained. The supported Windows job
 remains required. Source pins, raw control/qualification logs and native custody
 are recorded in `docs/evidence/analysis-scope-234cae4aee53/`.
+
+
+## 2026-10-08 — Selected analysis figures with original provenance (#59)
+
+The native gallery now offers **Export figures…** for the loaded completed job.
+Researchers can preview/check an explicit PNG subset, choose a ZIP destination,
+and retain the exact original images, job manifest and parameters together.
+The versioned bundle index distinguishes actual exported-input digests from
+historical hashes recorded inside the original job metadata. Recorded source
+identity, gaps, units, warnings and tooling remain intact; export does not
+recompute results or make a new scientific/hardware claim.
+
+Source reads, validation, PNG decoding, selection and failed/cancelled export
+leave job/session bytes unchanged. The writer stages beside the destination and
+preserves an existing export until successful publication; replacement requires
+an explicit native confirmation. Clear/reload invalidates the old selection and
+cancels its worker. The gallery's public lifecycle composes with #55 saved-job
+history without editing its screen/package hooks, and all sync/inspector behavior
+remains in its existing implementation.
+
+Local receiving uses the project's Python 3.12 source, actual PySide6/Qt 6.11.2
+controls/event loop, and an actual synthetic MCAP analysis job. The original
+native gallery has no export action; the candidate produces exact selected PNG
+members plus the two original source JSON files and a versioned bundle index.
+Tests include selected/empty/invalid/stale jobs, output failure and retry,
+replacement refusal/acceptance, native keyboard operation, and clear during an
+active worker. Supported-platform CI and independent receiving are recorded
+separately in the accompanying feature evidence; local Linux Qt is not Windows,
+hardware or installed-app qualification. See [figure export](FIGURE_EXPORT.md)
+for the operator workflow, bundle fields and explicit resource/failure bounds.
+
+## 2026-10-08 — Compose saved analysis with the merged scope controls
+
+Worker `estate-401c5d17da79`, issue #55: receiving on main `3e3ecc5`
+preserves the merged #53/#58 scope controls and normalized package identity
+while adding saved-result history. The current screen treats its retained
+thread handle as busy from scheduled start through the existing cleanup.
+One actual QApplication/QTimer journey passes 24 checks with two real
+numeric-feature jobs: saved exact ranges, disabled/restored controls,
+read-only reopening, same-package scope retention, and refusal to repaint
+a different package after a queued completion. The original 14/19 results
+below keep their original inputs; Windows CI and the separately owned
+nested-numeric gallery repair remain distinct. Exact source, the startup
+negative control and current receipts are in
+[current scope receiving](../../evidence/analysis-history-401c5d17da79/current-scope/README.md).
+
+## 2026-10-08 — Reopen saved analysis in the native workbench
+
+Worker `estate-401c5d17da79`, issue #55: the Analysis tab now lists retained
+completed and failed jobs from its selected package. Explicit Open loads the
+existing gallery and inspector; native read-only Parameters, Log and Manifest
+tabs expose saved diagnostics. Refresh does not rerun analysis. Package changes
+clear the old view, and late results remain attached to their original package.
+Unavailable/malformed/foreign jobs remain visible with a refusal reason.
+
+Authored source `37443f0` passes all 14 focused and retained native UI tests,
+including actual successful and failed analysis QThreads. Independent receiving
+passes 19 checks through the real QApplication event loop: retained real figures,
+same-name jobs in different sessions, stale selection refusal, late completion
+and exact saved/raw byte preservation. The original worker, signal wiring,
+thread cleanup, gallery, inspector and job formats are preserved. The separately
+owned #53/#54 scope controls and #46 provenance writer are outside this change.
+
+Earlier manual-event-pump crashes/stalls and an empty receipt caused by transient
+filesystem exhaustion are retained as non-accepting harness outcomes. The same
+first candidate passed its genuine application-event-loop control; no native
+cleanup defect is inferred from those manual-pump observations. Qualification is
+native Linux Qt/Python 3.12, not a Windows CI, full-product or hardware claim.
+Exact source pins, raw logs, independent methods and reviewed native frames are
+in [the receiving evidence](../../evidence/analysis-history-401c5d17da79/README.md).
+

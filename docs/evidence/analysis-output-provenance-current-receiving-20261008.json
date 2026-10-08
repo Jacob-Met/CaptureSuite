@@ -1,0 +1,688 @@
+{
+  "schema": "capture.analysis-provenance-current-receiving/1",
+  "existing_owner": {
+    "actor": "estate-6267db2cfc6e",
+    "issue": 39,
+    "pull_request": 48,
+    "published_head": "ccfa6ed488c446818eee5df9ded8311a76b888d4",
+    "merged_as": "2b3ee0e03fdfffe9d6d66d1c15806563bdf8636e",
+    "merged_utc": "2026-10-08T11:30:08Z"
+  },
+  "base_commit": "72c15d6b623e217291a824e4e4808a385df896a9",
+  "base_tree": "221cf5c7bb3c3392a7c4186ba0bcf5a8664135d1",
+  "base_jobs_sha256": "e7e9dda44eb014d18192563f1e2c0ae78cece850fbc853b0be3919daaf5ee276",
+  "candidate_source_sha256": {
+    "libs/python/capture_analysis/capture_analysis/jobs.py": "004db43bc2fa362e657de2c280c39644056d970551330488524bca5019452bc6",
+    "tests/analysis/test_job_output_provenance.py": "9f041284a595312cd7d75fc36a959d16205bb4cebf6f90bf0f098ef574bf8d0f",
+    "docs/design/ANALYSIS.md": "b8903ae994280930884ced623a7c496679fa90c07ca6b1266dbc3f4642e66562"
+  },
+  "runtime_delta": "Only successful finalization: write final diagnostic log before manifest serialization; omit manifest self-checksum. No new ID, destination, promotion, failure-record or consumer implementation.",
+  "historical_original_receiving": {
+    "test_sha256": "debcaac8e8f91071b479dbd022682d8e58f6dadb57cf57bbf36e0750bda45f62",
+    "tests": 7,
+    "passed": 2,
+    "failed": 5,
+    "classification": "Four remaining successful-output defects; one obsolete done-callback expectation superseded by PR48 prior-result preservation.",
+    "receipt_sha256": "0db89ba709022ee250667d182fe6497db0f9ce3065b2d99ea3b25d0e3e0e49ca",
+    "log_sha256": "0cdc7164b0df09f602cd6a13f77478e83ab7e598960979dfe270c929579bc010",
+    "junit_sha256": "f7376eedd046c6afe0ae9f143949b01454b23240abeffea356f64f3cf9d5c198"
+  },
+  "paired_native_receiving": {
+    "schema": "capture.pr48-provenance-native-pair/1",
+    "base_commit": "72c15d6b623e217291a824e4e4808a385df896a9",
+    "candidate_runtime_patch_sha256": "8adaf1d5a2b2fece2582a4c51159f05ed112419a6949be01f14489cf9d73becd",
+    "same_test_sha256": "9f041284a595312cd7d75fc36a959d16205bb4cebf6f90bf0f098ef574bf8d0f",
+    "scope": [
+      "tests/analysis/test_job_output_provenance.py",
+      "tests/analysis/test_job_replacement.py",
+      "tests/analysis/test_job_failure_cli.py",
+      "tests/analysis/test_phase_a_qc.py"
+    ],
+    "runs": [
+      {
+        "label": "baseline",
+        "command": [
+          "/Users/me/Developer/capturesuite-analysis-provenance-20261008/.venv-analysis/bin/python",
+          "-m",
+          "pytest",
+          "tests/analysis/test_job_output_provenance.py",
+          "tests/analysis/test_job_replacement.py",
+          "tests/analysis/test_job_failure_cli.py",
+          "tests/analysis/test_phase_a_qc.py",
+          "-q",
+          "--basetemp",
+          "/Users/me/Developer/capturesuite-analysis-current-receiving-20261008/out/provenance-receiving-evidence/baseline-paired-fixtures",
+          "--junitxml",
+          "/Users/me/Developer/capturesuite-analysis-current-receiving-20261008/out/provenance-receiving-evidence/baseline-paired.xml"
+        ],
+        "cwd": "/Users/me/Developer/capturesuite-analysis-current-receiving-20261008/out/provenance-receiving-evidence/baseline-current-main",
+        "exit_code": 1,
+        "tests": 24,
+        "failed_cases": [
+          "tests.analysis.test_job_output_provenance.test_recorded_hashes_describe_final_output_bytes",
+          "tests.analysis.test_job_output_provenance.test_persisted_manifest_matches_return_value",
+          "tests.analysis.test_job_output_provenance.test_completed_job_inventories_all_produced_artifacts",
+          "tests.analysis.test_job_output_provenance.test_overwrite_describes_replacement_artifacts",
+          "tests.analysis.test_job_output_provenance.test_done_callback_failure_preserves_prior_job_and_attempt_inventory"
+        ],
+        "skips": 0,
+        "source_before": {
+          "libs/python/capture_analysis/capture_analysis/jobs.py": "e7e9dda44eb014d18192563f1e2c0ae78cece850fbc853b0be3919daaf5ee276",
+          "tests/analysis/test_job_output_provenance.py": "9f041284a595312cd7d75fc36a959d16205bb4cebf6f90bf0f098ef574bf8d0f",
+          "tests/analysis/test_job_replacement.py": "e4480546d7e0653d3ad40cf52ad3f1489499c3810c9814f84145e1000b2b9ebd",
+          "tests/analysis/test_job_failure_cli.py": "77f62b52bc01b6325c2349f6482d407465869587ecc3380c01303e0398b226f6",
+          "tests/analysis/test_phase_a_qc.py": "0be539a3d593e1cf144f4b7f871af90082feaa19a4ac8f234f53a2b232c8cc07"
+        },
+        "source_after": {
+          "libs/python/capture_analysis/capture_analysis/jobs.py": "e7e9dda44eb014d18192563f1e2c0ae78cece850fbc853b0be3919daaf5ee276",
+          "tests/analysis/test_job_output_provenance.py": "9f041284a595312cd7d75fc36a959d16205bb4cebf6f90bf0f098ef574bf8d0f",
+          "tests/analysis/test_job_replacement.py": "e4480546d7e0653d3ad40cf52ad3f1489499c3810c9814f84145e1000b2b9ebd",
+          "tests/analysis/test_job_failure_cli.py": "77f62b52bc01b6325c2349f6482d407465869587ecc3380c01303e0398b226f6",
+          "tests/analysis/test_phase_a_qc.py": "0be539a3d593e1cf144f4b7f871af90082feaa19a4ac8f234f53a2b232c8cc07"
+        },
+        "log_sha256": "d323c00f9ad5e8e63c892a12dc3520604df01ef4f4d55d91610a53b9aa4a9d17",
+        "junit_sha256": "5b9f3680af5ed7f3a8b4b2d88e9f85e7113c2ce55acdecc550ca9d387981a963"
+      },
+      {
+        "label": "candidate",
+        "command": [
+          "/Users/me/Developer/capturesuite-analysis-provenance-20261008/.venv-analysis/bin/python",
+          "-m",
+          "pytest",
+          "tests/analysis/test_job_output_provenance.py",
+          "tests/analysis/test_job_replacement.py",
+          "tests/analysis/test_job_failure_cli.py",
+          "tests/analysis/test_phase_a_qc.py",
+          "-q",
+          "--basetemp",
+          "/Users/me/Developer/capturesuite-analysis-current-receiving-20261008/out/provenance-receiving-evidence/candidate-paired-fixtures",
+          "--junitxml",
+          "/Users/me/Developer/capturesuite-analysis-current-receiving-20261008/out/provenance-receiving-evidence/candidate-paired.xml"
+        ],
+        "cwd": "/Users/me/Developer/capturesuite-analysis-current-receiving-20261008",
+        "exit_code": 0,
+        "tests": 24,
+        "failed_cases": [],
+        "skips": 0,
+        "source_before": {
+          "libs/python/capture_analysis/capture_analysis/jobs.py": "004db43bc2fa362e657de2c280c39644056d970551330488524bca5019452bc6",
+          "tests/analysis/test_job_output_provenance.py": "9f041284a595312cd7d75fc36a959d16205bb4cebf6f90bf0f098ef574bf8d0f",
+          "tests/analysis/test_job_replacement.py": "e4480546d7e0653d3ad40cf52ad3f1489499c3810c9814f84145e1000b2b9ebd",
+          "tests/analysis/test_job_failure_cli.py": "77f62b52bc01b6325c2349f6482d407465869587ecc3380c01303e0398b226f6",
+          "tests/analysis/test_phase_a_qc.py": "0be539a3d593e1cf144f4b7f871af90082feaa19a4ac8f234f53a2b232c8cc07"
+        },
+        "source_after": {
+          "libs/python/capture_analysis/capture_analysis/jobs.py": "004db43bc2fa362e657de2c280c39644056d970551330488524bca5019452bc6",
+          "tests/analysis/test_job_output_provenance.py": "9f041284a595312cd7d75fc36a959d16205bb4cebf6f90bf0f098ef574bf8d0f",
+          "tests/analysis/test_job_replacement.py": "e4480546d7e0653d3ad40cf52ad3f1489499c3810c9814f84145e1000b2b9ebd",
+          "tests/analysis/test_job_failure_cli.py": "77f62b52bc01b6325c2349f6482d407465869587ecc3380c01303e0398b226f6",
+          "tests/analysis/test_phase_a_qc.py": "0be539a3d593e1cf144f4b7f871af90082feaa19a4ac8f234f53a2b232c8cc07"
+        },
+        "log_sha256": "0e956d8be27be782cd6d7fd0f7cc0b30afe78d16eb4c02479a69dbdee892125a",
+        "junit_sha256": "60016d3281a300764bef7b24fdb7fad9db349e7a1b19ad60d1331010b3c38320"
+      }
+    ]
+  },
+  "paired_native_receipt_sha256": "8df929c41fead9946698715f1ad838070ad567cb5e7e05b7ca1a0b5de72d7c1d",
+  "landed_contract_preservation": {
+    "schema": "capture.pr48-source-preservation/1",
+    "base": "72c15d6b623e217291a824e4e4808a385df896a9",
+    "all_non_run_functions_classes_unchanged": {
+      "JobParams": true,
+      "JobResult": true,
+      "_canonical_json": true,
+      "_params_digest": true,
+      "_validate_job_id": true,
+      "_job_id": true,
+      "_job_destination": true,
+      "_sha256_bytes": true,
+      "_sha256_file": true,
+      "_write_output": true,
+      "_try_validate_manifest": true,
+      "hash_sources_tree": true,
+      "_promote_replacement": true
+    },
+    "entire_failure_cleanup_return_tail_identical": true,
+    "failure_tail_sha256": "b2147fe31cd9e287a99c989f0dfe9382aeaa22a1fdeaa25d68ee177a6f111b3a",
+    "unchanged_current_consumers": {
+      "tools/run_analysis.py": "a6def4729ac6a84c5cb13a87032fac0ea53fa7edfc041194b358abb550f78e62",
+      "desktop/capture_desktop/screen_analysis.py": "1437b02b942f44378870540f12c5494d08693329abb5d00ca64c0c264f57633e",
+      "schemas/session/jsonschema/analysis_job.schema.json": "0f16c96cb79596f25e05f2a80545b42d080570adbcb84faaf5db5904f35b0ab1"
+    }
+  },
+  "landed_contract_receipt_sha256": "753ed644fc1a38a2ea66934723e61716f3c0fe50f3799ff5ed4be5af81d748d4",
+  "native_environment": {
+    "platform": "macOS arm64",
+    "python": "3.12.8",
+    "placement": "Existing analysis virtual environment; no dependency installation",
+    "gui_note": "Native scope excludes Qt; supported Windows CI remains necessary."
+  },
+  "old_pr46_custody": {
+    "head": "4c68370c7e8a98390ae75d1020f7eb47db70ae29",
+    "tree": "3702b499f14909954d5ec473944bcc69687960bf",
+    "workflow_run": 37763243225,
+    "python_passed": 234,
+    "python_daemon_skips": 6,
+    "cpp_ctest_passed": 25,
+    "cpp_native_passed": 6,
+    "cpp_skips": 0,
+    "cpp_custody_sha256": "0165ea5dbd74307b22c24cba1f756afe5fd15386de254736e3b93dc66cf9a83a",
+    "qualification_limit": "Historical source only; this completed run does not qualify the current PR48 composition."
+  },
+  "id_successor_disposition": {
+    "native_claim_seq": 3992,
+    "value": "superseded_pending_receiving",
+    "implementation_published": false,
+    "reason": "Existing landed PR48 owner covers the destructive ID/destination scope; preserve its contract."
+  },
+  "initial_static_failure": {
+    "check": "Ruff E501",
+    "disposition": "A 101-character test line was split before paired execution. Original diagnostic retained.",
+    "log_sha256": "616a94af15425b0b5f8b7ab415af29ebbe70348305529e92247cd9c678f0d069"
+  },
+  "supported_windows_gate": "Pending for the new exact published head",
+  "native_evidence_directory": "/Users/me/Developer/capturesuite-analysis-current-receiving-20261008/out/provenance-receiving-evidence",
+  "subsequent_main_receiving": {
+    "main": "e43da3b855475c8aacf815c201fa03eddaeec0f1",
+    "received_owners": [
+      "PR50 QC gap collector/HTML renderer",
+      "PR42 portable fixture isolation"
+    ],
+    "method": "Ordinary merge; resolve only analysis/progress documentation by retaining both additions. Reviewed runtime and seven-test bytes unchanged.",
+    "native_receiving": {
+      "schema": "capture.provenance-main-e43-receiving/1",
+      "current_main": "e43da3b855475c8aacf815c201fa03eddaeec0f1",
+      "previous_published_head": "8cba7e9e00a81e714d9faf24fccbf66c3b8156a3",
+      "reason": "Receive newly landed QC collector/HTML renderer dependency and portable fixture main; finalization and revised seven receivers unchanged",
+      "command": [
+        "/Users/me/Developer/capturesuite-analysis-provenance-20261008/.venv-analysis/bin/python",
+        "-m",
+        "pytest",
+        "tests/analysis/test_job_output_provenance.py",
+        "tests/analysis/test_job_replacement.py",
+        "tests/analysis/test_job_failure_cli.py",
+        "tests/analysis/test_phase_a_qc.py",
+        "tests/analysis/test_qc_gap_details.py",
+        "-q",
+        "--basetemp",
+        "/Users/me/Developer/capturesuite-analysis-current-receiving-20261008/out/provenance-receiving-evidence/main-e43-focused-fixtures",
+        "--junitxml",
+        "/Users/me/Developer/capturesuite-analysis-current-receiving-20261008/out/provenance-receiving-evidence/main-e43-focused.xml"
+      ],
+      "exit_code": 0,
+      "tests": 49,
+      "failures": [],
+      "skips": 0,
+      "source_before": {
+        "libs/python/capture_analysis/capture_analysis/jobs.py": "004db43bc2fa362e657de2c280c39644056d970551330488524bca5019452bc6",
+        "libs/python/capture_analysis/capture_analysis/qc.py": "f24e0593a3723311d41054aef40b56c4bb46d4f3ba5ef4b01afcae3a6cc4440a",
+        "libs/python/capture_analysis/capture_analysis/report_html.py": "f2c89c7faf6e4edc265540140272396b4195eb5aed9edf05c4912aac74286f03",
+        "tests/analysis/test_job_output_provenance.py": "9f041284a595312cd7d75fc36a959d16205bb4cebf6f90bf0f098ef574bf8d0f",
+        "tests/analysis/test_job_replacement.py": "e4480546d7e0653d3ad40cf52ad3f1489499c3810c9814f84145e1000b2b9ebd",
+        "tests/analysis/test_job_failure_cli.py": "77f62b52bc01b6325c2349f6482d407465869587ecc3380c01303e0398b226f6",
+        "tests/analysis/test_phase_a_qc.py": "0be539a3d593e1cf144f4b7f871af90082feaa19a4ac8f234f53a2b232c8cc07",
+        "tests/analysis/test_qc_gap_details.py": "9c6942a27fd37c01262d388e0834bdd49154a430b20cdf294791d6007e98f690"
+      },
+      "source_after": {
+        "libs/python/capture_analysis/capture_analysis/jobs.py": "004db43bc2fa362e657de2c280c39644056d970551330488524bca5019452bc6",
+        "libs/python/capture_analysis/capture_analysis/qc.py": "f24e0593a3723311d41054aef40b56c4bb46d4f3ba5ef4b01afcae3a6cc4440a",
+        "libs/python/capture_analysis/capture_analysis/report_html.py": "f2c89c7faf6e4edc265540140272396b4195eb5aed9edf05c4912aac74286f03",
+        "tests/analysis/test_job_output_provenance.py": "9f041284a595312cd7d75fc36a959d16205bb4cebf6f90bf0f098ef574bf8d0f",
+        "tests/analysis/test_job_replacement.py": "e4480546d7e0653d3ad40cf52ad3f1489499c3810c9814f84145e1000b2b9ebd",
+        "tests/analysis/test_job_failure_cli.py": "77f62b52bc01b6325c2349f6482d407465869587ecc3380c01303e0398b226f6",
+        "tests/analysis/test_phase_a_qc.py": "0be539a3d593e1cf144f4b7f871af90082feaa19a4ac8f234f53a2b232c8cc07",
+        "tests/analysis/test_qc_gap_details.py": "9c6942a27fd37c01262d388e0834bdd49154a430b20cdf294791d6007e98f690"
+      },
+      "log_sha256": "4a232a76e67836d7d4c1e6cbbfa2eb42e91f15da61cb882e67a7e20576b23985",
+      "junit_sha256": "9901f574a31a5e5b396ecfa796d2263ce2a177b7e0ee237ed302e1303ff5d5b8",
+      "runner_sha256": "48920cc7e7e5e6e483d5df67847b6c4c94177d53116848b041e373acc2f05f98"
+    },
+    "native_receipt_sha256": "dcd23f59634e2809e80cd62ec54bb45a5bc688ddd04dd77df93b616ab84e1466",
+    "initial_execution_block": "The first command did not start because zsh could not create a temporary here-document on a full filesystem. No test outcome is attributed to that invocation.",
+    "capacity_recovery": "Removed only two owned reconstructible staged-source placements after completed SPDX checks; all native evidence and environments retained.",
+    "windows_gate": "New exact published head still requires supported Windows CI"
+  },
+  "numeric_main_receiving": {
+    "incoming_main": "0ed1ccaa023a5327495565d59e1dd0b28b2ee5bd",
+    "native_clean_composition": "d0d2b60e6363b35ee3421e31afcdaddd03f5e7c7",
+    "native_clean_composition_tree": "5b43eac241ee498aade18421b7c8e6dba2e071d6",
+    "unchanged_runtime_sha256": "004db43bc2fa362e657de2c280c39644056d970551330488524bca5019452bc6",
+    "original_receiving": {
+      "schema": "capture.provenance-numeric-main-receiving/1",
+      "recorded_at": "2026-10-08T13:24:38.203674+00:00",
+      "current_main": "0ed1ccaa023a5327495565d59e1dd0b28b2ee5bd",
+      "published_pr_head": "c9165ce11c00feb88edcee4b35b1b9a0b9876d2a",
+      "native_composition": "d0d2b60e6363b35ee3421e31afcdaddd03f5e7c7",
+      "git_tree": "5b43eac241ee498aade18421b7c8e6dba2e071d6",
+      "reason": "Land PR49 numeric dependency behavior without changing the reviewed PR46 finalization or replaying unchanged hosted C++ gates",
+      "command": [
+        "/Users/me/Developer/capturesuite-analysis-provenance-20261008/.venv-analysis/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/analysis/test_job_output_provenance.py",
+        "tests/analysis/test_numeric_batch_pipeline.py",
+        "tests/analysis/test_numeric_cli_receiving.py",
+        "tests/analysis/test_numeric_receiving.py",
+        "-q",
+        "--basetemp",
+        "/Users/me/Developer/capturesuite-analysis-numeric-receiving-20261008/out/provenance-numeric-receiving-evidence/numeric-composition-fixtures",
+        "--junitxml",
+        "/Users/me/Developer/capturesuite-analysis-numeric-receiving-20261008/out/provenance-numeric-receiving-evidence/numeric-composition-focused.xml"
+      ],
+      "exit_code": 1,
+      "tests": 49,
+      "passed": 48,
+      "failures": [
+        "tests.analysis.test_numeric_cli_receiving.NumericCliReceiving.test_qc_html_inventory_and_manifest_are_available_without_features"
+      ],
+      "skips": 0,
+      "source_before": {
+        "libs/python/capture_analysis/capture_analysis/jobs.py": "004db43bc2fa362e657de2c280c39644056d970551330488524bca5019452bc6",
+        "libs/python/capture_analysis/capture_analysis/features/numeric_batch.py": "ecdeb88ca4dd093b973294a53954e9fa0e5d6b4b908225a52d097ef70c7d2154",
+        "libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py": "7c84c0425c1b9b821df711f4c40ea89ac13f267dbe6472922eb41a9263e4835c",
+        "libs/python/capture_analysis/capture_analysis/plots/modality.py": "bc3aa15ee79d50280a6c9d6aa144fe0519f85dd2c74a0cfa99323f7d57ecd28d",
+        "libs/python/capture_analysis/capture_analysis/plugins/manifest.yaml": "1efe3ee2d9eeeeac03c2c03c582edf0119c9abd6d214dfdca3d827fa10a5c048",
+        "libs/python/capture_analysis/capture_analysis/plugins/numeric.py": "75b55cb453095ad5470ce2532b65d3dce771e6a2f8ad1e46a538b4291fa4cf93",
+        "libs/python/capture_analysis/capture_analysis/plugins/registry.py": "33a4d07600db8b116fbd46b67492f62129df513df5b66a2c455dced0b2a9dc69",
+        "tests/analysis/test_job_output_provenance.py": "9f041284a595312cd7d75fc36a959d16205bb4cebf6f90bf0f098ef574bf8d0f",
+        "tests/analysis/test_numeric_batch_pipeline.py": "43369bd0fea48d2c8b7dee1d8128b3bb131b508b7b0a14512fc457fcfdb0ba3c",
+        "tests/analysis/test_numeric_cli_receiving.py": "cde85c2220a9428dd6509a0ab2e5e94253370772ea1152dfc072479b1c973e6a",
+        "tests/analysis/test_numeric_receiving.py": "7ea17b163076315202f235b1a646918bdffbfede95349c57675ef730706794a1"
+      },
+      "source_after": {
+        "libs/python/capture_analysis/capture_analysis/jobs.py": "004db43bc2fa362e657de2c280c39644056d970551330488524bca5019452bc6",
+        "libs/python/capture_analysis/capture_analysis/features/numeric_batch.py": "ecdeb88ca4dd093b973294a53954e9fa0e5d6b4b908225a52d097ef70c7d2154",
+        "libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py": "7c84c0425c1b9b821df711f4c40ea89ac13f267dbe6472922eb41a9263e4835c",
+        "libs/python/capture_analysis/capture_analysis/plots/modality.py": "bc3aa15ee79d50280a6c9d6aa144fe0519f85dd2c74a0cfa99323f7d57ecd28d",
+        "libs/python/capture_analysis/capture_analysis/plugins/manifest.yaml": "1efe3ee2d9eeeeac03c2c03c582edf0119c9abd6d214dfdca3d827fa10a5c048",
+        "libs/python/capture_analysis/capture_analysis/plugins/numeric.py": "75b55cb453095ad5470ce2532b65d3dce771e6a2f8ad1e46a538b4291fa4cf93",
+        "libs/python/capture_analysis/capture_analysis/plugins/registry.py": "33a4d07600db8b116fbd46b67492f62129df513df5b66a2c455dced0b2a9dc69",
+        "tests/analysis/test_job_output_provenance.py": "9f041284a595312cd7d75fc36a959d16205bb4cebf6f90bf0f098ef574bf8d0f",
+        "tests/analysis/test_numeric_batch_pipeline.py": "43369bd0fea48d2c8b7dee1d8128b3bb131b508b7b0a14512fc457fcfdb0ba3c",
+        "tests/analysis/test_numeric_cli_receiving.py": "cde85c2220a9428dd6509a0ab2e5e94253370772ea1152dfc072479b1c973e6a",
+        "tests/analysis/test_numeric_receiving.py": "7ea17b163076315202f235b1a646918bdffbfede95349c57675ef730706794a1"
+      },
+      "module_resolution": {
+        "jobs": "/Users/me/Developer/capturesuite-analysis-numeric-receiving-20261008/libs/python/capture_analysis/capture_analysis/jobs.py",
+        "numeric": "/Users/me/Developer/capturesuite-analysis-numeric-receiving-20261008/libs/python/capture_analysis/capture_analysis/plugins/numeric.py"
+      },
+      "log_sha256": "8acccf7ccf8c83f0268cfde38094813a29703f2653739acdfdbe5dd4a799a3ce",
+      "junit_sha256": "0bc1c0f98b046d32871a32a088082da9a2e30779e302eb2476dd6eb90af16bd1",
+      "runner_sha256": "cdb1d27d5d60dee9384fcb85ec6025a001f80f176f31125f771dc25ba22c09ea",
+      "hosted_ci_boundary": "Run37779429253 qualified c916/e43 synthetic merge treef4340e3deb9725ac7508625202936f069a568aa5. This separate native receipt qualifies numeric composition tree5b43eac241ee498aade18421b7c8e6dba2e071d6 only for its focused scope."
+    },
+    "original_receipt_sha256": "31d7b64d56b27879d0749a6f52240f770848f0463f14cb8b0ddf12c3b7e47a6a",
+    "diagnostic_delta": {
+      "file": "tests/analysis/test_numeric_cli_receiving.py",
+      "old_sha256": "cde85c2220a9428dd6509a0ab2e5e94253370772ea1152dfc072479b1c973e6a",
+      "new_sha256": "19100c6bde3cebd7d9cfedff3d1045d54814a54ad33d7562cbbd967d671b74c2",
+      "patch_sha256": "c8c35a4d3598d081daebd7e1837c4365966224874c7e3978808e8641687f1539",
+      "reason": "The new numeric receiver unconditionally accessed an old self-manifest row solely to record its known checksum mismatch. Absence is valid under reviewed PR46 finalization. Record presence=false and comparison=null when absent, and retain an external digest of actual manifest bytes. All87 existing assertion/call ASTs and all numeric runtime source remain unchanged."
+    },
+    "affected_case_receiving": {
+      "schema": "capture.numeric-manifest-diagnostic-receiving/1",
+      "recorded_at": "2026-10-08T13:34:02.455842+00:00",
+      "base_composition": "d0d2b60e6363b35ee3421e31afcdaddd03f5e7c7",
+      "base_tree": "5b43eac241ee498aade18421b7c8e6dba2e071d6",
+      "prior_receipt_sha256": "31d7b64d56b27879d0749a6f52240f770848f0463f14cb8b0ddf12c3b7e47a6a",
+      "prior_scope": {
+        "tests": 49,
+        "passed": 48,
+        "failed": 1,
+        "skipped": 0
+      },
+      "command": [
+        "/Users/me/Developer/capturesuite-analysis-provenance-20261008/.venv-analysis/bin/python",
+        "pytest.main",
+        "tests/analysis/test_numeric_cli_receiving.py::NumericCliReceiving::test_qc_html_inventory_and_manifest_are_available_without_features",
+        "-q",
+        "--basetemp",
+        "/Users/me/Developer/capturesuite-analysis-numeric-receiving-20261008/out/provenance-numeric-receiving-evidence/numeric-diagnostic-pytest",
+        "--junitxml",
+        "/Users/me/Developer/capturesuite-analysis-numeric-receiving-20261008/out/provenance-numeric-receiving-evidence/numeric-diagnostic-one-case.xml"
+      ],
+      "exit_code": 0,
+      "tests": 1,
+      "passed": 1,
+      "failed_cases": [],
+      "skips": 0,
+      "changed_input_files": [
+        "tests/analysis/test_numeric_cli_receiving.py"
+      ],
+      "source_before": {
+        "libs/python/capture_analysis/capture_analysis/jobs.py": "004db43bc2fa362e657de2c280c39644056d970551330488524bca5019452bc6",
+        "libs/python/capture_analysis/capture_analysis/features/numeric_batch.py": "ecdeb88ca4dd093b973294a53954e9fa0e5d6b4b908225a52d097ef70c7d2154",
+        "libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py": "7c84c0425c1b9b821df711f4c40ea89ac13f267dbe6472922eb41a9263e4835c",
+        "libs/python/capture_analysis/capture_analysis/plots/modality.py": "bc3aa15ee79d50280a6c9d6aa144fe0519f85dd2c74a0cfa99323f7d57ecd28d",
+        "libs/python/capture_analysis/capture_analysis/plugins/manifest.yaml": "1efe3ee2d9eeeeac03c2c03c582edf0119c9abd6d214dfdca3d827fa10a5c048",
+        "libs/python/capture_analysis/capture_analysis/plugins/numeric.py": "75b55cb453095ad5470ce2532b65d3dce771e6a2f8ad1e46a538b4291fa4cf93",
+        "libs/python/capture_analysis/capture_analysis/plugins/registry.py": "33a4d07600db8b116fbd46b67492f62129df513df5b66a2c455dced0b2a9dc69",
+        "tests/analysis/test_job_output_provenance.py": "9f041284a595312cd7d75fc36a959d16205bb4cebf6f90bf0f098ef574bf8d0f",
+        "tests/analysis/test_numeric_batch_pipeline.py": "43369bd0fea48d2c8b7dee1d8128b3bb131b508b7b0a14512fc457fcfdb0ba3c",
+        "tests/analysis/test_numeric_cli_receiving.py": "19100c6bde3cebd7d9cfedff3d1045d54814a54ad33d7562cbbd967d671b74c2",
+        "tests/analysis/test_numeric_receiving.py": "7ea17b163076315202f235b1a646918bdffbfede95349c57675ef730706794a1"
+      },
+      "source_after": {
+        "libs/python/capture_analysis/capture_analysis/jobs.py": "004db43bc2fa362e657de2c280c39644056d970551330488524bca5019452bc6",
+        "libs/python/capture_analysis/capture_analysis/features/numeric_batch.py": "ecdeb88ca4dd093b973294a53954e9fa0e5d6b4b908225a52d097ef70c7d2154",
+        "libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py": "7c84c0425c1b9b821df711f4c40ea89ac13f267dbe6472922eb41a9263e4835c",
+        "libs/python/capture_analysis/capture_analysis/plots/modality.py": "bc3aa15ee79d50280a6c9d6aa144fe0519f85dd2c74a0cfa99323f7d57ecd28d",
+        "libs/python/capture_analysis/capture_analysis/plugins/manifest.yaml": "1efe3ee2d9eeeeac03c2c03c582edf0119c9abd6d214dfdca3d827fa10a5c048",
+        "libs/python/capture_analysis/capture_analysis/plugins/numeric.py": "75b55cb453095ad5470ce2532b65d3dce771e6a2f8ad1e46a538b4291fa4cf93",
+        "libs/python/capture_analysis/capture_analysis/plugins/registry.py": "33a4d07600db8b116fbd46b67492f62129df513df5b66a2c455dced0b2a9dc69",
+        "tests/analysis/test_job_output_provenance.py": "9f041284a595312cd7d75fc36a959d16205bb4cebf6f90bf0f098ef574bf8d0f",
+        "tests/analysis/test_numeric_batch_pipeline.py": "43369bd0fea48d2c8b7dee1d8128b3bb131b508b7b0a14512fc457fcfdb0ba3c",
+        "tests/analysis/test_numeric_cli_receiving.py": "19100c6bde3cebd7d9cfedff3d1045d54814a54ad33d7562cbbd967d671b74c2",
+        "tests/analysis/test_numeric_receiving.py": "7ea17b163076315202f235b1a646918bdffbfede95349c57675ef730706794a1"
+      },
+      "diagnostics": [
+        {
+          "case": "test_qc_html_inventory_and_manifest_are_available_without_features",
+          "argv": [
+            "/Users/me/Developer/capturesuite-analysis-provenance-20261008/.venv-analysis/bin/python",
+            "/Users/me/Developer/capturesuite-analysis-numeric-receiving-20261008/tools/run_analysis.py",
+            "qc",
+            "/Users/me/Developer/capturesuite-analysis-numeric-receiving-20261008/out/provenance-numeric-receiving-evidence/numeric-diagnostic-retained/candidate/test_qc_html_inventory_and_manifest_are_available_without_features/session.mmsession",
+            "--overwrite-job-id",
+            "cli-qc",
+            "--strict-warnings"
+          ],
+          "exit_code": 0,
+          "stdout": "job_id=cli-qc\nstatus=completed\ndir=/Users/me/Developer/capturesuite-analysis-numeric-receiving-20261008/out/provenance-numeric-receiving-evidence/numeric-diagnostic-retained/candidate/test_qc_html_inventory_and_manifest_are_available_without_features/session.mmsession/processing/jobs/cli-qc\nstreams=3 gaps_open=0 gaps_closed=0 warnings=0\n",
+          "stderr": "Matplotlib is building the font cache; this may take a moment.\n",
+          "raw_before": {
+            "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+            "events/checkpoints.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+            "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+            "integrity.json": "f14ecf37961a5573e04c3ef0f6e559a2d6aa952e8b6b52f67cfb6b290754cc55",
+            "manifest.json": "77d52177df967781e855cb78ef991f680842582ebd988ded9c02e04b77a05a97",
+            "sources/sampler.a/health/gaps.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sources/sampler.a/source.json": "ded4b0b0994a6f370b23cea9d2182bfee6dc36525f7890e7f8e34519271ba4ab",
+            "sources/sampler.a/streams/force/segments/000000.mcap": "9467807bbd26f27129ab88b98d18365343c03c7a712fa7434fb234a7973f6400",
+            "sources/sampler.a/streams/force/stream.json": "7b5f368f899b5e8d9b40265d8c9ada3e344f689c3185defabd8918334115f9a6",
+            "sources/sampler.a/streams/voltage/segments/000000.mcap": "08a2f0ae5432bf5117707e27297063ea65c727b51f1113a587c76a58ec50eeb5",
+            "sources/sampler.a/streams/voltage/stream.json": "d9534fcd83e3539b38a4c471f912aadfdd4a7cd87d8069b69a8111741a737c01",
+            "sources/sampler.b/health/gaps.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sources/sampler.b/source.json": "51b11206a43ab0590baa31e0cf19b8f7194fac5875bc73f900f1417bd1d55b23",
+            "sources/sampler.b/streams/temperature/segments/000000.mcap": "237560fe806bf7576bfe9723c09307038c01d9048d32a4a29f9b09711864c8c7",
+            "sources/sampler.b/streams/temperature/stream.json": "a6e2152bd7d97aa6fc3ca23175d84fdb898ce91803c2147de52dc2a9f76c051d"
+          },
+          "raw_after": {
+            "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+            "events/checkpoints.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+            "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+            "integrity.json": "f14ecf37961a5573e04c3ef0f6e559a2d6aa952e8b6b52f67cfb6b290754cc55",
+            "manifest.json": "77d52177df967781e855cb78ef991f680842582ebd988ded9c02e04b77a05a97",
+            "sources/sampler.a/health/gaps.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sources/sampler.a/source.json": "ded4b0b0994a6f370b23cea9d2182bfee6dc36525f7890e7f8e34519271ba4ab",
+            "sources/sampler.a/streams/force/segments/000000.mcap": "9467807bbd26f27129ab88b98d18365343c03c7a712fa7434fb234a7973f6400",
+            "sources/sampler.a/streams/force/stream.json": "7b5f368f899b5e8d9b40265d8c9ada3e344f689c3185defabd8918334115f9a6",
+            "sources/sampler.a/streams/voltage/segments/000000.mcap": "08a2f0ae5432bf5117707e27297063ea65c727b51f1113a587c76a58ec50eeb5",
+            "sources/sampler.a/streams/voltage/stream.json": "d9534fcd83e3539b38a4c471f912aadfdd4a7cd87d8069b69a8111741a737c01",
+            "sources/sampler.b/health/gaps.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "sources/sampler.b/source.json": "51b11206a43ab0590baa31e0cf19b8f7194fac5875bc73f900f1417bd1d55b23",
+            "sources/sampler.b/streams/temperature/segments/000000.mcap": "237560fe806bf7576bfe9723c09307038c01d9048d32a4a29f9b09711864c8c7",
+            "sources/sampler.b/streams/temperature/stream.json": "a6e2152bd7d97aa6fc3ca23175d84fdb898ce91803c2147de52dc2a9f76c051d"
+          },
+          "raw_preserved": true,
+          "job_dir": "/Users/me/Developer/capturesuite-analysis-numeric-receiving-20261008/out/provenance-numeric-receiving-evidence/numeric-diagnostic-retained/candidate/test_qc_html_inventory_and_manifest_are_available_without_features/session.mmsession/processing/jobs/cli-qc",
+          "manifest_status": "completed",
+          "manifest_warnings": [],
+          "existing_manifest_self_entry_present": false,
+          "existing_manifest_self_digest_matches": null,
+          "manifest_file_sha256": "57526838b7d08c31cb9a8277939086cf0cbeefa94775296a8472125af544a82a",
+          "existing_log_listed_in_persisted_manifest": true
+        }
+      ],
+      "log_sha256": "16578f3c3b9e338e766afbd62c1ea684c72e782aeee48184901fa7e51f6c7b74",
+      "junit_sha256": "457cd660a873ca26b0a212711a22b4d04b215abb54d90a05db26912a66691e28",
+      "runner_sha256": "ff9a6068e3a04044c0b0ed8570c4d428ef4902deb957dac623ade8d69197553c",
+      "scope": "One affected real CLI case after diagnostic-only change; the prior48 passing cases were not replayed. New full hosted CI remains required."
+    },
+    "affected_case_receipt_sha256": "ebfcbc157ed7f2c14d1dc5a99ead772e41b40d1d3a4fff90151143dd1cdb200e",
+    "independent_review": "chatgpt:/root/mac_execution read exact diagnostic patch, SHA helper, surrounding QC/numeric assertions and all87 assertion/call ASTs; no replay or source edits; approved exact19100c6b/c8c35a4d.",
+    "scope_boundary": "The original49-case run had48pass/1diagnostic StopIteration. After the diagnostic-only edit, only the affected actualCLI case was replayed and passed1/1; do not present this as a second49-case run. Fresh required hosted CI must qualify the newly published composition."
+  },
+  "preceding_c916_hosted_qualification": {
+    "head": "c9165ce11c00feb88edcee4b35b1b9a0b9876d2a",
+    "synthetic_merge": "2a4e368d9fcbf607ecbc346f7f069a2b3c3f8fa1",
+    "tree": "f4340e3deb9725ac7508625202936f069a568aa5",
+    "run_id": 37779429253,
+    "python_custody": {
+      "schema": "capture.ci-artifact-custody/1",
+      "recorded_at": "2026-10-08T13:06:31.445134+00:00",
+      "repository": "Jacob-Met/CaptureSuite",
+      "pr": 46,
+      "head": "c9165ce11c00feb88edcee4b35b1b9a0b9876d2a",
+      "native_equivalent": "4c9141debbdeb171d59abd4e69691478a6332394",
+      "git_tree": "f4340e3deb9725ac7508625202936f069a568aa5",
+      "ci_merge_commit": "2a4e368d9fcbf607ecbc346f7f069a2b3c3f8fa1",
+      "ci_merge_parents": [
+        "e43da3b855475c8aacf815c201fa03eddaeec0f1",
+        "c9165ce11c00feb88edcee4b35b1b9a0b9876d2a"
+      ],
+      "ci_merge_tree_readback": "f4340e3deb9725ac7508625202936f069a568aa5",
+      "run_id": 37779429253,
+      "job_id": 113318474152,
+      "artifact_id": 11550974227,
+      "archive_sha256": "69f3574944c61f8f0a55082232b1cd0b885570ef8b5927f739916f97ec601c8c",
+      "archive_bytes": 1591666,
+      "artifact_files": {
+        "receipt.json": "9a964ec0ccbebc86ce94874735029e0533010d6862324f58b82ff61aa33c3d6e",
+        "source-manifest.json": "4f475f47c907ccb8867da4848ca76bf78ad780d683aa27aafad4999af1c0e1e7",
+        "pytest.xml": "9d63b555e62067cf68ed4f90b272bb6b6281766472049716923d1fe708ecc2e2",
+        "pytest.log": "2cf96bc1dcb538a95246d5140d8eac19fceac98de613aed55cf367045cc27197"
+      },
+      "counts": {
+        "tests": 341,
+        "passed": 335,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 6
+      },
+      "analysis_cases": 143,
+      "provenance_cases": 7,
+      "source_file_count": 783,
+      "raw_git_blob_matches": 775,
+      "declared_crlf_checkout_matches": [
+        {
+          "path": ".cursor/hooks/stop-capture-processes.ps1",
+          "raw_git_sha256": "76d5f0fd7960f9825713ffdfcf5cfd24d1697f1ee1920dc4477f1dc8fdc1004e",
+          "declared_checkout_sha256": "9ce051293d3cebd98a94103155ad1cfbc9c72ffb5b695768b4f96299d8b03198"
+        },
+        {
+          "path": "plugins/example_sine_py/run_worker.cmd",
+          "raw_git_sha256": "6f4d6561219a252689ac4fcedf80baa3590c2687ee5e92c7c05bef642c13a4e8",
+          "declared_checkout_sha256": "513a1f90f0e8160bb2e4829ac12e3d8795044ac885dfeb0ee4eb288cbfc0bfa1"
+        },
+        {
+          "path": "plugins/lsl_bridge/run_worker.cmd",
+          "raw_git_sha256": "0be217958d15e6b365a703ac7d70fb539b95d6281fb8ef275f416a117e5ed36b",
+          "declared_checkout_sha256": "ededbb3e56d0f046ad536914ddea599fbe29465eb9f95029c8040308029cb92c"
+        },
+        {
+          "path": "scripts/dev-env.ps1",
+          "raw_git_sha256": "e0d8ad357a59c80e09fdb9c4b9db0b7441bea7c0051b06022b28f3ae9ab81425",
+          "declared_checkout_sha256": "604ef0fa03d4558ef94f263481be8609dff8acd06185959316a61a47f1669a30"
+        },
+        {
+          "path": "tools/gstreamer-installers/install-gstreamer.ps1",
+          "raw_git_sha256": "8c5da568e758ae4c7c04ed027b481ac43a1de12de5df8740f0a94552ae56454e",
+          "declared_checkout_sha256": "f1c6a7dd3a9cc3ee05b6f9304fea8d99682a8b8e6170375bb5ec147bc0074b3c"
+        },
+        {
+          "path": "tools/new_plugin.ps1",
+          "raw_git_sha256": "12057eb6a0843e32d44d21a3e480684bd126fa880121bdaef48898842d5f2608",
+          "declared_checkout_sha256": "3f50e422f972133c785b49938d6dbd07ceefe1b3deba31e0f74275ba036d1ea6"
+        },
+        {
+          "path": "tools/run-daemon-gstreamer.ps1",
+          "raw_git_sha256": "912850c65e08032045d7da514928f142e2cac728e0e96fc2890d7c8724f188f5",
+          "declared_checkout_sha256": "bc7aedcedc29317215ed01f03c405462f9c8434920dba96fb561b0b392c2e7b2"
+        },
+        {
+          "path": "tools/run-demo.ps1",
+          "raw_git_sha256": "f95c255e76a1076382dfc90ed95ceabbb09edb741f9161fc3bbb3a72169afe0b",
+          "declared_checkout_sha256": "a3796b4b23756129e3e2030a3fba7c5e10f2a64ede2449d57e99de3027c335eb"
+        }
+      ],
+      "gitattributes_sha256": "5c8d629a36963278733a01f9b5bdde73da19501cf1d2353c4fdb31631bb9b5e2",
+      "unexplained_source_differences": [],
+      "source_worktree_dirty": false,
+      "source_unchanged_during_test": true,
+      "original_raw_git_comparison_failure_sha256": "4fd2b2aee3f7c7f9bc8fbcf8754dab72ce71db41ad42f637ff6d8217b5df82f7",
+      "skips": [
+        {
+          "name": "test_multi_modality_record_with_disconnect",
+          "reason": "capture_daemon.exe not built (run cmake --build)"
+        },
+        {
+          "name": "test_bad_stop_token_rejected",
+          "reason": "capture_daemon.exe not built (run cmake --build)"
+        },
+        {
+          "name": "test_config_schema_and_apply",
+          "reason": "capture_daemon.exe not built (run cmake --build)"
+        },
+        {
+          "name": "test_camera_apply_config_proxied_when_worker_present",
+          "reason": "capture_daemon.exe not built (run cmake --build)"
+        },
+        {
+          "name": "test_start_all_ready_and_acknowledge_alert",
+          "reason": "capture_daemon.exe not built (run cmake --build)"
+        },
+        {
+          "name": "test_concurrent_clients_served",
+          "reason": "capture_daemon.exe not built (run cmake --build)"
+        }
+      ],
+      "qualification": "Windows x64 CPython3.12.10 CI; exact Git tree with eight explicit CRLF checkout transforms. C++/native-daemon job remains pending."
+    },
+    "python_custody_sha256": "88f605cbda41a4db7dc68be5ecc84f8662a820abb0b0f958567b1bda02f22c3a",
+    "cpp_custody": {
+      "schema": "capture.ci-artifact-custody/1",
+      "recorded_at": "2026-10-08T13:14:30.605067+00:00",
+      "repository": "Jacob-Met/CaptureSuite",
+      "pr": 46,
+      "head": "c9165ce11c00feb88edcee4b35b1b9a0b9876d2a",
+      "native_equivalent": "4c9141debbdeb171d59abd4e69691478a6332394",
+      "git_tree": "f4340e3deb9725ac7508625202936f069a568aa5",
+      "ci_merge_commit": "2a4e368d9fcbf607ecbc346f7f069a2b3c3f8fa1",
+      "run_id": 37779429253,
+      "job_id": 113318473740,
+      "artifact_id": 11551858877,
+      "archive_sha256": "dc3dc33144001e8c99210de82328c6bac99ea0fbfc57b06dfe2514df6e639376",
+      "archive_bytes": 272930,
+      "archive_entries": 58,
+      "artifact_files": {
+        "evidence/native-20261008T130813Z-5f27f3e7/receipt.json": "eb0597191006385d790a25a5bb55b4b0bc19c25e1de1876ee50e6cc641c387c7",
+        "evidence/native-20261008T130813Z-5f27f3e7/source-manifest.json": "1420f433287d128b4ca8515e70a862588e95931d4c9d2838110032cb24aa166e",
+        "evidence/native-20261008T130813Z-5f27f3e7/pytest.xml": "689a10fbb67fae0b2214c5e4de3f4488a12e03c1ad3079bad43e14d1f4cd5a6d",
+        "evidence/native-20261008T130813Z-5f27f3e7/pytest.log": "a992e9adc46be3663df5bd8541d818bb868d57c17e653ae89e8c489518c73a80",
+        "evidence/warning-boundary-7d865a49dc/receipt.json": "8950f15679c6dc8a0c1403417bd5311eb6b52579d3cea39b3d5478c7fb608303",
+        "windows-release/ctest-results.xml": "55b4e884a606759c24718765c34a433ad18023efdbcb3d2df86c1d518dcd1cbc"
+      },
+      "native_counts": {
+        "tests": 6,
+        "passed": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "ctest_counts": {
+        "tests": 26,
+        "passed": 26,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "warning_boundary_accepted": true,
+      "owned_conversion_negative_control_exit": 2,
+      "source_files_matching_qualified_python_checkout": 783,
+      "source_map_extra_entries": {
+        "vcpkg/": null
+      },
+      "source_worktree_dirty": true,
+      "source_unchanged_during_test": true,
+      "source_qualification": "All783 tracked source hashes equal the separately qualified Python checkout manifest, including8 declared CRLF transforms. Extra vcpkg/ null is retained distinctly; dirty=true is observed, not rewritten.",
+      "binaries_recorded_by_runner": [
+        {
+          "path": "daemon/capture_daemon.exe",
+          "bytes": 1602560,
+          "sha256": "48fb9fd7d366b2a5db97b65390279591a0fe739b416d6fc5a9c8855e5d4ef05b"
+        },
+        {
+          "path": "tools/session_doctor/session_doctor.exe",
+          "bytes": 489472,
+          "sha256": "7f660502d4d081b3c1bdb8fc4a80dd9e3bf48fd21cd0ef7eafcc360e0b4c5041"
+        }
+      ],
+      "test_scope": [
+        "tests/protocol/test_daemon_e2e.py::test_multi_modality_record_with_disconnect",
+        "tests/protocol/test_daemon_e2e.py::test_bad_stop_token_rejected",
+        "tests/protocol/test_daemon_e2e.py::test_config_schema_and_apply",
+        "tests/protocol/test_daemon_e2e.py::test_start_all_ready_and_acknowledge_alert",
+        "tests/protocol/test_daemon_e2e.py::test_concurrent_clients_served",
+        "tests/kill_tests/test_kill_preserves_sealed.py::test_kill_preserves_sealed_segment"
+      ],
+      "qualification": "Current-head Windows native CMake/CTest/daemon gate passed; artifact and actual runner receipts read back. Hardware behavior is outside this fixture scope."
+    },
+    "cpp_custody_sha256": "5d703cab8acd0cb3e0080ad47264db59cf7bc12eb8b85b1d3ab1d082f0a5a954",
+    "boundary": "Both hosted jobs passed and artifacts were independently read back for this exact preceding tree. Numeric main and the test diagnostic delta arrived afterward; these CI outcomes do not qualify a new head."
+  },
+  "publication_carrier_recovery": {
+    "reason": "Mac ENOSPC during a small source-custody JSON append before any new commit/ref operation",
+    "post_failure_state": {
+      "path": "docs/evidence/analysis-output-provenance-current-receiving-20261008.json",
+      "bytes": 42198,
+      "sha256": "09d555ed0c0fb0b966d4eae4eb55fdea56d4c84ed632938ca1593d1a6616b2f5",
+      "valid_json": true,
+      "write_did_not_truncate": true
+    },
+    "carrier": "/tmp/capturesuite-integration-713adaab",
+    "carrier_storage": "Private ThinkPad tmpfs; Git source composition only",
+    "transfer_packet_sha256": "1fe24a56b7dc38638dad6b8cf3af9acdcd726c45b2e377b86b249c4cfa3414bd",
+    "frozen_mac_files": {
+      "docs/design/ANALYSIS.md": "8e161d286da6e260539607a4799f6b26bd570893c15ed3c9660be6e4fa3916cd",
+      "docs/evidence/analysis-output-provenance-20261008.json": "12a803f457938e8bdbee62b09ee0d6eeaf88c1360e85fa7a7641cf3f4275d5f2",
+      "libs/python/capture_analysis/capture_analysis/jobs.py": "004db43bc2fa362e657de2c280c39644056d970551330488524bca5019452bc6",
+      "tests/analysis/test_job_output_provenance.py": "9f041284a595312cd7d75fc36a959d16205bb4cebf6f90bf0f098ef574bf8d0f",
+      "docs/design/research/PROGRESS.md": "35882287c0d1bf519c5e905c9c77e1dcb56372815378df5ab436d760231bf38d",
+      "docs/evidence/analysis-output-provenance-current-receiving-20261008.json": "09d555ed0c0fb0b966d4eae4eb55fdea56d4c84ed632938ca1593d1a6616b2f5",
+      "tests/analysis/test_numeric_cli_receiving.py": "19100c6bde3cebd7d9cfedff3d1045d54814a54ad33d7562cbbd967d671b74c2"
+    },
+    "runtime_qualification": "Unchanged frozen Mac Python3.12 source and actual receiving receipts; no replay or dependency install because the carrier moved.",
+    "checkout_quota_recovery": "Full inherited checkout exceeded quota before candidate application; only its857 newly created zero-byte source placeholders were removed. Fetched objects and incoming packet remain intact; use an index plus seven owned files.",
+    "reclamation_receipt_sha256": "50d59a24be687e8ca7144425f1aa14c6bd3667c5429a185d8243894663c7b3ee"
+  },
+  "additional_main_received": {
+    "main": "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e",
+    "main_tree": "18e97093f04de23de5e9878fd22c1f5ed986d5f3",
+    "previous_numeric_main": "0ed1ccaa023a5327495565d59e1dd0b28b2ee5bd",
+    "received_owners": [
+      "PR52 Windows atomic retained-file preservation",
+      "PR58 sealed-session desktop time scopes"
+    ],
+    "analysis_runtime_dependencies_changed": [],
+    "only_candidate_overlap": "docs/design/research/PROGRESS.md",
+    "method": "Native Git three-way merge of additive progress entries; every incoming main leaf preserved except the seven reviewed contribution files.",
+    "source_paths_changed_since_numeric_main": [
+      "desktop/capture_desktop/app.py",
+      "desktop/capture_desktop/screen_analysis.py",
+      "desktop/capture_desktop/widgets_analysis_scope.py",
+      "desktop/capture_desktop/widgets_session_header.py",
+      "desktop/capture_desktop/widgets_session_timeline.py",
+      "docs/design/SESSION_FORMAT.md",
+      "docs/design/research/ANALYSIS_SCOPE_SEMANTICS.md",
+      "docs/design/research/PROGRESS.md",
+      "libs/cpp/capture_storage/include/capture/storage/atomic_file.hpp",
+      "libs/cpp/capture_storage/src/atomic_file.cpp",
+      "tests/cpp/CMakeLists.txt",
+      "tests/cpp/test_atomic_file_windows.cpp",
+      "tests/ui/test_analysis_scope.py"
+    ],
+    "qualification_boundary": "Fresh exact-head supported Windows CI must qualify the complete composed source. No additional local runtime result is claimed."
+  }
+}

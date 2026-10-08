@@ -1,0 +1,16 @@
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto'),cp=require('node:child_process');
+const lane='/Users/me/hamon-native-406d0fb04c43/capturesuite-kinematics',source=path.join(lane,'current-composition'),evidence=path.join(lane,'evidence/current-seam');
+fs.mkdirSync(evidence,{recursive:true});
+const manifest=JSON.parse(fs.readFileSync(path.join(lane,'current-composition-source-manifest.json'),'utf8'));
+const sha=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const snapshot=()=>Object.fromEntries(manifest.leaves.map(e=>[e.path,sha(path.join(source,e.path))]));
+const before=snapshot();for(const e of manifest.leaves)if(before[e.path]!==e.sha256)throw new Error('composition source mismatch '+e.path);
+if(before['tests/analysis/test_kinematics_validity.py']!=='f269c16f24883599e3972936f0a1e04868bf0939fbcbe1d178475eb0f197ad31')throw new Error('test changed');
+const receiptPath=path.join(evidence,'receipt.json');if(fs.existsSync(receiptPath))throw new Error('existing receipt');
+const python='/Users/me/Developer/capturesuite-analysis-provenance-20261008/.venv-analysis/bin/python';
+const args=['-m','pytest','-q','-p','no:cacheprovider','tests/analysis/test_kinematics_validity.py::test_sparse_non_sim_pose_cli_retains_missing_data_and_source_bytes','--junitxml='+path.join(evidence,'junit.xml'),'--basetemp='+path.join(evidence,'cases')];
+const env={...process.env,PYTHONDONTWRITEBYTECODE:'1',PYTHONPATH:[source,...['libs/python/capture_analysis','libs/python/capture_session','libs/python/capture_protocol','libs/python/capture_protocol/capture_protocol/generated'].map(p=>path.join(source,p))].join(':'),TMPDIR:path.join(lane,'evidence/tmp'),MPLCONFIGDIR:path.join(lane,'evidence/mpl'),XDG_CACHE_HOME:path.join(lane,'evidence/cache'),MPLBACKEND:'Agg'};
+const started=new Date().toISOString();const r=cp.spawnSync(python,args,{cwd:source,env,encoding:'utf8',timeout:60000,maxBuffer:4*1024*1024});
+fs.writeFileSync(path.join(evidence,'process.log'),r.stdout+'\n'+r.stderr);
+const after=snapshot();const receipt={publicParentCommit:manifest.publicParentCommit,publicParentTree:manifest.publicParentTree,authoredCandidateProjection:manifest.authorCandidateProjection,sourcePath:source,purpose:'Receive the frozen sparse non-sim public-CLI case on current PR50 QC/report code; do not repeat old numerical cases.',python,args,started,finished:new Date().toISOString(),exitCode:r.status,signal:r.signal,error:r.error?.message??null,sourceBefore:before,sourceAfter:after,all135SourcePinsPreserved:JSON.stringify(before)===JSON.stringify(after),junitSha256:fs.existsSync(path.join(evidence,'junit.xml'))?sha(path.join(evidence,'junit.xml')):null,summary:r.stdout.slice(-1400)};
+fs.writeFileSync(receiptPath,JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify({exitCode:r.status,sourceUnchanged:receipt.all135SourcePinsPreserved,summary:receipt.summary}));

@@ -17,6 +17,7 @@ from PySide6.QtWidgets import (
 )
 
 from . import theme
+from .widgets_figure_export import FigureExportBar
 
 try:
     import numpy as np
@@ -152,14 +153,18 @@ class FigureGallery(QWidget):
         layout.addWidget(self._tabs, 1)
         self._sync = SyncDashboardView()
         self._tabs.addTab(self._sync, "Sync")
+        self._figure_export = FigureExportBar(self)
+        layout.addWidget(self._figure_export)
 
     def clear(self) -> None:
+        self._figure_export.clear()
         while self._tabs.count() > 1:
             self._tabs.removeTab(1)
         self._sync.clear()
 
     def load_job_dir(self, job_dir: Path) -> None:
         self.clear()
+        self._figure_export.load_job_dir(job_dir)
         series_path = job_dir / "figures" / "sync_dashboard_series.json"
         if series_path.is_file():
             self._sync.load_json_path(series_path)
