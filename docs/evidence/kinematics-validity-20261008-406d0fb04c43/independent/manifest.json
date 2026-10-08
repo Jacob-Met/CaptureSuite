@@ -1,0 +1,30 @@
+{
+  "schema": "hamon.evidence-overlay.v1",
+  "destination": "docs/evidence/kinematics-validity-20261008-406d0fb04c43/independent",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 3029,
+      "sha256": "28366947b28ef8ec6b9b73ec5f4635f69d82ca8ee5c6819be79256c4740a98be",
+      "gitBlob": "355804bd71cd836250a57126b3fee28a47f233be"
+    },
+    {
+      "path": "independent-cli-artifacts.tar.gz",
+      "bytes": 174766,
+      "sha256": "458de13840765923c859f760879171b3f8fd8072b389f105a6b0f31510b397a9",
+      "gitBlob": "739fc581cae5561014b45049f225a2d4abdc2a6f"
+    },
+    {
+      "path": "receiving.json",
+      "bytes": 2172,
+      "sha256": "0e3026ee56b2c49091f0cfa81474560e77cdb93bfd0f6803872e06255e10769d",
+      "gitBlob": "4e63e2efd9e71728329abf66fe283597ee8ee815"
+    },
+    {
+      "path": "source-review.json",
+      "bytes": 1772,
+      "sha256": "03a4a3bdde2cb34887d8be7e25bfaa789b528c75829eac3eadc570f7a214ac2b",
+      "gitBlob": "bbfb3c062188f4287388741cfd526d07249f5177"
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "schema": "hamon.kinematics_author_receiving/1",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 6086,
+      "sha256": "417ab23ed9678e6f33682fc6ecded8c532adfd59d15e66f1fbf22d853bf22cd1"
+    },
+    {
+      "path": "author-receipt.json",
+      "bytes": 2067,
+      "sha256": "d248bcd81d02f053837d4902cdeb3a74805584359c6455c1c5d17cad72566767"
+    },
+    {
+      "path": "baseline-native-readback.json",
+      "bytes": 249,
+      "sha256": "1eae9e8a0171b7d2b716e4c0b6d581869db43aa156e105ebc38ff47eecccbae7"
+    },
+    {
+      "path": "baseline-runtime.tar.gz",
+      "bytes": 127426,
+      "sha256": "0582d461116198892445855ea5099606862bea20c3bd9486e19fbdef8ca929cd"
+    },
+    {
+      "path": "baseline-source-manifest.json",
+      "bytes": 34628,
+      "sha256": "6298000ae35530f2a3aa1b084c440686e4cd555c94e234084356312cebf228db"
+    },
+    {
+      "path": "baseline-tests.json",
+      "bytes": 38811,
+      "sha256": "f71c6ca89636be32fb66b32449ee99adefbeaa4020d9c33b02772ae2b46092e4"
+    },
+    {
+      "path": "baseline-tests.log",
+      "bytes": 16835,
+      "sha256": "d9e6388510fe89ecc75ba0462cb7e839555aeef0c925006e579d15606aa54144"
+    },
+    {
+      "path": "baseline-tests.xml",
+      "bytes": 20285,
+      "sha256": "336896a2527ff8de2078b32751f0750f4112837b29bd7187d62775177adda84b"
+    },
+    {
+      "path": "candidate-native-readback.json",
+      "bytes": 420,
+      "sha256": "cf88d3b114472667c29ceafceab2b48c45554378203290fb6024525df89e9fd4"
+    },
+    {
+      "path": "candidate-source-manifest.json",
+      "bytes": 1380,
+      "sha256": "e73f663dca542e2d79dd7d877bba245bea600c603895026a31d604d2a963fe76"
+    },
+    {
+      "path": "candidate-tests.json",
+      "bytes": 38699,
+      "sha256": "23292c8654a572a858e379781db524eae459e634fd0168504a586afe8026eabb"
+    },
+    {
+      "path": "candidate-tests.log",
+      "bytes": 1053,
+      "sha256": "a84ed32eef3c399c5b71a970ad3d664070dbe1f3829b277e9a2b1b87d1767627"
+    },
+    {
+      "path": "candidate-tests.xml",
+      "bytes": 3017,
+      "sha256": "33225f2f86661ecc8fce3cb70eccba33faf3db16ec7323550e81922b7fc53ae2"
+    },
+    {
+      "path": "environment.json",
+      "bytes": 641,
+      "sha256": "88000ae976510c80a1948ac12f79360640f9868427241f7357090bd30ee6f138"
+    },
+    {
+      "path": "product.patch",
+      "bytes": 19611,
+      "sha256": "69cc6c7b15806b6ce8e5456fed5c14b03add909a1ef4d3634fda55e0ebf70000"
+    },
+    {
+      "path": "static-checks.json",
+      "bytes": 508,
+      "sha256": "08897b06ecf4208a877cf441b68fdac448eb86450c9d68c16206ef1610dee0f3"
+    },
+    {
+      "path": "test-artifact-manifest.json",
+      "bytes": 77992,
+      "sha256": "734d5580f3a2ab77bb42c983578836cc36bb3d1429a9f98a777d9c973714573c"
+    },
+    {
+      "path": "test-artifacts.tar.gz",
+      "bytes": 185843,
+      "sha256": "e1c7d97225ef1d9244dc40acc9567a0c1f8748f5c85e36570509483100afb826"
+    },
+    {
+      "path": "test_kinematics_validity.py",
+      "bytes": 8424,
+      "sha256": "f269c16f24883599e3972936f0a1e04868bf0939fbcbe1d178475eb0f197ad31"
+    }
+  ]
+}

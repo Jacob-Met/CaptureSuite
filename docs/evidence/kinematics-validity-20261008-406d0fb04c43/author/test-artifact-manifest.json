@@ -1,0 +1,1665 @@
+{
+  "files": [
+    {
+      "path": "baseline-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/events/annotations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "baseline-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/events/checkpoints.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "baseline-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/events/sync_anchors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "baseline-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/integrity.json",
+      "bytes": 227,
+      "sha256": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556"
+    },
+    {
+      "path": "baseline-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/manifest.json",
+      "bytes": 270,
+      "sha256": "fc435d39a40b40141fb97bb325d5532307ef69331a1258ba00598cb4fbe0ecff"
+    },
+    {
+      "path": "baseline-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "baseline-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/kin-receiving/job_manifest.json",
+      "bytes": 3075,
+      "sha256": "e35928109868fac0c4477171e83ce8e7eb8b2c4a890d4078a540870628b577b8"
+    },
+    {
+      "path": "baseline-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/kin-receiving/kinematics/kinematics.parquet",
+      "bytes": 15465,
+      "sha256": "e3062fd3fc0f1fd5cae3b4682c05d444d4f5254e8f3e99205d4b3cf5ae340bcd"
+    },
+    {
+      "path": "baseline-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/kin-receiving/kinematics/kinematics_qc.json",
+      "bytes": 539,
+      "sha256": "a68b3a775c98cd5cd244f11ece7ea6a64f2ef02c3dc9e12726cb703f83fb489c"
+    },
+    {
+      "path": "baseline-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/kin-receiving/logs/job.log",
+      "bytes": 253,
+      "sha256": "2fabfbfe4d371761d7a356bb30d2419ed69072541ce11098b0903d3a288b16d5"
+    },
+    {
+      "path": "baseline-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/kin-receiving/params.json",
+      "bytes": 321,
+      "sha256": "c6a1fa6ca79ec6aea912180dcbee5ca6b56e863f8c8b8225931695812397e80b"
+    },
+    {
+      "path": "baseline-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/kin-receiving/reports/qc.html",
+      "bytes": 2036,
+      "sha256": "b6bbaef32eb5e0b7f0efd55169ae3024ea14c8b0f55e442e63a77ec7236efbd2"
+    },
+    {
+      "path": "baseline-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/kin-receiving/reports/qc.json",
+      "bytes": 2006,
+      "sha256": "062e9dc2566ed70c0b28089a631591ced0c6ad9c6b064fe42ad5e340be34bec0"
+    },
+    {
+      "path": "baseline-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/pose-recorded/job_manifest.json",
+      "bytes": 106,
+      "sha256": "0f1bafd789f3911973b791d60b437207e97bc944bedca7e2f0fdbcc39f3115d3"
+    },
+    {
+      "path": "baseline-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/pose-recorded/pose/camera-fixture/landmarks.parquet",
+      "bytes": 4615,
+      "sha256": "68bcca344a9927c817113a6a1aa9e44409443facaacfec154aabe8d467013239"
+    },
+    {
+      "path": "baseline-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/pose-recorded/pose/camera-fixture/model_card.json",
+      "bytes": 38,
+      "sha256": "795b592387b13ee11b5a2b84779876e4bb3c53f4bf5eed7a719a7537a5703570"
+    },
+    {
+      "path": "baseline-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.camera.main/source.json",
+      "bytes": 110,
+      "sha256": "95c2d2a41488699fa97b9b858d379697e1ec90bd7113ca6dabb91f0d5bd5c9a1"
+    },
+    {
+      "path": "baseline-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.camera.main/streams/sim.camera.main.timing/segments/000000.mkv",
+      "bytes": 4,
+      "sha256": "5fd872525fa77d054b86ca7b50927b4d1f860b21ab2b166fdf6c3ed3c4b5d0bc"
+    },
+    {
+      "path": "baseline-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.camera.main/streams/sim.camera.main.timing/segments/000000.timing.mcap",
+      "bytes": 985,
+      "sha256": "0a512be5f0216b48ea2ee92ae5dbd4ba5b5d743c3e3cb6ae0351d993bccdab32"
+    },
+    {
+      "path": "baseline-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.camera.main/streams/sim.camera.main.timing/stream.json",
+      "bytes": 208,
+      "sha256": "a8d053f0b46a43cefee12559bbaf27943847b3aa58bbc8d310156318f2ce6e00"
+    },
+    {
+      "path": "baseline-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.emg.main/health/gaps.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "baseline-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.emg.main/source.json",
+      "bytes": 112,
+      "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10"
+    },
+    {
+      "path": "baseline-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json",
+      "bytes": 216,
+      "sha256": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1"
+    },
+    {
+      "path": "baseline-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.imu.upper/source.json",
+      "bytes": 118,
+      "sha256": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8"
+    },
+    {
+      "path": "baseline-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "bytes": 219,
+      "sha256": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/events/annotations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/events/checkpoints.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/events/sync_anchors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/integrity.json",
+      "bytes": 227,
+      "sha256": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/manifest.json",
+      "bytes": 270,
+      "sha256": "02cae7279fc85b568f42bc1bfadad284dc0f41ff66ad1a227977ca31349f718a"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/bundle-e/job_manifest.json",
+      "bytes": 3124,
+      "sha256": "2a044fa670fa7040126a59031b9131c8df4db21425533bf2bc2412e002a4e313"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/bundle-e/logs/job.log",
+      "bytes": 233,
+      "sha256": "6fc3bb6fee25d3f8ee5bcd2933ab8218cc2181ecdf9adc41323b5407579e9de6"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/bundle-e/ml_bundle/manifest.json",
+      "bytes": 1282,
+      "sha256": "34ba352f912bc07e7231daef274440c39c067d3367bae92981a0b2742a8cbc9f"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/bundle-e/ml_bundle/windows.parquet",
+      "bytes": 6670,
+      "sha256": "3a27028a25ed143be92b5453a3f193f6403cc24cad7fe15abd015fc8c9a2fdf1"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/bundle-e/params.json",
+      "bytes": 366,
+      "sha256": "8ee46d8537855fb42716d51dc4a14fa926bd1bb54d7f0c85c513b25a29281990"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/bundle-e/reports/qc.html",
+      "bytes": 1858,
+      "sha256": "a2f47a10d0016331ab756c374647358601e835e0ff3245d5ba6ac6effb3f4619"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/bundle-e/reports/qc.json",
+      "bytes": 1697,
+      "sha256": "bad24bb9a80afe7f2f826c5f269a34e9d50e2df80624b50997c3324a70d8cfe6"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/eval-e/eval/eval_report.json",
+      "bytes": 716,
+      "sha256": "63ff039fa4f33b2f85e3a5919ab51a1769498c10430edb72b9d8e7ecdd7f6331"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/eval-e/eval/predictions.parquet",
+      "bytes": 11224,
+      "sha256": "82562607543d8ad7737710c35044d83d83e56886943b914fad52042d2cea1c97"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/eval-e/job_manifest.json",
+      "bytes": 2842,
+      "sha256": "37356b8cd23d6705bca84b560e94d5c4bd54a5df8e63bed7a3b6d3f8b6ba3fa1"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/eval-e/logs/job.log",
+      "bytes": 212,
+      "sha256": "8cd9bddf295f5a04fd2e2a3a85b0536e07102070e2352b6f583e15c366e5bdaa"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/eval-e/params.json",
+      "bytes": 283,
+      "sha256": "1cc78ed083ed32be690af9de59a2847fc5c8187f7d9fbed96e59f8901e5f0669"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/eval-e/reports/qc.html",
+      "bytes": 1858,
+      "sha256": "a2f47a10d0016331ab756c374647358601e835e0ff3245d5ba6ac6effb3f4619"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/eval-e/reports/qc.json",
+      "bytes": 1697,
+      "sha256": "bad24bb9a80afe7f2f826c5f269a34e9d50e2df80624b50997c3324a70d8cfe6"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/feat-e/features/_schema.json",
+      "bytes": 3431,
+      "sha256": "7038659dec4982be4830bac81b9a3af7066af690c84405bcbf55c7a2e3430d4c"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/feat-e/features/emg/sim.emg.main/windows.csv",
+      "bytes": 498,
+      "sha256": "132e389419ee223b77da04dcd986962c85446ae768d581eee52e3e239261e575"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/feat-e/features/emg/sim.emg.main/windows.parquet",
+      "bytes": 7411,
+      "sha256": "736edc12fa3ae8724eccc666d8c151101f50de9bbe3f9c7e5299e6f0c74ac11d"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/feat-e/features/imu/sim.imu.upper/windows.csv",
+      "bytes": 628,
+      "sha256": "62212faf4179e9050c4d7a2e3530a461c70d0e56b227138e31b0c273bb21a277"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/feat-e/features/imu/sim.imu.upper/windows.parquet",
+      "bytes": 7645,
+      "sha256": "ff4ca0fbfed45e13e95f73d03d8ba56ce0f8305868012ecb5101df277a449ba9"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/feat-e/features/video/sim.camera.main/timing_qc.csv",
+      "bytes": 410,
+      "sha256": "6af57d98efda3840ae4bd7123c307e7464a30b1afbd0ba3d03f501d94ef0e5c8"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/feat-e/features/video/sim.camera.main/timing_qc.parquet",
+      "bytes": 2891,
+      "sha256": "58ec445b4176ef76429a3375449657e5d7ce271a1a2dcdd880fefaa9c15a8443"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/feat-e/job_manifest.json",
+      "bytes": 4503,
+      "sha256": "af88481bf14098586421c5f699b0945db0eaa15c64d36568fa6da2db8876229a"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/feat-e/logs/job.log",
+      "bytes": 230,
+      "sha256": "d7c78353d41b3d474bbecde3cf929a106f22f838cb9d896f53b2e990cb0672c3"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/feat-e/params.json",
+      "bytes": 249,
+      "sha256": "0ee00418331175ca5c0864476c1f90da1fdc0d8f6d5bb7c2e26ec2f42c4c43f3"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/feat-e/reports/qc.html",
+      "bytes": 1858,
+      "sha256": "a2f47a10d0016331ab756c374647358601e835e0ff3245d5ba6ac6effb3f4619"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/feat-e/reports/qc.json",
+      "bytes": 1697,
+      "sha256": "bad24bb9a80afe7f2f826c5f269a34e9d50e2df80624b50997c3324a70d8cfe6"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/kin-e/job_manifest.json",
+      "bytes": 2862,
+      "sha256": "02caf90a610a707489ff5b89f260b77fbf24930c4a8fa86d80440699e055c2bd"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/kin-e/kinematics/kinematics.parquet",
+      "bytes": 16060,
+      "sha256": "af11f305c6eab4be859cb94057b20076eb04c2e7e8e249cacb2a515657d4d365"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/kin-e/kinematics/kinematics_qc.json",
+      "bytes": 524,
+      "sha256": "58b6c85fd023582559f86a206052a535853699195904129a6e45c8600e4871c2"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/kin-e/logs/job.log",
+      "bytes": 217,
+      "sha256": "3d265797f9538c5d571fda01f342017398e498d841f206d984439c4fa1b4f055"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/kin-e/params.json",
+      "bytes": 281,
+      "sha256": "596f2cef4493fad5acf4fdb9c5427353b1919eb517a200e816b06462dcb0c5db"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/kin-e/reports/qc.html",
+      "bytes": 1858,
+      "sha256": "a2f47a10d0016331ab756c374647358601e835e0ff3245d5ba6ac6effb3f4619"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/kin-e/reports/qc.json",
+      "bytes": 1697,
+      "sha256": "bad24bb9a80afe7f2f826c5f269a34e9d50e2df80624b50997c3324a70d8cfe6"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/pose-e/job_manifest.json",
+      "bytes": 3043,
+      "sha256": "3b758c1e3ca259721600df945696340a893e3c5b1dd3577591f8c063224251fc"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/pose-e/logs/job.log",
+      "bytes": 212,
+      "sha256": "30d3cfa6acd64547c7611b4e22071e686f0e9f8a593a6066f1d463934590bf96"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/pose-e/params.json",
+      "bytes": 245,
+      "sha256": "2ad21ff521167f87a3c900412bb1e82e4b69437b4adb9acb47ccb2ee536553f7"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/pose-e/pose/sim.camera.main/landmarks.parquet",
+      "bytes": 10978,
+      "sha256": "0f2ce07f38d63b1195cb52d04466dc5e32d812f8a0d361136621ea396eb11e45"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/pose-e/pose/sim.camera.main/model_card.json",
+      "bytes": 355,
+      "sha256": "aff356213303769d5ff790d7812a8ab31cc98863be494e023dcaab554673f3e6"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/pose-e/reports/qc.html",
+      "bytes": 1858,
+      "sha256": "a2f47a10d0016331ab756c374647358601e835e0ff3245d5ba6ac6effb3f4619"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/processing/jobs/pose-e/reports/qc.json",
+      "bytes": 1697,
+      "sha256": "bad24bb9a80afe7f2f826c5f269a34e9d50e2df80624b50997c3324a70d8cfe6"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/sources/sim.camera.main/source.json",
+      "bytes": 110,
+      "sha256": "95c2d2a41488699fa97b9b858d379697e1ec90bd7113ca6dabb91f0d5bd5c9a1"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/sources/sim.camera.main/streams/sim.camera.main.timing/segments/000000.mkv",
+      "bytes": 4,
+      "sha256": "5fd872525fa77d054b86ca7b50927b4d1f860b21ab2b166fdf6c3ed3c4b5d0bc"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/sources/sim.camera.main/streams/sim.camera.main.timing/segments/000000.timing.mcap",
+      "bytes": 985,
+      "sha256": "0a512be5f0216b48ea2ee92ae5dbd4ba5b5d743c3e3cb6ae0351d993bccdab32"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/sources/sim.camera.main/streams/sim.camera.main.timing/stream.json",
+      "bytes": 208,
+      "sha256": "a8d053f0b46a43cefee12559bbaf27943847b3aa58bbc8d310156318f2ce6e00"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/sources/sim.emg.main/health/gaps.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/sources/sim.emg.main/source.json",
+      "bytes": 112,
+      "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",
+      "bytes": 1057,
+      "sha256": "6f214fd5190bf05c1f660e4b5f23ee3739388f4ca3002560b78ad43600027334"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json",
+      "bytes": 223,
+      "sha256": "ac8e1e05a5047dca047319750a2ee6a95400e3ffde1089d174cf1edc53b99d70"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/sources/sim.imu.upper/source.json",
+      "bytes": 118,
+      "sha256": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+      "bytes": 1641,
+      "sha256": "19f618a46af7662ee52e5e10a873ed880011312e5e64213400fc8ba0fadc2bd4"
+    },
+    {
+      "path": "candidate-cases/test_eval_from_ml_bundle0/eval_pkg/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "bytes": 219,
+      "sha256": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/events/annotations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/events/checkpoints.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/events/sync_anchors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/integrity.json",
+      "bytes": 227,
+      "sha256": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/manifest.json",
+      "bytes": 270,
+      "sha256": "fc435d39a40b40141fb97bb325d5532307ef69331a1258ba00598cb4fbe0ecff"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/processing/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/processing/jobs/kin-fixture/job_manifest.json",
+      "bytes": 3063,
+      "sha256": "a3b6e830dbfa62b3a5133157100024bbd044e9bdd94ba7320eff8defef7fa210"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/processing/jobs/kin-fixture/kinematics/kinematics.parquet",
+      "bytes": 16060,
+      "sha256": "af11f305c6eab4be859cb94057b20076eb04c2e7e8e249cacb2a515657d4d365"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/processing/jobs/kin-fixture/kinematics/kinematics_qc.json",
+      "bytes": 530,
+      "sha256": "34f24ae0a0783acf1f79740389e0d56ad461b683dacee14a9e44a5e90f119dc2"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/processing/jobs/kin-fixture/logs/job.log",
+      "bytes": 241,
+      "sha256": "f79d2c42893bbd259e80c2eface342e357a36406845ab7d0d50e60c4547d0e93"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/processing/jobs/kin-fixture/params.json",
+      "bytes": 293,
+      "sha256": "248cfc2fbcf6e9667146b6620c69f3838795ebe5fd06dcda775a069694c87887"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/processing/jobs/kin-fixture/reports/qc.html",
+      "bytes": 2026,
+      "sha256": "7806b60f88cb6cbf5d3f7b78a269bfbdbca399af9d1894a122c8ca46699aba91"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/processing/jobs/kin-fixture/reports/qc.json",
+      "bytes": 1996,
+      "sha256": "c4f239efbe6ad9f5d1176031c8255fff1c6723430a47cb142cdb58ff01ac2262"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/processing/jobs/pose-fixture/job_manifest.json",
+      "bytes": 3238,
+      "sha256": "0583daa722c9f21d4bb70d16501f786a9d9762f4e0ef15188a7c24fe30138645"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/processing/jobs/pose-fixture/logs/job.log",
+      "bytes": 236,
+      "sha256": "499ef5e44c5217c6a9946d60ac6a276382b508cd1a5dea080dd10075b23d8e00"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/processing/jobs/pose-fixture/params.json",
+      "bytes": 251,
+      "sha256": "a702d014c650a82ca420892820cbe9ee3ad06ae4940eeb7ae71e511e5b4cccec"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/processing/jobs/pose-fixture/pose/sim.camera.main/landmarks.parquet",
+      "bytes": 10978,
+      "sha256": "0f2ce07f38d63b1195cb52d04466dc5e32d812f8a0d361136621ea396eb11e45"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/processing/jobs/pose-fixture/pose/sim.camera.main/model_card.json",
+      "bytes": 355,
+      "sha256": "aff356213303769d5ff790d7812a8ab31cc98863be494e023dcaab554673f3e6"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/processing/jobs/pose-fixture/reports/qc.html",
+      "bytes": 2026,
+      "sha256": "7806b60f88cb6cbf5d3f7b78a269bfbdbca399af9d1894a122c8ca46699aba91"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/processing/jobs/pose-fixture/reports/qc.json",
+      "bytes": 1996,
+      "sha256": "c4f239efbe6ad9f5d1176031c8255fff1c6723430a47cb142cdb58ff01ac2262"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/sources/sim.camera.main/source.json",
+      "bytes": 110,
+      "sha256": "95c2d2a41488699fa97b9b858d379697e1ec90bd7113ca6dabb91f0d5bd5c9a1"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/sources/sim.camera.main/streams/sim.camera.main.timing/segments/000000.mkv",
+      "bytes": 4,
+      "sha256": "5fd872525fa77d054b86ca7b50927b4d1f860b21ab2b166fdf6c3ed3c4b5d0bc"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/sources/sim.camera.main/streams/sim.camera.main.timing/segments/000000.timing.mcap",
+      "bytes": 985,
+      "sha256": "0a512be5f0216b48ea2ee92ae5dbd4ba5b5d743c3e3cb6ae0351d993bccdab32"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/sources/sim.camera.main/streams/sim.camera.main.timing/stream.json",
+      "bytes": 208,
+      "sha256": "a8d053f0b46a43cefee12559bbaf27943847b3aa58bbc8d310156318f2ce6e00"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/sources/sim.emg.main/health/gaps.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/sources/sim.emg.main/source.json",
+      "bytes": 112,
+      "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json",
+      "bytes": 216,
+      "sha256": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/sources/sim.imu.upper/source.json",
+      "bytes": 118,
+      "sha256": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8"
+    },
+    {
+      "path": "candidate-cases/test_kinematics_from_pose_job0/kin_pkg/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "bytes": 219,
+      "sha256": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/events/annotations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/events/checkpoints.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/events/sync_anchors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/integrity.json",
+      "bytes": 227,
+      "sha256": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/manifest.json",
+      "bytes": 270,
+      "sha256": "02cae7279fc85b568f42bc1bfadad284dc0f41ff66ad1a227977ca31349f718a"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/bundle-fixture/job_manifest.json",
+      "bytes": 3129,
+      "sha256": "1575a6c82eacf794889730895e208e260e601fd70fcaacaf662d60ff54e73f8b"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/bundle-fixture/logs/job.log",
+      "bytes": 238,
+      "sha256": "b65318bd4ab9ff0a12f41ac785f3fef116f4db829a249be38dbb783392a9fca2"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/bundle-fixture/ml_bundle/manifest.json",
+      "bytes": 1294,
+      "sha256": "34c81b771a71203d1aa4e20d820972342f4c48406ec2cdce5b261ad3f1333cae"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/bundle-fixture/ml_bundle/windows.parquet",
+      "bytes": 6670,
+      "sha256": "3a27028a25ed143be92b5453a3f193f6403cc24cad7fe15abd015fc8c9a2fdf1"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/bundle-fixture/params.json",
+      "bytes": 384,
+      "sha256": "7b65edc7ab3af46c79abe28cb0e312dcbe0f43e45a822666314e9530a32747d9"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/bundle-fixture/reports/qc.html",
+      "bytes": 1857,
+      "sha256": "69a49be2368030c4ca24bd78fa703bd830531eb3bf49f2b2ba6dfb0b56c070b0"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/bundle-fixture/reports/qc.json",
+      "bytes": 1696,
+      "sha256": "7db93e3bfb4368d86fa6c33c358ecfd3930047f4f37c880ef156235fed9cae36"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/feat-fixture/features/_schema.json",
+      "bytes": 3431,
+      "sha256": "7038659dec4982be4830bac81b9a3af7066af690c84405bcbf55c7a2e3430d4c"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/feat-fixture/features/emg/sim.emg.main/windows.csv",
+      "bytes": 498,
+      "sha256": "132e389419ee223b77da04dcd986962c85446ae768d581eee52e3e239261e575"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/feat-fixture/features/emg/sim.emg.main/windows.parquet",
+      "bytes": 7411,
+      "sha256": "736edc12fa3ae8724eccc666d8c151101f50de9bbe3f9c7e5299e6f0c74ac11d"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/feat-fixture/features/imu/sim.imu.upper/windows.csv",
+      "bytes": 628,
+      "sha256": "62212faf4179e9050c4d7a2e3530a461c70d0e56b227138e31b0c273bb21a277"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/feat-fixture/features/imu/sim.imu.upper/windows.parquet",
+      "bytes": 7645,
+      "sha256": "ff4ca0fbfed45e13e95f73d03d8ba56ce0f8305868012ecb5101df277a449ba9"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/feat-fixture/features/video/sim.camera.main/timing_qc.csv",
+      "bytes": 410,
+      "sha256": "6af57d98efda3840ae4bd7123c307e7464a30b1afbd0ba3d03f501d94ef0e5c8"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/feat-fixture/features/video/sim.camera.main/timing_qc.parquet",
+      "bytes": 2891,
+      "sha256": "58ec445b4176ef76429a3375449657e5d7ce271a1a2dcdd880fefaa9c15a8443"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/feat-fixture/job_manifest.json",
+      "bytes": 4508,
+      "sha256": "57841b0c0277cf25b70f570a0af2953eb0bfcf35dde2bc2e28e0ab6b52d32953"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/feat-fixture/logs/job.log",
+      "bytes": 235,
+      "sha256": "4e32917301bb61fbd6f0ce028384142f3e4033e749b7047c53dac1f58e08b104"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/feat-fixture/params.json",
+      "bytes": 255,
+      "sha256": "d5121e8acf9d947ee72499f317047c8f856fa809cc9e4e405b4eacf61d7241f7"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/feat-fixture/reports/qc.html",
+      "bytes": 1857,
+      "sha256": "69a49be2368030c4ca24bd78fa703bd830531eb3bf49f2b2ba6dfb0b56c070b0"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/feat-fixture/reports/qc.json",
+      "bytes": 1696,
+      "sha256": "7db93e3bfb4368d86fa6c33c358ecfd3930047f4f37c880ef156235fed9cae36"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/kin-fixture/job_manifest.json",
+      "bytes": 2873,
+      "sha256": "366a997ea8db427d33e5ba48075296419199d6cd2618170d27ee28b606e9180b"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/kin-fixture/kinematics/kinematics.parquet",
+      "bytes": 16060,
+      "sha256": "af11f305c6eab4be859cb94057b20076eb04c2e7e8e249cacb2a515657d4d365"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/kin-fixture/kinematics/kinematics_qc.json",
+      "bytes": 530,
+      "sha256": "34f24ae0a0783acf1f79740389e0d56ad461b683dacee14a9e44a5e90f119dc2"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/kin-fixture/logs/job.log",
+      "bytes": 222,
+      "sha256": "63ee9bce7a5406179815ba958937a5b2f0e1eda85f546dd89e0fe0b6fb52e7a8"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/kin-fixture/params.json",
+      "bytes": 293,
+      "sha256": "248cfc2fbcf6e9667146b6620c69f3838795ebe5fd06dcda775a069694c87887"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/kin-fixture/reports/qc.html",
+      "bytes": 1857,
+      "sha256": "69a49be2368030c4ca24bd78fa703bd830531eb3bf49f2b2ba6dfb0b56c070b0"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/kin-fixture/reports/qc.json",
+      "bytes": 1696,
+      "sha256": "7db93e3bfb4368d86fa6c33c358ecfd3930047f4f37c880ef156235fed9cae36"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/pose-fixture/job_manifest.json",
+      "bytes": 3048,
+      "sha256": "ecac85626a0835e4a5b85d9f7b699f8aac906e849d2ce1febd4ebae73d66f92c"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/pose-fixture/logs/job.log",
+      "bytes": 217,
+      "sha256": "249c75f538d589d669855e22611498b8f7e3437937b50981b393067fdeffd643"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/pose-fixture/params.json",
+      "bytes": 251,
+      "sha256": "a702d014c650a82ca420892820cbe9ee3ad06ae4940eeb7ae71e511e5b4cccec"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/pose-fixture/pose/sim.camera.main/landmarks.parquet",
+      "bytes": 10978,
+      "sha256": "0f2ce07f38d63b1195cb52d04466dc5e32d812f8a0d361136621ea396eb11e45"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/pose-fixture/pose/sim.camera.main/model_card.json",
+      "bytes": 355,
+      "sha256": "aff356213303769d5ff790d7812a8ab31cc98863be494e023dcaab554673f3e6"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/pose-fixture/reports/qc.html",
+      "bytes": 1857,
+      "sha256": "69a49be2368030c4ca24bd78fa703bd830531eb3bf49f2b2ba6dfb0b56c070b0"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/processing/jobs/pose-fixture/reports/qc.json",
+      "bytes": 1696,
+      "sha256": "7db93e3bfb4368d86fa6c33c358ecfd3930047f4f37c880ef156235fed9cae36"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/sources/sim.camera.main/source.json",
+      "bytes": 110,
+      "sha256": "95c2d2a41488699fa97b9b858d379697e1ec90bd7113ca6dabb91f0d5bd5c9a1"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/sources/sim.camera.main/streams/sim.camera.main.timing/segments/000000.mkv",
+      "bytes": 4,
+      "sha256": "5fd872525fa77d054b86ca7b50927b4d1f860b21ab2b166fdf6c3ed3c4b5d0bc"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/sources/sim.camera.main/streams/sim.camera.main.timing/segments/000000.timing.mcap",
+      "bytes": 985,
+      "sha256": "0a512be5f0216b48ea2ee92ae5dbd4ba5b5d743c3e3cb6ae0351d993bccdab32"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/sources/sim.camera.main/streams/sim.camera.main.timing/stream.json",
+      "bytes": 208,
+      "sha256": "a8d053f0b46a43cefee12559bbaf27943847b3aa58bbc8d310156318f2ce6e00"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/sources/sim.emg.main/health/gaps.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/sources/sim.emg.main/source.json",
+      "bytes": 112,
+      "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",
+      "bytes": 1057,
+      "sha256": "6f214fd5190bf05c1f660e4b5f23ee3739388f4ca3002560b78ad43600027334"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json",
+      "bytes": 223,
+      "sha256": "ac8e1e05a5047dca047319750a2ee6a95400e3ffde1089d174cf1edc53b99d70"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/sources/sim.imu.upper/source.json",
+      "bytes": 118,
+      "sha256": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+      "bytes": 1641,
+      "sha256": "19f618a46af7662ee52e5e10a873ed880011312e5e64213400fc8ba0fadc2bd4"
+    },
+    {
+      "path": "candidate-cases/test_ml_bundle_end_to_end0/ml_pkg/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "bytes": 219,
+      "sha256": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/events/annotations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/events/checkpoints.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/events/sync_anchors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/integrity.json",
+      "bytes": 227,
+      "sha256": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/manifest.json",
+      "bytes": 296,
+      "sha256": "b4eed387f2064753fb0aff9ee58b6308983411bd79d06689824015f26b7eaaa6"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/processing/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/processing/jobs/kin-2cam/job_manifest.json",
+      "bytes": 3085,
+      "sha256": "7416ae597dd9b7f4e45fc46e017fa9e84056c59e1bd70f150fd7ad73cce4c460"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/processing/jobs/kin-2cam/kinematics/kinematics.parquet",
+      "bytes": 16121,
+      "sha256": "08fa29f73f2718a48437895e33b373d933ee5d731adca00ab0c09fc8372bffd9"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/processing/jobs/kin-2cam/kinematics/kinematics_qc.json",
+      "bytes": 527,
+      "sha256": "02aa4d1050652e14fbada424b20ff882bdc2954f1de88d4010724320e7c67f6c"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/processing/jobs/kin-2cam/logs/job.log",
+      "bytes": 240,
+      "sha256": "7f1a2481de8ebd67b873b2c1f337b81ab2b23bee718e943312f36836d577aa50"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/processing/jobs/kin-2cam/params.json",
+      "bytes": 287,
+      "sha256": "642bd6ab3e081d164f6cd07454682e6eb3faf664560bf6365203abcba7d75755"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/processing/jobs/kin-2cam/reports/qc.html",
+      "bytes": 2232,
+      "sha256": "fe8461d227216ab24640a94891bee8c49a36129ce182b19048605e577c0d2d52"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/processing/jobs/kin-2cam/reports/qc.json",
+      "bytes": 2369,
+      "sha256": "3f618333fb6224ac5f4aa99527d3c846d47205cea986c908317698f52b5177db"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/processing/jobs/pose-2cam/job_manifest.json",
+      "bytes": 3851,
+      "sha256": "51e2f2247f782c2638a705e4c4018acd48a885c99044f72409c24c7c4cc94de2"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/processing/jobs/pose-2cam/logs/job.log",
+      "bytes": 235,
+      "sha256": "8097f62179384f3fade0680015ae02cb4a5a1c8fba5cd52db98119c67b2bceb7"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/processing/jobs/pose-2cam/params.json",
+      "bytes": 248,
+      "sha256": "f6d3510b6664502b33694d3439df99df353a9c830b6a9b9aed7c8e820848ac2d"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/processing/jobs/pose-2cam/pose/sim.camera.main/landmarks.parquet",
+      "bytes": 10978,
+      "sha256": "0f2ce07f38d63b1195cb52d04466dc5e32d812f8a0d361136621ea396eb11e45"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/processing/jobs/pose-2cam/pose/sim.camera.main/model_card.json",
+      "bytes": 355,
+      "sha256": "aff356213303769d5ff790d7812a8ab31cc98863be494e023dcaab554673f3e6"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/processing/jobs/pose-2cam/pose/sim.camera.oblique/landmarks.parquet",
+      "bytes": 10993,
+      "sha256": "42b4d3de69590c18bb3e89d4427f0a38ed32a8f48cd3512b0f72edae8173aa17"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/processing/jobs/pose-2cam/pose/sim.camera.oblique/model_card.json",
+      "bytes": 361,
+      "sha256": "fd5429700fb768ad731b16c38223d540c73951f89789deaaa464aacc5bd8c149"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/processing/jobs/pose-2cam/reports/qc.html",
+      "bytes": 2232,
+      "sha256": "fe8461d227216ab24640a94891bee8c49a36129ce182b19048605e577c0d2d52"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/processing/jobs/pose-2cam/reports/qc.json",
+      "bytes": 2369,
+      "sha256": "3f618333fb6224ac5f4aa99527d3c846d47205cea986c908317698f52b5177db"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/sources/sim.camera.main/source.json",
+      "bytes": 110,
+      "sha256": "95c2d2a41488699fa97b9b858d379697e1ec90bd7113ca6dabb91f0d5bd5c9a1"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/sources/sim.camera.main/streams/sim.camera.main.timing/segments/000000.mkv",
+      "bytes": 4,
+      "sha256": "5fd872525fa77d054b86ca7b50927b4d1f860b21ab2b166fdf6c3ed3c4b5d0bc"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/sources/sim.camera.main/streams/sim.camera.main.timing/segments/000000.timing.mcap",
+      "bytes": 985,
+      "sha256": "0a512be5f0216b48ea2ee92ae5dbd4ba5b5d743c3e3cb6ae0351d993bccdab32"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/sources/sim.camera.main/streams/sim.camera.main.timing/stream.json",
+      "bytes": 208,
+      "sha256": "a8d053f0b46a43cefee12559bbaf27943847b3aa58bbc8d310156318f2ce6e00"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/sources/sim.camera.oblique/source.json",
+      "bytes": 121,
+      "sha256": "a30714afb197142385e37094e87e6d88c830636167c54ca08f06fa600ec61150"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/sources/sim.camera.oblique/streams/sim.camera.oblique.timing/segments/000000.mkv",
+      "bytes": 4,
+      "sha256": "5fd872525fa77d054b86ca7b50927b4d1f860b21ab2b166fdf6c3ed3c4b5d0bc"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/sources/sim.camera.oblique/streams/sim.camera.oblique.timing/segments/000000.timing.mcap",
+      "bytes": 983,
+      "sha256": "d339fb0b6316fa88288eaea3898b13b1f0c15f124dfe856c5889c2af1a36e8ba"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/sources/sim.camera.oblique/streams/sim.camera.oblique.timing/stream.json",
+      "bytes": 214,
+      "sha256": "e716f67d374a14c8dbe398fdc369f1f02ffc87ee0c9ec7ad337a14926aec3189"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/sources/sim.emg.main/health/gaps.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/sources/sim.emg.main/source.json",
+      "bytes": 112,
+      "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json",
+      "bytes": 216,
+      "sha256": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/sources/sim.imu.upper/source.json",
+      "bytes": 118,
+      "sha256": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_two_camera_sessi0/dual_cam/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "bytes": 219,
+      "sha256": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_writes_landmarks0/pose_pkg/events/annotations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_writes_landmarks0/pose_pkg/events/checkpoints.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_writes_landmarks0/pose_pkg/events/sync_anchors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_writes_landmarks0/pose_pkg/integrity.json",
+      "bytes": 227,
+      "sha256": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_writes_landmarks0/pose_pkg/manifest.json",
+      "bytes": 270,
+      "sha256": "fc435d39a40b40141fb97bb325d5532307ef69331a1258ba00598cb4fbe0ecff"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_writes_landmarks0/pose_pkg/processing/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_writes_landmarks0/pose_pkg/processing/jobs/20261008T121807Z_7a7eef46/job_manifest.json",
+      "bytes": 3253,
+      "sha256": "41b0edfa1cb4e10a1f05e7c1ad6e380ba6c46b2838c76103d49ab3494ccf3678"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_writes_landmarks0/pose_pkg/processing/jobs/20261008T121807Z_7a7eef46/logs/job.log",
+      "bytes": 251,
+      "sha256": "48cb29e12e94890edeb9c84e0fa0fa6931930f164a64b087e13f864859d71c8c"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_writes_landmarks0/pose_pkg/processing/jobs/20261008T121807Z_7a7eef46/params.json",
+      "bytes": 241,
+      "sha256": "74fd4a262fec4975587c02fe3cf6b1a18f26f92f6dfce4c74d0e55cbf87b0e3a"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_writes_landmarks0/pose_pkg/processing/jobs/20261008T121807Z_7a7eef46/pose/sim.camera.main/landmarks.parquet",
+      "bytes": 10978,
+      "sha256": "0f2ce07f38d63b1195cb52d04466dc5e32d812f8a0d361136621ea396eb11e45"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_writes_landmarks0/pose_pkg/processing/jobs/20261008T121807Z_7a7eef46/pose/sim.camera.main/model_card.json",
+      "bytes": 355,
+      "sha256": "aff356213303769d5ff790d7812a8ab31cc98863be494e023dcaab554673f3e6"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_writes_landmarks0/pose_pkg/processing/jobs/20261008T121807Z_7a7eef46/reports/qc.html",
+      "bytes": 2028,
+      "sha256": "5129ca4d87490cc6b094c5807e08e8e52ec600ea687726d1785ceaeb1e64e5f2"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_writes_landmarks0/pose_pkg/processing/jobs/20261008T121807Z_7a7eef46/reports/qc.json",
+      "bytes": 1998,
+      "sha256": "69155e41ef09f99a824058ef9100e6e8a27c99e17d257104649bf51fb9dcbe33"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_writes_landmarks0/pose_pkg/sources/sim.camera.main/source.json",
+      "bytes": 110,
+      "sha256": "95c2d2a41488699fa97b9b858d379697e1ec90bd7113ca6dabb91f0d5bd5c9a1"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_writes_landmarks0/pose_pkg/sources/sim.camera.main/streams/sim.camera.main.timing/segments/000000.mkv",
+      "bytes": 4,
+      "sha256": "5fd872525fa77d054b86ca7b50927b4d1f860b21ab2b166fdf6c3ed3c4b5d0bc"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_writes_landmarks0/pose_pkg/sources/sim.camera.main/streams/sim.camera.main.timing/segments/000000.timing.mcap",
+      "bytes": 985,
+      "sha256": "0a512be5f0216b48ea2ee92ae5dbd4ba5b5d743c3e3cb6ae0351d993bccdab32"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_writes_landmarks0/pose_pkg/sources/sim.camera.main/streams/sim.camera.main.timing/stream.json",
+      "bytes": 208,
+      "sha256": "a8d053f0b46a43cefee12559bbaf27943847b3aa58bbc8d310156318f2ce6e00"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_writes_landmarks0/pose_pkg/sources/sim.emg.main/health/gaps.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_writes_landmarks0/pose_pkg/sources/sim.emg.main/source.json",
+      "bytes": 112,
+      "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_writes_landmarks0/pose_pkg/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json",
+      "bytes": 216,
+      "sha256": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_writes_landmarks0/pose_pkg/sources/sim.imu.upper/source.json",
+      "bytes": 118,
+      "sha256": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8"
+    },
+    {
+      "path": "candidate-cases/test_pose_job_writes_landmarks0/pose_pkg/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "bytes": 219,
+      "sha256": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/events/annotations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/events/checkpoints.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/events/sync_anchors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/integrity.json",
+      "bytes": 227,
+      "sha256": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/manifest.json",
+      "bytes": 270,
+      "sha256": "fc435d39a40b40141fb97bb325d5532307ef69331a1258ba00598cb4fbe0ecff"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/processing/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/processing/jobs/bundle-r/job_manifest.json",
+      "bytes": 3045,
+      "sha256": "234ecf727e10f9d4f362df687bddecea88367bdbfec79c4bd4e8a37a438400f4"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/processing/jobs/bundle-r/logs/job.log",
+      "bytes": 239,
+      "sha256": "598f99c2565623a45a4a03f6c763db5aba62ea412ec00616f9446e0a908e9bf6"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/processing/jobs/bundle-r/ml_bundle/manifest.json",
+      "bytes": 1282,
+      "sha256": "c70df8b808306437cb4b7a6234e69efa3613c2793e078aab1bb1773149f06a97"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/processing/jobs/bundle-r/ml_bundle/windows.parquet",
+      "bytes": 6278,
+      "sha256": "672cb7218e30c430dc731f2a20bcf900d38a4c3e359d54da09f1444362bdb63f"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/processing/jobs/bundle-r/params.json",
+      "bytes": 369,
+      "sha256": "ebc874e9261a213a2f40729d201691d890acac43c611beec8f4ead937857f3cb"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/processing/jobs/bundle-r/reports/qc.html",
+      "bytes": 2028,
+      "sha256": "ea6e9feb6b03377a9166b4ed99f8e24d46fb1ed0272c566afdc133527fa129aa"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/processing/jobs/bundle-r/reports/qc.json",
+      "bytes": 1998,
+      "sha256": "09b51296c2ed83e0b33dfed2d14b8c52f904164a6a2667ff2da7b324d9e9e72d"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/processing/jobs/feat-radar/features/radar/sim.radar.1/frame_features.parquet",
+      "bytes": 3113,
+      "sha256": "4e4adafcc9fca27c7ffafe1cd79ab1fc2c2ca7a9a2564c371db7e651bb3dd9cb"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/processing/jobs/feat-radar/job_manifest.json",
+      "bytes": 118,
+      "sha256": "467714992456e759bca5ffe2c5f316478bff09ae044349b93eb670442fc73873"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/processing/jobs/kin-r/job_manifest.json",
+      "bytes": 3053,
+      "sha256": "acb6fae197a934c822a0afb52f778517f4aeafebd593f260f691bb9a3d764b1d"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/processing/jobs/kin-r/kinematics/kinematics.parquet",
+      "bytes": 16060,
+      "sha256": "af11f305c6eab4be859cb94057b20076eb04c2e7e8e249cacb2a515657d4d365"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/processing/jobs/kin-r/kinematics/kinematics_qc.json",
+      "bytes": 524,
+      "sha256": "37581663cbfd3fd80d34bbefeac1b699e4352c7a5d66c85de355e2e3569edaae"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/processing/jobs/kin-r/logs/job.log",
+      "bytes": 237,
+      "sha256": "5dc3e9cbdf9eb1f510ce0ce1bd505ec21b55044e32a539ac58055274bdbebbbc"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/processing/jobs/kin-r/params.json",
+      "bytes": 281,
+      "sha256": "705d924576bf788e8c85fda70b3985eda55666bd1c1547d41dc3146a136f776f"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/processing/jobs/kin-r/reports/qc.html",
+      "bytes": 2028,
+      "sha256": "ea6e9feb6b03377a9166b4ed99f8e24d46fb1ed0272c566afdc133527fa129aa"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/processing/jobs/kin-r/reports/qc.json",
+      "bytes": 1998,
+      "sha256": "09b51296c2ed83e0b33dfed2d14b8c52f904164a6a2667ff2da7b324d9e9e72d"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/processing/jobs/pose-r/job_manifest.json",
+      "bytes": 3234,
+      "sha256": "04e5da644d3aec2689ce0ef1c36cfc388923d2dfc00bd7393dd7a91ca288090d"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/processing/jobs/pose-r/logs/job.log",
+      "bytes": 232,
+      "sha256": "d4f088d6aca8adaa9d030fc457aaa653b63ef8142b7e2a64b2c3ecda4c59f085"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/processing/jobs/pose-r/params.json",
+      "bytes": 245,
+      "sha256": "038f7a1adaf7dd6a87fc8db42ad31a5b88df89fe5a649939f37becd0e9abbc0d"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/processing/jobs/pose-r/pose/sim.camera.main/landmarks.parquet",
+      "bytes": 10978,
+      "sha256": "0f2ce07f38d63b1195cb52d04466dc5e32d812f8a0d361136621ea396eb11e45"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/processing/jobs/pose-r/pose/sim.camera.main/model_card.json",
+      "bytes": 355,
+      "sha256": "aff356213303769d5ff790d7812a8ab31cc98863be494e023dcaab554673f3e6"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/processing/jobs/pose-r/reports/qc.html",
+      "bytes": 2028,
+      "sha256": "ea6e9feb6b03377a9166b4ed99f8e24d46fb1ed0272c566afdc133527fa129aa"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/processing/jobs/pose-r/reports/qc.json",
+      "bytes": 1998,
+      "sha256": "09b51296c2ed83e0b33dfed2d14b8c52f904164a6a2667ff2da7b324d9e9e72d"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/sources/sim.camera.main/source.json",
+      "bytes": 110,
+      "sha256": "95c2d2a41488699fa97b9b858d379697e1ec90bd7113ca6dabb91f0d5bd5c9a1"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/sources/sim.camera.main/streams/sim.camera.main.timing/segments/000000.mkv",
+      "bytes": 4,
+      "sha256": "5fd872525fa77d054b86ca7b50927b4d1f860b21ab2b166fdf6c3ed3c4b5d0bc"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/sources/sim.camera.main/streams/sim.camera.main.timing/segments/000000.timing.mcap",
+      "bytes": 985,
+      "sha256": "0a512be5f0216b48ea2ee92ae5dbd4ba5b5d743c3e3cb6ae0351d993bccdab32"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/sources/sim.camera.main/streams/sim.camera.main.timing/stream.json",
+      "bytes": 208,
+      "sha256": "a8d053f0b46a43cefee12559bbaf27943847b3aa58bbc8d310156318f2ce6e00"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/sources/sim.emg.main/health/gaps.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/sources/sim.emg.main/source.json",
+      "bytes": 112,
+      "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json",
+      "bytes": 216,
+      "sha256": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/sources/sim.imu.upper/source.json",
+      "bytes": 118,
+      "sha256": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8"
+    },
+    {
+      "path": "candidate-cases/test_radar_to_teacher_ml_bundl0/radar_ml/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "bytes": 219,
+      "sha256": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/events/annotations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/events/checkpoints.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/events/sync_anchors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/integrity.json",
+      "bytes": 227,
+      "sha256": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/manifest.json",
+      "bytes": 270,
+      "sha256": "fc435d39a40b40141fb97bb325d5532307ef69331a1258ba00598cb4fbe0ecff"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/processing/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/processing/jobs/k1/job_manifest.json",
+      "bytes": 3045,
+      "sha256": "3bce60b6db116e3912d49913b71ddf19fb0e00951349f442a199d82b728b3a2d"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/processing/jobs/k1/kinematics/kinematics.parquet",
+      "bytes": 16060,
+      "sha256": "af11f305c6eab4be859cb94057b20076eb04c2e7e8e249cacb2a515657d4d365"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/processing/jobs/k1/kinematics/kinematics_qc.json",
+      "bytes": 520,
+      "sha256": "44febf96eadf65222dc236a674821cc1f84364efd73e2cff0ed010d6e7ed87a5"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/processing/jobs/k1/logs/job.log",
+      "bytes": 233,
+      "sha256": "b26f26f123bc088f0e2f4c8615694e58a38d41110f66207da9c2bf45b397648d"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/processing/jobs/k1/params.json",
+      "bytes": 299,
+      "sha256": "d5953dcc01a1d8d02b98c681f371ae77888ad583d00434a6283459a67ecc7f6e"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/processing/jobs/k1/reports/qc.html",
+      "bytes": 2027,
+      "sha256": "650db5644ccf8b12d34d02b6b0c769fab82c8b6399f15924db3f0accf2f37b01"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/processing/jobs/k1/reports/qc.json",
+      "bytes": 1997,
+      "sha256": "2cb306aab8c9ad7021786976b1e7b0c0ada594197d1370e03b89910f3705b2f2"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/processing/jobs/p1/job_manifest.json",
+      "bytes": 3229,
+      "sha256": "8aad133d893438eaa55d0877f0614c8b95c7adf0f766931b49904f6567b3620c"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/processing/jobs/p1/logs/job.log",
+      "bytes": 227,
+      "sha256": "e2b328dc4c710914a2f7a81a375fef37d255ba97658c41e1a8f1707a637d167c"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/processing/jobs/p1/params.json",
+      "bytes": 241,
+      "sha256": "2cda822ed61a71e4afb31340514fa99b7b309c5a6f39b35f3fc9fb558c9d9e29"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/processing/jobs/p1/pose/sim.camera.main/landmarks.parquet",
+      "bytes": 10978,
+      "sha256": "0f2ce07f38d63b1195cb52d04466dc5e32d812f8a0d361136621ea396eb11e45"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/processing/jobs/p1/pose/sim.camera.main/model_card.json",
+      "bytes": 355,
+      "sha256": "aff356213303769d5ff790d7812a8ab31cc98863be494e023dcaab554673f3e6"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/processing/jobs/p1/reports/qc.html",
+      "bytes": 2027,
+      "sha256": "650db5644ccf8b12d34d02b6b0c769fab82c8b6399f15924db3f0accf2f37b01"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/processing/jobs/p1/reports/qc.json",
+      "bytes": 1997,
+      "sha256": "2cb306aab8c9ad7021786976b1e7b0c0ada594197d1370e03b89910f3705b2f2"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/sources/sim.camera.main/source.json",
+      "bytes": 110,
+      "sha256": "95c2d2a41488699fa97b9b858d379697e1ec90bd7113ca6dabb91f0d5bd5c9a1"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/sources/sim.camera.main/streams/sim.camera.main.timing/segments/000000.mkv",
+      "bytes": 4,
+      "sha256": "5fd872525fa77d054b86ca7b50927b4d1f860b21ab2b166fdf6c3ed3c4b5d0bc"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/sources/sim.camera.main/streams/sim.camera.main.timing/segments/000000.timing.mcap",
+      "bytes": 985,
+      "sha256": "0a512be5f0216b48ea2ee92ae5dbd4ba5b5d743c3e3cb6ae0351d993bccdab32"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/sources/sim.camera.main/streams/sim.camera.main.timing/stream.json",
+      "bytes": 208,
+      "sha256": "a8d053f0b46a43cefee12559bbaf27943847b3aa58bbc8d310156318f2ce6e00"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/sources/sim.emg.main/health/gaps.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/sources/sim.emg.main/source.json",
+      "bytes": 112,
+      "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json",
+      "bytes": 216,
+      "sha256": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/sources/sim.imu.upper/source.json",
+      "bytes": 118,
+      "sha256": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_kinemati0/cli_kin/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "bytes": 219,
+      "sha256": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_pose0/pose_cli/events/annotations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_pose0/pose_cli/events/checkpoints.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_pose0/pose_cli/events/sync_anchors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_pose0/pose_cli/integrity.json",
+      "bytes": 227,
+      "sha256": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_pose0/pose_cli/manifest.json",
+      "bytes": 270,
+      "sha256": "fc435d39a40b40141fb97bb325d5532307ef69331a1258ba00598cb4fbe0ecff"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_pose0/pose_cli/processing/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_pose0/pose_cli/processing/jobs/20261008T121807Z_7a7eef46/job_manifest.json",
+      "bytes": 3249,
+      "sha256": "e3938ea696d3d6e31bad68aa8c2c97200104c82c37ab0be12e21d7e74e961dff"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_pose0/pose_cli/processing/jobs/20261008T121807Z_7a7eef46/logs/job.log",
+      "bytes": 247,
+      "sha256": "d0b9b136d7408bba469b83048e77d010d09586c11a3e1731ad1aafe5b72cc0b2"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_pose0/pose_cli/processing/jobs/20261008T121807Z_7a7eef46/params.json",
+      "bytes": 241,
+      "sha256": "74fd4a262fec4975587c02fe3cf6b1a18f26f92f6dfce4c74d0e55cbf87b0e3a"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_pose0/pose_cli/processing/jobs/20261008T121807Z_7a7eef46/pose/sim.camera.main/landmarks.parquet",
+      "bytes": 10978,
+      "sha256": "0f2ce07f38d63b1195cb52d04466dc5e32d812f8a0d361136621ea396eb11e45"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_pose0/pose_cli/processing/jobs/20261008T121807Z_7a7eef46/pose/sim.camera.main/model_card.json",
+      "bytes": 355,
+      "sha256": "aff356213303769d5ff790d7812a8ab31cc98863be494e023dcaab554673f3e6"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_pose0/pose_cli/processing/jobs/20261008T121807Z_7a7eef46/reports/qc.html",
+      "bytes": 2024,
+      "sha256": "cef6b97e812af5995e83a1b82bb30dd5576e036948cddc63ec5b9f830b53f787"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_pose0/pose_cli/processing/jobs/20261008T121807Z_7a7eef46/reports/qc.json",
+      "bytes": 1994,
+      "sha256": "0d83d1e03767121631b4d4ad34238c0398485b1302658eca189a760572cca7ce"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_pose0/pose_cli/sources/sim.camera.main/source.json",
+      "bytes": 110,
+      "sha256": "95c2d2a41488699fa97b9b858d379697e1ec90bd7113ca6dabb91f0d5bd5c9a1"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_pose0/pose_cli/sources/sim.camera.main/streams/sim.camera.main.timing/segments/000000.mkv",
+      "bytes": 4,
+      "sha256": "5fd872525fa77d054b86ca7b50927b4d1f860b21ab2b166fdf6c3ed3c4b5d0bc"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_pose0/pose_cli/sources/sim.camera.main/streams/sim.camera.main.timing/segments/000000.timing.mcap",
+      "bytes": 985,
+      "sha256": "0a512be5f0216b48ea2ee92ae5dbd4ba5b5d743c3e3cb6ae0351d993bccdab32"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_pose0/pose_cli/sources/sim.camera.main/streams/sim.camera.main.timing/stream.json",
+      "bytes": 208,
+      "sha256": "a8d053f0b46a43cefee12559bbaf27943847b3aa58bbc8d310156318f2ce6e00"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_pose0/pose_cli/sources/sim.emg.main/health/gaps.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_pose0/pose_cli/sources/sim.emg.main/source.json",
+      "bytes": 112,
+      "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_pose0/pose_cli/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json",
+      "bytes": 216,
+      "sha256": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_pose0/pose_cli/sources/sim.imu.upper/source.json",
+      "bytes": 118,
+      "sha256": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8"
+    },
+    {
+      "path": "candidate-cases/test_run_analysis_cli_pose0/pose_cli/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "bytes": 219,
+      "sha256": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+    },
+    {
+      "path": "candidate-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/events/annotations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/events/checkpoints.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/events/sync_anchors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "candidate-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/integrity.json",
+      "bytes": 227,
+      "sha256": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556"
+    },
+    {
+      "path": "candidate-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/manifest.json",
+      "bytes": 270,
+      "sha256": "fc435d39a40b40141fb97bb325d5532307ef69331a1258ba00598cb4fbe0ecff"
+    },
+    {
+      "path": "candidate-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "candidate-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/kin-receiving/job_manifest.json",
+      "bytes": 3076,
+      "sha256": "416de793a940cd3afd42072b902a73ead41f48fb2422b3de9d2b9a6fc7719559"
+    },
+    {
+      "path": "candidate-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/kin-receiving/kinematics/kinematics.parquet",
+      "bytes": 13893,
+      "sha256": "786d5b1d790162287cbd212fa03c48e6e4798a68b37759dae308e7eb30cfe1df"
+    },
+    {
+      "path": "candidate-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/kin-receiving/kinematics/kinematics_qc.json",
+      "bytes": 539,
+      "sha256": "1d63211e44c434b3c08708eda8eabb91e51538367a4a9299b8bcde797bbee9b9"
+    },
+    {
+      "path": "candidate-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/kin-receiving/logs/job.log",
+      "bytes": 254,
+      "sha256": "faf1a09861596fe9c19c0eaeb300bf2cc670a40dec813ed0f57917eec1a782a0"
+    },
+    {
+      "path": "candidate-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/kin-receiving/params.json",
+      "bytes": 321,
+      "sha256": "c6a1fa6ca79ec6aea912180dcbee5ca6b56e863f8c8b8225931695812397e80b"
+    },
+    {
+      "path": "candidate-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/kin-receiving/reports/qc.html",
+      "bytes": 2037,
+      "sha256": "fa00510f0345e0fbeb7c259b9c210317ac19797c95ed8b55c931ade042e1a14a"
+    },
+    {
+      "path": "candidate-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/kin-receiving/reports/qc.json",
+      "bytes": 2007,
+      "sha256": "7d6d12afa1f8ac25502778d4932f77c893d2df03e3b6c0a1d233dc2b4f110389"
+    },
+    {
+      "path": "candidate-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/pose-recorded/job_manifest.json",
+      "bytes": 106,
+      "sha256": "0f1bafd789f3911973b791d60b437207e97bc944bedca7e2f0fdbcc39f3115d3"
+    },
+    {
+      "path": "candidate-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/pose-recorded/pose/camera-fixture/landmarks.parquet",
+      "bytes": 4615,
+      "sha256": "68bcca344a9927c817113a6a1aa9e44409443facaacfec154aabe8d467013239"
+    },
+    {
+      "path": "candidate-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/pose-recorded/pose/camera-fixture/model_card.json",
+      "bytes": 38,
+      "sha256": "795b592387b13ee11b5a2b84779876e4bb3c53f4bf5eed7a719a7537a5703570"
+    },
+    {
+      "path": "candidate-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.camera.main/source.json",
+      "bytes": 110,
+      "sha256": "95c2d2a41488699fa97b9b858d379697e1ec90bd7113ca6dabb91f0d5bd5c9a1"
+    },
+    {
+      "path": "candidate-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.camera.main/streams/sim.camera.main.timing/segments/000000.mkv",
+      "bytes": 4,
+      "sha256": "5fd872525fa77d054b86ca7b50927b4d1f860b21ab2b166fdf6c3ed3c4b5d0bc"
+    },
+    {
+      "path": "candidate-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.camera.main/streams/sim.camera.main.timing/segments/000000.timing.mcap",
+      "bytes": 985,
+      "sha256": "0a512be5f0216b48ea2ee92ae5dbd4ba5b5d743c3e3cb6ae0351d993bccdab32"
+    },
+    {
+      "path": "candidate-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.camera.main/streams/sim.camera.main.timing/stream.json",
+      "bytes": 208,
+      "sha256": "a8d053f0b46a43cefee12559bbaf27943847b3aa58bbc8d310156318f2ce6e00"
+    },
+    {
+      "path": "candidate-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.emg.main/health/gaps.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "candidate-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.emg.main/source.json",
+      "bytes": 112,
+      "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10"
+    },
+    {
+      "path": "candidate-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json",
+      "bytes": 216,
+      "sha256": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1"
+    },
+    {
+      "path": "candidate-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.imu.upper/source.json",
+      "bytes": 118,
+      "sha256": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8"
+    },
+    {
+      "path": "candidate-cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "bytes": 219,
+      "sha256": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+    }
+  ],
+  "scope": "Every regular test artifact is included; pytest convenience symlink aliases are omitted from the portable archive."
+}

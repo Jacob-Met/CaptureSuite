@@ -1,0 +1,35 @@
+{
+  "repository": "Jacob-Met/CaptureSuite",
+  "issue": 56,
+  "publicBaseline": "72c15d6b623e217291a824e4e4808a385df896a9",
+  "publicBaselineTree": "221cf5c7bb3c3392a7c4186ba0bcf5a8664135d1",
+  "localProjectionParent": "7815b418a7fdc1658d15f48e6099855165430711",
+  "localProjectionCommit": "2a42301a65cb0c44b67950f515b8e9291c4f3816",
+  "localProjectionTree": "4c30b85ea56edb0fa495f161c79bbbf8ec50bed1",
+  "files": [
+    {
+      "path": "libs/python/capture_analysis/capture_analysis/kinematics/compute.py",
+      "bytes": 6993,
+      "gitBlob": "fb8be59b00e15d9c264aad0983cf75a757c9e210",
+      "sha256": "59bdcde630edd97833349d59703dd2c3bb5ce06981bc8b311668560cbfb6b2be"
+    },
+    {
+      "path": "tests/analysis/test_kinematics_validity.py",
+      "bytes": 8424,
+      "gitBlob": "7cf66857bcbeb9b72851ad53ce7c08f97d528fc8",
+      "sha256": "f269c16f24883599e3972936f0a1e04868bf0939fbcbe1d178475eb0f197ad31"
+    },
+    {
+      "path": "docs/design/KINEMATICS_PIPELINE.md",
+      "bytes": 8584,
+      "gitBlob": "4206818b8834c56db530ca939b04cfe59e73aff6",
+      "sha256": "5fedc9c3fb38c0d9d8b980874914c39463736f6e2e23b4e621bca9b1785a960b"
+    },
+    {
+      "path": "docs/design/research/PROGRESS.md",
+      "bytes": 31495,
+      "gitBlob": "712f551ff6fa948390d13897066050796774b0a3",
+      "sha256": "1bfc44a168ddde5c51b1c7afefe1b1f15900b601b404ef929af3d3b0e8195004"
+    }
+  ]
+}

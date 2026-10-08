@@ -1,0 +1,59 @@
+{
+  "schema": "capturesuite.kinematics.independent-receiving.v1",
+  "receivedAtUtc": "2026-10-08T12:48:10.467211+00:00",
+  "baselineCommit": "72c15d6b623e217291a824e4e4808a385df896a9",
+  "candidateProjection": "2a42301a65cb0c44b67950f515b8e9291c4f3816",
+  "computeSha256": "59bdcde630edd97833349d59703dd2c3bb5ce06981bc8b311668560cbfb6b2be",
+  "oracleSha256": "2a7c774338e03c225be5002f687a9a5863280a7c71326283142b7204c8ae2294",
+  "baselineReceiptSha256": "2a0d1514c75a428058d96a40198054a17e72474f1d8f43134dbb3cf55bcc98b9",
+  "candidateReceiptSha256": "84551d6a66526ee296e816079f53cd412766ea041a5d57e340bef5d9e83e0dbd",
+  "baselineCasesPassed": 2,
+  "baselineCasesTotal": 4,
+  "baselineFunctionalAssertionsFailed": 8,
+  "candidateCasesPassed": 4,
+  "candidateAssertionsPassed": 36,
+  "sourcePreserved": true,
+  "sourceLeavesBeforeAfter": [
+    134,
+    135
+  ],
+  "unchangedBaselineLeaves": 131,
+  "runtime": {
+    "python": "3.12.8 (main, Dec  3 2024, 18:42:41) [Clang 16.0.0 (clang-1600.0.26.4)]",
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "pyarrow": "25.0.1"
+  },
+  "cases": [
+    {
+      "name": "sparse",
+      "parquetSha256": "d8f32a606a60ff08efcba0b35340539b7ecb4c9fafe98f428ca9e7df70d25563",
+      "assertions": 9,
+      "pass": true
+    },
+    {
+      "name": "partial",
+      "parquetSha256": "fd0deee1d2c1d88f6bc663c4849284a9f7307d5cb18df124f0a640bab7b7beba",
+      "assertions": 9,
+      "pass": true
+    },
+    {
+      "name": "full",
+      "parquetSha256": "83408165ea4a4ae13ece552e0f40760e7b362f2ce32b5efdcd5cb94a6e65aeb8",
+      "assertions": 10,
+      "pass": true
+    },
+    {
+      "name": "sim",
+      "parquetSha256": "e9bcfb94895ae63fea05fb7dc408918a8e88bd8e0899b27d8e705e0a83667b98",
+      "assertions": 8,
+      "pass": true
+    }
+  ],
+  "artifactArchiveSha256": "458de13840765923c859f760879171b3f8fd8072b389f105a6b0f31510b397a9",
+  "artifactArchiveBytes": 174766,
+  "artifactMembers": 230,
+  "artifactFilesVerified": 229,
+  "nativePath": "/Users/me/hamon-native-406d0fb04c43/capturesuite-kinematics/root-receiving",
+  "result": "accepted; source and deterministic fixture CLI behavior; normal repository integration gates remain separate"
+}

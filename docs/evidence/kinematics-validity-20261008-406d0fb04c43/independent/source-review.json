@@ -1,0 +1,26 @@
+{
+  "schema": "capturesuite.kinematics.root-source-review.v1",
+  "baseline": "72c15d6b623e217291a824e4e4808a385df896a9",
+  "baselineTree": "221cf5c7bb3c3392a7c4186ba0bcf5a8664135d1",
+  "candidateProjection": "2a42301a65cb0c44b67950f515b8e9291c4f3816",
+  "candidateProjectionTree": "4c30b85ea56edb0fa495f161c79bbbf8ec50bed1",
+  "computeGitBlob": "fb8be59b00e15d9c264aad0983cf75a757c9e210",
+  "computeSha256": "59bdcde630edd97833349d59703dd2c3bb5ce06981bc8b311668560cbfb6b2be",
+  "verifiedSelectedSourceLeaves": 135,
+  "preservedUnchangedBaselineLeaves": 131,
+  "declaredPaths": [
+    "libs/python/capture_analysis/capture_analysis/kinematics/compute.py",
+    "tests/analysis/test_kinematics_validity.py",
+    "docs/design/KINEMATICS_PIPELINE.md",
+    "docs/design/research/PROGRESS.md"
+  ],
+  "findings": [
+    "Only explicit sim_ model IDs select the existing synthetic angles; unsupported real skeletons retain missing targets and provenance.",
+    "Required same-side shoulder/elbow/wrist evidence governs elbow validity; shoulder/elbow/hip governs both shoulder metrics. Finite per-landmark confidence and coordinates are checked before geometry.",
+    "Valid finite angles use the previous formulas. The independently generated complete pose and explicit-simulation Parquet controls are byte-for-byte baseline identical.",
+    "Non-simulated invalid angle centers mask derived angular velocity and AFR; no interpolation or smoothing is added.",
+    "No production caller, registry, model backend, schema, job publication, raw session or pose input is modified."
+  ],
+  "scope": "Source and deterministic real-CLI/Parquet receiving only. Native supported Windows CI and current-parent QC/report composition remain separate integration gates.",
+  "result": "accepted"
+}
