@@ -1,0 +1,370 @@
+{
+  "kind": "incomplete standalone Qt baseline harness",
+  "source_head": "2f4dcf3ec81a96ac92100f69155879fe42e4f948",
+  "git_status": "",
+  "reason": "Real backend completed, but standalone Qt thread lifetime did not return; no completed UI or raw-preservation qualification is claimed.",
+  "job_manifest": {
+    "analysisGrids": [],
+    "captureAnalysisVersion": "0.1.0",
+    "createdUtc": "2026-10-08T14:11:30Z",
+    "errors": [],
+    "evalWindowCount": null,
+    "featureTables": [
+      {
+        "featureSchemaVersion": 1,
+        "relativePath": "features/numeric/source-73616d706c65722e61/stream-666f726365/windows.parquet",
+        "rows": 5
+      },
+      {
+        "featureSchemaVersion": 1,
+        "relativePath": "features/numeric/source-73616d706c65722e61/stream-766f6c74616765/windows.parquet",
+        "rows": 5
+      },
+      {
+        "featureSchemaVersion": 1,
+        "relativePath": "features/numeric/source-73616d706c65722e62/stream-74656d7065726174757265/windows.parquet",
+        "rows": 5
+      }
+    ],
+    "gapPolicy": "mask",
+    "gapSummary": {
+      "closed": 0,
+      "maskedNs": 0,
+      "open": 0,
+      "validFraction": null
+    },
+    "jobId": "20261008T141114Z_68b612fe",
+    "kinematicsRows": null,
+    "manifestSha256": "77d52177df967781e855cb78ef991f680842582ebd988ded9c02e04b77a05a97",
+    "mlBundleWindowCount": null,
+    "modalities": [
+      "eeg",
+      "emg",
+      "numeric"
+    ],
+    "outputs": [
+      {
+        "bytes": 245,
+        "kind": "params",
+        "relativePath": "params.json",
+        "sha256": "651134af8208b12550a8b184a7d880f53615fa65965a39988de22d098ba58a16"
+      },
+      {
+        "bytes": 1630,
+        "kind": "qc_json",
+        "relativePath": "reports/qc.json",
+        "sha256": "24a34a098ce7e08779ec192426b7d7bef7c3357f032cad76e2e2ea03618ea08e"
+      },
+      {
+        "bytes": 2352,
+        "kind": "qc_html",
+        "relativePath": "reports/qc.html",
+        "sha256": "1a95b5fa7a3c8932e1e02ba79f95af482912292f68e1366e07a3baf0d82d5c33"
+      },
+      {
+        "bytes": 4214,
+        "kind": "feature_parquet",
+        "relativePath": "features/numeric/source-73616d706c65722e61/stream-666f726365/windows.parquet",
+        "sha256": "bc2d49b74f36240aa70f8ab56ee72c0846428be6bd5a6f9406338d4f817a4c5a"
+      },
+      {
+        "bytes": 341,
+        "kind": "feature_csv",
+        "relativePath": "features/numeric/source-73616d706c65722e61/stream-666f726365/windows.csv",
+        "sha256": "f2b965d97682cd7c53da3b0080a1c8cb3fa3d21b1f3e75200753cb9c285288f1"
+      },
+      {
+        "bytes": 4214,
+        "kind": "feature_parquet",
+        "relativePath": "features/numeric/source-73616d706c65722e61/stream-766f6c74616765/windows.parquet",
+        "sha256": "44189482a3880f498cd89ce5f806c4bfdc3a6b4ea9f740dbedd36d7f88d4b8bc"
+      },
+      {
+        "bytes": 341,
+        "kind": "feature_csv",
+        "relativePath": "features/numeric/source-73616d706c65722e61/stream-766f6c74616765/windows.csv",
+        "sha256": "871a48598c75f54b8b6b6d8fcc6995a11a930e3d92c2deba3ee6bd4c392fd316"
+      },
+      {
+        "bytes": 4214,
+        "kind": "feature_parquet",
+        "relativePath": "features/numeric/source-73616d706c65722e62/stream-74656d7065726174757265/windows.parquet",
+        "sha256": "f3474539ae5399f36bb979f7ce3ea7ad3de555e553763353f66ba382a0b0dae3"
+      },
+      {
+        "bytes": 401,
+        "kind": "feature_csv",
+        "relativePath": "features/numeric/source-73616d706c65722e62/stream-74656d7065726174757265/windows.csv",
+        "sha256": "4a97478272349a7a6dbfbfa15a60310501373a053c8efb148987448cde428f33"
+      },
+      {
+        "bytes": 6191,
+        "kind": "feature_schema",
+        "relativePath": "features/_schema.json",
+        "sha256": "f94e12aa77e9ec781b9ab5211a0934bddbb52afa6ce6c8fc39e5b6851f892dfe"
+      },
+      {
+        "bytes": 4460,
+        "kind": "manifest",
+        "relativePath": "job_manifest.json",
+        "sha256": "f2f860146c074505a2ae29a1d76a69710d73a6d45930b726298153f239a93e1c"
+      }
+    ],
+    "packagePath": "/dev/shm/capturesuite-234cae4aee53/source-baseline-f53jrimj/folder mismatch μ.mmsession",
+    "packageState": "finalized",
+    "paramsDigest": "68b612fe9384d6b32e3ab66c9a66299180e2fe88b7db30e68375eb7a9e0a2131",
+    "pluginIds": [
+      "emg.envelope.v1",
+      "imu.kinematics.v1",
+      "radar.rd_energy.v1",
+      "radar_doppler.mag.v1",
+      "video.timing_qc.v1",
+      "numeric.basic.v1",
+      "test.dummy.feature.v1"
+    ],
+    "pluginManifestVersion": "1.0.0",
+    "poseJobId": null,
+    "poseModelId": null,
+    "poseTables": [],
+    "schemaId": "capture.analysis_job/1",
+    "sessionId": "independent-numeric-cli",
+    "sourcesSelected": [
+      "sampler.a",
+      "sampler.b"
+    ],
+    "status": "completed",
+    "syncAnchorsApplied": {
+      "anchors": [],
+      "applied": false
+    },
+    "timeRange": {
+      "checkpointIds": [],
+      "endSessionNs": 4000000000,
+      "mode": "full",
+      "startSessionNs": 0
+    },
+    "tooling": {
+      "captureAnalysis": "0.1.0",
+      "matplotlib": "3.11.2",
+      "numpy": "2.5.3",
+      "pandas": "3.0.6",
+      "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+      "python": "3.12.14",
+      "scipy": "1.18.1"
+    },
+    "warnings": []
+  },
+  "params": {
+    "applySyncAnchors": false,
+    "checkpointSection": null,
+    "command": "features",
+    "endSessionNs": null,
+    "extra": {},
+    "gapPolicy": "mask",
+    "maxRamBytes": 2147483648,
+    "overwriteJobId": null,
+    "sources": [],
+    "startSessionNs": null
+  },
+  "feature_schema": {
+    "schemaId": "capture.analysis_feature_schema/1",
+    "tables": {
+      "features/numeric/source-73616d706c65722e61/stream-666f726365/windows.parquet": {
+        "columns": [
+          {
+            "calibrated": false,
+            "id": "numeric.basic.v1",
+            "interpolatedTimestamps": false,
+            "name": "t_start_ns",
+            "provisional": true,
+            "timestampMethod": "mcap-first-datum+device-delta-or-nominal-rate",
+            "units": "ns"
+          },
+          {
+            "calibrated": false,
+            "id": "numeric.basic.v1",
+            "interpolatedTimestamps": false,
+            "name": "t_end_ns",
+            "provisional": true,
+            "timestampMethod": "mcap-first-datum+device-delta-or-nominal-rate",
+            "units": "ns"
+          },
+          {
+            "calibrated": false,
+            "id": "numeric.basic.v1",
+            "interpolatedTimestamps": false,
+            "name": "rate_hz",
+            "provisional": true,
+            "timestampMethod": "mcap-first-datum+device-delta-or-nominal-rate",
+            "units": "Hz"
+          },
+          {
+            "calibrated": false,
+            "id": "numeric.basic.v1",
+            "interpolatedTimestamps": false,
+            "name": "gap_fraction",
+            "provisional": true,
+            "timestampMethod": "mcap-first-datum+device-delta-or-nominal-rate",
+            "units": "1"
+          },
+          {
+            "calibrated": false,
+            "id": "numeric.basic.v1",
+            "interpolatedTimestamps": false,
+            "name": "input 1_rms",
+            "provisional": true,
+            "timestampMethod": "mcap-first-datum+device-delta-or-nominal-rate",
+            "units": "a.u."
+          },
+          {
+            "calibrated": false,
+            "id": "numeric.basic.v1",
+            "interpolatedTimestamps": false,
+            "name": "input 1_mean",
+            "provisional": true,
+            "timestampMethod": "mcap-first-datum+device-delta-or-nominal-rate",
+            "units": "a.u."
+          }
+        ],
+        "featureSchemaVersion": 1,
+        "rows": 5,
+        "sourceId": "sampler.a",
+        "streamId": "force",
+        "validFraction": 1
+      },
+      "features/numeric/source-73616d706c65722e61/stream-766f6c74616765/windows.parquet": {
+        "columns": [
+          {
+            "calibrated": false,
+            "id": "numeric.basic.v1",
+            "interpolatedTimestamps": false,
+            "name": "t_start_ns",
+            "provisional": true,
+            "timestampMethod": "mcap-first-datum+device-delta-or-nominal-rate",
+            "units": "ns"
+          },
+          {
+            "calibrated": false,
+            "id": "numeric.basic.v1",
+            "interpolatedTimestamps": false,
+            "name": "t_end_ns",
+            "provisional": true,
+            "timestampMethod": "mcap-first-datum+device-delta-or-nominal-rate",
+            "units": "ns"
+          },
+          {
+            "calibrated": false,
+            "id": "numeric.basic.v1",
+            "interpolatedTimestamps": false,
+            "name": "rate_hz",
+            "provisional": true,
+            "timestampMethod": "mcap-first-datum+device-delta-or-nominal-rate",
+            "units": "Hz"
+          },
+          {
+            "calibrated": false,
+            "id": "numeric.basic.v1",
+            "interpolatedTimestamps": false,
+            "name": "gap_fraction",
+            "provisional": true,
+            "timestampMethod": "mcap-first-datum+device-delta-or-nominal-rate",
+            "units": "1"
+          },
+          {
+            "calibrated": false,
+            "id": "numeric.basic.v1",
+            "interpolatedTimestamps": false,
+            "name": "input 1_rms",
+            "provisional": true,
+            "timestampMethod": "mcap-first-datum+device-delta-or-nominal-rate",
+            "units": "V"
+          },
+          {
+            "calibrated": false,
+            "id": "numeric.basic.v1",
+            "interpolatedTimestamps": false,
+            "name": "input 1_mean",
+            "provisional": true,
+            "timestampMethod": "mcap-first-datum+device-delta-or-nominal-rate",
+            "units": "V"
+          }
+        ],
+        "featureSchemaVersion": 1,
+        "rows": 5,
+        "sourceId": "sampler.a",
+        "streamId": "voltage",
+        "validFraction": 1
+      },
+      "features/numeric/source-73616d706c65722e62/stream-74656d7065726174757265/windows.parquet": {
+        "columns": [
+          {
+            "calibrated": false,
+            "id": "numeric.basic.v1",
+            "interpolatedTimestamps": false,
+            "name": "t_start_ns",
+            "provisional": true,
+            "timestampMethod": "mcap-first-datum+device-delta-or-nominal-rate",
+            "units": "ns"
+          },
+          {
+            "calibrated": false,
+            "id": "numeric.basic.v1",
+            "interpolatedTimestamps": false,
+            "name": "t_end_ns",
+            "provisional": true,
+            "timestampMethod": "mcap-first-datum+device-delta-or-nominal-rate",
+            "units": "ns"
+          },
+          {
+            "calibrated": false,
+            "id": "numeric.basic.v1",
+            "interpolatedTimestamps": false,
+            "name": "rate_hz",
+            "provisional": true,
+            "timestampMethod": "mcap-first-datum+device-delta-or-nominal-rate",
+            "units": "Hz"
+          },
+          {
+            "calibrated": false,
+            "id": "numeric.basic.v1",
+            "interpolatedTimestamps": false,
+            "name": "gap_fraction",
+            "provisional": true,
+            "timestampMethod": "mcap-first-datum+device-delta-or-nominal-rate",
+            "units": "1"
+          },
+          {
+            "calibrated": false,
+            "id": "numeric.basic.v1",
+            "interpolatedTimestamps": false,
+            "name": "input 1_rms",
+            "provisional": true,
+            "timestampMethod": "mcap-first-datum+device-delta-or-nominal-rate",
+            "units": "degC"
+          },
+          {
+            "calibrated": false,
+            "id": "numeric.basic.v1",
+            "interpolatedTimestamps": false,
+            "name": "input 1_mean",
+            "provisional": true,
+            "timestampMethod": "mcap-first-datum+device-delta-or-nominal-rate",
+            "units": "degC"
+          }
+        ],
+        "featureSchemaVersion": 1,
+        "rows": 5,
+        "sourceId": "sampler.b",
+        "streamId": "temperature",
+        "validFraction": 1
+      }
+    }
+  },
+  "job_log": "capture_analysis 0.1.0 command=features\npackage=/dev/shm/capturesuite-234cae4aee53/source-baseline-f53jrimj/folder mismatch μ.mmsession\njob_id=20261008T141114Z_68b612fe\nstatus=completed\nfeature_tables=3\n",
+  "fixture_root": "/dev/shm/capturesuite-234cae4aee53/source-baseline-f53jrimj",
+  "process_exit": 130,
+  "stopped_by": "write_stdin interrupt of owned exec session 90783; read-only capture attempt's cross-session SIGTERM returned ESRCH and did not deliver a signal",
+  "executed_harness": "import hashlib, json, os, subprocess, tempfile, time\nfrom pathlib import Path\n\nrepo = Path.cwd()\nbefore = {p: hashlib.sha256((repo / p).read_bytes()).hexdigest()\n          for p in subprocess.check_output([\"git\", \"ls-files\"], text=True).splitlines()}\nhead = subprocess.check_output([\"git\", \"rev-parse\", \"HEAD\"], text=True).strip()\nwith tempfile.TemporaryDirectory(prefix=\"source-baseline-\", dir=\"/dev/shm/capturesuite-234cae4aee53\") as td:\n    root = Path(td)\n    for key in (\"LOCALAPPDATA\", \"APPDATA\", \"XDG_CONFIG_HOME\", \"XDG_DATA_HOME\", \"XDG_CACHE_HOME\"):\n        folder = root / key\n        folder.mkdir()\n        os.environ[key] = str(folder)\n    from tests.analysis.test_numeric_cli_receiving import make_package, retained_files, write_json\n    from capture_analysis.discover import discover_streams\n    from capture_session import load_review_summary\n    from capture_desktop.screen_analysis import AnalysisScreen\n    from capture_desktop.state import CaptureState\n    from PySide6.QtCore import Qt, QTimer, QCoreApplication, QEvent\n    from PySide6.QtTest import QTest\n    from PySide6.QtWidgets import QApplication, QComboBox, QMessageBox\n    app = QApplication.instance() or QApplication([])\n    package = make_package(root / \"folder mismatch μ.mmsession\")\n    (package / \"sources\" / \"sampler.a\").rename(package / \"sources\" / \"folder-a\")\n    integrity = json.loads((package / \"integrity.json\").read_text())\n    for item in integrity[\"files\"]:\n        item[\"path\"] = item[\"path\"].replace(\"sources/sampler.a/\", \"sources/folder-a/\")\n    write_json(package / \"integrity.json\", integrity)\n    raw = retained_files(package)\n    summary = load_review_summary(package)\n    ids = sorted({ref.source_id for ref in discover_streams(package)})\n    assert summary.source_ids == [\"folder-a\", \"sampler.b\"], summary.source_ids\n    assert ids == [\"sampler.a\", \"sampler.b\"], ids\n    screen = AnalysisScreen(CaptureState())\n    screen.set_package(str(package))\n    controls = [w for w in screen.findChildren(QComboBox)\n                if w.accessibleName() == \"Analysis source mode\"]\n    assert not controls, \"baseline already exposes the proposed source picker\"\n    screen._command.setCurrentIndex(screen._command.findData(\"features\"))\n    dialogs = []\n    def close_dialog():\n        dialog = QApplication.activeModalWidget()\n        if isinstance(dialog, QMessageBox):\n            dialogs.append(dialog.text())\n            dialog.accept()\n    timer = QTimer()\n    timer.timeout.connect(close_dialog)\n    timer.start(20)\n    try:\n        assert screen._btn_run.isEnabled()\n        screen._start_job()\n        until = time.monotonic() + 120\n        while screen._thread is not None and time.monotonic() < until:\n            QTest.qWait(20)\n        assert screen._thread is None, \"baseline worker did not finish\"\n        assert not dialogs, dialogs\n        assert screen._last_job_dir, screen._log.toPlainText()\n        job = Path(screen._last_job_dir)\n        manifest = json.loads((job / \"job_manifest.json\").read_text())\n        params = json.loads((job / \"params.json\").read_text())\n        tables = json.loads((job / \"features\" / \"_schema.json\").read_text())[\"tables\"]\n        identities = sorted([d[\"sourceId\"], d[\"streamId\"]] for d in tables.values())\n        assert params[\"sources\"] == []\n        assert manifest[\"sourcesSelected\"] == ids\n        assert identities == [[\"sampler.a\", \"force\"], [\"sampler.a\", \"voltage\"],\n                              [\"sampler.b\", \"temperature\"]], identities\n        assert retained_files(package) == raw\n        record = {\"source_head\": head, \"baseline_control\": \"no operator-accessible source picker\",\n                  \"review_directory_ids\": summary.source_ids, \"analysis_descriptor_ids\": ids,\n                  \"actual_default_job\": {\"params\": params, \"manifest\": manifest,\n                                         \"feature_identities\": identities},\n                  \"raw_sha256\": raw, \"raw_unchanged\": True, \"dialogs\": dialogs}\n    finally:\n        if screen._thread is not None:\n            screen._cancel_job()\n            while screen._thread is not None:\n                QTest.qWait(20)\n        timer.stop()\n        screen.close()\n        screen.deleteLater()\n        QCoreApplication.sendPostedEvents(None, QEvent.Type.DeferredDelete)\n        app.processEvents()\nafter = {p: hashlib.sha256((repo / p).read_bytes()).hexdigest() for p in before}\nassert before == after\nrecord[\"source_files_checked\"] = len(before)\nrecord[\"source_unchanged\"] = True\nrecord[\"git_status_after\"] = subprocess.check_output([\"git\", \"status\", \"--porcelain\"], text=True)\nprint(\"RECEIPT=\" + json.dumps(record, sort_keys=True))\n",
+  "executed_harness_sha256": "e3ad423fd8a63afc8c20c944fa756276811abf05afb8e5fa4f8198de5c31890d",
+  "runnable_copy_note": "Only the required GPL SPDX comment is prepended to standalone_incomplete.py. The exact original executed bytes are retained in executed_harness; this does not relabel the incomplete run as a pass."
+}

@@ -1,0 +1,129 @@
+{
+  "archive": {
+    "bytes": 1625504,
+    "entries": 282,
+    "path": "/Users/me/Developer/capturesuite-scope-receiving-234cae4aee53/build/evidence/analysis-sources-234cae4aee53/diagnostic-37809372315/python-test-evidence.zip",
+    "sha256": "3957e68ed218578e03721786c111250b9548e3e743e472fbde5cfa9edef4ddd9"
+  },
+  "cmake": "Intentionally skipped only on the diagnostic branch.",
+  "durations": {
+    "pytest_total_seconds": 193.59,
+    "scope_range_seconds": 68.93,
+    "scope_section_seconds": 63.12
+  },
+  "event": "push",
+  "head": "d9383231a4ddb58c968105761c607fb2c3206660",
+  "helper_note": "The independently reproduced early chooser timer risk is distinct. Its test-only repair and explicit early-delivery regression follow this frozen diagnostic.",
+  "job_id": 113421927104,
+  "job_log": {
+    "raw_bytes": 141685,
+    "raw_sha256": "8d00f6f03a3ad48a921e35ddd9b85a3d97a6b367bc5b3992bd27eddb0f31d4d2",
+    "stored_gzip_sha256": "09b1239f207d3fb6251400731eb0589ab18b14c221a3c49dfe7e3c824b7f6121"
+  },
+  "receipt": {
+    "accepted": true,
+    "counts": {
+      "errors": 0,
+      "failures": 0,
+      "passed": 490,
+      "skipped": 6,
+      "tests": 496
+    },
+    "created_at": "2026-10-08T16:35:53.463063+00:00",
+    "github": {
+      "GITHUB_ACTIONS": "true",
+      "GITHUB_EVENT_NAME": "push",
+      "GITHUB_REF": "refs/heads/estate/234cae4aee53-analysis-sources-diagnostic",
+      "GITHUB_RUN_ID": "37809372315",
+      "GITHUB_SHA": "d9383231a4ddb58c968105761c607fb2c3206660",
+      "GITHUB_WORKFLOW_REF": "Jacob-Met/CaptureSuite/.github/workflows/ci.yml@refs/heads/estate/234cae4aee53-analysis-sources-diagnostic"
+    },
+    "junit_sha256": "7a9a46e987b827f6ea01b44d68cd8e44afaf055b75f28ce785dc81228590a001",
+    "log_sha256": "d9776a6730845a967e5d47bffdf760731d4ef8224517f3f4d8191ea6890e932e",
+    "problems": [],
+    "process_exit": 0,
+    "run_directory": "build/evidence/python-20261008T163238Z-5c440de0",
+    "schema": "capturesuite.test-receipt.v1",
+    "scope": "Process and test-evidence consistency, not clinical validation",
+    "seconds": 194.3627534000002,
+    "source_commit": "d9383231a4ddb58c968105761c607fb2c3206660",
+    "source_file_count": 969,
+    "source_tree_sha256": "e1c07336ba9aa0ee33a92920ad966345fa154f1ed450d004019c95835bb2912f",
+    "source_unchanged_during_test": true,
+    "source_worktree_dirty": false
+  },
+  "retained_entries": [
+    {
+      "archive_path": "python-20261008T163238Z-5c440de0/pytest.xml",
+      "bytes": 68674,
+      "retained_name": "pytest.xml",
+      "sha256": "7a9a46e987b827f6ea01b44d68cd8e44afaf055b75f28ce785dc81228590a001"
+    },
+    {
+      "archive_path": "python-20261008T163238Z-5c440de0/pytest.log",
+      "bytes": 71960,
+      "retained_name": "pytest.log",
+      "sha256": "d9776a6730845a967e5d47bffdf760731d4ef8224517f3f4d8191ea6890e932e"
+    },
+    {
+      "archive_path": "python-20261008T163238Z-5c440de0/receipt.json",
+      "bytes": 1269,
+      "retained_name": "receipt.json",
+      "sha256": "9a54df38e3fefd48bb826453162b9300bdd76388323e5f99a6a771a9fd847403"
+    },
+    {
+      "archive_path": "python-20261008T163238Z-5c440de0/source-manifest.json",
+      "bytes": 127304,
+      "retained_name": "source-manifest.json",
+      "sha256": "c32760c57e6e48f07ca419db20b5ca08fa485bcd8bc9cef21628745eec37ed32"
+    }
+  ],
+  "run_id": 37809372315,
+  "run_url": "https://github.com/Jacob-Met/CaptureSuite/actions/runs/37809372315",
+  "schema": "capturesuite.analysis-sources.windows-receiving.v1",
+  "screenshot": {
+    "bytes": 15923,
+    "path": "/Users/me/Developer/capturesuite-scope-receiving-234cae4aee53/build/evidence/analysis-sources-234cae4aee53/diagnostic-37809372315/windows-mainwindow.png",
+    "presentation": "Missing-glyph boxes throughout offscreen Windows application text; execution and layout only. Readable Windows presentation is not claimed. Linux presentation remains separately identified.",
+    "sha256": "8a79ad1d9d2d66054e27ac521a95a5c842b2db0ea664b1861e5332a410eca711"
+  },
+  "selected_archive": {
+    "bytes": 68578,
+    "sha256": "8f90e505d6fbab45df01c1c6f63362b1a1958d7211a769d4fd1c859650c95db7"
+  },
+  "selected_evidence_note": "selected-evidence.tar.gz retains the exact unmodified pytest.xml, pytest.log, receipt.json and source-manifest.json bytes from the verified archive. The original full ZIP is retained at the native path above.",
+  "source_equality": {
+    "crlf": [
+      ".cursor/hooks/stop-capture-processes.ps1",
+      "plugins/example_sine_py/run_worker.cmd",
+      "plugins/lsl_bridge/run_worker.cmd",
+      "scripts/dev-env.ps1",
+      "tools/gstreamer-installers/install-gstreamer.ps1",
+      "tools/new_plugin.ps1",
+      "tools/run-daemon-gstreamer.ps1",
+      "tools/run-demo.ps1"
+    ],
+    "diagnostic": [
+      ".github/workflows/ci.yml"
+    ],
+    "errors": [],
+    "exact": 960
+  },
+  "source_parent": "866702923c97743ce80fb86b8d96d180068fc52b",
+  "source_testcases": [
+    "<testcase classname=\"tests.ui.test_analysis_sources\" name=\"test_operator_can_choose_exact_recorded_sources\" time=\"0.061\" />",
+    "<testcase classname=\"tests.ui.test_analysis_sources\" name=\"test_source_choice_reaches_real_thread_job_and_mcap_outputs[None]\" time=\"0.141\" />",
+    "<testcase classname=\"tests.ui.test_analysis_sources\" name=\"test_source_choice_reaches_real_thread_job_and_mcap_outputs[sampler.a]\" time=\"0.113\" />",
+    "<testcase classname=\"tests.ui.test_analysis_sources\" name=\"test_source_choice_reaches_real_thread_job_and_mcap_outputs[sampler.b]\" time=\"0.112\" />",
+    "<testcase classname=\"tests.ui.test_analysis_sources\" name=\"test_empty_selected_sources_never_become_all_sources\" time=\"0.062\" />",
+    "<testcase classname=\"tests.ui.test_analysis_sources\" name=\"test_vanished_selection_stays_invalid_and_is_rechecked_at_launch[False]\" time=\"0.064\" />",
+    "<testcase classname=\"tests.ui.test_analysis_sources\" name=\"test_vanished_selection_stays_invalid_and_is_rechecked_at_launch[True]\" time=\"0.067\" />",
+    "<testcase classname=\"tests.ui.test_analysis_sources\" name=\"test_cancel_command_limits_and_package_identity\" time=\"0.069\" />",
+    "<testcase classname=\"tests.ui.test_analysis_sources\" name=\"test_unreadable_inventory_refuses_explicit_subset\" time=\"0.051\" />",
+    "<testcase classname=\"tests.ui.test_analysis_sources\" name=\"test_worker_refuses_a_subset_for_a_nonconsuming_command\" time=\"0.015\" />",
+    "<testcase classname=\"tests.ui.test_analysis_sources\" name=\"test_application_sources_survive_timer_and_review_navigation\" time=\"0.333\" />"
+  ],
+  "status": "Python diagnostic passed; not the ordinary full PR gate",
+  "timeout_interpretation": "Both unchanged scope cases passed after the 45-second trace sampled matplotlib layout in the worker and QTest.qWait in the scope test. This does not establish the exact cause of the previous 300-second timeout, whose partial output has no emitted node IDs or stack. No deadline or product change was made.",
+  "tree": "224a7db3fc2469b41b00a6fddf4c419f23ab242b"
+}

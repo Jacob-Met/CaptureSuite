@@ -1,0 +1,29 @@
+diff --git a/.github/workflows/ci.yml b/.github/workflows/ci.yml
+index 9c08a4d..4471976 100644
+--- a/.github/workflows/ci.yml
++++ b/.github/workflows/ci.yml
+@@ -2,7 +2,7 @@ name: CI
+ 
+ on:
+   push:
+-    branches: [main, master]
++    branches: [main, master, estate/234cae4aee53-analysis-sources-diagnostic]
+   pull_request:
+ 
+ jobs:
+@@ -36,6 +36,7 @@ jobs:
+       - name: Pytest
+         env:
+           QT_QPA_PLATFORM: offscreen
++          PYTEST_ADDOPTS: "-vv --durations=25 -o faulthandler_timeout=45"
+         run: python tools/run_ci_tests.py
+       - name: Preserve Python test evidence
+         if: always()
+@@ -47,6 +48,7 @@ jobs:
+           retention-days: 7
+ 
+   cmake:
++    if: ${{ github.ref != 'refs/heads/estate/234cae4aee53-analysis-sources-diagnostic' }}
+     runs-on: windows-2022
+     timeout-minutes: 45
+     steps:

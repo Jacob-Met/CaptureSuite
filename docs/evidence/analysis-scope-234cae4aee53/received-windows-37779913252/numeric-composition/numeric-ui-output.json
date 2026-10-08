@@ -1,0 +1,235 @@
+{
+  "selected_ns": [
+    1200000001,
+    2400000001
+  ],
+  "actual_sample_ns": [
+    1250000000,
+    1300000000,
+    1350000000,
+    1400000000,
+    1450000000,
+    1500000000,
+    1550000000,
+    1600000000,
+    1650000000,
+    1700000000,
+    1750000000,
+    1800000000,
+    1850000000,
+    1900000000,
+    1950000000,
+    2000000000,
+    2050000000,
+    2100000000,
+    2150000000,
+    2200000000,
+    2250000000,
+    2300000000,
+    2350000000,
+    2400000000
+  ],
+  "series_labels": [
+    "Numeric sampler.a/force \u00b7 input 1",
+    "Numeric sampler.a/voltage \u00b7 input 1",
+    "Numeric sampler.b/temperature \u00b7 input 1"
+  ],
+  "source_ids": [
+    "sampler.a",
+    "sampler.b"
+  ],
+  "raw_files_unchanged": 15,
+  "params": {
+    "applySyncAnchors": false,
+    "checkpointSection": null,
+    "command": "all",
+    "endSessionNs": 2400000001,
+    "extra": {},
+    "gapPolicy": "mask",
+    "maxRamBytes": 2147483648,
+    "overwriteJobId": null,
+    "sources": [],
+    "startSessionNs": 1200000001
+  },
+  "manifest": {
+    "analysisGrids": [],
+    "captureAnalysisVersion": "0.1.0",
+    "createdUtc": "2026-10-08T13:27:25Z",
+    "errors": [],
+    "evalWindowCount": null,
+    "featureTables": [
+      {
+        "featureSchemaVersion": 1,
+        "relativePath": "features/numeric/source-73616d706c65722e61/stream-666f726365/windows.parquet",
+        "rows": 1
+      },
+      {
+        "featureSchemaVersion": 1,
+        "relativePath": "features/numeric/source-73616d706c65722e61/stream-766f6c74616765/windows.parquet",
+        "rows": 1
+      },
+      {
+        "featureSchemaVersion": 1,
+        "relativePath": "features/numeric/source-73616d706c65722e62/stream-74656d7065726174757265/windows.parquet",
+        "rows": 1
+      }
+    ],
+    "gapPolicy": "mask",
+    "gapSummary": {
+      "closed": 0,
+      "maskedNs": 0,
+      "open": 0,
+      "validFraction": null
+    },
+    "jobId": "20261008T132709Z_9c98951e",
+    "kinematicsRows": null,
+    "manifestSha256": "77d52177df967781e855cb78ef991f680842582ebd988ded9c02e04b77a05a97",
+    "mlBundleWindowCount": null,
+    "modalities": [
+      "eeg",
+      "emg",
+      "numeric"
+    ],
+    "outputs": [
+      {
+        "bytes": 252,
+        "kind": "params",
+        "relativePath": "params.json",
+        "sha256": "a03290ea6d745ac06441323dd028e5e20ad512403970c49f3265b27fbd5d189c"
+      },
+      {
+        "bytes": 1655,
+        "kind": "qc_json",
+        "relativePath": "reports/qc.json",
+        "sha256": "bc7b8af0b033c7978c51216641dd7a0f019f723a9312b573fd13b3cea9957e7a"
+      },
+      {
+        "bytes": 2377,
+        "kind": "qc_html",
+        "relativePath": "reports/qc.html",
+        "sha256": "1a97d405e53e56736859759904dc1f3c74ebf50a980ec8356d7d0c5b568c96b0"
+      },
+      {
+        "bytes": 4154,
+        "kind": "feature_parquet",
+        "relativePath": "features/numeric/source-73616d706c65722e61/stream-666f726365/windows.parquet",
+        "sha256": "44b3bf8d72ef1ecd352d4afa1f512338fd2a114525ede632f27a6dbe805b9fd7"
+      },
+      {
+        "bytes": 121,
+        "kind": "feature_csv",
+        "relativePath": "features/numeric/source-73616d706c65722e61/stream-666f726365/windows.csv",
+        "sha256": "a990a925e2e6b7f3aa0b20c28b9c29e89d7685537f7295deddc06276e33e1b2a"
+      },
+      {
+        "bytes": 54239,
+        "kind": "figure",
+        "relativePath": "figures/numeric/source-73616d706c65722e61/stream-666f726365/channel_0.png",
+        "sha256": "c2be3fc6335ca63e19ebe591ff7a8dd85918cef85f5aabdadf8618fc1b252f4f"
+      },
+      {
+        "bytes": 4154,
+        "kind": "feature_parquet",
+        "relativePath": "features/numeric/source-73616d706c65722e61/stream-766f6c74616765/windows.parquet",
+        "sha256": "6d01cefcbc8e7d5bc46d9084db0cce665fcc8cb0a22e47973a4bd84b5f9e1442"
+      },
+      {
+        "bytes": 121,
+        "kind": "feature_csv",
+        "relativePath": "features/numeric/source-73616d706c65722e61/stream-766f6c74616765/windows.csv",
+        "sha256": "79d866db11a651987f06d5008e56395d4a70e20a37942780b2e62939e7d26b49"
+      },
+      {
+        "bytes": 53569,
+        "kind": "figure",
+        "relativePath": "figures/numeric/source-73616d706c65722e61/stream-766f6c74616765/channel_0.png",
+        "sha256": "bc7ed97681e01d08df5b142279eb616db35d930fc0f28bca43e1a32fe1338866"
+      },
+      {
+        "bytes": 4154,
+        "kind": "feature_parquet",
+        "relativePath": "features/numeric/source-73616d706c65722e62/stream-74656d7065726174757265/windows.parquet",
+        "sha256": "0d70d056407080defff12e4b82b986e7684531335c2ee4c6886fdc001dd9b3ef"
+      },
+      {
+        "bytes": 120,
+        "kind": "feature_csv",
+        "relativePath": "features/numeric/source-73616d706c65722e62/stream-74656d7065726174757265/windows.csv",
+        "sha256": "e0b3897ba941a45252a8e350ff02105aef01aa397da2161c88c4b5175e30e136"
+      },
+      {
+        "bytes": 52023,
+        "kind": "figure",
+        "relativePath": "figures/numeric/source-73616d706c65722e62/stream-74656d7065726174757265/channel_0.png",
+        "sha256": "4b6b3d0fab38638ae02d60af21ff266b3276fc44d74dfc99c1543476681a435b"
+      },
+      {
+        "bytes": 6191,
+        "kind": "feature_schema",
+        "relativePath": "features/_schema.json",
+        "sha256": "169d2bdcb8fd6242580731d71ff6ad640e4d68fdc7511b3040e2d05e4307e374"
+      },
+      {
+        "bytes": 122120,
+        "kind": "figure",
+        "relativePath": "figures/sync_dashboard.png",
+        "sha256": "ccfccc1cd6876f95d56ffb0808c2be829fe9829f104d4873decda941514ebd4f"
+      },
+      {
+        "bytes": 3055,
+        "kind": "sync_series",
+        "relativePath": "figures/sync_dashboard_series.json",
+        "sha256": "854d95a2ee6d41e0f594c206b3752c3ad1ed35cc7fe00f95073c04a7cdafe0a4"
+      },
+      {
+        "bytes": 5636,
+        "kind": "manifest",
+        "relativePath": "job_manifest.json",
+        "sha256": "7f3294ff1bc7b8689c06ff6fa35e0b78f70c8a349b68d4413921327921fc90f7"
+      }
+    ],
+    "packagePath": "/dev/shm/capturesuite-234cae4aee53/scope-numeric-union/test_numeric_schema_priority_r0/numeric scope \u03bc.mmsession",
+    "packageState": "finalized",
+    "paramsDigest": "9c98951ed72f08f18193ab6ff623bb53cd489acbdfe397acef82c2449f7c9f64",
+    "pluginIds": [
+      "emg.envelope.v1",
+      "imu.kinematics.v1",
+      "radar.rd_energy.v1",
+      "radar_doppler.mag.v1",
+      "video.timing_qc.v1",
+      "numeric.basic.v1",
+      "test.dummy.feature.v1"
+    ],
+    "pluginManifestVersion": "1.0.0",
+    "poseJobId": null,
+    "poseModelId": null,
+    "poseTables": [],
+    "schemaId": "capture.analysis_job/1",
+    "sessionId": "independent-numeric-cli",
+    "sourcesSelected": [
+      "sampler.a",
+      "sampler.b"
+    ],
+    "status": "completed",
+    "syncAnchorsApplied": {
+      "anchors": [],
+      "applied": false
+    },
+    "timeRange": {
+      "checkpointIds": [],
+      "endSessionNs": 2400000001,
+      "mode": "custom",
+      "startSessionNs": 1200000001
+    },
+    "tooling": {
+      "captureAnalysis": "0.1.0",
+      "matplotlib": "3.11.2",
+      "numpy": "2.5.3",
+      "pandas": "3.0.6",
+      "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+      "python": "3.12.14",
+      "scipy": "1.18.1"
+    },
+    "warnings": []
+  }
+}

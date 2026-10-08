@@ -1,0 +1,78 @@
+{
+  "schema": "capturesuite.analysis-scope.windows-python-receiving.v1",
+  "run_id": 37779913252,
+  "job_id": 113320114149,
+  "artifact_id": 11551519953,
+  "zip_bytes": 1593274,
+  "zip_sha256": "7a9a860eae52a9e66120c4a78211d1765b05621a60df1f9bceef1c78a8365e67",
+  "published_head": "adc370116c54b0ee12bb79912aa59d49b4ed0234",
+  "actual_ci_checkout": "6c1173d492b8caebbe71098f208385058b5dda14",
+  "ci_git_tree": "02a0edc59b2f8dc0159282f67dfdd4ae0cf69ad9",
+  "ci_git_parents": [
+    "e43da3b855475c8aacf815c201fa03eddaeec0f1",
+    "adc370116c54b0ee12bb79912aa59d49b4ed0234"
+  ],
+  "counts": {
+    "tests": 351,
+    "passed": 345,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 6
+  },
+  "scope_tests_executed": 17,
+  "scope_skips": 0,
+  "main_window_test": {
+    "classname": "tests.ui.test_analysis_scope",
+    "name": "test_application_scope_survives_timer_and_review_navigation",
+    "time": "0.437"
+  },
+  "source_unchanged": true,
+  "source_files": 819,
+  "exact_raw_matches": 811,
+  "declared_crlf_paths": [
+    ".cursor/hooks/stop-capture-processes.ps1",
+    "plugins/example_sine_py/run_worker.cmd",
+    "plugins/lsl_bridge/run_worker.cmd",
+    "scripts/dev-env.ps1",
+    "tools/gstreamer-installers/install-gstreamer.ps1",
+    "tools/new_plugin.ps1",
+    "tools/run-daemon-gstreamer.ps1",
+    "tools/run-demo.ps1"
+  ],
+  "skips": [
+    {
+      "classname": "tests.protocol.test_daemon_e2e",
+      "name": "test_multi_modality_record_with_disconnect",
+      "reason": "capture_daemon.exe not built (run cmake --build)"
+    },
+    {
+      "classname": "tests.protocol.test_daemon_e2e",
+      "name": "test_bad_stop_token_rejected",
+      "reason": "capture_daemon.exe not built (run cmake --build)"
+    },
+    {
+      "classname": "tests.protocol.test_daemon_e2e",
+      "name": "test_config_schema_and_apply",
+      "reason": "capture_daemon.exe not built (run cmake --build)"
+    },
+    {
+      "classname": "tests.protocol.test_daemon_e2e",
+      "name": "test_camera_apply_config_proxied_when_worker_present",
+      "reason": "capture_daemon.exe not built (run cmake --build)"
+    },
+    {
+      "classname": "tests.protocol.test_daemon_e2e",
+      "name": "test_start_all_ready_and_acknowledge_alert",
+      "reason": "capture_daemon.exe not built (run cmake --build)"
+    },
+    {
+      "classname": "tests.protocol.test_daemon_e2e",
+      "name": "test_concurrent_clients_served",
+      "reason": "capture_daemon.exe not built (run cmake --build)"
+    }
+  ],
+  "errors": [],
+  "limits": [
+    "C++/native job is still pending; this receipt proves the complete Windows Python job, not installed release or hardware behavior."
+  ]
+}

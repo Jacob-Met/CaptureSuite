@@ -1011,3 +1011,42 @@ GNU linker-wrapped cases, Windows, complete Mac UI/daemon, x86_64 or notarizatio
 Native artifact paths, exact hashes, recipient usage, raw qualification and
 independent review are in
 [the receiving packet](../../receiving/macos-session-doctor-5f566b5ec8ef/README.md).
+
+
+## 2026-10-08 — Desktop analysis source selection (estate-234cae4aee53)
+
+Issue #62 adds All recorded sources / Selected sources to the Analysis workbench,
+using exact discovered descriptor IDs and the existing JobParams.sources path.
+The native chooser preserves explicit choices across refreshes, blocks empty or
+vanished subsets, and keeps package-wide QC visible. Each worker snapshots the
+source IDs before starting; the separate time scope composes unchanged. Source
+selection is available only to the existing consuming commands.
+
+The original clean 2f4dcf3 parent fails the actual Qt missing-control gate while
+the same fixture verifies the review-folder / analysis-descriptor identity
+difference. An earlier standalone baseline produced a completed numeric job but
+did not return from its Qt lifetime; that incomplete attempt is retained without
+a UI or raw-preservation pass. The candidate's focused actual-chooser/thread/MCAP
+gate passed at 7b2c999 (10 passed, one explicit Linux MainWindow skip), with all
+886 source files and all raw package hashes unchanged. The same real QEventLoop
+receiver completes on the untouched parent and candidate; only the test wait
+mechanism changed.
+
+Frozen Windows diagnostic 37809372315 passed 490 tests with six explicit daemon
+skips in 194.36 seconds, including all 11 source-selection cases and MainWindow.
+It changes observation only, retains the 300-second deadline, and skips CMake
+only on its diagnostic branch; it is not the ordinary full PR gate. The prior
+300-second timeout and its raw evidence remain distinct. Independent actual Qt
+receiving also reproduced and accepted a test-only early-timer chooser repair;
+one explicit early-delivery regression now guards that helper. Current main's
+checkpoint, sync-request refusal and camera changes compose without changing
+either accepted source-selection production blob. The ordinary Windows gate
+on the complete union remains pending. The offscreen Windows screenshot has
+missing glyphs; readable Windows presentation is not claimed.
+
+Shared-screen edits stay within control construction, existing package_loaded
+signal wiring, source admission, and worker parameter handoff. Package lifecycle,
+history/selection/completion, backend jobs/pipeline, galleries and raw storage
+remain with their current owners. The ownership fence is coordinated in #55 and
+HAMON #140. Details: ANALYSIS_SOURCE_SELECTION.md and
+docs/evidence/analysis-sources-234cae4aee53/.

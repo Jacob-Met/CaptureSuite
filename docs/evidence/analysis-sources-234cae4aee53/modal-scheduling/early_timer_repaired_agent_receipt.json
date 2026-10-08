@@ -1,0 +1,71 @@
+{
+  "execution": {
+    "chunk_id": "748b43",
+    "exit_code": 0,
+    "original_token_count": 375,
+    "output": "This plugin does not support propagateSizeHints()\nThis plugin does not support propagateSizeHints()\nThis plugin does not support propagateSizeHints()\nThis plugin does not support propagateSizeHints()\nHAMON_RECEIPT={\"cases\": [{\"elapsed_ms\": 34.858, \"events\": [{\"elapsed_ms\": 31.92, \"event\": \"actual clicked slot opens modal\"}, {\"elapsed_ms\": 34.786, \"event\": \"modal returned\"}], \"forced_early_timer_delivery\": false, \"offered\": [\"sampler.a\"], \"returned\": \"normal\"}, {\"active_modal_after_early_delivery\": false, \"elapsed_ms\": 12.335, \"events\": [{\"elapsed_ms\": 0.508, \"event\": \"deliver pending zero timer before real mouse click\"}, {\"elapsed_ms\": 0.691, \"event\": \"actual clicked slot opens modal\"}, {\"elapsed_ms\": 12.251, \"event\": \"modal returned\"}], \"forced_early_timer_delivery\": true, \"offered\": [\"sampler.a\"], \"returned\": \"normal\"}], \"helper_sha256\": \"e097531c324045781f0f5183a4e1c25b0887d9cde0cdb413a2c4b03845c4e083\", \"purpose\": \"Actual Qt receiving of the bounded modal chooser test helper\", \"pyside\": \"6.11.2\", \"scope\": \"The exact candidate test helper runs against real Qt combo/button/modal/list/button-box controls. A test-driver wrapper explicitly pumps the pending zero timer before forwarding the real chooser click. Both normal and explicitly early delivery must complete without the independent watchdog; this does not attribute the separate Windows suite timeout. No production source is changed.\", \"source_git_blob\": \"b7d2e381d4a1f47465c9ced7e35923eea0668872\", \"status\": \"accepted\"}\n",
+    "wall_time_seconds": 0.156346799
+  },
+  "full_test_git_blob": "b7d2e381d4a1f47465c9ced7e35923eea0668872",
+  "full_test_sha256": "db5430b670eafcbfb8fe5c05b3abffe31ab9eb5fc4bdcae043615dc921532d29",
+  "lint": {
+    "chunk_id": "63a7a4",
+    "exit_code": 0,
+    "original_token_count": 78,
+    "output": "{\"returncode\": 0, \"stdout\": \"All checks passed!\\n\", \"stderr\": \"\", \"test_sha256\": \"db5430b670eafcbfb8fe5c05b3abffe31ab9eb5fc4bdcae043615dc921532d29\", \"cwd\": \"/dev/shm/capturesuite-scope-compose-234cae4aee53\", \"stdin_filename\": \"/dev/shm/capturesuite-scope-compose-234cae4aee53/tests/ui/test_analysis_sources.py\"}\n",
+    "wall_time_seconds": 3.0296e-05
+  },
+  "receiver": {
+    "cases": [
+      {
+        "elapsed_ms": 34.858,
+        "events": [
+          {
+            "elapsed_ms": 31.92,
+            "event": "actual clicked slot opens modal"
+          },
+          {
+            "elapsed_ms": 34.786,
+            "event": "modal returned"
+          }
+        ],
+        "forced_early_timer_delivery": false,
+        "offered": [
+          "sampler.a"
+        ],
+        "returned": "normal"
+      },
+      {
+        "active_modal_after_early_delivery": false,
+        "elapsed_ms": 12.335,
+        "events": [
+          {
+            "elapsed_ms": 0.508,
+            "event": "deliver pending zero timer before real mouse click"
+          },
+          {
+            "elapsed_ms": 0.691,
+            "event": "actual clicked slot opens modal"
+          },
+          {
+            "elapsed_ms": 12.251,
+            "event": "modal returned"
+          }
+        ],
+        "forced_early_timer_delivery": true,
+        "offered": [
+          "sampler.a"
+        ],
+        "returned": "normal"
+      }
+    ],
+    "helper_sha256": "e097531c324045781f0f5183a4e1c25b0887d9cde0cdb413a2c4b03845c4e083",
+    "purpose": "Actual Qt receiving of the bounded modal chooser test helper",
+    "pyside": "6.11.2",
+    "scope": "The exact candidate test helper runs against real Qt combo/button/modal/list/button-box controls. A test-driver wrapper explicitly pumps the pending zero timer before forwarding the real chooser click. Both normal and explicitly early delivery must complete without the independent watchdog; this does not attribute the separate Windows suite timeout. No production source is changed.",
+    "source_git_blob": "b7d2e381d4a1f47465c9ced7e35923eea0668872",
+    "status": "accepted"
+  },
+  "schema": "capturesuite.modal-test-helper.receiving.v1",
+  "scope": "Test helper and one adversarial actual-screen regression only; production source unchanged."
+}

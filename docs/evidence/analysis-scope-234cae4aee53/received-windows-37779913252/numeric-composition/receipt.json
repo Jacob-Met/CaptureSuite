@@ -1,0 +1,25 @@
+{
+  "command": [
+    "/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "tests/ui/test_analysis_scope.py::test_selected_scope_reaches_real_thread_job_and_mcap_outputs",
+    "build/evidence/scope-numeric-composition/test_numeric_scope.py",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=/dev/shm/capturesuite-234cae4aee53/scope-numeric-union",
+    "--junitxml=build/evidence/scope-numeric-composition/pytest.xml",
+    "--durations=5",
+    "-q"
+  ],
+  "source_head": "64f25af9957ea0e0e40f9f02ebb45d63185ac049",
+  "tree": "6d849a6cfeba945b12b5ddc8570b45e2f64ce658",
+  "exit_code": 0,
+  "seconds": 65.9595909560012,
+  "clean_before": true,
+  "clean_after": true,
+  "source_files": 851,
+  "source_unchanged": true,
+  "harness_sha256": "d5fdd1876bed2902782e3d92af7886d122209658caa9d4135bbfc530ad06df69"
+}

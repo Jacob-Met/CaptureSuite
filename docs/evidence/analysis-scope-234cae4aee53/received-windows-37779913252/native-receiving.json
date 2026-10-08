@@ -1,0 +1,42 @@
+{
+  "schema": "capturesuite.analysis-scope.windows-native-receiving.v1",
+  "run_id": 37779913252,
+  "job_id": 113320114422,
+  "artifact_id": 11551854520,
+  "zip_bytes": 274421,
+  "zip_sha256": "2ecaef6457ac2b651d6fae00386a367de05f68490c6726501860b1760a1b3f0f",
+  "actual_ci_checkout": "6c1173d492b8caebbe71098f208385058b5dda14",
+  "ci_git_tree": "02a0edc59b2f8dc0159282f67dfdd4ae0cf69ad9",
+  "ctest_passed": 26,
+  "ctest_junit_sha256": "ef89bf5fa9551fc085ed9b021f0d21ec708ef15b63a65a950e65a55e64b30258",
+  "native_counts": {
+    "tests": 6,
+    "passed": 6,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "source_unchanged": true,
+  "source_worktree_dirty": true,
+  "qualified_source_files_exact": 819,
+  "extra_source_entries": {
+    "vcpkg/": null
+  },
+  "binaries": [
+    {
+      "path": "daemon/capture_daemon.exe",
+      "bytes": 1602560,
+      "sha256": "cd4d3b22ca4725f6c0582007e3ef30f3de152bade10b528aeec683e3be854624"
+    },
+    {
+      "path": "tools/session_doctor/session_doctor.exe",
+      "bytes": 489472,
+      "sha256": "4dc9af04151a96055cde29143ef96168f5b3ccfec4e5dd341fa4b30aed4cce46"
+    }
+  ],
+  "errors": [],
+  "limits": [
+    "The extra vcpkg/ entry is the tool-managed nested checkout; the819 tracked source paths match Python qualification exactly.",
+    "This is the original e43+adc CI union, not the later numeric-main composition."
+  ]
+}

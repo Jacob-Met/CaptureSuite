@@ -1,0 +1,13 @@
+{
+  "source_commit": "7b2c999584909fd7ef5623e2133b9e8f507031d8",
+  "accepted": false,
+  "reason": "PNG filesystem write failed while the cloud host was full. This attempt does not establish a successful presentation.",
+  "driver": "import hashlib, json, os\nfrom pathlib import Path\nfrom PySide6.QtCore import QTimer\nfrom PySide6.QtWidgets import QApplication, QDialog\nfrom capture_desktop import theme\nfrom tests.ui.test_analysis_sources import _screen, _choose, _close\nfrom tests.analysis.test_numeric_cli_receiving import retained_files\n\nroot = Path.cwd() / \"build/evidence/analysis-sources-234cae4aee53/presentation-7b2c999\"\nroot.mkdir(parents=True, exist_ok=False)\nfor key in (\"LOCALAPPDATA\", \"APPDATA\", \"XDG_CONFIG_HOME\", \"XDG_DATA_HOME\", \"XDG_CACHE_HOME\"):\n    directory = root / key\n    directory.mkdir()\n    os.environ[key] = str(directory)\npackage = Path(\"/dev/shm/capturesuite-234cae4aee53/source-candidate-7b2c999/\"\n               \"test_source_choice_reaches_rea0/source choice μ.mmsession\")\nbefore = retained_files(package)\napp = QApplication.instance() or QApplication([])\ntheme.apply_theme(app, setting=\"dark\")\nscreen = _screen(app, package)\nscreen._command.setCurrentIndex(screen._command.findData(\"features\"))\n_choose(app, screen._sources, {\"sampler.a\"})\napp.processEvents()\nassert screen.grab().save(str(root / \"workbench.png\"))\n\ndef capture_dialog():\n    dialog = app.activeModalWidget()\n    assert isinstance(dialog, QDialog)\n    assert dialog.grab().save(str(root / \"chooser.png\"))\n    dialog.reject()\n\nQTimer.singleShot(50, capture_dialog)\nscreen._sources._choose_sources()\nassert before == retained_files(package)\nprint(json.dumps({\"source_product\": \"unchanged from 7b2c999\", \"platform\": \"Linux offscreen Qt\",\n                  \"images\": {p.name: hashlib.sha256(p.read_bytes()).hexdigest()\n                             for p in root.glob(\"*.png\")}, \"raw_unchanged\": True}))\n_close(app, screen)\n",
+  "result": {
+    "chunk_id": "d59bf9",
+    "wall_time_seconds": 0.000023476,
+    "exit_code": 1,
+    "original_token_count": 79,
+    "output": "This plugin does not support propagateSizeHints()\nThis plugin does not support propagateSizeHints()\nThis plugin does not support propagateSizeHints()\nThis plugin does not support propagateSizeHints()\nlibpng error: Write Error\nTraceback (most recent call last):\n  File \"<string>\", line 24, in <module>\nAssertionError\n"
+  }
+}

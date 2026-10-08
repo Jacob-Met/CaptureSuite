@@ -1,0 +1,201 @@
+{
+  "source_head": "2f4dcf3ec81a96ac92100f69155879fe42e4f948",
+  "files": [
+    {
+      "file": "/dev/shm/capturesuite-234cae4aee53/publication/tree-0.json",
+      "bytes": 39240,
+      "sha256": "d9be494d783c70c529330945b4b74fc45e84b3a39ad87e4879881c9db63cc717",
+      "entries": 5
+    },
+    {
+      "file": "/dev/shm/capturesuite-234cae4aee53/publication/tree-1.json",
+      "bytes": 47396,
+      "sha256": "b26ac8a6f101387288f821ac00b69801d777b2c5bfe287a814f738e239e9924b",
+      "entries": 6
+    },
+    {
+      "file": "/dev/shm/capturesuite-234cae4aee53/publication/tree-2.json",
+      "bytes": 65938,
+      "sha256": "d0662117e9f4edc65d87eafd32a59f021890b82d86bc50af3dbcc4249d96b591",
+      "entries": 1
+    },
+    {
+      "file": "/dev/shm/capturesuite-234cae4aee53/publication/tree-3.json",
+      "bytes": 43068,
+      "sha256": "0a8c0293092d047b8987b89461046d19b7e288be438acafa27fc42a127c50842",
+      "entries": 11
+    },
+    {
+      "file": "/dev/shm/capturesuite-234cae4aee53/publication/tree-4.json",
+      "bytes": 35998,
+      "sha256": "0c22849035a4c25b09c33a410be0c4dcbf6c770a3d9d97e239df59d84e12c399",
+      "entries": 10
+    },
+    {
+      "file": "/dev/shm/capturesuite-234cae4aee53/publication/tree-5.json",
+      "bytes": 67873,
+      "sha256": "726268a929ddbba9d83ef74f7ae83d5a9c09dd3aac35acf8d92d537ec9758af5",
+      "entries": 1
+    },
+    {
+      "file": "/dev/shm/capturesuite-234cae4aee53/publication/tree-6.json",
+      "bytes": 46830,
+      "sha256": "4e9ae1cfe41a6e79bd78fa5b16391c9de942892a5e0405a49f684dfd5d603f63",
+      "entries": 5
+    },
+    {
+      "file": "/dev/shm/capturesuite-234cae4aee53/publication-r3/tree-1.json",
+      "bytes": 72357,
+      "sha256": "f1ea92e256541ca24b2fb7e7c53839ef5586739024eb981ebefac77225d94e9d",
+      "entries": 1
+    },
+    {
+      "file": "/dev/shm/capturesuite-234cae4aee53/publication-r3/tree-2.json",
+      "bytes": 12928,
+      "sha256": "a61459a0ca396399152cd259e0e0e1fc02263c80ebf901a3b6583a71eac9fb75",
+      "entries": 2
+    },
+    {
+      "file": "/dev/shm/capturesuite-234cae4aee53/publication-r3/tree-3.json",
+      "bytes": 46925,
+      "sha256": "42de46d16df049e41342d966f01a581f2931cf329046f8aaee50b4395e0884b3",
+      "entries": 2
+    },
+    {
+      "file": "/dev/shm/capturesuite-234cae4aee53/publication-r3/tree-4.json",
+      "bytes": 72371,
+      "sha256": "c1d6d610688dcb90549c8017da7c4ef40ab1f3d1df9749765f1e1684a7badc77",
+      "entries": 1
+    },
+    {
+      "file": "/dev/shm/capturesuite-234cae4aee53/publication-r3/tree-5.json",
+      "bytes": 34575,
+      "sha256": "4c4ec52b13bd32f63febe2059ef0a5dca5895758632d86496c0c396a22c9bf5e",
+      "entries": 2
+    },
+    {
+      "file": "/dev/shm/capturesuite-234cae4aee53/publication-r3-final/tree-0.json",
+      "bytes": 49380,
+      "sha256": "28d4ad64eafc597faf052144fe2489304e4c4bc84834bf6ff7feee79b25c9d04",
+      "entries": 38
+    },
+    {
+      "file": "/dev/shm/capturesuite-234cae4aee53/publication-r3-final/tree-1.json",
+      "bytes": 21041,
+      "sha256": "d72f240bd7b97a0c155b8d6954b7b8d03fa89c919971a30c0af5f05e10988295",
+      "entries": 6
+    },
+    {
+      "file": "/dev/shm/capturesuite-234cae4aee53/publication-r3-final/tree-2.json",
+      "bytes": 77055,
+      "sha256": "f05c10527f341ef2fa2d9769d3e34cd4e71c47b884583a9a223c132950a7ab45",
+      "entries": 1
+    },
+    {
+      "file": "/dev/shm/capturesuite-234cae4aee53/publication-r3-final/tree-3.json",
+      "bytes": 2183,
+      "sha256": "6424bbc0f2a2838e527c934938d9b0d4761770ae96a8cfa62bb1deeca9fdc035",
+      "entries": 2
+    },
+    {
+      "file": "/dev/shm/capturesuite-234cae4aee53/publication-r3-final/tree-4.json",
+      "bytes": 72357,
+      "sha256": "f1ea92e256541ca24b2fb7e7c53839ef5586739024eb981ebefac77225d94e9d",
+      "entries": 1
+    },
+    {
+      "file": "/dev/shm/capturesuite-234cae4aee53/publication-r3-final/tree-5.json",
+      "bytes": 12928,
+      "sha256": "a61459a0ca396399152cd259e0e0e1fc02263c80ebf901a3b6583a71eac9fb75",
+      "entries": 2
+    },
+    {
+      "file": "/dev/shm/capturesuite-234cae4aee53/publication-r3-final/tree-6.json",
+      "bytes": 46925,
+      "sha256": "42de46d16df049e41342d966f01a581f2931cf329046f8aaee50b4395e0884b3",
+      "entries": 2
+    },
+    {
+      "file": "/dev/shm/capturesuite-234cae4aee53/publication-r3-final/tree-7.json",
+      "bytes": 72371,
+      "sha256": "c1d6d610688dcb90549c8017da7c4ef40ab1f3d1df9749765f1e1684a7badc77",
+      "entries": 1
+    },
+    {
+      "file": "/dev/shm/capturesuite-234cae4aee53/publication-r3-final/tree-8.json",
+      "bytes": 35013,
+      "sha256": "db22818229f7acb1738c7695d9937eeb3f5e1324c260d91aa202d9077f5343c6",
+      "entries": 5
+    }
+  ],
+  "blobs": [
+    "b22d0098eb9af3860c654591e411dbab68a0f05d",
+    "d26f60636eba0a3796e3c3830518b2012acaae3f",
+    "c8f9e49f725bd0a9685b23812a1c1b2209aa305c",
+    "fa893f05b2ac701a32d41628c198e3832b16caa8",
+    "c7c02100befc6bcdc4ff15bb82d2b32b7cdfedb1",
+    "75bb080123927b7d9f383e57087775ecc78a5c5b",
+    "ed8e962c908c9524aeb5a0d46f87b54c86b517ad",
+    "1a4563058d19e81fc6cb445eb35a38e163d1bd51",
+    "7e5478e824ed72b93568eec8b1dfdd201c8b7f08",
+    "2c06f7e8083654fc48579ff749f311e69b4c64e3",
+    "e10030662c4f3ce7d8e1a8a5ea6ab6df4fff9b04",
+    "5b40ef375f05aaaf849133b2c06454d3c168ac0d",
+    "1017b8e27cdd7a51ce21e0477b0d6f0a16b93f46",
+    "88d586256a9477a79654263f0809cc38c0a6dde1",
+    "39eb06a5102200e7eabbe3cae6622ca3c5ce8104",
+    "ff09293861b288cc03eb8e43b4009ef2c2b1cb2b",
+    "b935facdb164da694a2cfe77929566ca5dd29b70",
+    "324fa1d50c7b3fb4ab2cdb25f7423e2bd5b791da",
+    "c9ec1d6eb80fb4662a96698a7d8b71648b245a7b",
+    "67b76f289b6cfc7d27287940218c9e73edc4eef5",
+    "ce228336cc4db0f40e0916c2244185b8d414e6de",
+    "beb896e19ba4fe55e935d33a1e6c97281c1fe20d",
+    "b1adf31a47e2154452dbe23919b7c4ff2359bc84",
+    "da1feb9e2e8bd585e1630a295c2fe78e2a51ba10",
+    "d92e4f454e40706986471c42e1399624079ab243",
+    "7a8ee85b450c422cb8f60de191434f4c4b39d4ac",
+    "d1d3cd0800f000e6ba8c663bcc15e431bce113aa",
+    "1ea8f57e321e8f0417705b2b162788847b129d74",
+    "55e847928ed1ef992f1bec22bd6ce8792e30901a",
+    "b44c4f3b5a1e473353158a36239342c3733c6f0b",
+    "1f5f344d054fae10f39140fb7199c99321d9190a",
+    "41c575ffc3983e3cf4134aae674b07aae3ec9c89",
+    "d691f4bd94c579b33d02944897b7214341be0a8c",
+    "41e82683d265136f9b85fceed4a8031aa327be52",
+    "8c265bb2498c7286298bec712361ca44f224c088",
+    "369622b0515d330a8089f6e2faed2af3e7894730",
+    "af340200cd9825ada30813e0cf6dbd5e770dd8b3",
+    "3c9ba995ae7a3b6982d736b9f756d0d1a892ae8b",
+    "721263b0e8edf00cad1d400d916a8500c7766ca1",
+    "f12482f232770e6e232f0a73cce7c0c966da15ad",
+    "b48544da1c6f981dbfea2d8249ed940fb60a8e31",
+    "81ac22a27820dc1295254b840bd46b5855d67cda",
+    "a6090a341883fd49fa27d6c79882781be18f0ed1",
+    "c954abbfba768d15c9996a3ab320e6a3a46aff20",
+    "2e5cb9ca9af76403af7cd7c77ea8ed7075e80f25",
+    "724c889b79b7ab882db8b0e7c19a65b658e166de",
+    "4451d3f1b466f3f4953c9268430ccfdccd9ea7ad",
+    "78af7d5b714708c91f5c2c5b6da6988a6c30597d",
+    "7283a48f2bc84faf907641e3c5675153add964d6",
+    "92d6ad922a88a0f147d79faf9b9b69a2f3537d00",
+    "66a8f344cbdf5cf1c4f5c9e6fa8e62481fb18066",
+    "25c11abbc00540e4846aae80afbe8a3a5bb5817d",
+    "a41cd5d06d265598fb8658c63f25fc846c644460",
+    "fa89838f383f77d4505015cb11f3d202b99b9ffb",
+    "3c2227ff89fb64f7d252e83a05df685708408f49",
+    "36f6901acc0c299f86419e461e127f0ec24df041",
+    "a6296920b89ad45528b6e526713c1a7e17fc0a61",
+    "2a3150fa8d5bb998393a421503221d3789be42a6",
+    "5c4bd27449a94d7099ab376db5367e454e2c0c45"
+  ],
+  "unverified": [
+    {
+      "file": "/dev/shm/capturesuite-234cae4aee53/publication-r3/tree-0.json",
+      "reason": "Contains entries not verified reachable; entire file retained"
+    }
+  ],
+  "native_head": "2f4dcf3ec81a96ac92100f69155879fe42e4f948",
+  "native_blob_verification": "All 59 exact blob objects read back through git cat-file --batch-check on existing Mac checkpoint",
+  "scope": "Only owned completed export publication cache chunks; source, distinct evidence, runtime dependencies, and unverified cache file retained"
+}

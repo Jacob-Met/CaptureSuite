@@ -1,0 +1,65 @@
+{
+  "receiver": {
+    "cases": [
+      {
+        "elapsed_ms": 34.75,
+        "events": [
+          {
+            "elapsed_ms": 32.349,
+            "event": "actual clicked slot opens modal"
+          },
+          {
+            "elapsed_ms": 34.701,
+            "event": "modal returned"
+          }
+        ],
+        "forced_early_timer_delivery": false,
+        "offered": [
+          "sampler.a"
+        ],
+        "returned": "normal"
+      },
+      {
+        "active_modal_after_early_delivery": false,
+        "elapsed_ms": 982.854,
+        "error": "",
+        "events": [
+          {
+            "elapsed_ms": 0.422,
+            "event": "deliver pending zero timer before real mouse click"
+          },
+          {
+            "elapsed_ms": 0.568,
+            "event": "actual clicked slot opens modal"
+          },
+          {
+            "elapsed_ms": 982.512,
+            "event": "independent watchdog rescues blocked modal"
+          },
+          {
+            "elapsed_ms": 982.724,
+            "event": "modal returned"
+          }
+        ],
+        "forced_early_timer_delivery": true,
+        "returned": "AssertionError",
+        "watchdog_fired": true
+      }
+    ],
+    "helper_sha256": "97945281b8e4cb34ac7fc599035321cef8457506c2506a89a7c8c0b42cd59e0d",
+    "purpose": "Actual Qt counterexample to the unbounded single zero-timer chooser test helper",
+    "pyside": "6.11.2",
+    "scope": "The exact candidate test helper runs against real Qt combo/button/modal/list/button-box controls. A test-driver wrapper explicitly pumps the pending zero timer before forwarding the real chooser click. This demonstrates the helper timing failure only; it does not identify the cause or current test of the separate Windows suite timeout. No production source is changed.",
+    "source_git_blob": "f1c8e1b06ae859490c0bca343134e2e6cdedd807",
+    "status": "reproduced"
+  },
+  "execution": {
+    "chunk_id": "758b6f",
+    "wall_time_seconds": 1.133526161,
+    "exit_code": 0,
+    "original_token_count": 402,
+    "output": "This plugin does not support propagateSizeHints()\nThis plugin does not support propagateSizeHints()\nThis plugin does not support propagateSizeHints()\nThis plugin does not support propagateSizeHints()\nHAMON_RECEIPT={\"cases\": [{\"elapsed_ms\": 34.75, \"events\": [{\"elapsed_ms\": 32.349, \"event\": \"actual clicked slot opens modal\"}, {\"elapsed_ms\": 34.701, \"event\": \"modal returned\"}], \"forced_early_timer_delivery\": false, \"offered\": [\"sampler.a\"], \"returned\": \"normal\"}, {\"active_modal_after_early_delivery\": false, \"elapsed_ms\": 982.854, \"error\": \"\", \"events\": [{\"elapsed_ms\": 0.422, \"event\": \"deliver pending zero timer before real mouse click\"}, {\"elapsed_ms\": 0.568, \"event\": \"actual clicked slot opens modal\"}, {\"elapsed_ms\": 982.512, \"event\": \"independent watchdog rescues blocked modal\"}, {\"elapsed_ms\": 982.724, \"event\": \"modal returned\"}], \"forced_early_timer_delivery\": true, \"returned\": \"AssertionError\", \"watchdog_fired\": true}], \"helper_sha256\": \"97945281b8e4cb34ac7fc599035321cef8457506c2506a89a7c8c0b42cd59e0d\", \"purpose\": \"Actual Qt counterexample to the unbounded single zero-timer chooser test helper\", \"pyside\": \"6.11.2\", \"scope\": \"The exact candidate test helper runs against real Qt combo/button/modal/list/button-box controls. A test-driver wrapper explicitly pumps the pending zero timer before forwarding the real chooser click. This demonstrates the helper timing failure only; it does not identify the cause or current test of the separate Windows suite timeout. No production source is changed.\", \"source_git_blob\": \"f1c8e1b06ae859490c0bca343134e2e6cdedd807\", \"status\": \"reproduced\"}\n"
+  },
+  "receipt_type": "Actual root-host Qt execution; process output preserved verbatim",
+  "source_note": "The receiver embeds the exact candidate test file and extracts only its _choose function. It was invoked with Python -B -c; no source file existed at execution."
+}
