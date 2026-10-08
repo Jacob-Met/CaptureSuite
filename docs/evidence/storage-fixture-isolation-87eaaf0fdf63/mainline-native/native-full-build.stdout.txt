@@ -1,0 +1,192 @@
+-- The CXX compiler identification is GNU 15.2.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Protobuf 3.21.12 found — C++ codegen enabled
+-- Found Threads: TRUE
+-- Found nlohmann_json: /usr/share/cmake/nlohmann_json/nlohmann_jsonConfig.cmake (found version "3.11.3")
+-- Found PkgConfig: /usr/bin/pkg-config (found version "2.5.1")
+-- Checking for module 'libzstd'
+--   Found libzstd, version 1.5.7
+-- Checking for module 'liblz4'
+--   Found liblz4, version 1.10.0
+-- Found SQLite3: /usr/lib/x86_64-linux-gnu/libsqlite3.so (found version "3.46.1")
+-- Configuring done (1.2s)
+-- Generating done (0.1s)
+-- Build files have been written to: /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug
+[1/119] Generating C++ from capture/v1/source.proto
+[2/119] Generating C++ from capture/v1/common.proto
+[3/119] Generating C++ from capture/v1/project.proto
+[4/119] Generating C++ from capture/v1/events.proto
+[5/119] Generating C++ from capture/v1/presets.proto
+[6/119] Generating C++ from capture/v1/health.proto
+[7/119] Generating C++ from capture/v1/preview.proto
+[8/119] Generating C++ from capture/v1/control.proto
+[9/119] Generating C++ from capture/v1/worker.proto
+[10/119] Generating C++ from capture/v1/storage.proto
+[11/119] Generating C++ from capture/v1/arrays.proto
+[12/119] Generating C++ from capture/v1/data/emg_batch.proto
+[13/119] Generating C++ from capture/v1/data/imu_frame.proto
+[14/119] Generating C++ from capture/v1/data/numeric_batch.proto
+[15/119] Generating C++ from capture/v1/data/radar_frame.proto
+[16/119] Generating C++ from capture/v1/data/radar_doppler.proto
+[17/119] Generating C++ from capture/v1/data/video_timing.proto
+[18/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/libs/cpp/capture_core/src/version.cpp for CXX dependencies
+[19/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/libs/cpp/capture_core/src/framing.cpp for CXX dependencies
+[20/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/libs/cpp/capture_core/src/session_fsm.cpp for CXX dependencies
+[21/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/libs/cpp/capture_core/src/clock.cpp for CXX dependencies
+[22/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/libs/cpp/capture_core/src/source_fsm.cpp for CXX dependencies
+[23/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/libs/cpp/capture_core/src/recording_buffer.cpp for CXX dependencies
+[24/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/libs/cpp/capture_proto/generated/capture/v1/common.pb.cc for CXX dependencies
+[25/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/libs/cpp/capture_core/src/logging.cpp for CXX dependencies
+[26/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/libs/cpp/capture_proto/generated/capture/v1/source.pb.cc for CXX dependencies
+[27/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/libs/cpp/capture_proto/generated/capture/v1/events.pb.cc for CXX dependencies
+[28/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/libs/cpp/capture_proto/generated/capture/v1/project.pb.cc for CXX dependencies
+[29/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/libs/cpp/capture_proto/generated/capture/v1/presets.pb.cc for CXX dependencies
+[30/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/libs/cpp/capture_proto/generated/capture/v1/health.pb.cc for CXX dependencies
+[31/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/libs/cpp/capture_proto/generated/capture/v1/control.pb.cc for CXX dependencies
+[32/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/libs/cpp/capture_proto/generated/capture/v1/preview.pb.cc for CXX dependencies
+[33/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/libs/cpp/capture_proto/generated/capture/v1/worker.pb.cc for CXX dependencies
+[34/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/libs/cpp/capture_proto/generated/capture/v1/storage.pb.cc for CXX dependencies
+[35/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/libs/cpp/capture_proto/generated/capture/v1/arrays.pb.cc for CXX dependencies
+[36/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/libs/cpp/capture_proto/generated/capture/v1/data/emg_batch.pb.cc for CXX dependencies
+[37/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/libs/cpp/capture_proto/generated/capture/v1/data/imu_frame.pb.cc for CXX dependencies
+[38/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/libs/cpp/capture_proto/generated/capture/v1/data/numeric_batch.pb.cc for CXX dependencies
+[39/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/libs/cpp/capture_proto/generated/capture/v1/data/radar_frame.pb.cc for CXX dependencies
+[40/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/libs/cpp/capture_proto/generated/capture/v1/data/radar_doppler.pb.cc for CXX dependencies
+[41/119] Generating CXX dyndep file libs/cpp/capture_core/CMakeFiles/capture_core.dir/CXX.dd
+[42/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug/libs/cpp/capture_proto/generated/capture/v1/data/video_timing.pb.cc for CXX dependencies
+[43/119] Generating CXX dyndep file libs/cpp/capture_proto/CMakeFiles/capture_proto.dir/CXX.dd
+[44/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/libs/cpp/capture_storage/src/atomic_file.cpp for CXX dependencies
+[45/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/libs/cpp/capture_storage/src/hash.cpp for CXX dependencies
+[46/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/libs/cpp/capture_storage/src/journal.cpp for CXX dependencies
+[47/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/libs/cpp/capture_storage/src/disk_watchdog.cpp for CXX dependencies
+[48/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/libs/cpp/capture_storage/src/mcap_impl.cpp for CXX dependencies
+[49/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/libs/cpp/capture_storage/src/mcap_stream_writer.cpp for CXX dependencies
+[50/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/libs/cpp/capture_storage/src/session_package.cpp for CXX dependencies
+[51/119] Building CXX object libs/cpp/capture_core/CMakeFiles/capture_core.dir/src/version.cpp.o
+[52/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/libs/cpp/capture_storage/src/recovery.cpp for CXX dependencies
+[53/119] Building CXX object libs/cpp/capture_core/CMakeFiles/capture_core.dir/src/framing.cpp.o
+[54/119] Building CXX object libs/cpp/capture_core/CMakeFiles/capture_core.dir/src/session_fsm.cpp.o
+[55/119] Building CXX object libs/cpp/capture_core/CMakeFiles/capture_core.dir/src/source_fsm.cpp.o
+[56/119] Building CXX object libs/cpp/capture_core/CMakeFiles/capture_core.dir/src/clock.cpp.o
+[57/119] Building CXX object libs/cpp/capture_core/CMakeFiles/capture_core.dir/src/recording_buffer.cpp.o
+[58/119] Building CXX object libs/cpp/capture_proto/CMakeFiles/capture_proto.dir/generated/capture/v1/common.pb.cc.o
+[59/119] Building CXX object libs/cpp/capture_core/CMakeFiles/capture_core.dir/src/logging.cpp.o
+/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/libs/cpp/capture_core/src/logging.cpp: In function ‘std::string capture::log::{anonymous}::utc_now_ms()’:
+/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/libs/cpp/capture_core/src/logging.cpp:65:73: warning: ‘snprintf’ output may be truncated before the last format character [-Wformat-truncation=]
+   65 |   std::snprintf(buf, sizeof(buf), "%04d-%02d-%02dT%02d:%02d:%02d.%03lldZ",
+      |                                                                         ^
+/home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/libs/cpp/capture_core/src/logging.cpp:65:16: note: ‘snprintf’ output between 25 and 94 bytes into a destination of size 40
+   65 |   std::snprintf(buf, sizeof(buf), "%04d-%02d-%02dT%02d:%02d:%02d.%03lldZ",
+      |   ~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   66 |                 tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour,
+      |                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   67 |                 tm.tm_min, tm.tm_sec, static_cast<long long>(ms.count()));
+      |                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[60/119] Building CXX object libs/cpp/capture_proto/CMakeFiles/capture_proto.dir/generated/capture/v1/source.pb.cc.o
+[61/119] Building CXX object libs/cpp/capture_proto/CMakeFiles/capture_proto.dir/generated/capture/v1/events.pb.cc.o
+[62/119] Building CXX object libs/cpp/capture_proto/CMakeFiles/capture_proto.dir/generated/capture/v1/project.pb.cc.o
+[63/119] Building CXX object libs/cpp/capture_proto/CMakeFiles/capture_proto.dir/generated/capture/v1/presets.pb.cc.o
+[64/119] Building CXX object libs/cpp/capture_proto/CMakeFiles/capture_proto.dir/generated/capture/v1/health.pb.cc.o
+[65/119] Building CXX object libs/cpp/capture_proto/CMakeFiles/capture_proto.dir/generated/capture/v1/preview.pb.cc.o
+[66/119] Building CXX object libs/cpp/capture_proto/CMakeFiles/capture_proto.dir/generated/capture/v1/control.pb.cc.o
+[67/119] Building CXX object libs/cpp/capture_proto/CMakeFiles/capture_proto.dir/generated/capture/v1/storage.pb.cc.o
+[68/119] Building CXX object libs/cpp/capture_proto/CMakeFiles/capture_proto.dir/generated/capture/v1/worker.pb.cc.o
+[69/119] Building CXX object libs/cpp/capture_proto/CMakeFiles/capture_proto.dir/generated/capture/v1/data/emg_batch.pb.cc.o
+[70/119] Building CXX object libs/cpp/capture_proto/CMakeFiles/capture_proto.dir/generated/capture/v1/arrays.pb.cc.o
+[71/119] Building CXX object libs/cpp/capture_proto/CMakeFiles/capture_proto.dir/generated/capture/v1/data/numeric_batch.pb.cc.o
+[72/119] Building CXX object libs/cpp/capture_proto/CMakeFiles/capture_proto.dir/generated/capture/v1/data/imu_frame.pb.cc.o
+[73/119] Building CXX object libs/cpp/capture_proto/CMakeFiles/capture_proto.dir/generated/capture/v1/data/radar_frame.pb.cc.o
+[74/119] Building CXX object libs/cpp/capture_proto/CMakeFiles/capture_proto.dir/generated/capture/v1/data/radar_doppler.pb.cc.o
+[75/119] Generating CXX dyndep file libs/cpp/capture_storage/CMakeFiles/capture_storage.dir/CXX.dd
+[76/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/tools/session_doctor/main.cpp for CXX dependencies
+[77/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/tests/cpp/test_clock.cpp for CXX dependencies
+[78/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/tests/cpp/test_env.cpp for CXX dependencies
+[79/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/tests/cpp/test_framing.cpp for CXX dependencies
+[80/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/tests/cpp/test_session_fsm.cpp for CXX dependencies
+[81/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/tests/cpp/test_source_fsm.cpp for CXX dependencies
+[82/119] Building CXX object libs/cpp/capture_proto/CMakeFiles/capture_proto.dir/generated/capture/v1/data/video_timing.pb.cc.o
+[83/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/tests/cpp/test_logging.cpp for CXX dependencies
+[84/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/tests/cpp/test_atomic_file_posix.cpp for CXX dependencies
+[85/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/tests/cpp/test_storage_posix.cpp for CXX dependencies
+[86/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/libs/cpp/capture_storage/src/atomic_file.cpp for CXX dependencies
+[87/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/tests/cpp/test_atomic_file_posix_identity.cpp for CXX dependencies
+[88/119] Scanning /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/libs/cpp/capture_storage/src/atomic_file.cpp for CXX dependencies
+[89/119] Linking CXX static library libs/cpp/capture_core/libcapture_core.a
+[90/119] Linking CXX static library libs/cpp/capture_proto/libcapture_proto.a
+[91/119] Building CXX object libs/cpp/capture_storage/CMakeFiles/capture_storage.dir/src/atomic_file.cpp.o
+[92/119] Building CXX object libs/cpp/capture_storage/CMakeFiles/capture_storage.dir/src/hash.cpp.o
+[93/119] Building CXX object libs/cpp/capture_storage/CMakeFiles/capture_storage.dir/src/journal.cpp.o
+[94/119] Building CXX object libs/cpp/capture_storage/CMakeFiles/capture_storage.dir/src/disk_watchdog.cpp.o
+[95/119] Building CXX object libs/cpp/capture_storage/CMakeFiles/capture_storage.dir/src/mcap_stream_writer.cpp.o
+[96/119] Building CXX object libs/cpp/capture_storage/CMakeFiles/capture_storage.dir/src/mcap_impl.cpp.o
+[97/119] Building CXX object libs/cpp/capture_storage/CMakeFiles/capture_storage.dir/src/session_package.cpp.o
+[98/119] Generating CXX dyndep file tools/session_doctor/CMakeFiles/session_doctor.dir/CXX.dd
+[99/119] Generating CXX dyndep file tests/cpp/CMakeFiles/capture_core_tests.dir/CXX.dd
+[100/119] Generating CXX dyndep file tests/cpp/CMakeFiles/capture_atomic_file_posix_tests.dir/CXX.dd
+[101/119] Generating CXX dyndep file tests/cpp/CMakeFiles/capture_atomic_file_posix_identity_tests.dir/CXX.dd
+[102/119] Building CXX object tools/session_doctor/CMakeFiles/session_doctor.dir/main.cpp.o
+[103/119] Building CXX object libs/cpp/capture_storage/CMakeFiles/capture_storage.dir/src/recovery.cpp.o
+[104/119] Building CXX object tests/cpp/CMakeFiles/capture_core_tests.dir/test_clock.cpp.o
+[105/119] Linking CXX static library libs/cpp/capture_storage/libcapture_storage.a
+[106/119] Building CXX object tests/cpp/CMakeFiles/capture_core_tests.dir/test_env.cpp.o
+[107/119] Building CXX object tests/cpp/CMakeFiles/capture_core_tests.dir/test_framing.cpp.o
+[108/119] Building CXX object tests/cpp/CMakeFiles/capture_core_tests.dir/test_session_fsm.cpp.o
+[109/119] Building CXX object tests/cpp/CMakeFiles/capture_core_tests.dir/test_source_fsm.cpp.o
+[110/119] Building CXX object tests/cpp/CMakeFiles/capture_core_tests.dir/test_storage_posix.cpp.o
+[111/119] Building CXX object tests/cpp/CMakeFiles/capture_atomic_file_posix_tests.dir/test_atomic_file_posix.cpp.o
+[112/119] Building CXX object tests/cpp/CMakeFiles/capture_atomic_file_posix_tests.dir/__/__/libs/cpp/capture_storage/src/atomic_file.cpp.o
+[113/119] Building CXX object tests/cpp/CMakeFiles/capture_core_tests.dir/test_logging.cpp.o
+[114/119] Building CXX object tests/cpp/CMakeFiles/capture_atomic_file_posix_identity_tests.dir/test_atomic_file_posix_identity.cpp.o
+[115/119] Building CXX object tests/cpp/CMakeFiles/capture_atomic_file_posix_identity_tests.dir/__/__/libs/cpp/capture_storage/src/atomic_file.cpp.o
+[116/119] Linking CXX executable tools/session_doctor/session_doctor
+[117/119] Linking CXX executable tests/cpp/capture_atomic_file_posix_tests
+[118/119] Linking CXX executable tests/cpp/capture_atomic_file_posix_identity_tests
+[119/119] Linking CXX executable tests/cpp/capture_core_tests
+Test project /home/jacob/capturesuite-review-87eaaf0fdf63/r3-mainline/repository/build/linux-debug
+      Start  1: SessionClock QPC frequency is positive
+ 1/19 Test  #1: SessionClock QPC frequency is positive ........................   Passed    0.03 sec
+      Start  2: SessionClock establish_t0 and session time advances
+ 2/19 Test  #2: SessionClock establish_t0 and session time advances ...........   Passed    0.01 sec
+      Start  3: qpc_delta_to_ns round-trip sanity
+ 3/19 Test  #3: qpc_delta_to_ns round-trip sanity .............................   Passed    0.01 sec
+      Start  4: environment helper preserves values and absence
+ 4/19 Test  #4: environment helper preserves values and absence ...............   Passed    0.01 sec
+      Start  5: encode/decode CSP1 frame round-trip
+ 5/19 Test  #5: encode/decode CSP1 frame round-trip ...........................   Passed    0.01 sec
+      Start  6: FrameDecoder reassembles split reads
+ 6/19 Test  #6: FrameDecoder reassembles split reads ..........................   Passed    0.01 sec
+      Start  7: bad magic rejects frame
+ 7/19 Test  #7: bad magic rejects frame .......................................   Passed    0.01 sec
+      Start  8: session happy path to finalized
+ 8/19 Test  #8: session happy path to finalized ...............................   Passed    0.01 sec
+      Start  9: illegal session transitions rejected
+ 9/19 Test  #9: illegal session transitions rejected ..........................   Passed    0.01 sec
+      Start 10: arm timeout none returns to preparing
+10/19 Test #10: arm timeout none returns to preparing .........................   Passed    0.01 sec
+      Start 11: source path to ready and record
+11/19 Test #11: source path to ready and record ...............................   Passed    0.01 sec
+      Start 12: disconnect during recording stays recording with error
+12/19 Test #12: disconnect during recording stays recording with error ........   Passed    0.01 sec
+      Start 13: structured log emits required JSON fields
+13/19 Test #13: structured log emits required JSON fields .....................   Passed    0.01 sec
+      Start 14: atomic_write_text replaces existing file and leaves no temp
+14/19 Test #14: atomic_write_text replaces existing file and leaves no temp ...   Passed    0.02 sec
+      Start 15: disk watchdog reports free bytes and honours override
+15/19 Test #15: disk watchdog reports free bytes and honours override .........   Passed    0.01 sec
+      Start 16: capture_storage_fixture_isolation
+16/19 Test #16: capture_storage_fixture_isolation .............................   Passed    0.06 sec
+      Start 17: capture_session_doctor_portable
+17/19 Test #17: capture_session_doctor_portable ...............................   Passed    0.10 sec
+      Start 18: capture_atomic_file_posix_durability
+18/19 Test #18: capture_atomic_file_posix_durability ..........................   Passed    0.05 sec
+      Start 19: capture_atomic_file_posix_identity
+19/19 Test #19: capture_atomic_file_posix_identity ............................   Passed    0.07 sec
+
+100% tests passed, 0 tests failed out of 19
+
+Total Test time (real) =   0.45 sec
+CAPTURESUITE_LINUX_PORTABLE_BUILD_OK

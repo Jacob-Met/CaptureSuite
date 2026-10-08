@@ -1,3 +1,47 @@
+## 2026-10-08 — Receive fixture ownership repair onto accepted main (estate-87eaaf0fdf63)
+
+The original Linux port #36 and the separately owned POSIX alias repair #44
+are now accepted on main `ac52c3ca7164a6ab457d11a8a1448957093eb592`.
+The fixture companion from #42 is composed onto that source. It retains the
+reviewed unique-directory fixture and adds only its CTest registration to the
+current test build. All accepted production, durability and alias-receiver
+bytes remain unchanged. The complete current upstream progress log follows
+unchanged after this lane's two blocks.
+
+The historical receiving results below remain pinned to their recorded source.
+Current mainline qualification, composition hashes and hosted gate results are
+recorded in `docs/evidence/storage-fixture-isolation-87eaaf0fdf63/MAINLINE.md`
+and the PR. No claim of hardware or power-cut qualification is added.
+
+## 2026-10-08 — Preserve concurrent storage-test evidence (estate-87eaaf0fdf63)
+
+Independent receiving of Linux-port PR #36 found that its new atomic-storage
+test deleted an unrelated invocation's receipt under the shared temporary
+directory while reporting all six assertions passed. The counterexample ran
+against the exact published source with real Catch2 and disposable private
+temporary data on the ThinkPad; no existing worktree or capture was changed.
+
+The test now atomically reserves a unique directory and cleans up only that
+owned path through a scoped fixture. A CMake receiving case runs the actual
+test with a retained sibling receipt and checks its bytes and fixture cleanup.
+The unchanged original fails this receiving case; the corrected candidate
+passes it plus the two native storage tests (11 assertions) under strict GCC
+warnings. The production atomic-file and disk-watchdog sources are unchanged.
+
+The independent review also passed ten actual POSIX atomic-write boundary
+cases, including open/close errors, binary and relative paths, real rename
+refusal and interrupted directory sync. These qualify the stated local
+storage boundary; they do not constitute a full native build, Windows or
+hardware acceptance. Source pins and raw failures are retained in
+`docs/evidence/storage-fixture-isolation-87eaaf0fdf63/`. This companion is
+prepared for the existing PR #36 owner; it has not been merged or deployed.
+
+Current receiving also preserves the producer's writer-close revision
+`05a6b6bd02f05efd2c7380ea4ee8f92942609d4b`. The independent ten-case
+receiver above remains bound to retained original `16eb17f` atomic source; it
+does not claim qualification of the revised writer. See the packet CURRENT.md
+for the exact companion composition and current fixture replay.
+
 ## 2026-10-08 — Preserve prior analysis jobs on failed replacement
 
 Worker `estate-6267db2cfc6e`, issue #39: portable job IDs and direct output

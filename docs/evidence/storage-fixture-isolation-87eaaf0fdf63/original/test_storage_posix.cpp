@@ -7,49 +7,14 @@
 #include "capture/storage/disk_watchdog.hpp"
 
 #include <filesystem>
-#include <random>
-#include <stdexcept>
 #include <string>
-
-namespace {
-class TemporaryStorageDirectory {
- public:
-  TemporaryStorageDirectory() {
-    const auto parent = std::filesystem::temp_directory_path();
-    std::random_device random;
-    for (unsigned attempt = 0; attempt < 100; ++attempt) {
-      const auto candidate =
-          parent / ("capturesuite_atomic_test-" + std::to_string(random()) +
-                    "-" + std::to_string(random()));
-      std::error_code error;
-      if (std::filesystem::create_directory(candidate, error)) {
-        path = candidate;
-        return;
-      }
-      if (error && error != std::errc::file_exists) {
-        throw std::filesystem::filesystem_error(
-            "create temporary storage test directory", candidate, error);
-      }
-    }
-    throw std::runtime_error("unable to reserve a temporary storage directory");
-  }
-
-  ~TemporaryStorageDirectory() {
-    std::error_code ignored;
-    std::filesystem::remove_all(path, ignored);
-  }
-
-  TemporaryStorageDirectory(const TemporaryStorageDirectory&) = delete;
-  TemporaryStorageDirectory& operator=(const TemporaryStorageDirectory&) = delete;
-
-  std::filesystem::path path;
-};
-}  // namespace
 
 TEST_CASE("atomic_write_text replaces existing file and leaves no temp",
           "[storage][atomic]") {
-  const TemporaryStorageDirectory fixture;
-  const auto& root = fixture.path;
+  const auto root =
+      std::filesystem::temp_directory_path() / "capturesuite_atomic_test";
+  std::filesystem::remove_all(root);
+  std::filesystem::create_directories(root);
   const auto path = root / "manifest.json";
   std::string err;
   REQUIRE(capture::storage::atomic_write_text(path, "first", err));
@@ -59,6 +24,7 @@ TEST_CASE("atomic_write_text replaces existing file and leaves no temp",
   REQUIRE_FALSE(capture::storage::atomic_write_text(
       root / "missing-dir" / "x.json", "x", err));
   REQUIRE_FALSE(err.empty());
+  std::filesystem::remove_all(root);
 }
 
 TEST_CASE("disk watchdog reports free bytes and honours override",
