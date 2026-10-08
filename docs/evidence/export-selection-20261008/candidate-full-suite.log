@@ -1,0 +1,108 @@
+
+==================================== ERRORS ====================================
+______________ ERROR collecting tests/protocol/test_daemon_e2e.py ______________
+ImportError while importing test module '/workspace/scratch/234cae4aee53/capturesuite-export/tests/protocol/test_daemon_e2e.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/protocol/test_daemon_e2e.py:13: in <module>
+    from capture_protocol.control_client import ControlClient
+libs/python/capture_protocol/capture_protocol/control_client.py:16: in <module>
+    import msvcrt
+E   ModuleNotFoundError: No module named 'msvcrt'
+______________ ERROR collecting tests/protocol/test_lsl_bridge.py ______________
+ImportError while importing test module '/workspace/scratch/234cae4aee53/capturesuite-export/tests/protocol/test_lsl_bridge.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/protocol/test_lsl_bridge.py:6: in <module>
+    from lsl_bridge import LslBridgeWorker
+plugins/lsl_bridge/lsl_bridge.py:13: in <module>
+    from capture_worker.preview import build_trace_preview
+libs/python/capture_worker/capture_worker/__init__.py:5: in <module>
+    from capture_worker.worker import Worker, next_preview_sequence, session_time_ns
+libs/python/capture_worker/capture_worker/worker.py:29: in <module>
+    from capture_worker.transport import MemoryTransport, Transport, WorkerPipeTransport
+libs/python/capture_worker/capture_worker/transport.py:13: in <module>
+    import msvcrt
+E   ModuleNotFoundError: No module named 'msvcrt'
+__________ ERROR collecting tests/protocol/test_python_worker_sdk.py ___________
+ImportError while importing test module '/workspace/scratch/234cae4aee53/capturesuite-export/tests/protocol/test_python_worker_sdk.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/protocol/test_python_worker_sdk.py:15: in <module>
+    from capture_worker.transport import MemoryTransport
+libs/python/capture_worker/capture_worker/__init__.py:5: in <module>
+    from capture_worker.worker import Worker, next_preview_sequence, session_time_ns
+libs/python/capture_worker/capture_worker/worker.py:29: in <module>
+    from capture_worker.transport import MemoryTransport, Transport, WorkerPipeTransport
+libs/python/capture_worker/capture_worker/transport.py:13: in <module>
+    import msvcrt
+E   ModuleNotFoundError: No module named 'msvcrt'
+_____________ ERROR collecting tests/protocol/test_soak_cleanup.py _____________
+ImportError while importing test module '/workspace/scratch/234cae4aee53/capturesuite-export/tests/protocol/test_soak_cleanup.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/importlib/__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/protocol/test_soak_cleanup.py:8: in <module>
+    import soak_camera_radar as soak
+tools/soak_camera_radar.py:14: in <module>
+    from capture_protocol.control_client import ControlClient  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+libs/python/capture_protocol/capture_protocol/control_client.py:16: in <module>
+    import msvcrt
+E   ModuleNotFoundError: No module named 'msvcrt'
+=============================== warnings summary ===============================
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.MessageMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.ScalarMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+ERROR tests/protocol/test_daemon_e2e.py
+ERROR tests/protocol/test_lsl_bridge.py
+ERROR tests/protocol/test_python_worker_sdk.py
+ERROR tests/protocol/test_soak_cleanup.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 4 errors during collection !!!!!!!!!!!!!!!!!!!!
+2 warnings, 4 errors in 2.01s
+
+{
+  "schema": "capturesuite.test-receipt.v1",
+  "accepted": false,
+  "process_exit": 2,
+  "counts": {
+    "tests": 4,
+    "passed": 0,
+    "failures": 0,
+    "errors": 4,
+    "skipped": 0
+  },
+  "junit_sha256": "235e9a6664fe6f8b625c015f4081d353cdbf5bbddbb8d00f3a7ef313a162b279",
+  "problems": [
+    "Test process did not exit successfully",
+    "No executed passing test cases",
+    "JUnit contains failing or errored cases"
+  ],
+  "scope": "Process and test-evidence consistency, not clinical validation",
+  "seconds": 2.7444260160009435,
+  "created_at": "2026-10-08T08:16:21.008064+00:00",
+  "run_directory": "build/evidence/python-20261008T081618Z-95a5ac0d",
+  "log_sha256": "147d27a92ecad1c9b09f8e58dddea8373c57a574be729adf144373947120e7be",
+  "source_commit": "f733ac450d57c7f02419894091d78a634dd071b1",
+  "source_worktree_dirty": true,
+  "source_tree_sha256": "3b47e0e5d22bf9fab79fb3ab58b88ae43dc32be872e06e04df310459732b42ce",
+  "source_file_count": 534,
+  "github": {},
+  "source_unchanged_during_test": true
+}

@@ -1,0 +1,39 @@
+from __future__ import annotations
+import hashlib
+import json
+import os
+from pathlib import Path
+import runpy
+import subprocess
+import sys
+import tempfile
+
+repo = Path('/workspace/scratch/234cae4aee53/capturesuite-export')
+helper = runpy.run_path(str(repo / 'tests/analysis/test_export_selection_mcap.py'))
+base = Path(tempfile.mkdtemp(prefix='capturesuite-peer-', dir='/workspace/scratch/234cae4aee53/agents/lead/export'))
+package = base / 'sealed.mmsession'
+package.mkdir()
+(package / 'manifest.json').write_text(json.dumps({'state': 'finalized', 'synthetic': True}))
+helper['_write_mcap'](package / 'sources/emg.control/streams/one/segments/000.mcap', ('emg',))
+helper['_write_mcap'](package / ('sources/imu.' + 'x' * 220 + '/streams/two/segments/000.mcap'), ('imu',))
+before = helper['_hash_files'](package)
+out = base / 'export'
+while len(str(out)) < 3890:
+    remain = 3890 - len(str(out)) - 1
+    out = out / ('d' * min(200, remain))
+out.mkdir(parents=True)
+result = subprocess.run([sys.executable, str(repo / 'tools/export_session.py'), str(package), str(out), '--modalities', 'emg,imu', '--verify'], cwd=repo, capture_output=True, text=True, timeout=30)
+manifest_path = out / 'export_manifest.json'
+manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else None
+receipt = {
+    'candidate_head': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=repo, text=True).strip(),
+    'script_sha256': hashlib.sha256((repo / 'tools/export_session.py').read_bytes()).hexdigest(),
+    'fixture': str(package), 'destination_length': len(str(out)),
+    'exit_code': result.returncode, 'stdout': result.stdout, 'stderr': result.stderr,
+    'actual_streams': {kind: len(manifest[kind]) for kind in ('emg', 'imu')} if manifest else None,
+    'source_unchanged': before == helper['_hash_files'](package),
+    'expected': 'Nonzero export result if a present selected stream cannot be written; both streams must be accounted for.'
+}
+(base / 'receipt.json').write_text(json.dumps(receipt, indent=2) + '\n')
+print(json.dumps({key: value for key, value in receipt.items() if key not in ('stdout', 'stderr')}, indent=2))
+print('RECEIPT', base / 'receipt.json')

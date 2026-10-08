@@ -1,0 +1,144 @@
+FFF..................................................................... [ 28%]
+................................................ssssss.................. [ 56%]
+........................................................................ [ 84%]
+.......................................                                  [100%]
+================================== FAILURES ===================================
+_____ test_real_mcap_selection_preserves_input_and_timestamps[selected0] ______
+
+package = WindowsPath('C:/Users/runneradmin/AppData/Local/Temp/pytest-of-runneradmin/pytest-0/test_real_mcap_selection_prese0/synthetic.mmsession')
+selected = ('imu',)
+
+    @pytest.mark.parametrize("selected", [("imu",), ("emg",), ("emg", "imu")])
+    def test_real_mcap_selection_preserves_input_and_timestamps(package: Path, selected) -> None:
+        _write_mcap(package / "sources/device-A/streams/one/segments/000.mcap", ("emg",))
+        _write_mcap(package / "sources/device-B/streams/two/segments/000.mcap", ("imu",))
+        before = _hash_files(package)
+        out = package.parent / "selected output \u96ea"
+        result = _export(package, out, selected)
+>       assert result.returncode == 0, result.stdout + result.stderr
+E       AssertionError: wrote Traceback (most recent call last):
+E           File "D:\a\CaptureSuite\CaptureSuite\tools\export_session.py", line 483, in <module>
+E             raise SystemExit(main())
+E                              ^^^^^^
+E           File "D:\a\CaptureSuite\CaptureSuite\tools\export_session.py", line 439, in main
+E             print("wrote", man_path)
+E           File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\encodings\cp1252.py", line 19, in encode
+E             return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+E                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E         UnicodeEncodeError: 'charmap' codec can't encode character '\u96ea' in position 119: character maps to <undefined>
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe', 'D:\\a\\CaptureSuite\\Capture...deEncodeError: \'charmap\' codec can\'t encode character \'\\u96ea\' in position 119: character maps to <undefined>\n').returncode
+
+tests\analysis\test_export_selection_mcap.py:120: AssertionError
+_____ test_real_mcap_selection_preserves_input_and_timestamps[selected1] ______
+
+package = WindowsPath('C:/Users/runneradmin/AppData/Local/Temp/pytest-of-runneradmin/pytest-0/test_real_mcap_selection_prese1/synthetic.mmsession')
+selected = ('emg',)
+
+    @pytest.mark.parametrize("selected", [("imu",), ("emg",), ("emg", "imu")])
+    def test_real_mcap_selection_preserves_input_and_timestamps(package: Path, selected) -> None:
+        _write_mcap(package / "sources/device-A/streams/one/segments/000.mcap", ("emg",))
+        _write_mcap(package / "sources/device-B/streams/two/segments/000.mcap", ("imu",))
+        before = _hash_files(package)
+        out = package.parent / "selected output \u96ea"
+        result = _export(package, out, selected)
+>       assert result.returncode == 0, result.stdout + result.stderr
+E       AssertionError: wrote Traceback (most recent call last):
+E           File "D:\a\CaptureSuite\CaptureSuite\tools\export_session.py", line 483, in <module>
+E             raise SystemExit(main())
+E                              ^^^^^^
+E           File "D:\a\CaptureSuite\CaptureSuite\tools\export_session.py", line 439, in main
+E             print("wrote", man_path)
+E           File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\encodings\cp1252.py", line 19, in encode
+E             return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+E                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E         UnicodeEncodeError: 'charmap' codec can't encode character '\u96ea' in position 119: character maps to <undefined>
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe', 'D:\\a\\CaptureSuite\\Capture...deEncodeError: \'charmap\' codec can\'t encode character \'\\u96ea\' in position 119: character maps to <undefined>\n').returncode
+
+tests\analysis\test_export_selection_mcap.py:120: AssertionError
+_____ test_real_mcap_selection_preserves_input_and_timestamps[selected2] ______
+
+package = WindowsPath('C:/Users/runneradmin/AppData/Local/Temp/pytest-of-runneradmin/pytest-0/test_real_mcap_selection_prese2/synthetic.mmsession')
+selected = ('emg', 'imu')
+
+    @pytest.mark.parametrize("selected", [("imu",), ("emg",), ("emg", "imu")])
+    def test_real_mcap_selection_preserves_input_and_timestamps(package: Path, selected) -> None:
+        _write_mcap(package / "sources/device-A/streams/one/segments/000.mcap", ("emg",))
+        _write_mcap(package / "sources/device-B/streams/two/segments/000.mcap", ("imu",))
+        before = _hash_files(package)
+        out = package.parent / "selected output \u96ea"
+        result = _export(package, out, selected)
+>       assert result.returncode == 0, result.stdout + result.stderr
+E       AssertionError: wrote Traceback (most recent call last):
+E           File "D:\a\CaptureSuite\CaptureSuite\tools\export_session.py", line 483, in <module>
+E             raise SystemExit(main())
+E                              ^^^^^^
+E           File "D:\a\CaptureSuite\CaptureSuite\tools\export_session.py", line 439, in main
+E             print("wrote", man_path)
+E           File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\encodings\cp1252.py", line 19, in encode
+E             return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+E                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E         UnicodeEncodeError: 'charmap' codec can't encode character '\u96ea' in position 119: character maps to <undefined>
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe', 'D:\\a\\CaptureSuite\\Capture...deEncodeError: \'charmap\' codec can\'t encode character \'\\u96ea\' in position 119: character maps to <undefined>\n').returncode
+
+tests\analysis\test_export_selection_mcap.py:120: AssertionError
+============================== warnings summary ===============================
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.MessageMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.ScalarMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+SKIPPED [1] tests\protocol\test_daemon_e2e.py:74: capture_daemon.exe not built (run cmake --build)
+SKIPPED [1] tests\protocol\test_daemon_e2e.py:148: capture_daemon.exe not built (run cmake --build)
+SKIPPED [1] tests\protocol\test_daemon_e2e.py:161: capture_daemon.exe not built (run cmake --build)
+SKIPPED [1] tests\protocol\test_daemon_e2e.py:196: capture_daemon.exe not built (run cmake --build)
+SKIPPED [1] tests\protocol\test_daemon_e2e.py:238: capture_daemon.exe not built (run cmake --build)
+SKIPPED [1] tests\protocol\test_daemon_e2e.py:262: capture_daemon.exe not built (run cmake --build)
+FAILED tests/analysis/test_export_selection_mcap.py::test_real_mcap_selection_preserves_input_and_timestamps[selected0] - AssertionError: wrote Traceback (most recent call last):
+    File "D:\a\CaptureSuite\CaptureSuite\tools\export_session.py", line 483, in <module>
+      raise SystemExit(main())
+                       ^^^^^^
+    File "D:\a\CaptureSuite\CaptureSuite\tools\export_session.py", line 439, in main
+      print("wrote", man_path)
+    File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\encodings\cp1252.py", line 19, in encode
+      return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  UnicodeEncodeError: 'charmap' codec can't encode character '\u96ea' in position 119: character maps to <undefined>
+  
+assert 1 == 0
+ +  where 1 = CompletedProcess(args=['C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe', 'D:\\a\\CaptureSuite\\Capture...deEncodeError: \'charmap\' codec can\'t encode character \'\\u96ea\' in position 119: character maps to <undefined>\n').returncode
+FAILED tests/analysis/test_export_selection_mcap.py::test_real_mcap_selection_preserves_input_and_timestamps[selected1] - AssertionError: wrote Traceback (most recent call last):
+    File "D:\a\CaptureSuite\CaptureSuite\tools\export_session.py", line 483, in <module>
+      raise SystemExit(main())
+                       ^^^^^^
+    File "D:\a\CaptureSuite\CaptureSuite\tools\export_session.py", line 439, in main
+      print("wrote", man_path)
+    File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\encodings\cp1252.py", line 19, in encode
+      return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  UnicodeEncodeError: 'charmap' codec can't encode character '\u96ea' in position 119: character maps to <undefined>
+  
+assert 1 == 0
+ +  where 1 = CompletedProcess(args=['C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe', 'D:\\a\\CaptureSuite\\Capture...deEncodeError: \'charmap\' codec can\'t encode character \'\\u96ea\' in position 119: character maps to <undefined>\n').returncode
+FAILED tests/analysis/test_export_selection_mcap.py::test_real_mcap_selection_preserves_input_and_timestamps[selected2] - AssertionError: wrote Traceback (most recent call last):
+    File "D:\a\CaptureSuite\CaptureSuite\tools\export_session.py", line 483, in <module>
+      raise SystemExit(main())
+                       ^^^^^^
+    File "D:\a\CaptureSuite\CaptureSuite\tools\export_session.py", line 439, in main
+      print("wrote", man_path)
+    File "C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\encodings\cp1252.py", line 19, in encode
+      return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  UnicodeEncodeError: 'charmap' codec can't encode character '\u96ea' in position 119: character maps to <undefined>
+  
+assert 1 == 0
+ +  where 1 = CompletedProcess(args=['C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe', 'D:\\a\\CaptureSuite\\Capture...deEncodeError: \'charmap\' codec can\'t encode character \'\\u96ea\' in position 119: character maps to <undefined>\n').returncode
+3 failed, 246 passed, 6 skipped, 2 warnings in 11.99s

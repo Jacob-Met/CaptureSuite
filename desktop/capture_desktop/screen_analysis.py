@@ -72,10 +72,10 @@ class _AnalysisWorker(QObject):
                 cancel=self._cancel,
             )
             self.finished.emit(result)
-        except InterruptedError:
-            self.failed.emit("cancelled")
+        except InterruptedError as exc:
+            self.failed.emit("\n".join(["cancelled", *getattr(exc, "__notes__", ())]))
         except Exception as exc:  # noqa: BLE001
-            self.failed.emit(str(exc))
+            self.failed.emit("\n".join([str(exc), *getattr(exc, "__notes__", ())]))
 
 
 class AnalysisScreen(QWidget):
@@ -395,7 +395,7 @@ class AnalysisScreen(QWidget):
     @Slot(str)
     def _on_failed(self, message: str) -> None:
         self._append_log(f"FAIL: {message}")
-        if message != "cancelled":
+        if message.split("\n", 1)[0] != "cancelled":
             QMessageBox.warning(self, "Analysis failed", message)
 
     def _on_thread_finished(self) -> None:

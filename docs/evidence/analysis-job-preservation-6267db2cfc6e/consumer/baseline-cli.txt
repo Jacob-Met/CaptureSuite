@@ -1,0 +1,36 @@
+F.                                                                       [100%]
+=================================== FAILURES ===================================
+_________________ test_cli_reports_retained_failed_replacement _________________
+
+tmp_path = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-6/test_cli_reports_retained_fail0')
+
+    def test_cli_reports_retained_failed_replacement(tmp_path: Path) -> None:
+        package = tmp_path / "session with spaces.mmsession"
+        shutil.copytree(FIXTURE, package)
+        successful = _cli("qc", str(package), "--overwrite-job-id", "previous")
+        assert successful.returncode == 0, successful.stdout + successful.stderr
+        assert "job_id=previous" in successful.stdout
+    
+        failed = _cli(
+            "kinematics",
+            str(package),
+            "--pose-job",
+            "missing-pose-job",
+            "--overwrite-job-id",
+            "previous",
+        )
+        assert failed.returncode == 1, failed.stdout + failed.stderr
+        assert "FAIL: analysis job not found: missing-pose-job" in failed.stderr
+        attempts = list((package / "processing" / "jobs").glob(".attempt_*"))
+        assert len(attempts) == 1
+        attempt = attempts[0]
+>       assert str(attempt) in failed.stderr, "CLI must expose the retained failure location"
+E       AssertionError: CLI must expose the retained failure location
+E       assert '/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-6/test_cli_reports_retained_fail0/session with spaces.mmsession/processing/jobs/.attempt_ztmhbdvv' in 'FAIL: analysis job not found: missing-pose-job (/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-6/test_cli_reports_retained_fail0/session with spaces.mmsession/processing/jobs/missing-pose-job)\n'
+E        +  where '/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-6/test_cli_reports_retained_fail0/session with spaces.mmsession/processing/jobs/.attempt_ztmhbdvv' = str(PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-6/test_cli_reports_retained_fail0/session with spaces.mmsession/processing/jobs/.attempt_ztmhbdvv'))
+E        +  and   'FAIL: analysis job not found: missing-pose-job (/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-6/test_cli_reports_retained_fail0/session with spaces.mmsession/processing/jobs/missing-pose-job)\n' = CompletedProcess(args=['/workspace/scratch/6267db2cfc6e/test-env/bin/python', '/dev/shm/estate-6267db2cfc6e-workspace/...st-of-root/pytest-6/test_cli_reports_retained_fail0/session with spaces.mmsession/processing/jobs/missing-pose-job)\n').stderr
+
+tests/analysis/test_job_failure_cli.py:47: AssertionError
+=========================== short test summary info ============================
+FAILED tests/analysis/test_job_failure_cli.py::test_cli_reports_retained_failed_replacement
+1 failed, 1 passed in 3.26s

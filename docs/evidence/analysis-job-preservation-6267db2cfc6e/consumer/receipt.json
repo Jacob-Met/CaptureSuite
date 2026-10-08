@@ -1,0 +1,35 @@
+{
+  "baseline_commit": "c43b2819b149e1e87d7f957d8b3583881c29ffb4",
+  "receiving_main": "52203f5ceedfa0da8f1813e700a41ec8c364263e",
+  "baseline_cli_result": "1 failed, 1 passed; retained-attempt path missing from stderr",
+  "candidate_result": "2 passed, 1 skipped; actual CLI native runner, Qt module skipped because PySide6 absent",
+  "source_integrity": "4 original Git blob hashes verified against immutable fetch data",
+  "evidence_provenance": "Freshly rerun after storage relocation; not reconstructed old logs",
+  "files": [
+    {
+      "path": "tools/run_analysis.py",
+      "bytes": 4590,
+      "sha256": "a6def4729ac6a84c5cb13a87032fac0ea53fa7edfc041194b358abb550f78e62",
+      "blob": "8288703d8f1e8c94e600c6bc7616c23f94f11fc3"
+    },
+    {
+      "path": "desktop/capture_desktop/screen_analysis.py",
+      "bytes": 14870,
+      "sha256": "1437b02b942f44378870540f12c5494d08693329abb5d00ca64c0c264f57633e",
+      "blob": "ef608ddb93c86c0d0c057b703e40b897e16f8a4a"
+    },
+    {
+      "path": "tests/analysis/test_job_failure_cli.py",
+      "bytes": 2008,
+      "sha256": "77f62b52bc01b6325c2349f6482d407465869587ecc3380c01303e0398b226f6",
+      "blob": "70ebbbc0db3d7b26a00c9936634f28f6244e8232"
+    },
+    {
+      "path": "tests/ui/test_analysis_failure_notes.py",
+      "bytes": 3450,
+      "sha256": "3d8ae8c4ea3d38f9614b28a26f89e9badc7117689e8166ba410cb93c06c7a80e",
+      "blob": "9a21d6499b217973e63ac51f5235d43492f4412a"
+    }
+  ],
+  "backend_sha256": "e7e9dda44eb014d18192563f1e2c0ae78cece850fbc853b0be3919daaf5ee276"
+}

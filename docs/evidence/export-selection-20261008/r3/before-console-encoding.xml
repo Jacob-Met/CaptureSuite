@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="0.307" timestamp="2026-10-08T18:55:42.064008+09:00" hostname="05aaedaf3e50"><testcase classname="tests.analysis.test_export_selection_mcap" name="test_unicode_destination_with_legacy_pipe_encoding" time="0.204"><failure message="AssertionError: wrote Traceback (most recent call last):&#10;    File &quot;/workspace/scratch/234cae4aee53/capturesuite-export/tools/export_session.py&quot;, line 483, in &lt;module&gt;&#10;      raise SystemExit(main())&#10;                       ^^^^^^&#10;    File &quot;/workspace/scratch/234cae4aee53/capturesuite-export/tools/export_session.py&quot;, line 439, in main&#10;      print(&quot;wrote&quot;, man_path)&#10;    File &quot;/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/encodings/cp1252.py&quot;, line 19, in encode&#10;      return codecs.charmap_encode(input,self.errors,encoding_table)[0]&#10;             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^&#10;  UnicodeEncodeError: 'charmap' codec can't encode character '\u96ea' in position 99: character maps to &lt;undefined&gt;&#10;  &#10;assert 1 == 0&#10; +  where 1 = CompletedProcess(args=['/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python', '/workspace/scratch/234cae4aee5...odeEncodeError: \'charmap\' codec can\'t encode character \'\\u96ea\' in position 99: character maps to &lt;undefined&gt;\n').returncode">package = PosixPath('/dev/shm/capturesuite-234cae4aee53/encoding-before/test_unicode_destination_with_0/synthetic.mmsession')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7f91d0fdd5b0&gt;
+
+    def test_unicode_destination_with_legacy_pipe_encoding(package: Path, monkeypatch) -&gt; None:
+        """A Windows-style output pipe must not fail after writing valid export files."""
+        _write_mcap(package / "sources/device-17/streams/mixed/segments/000.mcap", ("emg", "imu"))
+        before = _hash_files(package)
+        out = package.parent / "selected output 雪"
+        monkeypatch.setenv("PYTHONIOENCODING", "cp1252:strict")
+        result = _export(package, out, ("emg", "imu"))
+&gt;       assert result.returncode == 0, result.stdout + result.stderr
+E       AssertionError: wrote Traceback (most recent call last):
+E           File "/workspace/scratch/234cae4aee53/capturesuite-export/tools/export_session.py", line 483, in &lt;module&gt;
+E             raise SystemExit(main())
+E                              ^^^^^^
+E           File "/workspace/scratch/234cae4aee53/capturesuite-export/tools/export_session.py", line 439, in main
+E             print("wrote", man_path)
+E           File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/encodings/cp1252.py", line 19, in encode
+E             return codecs.charmap_encode(input,self.errors,encoding_table)[0]
+E                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E         UnicodeEncodeError: 'charmap' codec can't encode character '\u96ea' in position 99: character maps to &lt;undefined&gt;
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python', '/workspace/scratch/234cae4aee5...odeEncodeError: \'charmap\' codec can\'t encode character \'\\u96ea\' in position 99: character maps to &lt;undefined&gt;\n').returncode
+
+tests/analysis/test_export_selection_mcap.py:133: AssertionError</failure></testcase></testsuite></testsuites>

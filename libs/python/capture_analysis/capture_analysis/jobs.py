@@ -5,14 +5,16 @@ from __future__ import annotations
 
 import hashlib
 import json
+import logging
 import platform
 import shutil
 import sys
+import tempfile
 import threading
 from collections.abc import Callable
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 from typing import Any
 
 from capture_session.package_reader import load_review_summary
@@ -73,11 +75,39 @@ def _params_digest(params: JobParams) -> str:
     return hashlib.sha256(_canonical_json(params.to_dict())).hexdigest()
 
 
+def _validate_job_id(job_id: str) -> str:
+    # Dot-prefixed names belong to internal staging/failed attempts, not user jobs.
+    # Apply Windows naming rules on every host so an ID cannot change meaning
+    # when a package is opened on the supported Windows workstation.
+    if (
+        not isinstance(job_id, str)
+        or not job_id
+        or job_id.startswith(".")
+        or job_id.endswith((".", " "))
+        or any(char in '<>:"/\\|?*' or ord(char) < 32 for char in job_id)
+        or PureWindowsPath(job_id).is_reserved()
+    ):
+        raise ValueError("analysis job ID must be one non-hidden, portable directory name")
+    return job_id
+
+
 def _job_id(params: JobParams) -> str:
-    if params.overwrite_job_id:
-        return params.overwrite_job_id
+    if params.overwrite_job_id is not None:
+        return _validate_job_id(params.overwrite_job_id)
     stamp = datetime.now(UTC).strftime("%Y%m%dT%H%M%SZ")
     return f"{stamp}_{_params_digest(params)[:8]}"
+
+
+def _job_destination(root: Path, job_id: str) -> tuple[Path, Path]:
+    """Check the output namespace without creating or following linked directories."""
+    processing = root / "processing" / "jobs"
+    job_dir = processing / job_id
+    for path in (root / "processing", processing, job_dir):
+        if path.is_symlink() or path.is_junction() or path.resolve() != path:
+            raise ValueError(f"analysis job destination must not use linked directories: {path}")
+        if path.exists() and not path.is_dir():
+            raise ValueError(f"analysis job destination is not a directory: {path}")
+    return processing, job_dir
 
 
 def _sha256_bytes(data: bytes) -> str:
@@ -138,6 +168,38 @@ def hash_sources_tree(package_root: Path) -> dict[str, str]:
     return out
 
 
+def _promote_replacement(work: Path, job_dir: Path) -> Path:
+    """Publish a prepared job, restoring the previous directory if publication fails."""
+    backup = Path(tempfile.mkdtemp(prefix=".previous_job_", dir=job_dir.parent))
+    previous = backup / "job"
+    try:
+        job_dir.rename(previous)
+    except BaseException:
+        # No previous result was moved. Only remove the empty directory we own.
+        try:
+            backup.rmdir()
+        except OSError:
+            pass
+        raise
+    try:
+        work.rename(job_dir)
+    except BaseException as exc:
+        try:
+            previous.rename(job_dir)
+        except OSError as restore_exc:
+            raise OSError(
+                f"Could not publish replacement {job_dir}: {exc}. "
+                f"The previous job is preserved at {previous}; "
+                f"restoring its original path also failed: {restore_exc}"
+            ) from exc
+        try:
+            backup.rmdir()
+        except OSError:
+            pass
+        raise
+    return backup
+
+
 def run(
     package_path: str | Path,
     params: JobParams | None = None,
@@ -155,6 +217,8 @@ def run(
             raise InterruptedError("analysis cancelled")
         if progress is not None:
             progress(stage, frac)
+        if cancel is not None and cancel.is_set():
+            raise InterruptedError("analysis cancelled")
 
     allowed = {"qc", "features", "plots", "all", "pose", "kinematics", "ml_bundle", "eval"}
     if params.command not in allowed:
@@ -170,15 +234,12 @@ def run(
     qc_dict = qc_report.to_dict()
 
     job_id = _job_id(params)
-    processing = root / "processing" / "jobs"
+    processing, job_dir = _job_destination(root, job_id)
     processing.mkdir(parents=True, exist_ok=True)
-    job_dir = processing / job_id
     if job_dir.exists() and params.overwrite_job_id:
-        tmp = processing / f".{job_id}.tmp"
-        if tmp.exists():
-            shutil.rmtree(tmp)
-        tmp.mkdir(parents=True)
-        work = tmp
+        # Keep incomplete/failed attempts out of downstream job selectors. Never
+        # reuse or remove a predictable staging path belonging to another run.
+        work = Path(tempfile.mkdtemp(prefix=".attempt_", dir=processing))
     else:
         job_dir.mkdir(parents=True, exist_ok=False)
         work = job_dir
@@ -187,6 +248,7 @@ def run(
     errors: list[str] = []
     warnings = list(qc_dict.get("warnings") or [])
     feature_tables: list[dict[str, Any]] = []
+    previous: Path | None = None
     log_lines = [
         f"capture_analysis {__version__} command={params.command}",
         f"package={root}",
@@ -194,14 +256,13 @@ def run(
     ]
 
     try:
+        params_bytes = json.dumps(params.to_dict(), indent=2, sort_keys=True).encode("utf-8")
+        _write_output(work, "params.json", params_bytes, "params", outputs)
         tick("write_qc", 0.25)
         qc_bytes = json.dumps(qc_dict, indent=2, sort_keys=True).encode("utf-8")
         _write_output(work, "reports/qc.json", qc_bytes, "qc_json", outputs)
         html = render_qc_html(qc_dict).encode("utf-8")
         _write_output(work, "reports/qc.html", html, "qc_html", outputs)
-
-        params_bytes = json.dumps(params.to_dict(), indent=2, sort_keys=True).encode("utf-8")
-        _write_output(work, "params.json", params_bytes, "params", outputs)
 
         window = resolve_window(
             summary,
@@ -409,25 +470,25 @@ def run(
             outputs,
         )
 
-        if work != job_dir:
-            if job_dir.exists():
-                shutil.rmtree(job_dir)
-            work.rename(job_dir)
-
+        # Callbacks and cancellation remain fallible until publication starts.
+        # No callback runs after the previous result has been replaced.
         tick("done", 1.0)
-        return JobResult(
-            job_id=job_id,
-            job_dir=job_dir,
-            status=status,
-            manifest=manifest,
-            qc=qc_dict,
-        )
+        if work != job_dir:
+            previous = _promote_replacement(work, job_dir)
     except Exception as exc:
         errors.append(str(exc))
         log_lines.append(f"ERROR: {exc}")
+        failed_job_id = work.name if work != job_dir else job_id
+        log_lines.append(f"failed_job_id={failed_job_id}")
+        # A completed manifest/log may already have been written before a late
+        # cancellation or publication error. Do not retain stale output hashes.
+        outputs[:] = [
+            item for item in outputs
+            if item["relativePath"] not in {"params.json", "job_manifest.json", "logs/job.log"}
+        ]
         fail_manifest = {
             "schemaId": "capture.analysis_job/1",
-            "jobId": job_id,
+            "jobId": failed_job_id,
             "createdUtc": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
             "captureAnalysisVersion": __version__,
             "packagePath": str(root),
@@ -438,16 +499,37 @@ def run(
             "outputs": outputs,
         }
         try:
+            _write_output(
+                work, "params.json",
+                json.dumps(params.to_dict(), indent=2, sort_keys=True).encode("utf-8"),
+                "params", outputs,
+            )
+            _write_output(
+                work, "logs/job.log", ("\n".join(log_lines) + "\n").encode("utf-8"),
+                "log", outputs,
+            )
             (work / "job_manifest.json").write_text(
                 json.dumps(fail_manifest, indent=2, sort_keys=True) + "\n",
                 encoding="utf-8",
             )
-            (work / "logs").mkdir(parents=True, exist_ok=True)
-            (work / "logs" / "job.log").write_text("\n".join(log_lines) + "\n", encoding="utf-8")
-            if work != job_dir and work.exists():
-                if job_dir.exists():
-                    shutil.rmtree(job_dir)
-                work.rename(job_dir)
-        except Exception:
-            pass
+            exc.add_note(f"Failed analysis attempt retained at {work}")
+        except Exception as record_exc:
+            exc.add_note(f"Could not finish the failed analysis record at {work}: {record_exc}")
         raise
+
+    # Publication has committed. Cleanup cannot turn a successful job into a
+    # failed replacement or remove its new results.
+    if previous is not None:
+        try:
+            shutil.rmtree(previous)
+        except OSError as cleanup_exc:
+            logging.getLogger(__name__).warning(
+                "Replacement completed; previous job remains at %s: %s", previous, cleanup_exc
+            )
+    return JobResult(
+        job_id=job_id,
+        job_dir=job_dir,
+        status=status,
+        manifest=manifest,
+        qc=qc_dict,
+    )

@@ -1,0 +1,111 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-08T09:24:03.680Z",
+  "repository": "Jacob-Met/CaptureSuite",
+  "pull_request": "https://github.com/Jacob-Met/CaptureSuite/pull/38",
+  "original_candidate": "8167c9ad8b44433409e8f3d66f66c4254f879db3",
+  "original_worker": "estate-afe225d6c6be/product_execution",
+  "original_author": "HAMON Product Worker <hamon-product@users.noreply.github.com>",
+  "receiver": "ChatGPT worker dd846795-production",
+  "reconciliation": "The same-boundary candidate was found after temporary GitHub content-creation limits prevented initial coordination comments. One PR38 receives both lineages; parent estate-afe225d6c6be retains authorship and coordination, and existing T68 ownership is not transferred.",
+  "original_artifacts": {
+    "received_archive": "/srv/hamon-estate/receiving-afe225d6c6be-Ao7odc/CaptureSuite-camera-contribution-8167c9a.tar.gz",
+    "retained_archive": "/srv/hamon-estate/bundles/CaptureSuite-camera-contribution-8167c9a.tar.gz",
+    "archive_sha256": "f9ce759f24d785b79e81e969412010567853ebc4464de05a03a410fa259c692a",
+    "format_patch_sha256": "74bbff346ee96f5edd9c8c9d20405a897c9648b991c9346f39689ef5856b1208",
+    "declared_git_bundle": {
+      "path": "CaptureSuite-camera-runtime-8167c9a.bundle",
+      "sha256": "175aad6c79c78bf6c8461f23e6c5bd87114ba27db5b1ab51f11d378473f506e0"
+    },
+    "git_bundle_present_in_received_archive": false,
+    "retained_content": "Original format-patch, exact changed files and both package manifests. The original complete git bundle remains manifest-declared; a source path was requested through the native handoff."
+  },
+  "implementation_comparison": {
+    "original_camera_sha256": "e7a0bde4f81d72b67ba73dde75136ed8626cc6578302f6d8fa7c7757743bc98c",
+    "receiver_camera_sha256": "ddb68fccae5e9b5ae66f81ff4859060f27dcc425d6a41c607e9c9c883a6bd842",
+    "only_difference": "Explanatory CMake COMMENT string; every production command byte is identical after replacing that one string.",
+    "receiver_production_source_changed": false
+  },
+  "imported_unchanged": [
+    {
+      "path": "tests/cmake/camera_packaging/CMakeLists.txt",
+      "sha256": "84e3c12336d99d92bab625c9dcf66edb14eae3a4a6d96e0ae722303230b95ae0",
+      "bytes": 1789
+    },
+    {
+      "path": "tests/cmake/camera_packaging/README.md",
+      "sha256": "1b8bd553537820097b3b3d2e39e21a28acb8ed8778b4b91f84ef91b2ddb3d0a9",
+      "bytes": 1474
+    },
+    {
+      "path": "tests/cmake/camera_packaging/check_packaging.py",
+      "sha256": "8973e4e67cae02ddf9abadfbafa76df3481015ef24db6064877d6430972812b0",
+      "bytes": 6633
+    },
+    {
+      "path": "tests/cmake/camera_packaging/probe.cpp",
+      "sha256": "589b638fa7c213e6db05ba1e04eeda6f437ca3b71ba407f138ef0ee041124e48",
+      "bytes": 448
+    },
+    {
+      "path": "docs/evidence/camera-packaging-20261008/baseline.json",
+      "sha256": "480e72d069fae5d8e11de6e7ffa24dff06c36d53cc2a3970433e47bea928a0e3",
+      "bytes": 6436
+    },
+    {
+      "path": "docs/evidence/camera-packaging-20261008/candidate.json",
+      "sha256": "45a32517f668dab4a7b4800bb61d771abab4e88a430709788f7f89fefe612e8b",
+      "bytes": 6657
+    },
+    {
+      "path": "docs/evidence/camera-packaging-20261008/receipt.json",
+      "sha256": "903504c305cf22c315ed10e1b05645aae7ebc7bdf6f2aceaf790f4ac2170e821",
+      "bytes": 3528
+    }
+  ],
+  "additional_unchanged_manifests": [
+    {
+      "path": "docs/evidence/camera-packaging-20261008/package-8167c9a.json",
+      "sha256": "bfb415104f9bbd9ecd6d5da7ae0335f1063ae398028f34462619664131b83f55"
+    },
+    {
+      "path": "docs/evidence/camera-packaging-20261008/thin-package-8167c9a.json",
+      "sha256": "63c86b9c0bacdff62ff49faf58dab69fff83a62e1311450aad1df8abb807d98d"
+    }
+  ],
+  "receiving": {
+    "source_before_import": "8022790fa30b4d7742e68579976505d22ef53e55",
+    "command": "python3 tests/cmake/camera_packaging/check_packaging.py --source <PR38-source> --work <new-proof-root>/linked-fixture-receiving",
+    "result": "passed",
+    "checks": 17,
+    "exit_code": 0,
+    "report_path": "docs/evidence/camera-packaging-20261008/receiving-linked-report.json",
+    "report_sha256": "947c944ea9e2e52a14c4b436aba577e9dec39bc7164955f244a39bd8f3277110",
+    "packaged_worker_sha256": "6c8149625674b9bbb36d35ff97733431bfd3298e573251962baca8653ab2d46b",
+    "dynamic_dependencies_and_runpath": [
+      " 0x0000000000000001 (NEEDED)             Shared library: [abseil_dll.dll]",
+      " 0x0000000000000001 (NEEDED)             Shared library: [blake3.dll]",
+      " 0x0000000000000001 (NEEDED)             Shared library: [libprotobuf.dll]",
+      " 0x0000000000000001 (NEEDED)             Shared library: [lz4.dll]",
+      " 0x0000000000000001 (NEEDED)             Shared library: [zstd.dll]",
+      " 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]",
+      " 0x000000000000001d (RUNPATH)            Library runpath: [$ORIGIN]"
+    ],
+    "environment": {
+      "platform": "Linux 7.0.0-34-generic x86_64",
+      "python": "Python 3.14.4",
+      "cmake": "cmake version 4.2.3",
+      "compiler": "c++ (Ubuntu 15.2.0-16ubuntu1) 15.2.0"
+    }
+  },
+  "qualification_limits": [
+    "Independent Linux native fixture receiving; the production camera CMake commands are reused, while libraries and compilation units are synthetic.",
+    "Native ELF loader success and missing-library rejection do not establish a Windows camera/vcpkg/GStreamer build or Windows loader closure.",
+    "No migration host, physical camera, daemon session, release or runtime deployment was touched.",
+    "The source merge decision remains with the authorized receiver after current owner reconciliation and CI."
+  ],
+  "coordination_notes": [
+    "https://github.com/Jacob-Met/CaptureSuite/issues/34#issuecomment-6056611976",
+    "https://github.com/Jacob-Met/CaptureSuite/pull/38#issuecomment-6056620509"
+  ]
+}

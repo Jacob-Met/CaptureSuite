@@ -1,0 +1,5 @@
+...............................s...................                      [100%]
+=========================== short test summary info ============================
+SKIPPED [1] tests/ui/test_analysis_failure_notes.py:14: could not import 'PySide6': No module named 'PySide6'
+SKIPPED [1] tests/analysis/test_job_destinations.py:124: native Windows junction semantics
+50 passed, 2 skipped in 4.55s

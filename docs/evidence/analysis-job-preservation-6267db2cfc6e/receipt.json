@@ -1,0 +1,180 @@
+{
+  "schemaVersion": 1,
+  "worker": "estate-6267db2cfc6e",
+  "issue": "https://github.com/Jacob-Met/CaptureSuite/issues/39",
+  "recordedUtc": "2026-10-08T10:14:35Z",
+  "originalBaseline": {
+    "commit": "c43b2819b149e1e87d7f957d8b3583881c29ffb4",
+    "tree": "befabb7f507780a2e4d720ac0ae841327c352df8",
+    "jobsBlob": "5c8d1d5503de6f47663fa3e4399e13d91f0a808a",
+    "jobsSha256": "1f58a18fbddf620f304d4521e693d1d26508a8871ad373bc47630da7dd38dcc2"
+  },
+  "composedBaseline": {
+    "commit": "52203f5ceedfa0da8f1813e700a41ec8c364263e",
+    "tree": "48a04593f0415a92e0176377da93bbebda68d63d",
+    "carriedAnalysisDependency": {
+      "path": "libs/python/capture_analysis/capture_analysis/windows.py",
+      "blob": "80bea6bd69365a48c5b204c26d054b8ae179437a"
+    }
+  },
+  "sourceCheckpointCommit": "a3356bfec97a2e2aa7ba804ea6306c564c3b7466",
+  "sourceFiles": [
+    {
+      "path": "libs/python/capture_analysis/capture_analysis/jobs.py",
+      "bytes": 19627,
+      "sha256": "e7e9dda44eb014d18192563f1e2c0ae78cece850fbc853b0be3919daaf5ee276",
+      "blob": "7badee5cdf5a4b30a283e0dcbb2c5d85fb787489"
+    },
+    {
+      "path": "tools/run_analysis.py",
+      "bytes": 4590,
+      "sha256": "a6def4729ac6a84c5cb13a87032fac0ea53fa7edfc041194b358abb550f78e62",
+      "blob": "8288703d8f1e8c94e600c6bc7616c23f94f11fc3"
+    },
+    {
+      "path": "desktop/capture_desktop/screen_analysis.py",
+      "bytes": 14870,
+      "sha256": "1437b02b942f44378870540f12c5494d08693329abb5d00ca64c0c264f57633e",
+      "blob": "ef608ddb93c86c0d0c057b703e40b897e16f8a4a"
+    },
+    {
+      "path": "tests/analysis/test_job_destinations.py",
+      "bytes": 5091,
+      "sha256": "4cd647bee435fd26e21fb9d6a87051b3d2e79ddac95750852f891ef1a3a0f0eb",
+      "blob": "6f226b0b047f570d1022f5de3dbf26563deda8b5"
+    },
+    {
+      "path": "tests/analysis/test_job_replacement.py",
+      "bytes": 12573,
+      "sha256": "e4480546d7e0653d3ad40cf52ad3f1489499c3810c9814f84145e1000b2b9ebd",
+      "blob": "4306dcce94f781c0c979236d8575b2b68d3cc6cf"
+    },
+    {
+      "path": "tests/analysis/test_job_failure_cli.py",
+      "bytes": 2008,
+      "sha256": "77f62b52bc01b6325c2349f6482d407465869587ecc3380c01303e0398b226f6",
+      "blob": "70ebbbc0db3d7b26a00c9936634f28f6244e8232"
+    },
+    {
+      "path": "tests/ui/test_analysis_failure_notes.py",
+      "bytes": 3450,
+      "sha256": "3d8ae8c4ea3d38f9614b28a26f89e9badc7117689e8166ba410cb93c06c7a80e",
+      "blob": "9a21d6499b217973e63ac51f5235d43492f4412a"
+    },
+    {
+      "path": "docs/design/ANALYSIS.md",
+      "bytes": 14178,
+      "sha256": "217b3c6a337394e9096887b0fb0c62e04ee281ac79984225f5b0d9093fa65fa7",
+      "blob": "718f53a0cfea30b3116010ca6c6d751cf1e2a09e"
+    }
+  ],
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+    "pytest": "9.1.1",
+    "protobuf": "4.25.9",
+    "jsonschema": "4.25.1",
+    "ruff": "0.12.12",
+    "data": "authored/copied mini_session fixture; no participant or hardware inputs",
+    "sourceScope": "verified native analysis/session/protocol source slice; complete repository checkout is exercised by hosted CI"
+  },
+  "checks": [
+    {
+      "name": "replacement negative control",
+      "baseline": "originalBaseline",
+      "command": "python -m pytest -q -p no:cacheprovider tests/analysis/test_job_replacement.py",
+      "exitCode": 1,
+      "passed": 2,
+      "failed": 7,
+      "skipped": 0,
+      "seconds": 1.34,
+      "log": "baseline-replacement.log"
+    },
+    {
+      "name": "destination negative control",
+      "baseline": "originalBaseline",
+      "command": "python -m pytest -q -ra -p no:cacheprovider tests/analysis/test_job_destinations.py",
+      "exitCode": 1,
+      "passed": 4,
+      "failed": 21,
+      "skipped": 1,
+      "seconds": 1.24,
+      "log": "baseline-destinations.log"
+    },
+    {
+      "name": "composed receiving",
+      "baseline": "composedBaseline",
+      "command": "python -m pytest -q -ra -p no:cacheprovider tests/analysis/test_phase_a_qc.py tests/analysis/test_job_destinations.py tests/analysis/test_job_replacement.py tests/analysis/test_job_failure_cli.py tests/analysis/test_stream_gap_scope.py tests/ui/test_analysis_failure_notes.py",
+      "exitCode": 0,
+      "passed": 50,
+      "failed": 0,
+      "skipped": 2,
+      "seconds": 4.55,
+      "skipReasons": [
+        "native Windows junction semantics",
+        "PySide6 unavailable locally; actual Qt module deferred to hosted Windows"
+      ],
+      "log": "composed-candidate.log"
+    },
+    {
+      "name": "Ruff",
+      "command": "ruff check libs/python/capture_analysis/capture_analysis/jobs.py tools/run_analysis.py desktop/capture_desktop/screen_analysis.py tests/analysis/test_job_destinations.py tests/analysis/test_job_replacement.py tests/analysis/test_job_failure_cli.py tests/ui/test_analysis_failure_notes.py",
+      "exitCode": 0,
+      "log": "ruff.log"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "baseline-replacement.log",
+      "bytes": 19929,
+      "sha256": "5c90b033e7d3bb3a6a2b1350778eedbc8a1782994cbdf352178828b641a85aeb"
+    },
+    {
+      "path": "baseline-destinations.log",
+      "bytes": 54396,
+      "sha256": "813e64cf8e88c6dc242c03d7103b638fae5f425263e7a9deb1b1966e476c73df"
+    },
+    {
+      "path": "composed-candidate.log",
+      "bytes": 392,
+      "sha256": "1c3c6c5555b44af1e7181ff400ac00446ddadcce63c2bb80b9dffdc20ea4c0b4"
+    },
+    {
+      "path": "ruff.log",
+      "bytes": 19,
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    {
+      "path": "consumer/baseline-cli.txt",
+      "bytes": 2980,
+      "sha256": "7848862f883832c2ad69703e09384ee005266c4172a8f56e079d7fdc5e8aa180"
+    },
+    {
+      "path": "consumer/candidate-cli-and-ui-collection.txt",
+      "bytes": 109,
+      "sha256": "905109d9866bdccd18b0faa3195ccef59aeaa0d5d181b3d2530c7a9fa040e340"
+    },
+    {
+      "path": "consumer/receipt.json",
+      "bytes": 1538,
+      "sha256": "ba83e889a51917e8b8c37d7a091ff2719f18af6017c71010e93a78ef981ea679"
+    }
+  ],
+  "independentReceiving": {
+    "destinationGuard": "authority_recovery; 31 passed and one Windows-only skip on original baseline plus guard; reviewed composed guards and recovery paths",
+    "replacementFaults": "repo_frontier; authored nine fault/success controls; read-only composed review found no blocking interaction",
+    "consumers": "runtime_access; actual CLI subprocess controls, standard exception-note propagation, real Qt tests reserved for hosted execution",
+    "identity": "separate agents under the same authenticated GitHub identity; no self-approval or external maintainer approval is implied",
+    "consumerEvidence": "consumer/receipt.json; baseline-cli.txt reproduces missing stderr note with repaired core, candidate-cli-and-ui-collection.txt receives the consumer repair"
+  },
+  "recoveryDisclosure": "Local copies were lost during an incorrect scratch relocation. Core source was restored with its exact pre-loss SHA-256 from retained tool records. These four logs are fresh executions after restoration; prior lost raw logs and earlier unavailable packets are not represented as recovered.",
+  "pendingAcceptance": [
+    "Full supported Windows CI on the published composed commit, including actual Qt and junction tests",
+    "Fresh main/head, review and check-result readback before merge"
+  ],
+  "limits": [
+    "No simultaneous-writer locking or crash/power-loss recovery protocol is introduced.",
+    "No native hardware or clinical qualification is claimed.",
+    "Existing successful-manifest self-hash repair is separately owned and outside this change."
+  ]
+}

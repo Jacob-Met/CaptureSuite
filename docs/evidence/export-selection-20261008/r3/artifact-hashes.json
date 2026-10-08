@@ -1,0 +1,18 @@
+{
+  "analysis.log": "0b57bcc29697304738a08953e53c3ee1ee47ad6e95e611135a7aa20ec5fa02e3",
+  "analysis.xml": "8d6fae50d5c27f154cbb236769d64c0aa02246eb9e462330331fbbf64a1c2de5",
+  "before-console-encoding.log": "8a6449a1aedfb886d573162061400c068d0e307b8e111ab06c219e07e8d34c32",
+  "before-console-encoding.xml": "ca58b175bfcc7fac84096e7fc9406c14e0fc8e49bce1c62844247079a1a1bbfb",
+  "receipt.json": "b4538250f7fee2611ae078a55d543eb2174bd219a22edb8dbb693a08e421c493",
+  "source-manifest.json": "6e61ec596b5695fa7c21c4e7a5f1f392912a8a064c585ef752073d7e0c5eb6db",
+  "windows-first/pytest.log": "639b81e766d2934d834778c915b2bb20dbbed711b1d7a0f33705b3e4d43292f5",
+  "windows-first/pytest.xml": "d1b0c4808c03e606551b2991cd8fb90ca66ad998df5346ab5536375d8a69efee",
+  "windows-first/receipt.json": "333c0284b5dd80d85916b6ef321c7cb8324a384df56899b6f214b98cf4d80bf6",
+  "windows-first/source-manifest.json": "b1217b0616696d0cb3e443077f907415d6b50da8b3018b0fae91acdf607a551c",
+  "windows-first-run.json": "7084e21d452290aefd268652ba8d2475e7d272194afa62459466c3ead0c32611",
+  "peer-console-receipt.json": "081c3167a668cf975e6f2cb62573127bea5e604334271bd6384e1595b075f487",
+  "composed-main-522/source-manifest.json": "652f8128342d683b609e809774d74b43b1be4689e5d36cbd0c7544244cfd456a",
+  "composed-main-522/receipt.json": "d3a12a40aa105eb4a643c902f8ea7a0f857a2df081e4c89db2e2f9fb3165c465",
+  "composed-main-522/analysis.log": "055128a2fb41ab390abd462d404b7e3be35c89ff34a43529aa9cfc292e8b8d39",
+  "composed-main-522/analysis.xml": "ff60f65f0a2eb7b405ae09a43bac7b335320a4528de533e7528d5850bbd34e22"
+}
