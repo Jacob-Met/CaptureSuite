@@ -4,6 +4,8 @@
 #ifdef _WIN32
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
+#include <atomic>
+#include <system_error>
 #else
 #include <algorithm>
 #include <atomic>
@@ -22,24 +24,87 @@ namespace capture::storage {
 bool atomic_write_bytes(const std::filesystem::path& path,
                         std::string_view bytes, std::string& error) {
 #ifdef _WIN32
-  const auto tmp = path.wstring() + L".tmp";
-  {
-    std::ofstream out(tmp, std::ios::binary | std::ios::trunc);
-    if (!out) {
-      error = "failed to open temp file for atomic write";
-      return false;
-    }
-    out.write(bytes.data(), static_cast<std::streamsize>(bytes.size()));
-    out.flush();
-    if (!out) {
-      error = "failed to write temp file";
-      return false;
-    }
+  const auto io_error = [](const char* context, DWORD code) {
+    return std::string(context) +
+           std::error_code(static_cast<int>(code), std::system_category()).message();
+  };
+  const auto dir = path.has_parent_path() ? path.parent_path()
+                                         : std::filesystem::path(L".");
+  const auto name = path.filename().wstring();
+  if (name.empty() || name == L"." || name == L"..") {
+    error = "atomic write requires a file name";
+    return false;
   }
-  if (!MoveFileExW(tmp.c_str(), path.wstring().c_str(),
-                   MOVEFILE_REPLACE_EXISTING | MOVEFILE_WRITE_THROUGH)) {
-    error = "MoveFileEx failed during atomic write";
-    DeleteFileW(tmp.c_str());
+
+  // A pre-existing path.tmp may alias retained data. CREATE_NEW gives this
+  // operation its own file; never open, truncate, or clean up a prior name.
+  static std::atomic<unsigned long long> next_temp{0};
+  std::filesystem::path tmp;
+  HANDLE file = INVALID_HANDLE_VALUE;
+  DWORD create_error = ERROR_FILE_EXISTS;
+  for (int attempt = 0; attempt < 128; ++attempt) {
+    const auto temp_name = L".capturesuite-atomic-" +
+        std::to_wstring(::GetCurrentProcessId()) + L"-" +
+        std::to_wstring(next_temp.fetch_add(1, std::memory_order_relaxed));
+    if (::CompareStringOrdinal(temp_name.c_str(), -1, name.c_str(), -1, TRUE) ==
+        CSTR_EQUAL) {
+      continue;
+    }
+    tmp = dir / temp_name;
+    file = ::CreateFileW(tmp.c_str(), GENERIC_WRITE, 0, nullptr, CREATE_NEW,
+                         FILE_ATTRIBUTE_NORMAL, nullptr);
+    if (file != INVALID_HANDLE_VALUE) break;
+    create_error = ::GetLastError();
+    if (create_error != ERROR_FILE_EXISTS && create_error != ERROR_ALREADY_EXISTS) break;
+  }
+  if (file == INVALID_HANDLE_VALUE) {
+    error = io_error("failed to create exclusive temp file: ", create_error);
+    return false;
+  }
+  const auto discard_temp = [&] {
+    if (file != INVALID_HANDLE_VALUE) {
+      ::CloseHandle(file);
+      file = INVALID_HANDLE_VALUE;
+    }
+    ::DeleteFileW(tmp.c_str());
+  };
+
+  std::size_t offset = 0;
+  while (offset < bytes.size()) {
+    const auto remaining = bytes.size() - offset;
+    const auto amount = static_cast<DWORD>(
+        remaining > static_cast<std::size_t>(MAXDWORD) ? MAXDWORD : remaining);
+    DWORD written = 0;
+    if (!::WriteFile(file, bytes.data() + offset, amount, &written, nullptr)) {
+      error = io_error("failed to write temp file: ", ::GetLastError());
+      discard_temp();
+      return false;
+    }
+    if (written == 0) {
+      error = "failed to write temp file: no progress";
+      discard_temp();
+      return false;
+    }
+    offset += static_cast<std::size_t>(written);
+  }
+  if (!::FlushFileBuffers(file)) {
+    error = io_error("failed to sync temp file: ", ::GetLastError());
+    discard_temp();
+    return false;
+  }
+  const BOOL closed = ::CloseHandle(file);
+  file = INVALID_HANDLE_VALUE;
+  if (!closed) {
+    error = io_error("failed to close synced temp file: ", ::GetLastError());
+    discard_temp();
+    return false;
+  }
+
+  // Keep the existing same-directory, write-through replacement boundary.
+  if (!::MoveFileExW(tmp.c_str(), path.c_str(),
+                     MOVEFILE_REPLACE_EXISTING | MOVEFILE_WRITE_THROUGH)) {
+    error = io_error("MoveFileEx failed during atomic write: ", ::GetLastError());
+    discard_temp();
     return false;
   }
 #else

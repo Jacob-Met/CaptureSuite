@@ -1,0 +1,130 @@
+{
+  "files": [
+    {
+      "path": "cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/events/annotations.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/events/checkpoints.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/events/sync_anchors.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/integrity.json",
+      "bytes": 227,
+      "sha256": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556"
+    },
+    {
+      "path": "cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/manifest.json",
+      "bytes": 270,
+      "sha256": "fc435d39a40b40141fb97bb325d5532307ef69331a1258ba00598cb4fbe0ecff"
+    },
+    {
+      "path": "cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/.gitkeep",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/kin-receiving/job_manifest.json",
+      "bytes": 3079,
+      "sha256": "96b2634c885d282c97f329330c5534e76ff722487072fabc5150d8c39f34c4df"
+    },
+    {
+      "path": "cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/kin-receiving/kinematics/kinematics.parquet",
+      "bytes": 13893,
+      "sha256": "786d5b1d790162287cbd212fa03c48e6e4798a68b37759dae308e7eb30cfe1df"
+    },
+    {
+      "path": "cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/kin-receiving/kinematics/kinematics_qc.json",
+      "bytes": 539,
+      "sha256": "0212591dd43ae1698a4a923b8924a58423afdbcd0c543118f26513fbd5ace2ed"
+    },
+    {
+      "path": "cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/kin-receiving/logs/job.log",
+      "bytes": 257,
+      "sha256": "c7903ff59c797031be0bff540f9ddff187eafb06c4b2e0b4929792992f33cb88"
+    },
+    {
+      "path": "cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/kin-receiving/params.json",
+      "bytes": 321,
+      "sha256": "c6a1fa6ca79ec6aea912180dcbee5ca6b56e863f8c8b8225931695812397e80b"
+    },
+    {
+      "path": "cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/kin-receiving/reports/qc.html",
+      "bytes": 2642,
+      "sha256": "bde52b3c90040cc5100beb38462ff86a130d8d3e7b42e2fb7398dbc8c460c790"
+    },
+    {
+      "path": "cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/kin-receiving/reports/qc.json",
+      "bytes": 2024,
+      "sha256": "e16a955919ea33038f4967bd32f5e0d59701267a158efc6ccd2d94740748817c"
+    },
+    {
+      "path": "cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/pose-recorded/job_manifest.json",
+      "bytes": 106,
+      "sha256": "0f1bafd789f3911973b791d60b437207e97bc944bedca7e2f0fdbcc39f3115d3"
+    },
+    {
+      "path": "cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/pose-recorded/pose/camera-fixture/landmarks.parquet",
+      "bytes": 4615,
+      "sha256": "68bcca344a9927c817113a6a1aa9e44409443facaacfec154aabe8d467013239"
+    },
+    {
+      "path": "cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/processing/jobs/pose-recorded/pose/camera-fixture/model_card.json",
+      "bytes": 38,
+      "sha256": "795b592387b13ee11b5a2b84779876e4bb3c53f4bf5eed7a719a7537a5703570"
+    },
+    {
+      "path": "cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.camera.main/source.json",
+      "bytes": 110,
+      "sha256": "95c2d2a41488699fa97b9b858d379697e1ec90bd7113ca6dabb91f0d5bd5c9a1"
+    },
+    {
+      "path": "cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.camera.main/streams/sim.camera.main.timing/segments/000000.mkv",
+      "bytes": 4,
+      "sha256": "5fd872525fa77d054b86ca7b50927b4d1f860b21ab2b166fdf6c3ed3c4b5d0bc"
+    },
+    {
+      "path": "cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.camera.main/streams/sim.camera.main.timing/segments/000000.timing.mcap",
+      "bytes": 985,
+      "sha256": "0a512be5f0216b48ea2ee92ae5dbd4ba5b5d743c3e3cb6ae0351d993bccdab32"
+    },
+    {
+      "path": "cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.camera.main/streams/sim.camera.main.timing/stream.json",
+      "bytes": 208,
+      "sha256": "a8d053f0b46a43cefee12559bbaf27943847b3aa58bbc8d310156318f2ce6e00"
+    },
+    {
+      "path": "cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.emg.main/health/gaps.jsonl",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.emg.main/source.json",
+      "bytes": 112,
+      "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10"
+    },
+    {
+      "path": "cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json",
+      "bytes": 216,
+      "sha256": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1"
+    },
+    {
+      "path": "cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.imu.upper/source.json",
+      "bytes": 118,
+      "sha256": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8"
+    },
+    {
+      "path": "cases/test_sparse_non_sim_pose_cli_r0/session.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "bytes": 219,
+      "sha256": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+    }
+  ],
+  "scope": "Every regular actual test artifact; pytest convenience symlink aliases omitted."
+}

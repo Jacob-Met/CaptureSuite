@@ -1,0 +1,12 @@
+{
+  "publicBaseline": "72c15d6b623e217291a824e4e4808a385df896a9",
+  "localProjectionCommit": "2a42301a65cb0c44b67950f515b8e9291c4f3816",
+  "all135SourceBytesMatch": true,
+  "leaves": 135,
+  "changedPaths": [
+    "libs/python/capture_analysis/capture_analysis/kinematics/compute.py",
+    "tests/analysis/test_kinematics_validity.py",
+    "docs/design/KINEMATICS_PIPELINE.md",
+    "docs/design/research/PROGRESS.md"
+  ]
+}

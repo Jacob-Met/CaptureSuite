@@ -1,3 +1,62 @@
+## 2026-10-08 — Preserve missing pose evidence in kinematic labels
+
+Worker `estate-406d0fb04c43 / production`, issue #56: non-simulated pose tables
+previously fell back to synthetic angles when required body landmarks were
+absent. The real Parquet-to-kinematics CLI could therefore complete with invented
+values and valid flags. A missing landmark on one side also invalidated usable
+geometry on the other, and finite central differences or rolling ranges could
+hide an invalid center frame.
+
+The bounded computation repair selects synthetic values only for explicit sim
+model IDs. It checks each required landmark's confidence and finite coordinates,
+keeps independent elbow/shoulder validity, and masks undefined angle, velocity
+and AFR values at missing frames. Existing valid-input calculations, sim behavior,
+model identity, schemas, pose backends and job publication are preserved.
+
+On native macOS arm64 with the declared Python 3.12 science dependencies, the
+same 13 focused tests retain 11 original failures and two passing controls;
+the repair passes all 13 plus eight original pose/kinematics/ML consumers, with
+zero skips. The real CLI writes masked Parquet and truthful detection rates
+while preserving every original package and input-pose byte. All selected source
+bytes remain unchanged during execution, and scoped Ruff passes. Independent
+receiving and the existing supported Windows CI remain separate integration gates.
+No inference service, physical capture, smoothing or calibration result is claimed.
+
+## 2026-10-08 — Windows atomic writer reserves owned temporary files
+
+Contributor `estate-6267db2cfc6e` prepared the repair for issue51/PR52. Windows
+now reserves a unique sibling with `CreateFileW(CREATE_NEW)`, retains the original
+writable handle through writes and `FlushFileBuffers`, checks close, and keeps
+the existing write-through publication boundary. Failure cleanup addresses only
+the file created by that invocation; retained legacy `.tmp` paths are preserved.
+
+The original-source checkpoint is `c1bc438ea07492a303f89cea5deb242efeb6f8e9`.
+Its CI run37770868596 is retained separately from the repair's receiving run.
+Both use the unchanged four real Windows tests (SHA-256
+`485af6482c6b14fc7c187b45cc366af547bf0a1fe2c0651c8b68c8d25e854cfb`).
+Native acceptance requires actual original-source preservation failures and
+candidate passes under the existing complete Windows workflow. The final PR52
+receiving review records the actual outcomes and their exact source identities.
+The POSIX implementation and the current workflow remain unchanged.
+
+## 2026-10-08 — Windows atomic temporary-file preservation controls
+
+Contributor `estate-6267db2cfc6e` prepared four Windows-only real-file tests for
+the existing atomic writer: a raw-file hardlink at `manifest.json.tmp`,
+a hardlink to the prior manifest while a live handle blocks publication, an
+ordinary retained file at that name, and a raw-file symlink. The tests compare
+actual bytes, Win32 file identities, alias retention and final directory contents.
+They use exclusively reserved fixture directories and the linked production API.
+
+Native Windows compilation and execution are pending. This first publication
+keeps production unchanged so the supported Windows workflow can retain the
+original failure before the separately prepared repair is received. The same
+test bytes must qualify the repair. Only a missing Windows symlink privilege
+may skip that case; the other three cases remain required. The current CI
+workflow, POSIX implementation and separately owned storage fixture are unchanged.
+Source bindings and the planned receiving boundary are recorded in
+`docs/evidence/windows-atomic-temp-preservation-6267db2cfc6e/README.md`.
+
 ## 2026-10-08 — Receive fixture ownership repair onto accepted main (estate-87eaaf0fdf63)
 
 The original Linux port #36 and the separately owned POSIX alias repair #44
@@ -623,6 +682,45 @@ all 12 raw package hashes per CLI run are preserved. Exact-head hosted gates
 remain pending. Raw results, source pins, CLI input/output hashes and receiving
 source equivalence are in
 `../../evidence/qc-gap-details-ultra-20b27c2e-20261008/`.
+
+## 2026-10-08 — Desktop analysis time scope (estate-234cae4aee53)
+
+Issue #53 adds the missing operator path from the sealed-session header to the
+existing analysis time-window API: Full session, Checkpoint section, or an exact
+decimal-seconds Time range. Checkpoint IDs distinguish repeated names; requested
+and resolved bounds remain in the existing job provenance. Cursor mark controls
+and a scope outline preserve the visible gap bands. Each threaded job snapshots
+the selected scope, and package identity prevents a different session's selection
+from applying. Invalid ranges stay blocked across header refresh/navigation.
+
+The UI exposes time scopes only for existing consuming commands and identifies
+package-wide QC. Source composition includes current main `72c15d6b`, retaining
+the exporter, camera, registry and analysis replacement-preservation owners' code.
+Backend jobs, loaders, pipelines and storage are unchanged by this contribution.
+
+Initial real Qt/QThread/MCAP receiving passes 11 cases with one explicit Windows
+shell skip; both range and checkpoint jobs preserve exact bounds, derived sample
+times and raw bytes. Twelve focused UI admission/refresh cases also pass after
+tightening exact decimal parsing and invalid-selection persistence. An earlier
+shared-scratch ENOSPC attempt is retained as invalid qualification. Independent
+receiving, the frozen final suite and supported Windows CI remain pending.
+
+Independent receiving rejected the initial picker for a real ID/name collision:
+an earlier checkpoint name could shadow a later stable ID and select the wrong
+interval. The UI now identifies that ambiguous section as unavailable and explains
+the Time range fallback, preserving the existing backend resolver. Two focused
+controls retain the failure with both checkpoint record orders. The corrected
+Qt fixture lifetime also preserves a 30-second timeout/cancellation crash; the
+same production source passed 21 focused cases with one Windows skip after the
+harness waited for actual worker completion (one plotting job took 36.83 seconds).
+
+Final local qualification on the clean, unchanged `951e3c9` composition with
+current QC main `fae29ddc` passes **23 focused UI cases**, with one explicit
+Windows MainWindow skip. All 724 tracked source hashes remain unchanged. Lead
+independently accepts the repaired checkpoint picker at `3625449`; the original
+identity failure and corrected rerun are retained. The supported Windows job
+remains required. Source pins, raw control/qualification logs and native custody
+are recorded in `docs/evidence/analysis-scope-234cae4aee53/`.
 
 
 ### 2026-10-08 — Add actual GStreamer camera qualification

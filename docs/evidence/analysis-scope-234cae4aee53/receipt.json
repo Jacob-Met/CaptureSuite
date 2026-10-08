@@ -1,0 +1,44 @@
+{
+  "schema": "capturesuite.analysis-scope.receiving.v1",
+  "issue": 53,
+  "owner": "estate-234cae4aee53",
+  "original_main": "72c15d6b623e217291a824e4e4808a385df896a9",
+  "rejected_picker_source": "27b557d58658fa8c76875833f997fa7825216abd",
+  "accepted_production_source": "36254496e386568de05148db9bd9fa4d69020dd4",
+  "qualified_composition": "951e3c962f2f57e25656ba8e18d9372db74c4856",
+  "qualified_tree": "25c8af5fcea93fa47167afed55a96bcdf8a23b8a",
+  "composed_main": "fae29ddcbc0380b7d7e307130093bc5d66bf2f90",
+  "final_tests": {
+    "passed": 23,
+    "skipped": 1,
+    "skip_reason": "MainWindow imports the supported Windows named-pipe transport; full hosted Windows test required"
+  },
+  "initial_storage_attempt": {
+    "exit_code": 120,
+    "qualification_valid": false,
+    "reason": "Shared tmpfs ENOSPC, including an incomplete JUnit/terminal write; raw partial output retained in first.log."
+  },
+  "rejected_harness_attempt": {
+    "source": "27b557d58658fa8c76875833f997fa7825216abd",
+    "exit_code": -11,
+    "qualification_valid": false,
+    "reason": "30s test deadline cancelled a still-active plotting worker; 5s cleanup could allow overlap with the next test. Test-only correction waits for worker completion and deletes widgets on the GUI thread. The corrected range case needed36.83s; final42.41s."
+  },
+  "production_sha256": {
+    "desktop/capture_desktop/app.py": "e33cf4446d4edfda3634cb5445aa9456d2f243a8b710c0d9c6497b2ec28078b2",
+    "desktop/capture_desktop/screen_analysis.py": "7f1486e50773b590e9f06cca0e865ab67ef383677188fa0845a14f38d7336fdb",
+    "desktop/capture_desktop/widgets_analysis_scope.py": "3f58ffba9125d0ce88fa99317f6aa593fe8aeb4b0dc1d799c95c9c04fb0b73ff",
+    "desktop/capture_desktop/widgets_session_header.py": "b9e11a7e3709283ed37bacbe96836d6720467f2bdcb934d75491df5dc02927fa",
+    "desktop/capture_desktop/widgets_session_timeline.py": "7671ad4b632fd83498ad0c02f9030e4f46a0ef2d99a3764c13de3996e3c2ade4"
+  },
+  "unmodified_backend_sha256": {
+    "libs/python/capture_analysis/capture_analysis/jobs.py": "e7e9dda44eb014d18192563f1e2c0ae78cece850fbc853b0be3919daaf5ee276",
+    "libs/python/capture_analysis/capture_analysis/windows.py": "af40235d55341d2a6b11d7f67a0195779676301fa822b2bd05240d138ee28c50",
+    "libs/python/capture_analysis/capture_analysis/pipeline.py": "e8c0152040ba5b5f3f37ac53fb5188bac9dd9aaf0d5816d6a718be505c20898c"
+  },
+  "limits": [
+    "No hardware result or installed release claim.",
+    "Source subset/tag/sync controls and backend semantics are outside this UI feature.",
+    "The final Windows MainWindow/complete Python and C++ workflows remain the publication gates."
+  ]
+}

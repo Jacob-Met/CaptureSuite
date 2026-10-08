@@ -45,8 +45,8 @@ inode instead of reusing `<name>.tmp`. The writable descriptor is fully written
 and synced, then renamed within the opened parent directory, which is also
 synced before success. Existing temporary files and links are left untouched.
 This prevents recovery metadata from overwriting retained package data through
-an alias at the old fixed temporary name. The Windows `MoveFileEx` procedure
-below is unchanged; no serialized schema changes.
+an alias at the old fixed temporary name. Windows uses the exclusive creation
+procedure below; serialized schemas are unchanged.
 
 ## manifest.json
 
@@ -66,10 +66,14 @@ Required fields:
 | `sdk_versions`, `firmware_versions` | provenance |
 | `source_ids` | sources participating in this session |
 
-On Windows, written atomically: serialize to `manifest.json.tmp`, flush, then
-`MoveFileEx` with `MOVEFILE_REPLACE_EXISTING`. POSIX uses the exclusive temporary
-inode procedure above. The corresponding platform rule applies to every JSON
-metadata file.
+On Windows, JSON metadata is written to a newly created exclusive sibling file
+using `CreateFileW(CREATE_NEW)`. The same open handle is fully written and flushed
+with `FlushFileBuffers` before it is closed. `MoveFileExW` then replaces the target
+with `MOVEFILE_REPLACE_EXISTING | MOVEFILE_WRITE_THROUGH`. Existing temporary files
+and aliases, including `manifest.json.tmp`, are left untouched. A failed write or
+publication only cleans up the new temporary file owned by that operation. POSIX
+uses the exclusive temporary inode procedure above. The corresponding platform
+rule applies to every JSON metadata file; each target has one writer at a time.
 
 Unknown fields encountered on read are preserved and written back unchanged. That is what makes an older reader safe against a newer writer.
 

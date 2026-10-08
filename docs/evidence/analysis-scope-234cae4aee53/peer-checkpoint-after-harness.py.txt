@@ -1,0 +1,53 @@
+import hashlib, json, os, subprocess, sys
+from pathlib import Path
+ROOT=Path("/dev/shm/capturesuite-scope-peer-234cae4aee53")
+ROOT.mkdir(exist_ok=True)
+REPO=Path("/dev/shm/capturesuite-scope-234cae4aee53")
+for key, part in [("LOCALAPPDATA","local"),("APPDATA","roaming"),("XDG_CONFIG_HOME","config"),("XDG_DATA_HOME","data"),("XDG_CACHE_HOME","cache")]:
+    folder=ROOT/part
+    folder.mkdir(exist_ok=True)
+    os.environ[key]=str(folder)
+os.environ["QT_QPA_PLATFORM"]="offscreen"
+for part in ["desktop","libs/python/capture_session","libs/python/capture_analysis","libs/python/capture_protocol"]:
+    sys.path.insert(0,str(REPO/part))
+from PySide6.QtWidgets import QApplication
+from capture_desktop.widgets_analysis_scope import AnalysisScopePicker, ScopeSelection
+from capture_session.package_reader import ReviewSummary
+app=QApplication([])
+records=[]
+for name, first_name in [("repeated-label-control","Movement"),("id-shadowed-by-earlier-label","later-id")]:
+    checkpoints=[
+        {"checkpointId":"earlier-id","name":first_name,"effectiveTimestampNs":1_000_000_001},
+        {"checkpointId":"later-id","name":"Movement","effectiveTimestampNs":4_000_000_003},
+    ]
+    summary=ReviewSummary(package_path=str(ROOT/"authored.mmsession"),session_id="peer",state="finalized",
+                          duration_ns=10_000_000_005,checkpoints=checkpoints)
+    widget=AnalysisScopePicker()
+    widget.set_summary(summary,ScopeSelection())
+    widget._mode.setCurrentIndex(widget._mode.findData("section"))
+    options=[{"label":widget._sections.itemText(i),"id":widget._sections.itemData(i).section_name}
+             for i in range(widget._sections.count())]
+    selected_index=next((i for i in range(widget._sections.count())
+                        if widget._sections.itemData(i).section_name=="later-id"),None)
+    if selected_index is not None:
+        widget._sections.setCurrentIndex(selected_index)
+        selection=widget.selection
+        bounds=[selection.start_ns,selection.end_ns] if selection else None
+    else:
+        bounds=None
+    expected=[4_000_000_003,10_000_000_005]
+    records.append({"case":name,"checkpoints":checkpoints,"offered_options":options,
+                    "actual_bounds":bounds,"expected_bounds":expected,
+                    "selection_correct_or_explicitly_unavailable":bounds==expected or selected_index is None})
+    widget.close()
+    widget.deleteLater()
+app.processEvents()
+receipt={"source_head":subprocess.check_output(["git","-C",str(REPO),"rev-parse","HEAD"],text=True).strip(),
+         "source_status":subprocess.check_output(["git","-C",str(REPO),"status","--short"],text=True),
+         "backend_windows_sha256":hashlib.sha256((REPO/"libs/python/capture_analysis/capture_analysis/windows.py").read_bytes()).hexdigest(),
+         "picker_sha256":hashlib.sha256((REPO/"desktop/capture_desktop/widgets_analysis_scope.py").read_bytes()).hexdigest(),
+         "cases":records,"accepted":all(r["selection_correct_or_explicitly_unavailable"] for r in records)}
+(ROOT/"checkpoint-identity-receipt.json").write_text(json.dumps(receipt,indent=2)+"\n")
+print(json.dumps(receipt))
+sys.exit(0 if receipt["accepted"] else 1)
+

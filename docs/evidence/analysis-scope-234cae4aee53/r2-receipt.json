@@ -1,0 +1,27 @@
+{
+  "source_commit": "dd8bde3ace41f2c39546dffda2e592d101071bbf",
+  "source_tree": "ccf0a0f80600c2bc3df111fe92ab1cae285c6b9e",
+  "command": [
+    "/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python",
+    "-B",
+    "-m",
+    "pytest",
+    "tests/ui/test_analysis_scope.py",
+    "tests/ui/test_analysis_failure_notes.py",
+    "tests/ui/test_analysis_workbench.py",
+    "tests/ui/test_desktop_smoke.py::test_session_timeline_from_fixture",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=/dev/shm/capturesuite-234cae4aee53/scope-r2",
+    "--junitxml=build/evidence/analysis-scope-234cae4aee53/r2.xml",
+    "--durations=5",
+    "-q"
+  ],
+  "exit_code": 0,
+  "duration_seconds": 69.20020068300073,
+  "clean_before": true,
+  "clean_after": true,
+  "source_files": 670,
+  "source_unchanged": true,
+  "manifest_sha256": "dabdbe5ac17439b8b607003cd5514f62bba6249eca05b98dc7b7b34bf8533fe9"
+}
