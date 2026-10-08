@@ -1,0 +1,100 @@
+{
+  "blockers": [],
+  "disposition": "approve_source_and_retained_file_readback",
+  "findings": [
+    "The inversion comparison stays on int64 timestamps; the same stable permutation is applied to timestamps and their already-computed feature values, preserving row association without a float conversion.",
+    "Already ordered series and a single row take the existing path. Stable ordering preserves the original relative order of duplicates; the unchanged searchsorted/strict-distance code retains its exact-match and later-timestamp midpoint rules.",
+    "Removing exactly the four new lines restores the complete original producer byte-for-byte. Feature-file selection, numeric aggregation, source identifiers, warnings, center generation, targets/validity, metadata and output writing remain unchanged.",
+    "The receivers use the complete producer and retained Parquet files, including adjacent nanoseconds above binary64 integer precision, duplicate times, equal distance, aggregate numeric features and an actual MCAP ingestion/Job API path.",
+    "The reported native pipeline correction is energy4 to9 in the final window; the retained paired report and assertions agree. High nanosecond report values were read as decimal strings to preserve exact integers across tool transport.",
+    "The documentation accurately distinguishes retained row order from embedded timestamp order and does not claim physical synchronization or hardware accuracy."
+  ],
+  "independent_checks": {
+    "all_source_test_hashes_match_frozen_request": true,
+    "byte_identical_ordered_outputs": 6,
+    "changed_unordered_outputs": 11,
+    "input_pairs_read_and_byte_equal": 43,
+    "output_pairs_read_and_hash_pinned": 17,
+    "outside_four_added_lines_exact": true,
+    "restored_baseline_sha256": "38b7161f081ef038e6ce464dd3b82ca2b49f775ad8988010243743274d6fc5e6"
+  },
+  "issue": 86,
+  "limits": [
+    "Reviewer performed source inspection, stdlib hashing and receipt parsing only; no pytest, producer invocation, build, dependency installation or source mutation.",
+    "All43 input pairs and17 output pairs were independently read as bytes and checked against the retained hashes. Numeric output-column equality was read from the owner's paired report and source assertions; the reviewer did not decode Parquet or recompute outputs.",
+    "Native owner receiving is Linux Python3.12.10. This review does not replace supported Windows CI or establish hardware/physical-clock receiving.",
+    "The initial schema-invalid2ns receiver attempt and its corrected final qualification remain separate. The pre-existing internal manifest self-digest convention remains outside this change."
+  ],
+  "owner_receiving_read": {
+    "baseline": {
+      "errors": 0,
+      "failed": 11,
+      "passed": 6,
+      "skipped": 0
+    },
+    "candidate": {
+      "errors": 0,
+      "failed": 0,
+      "passed": 17,
+      "skipped": 0
+    },
+    "same_final_test_sha256": "7a5e226afb9c0f49eadf6d4c25b8bc22575f1fdd04afdac854cf8aa4adee58be"
+  },
+  "pins": {
+    "baseline_producer": {
+      "bytes": 10005,
+      "path": "/srv/hamon-estate/chatgpt-capturesuite-nearest-features-713adaab/evidence/baseline-producer.py",
+      "sha256": "38b7161f081ef038e6ce464dd3b82ca2b49f775ad8988010243743274d6fc5e6"
+    },
+    "baseline_receipt": {
+      "bytes": 23626,
+      "path": "/srv/hamon-estate/chatgpt-capturesuite-nearest-features-713adaab/evidence/baseline-final/receipt.json",
+      "sha256": "a170cc673be0c202e3fc8676412fa5eb62ef95c7ce875894ef3029bf146fbf41"
+    },
+    "candidate_producer": {
+      "bytes": 10233,
+      "path": "/srv/hamon-estate/chatgpt-capturesuite-nearest-features-713adaab/source/libs/python/capture_analysis/capture_analysis/ml_bundle/job.py",
+      "sha256": "ed67d94ded834d63599797bbd8efb7b26f125bd216f52bcb7f01febb928922ce"
+    },
+    "candidate_receipt": {
+      "bytes": 20028,
+      "path": "/srv/hamon-estate/chatgpt-capturesuite-nearest-features-713adaab/evidence/candidate/receipt.json",
+      "sha256": "095b5d940f4c6e849692279de1ba40168c1ba2a690fb705d409de76085e89040"
+    },
+    "documentation_patch": {
+      "bytes": 3630,
+      "path": "/srv/hamon-estate/chatgpt-capturesuite-nearest-features-713adaab/evidence/documentation.patch",
+      "sha256": "f9d5ee8ef65acf3cb6d1d331a0deff4418326e9a2344d4e91db4cfc4ef9d4a58"
+    },
+    "paired_artifacts": {
+      "bytes": 22656,
+      "path": "/srv/hamon-estate/chatgpt-capturesuite-nearest-features-713adaab/evidence/paired-artifacts.json",
+      "sha256": "e9f1b94c200261104ce9504b8f568a6738b957b26ee8506e8d317a8f6cb8b355"
+    },
+    "pyproject": {
+      "bytes": 1233,
+      "path": "/srv/hamon-estate/chatgpt-capturesuite-nearest-features-713adaab/source/pyproject.toml",
+      "sha256": "0cb8de1ab3dfbfed84ff16b35f3c89c6440180183ee5851d5d80da83622e53d0"
+    },
+    "runtime_patch": {
+      "bytes": 964,
+      "path": "/srv/hamon-estate/chatgpt-capturesuite-nearest-features-713adaab/evidence/runtime.patch",
+      "sha256": "3232f15dc5b9c443b04d63aa0f23503b9fc19926cda0f83882a4708fa7b5c35e"
+    },
+    "test": {
+      "bytes": 10078,
+      "path": "/srv/hamon-estate/chatgpt-capturesuite-nearest-features-713adaab/source/tests/analysis/test_ml_bundle_feature_order.py",
+      "sha256": "7a5e226afb9c0f49eadf6d4c25b8bc22575f1fdd04afdac854cf8aa4adee58be"
+    }
+  },
+  "project": "CaptureSuite",
+  "reviewed": [
+    "Complete four-line runtime patch and full _load_feature_series, _nearest_indices, and run_ml_bundle_job context",
+    "All17 final parametrized receiver cases, including actual MCAP \u2192 radar extractor \u2192 native feature writer \u2192 public Job API",
+    "Metadata design note and research PROGRESS documentation patch",
+    "Final paired baseline/candidate receipts and paired retained-artifact inventory"
+  ],
+  "reviewed_at": "2026-10-08T18:58:11.839631+00:00",
+  "reviewer": "chatgpt:/root/mac_execution",
+  "schema": "hamon.independent_source_review/1"
+}

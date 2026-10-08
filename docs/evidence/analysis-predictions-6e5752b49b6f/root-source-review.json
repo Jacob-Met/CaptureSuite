@@ -1,0 +1,35 @@
+{
+  "schema": "hamon.capturesuite.prediction-input.root-source-review.v1",
+  "reviewer": "estate-6e5752b49b6f/root",
+  "issue": 69,
+  "decision": "Source accepted; native peer changed-contract receiving passed; final current-main and supported-Windows gates remain separate",
+  "original_native_source": "424298e30d6e0f08fe4124fa282328575c40d203",
+  "original_parent": "d7459fa62dd7a57d5565214e10638e055ad5877c",
+  "accepted_source": "983641cc270db34be0711d554cd2c82608cb0b8c",
+  "accepted_tree": "4cceca0d9ce05a354584c7a2e3092e5e59e6c7c9",
+  "production_sha256": {
+    "desktop/capture_desktop/widgets_analysis_predictions.py": "d865031e313b0c1aed23a2cb0beeb20441a96d380f0b3652458107ba4a6e2435",
+    "desktop/capture_desktop/widgets_analysis_jobs.py": "a012ac150e1301a630417cd78238c050093206f94f073e6e0ee4c90f22b81b62",
+    "desktop/capture_desktop/screen_analysis.py": "a62e7e9ae63c658205531ef51844f4a68a64c738ce1de6083f93a4e9a5ddbc94"
+  },
+  "source_review": [
+    "Identity mode omits prediction_path; external mode retains its key even with an empty choice. Validation refuses absent/unavailable files without falling through to identity.",
+    "Native choice remains literal, including significant whitespace. Cancellation preserves the prior choice. Package changes clear it; revision changes retire delayed choices after package/command/mode/busy changes.",
+    "AnalysisJobExtras contributes the new key only to Eval. Existing _AnalysisWorker copies the scalar extra dictionary immediately, so later UI changes cannot rewrite queued parameters.",
+    "The new scroll container preserves existing widgets and their order, permits natural control heights, and keeps its minimum width compatible with the existing column.",
+    "The common busy predicate now uses reserved thread presence. This disables Run/configuration, enables Cancel before start, and remains active until existing thread-finished cleanup releases the reservation. The matching launch guard refuses another reserved job."
+  ],
+  "demonstrated_corrections": {
+    "new_layout_defect": "Original native controls clipped; a forced group height overlapped Run. Root identified the actual 1100 by 700 application minimum and lack of a column scroll container. Peer baseline also observed forced 1100 by 881 and 11-pixel controls. The scroll wrapper addresses that measured constraint.",
+    "inherited_busy_defect": "Peer observed a real reserved/running QThread with Run enabled and Cancel disabled on source 424. Removing only the new input busy hook recovers the d745 parent screen byte-for-byte. This ancestry distinguishes the inherited defect from the feature.",
+    "busy_counterexample_source_receipt_sha256": "ab9b56c9f25b39b717f3c97ef1929a596a08179112fcfb21fcfea5c36f2f7880"
+  },
+  "peer_receiving": {
+    "original_functional": "Four groups, twelve actual Qt dialogs and six real evaluator jobs on exact 424 source; no evaluator requalification claimed by this source review.",
+    "final_changed_contract": "Exact 983 source: actual AnalysisScreen at 1280 by 960 and 1100 by 700; actual chooser/Run, one real held worker, keyboard Cancel, then settled and re-enabled controls. Process 31156 completed exit 0 in the peer's recorded 12.57 seconds.",
+    "source_changes_by_receiver": false,
+    "corrections_retained": "Invalid ancestor-map coordinates excluded; forward-Tab assumptions around existing QTextEdit controls corrected to observed Shift+Tab navigation. Original receiver failures retained without product rewrites."
+  },
+  "platform_boundary": "Actual app.py/MainWindow imports Windows msvcrt and ctypes.WinDLL(kernel32) before auto_connect=False. Mac evidence is actual AnalysisScreen and Qt viewport evidence, not a full MainWindow claim. The added Windows-only test must pass on supported hosted Windows before final integration.",
+  "scope": "No changes to evaluator, numerical admission/scoring, JobParams, worker implementation, output schema, dependencies, workflows, capture sources or other owners' code beyond the explicit three UI paths. Current-main imported-source equality and final full tree remain publication gates."
+}

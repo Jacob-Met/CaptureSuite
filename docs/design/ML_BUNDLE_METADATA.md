@@ -72,3 +72,24 @@ truthful description of the supplied values.
 metadata to three actual small Parquet witnesses and the public analysis-job
 API. All three window files remain byte-identical to the original producer;
 only the metadata dictionary changes.
+
+
+## Feature rows and nearest lookup
+
+Retained feature tables can contain session timestamps in a different order
+from their stored rows. MCAP message log order, for example, does not establish
+the order of embedded session timestamps. Before nearest-feature lookup, the
+loader checks the integer timestamps and stably orders timestamp/value pairs
+in memory when it finds an inversion. The original Parquet file and the
+feature writer's row order remain intact.
+
+Already ordered rows follow the same lookup path. Equal-distance choices
+continue to select the later timestamp. Equal timestamps retain their original
+relative row order: an exact query selects the first equal row, while a query
+just after them compares the last preceding equal row. No interpolation,
+aggregation, timestamp conversion, validity or target-column rule changes.
+
+[Feature-order receiving](../evidence/ml-bundle-feature-order-713adaab/README.md)
+includes actual Parquet inputs and an MCAP-to-feature-table-to-public-job
+witness. This qualification concerns deterministic data alignment; it does not
+establish physical clock synchronization or hardware accuracy.

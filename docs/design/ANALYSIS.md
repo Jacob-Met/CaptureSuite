@@ -524,3 +524,21 @@ held-out participants, calibration, teacher accuracy or clinical validity.
 Without --predictions, the prior identity_teacher_sim behavior is preserved.
 
 Verification: python -m pytest tests/analysis/test_external_predictions.py.
+
+### Native workbench: supplied prediction files
+
+In the Analysis tab, select **Eval report**, the source **ML bundle job**, and
+**External predictions file** under **Evaluation input**. **Choose…** selects
+the JSON file; **Run** sends that explicit choice through the existing job
+worker and evaluator. Empty or unavailable external choices block the run and
+never select the identity simulation. **Identity teacher (simulation)** remains
+the explicit default for fixture checks.
+
+The control column scrolls at smaller window sizes. The workbench preserves a
+choice after dialog cancellation and clears it when a different session is
+opened. A running job captures its request, disables the evaluation-input controls, and offers the
+existing cancellation action. The evaluator retains the bytes it receives when
+the job executes; selecting a file does not freeze its contents.
+
+See [Evaluate a predictions file in Analysis](research/EXTERNAL_EVALUATION_WORKBENCH.md)
+for the operator flow, file-choice behavior and retained report/figure paths.

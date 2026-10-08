@@ -1,3 +1,29 @@
+## 2026-10-08 — Preserve nearest feature pairs across retained row orders
+
+Contributor `chatgpt:/root/production_execution`, issue #86, repaired the
+ML-bundle loader's assumption that retained feature timestamps were ordered.
+A real private MCAP fixture with different log and embedded timestamp orders
+passes through the radar extractor, native feature writer and public Job API;
+the original bundle selects energy 4 where the nearest sample has energy 9.
+
+Only feature ingestion adds an inversion check and stable in-memory ordering
+of the timestamp and value arrays together. Ordered inputs, duplicate relative
+order and the existing equal-distance choice retain their behavior. Stored
+inputs, feature writers, kinematics/evaluation, validity, metadata, schema and
+the unrelated internal self-digest convention remain unchanged.
+
+The same 17 final native Python 3.12.10 receivers record 6 original passes and
+11 failures, then 17 candidate passes without errors or skips. A separate 14
+inherited metadata, pose, kinematics, bundle, CLI and actual evaluator cases
+pass. Paired file readback verifies all 43 original inputs, six byte-identical
+ordered output controls, eleven corrected unordered outputs and identical
+non-energy columns. The initial receiver's four schema-invalid 2 ns windows
+and their correction remain distinct from the final paired qualification.
+[Source and receiving custody](../../evidence/ml-bundle-feature-order-713adaab/README.md)
+retains exact files and limitations. Independent review and supported Windows
+CI remain separate integration gates; no installed or hardware result is
+claimed here.
+
 ## 2026-10-08 — Inspect and compare retained analysis parameters
 
 Contributor `chatgpt-ac386303dce2/product_execution`, issue #70, implements
@@ -1096,6 +1122,58 @@ history/selection/completion, backend jobs/pipeline, galleries and raw storage
 remain with their current owners. The ownership fence is coordinated in #55 and
 HAMON #140. Details: ANALYSIS_SOURCE_SELECTION.md and
 docs/evidence/analysis-sources-234cae4aee53/.
+
+## 2026-10-08 — Native external-prediction evaluation (#69; HAMON 6e5752b49b6f)
+
+The native Analysis workbench now exposes the existing #57/PR65 evaluator with
+an explicit **Evaluation input** choice. **Identity teacher (simulation)**
+retains the original default. **External predictions file** offers a native
+file chooser, literal read-only path, Clear and actionable missing-file errors.
+It sends the ordinary prediction_path job extra without replacing evaluator
+admission, source binding, scoring, schema or publication. Source and raw files
+remain read-only. See [the operator guide](EXTERNAL_EVALUATION_WORKBENCH.md).
+
+Chooser cancellation preserves the current choice. A new session clears the
+file; command/mode changes preserve it within the same session. Revision checks
+retire file dialogs whose context changed while they were open. The worker
+captures scalar request values, while the evaluator admits and retains the
+actual input bytes when it runs. No file-byte snapshot or trained-model
+execution is implied by a selection.
+
+Native receiving exposed two separate workbench findings. The first candidate
+clipped its new controls under vertical pressure, so the unchanged control
+column now lives in a native scroll area. Keyboard controls, wrapped text and
+Run/Cancel remain reachable without forcing a taller Analysis window. An
+independent held-worker check also proved the parent's Run/Cancel state used
+isRunning before thread.start and never resynchronized. The shared screen hunk
+now treats a reserved worker as busy and rejects any duplicate start while it
+is reserved; the existing worker/cancellation/job lifecycle is unchanged.
+
+The original absence capture, functional source, clipped images, inherited busy
+counterexample and receiver-only corrections remain distinct in qualification.
+Local Python 3.12.8 / PySide6 6.11.2 receiving uses actual Qt dialogs and QThreads,
+real external/identity/refused jobs, retained-file and output-inventory checks,
+and keyboard reachability at 1100×700 and 1280×960. The actual MainWindow imports
+Windows named-pipe APIs before its auto_connect=False guard, so its minimum-size
+case is a supported Windows CI gate, explicitly skipped on Mac. No Windows
+hardware, OS-native dialog, model authorship or scientific efficacy claim is
+made from the local fixture evidence. Independent receiving and hosted results
+are recorded separately with their exact source identities.
+
+
+### PR84 Windows chooser receiving correction (2026-10-08)
+
+The first ordinary Windows gate timed out before JUnit. An isolated unchanged-source full-order diagnostic identified the actual Qt test helper stripping a significant leading filename space, then waiting inside a file-not-found QMessageBox. Production chooser behavior is unchanged. The helper now uses verified literal filename entry and independent bounded modal cleanup, with an actual missing-file unwind regression. The normal 300-second runner and selection remain exact; a read-only post-Pytest step prints and checks the actual named MainWindow and chooser JUnit cases. Original failure and diagnostic evidence are preserved in `docs/evidence/analysis-predictions-windows-correction-6e5752b49b6f/`; supported Windows acceptance remains pending until that actual successor gate completes.
+
+
+### PR84 exact Windows diagnosis and current picker composition (2026-10-08)
+
+The second unchanged-source diagnostic separates three actual failures and a later inherited receiving stall: inline CI observation violated the one-command contract; even quoted filename entry lost significant leading space through Qt's model; MainWindow's global checkpoint Space shortcut consumed native Clear activation; the existing scope-test QTest.qWait loop stalled a real plotting worker. Original ordinary and diagnostic failures are retained, not relabeled. The next candidate uses the independently received actual file-view selection approach, retains bounded modal cleanup, protects only unmodified Space on a focused descendant Analysis QPushButton, and preserves global shortcut behavior in a real countercontrol. JUnit observation moves to one explicit Python command. The scope wait correction is independently owned and preserves its original receiving assertions/bound. The full current source picker and current progress text are preserved in this composition. The unchanged ordinary300-second Windows gate must qualify the resulting exact checkout before adoption.
+
+
+### PR84 exact file-model boundary and owned scope receiving (2026-10-08)
+
+The unchanged-source Windows probe directly distinguished the literal OS filename from Qt6.12 widget-model normalization. Successful real chooser receiving now uses a representable Unicode/internal-space filename; the original leading-space fixture separately requires exact identity or bounded refusal with prior path unchanged, recording the actual branch in JUnit. No product path normalization or native Windows-dialog claim is introduced. The exact owner-authored PR79 scope wait blob817412fe is adopted with estate-7879c2abc07f credit, preserving every existing bound/assertion and excluding its unrelated QC source. The current picker, narrow focused-button Space correction, one-command read-only JUnit gate, original failures and native receiving packets are preserved. Ordinary full-suite Windows acceptance is still pending for this exact composition.
 
 
 ## 2026-10-08 — Native recorded-video segment review (chatgpt-0378a7b6b7c2/mac_product)
