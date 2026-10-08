@@ -1,0 +1,10 @@
+{
+  "main": "0ed1ccaa023a5327495565d59e1dd0b28b2ee5bd",
+  "scope_head": "adc370116c54b0ee12bb79912aa59d49b4ed0234",
+  "local_composed_head": "64f25af9957ea0e0e40f9f02ebb45d63185ac049",
+  "tree": "6d849a6cfeba945b12b5ddc8570b45e2f64ce658",
+  "qualified_scope_leaves_exact": 44,
+  "unowned_actual_main_leaves_exact": 806,
+  "upstream_progress_bytes_preserved": true,
+  "errors": []
+}
