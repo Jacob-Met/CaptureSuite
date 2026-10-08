@@ -40,6 +40,14 @@ The canonical session package. Directly reopenable by the app; export is for int
 
 A session may sit inside a project folder carrying Project / Participant / Visit metadata, but the session always embeds the full identity chain so a moved package stays self-describing.
 
+On POSIX, JSON replacement uses a newly created exclusive sibling temporary
+inode instead of reusing `<name>.tmp`. The writable descriptor is fully written
+and synced, then renamed within the opened parent directory, which is also
+synced before success. Existing temporary files and links are left untouched.
+This prevents recovery metadata from overwriting retained package data through
+an alias at the old fixed temporary name. The Windows `MoveFileEx` procedure
+below is unchanged; no serialized schema changes.
+
 ## manifest.json
 
 Required fields:
@@ -58,7 +66,10 @@ Required fields:
 | `sdk_versions`, `firmware_versions` | provenance |
 | `source_ids` | sources participating in this session |
 
-Written atomically: serialize to `manifest.json.tmp`, flush, then `MoveFileEx` with `MOVEFILE_REPLACE_EXISTING`. Same rule for every JSON metadata file.
+On Windows, written atomically: serialize to `manifest.json.tmp`, flush, then
+`MoveFileEx` with `MOVEFILE_REPLACE_EXISTING`. POSIX uses the exclusive temporary
+inode procedure above. The corresponding platform rule applies to every JSON
+metadata file.
 
 Unknown fields encountered on read are preserved and written back unchanged. That is what makes an older reader safe against a newer writer.
 

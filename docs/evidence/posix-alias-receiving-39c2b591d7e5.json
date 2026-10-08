@@ -1,0 +1,155 @@
+{
+  "actual_cli": {
+    "candidate_alias_cases_passed": 2,
+    "candidate_binary_sha256": "d70234d6e1aa50ad43db0fa2a2323d970f1031a5964dfad86697a561297dc81f",
+    "candidate_repeat_noop_cases_passed": 2,
+    "cases": [
+      {
+        "case": "candidate-symlink",
+        "checks": {
+          "alias_inode_retained": true,
+          "alias_kind_retained": true,
+          "cli_reports_successful_recovery": true,
+          "integrity_entry_preserved": true,
+          "manifest_finalized": true,
+          "manifest_regular_file": true,
+          "manifest_unknown_field_preserved": true,
+          "no_owned_temp_leftovers": true,
+          "repeat_is_noop": true,
+          "report_trusts_only_sealed_fixture": true,
+          "sealed_raw_bytes_preserved": true,
+          "sealed_raw_inode_preserved": true
+        },
+        "expected_outcome_observed": true,
+        "raw_after_sha256": "675b2fd187e4ebf6ede2e7316a2444eca0a640649dd02160aef9435f4a293038",
+        "raw_after_size": 207,
+        "raw_before_sha256": "675b2fd187e4ebf6ede2e7316a2444eca0a640649dd02160aef9435f4a293038",
+        "raw_before_size": 207
+      },
+      {
+        "case": "candidate-hardlink",
+        "checks": {
+          "alias_inode_retained": true,
+          "alias_kind_retained": true,
+          "cli_reports_successful_recovery": true,
+          "integrity_entry_preserved": true,
+          "manifest_finalized": true,
+          "manifest_regular_file": true,
+          "manifest_unknown_field_preserved": true,
+          "no_owned_temp_leftovers": true,
+          "repeat_is_noop": true,
+          "report_trusts_only_sealed_fixture": true,
+          "sealed_raw_bytes_preserved": true,
+          "sealed_raw_inode_preserved": true
+        },
+        "expected_outcome_observed": true,
+        "raw_after_sha256": "675b2fd187e4ebf6ede2e7316a2444eca0a640649dd02160aef9435f4a293038",
+        "raw_after_size": 207,
+        "raw_before_sha256": "675b2fd187e4ebf6ede2e7316a2444eca0a640649dd02160aef9435f4a293038",
+        "raw_before_size": 207
+      },
+      {
+        "case": "published-r2-control-symlink",
+        "checks": {
+          "alias_inode_retained": false,
+          "alias_kind_retained": false,
+          "cli_reports_successful_recovery": true,
+          "integrity_entry_preserved": true,
+          "manifest_finalized": true,
+          "manifest_regular_file": false,
+          "manifest_unknown_field_preserved": true,
+          "no_owned_temp_leftovers": true,
+          "report_trusts_only_sealed_fixture": true,
+          "sealed_raw_bytes_preserved": false,
+          "sealed_raw_inode_preserved": true
+        },
+        "expected_outcome_observed": true,
+        "raw_after_sha256": "e75eaf4e78db42b43660a6d84744b19c9aaa6786d485a8d69087bffffbed60e2",
+        "raw_after_size": 313,
+        "raw_before_sha256": "675b2fd187e4ebf6ede2e7316a2444eca0a640649dd02160aef9435f4a293038",
+        "raw_before_size": 207
+      },
+      {
+        "case": "published-r2-control-hardlink",
+        "checks": {
+          "alias_inode_retained": false,
+          "alias_kind_retained": false,
+          "cli_reports_successful_recovery": true,
+          "integrity_entry_preserved": true,
+          "manifest_finalized": true,
+          "manifest_regular_file": true,
+          "manifest_unknown_field_preserved": true,
+          "no_owned_temp_leftovers": true,
+          "report_trusts_only_sealed_fixture": true,
+          "sealed_raw_bytes_preserved": false,
+          "sealed_raw_inode_preserved": true
+        },
+        "expected_outcome_observed": true,
+        "raw_after_sha256": "e16485db2a0af9f979cfdf3e28946bc77d4758f1a26883f4c56910150ecff8c8",
+        "raw_after_size": 314,
+        "raw_before_sha256": "675b2fd187e4ebf6ede2e7316a2444eca0a640649dd02160aef9435f4a293038",
+        "raw_before_size": 207
+      }
+    ],
+    "fixture_kind": "Fresh valid empty MCAP made and reopened by the pinned MCAP C++ library; real BLAKE3 and sealed integrity entry.",
+    "full_raw_receipt_sha256": "ab96f6ed7c3dd3ef9c9a4f2cc855c9c8387828a4dd4b09edd44356dba71fc06f",
+    "published_r2_control_binary_sha256": "8104af6502590eceff5daf6c57d3f768bb431463104c40a958942d94927cbcf4",
+    "published_r2_sealed_byte_preservation_failures": 2
+  },
+  "composed_source_sha256": {
+    "docs/design/SESSION_FORMAT.md": "eb7cc1f26d930603cbab6c0f211243cea52d342e29a0f201e732956ef3a2c114",
+    "libs/cpp/capture_storage/include/capture/storage/atomic_file.hpp": "f057e8c4506e9e4195a4d38b4da97462903e35e0e5b523f65a007ff6f1ea8aef",
+    "libs/cpp/capture_storage/src/atomic_file.cpp": "912700935decf0bdf9cc4eee5bcd3f7d5aadfddf70d16de7a2cc0a5168ac8fec",
+    "tests/cpp/CMakeLists.txt": "2c786748992ed2b0b66e6632d199f1145016b4ede23e6caf7ebcdc5e3a40b3f6",
+    "tests/cpp/test_atomic_file_posix.cpp": "ea35516f3f6c81f6701c356cab57c6d55fd0e8e273a8a771599a5f982bee2ef9",
+    "tests/cpp/test_atomic_file_posix_identity.cpp": "347f85f5087c674199120d196c3457ae688fe698c2fd6fde119a307cc9fc9702"
+  },
+  "composition_adaptations": [
+    "Keep the existing R2 zero-write no-progress diagnostic and original write_calls == 1 assertion.",
+    "Count writer-descriptor close attempts before the wrapped close, excluding legitimate directory cleanup.",
+    "Retain R2 write/fsync/close linker wrappers and append the exclusive-file identity target.",
+    "Preserve the author R2 build/evidence/progress material and document platform-specific replacement behavior."
+  ],
+  "date_utc": "2026-10-08T09:09:23.913920+00:00",
+  "initial_unadapted_failures": {
+    "ctest_exit_code": 8,
+    "r2_cases_failed": 4,
+    "raw_log": "evidence/r2-unadapted-test.log",
+    "raw_log_sha256": "d815bc497c9ab95c4b9b893efb648436943573dd3ef70d800462941eef15bcf8"
+  },
+  "mcap_dependency_commit": "b2953496735e7b89d5b2ea58be73abed85317c5f",
+  "native_build": {
+    "build_type": "Debug",
+    "capture_werror": false,
+    "configure_and_complete_build_exit_code": 0,
+    "ctest_targets_failed": 0,
+    "ctest_targets_passed": 18,
+    "generator": "Ninja",
+    "identity_cases_passed": 15,
+    "r2_durability_cases_passed": 10,
+    "werror_boundary": "Project default; original existing logging warning remains. Strict isolated source/helper qualification is recorded separately.",
+    "workers_enabled": false
+  },
+  "native_candidate_binary": "/home/jacob/hamon-estate-receiving-capturesuite-39c2b591-v1-i5XkI8/artifacts/session_doctor-posix-alias-v1",
+  "native_donor_local_commit_same_tree": "4e7d354fe0c0e0d8d27b7fa85dcb3cfd57ab52ae",
+  "native_full_evidence": "/home/jacob/hamon-estate-receiving-capturesuite-39c2b591-v1-i5XkI8/evidence",
+  "native_receiving_directory": "/home/jacob/hamon-estate-receiving-capturesuite-39c2b591-v1-i5XkI8",
+  "parent_supplement_cpp_sha256": "3877a3b66a6467076d2906e1fac1982ab8dc21c53871d36f13625a7ba429ae0e",
+  "published_head": "05a6b6bd02f05efd2c7380ea4ee8f92942609d4b",
+  "published_pr": 36,
+  "published_tree": "e94c68e129f51c60f184dde24888a78cdaaa3e37",
+  "receiving_lane": "estate-39c2b591d7e5/coordination",
+  "schema": "capturesuite-posix-alias-receiving-v1",
+  "source_and_scope": {
+    "all_source_unchanged_during_build_controls": true,
+    "documentation_only_after_final_execution": [
+      "docs/design/research/PROGRESS.md",
+      "docs/evidence/posix-alias-receiving-39c2b591d7e5.json"
+    ],
+    "donor_checkout_read_only": true,
+    "hardware_qualification": false,
+    "merged": false,
+    "whole_product_qualification": false,
+    "windows_atomic_branch_matches_public_r2": true
+  }
+}

@@ -96,4 +96,16 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
   capture_set_warnings(capture_atomic_file_posix_tests)
   add_test(NAME capture_atomic_file_posix_durability
            COMMAND capture_atomic_file_posix_tests)
+  add_executable(capture_atomic_file_posix_identity_tests
+    test_atomic_file_posix_identity.cpp
+    ${CMAKE_SOURCE_DIR}/libs/cpp/capture_storage/src/atomic_file.cpp
+  )
+  target_include_directories(capture_atomic_file_posix_identity_tests PRIVATE
+    ${CMAKE_SOURCE_DIR}/libs/cpp/capture_storage/include
+  )
+  target_link_options(capture_atomic_file_posix_identity_tests PRIVATE
+    "-Wl,--wrap=openat,--wrap=write,--wrap=fsync,--wrap=close,--wrap=renameat")
+  capture_set_warnings(capture_atomic_file_posix_identity_tests)
+  add_test(NAME capture_atomic_file_posix_identity
+           COMMAND capture_atomic_file_posix_identity_tests)
 endif()

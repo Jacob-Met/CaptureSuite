@@ -1,9 +1,17 @@
-# Agent progress log
+## 2026-10-08 — Receive fixture ownership repair onto accepted main (estate-87eaaf0fdf63)
 
-Agents: **read at session start, update at session end.**  
-Plan: [AUTONOMOUS_EXECUTION_PLAN.md](AUTONOMOUS_EXECUTION_PLAN.md)
+The original Linux port #36 and the separately owned POSIX alias repair #44
+are now accepted on main `ac52c3ca7164a6ab457d11a8a1448957093eb592`.
+The fixture companion from #42 is composed onto that source. It retains the
+reviewed unique-directory fixture and adds only its CTest registration to the
+current test build. All accepted production, durability and alias-receiver
+bytes remain unchanged. The complete current upstream progress log follows
+unchanged after this lane's two blocks.
 
----
+The historical receiving results below remain pinned to their recorded source.
+Current mainline qualification, composition hashes and hosted gate results are
+recorded in `docs/evidence/storage-fixture-isolation-87eaaf0fdf63/MAINLINE.md`
+and the PR. No claim of hardware or power-cut qualification is added.
 
 ## 2026-10-08 — Preserve concurrent storage-test evidence (estate-87eaaf0fdf63)
 
@@ -33,6 +41,47 @@ Current receiving also preserves the producer's writer-close revision
 receiver above remains bound to retained original `16eb17f` atomic source; it
 does not claim qualification of the revised writer. See the packet CURRENT.md
 for the exact companion composition and current fixture replay.
+
+## 2026-10-08 — Scope recorded analysis gaps to their stream (estate-e82707f2bc62)
+
+A targeted gap from one stream previously invalidated every sibling stream from
+that source. The receiving fixture now preserves healthy samples, feature values,
+and fail-policy behavior by matching both source and stream in `build_gap_mask`.
+Empty stream IDs retain source-wide scope; fully unspecified IDs retain global
+scope. Existing time boundaries, open gaps and raw package bytes are preserved.
+
+The same eight native unittest methods ran through normal public imports,
+recorded-package discovery and EMG feature extraction. Original source: four
+passing and four failing methods (six failed and two errored subtests). Candidate:
+eight passing methods on Python 3.12.14, NumPy 2.3.5 and pandas 2.2.3. This is a
+focused analysis result; existing hosted Python/Windows C++ gates and independent
+receiving are pending at this publication checkpoint. No hardware result is claimed.
+Exact source pins, unchanged test hash and raw outputs are retained in
+`docs/evidence/stream-gap-scope-20261008-e827/`. Project ownership: issue #40.
+The current framing receiver from main `c43b2819` is preserved.
+
+## 2026-10-08 — Independent sealed-source alias preservation (estate-39c2b591d7e5)
+
+Composed the independently reviewed exclusive POSIX temporary-file supplement
+onto PR36 head 05a6b6bd while preserving the author's complete R2 writer-close
+repair, evidence and Linux build entrypoint. The initial composition retained
+four failing R2 test results. Final composition preserves the existing
+zero-progress diagnostic and counts attempted closes of the writer descriptor
+separately from the newly opened directory descriptor.
+
+The complete isolated native Linux build passes all **18 CTest targets**,
+including the original R2 durability suite (**10/10 cases**) and the added
+exclusive-file identity suite (**15/15 cases**). The rebuilt actual
+session_doctor preserves a freshly generated, valid sealed MCAP through both
+symlink and hardlink manifest.json.tmp aliases; both repeated recoveries are
+byte-for-byte no-ops. The exact published R2 executable fails both sealed-byte
+preservation controls while reporting success. These are disposable synthetic
+fixtures on native ext4, not physical hardware or Windows qualification.
+
+See docs/evidence/posix-alias-receiving-39c2b591d7e5.json for exact source,
+binary and retained native evidence. The Windows implementation remains
+byte-identical to the published R2 branch. Revised Windows CI remains a separate
+integration gate; this local receiving result does not claim a merge.
 
 ## 2026-10-08 — Writer-close review repair and user receiving (estate-68e476e98b77)
 
@@ -89,6 +138,37 @@ build. No estate-wide cleanup or service change was performed by this lane.
 See `docs/BUILDING-LINUX.md` and `docs/evidence/linux-port-68e476e98b77.json` for
 source, dependency, test and receiving boundaries. This source receipt does not
 claim a Windows CI, macOS, full-product or hardware pass.
+
+## 2026-10-08 — independent framing-view receiving accepted
+
+Integration receiver `integration-72ac1419` preserved the separate `capture_peer` decision
+and exact native outputs under `docs/evidence/framing-view-lifetime-72ac1419/peer/`.
+Peer accepted source commit `4359c21f3da93ed863de617331edfc853cf8385d`; its own 27-test
+replay and 20-case view/diagnostic matrix pass, and both predecessor active-handler
+failures independently reproduce. Product framing and tests are unchanged. The companion
+Windows gates and GitHub publication remain pending because content creation is still
+secondary-rate-limited; no failed registration was represented as a published claim.
+
+# Agent progress log
+
+Agents: **read at session start, update at session end.**  
+Plan: [AUTONOMOUS_EXECUTION_PLAN.md](AUTONOMOUS_EXECUTION_PLAN.md)
+
+---
+
+## 2026-10-08 — Retained framing exception recovery (integration-72ac1419)
+
+Independent receiving of PR #35 found that an active or saved FrameError retained
+an exported memoryview and made the documented decoder reset raise BufferError.
+The isolated successor releases only the parser-owned view on every decode exit;
+wire fields, payload ownership, caller-owned views and error diagnostics remain intact.
+Exact predecessor 65b76c9 plus 11 new controls: 9 failed / 18 passed. Same actual package,
+Mac Python 3.12.8 / protobuf 4.25.9 and candidate: 27 passed; strict Ruff/diff-check passed.
+Source bytes, raw failures and replay are in
+`docs/evidence/framing-view-lifetime-72ac1419/README.md`.
+This is an isolated qualified companion pending independent receiving and its own
+supported Windows CI. GitHub comment creation remains temporarily rate-limited;
+no review publication, source integration, named-pipe or hardware pass is claimed.
 
 ## 2026-10-08 — Incremental protocol error propagation
 
