@@ -1,0 +1,211 @@
+{
+  "schema": "capture.qc-package-review.original-receiving/1",
+  "repository": "Jacob-Met/CaptureSuite",
+  "issue": 74,
+  "pullRequest": 79,
+  "authors": {
+    "product": "offhand_published_review",
+    "consumer": "echo_opening_receiving",
+    "independentReview": "github_execution"
+  },
+  "source": {
+    "head": "13164f0e52ad27ca512b90ffd0165329a1fe1abd",
+    "tree": "ad6e9d2dc3a81ec1aa1778bd60a911ba266f5ea3",
+    "parent": "a2fd6c58ccc97c7262b97570a85d8aae8dfb978c",
+    "fullTreeProof": {
+      "base": "a2fd6c58ccc97c7262b97570a85d8aae8dfb978c",
+      "baseTree": "9cb6f200bece07bbed86b166d659026fcfaf632f",
+      "tree": "ad6e9d2dc3a81ec1aa1778bd60a911ba266f5ea3",
+      "baseLeaves": 1050,
+      "leaves": 1053,
+      "unchanged": 1050,
+      "added": [
+        {
+          "path": "tests/analysis/test_qc_package_review_receiving_7879.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "4f3fc6695d36cfa525dab393492ab0e6466aae85"
+        },
+        {
+          "path": "tools/check_qc_package_review_index_7879.mjs",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2a195f01df5046b6edc3a1da37d78e798bb3b8b1"
+        },
+        {
+          "path": ".github/workflows/qc-package-review-receiving.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ead7560750d6461dc1f191b651143a3bec7fd7fb"
+        }
+      ],
+      "changed": [],
+      "removed": [],
+      "productionAbsent": [
+        "tools/review_qc_packages.py",
+        "libs/python/capture_analysis/capture_analysis/qc_packages.py"
+      ]
+    },
+    "receiver": [
+      {
+        "path": "tests/analysis/test_qc_package_review_receiving_7879.py",
+        "sha": "4f3fc6695d36cfa525dab393492ab0e6466aae85",
+        "bytes": 37544,
+        "sha256": "ca2c3af5fa3eb606a42c4b940046c2f054b4f0c9f050fcfea3201d14e1f3995b"
+      },
+      {
+        "path": "tools/check_qc_package_review_index_7879.mjs",
+        "sha": "2a195f01df5046b6edc3a1da37d78e798bb3b8b1",
+        "bytes": 12411,
+        "sha256": "537ef5f267445a3312bb04a820f98e4df1d343fb16cc32f16e474bc091031ffa"
+      },
+      {
+        "path": ".github/workflows/qc-package-review-receiving.yml",
+        "sha": "ead7560750d6461dc1f191b651143a3bec7fd7fb",
+        "bytes": 2516,
+        "sha256": "6fce52b44a1710f8c385d0945ca707b9028919ee82cd82279b1266d352713c0c"
+      }
+    ]
+  },
+  "actualCheckout": {
+    "sha": "56ec61aa8e272f3633440cc05fa39eda7c853d69",
+    "tree": "ad6e9d2dc3a81ec1aa1778bd60a911ba266f5ea3",
+    "parents": [
+      "a2fd6c58ccc97c7262b97570a85d8aae8dfb978c",
+      "13164f0e52ad27ca512b90ffd0165329a1fe1abd"
+    ]
+  },
+  "predecessorBridge": {
+    "criteriaBase": "70f34e3b982523b544a9370d2316a1b69d79bd70",
+    "intermediate": "58157fdc1b83a12bb4856ef14b0498cf524a1087",
+    "native9c": "9c44354cb101c76beff79265de0040b6839d249f",
+    "actualParent": "a2fd6c58ccc97c7262b97570a85d8aae8dfb978c",
+    "allSevenCriteriaInputsExact": {
+      "libs/python/capture_analysis/capture_analysis/qc.py": "530b86af1247599c127e2d0c3fa5e4d7d12169f6",
+      "libs/python/capture_analysis/capture_analysis/report_html.py": "bb8032024cfce30c6fe9a2bd2c13b0d2cbc2d102",
+      "libs/python/capture_analysis/capture_analysis/discover.py": "d5c4fa7e06ac6e9139ebfc78fade90a3df5e451a",
+      "libs/python/capture_session/capture_session/package_reader.py": "91fbf913c5af8489968425d7ceac51c04233d3e0",
+      "libs/python/capture_session/capture_session/__init__.py": "894e3c152a98b6e804de90122572afbcd929b3da",
+      "tests/analysis/test_phase_a_qc.py": "26ba50397f91d3ab4ba1ea04fcd56130afba83f5",
+      "tests/fixtures/mini_session/manifest.json": "800dab5b41774bc043ebdee4714195770e75229b"
+    },
+    "base1050From9c": {
+      "unchanged": 1011,
+      "changed": [
+        "docs/design/research/PROGRESS.md"
+      ],
+      "added": 38,
+      "removed": 0
+    },
+    "meaning": "Frozen criteria and receiver name their historical source baselines. Actual execution is bound to the synthesized a2+131 checkout above."
+  },
+  "runtime": {
+    "nativeReceiver": {
+      "run": 37809326650,
+      "job": 113421774576,
+      "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+      "status": "expected missing-capability failure",
+      "nativePositiveGroups": [
+        "real native collector/renderer inventory two copied finalized mini packages before the advertised multi-package command is required"
+      ],
+      "actualCommands": [
+        {
+          "applicationStateUnchanged": true,
+          "argv": [
+            "C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe",
+            "D:\\a\\CaptureSuite\\CaptureSuite\\tools\\review_qc_packages.py",
+            "--output",
+            "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\pytest-of-runneradmin\\pytest-0\\test_qc_package_review_receivi0\\explicit-review-outputs\\ordered",
+            ".\\input-packages\\z-last-海-Cafe.mmsession",
+            "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\pytest-of-runneradmin\\pytest-0\\test_qc_package_review_receivi0\\input-packages\\a-first.mmsession"
+          ],
+          "cwd": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\pytest-of-runneradmin\\pytest-0\\test_qc_package_review_receivi0",
+          "exit": 2,
+          "inputUnchanged": true,
+          "inputsAfter": "da7ee8cec6808de00ace648ede1ea5aa883898647c8f5d8b6050f7b51e2a9f42",
+          "inputsBefore": "da7ee8cec6808de00ace648ede1ea5aa883898647c8f5d8b6050f7b51e2a9f42",
+          "name": "original-or-candidate-two-package-command",
+          "stderr": "C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe: can't open file 'D:\\\\a\\\\CaptureSuite\\\\CaptureSuite\\\\tools\\\\review_qc_packages.py': [Errno 2] No such file or directory\n",
+          "stdout": ""
+        }
+      ],
+      "sourceUnchanged": true,
+      "summary": "1 failed in 16.71s",
+      "browserReached": false,
+      "browserNote": "Execution stopped at the absent entrypoint before browser receiving. Preserve the original report's initial browser text as historical raw output."
+    },
+    "maintainedPython": {
+      "run": 37809326170,
+      "job": 113421772517,
+      "passed": 522,
+      "skipped": 6,
+      "failed": 1,
+      "warnings": 2,
+      "seconds": 271.25,
+      "failure": "same independently frozen missing-entrypoint assertion",
+      "otherCurrentChecks": "Dependency consistency, generation freshness, Ruff and license checks succeeded; raw log retained."
+    },
+    "nativeCmake": "Still in progress when this original packet was sealed; no whole-workflow success claim."
+  },
+  "logs": [
+    {
+      "job": 113421774576,
+      "run": 37809326650,
+      "bytes": 117343,
+      "sha256": "aa9e0f7ce7aa8868fde379232ba5428fa15dab314c0ffcca92372b64d218d035",
+      "gitBlob": "886c7e2a632cce7178533a81186c7a0c9705b865"
+    },
+    {
+      "job": 113421772517,
+      "run": 37809326170,
+      "bytes": 65097,
+      "sha256": "770abd5568f8e068d98f585c2b193fbc81382c4baefa8450f35f42f2d3ddc768",
+      "gitBlob": "d5fd2d833171ce90849ca2bafec1078199c7911b"
+    }
+  ],
+  "bundle": {
+    "bytes": 47186,
+    "sha256": "6d1c34aabe11693ddb7249a464b8d8e7bfe9a3196ad49362881f56458aea2b3b",
+    "chunks": 16,
+    "files": [
+      {
+        "path": "native/001-qc.html",
+        "bytes": 2281,
+        "sha256": "5ef30eef2b488d1bcff4fbb5a8df6140e55bbeb9f771b78684f7e2320a29484b",
+        "gitBlob": "0d4a88e945f68e2c9c5a6e6b96eabef26eadf40d"
+      },
+      {
+        "path": "native/001-qc.json",
+        "bytes": 1375,
+        "sha256": "8be8d070a15715282fb490b923f7231059bf19938745db4f2c79c0869b7dbf3d",
+        "gitBlob": "db7ec2e9333f3d8e1b78bb5510af2fb00a36fb76"
+      },
+      {
+        "path": "native/002-qc.html",
+        "bytes": 2289,
+        "sha256": "9f0a2b121bf900e10a7524dc6fdaaa2648781b61f0986fa5507ce6e0783caa7b",
+        "gitBlob": "8a3f6de9d8075db85f7053a706a996b75c6bbb2b"
+      },
+      {
+        "path": "native/002-qc.json",
+        "bytes": 1386,
+        "sha256": "81dbb5518256a16e67864b5b8d412caff52f1ae4f0199e9c1b19a9710ff2e57e",
+        "gitBlob": "f29bab653476d3777db6c1e2af3be1a6f4b49d5b"
+      },
+      {
+        "path": "receiving-report.json",
+        "bytes": 27541,
+        "sha256": "5a96240d185b83373bd228411d8a10fda11ee6aa510fa94423e71d473318321f",
+        "gitBlob": "255882da5da94d8ae5aadbcb30800102511f0f4c"
+      }
+    ],
+    "complete": true
+  },
+  "interpretation": "The unchanged real collector and renderer can read the two authored finalized packages. The actual new multi-package CLI is absent at the frozen baseline; Python exits2 before input or application-state mutation. This is not a dependency/import/harness failure or a passing product claim.",
+  "limits": [
+    "Synthetic mini_session contains two 28-byte MCAP placeholders; no segment decoding, raw rehash or scientific certification.",
+    "Only specified source/fixture inputs are runtime-hashed; separate complete Git-tree comparison proves all inherited repository leaves were retained.",
+    "No browser page or pixel was reached at this baseline.",
+    "No product source was present in the executed tree. Proposed later source and any unexecuted preview are distinct."
+  ]
+}

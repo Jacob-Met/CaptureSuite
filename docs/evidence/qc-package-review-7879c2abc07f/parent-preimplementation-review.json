@@ -1,0 +1,492 @@
+{
+  "schema": "capturesuite.qc-package-review.parent-preimplementation-review/1",
+  "reviewer": "/root/github_execution",
+  "repository": "Jacob-Met/CaptureSuite",
+  "issue": 74,
+  "pullRequest": 79,
+  "scope": "Independent frozen-consumer, native original absence and proposed production source review; candidate runtime qualification remains pending.",
+  "criteriaBlob": "3c6db0126cd7fa513287fde42e9cecff96bd3218",
+  "baseGraph": [
+    {
+      "commit": "58157fdc1b83a12bb4856ef14b0498cf524a1087",
+      "tree": "51c711928a28dc02e100fcdea44cd34512318113",
+      "leaves": 922
+    },
+    {
+      "commit": "e91ab9d1e93c002c1948131168edcfe1322f1b2b",
+      "tree": "e7754d3bf2e93ac0b17cb05833f8a744c2833a3b",
+      "parents": [
+        "58157fdc1b83a12bb4856ef14b0498cf524a1087",
+        "cd1a2c4ba00f722e69c9e1bc992850bed8a5385d"
+      ]
+    },
+    {
+      "commit": "9c44354cb101c76beff79265de0040b6839d249f",
+      "tree": "50cd83ef270467490b15f74639413d238aaa15c6",
+      "parents": [
+        "e91ab9d1e93c002c1948131168edcfe1322f1b2b",
+        "79d3a4cfeaef59c98b1c8d1b441845eea93c973f"
+      ]
+    },
+    {
+      "commit": "a2fd6c58ccc97c7262b97570a85d8aae8dfb978c",
+      "tree": "9cb6f200bece07bbed86b166d659026fcfaf632f",
+      "parents": [
+        "9c44354cb101c76beff79265de0040b6839d249f",
+        "8b3fed6805b199543453420a28b5283b75cf1655"
+      ]
+    },
+    {
+      "commit": "13164f0e52ad27ca512b90ffd0165329a1fe1abd",
+      "tree": "ad6e9d2dc3a81ec1aa1778bd60a911ba266f5ea3",
+      "parents": [
+        "a2fd6c58ccc97c7262b97570a85d8aae8dfb978c"
+      ]
+    },
+    {
+      "commit": "56ec61aa8e272f3633440cc05fa39eda7c853d69",
+      "tree": "ad6e9d2dc3a81ec1aa1778bd60a911ba266f5ea3",
+      "parents": [
+        "a2fd6c58ccc97c7262b97570a85d8aae8dfb978c",
+        "13164f0e52ad27ca512b90ffd0165329a1fe1abd"
+      ]
+    }
+  ],
+  "baseBridges": {
+    "predictionsToCameraAndCheckpoints": {
+      "beforeLeaves": 922,
+      "afterLeaves": 1012,
+      "exactLeaves": 914,
+      "changed": [
+        {
+          "path": "docs/design/ANALYSIS.md",
+          "before": "077afcf3943762479d98b39a9f45b72b414007e1",
+          "after": "13fbc44f76c819edf38b028747fcdf8be6f39a16"
+        },
+        {
+          "path": "docs/design/research/ANALYSIS_SCOPE_SEMANTICS.md",
+          "before": "2814d8e3d13c934846b84bb1dfbb1f9bb5cb50d1",
+          "after": "68cea4077c84eb0bb4451dec815e9f7053478e43"
+        },
+        {
+          "path": "docs/design/research/PROGRESS.md",
+          "before": "355e8a311c4f7c44fda8e5447258a797cc5a58ee",
+          "after": "e37395f1ac8971758192605ff9389942ae918025"
+        },
+        {
+          "path": "libs/python/capture_analysis/capture_analysis/windows.py",
+          "before": "80bea6bd69365a48c5b204c26d054b8ae179437a",
+          "after": "aaafd8db78f82a5a56178135dbed5bfd4f45c634"
+        },
+        {
+          "path": "tests/analysis/test_numeric_receiving.py",
+          "before": "cee5571f3802a2ca452f4591afc2fd4c86c6beba",
+          "after": "d2d80dca85375acd58c4970e0c9490ee662c75f9"
+        },
+        {
+          "path": "tests/cpp/test_worker_host.cpp",
+          "before": "874b2a2053c03d2da0a403899f7d22599f00a722",
+          "after": "bdb2ceb0b8fbacdbe17f3ca0b30fa758aa9e1e53"
+        },
+        {
+          "path": "tests/ui/test_analysis_scope.py",
+          "before": "b1d5d4f9dd06c6f5c1cf05080079191f55e97c95",
+          "after": "2ee653a05e27e8586e74439d2bdc9eccf06505ef"
+        },
+        {
+          "path": "workers/camera/src/capture_pipeline.cpp",
+          "before": "af73d91c9da775fd74749362ed3b2440dfc318f6",
+          "after": "2616b3b1644a570c39e0967460b0a78caee54b03"
+        }
+      ],
+      "addedCount": 90,
+      "removedCount": 0
+    },
+    "cameraToCurrentDocs": {
+      "beforeLeaves": 1012,
+      "afterLeaves": 1050,
+      "exactLeaves": 1011,
+      "changed": [
+        {
+          "path": "docs/design/research/PROGRESS.md",
+          "before": "e37395f1ac8971758192605ff9389942ae918025",
+          "after": "b9f368902d2bfc949c32e1d759af8d48d1405967"
+        }
+      ],
+      "addedCount": 38,
+      "allAdditionsWithinDocs": true,
+      "removedCount": 0
+    },
+    "testFirstBaseline": {
+      "beforeLeaves": 1050,
+      "afterLeaves": 1053,
+      "exactLeaves": 1050,
+      "changed": [],
+      "added": [
+        {
+          "path": ".github/workflows/qc-package-review-receiving.yml",
+          "gitBlob": "ead7560750d6461dc1f191b651143a3bec7fd7fb"
+        },
+        {
+          "path": "tests/analysis/test_qc_package_review_receiving_7879.py",
+          "gitBlob": "4f3fc6695d36cfa525dab393492ab0e6466aae85"
+        },
+        {
+          "path": "tools/check_qc_package_review_index_7879.mjs",
+          "gitBlob": "2a195f01df5046b6edc3a1da37d78e798bb3b8b1"
+        }
+      ],
+      "removed": []
+    }
+  },
+  "nativeOriginal": {
+    "run": 37809326650,
+    "job": 113421774576,
+    "actualCheckout": "56ec61aa8e272f3633440cc05fa39eda7c853d69",
+    "tree": "ad6e9d2dc3a81ec1aa1778bd60a911ba266f5ea3",
+    "log": {
+      "bytes": 117343,
+      "sha256": "aa9e0f7ce7aa8868fde379232ba5428fa15dab314c0ffcca92372b64d218d035"
+    },
+    "runtime": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "positiveControl": "real native collector/renderer inventory two copied finalized mini packages before the advertised multi-package command is required",
+    "actualCommand": {
+      "applicationStateUnchanged": true,
+      "argv": [
+        "C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe",
+        "D:\\a\\CaptureSuite\\CaptureSuite\\tools\\review_qc_packages.py",
+        "--output",
+        "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\pytest-of-runneradmin\\pytest-0\\test_qc_package_review_receivi0\\explicit-review-outputs\\ordered",
+        ".\\input-packages\\z-last-海-Cafe.mmsession",
+        "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\pytest-of-runneradmin\\pytest-0\\test_qc_package_review_receivi0\\input-packages\\a-first.mmsession"
+      ],
+      "cwd": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\pytest-of-runneradmin\\pytest-0\\test_qc_package_review_receivi0",
+      "exit": 2,
+      "inputUnchanged": true,
+      "inputsAfter": "da7ee8cec6808de00ace648ede1ea5aa883898647c8f5d8b6050f7b51e2a9f42",
+      "inputsBefore": "da7ee8cec6808de00ace648ede1ea5aa883898647c8f5d8b6050f7b51e2a9f42",
+      "name": "original-or-candidate-two-package-command",
+      "stderr": "C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe: can't open file 'D:\\\\a\\\\CaptureSuite\\\\CaptureSuite\\\\tools\\\\review_qc_packages.py': [Errno 2] No such file or directory\n",
+      "stdout": ""
+    },
+    "status": "expected original capability absence: actual Python missing-file error, then assertion failure",
+    "pytest": {
+      "passedGroups": 1,
+      "failedTests": 1,
+      "elapsedSeconds": 16.71
+    },
+    "sourceUnchanged": true,
+    "sourceBeforeAfterExact": true,
+    "nativeSourceHashesIndependentlyMatchedGit": [
+      {
+        "path": ".github/workflows/ci.yml",
+        "gitBlob": "9c08a4d38d435169f402511c934d1c59701082cf",
+        "bytes": 3743,
+        "sha256": "272cb962395776a2648507792faeab2bfdd7f24ecdba59e3f2288b77bc45c114"
+      },
+      {
+        "path": ".github/workflows/qc-package-review-receiving.yml",
+        "gitBlob": "ead7560750d6461dc1f191b651143a3bec7fd7fb",
+        "bytes": 2516,
+        "sha256": "6fce52b44a1710f8c385d0945ca707b9028919ee82cd82279b1266d352713c0c"
+      },
+      {
+        "path": "AGENTS.md",
+        "gitBlob": "9ac6683ba4805e210143e5a33e7782da55af0d15",
+        "bytes": 3932,
+        "sha256": "525164ca1f3b9e68561434ab110ba17ed65843a20c23f4c1385fde33f1863a74"
+      },
+      {
+        "path": "CONTRIBUTING.md",
+        "gitBlob": "07ce652a85c16bfed220192076f22ce6d602d211",
+        "bytes": 1584,
+        "sha256": "870dc66fe5b2a24e617fff7f0c0589a44cb906aef6d97779a0ad3c8a00c148df"
+      },
+      {
+        "path": "LICENSING.md",
+        "gitBlob": "44df160df06a04305cc457c4bf296552e5c38c80",
+        "bytes": 1728,
+        "sha256": "a407df01c4c285fdb2a36e14254e769a614c1a1bd6f53caaacf184b2b13f05e3"
+      },
+      {
+        "path": "libs/python/capture_analysis/capture_analysis/__init__.py",
+        "gitBlob": "67a4fb257b771af771edb4010e573ceeab86a51f",
+        "bytes": 497,
+        "sha256": "14cfe6dccd33a0bda74fac3c9339e1a37a3538b2110a8ae6e307801b776eb43a"
+      },
+      {
+        "path": "libs/python/capture_analysis/capture_analysis/discover.py",
+        "gitBlob": "d5c4fa7e06ac6e9139ebfc78fade90a3df5e451a",
+        "bytes": 4023,
+        "sha256": "344ee5d7cb0f5e95ac7524a0c1141b0a293bb9445e2bd4789c6736f39cfcb90d"
+      },
+      {
+        "path": "libs/python/capture_analysis/capture_analysis/jobs.py",
+        "gitBlob": "ad0a551e90e5d06ec38a9218277efa24b0030c75",
+        "bytes": 19385,
+        "sha256": "0742573679f5d3717fae9f17b7ed2f540c0b9c85859d74db2764c65dd517e37c"
+      },
+      {
+        "path": "libs/python/capture_analysis/capture_analysis/qc.py",
+        "gitBlob": "530b86af1247599c127e2d0c3fa5e4d7d12169f6",
+        "bytes": 9187,
+        "sha256": "f24e0593a3723311d41054aef40b56c4bb46d4f3ba5ef4b01afcae3a6cc4440a"
+      },
+      {
+        "path": "libs/python/capture_analysis/capture_analysis/qc_packages.py",
+        "absent": true
+      },
+      {
+        "path": "libs/python/capture_analysis/capture_analysis/report_html.py",
+        "gitBlob": "bb8032024cfce30c6fe9a2bd2c13b0d2cbc2d102",
+        "bytes": 4716,
+        "sha256": "f2c89c7faf6e4edc265540140272396b4195eb5aed9edf05c4912aac74286f03"
+      },
+      {
+        "path": "libs/python/capture_analysis/capture_analysis/types.py",
+        "gitBlob": "2adf26816e0ef9e84e6763cf8bbff69d64697949",
+        "bytes": 3428,
+        "sha256": "e7996d02483f69265a2ef2ec0b28078c86f4f479daa53e38faf8b4a62645d02c"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/__init__.py",
+        "gitBlob": "894e3c152a98b6e804de90122572afbcd929b3da",
+        "bytes": 2412,
+        "sha256": "da530f86c0d1d584862868ddba9f7087ccf5dfbddd64dd1e577337ecfd776419"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/package_reader.py",
+        "gitBlob": "91fbf913c5af8489968425d7ceac51c04233d3e0",
+        "bytes": 6331,
+        "sha256": "9a1d9e6e7d24341a083cee602af9538413e948f3369b22660e484356e3d34eb1"
+      },
+      {
+        "path": "pyproject.toml",
+        "gitBlob": "52491c6beebc4b17983fc66bb8765154c33cf6d8",
+        "bytes": 1233,
+        "sha256": "0cb8de1ab3dfbfed84ff16b35f3c89c6440180183ee5851d5d80da83622e53d0"
+      },
+      {
+        "path": "requirements-ci.txt",
+        "gitBlob": "044cfa00061e8a368be427c60d72765318d9080a",
+        "bytes": 383,
+        "sha256": "66bd392a587715b823c0bf5c1f50a1069b7aea95a56f8bd2ac9651e5586c6323"
+      },
+      {
+        "path": "tests/analysis/test_phase_a_qc.py",
+        "gitBlob": "26ba50397f91d3ab4ba1ea04fcd56130afba83f5",
+        "bytes": 4085,
+        "sha256": "0be539a3d593e1cf144f4b7f871af90082feaa19a4ac8f234f53a2b232c8cc07"
+      },
+      {
+        "path": "tests/analysis/test_qc_package_review_receiving_7879.py",
+        "gitBlob": "4f3fc6695d36cfa525dab393492ab0e6466aae85",
+        "bytes": 37544,
+        "sha256": "ca2c3af5fa3eb606a42c4b940046c2f054b4f0c9f050fcfea3201d14e1f3995b"
+      },
+      {
+        "path": "tests/conftest.py",
+        "gitBlob": "ad9b61fd8e9c1c3d74f91710d4e82dd7d899e6b4",
+        "bytes": 1773,
+        "sha256": "f669618fad17e906c91df7a1e9393fc7a54f458c6d62a4385436ba2622beca0e"
+      },
+      {
+        "path": "tests/fixtures/mini_session/events/annotations.json",
+        "gitBlob": "fe51488c7066f6687ef680d6bfaa4f7768ef205c",
+        "bytes": 3,
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      },
+      {
+        "path": "tests/fixtures/mini_session/events/checkpoints.json",
+        "gitBlob": "fe51488c7066f6687ef680d6bfaa4f7768ef205c",
+        "bytes": 3,
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      },
+      {
+        "path": "tests/fixtures/mini_session/events/sync_anchors.json",
+        "gitBlob": "fe51488c7066f6687ef680d6bfaa4f7768ef205c",
+        "bytes": 3,
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      },
+      {
+        "path": "tests/fixtures/mini_session/integrity.json",
+        "gitBlob": "d10093b866427fcaed78a85e60e600d8657a86a7",
+        "bytes": 227,
+        "sha256": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556"
+      },
+      {
+        "path": "tests/fixtures/mini_session/manifest.json",
+        "gitBlob": "800dab5b41774bc043ebdee4714195770e75229b",
+        "bytes": 235,
+        "sha256": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380"
+      },
+      {
+        "path": "tests/fixtures/mini_session/processing/.gitkeep",
+        "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "tests/fixtures/mini_session/sources/sim.emg.main/health/gaps.jsonl",
+        "gitBlob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "tests/fixtures/mini_session/sources/sim.emg.main/source.json",
+        "gitBlob": "9528c95289b4b1b49d11d412b5ab2e3d019b4066",
+        "bytes": 112,
+        "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10"
+      },
+      {
+        "path": "tests/fixtures/mini_session/sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",
+        "gitBlob": "320ce3607fadf57d05cf506987d045cf5b62ad9f",
+        "bytes": 28,
+        "sha256": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649"
+      },
+      {
+        "path": "tests/fixtures/mini_session/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json",
+        "gitBlob": "12c4db8831572fc4ab3db9ba5f784fa236078e5f",
+        "bytes": 216,
+        "sha256": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1"
+      },
+      {
+        "path": "tests/fixtures/mini_session/sources/sim.imu.upper/source.json",
+        "gitBlob": "fcc248c52b8319f5e7fd0067763b74640f0040dd",
+        "bytes": 118,
+        "sha256": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8"
+      },
+      {
+        "path": "tests/fixtures/mini_session/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+        "gitBlob": "320ce3607fadf57d05cf506987d045cf5b62ad9f",
+        "bytes": 28,
+        "sha256": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649"
+      },
+      {
+        "path": "tests/fixtures/mini_session/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+        "gitBlob": "9c634d4af594372063fcc612331ba338ae95f8c9",
+        "bytes": 219,
+        "sha256": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+      },
+      {
+        "path": "tools/check_qc_package_review_index_7879.mjs",
+        "gitBlob": "2a195f01df5046b6edc3a1da37d78e798bb3b8b1",
+        "bytes": 12411,
+        "sha256": "537ef5f267445a3312bb04a820f98e4df1d343fb16cc32f16e474bc091031ffa"
+      },
+      {
+        "path": "tools/review_qc_packages.py",
+        "absent": true
+      },
+      {
+        "path": "tools/run_analysis.py",
+        "gitBlob": "a846e6e0550ec4ba1db12a1b989d5e03cfdd69b6",
+        "bytes": 4865,
+        "sha256": "f450b1e17185bb2b19e45747698dd1f75f487c7898304484357abec5bee9f555"
+      },
+      {
+        "path": "tools/run_ci_tests.py",
+        "gitBlob": "ef5274ab4c38e4082eca69608532a12a32d50c9f",
+        "bytes": 7416,
+        "sha256": "08a9d4786a6e768e0914ac5490d780c64c07f920b790dd16c5e0740bda9c2ac2"
+      }
+    ],
+    "bundle": {
+      "bytes": 47186,
+      "sha256": "6d1c34aabe11693ddb7249a464b8d8e7bfe9a3196ad49362881f56458aea2b3b",
+      "chunks": 16,
+      "files": [
+        {
+          "path": "native/001-qc.html",
+          "bytes": 2281,
+          "sha256": "5ef30eef2b488d1bcff4fbb5a8df6140e55bbeb9f771b78684f7e2320a29484b"
+        },
+        {
+          "path": "native/001-qc.json",
+          "bytes": 1375,
+          "sha256": "8be8d070a15715282fb490b923f7231059bf19938745db4f2c79c0869b7dbf3d"
+        },
+        {
+          "path": "native/002-qc.html",
+          "bytes": 2289,
+          "sha256": "9f0a2b121bf900e10a7524dc6fdaaa2648781b61f0986fa5507ce6e0783caa7b"
+        },
+        {
+          "path": "native/002-qc.json",
+          "bytes": 1386,
+          "sha256": "81dbb5518256a16e67864b5b8d412caff52f1ae4f0199e9c1b19a9710ff2e57e"
+        },
+        {
+          "path": "receiving-report.json",
+          "bytes": 27541,
+          "sha256": "5a96240d185b83373bd228411d8a10fda11ee6aa510fa94423e71d473318321f"
+        }
+      ]
+    },
+    "browser": "Not reached after the original missing-command failure. The frozen report's initial browser status text is a default label, not browser execution evidence."
+  },
+  "maintainedOriginalPython": {
+    "run": 37809326170,
+    "job": 113421772517,
+    "log": {
+      "bytes": 65097,
+      "sha256": "770abd5568f8e068d98f585c2b193fbc81382c4baefa8450f35f42f2d3ddc768"
+    },
+    "passed": 522,
+    "skipped": 6,
+    "failed": 1,
+    "warnings": 2,
+    "elapsedSeconds": 271.25,
+    "failure": "Only the new frozen consumer's actual absent tools/review_qc_packages.py command.",
+    "cmake": "Still running at this receipt; no CMake conclusion asserted here."
+  },
+  "consumerSourceReview": {
+    "files": [
+      {
+        "path": "tests/analysis/test_qc_package_review_receiving_7879.py",
+        "gitBlob": "4f3fc6695d36cfa525dab393492ab0e6466aae85",
+        "bytes": 37544,
+        "sha256": "ca2c3af5fa3eb606a42c4b940046c2f054b4f0c9f050fcfea3201d14e1f3995b"
+      },
+      {
+        "path": "tools/check_qc_package_review_index_7879.mjs",
+        "gitBlob": "2a195f01df5046b6edc3a1da37d78e798bb3b8b1",
+        "bytes": 12411,
+        "sha256": "537ef5f267445a3312bb04a820f98e4df1d343fb16cc32f16e474bc091031ffa"
+      },
+      {
+        "path": ".github/workflows/qc-package-review-receiving.yml",
+        "gitBlob": "ead7560750d6461dc1f191b651143a3bec7fd7fb",
+        "bytes": 2516,
+        "sha256": "6fce52b44a1710f8c385d0945ca707b9028919ee82cd82279b1266d352713c0c"
+      }
+    ],
+    "conclusion": "No blocking source finding. Real native collector/renderer and actual subprocess CLI; complete owned-package and application-state conservation; native report byte equality; ordered identities and explicit failures; bounded fixed artifact members; installed browser with a create-only owned profile and no package/browser installation.",
+    "runtimeLimit": "Only the first native positive and original absent-command negative have run at this review. Other consumer scenarios await the candidate."
+  },
+  "proposedSource": {
+    "previewTree": "29a2e8e09655c8dc55a0cc8c6ff63c54c9a3998d",
+    "model": {
+      "gitBlob": "e9ece18a7ffc47d709c407d25d39d9d77fae4cfa",
+      "bytes": 12702,
+      "sha256": "8dd76bb2980f1fe4d16e076e61a50580c2c01c68f90b303653fa64efabff009b"
+    },
+    "cli": "e39c2ba4272771765d23db58beafea6bcfa2bcca",
+    "additionalTests": [
+      "7bfefe4380e5992cf6a8275441e6a7a8be48f7c3",
+      "0dd0833cc4116306ade46f7d97fe309a6abe8246"
+    ],
+    "guide": "d72ee9aa2ff55f42ff8ee6b94c272db242445abc",
+    "readme": "91956537b2ad2c905d3b87b187d72c1687710106",
+    "reviewed": "Complete model, actual CLI, ten additional authored cases, guide and README paragraph read independently.",
+    "conclusion": "Scoped source ready for native qualification. Ordered explicit 1–32 paths, finalized-state admission, exclusive new output, original ordinal reports, exact native JSON/HTML bytes, per-package read failures with later continuation, safe literal aggregate markup. No native collector/renderer/requirements/settings/job/desktop change.",
+    "presentationRefinement": "Only the new index's light-mode ok/warn text shades changed to #15803d/#a16207 after measured low-contrast text. Reversing the two literals exactly reconstructs the earlier reviewed model. Dark overrides and native report bytes remain unchanged.",
+    "pending": "Actual unchanged consumer, maintained full suite, CMake and direct browser artifacts on the published final candidate."
+  },
+  "limits": [
+    "Mini-session contains two synthetic 28-byte MCAP placeholders; no hardware or raw-stream decoding claim.",
+    "Native optional-record handling remains unchanged; no inferred healthy state or scientific validation.",
+    "No physical-device or full desktop application interaction is claimed.",
+    "Baseline source custody includes all 34 present selected native/source/fixture paths and exact two proposed-file absences; whole-tree conservation is separately verified."
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "schema": "capture.qc-package-review.publication-index/1",
+  "phase": "original missing-capability baseline and independent source review",
+  "packetRoot": "docs/evidence/qc-package-review-7879c2abc07f",
+  "sourceHead": "13164f0e52ad27ca512b90ffd0165329a1fe1abd",
+  "sourceTree": "ad6e9d2dc3a81ec1aa1778bd60a911ba266f5ea3",
+  "payloadFiles": 11,
+  "payloadBytes": 256994,
+  "files": [
+    {
+      "path": "baseline/baseline-native-receiver.log",
+      "bytes": 117343,
+      "sha256": "aa9e0f7ce7aa8868fde379232ba5428fa15dab314c0ffcca92372b64d218d035",
+      "sha": "886c7e2a632cce7178533a81186c7a0c9705b865"
+    },
+    {
+      "path": "baseline/baseline-maintained-python.log",
+      "bytes": 65097,
+      "sha256": "770abd5568f8e068d98f585c2b193fbc81382c4baefa8450f35f42f2d3ddc768",
+      "sha": "d5fd2d833171ce90849ca2bafec1078199c7911b"
+    },
+    {
+      "path": "baseline/QUALIFICATION.json",
+      "bytes": 9208,
+      "sha256": "22a512e9410699e72579044a48141f2cbd574d034decc7a90f8150ccbf2f816d",
+      "sha": "82b591655dd160ff9e4bd3d0e6ee4c91d5b60fc3"
+    },
+    {
+      "path": "baseline/ACCEPTANCE-CRITERIA.json",
+      "bytes": 6867,
+      "sha256": "93025044ecba4d6af0c28e9dd0a0d30da646d284a4860269f1cf5e5a4f01e621",
+      "sha": "3c6db0126cd7fa513287fde42e9cecff96bd3218"
+    },
+    {
+      "path": "baseline/README.md",
+      "bytes": 2699,
+      "sha256": "e71732248bee9648d4392391de4b66525cabd5a2a0e62992fe278ace2b0d28c4",
+      "sha": "33bc9d5a65a2523d0893abe9eba56148924eedea"
+    },
+    {
+      "path": "baseline/native/001-qc.html",
+      "bytes": 2281,
+      "sha256": "5ef30eef2b488d1bcff4fbb5a8df6140e55bbeb9f771b78684f7e2320a29484b",
+      "sha": "0d4a88e945f68e2c9c5a6e6b96eabef26eadf40d"
+    },
+    {
+      "path": "baseline/native/001-qc.json",
+      "bytes": 1375,
+      "sha256": "8be8d070a15715282fb490b923f7231059bf19938745db4f2c79c0869b7dbf3d",
+      "sha": "db7ec2e9333f3d8e1b78bb5510af2fb00a36fb76"
+    },
+    {
+      "path": "baseline/native/002-qc.html",
+      "bytes": 2289,
+      "sha256": "9f0a2b121bf900e10a7524dc6fdaaa2648781b61f0986fa5507ce6e0783caa7b",
+      "sha": "8a3f6de9d8075db85f7053a706a996b75c6bbb2b"
+    },
+    {
+      "path": "baseline/native/002-qc.json",
+      "bytes": 1386,
+      "sha256": "81dbb5518256a16e67864b5b8d412caff52f1ae4f0199e9c1b19a9710ff2e57e",
+      "sha": "f29bab653476d3777db6c1e2af3be1a6f4b49d5b"
+    },
+    {
+      "path": "baseline/receiving-report.json",
+      "bytes": 27541,
+      "sha256": "5a96240d185b83373bd228411d8a10fda11ee6aa510fa94423e71d473318321f",
+      "sha": "255882da5da94d8ae5aadbcb30800102511f0f4c"
+    },
+    {
+      "path": "parent-preimplementation-review.json",
+      "bytes": 20908,
+      "sha256": "fefd615dc89fc969fc08ebbeedd049a1b54f8e7a1e1de995bd76665e65764978",
+      "sha": "04dfdc6d0657b424acba92e424170e4069ae6621"
+    }
+  ]
+}

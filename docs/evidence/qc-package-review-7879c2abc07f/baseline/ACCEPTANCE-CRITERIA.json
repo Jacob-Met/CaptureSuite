@@ -1,0 +1,103 @@
+{
+  "schema": "capture.qc-package-review.independent-acceptance/1",
+  "owner": "7879c2abc07f / github_execution",
+  "sourceAuthor": "offhand_published_review",
+  "consumerAuthor": "echo_opening_receiving",
+  "frozenBeforeProduction": true,
+  "repository": "Jacob-Met/CaptureSuite",
+  "issue": 74,
+  "base": {
+    "commit": "70f34e3b982523b544a9370d2316a1b69d79bd70",
+    "tree": "1537621f793d5d5c9b331f3c4d37a79a4af824b7"
+  },
+  "nativeInputs": {
+    "libs/python/capture_analysis/capture_analysis/qc.py": "530b86af1247599c127e2d0c3fa5e4d7d12169f6",
+    "libs/python/capture_analysis/capture_analysis/report_html.py": "bb8032024cfce30c6fe9a2bd2c13b0d2cbc2d102",
+    "libs/python/capture_analysis/capture_analysis/discover.py": "d5c4fa7e06ac6e9139ebfc78fade90a3df5e451a",
+    "libs/python/capture_session/capture_session/package_reader.py": "91fbf913c5af8489968425d7ceac51c04233d3e0",
+    "libs/python/capture_session/capture_session/__init__.py": "894e3c152a98b6e804de90122572afbcd929b3da",
+    "tests/analysis/test_phase_a_qc.py": "26ba50397f91d3ab4ba1ea04fcd56130afba83f5",
+    "tests/fixtures/mini_session/manifest.json": "800dab5b41774bc043ebdee4714195770e75229b"
+  },
+  "governanceRead": [
+    "AGENTS.md",
+    "CONTRIBUTING.md",
+    "LICENSING.md",
+    "docs/design/README.md",
+    "docs/design/research/AUTONOMOUS_EXECUTION_PLAN.md"
+  ],
+  "publicCommand": "python tools/review_qc_packages.py --output NEW_DIR PACKAGE...",
+  "outputContract": {
+    "schemaId": "capture.qc_package_review/1",
+    "summaryKeys": [
+      "schemaId",
+      "packageCount",
+      "collectedCount",
+      "failedCount",
+      "packages"
+    ],
+    "entryKeys": [
+      "ordinal",
+      "inputPath",
+      "packagePath",
+      "status",
+      "qc",
+      "error",
+      "reports"
+    ],
+    "status": [
+      "collected",
+      "failed"
+    ],
+    "qc": "Exact native collect_qc(package).to_dict() on success; null on failure.",
+    "reports": "Success uses reports/001-qc.json and reports/001-qc.html, numbered by original 1-based ordinal. Relative JSON/HTML paths are retained in reports; failed entries have null reports.",
+    "html": "Each native QC HTML file is byte-exact render_qc_html(qc) encoded as UTF-8.",
+    "index": "Single external index.html shows every requested package, preserves full path/session identity, truthful collected/failed disposition and warnings, and uses safe relative report links.",
+    "exits": {
+      "0": "Every requested package collected; native QC warnings/traffic failures stay explicit and do not become collection failures.",
+      "1": "One or more per-package failures, or an output-write failure.",
+      "2": "Invalid invocation/count, existing destination, or destination inside a requested package."
+    }
+  },
+  "independentConsumerGroups": [
+    {
+      "name": "original native positive and actual missing capability",
+      "requirement": "Copy the maintained mini_session to an owned hosted fixture; call the real unchanged collect_qc/render_qc_html with actual dependencies and prove its two descriptor/placeholder streams are inventoried. Invoke the advertised new CLI against the untouched source and preserve the actual missing-entrypoint failure before production."
+    },
+    {
+      "name": "ordered provenance and separate equal identities",
+      "requirement": "Use multiple distinct package paths with equal session IDs and deliberately ordered requests. Preserve every position and canonical package path, exact native QC dictionary, native manifest digest and separate ordinal report files. Do not group by ID, deduplicate distinct paths or substitute one package's report."
+    },
+    {
+      "name": "native warnings and precision",
+      "requirement": "Include a finalized_recovered fixture, recovery-report warning, large native integer gap start/end/loss values, an open gap, and a stream with no segments. Preserve the original reader's dictionary, gap decimal strings/duration status, warnings and traffic lights. A successfully collected report with a failure traffic light remains collected rather than disappearing."
+    },
+    {
+      "name": "literal report identity",
+      "requirement": "Use a safe filesystem path with a session ID/cause containing literal markup, accented/CJK/emoji text. Exact native HTML must retain proper escaping. The aggregate index must show the identity as text and link only to its generated relative report; no executable markup may be introduced."
+    },
+    {
+      "name": "per-package refusal isolation",
+      "requirement": "Place malformed-manifest, missing-package and non-finalized inputs between valid packages. Each becomes an explicit failed entry with null QC/reports and a useful typed error; later valid reports remain present. The aggregate counts agree exactly, and no partial bad native dictionary is represented as collected."
+    },
+    {
+      "name": "all input state conservation",
+      "requirement": "Hash the complete owned package file inventory, retained processing sentinel and directory inventory before and after each CLI call, including every refusal. All bytes and directories must remain exact; no analysis job, manifest rewrite, registry activity or package output is introduced."
+    },
+    {
+      "name": "fresh independent collection",
+      "requirement": "After an intentional fixture metadata change, a new explicit invocation into another new external directory must reflect the then-current native report while the earlier completed review output remains exact."
+    },
+    {
+      "name": "bounded invocation and external destination",
+      "requirement": "Accept the documented 1–32 ordered path boundary. Refuse empty/33-path invocations and an occupied file/directory destination before creation or replacement. Refuse output inside a requested package even through a not-yet-created descendant. Require an existing output parent, retain sentinel bytes and avoid creating input or outside directories on refusal."
+    }
+  ],
+  "nativeLimitations": [
+    "The maintained mini_session contains two28-byte MCAP placeholders. The collector inventories descriptors and segment names; it does not decode, rehash or certify the raw streams.",
+    "The native reader skips malformed optional gap JSON lines and some malformed optional metadata. This contribution preserves that behavior and must not claim stricter whole-package scientific validation.",
+    "Native package initializers import the existing analysis/job/NumPy dependency closure; receiving must use the real requirements-ci environment, with no fabricated module stubs.",
+    "No daemon, hardware, recovery mutation, ML evaluation or hand-model benchmark is part of this flow.",
+    "This freezes acceptance criteria, not a passing execution claim. The exact consumer source, original failure and candidate native results will be received separately."
+  ]
+}
