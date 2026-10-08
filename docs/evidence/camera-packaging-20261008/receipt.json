@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/Jacob-Met/CaptureSuite",
+  "base_ref": "main",
+  "base_commit": "742dd7dc0455cc8c060db06123c8432d919e93eb",
+  "worker": "estate-afe225d6c6be/product_execution",
+  "existing_proposal": "https://github.com/Jacob-Met/CaptureSuite/issues/34",
+  "prior_disposition_routing": "https://github.com/Jacob-Met/CaptureSuite/issues/34#issuecomment-5998603222",
+  "prior_owner": "T68 muse-coord-a8b9 retains export/integration ownership; this implements the issue #34 proposal in an isolated candidate.",
+  "coordination": "Parent authorized only camera CMake, its native staging regression, this evidence and the required progress entry. GitHub secondary content-creation limit prevented accepted claim publication; no production lease, merge or deployment is asserted.",
+  "product_change": "Copy the existing five vcpkg DLLs to plugins/camera_gstreamer as well as workers/camera without changing executable or manifest resolution.",
+  "baseline_cmake_sha256": "7eff92acdb7d6b1c328132b8f5a78b3e3a85ffce15fb7fb95f0485934154dfad",
+  "candidate_files": {
+    "workers/camera/CMakeLists.txt": "e7a0bde4f81d72b67ba73dde75136ed8626cc6578302f6d8fa7c7757743bc98c",
+    "tests/cmake/camera_packaging/CMakeLists.txt": "84e3c12336d99d92bab625c9dcf66edb14eae3a4a6d96e0ae722303230b95ae0",
+    "tests/cmake/camera_packaging/probe.cpp": "589b638fa7c213e6db05ba1e04eeda6f437ca3b71ba407f138ef0ee041124e48",
+    "tests/cmake/camera_packaging/check_packaging.py": "8973e4e67cae02ddf9abadfbafa76df3481015ef24db6064877d6430972812b0",
+    "tests/cmake/camera_packaging/README.md": "1b8bd553537820097b3b3d2e39e21a28acb8ed8778b4b91f84ef91b2ddb3d0a9"
+  },
+  "toolchain": {
+    "python": "3.12.14",
+    "cmake": "3.31.6",
+    "cxx": "GCC 13.3.0",
+    "platform": "Linux x86_64"
+  },
+  "baseline": {
+    "legacy_launch_exit": 0,
+    "plugin_launch_exit": 127,
+    "missing_plugin_dependencies": [
+      "abseil_dll.dll",
+      "blake3.dll",
+      "libprotobuf.dll",
+      "lz4.dll",
+      "zstd.dll"
+    ],
+    "note": "Six package checks fail; the removal control cannot run because its required plugin-local library is already absent."
+  },
+  "candidate": {
+    "passed": 17,
+    "total": 17,
+    "legacy_launch_exit": 0,
+    "plugin_launch_exit": 0,
+    "only_libprotobuf_removed_exit": 127
+  },
+  "linker_inspection": {
+    "needed_fixture_libraries": [
+      "abseil_dll.dll",
+      "blake3.dll",
+      "libprotobuf.dll",
+      "lz4.dll",
+      "zstd.dll"
+    ],
+    "runpath": "$ORIGIN",
+    "source_build_directory_rpath": false
+  },
+  "other_checks": [
+    "Ruff 0.11.4: all checks passed",
+    "git diff --check: passed",
+    "python tools/check_licenses.py --enforce-spdx: license check OK"
+  ],
+  "artifacts": {
+    "baseline": {
+      "path": "baseline.json",
+      "sha256": "480e72d069fae5d8e11de6e7ffa24dff06c36d53cc2a3970433e47bea928a0e3"
+    },
+    "candidate": {
+      "path": "candidate.json",
+      "sha256": "45a32517f668dab4a7b4800bb61d771abab4e88a430709788f7f89fefe612e8b"
+    }
+  },
+  "qualification_limits": [
+    "The native executable and five dependencies are fixture compilation units; production camera CMake and plugin manifest are copied unchanged.",
+    "Linux uses ELF shared libraries with production DLL filenames, not Windows DLL loader execution.",
+    "Real Windows camera/vcpkg/GStreamer build, daemon handshake, hardware capture, release and deployment remain unverified."
+  ],
+  "independent_receiving": "Pending separate-worker review of the exact candidate."
+}

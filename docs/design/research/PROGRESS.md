@@ -1,9 +1,89 @@
+## 2026-10-08 — Writer-close review repair and user receiving (estate-68e476e98b77)
+
+Independent review of PR36 found an additional actual-process durability
+blocker: an injected error from the original `ofstream` writer's close was
+ignored, so `session_doctor` returned success and replaced the manifest. The
+POSIX path now retains one writable descriptor through short/interrupted-safe
+writes, `fsync`, and checked close; zero-progress writes fail, close is not
+retried, and all writer failures preserve the old target. Windows source
+behavior and the separately owned recovery scanner remain unchanged.
+
+The revised native entrypoint passes all **17 CTest tests** and its strict
+standalone durability executable passes **10/10 cases**. The unchanged
+independent process regression now returns exit 2 for writer-close EIO,
+preserves the recording manifest exactly, leaves no temp file and prints no
+false success. Normal success and parent-fsync EIO after rename also pass;
+both frozen MCAP files remain byte-identical in all three cases. Original
+failed receiver and reviewer reproducers are preserved with hashes.
+
+An ordinary-user receiving copy is retained at
+`/home/jacob/capturesuite-receiver-68e476e98b77-r2/bin/session_doctor` (UID1000,
+mode0755), SHA-256 `8104af6502590eceff5daf6c57d3f768bb431463104c40a958942d94927cbcf4`.
+This resolves access through the original protected estate archive without
+changing its ancestor permissions or any service/default. A later compiler
+scratch quota failure is retained; assigning compiler TMPDIR to this lane's
+own evidence directory allowed the bounded build to finish without cleanup.
+Original-head Windows and Python CI passed; revised-head CI remains a separate
+integration gate. See `docs/evidence/linux-port-68e476e98b77-r2.json`.
+
+## 2026-10-08 — Linux portable build receiving (estate-68e476e98b77)
+
+Received the retained Linux C++/CMake donor `e3270d84` onto current public main
+`742dd7dc`, with the donor patch hash and missing bundle prerequisite recorded.
+The isolated native build now produces core/protocol/storage libraries and
+`session_doctor`. The documented entrypoint and all **17 CTest tests pass** on
+the ThinkPad Linux toolchain, including actual process checks on disposable
+synthetic finalized/recovery fixtures. This remains portable-library
+qualification; existing macOS A–H, daemon/desktop and hardware work is separate.
+
+A native real-file regression found three donor durability failures: temporary
+and directory `fsync` errors were reported as success, and `EINTR` was ignored.
+The same four-case executable now passes after propagating failures, preserving
+the old target before rename, and reporting post-rename durability uncertainty.
+It also passes a standalone `-Wall -Wextra -Wpedantic -Werror` build. Python and
+existing MCAP recovery scanner/CRC candidates were left untouched.
+
+Retained limitations/failures: the whole-tree GCC WERROR probe still exposes a
+pre-existing logging format-truncation warning; the portable preset uses the
+project default WERROR=OFF. A root-filesystem ENOSPC interrupted archiving and
+two source writes. Only this lane's reproducible outputs moved to tmpfs; the
+two zero-length files were restored from exact inputs before the successful
+build. No estate-wide cleanup or service change was performed by this lane.
+
+See `docs/BUILDING-LINUX.md` and `docs/evidence/linux-port-68e476e98b77.json` for
+source, dependency, test and receiving boundaries. This source receipt does not
+claim a Windows CI, macOS, full-product or hardware pass.
+
+## 2026-10-08 — independent framing-view receiving accepted
+
+Integration receiver `integration-72ac1419` preserved the separate `capture_peer` decision
+and exact native outputs under `docs/evidence/framing-view-lifetime-72ac1419/peer/`.
+Peer accepted source commit `4359c21f3da93ed863de617331edfc853cf8385d`; its own 27-test
+replay and 20-case view/diagnostic matrix pass, and both predecessor active-handler
+failures independently reproduce. Product framing and tests are unchanged. The companion
+Windows gates and GitHub publication remain pending because content creation is still
+secondary-rate-limited; no failed registration was represented as a published claim.
+
 # Agent progress log
 
 Agents: **read at session start, update at session end.**  
 Plan: [AUTONOMOUS_EXECUTION_PLAN.md](AUTONOMOUS_EXECUTION_PLAN.md)
 
 ---
+
+## 2026-10-08 — Retained framing exception recovery (integration-72ac1419)
+
+Independent receiving of PR #35 found that an active or saved FrameError retained
+an exported memoryview and made the documented decoder reset raise BufferError.
+The isolated successor releases only the parser-owned view on every decode exit;
+wire fields, payload ownership, caller-owned views and error diagnostics remain intact.
+Exact predecessor 65b76c9 plus 11 new controls: 9 failed / 18 passed. Same actual package,
+Mac Python 3.12.8 / protobuf 4.25.9 and candidate: 27 passed; strict Ruff/diff-check passed.
+Source bytes, raw failures and replay are in
+`docs/evidence/framing-view-lifetime-72ac1419/README.md`.
+This is an isolated qualified companion pending independent receiving and its own
+supported Windows CI. GitHub comment creation remains temporarily rate-limited;
+no review publication, source integration, named-pipe or hardware pass is claimed.
 
 ## 2026-10-08 — Incremental protocol error propagation
 
@@ -258,3 +338,40 @@ not Windows loader behavior, GStreamer, physical capture or full-product readine
 Exact source hashes and retained logs: `docs/evidence/camera-runtime-closure-20261008.json`.
 Owner receiving remains a draft-PR step; no main merge, deployment, release or tag
 is represented by this source qualification.
+
+
+### 2026-10-08 — Receive the parallel linked-library packaging fixture
+
+After the initial coordination comments were temporarily throttled, receiving
+discovered candidate 8167c9ad8b44433409e8f3d66f66c4254f879db3 from
+estate-afe225d6c6be/product_execution (original author: HAMON Product Worker).
+Its production command bytes match this fix; only the explanatory CMake COMMENT
+wording differs. The receiver kept the existing production CMake bytes and imported
+the four linked-library fixture files and three original evidence files unchanged.
+Both package manifests and the original source archive remain retained.
+
+Independent receiving on the ThinkPad passed all 17 checks against this PR source:
+both packaged native executables reached main, and removing only plugin-local
+libprotobuf prevented main. Native ELF libraries use an origin-only runtime path.
+This strengthens native fixture evidence; actual Windows camera/vcpkg/GStreamer
+packaging and physical capture remain outside the observed results. One PR (#38)
+carries both source lineages. Original parent authorship/coordination and existing
+T68 ownership are retained. See docs/evidence/camera-packaging-20261008/receiving-8167c9a.json.
+
+
+### 2026-10-08 — Reconcile final peer evidence and collect the native fixture
+
+The original contributor explicitly accepted the one-PR receiving plan in PR #38
+comment 6056803042. Its published b14a0d4 commit is retained as Git ancestry;
+the four maintained fixture files are unchanged, and eleven final qualification
+files preserve the independent 17-check and six-group Linux evidence. Original
+8167c9a attribution, patch/archive custody and receiving reports remain retained.
+
+The additive pytest wrapper now collects the native linked-library fixture in the
+existing Python CI job, with explicit Visual Studio 2022/x64 selection on Windows
+and retained build/evidence output. It suppresses expected missing-DLL error dialogs
+while preserving and restoring the process error mode. Current main a1b3c966 was
+merged without changing the camera source or either fixture. The final combined
+Linux collection passed 1/1 tests and 17/17 native checks. New-head hosted Windows
+qualification is pending; actual camera/vcpkg/GStreamer receiving remains open.
+See docs/evidence/camera-packaging-20261008/receiving-final-integration.json.

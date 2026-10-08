@@ -1,0 +1,322 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-08T10:00:33.106Z",
+  "integration_owner": "dd846795-production",
+  "receiving_pr": "https://github.com/Jacob-Met/CaptureSuite/pull/38",
+  "accepted_owner_handoff": "https://github.com/Jacob-Met/CaptureSuite/pull/38#issuecomment-6056803042",
+  "original_candidate": {
+    "commit": "8167c9ad8b44433409e8f3d66f66c4254f879db3",
+    "author": "HAMON Product Worker <hamon-product@users.noreply.github.com>",
+    "parent": "estate-afe225d6c6be",
+    "custody": "Original format patch and changed source files retained in the received thin archive and native receipt. The separately declared original .bundle was not delivered; no bundle receipt is claimed.",
+    "archive_sha256": "f9ce759f24d785b79e81e969412010567853ebc4464de05a03a410fa259c692a"
+  },
+  "peer_final": {
+    "schema_version": 1,
+    "received_at": "2026-10-08T09:53:25.565Z",
+    "receiver": "dd846795-production",
+    "original_contributor": "estate-afe225d6c6be/product_execution",
+    "peer_commit": "b14a0d437365bc148b1809141e366e3d39eb1569",
+    "peer_tree": "9763562aa7e31df2e0fa89fa3b105f5ac5503a51",
+    "owner_acceptance": "https://github.com/Jacob-Met/CaptureSuite/pull/38#issuecomment-6056803042",
+    "archive": {
+      "path": "/srv/hamon-estate/receiving-afe225d6c6be-Ao7odc/CaptureSuite-pr38-independent-afe225d6c6be.tar.gz",
+      "bytes": 15593,
+      "sha256": "ba6b2d0184d92c8fecb488cfb5fa03aebe1df197120345cf5eb3577ef8260cea"
+    },
+    "files": [
+      {
+        "path": "docs/qualification/camera-independent-afe225d6c6be/PR38_RECEIVING.md",
+        "bytes": 2841,
+        "sha256": "57e3115c0a1d9b660ecc407018cc1b8111c4a06cbec124c6d0a426ddcabd070e",
+        "git_blob": "6d516643aee2400807032aa5cbc1ebc0518c46c6",
+        "existing_identical": false
+      },
+      {
+        "path": "docs/qualification/camera-independent-afe225d6c6be/README.md",
+        "bytes": 3874,
+        "sha256": "19fd5dc2e99869b10f1da9ae17ca6ca1051b959f049f77cd4cc545aa180b6bdc",
+        "git_blob": "d371385d8d19c97b76369cb6df01d953bb3e742f",
+        "existing_identical": false
+      },
+      {
+        "path": "docs/qualification/camera-independent-afe225d6c6be/evidence/pr38-final-baseline-report.json",
+        "bytes": 6723,
+        "sha256": "0acba2b88e59ce35e2f3903189b2f5a7c9e29a13505be6eb190d607b69d2890a",
+        "git_blob": "823a494a0d5b87eeac326ec205f91d5e465c817d",
+        "existing_identical": false
+      },
+      {
+        "path": "docs/qualification/camera-independent-afe225d6c6be/evidence/pr38-final-independent-review.json",
+        "bytes": 19171,
+        "sha256": "ddf7d5c130c12a2e922030e0e800b8b7a40e5358b0b54cbfaf43043468999941",
+        "git_blob": "a273c7e42b06a16d706e58eb6c17b8a2924600fb",
+        "existing_identical": false
+      },
+      {
+        "path": "docs/qualification/camera-independent-afe225d6c6be/evidence/pr38-final-native-report.json",
+        "bytes": 6985,
+        "sha256": "21f273f156fb1ef46f47320f147b5c747a0862d8b24c9d2069bcee21a21422aa",
+        "git_blob": "23c4fb2decfb6f3c67b7da273653f02a11bb5b79",
+        "existing_identical": false
+      },
+      {
+        "path": "docs/qualification/camera-independent-afe225d6c6be/evidence/pr38-only-comment.diff",
+        "bytes": 484,
+        "sha256": "cc04ffa542891c3d42f911dcb27c2cf05523211469228b9f03b6cc6748c614ff",
+        "git_blob": "a654cf8e665b37f2ac7ef57e5ca2a6169843c3ab",
+        "existing_identical": false
+      },
+      {
+        "path": "docs/qualification/camera-independent-afe225d6c6be/evidence/pr38-review-receipt.json",
+        "bytes": 2944,
+        "sha256": "808989e1cdd2e66e76c201456397345c8d47b7c6fbbe4019c37a24a9cbaa983e",
+        "git_blob": "9de136d7593c97053bb844d3d0c23a2f654229ad",
+        "existing_identical": false
+      },
+      {
+        "path": "docs/qualification/camera-independent-afe225d6c6be/evidence/review-helper-final-ruff.json",
+        "bytes": 621,
+        "sha256": "7a83faec54e75b5238be9fd563c1f9b6d2b5164e097b6e1e5b7ff963140b502d",
+        "git_blob": "25136b675f58c2fe3fdb3ed7a920a8d156c9aa0f",
+        "existing_identical": false
+      },
+      {
+        "path": "docs/qualification/camera-independent-afe225d6c6be/ownership-refresh.json",
+        "bytes": 1159,
+        "sha256": "6c537dc1b465555e33a94bb8cec26372ed47a89fce6bbdba9d56302f6f17abec",
+        "git_blob": "4f882db8620f184612446916243dd461a5886028",
+        "existing_identical": false
+      },
+      {
+        "path": "docs/qualification/camera-independent-afe225d6c6be/review_packaging.py",
+        "bytes": 7947,
+        "sha256": "9da0213cf76f0e37d45f3b5d8ae4d125b63c053230f1aa51d8f9d5515834d1d2",
+        "git_blob": "9832edd727be73cf3353b3f254068d0a48b0eab8",
+        "existing_identical": false
+      },
+      {
+        "path": "docs/qualification/camera-independent-afe225d6c6be/source-pins.json",
+        "bytes": 805,
+        "sha256": "246b4f2583398cd67299426cd93f792eefa7aa524e24fe8b086ebecdef4d4067",
+        "git_blob": "7301ac394a309676ba5333959ded324f02caa1fd",
+        "existing_identical": false
+      },
+      {
+        "path": "tests/cmake/camera_packaging/CMakeLists.txt",
+        "bytes": 1789,
+        "sha256": "84e3c12336d99d92bab625c9dcf66edb14eae3a4a6d96e0ae722303230b95ae0",
+        "git_blob": "f84d04715d6055eae99300393a6f11061b1a518e",
+        "existing_identical": true
+      },
+      {
+        "path": "tests/cmake/camera_packaging/README.md",
+        "bytes": 1474,
+        "sha256": "1b8bd553537820097b3b3d2e39e21a28acb8ed8778b4b91f84ef91b2ddb3d0a9",
+        "git_blob": "cdc27183b1e3f93b474ca99e6c516e9a123cd29b",
+        "existing_identical": true
+      },
+      {
+        "path": "tests/cmake/camera_packaging/check_packaging.py",
+        "bytes": 6633,
+        "sha256": "8973e4e67cae02ddf9abadfbafa76df3481015ef24db6064877d6430972812b0",
+        "git_blob": "11b8ae6f76b96a927be061e41f319062e949050a",
+        "existing_identical": true
+      },
+      {
+        "path": "tests/cmake/camera_packaging/probe.cpp",
+        "bytes": 448,
+        "sha256": "589b638fa7c213e6db05ba1e04eeda6f437ca3b71ba407f138ef0ee041124e48",
+        "git_blob": "36e87632ea06045606fb3dc0cfd46435f5c67f50",
+        "existing_identical": true
+      }
+    ],
+    "disposition": "All 15 archive payloads match published peer commit. Four fixture files exactly match the already received original candidate; 11 qualification files are new. Retain original custody and integrate one PR with peer ancestry."
+  },
+  "integration": {
+    "qualified_native_head": "5fa0af5e92dff7e261043f7cd715e87ac7402278",
+    "current_main": "a1b3c966bc8df46fd8160d3854c30a9e03c6a478",
+    "wrapper_commit": "3aad78b206e16be94a283e9bafc0406c1edbb5d9",
+    "peer_merge_commit": "00fd1641e172836108c11bbcf531bc3f82699d78",
+    "method": "Retain the original source import and evidence; merge the final published peer commit and current main. All four maintained native fixture files match original bytes. Add the peer eleven-file qualification packet unchanged. Keep production staging bytes unchanged.",
+    "sole_conflict": "The peer PROGRESS version was an exact prefix of the receiving version; retain the receiving append. Main merged without a conflict.",
+    "production_git_blob": "8b74080cc042c9dc60d6f4569f0c1b6e5b2c7f78"
+  },
+  "final_local_collection": {
+    "schema_version": 1,
+    "qualified_at": "2026-10-08T09:57:42.629Z",
+    "receiver": "dd846795-production",
+    "repo": "/srv/hamon-estate/capturesuite-camera-closure-dd846795",
+    "head": "5fa0af5e92dff7e261043f7cd715e87ac7402278",
+    "main": "a1b3c966bc8df46fd8160d3854c30a9e03c6a478",
+    "command": [
+      "python3",
+      "-m",
+      "pytest",
+      "tests/cmake/test_camera_packaging.py",
+      "-q",
+      "-ra",
+      "--junitxml=/srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-combined-pytest/pytest.xml"
+    ],
+    "exit_code": 0,
+    "stdout_stderr": {
+      "path": "/srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-combined-pytest/pytest.log",
+      "sha256": "e5365f2f0f1330c30053e4a02885e383d95892b54264212d7b4f59c2f8860eb4",
+      "text": ".                                                                        [100%]\n1 passed in 3.65s\n"
+    },
+    "source_hashes": {
+      "workers/camera/CMakeLists.txt": "ddb68fccae5e9b5ae66f81ff4859060f27dcc425d6a41c607e9c9c883a6bd842",
+      "plugins/camera_gstreamer/plugin.json": "6f921746e815083b55f5d81d10c660e9b448ff315b48a2082090b34b350eae03",
+      "tests/cmake/camera_packaging/CMakeLists.txt": "84e3c12336d99d92bab625c9dcf66edb14eae3a4a6d96e0ae722303230b95ae0",
+      "tests/cmake/camera_packaging/check_packaging.py": "8973e4e67cae02ddf9abadfbafa76df3481015ef24db6064877d6430972812b0",
+      "tests/cmake/camera_packaging/probe.cpp": "589b638fa7c213e6db05ba1e04eeda6f437ca3b71ba407f138ef0ee041124e48",
+      "tests/cmake/test_camera_packaging.py": "caf76c4e3317525af921b3d76dc7f2d5111c2d67903d1e523c5824ba81eee383"
+    },
+    "native_report": {
+      "path": "/srv/hamon-estate/capturesuite-camera-closure-dd846795/build/evidence/camera-packaging-ddeb9269db244174af16471252ddc594/native fixture with spaces/report.json",
+      "sha256": "679d24360cdebac32b8050f72a326f6f52bd3ce75596b6780c2f6219b74b7a1c",
+      "report": {
+        "source": "/srv/hamon-estate/capturesuite-camera-closure-dd846795",
+        "platform": "linux",
+        "cmake_sha256": "ddb68fccae5e9b5ae66f81ff4859060f27dcc425d6a41c607e9c9c883a6bd842",
+        "manifest_sha256": "6f921746e815083b55f5d81d10c660e9b448ff315b48a2082090b34b350eae03",
+        "checks": [
+          {
+            "check": "workers/camera/capture_worker_camera.exe: exact staged bytes",
+            "pass": true
+          },
+          {
+            "check": "workers/camera/abseil_dll.dll: exact staged bytes",
+            "pass": true
+          },
+          {
+            "check": "workers/camera/blake3.dll: exact staged bytes",
+            "pass": true
+          },
+          {
+            "check": "workers/camera/libprotobuf.dll: exact staged bytes",
+            "pass": true
+          },
+          {
+            "check": "workers/camera/lz4.dll: exact staged bytes",
+            "pass": true
+          },
+          {
+            "check": "workers/camera/zstd.dll: exact staged bytes",
+            "pass": true
+          },
+          {
+            "check": "workers/camera: native dependency launch",
+            "pass": true,
+            "command": [
+              "/srv/hamon-estate/capturesuite-camera-closure-dd846795/build/evidence/camera-packaging-ddeb9269db244174af16471252ddc594/native fixture with spaces/build/daemon/Release/workers/camera/capture_worker_camera.exe"
+            ],
+            "returncode": 0,
+            "stdout": "CAMERA_PACKAGING_PROBE_REACHED_MAIN\n",
+            "stderr": ""
+          },
+          {
+            "check": "plugins/camera_gstreamer/capture_worker_camera.exe: exact staged bytes",
+            "pass": true
+          },
+          {
+            "check": "plugins/camera_gstreamer/abseil_dll.dll: exact staged bytes",
+            "pass": true
+          },
+          {
+            "check": "plugins/camera_gstreamer/blake3.dll: exact staged bytes",
+            "pass": true
+          },
+          {
+            "check": "plugins/camera_gstreamer/libprotobuf.dll: exact staged bytes",
+            "pass": true
+          },
+          {
+            "check": "plugins/camera_gstreamer/lz4.dll: exact staged bytes",
+            "pass": true
+          },
+          {
+            "check": "plugins/camera_gstreamer/zstd.dll: exact staged bytes",
+            "pass": true
+          },
+          {
+            "check": "plugins/camera_gstreamer: native dependency launch",
+            "pass": true,
+            "command": [
+              "/srv/hamon-estate/capturesuite-camera-closure-dd846795/build/evidence/camera-packaging-ddeb9269db244174af16471252ddc594/native fixture with spaces/build/daemon/Release/plugins/camera_gstreamer/capture_worker_camera.exe"
+            ],
+            "returncode": 0,
+            "stdout": "CAMERA_PACKAGING_PROBE_REACHED_MAIN\n",
+            "stderr": ""
+          },
+          {
+            "check": "plugin manifest: exact staged bytes",
+            "pass": true
+          },
+          {
+            "check": "removing only plugin-local libprotobuf.dll prevents main",
+            "pass": true,
+            "command": [
+              "/srv/hamon-estate/capturesuite-camera-closure-dd846795/build/evidence/camera-packaging-ddeb9269db244174af16471252ddc594/native fixture with spaces/missing-protobuf/capture_worker_camera.exe"
+            ],
+            "returncode": 127,
+            "stdout": "",
+            "stderr": "/srv/hamon-estate/capturesuite-camera-closure-dd846795/build/evidence/camera-packaging-ddeb9269db244174af16471252ddc594/native fixture with spaces/missing-protobuf/capture_worker_camera.exe: error while loading shared libraries: libprotobuf.dll: cannot open shared object file: No such file or directory\n"
+          },
+          {
+            "check": "production source remained unchanged during qualification",
+            "pass": true
+          }
+        ],
+        "commands": [
+          {
+            "command": [
+              "/usr/bin/cmake",
+              "-S",
+              "/srv/hamon-estate/capturesuite-camera-closure-dd846795/build/evidence/camera-packaging-ddeb9269db244174af16471252ddc594/native fixture with spaces/fixture",
+              "-B",
+              "/srv/hamon-estate/capturesuite-camera-closure-dd846795/build/evidence/camera-packaging-ddeb9269db244174af16471252ddc594/native fixture with spaces/build",
+              "-DCMAKE_BUILD_TYPE=Release"
+            ],
+            "returncode": 0,
+            "stdout": "-- The CXX compiler identification is GNU 15.2.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: /usr/bin/c++ - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (0.9s)\n-- Generating done (0.0s)\n-- Build files have been written to: /srv/hamon-estate/capturesuite-camera-closure-dd846795/build/evidence/camera-packaging-ddeb9269db244174af16471252ddc594/native fixture with spaces/build\n",
+            "stderr": ""
+          },
+          {
+            "command": [
+              "/usr/bin/cmake",
+              "--build",
+              "/srv/hamon-estate/capturesuite-camera-closure-dd846795/build/evidence/camera-packaging-ddeb9269db244174af16471252ddc594/native fixture with spaces/build",
+              "--config",
+              "Release",
+              "--parallel",
+              "2"
+            ],
+            "returncode": 0,
+            "stdout": "[  5%] Building CXX object CMakeFiles/probe_abseil_dll.dir/dependency.cpp.o\n[ 10%] Building CXX object CMakeFiles/capture_daemon.dir/daemon.cpp.o\n[ 15%] Linking CXX executable daemon/Release/capture_daemon\n[ 20%] Linking CXX shared library workers/camera/Release/abseil_dll.dll\n[ 20%] Built target probe_abseil_dll\n[ 20%] Built target capture_daemon\n[ 25%] Building CXX object CMakeFiles/probe_blake3.dir/dependency.cpp.o\n[ 30%] Building CXX object CMakeFiles/probe_libprotobuf.dir/dependency.cpp.o\n[ 35%] Linking CXX shared library workers/camera/Release/libprotobuf.dll\n[ 40%] Linking CXX shared library workers/camera/Release/blake3.dll\n[ 40%] Built target probe_blake3\n[ 40%] Built target probe_libprotobuf\n[ 45%] Building CXX object CMakeFiles/probe_zstd.dir/dependency.cpp.o\n[ 50%] Building CXX object CMakeFiles/probe_lz4.dir/dependency.cpp.o\n[ 55%] Linking CXX shared library workers/camera/Release/zstd.dll\n[ 60%] Linking CXX shared library workers/camera/Release/lz4.dll\n[ 60%] Built target probe_zstd\n[ 60%] Built target probe_lz4\n[ 65%] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/src/camera_enumerate.cpp.o\n[ 70%] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/src/main.cpp.o\n[ 75%] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/src/worker_session.cpp.o\n[ 80%] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/src/gst_pipeline.cpp.o\n[ 85%] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/src/capture_mode.cpp.o\n[ 90%] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/src/capture_pipeline.cpp.o\n[ 95%] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/src/uvc_controls.cpp.o\n[100%] Linking CXX executable Release/capture_worker_camera.exe\nCopy capture_worker_camera next to capture_daemon\nCopy abseil_dll.dll beside both packaged camera workers\nCopy blake3.dll beside both packaged camera workers\nCopy libprotobuf.dll beside both packaged camera workers\nCopy lz4.dll beside both packaged camera workers\nCopy zstd.dll beside both packaged camera workers\n[100%] Built target capture_worker_camera\n",
+            "stderr": ""
+          }
+        ],
+        "limits": "Native fixture packaging only; no real SDK, camera, daemon or hardware.",
+        "passed": true
+      }
+    },
+    "limits": [
+      "Native Linux linked-library fixture and automatic pytest collection only.",
+      "Hosted Windows result for this new source remains pending.",
+      "Actual camera worker, MSVC/vcpkg/GStreamer package and physical capture are not qualified."
+    ]
+  },
+  "hosted_ci": {
+    "old_head": "677026871c39362e9b6e2c816b841fc6393050f0",
+    "old_run": "https://github.com/Jacob-Met/CaptureSuite/actions/runs/37751966373",
+    "old_result": "Successful Windows MSVC build, CTest 22/22, native daemon/recovery 6/6, Python 208 passed / 6 native skips. Camera build was OFF.",
+    "new_head_status": "Pending publication and automatic CI; old-head CI is not asserted for this integrated source."
+  },
+  "limits": [
+    "The local result is compiled Linux shared-library packaging and loader behavior for a synthetic native fixture.",
+    "The additive pytest wrapper will exercise this same synthetic fixture on Windows in the existing Python CI job; that result is not yet observed here.",
+    "Actual camera worker MSVC/vcpkg/GStreamer package closure, Media Foundation, daemon camera handshake and physical capture remain outside qualification.",
+    "PR remains a source receiving contribution; no installed runtime, release or issue-closure claim."
+  ]
+}

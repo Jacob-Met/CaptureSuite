@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/Jacob-Met/CaptureSuite",
+  "base": "742dd7dc0455cc8c060db06123c8432d919e93eb",
+  "candidate": "8167c9ad8b44433409e8f3d66f66c4254f879db3",
+  "files": {
+    "CaptureSuite-camera-runtime-8167c9a.patch": {
+      "bytes": 33620,
+      "sha256": "74bbff346ee96f5edd9c8c9d20405a897c9648b991c9346f39689ef5856b1208"
+    },
+    "CaptureSuite-camera-runtime-8167c9a.tar.gz": {
+      "bytes": 604082,
+      "sha256": "2b94829bc372f96313b9fc34367be8f711ae0532808825e504be198797cfb878"
+    }
+  },
+  "scope": "Camera plugin runtime packaging only, based on existing issue #34 proposal; source branch unpushed; independent receiving in progress."
+}

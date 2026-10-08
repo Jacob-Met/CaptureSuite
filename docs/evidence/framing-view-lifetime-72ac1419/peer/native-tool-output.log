@@ -1,0 +1,111 @@
+Process started with PID 98061 (shell: bash)
+Initial output:
+{
+  "receiver": "integration/capture_peer",
+  "head": "4359c21f3da93ed863de617331edfc853cf8385d",
+  "parent": "65b76c9909f0c28d34c9f44f07d306b924955da8",
+  "tree": "43902c3fc551425acf7c3a2dc8bec177f3f29c61",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "python": "3.12.8",
+  "protobuf": "4.25.9",
+  "package": "/Users/me/Developer/capturesuite-framing-integration-72ac1419/libs/python/capture_protocol/capture_protocol/__init__.py",
+  "candidate_source_sha256": "3ff7c7284d9907a2ad516c83fab383a4151996da3f2d5a1d27e24d7c7575d92e",
+  "predecessor_source_sha256": "4bc45fb94866658fe44be9ad0871dc12a9e2b1bfedf88c48fd15e2246f62e08d",
+  "retained_predecessor_failures": [
+    {
+      "kind": "magic",
+      "frame_error": "bad magic: expected b'CSP1', got b'\\x00\\x00\\x00\\x00'",
+      "reset_error": "Existing exports of data: object cannot be re-sized"
+    },
+    {
+      "kind": "length",
+      "frame_error": "payload_len 8388609 exceeds max 8388608",
+      "reset_error": "Existing exports of data: object cannot be re-sized"
+    }
+  ],
+  "independent_candidate_cases_passed": [
+    "bytearray:partial-header",
+    "bytearray:partial-payload",
+    "bytearray:bad-magic",
+    "bytearray:oversized-length",
+    "bytearray:valid",
+    "caller-view:partial-header",
+    "caller-view:partial-payload",
+    "caller-view:bad-magic",
+    "caller-view:oversized-length",
+    "caller-view:valid",
+    "readonly-view:partial-header",
+    "readonly-view:partial-payload",
+    "readonly-view:bad-magic",
+    "readonly-view:oversized-length",
+    "readonly-view:valid",
+    "sliced-view:partial-header",
+    "sliced-view:partial-payload",
+    "sliced-view:bad-magic",
+    "sliced-view:oversized-length",
+    "sliced-view:valid"
+  ],
+  "count": 20,
+  "working_tree": "clean_before_and_after",
+  "windows_qualification": "not_performed"
+}
+
+
+[executed on device: Mac.lan (5f462f1b-490d-4a0d-8caa-51742c9d09b4)]
+
+[Reading 50 new lines (total: 50 lines)]
+
+{
+  "receiver": "integration/capture_peer",
+  "head": "4359c21f3da93ed863de617331edfc853cf8385d",
+  "parent": "65b76c9909f0c28d34c9f44f07d306b924955da8",
+  "tree": "43902c3fc551425acf7c3a2dc8bec177f3f29c61",
+  "platform": "macOS-26.6.2-arm64-arm-64bit",
+  "python": "3.12.8",
+  "protobuf": "4.25.9",
+  "package": "/Users/me/Developer/capturesuite-framing-integration-72ac1419/libs/python/capture_protocol/capture_protocol/__init__.py",
+  "candidate_source_sha256": "3ff7c7284d9907a2ad516c83fab383a4151996da3f2d5a1d27e24d7c7575d92e",
+  "predecessor_source_sha256": "4bc45fb94866658fe44be9ad0871dc12a9e2b1bfedf88c48fd15e2246f62e08d",
+  "retained_predecessor_failures": [
+    {
+      "kind": "magic",
+      "frame_error": "bad magic: expected b'CSP1', got b'\\x00\\x00\\x00\\x00'",
+      "reset_error": "Existing exports of data: object cannot be re-sized"
+    },
+    {
+      "kind": "length",
+      "frame_error": "payload_len 8388609 exceeds max 8388608",
+      "reset_error": "Existing exports of data: object cannot be re-sized"
+    }
+  ],
+  "independent_candidate_cases_passed": [
+    "bytearray:partial-header",
+    "bytearray:partial-payload",
+    "bytearray:bad-magic",
+    "bytearray:oversized-length",
+    "bytearray:valid",
+    "caller-view:partial-header",
+    "caller-view:partial-payload",
+    "caller-view:bad-magic",
+    "caller-view:oversized-length",
+    "caller-view:valid",
+    "readonly-view:partial-header",
+    "readonly-view:partial-payload",
+    "readonly-view:bad-magic",
+    "readonly-view:oversized-length",
+    "readonly-view:valid",
+    "sliced-view:partial-header",
+    "sliced-view:partial-payload",
+    "sliced-view:bad-magic",
+    "sliced-view:oversized-length",
+    "sliced-view:valid"
+  ],
+  "count": 20,
+  "working_tree": "clean_before_and_after",
+  "windows_qualification": "not_performed"
+}
+
+✅ Process completed with exit code 0 (runtime: 0.30s)
+
+[executed on device: Mac.lan (5f462f1b-490d-4a0d-8caa-51742c9d09b4)]
+
