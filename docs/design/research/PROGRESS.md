@@ -101,6 +101,39 @@ receiver above remains bound to retained original `16eb17f` atomic source; it
 does not claim qualification of the revised writer. See the packet CURRENT.md
 for the exact companion composition and current fixture replay.
 
+## 2026-10-08 — Analyze the section closed by a captured checkpoint
+
+Contributor `18a24bf0c281 / estate_product`, issue #54: selecting a captured
+checkpoint now resolves the preceding effective checkpoint (or session time
+zero) through the selected checkpoint. The final marker no longer selects the
+tail. Existing timestamp aliases, exact integers, stable ties, inclusive point
+sections and gap helpers are preserved. A persisted negative first marker
+reports invalid inverted bounds without clamping or rewriting the recording.
+
+The same frozen native Python 3.12.8 test file changes from **25 failed / 5
+passed** on the original implementation to **30 passed** on source `4fcd0aa`.
+Ten real CLI cases per implementation check synthetic protobuf MCAP through
+Parquet/CSV output; all eight raw files in every invocation remain exact. The
+candidate also passes **19 existing QC/features/stream-gap checks**, scoped
+Ruff and the existing license checker. Two upstream protobuf deprecation
+warnings remain recorded. Independent future-marker/data invariance and
+inside-section sensitivity receiving passes **26 checks** on the same
+production blob, with its original failures retained separately.
+
+`ANALYSIS.md` records the explicit decision reconciling the captured-checkpoint
+session contract with an older research tagged-start example. Scope UI #53 and
+history #55 keep their owned files. Actual native figures contain the correct
+selected samples; their existing elapsed-axis label discrepancy was retained
+and handed to the current plot/scope owners without editing plot source.
+
+Exact source pins, complete native logs/fixtures/artifacts, actual PNGs and
+byte-preservation receipts are in
+[`docs/evidence/checkpoint-sections-18a24bf0c281/README.md`](../../evidence/checkpoint-sections-18a24bf0c281/README.md).
+The distinct independent review is in
+[`checkpoint-future-isolation-18a24bf0c281`](../../evidence/checkpoint-future-isolation-18a24bf0c281/README.md).
+This is bounded native offline receiving; supported Windows CI, desktop
+composition and physical acquisition retain their separate acceptance gates.
+
 ## 2026-10-08 — Preserve prior analysis jobs on failed replacement
 
 Worker `estate-6267db2cfc6e`, issue #39: portable job IDs and direct output

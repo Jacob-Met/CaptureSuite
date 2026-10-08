@@ -1,0 +1,10 @@
+{
+  "result": "Native transfer of the purpose-built tool's returned file URI failed with HTTP403 before its expiry; no ZIP bytes were obtained or claimed in native custody.",
+  "device": "0e3d582f-e25b-44b2-8418-9639fc4e4e33",
+  "pid": 82425,
+  "process_exit": 1,
+  "observed_at_utc": "2026-10-08T14:43:27Z",
+  "error": "urllib.error.HTTPError: HTTP Error 403: Forbidden",
+  "file_id": "file_0000000039c481f6901ca428ea794077",
+  "root_instruction": "Retain metadata/failure only; do not retry through other endpoints or accounts."
+}

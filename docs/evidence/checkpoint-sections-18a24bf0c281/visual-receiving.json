@@ -1,0 +1,12 @@
+{
+  "method": "Direct inspection of actual unedited native Matplotlib PNGs through RDC.",
+  "inspected": [
+    "figures/candidate-imu.png",
+    "figures/candidate-sync.png",
+    "figures/baseline-imu.png"
+  ],
+  "candidate_data": "The selected Reach section contains session2–5s, IMU magnitudes20–50; actual sync JSON retains31 exact session timestamps.",
+  "baseline_data": "The old resolver selects5–5s because the following marker is tied; only the boundary sample remains.",
+  "existing_presentation_limit": "Both current plot functions subtract the first retained timestamp but label the0–3s axis 'session time (s)'. This scope preserves those owned plot files. Actual window provenance and exported tables retain absolute session nanoseconds.",
+  "coordination": "Reported to root for current plot/scope owners; no claim that this resolver repair fixes plot-origin labels."
+}

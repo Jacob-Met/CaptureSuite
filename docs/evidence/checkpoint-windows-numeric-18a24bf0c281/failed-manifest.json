@@ -1,0 +1,98 @@
+{
+  "schemaId": "capture.analysis_job/1",
+  "jobId": "20261008T143123Z_3bbcdbea",
+  "createdUtc": "2026-10-08T14:31:23Z",
+  "captureAnalysisVersion": "0.1.0",
+  "pluginManifestVersion": "1.0.0",
+  "pluginIds": [
+    "emg.envelope.v1",
+    "imu.kinematics.v1",
+    "radar.rd_energy.v1",
+    "radar_doppler.mag.v1",
+    "video.timing_qc.v1",
+    "numeric.basic.v1",
+    "test.dummy.feature.v1"
+  ],
+  "packagePath": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\numeric-receiving-yrqsczqm\\native.mmsession",
+  "sessionId": "independent-numeric-receiving",
+  "packageState": "finalized",
+  "manifestSha256": "67bf587669510c8fea6e964cc89f724e9ad2a963b354e80e292ee01f8a548f00",
+  "timeRange": {
+    "mode": "cp:trial",
+    "startSessionNs": 0,
+    "endSessionNs": 5080000000,
+    "checkpointIds": [
+      "trial"
+    ]
+  },
+  "sourcesSelected": [
+    "sim.numeric.force"
+  ],
+  "modalities": [
+    "emg"
+  ],
+  "gapPolicy": "mask",
+  "gapSummary": {
+    "open": 0,
+    "closed": 0,
+    "maskedNs": 0,
+    "validFraction": null
+  },
+  "analysisGrids": [],
+  "syncAnchorsApplied": {
+    "applied": false,
+    "anchors": []
+  },
+  "paramsDigest": "3bbcdbea6154f4861eb7d911435944ba21c8ef775e0658dd9d6297051d4db73c",
+  "tooling": {
+    "python": "3.12.10",
+    "platform": "Windows-2022Server-10.0.20348-SP0",
+    "captureAnalysis": "0.1.0",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "pandas": "3.0.6",
+    "matplotlib": "3.11.2"
+  },
+  "featureTables": [],
+  "poseTables": [],
+  "poseModelId": null,
+  "kinematicsRows": null,
+  "poseJobId": null,
+  "mlBundleWindowCount": null,
+  "evalWindowCount": null,
+  "outputs": [
+    {
+      "relativePath": "params.json",
+      "bytes": 245,
+      "sha256": "43c08333b2e216225ad845ae6da0e57e87b7e796d9ff149225788eec7e877cbd",
+      "kind": "params"
+    },
+    {
+      "relativePath": "reports/qc.json",
+      "bytes": 991,
+      "sha256": "fc53962cc25c82562f7dfd562470bded1c458c8fd38e9822f514f36cbf20ffbd",
+      "kind": "qc_json"
+    },
+    {
+      "relativePath": "reports/qc.html",
+      "bytes": 2076,
+      "sha256": "d67e18a5806424bda65e77615679b92931c0ed22e6fa59290854bcccb03ebee1",
+      "kind": "qc_html"
+    },
+    {
+      "relativePath": "job_manifest.json",
+      "bytes": 2312,
+      "sha256": "9bc008eebc05a3e17157590d6d79fcfd04ca62325fc1bbaba0240188285eb5cf",
+      "kind": "manifest"
+    },
+    {
+      "relativePath": "logs/job.log",
+      "bytes": 199,
+      "sha256": "a31f836b3e50a21ee6f80d818ccc674c6d022c6684b7454210b5176577bec0b6",
+      "kind": "log"
+    }
+  ],
+  "warnings": [],
+  "errors": [],
+  "status": "completed"
+}

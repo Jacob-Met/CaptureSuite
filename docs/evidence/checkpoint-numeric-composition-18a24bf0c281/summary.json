@@ -1,0 +1,855 @@
+{
+  "source_commit": "0ed1ccaa023a5327495565d59e1dd0b28b2ee5bd",
+  "source_tree": "b8990a709744eab58b25b875596c79d0865cce4a",
+  "purpose": "current numeric schema-first CLI receiving of the frozen closing-checkpoint resolver",
+  "started_utc": "2026-10-08T13:27:03.723373+00:00",
+  "runs": [
+    {
+      "variant": "baseline",
+      "started_utc": "2026-10-08T13:27:06.006064+00:00",
+      "seconds": 19.910121291992255,
+      "argv": [
+        "/Users/me/capturesuite-checkpoint-18a24bf0c281/venv/bin/python",
+        "/Users/me/capturesuite-checkpoint-18a24bf0c281/numeric-composition-0ed1/baseline-source/tools/run_analysis.py",
+        "all",
+        "/Users/me/capturesuite-checkpoint-18a24bf0c281/numeric-composition-0ed1/baseline/numeric.mmsession",
+        "--checkpoint-section",
+        "trial",
+        "--sources",
+        "sampler.section",
+        "--strict-warnings",
+        "--overwrite-job-id",
+        "numeric-checkpoint"
+      ],
+      "exit_code": 0,
+      "window": [
+        5000000000,
+        7000000000
+      ],
+      "manifest_selection": null,
+      "feature_rows": [
+        {
+          "t_start_ns": 5000000000,
+          "t_end_ns": 6000000000,
+          "rate_hz": 10.0,
+          "gap_fraction": 0.0,
+          "index_rms": 54.57563558951925,
+          "index_mean": 54.50000000000001
+        },
+        {
+          "t_start_ns": 5500000000,
+          "t_end_ns": 6500000000,
+          "rate_hz": 10.0,
+          "gap_fraction": 0.0,
+          "index_rms": 59.56928738872071,
+          "index_mean": 59.5
+        },
+        {
+          "t_start_ns": 6000000000,
+          "t_end_ns": 7000000000,
+          "rate_hz": 10.0,
+          "gap_fraction": 0.0,
+          "index_rms": 64.56392181396666,
+          "index_mean": 64.5
+        }
+      ],
+      "retained_series": {
+        "color": "#3d8bfd",
+        "label": "Numeric sampler.section/emg.evidence · index",
+        "t_ns": [
+          5000000000,
+          5100000000,
+          5200000000,
+          5300000000,
+          5400000000,
+          5500000000,
+          5600000000,
+          5700000000,
+          5800000000,
+          5900000000,
+          6000000000,
+          6100000000,
+          6200000000,
+          6300000000,
+          6400000000,
+          6500000000,
+          6600000000,
+          6700000000,
+          6800000000,
+          6900000000,
+          7000000000
+        ],
+        "y": [
+          50.0,
+          51.0,
+          52.0,
+          53.0,
+          54.0,
+          55.0,
+          56.0,
+          57.0,
+          58.0,
+          59.0,
+          60.0,
+          61.0,
+          62.0,
+          63.0,
+          64.0,
+          65.0,
+          66.0,
+          67.0,
+          68.0,
+          69.0,
+          70.0
+        ]
+      },
+      "source_modules": 49,
+      "raw_before": {
+        "events/annotations.json": {
+          "bytes": 3,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "events/checkpoints.json": {
+          "bytes": 311,
+          "sha256": "aabf4af316fb30e87c3aa8cd36a3e15ec59f9458909934e00ab45bf9854ffa6c"
+        },
+        "events/sync_anchors.json": {
+          "bytes": 3,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "integrity.json": {
+          "bytes": 437,
+          "sha256": "2d5ca6a3b0680dcf05a9f435571055a66e1b74d98dfd571fea9ac6a4d597e9b6"
+        },
+        "manifest.json": {
+          "bytes": 230,
+          "sha256": "472c5347c4c16601669f6bdd7158fbbe54545d254374fac21099a5697b7e7fd7"
+        },
+        "sources/sampler.section/health/gaps.jsonl": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "sources/sampler.section/source.json": {
+          "bytes": 36,
+          "sha256": "deef6d73057198b5c02c09fe5fe518bfa9bb441d0b6b7d54f5c2ea173f9d34db"
+        },
+        "sources/sampler.section/streams/emg.evidence/segments/000000.mcap": {
+          "bytes": 1799,
+          "sha256": "94e53746486a066c6eedb7fd854f21c01a54b8bcadd17e90720caa3103d0a0b4"
+        },
+        "sources/sampler.section/streams/emg.evidence/stream.json": {
+          "bytes": 330,
+          "sha256": "cb5aef1d98e6d4f626cc597293c4807d800f19229ccbb061186cbd11fe8eb56e"
+        }
+      },
+      "raw_after": {
+        "events/annotations.json": {
+          "bytes": 3,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "events/checkpoints.json": {
+          "bytes": 311,
+          "sha256": "aabf4af316fb30e87c3aa8cd36a3e15ec59f9458909934e00ab45bf9854ffa6c"
+        },
+        "events/sync_anchors.json": {
+          "bytes": 3,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "integrity.json": {
+          "bytes": 437,
+          "sha256": "2d5ca6a3b0680dcf05a9f435571055a66e1b74d98dfd571fea9ac6a4d597e9b6"
+        },
+        "manifest.json": {
+          "bytes": 230,
+          "sha256": "472c5347c4c16601669f6bdd7158fbbe54545d254374fac21099a5697b7e7fd7"
+        },
+        "sources/sampler.section/health/gaps.jsonl": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "sources/sampler.section/source.json": {
+          "bytes": 36,
+          "sha256": "deef6d73057198b5c02c09fe5fe518bfa9bb441d0b6b7d54f5c2ea173f9d34db"
+        },
+        "sources/sampler.section/streams/emg.evidence/segments/000000.mcap": {
+          "bytes": 1799,
+          "sha256": "94e53746486a066c6eedb7fd854f21c01a54b8bcadd17e90720caa3103d0a0b4"
+        },
+        "sources/sampler.section/streams/emg.evidence/stream.json": {
+          "bytes": 330,
+          "sha256": "cb5aef1d98e6d4f626cc597293c4807d800f19229ccbb061186cbd11fe8eb56e"
+        }
+      },
+      "outputs": [
+        {
+          "path": "features/_schema.json",
+          "bytes": 2140,
+          "sha256": "345e7c6325d53c1c9f99a555ee2220176441377f9acc570e003e3e0ec0207694"
+        },
+        {
+          "path": "features/numeric/source-73616d706c65722e73656374696f6e/stream-656d672e65766964656e6365/windows.csv",
+          "bytes": 237,
+          "sha256": "a1520638ee8975daa2ab59dec945733de235b7556b70d5ddc120b9ea69be259c"
+        },
+        {
+          "path": "features/numeric/source-73616d706c65722e73656374696f6e/stream-656d672e65766964656e6365/windows.parquet",
+          "bytes": 4186,
+          "sha256": "9ffec1878075123ed70eda1eb52088821f904e0331e99aaa88057d2d3b3dd3e8"
+        },
+        {
+          "path": "figures/numeric/source-73616d706c65722e73656374696f6e/stream-656d672e65766964656e6365/channel_0.png",
+          "bytes": 40018,
+          "sha256": "e343e7d84cc8ea7dd286a3dd16c07e3853582168b8c55b97cd933bc83ec3c675"
+        },
+        {
+          "path": "figures/sync_dashboard.png",
+          "bytes": 29361,
+          "sha256": "cbfec959695b0072fe76c2f815f77bc88ea30d76bdfc07b68fabe64b9b1abb09"
+        },
+        {
+          "path": "figures/sync_dashboard_series.json",
+          "bytes": 1117,
+          "sha256": "8ccf2922285588cbb4989784a41734129dfb88f72f5aab7e8e25c69f0f30a3e0"
+        },
+        {
+          "path": "job_manifest.json",
+          "bytes": 4009,
+          "sha256": "18b210428f1dc52d38543ef9211904115f49f564d1fbe93e2ec0dabc3c1d0ee4"
+        },
+        {
+          "path": "logs/job.log",
+          "bytes": 202,
+          "sha256": "1236b2a88fa5b16cb8634200a27047e5c7edac6b2b8ac0c0e6c7a717d0c67d92"
+        },
+        {
+          "path": "params.json",
+          "bytes": 284,
+          "sha256": "5979a6a818ae572b4afd8ef9e1cc84d278b97be00ea667fab4871e9181f4f695"
+        },
+        {
+          "path": "reports/qc.html",
+          "bytes": 2075,
+          "sha256": "88de766a1bd010d8576c468ab19f9a5e028446d5e43e92e18dd266d0e8837d57"
+        },
+        {
+          "path": "reports/qc.json",
+          "bytes": 990,
+          "sha256": "9e567ebeec2e6a482c2b512e6272c732dfba1e0d9937ce2e04d40d38b625d972"
+        }
+      ],
+      "checks": [
+        {
+          "name": "actual CLI strict success with real schema validation",
+          "passed": true,
+          "actual": {
+            "exit": 0,
+            "status": "completed",
+            "warnings": []
+          }
+        },
+        {
+          "name": "raw fixture and persisted checkpoints unchanged",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "name": "generic schema dispatch selected numeric despite emg modality",
+          "passed": true,
+          "actual": "features/numeric/source-73616d706c65722e73656374696f6e/stream-656d672e65766964656e6365/windows.parquet"
+        },
+        {
+          "name": "exact selected source and stream metadata retained",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "name": "Parquet and CSV describe the same actual feature rows",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "name": "selected trial closes its preceding interval",
+          "passed": false,
+          "actual": [
+            5000000000,
+            7000000000
+          ]
+        },
+        {
+          "name": "all retained numeric timestamps are precisely the inclusive selected section",
+          "passed": false,
+          "actual": [
+            5000000000,
+            5100000000,
+            5200000000,
+            5300000000,
+            5400000000,
+            5500000000,
+            5600000000,
+            5700000000,
+            5800000000,
+            5900000000,
+            6000000000,
+            6100000000,
+            6200000000,
+            6300000000,
+            6400000000,
+            6500000000,
+            6600000000,
+            6700000000,
+            6800000000,
+            6900000000,
+            7000000000
+          ]
+        },
+        {
+          "name": "retained numeric values come from that closed section across both native batches",
+          "passed": false,
+          "actual": [
+            50.0,
+            51.0,
+            52.0,
+            53.0,
+            54.0,
+            55.0,
+            56.0,
+            57.0,
+            58.0,
+            59.0,
+            60.0,
+            61.0,
+            62.0,
+            63.0,
+            64.0,
+            65.0,
+            66.0,
+            67.0,
+            68.0,
+            69.0,
+            70.0
+          ]
+        },
+        {
+          "name": "only complete feature windows from the closed section are exported",
+          "passed": false,
+          "actual": [
+            {
+              "t_start_ns": 5000000000,
+              "t_end_ns": 6000000000,
+              "rate_hz": 10.0,
+              "gap_fraction": 0.0,
+              "index_rms": 54.57563558951925,
+              "index_mean": 54.50000000000001
+            },
+            {
+              "t_start_ns": 5500000000,
+              "t_end_ns": 6500000000,
+              "rate_hz": 10.0,
+              "gap_fraction": 0.0,
+              "index_rms": 59.56928738872071,
+              "index_mean": 59.5
+            },
+            {
+              "t_start_ns": 6000000000,
+              "t_end_ns": 7000000000,
+              "rate_hz": 10.0,
+              "gap_fraction": 0.0,
+              "index_rms": 64.56392181396666,
+              "index_mean": 64.5
+            }
+          ]
+        },
+        {
+          "name": "closed-section window means match original selected samples",
+          "passed": false,
+          "actual": [
+            54.50000000000001,
+            59.5,
+            64.5
+          ]
+        },
+        {
+          "name": "reported artifact sizes and hashes bind actual outputs",
+          "passed": false,
+          "actual": null
+        },
+        {
+          "name": "numeric and sync PNGs were emitted",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "name": "all 812 executed source blobs unchanged",
+          "passed": true,
+          "actual": null
+        }
+      ],
+      "passed": 7,
+      "failed": 6
+    },
+    {
+      "variant": "candidate",
+      "started_utc": "2026-10-08T13:27:25.923015+00:00",
+      "seconds": 19.945226415991783,
+      "argv": [
+        "/Users/me/capturesuite-checkpoint-18a24bf0c281/venv/bin/python",
+        "/Users/me/capturesuite-checkpoint-18a24bf0c281/numeric-composition-0ed1/candidate-source/tools/run_analysis.py",
+        "all",
+        "/Users/me/capturesuite-checkpoint-18a24bf0c281/numeric-composition-0ed1/candidate/numeric.mmsession",
+        "--checkpoint-section",
+        "trial",
+        "--sources",
+        "sampler.section",
+        "--strict-warnings",
+        "--overwrite-job-id",
+        "numeric-checkpoint"
+      ],
+      "exit_code": 0,
+      "window": [
+        2000000000,
+        5000000000
+      ],
+      "manifest_selection": null,
+      "feature_rows": [
+        {
+          "t_start_ns": 2000000000,
+          "t_end_ns": 3000000000,
+          "rate_hz": 10.0,
+          "gap_fraction": 0.0,
+          "index_rms": 24.667792767088017,
+          "index_mean": 24.499999999999996
+        },
+        {
+          "t_start_ns": 2500000000,
+          "t_end_ns": 3500000000,
+          "rate_hz": 10.0,
+          "gap_fraction": 0.0,
+          "index_rms": 29.63950067055786,
+          "index_mean": 29.499999999999996
+        },
+        {
+          "t_start_ns": 3000000000,
+          "t_end_ns": 4000000000,
+          "rate_hz": 10.0,
+          "gap_fraction": 0.0,
+          "index_rms": 34.619358746227526,
+          "index_mean": 34.5
+        },
+        {
+          "t_start_ns": 3500000000,
+          "t_end_ns": 4500000000,
+          "rate_hz": 10.0,
+          "gap_fraction": 0.0,
+          "index_rms": 39.604292696625706,
+          "index_mean": 39.5
+        },
+        {
+          "t_start_ns": 4000000000,
+          "t_end_ns": 5000000000,
+          "rate_hz": 10.0,
+          "gap_fraction": 0.0,
+          "index_rms": 44.5926002830066,
+          "index_mean": 44.49999999999999
+        }
+      ],
+      "retained_series": {
+        "color": "#3d8bfd",
+        "label": "Numeric sampler.section/emg.evidence · index",
+        "t_ns": [
+          2000000000,
+          2100000000,
+          2200000000,
+          2300000000,
+          2400000000,
+          2500000000,
+          2600000000,
+          2700000000,
+          2800000000,
+          2900000000,
+          3000000000,
+          3100000000,
+          3200000000,
+          3300000000,
+          3400000000,
+          3500000000,
+          3600000000,
+          3700000000,
+          3800000000,
+          3900000000,
+          4000000000,
+          4100000000,
+          4200000000,
+          4300000000,
+          4400000000,
+          4500000000,
+          4600000000,
+          4700000000,
+          4800000000,
+          4900000000,
+          5000000000
+        ],
+        "y": [
+          20.0,
+          21.0,
+          22.0,
+          23.0,
+          24.0,
+          25.0,
+          26.0,
+          27.0,
+          28.0,
+          29.0,
+          30.0,
+          31.0,
+          32.0,
+          33.0,
+          34.0,
+          35.0,
+          36.0,
+          37.0,
+          38.0,
+          39.0,
+          40.0,
+          41.0,
+          42.0,
+          43.0,
+          44.0,
+          45.0,
+          46.0,
+          47.0,
+          48.0,
+          49.0,
+          50.0
+        ]
+      },
+      "source_modules": 49,
+      "raw_before": {
+        "events/annotations.json": {
+          "bytes": 3,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "events/checkpoints.json": {
+          "bytes": 311,
+          "sha256": "aabf4af316fb30e87c3aa8cd36a3e15ec59f9458909934e00ab45bf9854ffa6c"
+        },
+        "events/sync_anchors.json": {
+          "bytes": 3,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "integrity.json": {
+          "bytes": 437,
+          "sha256": "2d5ca6a3b0680dcf05a9f435571055a66e1b74d98dfd571fea9ac6a4d597e9b6"
+        },
+        "manifest.json": {
+          "bytes": 230,
+          "sha256": "472c5347c4c16601669f6bdd7158fbbe54545d254374fac21099a5697b7e7fd7"
+        },
+        "sources/sampler.section/health/gaps.jsonl": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "sources/sampler.section/source.json": {
+          "bytes": 36,
+          "sha256": "deef6d73057198b5c02c09fe5fe518bfa9bb441d0b6b7d54f5c2ea173f9d34db"
+        },
+        "sources/sampler.section/streams/emg.evidence/segments/000000.mcap": {
+          "bytes": 1799,
+          "sha256": "94e53746486a066c6eedb7fd854f21c01a54b8bcadd17e90720caa3103d0a0b4"
+        },
+        "sources/sampler.section/streams/emg.evidence/stream.json": {
+          "bytes": 330,
+          "sha256": "cb5aef1d98e6d4f626cc597293c4807d800f19229ccbb061186cbd11fe8eb56e"
+        }
+      },
+      "raw_after": {
+        "events/annotations.json": {
+          "bytes": 3,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "events/checkpoints.json": {
+          "bytes": 311,
+          "sha256": "aabf4af316fb30e87c3aa8cd36a3e15ec59f9458909934e00ab45bf9854ffa6c"
+        },
+        "events/sync_anchors.json": {
+          "bytes": 3,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "integrity.json": {
+          "bytes": 437,
+          "sha256": "2d5ca6a3b0680dcf05a9f435571055a66e1b74d98dfd571fea9ac6a4d597e9b6"
+        },
+        "manifest.json": {
+          "bytes": 230,
+          "sha256": "472c5347c4c16601669f6bdd7158fbbe54545d254374fac21099a5697b7e7fd7"
+        },
+        "sources/sampler.section/health/gaps.jsonl": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "sources/sampler.section/source.json": {
+          "bytes": 36,
+          "sha256": "deef6d73057198b5c02c09fe5fe518bfa9bb441d0b6b7d54f5c2ea173f9d34db"
+        },
+        "sources/sampler.section/streams/emg.evidence/segments/000000.mcap": {
+          "bytes": 1799,
+          "sha256": "94e53746486a066c6eedb7fd854f21c01a54b8bcadd17e90720caa3103d0a0b4"
+        },
+        "sources/sampler.section/streams/emg.evidence/stream.json": {
+          "bytes": 330,
+          "sha256": "cb5aef1d98e6d4f626cc597293c4807d800f19229ccbb061186cbd11fe8eb56e"
+        }
+      },
+      "outputs": [
+        {
+          "path": "features/_schema.json",
+          "bytes": 2140,
+          "sha256": "d970c98862f9177fe46bb9d30ce78ea19a5338e769923bbca787a4571cbe313a"
+        },
+        {
+          "path": "features/numeric/source-73616d706c65722e73656374696f6e/stream-656d672e65766964656e6365/windows.csv",
+          "bytes": 375,
+          "sha256": "5e14b1d8dc4c7f5ff3de224c702b084c184274e970b9deffd1a26d2babb50c8e"
+        },
+        {
+          "path": "features/numeric/source-73616d706c65722e73656374696f6e/stream-656d672e65766964656e6365/windows.parquet",
+          "bytes": 4240,
+          "sha256": "5a8514a2f20288943903d8868ae10bd1d6b527a208a5e832a0fb22fb2dc5bc4a"
+        },
+        {
+          "path": "figures/numeric/source-73616d706c65722e73656374696f6e/stream-656d672e65766964656e6365/channel_0.png",
+          "bytes": 38030,
+          "sha256": "4d03a587580e23f5c9f5da2cc80c108e6a3ed6c4adbd8d0e8889ef9e613af621"
+        },
+        {
+          "path": "figures/sync_dashboard.png",
+          "bytes": 26516,
+          "sha256": "843c5dbd8b37134ab0d77e75775ed6e655e931b01a9e40115e13a912cbcc7810"
+        },
+        {
+          "path": "figures/sync_dashboard_series.json",
+          "bytes": 1457,
+          "sha256": "4729ae395d18c3a4036bf88b2eeb38b371a7280cd7e9d28ed3d129f3c69e501e"
+        },
+        {
+          "path": "job_manifest.json",
+          "bytes": 4010,
+          "sha256": "dceb2af3f996486ea20b1087698e89f2f936ffe742ea55c43b8bd15c3f394864"
+        },
+        {
+          "path": "logs/job.log",
+          "bytes": 203,
+          "sha256": "c4110c2a9be3a3777a1d1cb06c3c9f18ce86bd19b71d7b02f5cc66bb791346bb"
+        },
+        {
+          "path": "params.json",
+          "bytes": 284,
+          "sha256": "5979a6a818ae572b4afd8ef9e1cc84d278b97be00ea667fab4871e9181f4f695"
+        },
+        {
+          "path": "reports/qc.html",
+          "bytes": 2076,
+          "sha256": "417afc54d05d473b25ea3e0ea079f00862db373db0af29fb3911039ba09149ca"
+        },
+        {
+          "path": "reports/qc.json",
+          "bytes": 991,
+          "sha256": "4f6eda7b203f7566075b8a33609ae11e4323cc4cde25c42f6c711466fdf6b41b"
+        }
+      ],
+      "checks": [
+        {
+          "name": "actual CLI strict success with real schema validation",
+          "passed": true,
+          "actual": {
+            "exit": 0,
+            "status": "completed",
+            "warnings": []
+          }
+        },
+        {
+          "name": "raw fixture and persisted checkpoints unchanged",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "name": "generic schema dispatch selected numeric despite emg modality",
+          "passed": true,
+          "actual": "features/numeric/source-73616d706c65722e73656374696f6e/stream-656d672e65766964656e6365/windows.parquet"
+        },
+        {
+          "name": "exact selected source and stream metadata retained",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "name": "Parquet and CSV describe the same actual feature rows",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "name": "selected trial closes its preceding interval",
+          "passed": true,
+          "actual": [
+            2000000000,
+            5000000000
+          ]
+        },
+        {
+          "name": "all retained numeric timestamps are precisely the inclusive selected section",
+          "passed": true,
+          "actual": [
+            2000000000,
+            2100000000,
+            2200000000,
+            2300000000,
+            2400000000,
+            2500000000,
+            2600000000,
+            2700000000,
+            2800000000,
+            2900000000,
+            3000000000,
+            3100000000,
+            3200000000,
+            3300000000,
+            3400000000,
+            3500000000,
+            3600000000,
+            3700000000,
+            3800000000,
+            3900000000,
+            4000000000,
+            4100000000,
+            4200000000,
+            4300000000,
+            4400000000,
+            4500000000,
+            4600000000,
+            4700000000,
+            4800000000,
+            4900000000,
+            5000000000
+          ]
+        },
+        {
+          "name": "retained numeric values come from that closed section across both native batches",
+          "passed": true,
+          "actual": [
+            20.0,
+            21.0,
+            22.0,
+            23.0,
+            24.0,
+            25.0,
+            26.0,
+            27.0,
+            28.0,
+            29.0,
+            30.0,
+            31.0,
+            32.0,
+            33.0,
+            34.0,
+            35.0,
+            36.0,
+            37.0,
+            38.0,
+            39.0,
+            40.0,
+            41.0,
+            42.0,
+            43.0,
+            44.0,
+            45.0,
+            46.0,
+            47.0,
+            48.0,
+            49.0,
+            50.0
+          ]
+        },
+        {
+          "name": "only complete feature windows from the closed section are exported",
+          "passed": true,
+          "actual": [
+            {
+              "t_start_ns": 2000000000,
+              "t_end_ns": 3000000000,
+              "rate_hz": 10.0,
+              "gap_fraction": 0.0,
+              "index_rms": 24.667792767088017,
+              "index_mean": 24.499999999999996
+            },
+            {
+              "t_start_ns": 2500000000,
+              "t_end_ns": 3500000000,
+              "rate_hz": 10.0,
+              "gap_fraction": 0.0,
+              "index_rms": 29.63950067055786,
+              "index_mean": 29.499999999999996
+            },
+            {
+              "t_start_ns": 3000000000,
+              "t_end_ns": 4000000000,
+              "rate_hz": 10.0,
+              "gap_fraction": 0.0,
+              "index_rms": 34.619358746227526,
+              "index_mean": 34.5
+            },
+            {
+              "t_start_ns": 3500000000,
+              "t_end_ns": 4500000000,
+              "rate_hz": 10.0,
+              "gap_fraction": 0.0,
+              "index_rms": 39.604292696625706,
+              "index_mean": 39.5
+            },
+            {
+              "t_start_ns": 4000000000,
+              "t_end_ns": 5000000000,
+              "rate_hz": 10.0,
+              "gap_fraction": 0.0,
+              "index_rms": 44.5926002830066,
+              "index_mean": 44.49999999999999
+            }
+          ]
+        },
+        {
+          "name": "closed-section window means match original selected samples",
+          "passed": true,
+          "actual": [
+            24.499999999999996,
+            29.499999999999996,
+            34.5,
+            39.5,
+            44.49999999999999
+          ]
+        },
+        {
+          "name": "reported artifact sizes and hashes bind actual outputs",
+          "passed": false,
+          "actual": null
+        },
+        {
+          "name": "numeric and sync PNGs were emitted",
+          "passed": true,
+          "actual": null
+        },
+        {
+          "name": "all 812 executed source blobs unchanged",
+          "passed": true,
+          "actual": null
+        }
+      ],
+      "passed": 12,
+      "failed": 1
+    }
+  ],
+  "completed_utc": "2026-10-08T13:27:45.946383+00:00",
+  "accepted": false,
+  "harness_error": {
+    "type": "AssertionError",
+    "message": "Receiving matrix did not match the declared baseline/candidate boundary",
+    "traceback": "Traceback (most recent call last):\n  File \"/Users/me/capturesuite-checkpoint-18a24bf0c281/numeric-composition-0ed1/receive.py\", line 270, in <module>\n    run()\n  File \"/Users/me/capturesuite-checkpoint-18a24bf0c281/numeric-composition-0ed1/receive.py\", line 266, in run\n    raise AssertionError(\"Receiving matrix did not match the declared baseline/candidate boundary\")\nAssertionError: Receiving matrix did not match the declared baseline/candidate boundary\n"
+  }
+}
