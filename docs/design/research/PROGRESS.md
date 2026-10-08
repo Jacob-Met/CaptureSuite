@@ -233,3 +233,28 @@ enumeration, so this gate is designed not to touch physical webcams. This is not
 positive native execution. Hosted Windows execution of the exact published candidate is
 the remaining acceptance gate. See
 `docs/evidence/native-integration-gate-20260909.json`.
+
+
+## 2026-10-08 — Camera plugin runtime packaging (#34)
+
+ChatGPT worker `dd846795-production` added the existing five camera runtime DLLs
+to the plugin-manifest executable directory as well as the legacy worker directory.
+This fixes the asymmetric post-build copy rule without changing the dependency list,
+worker launch logic, schemas, protocol, or radar packaging.
+
+The same final CMake regression harness executes the actual production staging
+commands against native C++ fixtures. Baseline `742dd7d` fails for a missing
+plugin-local DLL; the repaired source passes Unix Makefiles and Ninja Multi-Config.
+Both layouts retain exact executable/DLL/manifest bytes. Changed-input controls
+reject a plugin-only omission, restore it on rebuild, and reject a missing source
+DLL during the actual build. The test requires only CMake 3.28+ and a C++ compiler:
+
+```sh
+cmake -DWORK_DIR=/absolute/new/scratch/path -P tests/cmake/camera_runtime_packaging.cmake
+```
+
+The DLLs are synthetic text fixtures: these results qualify packaging commands,
+not Windows loader behavior, GStreamer, physical capture or full-product readiness.
+Exact source hashes and retained logs: `docs/evidence/camera-runtime-closure-20261008.json`.
+Owner receiving remains a draft-PR step; no main merge, deployment, release or tag
+is represented by this source qualification.

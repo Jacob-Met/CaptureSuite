@@ -71,7 +71,10 @@ if(TARGET capture_daemon)
       COMMAND ${CMAKE_COMMAND} -E copy_if_different
               "$<TARGET_FILE_DIR:capture_worker_camera>/${_dep}.dll"
               "$<TARGET_FILE_DIR:capture_daemon>/workers/camera/"
-      COMMENT "Copy ${_dep}.dll next to capture_daemon"
+      COMMAND ${CMAKE_COMMAND} -E copy_if_different
+              "$<TARGET_FILE_DIR:capture_worker_camera>/${_dep}.dll"
+              "$<TARGET_FILE_DIR:capture_daemon>/plugins/camera_gstreamer/"
+      COMMENT "Copy ${_dep}.dll beside both packaged camera workers"
     )
   endforeach()
 endif()

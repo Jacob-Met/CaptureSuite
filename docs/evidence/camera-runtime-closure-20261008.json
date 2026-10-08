@@ -1,0 +1,305 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-08T08:20:29.037Z",
+  "issue": "https://github.com/Jacob-Met/CaptureSuite/issues/34",
+  "contributor": "ChatGPT worker dd846795-production",
+  "baseline_commit": "742dd7dc0455cc8c060db06123c8432d919e93eb",
+  "branch": "chatgpt/camera-runtime-closure-dd846795",
+  "production_change": "Copy each existing camera runtime DLL beside both staged worker executable copies; keep the original DLL list, worker/manifest copies and dependencies.",
+  "baseline_camera_cmake_sha256": "7eff92acdb7d6b1c328132b8f5a78b3e3a85ffce15fb7fb95f0485934154dfad",
+  "source_sha256": {
+    "workers/camera/CMakeLists.txt": "ddb68fccae5e9b5ae66f81ff4859060f27dcc425d6a41c607e9c9c883a6bd842",
+    "tests/cmake/camera_runtime_packaging.cmake": "e13e7934d1875d4fc27dcbdd2a76638e0f721e4830a83dd2710eda7b13395093",
+    "plugins/camera_gstreamer/plugin.json": "6f921746e815083b55f5d81d10c660e9b448ff315b48a2082090b34b350eae03"
+  },
+  "environment": {
+    "platform": "Linux 7.0.0-34-generic x86_64",
+    "cmake": "cmake version 4.2.3",
+    "compiler": "c++ (Ubuntu 15.2.0-16ubuntu1) 15.2.0",
+    "generators": [
+      "Unix Makefiles",
+      "Ninja Multi-Config (Release)"
+    ]
+  },
+  "qualification": [
+    {
+      "case": "final-baseline",
+      "source": "Immutable baseline camera CMakeLists.txt and plugin.json retrieved with git show",
+      "command": "cmake -DCAPTURE_SOURCE_DIR=<baseline-source> -DWORK_DIR=<new-proof-root>/final-baseline -P tests/cmake/camera_runtime_packaging.cmake",
+      "outcome": "expected_failure",
+      "exit_code": 1,
+      "reason": "The real post-build commands omit plugin-local abseil_dll.dll; the original legacy runtime copy exists."
+    },
+    {
+      "case": "final-make",
+      "command": "cmake -DWORK_DIR=<new-proof-root>/final-make -P tests/cmake/camera_runtime_packaging.cmake",
+      "outcome": "passed",
+      "exit_code": 0
+    },
+    {
+      "case": "final-multiconfig",
+      "command": "CMAKE_GENERATOR=\"Ninja Multi-Config\" cmake -DWORK_DIR=<new-proof-root>/final-multiconfig -P tests/cmake/camera_runtime_packaging.cmake",
+      "outcome": "passed",
+      "exit_code": 0
+    },
+    {
+      "case": "rebased-main",
+      "command": "cmake -DWORK_DIR=<new-proof-root>/rebased-main -P tests/cmake/camera_runtime_packaging.cmake",
+      "outcome": "passed",
+      "exit_code": 0
+    }
+  ],
+  "behavior_checked": [
+    "Execute the exact production staging block using real native C++ fixture targets.",
+    "Verify both staged executables and all five DLL payloads by SHA-256, plus the plugin manifest.",
+    "Run both staged native fixture executables from paths containing spaces.",
+    "Delete only plugin-local lz4.dll: the verifier rejects it while the legacy copy remains intact.",
+    "Relink through the real post-build commands: the missing packaged DLL is restored.",
+    "Delete source zstd.dll: the real copy command fails the build rather than accepting a complete package.",
+    "Restore source zstd.dll and relink: both packages return to exact-byte completeness."
+  ],
+  "scope_limits": [
+    "Synthetic DLLs are distinct text payloads, not Windows binaries.",
+    "Native fixture executable success verifies paths and openability only.",
+    "The actual camera worker, GStreamer integration, Windows loader and full transitive runtime closure were not qualified by this Linux fixture.",
+    "No physical camera, live daemon, application deployment, release or tag was exercised.",
+    "This same-author packaging regression is a draft contribution for the project owner, not whole-product acceptance."
+  ],
+  "retained_evidence": [
+    {
+      "case": "final-baseline",
+      "sha256": "fe31bfc85f5e92771b27d8311d07e98cc2c1f5e72e5d6264c55cfe526ceebe3e",
+      "bytes": 439,
+      "content_utf8": "-- The CXX compiler identification is GNU 15.2.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: /usr/bin/c++ - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (0.7s)\n-- Generating done (0.0s)\n-- Build files have been written to: /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-baseline/fixture build\n",
+      "archive_key": "final-baseline-configure.log"
+    },
+    {
+      "case": "final-baseline",
+      "sha256": "d8a2ce303d375e99abbeabe9475768ce2a01155e4797bd7e24663d5d6feab963",
+      "bytes": 612,
+      "content_utf8": "[ 25%] Building CXX object CMakeFiles/capture_daemon.dir/daemon.cpp.o\n[ 50%] Linking CXX executable \"daemon package/capture_daemon.exe\"\n[ 50%] Built target capture_daemon\n[ 75%] Building CXX object CMakeFiles/capture_worker_camera.dir/worker.cpp.o\n[100%] Linking CXX executable \"worker runtime/capture_worker_camera.exe\"\nCopy capture_worker_camera next to capture_daemon\nCopy abseil_dll.dll next to capture_daemon\nCopy blake3.dll next to capture_daemon\nCopy libprotobuf.dll next to capture_daemon\nCopy lz4.dll next to capture_daemon\nCopy zstd.dll next to capture_daemon\n[100%] Built target capture_worker_camera\n",
+      "archive_key": "final-baseline-build.log"
+    },
+    {
+      "case": "final-baseline",
+      "sha256": "8f228700a180bf434b544723ed29d31148f0da9a59e4908adb03b4bfd0c4de95",
+      "bytes": 457,
+      "content_utf8": "CMake Error at /srv/hamon-estate/capturesuite-camera-closure-dd846795/tests/cmake/camera_runtime_packaging.cmake:24 (message):\n  Missing packaged file:\n  /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-baseline/fixture\n  build/daemon package/plugins/camera_gstreamer/abseil_dll.dll\nCall Stack (most recent call first):\n  /srv/hamon-estate/capturesuite-camera-closure-dd846795/tests/cmake/camera_runtime_packaging.cmake:38 (assert_same)\n\n\n",
+      "archive_key": "final-baseline-initial-package.log"
+    },
+    {
+      "case": "final-make",
+      "sha256": "8a9850a2d7af2256752293f93ea39c84bd0407dec3481726abbce39ceb0928d9",
+      "bytes": 435,
+      "content_utf8": "-- The CXX compiler identification is GNU 15.2.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: /usr/bin/c++ - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (1.0s)\n-- Generating done (0.0s)\n-- Build files have been written to: /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-make/fixture build\n",
+      "archive_key": "final-make-configure.log"
+    },
+    {
+      "case": "final-make",
+      "sha256": "31d7080669638e7be9893f07117341747c0bea3f105ef2ab69dbc03622f93ecd",
+      "bytes": 677,
+      "content_utf8": "[ 25%] Building CXX object CMakeFiles/capture_daemon.dir/daemon.cpp.o\n[ 50%] Linking CXX executable \"daemon package/capture_daemon.exe\"\n[ 50%] Built target capture_daemon\n[ 75%] Building CXX object CMakeFiles/capture_worker_camera.dir/worker.cpp.o\n[100%] Linking CXX executable \"worker runtime/capture_worker_camera.exe\"\nCopy capture_worker_camera next to capture_daemon\nCopy abseil_dll.dll beside both packaged camera workers\nCopy blake3.dll beside both packaged camera workers\nCopy libprotobuf.dll beside both packaged camera workers\nCopy lz4.dll beside both packaged camera workers\nCopy zstd.dll beside both packaged camera workers\n[100%] Built target capture_worker_camera\n",
+      "archive_key": "final-make-build.log"
+    },
+    {
+      "case": "final-make",
+      "sha256": "56084df35ad89c21d76452839f711e367ef8e9fc8edc114e2051cbb78dd20a8c",
+      "bytes": 78,
+      "content_utf8": "-- Both camera executable copies retain all five runtime DLLs and exact bytes\n",
+      "archive_key": "final-make-initial-package.log"
+    },
+    {
+      "case": "final-make",
+      "sha256": "ed06984b7b747d4265c5fd4990470200aa4239580d0d9bbf5f0f22db58fe7d1c",
+      "bytes": 446,
+      "content_utf8": "CMake Error at /srv/hamon-estate/capturesuite-camera-closure-dd846795/tests/cmake/camera_runtime_packaging.cmake:24 (message):\n  Missing packaged file:\n  /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-make/fixture\n  build/daemon package/plugins/camera_gstreamer/lz4.dll\nCall Stack (most recent call first):\n  /srv/hamon-estate/capturesuite-camera-closure-dd846795/tests/cmake/camera_runtime_packaging.cmake:38 (assert_same)\n\n\n",
+      "archive_key": "final-make-omission-control.log"
+    },
+    {
+      "case": "final-make",
+      "sha256": "7553130fad5d950508ef02bda41386b085f968eeb08e62e6c1f4ce952bfbc1b3",
+      "bytes": 541,
+      "content_utf8": "[ 50%] Built target capture_daemon\n[ 75%] Building CXX object CMakeFiles/capture_worker_camera.dir/worker.cpp.o\n[100%] Linking CXX executable \"worker runtime/capture_worker_camera.exe\"\nCopy capture_worker_camera next to capture_daemon\nCopy abseil_dll.dll beside both packaged camera workers\nCopy blake3.dll beside both packaged camera workers\nCopy libprotobuf.dll beside both packaged camera workers\nCopy lz4.dll beside both packaged camera workers\nCopy zstd.dll beside both packaged camera workers\n[100%] Built target capture_worker_camera\n",
+      "archive_key": "final-make-rebuild.log"
+    },
+    {
+      "case": "final-make",
+      "sha256": "56084df35ad89c21d76452839f711e367ef8e9fc8edc114e2051cbb78dd20a8c",
+      "bytes": 78,
+      "content_utf8": "-- Both camera executable copies retain all five runtime DLLs and exact bytes\n",
+      "archive_key": "final-make-restored-package.log"
+    },
+    {
+      "case": "final-make",
+      "sha256": "85c9121a8d1d68e03584eed250df3234c8cd8c652ed44c7d965842ab4dbe445c",
+      "bytes": 1091,
+      "content_utf8": "[ 50%] Built target capture_daemon\n[ 75%] Building CXX object CMakeFiles/capture_worker_camera.dir/worker.cpp.o\n[100%] Linking CXX executable \"worker runtime/capture_worker_camera.exe\"\nCopy capture_worker_camera next to capture_daemon\nCopy abseil_dll.dll beside both packaged camera workers\nCopy blake3.dll beside both packaged camera workers\nCopy libprotobuf.dll beside both packaged camera workers\nCopy lz4.dll beside both packaged camera workers\nCopy zstd.dll beside both packaged camera workers\nError copying file (if different) from \"/srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-make/fixture build/worker runtime/zstd.dll\" to \"/srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-make/fixture build/daemon package/workers/camera/\".\ngmake[2]: *** [CMakeFiles/capture_worker_camera.dir/build.make:121: worker runtime/capture_worker_camera.exe] Error 1\ngmake[2]: *** Deleting file 'worker runtime/capture_worker_camera.exe'\ngmake[1]: *** [CMakeFiles/Makefile2:122: CMakeFiles/capture_worker_camera.dir/all] Error 2\ngmake: *** [Makefile:91: all] Error 2\n",
+      "archive_key": "final-make-missing-runtime-input.log"
+    },
+    {
+      "case": "final-make",
+      "sha256": "7553130fad5d950508ef02bda41386b085f968eeb08e62e6c1f4ce952bfbc1b3",
+      "bytes": 541,
+      "content_utf8": "[ 50%] Built target capture_daemon\n[ 75%] Building CXX object CMakeFiles/capture_worker_camera.dir/worker.cpp.o\n[100%] Linking CXX executable \"worker runtime/capture_worker_camera.exe\"\nCopy capture_worker_camera next to capture_daemon\nCopy abseil_dll.dll beside both packaged camera workers\nCopy blake3.dll beside both packaged camera workers\nCopy libprotobuf.dll beside both packaged camera workers\nCopy lz4.dll beside both packaged camera workers\nCopy zstd.dll beside both packaged camera workers\n[100%] Built target capture_worker_camera\n",
+      "archive_key": "final-make-final-rebuild.log"
+    },
+    {
+      "case": "final-make",
+      "sha256": "56084df35ad89c21d76452839f711e367ef8e9fc8edc114e2051cbb78dd20a8c",
+      "bytes": 78,
+      "content_utf8": "-- Both camera executable copies retain all five runtime DLLs and exact bytes\n",
+      "archive_key": "final-make-final-package.log"
+    },
+    {
+      "case": "final-multiconfig",
+      "sha256": "44eaaa3c23d1fd34f6eac7d153b279e38e5ecb00bb9d2966545a97846b264ad9",
+      "bytes": 542,
+      "content_utf8": "-- The CXX compiler identification is GNU 15.2.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: /usr/bin/c++ - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (0.6s)\n-- Generating done (0.0s)\nCMake Warning:\n  Manually-specified variables were not used by the project:\n\n    CMAKE_BUILD_TYPE\n\n\n-- Build files have been written to: /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture build\n",
+      "archive_key": "final-multiconfig-configure.log"
+    },
+    {
+      "case": "final-multiconfig",
+      "sha256": "d6e3bfbea6c0e60c807982ac4e701bb4c4f36ff2b69b6e368e598febf63868ab",
+      "bytes": 618,
+      "content_utf8": "[1/4] Building CXX object CMakeFiles/capture_daemon.dir/Release/daemon.cpp.o\n[2/4] Building CXX object CMakeFiles/capture_worker_camera.dir/Release/worker.cpp.o\n[3/4] Linking CXX executable \"daemon package/capture_daemon.exe\"\n[4/4] Linking CXX executable \"worker runtime/capture_worker_camera.exe\"; Copy capture_worker_camera next to capture_daemon; Copy abseil_dll.dll beside both packaged camera workers; Copy blake3.dll beside both packaged camera workers; Copy libprotobuf.dll beside both packaged camera workers; Copy lz4.dll beside both packaged camera workers; Copy zstd.dll beside both packaged camera workers\n",
+      "archive_key": "final-multiconfig-build.log"
+    },
+    {
+      "case": "final-multiconfig",
+      "sha256": "56084df35ad89c21d76452839f711e367ef8e9fc8edc114e2051cbb78dd20a8c",
+      "bytes": 78,
+      "content_utf8": "-- Both camera executable copies retain all five runtime DLLs and exact bytes\n",
+      "archive_key": "final-multiconfig-initial-package.log"
+    },
+    {
+      "case": "final-multiconfig",
+      "sha256": "e1b1a0d292c6a73d73372af0161de1d13367d2821202d6dff4bfe0212b524fbb",
+      "bytes": 453,
+      "content_utf8": "CMake Error at /srv/hamon-estate/capturesuite-camera-closure-dd846795/tests/cmake/camera_runtime_packaging.cmake:24 (message):\n  Missing packaged file:\n  /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\n  build/daemon package/plugins/camera_gstreamer/lz4.dll\nCall Stack (most recent call first):\n  /srv/hamon-estate/capturesuite-camera-closure-dd846795/tests/cmake/camera_runtime_packaging.cmake:38 (assert_same)\n\n\n",
+      "archive_key": "final-multiconfig-omission-control.log"
+    },
+    {
+      "case": "final-multiconfig",
+      "sha256": "4453a28f40d94d03a9e35b65a5efba8a806580955486ff70b989b830f576a957",
+      "bytes": 476,
+      "content_utf8": "[1/2] Building CXX object CMakeFiles/capture_worker_camera.dir/Release/worker.cpp.o\n[2/2] Linking CXX executable \"worker runtime/capture_worker_camera.exe\"; Copy capture_worker_camera next to capture_daemon; Copy abseil_dll.dll beside both packaged camera workers; Copy blake3.dll beside both packaged camera workers; Copy libprotobuf.dll beside both packaged camera workers; Copy lz4.dll beside both packaged camera workers; Copy zstd.dll beside both packaged camera workers\n",
+      "archive_key": "final-multiconfig-rebuild.log"
+    },
+    {
+      "case": "final-multiconfig",
+      "sha256": "56084df35ad89c21d76452839f711e367ef8e9fc8edc114e2051cbb78dd20a8c",
+      "bytes": 78,
+      "content_utf8": "-- Both camera executable copies retain all five runtime DLLs and exact bytes\n",
+      "archive_key": "final-multiconfig-restored-package.log"
+    },
+    {
+      "case": "final-multiconfig",
+      "sha256": "6d7659dde13100766d689d72e4846a1dd66c21a76fb240541ce418c41a894155",
+      "bytes": 5861,
+      "content_utf8": "[1/2] Building CXX object CMakeFiles/capture_worker_camera.dir/Release/worker.cpp.o\n[2/2] Linking CXX executable \"worker runtime/capture_worker_camera.exe\"; Copy capture_worker_camera next to capture_daemon; Copy abseil_dll.dll beside both packaged camera workers; Copy blake3.dll beside both packaged camera workers; Copy libprotobuf.dll beside both packaged camera workers; Copy lz4.dll beside both packaged camera workers; Copy zstd.dll beside both packaged camera workers\nFAILED: [code=1] worker runtime/capture_worker_camera.exe \n: && /usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/capture_worker_camera.dir/Release/link.d CMakeFiles/capture_worker_camera.dir/Release/worker.cpp.o -o \"worker runtime/capture_worker_camera.exe\"   && cd \"/srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture build\" && /usr/bin/cmake -E make_directory /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/daemon\\ package/workers/camera && /usr/bin/cmake -E make_directory /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/daemon\\ package/plugins/camera_gstreamer && /usr/bin/cmake -E copy_if_different /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/worker\\ runtime/capture_worker_camera.exe /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/daemon\\ package/workers/camera/ && /usr/bin/cmake -E copy_if_different /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/worker\\ runtime/capture_worker_camera.exe /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/daemon\\ package/plugins/camera_gstreamer/ && /usr/bin/cmake -E copy_if_different /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ source/plugins/camera_gstreamer/plugin.json /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/daemon\\ package/plugins/camera_gstreamer/plugin.json && cd \"/srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture build\" && /usr/bin/cmake -E copy_if_different /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/worker\\ runtime/abseil_dll.dll /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/daemon\\ package/workers/camera/ && /usr/bin/cmake -E copy_if_different /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/worker\\ runtime/abseil_dll.dll /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/daemon\\ package/plugins/camera_gstreamer/ && cd \"/srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture build\" && /usr/bin/cmake -E copy_if_different /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/worker\\ runtime/blake3.dll /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/daemon\\ package/workers/camera/ && /usr/bin/cmake -E copy_if_different /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/worker\\ runtime/blake3.dll /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/daemon\\ package/plugins/camera_gstreamer/ && cd \"/srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture build\" && /usr/bin/cmake -E copy_if_different /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/worker\\ runtime/libprotobuf.dll /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/daemon\\ package/workers/camera/ && /usr/bin/cmake -E copy_if_different /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/worker\\ runtime/libprotobuf.dll /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/daemon\\ package/plugins/camera_gstreamer/ && cd \"/srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture build\" && /usr/bin/cmake -E copy_if_different /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/worker\\ runtime/lz4.dll /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/daemon\\ package/workers/camera/ && /usr/bin/cmake -E copy_if_different /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/worker\\ runtime/lz4.dll /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/daemon\\ package/plugins/camera_gstreamer/ && cd \"/srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture build\" && /usr/bin/cmake -E copy_if_different /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/worker\\ runtime/zstd.dll /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/daemon\\ package/workers/camera/ && /usr/bin/cmake -E copy_if_different /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/worker\\ runtime/zstd.dll /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture\\ build/daemon\\ package/plugins/camera_gstreamer/\nError copying file (if different) from \"/srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture build/worker runtime/zstd.dll\" to \"/srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/final-multiconfig/fixture build/daemon package/workers/camera/\".\nninja: build stopped: subcommand failed.\n",
+      "archive_key": "final-multiconfig-missing-runtime-input.log"
+    },
+    {
+      "case": "final-multiconfig",
+      "sha256": "4453a28f40d94d03a9e35b65a5efba8a806580955486ff70b989b830f576a957",
+      "bytes": 476,
+      "content_utf8": "[1/2] Building CXX object CMakeFiles/capture_worker_camera.dir/Release/worker.cpp.o\n[2/2] Linking CXX executable \"worker runtime/capture_worker_camera.exe\"; Copy capture_worker_camera next to capture_daemon; Copy abseil_dll.dll beside both packaged camera workers; Copy blake3.dll beside both packaged camera workers; Copy libprotobuf.dll beside both packaged camera workers; Copy lz4.dll beside both packaged camera workers; Copy zstd.dll beside both packaged camera workers\n",
+      "archive_key": "final-multiconfig-final-rebuild.log"
+    },
+    {
+      "case": "final-multiconfig",
+      "sha256": "56084df35ad89c21d76452839f711e367ef8e9fc8edc114e2051cbb78dd20a8c",
+      "bytes": 78,
+      "content_utf8": "-- Both camera executable copies retain all five runtime DLLs and exact bytes\n",
+      "archive_key": "final-multiconfig-final-package.log"
+    },
+    {
+      "case": "rebased-main",
+      "archive_key": "rebased-main-configure.log",
+      "sha256": "ebfdd7f46996338c5bde8164f2ea7a9d76575c9e3d14b153b23e2f9b09f405a9",
+      "bytes": 437,
+      "content_utf8": "-- The CXX compiler identification is GNU 15.2.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: /usr/bin/c++ - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (0.5s)\n-- Generating done (0.0s)\n-- Build files have been written to: /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/rebased-main/fixture build\n"
+    },
+    {
+      "case": "rebased-main",
+      "archive_key": "rebased-main-build.log",
+      "sha256": "31d7080669638e7be9893f07117341747c0bea3f105ef2ab69dbc03622f93ecd",
+      "bytes": 677,
+      "content_utf8": "[ 25%] Building CXX object CMakeFiles/capture_daemon.dir/daemon.cpp.o\n[ 50%] Linking CXX executable \"daemon package/capture_daemon.exe\"\n[ 50%] Built target capture_daemon\n[ 75%] Building CXX object CMakeFiles/capture_worker_camera.dir/worker.cpp.o\n[100%] Linking CXX executable \"worker runtime/capture_worker_camera.exe\"\nCopy capture_worker_camera next to capture_daemon\nCopy abseil_dll.dll beside both packaged camera workers\nCopy blake3.dll beside both packaged camera workers\nCopy libprotobuf.dll beside both packaged camera workers\nCopy lz4.dll beside both packaged camera workers\nCopy zstd.dll beside both packaged camera workers\n[100%] Built target capture_worker_camera\n"
+    },
+    {
+      "case": "rebased-main",
+      "archive_key": "rebased-main-initial-package.log",
+      "sha256": "56084df35ad89c21d76452839f711e367ef8e9fc8edc114e2051cbb78dd20a8c",
+      "bytes": 78,
+      "content_utf8": "-- Both camera executable copies retain all five runtime DLLs and exact bytes\n"
+    },
+    {
+      "case": "rebased-main",
+      "archive_key": "rebased-main-omission-control.log",
+      "sha256": "d27b4d57bcdcd07fa708c472c32210b090cc2f9221ee1e769f176add60f26343",
+      "bytes": 448,
+      "content_utf8": "CMake Error at /srv/hamon-estate/capturesuite-camera-closure-dd846795/tests/cmake/camera_runtime_packaging.cmake:24 (message):\n  Missing packaged file:\n  /srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/rebased-main/fixture\n  build/daemon package/plugins/camera_gstreamer/lz4.dll\nCall Stack (most recent call first):\n  /srv/hamon-estate/capturesuite-camera-closure-dd846795/tests/cmake/camera_runtime_packaging.cmake:38 (assert_same)\n\n\n"
+    },
+    {
+      "case": "rebased-main",
+      "archive_key": "rebased-main-rebuild.log",
+      "sha256": "7553130fad5d950508ef02bda41386b085f968eeb08e62e6c1f4ce952bfbc1b3",
+      "bytes": 541,
+      "content_utf8": "[ 50%] Built target capture_daemon\n[ 75%] Building CXX object CMakeFiles/capture_worker_camera.dir/worker.cpp.o\n[100%] Linking CXX executable \"worker runtime/capture_worker_camera.exe\"\nCopy capture_worker_camera next to capture_daemon\nCopy abseil_dll.dll beside both packaged camera workers\nCopy blake3.dll beside both packaged camera workers\nCopy libprotobuf.dll beside both packaged camera workers\nCopy lz4.dll beside both packaged camera workers\nCopy zstd.dll beside both packaged camera workers\n[100%] Built target capture_worker_camera\n"
+    },
+    {
+      "case": "rebased-main",
+      "archive_key": "rebased-main-restored-package.log",
+      "sha256": "56084df35ad89c21d76452839f711e367ef8e9fc8edc114e2051cbb78dd20a8c",
+      "bytes": 78,
+      "content_utf8": "-- Both camera executable copies retain all five runtime DLLs and exact bytes\n"
+    },
+    {
+      "case": "rebased-main",
+      "archive_key": "rebased-main-missing-runtime-input.log",
+      "sha256": "fa5d1001af2ed9b576f7a9717108931c82a7e8e5a06899c7fae8f5ed0234efa6",
+      "bytes": 1095,
+      "content_utf8": "[ 50%] Built target capture_daemon\n[ 75%] Building CXX object CMakeFiles/capture_worker_camera.dir/worker.cpp.o\n[100%] Linking CXX executable \"worker runtime/capture_worker_camera.exe\"\nCopy capture_worker_camera next to capture_daemon\nCopy abseil_dll.dll beside both packaged camera workers\nCopy blake3.dll beside both packaged camera workers\nCopy libprotobuf.dll beside both packaged camera workers\nCopy lz4.dll beside both packaged camera workers\nCopy zstd.dll beside both packaged camera workers\nError copying file (if different) from \"/srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/rebased-main/fixture build/worker runtime/zstd.dll\" to \"/srv/hamon-estate/capturesuite-camera-closure-dd846795-proof/rebased-main/fixture build/daemon package/workers/camera/\".\ngmake[2]: *** [CMakeFiles/capture_worker_camera.dir/build.make:121: worker runtime/capture_worker_camera.exe] Error 1\ngmake[2]: *** Deleting file 'worker runtime/capture_worker_camera.exe'\ngmake[1]: *** [CMakeFiles/Makefile2:122: CMakeFiles/capture_worker_camera.dir/all] Error 2\ngmake: *** [Makefile:91: all] Error 2\n"
+    },
+    {
+      "case": "rebased-main",
+      "archive_key": "rebased-main-final-rebuild.log",
+      "sha256": "7553130fad5d950508ef02bda41386b085f968eeb08e62e6c1f4ce952bfbc1b3",
+      "bytes": 541,
+      "content_utf8": "[ 50%] Built target capture_daemon\n[ 75%] Building CXX object CMakeFiles/capture_worker_camera.dir/worker.cpp.o\n[100%] Linking CXX executable \"worker runtime/capture_worker_camera.exe\"\nCopy capture_worker_camera next to capture_daemon\nCopy abseil_dll.dll beside both packaged camera workers\nCopy blake3.dll beside both packaged camera workers\nCopy libprotobuf.dll beside both packaged camera workers\nCopy lz4.dll beside both packaged camera workers\nCopy zstd.dll beside both packaged camera workers\n[100%] Built target capture_worker_camera\n"
+    },
+    {
+      "case": "rebased-main",
+      "archive_key": "rebased-main-final-package.log",
+      "sha256": "56084df35ad89c21d76452839f711e367ef8e9fc8edc114e2051cbb78dd20a8c",
+      "bytes": 78,
+      "content_utf8": "-- Both camera executable copies retain all five runtime DLLs and exact bytes\n"
+    }
+  ],
+  "evidence_encoding": "CMake logs are embedded as exact UTF-8 strings with SHA-256 and byte lengths; escaped JSON preserves original whitespace.",
+  "agent_review": {
+    "reviewer": "ChatGPT root dd84679589d8",
+    "relationship": "Separate reviewing agent within the same task; not external reviewer or product-owner acceptance.",
+    "reviewed_source_commit": "750d211de6080bfb63c702dd87021c39b0d3a005",
+    "outcome": "passed",
+    "findings": [
+      "The production +4/-1 CMake change copies runtime dependencies to both executable destinations.",
+      "Both target directories are created before the runtime copies.",
+      "A missing runtime input still fails the real build.",
+      "The fixture does not justify a Windows loader or hardware claim."
+    ]
+  },
+  "receiving_rebase": {
+    "current_base_commit": "d3edda561322a80bfc1491ae4f4c7b0bb94943ea",
+    "incorporated_main_change": "Merged PR #35 incremental decoder fix and its progress entry",
+    "method": "Cherry-pick the two native candidate commits into an isolated branch based on current main; no conflicts.",
+    "qualification": "Same unchanged production CMake and test hashes; native Makefiles fixture and all changed-input controls passed again on the rebased source.",
+    "original_native_commits": [
+      "750d211de6080bfb63c702dd87021c39b0d3a005",
+      "70420930953c0b034340f0138aaebd156790f5db"
+    ],
+    "remote_branch": "chatgpt/camera-runtime-closure-dd846795",
+    "pull_request": "https://github.com/Jacob-Met/CaptureSuite/pull/38"
+  }
+}
