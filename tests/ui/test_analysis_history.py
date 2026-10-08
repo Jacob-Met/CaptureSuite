@@ -261,3 +261,17 @@ def test_real_threaded_failure_offers_its_retained_diagnostics(qapp, package: Pa
     assert {name: after[name] for name in before} == before
     assert all(name.startswith("processing/") for name in after.keys() - before.keys())
     screen.close()
+
+
+@pytest.fixture(autouse=True)
+def _history_ci_boundary(request, capfd):
+    """Temporary timing evidence for the two retained 300-second CI timeouts."""
+    import time
+
+    started = time.perf_counter()
+    with capfd.disabled():
+        print(f"[analysis-history:start] {request.node.nodeid}", flush=True)
+    yield
+    with capfd.disabled():
+        elapsed = time.perf_counter() - started
+        print(f"[analysis-history:finish] {request.node.nodeid} {elapsed:.3f}s", flush=True)
