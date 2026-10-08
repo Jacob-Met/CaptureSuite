@@ -1,0 +1,320 @@
+{
+  "schema": "capturesuite-linux-receiving/v1",
+  "recorded_at": "2026-10-08T07:43:13.133Z",
+  "contributor": "estate-68e476e98b77/project_delivery",
+  "status": "native_linux_portable_candidate_qualified",
+  "source": {
+    "repository": "https://github.com/Jacob-Met/CaptureSuite",
+    "base": "742dd7dc0455cc8c060db06123c8432d919e93eb",
+    "branch": "estate/68e476e98b77-linux-port",
+    "donor_commit": "e3270d84d478205fffc233a62b674e4ea5c06036",
+    "donor_patch_sha256": "11c359d87eddcb21adf59c1026bfe66ed5ed01e578bb25c3fa40c3d002fd4e63",
+    "donor_bundle_missing_prerequisite": "b2c42089596dee3221eed14998b9ce6d6f8b28c3",
+    "composition": "Attributed native patch receiving; not a cherry-pick. Python donor changes excluded.",
+    "changed_file_hashes": [
+      {
+        "path": "CMakeLists.txt",
+        "sha256": "6b7bbb235e2bfc3588084bddb484df303ec7b93f588425a6dd67244525938f87",
+        "mode": "664"
+      },
+      {
+        "path": "CMakePresets.json",
+        "sha256": "46e947d2287d58710b7ae456cc9e88280cbe434e88e70e733d981813913b1d2a",
+        "mode": "664"
+      },
+      {
+        "path": "README.md",
+        "sha256": "0ea3c41ee6af89971f06acb4077d5065fee7465ccfdfd13ac2a00f1c431b4620",
+        "mode": "644"
+      },
+      {
+        "path": "cmake/linux-shims/unofficial-mcap/unofficial-mcapConfig.cmake",
+        "sha256": "bd9e56246490dfed7ef6ed01794103b69c5b5831fd2e2ea0875e2fb615a8ebf5",
+        "mode": "664"
+      },
+      {
+        "path": "cmake/linux-shims/unofficial-sqlite3/unofficial-sqlite3Config.cmake",
+        "sha256": "4e696e8bcb6272ecaefa0ea17ea8235f466b861d7436b9da6fdf8d925b867bb2",
+        "mode": "664"
+      },
+      {
+        "path": "docs/BUILDING-LINUX.md",
+        "sha256": "7c6ffa7f2fab9b2da9b0f76dbd437bf6611bf3b9727e964b3bfcf4cc9c49d4e3",
+        "mode": "664"
+      },
+      {
+        "path": "docs/design/research/PROGRESS.md",
+        "sha256": "abb7ca2f597cf6e0c98576f3e414ed9923f03dd9b583735fde63cf0953fd6201",
+        "mode": "644"
+      },
+      {
+        "path": "libs/cpp/capture_core/src/clock.cpp",
+        "sha256": "b558f737730f05b82635443b3f9b36da9c6253fe5dee5401ddec8ef7528fb78a",
+        "mode": "664"
+      },
+      {
+        "path": "libs/cpp/capture_proto/CMakeLists.txt",
+        "sha256": "3574332240a8701f38636e54512bb100e24e04ea42e7594ff64347f9915a7d1f",
+        "mode": "664"
+      },
+      {
+        "path": "libs/cpp/capture_storage/include/capture/storage/atomic_file.hpp",
+        "sha256": "2fbcbfc04eab2d0f42913223f4a477b5122523d54080e268351a4d7edee0e3e9",
+        "mode": "644"
+      },
+      {
+        "path": "libs/cpp/capture_storage/src/atomic_file.cpp",
+        "sha256": "679f15779ec27a0377b5ff44ffb37a92a8bb2286a234b37d2b25638d4584388a",
+        "mode": "664"
+      },
+      {
+        "path": "libs/cpp/capture_storage/src/disk_watchdog.cpp",
+        "sha256": "d2781ecb8a9a31f9aceeb0b053ab1b9ea9d9c73ea43c0a2266bb9e62b2ac3068",
+        "mode": "664"
+      },
+      {
+        "path": "libs/cpp/capture_storage/src/recovery.cpp",
+        "sha256": "edcdd4a66845bb3270022afb5a90f02a95ab2610ac2a628ae6ec78490bc847d0",
+        "mode": "664"
+      },
+      {
+        "path": "libs/cpp/capture_storage/src/session_package.cpp",
+        "sha256": "edd538bfb9e89bd6fd4611490a8e32c80b8337ff9fceeca4221642fef9362e75",
+        "mode": "664"
+      },
+      {
+        "path": "scripts/build-linux.sh",
+        "sha256": "b27bfa332d0cbd5f672d890c1f4d16ce42d46be6c25dff9e39c99c7870c74f91",
+        "mode": "775"
+      },
+      {
+        "path": "tests/cmake/portable_storage/session_doctor.cmake",
+        "sha256": "afc37e9f36b94309b807e46c8f0fc3b338c458448a83e2f7ec2a08386e8bedbe",
+        "mode": "664"
+      },
+      {
+        "path": "tests/cpp/CMakeLists.txt",
+        "sha256": "4ddb7ca8f5bec18658330f2b9959d48c887abb1e39759c973a67d728f8d7a33e",
+        "mode": "664"
+      },
+      {
+        "path": "tests/cpp/test_atomic_file_posix.cpp",
+        "sha256": "5cb2735c6ff6ffd0f70ff997c11fb3230de9272c1a5b8706630994e636ae6587",
+        "mode": "664"
+      },
+      {
+        "path": "tests/cpp/test_storage_posix.cpp",
+        "sha256": "ed258c80f90397c54fa86404c2c8526b5c5283698910b79bdddfc6fff2afea1b",
+        "mode": "664"
+      }
+    ]
+  },
+  "ownership": {
+    "project_claim": "https://github.com/Jacob-Met/CaptureSuite/issues/15#issuecomment-6054870649",
+    "estate_claim": "https://github.com/Jacob-Met/hamon/issues/140#issuecomment-6054873845",
+    "inspected_unknown_predecessors": [
+      "goal_de901abd5e3b4c208dab",
+      "goal_0761c9a34ac14c1eb99b"
+    ],
+    "interpretation": "Unknown outcomes were not treated as abandonment. Existing Mac/protobuf/recovery candidate worktrees and branches were not modified or replayed."
+  },
+  "host": {
+    "hostname": "hamon-thinkpad",
+    "platform": "linux",
+    "arch": "x64",
+    "kernel": "7.0.0-34-generic",
+    "uid": 1000,
+    "compiler": "g++ (Ubuntu 15.2.0-16ubuntu1) 15.2.0",
+    "cmake": "cmake version 4.2.3",
+    "ninja": "1.13.2",
+    "protoc": "libprotoc 3.21.12"
+  },
+  "dependencies": {
+    "mcap": "b2953496735e7b89d5b2ea58be73abed85317c5f",
+    "system_packages": [
+      "catch2 3.7.1-0.6",
+      "libblake3-dev 1.8.2-1",
+      "liblz4-dev 1.10.0-8",
+      "libprotobuf-dev 3.21.12-15ubuntu1",
+      "libspdlog-dev 1:1.15.3+ds-1build1",
+      "libsqlite3-dev 3.46.1-9ubuntu0.3",
+      "libzstd-dev 1.5.7+dfsg-3",
+      "nlohmann-json3-dev 3.12.0.really.3.12.0.really.3.11.3-3build1"
+    ]
+  },
+  "validation": [
+    {
+      "check": "baseline native clock compile",
+      "outcome": "expected failure: Windows.h unavailable",
+      "log": "baseline-clock.log"
+    },
+    {
+      "check": "donor atomic native fault injection",
+      "outcome": "3 failures of 4 cases",
+      "exit_code": 1,
+      "log": "donor-atomic-tests.log"
+    },
+    {
+      "check": "repaired atomic native fault injection, strict compiler warnings",
+      "outcome": "4 passed of 4 cases",
+      "exit_code": 0,
+      "log": "repaired-atomic-tests.log"
+    },
+    {
+      "check": "native portable CMake build and CTest",
+      "outcome": "17 passed, 0 failed; actual session_doctor process included",
+      "exit_code": 0,
+      "log": "ctest-debug.log"
+    },
+    {
+      "check": "documented scripts/build-linux.sh",
+      "outcome": "17 tests passed and final success marker",
+      "exit_code": 0,
+      "log": "build-entrypoint.log"
+    },
+    {
+      "check": "license checker",
+      "outcome": "passed",
+      "exit_code": 0,
+      "log": "licenses.log"
+    },
+    {
+      "check": "invalid config/job count and dirty dependency",
+      "outcome": "all refused with exit 2; dependency marker preserved until explicit test cleanup",
+      "logs": [
+        "invalid-config.log",
+        "invalid-jobs.log",
+        "dirty-dependency.log"
+      ]
+    }
+  ],
+  "retained_failures": [
+    {
+      "log": "build-debug.log",
+      "finding": "Strict GCC diagnosed the existing wide-integer extension; locally annotated deliberate extension in touched clock code."
+    },
+    {
+      "log": "build-debug-retry1.log",
+      "finding": "Whole-tree CAPTURE_WERROR=ON remains blocked by pre-existing logging.cpp format-truncation warning. Native portable default CAPTURE_WERROR=OFF used; no logging change."
+    },
+    {
+      "log": "build-debug-default.log",
+      "finding": "Root filesystem ENOSPC interrupted ar. Subsequent failed tool writes left docs/BUILDING-LINUX.md and clock.cpp empty; both precisely restored. Only owned source/build/evidence moved to tmpfs before the passing build."
+    }
+  ],
+  "binaries": [
+    {
+      "path": "build/linux-debug/tools/session_doctor/session_doctor",
+      "sha256": "46c1e7c36d258c4e2fddbfad5d322cd7b4f50d43ff945cf321bf0f20e13dfce6",
+      "bytes": 7727792
+    },
+    {
+      "path": "build/linux-debug/tests/cpp/capture_core_tests",
+      "sha256": "57d2630d714d0b7a0514ec600806256570c3369b5cc7e2eb1e79aa80f2e377b8",
+      "bytes": 5776368
+    },
+    {
+      "path": "build/linux-debug/tests/cpp/capture_atomic_file_posix_tests",
+      "sha256": "b062059de71eb7b6122cee7e50764c50bc566b7d02fc0da5804fbecc55516514",
+      "bytes": 538224
+    }
+  ],
+  "retained_logs": [
+    {
+      "path": "baseline-clock.log",
+      "sha256": "76e18e010f94fd8df3985c4050cacc17a95bee1e653f2b5cb655b2c86e471df5",
+      "bytes": 174
+    },
+    {
+      "path": "baseline-status.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "build-debug-default.log",
+      "sha256": "3bfdea0f3358edb2a8029e440d1a33f03e7c3fa406e6796b3c62bb34e0e92c53",
+      "bytes": 12496
+    },
+    {
+      "path": "build-debug-retry1.log",
+      "sha256": "75041b98bc26c06ecb0b88e5a702df9d124194cff76fa9cdbc71c6c6911129e0",
+      "bytes": 2838
+    },
+    {
+      "path": "build-debug-tmpfs.log",
+      "sha256": "ac71fb92f74358fc6dd0439d207e6a5409fe5b31b90036a70322a7bf65cca081",
+      "bytes": 2154
+    },
+    {
+      "path": "build-debug.log",
+      "sha256": "688cb90e07a90b8ebb90ffe5d34616827fd9aecf3dfd560f8aee0d0ace70f966",
+      "bytes": 7792
+    },
+    {
+      "path": "build-entrypoint.log",
+      "sha256": "a96b38be6d6e8795df44f2b1225a2a96f295b458806e62d951ebb778ef81b1c4",
+      "bytes": 3627
+    },
+    {
+      "path": "configure-debug-default.log",
+      "sha256": "1e91f69c48b1af2d5b37062719eb48e0039c4ad3b6bd5771b91bccdfac886f04",
+      "bytes": 201
+    },
+    {
+      "path": "configure-debug.log",
+      "sha256": "bf0f876a086120ddd9992da8e11cf0acc3c53b761ff9a9d290122cee9984c853",
+      "bytes": 869
+    },
+    {
+      "path": "ctest-debug.log",
+      "sha256": "07444725dd409142fc9a6fee367321c18d5d5350137ed950f84f829d7d33c00b",
+      "bytes": 2834
+    },
+    {
+      "path": "dirty-dependency.log",
+      "sha256": "86a40771b2c1e6aa969a6e26c4294e1c691260229485442356823361fdbd4263",
+      "bytes": 68
+    },
+    {
+      "path": "donor-atomic-tests.log",
+      "sha256": "a581cf64bd02f578000783466748938a0c2d0780dc50f8de1bfa85b76f4e8720",
+      "bytes": 348
+    },
+    {
+      "path": "donor-linux-port.patch",
+      "sha256": "11c359d87eddcb21adf59c1026bfe66ed5ed01e578bb25c3fa40c3d002fd4e63",
+      "bytes": 31234
+    },
+    {
+      "path": "invalid-config.log",
+      "sha256": "564834f5b13a3452e9b30a88a2594c37b2bf9c8706f5abe9f6e7cbd368e72a28",
+      "bytes": 56
+    },
+    {
+      "path": "invalid-jobs.log",
+      "sha256": "dda5ab76a3c739f5aeebb4586ecb8b172545827b5225a1866d6215fe9c8f109c",
+      "bytes": 47
+    },
+    {
+      "path": "licenses.log",
+      "sha256": "7bcb47df08917b40ea6dc57be21749a0311e7197c5d26ca0df66e0d9f516bcba",
+      "bytes": 17
+    },
+    {
+      "path": "repaired-atomic-tests.log",
+      "sha256": "bcd9dba16f9ebc609596057d7e0f2d92a7585446a0f3eae45f6ab9bde5e19349",
+      "bytes": 223
+    }
+  ],
+  "limits": [
+    "Linux Debug portable-library and synthetic-fixture process qualification only.",
+    "No Windows CI, macOS, daemon/control/UI or physical hardware acceptance claimed.",
+    "Existing recovery scanner/CRC logic and Python generator/client/bindings are unchanged.",
+    "Native executable uses the recorded host system libraries; it is not a universal binary."
+  ],
+  "workspace": {
+    "declared": "/home/jacob/capturesuite-port-68e476e98b77",
+    "physical": "/tmp/capturesuite-source-68e476e98b77",
+    "evidence_physical": "/tmp/capturesuite-evidence-68e476e98b77"
+  }
+}

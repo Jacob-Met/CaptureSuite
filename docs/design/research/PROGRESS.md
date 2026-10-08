@@ -16,6 +16,62 @@ Exact source pins, unchanged test hash and raw outputs are retained in
 `docs/evidence/stream-gap-scope-20261008-e827/`. Project ownership: issue #40.
 The current framing receiver from main `c43b2819` is preserved.
 
+## 2026-10-08 — Writer-close review repair and user receiving (estate-68e476e98b77)
+
+Independent review of PR36 found an additional actual-process durability
+blocker: an injected error from the original `ofstream` writer's close was
+ignored, so `session_doctor` returned success and replaced the manifest. The
+POSIX path now retains one writable descriptor through short/interrupted-safe
+writes, `fsync`, and checked close; zero-progress writes fail, close is not
+retried, and all writer failures preserve the old target. Windows source
+behavior and the separately owned recovery scanner remain unchanged.
+
+The revised native entrypoint passes all **17 CTest tests** and its strict
+standalone durability executable passes **10/10 cases**. The unchanged
+independent process regression now returns exit 2 for writer-close EIO,
+preserves the recording manifest exactly, leaves no temp file and prints no
+false success. Normal success and parent-fsync EIO after rename also pass;
+both frozen MCAP files remain byte-identical in all three cases. Original
+failed receiver and reviewer reproducers are preserved with hashes.
+
+An ordinary-user receiving copy is retained at
+`/home/jacob/capturesuite-receiver-68e476e98b77-r2/bin/session_doctor` (UID1000,
+mode0755), SHA-256 `8104af6502590eceff5daf6c57d3f768bb431463104c40a958942d94927cbcf4`.
+This resolves access through the original protected estate archive without
+changing its ancestor permissions or any service/default. A later compiler
+scratch quota failure is retained; assigning compiler TMPDIR to this lane's
+own evidence directory allowed the bounded build to finish without cleanup.
+Original-head Windows and Python CI passed; revised-head CI remains a separate
+integration gate. See `docs/evidence/linux-port-68e476e98b77-r2.json`.
+
+## 2026-10-08 — Linux portable build receiving (estate-68e476e98b77)
+
+Received the retained Linux C++/CMake donor `e3270d84` onto current public main
+`742dd7dc`, with the donor patch hash and missing bundle prerequisite recorded.
+The isolated native build now produces core/protocol/storage libraries and
+`session_doctor`. The documented entrypoint and all **17 CTest tests pass** on
+the ThinkPad Linux toolchain, including actual process checks on disposable
+synthetic finalized/recovery fixtures. This remains portable-library
+qualification; existing macOS A–H, daemon/desktop and hardware work is separate.
+
+A native real-file regression found three donor durability failures: temporary
+and directory `fsync` errors were reported as success, and `EINTR` was ignored.
+The same four-case executable now passes after propagating failures, preserving
+the old target before rename, and reporting post-rename durability uncertainty.
+It also passes a standalone `-Wall -Wextra -Wpedantic -Werror` build. Python and
+existing MCAP recovery scanner/CRC candidates were left untouched.
+
+Retained limitations/failures: the whole-tree GCC WERROR probe still exposes a
+pre-existing logging format-truncation warning; the portable preset uses the
+project default WERROR=OFF. A root-filesystem ENOSPC interrupted archiving and
+two source writes. Only this lane's reproducible outputs moved to tmpfs; the
+two zero-length files were restored from exact inputs before the successful
+build. No estate-wide cleanup or service change was performed by this lane.
+
+See `docs/BUILDING-LINUX.md` and `docs/evidence/linux-port-68e476e98b77.json` for
+source, dependency, test and receiving boundaries. This source receipt does not
+claim a Windows CI, macOS, full-product or hardware pass.
+
 ## 2026-10-08 — independent framing-view receiving accepted
 
 Integration receiver `integration-72ac1419` preserved the separate `capture_peer` decision

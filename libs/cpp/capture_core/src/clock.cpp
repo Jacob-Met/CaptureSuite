@@ -1,8 +1,13 @@
 // SPDX-License-Identifier: GPL-3.0-only
 #include "capture/clock.hpp"
 
+#ifdef _WIN32
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
+#else
+#include <chrono>
+#include <ctime>
+#endif
 
 #include <algorithm>
 #include <iomanip>
@@ -17,6 +22,7 @@
 namespace capture {
 namespace {
 
+#ifdef _WIN32
 int64_t query_frequency() {
   LARGE_INTEGER freq{};
   if (!QueryPerformanceFrequency(&freq) || freq.QuadPart <= 0) {
@@ -32,6 +38,17 @@ int64_t query_counter() {
   }
   return static_cast<int64_t>(counter.QuadPart);
 }
+
+#else
+// Convert the native steady clock to nanosecond ticks; "QPC" frequency is 1e9.
+int64_t query_frequency() { return 1000000000LL; }
+
+int64_t query_counter() {
+  return std::chrono::duration_cast<std::chrono::nanoseconds>(
+             std::chrono::steady_clock::now().time_since_epoch())
+      .count();
+}
+#endif
 
 }  // namespace
 
@@ -72,7 +89,10 @@ int64_t SessionClock::qpc_delta_to_ns(int64_t delta_ticks, int64_t frequency) {
   const int64_t result = static_cast<int64_t>(quotient_low);
   return negative ? -result : result;
 #else
-  const __int128 num = static_cast<__int128>(delta_ticks) * 1000000000;
+  // GCC/Clang's wide integer keeps the multiply exact. Mark this deliberate
+  // extension locally so the rest of the target retains -Wpedantic/-Werror.
+  __extension__ using WideTicks = __int128;
+  const WideTicks num = static_cast<WideTicks>(delta_ticks) * 1000000000;
   return static_cast<int64_t>(num / frequency);
 #endif
 }
@@ -81,6 +101,7 @@ int64_t SessionClock::now_monotonic_ns() const {
   return qpc_delta_to_ns(now_qpc() - process_start_qpc_, frequency_);
 }
 
+#ifdef _WIN32
 WallAnchor SessionClock::read_wall_utc() {
   FILETIME ft{};
   GetSystemTimePreciseAsFileTime(&ft);
@@ -101,6 +122,29 @@ WallAnchor SessionClock::read_wall_utc() {
   anchor.iso_utc = oss.str();
   return anchor;
 }
+
+#else
+WallAnchor SessionClock::read_wall_utc() {
+  using namespace std::chrono;
+  const auto now = system_clock::now();
+  const auto ns = duration_cast<nanoseconds>(now.time_since_epoch()).count();
+  const std::time_t secs = static_cast<std::time_t>(ns / 1000000000LL);
+  const int ms = static_cast<int>((ns / 1000000LL) % 1000);
+  std::tm tm{};
+  gmtime_r(&secs, &tm);
+  std::ostringstream oss;
+  oss << std::setfill('0') << std::setw(4) << (tm.tm_year + 1900) << '-'
+      << std::setw(2) << (tm.tm_mon + 1) << '-' << std::setw(2) << tm.tm_mday
+      << 'T' << std::setw(2) << tm.tm_hour << ':' << std::setw(2) << tm.tm_min
+      << ':' << std::setw(2) << tm.tm_sec << '.' << std::setw(3) << ms << 'Z';
+  WallAnchor anchor;
+  // FILETIME epoch (1601) is 11644473600 s before the Unix epoch.
+  anchor.filetime_utc = static_cast<uint64_t>(ns / 100) + 116444736000000000ULL;
+  anchor.iso_utc = oss.str();
+  return anchor;
+}
+
+#endif
 
 T0 SessionClock::establish_t0() {
   const int64_t q0 = now_qpc();

@@ -12,6 +12,26 @@
     "sha256": "af40235d55341d2a6b11d7f67a0195779676301fa822b2bd05240d138ee28c50"
   },
   "command": "PYTHONPATH=libs/python/capture_analysis:libs/python/capture_session python3 -m unittest discover -s tests/analysis -p test_stream_gap_scope.py -v",
+  "current_main_receiving": {
+    "combined_head_native_ci": "pending",
+    "main_commit": "a1b3c966bc8df46fd8160d3854c30a9e03c6a478",
+    "main_tree": "afd26ca94b2bfd2762e4ec9c1be5dfb5e5a22bd7",
+    "previous_python_accepted": true,
+    "previous_python_counts": {
+      "errored": 0,
+      "failed": 0,
+      "passed": 227,
+      "skipped": 6,
+      "tests": 233
+    },
+    "previous_python_job": 113245246882,
+    "previous_python_run": 37757405327,
+    "previous_qualified_head": "b42ca5a8135ca9ca6c9239b6a4633b72713f209a",
+    "production_and_test_unchanged": true,
+    "progress_composition": "Original contribution prefix followed by exact current-main PROGRESS bytes; all source owners retained.",
+    "tree_composition": "Complete current-main tree plus the twelve claimed paths; 553 unrelated existing leaves must match object, mode and type.",
+    "upstream_pull_request": 36
+  },
   "environment": {
     "numpy": "2.3.5",
     "pandas": "2.2.3",

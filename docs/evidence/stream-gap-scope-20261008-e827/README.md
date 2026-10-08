@@ -110,3 +110,21 @@ directory: four methods pass, three fail and one errors. Against the unchanged
 candidate production source, all eight methods pass. Raw outputs are
 `final-baseline.log` and `final-candidate.log`. All earlier failures and receipts
 remain available. The next hosted run must establish native receipt acceptance.
+
+## Receiving concurrent main
+
+The ordinary-reporting head `b42ca5a8135ca9ca6c9239b6a4633b72713f209a` passed its
+native Python gate in run `37757405327`, job `113245246882`: 227 tests passed, six
+explicit daemon-unavailable tests skipped, and all 233 JUnit cases were accepted
+by the unchanged strict receipt checker. Process exit was 0 and source bytes were
+unchanged. The CI merge `2346c7257b07a8c7d65a023f2f4ccd86f480dd61` had the exact
+published tree `975cffc2f9380e6a5d095e1f6043d66b66cd0dfb`.
+
+While its native C++ gate was running, main advanced to
+`a1b3c966bc8df46fd8160d3854c30a9e03c6a478` through Linux storage/recovery PR #36.
+The successor receives that complete tree and preserves all Linux and framing
+source. Only the shared progress text needed composition: the original gap entry
+prefix is followed by the exact current-main progress file. The independently
+qualified gap production blob and final test blob remain unchanged. All 553
+unrelated current-main leaves are checked for equal object, mode and type. The
+combined head requires its own existing native CI result before integration.
