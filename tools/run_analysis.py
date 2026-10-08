@@ -65,6 +65,10 @@ def main(argv: list[str] | None = None) -> int:
     p_eval = sub.add_parser("eval", help="eval report from ml_bundle (Phase F)")
     add_common(p_eval)
     p_eval.add_argument("--ml-bundle-job", required=True, dest="ml_bundle_job")
+    p_eval.add_argument(
+        "--predictions", type=Path,
+        help="capture.eval_predictions/1 JSON bound to this ML bundle (default: identity sim)",
+    )
 
     args = ap.parse_args(argv)
     extra: dict = {}
@@ -79,6 +83,8 @@ def main(argv: list[str] | None = None) -> int:
         extra["grid_rate_hz"] = args.grid_rate_hz
     elif args.command == "eval":
         extra["ml_bundle_job_id"] = args.ml_bundle_job
+        if args.predictions is not None:
+            extra["prediction_path"] = str(args.predictions.resolve())
 
     params = JobParams(
         command=args.command,
