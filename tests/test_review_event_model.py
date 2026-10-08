@@ -8,7 +8,6 @@ import hashlib
 import json
 
 import pytest
-
 from capture_desktop.review_events import checkpoint_time, events_from_summary, filter_events
 from capture_session.package_reader import GapSummary, ReviewSummary, load_review_summary
 
