@@ -124,6 +124,44 @@ Composition update: main `ac52c3ca` adds the separately received POSIX sealed-re
 repair. The job-preservation production, tests, and initial receiving evidence remain
 byte-identical; hosted CI qualifies this new combined repository tree.
 
+## 2026-10-08 — Receive final output provenance on preserved analysis jobs
+
+Receive the landed PR48 replacement contract before completing PR46. The only
+production delta now finalizes the successful diagnostic log before serializing
+the manifest, and removes the impossible self-manifest checksum. The stored
+inventory agrees with the returned result and final artifact bytes. PR48's
+portable destination guards, unique attempts, failed-record handling, previous
+result restoration and CLI/UI recovery notes remain unchanged.
+
+The original seven provenance receivers on landed main gave two passes, four
+remaining successful-inventory failures and one obsolete completion-callback
+expectation. The updated receiver preserves the previous completed revision and
+checks both its inventory and the separately retained failed attempt. With the
+same updated tests, native Python 3.12.8 receiving improves from **19 passed,
+5 failed** to **24 passed, 0 skipped**. This includes the owner's nine replacement
+fault controls, two actual CLI failure controls and six existing QC controls.
+
+After receiving PR50's QC collector/HTML changes and PR42's fixture isolation,
+the unchanged finalization source passes all **49** focused controls, including
+the landed QC gap cases, with no skips. Both owners' source and documentation
+remain intact.
+
+Receiving the later PR49 numeric pipeline gave **48 passed and one diagnostic
+StopIteration** across seven provenance and 42 numeric controls. Its new CLI
+receiver assumed the old self-manifest row existed only to record that row's
+known checksum mismatch. Make this diagnostic optional, retain a null comparison
+when absent, and record the actual manifest file's external SHA. All existing
+assertions and all numeric runtime source remain unchanged. The affected actual
+CLI case then passed **1/1**, with retained output bytes and source hashes; the
+other 48 cases were not replayed. Independent review verified the diagnostic
+delta and all 87 unchanged assertion/call expressions.
+
+The previously qualified PR46 head and all negative evidence remain in custody;
+its Windows CI does not qualify this new composition. Exact-head supported
+Windows CI remains pending. The separately prepared job-ID candidate was
+superseded by the landed owner and is not included. See
+`docs/evidence/analysis-output-provenance-current-receiving-20261008.json`.
+
 ## 2026-10-08 — Scope recorded analysis gaps to their stream (estate-e82707f2bc62)
 
 A targeted gap from one stream previously invalidated every sibling stream from
