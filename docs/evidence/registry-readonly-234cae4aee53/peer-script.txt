@@ -1,0 +1,105 @@
+from __future__ import annotations
+import hashlib
+import json
+import sqlite3
+import subprocess
+import sys
+import tempfile
+import types
+from pathlib import Path
+
+from capture_session import registry as candidate
+
+root = Path.cwd()
+source = root / "libs/python/capture_session/capture_session/registry.py"
+sha256 = hashlib.sha256(source.read_bytes()).hexdigest()
+assert sha256 == "809b26ce8d8efc0559a3854cf85ea74b4e486fcd77d253ebfa76bade64b0a8d1"
+base_text = subprocess.check_output(
+    ["git", "show", "c43b2819b149e1e87d7f957d8b3583881c29ffb4:libs/python/capture_session/capture_session/registry.py"],
+    text=True,
+)
+baseline = types.ModuleType("registry_independent_baseline_234cae4aee53")
+sys.modules[baseline.__name__] = baseline
+exec(compile(base_text, "<registry baseline>", "exec"), baseline.__dict__)
+real_connect = sqlite3.connect
+reports = []
+
+def writable_control(module, directory):
+    path = directory / "supported.sqlite"
+    with module.AppRegistry(path) as registry:
+        con = registry._require()
+        assert con.execute("PRAGMA journal_mode").fetchone()[0] == "wal"
+        assert con.execute("PRAGMA foreign_keys").fetchone()[0] == 1
+        assert con.execute("PRAGMA synchronous").fetchone()[0] == 1
+        registry.put_preset(preset_id="preset", preset_type="capture", name="Retained",
+                            schema_version="1", content_json='{"native":true}')
+        registry.touch_session(package_path="sample.mmsession", session_id="sample",
+                               state="finalized")
+    with module.AppRegistry(path) as registry:
+        assert registry.get_preset("preset")["content_json"] == '{"native":true}'
+        assert registry.recent_sessions()[0]["session_id"] == "sample"
+    return True
+
+def query_filename_control(module, directory):
+    path = directory / "registry ?mode=rw&immutable=1#100% 雪.sqlite"
+    with real_connect(path) as con:
+        con.execute("CREATE TABLE schema_migrations(version INTEGER PRIMARY KEY, applied_utc TEXT NOT NULL)")
+        con.execute("INSERT INTO schema_migrations VALUES (17,'synthetic')")
+    before = path.read_bytes()
+    with module.AppRegistry(path) as registry:
+        assert registry.schema_version == 17 and registry.read_only
+        blocked = False
+        try:
+            registry._require().execute("CREATE TABLE forbidden(value)")
+        except sqlite3.OperationalError as error:
+            blocked = "readonly" in str(error)
+    return {"write_blocked": blocked, "database_bytes_preserved": path.read_bytes() == before}
+
+def advance_between_probe_and_open(directory):
+    path = directory / "advanced-between-opens.sqlite"
+    with candidate.AppRegistry(path):
+        pass
+    with real_connect(path) as con:
+        con.execute("PRAGMA journal_mode=DELETE")
+    state = {"saw_read_only_probe": False, "advanced": False, "opens": []}
+    def intercepted_connect(database, *args, **kwargs):
+        uri = kwargs.get("uri", False)
+        state["opens"].append("ro" if uri else "rw")
+        if uri:
+            state["saw_read_only_probe"] = True
+        elif state["saw_read_only_probe"] and not state["advanced"]:
+            with real_connect(path) as writer:
+                writer.execute("INSERT INTO schema_migrations VALUES (19,'synthetic')")
+            state["advanced"] = True
+        return real_connect(database, *args, **kwargs)
+    sqlite3.connect = intercepted_connect
+    registry = candidate.AppRegistry(path)
+    try:
+        result = registry.open()
+        assert result.read_only and result.schema_version == 19
+        try:
+            registry._require().execute("DELETE FROM schema_migrations")
+        except sqlite3.OperationalError as error:
+            assert "readonly" in str(error)
+        else:
+            raise AssertionError("second version guard retained a writable connection")
+        assert registry._require().execute("PRAGMA journal_mode").fetchone()[0] == "delete"
+    finally:
+        registry.close()
+        sqlite3.connect = real_connect
+    assert state["opens"] == ["ro", "rw", "ro"]
+    return state
+
+with tempfile.TemporaryDirectory(prefix="registry-review-234cae4aee53-", dir="/dev/shm") as td:
+    temporary = Path(td)
+    for label, module in [("baseline", baseline), ("candidate", candidate)]:
+        directory = temporary / label
+        directory.mkdir()
+        reports.append({"source": label, "writable_supported_control": writable_control(module, directory),
+                        "uri_query_filename": query_filename_control(module, directory)})
+    reports.append({"candidate_second_version_guard": advance_between_probe_and_open(temporary)})
+assert reports[0]["uri_query_filename"] == {"write_blocked": False, "database_bytes_preserved": False}
+assert reports[1]["uri_query_filename"] == {"write_blocked": True, "database_bytes_preserved": True}
+print(json.dumps({"review": "accepted", "candidate_sha256": sha256, "sqlite": sqlite3.sqlite_version,
+                  "controls": reports}, indent=2))
+
