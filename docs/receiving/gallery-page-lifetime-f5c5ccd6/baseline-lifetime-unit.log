@@ -1,0 +1,48 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________ test_reloaded_gallery_releases_replaced_native_image_pages __________
+
+qapp = <PySide6.QtWidgets.QApplication(0x306d58c0) at 0x71d77afe7e40>
+tmp_path = PosixPath('/tmp/pytest-of-jacob/pytest-262/test_reloaded_gallery_releases0')
+
+    def test_reloaded_gallery_releases_replaced_native_image_pages(qapp, tmp_path: Path):
+        from capture_desktop.widgets_analysis_plots import FigureGallery
+        from PySide6.QtCore import QCoreApplication, QEvent
+        from PySide6.QtGui import QColor, QImage
+        from PySide6.QtWidgets import QLabel, QScrollArea
+        from shiboken6 import isValid
+    
+        for number in range(3):
+            path = tmp_path / "figures" / "nested" / f"channel_{number}.png"
+            path.parent.mkdir(parents=True, exist_ok=True)
+            image = QImage(16, 12, QImage.Format.Format_RGB32)
+            image.fill(QColor("#2855cc"))
+            assert image.save(str(path), "PNG")
+    
+        def drain():
+            qapp.processEvents()
+            QCoreApplication.sendPostedEvents(None, QEvent.Type.DeferredDelete)
+            qapp.processEvents()
+    
+        def pages(gallery):
+            return [
+                area for area in gallery._tabs.findChildren(QScrollArea)
+                if isinstance(area.widget(), QLabel)
+            ]
+    
+        gallery = FigureGallery()
+        previous = []
+        try:
+            for _ in range(4):
+                gallery.load_job_dir(tmp_path)
+                drain()
+                assert gallery._tabs.count() == 4
+>               assert len(pages(gallery)) == 3
+E               assert 6 == 3
+E                +  where 6 = len([<PySide6.QtWidgets.QScrollArea(0x310f72c0) at 0x71d75e766200>, <PySide6.QtWidgets.QScrollArea(0x310c6ec0) at 0x71d75e...e6.QtWidgets.QScrollArea(0x3106f120) at 0x71d75e9909c0>, <PySide6.QtWidgets.QScrollArea(0x310dd8d0) at 0x71d75e765940>])
+E                +    where [<PySide6.QtWidgets.QScrollArea(0x310f72c0) at 0x71d75e766200>, <PySide6.QtWidgets.QScrollArea(0x310c6ec0) at 0x71d75e...e6.QtWidgets.QScrollArea(0x3106f120) at 0x71d75e9909c0>, <PySide6.QtWidgets.QScrollArea(0x310dd8d0) at 0x71d75e765940>] = <function test_reloaded_gallery_releases_replaced_native_image_pages.<locals>.pages at 0x71d77c781300>(<capture_desktop.widgets_analysis_plots.FigureGallery(0x30f7f350) at 0x71d75ea70040>)
+
+tests/ui/test_analysis_gallery_lifetime.py:43: AssertionError
+=========================== short test summary info ============================
+FAILED tests/ui/test_analysis_gallery_lifetime.py::test_reloaded_gallery_releases_replaced_native_image_pages
+1 failed in 6.91s

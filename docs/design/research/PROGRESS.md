@@ -942,3 +942,10 @@ Source pins, methods, limits and exact receipts are in
 docs/evidence/nested-figure-gallery-401c5d17da79/README.md.
 Full hosted Windows acceptance and current owner integration remain separate.
 
+
+
+### 2026-10-08 — independently received native gallery page lifetime (f5c5ccd6)
+
+The actual 11cc main + PR71 8747 + corrected PR80 837fa composition retained removed image pages across saved-result opens: three-image views left 3, 6, 9 and 12 native pages, and a package change retained 15. This receiver's narrow two-line FigureGallery.clear correction schedules the removed page for Qt deletion while preserving Sync and export invalidation. The same real synthetic-MCAP/analysis-QThread/history/gallery/export-QThread journey passes 18/18; page counts remain 3 throughout reopening and fall to zero at package change. The focused native Qt regression changes from one failure to one pass. Root exact-byte and independent semantic reviews accept the bounded change.
+
+Evidence is retained under docs/receiving/gallery-page-lifetime-f5c5ccd6/. The companion targets estate-401c5d17da79's existing PR80 branch; that owner retains the later a2c source-picker/parameter-comparison composition and proposed-main gate. These pin-bound native results make no later-source, Windows full-suite, installed-service, hardware or deployment claim.

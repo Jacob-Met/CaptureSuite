@@ -1,0 +1,21 @@
+{
+  "schema": "hamon.capture-gallery-source-review.v1",
+  "reviewer": "hamon-f5c5ccd6-20261008/root",
+  "recorded_at": "2026-10-08T19:48:09.928977+00:00",
+  "source_root": "/home/jacob/hamon-capture-composition-f5c5ccd6",
+  "base_commit": "9d90abb574f7fbadc85f323e73b4b268acc0f5b3",
+  "path": "desktop/capture_desktop/widgets_analysis_plots.py",
+  "baseline_sha256": "002327b8e6303412269c0ca8c4a105d9e8eeb96491eec0836e39ce199e2c18fd",
+  "candidate_sha256": "846239118bff9c6ad014a7736309e4f7a0d43ae2158de13d81dfd3b8de75404f",
+  "test_sha256": "05d8cc42b32f8944c0ab6c27cdf57082048c961cf20b4c705a6ec95608c35f6f",
+  "accepted": true,
+  "scope": "Exact two-line runtime insertion only; all other module bytes identical.",
+  "review": [
+    "Captures the page before tab removal, then schedules native widget destruction.",
+    "Index-zero Sync page and existing export/sync cleanup order remain unchanged.",
+    "Focused regression observes actual native QObject lifetime across four reloads and clear, including invalid prior wrappers and preserved Sync identity.",
+    "Real journey baseline already demonstrates retained pages; this review does not count additional test execution."
+  ],
+  "primary_api_reference": "https://doc.qt.io/qt-6.12/qtabwidget.html#removeTab",
+  "remaining_gate": "Author same18-check native journey and focused regression; no source adoption inferred."
+}

@@ -159,7 +159,9 @@ class FigureGallery(QWidget):
     def clear(self) -> None:
         self._figure_export.clear()
         while self._tabs.count() > 1:
+            page = self._tabs.widget(1)
             self._tabs.removeTab(1)
+            page.deleteLater()
         self._sync.clear()
 
     def load_job_dir(self, job_dir: Path) -> None:

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="6.922" timestamp="2026-10-08T19:37:08.005490+00:00" hostname="hamon-thinkpad"><testcase classname="tests.ui.test_analysis_gallery_lifetime" name="test_reloaded_gallery_releases_replaced_native_image_pages" time="5.435"><failure message="assert 6 == 3&#10; +  where 6 = len([&lt;PySide6.QtWidgets.QScrollArea(0x310f72c0) at 0x71d75e766200&gt;, &lt;PySide6.QtWidgets.QScrollArea(0x310c6ec0) at 0x71d75e...e6.QtWidgets.QScrollArea(0x3106f120) at 0x71d75e9909c0&gt;, &lt;PySide6.QtWidgets.QScrollArea(0x310dd8d0) at 0x71d75e765940&gt;])&#10; +    where [&lt;PySide6.QtWidgets.QScrollArea(0x310f72c0) at 0x71d75e766200&gt;, &lt;PySide6.QtWidgets.QScrollArea(0x310c6ec0) at 0x71d75e...e6.QtWidgets.QScrollArea(0x3106f120) at 0x71d75e9909c0&gt;, &lt;PySide6.QtWidgets.QScrollArea(0x310dd8d0) at 0x71d75e765940&gt;] = &lt;function test_reloaded_gallery_releases_replaced_native_image_pages.&lt;locals&gt;.pages at 0x71d77c781300&gt;(&lt;capture_desktop.widgets_analysis_plots.FigureGallery(0x30f7f350) at 0x71d75ea70040&gt;)">qapp = &lt;PySide6.QtWidgets.QApplication(0x306d58c0) at 0x71d77afe7e40&gt;
+tmp_path = PosixPath('/tmp/pytest-of-jacob/pytest-262/test_reloaded_gallery_releases0')
+
+    def test_reloaded_gallery_releases_replaced_native_image_pages(qapp, tmp_path: Path):
+        from capture_desktop.widgets_analysis_plots import FigureGallery
+        from PySide6.QtCore import QCoreApplication, QEvent
+        from PySide6.QtGui import QColor, QImage
+        from PySide6.QtWidgets import QLabel, QScrollArea
+        from shiboken6 import isValid
+    
+        for number in range(3):
+            path = tmp_path / "figures" / "nested" / f"channel_{number}.png"
+            path.parent.mkdir(parents=True, exist_ok=True)
+            image = QImage(16, 12, QImage.Format.Format_RGB32)
+            image.fill(QColor("#2855cc"))
+            assert image.save(str(path), "PNG")
+    
+        def drain():
+            qapp.processEvents()
+            QCoreApplication.sendPostedEvents(None, QEvent.Type.DeferredDelete)
+            qapp.processEvents()
+    
+        def pages(gallery):
+            return [
+                area for area in gallery._tabs.findChildren(QScrollArea)
+                if isinstance(area.widget(), QLabel)
+            ]
+    
+        gallery = FigureGallery()
+        previous = []
+        try:
+            for _ in range(4):
+                gallery.load_job_dir(tmp_path)
+                drain()
+                assert gallery._tabs.count() == 4
+&gt;               assert len(pages(gallery)) == 3
+E               assert 6 == 3
+E                +  where 6 = len([&lt;PySide6.QtWidgets.QScrollArea(0x310f72c0) at 0x71d75e766200&gt;, &lt;PySide6.QtWidgets.QScrollArea(0x310c6ec0) at 0x71d75e...e6.QtWidgets.QScrollArea(0x3106f120) at 0x71d75e9909c0&gt;, &lt;PySide6.QtWidgets.QScrollArea(0x310dd8d0) at 0x71d75e765940&gt;])
+E                +    where [&lt;PySide6.QtWidgets.QScrollArea(0x310f72c0) at 0x71d75e766200&gt;, &lt;PySide6.QtWidgets.QScrollArea(0x310c6ec0) at 0x71d75e...e6.QtWidgets.QScrollArea(0x3106f120) at 0x71d75e9909c0&gt;, &lt;PySide6.QtWidgets.QScrollArea(0x310dd8d0) at 0x71d75e765940&gt;] = &lt;function test_reloaded_gallery_releases_replaced_native_image_pages.&lt;locals&gt;.pages at 0x71d77c781300&gt;(&lt;capture_desktop.widgets_analysis_plots.FigureGallery(0x30f7f350) at 0x71d75ea70040&gt;)
+
+tests/ui/test_analysis_gallery_lifetime.py:43: AssertionError</failure></testcase></testsuite></testsuites>
