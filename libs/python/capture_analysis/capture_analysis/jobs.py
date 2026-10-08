@@ -102,9 +102,11 @@ def _write_output(
     path = job_dir / relative
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_bytes(data)
+    relative_path = relative.replace("\\", "/")
+    outputs[:] = [row for row in outputs if row["relativePath"] != relative_path]
     outputs.append(
         {
-            "relativePath": relative.replace("\\", "/"),
+            "relativePath": relative_path,
             "bytes": len(data),
             "sha256": _sha256_bytes(data),
             "kind": kind,
@@ -385,20 +387,6 @@ def run(
             status = "completed_with_warnings"
             manifest["status"] = status
 
-        tick("manifest", 0.9)
-        man_path = work / "job_manifest.json"
-        man_path.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-        outputs.append(
-            {
-                "relativePath": "job_manifest.json",
-                "bytes": man_path.stat().st_size,
-                "sha256": _sha256_file(man_path),
-                "kind": "manifest",
-            }
-        )
-        manifest["outputs"] = outputs
-        man_path.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-
         log_lines.append(f"status={status}")
         log_lines.append(f"feature_tables={len(feature_tables)}")
         _write_output(
@@ -409,10 +397,16 @@ def run(
             outputs,
         )
 
+        tick("manifest", 0.9)
+        # The inventory describes finalized artifacts; it cannot checksum itself.
+        man_path = work / "job_manifest.json"
+        man_path.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+
         if work != job_dir:
             if job_dir.exists():
                 shutil.rmtree(job_dir)
             work.rename(job_dir)
+            work = job_dir
 
         tick("done", 1.0)
         return JobResult(
@@ -438,12 +432,17 @@ def run(
             "outputs": outputs,
         }
         try:
+            _write_output(
+                work,
+                "logs/job.log",
+                ("\n".join(log_lines) + "\n").encode("utf-8"),
+                "log",
+                outputs,
+            )
             (work / "job_manifest.json").write_text(
                 json.dumps(fail_manifest, indent=2, sort_keys=True) + "\n",
                 encoding="utf-8",
             )
-            (work / "logs").mkdir(parents=True, exist_ok=True)
-            (work / "logs" / "job.log").write_text("\n".join(log_lines) + "\n", encoding="utf-8")
             if work != job_dir and work.exists():
                 if job_dir.exists():
                     shutil.rmtree(job_dir)

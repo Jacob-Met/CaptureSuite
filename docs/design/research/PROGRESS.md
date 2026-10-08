@@ -1,3 +1,27 @@
+## 2026-10-08 — Final analysis output provenance
+
+Analysis manifests now inventory the final bytes of every produced artifact,
+including the diagnostic log. The fixed-path manifest is omitted from its own
+inventory because its checksum belongs in an external delivery receipt. A
+successful returned manifest equals the serialized JSON. Rewritten diagnostics
+replace earlier receipts for that path, including failure after overwrite promotion.
+The existing schema and consumers remain compatible.
+
+Seven new fixture tests plus six existing QC controls pass on native macOS arm64
+Python 3.12.8. The paired full analysis scope uses identical test bytes: baseline
+**8 failed, 28 passed**; candidate **1 failed, 35 passed**. The single remaining
+failure in both runs requires the uninstalled PySide6 export dependency; these
+results are not a complete supported Windows pass. Raw source bytes remain intact.
+
+Independent review found a completion-callback fault that could lose overwritten
+artifacts in the initial candidate. That exact fault was reproduced and repaired
+before publication by rebinding the work path after promotion; its regression now
+checks preserved params/QC files and their final hashes. Original failing evidence
+is retained. Scoped Ruff, dependency consistency and the unchanged SPDX checker in
+a clean tracked-source archive pass. Current main's framing-view repair is
+preserved. Exact candidate Windows CI remains the acceptance gate; see
+`docs/evidence/analysis-output-provenance-20261008.json`.
+
 ## 2026-10-08 — independent framing-view receiving accepted
 
 Integration receiver `integration-72ac1419` preserved the separate `capture_peer` decision
