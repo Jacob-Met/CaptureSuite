@@ -1,0 +1,255 @@
+{
+  "schema": "capturesuite.qc-package-review.parent-first-candidate-receiving/1",
+  "repository": "Jacob-Met/CaptureSuite",
+  "issue": 74,
+  "pullRequest": 79,
+  "reviewer": "/root/github_execution",
+  "source": {
+    "base": "3cbb5300bdc79c157370d1b3e599a6c82752d54a",
+    "head": "2717861936b0d3a68f235ebe65f28f4e08dd1dd6",
+    "tree": "34ce1440bf3dbe9f01f455a881b2a3c903213ea0",
+    "baseLeaves": 1057,
+    "candidateLeaves": 1065,
+    "exact": 1056,
+    "changed": [
+      {
+        "path": "README.md",
+        "before": "14bae7a2f91a88431cf1bca94a0cb8efdbef4aa7",
+        "after": "91956537b2ad2c905d3b87b187d72c1687710106"
+      }
+    ],
+    "added": [
+      {
+        "path": ".github/workflows/qc-package-review-receiving.yml",
+        "sha": "ead7560750d6461dc1f191b651143a3bec7fd7fb",
+        "mode": "100644"
+      },
+      {
+        "path": "docs/QC_PACKAGE_REVIEW.md",
+        "sha": "d72ee9aa2ff55f42ff8ee6b94c272db242445abc",
+        "mode": "100644"
+      },
+      {
+        "path": "libs/python/capture_analysis/capture_analysis/qc_packages.py",
+        "sha": "e9ece18a7ffc47d709c407d25d39d9d77fae4cfa",
+        "mode": "100644"
+      },
+      {
+        "path": "tests/analysis/test_qc_package_review_receiving_7879.py",
+        "sha": "4f3fc6695d36cfa525dab393492ab0e6466aae85",
+        "mode": "100644"
+      },
+      {
+        "path": "tests/analysis/test_qc_packages.py",
+        "sha": "7bfefe4380e5992cf6a8275441e6a7a8be48f7c3",
+        "mode": "100644"
+      },
+      {
+        "path": "tests/analysis/test_qc_packages_cli.py",
+        "sha": "0dd0833cc4116306ade46f7d97fe309a6abe8246",
+        "mode": "100644"
+      },
+      {
+        "path": "tools/check_qc_package_review_index_7879.mjs",
+        "sha": "2a195f01df5046b6edc3a1da37d78e798bb3b8b1",
+        "mode": "100644"
+      },
+      {
+        "path": "tools/review_qc_packages.py",
+        "sha": "e39c2ba4272771765d23db58beafea6bcfa2bcca",
+        "mode": "100644"
+      }
+    ],
+    "removed": [],
+    "allReviewedProductReceiverBytesExact": true,
+    "currentSyncJobsExact": true
+  },
+  "actualCheckout": {
+    "commit": "c527b3af92eb01daf10087a51196c07281e31dfc",
+    "tree": "34ce1440bf3dbe9f01f455a881b2a3c903213ea0",
+    "parents": [
+      "3cbb5300bdc79c157370d1b3e599a6c82752d54a",
+      "2717861936b0d3a68f235ebe65f28f4e08dd1dd6"
+    ]
+  },
+  "currentMainBridge": {
+    "from": "a2fd6c58ccc97c7262b97570a85d8aae8dfb978c",
+    "to": "3cbb5300bdc79c157370d1b3e599a6c82752d54a",
+    "tree": "4af105896633559b35823a7aa2710dc30b2f1740",
+    "before": 1050,
+    "after": 1057,
+    "exact": 1047,
+    "changed": [
+      {
+        "path": "docs/design/research/ANALYSIS_SCOPE_SEMANTICS.md",
+        "before": "68cea4077c84eb0bb4451dec815e9f7053478e43",
+        "after": "0e2c79ebf857174f5531ff03f9af6b5354070b31"
+      },
+      {
+        "path": "docs/design/research/PROGRESS.md",
+        "before": "b9f368902d2bfc949c32e1d759af8d48d1405967",
+        "after": "928ec029f5a6e289c87ea32cd00b55c978b9af92"
+      },
+      {
+        "path": "libs/python/capture_analysis/capture_analysis/jobs.py",
+        "before": "ad0a551e90e5d06ec38a9218277efa24b0030c75",
+        "after": "dd25dd3d6cc4b583f0fe6cfb352fba10be22352b"
+      }
+    ],
+    "added": [
+      {
+        "path": "docs/evidence/sync-anchor-request-bd1abdb2f886-20261008/README.md",
+        "sha": "e420bee3f9a031d97e008b5eaaab0c0b8e36f649",
+        "mode": "100644"
+      },
+      {
+        "path": "docs/evidence/sync-anchor-request-bd1abdb2f886-20261008/current-finalizer-evidence.tar.gz",
+        "sha": "b157de2f3644138a5349b23ec90d052cefebfd80",
+        "mode": "100644"
+      },
+      {
+        "path": "docs/evidence/sync-anchor-request-bd1abdb2f886-20261008/current-finalizer-package.json",
+        "sha": "00f509effd55c92bf53d9f82b20cf2991e7c28d1",
+        "mode": "100644"
+      },
+      {
+        "path": "docs/evidence/sync-anchor-request-bd1abdb2f886-20261008/current-predictions-evidence.tar.gz",
+        "sha": "0767d2388dadf9b0d3b3baf9750d335ab019b89c",
+        "mode": "100644"
+      },
+      {
+        "path": "docs/evidence/sync-anchor-request-bd1abdb2f886-20261008/current-predictions-package.json",
+        "sha": "96462a082f59ee279a9f192312e9407dc983c0a2",
+        "mode": "100644"
+      },
+      {
+        "path": "docs/evidence/sync-anchor-request-bd1abdb2f886-20261008/evidence.tar.gz",
+        "sha": "6476538ae6a8a266f55aacf427549b7983fa1b19",
+        "mode": "100644"
+      },
+      {
+        "path": "tests/analysis/test_sync_anchor_request.py",
+        "sha": "ead08b6cd74455115fa1e9f2e83e9ea4a72dcd18",
+        "mode": "100644"
+      }
+    ],
+    "removed": []
+  },
+  "currentJobSourceReview": {
+    "blob": "dd25dd3d6cc4b583f0fe6cfb352fba10be22352b",
+    "bytes": 19577,
+    "sha256": "fa7686685f1a680eb2982191fbd03b3986487e638e95088b56de32d4c183d568",
+    "exactTwoChanges": true,
+    "changes": [
+      "Refuse apply_sync_anchors requests inside run_job before all work.",
+      "Successful job manifest reports applied false."
+    ]
+  },
+  "native": {
+    "run": 37811117397,
+    "job": 113427903017,
+    "log": {
+      "bytes": 115970,
+      "sha256": "fa1fc36dfc42bb4d9c051ba4dea2a9da3fb898118290228ab763fc74fd456012"
+    },
+    "runtime": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+    "positiveControl": "real native collector/renderer inventory two copied finalized mini packages before the advertised multi-package command is required",
+    "command": {
+      "applicationStateUnchanged": false,
+      "argv": [
+        "C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe",
+        "D:\\a\\CaptureSuite\\CaptureSuite\\tools\\review_qc_packages.py",
+        "--output",
+        "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\pytest-of-runneradmin\\pytest-0\\test_qc_package_review_receivi0\\explicit-review-outputs\\ordered",
+        ".\\input-packages\\z-last-海-Cafe.mmsession",
+        "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\pytest-of-runneradmin\\pytest-0\\test_qc_package_review_receivi0\\input-packages\\a-first.mmsession"
+      ],
+      "cwd": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\pytest-of-runneradmin\\pytest-0\\test_qc_package_review_receivi0",
+      "exit": 0,
+      "inputUnchanged": true,
+      "inputsAfter": "da7ee8cec6808de00ace648ede1ea5aa883898647c8f5d8b6050f7b51e2a9f42",
+      "inputsBefore": "da7ee8cec6808de00ace648ede1ea5aa883898647c8f5d8b6050f7b51e2a9f42",
+      "name": "original-or-candidate-two-package-command",
+      "stderr": "",
+      "stdout": "Collected 2 of 2 packages; 0 collection failure(s).\nOpen C:\\Users\\runneradmin\\AppData\\Local\\Temp\\pytest-of-runneradmin\\pytest-0\\test_qc_package_review_receivi0\\explicit-review-outputs\\ordered\\index.html\n"
+    },
+    "result": "failed: applicationStateUnchanged is false on the first real two-package CLI invocation",
+    "sourceUnchanged": true,
+    "sourceBeforeAfterExact": true,
+    "pytestFailed": 1,
+    "elapsedSeconds": 10.93,
+    "bundle": {
+      "bytes": 47186,
+      "sha256": "e6b43e4b0eab8396dbb67bd299e2d32b8d075e95cf754d6420e8c0b4f978d592",
+      "chunks": 16,
+      "members": [
+        {
+          "path": "native/001-qc.html",
+          "bytes": 2281,
+          "sha256": "5ef30eef2b488d1bcff4fbb5a8df6140e55bbeb9f771b78684f7e2320a29484b"
+        },
+        {
+          "path": "native/001-qc.json",
+          "bytes": 1375,
+          "sha256": "8be8d070a15715282fb490b923f7231059bf19938745db4f2c79c0869b7dbf3d"
+        },
+        {
+          "path": "native/002-qc.html",
+          "bytes": 2289,
+          "sha256": "9f0a2b121bf900e10a7524dc6fdaaa2648781b61f0986fa5507ce6e0783caa7b"
+        },
+        {
+          "path": "native/002-qc.json",
+          "bytes": 1386,
+          "sha256": "81dbb5518256a16e67864b5b8d412caff52f1ae4f0199e9c1b19a9710ff2e57e"
+        },
+        {
+          "path": "receiving-report.json",
+          "bytes": 27543,
+          "sha256": "ed44b9681f8f2f7b8cdc1d471c849028dee681124874f8131cd26377c5da6002"
+        }
+      ]
+    },
+    "meaning": "The real command is now present and returns zero while reporting two collected packages. Input files/directories and source stay unchanged. The independent frozen application-state conservation assertion fails before generated review/report-content admission. No later cases or browser execution occurred.",
+    "stateDeltaLimit": "The unchanged frozen report contains applicationStateUnchanged only, so actual changed relative filenames are not recoverable from this run's packet."
+  },
+  "importSourceFinding": {
+    "status": "Native source trace, not an observed filename attribution.",
+    "chain": [
+      {
+        "path": "libs/python/capture_analysis/capture_analysis/__init__.py",
+        "blob": "67a4fb257b771af771edb4010e573ceeab86a51f",
+        "action": "Eagerly imports JobParams, JobResult, hash_sources_tree and run from jobs."
+      },
+      {
+        "path": "libs/python/capture_analysis/capture_analysis/jobs.py",
+        "blob": "dd25dd3d6cc4b583f0fe6cfb352fba10be22352b",
+        "action": "Eagerly imports run_features_and_plots from pipeline."
+      },
+      {
+        "path": "libs/python/capture_analysis/capture_analysis/pipeline.py",
+        "blob": "8113ab4cb51678a122bbb702a23f2200c9333233",
+        "action": "Eagerly imports plot_sync_dashboard."
+      },
+      {
+        "path": "libs/python/capture_analysis/capture_analysis/plots/sync_dashboard.py",
+        "blob": "828204e998a46b9571b3a2b3ba08acd9fc6caa31",
+        "action": "Eagerly imports style helpers."
+      },
+      {
+        "path": "libs/python/capture_analysis/capture_analysis/plots/style.py",
+        "blob": "3725e840e5eb046accea79d4b6376f902392dac8",
+        "action": "Calls matplotlib.use('Agg') and imports matplotlib.pyplot at import time."
+      }
+    ],
+    "proposal": "After native ownership coordination, defer the initializer's four existing job exports while preserving their actual identities/signatures, __all__ and dir visibility. Keep job/pipeline/plot and native collector/renderer bytes unchanged.",
+    "receiving": "A separate independently authored fresh-process import and API test should measure actual isolated application-state inventories. The original three receiving files and assertion remain unchanged."
+  },
+  "decision": "Do not accept or integrate this candidate. Preserve its actual failed log/report; qualify the necessary import-boundary correction natively.",
+  "pending": [
+    "Concrete fresh-process state-delta observation.",
+    "Owner-coordinated initializer source review and public API compatibility.",
+    "Unchanged complete frozen consumer and direct native browser outputs.",
+    "Maintained current Python and CMake outcomes."
+  ]
+}

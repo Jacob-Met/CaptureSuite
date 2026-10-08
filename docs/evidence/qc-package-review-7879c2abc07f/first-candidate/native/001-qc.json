@@ -1,0 +1,51 @@
+{
+  "annotationCount": 0,
+  "checkpointCount": 0,
+  "closedGapCount": 0,
+  "durationNs": 10000000000,
+  "gaps": [],
+  "integrityFileCount": 1,
+  "manifestSha256": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380",
+  "openGapCount": 0,
+  "packagePath": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\pytest-of-runneradmin\\pytest-0\\test_qc_package_review_receivi0\\input-packages\\a-first.mmsession",
+  "packageState": "finalized",
+  "recoveryReports": [],
+  "schemaId": "capture.analysis_qc/2",
+  "sessionId": "mini-analysis-fixture",
+  "sourceCount": 2,
+  "streamCount": 2,
+  "streams": [
+    {
+      "dataSchemaId": "emg.batch/1",
+      "mcapSegments": 1,
+      "mkvSegments": 0,
+      "modality": "emg",
+      "nominalRateHz": 2000.0,
+      "rateOk": true,
+      "sourceId": "sim.emg.main",
+      "streamId": "sim.emg.main.batch",
+      "timingSegments": 0,
+      "units": "mV",
+      "warnings": []
+    },
+    {
+      "dataSchemaId": "imu.frame/1",
+      "mcapSegments": 1,
+      "mkvSegments": 0,
+      "modality": "imu",
+      "nominalRateHz": 60.0,
+      "rateOk": true,
+      "sourceId": "sim.imu.upper",
+      "streamId": "sim.imu.upper.frames",
+      "timingSegments": 0,
+      "units": "a.u.",
+      "warnings": []
+    }
+  ],
+  "syncAnchorCount": 0,
+  "trafficLights": {
+    "sim.emg.main": "ok",
+    "sim.imu.upper": "ok"
+  },
+  "warnings": []
+}

@@ -1,0 +1,621 @@
+{
+  "artifacts": [
+    {
+      "bytes": 1375,
+      "kind": "real native QC",
+      "path": "native/001-qc.json",
+      "sha256": "8be8d070a15715282fb490b923f7231059bf19938745db4f2c79c0869b7dbf3d"
+    },
+    {
+      "bytes": 2281,
+      "kind": "real native QC HTML",
+      "path": "native/001-qc.html",
+      "sha256": "5ef30eef2b488d1bcff4fbb5a8df6140e55bbeb9f771b78684f7e2320a29484b"
+    },
+    {
+      "bytes": 1386,
+      "kind": "real native QC",
+      "path": "native/002-qc.json",
+      "sha256": "81dbb5518256a16e67864b5b8d412caff52f1ae4f0199e9c1b19a9710ff2e57e"
+    },
+    {
+      "bytes": 2289,
+      "kind": "real native QC HTML",
+      "path": "native/002-qc.html",
+      "sha256": "9f0a2b121bf900e10a7524dc6fdaaa2648781b61f0986fa5507ce6e0783caa7b"
+    }
+  ],
+  "browser": {
+    "status": "not requested in the maintained full-suite route"
+  },
+  "checkout": "c527b3af92eb01daf10087a51196c07281e31dfc",
+  "checks": [
+    "real native collector/renderer inventory two copied finalized mini packages before the advertised multi-package command is required"
+  ],
+  "commands": [
+    {
+      "applicationStateUnchanged": false,
+      "argv": [
+        "C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe",
+        "D:\\a\\CaptureSuite\\CaptureSuite\\tools\\review_qc_packages.py",
+        "--output",
+        "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\pytest-of-runneradmin\\pytest-0\\test_qc_package_review_receivi0\\explicit-review-outputs\\ordered",
+        ".\\input-packages\\z-last-\u6d77-Cafe.mmsession",
+        "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\pytest-of-runneradmin\\pytest-0\\test_qc_package_review_receivi0\\input-packages\\a-first.mmsession"
+      ],
+      "cwd": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\pytest-of-runneradmin\\pytest-0\\test_qc_package_review_receivi0",
+      "exit": 0,
+      "inputUnchanged": true,
+      "inputsAfter": "da7ee8cec6808de00ace648ede1ea5aa883898647c8f5d8b6050f7b51e2a9f42",
+      "inputsBefore": "da7ee8cec6808de00ace648ede1ea5aa883898647c8f5d8b6050f7b51e2a9f42",
+      "name": "original-or-candidate-two-package-command",
+      "stderr": "",
+      "stdout": "Collected 2 of 2 packages; 0 collection failure(s).\nOpen C:\\Users\\runneradmin\\AppData\\Local\\Temp\\pytest-of-runneradmin\\pytest-0\\test_qc_package_review_receivi0\\explicit-review-outputs\\ordered\\index.html\n"
+    }
+  ],
+  "criteriaBlob": "3c6db0126cd7fa513287fde42e9cecff96bd3218",
+  "criteriaPredecessor": "70f34e3b982523b544a9370d2316a1b69d79bd70",
+  "currentBase": "9c44354cb101c76beff79265de0040b6839d249f",
+  "currentSourceBridge": {
+    "added": 90,
+    "changed": [
+      "docs/design/ANALYSIS.md",
+      "docs/design/research/ANALYSIS_SCOPE_SEMANTICS.md",
+      "docs/design/research/PROGRESS.md",
+      "libs/python/capture_analysis/capture_analysis/windows.py",
+      "tests/analysis/test_numeric_receiving.py",
+      "tests/cpp/test_worker_host.cpp",
+      "tests/ui/test_analysis_scope.py",
+      "workers/camera/src/capture_pipeline.cpp"
+    ],
+    "currentLeaves": 1012,
+    "from": "58157fdc1b83a12bb4856ef14b0498cf524a1087",
+    "meaning": "QC/readers/mini_session/requirements/maintained CI remain exact; the actual synthesized checkout and observed source hashes are recorded.",
+    "oldLeaves": 922,
+    "removed": 0,
+    "to": "9c44354cb101c76beff79265de0040b6839d249f",
+    "unchanged": 914
+  },
+  "error": "Traceback (most recent call last):\n  File \"D:\\a\\CaptureSuite\\CaptureSuite\\tests\\analysis\\test_qc_package_review_receiving_7879.py\", line 470, in test_qc_package_review_receiving_7879\n    receiver.command(\"original-or-candidate-two-package-command\", ordered_inputs, ordered, 0)\n  File \"D:\\a\\CaptureSuite\\CaptureSuite\\tests\\analysis\\test_qc_package_review_receiving_7879.py\", line 267, in command\n    assert item[\"applicationStateUnchanged\"], name + \": no registry/settings/job activity\"\nAssertionError: original-or-candidate-two-package-command: no registry/settings/job activity\nassert False\n",
+  "executable": "C:\\hostedtoolcache\\windows\\Python\\3.12.10\\x64\\python.exe",
+  "fixtureBefore": {
+    "directories": [
+      ".",
+      "events",
+      "processing",
+      "sources",
+      "sources/sim.emg.main",
+      "sources/sim.emg.main/health",
+      "sources/sim.emg.main/streams",
+      "sources/sim.emg.main/streams/sim.emg.main.batch",
+      "sources/sim.emg.main/streams/sim.emg.main.batch/segments",
+      "sources/sim.imu.upper",
+      "sources/sim.imu.upper/streams",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments"
+    ],
+    "exists": true,
+    "files": {
+      "events/annotations.json": {
+        "bytes": 3,
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      },
+      "events/checkpoints.json": {
+        "bytes": 3,
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      },
+      "events/sync_anchors.json": {
+        "bytes": 3,
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+      },
+      "integrity.json": {
+        "bytes": 227,
+        "sha256": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556"
+      },
+      "manifest.json": {
+        "bytes": 235,
+        "sha256": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380"
+      },
+      "processing/.gitkeep": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sources/sim.emg.main/health/gaps.jsonl": {
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "sources/sim.emg.main/source.json": {
+        "bytes": 112,
+        "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10"
+      },
+      "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap": {
+        "bytes": 28,
+        "sha256": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649"
+      },
+      "sources/sim.emg.main/streams/sim.emg.main.batch/stream.json": {
+        "bytes": 216,
+        "sha256": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1"
+      },
+      "sources/sim.imu.upper/source.json": {
+        "bytes": 118,
+        "sha256": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8"
+      },
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": {
+        "bytes": 28,
+        "sha256": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649"
+      },
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": {
+        "bytes": 219,
+        "sha256": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+      }
+    },
+    "kind": "directory"
+  },
+  "inputSnapshots": {
+    "da7ee8cec6808de00ace648ede1ea5aa883898647c8f5d8b6050f7b51e2a9f42": {
+      "directories": [
+        ".",
+        "a-first.mmsession",
+        "a-first.mmsession/events",
+        "a-first.mmsession/processing",
+        "a-first.mmsession/sources",
+        "a-first.mmsession/sources/sim.emg.main",
+        "a-first.mmsession/sources/sim.emg.main/health",
+        "a-first.mmsession/sources/sim.emg.main/streams",
+        "a-first.mmsession/sources/sim.emg.main/streams/sim.emg.main.batch",
+        "a-first.mmsession/sources/sim.emg.main/streams/sim.emg.main.batch/segments",
+        "a-first.mmsession/sources/sim.imu.upper",
+        "a-first.mmsession/sources/sim.imu.upper/streams",
+        "a-first.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames",
+        "a-first.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments",
+        "z-last-\u6d77-Cafe.mmsession",
+        "z-last-\u6d77-Cafe.mmsession/events",
+        "z-last-\u6d77-Cafe.mmsession/processing",
+        "z-last-\u6d77-Cafe.mmsession/sources",
+        "z-last-\u6d77-Cafe.mmsession/sources/sim.emg.main",
+        "z-last-\u6d77-Cafe.mmsession/sources/sim.emg.main/health",
+        "z-last-\u6d77-Cafe.mmsession/sources/sim.emg.main/streams",
+        "z-last-\u6d77-Cafe.mmsession/sources/sim.emg.main/streams/sim.emg.main.batch",
+        "z-last-\u6d77-Cafe.mmsession/sources/sim.emg.main/streams/sim.emg.main.batch/segments",
+        "z-last-\u6d77-Cafe.mmsession/sources/sim.imu.upper",
+        "z-last-\u6d77-Cafe.mmsession/sources/sim.imu.upper/streams",
+        "z-last-\u6d77-Cafe.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames",
+        "z-last-\u6d77-Cafe.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments"
+      ],
+      "exists": true,
+      "files": {
+        "a-first.mmsession/events/annotations.json": {
+          "bytes": 3,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "a-first.mmsession/events/checkpoints.json": {
+          "bytes": 3,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "a-first.mmsession/events/sync_anchors.json": {
+          "bytes": 3,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "a-first.mmsession/integrity.json": {
+          "bytes": 227,
+          "sha256": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556"
+        },
+        "a-first.mmsession/manifest.json": {
+          "bytes": 235,
+          "sha256": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380"
+        },
+        "a-first.mmsession/processing/.gitkeep": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "a-first.mmsession/processing/retained-owner-note.bin": {
+          "bytes": 54,
+          "sha256": "fdf76777cfee70dddefcec7844764bc1e2511e12fc218f31d74acd7d3e15a250"
+        },
+        "a-first.mmsession/sources/sim.emg.main/health/gaps.jsonl": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "a-first.mmsession/sources/sim.emg.main/source.json": {
+          "bytes": 112,
+          "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10"
+        },
+        "a-first.mmsession/sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap": {
+          "bytes": 28,
+          "sha256": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649"
+        },
+        "a-first.mmsession/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json": {
+          "bytes": 216,
+          "sha256": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1"
+        },
+        "a-first.mmsession/sources/sim.imu.upper/source.json": {
+          "bytes": 118,
+          "sha256": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8"
+        },
+        "a-first.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": {
+          "bytes": 28,
+          "sha256": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649"
+        },
+        "a-first.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": {
+          "bytes": 219,
+          "sha256": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+        },
+        "z-last-\u6d77-Cafe.mmsession/events/annotations.json": {
+          "bytes": 3,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "z-last-\u6d77-Cafe.mmsession/events/checkpoints.json": {
+          "bytes": 3,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "z-last-\u6d77-Cafe.mmsession/events/sync_anchors.json": {
+          "bytes": 3,
+          "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+        },
+        "z-last-\u6d77-Cafe.mmsession/integrity.json": {
+          "bytes": 227,
+          "sha256": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556"
+        },
+        "z-last-\u6d77-Cafe.mmsession/manifest.json": {
+          "bytes": 235,
+          "sha256": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380"
+        },
+        "z-last-\u6d77-Cafe.mmsession/processing/.gitkeep": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "z-last-\u6d77-Cafe.mmsession/processing/retained-owner-note.bin": {
+          "bytes": 54,
+          "sha256": "fdf76777cfee70dddefcec7844764bc1e2511e12fc218f31d74acd7d3e15a250"
+        },
+        "z-last-\u6d77-Cafe.mmsession/sources/sim.emg.main/health/gaps.jsonl": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "z-last-\u6d77-Cafe.mmsession/sources/sim.emg.main/source.json": {
+          "bytes": 112,
+          "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10"
+        },
+        "z-last-\u6d77-Cafe.mmsession/sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap": {
+          "bytes": 28,
+          "sha256": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649"
+        },
+        "z-last-\u6d77-Cafe.mmsession/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json": {
+          "bytes": 216,
+          "sha256": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1"
+        },
+        "z-last-\u6d77-Cafe.mmsession/sources/sim.imu.upper/source.json": {
+          "bytes": 118,
+          "sha256": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8"
+        },
+        "z-last-\u6d77-Cafe.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": {
+          "bytes": 28,
+          "sha256": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649"
+        },
+        "z-last-\u6d77-Cafe.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": {
+          "bytes": 219,
+          "sha256": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+        }
+      },
+      "kind": "directory"
+    }
+  },
+  "nativeLimit": "Maintained mini_session contains two 28-byte MCAP placeholders. The native collector inventories descriptors/segment names and optional metadata; It does not certify raw capture; native optional-record omissions remain.",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "schema": "capture.qc-package-review.browser-cli-receiving/1",
+  "sourceAfter": {
+    ".github/workflows/ci.yml": {
+      "bytes": 3743,
+      "sha256": "272cb962395776a2648507792faeab2bfdd7f24ecdba59e3f2288b77bc45c114"
+    },
+    ".github/workflows/qc-package-review-receiving.yml": {
+      "bytes": 2516,
+      "sha256": "6fce52b44a1710f8c385d0945ca707b9028919ee82cd82279b1266d352713c0c"
+    },
+    "AGENTS.md": {
+      "bytes": 3932,
+      "sha256": "525164ca1f3b9e68561434ab110ba17ed65843a20c23f4c1385fde33f1863a74"
+    },
+    "CONTRIBUTING.md": {
+      "bytes": 1584,
+      "sha256": "870dc66fe5b2a24e617fff7f0c0589a44cb906aef6d97779a0ad3c8a00c148df"
+    },
+    "LICENSING.md": {
+      "bytes": 1728,
+      "sha256": "a407df01c4c285fdb2a36e14254e769a614c1a1bd6f53caaacf184b2b13f05e3"
+    },
+    "libs/python/capture_analysis/capture_analysis/__init__.py": {
+      "bytes": 497,
+      "sha256": "14cfe6dccd33a0bda74fac3c9339e1a37a3538b2110a8ae6e307801b776eb43a"
+    },
+    "libs/python/capture_analysis/capture_analysis/discover.py": {
+      "bytes": 4023,
+      "sha256": "344ee5d7cb0f5e95ac7524a0c1141b0a293bb9445e2bd4789c6736f39cfcb90d"
+    },
+    "libs/python/capture_analysis/capture_analysis/jobs.py": {
+      "bytes": 19577,
+      "sha256": "fa7686685f1a680eb2982191fbd03b3986487e638e95088b56de32d4c183d568"
+    },
+    "libs/python/capture_analysis/capture_analysis/qc.py": {
+      "bytes": 9187,
+      "sha256": "f24e0593a3723311d41054aef40b56c4bb46d4f3ba5ef4b01afcae3a6cc4440a"
+    },
+    "libs/python/capture_analysis/capture_analysis/qc_packages.py": {
+      "bytes": 12702,
+      "sha256": "8dd76bb2980f1fe4d16e076e61a50580c2c01c68f90b303653fa64efabff009b"
+    },
+    "libs/python/capture_analysis/capture_analysis/report_html.py": {
+      "bytes": 4716,
+      "sha256": "f2c89c7faf6e4edc265540140272396b4195eb5aed9edf05c4912aac74286f03"
+    },
+    "libs/python/capture_analysis/capture_analysis/types.py": {
+      "bytes": 3428,
+      "sha256": "e7996d02483f69265a2ef2ec0b28078c86f4f479daa53e38faf8b4a62645d02c"
+    },
+    "libs/python/capture_session/capture_session/__init__.py": {
+      "bytes": 2412,
+      "sha256": "da530f86c0d1d584862868ddba9f7087ccf5dfbddd64dd1e577337ecfd776419"
+    },
+    "libs/python/capture_session/capture_session/package_reader.py": {
+      "bytes": 6331,
+      "sha256": "9a1d9e6e7d24341a083cee602af9538413e948f3369b22660e484356e3d34eb1"
+    },
+    "pyproject.toml": {
+      "bytes": 1233,
+      "sha256": "0cb8de1ab3dfbfed84ff16b35f3c89c6440180183ee5851d5d80da83622e53d0"
+    },
+    "requirements-ci.txt": {
+      "bytes": 383,
+      "sha256": "66bd392a587715b823c0bf5c1f50a1069b7aea95a56f8bd2ac9651e5586c6323"
+    },
+    "tests/analysis/test_phase_a_qc.py": {
+      "bytes": 4085,
+      "sha256": "0be539a3d593e1cf144f4b7f871af90082feaa19a4ac8f234f53a2b232c8cc07"
+    },
+    "tests/analysis/test_qc_package_review_receiving_7879.py": {
+      "bytes": 37544,
+      "sha256": "ca2c3af5fa3eb606a42c4b940046c2f054b4f0c9f050fcfea3201d14e1f3995b"
+    },
+    "tests/conftest.py": {
+      "bytes": 1773,
+      "sha256": "f669618fad17e906c91df7a1e9393fc7a54f458c6d62a4385436ba2622beca0e"
+    },
+    "tests/fixtures/mini_session/events/annotations.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "tests/fixtures/mini_session/events/checkpoints.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "tests/fixtures/mini_session/events/sync_anchors.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "tests/fixtures/mini_session/integrity.json": {
+      "bytes": 227,
+      "sha256": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556"
+    },
+    "tests/fixtures/mini_session/manifest.json": {
+      "bytes": 235,
+      "sha256": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380"
+    },
+    "tests/fixtures/mini_session/processing/.gitkeep": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests/fixtures/mini_session/sources/sim.emg.main/health/gaps.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests/fixtures/mini_session/sources/sim.emg.main/source.json": {
+      "bytes": 112,
+      "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10"
+    },
+    "tests/fixtures/mini_session/sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap": {
+      "bytes": 28,
+      "sha256": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649"
+    },
+    "tests/fixtures/mini_session/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json": {
+      "bytes": 216,
+      "sha256": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1"
+    },
+    "tests/fixtures/mini_session/sources/sim.imu.upper/source.json": {
+      "bytes": 118,
+      "sha256": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8"
+    },
+    "tests/fixtures/mini_session/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": {
+      "bytes": 28,
+      "sha256": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649"
+    },
+    "tests/fixtures/mini_session/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": {
+      "bytes": 219,
+      "sha256": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+    },
+    "tools/check_qc_package_review_index_7879.mjs": {
+      "bytes": 12411,
+      "sha256": "537ef5f267445a3312bb04a820f98e4df1d343fb16cc32f16e474bc091031ffa"
+    },
+    "tools/review_qc_packages.py": {
+      "bytes": 2041,
+      "sha256": "07ba4315f8760f2343acd90fe5ff8f365da72346ebce152e3809311ff52b4ccf"
+    },
+    "tools/run_analysis.py": {
+      "bytes": 4865,
+      "sha256": "f450b1e17185bb2b19e45747698dd1f75f487c7898304484357abec5bee9f555"
+    },
+    "tools/run_ci_tests.py": {
+      "bytes": 7416,
+      "sha256": "08a9d4786a6e768e0914ac5490d780c64c07f920b790dd16c5e0740bda9c2ac2"
+    }
+  },
+  "sourceBefore": {
+    ".github/workflows/ci.yml": {
+      "bytes": 3743,
+      "sha256": "272cb962395776a2648507792faeab2bfdd7f24ecdba59e3f2288b77bc45c114"
+    },
+    ".github/workflows/qc-package-review-receiving.yml": {
+      "bytes": 2516,
+      "sha256": "6fce52b44a1710f8c385d0945ca707b9028919ee82cd82279b1266d352713c0c"
+    },
+    "AGENTS.md": {
+      "bytes": 3932,
+      "sha256": "525164ca1f3b9e68561434ab110ba17ed65843a20c23f4c1385fde33f1863a74"
+    },
+    "CONTRIBUTING.md": {
+      "bytes": 1584,
+      "sha256": "870dc66fe5b2a24e617fff7f0c0589a44cb906aef6d97779a0ad3c8a00c148df"
+    },
+    "LICENSING.md": {
+      "bytes": 1728,
+      "sha256": "a407df01c4c285fdb2a36e14254e769a614c1a1bd6f53caaacf184b2b13f05e3"
+    },
+    "libs/python/capture_analysis/capture_analysis/__init__.py": {
+      "bytes": 497,
+      "sha256": "14cfe6dccd33a0bda74fac3c9339e1a37a3538b2110a8ae6e307801b776eb43a"
+    },
+    "libs/python/capture_analysis/capture_analysis/discover.py": {
+      "bytes": 4023,
+      "sha256": "344ee5d7cb0f5e95ac7524a0c1141b0a293bb9445e2bd4789c6736f39cfcb90d"
+    },
+    "libs/python/capture_analysis/capture_analysis/jobs.py": {
+      "bytes": 19577,
+      "sha256": "fa7686685f1a680eb2982191fbd03b3986487e638e95088b56de32d4c183d568"
+    },
+    "libs/python/capture_analysis/capture_analysis/qc.py": {
+      "bytes": 9187,
+      "sha256": "f24e0593a3723311d41054aef40b56c4bb46d4f3ba5ef4b01afcae3a6cc4440a"
+    },
+    "libs/python/capture_analysis/capture_analysis/qc_packages.py": {
+      "bytes": 12702,
+      "sha256": "8dd76bb2980f1fe4d16e076e61a50580c2c01c68f90b303653fa64efabff009b"
+    },
+    "libs/python/capture_analysis/capture_analysis/report_html.py": {
+      "bytes": 4716,
+      "sha256": "f2c89c7faf6e4edc265540140272396b4195eb5aed9edf05c4912aac74286f03"
+    },
+    "libs/python/capture_analysis/capture_analysis/types.py": {
+      "bytes": 3428,
+      "sha256": "e7996d02483f69265a2ef2ec0b28078c86f4f479daa53e38faf8b4a62645d02c"
+    },
+    "libs/python/capture_session/capture_session/__init__.py": {
+      "bytes": 2412,
+      "sha256": "da530f86c0d1d584862868ddba9f7087ccf5dfbddd64dd1e577337ecfd776419"
+    },
+    "libs/python/capture_session/capture_session/package_reader.py": {
+      "bytes": 6331,
+      "sha256": "9a1d9e6e7d24341a083cee602af9538413e948f3369b22660e484356e3d34eb1"
+    },
+    "pyproject.toml": {
+      "bytes": 1233,
+      "sha256": "0cb8de1ab3dfbfed84ff16b35f3c89c6440180183ee5851d5d80da83622e53d0"
+    },
+    "requirements-ci.txt": {
+      "bytes": 383,
+      "sha256": "66bd392a587715b823c0bf5c1f50a1069b7aea95a56f8bd2ac9651e5586c6323"
+    },
+    "tests/analysis/test_phase_a_qc.py": {
+      "bytes": 4085,
+      "sha256": "0be539a3d593e1cf144f4b7f871af90082feaa19a4ac8f234f53a2b232c8cc07"
+    },
+    "tests/analysis/test_qc_package_review_receiving_7879.py": {
+      "bytes": 37544,
+      "sha256": "ca2c3af5fa3eb606a42c4b940046c2f054b4f0c9f050fcfea3201d14e1f3995b"
+    },
+    "tests/conftest.py": {
+      "bytes": 1773,
+      "sha256": "f669618fad17e906c91df7a1e9393fc7a54f458c6d62a4385436ba2622beca0e"
+    },
+    "tests/fixtures/mini_session/events/annotations.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "tests/fixtures/mini_session/events/checkpoints.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "tests/fixtures/mini_session/events/sync_anchors.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "tests/fixtures/mini_session/integrity.json": {
+      "bytes": 227,
+      "sha256": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556"
+    },
+    "tests/fixtures/mini_session/manifest.json": {
+      "bytes": 235,
+      "sha256": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380"
+    },
+    "tests/fixtures/mini_session/processing/.gitkeep": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests/fixtures/mini_session/sources/sim.emg.main/health/gaps.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests/fixtures/mini_session/sources/sim.emg.main/source.json": {
+      "bytes": 112,
+      "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10"
+    },
+    "tests/fixtures/mini_session/sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap": {
+      "bytes": 28,
+      "sha256": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649"
+    },
+    "tests/fixtures/mini_session/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json": {
+      "bytes": 216,
+      "sha256": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1"
+    },
+    "tests/fixtures/mini_session/sources/sim.imu.upper/source.json": {
+      "bytes": 118,
+      "sha256": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8"
+    },
+    "tests/fixtures/mini_session/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": {
+      "bytes": 28,
+      "sha256": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649"
+    },
+    "tests/fixtures/mini_session/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": {
+      "bytes": 219,
+      "sha256": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+    },
+    "tools/check_qc_package_review_index_7879.mjs": {
+      "bytes": 12411,
+      "sha256": "537ef5f267445a3312bb04a820f98e4df1d343fb16cc32f16e474bc091031ffa"
+    },
+    "tools/review_qc_packages.py": {
+      "bytes": 2041,
+      "sha256": "07ba4315f8760f2343acd90fe5ff8f365da72346ebce152e3809311ff52b4ccf"
+    },
+    "tools/run_analysis.py": {
+      "bytes": 4865,
+      "sha256": "f450b1e17185bb2b19e45747698dd1f75f487c7898304484357abec5bee9f555"
+    },
+    "tools/run_ci_tests.py": {
+      "bytes": 7416,
+      "sha256": "08a9d4786a6e768e0914ac5490d780c64c07f920b790dd16c5e0740bda9c2ac2"
+    }
+  },
+  "sourceBridge": {
+    "added": [
+      "libs/python/capture_analysis/capture_analysis/eval/predictions.py",
+      "schemas/eval/predictions.schema.json",
+      "tests/analysis/test_external_predictions.py"
+    ],
+    "changed": [
+      "docs/design/ANALYSIS.md",
+      "docs/design/research/PROGRESS.md",
+      "libs/python/capture_analysis/capture_analysis/eval/job.py",
+      "libs/python/capture_analysis/capture_analysis/jobs.py",
+      "tools/run_analysis.py"
+    ],
+    "currentLeaves": 922,
+    "from": "70f34e3b982523b544a9370d2316a1b69d79bd70",
+    "meaning": "70f is the predecessor; actual checkout is recorded below.",
+    "oldLeaves": 919,
+    "to": "58157fdc1b83a12bb4856ef14b0498cf524a1087",
+    "unchanged": 914
+  },
+  "sourceUnchanged": true,
+  "status": "failed",
+  "tree": "34ce1440bf3dbe9f01f455a881b2a3c903213ea0"
+}
