@@ -12,11 +12,13 @@ from PySide6.QtCore import QObject, QThread, Signal, Slot
 from PySide6.QtWidgets import (
     QComboBox,
     QFileDialog,
+    QFrame,
     QHBoxLayout,
     QLabel,
     QMessageBox,
     QProgressBar,
     QPushButton,
+    QScrollArea,
     QSplitter,
     QTextEdit,
     QVBoxLayout,
@@ -138,7 +140,15 @@ class AnalysisScreen(QWidget):
         self._build_controls(left_layout)
         self._mappings = AnatomicalMappingPanel(persistence)
         left_layout.addWidget(self._mappings)
-        splitter.addWidget(left)
+        controls_scroll = QScrollArea()
+        controls_scroll.setObjectName("AnalysisControlsScroll")
+        controls_scroll.setWidgetResizable(True)
+        controls_scroll.setFrameShape(QFrame.Shape.NoFrame)
+        controls_scroll.setMinimumWidth(
+            left.minimumWidth() + controls_scroll.verticalScrollBar().sizeHint().width()
+        )
+        controls_scroll.setWidget(left)
+        splitter.addWidget(controls_scroll)
 
         self._gallery = FigureGallery()
         splitter.addWidget(self._gallery)
@@ -320,7 +330,8 @@ class AnalysisScreen(QWidget):
         )
 
     def _sync_enabled(self) -> None:
-        busy = self._thread is not None and self._thread.isRunning()
+        busy = self._thread is not None
+        self._extras.set_eval_busy(busy)
         locked = self._recording_locked()
         has_pkg = self._summary is not None
         scope_error = self._scope_error()
@@ -379,7 +390,7 @@ class AnalysisScreen(QWidget):
         self._log.append(line)
 
     def _start_job(self) -> None:
-        if self._summary is None or (self._thread and self._thread.isRunning()):
+        if self._summary is None or self._thread is not None:
             return
         if self._recording_locked():
             QMessageBox.warning(

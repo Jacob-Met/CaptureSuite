@@ -982,3 +982,40 @@ GNU linker-wrapped cases, Windows, complete Mac UI/daemon, x86_64 or notarizatio
 Native artifact paths, exact hashes, recipient usage, raw qualification and
 independent review are in
 [the receiving packet](../../receiving/macos-session-doctor-5f566b5ec8ef/README.md).
+
+## 2026-10-08 — Native external-prediction evaluation (#69; HAMON 6e5752b49b6f)
+
+The native Analysis workbench now exposes the existing #57/PR65 evaluator with
+an explicit **Evaluation input** choice. **Identity teacher (simulation)**
+retains the original default. **External predictions file** offers a native
+file chooser, literal read-only path, Clear and actionable missing-file errors.
+It sends the ordinary prediction_path job extra without replacing evaluator
+admission, source binding, scoring, schema or publication. Source and raw files
+remain read-only. See [the operator guide](EXTERNAL_EVALUATION_WORKBENCH.md).
+
+Chooser cancellation preserves the current choice. A new session clears the
+file; command/mode changes preserve it within the same session. Revision checks
+retire file dialogs whose context changed while they were open. The worker
+captures scalar request values, while the evaluator admits and retains the
+actual input bytes when it runs. No file-byte snapshot or trained-model
+execution is implied by a selection.
+
+Native receiving exposed two separate workbench findings. The first candidate
+clipped its new controls under vertical pressure, so the unchanged control
+column now lives in a native scroll area. Keyboard controls, wrapped text and
+Run/Cancel remain reachable without forcing a taller Analysis window. An
+independent held-worker check also proved the parent's Run/Cancel state used
+isRunning before thread.start and never resynchronized. The shared screen hunk
+now treats a reserved worker as busy and rejects any duplicate start while it
+is reserved; the existing worker/cancellation/job lifecycle is unchanged.
+
+The original absence capture, functional source, clipped images, inherited busy
+counterexample and receiver-only corrections remain distinct in qualification.
+Local Python 3.12.8 / PySide6 6.11.2 receiving uses actual Qt dialogs and QThreads,
+real external/identity/refused jobs, retained-file and output-inventory checks,
+and keyboard reachability at 1100×700 and 1280×960. The actual MainWindow imports
+Windows named-pipe APIs before its auto_connect=False guard, so its minimum-size
+case is a supported Windows CI gate, explicitly skipped on Mac. No Windows
+hardware, OS-native dialog, model authorship or scientific efficacy claim is
+made from the local fixture evidence. Independent receiving and hosted results
+are recorded separately with their exact source identities.
