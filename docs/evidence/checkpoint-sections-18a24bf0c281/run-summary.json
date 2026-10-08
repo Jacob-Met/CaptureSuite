@@ -1,0 +1,161 @@
+[
+  {
+    "label": "baseline",
+    "current_main": "72c15d6b623e217291a824e4e4808a385df896a9",
+    "source_tree": "221cf5c7bb3c3392a7c4186ba0bcf5a8664135d1",
+    "window_git_blob": "80bea6bd69365a48c5b204c26d054b8ae179437a",
+    "test_sha256": "f08db026af80f802b0c8a491095e86bcd3436945def56f0d2f4899e2c22c368f",
+    "started": "2026-10-08T12:25:34.462Z",
+    "finished": "2026-10-08T12:27:28.348Z",
+    "command": "/Users/me/capturesuite-checkpoint-18a24bf0c281/venv/bin/python",
+    "args": [
+      "-m",
+      "pytest",
+      "tests/analysis/test_checkpoint_sections.py",
+      "-q",
+      "--basetemp",
+      "/Users/me/capturesuite-checkpoint-18a24bf0c281/evidence/baseline/pytest-tmp",
+      "--junitxml",
+      "/Users/me/capturesuite-checkpoint-18a24bf0c281/evidence/baseline/junit.xml",
+      "-o",
+      "junit_logging=all"
+    ],
+    "cwd": "/Users/me/capturesuite-checkpoint-18a24bf0c281/repository",
+    "runtime": {
+      "python": "3.12.8 (main, Dec  3 2024, 18:42:41) [Clang 16.0.0 (clang-1600.0.26.4)]",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "windows": "/Users/me/capturesuite-checkpoint-18a24bf0c281/repository/libs/python/capture_analysis/capture_analysis/windows.py",
+      "jobs": "/Users/me/capturesuite-checkpoint-18a24bf0c281/repository/libs/python/capture_analysis/capture_analysis/jobs.py",
+      "reader": "/Users/me/capturesuite-checkpoint-18a24bf0c281/repository/libs/python/capture_session/capture_session/package_reader.py"
+    },
+    "exit_code": 1,
+    "signal": null,
+    "error": null,
+    "source_unchanged": true,
+    "authored_files_verified_after_all_tests": 669,
+    "junit": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "25",
+      "skipped": "0",
+      "tests": "30",
+      "time": "113.574",
+      "timestamp": "2026-10-08T05:25:34.645882-07:00",
+      "hostname": "Mac.lan"
+    }
+  },
+  {
+    "label": "candidate",
+    "current_main": "72c15d6b623e217291a824e4e4808a385df896a9",
+    "source_tree": "221cf5c7bb3c3392a7c4186ba0bcf5a8664135d1",
+    "window_git_blob": "aaafd8db78f82a5a56178135dbed5bfd4f45c634",
+    "test_sha256": "f08db026af80f802b0c8a491095e86bcd3436945def56f0d2f4899e2c22c368f",
+    "started": "2026-10-08T12:34:01.199Z",
+    "finished": "2026-10-08T12:35:58.008Z",
+    "command": "/Users/me/capturesuite-checkpoint-18a24bf0c281/venv/bin/python",
+    "args": [
+      "-m",
+      "pytest",
+      "tests/analysis/test_checkpoint_sections.py",
+      "-q",
+      "--basetemp",
+      "/Users/me/capturesuite-checkpoint-18a24bf0c281/evidence/candidate/pytest-tmp",
+      "--junitxml",
+      "/Users/me/capturesuite-checkpoint-18a24bf0c281/evidence/candidate/junit.xml",
+      "-o",
+      "junit_logging=all"
+    ],
+    "cwd": "/Users/me/capturesuite-checkpoint-18a24bf0c281/candidate",
+    "runtime": {
+      "python": "3.12.8 (main, Dec  3 2024, 18:42:41) [Clang 16.0.0 (clang-1600.0.26.4)]",
+      "platform": "macOS-26.6.2-arm64-arm-64bit",
+      "windows": "/Users/me/capturesuite-checkpoint-18a24bf0c281/candidate/libs/python/capture_analysis/capture_analysis/windows.py",
+      "jobs": "/Users/me/capturesuite-checkpoint-18a24bf0c281/candidate/libs/python/capture_analysis/capture_analysis/jobs.py",
+      "reader": "/Users/me/capturesuite-checkpoint-18a24bf0c281/candidate/libs/python/capture_session/capture_session/package_reader.py"
+    },
+    "exit_code": 0,
+    "signal": null,
+    "error": null,
+    "source_unchanged": true,
+    "authored_files_verified_after_all_tests": 669,
+    "junit": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "30",
+      "time": "116.433",
+      "timestamp": "2026-10-08T05:34:01.428070-07:00",
+      "hostname": "Mac.lan"
+    }
+  },
+  {
+    "source_commit": "4fcd0aa4319b6594af637af8644c187fcbff3cf5",
+    "window_sha256": "5cf401b7b7d201225c966b804cfff39c3f6d59669da7e488dd68c4253a829c32",
+    "test_sha256": "f08db026af80f802b0c8a491095e86bcd3436945def56f0d2f4899e2c22c368f",
+    "source_hashes_preserved": true,
+    "steps": [
+      {
+        "name": "ruff",
+        "command": "/Users/me/capturesuite-checkpoint-18a24bf0c281/venv/bin/python",
+        "args": [
+          "-m",
+          "ruff",
+          "check",
+          "libs/python/capture_analysis/capture_analysis/windows.py",
+          "tests/analysis/test_checkpoint_sections.py"
+        ],
+        "cwd": "/Users/me/capturesuite-checkpoint-18a24bf0c281/candidate",
+        "started": "2026-10-08T12:39:02.542Z",
+        "finished": "2026-10-08T12:39:02.660Z",
+        "exit_code": 0,
+        "error": null
+      },
+      {
+        "name": "pytest",
+        "command": "/Users/me/capturesuite-checkpoint-18a24bf0c281/venv/bin/python",
+        "args": [
+          "-m",
+          "pytest",
+          "tests/analysis/test_phase_a_qc.py",
+          "tests/analysis/test_phase_b_features.py",
+          "tests/analysis/test_stream_gap_scope.py",
+          "-q",
+          "--basetemp",
+          "/Users/me/capturesuite-checkpoint-18a24bf0c281/evidence/regression/pytest-tmp",
+          "--junitxml",
+          "/Users/me/capturesuite-checkpoint-18a24bf0c281/evidence/regression/junit.xml",
+          "-o",
+          "junit_logging=all"
+        ],
+        "cwd": "/Users/me/capturesuite-checkpoint-18a24bf0c281/candidate",
+        "started": "2026-10-08T12:39:02.662Z",
+        "finished": "2026-10-08T12:39:19.976Z",
+        "exit_code": 0,
+        "error": null
+      },
+      {
+        "name": "licenses",
+        "command": "/Users/me/capturesuite-checkpoint-18a24bf0c281/venv/bin/python",
+        "args": [
+          "tools/check_licenses.py"
+        ],
+        "cwd": "/Users/me/capturesuite-checkpoint-18a24bf0c281/candidate",
+        "started": "2026-10-08T12:39:19.977Z",
+        "finished": "2026-10-08T12:39:20.167Z",
+        "exit_code": 0,
+        "error": null
+      }
+    ],
+    "junit": {
+      "name": "pytest",
+      "errors": "0",
+      "failures": "0",
+      "skipped": "0",
+      "tests": "19",
+      "time": "16.838",
+      "timestamp": "2026-10-08T05:39:02.922341-07:00",
+      "hostname": "Mac.lan"
+    }
+  }
+]

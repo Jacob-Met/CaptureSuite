@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "capture.eval_predictions/1",
+  "title": "CaptureSuite external predictions version 1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaId",
+    "modelId",
+    "windowsSha256",
+    "manifestSha256",
+    "predictions"
+  ],
+  "properties": {
+    "schemaId": {
+      "const": "capture.eval_predictions/1"
+    },
+    "modelId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120,
+      "description": "Caller-supplied single-line model/experiment label, not authenticated model identity."
+    },
+    "windowsSha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "manifestSha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "predictions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "window_id",
+          "session_time_ns",
+          "values"
+        ],
+        "properties": {
+          "window_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "session_time_ns": {
+            "type": "integer",
+            "minimum": -9223372036854775808,
+            "maximum": 9223372036854775807
+          },
+          "values": {
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "description": "Exactly the selected bundle's targetColumns; null means unavailable."
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "archive_member_paths_preserved": true,
+  "archive_native_original_root": "/Users/me/capturesuite-independent-checkpoint-18a24bf0c281",
+  "copied_files": [
+    {
+      "bytes": 8140,
+      "git_blob": "40b68d71bdf0a715fe36e67e4e0b2687e77e1321",
+      "native_original": "REVIEW.md",
+      "published_path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/README.md",
+      "sha256": "d37a96f017656438ca45dd71f253df93c1bdef0dbf20eaa5d9babcf9d7eff0a8"
+    },
+    {
+      "bytes": 13473,
+      "git_blob": "b04449f05c0b217dd705ddd52a3172b5e00c1251",
+      "native_original": "receive_closed_section_isolation.py",
+      "published_path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/receive_closed_section_isolation.py",
+      "sha256": "0779ae505ae3b784177960504185f0276215c4b853969a222316167f142f08d2"
+    },
+    {
+      "bytes": 287056,
+      "git_blob": "59df1a34a44d3141693352201cf9b99efed7c4bb",
+      "native_original": "baseline-manifest.json",
+      "published_path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/baseline-source-manifest.json",
+      "sha256": "bddfc40120b0b0a59f0b2242b0df776f88ad48ce8b3f8853d545ba358aa00018"
+    },
+    {
+      "bytes": 287731,
+      "git_blob": "934396f7e12fc8cad7069080857704b950a26952",
+      "native_original": "candidate-manifest.json",
+      "published_path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/candidate-source-manifest.json",
+      "sha256": "36d2ccd731f38bd7f15b8e0e064d58be078cfb2902ba805856bd5bcbbe89dc7b"
+    },
+    {
+      "bytes": 514,
+      "git_blob": "c52a56b1f3a8285a9795049f97d5cbea65b247bb",
+      "native_original": "dependency-pins.txt",
+      "published_path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/dependency-pins.txt",
+      "sha256": "77edbb6835783fb832a221fc01c4ec78affa586ed65323b7a03c128e23df0fef"
+    },
+    {
+      "bytes": 526,
+      "git_blob": "cc60921870b425c6036bb17eb5b5263c2a754e2e",
+      "native_original": "independent-environment-freeze.txt",
+      "published_path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/independent-environment-freeze.txt",
+      "sha256": "a11a36921a8ef8a0c2c5de0f10c9c2f6673371ebaf9f2dda3d7d6cd2fed2f53d"
+    },
+    {
+      "bytes": 520,
+      "git_blob": "38bfe23038be2f393c365ca6793a48adcde3f9b6",
+      "native_original": "environment-install.json",
+      "published_path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/environment-install.json",
+      "sha256": "b54c5fb13da4d2206d9a9447b699501c69ddbf004ecafd666d79c34a7b4d8dc9"
+    },
+    {
+      "bytes": 10332,
+      "git_blob": "f05d1af73b948151e7022463b258d1ccd1a39c78",
+      "native_original": "environment-install.log",
+      "published_path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/environment-install.log",
+      "sha256": "24ee745e9d43d4b7fa15fe19beddfbf731e47943a2ef1b53d667e4a0621fa1d5"
+    },
+    {
+      "bytes": 30,
+      "git_blob": "c688d8ccdad82420475fc31cb40020cccfeeef2b",
+      "native_original": "environment-check.txt",
+      "published_path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/environment-check.txt",
+      "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+    },
+    {
+      "bytes": 4285,
+      "git_blob": "17ca41c595d9ee6b356583b8caf3c655877d09cd",
+      "native_original": "intake-errors/archive-git-byte-mismatch-v1.json",
+      "published_path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/intake-errors/archive-git-byte-mismatch-v1.json",
+      "sha256": "e249b2a268a7ad351c486fcc59f8929e83933f6bf0b69d1d1682014216fdb683"
+    },
+    {
+      "bytes": 822,
+      "git_blob": "49a0a06a2ea5df5c6832d12eca1e5231c696b9d4",
+      "native_original": "intake-errors/checkpoint-field-names-v1.json",
+      "published_path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/intake-errors/checkpoint-field-names-v1.json",
+      "sha256": "9487bfd134abed209c51d5eff11df333a19ae4b87b21810b9f1b35439cbb0908"
+    },
+    {
+      "bytes": 1250,
+      "git_blob": "c6381a39397fe4676dce93fc628b48dfa97461b6",
+      "native_original": "intake-errors/git-log-normalization-v1.json",
+      "published_path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/intake-errors/git-log-normalization-v1.json",
+      "sha256": "adc1d7c2b7a3f71f6a55c15d97eb8374125279b5dc8f9f90f3a8772b3c8972b9"
+    },
+    {
+      "bytes": 544,
+      "git_blob": "a241496e899b02089b47e69d90e840838929125d",
+      "native_original": "intake-errors/git-log-normalization-v2.json",
+      "published_path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/intake-errors/git-log-normalization-v2.json",
+      "sha256": "026a09d41f9e07e91fdb66872015158bbe823349ed0ac7057c12b75983cb9b9e"
+    },
+    {
+      "bytes": 13477,
+      "git_blob": "d80568bdbac9d488c84720577f88f6b70f2d1ddf",
+      "native_original": "intake-errors/receive_closed_section_isolation_v1.py",
+      "published_path": "docs/evidence/checkpoint-future-isolation-18a24bf0c281/intake-errors/receive_closed_section_isolation_v1.py",
+      "sha256": "d88eb2a870d6950a872b823a6789b0a6c7318c1cb791015e786e4d3f1127daa2"
+    }
+  ],
+  "generated_files": [
+    "qualification.json",
+    "raw-receiving-manifest.json",
+    "raw-receiving-evidence.tar.xz",
+    "publication-path-map.json"
+  ],
+  "prefix": "docs/evidence/checkpoint-future-isolation-18a24bf0c281",
+  "receiving_commit": "ca52be3dd56356eed3081b2653a77380f72c8642"
+}

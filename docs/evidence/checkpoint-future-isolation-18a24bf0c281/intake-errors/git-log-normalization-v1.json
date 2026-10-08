@@ -1,0 +1,19 @@
+{
+  "initial_commit": "141858992302b10baae271fdbf1c0d077127cdbb",
+  "reason": "Preserve two original upstream CRLF evidence logs byte for byte; inherited text=auto normalized their initial Git index. On-disk source already matched canonical upstream. The targeted reviewer-only Git info/attributes changes serialization of these two data files, not source or hooks.",
+  "reviewer_git_info_attributes": "baseline/docs/evidence/stream-gap-scope-20261008-e827/initial-ci-lint.log -text\nbaseline/docs/evidence/stream-gap-scope-20261008-e827/initial-junit-rejection.log -text\n",
+  "paths": [
+    {
+      "path": "baseline/docs/evidence/stream-gap-scope-20261008-e827/initial-ci-lint.log",
+      "before_index": "5b9d0ee4b78dbffd8f2389c182d8fa47baf86de8",
+      "expected_git_blob": "f816c4ddec08a928433444a939f7a9c2acb14979",
+      "sha256": "9075ad8bd2991c38ab29738d405fca0e4e3213af2986b8d00fc89fd2b60b6467"
+    },
+    {
+      "path": "baseline/docs/evidence/stream-gap-scope-20261008-e827/initial-junit-rejection.log",
+      "before_index": "df198fd249caf1a29b5f2fe57111891f8d0c44f9",
+      "expected_git_blob": "b1f63ef9cb0900f8120efc35ccf528171c3ab84d",
+      "sha256": "9e879a5a39912af125c2ed82e7d2663395a53676db52c38089cfbcf20932c24b"
+    }
+  ]
+}

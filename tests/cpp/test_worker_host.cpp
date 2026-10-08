@@ -42,6 +42,20 @@ std::filesystem::path stub_exe() {
          "capture_worker_stub.exe";
 }
 
+#if defined(CAPTURE_HAS_CAMERA_WORKER)
+// Select an exact staged copy while preserving the existing protocol tests.
+std::filesystem::path camera_exe() {
+  const auto selected = capture::env::get("CAPTURE_TEST_CAMERA_WORKER_EXE");
+  if (selected.has_value()) {
+    const std::filesystem::path exe(*selected);
+    REQUIRE(exe.is_absolute());
+    return exe;
+  }
+  return std::filesystem::path(CAPTURE_BINARY_DIR) / "workers" / "camera" /
+         "capture_worker_camera.exe";
+}
+#endif
+
 }  // namespace
 
 TEST_CASE("worker host spawns stub with Hello and Identify", "[worker_host]") {
@@ -69,8 +83,7 @@ TEST_CASE("worker host spawns stub with Hello and Identify", "[worker_host]") {
 
 #if defined(CAPTURE_HAS_CAMERA_WORKER)
 TEST_CASE("worker host spawns camera worker Identify", "[worker_host][camera]") {
-  const auto exe = std::filesystem::path(CAPTURE_BINARY_DIR) / "workers" /
-                     "camera" / "capture_worker_camera.exe";
+  const auto exe = camera_exe();
   REQUIRE(std::filesystem::exists(exe));
 
   // Worker needs GStreamer DLLs on PATH.
@@ -119,8 +132,7 @@ TEST_CASE("worker host spawns camera worker Identify", "[worker_host][camera]") 
 
 TEST_CASE("camera worker start/stop with videotestsrc",
           "[worker_host][camera]") {
-  const auto exe = std::filesystem::path(CAPTURE_BINARY_DIR) / "workers" /
-                     "camera" / "capture_worker_camera.exe";
+  const auto exe = camera_exe();
   REQUIRE(std::filesystem::exists(exe));
 
   const auto gst = capture::env::get("GSTREAMER_1_0_ROOT_MSVC_X86_64");
@@ -214,8 +226,7 @@ TEST_CASE("camera worker start/stop with videotestsrc",
 
 TEST_CASE("camera worker bridge seals into session package",
           "[worker_host][camera][bridge]") {
-  const auto exe = std::filesystem::path(CAPTURE_BINARY_DIR) / "workers" /
-                     "camera" / "capture_worker_camera.exe";
+  const auto exe = camera_exe();
   REQUIRE(std::filesystem::exists(exe));
 
   const auto gst = capture::env::get("GSTREAMER_1_0_ROOT_MSVC_X86_64");
