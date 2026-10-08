@@ -1,0 +1,27 @@
+{
+  "schema": "capturesuite.review-video.freeze/1",
+  "at": "2026-10-08T19:54:42Z",
+  "parent": "a2c89957c2cfe6fd5347d4ac317982449d3baa3a",
+  "observed_main": "a2c89957c2cfe6fd5347d4ac317982449d3baa3a",
+  "owned_existing": [
+    "desktop/capture_desktop/screen_review.py",
+    "docs/design/research/PROGRESS.md",
+    "docs/design/research/REVIEW_AND_EXPORT_UX.md",
+    "docs/operator/README.md"
+  ],
+  "unowned_original_leaves_preserved": 1156,
+  "all_original_documentation_prefixes_preserved": true,
+  "exact_committed_fixture": true,
+  "independent_manifest_sha256": "67e8aa5bf6fa1cb67a2b5849dcb1d5c5cf96d02e57d04a52ba080a9bc27e8d99",
+  "source_sha256": {
+    "desktop/capture_desktop/review_video.py": "f8116601de2b920140d430d59460e07b7f80167d8151fb90f80534eda7f181d5",
+    "desktop/capture_desktop/widgets_review_video.py": "3d89f1f8453a3d18d2776574941a2c6197f3be59e8df3a7a278f3b5c400134d9",
+    "desktop/capture_desktop/screen_review.py": "8ee038aaca15d6f96ae3df8b4894466f404b6da8a0016179f70f267077f3ff36",
+    "tests/test_review_video_model.py": "bf57cd9eb7a1a6335aebfa4e2bfea7e6caeb027d0caaea258c7272ef657e5cba",
+    "tests/ui/test_review_video.py": "04de2ab06484988097de968aebae23c8718d31158db69b50e017116355b9b0d8"
+  },
+  "full_ruff_passed": true,
+  "license_check_passed": true,
+  "native_ui_result": "151 passed / 0 skips / 0 errors / 256.11s",
+  "onscreen_gpu_video_qualified": false
+}

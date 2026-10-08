@@ -1096,3 +1096,33 @@ history/selection/completion, backend jobs/pipeline, galleries and raw storage
 remain with their current owners. The ownership fence is coordinated in #55 and
 HAMON #140. Details: ANALYSIS_SOURCE_SELECTION.md and
 docs/evidence/analysis-sources-234cae4aee53/.
+
+
+## 2026-10-08 — Native recorded-video segment review (chatgpt-0378a7b6b7c2/mac_product)
+
+Issue #89 adds explicit retained-video selection, play/pause and seeking to Review.
+Source/stream/package-relative identities distinguish equal segment filenames.
+The media clock is segment-local; there is no inferred camera/checkpoint alignment,
+gap interpolation or audio playback. Native asynchronous signals are guarded by
+player identity and selection generation. Missing/invalid media, changed/failed
+package loads and hidden views retire or pause the old media with actionable state.
+
+The original actual Review screen loaded a two-stream, four-file synthetic package
+and had no playback controls. The candidate's real Qt decoder received red/blue/green
+frames, explicit pause and 1500/2000 ms seek. All 15 focused model/UI cases passed;
+the complete inherited UI suite plus new model cases passed 151 tests in 256.11 s.
+Independent MSI review accepted the exact three production hashes and a distinct
+six-group native oracle: rapid A→B→A, 14 retired-player signal emissions, independent
+identity/generation challenges, fractional seek despite a large checkpoint clock,
+error/reload and failed-package retirement. First receiver/setup failures remain
+retained separately from successful observations. Original source leaves outside
+the seven-line Review hook and every original raw fixture byte were preserved.
+
+Readable dark/light/compact control captures and actual decoded QVideoSink pixels
+are qualified separately: offscreen QWidget captures omit the GPU video surface,
+and a Windows-platform HWND grab returned an entirely black image. Onscreen GPU
+presentation is not claimed. The standard native QVideoWidget renderer remains
+unchanged. Existing supported hosted Windows Python and C++/native gates and final
+current-main receiving remain required before integration. See
+[operator steps](../../operator/RECORDED_VIDEO_REVIEW.md) and
+[full evidence and limits](../../evidence/review-video-0378a7b6/README.md).

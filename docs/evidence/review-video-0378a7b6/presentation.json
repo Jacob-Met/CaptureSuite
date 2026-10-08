@@ -1,0 +1,47 @@
+{
+  "at": "2026-10-08T19:38:25Z",
+  "python": "3.12.10 (main, May 30 2025, 05:39:07) [MSC v.1943 64 bit (AMD64)]",
+  "sourcePins": {
+    "desktop/capture_desktop/review_video.py": "f8116601de2b920140d430d59460e07b7f80167d8151fb90f80534eda7f181d5",
+    "desktop/capture_desktop/widgets_review_video.py": "3d89f1f8453a3d18d2776574941a2c6197f3be59e8df3a7a278f3b5c400134d9",
+    "desktop/capture_desktop/screen_review.py": "8ee038aaca15d6f96ae3df8b4894466f404b6da8a0016179f70f267077f3ff36",
+    "tests/test_review_video_model.py": "bf57cd9eb7a1a6335aebfa4e2bfea7e6caeb027d0caaea258c7272ef657e5cba",
+    "tests/ui/test_review_video.py": "04de2ab06484988097de968aebae23c8718d31158db69b50e017116355b9b0d8"
+  },
+  "nativeMedia": {
+    "decoderReady": true,
+    "actualRedFrame": true,
+    "actualBlueFrameAfterSeek": true,
+    "positionMs": 1500,
+    "durationMs": 2000,
+    "clockText": "Media position 00:00:01.500 / 00:00:02.000"
+  },
+  "fontsLoadedOnlyInReceiver": {
+    "segoeui.ttf": {
+      "sha256": "ba32a222b23d727267cf1aba4e5296fe84ce99b9d910915103fc085d7931bc88",
+      "families": [
+        "Segoe UI"
+      ]
+    },
+    "segoeuib.ttf": {
+      "sha256": "1b242874a2f57529060e770ba313e027a99d40b3c36e1c7e8b2dece16ad6ed88",
+      "families": [
+        "Segoe UI"
+      ]
+    }
+  },
+  "screenshots": [
+    "baseline-fonts.png",
+    "candidate-dark.png",
+    "candidate-light.png",
+    "candidate-compact.png",
+    "decoded-blue-frame.png"
+  ],
+  "unchangedOriginalLeaves": 1159,
+  "changedOriginalLeaves": [
+    "desktop/capture_desktop/screen_review.py"
+  ],
+  "packagePreserved": true,
+  "sourceStableDuringReceiving": true,
+  "boundary": "Actual Windows native Qt offscreen decoder/widget receiving with synthetic FFV1 MKV. Fonts were explicitly loaded from existing Windows files into this test application after initial offscreen screenshots showed missing glyphs. No installed font, theme or production dependency was changed."
+}

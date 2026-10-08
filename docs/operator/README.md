@@ -45,3 +45,10 @@ path to capture stderr.
 | No hardware sources | Plugin enabled? SDK env set? See Setup → plugins |
 | LNK1168 on build | Stop daemon/workers before linking |
 | Camera worker missing | Use local CMake preset with GStreamer |
+
+
+## Inspect recorded video
+
+In Review, expand Recorded video to explicitly choose and play a retained segment.
+See [Recorded video review](RECORDED_VIDEO_REVIEW.md) for controls, segment-local
+clock meaning and unavailable-media recovery.

@@ -1,0 +1,33 @@
+{
+  "schema": "capturesuite.independent-video-review.v1",
+  "at": "2026-10-08T19:48:38Z",
+  "python": "3.12.10 (main, May 30 2025, 05:39:07) [MSC v.1943 64 bit (AMD64)]",
+  "executable": "C:\\Users\\minec\\hamon-0378a7b6-capture-runtime\\venv\\Scripts\\python.exe",
+  "pyside6": "6.12.0",
+  "baseHead": "a2c89957c2cfe6fd5347d4ac317982449d3baa3a",
+  "expectedSourcePins": {
+    "desktop/capture_desktop/review_video.py": "f8116601de2b920140d430d59460e07b7f80167d8151fb90f80534eda7f181d5",
+    "desktop/capture_desktop/widgets_review_video.py": "3d89f1f8453a3d18d2776574941a2c6197f3be59e8df3a7a278f3b5c400134d9",
+    "desktop/capture_desktop/screen_review.py": "8ee038aaca15d6f96ae3df8b4894466f404b6da8a0016179f70f267077f3ff36"
+  },
+  "checks": [],
+  "outcome": "fail",
+  "boundary": "Native Qt offscreen control/decoder state oracle on synthetic retained files; no onscreen GPU surface acceptance, hardware capture or session alignment claim.",
+  "modifiedFixturePins": {
+    "manifest.json": "e9890dd15e530de2731bdfcb2e3424289c65291424238d1424a5c9d7e032f459",
+    "events/checkpoints.json": "e5deaf0417e9dede91f382a7ea38945d507d4169873cdc4c6d604959aa86744a",
+    "sources/sim.left/streams/front/stream.json": "3e4217a1256a566e7f0ba97d44dca21c3a52c8081576c853d623fb49a722e1cb",
+    "sources/sim.left/streams/front/segments/0001.mkv": "f19179c4022ceee1be55052ec9aa2dc35708a2192192305458010bb8ae3e8372",
+    "sources/sim.left/streams/front/segments/0002.mkv": "55b11006aeb0551e3350a1b81dfccfb27de0824c6743b0157a59c2f64d17b9c2",
+    "sources/sim.right/streams/front/stream.json": "e890dae4488c9fdec0064d170df64d8e3dac50b0dbaae0d67df4a2716cdc8bb9",
+    "sources/sim.right/streams/front/segments/0001.mkv": "849be4425f026e3d97a39b7c1377940e313adb862c093d12243d005ee74fb306",
+    "sources/sim.right/streams/front/segments/invalid.mkv": "4c5eb903dd253c29f18002497ac1e2759d7d85cbb851f94af2fd0e972762d5d4"
+  },
+  "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\minec\\hamon-0378a7b6-capturesuite-discovery\\docs\\evidence\\review-video-0378a7b6\\independent-msi\\review_native.py\", line 103, in <module>\n    assert screen._recovered_banner.isVisible()\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError\n",
+  "finalSourcePins": {
+    "desktop/capture_desktop/review_video.py": "f8116601de2b920140d430d59460e07b7f80167d8151fb90f80534eda7f181d5",
+    "desktop/capture_desktop/widgets_review_video.py": "3d89f1f8453a3d18d2776574941a2c6197f3be59e8df3a7a278f3b5c400134d9",
+    "desktop/capture_desktop/screen_review.py": "8ee038aaca15d6f96ae3df8b4894466f404b6da8a0016179f70f267077f3ff36"
+  },
+  "sourceFixturePreserved": true
+}

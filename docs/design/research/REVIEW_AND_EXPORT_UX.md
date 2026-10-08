@@ -155,3 +155,36 @@ different selections. Default exports still use the package's `exports/` folder.
 
 The receiving record is in
 [`docs/evidence/export-selection-20261008/`](../../evidence/export-selection-20261008/).
+
+
+## Decision 2026-10-08: Explicit recorded-video segment inspection
+
+**Reason:** The current Review inventory counts retained MKV files but cannot show
+them. The desired unified session timeline depends on a trustworthy segment-to-
+session mapping; the current timing loader has an explicit segment-index stub.
+This bounded first viewer makes retained video inspectable without inventing that
+mapping or changing its owner's timing work.
+
+Review adds a collapsible Recorded video section using the existing stream
+discovery and PySide6 multimedia backend. Each explicit choice includes source,
+stream and package-relative file identity. Package load only builds the inventory;
+selection lazily loads one media file, and Play remains an explicit operator action.
+The native media clock is labeled segment-local. No camera/checkpoint alignment,
+gap interpolation, continuous segment join, audio playback or integrity assurance
+is inferred. Only finalized and finalized_recovered packages are admitted.
+
+Changing selections or clearing/failing a package load retires the old player,
+output and active controls before loading another. Every native media callback is
+bound to both its player and selection generation. Missing files and decoder
+errors retain an actionable identity and explicit reload path, without an old
+picture under a new selection. Hiding the section or Review pauses playback.
+The existing event browser, timeline, analysis, export and raw bytes retain their
+separate ownership and behavior.
+
+**Files:** `desktop/capture_desktop/review_video.py`,
+`desktop/capture_desktop/widgets_review_video.py`, and seven additive lines in
+`desktop/capture_desktop/screen_review.py`. Operator steps are in
+[Recorded video review](../../operator/RECORDED_VIDEO_REVIEW.md). Native source,
+actual-decoder qualification, independent stale-signal receiving and the explicit
+GPU-screenshot limitation are retained in
+[the receiving record](../../evidence/review-video-0378a7b6/README.md).

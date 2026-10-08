@@ -1,0 +1,50 @@
+﻿{
+    "recordedAt":  "2026-10-08T19:50:12.5741823Z",
+    "files":  [
+                  {
+                      "path":  "receipt.json",
+                      "sha256":  "3bd52745dfe4c9a9a6de8da78c763fa889f0c0d9f75658bc79f5b8911113bde1",
+                      "bytes":  2684
+                  },
+                  {
+                      "path":  "receipt-v2.json",
+                      "sha256":  "0e67ae933319786ab1f20c0019e9e9727b90c37a81142d4770c100ed41f29eea",
+                      "bytes":  3041
+                  },
+                  {
+                      "path":  "REVIEW.md",
+                      "sha256":  "068429fcd1879f392d362a1ba1011a5f22645cd63896921ebb8747ba6c8ba711",
+                      "bytes":  4710
+                  },
+                  {
+                      "path":  "review_native.py",
+                      "sha256":  "b2e1ca7ce5e38dbfb625c93bfdd44d76c5b16422b41a36217d0a85a5acfe2021",
+                      "bytes":  9269
+                  },
+                  {
+                      "path":  "review_native_v2.py",
+                      "sha256":  "534308ce531e2dc25753db01fc358e47a190d6a3b4c4f9916f9cfb684f80acf9",
+                      "bytes":  9290
+                  },
+                  {
+                      "path":  "run.log",
+                      "sha256":  "00b4205b5d7fe2fcadb11fec4a9e7e80106e8812c13890adeae650cebcabfb12",
+                      "bytes":  6410
+                  },
+                  {
+                      "path":  "run-result.json",
+                      "sha256":  "2135a70a52e4940811d4ed933b2245a2d602dd9d01a5f6b55805a9f6e2f17315",
+                      "bytes":  82
+                  },
+                  {
+                      "path":  "run-v2.log",
+                      "sha256":  "cd94520aa15e926647f430df35e7a0be4579f0464f87b6bb7ba450e49723aba5",
+                      "bytes":  8100
+                  },
+                  {
+                      "path":  "run-v2-result.json",
+                      "sha256":  "4b63a8252878ddf021da2d0c6275eeb04df05e973c15203d8290d307f827e2e3",
+                      "bytes":  82
+                  }
+              ]
+}
