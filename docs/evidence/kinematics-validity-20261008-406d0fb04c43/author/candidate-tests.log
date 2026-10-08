@@ -1,0 +1,12 @@
+.....................                                                    [100%]
+=============================== warnings summary ===============================
+tests/analysis/test_kinematics_validity.py::test_sparse_non_sim_pose_cli_retains_missing_data_and_source_bytes
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.MessageMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+
+tests/analysis/test_kinematics_validity.py::test_sparse_non_sim_pose_cli_retains_missing_data_and_source_bytes
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.ScalarMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: /Users/me/hamon-native-406d0fb04c43/capturesuite-kinematics/evidence/candidate-tests.xml -
+21 passed, 2 warnings in 2.36s
+

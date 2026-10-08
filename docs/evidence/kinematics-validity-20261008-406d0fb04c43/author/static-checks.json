@@ -1,0 +1,28 @@
+[
+  {
+    "args": [
+      "-m",
+      "ruff",
+      "check",
+      "libs/python/capture_analysis/capture_analysis/kinematics/compute.py",
+      "tests/analysis/test_kinematics_validity.py"
+    ],
+    "exitCode": 0,
+    "signal": null,
+    "error": null,
+    "stdout": "All checks passed!\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "-m",
+      "pip",
+      "check"
+    ],
+    "exitCode": 0,
+    "signal": null,
+    "error": null,
+    "stdout": "No broken requirements found.\n",
+    "stderr": ""
+  }
+]

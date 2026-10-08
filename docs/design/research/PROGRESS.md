@@ -1,3 +1,27 @@
+## 2026-10-08 — Preserve missing pose evidence in kinematic labels
+
+Worker `estate-406d0fb04c43 / production`, issue #56: non-simulated pose tables
+previously fell back to synthetic angles when required body landmarks were
+absent. The real Parquet-to-kinematics CLI could therefore complete with invented
+values and valid flags. A missing landmark on one side also invalidated usable
+geometry on the other, and finite central differences or rolling ranges could
+hide an invalid center frame.
+
+The bounded computation repair selects synthetic values only for explicit sim
+model IDs. It checks each required landmark's confidence and finite coordinates,
+keeps independent elbow/shoulder validity, and masks undefined angle, velocity
+and AFR values at missing frames. Existing valid-input calculations, sim behavior,
+model identity, schemas, pose backends and job publication are preserved.
+
+On native macOS arm64 with the declared Python 3.12 science dependencies, the
+same 13 focused tests retain 11 original failures and two passing controls;
+the repair passes all 13 plus eight original pose/kinematics/ML consumers, with
+zero skips. The real CLI writes masked Parquet and truthful detection rates
+while preserving every original package and input-pose byte. All selected source
+bytes remain unchanged during execution, and scoped Ruff passes. Independent
+receiving and the existing supported Windows CI remain separate integration gates.
+No inference service, physical capture, smoothing or calibration result is claimed.
+
 ## 2026-10-08 — Windows atomic writer reserves owned temporary files
 
 Contributor `estate-6267db2cfc6e` prepared the repair for issue51/PR52. Windows
