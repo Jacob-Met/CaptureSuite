@@ -1,0 +1,259 @@
+{
+  "archive": {
+    "bytes": 34438,
+    "expanded_bytes": 223962,
+    "path": "receiving.tar.gz",
+    "regular_members": 48,
+    "sha256": "2314ff2c4730465eb98aa55938e57a81809bad3d0d15a39583968f914a015262"
+  },
+  "base_commit": "70f34e3b982523b544a9370d2316a1b69d79bd70",
+  "issue": 72,
+  "members": {
+    "baseline-final-tests-preparation-failure/receipt.json": {
+      "bytes": 355,
+      "sha256": "cc0588766b35ed5ff09c5d6616643b3a19fe1f41c729b0c91fce5adad4fcfb0b"
+    },
+    "baseline-final-tests/pytest.log": {
+      "bytes": 10281,
+      "sha256": "8ed923e9062da53160c615056175d7e23bb80f418de6bbfdb63a6aba3208b43f"
+    },
+    "baseline-final-tests/pytest.xml": {
+      "bytes": 10675,
+      "sha256": "7cadfb520a88b263eeea5d64a9607a86eda673afdce79e9893cbda6bacbb7139"
+    },
+    "baseline-final-tests/receipt.json": {
+      "bytes": 4389,
+      "sha256": "70c6d0bb039b40cd9c031f36c83b9eabf26b12039e1aa9e9cc68887ee3b362fd"
+    },
+    "baseline-tests/pytest.log": {
+      "bytes": 10185,
+      "sha256": "47289711a1314503e70761d064761ed7f625e1b73f4e671fced67e16a6ea3c78"
+    },
+    "baseline-tests/pytest.xml": {
+      "bytes": 10585,
+      "sha256": "a74564403dbcb30feebfd050569557f3131956876a3c8bb58878e747e7fe0688"
+    },
+    "baseline-tests/receipt.json": {
+      "bytes": 4263,
+      "sha256": "841b531cf13ce4ae85f4452afde1c61970ce12e8952b341b36cc1f11bc4eb5eb"
+    },
+    "baseline-witness.json": {
+      "bytes": 11349,
+      "sha256": "d1dd784d7191f752e44b3c6cc9dc468b603df2d0e4f6be326654a6b2a5dd02d8"
+    },
+    "baseline-witness/quantized/output/ml_bundle/manifest.json": {
+      "bytes": 1317,
+      "sha256": "1569c6cc465fbefbafb44fc840de314c3b90e759d77a362748ae3073f22afa43"
+    },
+    "baseline-witness/quantized/output/ml_bundle/windows.parquet": {
+      "bytes": 6245,
+      "sha256": "2ea9e0861d4a1fa4e1bb198a87d237a906de3972b1dd09372610e05bf848a65a"
+    },
+    "baseline-witness/quantized/package/processing/jobs/feat/features/radar/radar.fixture/energy.parquet": {
+      "bytes": 1813,
+      "sha256": "e7b53087ed19c0beff1658bdc08ddb4e7040cdfef339faa7c41ca1ee63effc97"
+    },
+    "baseline-witness/quantized/package/processing/jobs/kin/kinematics/kinematics.parquet": {
+      "bytes": 5237,
+      "sha256": "f3180f4a5ea20d9b0e0b0d7ff1e957a08c0edebc6a264e0f128b58492cfe4a57"
+    },
+    "baseline-witness/regular/output/ml_bundle/manifest.json": {
+      "bytes": 1281,
+      "sha256": "f94487f2bc2d5670582740ae376cbf301aac5d5dda889f6e6c9f71f73c7670e2"
+    },
+    "baseline-witness/regular/output/ml_bundle/windows.parquet": {
+      "bytes": 6245,
+      "sha256": "2ea9e0861d4a1fa4e1bb198a87d237a906de3972b1dd09372610e05bf848a65a"
+    },
+    "baseline-witness/regular/package/processing/jobs/feat/features/radar/radar.fixture/energy.parquet": {
+      "bytes": 1813,
+      "sha256": "e7b53087ed19c0beff1658bdc08ddb4e7040cdfef339faa7c41ca1ee63effc97"
+    },
+    "baseline-witness/regular/package/processing/jobs/kin/kinematics/kinematics.parquet": {
+      "bytes": 5237,
+      "sha256": "f3180f4a5ea20d9b0e0b0d7ff1e957a08c0edebc6a264e0f128b58492cfe4a57"
+    },
+    "baseline-witness/short_fallback/output/ml_bundle/manifest.json": {
+      "bytes": 1281,
+      "sha256": "7f5fb87aa2bdb07ad5b34e796a045c640a887d4ba23c985eef00c3ef8cb85fdf"
+    },
+    "baseline-witness/short_fallback/output/ml_bundle/windows.parquet": {
+      "bytes": 6072,
+      "sha256": "b7902d8d9a1178b6d6bf16d8cfdaa14eaebeeffb60b376a1ab6f34258137e0a1"
+    },
+    "baseline-witness/short_fallback/package/processing/jobs/feat/features/radar/radar.fixture/energy.parquet": {
+      "bytes": 1813,
+      "sha256": "e7b53087ed19c0beff1658bdc08ddb4e7040cdfef339faa7c41ca1ee63effc97"
+    },
+    "baseline-witness/short_fallback/package/processing/jobs/kin/kinematics/kinematics.parquet": {
+      "bytes": 4900,
+      "sha256": "6ed99f6df5dae6e9e8bfc944037fdf13469071f74fc7bb6da273511587478351"
+    },
+    "candidate-final-tests/pytest.log": {
+      "bytes": 257,
+      "sha256": "f5f176476c83efb1082311fa75967c85ebad0a3f500be0efc8d5ae7dc58da36f"
+    },
+    "candidate-final-tests/pytest.xml": {
+      "bytes": 1422,
+      "sha256": "3adf9d41c82160dcfad015a818aa12064909a7aa3846ae684a3bf69c6362d8b3"
+    },
+    "candidate-final-tests/receipt.json": {
+      "bytes": 3711,
+      "sha256": "472821cef185e41dece47398d3a76f032195fe51cff8a6d333bd948d961729d0"
+    },
+    "candidate-tests/pytest.log": {
+      "bytes": 1024,
+      "sha256": "434e4da5250a630b9d78ee5245f96e9e6bd7489992bddd7771045dbfd41810c1"
+    },
+    "candidate-tests/pytest.xml": {
+      "bytes": 1994,
+      "sha256": "f979f219602d9e521f64ae94bbaecd5029ce59cbe9e408b24e91e3f58fd74f3c"
+    },
+    "candidate-tests/receipt.json": {
+      "bytes": 3984,
+      "sha256": "0255f613053c85f98183aef4ff7c5781bdce4d58acac353e64b8374cb2dab913"
+    },
+    "candidate-witness/quantized/ml_bundle/manifest.json": {
+      "bytes": 1595,
+      "sha256": "15e3b85391449281f0253efcff0b547a21fa0a1866d59331d9125cbbfe2c58ea"
+    },
+    "candidate-witness/quantized/ml_bundle/windows.parquet": {
+      "bytes": 6245,
+      "sha256": "2ea9e0861d4a1fa4e1bb198a87d237a906de3972b1dd09372610e05bf848a65a"
+    },
+    "candidate-witness/regular/ml_bundle/manifest.json": {
+      "bytes": 1577,
+      "sha256": "f8ba921c23f0773a56a50b36f34626254247090e111bf0e7ac25b047bb852ce4"
+    },
+    "candidate-witness/regular/ml_bundle/windows.parquet": {
+      "bytes": 6245,
+      "sha256": "2ea9e0861d4a1fa4e1bb198a87d237a906de3972b1dd09372610e05bf848a65a"
+    },
+    "candidate-witness/short_fallback/ml_bundle/manifest.json": {
+      "bytes": 1581,
+      "sha256": "2c4caa5be5b3c4f11d384a283d57cbc415a5adc06218821d23eea2657335c04f"
+    },
+    "candidate-witness/short_fallback/ml_bundle/windows.parquet": {
+      "bytes": 6072,
+      "sha256": "b7902d8d9a1178b6d6bf16d8cfdaa14eaebeeffb60b376a1ab6f34258137e0a1"
+    },
+    "consumer-external-predictions-d7459fa6.py": {
+      "bytes": 18051,
+      "sha256": "decff22c1e2e661a3ce21679db68b667ea44fa5b18df8501204d7d23161cc906"
+    },
+    "consumer-review.json": {
+      "bytes": 2110,
+      "sha256": "e5bc18adc0714e78eed167ba22959c74379f3b2883a14cac470d52f1307e5d0d"
+    },
+    "drivers/freeze_baseline.py": {
+      "bytes": 5479,
+      "sha256": "0f11c18964cd9df458b7b08e2599e9a6e23508f6328420dcbc71b726ed73d523"
+    },
+    "drivers/receive_metadata.py": {
+      "bytes": 3461,
+      "sha256": "532dda34b0cc42a5d306632c9535afbe72d8ee850f97c52eb111f2ff0b4557af"
+    },
+    "drivers/receive_metadata_final.py": {
+      "bytes": 3455,
+      "sha256": "adf60bc72ddda70585aa6c679cba3d3f783343b7225bcd9eca8f37485746492e"
+    },
+    "drivers/receive_witness.py": {
+      "bytes": 3385,
+      "sha256": "5ebf8779c025e2bfd80a040339af04ae6d7a5314a667c75d388c666636789b8d"
+    },
+    "paired-witness.json": {
+      "bytes": 6628,
+      "sha256": "fc27a2bb9f88c7ab2308ec2b8ff66d643823feeacdd4acc77595878236d608d6"
+    },
+    "ruff-final.log": {
+      "bytes": 19,
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+    },
+    "ruff.json": {
+      "bytes": 1861,
+      "sha256": "f8bf781a79e7eb6e0fb2477c583fdbcbd674209b7ed3ba0787c13acbba56ae07"
+    },
+    "ruff.log": {
+      "bytes": 1496,
+      "sha256": "33b852430848861249a8ecefe4f57d9aa3c38ad52da1c3fcb50702a34a5c6107"
+    },
+    "runtime.patch": {
+      "bytes": 2247,
+      "sha256": "15b0c08d3caf10b78da08883460d712e133652b000469a8bf88809663589f185"
+    },
+    "source-preservation.json": {
+      "bytes": 802,
+      "sha256": "40aff8f3f7d0505dad63cc49af85a246221e1c9508e19b4467603927dcdb9e76"
+    },
+    "source/candidate-job.py": {
+      "bytes": 10005,
+      "sha256": "38b7161f081ef038e6ce464dd3b82ca2b49f775ad8988010243743274d6fc5e6"
+    },
+    "source/final-test_ml_bundle_metadata.py": {
+      "bytes": 7257,
+      "sha256": "b2104dd43f464629e284fe946126a65fa5423531f67b9fd165b702f888cd799d"
+    },
+    "source/original-job.py": {
+      "bytes": 9419,
+      "sha256": "c14c74760e20c818ce5e2428d0b03a8a949899b0bba6c46e37fa8fd797631c75"
+    },
+    "test_ml_bundle_metadata.executed.py": {
+      "bytes": 7244,
+      "sha256": "42a63d081d709c6953fe2e535590a346f8bf073890a63769762ff1bf56e1e443"
+    }
+  },
+  "owner": "chatgpt:/root/production_execution",
+  "receiving": {
+    "all_three_windows_byte_identical": true,
+    "earlier_same_producer_combined": {
+      "counts": {
+        "errors": 0,
+        "failures": 0,
+        "passed": 13,
+        "skipped": 0,
+        "tests": 13
+      },
+      "receipt_sha256": "0255f613053c85f98183aef4ff7c5781bdce4d58acac353e64b8374cb2dab913",
+      "scope": "Five inherited pipeline/CLI/eval controls plus eight pre-lint test controls. Final identical eight-test comparison is recorded separately; earlier source/receipts remain retained."
+    },
+    "final_candidate_receipt_sha256": "472821cef185e41dece47398d3a76f032195fe51cff8a6d333bd948d961729d0",
+    "final_original_receipt_sha256": "70c6d0bb039b40cd9c031f36c83b9eabf26b12039e1aa9e9cc68887ee3b362fd",
+    "final_paired_candidate": {
+      "errors": 0,
+      "failures": 0,
+      "passed": 8,
+      "skipped": 0,
+      "tests": 8
+    },
+    "final_paired_original": {
+      "errors": 0,
+      "failures": 8,
+      "passed": 0,
+      "skipped": 0,
+      "tests": 8
+    },
+    "original_fixture_files_unchanged": 12,
+    "paired_witness_sha256": "fc27a2bb9f88c7ab2308ec2b8ff66d643823feeacdd4acc77595878236d608d6",
+    "regular_and_quantized_window_sha256": "2ea9e0861d4a1fa4e1bb198a87d237a906de3972b1dd09372610e05bf848a65a",
+    "schema_and_final_output_receipts": "passed",
+    "scoped_ruff": "passed after two test-only lint corrections; original Ruff result retained",
+    "short_fallback_window_sha256": "b7902d8d9a1178b6d6bf16d8cfdaa14eaebeeffb60b376a1ab6f34258137e0a1"
+  },
+  "recorded_at": "2026-10-08T15:24:51.181308+00:00",
+  "review_boundaries": {
+    "current_consumers": "Read-only at base70f34e3; exact paths/hashes in consumer-review.json",
+    "excluded": "Numeric algorithms, interpolation/normalization implementation, kinematics/evaluator owners, schemas, unrelated internal manifest self-digest, deployment and hardware",
+    "hosted_supported_windows_gate": "pending at packaging time",
+    "pending_external_evaluator": "Read-only PR65 headd7459fa6; no receiving or source mutation of another owner",
+    "producer_only_manifest_dictionary_changed": true,
+    "source_and_artifact_review": "Independent source review tracked outside this archive so its actual attribution can be preserved after this packet freeze"
+  },
+  "schema": "capture.ml_bundle_metadata.evidence/1",
+  "source": {
+    "candidate_producer_sha256": "38b7161f081ef038e6ce464dd3b82ca2b49f775ad8988010243743274d6fc5e6",
+    "contract_doc_sha256": "7c78ab88535aaa8998e443fb39a1167a05a6d7e14f93da252a3792bdd862ae3c",
+    "final_test_sha256": "b2104dd43f464629e284fe946126a65fa5423531f67b9fd165b702f888cd799d",
+    "original_producer_sha256": "c14c74760e20c818ce5e2428d0b03a8a949899b0bba6c46e37fa8fd797631c75",
+    "runtime_patch_sha256": "15b0c08d3caf10b78da08883460d712e133652b000469a8bf88809663589f185"
+  }
+}

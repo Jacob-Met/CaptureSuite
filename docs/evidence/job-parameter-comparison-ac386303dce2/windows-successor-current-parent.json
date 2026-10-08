@@ -1,0 +1,202 @@
+{
+  "schema": "capture.job_parameter_comparison.windows_successor_composition/1",
+  "parent": "11cc78297d8d214407aea693548af4de855d61da",
+  "parent_tree": "2704707993e09393fa6b7d8f319ff0b58d6a2dfc",
+  "parent_leaves": 1070,
+  "previous_head": "1980c6920001a57f9cdbc496d9f1e3c4f54134ae",
+  "materialized_unchanged_leaves": 586,
+  "canonical_tree_carried_unmaterialized_leaves": 482,
+  "missing_unrelated_source": [],
+  "mismatches": [],
+  "intended_existing_modifications": [
+    "desktop/capture_desktop/widgets_analysis_plots.py",
+    "docs/design/research/PROGRESS.md"
+  ],
+  "full_parent_progress_sha1": "87bd0dd7e48f66a61dd75322422d39e8c546d34b",
+  "source_files": [
+    {
+      "path": "desktop/capture_desktop/analysis_job_comparison.py",
+      "bytes": 13045,
+      "sha256": "3fcc013cedffba87cdfdf105f80502b60bcfdca8c298e6b8feb20da2348d0966",
+      "git_blob_sha1": "a8496ac1e07ef649ba5d8b750ea72db45214d408"
+    },
+    {
+      "path": "desktop/capture_desktop/widgets_analysis_comparison.py",
+      "bytes": 14400,
+      "sha256": "bd0adca471711350b45702bf7c625b28c348321be43c6eaecd047da33304fc1d",
+      "git_blob_sha1": "e770b14c04fe2e36e98a08913ac8f42baa05e980"
+    },
+    {
+      "path": "desktop/capture_desktop/widgets_analysis_plots.py",
+      "bytes": 10075,
+      "sha256": "3d9e2a5843acf530fbffd4dcb42bccff71822801ce0df0c037a72a3d6e7d07da",
+      "git_blob_sha1": "8938b536f13479a424ffb3cd913a4f3364de8d32"
+    },
+    {
+      "path": "tests/ui/test_analysis_job_comparison.py",
+      "bytes": 17558,
+      "sha256": "81e931c5dfe9cd67b3f38117e4e2fd08d1a3b8c395c46cc02ce28839541fbfe0",
+      "git_blob_sha1": "26b8fe1772fb66552f20a22c00fe53c6e689edbb"
+    },
+    {
+      "path": "tests/ui/test_analysis_job_file_reads.py",
+      "bytes": 3650,
+      "sha256": "2f862646186213e4f9ad4ec1427011fc009887be86bd112b4181776f2d159372",
+      "git_blob_sha1": "518fb9f79ab3a3ea3817b8a36a6b9450ef1198af"
+    }
+  ],
+  "shared_module_definitions_identical_to_original_publication": [
+    "_hex_color",
+    "SyncDashboardView",
+    "FigureGallery",
+    "JobInspector"
+  ],
+  "incoming_paths": [
+    {
+      "path": "docs/design/ML_BUNDLE_METADATA.md",
+      "status": "added",
+      "sha": "094754af9360caf6538ae3c7de1686127e2070b4"
+    },
+    {
+      "path": "docs/design/research/ANALYSIS_SCOPE_SEMANTICS.md",
+      "status": "modified",
+      "sha": "0e2c79ebf857174f5531ff03f9af6b5354070b31"
+    },
+    {
+      "path": "docs/design/research/PROGRESS.md",
+      "status": "modified",
+      "sha": "87bd0dd7e48f66a61dd75322422d39e8c546d34b"
+    },
+    {
+      "path": "docs/evidence/ml-bundle-metadata-713adaab/README.md",
+      "status": "added",
+      "sha": "727b83de45f141a04135bf82c5e7b5d7ace8b367"
+    },
+    {
+      "path": "docs/evidence/ml-bundle-metadata-713adaab/current-main-composition.json",
+      "status": "added",
+      "sha": "b1ace1738ab9feb6d89db38e56751321307ed255"
+    },
+    {
+      "path": "docs/evidence/ml-bundle-metadata-713adaab/landed-evaluator/pytest.log",
+      "status": "added",
+      "sha": "5cc98c50e05783151b576824c461f9507d413346"
+    },
+    {
+      "path": "docs/evidence/ml-bundle-metadata-713adaab/landed-evaluator/pytest.xml",
+      "status": "added",
+      "sha": "c36d34f1c40337041027bb044845036f6cfccf44"
+    },
+    {
+      "path": "docs/evidence/ml-bundle-metadata-713adaab/landed-evaluator/read_landed_evaluator.py",
+      "status": "added",
+      "sha": "f4dfa747162092a8cf3a1de9a729e6f147da3a25"
+    },
+    {
+      "path": "docs/evidence/ml-bundle-metadata-713adaab/landed-evaluator/receipt.json",
+      "status": "added",
+      "sha": "dab4fba08da69a2d55be73dacb686eedbe9589e3"
+    },
+    {
+      "path": "docs/evidence/ml-bundle-metadata-713adaab/landed-evaluator/receive_landed_evaluator.py",
+      "status": "added",
+      "sha": "4d6a8326d394661b1ed6484481b318956bbeca74"
+    },
+    {
+      "path": "docs/evidence/ml-bundle-metadata-713adaab/manifest.json",
+      "status": "added",
+      "sha": "7b859f37dbc73f9a29e97447838662c15761b347"
+    },
+    {
+      "path": "docs/evidence/ml-bundle-metadata-713adaab/peer-ml-bundle-review.json",
+      "status": "added",
+      "sha": "5b69854fb48a4be64ca128c35a4fe722d937377a"
+    },
+    {
+      "path": "docs/evidence/ml-bundle-metadata-713adaab/receiving.tar.gz",
+      "status": "added",
+      "sha": "29ad126c8c69591ffde3e431218741ca85134ee5"
+    },
+    {
+      "path": "docs/evidence/ml-bundle-metadata-713adaab/root-integration-review-20261008.json",
+      "status": "added",
+      "sha": "8a53ad2dc3d373586571518c1e46863b6c160847"
+    },
+    {
+      "path": "docs/evidence/sync-anchor-request-bd1abdb2f886-20261008/README.md",
+      "status": "added",
+      "sha": "e420bee3f9a031d97e008b5eaaab0c0b8e36f649"
+    },
+    {
+      "path": "docs/evidence/sync-anchor-request-bd1abdb2f886-20261008/current-finalizer-evidence.tar.gz",
+      "status": "added",
+      "sha": "b157de2f3644138a5349b23ec90d052cefebfd80"
+    },
+    {
+      "path": "docs/evidence/sync-anchor-request-bd1abdb2f886-20261008/current-finalizer-package.json",
+      "status": "added",
+      "sha": "00f509effd55c92bf53d9f82b20cf2991e7c28d1"
+    },
+    {
+      "path": "docs/evidence/sync-anchor-request-bd1abdb2f886-20261008/current-predictions-evidence.tar.gz",
+      "status": "added",
+      "sha": "0767d2388dadf9b0d3b3baf9750d335ab019b89c"
+    },
+    {
+      "path": "docs/evidence/sync-anchor-request-bd1abdb2f886-20261008/current-predictions-package.json",
+      "status": "added",
+      "sha": "96462a082f59ee279a9f192312e9407dc983c0a2"
+    },
+    {
+      "path": "docs/evidence/sync-anchor-request-bd1abdb2f886-20261008/evidence.tar.gz",
+      "status": "added",
+      "sha": "6476538ae6a8a266f55aacf427549b7983fa1b19"
+    },
+    {
+      "path": "libs/python/capture_analysis/capture_analysis/jobs.py",
+      "status": "modified",
+      "sha": "dd25dd3d6cc4b583f0fe6cfb352fba10be22352b"
+    },
+    {
+      "path": "libs/python/capture_analysis/capture_analysis/ml_bundle/job.py",
+      "status": "modified",
+      "sha": "8ff6cf51922d84d85b25b9c5be61a4c8a540ea5b"
+    },
+    {
+      "path": "tests/analysis/test_ml_bundle_metadata.py",
+      "status": "added",
+      "sha": "e5b932680e90ac97d8f0a608ec0303442c4cad65"
+    },
+    {
+      "path": "tests/analysis/test_sync_anchor_request.py",
+      "status": "added",
+      "sha": "ead08b6cd74455115fa1e9f2e83e9ea4a72dcd18"
+    }
+  ],
+  "publication_policy": "Construct a genuine descendant of the original PR head and current canonical parent. The complete current-parent Git tree supplies every unrelated leaf/mode/type; only the recorded comparison source, tests, documentation and uniquely scoped evidence are overlaid. No force push.",
+  "qualification_limits": "The unchanged original comparison tests retain their retry assertions. Native source qualification and the first failed Windows gate retain their exact source pins. Actual successor Windows receiving is required.",
+  "preparation_note": "The first write of this completed source comparison hit ENOSPC. Three exact already-capsuled redundant raw records were losslessly compacted with original digests retained. Re-executing the unchanged comparisons writes this receipt; no source or assertions were altered.",
+  "independent_successor_receiving": {
+    "contributor": "chatgpt-ac386303dce2/root",
+    "disposition": "Bounded source accepted for normal publication; actual current-composition Windows CI required",
+    "capsule": "root/windows-successor-independent.json.gz",
+    "sha256": "29f4f93cc78992d6d5ffe8ccb173dd6a868664e37be69e0fa59a50aa49ae753b",
+    "members": 21,
+    "original_member_bytes": 140451,
+    "native_windows_python": "3.13.15",
+    "native_windows_original": {
+      "passed": 4,
+      "failed": 2,
+      "skipped": 0
+    },
+    "native_windows_successor": {
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0
+    },
+    "unchanged_linux_qt_keyboard_cases": 16,
+    "unchanged_linux_qt_wrapper_cases": 5,
+    "qt_runtime": "Python3.12.14/PySide6+Qt6.11.2",
+    "source_unchanged": true
+  }
+}

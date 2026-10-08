@@ -85,13 +85,22 @@ def _read_regular(path: Path) -> bytes:
         flags |= getattr(os, "O_NOFOLLOW", 0) | getattr(os, "O_NONBLOCK", 0)
         with os.fdopen(os.open(path, flags), "rb") as stream:
             opened = os.fstat(stream.fileno())
-            if not stat.S_ISREG(opened.st_mode) or _file_identity(before) != _file_identity(opened):
+            # Windows can expose creation time through lstat's ctime and change
+            # time through fstat's ctime. Match the file ID across APIs, then
+            # compare all metadata only within the same path/handle family.
+            if not stat.S_ISREG(opened.st_mode) or (before.st_dev, before.st_ino) != (
+                opened.st_dev,
+                opened.st_ino,
+            ):
                 raise JobParameterError(f"{path.name} changed while being opened; reload this job.")
             data = stream.read(MAX_JSON_BYTES + 1)
             after = os.fstat(stream.fileno())
         if len(data) > MAX_JSON_BYTES or len(data) != before.st_size:
             raise JobParameterError(f"{path.name} changed while being read; reload this job.")
-        if _file_identity(before) != _file_identity(after):
+        if _file_identity(opened) != _file_identity(after):
+            raise JobParameterError(f"{path.name} changed while being read; reload this job.")
+        current = path.lstat()
+        if not stat.S_ISREG(current.st_mode) or _file_identity(before) != _file_identity(current):
             raise JobParameterError(f"{path.name} changed while being read; reload this job.")
         return data
     except OSError as exc:

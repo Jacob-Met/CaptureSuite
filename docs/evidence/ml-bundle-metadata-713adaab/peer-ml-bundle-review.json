@@ -1,0 +1,60 @@
+{
+  "decision": "approve",
+  "design_note_sha256": "7c78ab88535aaa8998e443fb39a1167a05a6d7e14f93da252a3792bdd862ae3c",
+  "findings": [
+    "Metadata matches the existing integer-hop center loop and nearest-feature/window-median target aggregation.",
+    "Window endpoints remain inclusive; effective endpoint separation and hop correctly describe integer nanosecond quantization.",
+    "Configured rate is explicitly distinguished from observed cadence. The strict endpoint-span comparison selects median_fallback exactly when no regular center fits.",
+    "Both normalization values none describe unchanged incoming feature/target units without imposing a false shared raw_degrees unit.",
+    "The schema already permits the method string, extra grid parameters and none normalization. No schema edit is needed.",
+    "Current evaluator, desktop summary and dispatch retain their existing targetColumns, gridId, provisional, values and caller-parameter behavior.",
+    "Pending PR65 evaluator binds exact raw manifest/windows digests, selected session and registry-column units; it does not interpret the changed normalization/grid/timing description.",
+    "Independent byte comparison confirms every producer byte outside the annotated manifest dictionary is unchanged and actual baseline/candidate final test bytes match exactly."
+  ],
+  "frozen_native_commit": "f151a1d85a9c9e09c7708701c4a1faadfe0ad777",
+  "independent_comparison": {
+    "actual_final_test_bytes_equal": true,
+    "baseline_sha256": "c14c74760e20c818ce5e2428d0b03a8a949899b0bba6c46e37fa8fd797631c75",
+    "initial_script_limit": "First read-only selector handled ast.Assign only and stopped at an assertion because this source uses ast.AnnAssign. Corrected selector completed the byte comparison; neither script ran tests or wrote source.",
+    "prefix_exact": true,
+    "suffix_exact": true,
+    "test_sha256": "b2104dd43f464629e284fe946126a65fa5423531f67b9fd165b702f888cd799d"
+  },
+  "issue": 72,
+  "limits": [
+    "Source/receipt review only; no reviewer runtime replay.",
+    "No owner source, fixture, output or consumer mutation.",
+    "Existing inner manifest self-digest convention remains outside this repair.",
+    "Read consumer coverage is pinned, not a claim about every future consumer."
+  ],
+  "patch_sha256": "15b0c08d3caf10b78da08883460d712e133652b000469a8bf88809663589f185",
+  "producer_sha256": "38b7161f081ef038e6ce464dd3b82ca2b49f775ad8988010243743274d6fc5e6",
+  "read_receipts": {
+    "baseline_final": "70c6d0bb039b40cd9c031f36c83b9eabf26b12039e1aa9e9cc68887ee3b362fd",
+    "candidate_final": "472821cef185e41dece47398d3a76f032195fe51cff8a6d333bd948d961729d0",
+    "consumer_review": "e5bc18adc0714e78eed167ba22959c74379f3b2883a14cac470d52f1307e5d0d",
+    "paired_windows": "fc27a2bb9f88c7ab2308ec2b8ff66d643823feeacdd4acc77595878236d608d6",
+    "pending_consumer_source": "decff22c1e2e661a3ce21679db68b667ea44fa5b18df8501204d7d23161cc906",
+    "source_preservation": "40aff8f3f7d0505dad63cc49af85a246221e1c9508e19b4467603927dcdb9e76"
+  },
+  "read_scope": [
+    "Entire runtime patch and producer",
+    "Entire eight-case new test file",
+    "Existing manifest schema",
+    "Design note",
+    "Current identity evaluator",
+    "Desktop summary and dispatch context",
+    "Entire pinned pending PR65 evaluator at d7459fa62dd7a57d5565214e10638e055ad5877c",
+    "Final paired receipts and three immutable Parquet witnesses"
+  ],
+  "recorded_at": "2026-10-08T15:36:12.196469+00:00",
+  "reported_owner_receiving": {
+    "baseline_final": "0 passed, 8 failed, 0 errors/skips",
+    "candidate_final": "8 passed, 0 failed/errors/skips",
+    "original_parquet_outputs": "All three original window files are byte-identical to candidate output."
+  },
+  "repository": "Jacob-Met/CaptureSuite",
+  "reviewer": "chatgpt:/root/mac_execution",
+  "schema": "capture.ml_bundle_metadata.independent_source_review/1",
+  "test_sha256": "b2104dd43f464629e284fe946126a65fa5423531f67b9fd165b702f888cd799d"
+}

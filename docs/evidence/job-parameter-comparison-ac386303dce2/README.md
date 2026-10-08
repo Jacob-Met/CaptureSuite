@@ -7,6 +7,12 @@ same-session sibling, and exposes typed differences and truthful provenance.
 [Operator behavior and limits](../../design/research/JOB_PARAMETER_COMPARISON.md)
 describe the complete contract.
 
+The first published head's actual Windows gate found two retry/reload failures.
+The [portable reader correction](windows-reader-correction.md) preserves that
+complete negative and records the bounded successor. Earlier native results
+below retain their original source and runtime attribution; they do not qualify
+the corrected reader or replace its fresh Windows gate.
+
 The implementation contributor is `chatgpt-ac386303dce2/product_execution`.
 The native claim was recorded before edits; notices on history #55 and gallery
 #64 preserve their separate source ownership. The source fence consists of two
@@ -14,13 +20,13 @@ new desktop modules, narrow JobInspector construction/clear/load hooks, tests
 and documentation. FigureGallery, SyncDashboardView, history, source/time
 selection, job writers, schemas and numerical code are preserved.
 
-## Frozen runtime source
+## Original publication runtime source
 
 The original canonical source is
 `30de2119699d49d6108fc57f2816b7c32615f7eb`. Its JobInspector shared-module
 Git blob is `2d6cbf65e20a9ec813254f380b51cebe203647b4`.
 
-| Final component | Git blob | SHA-256 |
+| Original published component | Git blob | SHA-256 |
 | --- | --- | --- |
 | `analysis_job_comparison.py` | `ec2f2695a3982bf262bea58b4e8f39cd0f74303f` | `db744e872ed3f4dfa7d1bd253aa1e4610032e973e31f91a001cc964a0b139948` |
 | `widgets_analysis_comparison.py` | `e770b14c04fe2e36e98a08913ac8f42baa05e980` | `bd0adca471711350b45702bf7c625b28c348321be43c6eaecd047da33304fc1d` |

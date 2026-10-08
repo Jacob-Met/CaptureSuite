@@ -1,0 +1,30 @@
+{
+  "archive_bytes": 440747,
+  "archive_git_blob": "b157de2f3644138a5349b23ec90d052cefebfd80",
+  "archive_sha256": "4daf89d3e87c7cf0d0630399676ab544c22d825779fde455380b61097a18654a",
+  "baseline_counts": {
+    "error": 0,
+    "failure": 11,
+    "passed": 6,
+    "skipped": 0
+  },
+  "candidate_counts": {
+    "error": 0,
+    "failure": 0,
+    "passed": 66,
+    "skipped": 1
+  },
+  "directory_metadata_entries": 1413,
+  "jobs_bytes": 19508,
+  "jobs_git_blob": "ac08d68b636ce17530816118032e81e5d8f734b2",
+  "jobs_sha256": "d0442eab9b03d4e4c2d5a9399e2d040350370e8661fe9e2511d817e8651f6e15",
+  "manifest_entries": 1507,
+  "manifest_sha256": "88861ede16573624391702572c18f0c37affbaa6719b0e4b521726af57b2ccd7",
+  "qualification_sha256": "fab2ec8d8a4c1ab72b1c4028dab07eed6b4258c1b98eafe514177f3b2cbb1775",
+  "regular_members": 1508,
+  "scope": "Original and composed finalizer sources, actual paired native QC/admission/inventory/replacement artifacts, JUnit/logs, explicit unsupported-runtime and missing-MCAP limits.",
+  "source_files_per_variant": 109,
+  "source_parent": "70f34e3b982523b544a9370d2316a1b69d79bd70",
+  "source_tree": "1537621f793d5d5c9b331f3c4d37a79a4af824b7",
+  "symlink_metadata_entries": 48
+}
