@@ -1,0 +1,6 @@
+{
+  "process_exit": 0,
+  "process_seconds": 1.676,
+  "stderr": "This plugin does not support propagateSizeHints()\nThis plugin does not support propagateSizeHints()\nThis plugin does not support propagateSizeHints()\nThis plugin does not support propagateSizeHints()\nThis plugin does not support propagateSizeHints()\n",
+  "stdout_format": "JSON receipt and PNG frames, parsed without edits; receipt and frames preserved separately"
+}

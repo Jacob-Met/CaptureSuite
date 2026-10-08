@@ -1,0 +1,10 @@
+{
+  "method_sha256": "1f7029cb84c999feed1b5b636d65551a75938f5875d09bbff20065aa9d1cc0b2",
+  "source_blob": "ee2db9acacdc92d3aa8ba0bfe12f638e9418f9b4",
+  "runtime_tree": "07d78241dca691015bb3e4d8d260b109672b7de0",
+  "classification": "Non-accepting artifact-capture continuation; no complete native outcome claimed",
+  "reason": "ENOSPC while writing frame/receipt and supervisor artifacts",
+  "receipt_bytes": 0,
+  "receipt_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "preservation": "Original private source, method, partial native fixture and zero-byte receipt were retained without deletion or truncation. The final qualified method emits a complete report and PNG through stdout."
+}

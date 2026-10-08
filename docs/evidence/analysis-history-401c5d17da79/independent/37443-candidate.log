@@ -1,0 +1,18 @@
+This plugin does not support propagateSizeHints()
+candidate: fresh screen reopens real prior A result into gallery and inspector: True
+candidate: package switch clears prior package result and launch targets: True
+candidate: same basename in package B resolves only B saved figures and metadata: True
+candidate: malformed-manifest is visibly unavailable: True
+This plugin does not support propagateSizeHints()
+candidate: malformed-manifest refuses opening without replacing valid B view: True
+candidate: missing-manifest is visibly unavailable: True
+candidate: missing-manifest refuses opening without replacing valid B view: True
+candidate: foreign-session is visibly unavailable: True
+candidate: foreign-session refuses opening without replacing valid B view: True
+candidate: foreign-directory is visibly unavailable: True
+candidate: foreign-directory refuses opening without replacing valid B view: True
+candidate: unavailable-row inspection leaves all saved bytes unchanged: True
+candidate: Open revalidates cached row when manifest disappears: True
+candidate: failed Open preserves every persisted byte after controlled fixture rename: True
+This plugin does not support propagateSizeHints()
+candidate: actual QThread QC result exists before deferred delivery: True

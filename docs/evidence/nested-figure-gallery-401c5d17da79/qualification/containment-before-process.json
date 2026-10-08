@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python",
+    "-m",
+    "pytest",
+    "tests/ui/test_analysis_nested_gallery.py::test_png_discovery_refuses_external_file_links_and_directories",
+    "-q",
+    "-ra",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=/dev/shm/capturesuite-gallery-401c5d17da79/tmp/containment-before"
+  ],
+  "exit": 1,
+  "seconds": 1.357,
+  "gallery_sha256": "852c9059d01fac9ba38edbe228e0920e8cf3298bb8e1a9d6610b148f6d1e7ffb",
+  "test_sha256": "727340556a0d8e4178b62157ba9680a59d1c43158abb1bf979b21be8c98c591f",
+  "expected_failure": "External PNG symlink still appears; directory named PNG is already excluded."
+}

@@ -1,0 +1,10 @@
+.
+=============================== warnings summary ===============================
+tests/ui/test_analysis_workspace_composition.py::test_sources_history_comparison_and_gallery_share_package_lifetime
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.MessageMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+
+tests/ui/test_analysis_workspace_composition.py::test_sources_history_comparison_and_gallery_share_package_lifetime
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.ScalarMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+1 passed, 2 warnings in 46.01s

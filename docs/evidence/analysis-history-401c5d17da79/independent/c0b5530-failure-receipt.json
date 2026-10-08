@@ -1,0 +1,345 @@
+{
+  "archives": {
+    "candidate-reopened-a.png": {
+      "bytes": 204136,
+      "path": "/dev/shm/hamon-401c5d17da79-capturesuite-receiving/evidence/c0b5530-candidate-reopened-a.png",
+      "sha256": "a4e78ff532b45507142b2053db0b2391994cb51f9120eeaebb5135cf76755b8c"
+    },
+    "candidate-reopened-b.png": {
+      "bytes": 217136,
+      "path": "/dev/shm/hamon-401c5d17da79-capturesuite-receiving/evidence/c0b5530-candidate-reopened-b.png",
+      "sha256": "a87a869be6e6f65ed50af9e63f386d54edcef524f3f1e44072d1f2318824d6a7"
+    },
+    "candidate.log": {
+      "bytes": 4375,
+      "path": "/dev/shm/hamon-401c5d17da79-capturesuite-receiving/evidence/c0b5530-candidate.log",
+      "sha256": "6aae6bbe36f9f7070a42910ecbbf2297a3dd222d5834cbeabbd816e4003f39b4"
+    },
+    "eventloop-receipt.json": {
+      "bytes": 2679,
+      "path": "/dev/shm/hamon-401c5d17da79-capturesuite-receiving/evidence/c0b5530-eventloop-receipt.json",
+      "sha256": "17a363b7ffee224a1f65f1eea6a61c4e83d47e8b30ae68aab07ccb2298c425d1"
+    },
+    "eventloop.log": {
+      "bytes": 375,
+      "path": "/dev/shm/hamon-401c5d17da79-capturesuite-receiving/evidence/c0b5530-eventloop.log",
+      "sha256": "42724fb02c89311d1a34d82672cbc9c9034c7ac9a376ec365c4f6c53bc01ed52"
+    }
+  },
+  "assertions_completed": 15,
+  "candidate_commit": "c0b5530c03cce3e42a0430e5411cddf1df716e19",
+  "candidate_tree": "c384c9553757fb1614405d124a5026ae49b4be71",
+  "crash_location": "native thread has no Python frame; main thread in AnalysisScreen._on_thread_finished -> AnalysisHistory.refresh -> Path.resolve",
+  "fixture_files": {
+    "package-a.mmsession/events/annotations.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "package-a.mmsession/events/checkpoints.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "package-a.mmsession/events/sync_anchors.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "package-a.mmsession/integrity.json": {
+      "bytes": 225,
+      "sha256": "2fb4194b22d4b1c373f25f9ecab51d0c80e14f42a52f53293fd727ce5418f140"
+    },
+    "package-a.mmsession/manifest.json": {
+      "bytes": 250,
+      "sha256": "6cc54886cc63fa1263a4077fec322454fdfa133a408836a75451fd77eb7c5243"
+    },
+    "package-a.mmsession/processing/jobs/late-baseline-actual-qc/job_manifest.json": {
+      "bytes": 2400,
+      "sha256": "bbb88191cb522d3314139b6ebcb4cd2e6b8aa6c6b7df362d0653a0a75dcba7bc"
+    },
+    "package-a.mmsession/processing/jobs/late-baseline-actual-qc/logs/job.log": {
+      "bytes": 187,
+      "sha256": "59f307f1af8f7e20fe908e17afdf3047f6d7eda3d04d2d7e5153f258b6377d37"
+    },
+    "package-a.mmsession/processing/jobs/late-baseline-actual-qc/params.json": {
+      "bytes": 260,
+      "sha256": "88f55fe8dddb0794c98f693dd21fdd7764a6bac45203e11ba52eab3ebaa40fc3"
+    },
+    "package-a.mmsession/processing/jobs/late-baseline-actual-qc/reports/qc.html": {
+      "bytes": 1629,
+      "sha256": "db815562d270dc133bce019f0c0791bea4e9af52fc62ce7107a41ea6a8485d20"
+    },
+    "package-a.mmsession/processing/jobs/late-baseline-actual-qc/reports/qc.json": {
+      "bytes": 1296,
+      "sha256": "2a1addc8accb001643f81a4b1061458f8fa27de6ffcc157fbed5ddb837c9cf27"
+    },
+    "package-a.mmsession/processing/jobs/late-candidate-actual-qc/job_manifest.json": {
+      "bytes": 2401,
+      "sha256": "b8e5cceef8c8cc17430606013cc72df5e779880bb77ffaedd9fa043c908fd171"
+    },
+    "package-a.mmsession/processing/jobs/late-candidate-actual-qc/logs/job.log": {
+      "bytes": 188,
+      "sha256": "c2b223c3686c245380c6b3788d45deb8f4a56ca9d420039af2ff598f6eb66cc1"
+    },
+    "package-a.mmsession/processing/jobs/late-candidate-actual-qc/params.json": {
+      "bytes": 261,
+      "sha256": "9aad1ac26d07fdbf51e882ad70c97ae15942b3057755083b0a8b063506d23fe8"
+    },
+    "package-a.mmsession/processing/jobs/late-candidate-actual-qc/reports/qc.html": {
+      "bytes": 1629,
+      "sha256": "db815562d270dc133bce019f0c0791bea4e9af52fc62ce7107a41ea6a8485d20"
+    },
+    "package-a.mmsession/processing/jobs/late-candidate-actual-qc/reports/qc.json": {
+      "bytes": 1296,
+      "sha256": "2a1addc8accb001643f81a4b1061458f8fa27de6ffcc157fbed5ddb837c9cf27"
+    },
+    "package-a.mmsession/processing/jobs/late-eventloop-actual-qc/job_manifest.json": {
+      "bytes": 2401,
+      "sha256": "612f56635415e2ab8882b9545257b1b2cf50401bb0b3a45358e98904ac908f41"
+    },
+    "package-a.mmsession/processing/jobs/late-eventloop-actual-qc/logs/job.log": {
+      "bytes": 188,
+      "sha256": "1fe30cd8c3f36e5370ac406741decd78802073fb793d43b6d5cba99722d346dd"
+    },
+    "package-a.mmsession/processing/jobs/late-eventloop-actual-qc/params.json": {
+      "bytes": 261,
+      "sha256": "be905b67387880dbfa478ee1a90def66691d600c2ca2a348ef518e99bd82384f"
+    },
+    "package-a.mmsession/processing/jobs/late-eventloop-actual-qc/reports/qc.html": {
+      "bytes": 1629,
+      "sha256": "db815562d270dc133bce019f0c0791bea4e9af52fc62ce7107a41ea6a8485d20"
+    },
+    "package-a.mmsession/processing/jobs/late-eventloop-actual-qc/reports/qc.json": {
+      "bytes": 1296,
+      "sha256": "2a1addc8accb001643f81a4b1061458f8fa27de6ffcc157fbed5ddb837c9cf27"
+    },
+    "package-a.mmsession/processing/jobs/retained-prior/features/_schema.json": {
+      "bytes": 2880,
+      "sha256": "c80f7d1e05378bf2399098e9887fc463edda22e366236eab3e9b1b0526d1f0f0"
+    },
+    "package-a.mmsession/processing/jobs/retained-prior/features/emg/sim.emg.main/windows.csv": {
+      "bytes": 501,
+      "sha256": "0c9b8016e1295976eb10eabdb913efff752cf9936bf4a7cab1d3107a85ca97ff"
+    },
+    "package-a.mmsession/processing/jobs/retained-prior/features/emg/sim.emg.main/windows.parquet": {
+      "bytes": 7411,
+      "sha256": "c5d6d1727acd151ca0b1430eecb0dd0491fe2863a9f7c163d7524bfed584e60f"
+    },
+    "package-a.mmsession/processing/jobs/retained-prior/features/imu/sim.imu.upper/windows.csv": {
+      "bytes": 628,
+      "sha256": "62212faf4179e9050c4d7a2e3530a461c70d0e56b227138e31b0c273bb21a277"
+    },
+    "package-a.mmsession/processing/jobs/retained-prior/features/imu/sim.imu.upper/windows.parquet": {
+      "bytes": 7645,
+      "sha256": "ff4ca0fbfed45e13e95f73d03d8ba56ce0f8305868012ecb5101df277a449ba9"
+    },
+    "package-a.mmsession/processing/jobs/retained-prior/figures/emg_sim.emg.main_channels.png": {
+      "bytes": 91869,
+      "sha256": "4c7a4aee76c4895cf99e38874de271e83a52c0e7389093c14a93344e9dc43853"
+    },
+    "package-a.mmsession/processing/jobs/retained-prior/figures/imu_sim.imu.upper_accel.png": {
+      "bytes": 24298,
+      "sha256": "8cc603bf604d8925ba13be2c77e0bd8d8f8efbce9529e7d459a449fd61e6a8a4"
+    },
+    "package-a.mmsession/processing/jobs/retained-prior/figures/sync_dashboard.png": {
+      "bytes": 37253,
+      "sha256": "bda125c256b17dbd688ec825c2a5b9b8542f346ce95209faf15efadad5c78d48"
+    },
+    "package-a.mmsession/processing/jobs/retained-prior/figures/sync_dashboard_series.json": {
+      "bytes": 1963,
+      "sha256": "ba1181c30b0a3ab1b26b716e56bf0787f2e67aa4178cd511f0106486d04aa8e6"
+    },
+    "package-a.mmsession/processing/jobs/retained-prior/job_manifest.json": {
+      "bytes": 4508,
+      "sha256": "21471f1ee0cae441202b4b704c6cd1359558ac1bf27f077668508eb1368ae6e7"
+    },
+    "package-a.mmsession/processing/jobs/retained-prior/logs/job.log": {
+      "bytes": 179,
+      "sha256": "3cf99c71a0e4e3046b791ad2c04e388adfe452959b315d8dd5df6d278a5aaf63"
+    },
+    "package-a.mmsession/processing/jobs/retained-prior/params.json": {
+      "bytes": 252,
+      "sha256": "9c0e1ab18949727f29352f1a602ae65d74db48f8453a49faa72fbc95c518b35b"
+    },
+    "package-a.mmsession/processing/jobs/retained-prior/reports/qc.html": {
+      "bytes": 1629,
+      "sha256": "db815562d270dc133bce019f0c0791bea4e9af52fc62ce7107a41ea6a8485d20"
+    },
+    "package-a.mmsession/processing/jobs/retained-prior/reports/qc.json": {
+      "bytes": 1296,
+      "sha256": "2a1addc8accb001643f81a4b1061458f8fa27de6ffcc157fbed5ddb837c9cf27"
+    },
+    "package-a.mmsession/sources/sim.emg.main/health/gaps.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "package-a.mmsession/sources/sim.emg.main/source.json": {
+      "bytes": 112,
+      "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10"
+    },
+    "package-a.mmsession/sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap": {
+      "bytes": 1095,
+      "sha256": "6f3b9bd4ce01238f122649a1139a290ea6193893938a95f3ac61dd61a447d997"
+    },
+    "package-a.mmsession/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json": {
+      "bytes": 224,
+      "sha256": "5307697f957309eaca816fa0e20c4799c900e2598a8acf66a59928aa83b305b2"
+    },
+    "package-a.mmsession/sources/sim.imu.upper/source.json": {
+      "bytes": 118,
+      "sha256": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8"
+    },
+    "package-a.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": {
+      "bytes": 1678,
+      "sha256": "c477a0e0865086fbb4154c977def4d93ea5fb38cc098a4862c45b21b966014c9"
+    },
+    "package-a.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": {
+      "bytes": 219,
+      "sha256": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+    },
+    "package-b.mmsession/events/annotations.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "package-b.mmsession/events/checkpoints.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "package-b.mmsession/events/sync_anchors.json": {
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    "package-b.mmsession/integrity.json": {
+      "bytes": 225,
+      "sha256": "2fb4194b22d4b1c373f25f9ecab51d0c80e14f42a52f53293fd727ce5418f140"
+    },
+    "package-b.mmsession/manifest.json": {
+      "bytes": 250,
+      "sha256": "26ea1e6f375028575b0c72477dddff58248a6ab0f1d63a91c797c9c5d44c2af8"
+    },
+    "package-b.mmsession/processing/jobs/foreign-directory": {
+      "symlink": "/dev/shm/hamon-401c5d17da79-capturesuite-receiving/fixtures/package-a.mmsession/processing/jobs/retained-prior"
+    },
+    "package-b.mmsession/processing/jobs/foreign-session/job_manifest.json": {
+      "bytes": 4509,
+      "sha256": "95066d530c9a56380fd58679dae6680d6e3f678064405438c5985e37526aff7a"
+    },
+    "package-b.mmsession/processing/jobs/malformed-manifest/job_manifest.json": {
+      "bytes": 9,
+      "sha256": "69cb18c1151284aa03aa4e6840be1940f366267b30a7e9a64330cd76c68d8bb4"
+    },
+    "package-b.mmsession/processing/jobs/missing-manifest/params.json": {
+      "bytes": 3,
+      "sha256": "ca3d163bab055381827226140568f3bef7eaac187cebd76878e0b63e9e442356"
+    },
+    "package-b.mmsession/processing/jobs/retained-prior/features/_schema.json": {
+      "bytes": 2880,
+      "sha256": "c80f7d1e05378bf2399098e9887fc463edda22e366236eab3e9b1b0526d1f0f0"
+    },
+    "package-b.mmsession/processing/jobs/retained-prior/features/emg/sim.emg.main/windows.csv": {
+      "bytes": 504,
+      "sha256": "d7244bae8dab4e4e8ef00cf72cf387343720e31a25499c3f4741741209d1e9ad"
+    },
+    "package-b.mmsession/processing/jobs/retained-prior/features/emg/sim.emg.main/windows.parquet": {
+      "bytes": 7411,
+      "sha256": "60858ced982730b51829ae8080bd4217f9289373b65b501cc28411fdd1d83af0"
+    },
+    "package-b.mmsession/processing/jobs/retained-prior/features/imu/sim.imu.upper/windows.csv": {
+      "bytes": 628,
+      "sha256": "62212faf4179e9050c4d7a2e3530a461c70d0e56b227138e31b0c273bb21a277"
+    },
+    "package-b.mmsession/processing/jobs/retained-prior/features/imu/sim.imu.upper/windows.parquet": {
+      "bytes": 7645,
+      "sha256": "ff4ca0fbfed45e13e95f73d03d8ba56ce0f8305868012ecb5101df277a449ba9"
+    },
+    "package-b.mmsession/processing/jobs/retained-prior/figures/emg_sim.emg.main_channels.png": {
+      "bytes": 93063,
+      "sha256": "87a315c7e23f334c9c8065cdab60ca26b8af8b965bd0ebaf33645864d0048124"
+    },
+    "package-b.mmsession/processing/jobs/retained-prior/figures/imu_sim.imu.upper_accel.png": {
+      "bytes": 24298,
+      "sha256": "8cc603bf604d8925ba13be2c77e0bd8d8f8efbce9529e7d459a449fd61e6a8a4"
+    },
+    "package-b.mmsession/processing/jobs/retained-prior/figures/sync_dashboard.png": {
+      "bytes": 37408,
+      "sha256": "07ebc1ff60a592f2086dcdfe63652666946329dbadf29dece5b6c84f87dd6082"
+    },
+    "package-b.mmsession/processing/jobs/retained-prior/figures/sync_dashboard_series.json": {
+      "bytes": 1964,
+      "sha256": "01cdce9f387ad77ac1ea7632cee3c1d84fc879671cbf46e195c64bf1ec4a8c52"
+    },
+    "package-b.mmsession/processing/jobs/retained-prior/job_manifest.json": {
+      "bytes": 4508,
+      "sha256": "95acf1efa8439e47fc5b011813f2fc5313a92de692f25459e3d56e68533a0389"
+    },
+    "package-b.mmsession/processing/jobs/retained-prior/logs/job.log": {
+      "bytes": 179,
+      "sha256": "f0c184fbf12257a9ad4e41329ab95a5578ca769ca5fb84d9b9a32a18df8d7f46"
+    },
+    "package-b.mmsession/processing/jobs/retained-prior/params.json": {
+      "bytes": 252,
+      "sha256": "9c0e1ab18949727f29352f1a602ae65d74db48f8453a49faa72fbc95c518b35b"
+    },
+    "package-b.mmsession/processing/jobs/retained-prior/reports/qc.html": {
+      "bytes": 1629,
+      "sha256": "93671b7b67b1bf290a50a7a8d69e6fee6968caa1e540bf0615add4d0d1127671"
+    },
+    "package-b.mmsession/processing/jobs/retained-prior/reports/qc.json": {
+      "bytes": 1296,
+      "sha256": "0c3647238cffb1ae94177f950a9b1407a88e0730b4503cffd27118c4634bc706"
+    },
+    "package-b.mmsession/processing/jobs/selected-before-missing/job_manifest.receiver-held.json": {
+      "bytes": 2400,
+      "sha256": "92e19a48f6c45e672d82c898f3827c8f353bf9e4a705c50f0012ddb033f2e845"
+    },
+    "package-b.mmsession/processing/jobs/selected-before-missing/logs/job.log": {
+      "bytes": 187,
+      "sha256": "75632168a67884e1ae52815a3ea0d9d3826f2d57f6ea8c23f1fa3f72a7591938"
+    },
+    "package-b.mmsession/processing/jobs/selected-before-missing/params.json": {
+      "bytes": 260,
+      "sha256": "564c6f9ab9fc6eed20ffe5a8de9fd55533f59d2783e38b1217cb65f88358b20a"
+    },
+    "package-b.mmsession/processing/jobs/selected-before-missing/reports/qc.html": {
+      "bytes": 1629,
+      "sha256": "93671b7b67b1bf290a50a7a8d69e6fee6968caa1e540bf0615add4d0d1127671"
+    },
+    "package-b.mmsession/processing/jobs/selected-before-missing/reports/qc.json": {
+      "bytes": 1296,
+      "sha256": "0c3647238cffb1ae94177f950a9b1407a88e0730b4503cffd27118c4634bc706"
+    },
+    "package-b.mmsession/sources/sim.emg.main/health/gaps.jsonl": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "package-b.mmsession/sources/sim.emg.main/source.json": {
+      "bytes": 112,
+      "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10"
+    },
+    "package-b.mmsession/sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap": {
+      "bytes": 1094,
+      "sha256": "9e997481c9b39b6a6b2d647df873fea26b04337c41571e77427a7f8ca9cda63b"
+    },
+    "package-b.mmsession/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json": {
+      "bytes": 224,
+      "sha256": "5307697f957309eaca816fa0e20c4799c900e2598a8acf66a59928aa83b305b2"
+    },
+    "package-b.mmsession/sources/sim.imu.upper/source.json": {
+      "bytes": 118,
+      "sha256": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8"
+    },
+    "package-b.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": {
+      "bytes": 1678,
+      "sha256": "c477a0e0865086fbb4154c977def4d93ea5fb38cc098a4862c45b21b966014c9"
+    },
+    "package-b.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": {
+      "bytes": 219,
+      "sha256": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d"
+    }
+  },
+  "fixture_path": "/dev/shm/hamon-401c5d17da79-capturesuite-receiving/fixtures-c0b5530-failure",
+  "harness_sha256": "b46094d3d823145aa07aa088371c6a63343ee7c5d8a06b254c6a4669f8c52da8",
+  "last_completed_assertion": "actual QThread QC result exists before deferred delivery",
+  "native_loop_control": "QApplication.exec control on same source passed 5 checks, exit 0, 0.249 s; this receipt does not claim a native application-loop failure",
+  "no_timeout_occurred": true,
+  "result": "manual-pump receiving process exited 139 after real result persistence and release; full candidate acceptance withheld",
+  "schema": "capturesuite.history.receiving.native-failure.v1"
+}

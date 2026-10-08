@@ -1,0 +1,10 @@
+This plugin does not support propagateSizeHints()
+This plugin does not support propagateSizeHints()
+baseline: baseline reproduces stale A view after switching to B: True
+This plugin does not support propagateSizeHints()
+baseline: actual QThread QC result exists before deferred delivery: True
+baseline: baseline reproduces foreign binding after late real completion: True
+baseline: delivery and reopening perform no persisted writes: True
+baseline: all captured raw package bytes remain unchanged: True
+baseline: no Qt error dialogs or worker failures occurred: True
+{"mode": "baseline", "result": "expected baseline defects reproduced", "checks": 6, "free_bytes": 21540864}

@@ -1,0 +1,5 @@
+{
+  "frame": "composed-history-gallery.png",
+  "review": "The actual frame shows saved-job history, current source selector, both nested channel tabs, linked plots, selected-figure export and Parameters / compare together. Long incumbent output rows overlap in this immediate single frame; it does not establish full-pane readability or attribute a new regression. Functional source/pixel assertions are independently recorded. No runtime modification or further run followed this observation.",
+  "no_new_visual_acceptance": true
+}
