@@ -1,0 +1,24 @@
+[
+  {
+    "args": [
+      "format",
+      "--config",
+      "/workspace/scratch/afe225d6c6be/product_execution/CaptureSuite/pyproject.toml",
+      "/workspace/scratch/afe225d6c6be/coordination_review/camera/review_packaging.py"
+    ],
+    "exit": 0,
+    "stdout": "1 file left unchanged\n",
+    "stderr": ""
+  },
+  {
+    "args": [
+      "check",
+      "--config",
+      "/workspace/scratch/afe225d6c6be/product_execution/CaptureSuite/pyproject.toml",
+      "/workspace/scratch/afe225d6c6be/coordination_review/camera/review_packaging.py"
+    ],
+    "exit": 0,
+    "stdout": "All checks passed!\n",
+    "stderr": ""
+  }
+]

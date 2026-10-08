@@ -1,0 +1,90 @@
+{
+  "recorded_at_utc": "2026-10-08T09:14:46.603540+00:00",
+  "repository": "Jacob-Met/CaptureSuite",
+  "existing_pr": 38,
+  "head": "677026871c39362e9b6e2c816b841fc6393050f0",
+  "base": "d3edda561322a80bfc1491ae4f4c7b0bb94943ea",
+  "implementation_owner": "dd846795-production",
+  "reviewer": "coordination_review",
+  "verdict": "accepted for source packaging and native Linux fixture receiving",
+  "runtime_changes_contributed_by_handoff": 0,
+  "source": {
+    "camera_git_blob": "8b74080cc042c9dc60d6f4569f0c1b6e5b2c7f78",
+    "camera_sha256": "ddb68fccae5e9b5ae66f81ff4859060f27dcc425d6a41c607e9c9c883a6bd842",
+    "manifest_sha256": "6f921746e815083b55f5d81d10c660e9b448ff315b48a2082090b34b350eae03"
+  },
+  "comparison_to_accepted_8167": {
+    "difference": "one CMake COMMENT string",
+    "runtime_commands_byte_identical": true,
+    "manifest_byte_identical": true
+  },
+  "final_independent_helper": {
+    "sha256": "9da0213cf76f0e37d45f3b5d8ae4d125b63c053230f1aa51d8f9d5515834d1d2",
+    "spdx": "GPL-3.0-only",
+    "repository_ruff": "passed"
+  },
+  "final_exact_source_run": {
+    "independent_groups_passed": 6,
+    "independent_groups_failed": 0,
+    "native_commands": 25,
+    "worker_launches": 21,
+    "expected_individual_loader_refusals": 5,
+    "candidate_checks_passed": 17,
+    "candidate_checks_failed": 0,
+    "legacy_launch_exit": 0,
+    "plugin_launch_exit": 0
+  },
+  "final_baseline_replay": {
+    "passed": 10,
+    "failed": 7,
+    "plugin_launch_exit": 127
+  },
+  "configuration_receiving": [
+    "Ninja Multi-Config Debug",
+    "Ninja Multi-Config Release"
+  ],
+  "unverified": [
+    "Windows DLL loader",
+    "MSVC/vcpkg/GStreamer runtime closure",
+    "Media Foundation",
+    "daemon handshake",
+    "hardware capture"
+  ],
+  "artifacts": [
+    {
+      "path": "PR38_RECEIVING.md",
+      "sha256": "57e3115c0a1d9b660ecc407018cc1b8111c4a06cbec124c6d0a426ddcabd070e",
+      "bytes": 2841
+    },
+    {
+      "path": "review_packaging.py",
+      "sha256": "9da0213cf76f0e37d45f3b5d8ae4d125b63c053230f1aa51d8f9d5515834d1d2",
+      "bytes": 7947
+    },
+    {
+      "path": "evidence/pr38-only-comment.diff",
+      "sha256": "cc04ffa542891c3d42f911dcb27c2cf05523211469228b9f03b6cc6748c614ff",
+      "bytes": 484
+    },
+    {
+      "path": "evidence/pr38-final-native-report.json",
+      "sha256": "21f273f156fb1ef46f47320f147b5c747a0862d8b24c9d2069bcee21a21422aa",
+      "bytes": 6985
+    },
+    {
+      "path": "evidence/pr38-final-baseline-report.json",
+      "sha256": "0acba2b88e59ce35e2f3903189b2f5a7c9e29a13505be6eb190d607b69d2890a",
+      "bytes": 6723
+    },
+    {
+      "path": "evidence/pr38-final-independent-review.json",
+      "sha256": "ddf7d5c130c12a2e922030e0e800b8b7a40e5358b0b54cbfaf43043468999941",
+      "bytes": 19171
+    },
+    {
+      "path": "evidence/review-helper-final-ruff.json",
+      "sha256": "7a83faec54e75b5238be9fd563c1f9b6d2b5164e097b6e1e5b7ff963140b502d",
+      "bytes": 621
+    }
+  ]
+}
