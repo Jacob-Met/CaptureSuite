@@ -1011,3 +1011,44 @@ GNU linker-wrapped cases, Windows, complete Mac UI/daemon, x86_64 or notarizatio
 Native artifact paths, exact hashes, recipient usage, raw qualification and
 independent review are in
 [the receiving packet](../../receiving/macos-session-doctor-5f566b5ec8ef/README.md).
+
+## 2026-10-08 — Compose saved analysis with the merged scope controls
+
+Worker `estate-401c5d17da79`, issue #55: receiving on main `3e3ecc5`
+preserves the merged #53/#58 scope controls and normalized package identity
+while adding saved-result history. The current screen treats its retained
+thread handle as busy from scheduled start through the existing cleanup.
+One actual QApplication/QTimer journey passes 24 checks with two real
+numeric-feature jobs: saved exact ranges, disabled/restored controls,
+read-only reopening, same-package scope retention, and refusal to repaint
+a different package after a queued completion. The original 14/19 results
+below keep their original inputs; Windows CI and the separately owned
+nested-numeric gallery repair remain distinct. Exact source, the startup
+negative control and current receipts are in
+[current scope receiving](../../evidence/analysis-history-401c5d17da79/current-scope/README.md).
+
+## 2026-10-08 — Reopen saved analysis in the native workbench
+
+Worker `estate-401c5d17da79`, issue #55: the Analysis tab now lists retained
+completed and failed jobs from its selected package. Explicit Open loads the
+existing gallery and inspector; native read-only Parameters, Log and Manifest
+tabs expose saved diagnostics. Refresh does not rerun analysis. Package changes
+clear the old view, and late results remain attached to their original package.
+Unavailable/malformed/foreign jobs remain visible with a refusal reason.
+
+Authored source `37443f0` passes all 14 focused and retained native UI tests,
+including actual successful and failed analysis QThreads. Independent receiving
+passes 19 checks through the real QApplication event loop: retained real figures,
+same-name jobs in different sessions, stale selection refusal, late completion
+and exact saved/raw byte preservation. The original worker, signal wiring,
+thread cleanup, gallery, inspector and job formats are preserved. The separately
+owned #53/#54 scope controls and #46 provenance writer are outside this change.
+
+Earlier manual-event-pump crashes/stalls and an empty receipt caused by transient
+filesystem exhaustion are retained as non-accepting harness outcomes. The same
+first candidate passed its genuine application-event-loop control; no native
+cleanup defect is inferred from those manual-pump observations. Qualification is
+native Linux Qt/Python 3.12, not a Windows CI, full-product or hardware claim.
+Exact source pins, raw logs, independent methods and reviewed native frames are
+in [the receiving evidence](../../evidence/analysis-history-401c5d17da79/README.md).
+

@@ -1,0 +1,100 @@
+{
+  "schema": "hamon.exact-source-custody.v1",
+  "source_and_method_destination": "/Users/me/hamon/estate-401c5d17da79/capturesuite-history/scope-prepared-6893f119",
+  "prepared_checkpoint": {
+    "schema": "hamon.prepared-source-custody.v1",
+    "root": "/Users/me/hamon/estate-401c5d17da79/capturesuite-history/scope-prepared-6893f119",
+    "uid": 501,
+    "canonical_parent": "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e",
+    "runtime_tree": "167bbac3bba862cc1532d954fe2d503e561a00df",
+    "candidate_screen_blob": "6893f119593f8ff6551167efcb1939d014a081e6",
+    "files": [
+      {
+        "path": "screen_analysis.py",
+        "bytes": 19038,
+        "sha256": "1475764b8453ed870174fcaf98bc02370db76b5001c4175feb93263ad33d5b70"
+      },
+      {
+        "path": "check_scope_history.py",
+        "bytes": 16423,
+        "sha256": "c45eb2b2b02b8c9423565d811ae7782eff576b1313bf5cef366c4af8bf4e3802"
+      },
+      {
+        "path": "candidate-source-inputs.json",
+        "bytes": 36983,
+        "sha256": "7e2d4d219c8a4b70865f780750fa8fe5362da54a43898097082a44784f807438"
+      },
+      {
+        "path": "correction.diff",
+        "bytes": 411,
+        "sha256": "a673362be10374234e4c0a7747db5dc0ebe4d197c9053a8791204b703cbeb79d"
+      },
+      {
+        "path": "startup-negative.json",
+        "bytes": 1711,
+        "sha256": "5c31757b0432077a91140cb4deb60503f83e353cb4eb2e1fe9c384a76e6e36f6"
+      }
+    ],
+    "preparation_sha256": "047a3ec794ef2037c116ab68de6544f191163909498d58fea13ab4dbb6c95e1a",
+    "source_blobs_and_changed_trees_verified": true,
+    "native_acceptance": "Pending actual corrected native journey; this checkpoint preserves source and receiver, not acceptance."
+  },
+  "prepared_checkpoint_sha256": "3f1fdce7f3db1506b8f617adb3eb6b930e0af4aa3eb4eb225c2e3ff9b00e8d67",
+  "qualified_receiving_destination": "/Users/me/hamon/estate-401c5d17da79/capturesuite-history/scope-prepared-6893f119/qualified-receiving",
+  "qualified_checkpoint": {
+    "schema": "hamon.native-receiving-custody.v1",
+    "root": "/Users/me/hamon/estate-401c5d17da79/capturesuite-history/scope-prepared-6893f119/qualified-receiving",
+    "runtime_tree": "167bbac3bba862cc1532d954fe2d503e561a00df",
+    "screen_git_blob": "6893f119593f8ff6551167efcb1939d014a081e6",
+    "method_sha256": "c45eb2b2b02b8c9423565d811ae7782eff576b1313bf5cef366c4af8bf4e3802",
+    "native_platform": "Linux Python3.12/PySide6 6.11.2 from the established CaptureSuite environment; Mac is custody only",
+    "process_exit_code": 0,
+    "checks_passed": 24,
+    "checks_failed": 0,
+    "seconds": 3.534,
+    "raw_stdout_and_stderr_sha_verified": true,
+    "frame_extracted_and_read_back_exact": true,
+    "files": [
+      {
+        "path": "README.md",
+        "bytes": 3748,
+        "sha256": "983f657b0ab4bc194c16cb3938d2494d110ecd3fd5f4c0de7890f6f0b8de306e"
+      },
+      {
+        "path": "native.stderr.log",
+        "bytes": 250,
+        "sha256": "bcd516d5e9014bd0f43bf526bc701b744bbd4ea9c35d16fdd65e6fde7b0270d5"
+      },
+      {
+        "path": "native.stdout.log",
+        "bytes": 268056,
+        "sha256": "aab4b265957f5404474d87c430bb03167b3514fb8fb05399e23cf5534f4b9c70"
+      },
+      {
+        "path": "process.json",
+        "bytes": 817,
+        "sha256": "668d3732d79062b8390c6f9b2660bebca1b1deb566b0852a049d7a952fc217f6"
+      },
+      {
+        "path": "receipt.json",
+        "bytes": 13734,
+        "sha256": "2b7114760bd212372ae1071c4954e1904724010c486cbff510f254f1f2fa9471"
+      },
+      {
+        "path": "receiving.json",
+        "bytes": 2196,
+        "sha256": "31e28e425b8dfc74b5224418671d6720cd3ddc86a2fd7fae0ba2e5210330403f"
+      },
+      {
+        "path": "scope-history-reopened.png",
+        "bytes": 193004,
+        "sha256": "c8ec0afb810a76da3254e035cdac3a5e0ec46097976743e1917e672441a550f5"
+      }
+    ],
+    "qualification_scope": "One current scope/history journey; original 37443/72c15 acceptance and e43 QC remain separate."
+  },
+  "qualified_checkpoint_sha256": "69757fc3f931d781c999a728e7ae3d381999c94a267f3d93d961cc5f6f7c5059",
+  "verification": "Both checkpoints were independently read back through RDC and SHA-256 matched. Full final native stdout and its embedded original PNG are preserved in the qualified receiving destination.",
+  "prior_0ed_packet": "/Users/me/hamon/estate-401c5d17da79/capturesuite-history/source-pr-0ed1ccaa-2355dee/packet",
+  "prior_0ed_checkpoint_sha256": "7ec1926ff45e95b1034cbd0b14919fcfcd5896ee4a7ac63b0f70a9450d651839"
+}

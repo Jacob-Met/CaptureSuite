@@ -1,0 +1,162 @@
+{
+  "checks": [
+    {
+      "evidence": {
+        "history_loaded_job_id": null,
+        "inspector": "job_id=retained-prior\nstatus=completed\ngap_policy=mask\nplugin_manifest=1.0.0\npath=/dev/shm/hamon-401c5d17da79-capturesuite-receiving/fixtures/package-a.mmsession/processing/jobs/retained-prior",
+        "last_job_dir": "/dev/shm/hamon-401c5d17da79-capturesuite-receiving/fixtures/package-a.mmsession/processing/jobs/retained-prior",
+        "linked_plot_count": 2,
+        "open_folder_enabled": false,
+        "open_report_enabled": false,
+        "package": "/dev/shm/hamon-401c5d17da79-capturesuite-receiving/fixtures/package-b.mmsession",
+        "png_count": 2,
+        "sync_title": "receiving-a-401c5d17da79 \u00b7 gap_policy=mask",
+        "tabs": [
+          "Sync",
+          "emg sim.emg.main channel",
+          "imu sim.imu.upper accel"
+        ]
+      },
+      "name": "baseline reproduces stale A view after switching to B",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "job_dir": "/dev/shm/hamon-401c5d17da79-capturesuite-receiving/fixtures/package-a.mmsession/processing/jobs/late-baseline-actual-qc",
+        "status": "completed"
+      },
+      "name": "actual QThread QC result exists before deferred delivery",
+      "pass": true
+    },
+    {
+      "evidence": {
+        "history_loaded_job_id": null,
+        "inspector": "job_id=late-baseline-actual-qc\nstatus=completed\ngap_policy=mask\nplugin_manifest=1.0.0\npath=/dev/shm/hamon-401c5d17da79-capturesuite-receiving/fixtures/package-a.mmsession/processing/jobs/late-baseline-actual-qc",
+        "last_job_dir": "/dev/shm/hamon-401c5d17da79-capturesuite-receiving/fixtures/package-a.mmsession/processing/jobs/late-baseline-actual-qc",
+        "linked_plot_count": 0,
+        "open_folder_enabled": true,
+        "open_report_enabled": true,
+        "package": "/dev/shm/hamon-401c5d17da79-capturesuite-receiving/fixtures/package-b.mmsession",
+        "png_count": 0,
+        "sync_title": "Sync dashboard",
+        "tabs": [
+          "Sync"
+        ]
+      },
+      "name": "baseline reproduces foreign binding after late real completion",
+      "pass": true
+    },
+    {
+      "evidence": null,
+      "name": "delivery and reopening perform no persisted writes",
+      "pass": true
+    },
+    {
+      "evidence": null,
+      "name": "all captured raw package bytes remain unchanged",
+      "pass": true
+    },
+    {
+      "evidence": [],
+      "name": "no Qt error dialogs or worker failures occurred",
+      "pass": true
+    }
+  ],
+  "dialog_errors": [],
+  "free_bytes_after": 21540864,
+  "harness_sha256": "a5af6de29e75e3870121a7f03b1f3675f31f34c8615eb6ca6b7ecff560c838ce",
+  "mode": "baseline",
+  "pyside6": "6.11.2",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "qt_platform": "offscreen",
+  "result": "expected baseline defects reproduced",
+  "screens": {
+    "after_package_switch": {
+      "history_loaded_job_id": null,
+      "inspector": "job_id=retained-prior\nstatus=completed\ngap_policy=mask\nplugin_manifest=1.0.0\npath=/dev/shm/hamon-401c5d17da79-capturesuite-receiving/fixtures/package-a.mmsession/processing/jobs/retained-prior",
+      "last_job_dir": "/dev/shm/hamon-401c5d17da79-capturesuite-receiving/fixtures/package-a.mmsession/processing/jobs/retained-prior",
+      "linked_plot_count": 2,
+      "open_folder_enabled": false,
+      "open_report_enabled": false,
+      "package": "/dev/shm/hamon-401c5d17da79-capturesuite-receiving/fixtures/package-b.mmsession",
+      "png_count": 2,
+      "sync_title": "receiving-a-401c5d17da79 \u00b7 gap_policy=mask",
+      "tabs": [
+        "Sync",
+        "emg sim.emg.main channel",
+        "imu sim.imu.upper accel"
+      ]
+    },
+    "initial_a": {
+      "history_loaded_job_id": null,
+      "inspector": "job_id=retained-prior\nstatus=completed\ngap_policy=mask\nplugin_manifest=1.0.0\npath=/dev/shm/hamon-401c5d17da79-capturesuite-receiving/fixtures/package-a.mmsession/processing/jobs/retained-prior",
+      "last_job_dir": "/dev/shm/hamon-401c5d17da79-capturesuite-receiving/fixtures/package-a.mmsession/processing/jobs/retained-prior",
+      "linked_plot_count": 2,
+      "open_folder_enabled": false,
+      "open_report_enabled": false,
+      "package": "/dev/shm/hamon-401c5d17da79-capturesuite-receiving/fixtures/package-a.mmsession",
+      "png_count": 2,
+      "sync_title": "receiving-a-401c5d17da79 \u00b7 gap_policy=mask",
+      "tabs": [
+        "Sync",
+        "emg sim.emg.main channel",
+        "imu sim.imu.upper accel"
+      ]
+    },
+    "late_after_delivery": {
+      "history_loaded_job_id": null,
+      "inspector": "job_id=late-baseline-actual-qc\nstatus=completed\ngap_policy=mask\nplugin_manifest=1.0.0\npath=/dev/shm/hamon-401c5d17da79-capturesuite-receiving/fixtures/package-a.mmsession/processing/jobs/late-baseline-actual-qc",
+      "last_job_dir": "/dev/shm/hamon-401c5d17da79-capturesuite-receiving/fixtures/package-a.mmsession/processing/jobs/late-baseline-actual-qc",
+      "linked_plot_count": 0,
+      "open_folder_enabled": true,
+      "open_report_enabled": true,
+      "package": "/dev/shm/hamon-401c5d17da79-capturesuite-receiving/fixtures/package-b.mmsession",
+      "png_count": 0,
+      "sync_title": "Sync dashboard",
+      "tabs": [
+        "Sync"
+      ]
+    },
+    "late_before_delivery": {
+      "history_loaded_job_id": null,
+      "inspector": "No job loaded",
+      "last_job_dir": "/dev/shm/hamon-401c5d17da79-capturesuite-receiving/fixtures/package-a.mmsession/processing/jobs/retained-prior",
+      "linked_plot_count": 0,
+      "open_folder_enabled": false,
+      "open_report_enabled": false,
+      "package": "/dev/shm/hamon-401c5d17da79-capturesuite-receiving/fixtures/package-b.mmsession",
+      "png_count": 0,
+      "sync_title": "Sync dashboard",
+      "tabs": [
+        "Sync"
+      ]
+    }
+  },
+  "screenshot": {
+    "path": "/dev/shm/hamon-401c5d17da79-capturesuite-receiving/evidence/baseline-qt.png",
+    "sha256": "9709a37b5abd159c5eafb7d58b8fb096bda7926fe109ec1f11eb8d50a47ade0f"
+  },
+  "source_commit": "72c15d6b623e217291a824e4e4808a385df896a9",
+  "source_imports": {
+    "capture_analysis": {
+      "path": "/dev/shm/capturesuite-history-401c5d17da79/source/libs/python/capture_analysis/capture_analysis/__init__.py",
+      "sha256": "14cfe6dccd33a0bda74fac3c9339e1a37a3538b2110a8ae6e307801b776eb43a"
+    },
+    "capture_analysis.jobs": {
+      "path": "/dev/shm/capturesuite-history-401c5d17da79/source/libs/python/capture_analysis/capture_analysis/jobs.py",
+      "sha256": "e7e9dda44eb014d18192563f1e2c0ae78cece850fbc853b0be3919daaf5ee276"
+    },
+    "capture_desktop.screen_analysis": {
+      "path": "/dev/shm/hamon-401c5d17da79-capturesuite-receiving/pins/baseline-screen_analysis.py",
+      "sha256": "1437b02b942f44378870540f12c5494d08693329abb5d00ca64c0c264f57633e"
+    },
+    "capture_desktop.state": {
+      "path": "/dev/shm/capturesuite-history-401c5d17da79/source/desktop/capture_desktop/state.py",
+      "sha256": "97fc98498f4553fc7f052d0dc4db992cf2fc136ba7c4405cd275bd156c74e314"
+    },
+    "capture_desktop.widgets_analysis_plots": {
+      "path": "/dev/shm/capturesuite-history-401c5d17da79/source/desktop/capture_desktop/widgets_analysis_plots.py",
+      "sha256": "85c73f881ee7d60ef2f868f7ff73fc57c0a4ef99a717f7f5015534db23e1ab86"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "exit": 0,
+  "elapsed": 4.036,
+  "command": [
+    "/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python",
+    "-m",
+    "pytest",
+    "tests/ui/test_analysis_history.py",
+    "tests/ui/test_analysis_workbench.py",
+    "tests/ui/test_analysis_failure_notes.py",
+    "-q",
+    "-ra",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=/dev/shm/capturesuite-history-401c5d17da79/tmp/author-correction"
+  ]
+}

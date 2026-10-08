@@ -1,0 +1,7 @@
+This plugin does not support propagateSizeHints()
+real QC was persisted before release True
+selected B is unbound before A completion True
+native event loop settles without binding previous-package result True
+completion preserves all bytes after actual job persistence True
+no native error dialogs True
+{"pass": true, "checks": 5, "seconds": 0.24924598599318415, "code": 0}

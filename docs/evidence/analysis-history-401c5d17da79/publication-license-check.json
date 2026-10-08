@@ -1,0 +1,11 @@
+{
+  "command": [
+    "/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python",
+    "tools/check_licenses.py",
+    "--enforce-spdx"
+  ],
+  "exit": 0,
+  "observed_stdout": "license check OK\n",
+  "runtime_changes": false,
+  "correction": "Only two copied evidence scripts received required GPL-3.0-only SPDX headers; original tested bytes are preserved in1ce96118 and recorded separately."
+}

@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python",
+    "-B",
+    "/dev/shm/hamon-401c5d17da79-capture-history-pr/current-boundary/check_current_qc_history.py",
+    "--source",
+    "/dev/shm/hamon-401c5d17da79-capture-history-pr/current-boundary/source",
+    "--inputs",
+    "/dev/shm/hamon-401c5d17da79-capture-history-pr/current-boundary/source-inputs.json",
+    "--output",
+    "/dev/shm/hamon-401c5d17da79-capture-history-pr/current-boundary/current-run"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 3.471,
+  "stdout_sha256": "34b2748419db7460c2abff30184db5e7f12b075c1808667abcb065177dfd5025",
+  "stderr_sha256": "caeb11f6473c6c7125dd27478e588b85ffd6b31784e9adb1371a60f1661eb00f",
+  "runner_sha256": "469b3e3fd0403e420c847e1e4c11525b968055447aa2ecdd1024714e2c12039e"
+}

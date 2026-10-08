@@ -1,0 +1,380 @@
+{
+  "canonical_parent": "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e",
+  "runtime_tree": "167bbac3bba862cc1532d954fe2d503e561a00df",
+  "screen_git_blob": "6893f119593f8ff6551167efcb1939d014a081e6",
+  "checks": [
+    {
+      "name": "screen, header and history use one normalized package identity",
+      "passed": true
+    },
+    {
+      "name": "real header selection enables the composed Analysis screen with exact bounds",
+      "passed": true
+    },
+    {
+      "name": "real feature worker disables saved-history actions while running",
+      "passed": true
+    },
+    {
+      "name": "the first real worker completes without a modal failure",
+      "passed": true
+    },
+    {
+      "name": "settled first job restores native Run and history controls",
+      "passed": true
+    },
+    {
+      "name": "completed scoped job reaches the saved-history viewer",
+      "passed": true
+    },
+    {
+      "name": "real saved job retains its exact selected nanosecond parameters",
+      "passed": true
+    },
+    {
+      "name": "completed current numeric job reports that selected interval",
+      "passed": true
+    },
+    {
+      "name": "successful saved job contains only the two expected fixture metadata warnings",
+      "passed": true
+    },
+    {
+      "name": "explicitly reopening the old job preserves the next selected scope",
+      "passed": true
+    },
+    {
+      "name": "reopen is read-only and starts no additional worker",
+      "passed": true
+    },
+    {
+      "name": "native read-only details show the saved scope, distinct from the next selection",
+      "passed": true
+    },
+    {
+      "name": "same-package refresh preserves both scope and loaded saved result",
+      "passed": true
+    },
+    {
+      "name": "combined native frame is captured",
+      "passed": true
+    },
+    {
+      "name": "a second real worker starts from the next selection",
+      "passed": true
+    },
+    {
+      "name": "changing package resets scope and clears history as one transition",
+      "passed": true
+    },
+    {
+      "name": "late real completion is retained under its originating package only",
+      "passed": true
+    },
+    {
+      "name": "real saved job retains its exact selected nanosecond parameters",
+      "passed": true
+    },
+    {
+      "name": "completed current numeric job reports that selected interval",
+      "passed": true
+    },
+    {
+      "name": "successful saved job contains only the two expected fixture metadata warnings",
+      "passed": true
+    },
+    {
+      "name": "late foreign completion cannot repaint current history or scope",
+      "passed": true
+    },
+    {
+      "name": "late-job settlement restores controls for the current package only",
+      "passed": true
+    },
+    {
+      "name": "the prior reopened job remains byte-identical after the second job",
+      "passed": true
+    },
+    {
+      "name": "both real package raw inputs remain byte-identical",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "method": "QApplication.exec/QTimer; actual SessionHeader and AnalysisScreen, two real QThread/MCAP feature jobs",
+  "method_sha256": "c45eb2b2b02b8c9423565d811ae7782eff576b1313bf5cef366c4af8bf4e3802",
+  "source_inputs_sha256": "7e2d4d219c8a4b70865f780750fa8fe5362da54a43898097082a44784f807438",
+  "scope": "One changed scope/history boundary. No Windows MainWindow, full-suite, nested-image repair or installed-release claim.",
+  "initial_busy_state": {
+    "thread_retained": true,
+    "thread_running": true,
+    "history_refresh_enabled": false,
+    "history_open_enabled": false
+  },
+  "saved_job_manifests": [
+    {
+      "analysisGrids": [],
+      "captureAnalysisVersion": "0.1.0",
+      "createdUtc": "2026-10-08T14:16:48Z",
+      "errors": [],
+      "evalWindowCount": null,
+      "featureTables": [
+        {
+          "featureSchemaVersion": 1,
+          "relativePath": "features/numeric/source-6c736c/stream-6e756d657269632e73747265616d/windows.parquet",
+          "rows": 1
+        }
+      ],
+      "gapPolicy": "mask",
+      "gapSummary": {
+        "closed": 0,
+        "maskedNs": 0,
+        "open": 0,
+        "validFraction": null
+      },
+      "jobId": "20261008T141648Z_3bcabb8c",
+      "kinematicsRows": null,
+      "manifestSha256": "53cfd49d90b9467e45769ff379fe20457e738e27dbff76ce64e4845d4e0a7028",
+      "mlBundleWindowCount": null,
+      "modalities": [
+        "eeg"
+      ],
+      "outputs": [
+        {
+          "bytes": 257,
+          "kind": "params",
+          "relativePath": "params.json",
+          "sha256": "6fbf697209770acc7d5e1690e95bd7869ba803a809c593f0e5b011508f6c5798"
+        },
+        {
+          "bytes": 1141,
+          "kind": "qc_json",
+          "relativePath": "reports/qc.json",
+          "sha256": "fd46c1fdbb332dfb11d3b3362d51c25d57f8c2a79396d5bdfca537a6705dbd5b"
+        },
+        {
+          "bytes": 2220,
+          "kind": "qc_html",
+          "relativePath": "reports/qc.html",
+          "sha256": "e7a1d98a2ce429128b11125b062c70f968f2bffd9198d326563457e5573de10d"
+        },
+        {
+          "bytes": 5266,
+          "kind": "feature_parquet",
+          "relativePath": "features/numeric/source-6c736c/stream-6e756d657269632e73747265616d/windows.parquet",
+          "sha256": "03cfd112d75b61015ea9e109359f349857d5a9f7fbcd04718ab425ae8945da92"
+        },
+        {
+          "bytes": 156,
+          "kind": "feature_csv",
+          "relativePath": "features/numeric/source-6c736c/stream-6e756d657269632e73747265616d/windows.csv",
+          "sha256": "b82f0241cf32d20ee1809d8a67e406b6074dd0fe1197316c900c1bf8cc236191"
+        },
+        {
+          "bytes": 2691,
+          "kind": "feature_schema",
+          "relativePath": "features/_schema.json",
+          "sha256": "5d389cc9b624d1d818c6739554fcaf5d881ad4cffb0d31d74486fa644a969e85"
+        },
+        {
+          "bytes": 3279,
+          "kind": "manifest",
+          "relativePath": "job_manifest.json",
+          "sha256": "305136787550fa5ef4df95ee41187dea93f414ad39d7eaa8c551f7a9666f73c4"
+        }
+      ],
+      "packagePath": "/dev/shm/hamon-401c5d17da79-capture-history-pr/scope-current-seam/native-scope-qualified/scope history A.mmsession",
+      "packageState": "sealed",
+      "paramsDigest": "3bcabb8cfbc12d0ec01c35b20c8d098b0559e7161440de5406af9e5cf4775f33",
+      "pluginIds": [
+        "emg.envelope.v1",
+        "imu.kinematics.v1",
+        "radar.rd_energy.v1",
+        "radar_doppler.mag.v1",
+        "video.timing_qc.v1",
+        "numeric.basic.v1",
+        "test.dummy.feature.v1"
+      ],
+      "pluginManifestVersion": "1.0.0",
+      "poseJobId": null,
+      "poseModelId": null,
+      "poseTables": [],
+      "schemaId": "capture.analysis_job/1",
+      "sessionId": "scope history A",
+      "sourcesSelected": [
+        "lsl"
+      ],
+      "status": "completed_with_warnings",
+      "syncAnchorsApplied": {
+        "anchors": [],
+        "applied": false
+      },
+      "timeRange": {
+        "checkpointIds": [],
+        "endSessionNs": 2500000001,
+        "mode": "custom",
+        "startSessionNs": 1500000001
+      },
+      "tooling": {
+        "captureAnalysis": "0.1.0",
+        "matplotlib": "3.11.2",
+        "numpy": "2.5.3",
+        "pandas": "3.0.6",
+        "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+        "python": "3.12.14",
+        "scipy": "1.18.1"
+      },
+      "warnings": [
+        "package state is 'sealed' (prefer finalized)",
+        "package duration_ns is unknown/zero — analysis uses an open time window (integrity entries lack endSessionTimeNs)"
+      ]
+    },
+    {
+      "analysisGrids": [],
+      "captureAnalysisVersion": "0.1.0",
+      "createdUtc": "2026-10-08T14:16:48Z",
+      "errors": [],
+      "evalWindowCount": null,
+      "featureTables": [
+        {
+          "featureSchemaVersion": 1,
+          "relativePath": "features/numeric/source-6c736c/stream-6e756d657269632e73747265616d/windows.parquet",
+          "rows": 1
+        }
+      ],
+      "gapPolicy": "mask",
+      "gapSummary": {
+        "closed": 0,
+        "maskedNs": 0,
+        "open": 0,
+        "validFraction": null
+      },
+      "jobId": "20261008T141648Z_b793f3b4",
+      "kinematicsRows": null,
+      "manifestSha256": "53cfd49d90b9467e45769ff379fe20457e738e27dbff76ce64e4845d4e0a7028",
+      "mlBundleWindowCount": null,
+      "modalities": [
+        "eeg"
+      ],
+      "outputs": [
+        {
+          "bytes": 257,
+          "kind": "params",
+          "relativePath": "params.json",
+          "sha256": "efa12cb2a20649da7c1f3f823a265ee25b31540d28feeee0b47125b944e3d7e4"
+        },
+        {
+          "bytes": 1141,
+          "kind": "qc_json",
+          "relativePath": "reports/qc.json",
+          "sha256": "fd46c1fdbb332dfb11d3b3362d51c25d57f8c2a79396d5bdfca537a6705dbd5b"
+        },
+        {
+          "bytes": 2220,
+          "kind": "qc_html",
+          "relativePath": "reports/qc.html",
+          "sha256": "e7a1d98a2ce429128b11125b062c70f968f2bffd9198d326563457e5573de10d"
+        },
+        {
+          "bytes": 5266,
+          "kind": "feature_parquet",
+          "relativePath": "features/numeric/source-6c736c/stream-6e756d657269632e73747265616d/windows.parquet",
+          "sha256": "858438d0c22ee6ecb5e304d22c7ad80579ecbe2178ebf5f8cd169494ae249b0d"
+        },
+        {
+          "bytes": 156,
+          "kind": "feature_csv",
+          "relativePath": "features/numeric/source-6c736c/stream-6e756d657269632e73747265616d/windows.csv",
+          "sha256": "786ee658a04e19c111cc65914e64dbbff86c063dfe897b67e9a5290188af874e"
+        },
+        {
+          "bytes": 2691,
+          "kind": "feature_schema",
+          "relativePath": "features/_schema.json",
+          "sha256": "5d389cc9b624d1d818c6739554fcaf5d881ad4cffb0d31d74486fa644a969e85"
+        },
+        {
+          "bytes": 3279,
+          "kind": "manifest",
+          "relativePath": "job_manifest.json",
+          "sha256": "dd592f615b84e455c6dc18dd7385b05f45c5e9b195c0b33236062e3870f5e8af"
+        }
+      ],
+      "packagePath": "/dev/shm/hamon-401c5d17da79-capture-history-pr/scope-current-seam/native-scope-qualified/scope history A.mmsession",
+      "packageState": "sealed",
+      "paramsDigest": "b793f3b4690f50a5651d48f7479d01d0c846391249aecbf2afb7a44d96a05fc7",
+      "pluginIds": [
+        "emg.envelope.v1",
+        "imu.kinematics.v1",
+        "radar.rd_energy.v1",
+        "radar_doppler.mag.v1",
+        "video.timing_qc.v1",
+        "numeric.basic.v1",
+        "test.dummy.feature.v1"
+      ],
+      "pluginManifestVersion": "1.0.0",
+      "poseJobId": null,
+      "poseModelId": null,
+      "poseTables": [],
+      "schemaId": "capture.analysis_job/1",
+      "sessionId": "scope history A",
+      "sourcesSelected": [
+        "lsl"
+      ],
+      "status": "completed_with_warnings",
+      "syncAnchorsApplied": {
+        "anchors": [],
+        "applied": false
+      },
+      "timeRange": {
+        "checkpointIds": [],
+        "endSessionNs": 2000000001,
+        "mode": "custom",
+        "startSessionNs": 1000000001
+      },
+      "tooling": {
+        "captureAnalysis": "0.1.0",
+        "matplotlib": "3.11.2",
+        "numpy": "2.5.3",
+        "pandas": "3.0.6",
+        "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+        "python": "3.12.14",
+        "scipy": "1.18.1"
+      },
+      "warnings": [
+        "package state is 'sealed' (prefer finalized)",
+        "package duration_ns is unknown/zero — analysis uses an open time window (integrity entries lack endSessionTimeNs)"
+      ]
+    }
+  ],
+  "native_frame": {
+    "filename": "scope-history-reopened.png",
+    "bytes": 193004,
+    "sha256": "c8ec0afb810a76da3254e035cdac3a5e0ec46097976743e1917e672441a550f5"
+  },
+  "real_jobs": [
+    "/dev/shm/hamon-401c5d17da79-capture-history-pr/scope-current-seam/native-scope-qualified/scope history A.mmsession/processing/jobs/20261008T141648Z_3bcabb8c",
+    "/dev/shm/hamon-401c5d17da79-capture-history-pr/scope-current-seam/native-scope-qualified/scope history A.mmsession/processing/jobs/20261008T141648Z_b793f3b4"
+  ],
+  "raw_package_hashes": {
+    "/dev/shm/hamon-401c5d17da79-capture-history-pr/scope-current-seam/native-scope-qualified/scope history A.mmsession": {
+      "manifest.json": "53cfd49d90b9467e45769ff379fe20457e738e27dbff76ce64e4845d4e0a7028",
+      "sources/lsl/streams/numeric/segments/000000.mcap": "f3df8e3cc95f76462c502935aad5abafd4392ed3224c239775650c5b49bcd18f",
+      "sources/lsl/streams/numeric/stream.json": "1adfb22cb81843c0e5bef319c9c2268ea2746e930232f6d89e154d133e0fa885"
+    },
+    "/dev/shm/hamon-401c5d17da79-capture-history-pr/scope-current-seam/native-scope-qualified/scope history B.mmsession": {
+      "manifest.json": "bb31522d57c0572ddf144fdebb5037fa4dc51940cbe52034bbfd64911f9cdc3b",
+      "sources/lsl/streams/numeric/segments/000000.mcap": "f3df8e3cc95f76462c502935aad5abafd4392ed3224c239775650c5b49bcd18f",
+      "sources/lsl/streams/numeric/stream.json": "1adfb22cb81843c0e5bef319c9c2268ea2746e930232f6d89e154d133e0fa885"
+    }
+  },
+  "last_native_log": "Starting features on /dev/shm/hamon-401c5d17da79-capture-history-pr/scope-current-seam/native-scope-qualified/scope history A.mmsession\nscope=1.000000001–2.000000001 s\nstart (0%)\nqc (15%)\nwrite_qc (25%)\nfeatures_plots (45%)\nmanifest (90%)\ndone (100%)\nDone status=completed_with_warnings job_id=20261008T141648Z_b793f3b4\ndir=/dev/shm/hamon-401c5d17da79-capture-history-pr/scope-current-seam/native-scope-qualified/scope history A.mmsession/processing/jobs/20261008T141648Z_b793f3b4\nResult saved for the previous package; select that package to inspect it.",
+  "dialogs": [],
+  "event_loop_exit": 0,
+  "pyside6": "6.11.2",
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "source_unchanged": true,
+  "passed": 24,
+  "failed": 0,
+  "exit_code": 0
+}

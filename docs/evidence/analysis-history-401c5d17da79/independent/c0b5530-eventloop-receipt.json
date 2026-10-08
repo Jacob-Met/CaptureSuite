@@ -1,0 +1,74 @@
+{
+  "candidate": {
+    "baseline": "72c15d6b623e217291a824e4e4808a385df896a9",
+    "commit": "c0b5530c03cce3e42a0430e5411cddf1df716e19",
+    "focused_tests": "7 passed in 2.61s; no skips",
+    "harness_notes": "Replaced QTest.qWait polling with QEventLoop plus settling cleanup after a timeout/unsafe teardown; production worker and signal wiring remain baseline bytes.",
+    "inputs": {
+      "desktop/capture_desktop/analysis_history.py": {
+        "bytes": 6375,
+        "sha256": "2e0db8cee59ef268d3c91ea0beac7d761d83a3003862841cc9d7f1782fd3543c"
+      },
+      "desktop/capture_desktop/screen_analysis.py": {
+        "bytes": 16407,
+        "sha256": "4a2e3eaee50fba5236b5567be993582a557de6fe2c62cc0bf3f424483beefb2b"
+      },
+      "desktop/capture_desktop/widgets_analysis_history.py": {
+        "bytes": 8458,
+        "sha256": "a3b77c87483c1412b50de7ddde1498f6bfd3968002fc3ac3bfa474a2477d9bc4"
+      },
+      "tests/ui/test_analysis_history.py": {
+        "bytes": 9023,
+        "sha256": "eabe6a4e663307965ce00a1f9032325bfc7be6357b7a3a91b79820cafc4c0a97"
+      }
+    },
+    "runtime": "/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python",
+    "tree": "c384c9553757fb1614405d124a5026ae49b4be71"
+  },
+  "checks": [
+    {
+      "detail": {
+        "job_dir": "/dev/shm/hamon-401c5d17da79-capturesuite-receiving/fixtures/package-a.mmsession/processing/jobs/late-eventloop-actual-qc",
+        "status": "completed"
+      },
+      "label": "real QC was persisted before release",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "label": "selected B is unbound before A completion",
+      "pass": true
+    },
+    {
+      "detail": {
+        "inspector": "No job loaded",
+        "last_job_dir": "",
+        "package": "/dev/shm/hamon-401c5d17da79-capturesuite-receiving/fixtures/package-b.mmsession"
+      },
+      "label": "native event loop settles without binding previous-package result",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "label": "completion preserves all bytes after actual job persistence",
+      "pass": true
+    },
+    {
+      "detail": [],
+      "label": "no native error dialogs",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "events": [
+    "actual QThread started in native application loop",
+    "selected B, released real A completion",
+    "native event loop accepted exact completion boundary"
+  ],
+  "loop": "QApplication.exec with QTimer; no manual processEvents or QTest.qWait",
+  "method_sha256": "f05476354e1d1e40478bcc4ed3e5e753bb3baa99fe1a822e3f12e15018236d7d",
+  "pass": true,
+  "process_return": 0,
+  "schema": "capturesuite.history.native-eventloop-control.v1",
+  "seconds": 0.24924598599318415
+}
