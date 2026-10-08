@@ -1,0 +1,326 @@
+{
+  "groups": [
+    {
+      "name": "actual ELF closure and origin-only search",
+      "pass": true,
+      "needed": [
+        "abseil_dll.dll",
+        "blake3.dll",
+        "libprotobuf.dll",
+        "lz4.dll",
+        "zstd.dll",
+        "libc.so.6"
+      ],
+      "search": [
+        "$ORIGIN"
+      ]
+    },
+    {
+      "name": "each dependency is necessary and restoration recovers",
+      "pass": true,
+      "cases": [
+        {
+          "dependency": "abseil_dll.dll",
+          "missing_exit": 127,
+          "legacy_with_original_present_exit": 0,
+          "restored_exit": 0
+        },
+        {
+          "dependency": "blake3.dll",
+          "missing_exit": 127,
+          "legacy_with_original_present_exit": 0,
+          "restored_exit": 0
+        },
+        {
+          "dependency": "libprotobuf.dll",
+          "missing_exit": 127,
+          "legacy_with_original_present_exit": 0,
+          "restored_exit": 0
+        },
+        {
+          "dependency": "lz4.dll",
+          "missing_exit": 127,
+          "legacy_with_original_present_exit": 0,
+          "restored_exit": 0
+        },
+        {
+          "dependency": "zstd.dll",
+          "missing_exit": 127,
+          "legacy_with_original_present_exit": 0,
+          "restored_exit": 0
+        }
+      ]
+    },
+    {
+      "name": "both plugin locations run without original or legacy trees",
+      "pass": true
+    },
+    {
+      "name": "multi-config Debug and Release stage their own exact bytes",
+      "pass": true,
+      "config_hashes": {
+        "Debug": {
+          "capture_worker_camera.exe": "5b6ae6ec8172ec7155fa0da0f0f6b7be76aca1dd1fe832a6eb5eeefcccaa9f66",
+          "abseil_dll.dll": "6d5ee63a961af8e243e419dff07cd40680fe5163665453f59dede41daa352139",
+          "blake3.dll": "08731f116321d19ae8fb6bab7f2850dec3475b41c63852fc580dedd2cf9129f2",
+          "libprotobuf.dll": "de1a2116170a5303ef8d4c9accbe0774a8d06d66d26179f8cfb75bf38ae321d6",
+          "lz4.dll": "869b4f7a98f4b31ebbb8d243fa7ae85da706969ecf7d772c137c18daafb17238",
+          "zstd.dll": "980fd7167abd75349e7da93305f3be5e2a06848f7cb8f5f1a660a6a728e77d9d"
+        },
+        "Release": {
+          "capture_worker_camera.exe": "34a5baa3e37465e0e1f122589e597d407bd016fd6cafa5908973c7b425e06144",
+          "abseil_dll.dll": "499f9d1f7ac5158b348e9f687069b187aa365d773985778734068e65562afaec",
+          "blake3.dll": "5a4e596059dcf113a5e815cfd2ba26d2994aa8c267a41a0ea3e73b00fdfca32a",
+          "libprotobuf.dll": "e191e4aaa9bb01bdae32f6fe100b52b9067c003740e3b0827776a0035032b874",
+          "lz4.dll": "4bec5e95c208c7d70c9777eb7521f5f311e4d6c14956e1401d051378ab9e207b",
+          "zstd.dll": "53d23e4e49f4b763e5998774ad305c7871733b8aa1ec419c755a98f9802d350e"
+        }
+      }
+    },
+    {
+      "name": "exact production rollback restores missing-package failure",
+      "pass": true,
+      "baseline_passed": 10,
+      "baseline_failed": 7,
+      "candidate_passed": 17,
+      "candidate_failed": 0
+    },
+    {
+      "name": "production source and manifest remain byte-identical",
+      "pass": true
+    }
+  ],
+  "commands": [
+    {
+      "argv": [
+        "readelf",
+        "-d",
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/candidate native work with spaces/build/daemon/Release/plugins/camera_gstreamer/capture_worker_camera.exe"
+      ],
+      "exit": 0,
+      "stdout": "\nDynamic section at offset 0x2d40 contains 33 entries:\n  Tag        Type                         Name/Value\n 0x0000000000000001 (NEEDED)             Shared library: [abseil_dll.dll]\n 0x0000000000000001 (NEEDED)             Shared library: [blake3.dll]\n 0x0000000000000001 (NEEDED)             Shared library: [libprotobuf.dll]\n 0x0000000000000001 (NEEDED)             Shared library: [lz4.dll]\n 0x0000000000000001 (NEEDED)             Shared library: [zstd.dll]\n 0x0000000000000001 (NEEDED)             Shared library: [libc.so.6]\n 0x000000000000001d (RUNPATH)            Library runpath: [$ORIGIN]\n 0x000000000000000c (INIT)               0x1000\n 0x000000000000000d (FINI)               0x124c\n 0x0000000000000019 (INIT_ARRAY)         0x3d30\n 0x000000000000001b (INIT_ARRAYSZ)       8 (bytes)\n 0x000000000000001a (FINI_ARRAY)         0x3d38\n 0x000000000000001c (FINI_ARRAYSZ)       8 (bytes)\n 0x000000006ffffef5 (GNU_HASH)           0x3b0\n 0x0000000000000005 (STRTAB)             0x4f8\n 0x0000000000000006 (SYMTAB)             0x3d8\n 0x000000000000000a (STRSZ)              277 (bytes)\n 0x000000000000000b (SYMENT)             24 (bytes)\n 0x0000000000000015 (DEBUG)              0x0\n 0x0000000000000003 (PLTGOT)             0x3f90\n 0x0000000000000002 (PLTRELSZ)           144 (bytes)\n 0x0000000000000014 (PLTREL)             RELA\n 0x0000000000000017 (JMPREL)             0x718\n 0x0000000000000007 (RELA)               0x658\n 0x0000000000000008 (RELASZ)             192 (bytes)\n 0x0000000000000009 (RELAENT)            24 (bytes)\n 0x000000000000001e (FLAGS)              BIND_NOW\n 0x000000006ffffffb (FLAGS_1)            Flags: NOW PIE\n 0x000000006ffffffe (VERNEED)            0x628\n 0x000000006fffffff (VERNEEDNUM)         1\n 0x000000006ffffff0 (VERSYM)             0x60e\n 0x000000006ffffff9 (RELACOUNT)          3\n 0x0000000000000000 (NULL)               0x0\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/candidate native work with spaces/build/daemon/Release/plugins/camera_gstreamer/capture_worker_camera.exe"
+      ],
+      "exit": 127,
+      "stdout": "",
+      "stderr": "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/candidate native work with spaces/build/daemon/Release/plugins/camera_gstreamer/capture_worker_camera.exe: error while loading shared libraries: abseil_dll.dll: cannot open shared object file: No such file or directory\n"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/candidate native work with spaces/build/daemon/Release/workers/camera/capture_worker_camera.exe"
+      ],
+      "exit": 0,
+      "stdout": "CAMERA_PACKAGING_PROBE_REACHED_MAIN\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/candidate native work with spaces/build/daemon/Release/plugins/camera_gstreamer/capture_worker_camera.exe"
+      ],
+      "exit": 0,
+      "stdout": "CAMERA_PACKAGING_PROBE_REACHED_MAIN\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/candidate native work with spaces/build/daemon/Release/plugins/camera_gstreamer/capture_worker_camera.exe"
+      ],
+      "exit": 127,
+      "stdout": "",
+      "stderr": "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/candidate native work with spaces/build/daemon/Release/plugins/camera_gstreamer/capture_worker_camera.exe: error while loading shared libraries: blake3.dll: cannot open shared object file: No such file or directory\n"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/candidate native work with spaces/build/daemon/Release/workers/camera/capture_worker_camera.exe"
+      ],
+      "exit": 0,
+      "stdout": "CAMERA_PACKAGING_PROBE_REACHED_MAIN\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/candidate native work with spaces/build/daemon/Release/plugins/camera_gstreamer/capture_worker_camera.exe"
+      ],
+      "exit": 0,
+      "stdout": "CAMERA_PACKAGING_PROBE_REACHED_MAIN\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/candidate native work with spaces/build/daemon/Release/plugins/camera_gstreamer/capture_worker_camera.exe"
+      ],
+      "exit": 127,
+      "stdout": "",
+      "stderr": "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/candidate native work with spaces/build/daemon/Release/plugins/camera_gstreamer/capture_worker_camera.exe: error while loading shared libraries: libprotobuf.dll: cannot open shared object file: No such file or directory\n"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/candidate native work with spaces/build/daemon/Release/workers/camera/capture_worker_camera.exe"
+      ],
+      "exit": 0,
+      "stdout": "CAMERA_PACKAGING_PROBE_REACHED_MAIN\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/candidate native work with spaces/build/daemon/Release/plugins/camera_gstreamer/capture_worker_camera.exe"
+      ],
+      "exit": 0,
+      "stdout": "CAMERA_PACKAGING_PROBE_REACHED_MAIN\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/candidate native work with spaces/build/daemon/Release/plugins/camera_gstreamer/capture_worker_camera.exe"
+      ],
+      "exit": 127,
+      "stdout": "",
+      "stderr": "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/candidate native work with spaces/build/daemon/Release/plugins/camera_gstreamer/capture_worker_camera.exe: error while loading shared libraries: lz4.dll: cannot open shared object file: No such file or directory\n"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/candidate native work with spaces/build/daemon/Release/workers/camera/capture_worker_camera.exe"
+      ],
+      "exit": 0,
+      "stdout": "CAMERA_PACKAGING_PROBE_REACHED_MAIN\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/candidate native work with spaces/build/daemon/Release/plugins/camera_gstreamer/capture_worker_camera.exe"
+      ],
+      "exit": 0,
+      "stdout": "CAMERA_PACKAGING_PROBE_REACHED_MAIN\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/candidate native work with spaces/build/daemon/Release/plugins/camera_gstreamer/capture_worker_camera.exe"
+      ],
+      "exit": 127,
+      "stdout": "",
+      "stderr": "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/candidate native work with spaces/build/daemon/Release/plugins/camera_gstreamer/capture_worker_camera.exe: error while loading shared libraries: zstd.dll: cannot open shared object file: No such file or directory\n"
+    },
+    {
+      "argv": [
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/candidate native work with spaces/build/daemon/Release/workers/camera/capture_worker_camera.exe"
+      ],
+      "exit": 0,
+      "stdout": "CAMERA_PACKAGING_PROBE_REACHED_MAIN\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/candidate native work with spaces/build/daemon/Release/plugins/camera_gstreamer/capture_worker_camera.exe"
+      ],
+      "exit": 0,
+      "stdout": "CAMERA_PACKAGING_PROBE_REACHED_MAIN\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/candidate native work with spaces/build/daemon/Release/plugins/camera_gstreamer/capture_worker_camera.exe"
+      ],
+      "exit": 0,
+      "stdout": "CAMERA_PACKAGING_PROBE_REACHED_MAIN\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/relocated camera (independent)/capture_worker_camera.exe"
+      ],
+      "exit": 0,
+      "stdout": "CAMERA_PACKAGING_PROBE_REACHED_MAIN\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/workspace/scratch/afe225d6c6be/product_execution/toolchain/cmake/data/bin/cmake",
+        "-S",
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/candidate native work with spaces/fixture",
+        "-B",
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/multi config build with spaces",
+        "-G",
+        "Ninja Multi-Config",
+        "-DCMAKE_MAKE_PROGRAM=/workspace/scratch/7183b7a84620/agents/products/toolchain/bin/ninja"
+      ],
+      "exit": 0,
+      "stdout": "-- The CXX compiler identification is GNU 13.3.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: /usr/bin/c++ - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (0.1s)\n-- Generating done (0.0s)\n-- Build files have been written to: /workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/multi config build with spaces\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/workspace/scratch/afe225d6c6be/product_execution/toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/multi config build with spaces",
+        "--config",
+        "Debug",
+        "--parallel",
+        "2"
+      ],
+      "exit": 0,
+      "stdout": "[1/20] Building CXX object CMakeFiles/capture_daemon.dir/Debug/daemon.cpp.o\n[2/20] Building CXX object CMakeFiles/probe_abseil_dll.dir/Debug/dependency.cpp.o\n[3/20] Linking CXX shared library workers/camera/Debug/abseil_dll.dll\n[4/20] Linking CXX executable daemon/Debug/capture_daemon\n[5/20] Building CXX object CMakeFiles/probe_blake3.dir/Debug/dependency.cpp.o\n[6/20] Building CXX object CMakeFiles/probe_libprotobuf.dir/Debug/dependency.cpp.o\n[7/20] Linking CXX shared library workers/camera/Debug/blake3.dll\n[8/20] Linking CXX shared library workers/camera/Debug/libprotobuf.dll\n[9/20] Building CXX object CMakeFiles/probe_lz4.dir/Debug/dependency.cpp.o\n[10/20] Building CXX object CMakeFiles/probe_zstd.dir/Debug/dependency.cpp.o\n[11/20] Linking CXX shared library workers/camera/Debug/lz4.dll\n[12/20] Linking CXX shared library workers/camera/Debug/zstd.dll\n[13/20] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/Debug/src/camera_enumerate.cpp.o\n[14/20] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/Debug/src/main.cpp.o\n[15/20] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/Debug/src/worker_session.cpp.o\n[16/20] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/Debug/src/gst_pipeline.cpp.o\n[17/20] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/Debug/src/capture_mode.cpp.o\n[18/20] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/Debug/src/capture_pipeline.cpp.o\n[19/20] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/Debug/src/uvc_controls.cpp.o\n[20/20] Linking CXX executable workers/camera/Debug/capture_worker_camera.exe\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/multi config build with spaces/daemon/Debug/workers/camera/capture_worker_camera.exe"
+      ],
+      "exit": 0,
+      "stdout": "CAMERA_PACKAGING_PROBE_REACHED_MAIN\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/multi config build with spaces/daemon/Debug/plugins/camera_gstreamer/capture_worker_camera.exe"
+      ],
+      "exit": 0,
+      "stdout": "CAMERA_PACKAGING_PROBE_REACHED_MAIN\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/workspace/scratch/afe225d6c6be/product_execution/toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/multi config build with spaces",
+        "--config",
+        "Release",
+        "--parallel",
+        "2"
+      ],
+      "exit": 0,
+      "stdout": "[1/20] Building CXX object CMakeFiles/probe_abseil_dll.dir/Release/dependency.cpp.o\n[2/20] Building CXX object CMakeFiles/capture_daemon.dir/Release/daemon.cpp.o\n[3/20] Linking CXX shared library workers/camera/Release/abseil_dll.dll\n[4/20] Linking CXX executable daemon/Release/capture_daemon\n[5/20] Building CXX object CMakeFiles/probe_libprotobuf.dir/Release/dependency.cpp.o\n[6/20] Building CXX object CMakeFiles/probe_blake3.dir/Release/dependency.cpp.o\n[7/20] Linking CXX shared library workers/camera/Release/libprotobuf.dll\n[8/20] Linking CXX shared library workers/camera/Release/blake3.dll\n[9/20] Building CXX object CMakeFiles/probe_lz4.dir/Release/dependency.cpp.o\n[10/20] Building CXX object CMakeFiles/probe_zstd.dir/Release/dependency.cpp.o\n[11/20] Linking CXX shared library workers/camera/Release/lz4.dll\n[12/20] Linking CXX shared library workers/camera/Release/zstd.dll\n[13/20] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/Release/src/camera_enumerate.cpp.o\n[14/20] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/Release/src/worker_session.cpp.o\n[15/20] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/Release/src/main.cpp.o\n[16/20] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/Release/src/gst_pipeline.cpp.o\n[17/20] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/Release/src/capture_mode.cpp.o\n[18/20] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/Release/src/capture_pipeline.cpp.o\n[19/20] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/Release/src/uvc_controls.cpp.o\n[20/20] Linking CXX executable workers/camera/Release/capture_worker_camera.exe\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/multi config build with spaces/daemon/Release/workers/camera/capture_worker_camera.exe"
+      ],
+      "exit": 0,
+      "stdout": "CAMERA_PACKAGING_PROBE_REACHED_MAIN\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/multi config build with spaces/daemon/Release/plugins/camera_gstreamer/capture_worker_camera.exe"
+      ],
+      "exit": 0,
+      "stdout": "CAMERA_PACKAGING_PROBE_REACHED_MAIN\n",
+      "stderr": ""
+    }
+  ],
+  "source_before": {
+    "workers/camera/CMakeLists.txt": "ddb68fccae5e9b5ae66f81ff4859060f27dcc425d6a41c607e9c9c883a6bd842",
+    "plugins/camera_gstreamer/plugin.json": "6f921746e815083b55f5d81d10c660e9b448ff315b48a2082090b34b350eae03"
+  },
+  "passed": true,
+  "limits": [
+    "Native Linux CMake/ELF fixture, including Ninja Multi-Config and paths with spaces.",
+    "No Windows DLL loader, MSVC/vcpkg, GStreamer, Media Foundation, daemon or hardware run.",
+    "POST_BUILD packages a newly built target; this is not an automatic package repair contract."
+  ]
+}

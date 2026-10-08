@@ -37,6 +37,25 @@ class ExportOptions:
     write_sidecar: bool = True
 
 
+_MODALITY_FLAGS = (
+    ("radar", "include_radar"),
+    ("video", "include_video"),
+    ("emg", "include_emg"),
+    ("imu", "include_imu"),
+)
+
+
+def _build_modalities_args(options: ExportOptions) -> list[str]:
+    """Translate the wizard checkboxes into the export_session --modalities contract.
+
+    An explicitly empty selection becomes "--modalities ''", which
+    export_session.py rejects with a clear error (metadata-only export is an
+    owner decision, not invented here).
+    """
+    selected = [name for name, attr in _MODALITY_FLAGS if getattr(options, attr)]
+    return ["--modalities", ",".join(selected)]
+
+
 class ExportWizard(QDialog):
     def __init__(
         self,
@@ -55,6 +74,7 @@ class ExportWizard(QDialog):
         root = QVBoxLayout(self)
         intro = QLabel(
             "Export continuous streams offline. Raw package is never modified. "
+            "Choose a new or empty destination folder. "
             "A provenance sidecar (export_manifest.json) is written to the destination."
         )
         intro.setWordWrap(True)
@@ -141,12 +161,17 @@ def run_export(
     cmd = [str(py), str(root / "tools" / "export_session.py"), package_path, options.out_dir]
     if options.verify:
         cmd.append("--verify")
+    cmd += _build_modalities_args(options)
     proc = subprocess.run(cmd, capture_output=True, text=True, cwd=str(root))
     tail = (proc.stderr or proc.stdout)[-800:]
     if proc.returncode == 0 and options.write_sidecar:
         sidecar = Path(options.out_dir) / "provenance_sidecar.json"
         manifest_path = Path(options.out_dir) / "export_manifest.json"
         if manifest_path.is_file():
+            doc = json.loads(manifest_path.read_text(encoding="utf-8"))
+            # Requested inclusion is not the same as actual output: record what
+            # the exporter really emitted (non-empty manifest stream arrays).
+            actual = {m: bool(doc.get(m)) for m in ("radar", "video", "emg", "imu")}
             sidecar.write_text(
                 json.dumps(
                     {
@@ -159,6 +184,7 @@ def run_export(
                             "emg": options.include_emg,
                             "imu": options.include_imu,
                         },
+                        "actualStreams": actual,
                     },
                     indent=2,
                 )

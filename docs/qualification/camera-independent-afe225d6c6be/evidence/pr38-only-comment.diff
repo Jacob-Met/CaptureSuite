@@ -1,0 +1,11 @@
+--- accepted-8167/workers/camera/CMakeLists.txt
++++ pr38-6770268/workers/camera/CMakeLists.txt
+@@ -74,7 +74,7 @@
+       COMMAND ${CMAKE_COMMAND} -E copy_if_different
+               "$<TARGET_FILE_DIR:capture_worker_camera>/${_dep}.dll"
+               "$<TARGET_FILE_DIR:capture_daemon>/plugins/camera_gstreamer/"
+-      COMMENT "Copy ${_dep}.dll to both camera package directories"
++      COMMENT "Copy ${_dep}.dll beside both packaged camera workers"
+     )
+   endforeach()
+ endif()

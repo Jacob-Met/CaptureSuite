@@ -1,0 +1,862 @@
+FFFFFFFFFFFFFFFFFFFFF....s                                               [100%]
+=================================== FAILURES ===================================
+________ test_raw_sources_cannot_be_an_overwrite_destination[traversal] ________
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_raw_sources_cannot_be_an_0/mini.mmsession')
+absolute = False
+
+    @pytest.mark.parametrize("absolute", [False, True], ids=["traversal", "absolute"])
+    def test_raw_sources_cannot_be_an_overwrite_destination(package: Path, absolute: bool) -> None:
+        job_id = str(package / "sources") if absolute else "../../sources"
+>       _expect_rejected_without_mutation(package, job_id)
+
+tests/analysis/test_job_destinations.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_raw_sources_cannot_be_an_0/mini.mmsession')
+job_id = '../../sources', extra = ()
+
+    def _expect_rejected_without_mutation(package: Path, job_id: str, *extra: Path) -> None:
+        roots = (package, *extra)
+        before = [_snapshot(root) for root in roots]
+        failure: Exception | None = None
+        try:
+            run(package, JobParams(command="qc", overwrite_job_id=job_id))
+        except Exception as exc:  # noqa: BLE001
+            failure = exc
+>       assert [_snapshot(root) for root in roots] == before, "rejected jobs must not change data"
+E       AssertionError: rejected jobs must not change data
+E       assert [{'events': '...b'[]\n', ...}] == [{'events': '...b'[]\n', ...}]
+E         
+E         At index 0 diff: {'events': 'directory', 'events/annotations.json': b'[]\n', 'events/checkpoints.json': b'[]\n', 'events/sync_anchors.json': b'[]\n', 'integrity.json': b'{\n  "schemaVersion": "1",\n  "files": [\n    {\n      "path": "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",\n      "sizeBytes": 128,\n      "sha256": "00",\n      "endSessionTimeNs": 10000000000\n    }\n  ]\n}\n', 'manifest.json': b'{\n  "session_schema_version": "1.0.0",\n  "sessionId": "mini-analysis-fixture",\n  "state": "finalized",\n  "t0WallUtc": "2026-08-09T00:00:00Z",\...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/analysis/test_job_destinations.py:52: AssertionError
+________ test_raw_sources_cannot_be_an_overwrite_destination[absolute] _________
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_raw_sources_cannot_be_an_1/mini.mmsession')
+absolute = True
+
+    @pytest.mark.parametrize("absolute", [False, True], ids=["traversal", "absolute"])
+    def test_raw_sources_cannot_be_an_overwrite_destination(package: Path, absolute: bool) -> None:
+        job_id = str(package / "sources") if absolute else "../../sources"
+>       _expect_rejected_without_mutation(package, job_id)
+
+tests/analysis/test_job_destinations.py:60: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_raw_sources_cannot_be_an_1/mini.mmsession')
+job_id = '/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_raw_sources_cannot_be_an_1/mini.mmsession/sources'
+extra = ()
+
+    def _expect_rejected_without_mutation(package: Path, job_id: str, *extra: Path) -> None:
+        roots = (package, *extra)
+        before = [_snapshot(root) for root in roots]
+        failure: Exception | None = None
+        try:
+            run(package, JobParams(command="qc", overwrite_job_id=job_id))
+        except Exception as exc:  # noqa: BLE001
+            failure = exc
+>       assert [_snapshot(root) for root in roots] == before, "rejected jobs must not change data"
+E       AssertionError: rejected jobs must not change data
+E       assert [{'events': '...b'[]\n', ...}] == [{'events': '...b'[]\n', ...}]
+E         
+E         At index 0 diff: {'events': 'directory', 'events/annotations.json': b'[]\n', 'events/checkpoints.json': b'[]\n', 'events/sync_anchors.json': b'[]\n', 'integrity.json': b'{\n  "schemaVersion": "1",\n  "files": [\n    {\n      "path": "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",\n      "sizeBytes": 128,\n      "sha256": "00",\n      "endSessionTimeNs": 10000000000\n    }\n  ]\n}\n', 'manifest.json': b'{\n  "session_schema_version": "1.0.0",\n  "sessionId": "mini-analysis-fixture",\n  "state": "finalized",\n  "t0WallUtc": "2026-08-09T00:00:00Z",\...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/analysis/test_job_destinations.py:52: AssertionError
+_______________ test_job_ids_are_portable_single_visible_names[] _______________
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_job_ids_are_portable_sing0/mini.mmsession')
+job_id = ''
+
+    @pytest.mark.parametrize(
+        "job_id",
+        ["", ".", "..", "nested/job", r"nested\job", "C:job", "qc.", "qc ", "NUL.txt",
+         "qc?one", ".attempt_existing", "qc\x00one"],
+    )
+    def test_job_ids_are_portable_single_visible_names(package: Path, job_id: str) -> None:
+>       _expect_rejected_without_mutation(package, job_id)
+
+tests/analysis/test_job_destinations.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_job_ids_are_portable_sing0/mini.mmsession')
+job_id = '', extra = ()
+
+    def _expect_rejected_without_mutation(package: Path, job_id: str, *extra: Path) -> None:
+        roots = (package, *extra)
+        before = [_snapshot(root) for root in roots]
+        failure: Exception | None = None
+        try:
+            run(package, JobParams(command="qc", overwrite_job_id=job_id))
+        except Exception as exc:  # noqa: BLE001
+            failure = exc
+>       assert [_snapshot(root) for root in roots] == before, "rejected jobs must not change data"
+E       AssertionError: rejected jobs must not change data
+E       assert [{'events': '...b'[]\n', ...}] == [{'events': '...b'[]\n', ...}]
+E         
+E         At index 0 diff: {'events': 'directory', 'events/annotations.json': b'[]\n', 'events/checkpoints.json': b'[]\n', 'events/sync_anchors.json': b'[]\n', 'integrity.json': b'{\n  "schemaVersion": "1",\n  "files": [\n    {\n      "path": "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",\n      "sizeBytes": 128,\n      "sha256": "00",\n      "endSessionTimeNs": 10000000000\n    }\n  ]\n}\n', 'manifest.json': b'{\n  "session_schema_version": "1.0.0",\n  "sessionId": "mini-analysis-fixture",\n  "state": "finalized",\n  "t0WallUtc": "2026-08-09T00:00:00Z",\...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/analysis/test_job_destinations.py:52: AssertionError
+______________ test_job_ids_are_portable_single_visible_names[.] _______________
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_job_ids_are_portable_sing1/mini.mmsession')
+job_id = '.'
+
+    @pytest.mark.parametrize(
+        "job_id",
+        ["", ".", "..", "nested/job", r"nested\job", "C:job", "qc.", "qc ", "NUL.txt",
+         "qc?one", ".attempt_existing", "qc\x00one"],
+    )
+    def test_job_ids_are_portable_single_visible_names(package: Path, job_id: str) -> None:
+>       _expect_rejected_without_mutation(package, job_id)
+
+tests/analysis/test_job_destinations.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_job_ids_are_portable_sing1/mini.mmsession')
+job_id = '.', extra = ()
+
+    def _expect_rejected_without_mutation(package: Path, job_id: str, *extra: Path) -> None:
+        roots = (package, *extra)
+        before = [_snapshot(root) for root in roots]
+        failure: Exception | None = None
+        try:
+            run(package, JobParams(command="qc", overwrite_job_id=job_id))
+        except Exception as exc:  # noqa: BLE001
+            failure = exc
+        assert [_snapshot(root) for root in roots] == before, "rejected jobs must not change data"
+>       assert isinstance(failure, ValueError), f"expected destination rejection, got {failure!r}"
+E       AssertionError: expected destination rejection, got FileNotFoundError(2, 'No such file or directory')
+E       assert False
+E        +  where False = isinstance(FileNotFoundError(2, 'No such file or directory'), ValueError)
+
+tests/analysis/test_job_destinations.py:53: AssertionError
+______________ test_job_ids_are_portable_single_visible_names[..] ______________
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_job_ids_are_portable_sing2/mini.mmsession')
+job_id = '..'
+
+    @pytest.mark.parametrize(
+        "job_id",
+        ["", ".", "..", "nested/job", r"nested\job", "C:job", "qc.", "qc ", "NUL.txt",
+         "qc?one", ".attempt_existing", "qc\x00one"],
+    )
+    def test_job_ids_are_portable_single_visible_names(package: Path, job_id: str) -> None:
+>       _expect_rejected_without_mutation(package, job_id)
+
+tests/analysis/test_job_destinations.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_job_ids_are_portable_sing2/mini.mmsession')
+job_id = '..', extra = ()
+
+    def _expect_rejected_without_mutation(package: Path, job_id: str, *extra: Path) -> None:
+        roots = (package, *extra)
+        before = [_snapshot(root) for root in roots]
+        failure: Exception | None = None
+        try:
+            run(package, JobParams(command="qc", overwrite_job_id=job_id))
+        except Exception as exc:  # noqa: BLE001
+            failure = exc
+>       assert [_snapshot(root) for root in roots] == before, "rejected jobs must not change data"
+E       AssertionError: rejected jobs must not change data
+E       assert [{'events': '...b'[]\n', ...}] == [{'events': '...b'[]\n', ...}]
+E         
+E         At index 0 diff: {'events': 'directory', 'events/annotations.json': b'[]\n', 'events/checkpoints.json': b'[]\n', 'events/sync_anchors.json': b'[]\n', 'integrity.json': b'{\n  "schemaVersion": "1",\n  "files": [\n    {\n      "path": "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",\n      "sizeBytes": 128,\n      "sha256": "00",\n      "endSessionTimeNs": 10000000000\n    }\n  ]\n}\n', 'manifest.json': b'{\n  "session_schema_version": "1.0.0",\n  "sessionId": "mini-analysis-fixture",\n  "state": "finalized",\n  "t0WallUtc": "2026-08-09T00:00:00Z",\...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/analysis/test_job_destinations.py:52: AssertionError
+__________ test_job_ids_are_portable_single_visible_names[nested/job] __________
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_job_ids_are_portable_sing3/mini.mmsession')
+job_id = 'nested/job'
+
+    @pytest.mark.parametrize(
+        "job_id",
+        ["", ".", "..", "nested/job", r"nested\job", "C:job", "qc.", "qc ", "NUL.txt",
+         "qc?one", ".attempt_existing", "qc\x00one"],
+    )
+    def test_job_ids_are_portable_single_visible_names(package: Path, job_id: str) -> None:
+>       _expect_rejected_without_mutation(package, job_id)
+
+tests/analysis/test_job_destinations.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_job_ids_are_portable_sing3/mini.mmsession')
+job_id = 'nested/job', extra = ()
+
+    def _expect_rejected_without_mutation(package: Path, job_id: str, *extra: Path) -> None:
+        roots = (package, *extra)
+        before = [_snapshot(root) for root in roots]
+        failure: Exception | None = None
+        try:
+            run(package, JobParams(command="qc", overwrite_job_id=job_id))
+        except Exception as exc:  # noqa: BLE001
+            failure = exc
+>       assert [_snapshot(root) for root in roots] == before, "rejected jobs must not change data"
+E       AssertionError: rejected jobs must not change data
+E       assert [{'events': '...b'[]\n', ...}] == [{'events': '...b'[]\n', ...}]
+E         
+E         At index 0 diff: {'events': 'directory', 'events/annotations.json': b'[]\n', 'events/checkpoints.json': b'[]\n', 'events/sync_anchors.json': b'[]\n', 'integrity.json': b'{\n  "schemaVersion": "1",\n  "files": [\n    {\n      "path": "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",\n      "sizeBytes": 128,\n      "sha256": "00",\n      "endSessionTimeNs": 10000000000\n    }\n  ]\n}\n', 'manifest.json': b'{\n  "session_schema_version": "1.0.0",\n  "sessionId": "mini-analysis-fixture",\n  "state": "finalized",\n  "t0WallUtc": "2026-08-09T00:00:00Z",\...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/analysis/test_job_destinations.py:52: AssertionError
+_________ test_job_ids_are_portable_single_visible_names[nested\\job] __________
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_job_ids_are_portable_sing4/mini.mmsession')
+job_id = 'nested\\job'
+
+    @pytest.mark.parametrize(
+        "job_id",
+        ["", ".", "..", "nested/job", r"nested\job", "C:job", "qc.", "qc ", "NUL.txt",
+         "qc?one", ".attempt_existing", "qc\x00one"],
+    )
+    def test_job_ids_are_portable_single_visible_names(package: Path, job_id: str) -> None:
+>       _expect_rejected_without_mutation(package, job_id)
+
+tests/analysis/test_job_destinations.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_job_ids_are_portable_sing4/mini.mmsession')
+job_id = 'nested\\job', extra = ()
+
+    def _expect_rejected_without_mutation(package: Path, job_id: str, *extra: Path) -> None:
+        roots = (package, *extra)
+        before = [_snapshot(root) for root in roots]
+        failure: Exception | None = None
+        try:
+            run(package, JobParams(command="qc", overwrite_job_id=job_id))
+        except Exception as exc:  # noqa: BLE001
+            failure = exc
+>       assert [_snapshot(root) for root in roots] == before, "rejected jobs must not change data"
+E       AssertionError: rejected jobs must not change data
+E       assert [{'events': '...b'[]\n', ...}] == [{'events': '...b'[]\n', ...}]
+E         
+E         At index 0 diff: {'events': 'directory', 'events/annotations.json': b'[]\n', 'events/checkpoints.json': b'[]\n', 'events/sync_anchors.json': b'[]\n', 'integrity.json': b'{\n  "schemaVersion": "1",\n  "files": [\n    {\n      "path": "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",\n      "sizeBytes": 128,\n      "sha256": "00",\n      "endSessionTimeNs": 10000000000\n    }\n  ]\n}\n', 'manifest.json': b'{\n  "session_schema_version": "1.0.0",\n  "sessionId": "mini-analysis-fixture",\n  "state": "finalized",\n  "t0WallUtc": "2026-08-09T00:00:00Z",\...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/analysis/test_job_destinations.py:52: AssertionError
+____________ test_job_ids_are_portable_single_visible_names[C:job] _____________
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_job_ids_are_portable_sing5/mini.mmsession')
+job_id = 'C:job'
+
+    @pytest.mark.parametrize(
+        "job_id",
+        ["", ".", "..", "nested/job", r"nested\job", "C:job", "qc.", "qc ", "NUL.txt",
+         "qc?one", ".attempt_existing", "qc\x00one"],
+    )
+    def test_job_ids_are_portable_single_visible_names(package: Path, job_id: str) -> None:
+>       _expect_rejected_without_mutation(package, job_id)
+
+tests/analysis/test_job_destinations.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_job_ids_are_portable_sing5/mini.mmsession')
+job_id = 'C:job', extra = ()
+
+    def _expect_rejected_without_mutation(package: Path, job_id: str, *extra: Path) -> None:
+        roots = (package, *extra)
+        before = [_snapshot(root) for root in roots]
+        failure: Exception | None = None
+        try:
+            run(package, JobParams(command="qc", overwrite_job_id=job_id))
+        except Exception as exc:  # noqa: BLE001
+            failure = exc
+>       assert [_snapshot(root) for root in roots] == before, "rejected jobs must not change data"
+E       AssertionError: rejected jobs must not change data
+E       assert [{'events': '...b'[]\n', ...}] == [{'events': '...b'[]\n', ...}]
+E         
+E         At index 0 diff: {'events': 'directory', 'events/annotations.json': b'[]\n', 'events/checkpoints.json': b'[]\n', 'events/sync_anchors.json': b'[]\n', 'integrity.json': b'{\n  "schemaVersion": "1",\n  "files": [\n    {\n      "path": "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",\n      "sizeBytes": 128,\n      "sha256": "00",\n      "endSessionTimeNs": 10000000000\n    }\n  ]\n}\n', 'manifest.json': b'{\n  "session_schema_version": "1.0.0",\n  "sessionId": "mini-analysis-fixture",\n  "state": "finalized",\n  "t0WallUtc": "2026-08-09T00:00:00Z",\...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/analysis/test_job_destinations.py:52: AssertionError
+_____________ test_job_ids_are_portable_single_visible_names[qc.] ______________
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_job_ids_are_portable_sing6/mini.mmsession')
+job_id = 'qc.'
+
+    @pytest.mark.parametrize(
+        "job_id",
+        ["", ".", "..", "nested/job", r"nested\job", "C:job", "qc.", "qc ", "NUL.txt",
+         "qc?one", ".attempt_existing", "qc\x00one"],
+    )
+    def test_job_ids_are_portable_single_visible_names(package: Path, job_id: str) -> None:
+>       _expect_rejected_without_mutation(package, job_id)
+
+tests/analysis/test_job_destinations.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_job_ids_are_portable_sing6/mini.mmsession')
+job_id = 'qc.', extra = ()
+
+    def _expect_rejected_without_mutation(package: Path, job_id: str, *extra: Path) -> None:
+        roots = (package, *extra)
+        before = [_snapshot(root) for root in roots]
+        failure: Exception | None = None
+        try:
+            run(package, JobParams(command="qc", overwrite_job_id=job_id))
+        except Exception as exc:  # noqa: BLE001
+            failure = exc
+>       assert [_snapshot(root) for root in roots] == before, "rejected jobs must not change data"
+E       AssertionError: rejected jobs must not change data
+E       assert [{'events': '...b'[]\n', ...}] == [{'events': '...b'[]\n', ...}]
+E         
+E         At index 0 diff: {'events': 'directory', 'events/annotations.json': b'[]\n', 'events/checkpoints.json': b'[]\n', 'events/sync_anchors.json': b'[]\n', 'integrity.json': b'{\n  "schemaVersion": "1",\n  "files": [\n    {\n      "path": "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",\n      "sizeBytes": 128,\n      "sha256": "00",\n      "endSessionTimeNs": 10000000000\n    }\n  ]\n}\n', 'manifest.json': b'{\n  "session_schema_version": "1.0.0",\n  "sessionId": "mini-analysis-fixture",\n  "state": "finalized",\n  "t0WallUtc": "2026-08-09T00:00:00Z",\...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/analysis/test_job_destinations.py:52: AssertionError
+_____________ test_job_ids_are_portable_single_visible_names[qc ] ______________
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_job_ids_are_portable_sing7/mini.mmsession')
+job_id = 'qc '
+
+    @pytest.mark.parametrize(
+        "job_id",
+        ["", ".", "..", "nested/job", r"nested\job", "C:job", "qc.", "qc ", "NUL.txt",
+         "qc?one", ".attempt_existing", "qc\x00one"],
+    )
+    def test_job_ids_are_portable_single_visible_names(package: Path, job_id: str) -> None:
+>       _expect_rejected_without_mutation(package, job_id)
+
+tests/analysis/test_job_destinations.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_job_ids_are_portable_sing7/mini.mmsession')
+job_id = 'qc ', extra = ()
+
+    def _expect_rejected_without_mutation(package: Path, job_id: str, *extra: Path) -> None:
+        roots = (package, *extra)
+        before = [_snapshot(root) for root in roots]
+        failure: Exception | None = None
+        try:
+            run(package, JobParams(command="qc", overwrite_job_id=job_id))
+        except Exception as exc:  # noqa: BLE001
+            failure = exc
+>       assert [_snapshot(root) for root in roots] == before, "rejected jobs must not change data"
+E       AssertionError: rejected jobs must not change data
+E       assert [{'events': '...b'[]\n', ...}] == [{'events': '...b'[]\n', ...}]
+E         
+E         At index 0 diff: {'events': 'directory', 'events/annotations.json': b'[]\n', 'events/checkpoints.json': b'[]\n', 'events/sync_anchors.json': b'[]\n', 'integrity.json': b'{\n  "schemaVersion": "1",\n  "files": [\n    {\n      "path": "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",\n      "sizeBytes": 128,\n      "sha256": "00",\n      "endSessionTimeNs": 10000000000\n    }\n  ]\n}\n', 'manifest.json': b'{\n  "session_schema_version": "1.0.0",\n  "sessionId": "mini-analysis-fixture",\n  "state": "finalized",\n  "t0WallUtc": "2026-08-09T00:00:00Z",\...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/analysis/test_job_destinations.py:52: AssertionError
+___________ test_job_ids_are_portable_single_visible_names[NUL.txt] ____________
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_job_ids_are_portable_sing8/mini.mmsession')
+job_id = 'NUL.txt'
+
+    @pytest.mark.parametrize(
+        "job_id",
+        ["", ".", "..", "nested/job", r"nested\job", "C:job", "qc.", "qc ", "NUL.txt",
+         "qc?one", ".attempt_existing", "qc\x00one"],
+    )
+    def test_job_ids_are_portable_single_visible_names(package: Path, job_id: str) -> None:
+>       _expect_rejected_without_mutation(package, job_id)
+
+tests/analysis/test_job_destinations.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_job_ids_are_portable_sing8/mini.mmsession')
+job_id = 'NUL.txt', extra = ()
+
+    def _expect_rejected_without_mutation(package: Path, job_id: str, *extra: Path) -> None:
+        roots = (package, *extra)
+        before = [_snapshot(root) for root in roots]
+        failure: Exception | None = None
+        try:
+            run(package, JobParams(command="qc", overwrite_job_id=job_id))
+        except Exception as exc:  # noqa: BLE001
+            failure = exc
+>       assert [_snapshot(root) for root in roots] == before, "rejected jobs must not change data"
+E       AssertionError: rejected jobs must not change data
+E       assert [{'events': '...b'[]\n', ...}] == [{'events': '...b'[]\n', ...}]
+E         
+E         At index 0 diff: {'events': 'directory', 'events/annotations.json': b'[]\n', 'events/checkpoints.json': b'[]\n', 'events/sync_anchors.json': b'[]\n', 'integrity.json': b'{\n  "schemaVersion": "1",\n  "files": [\n    {\n      "path": "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",\n      "sizeBytes": 128,\n      "sha256": "00",\n      "endSessionTimeNs": 10000000000\n    }\n  ]\n}\n', 'manifest.json': b'{\n  "session_schema_version": "1.0.0",\n  "sessionId": "mini-analysis-fixture",\n  "state": "finalized",\n  "t0WallUtc": "2026-08-09T00:00:00Z",\...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/analysis/test_job_destinations.py:52: AssertionError
+____________ test_job_ids_are_portable_single_visible_names[qc?one] ____________
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_job_ids_are_portable_sing9/mini.mmsession')
+job_id = 'qc?one'
+
+    @pytest.mark.parametrize(
+        "job_id",
+        ["", ".", "..", "nested/job", r"nested\job", "C:job", "qc.", "qc ", "NUL.txt",
+         "qc?one", ".attempt_existing", "qc\x00one"],
+    )
+    def test_job_ids_are_portable_single_visible_names(package: Path, job_id: str) -> None:
+>       _expect_rejected_without_mutation(package, job_id)
+
+tests/analysis/test_job_destinations.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_job_ids_are_portable_sing9/mini.mmsession')
+job_id = 'qc?one', extra = ()
+
+    def _expect_rejected_without_mutation(package: Path, job_id: str, *extra: Path) -> None:
+        roots = (package, *extra)
+        before = [_snapshot(root) for root in roots]
+        failure: Exception | None = None
+        try:
+            run(package, JobParams(command="qc", overwrite_job_id=job_id))
+        except Exception as exc:  # noqa: BLE001
+            failure = exc
+>       assert [_snapshot(root) for root in roots] == before, "rejected jobs must not change data"
+E       AssertionError: rejected jobs must not change data
+E       assert [{'events': '...b'[]\n', ...}] == [{'events': '...b'[]\n', ...}]
+E         
+E         At index 0 diff: {'events': 'directory', 'events/annotations.json': b'[]\n', 'events/checkpoints.json': b'[]\n', 'events/sync_anchors.json': b'[]\n', 'integrity.json': b'{\n  "schemaVersion": "1",\n  "files": [\n    {\n      "path": "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",\n      "sizeBytes": 128,\n      "sha256": "00",\n      "endSessionTimeNs": 10000000000\n    }\n  ]\n}\n', 'manifest.json': b'{\n  "session_schema_version": "1.0.0",\n  "sessionId": "mini-analysis-fixture",\n  "state": "finalized",\n  "t0WallUtc": "2026-08-09T00:00:00Z",\...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/analysis/test_job_destinations.py:52: AssertionError
+______ test_job_ids_are_portable_single_visible_names[.attempt_existing] _______
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_job_ids_are_portable_sing10/mini.mmsession')
+job_id = '.attempt_existing'
+
+    @pytest.mark.parametrize(
+        "job_id",
+        ["", ".", "..", "nested/job", r"nested\job", "C:job", "qc.", "qc ", "NUL.txt",
+         "qc?one", ".attempt_existing", "qc\x00one"],
+    )
+    def test_job_ids_are_portable_single_visible_names(package: Path, job_id: str) -> None:
+>       _expect_rejected_without_mutation(package, job_id)
+
+tests/analysis/test_job_destinations.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_job_ids_are_portable_sing10/mini.mmsession')
+job_id = '.attempt_existing', extra = ()
+
+    def _expect_rejected_without_mutation(package: Path, job_id: str, *extra: Path) -> None:
+        roots = (package, *extra)
+        before = [_snapshot(root) for root in roots]
+        failure: Exception | None = None
+        try:
+            run(package, JobParams(command="qc", overwrite_job_id=job_id))
+        except Exception as exc:  # noqa: BLE001
+            failure = exc
+>       assert [_snapshot(root) for root in roots] == before, "rejected jobs must not change data"
+E       AssertionError: rejected jobs must not change data
+E       assert [{'events': '...b'[]\n', ...}] == [{'events': '...b'[]\n', ...}]
+E         
+E         At index 0 diff: {'events': 'directory', 'events/annotations.json': b'[]\n', 'events/checkpoints.json': b'[]\n', 'events/sync_anchors.json': b'[]\n', 'integrity.json': b'{\n  "schemaVersion": "1",\n  "files": [\n    {\n      "path": "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",\n      "sizeBytes": 128,\n      "sha256": "00",\n      "endSessionTimeNs": 10000000000\n    }\n  ]\n}\n', 'manifest.json': b'{\n  "session_schema_version": "1.0.0",\n  "sessionId": "mini-analysis-fixture",\n  "state": "finalized",\n  "t0WallUtc": "2026-08-09T00:00:00Z",\...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/analysis/test_job_destinations.py:52: AssertionError
+__________ test_job_ids_are_portable_single_visible_names[qc\x00one] ___________
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_job_ids_are_portable_sing11/mini.mmsession')
+job_id = 'qc\x00one'
+
+    @pytest.mark.parametrize(
+        "job_id",
+        ["", ".", "..", "nested/job", r"nested\job", "C:job", "qc.", "qc ", "NUL.txt",
+         "qc?one", ".attempt_existing", "qc\x00one"],
+    )
+    def test_job_ids_are_portable_single_visible_names(package: Path, job_id: str) -> None:
+>       _expect_rejected_without_mutation(package, job_id)
+
+tests/analysis/test_job_destinations.py:69: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_job_ids_are_portable_sing11/mini.mmsession')
+job_id = 'qc\x00one', extra = ()
+
+    def _expect_rejected_without_mutation(package: Path, job_id: str, *extra: Path) -> None:
+        roots = (package, *extra)
+        before = [_snapshot(root) for root in roots]
+        failure: Exception | None = None
+        try:
+            run(package, JobParams(command="qc", overwrite_job_id=job_id))
+        except Exception as exc:  # noqa: BLE001
+            failure = exc
+>       assert [_snapshot(root) for root in roots] == before, "rejected jobs must not change data"
+E       AssertionError: rejected jobs must not change data
+E       assert [{'events': '...b'[]\n', ...}] == [{'events': '...b'[]\n', ...}]
+E         
+E         At index 0 diff: {'events': 'directory', 'events/annotations.json': b'[]\n', 'events/checkpoints.json': b'[]\n', 'events/sync_anchors.json': b'[]\n', 'integrity.json': b'{\n  "schemaVersion": "1",\n  "files": [\n    {\n      "path": "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",\n      "sizeBytes": 128,\n      "sha256": "00",\n      "endSessionTimeNs": 10000000000\n    }\n  ]\n}\n', 'manifest.json': b'{\n  "session_schema_version": "1.0.0",\n  "sessionId": "mini-analysis-fixture",\n  "state": "finalized",\n  "t0WallUtc": "2026-08-09T00:00:00Z",\...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/analysis/test_job_destinations.py:52: AssertionError
+________ test_linked_output_paths_are_rejected[raw-sources-processing] _________
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_linked_output_paths_are_r0/mini.mmsession')
+tmp_path = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_linked_output_paths_are_r0')
+component = 'processing', outside = False
+
+    @pytest.mark.parametrize("component", ["processing", "jobs", "job"])
+    @pytest.mark.parametrize("outside", [False, True], ids=["raw-sources", "outside-package"])
+    def test_linked_output_paths_are_rejected(
+        package: Path, tmp_path: Path, component: str, outside: bool
+    ) -> None:
+        target = tmp_path / "unrelated" if outside else package / "sources"
+        if outside:
+            target.mkdir()
+            (target / "keep.txt").write_bytes(b"unrelated existing data")
+        processing = package / "processing"
+        if component == "processing":
+            shutil.rmtree(processing)
+            link = processing
+        elif component == "jobs":
+            link = processing / "jobs"
+        else:
+            (processing / "jobs").mkdir()
+            link = processing / "jobs" / "qc-test"
+        _symlink(link, target)
+>       _expect_rejected_without_mutation(package, "qc-test", target)
+
+tests/analysis/test_job_destinations.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_linked_output_paths_are_r0/mini.mmsession')
+job_id = 'qc-test'
+extra = (PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_linked_output_paths_are_r0/mini.mmsession/sources'),)
+
+    def _expect_rejected_without_mutation(package: Path, job_id: str, *extra: Path) -> None:
+        roots = (package, *extra)
+        before = [_snapshot(root) for root in roots]
+        failure: Exception | None = None
+        try:
+            run(package, JobParams(command="qc", overwrite_job_id=job_id))
+        except Exception as exc:  # noqa: BLE001
+            failure = exc
+>       assert [_snapshot(root) for root in roots] == before, "rejected jobs must not change data"
+E       AssertionError: rejected jobs must not change data
+E       assert [{'events': '...ectory', ...}] == [{'events': '..."\n}\n', ...}]
+E         
+E         At index 0 diff: {'events': 'directory', 'events/annotations.json': b'[]\n', 'events/checkpoints.json': b'[]\n', 'events/sync_anchors.json': b'[]\n', 'integrity.json': b'{\n  "schemaVersion": "1",\n  "files": [\n    {\n      "path": "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",\n      "sizeBytes": 128,\n      "sha256": "00",\n      "endSessionTimeNs": 10000000000\n    }\n  ]\n}\n', 'manifest.json': b'{\n  "session_schema_version": "1.0.0",\n  "sessionId": "mini-analysis-fixture",\n  "state": "finalized",\n  "t0WallUtc": "2026-08-09T00:00:00Z",\...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/analysis/test_job_destinations.py:52: AssertionError
+___________ test_linked_output_paths_are_rejected[raw-sources-jobs] ____________
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_linked_output_paths_are_r1/mini.mmsession')
+tmp_path = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_linked_output_paths_are_r1')
+component = 'jobs', outside = False
+
+    @pytest.mark.parametrize("component", ["processing", "jobs", "job"])
+    @pytest.mark.parametrize("outside", [False, True], ids=["raw-sources", "outside-package"])
+    def test_linked_output_paths_are_rejected(
+        package: Path, tmp_path: Path, component: str, outside: bool
+    ) -> None:
+        target = tmp_path / "unrelated" if outside else package / "sources"
+        if outside:
+            target.mkdir()
+            (target / "keep.txt").write_bytes(b"unrelated existing data")
+        processing = package / "processing"
+        if component == "processing":
+            shutil.rmtree(processing)
+            link = processing
+        elif component == "jobs":
+            link = processing / "jobs"
+        else:
+            (processing / "jobs").mkdir()
+            link = processing / "jobs" / "qc-test"
+        _symlink(link, target)
+>       _expect_rejected_without_mutation(package, "qc-test", target)
+
+tests/analysis/test_job_destinations.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_linked_output_paths_are_r1/mini.mmsession')
+job_id = 'qc-test'
+extra = (PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_linked_output_paths_are_r1/mini.mmsession/sources'),)
+
+    def _expect_rejected_without_mutation(package: Path, job_id: str, *extra: Path) -> None:
+        roots = (package, *extra)
+        before = [_snapshot(root) for root in roots]
+        failure: Exception | None = None
+        try:
+            run(package, JobParams(command="qc", overwrite_job_id=job_id))
+        except Exception as exc:  # noqa: BLE001
+            failure = exc
+>       assert [_snapshot(root) for root in roots] == before, "rejected jobs must not change data"
+E       AssertionError: rejected jobs must not change data
+E       assert [{'events': '...es=0\n', ...}] == [{'events': '..."\n}\n', ...}]
+E         
+E         At index 0 diff: {'events': 'directory', 'events/annotations.json': b'[]\n', 'events/checkpoints.json': b'[]\n', 'events/sync_anchors.json': b'[]\n', 'integrity.json': b'{\n  "schemaVersion": "1",\n  "files": [\n    {\n      "path": "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",\n      "sizeBytes": 128,\n      "sha256": "00",\n      "endSessionTimeNs": 10000000000\n    }\n  ]\n}\n', 'manifest.json': b'{\n  "session_schema_version": "1.0.0",\n  "sessionId": "mini-analysis-fixture",\n  "state": "finalized",\n  "t0WallUtc": "2026-08-09T00:00:00Z",\...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/analysis/test_job_destinations.py:52: AssertionError
+____________ test_linked_output_paths_are_rejected[raw-sources-job] ____________
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_linked_output_paths_are_r2/mini.mmsession')
+tmp_path = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_linked_output_paths_are_r2')
+component = 'job', outside = False
+
+    @pytest.mark.parametrize("component", ["processing", "jobs", "job"])
+    @pytest.mark.parametrize("outside", [False, True], ids=["raw-sources", "outside-package"])
+    def test_linked_output_paths_are_rejected(
+        package: Path, tmp_path: Path, component: str, outside: bool
+    ) -> None:
+        target = tmp_path / "unrelated" if outside else package / "sources"
+        if outside:
+            target.mkdir()
+            (target / "keep.txt").write_bytes(b"unrelated existing data")
+        processing = package / "processing"
+        if component == "processing":
+            shutil.rmtree(processing)
+            link = processing
+        elif component == "jobs":
+            link = processing / "jobs"
+        else:
+            (processing / "jobs").mkdir()
+            link = processing / "jobs" / "qc-test"
+        _symlink(link, target)
+>       _expect_rejected_without_mutation(package, "qc-test", target)
+
+tests/analysis/test_job_destinations.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_linked_output_paths_are_r2/mini.mmsession')
+job_id = 'qc-test'
+extra = (PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_linked_output_paths_are_r2/mini.mmsession/sources'),)
+
+    def _expect_rejected_without_mutation(package: Path, job_id: str, *extra: Path) -> None:
+        roots = (package, *extra)
+        before = [_snapshot(root) for root in roots]
+        failure: Exception | None = None
+        try:
+            run(package, JobParams(command="qc", overwrite_job_id=job_id))
+        except Exception as exc:  # noqa: BLE001
+            failure = exc
+>       assert [_snapshot(root) for root in roots] == before, "rejected jobs must not change data"
+E       AssertionError: rejected jobs must not change data
+E       assert [{'events': '..."\n}\n', ...}] == [{'events': '..."\n}\n', ...}]
+E         
+E         At index 0 diff: {'events': 'directory', 'events/annotations.json': b'[]\n', 'events/checkpoints.json': b'[]\n', 'events/sync_anchors.json': b'[]\n', 'integrity.json': b'{\n  "schemaVersion": "1",\n  "files": [\n    {\n      "path": "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",\n      "sizeBytes": 128,\n      "sha256": "00",\n      "endSessionTimeNs": 10000000000\n    }\n  ]\n}\n', 'manifest.json': b'{\n  "session_schema_version": "1.0.0",\n  "sessionId": "mini-analysis-fixture",\n  "state": "finalized",\n  "t0WallUtc": "2026-08-09T00:00:00Z",\...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/analysis/test_job_destinations.py:52: AssertionError
+______ test_linked_output_paths_are_rejected[outside-package-processing] _______
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_linked_output_paths_are_r3/mini.mmsession')
+tmp_path = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_linked_output_paths_are_r3')
+component = 'processing', outside = True
+
+    @pytest.mark.parametrize("component", ["processing", "jobs", "job"])
+    @pytest.mark.parametrize("outside", [False, True], ids=["raw-sources", "outside-package"])
+    def test_linked_output_paths_are_rejected(
+        package: Path, tmp_path: Path, component: str, outside: bool
+    ) -> None:
+        target = tmp_path / "unrelated" if outside else package / "sources"
+        if outside:
+            target.mkdir()
+            (target / "keep.txt").write_bytes(b"unrelated existing data")
+        processing = package / "processing"
+        if component == "processing":
+            shutil.rmtree(processing)
+            link = processing
+        elif component == "jobs":
+            link = processing / "jobs"
+        else:
+            (processing / "jobs").mkdir()
+            link = processing / "jobs" / "qc-test"
+        _symlink(link, target)
+>       _expect_rejected_without_mutation(package, "qc-test", target)
+
+tests/analysis/test_job_destinations.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_linked_output_paths_are_r3/mini.mmsession')
+job_id = 'qc-test'
+extra = (PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_linked_output_paths_are_r3/unrelated'),)
+
+    def _expect_rejected_without_mutation(package: Path, job_id: str, *extra: Path) -> None:
+        roots = (package, *extra)
+        before = [_snapshot(root) for root in roots]
+        failure: Exception | None = None
+        try:
+            run(package, JobParams(command="qc", overwrite_job_id=job_id))
+        except Exception as exc:  # noqa: BLE001
+            failure = exc
+>       assert [_snapshot(root) for root in roots] == before, "rejected jobs must not change data"
+E       AssertionError: rejected jobs must not change data
+E       assert [{'events': '...ectory', ...}] == [{'events': '...isting data'}]
+E         
+E         At index 1 diff: {'jobs': 'directory', 'jobs/qc-test': 'directory', 'jobs/qc-test/job_manifest.json': b'{\n  "analysisGrids": [],\n  "captureAnalysisVersion": "0.1.0",\n  "createdUtc": "2026-10-08T10:12:06Z",\n  "errors": [],\n  "evalWindowCount": null,\n  "featureTables": [],\n  "gapPolicy": "mask",\n  "gapSummary": {\n    "closed": 0,\n    "maskedNs": 0,\n    "open": 0,\n    "validFraction": null\n  },\n  "jobId": "qc-test",\n  "kinematicsRows": null,\n  "manifestSha256": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380",\n  "mlBundleWindowCount": nul...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/analysis/test_job_destinations.py:52: AssertionError
+_________ test_linked_output_paths_are_rejected[outside-package-jobs] __________
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_linked_output_paths_are_r4/mini.mmsession')
+tmp_path = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_linked_output_paths_are_r4')
+component = 'jobs', outside = True
+
+    @pytest.mark.parametrize("component", ["processing", "jobs", "job"])
+    @pytest.mark.parametrize("outside", [False, True], ids=["raw-sources", "outside-package"])
+    def test_linked_output_paths_are_rejected(
+        package: Path, tmp_path: Path, component: str, outside: bool
+    ) -> None:
+        target = tmp_path / "unrelated" if outside else package / "sources"
+        if outside:
+            target.mkdir()
+            (target / "keep.txt").write_bytes(b"unrelated existing data")
+        processing = package / "processing"
+        if component == "processing":
+            shutil.rmtree(processing)
+            link = processing
+        elif component == "jobs":
+            link = processing / "jobs"
+        else:
+            (processing / "jobs").mkdir()
+            link = processing / "jobs" / "qc-test"
+        _symlink(link, target)
+>       _expect_rejected_without_mutation(package, "qc-test", target)
+
+tests/analysis/test_job_destinations.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_linked_output_paths_are_r4/mini.mmsession')
+job_id = 'qc-test'
+extra = (PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_linked_output_paths_are_r4/unrelated'),)
+
+    def _expect_rejected_without_mutation(package: Path, job_id: str, *extra: Path) -> None:
+        roots = (package, *extra)
+        before = [_snapshot(root) for root in roots]
+        failure: Exception | None = None
+        try:
+            run(package, JobParams(command="qc", overwrite_job_id=job_id))
+        except Exception as exc:  # noqa: BLE001
+            failure = exc
+>       assert [_snapshot(root) for root in roots] == before, "rejected jobs must not change data"
+E       AssertionError: rejected jobs must not change data
+E       assert [{'events': '...ectory', ...}] == [{'events': '...isting data'}]
+E         
+E         At index 1 diff: {'keep.txt': b'unrelated existing data', 'qc-test': 'directory', 'qc-test/job_manifest.json': b'{\n  "analysisGrids": [],\n  "captureAnalysisVersion": "0.1.0",\n  "createdUtc": "2026-10-08T10:12:06Z",\n  "errors": [],\n  "evalWindowCount": null,\n  "featureTables": [],\n  "gapPolicy": "mask",\n  "gapSummary": {\n    "closed": 0,\n    "maskedNs": 0,\n    "open": 0,\n    "validFraction": null\n  },\n  "jobId": "qc-test",\n  "kinematicsRows": null,\n  "manifestSha256": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380",\n  "mlBundleWindowCo...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/analysis/test_job_destinations.py:52: AssertionError
+__________ test_linked_output_paths_are_rejected[outside-package-job] __________
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_linked_output_paths_are_r5/mini.mmsession')
+tmp_path = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_linked_output_paths_are_r5')
+component = 'job', outside = True
+
+    @pytest.mark.parametrize("component", ["processing", "jobs", "job"])
+    @pytest.mark.parametrize("outside", [False, True], ids=["raw-sources", "outside-package"])
+    def test_linked_output_paths_are_rejected(
+        package: Path, tmp_path: Path, component: str, outside: bool
+    ) -> None:
+        target = tmp_path / "unrelated" if outside else package / "sources"
+        if outside:
+            target.mkdir()
+            (target / "keep.txt").write_bytes(b"unrelated existing data")
+        processing = package / "processing"
+        if component == "processing":
+            shutil.rmtree(processing)
+            link = processing
+        elif component == "jobs":
+            link = processing / "jobs"
+        else:
+            (processing / "jobs").mkdir()
+            link = processing / "jobs" / "qc-test"
+        _symlink(link, target)
+>       _expect_rejected_without_mutation(package, "qc-test", target)
+
+tests/analysis/test_job_destinations.py:91: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_linked_output_paths_are_r5/mini.mmsession')
+job_id = 'qc-test'
+extra = (PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_linked_output_paths_are_r5/unrelated'),)
+
+    def _expect_rejected_without_mutation(package: Path, job_id: str, *extra: Path) -> None:
+        roots = (package, *extra)
+        before = [_snapshot(root) for root in roots]
+        failure: Exception | None = None
+        try:
+            run(package, JobParams(command="qc", overwrite_job_id=job_id))
+        except Exception as exc:  # noqa: BLE001
+            failure = exc
+>       assert [_snapshot(root) for root in roots] == before, "rejected jobs must not change data"
+E       AssertionError: rejected jobs must not change data
+E       assert [{'events': '...isting data'}] == [{'events': '...isting data'}]
+E         
+E         At index 0 diff: {'events': 'directory', 'events/annotations.json': b'[]\n', 'events/checkpoints.json': b'[]\n', 'events/sync_anchors.json': b'[]\n', 'integrity.json': b'{\n  "schemaVersion": "1",\n  "files": [\n    {\n      "path": "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",\n      "sizeBytes": 128,\n      "sha256": "00",\n      "endSessionTimeNs": 10000000000\n    }\n  ]\n}\n', 'manifest.json': b'{\n  "session_schema_version": "1.0.0",\n  "sessionId": "mini-analysis-fixture",\n  "state": "finalized",\n  "t0WallUtc": "2026-08-09T00:00:00Z",\...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+tests/analysis/test_job_destinations.py:52: AssertionError
+__________________ test_dangling_destination_link_is_rejected __________________
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_dangling_destination_link0/mini.mmsession')
+tmp_path = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_dangling_destination_link0')
+
+    def test_dangling_destination_link_is_rejected(package: Path, tmp_path: Path) -> None:
+        jobs = package / "processing" / "jobs"
+        jobs.mkdir()
+        target = tmp_path / "missing"
+        _symlink(jobs / "qc-test", target)
+>       _expect_rejected_without_mutation(package, "qc-test")
+
+tests/analysis/test_job_destinations.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-8/test_dangling_destination_link0/mini.mmsession')
+job_id = 'qc-test', extra = ()
+
+    def _expect_rejected_without_mutation(package: Path, job_id: str, *extra: Path) -> None:
+        roots = (package, *extra)
+        before = [_snapshot(root) for root in roots]
+        failure: Exception | None = None
+        try:
+            run(package, JobParams(command="qc", overwrite_job_id=job_id))
+        except Exception as exc:  # noqa: BLE001
+            failure = exc
+        assert [_snapshot(root) for root in roots] == before, "rejected jobs must not change data"
+>       assert isinstance(failure, ValueError), f"expected destination rejection, got {failure!r}"
+E       AssertionError: expected destination rejection, got FileExistsError(17, 'File exists')
+E       assert False
+E        +  where False = isinstance(FileExistsError(17, 'File exists'), ValueError)
+
+tests/analysis/test_job_destinations.py:53: AssertionError
+=========================== short test summary info ============================
+SKIPPED [1] tests/analysis/test_job_destinations.py:124: native Windows junction semantics
+FAILED tests/analysis/test_job_destinations.py::test_raw_sources_cannot_be_an_overwrite_destination[traversal]
+FAILED tests/analysis/test_job_destinations.py::test_raw_sources_cannot_be_an_overwrite_destination[absolute]
+FAILED tests/analysis/test_job_destinations.py::test_job_ids_are_portable_single_visible_names[]
+FAILED tests/analysis/test_job_destinations.py::test_job_ids_are_portable_single_visible_names[.]
+FAILED tests/analysis/test_job_destinations.py::test_job_ids_are_portable_single_visible_names[..]
+FAILED tests/analysis/test_job_destinations.py::test_job_ids_are_portable_single_visible_names[nested/job]
+FAILED tests/analysis/test_job_destinations.py::test_job_ids_are_portable_single_visible_names[nested\\job]
+FAILED tests/analysis/test_job_destinations.py::test_job_ids_are_portable_single_visible_names[C:job]
+FAILED tests/analysis/test_job_destinations.py::test_job_ids_are_portable_single_visible_names[qc.]
+FAILED tests/analysis/test_job_destinations.py::test_job_ids_are_portable_single_visible_names[qc ]
+FAILED tests/analysis/test_job_destinations.py::test_job_ids_are_portable_single_visible_names[NUL.txt]
+FAILED tests/analysis/test_job_destinations.py::test_job_ids_are_portable_single_visible_names[qc?one]
+FAILED tests/analysis/test_job_destinations.py::test_job_ids_are_portable_single_visible_names[.attempt_existing]
+FAILED tests/analysis/test_job_destinations.py::test_job_ids_are_portable_single_visible_names[qc\x00one]
+FAILED tests/analysis/test_job_destinations.py::test_linked_output_paths_are_rejected[raw-sources-processing]
+FAILED tests/analysis/test_job_destinations.py::test_linked_output_paths_are_rejected[raw-sources-jobs]
+FAILED tests/analysis/test_job_destinations.py::test_linked_output_paths_are_rejected[raw-sources-job]
+FAILED tests/analysis/test_job_destinations.py::test_linked_output_paths_are_rejected[outside-package-processing]
+FAILED tests/analysis/test_job_destinations.py::test_linked_output_paths_are_rejected[outside-package-jobs]
+FAILED tests/analysis/test_job_destinations.py::test_linked_output_paths_are_rejected[outside-package-job]
+FAILED tests/analysis/test_job_destinations.py::test_dangling_destination_link_is_rejected
+21 failed, 4 passed, 1 skipped in 1.24s

@@ -1,0 +1,15 @@
+{
+  "head": "719ef6e7f9084bc287879ad9eba033b13a709e37",
+  "script_sha256": "0b83d42da26fa62426741f1dcca6814f4d5631a8d700d3c31cf6eb64a1da8b0e",
+  "pythonioencoding": "cp1252:strict",
+  "exit": 0,
+  "stdout": "wrote /dev/shm/export-encoding-peer-zc4kh7sw/independent output \\u96ea/export_manifest.json\nradar 0 video 0 imu 1 emg 1\n",
+  "stderr": "",
+  "actual_streams": {
+    "emg": 1,
+    "imu": 1
+  },
+  "source_unchanged": true,
+  "passed": true,
+  "scope": "Real subprocess with legacy encoding on Linux; actual Windows CI remains a separate gate."
+}

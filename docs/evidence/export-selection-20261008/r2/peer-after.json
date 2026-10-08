@@ -1,0 +1,12 @@
+{
+  "candidate_head": "f81ce452ece2efc2345eda8bdf6d477a93adc6a9",
+  "script_sha256": "85874a7489c1174e8e4a27a99fcc294e0d7df2bc46a011df6cb0e86ee9b5bd40",
+  "fixture": "/workspace/scratch/234cae4aee53/agents/lead/export/capturesuite-peer-7uaivv3w/sealed.mmsession",
+  "destination_length": 3890,
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "FAIL export: Could not write IMU summary for source 'imu.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx': File name too long. Choose a writable destination with enough free space and a shorter path.\n",
+  "actual_streams": null,
+  "source_unchanged": true,
+  "expected": "Nonzero export result if a present selected stream cannot be written; both streams must be accounted for."
+}

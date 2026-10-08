@@ -45,6 +45,30 @@ Pinned companion to the product notes in
 
 `job_id` format: `YYYYMMDDTHHMMSSZ_<first 8 hex of params_digest>`.
 
+An explicit `--overwrite-job-id` can name a previous job, such as `qc-test`.
+It must be one non-hidden directory name that is valid on Windows and POSIX;
+paths, Windows device names, alternate data streams, and trailing dots/spaces are
+rejected before output creation. Existing `processing`, `jobs`, and target job
+directories must be direct directories, without symlinks or junctions. A linked
+package root is supported by resolving the package before choosing its output.
+
+Replacing a job prepares a separate, uniquely owned `.attempt_<unique>` directory.
+Analysis, progress callbacks, and cancellation checks finish before the previous
+job is moved. A successful replacement keeps the requested job ID. If analysis
+fails or is cancelled, the previous job stays byte-for-byte intact and the failed
+attempt remains on disk with its own matching directory and manifest `jobId`.
+Its `params.json` retains `overwriteJobId`, so the intended replacement is explicit.
+The failure diagnostic identifies the retained path. The desktop's downstream
+job selectors exclude these dot-prefixed internal attempt records.
+
+Publication temporarily moves the previous directory into an owned backup and
+restores it if moving the candidate into place fails. If the filesystem also
+prevents restoration, the error names the backup containing the previous result.
+Cleanup of a previous result happens only after successful publication; a cleanup
+error leaves the new job completed and logs the remaining backup path. This is
+exception/cancellation recovery within one run, not crash recovery or coordination
+between concurrent writers.
+
 Schema: [`schemas/session/jsonschema/analysis_job.schema.json`](../../schemas/session/jsonschema/analysis_job.schema.json).
 
 ## Memory / streaming

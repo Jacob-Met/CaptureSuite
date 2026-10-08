@@ -1,0 +1,14 @@
+{
+  "before-pr30.log": "7e080e95b6272bf266f051631ecbf23a57b45ebc2c0c778ba35519070da9d709",
+  "before-pr30.xml": "b1aec8d23e7fcc1a697638635ecae45a36d8a9e54023fd8f3a796c85201b9af8",
+  "candidate-analysis.log": "1cafec2d551f850b9ebc08500b8fedc7ca137f6e2093c0fbf67bc571090bfd2d",
+  "candidate-analysis.xml": "149c0aba8be8609d9fd4530277dd5deb275e0d784c1b50a37e89713fd55d7b1e",
+  "candidate-full-suite.log": "4290b279cb30024a5e99c3f7a40dcaa04c4fdf45ea86c76af29015d16ab0a49a",
+  "candidate-receipt.json": "04d6a8afe4c962a66f2ea0153a9198cf0dab64dd7981c4d03c9240d493089182",
+  "candidate-source-manifest.json": "417aa06122ec9155f152a27be17a9d1af3fb36763b87ff352e564a28b66dd40d",
+  "ci-contract.log": "57ac52c791c45c5170b963dfd37c2812136c9915310dfef6c0a62681cc4259fe",
+  "license.log": "7bcb47df08917b40ea6dc57be21749a0311e7197c5d26ca0df66e0d9f516bcba",
+  "main-full-suite.log": "79e3f7a7822e3ff9c89b2a38ae9d37e51943cfdef87ea3725cc82689e985f446",
+  "ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+  "source-pins.json": "2d6436c604e55ca2612295451bf123bfbc176b4b5f85f25a63ea12520baee86a"
+}

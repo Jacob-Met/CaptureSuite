@@ -42,6 +42,29 @@ receiver above remains bound to retained original `16eb17f` atomic source; it
 does not claim qualification of the revised writer. See the packet CURRENT.md
 for the exact companion composition and current fixture replay.
 
+## 2026-10-08 — Preserve prior analysis jobs on failed replacement
+
+Worker `estate-6267db2cfc6e`, issue #39: portable job IDs and direct output
+directories are checked before writes. An overwrite builds in a unique hidden
+attempt, preserves the prior result through analysis/cancellation failures, and
+restores it after a failed publication rename. Failed attempts retain their own
+manifest identity, original overwrite intent, and actionable diagnostic path.
+CLI and desktop consumers preserve exception notes; desktop cancellation stays
+quiet while logging the retained path.
+
+Fresh original-source controls reproduce 21 destination failures and seven
+replacement failures. The candidate composed with main `52203f5c` passes 50
+tests, including real CLI subprocesses and the current stream-gap regressions;
+Ruff passes. The two explicit local skips require native Windows junctions and
+PySide6. Full supported Windows CI remains the publication acceptance gate.
+Exact sources, fresh raw logs, independent agent receiving and the earlier
+scratch-loss disclosure are recorded in
+[`docs/evidence/analysis-job-preservation-6267db2cfc6e/README.md`](../../evidence/analysis-job-preservation-6267db2cfc6e/README.md).
+
+Composition update: main `ac52c3ca` adds the separately received POSIX sealed-recording
+repair. The job-preservation production, tests, and initial receiving evidence remain
+byte-identical; hosted CI qualifies this new combined repository tree.
+
 ## 2026-10-08 — Scope recorded analysis gaps to their stream (estate-e82707f2bc62)
 
 A targeted gap from one stream previously invalidated every sibling stream from
@@ -172,6 +195,56 @@ Agents: **read at session start, update at session end.**
 Plan: [AUTONOMOUS_EXECUTION_PLAN.md](AUTONOMOUS_EXECUTION_PLAN.md)
 
 ---
+
+## 2026-10-08 — Selective export receiving
+
+Independent receiving of T68 / PR #30 at `69e6cb7` uses the real protobuf MCAP
+reader/writer, CPython 3.12 and PySide6, including a native export wizard. Twelve
+new behavioral cases retain **seven failures and five passing controls** on the
+original candidate. They reproduce omitted later IMU streams under neutral
+source IDs and mixed old/new output when a destination is reused.
+
+The qualified successor scans the actual message schemas, creates EMG/IMU
+outputs only after matching decoded messages, and rejects nonempty destinations
+before writes. Existing empty destinations, timestamps, source bytes and
+requested-versus-actual provenance are covered. **31 export tests and all 59
+analysis tests pass**, with no skips. The whole configured Ruff and license
+checks pass; protobuf/session-schema regeneration has no byte drift.
+
+Independent lead review rejected initial source `a00e0df` / `6866ebd`: moving
+lazy output creation into the tolerated input-read handler could hide a write
+failure. A real 3890-character destination reproduced success with a missing
+selected stream; untouched PR #30 failed as expected. Correction `f81ce45`
+keeps input reads in a streaming generator and makes output creation, writing
+and close failures actionable and fatal before a success manifest is written.
+Six portable cases retain four initial failures and two unchanged input-read
+controls. Lead reran the real path-limit case: exit 1, no manifest and unchanged
+raw hashes. The final clean/unchanged source passes all 59 analysis cases.
+
+Successor PR #45 preserves the qualified tree on current main. Its first
+Windows Python run (`37758185607`) reached all 255 cases: 246 passed, six
+daemon-build skips, and three failures from Unicode paths printed through
+cp1252 stdout after successful export writes. A real child process under
+`PYTHONIOENCODING=cp1252:strict` reproduces this failure locally. The CLI now
+escapes only status text that its output encoding cannot represent; filesystem
+paths and manifest contents remain unchanged. All 60 analysis tests pass with
+the added regression. The failed Windows receipt is retained and the next
+Windows run remains required before platform acceptance.
+
+The forward update also receives main `52203f5`, preserving its landed Linux
+storage/recovery and stream-gap changes through a clean normal merge. All 68
+analysis tests pass on the unchanged composed source; the accepted exporter
+bytes are unchanged. Independent lead receiving confirmed both selected
+streams, the actual Unicode destination and unchanged raw hashes under a
+legacy output pipe. The next hosted Windows run remains the final platform gate.
+
+The full repository suite on Linux still fails during collection with the same
+four pre-existing `msvcrt` import errors on current main and the successor.
+Windows CI/native daemon qualification remains a separate acceptance gate; no
+hardware, installed app, release or native Linux-port acceptance is claimed.
+The original T68 and Linux portability owners retain their respective scopes.
+Exact source pins, negative evidence and replay commands are retained under
+[`docs/evidence/export-selection-20261008/`](../../evidence/export-selection-20261008/).
 
 ## 2026-10-08 — Retained framing exception recovery (integration-72ac1419)
 
@@ -422,3 +495,65 @@ enumeration, so this gate is designed not to touch physical webcams. This is not
 positive native execution. Hosted Windows execution of the exact published candidate is
 the remaining acceptance gate. See
 `docs/evidence/native-integration-gate-20260909.json`.
+
+
+## 2026-10-08 — Camera plugin runtime packaging (#34)
+
+ChatGPT worker `dd846795-production` added the existing five camera runtime DLLs
+to the plugin-manifest executable directory as well as the legacy worker directory.
+This fixes the asymmetric post-build copy rule without changing the dependency list,
+worker launch logic, schemas, protocol, or radar packaging.
+
+The same final CMake regression harness executes the actual production staging
+commands against native C++ fixtures. Baseline `742dd7d` fails for a missing
+plugin-local DLL; the repaired source passes Unix Makefiles and Ninja Multi-Config.
+Both layouts retain exact executable/DLL/manifest bytes. Changed-input controls
+reject a plugin-only omission, restore it on rebuild, and reject a missing source
+DLL during the actual build. The test requires only CMake 3.28+ and a C++ compiler:
+
+```sh
+cmake -DWORK_DIR=/absolute/new/scratch/path -P tests/cmake/camera_runtime_packaging.cmake
+```
+
+The DLLs are synthetic text fixtures: these results qualify packaging commands,
+not Windows loader behavior, GStreamer, physical capture or full-product readiness.
+Exact source hashes and retained logs: `docs/evidence/camera-runtime-closure-20261008.json`.
+Owner receiving remains a draft-PR step; no main merge, deployment, release or tag
+is represented by this source qualification.
+
+
+### 2026-10-08 — Receive the parallel linked-library packaging fixture
+
+After the initial coordination comments were temporarily throttled, receiving
+discovered candidate 8167c9ad8b44433409e8f3d66f66c4254f879db3 from
+estate-afe225d6c6be/product_execution (original author: HAMON Product Worker).
+Its production command bytes match this fix; only the explanatory CMake COMMENT
+wording differs. The receiver kept the existing production CMake bytes and imported
+the four linked-library fixture files and three original evidence files unchanged.
+Both package manifests and the original source archive remain retained.
+
+Independent receiving on the ThinkPad passed all 17 checks against this PR source:
+both packaged native executables reached main, and removing only plugin-local
+libprotobuf prevented main. Native ELF libraries use an origin-only runtime path.
+This strengthens native fixture evidence; actual Windows camera/vcpkg/GStreamer
+packaging and physical capture remain outside the observed results. One PR (#38)
+carries both source lineages. Original parent authorship/coordination and existing
+T68 ownership are retained. See docs/evidence/camera-packaging-20261008/receiving-8167c9a.json.
+
+
+### 2026-10-08 — Reconcile final peer evidence and collect the native fixture
+
+The original contributor explicitly accepted the one-PR receiving plan in PR #38
+comment 6056803042. Its published b14a0d4 commit is retained as Git ancestry;
+the four maintained fixture files are unchanged, and eleven final qualification
+files preserve the independent 17-check and six-group Linux evidence. Original
+8167c9a attribution, patch/archive custody and receiving reports remain retained.
+
+The additive pytest wrapper now collects the native linked-library fixture in the
+existing Python CI job, with explicit Visual Studio 2022/x64 selection on Windows
+and retained build/evidence output. It suppresses expected missing-DLL error dialogs
+while preserving and restoring the process error mode. Current main a1b3c966 was
+merged without changing the camera source or either fixture. The final combined
+Linux collection passed 1/1 tests and 17/17 native checks. New-head hosted Windows
+qualification is pending; actual camera/vcpkg/GStreamer receiving remains open.
+See docs/evidence/camera-packaging-20261008/receiving-final-integration.json.
