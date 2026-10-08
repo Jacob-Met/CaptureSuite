@@ -1,0 +1,22 @@
+{
+  "base": "70f34e3b982523b544a9370d2316a1b69d79bd70",
+  "native_reviewed_head": "1e9727201face54a1a70551dbcc8df50a70a3f70",
+  "received_main": "58157fdc1b83a12bb4856ef14b0498cf524a1087",
+  "staged_tree": "38015f3dec35025daea4e84d198a00e22cae5327",
+  "automatic_merge": true,
+  "owner_source_files_preserved": {
+    "docs/design/ANALYSIS.md": "58a4e6783f7f85cffe9a44fb7b445e27b6339a4cec567d973ec9cf560f62da64",
+    "libs/python/capture_analysis/capture_analysis/eval/job.py": "0af5556304cfae0be9f40929fbe4eeba6cf8b1453f94e9ba475d66acda8bc913",
+    "libs/python/capture_analysis/capture_analysis/eval/predictions.py": "decff22c1e2e661a3ce21679db68b667ea44fa5b18df8501204d7d23161cc906",
+    "libs/python/capture_analysis/capture_analysis/jobs.py": "0742573679f5d3717fae9f17b7ed2f540c0b9c85859d74db2764c65dd517e37c",
+    "schemas/eval/predictions.schema.json": "dc7de69d50d94876de42aa6671b4f922b1fa397d72418347559594ecea5fb57c",
+    "tests/analysis/test_external_predictions.py": "83f4c799720ae9cdffcc1cb81fa010ea0ec5d91c655309f2137a3594370579a7",
+    "tools/run_analysis.py": "f450b1e17185bb2b19e45747698dd1f75f487c7898304484357abec5bee9f555"
+  },
+  "progress_all_main_bytes_preserved_after_removing_only_our_exact_addition": true,
+  "progress_sha256": "392fed08c1275f867c6079d8f83e830196c333edbfbb6252627af4049d692ab1",
+  "producer_test_pins": {
+    "libs/python/capture_analysis/capture_analysis/ml_bundle/job.py": "38b7161f081ef038e6ce464dd3b82ca2b49f775ad8988010243743274d6fc5e6",
+    "tests/analysis/test_ml_bundle_metadata.py": "b2104dd43f464629e284fe946126a65fa5423531f67b9fd165b702f888cd799d"
+  }
+}
