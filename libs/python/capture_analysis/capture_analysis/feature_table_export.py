@@ -59,6 +59,8 @@ def _job_file(job: Path, relative: str) -> Path:
             _fail(f"linked retained-job path is not supported: {relative}")
     if not path.is_file():
         _fail(f"missing retained-job file: {relative}")
+    if path.stat().st_nlink > 1:
+        _fail(f"hard-linked retained-job file is not supported: {relative}")
     return path
 
 
@@ -286,6 +288,7 @@ def export_feature_table(
                 "encoding": "UTF-8",
                 "delimiter": ",",
                 "header": True,
+                "newlinesInValues": True,
                 "nullValues": [""],
                 "stringsCanBeNull": True,
                 "quotedStringsCanBeNull": False,
