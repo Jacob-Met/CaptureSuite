@@ -1,0 +1,530 @@
+{
+  "schema": "capture.qc-current-source-custody/1",
+  "contributor": "7879c2abc07f",
+  "repository": "Jacob-Met/CaptureSuite",
+  "issue": 74,
+  "pull_request": 79,
+  "purpose": "Preserve exact accepted QC package review, its current-main composition, source-bound historical gates, and independently received current Linux component compatibility without triggering Actions.",
+  "composition": {
+    "schema": "capture.qc-current-composition/1",
+    "contributor": "7879c2abc07f",
+    "prepared_commit": "f8f090861326acf7546a822569dd369362fb0f65",
+    "prepared_tree": "4aa2ade8b77170ae94d653aadfdf513e746777e3",
+    "current_parent": "e48825b1b37544f4c31912e3c29a3918704f5456",
+    "accepted_parent": "7f5548fb12e040f45d7e1f5867d511dc33a618ac",
+    "total_leaves": 1182,
+    "owned_paths": [
+      {
+        "path": "README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "91956537b2ad2c905d3b87b187d72c1687710106"
+      },
+      {
+        "path": "docs/design/research/PROGRESS.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7284db4be0e405332d6b1c2c13968fbc8d9621cc"
+      },
+      {
+        "path": "libs/python/capture_analysis/capture_analysis/__init__.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "1cc42e80ddd22d004fc71837e4190e053e6d1a7d"
+      },
+      {
+        "path": "tests/ui/test_analysis_scope.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "817412fe4352c527ad7da8406269ac67cede1709"
+      },
+      {
+        "path": ".github/workflows/qc-package-review-receiving.yml",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ead7560750d6461dc1f191b651143a3bec7fd7fb"
+      },
+      {
+        "path": "docs/QC_PACKAGE_REVIEW.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "d72ee9aa2ff55f42ff8ee6b94c272db242445abc"
+      },
+      {
+        "path": "libs/python/capture_analysis/capture_analysis/qc_packages.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e9ece18a7ffc47d709c407d25d39d9d77fae4cfa"
+      },
+      {
+        "path": "tests/analysis/test_qc_import_boundary_receiving_7879.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "5fb2876d99f0bf174f0be3b2f0a199de281ee412"
+      },
+      {
+        "path": "tests/analysis/test_qc_package_review_receiving_7879.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "4f3fc6695d36cfa525dab393492ab0e6466aae85"
+      },
+      {
+        "path": "tests/analysis/test_qc_packages.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7bfefe4380e5992cf6a8275441e6a7a8be48f7c3"
+      },
+      {
+        "path": "tests/analysis/test_qc_packages_cli.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "0dd0833cc4116306ade46f7d97fe309a6abe8246"
+      },
+      {
+        "path": "tools/check_qc_package_review_index_7879.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2a195f01df5046b6edc3a1da37d78e798bb3b8b1"
+      },
+      {
+        "path": "tools/review_qc_packages.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e39c2ba4272771765d23db58beafea6bcfa2bcca"
+      }
+    ],
+    "unrelated_current_leaves": 1169,
+    "no_deletions": true,
+    "progress": {
+      "preserves_complete_current_prefix": true,
+      "preserves_exact_accepted_append": true,
+      "bytes": 73624,
+      "sha256": "890e3e07f68938f6fbe1f2cb033346f7a00265005e83ab1f456ebb34e218c28d",
+      "git_blob": "7284db4be0e405332d6b1c2c13968fbc8d9621cc"
+    },
+    "source_acceptance": "Independent full-tree acceptance and targeted current Linux component acceptance completed; current Windows full-suite integration gate remains unrun.",
+    "native_test_inputs": [
+      {
+        "path": "tests/analysis/test_qc_import_boundary_receiving_7879.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "5fb2876d99f0bf174f0be3b2f0a199de281ee412",
+        "size": 9206,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/5fb2876d99f0bf174f0be3b2f0a199de281ee412"
+      },
+      {
+        "path": "tests/conftest.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ad9b61fd8e9c1c3d74f91710d4e82dd7d899e6b4",
+        "size": 1773,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/ad9b61fd8e9c1c3d74f91710d4e82dd7d899e6b4"
+      },
+      {
+        "path": "tests/ui/test_analysis_job_comparison.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "26b8fe1772fb66552f20a22c00fe53c6e689edbb",
+        "size": 17558,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/26b8fe1772fb66552f20a22c00fe53c6e689edbb"
+      },
+      {
+        "path": "tests/ui/test_analysis_job_file_reads.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "518fb9f79ab3a3ea3817b8a36a6b9450ef1198af",
+        "size": 3650,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/518fb9f79ab3a3ea3817b8a36a6b9450ef1198af"
+      },
+      {
+        "path": "tests/ui/test_analysis_scope.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "817412fe4352c527ad7da8406269ac67cede1709",
+        "size": 14572,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/817412fe4352c527ad7da8406269ac67cede1709"
+      },
+      {
+        "path": "tests/ui/test_analysis_sources.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b7d2e381d4a1f47465c9ced7e35923eea0668872",
+        "size": 19069,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/b7d2e381d4a1f47465c9ced7e35923eea0668872"
+      },
+      {
+        "path": "tools/run_ci_tests.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b5717e9f605ee7de6474cf4d3ecba45e5eaa44ba",
+        "size": 7443,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/b5717e9f605ee7de6474cf4d3ecba45e5eaa44ba"
+      }
+    ]
+  },
+  "native": {
+    "scope": "Selected exact 319-file closure of the composed source. Linux component compatibility only.",
+    "receiver": "7879c2abc07f/native_receiving",
+    "reviewer": "7879c2abc07f/next_production",
+    "packet_reviewer": "7879c2abc07f/offhand_review",
+    "host": "hamon-thinkpad",
+    "python": "3.12.15",
+    "pyside6": "6.12.0",
+    "existing_interpreter": "/home/jacob/hamon-capture-composition-f5c5ccd6-tools/venv/bin/python",
+    "existing_native_custody": "/home/jacob/capturesuite-current-receiving-7879c2abc07f-20261008",
+    "materialized_files": 319,
+    "materialized_bytes": 1529056,
+    "source_conserved": true,
+    "source_modes_conserved": true,
+    "same_process_project_imports": 76,
+    "imports_outside_selected_source": 0,
+    "outer_timeout_seconds": 300,
+    "frozen_test_files": [
+      {
+        "path": "tests/analysis/test_qc_import_boundary_receiving_7879.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "5fb2876d99f0bf174f0be3b2f0a199de281ee412",
+        "size": 9206,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/5fb2876d99f0bf174f0be3b2f0a199de281ee412"
+      },
+      {
+        "path": "tests/ui/test_analysis_job_comparison.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "26b8fe1772fb66552f20a22c00fe53c6e689edbb",
+        "size": 17558,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/26b8fe1772fb66552f20a22c00fe53c6e689edbb"
+      },
+      {
+        "path": "tests/ui/test_analysis_job_file_reads.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "518fb9f79ab3a3ea3817b8a36a6b9450ef1198af",
+        "size": 3650,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/518fb9f79ab3a3ea3817b8a36a6b9450ef1198af"
+      },
+      {
+        "path": "tests/ui/test_analysis_scope.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "817412fe4352c527ad7da8406269ac67cede1709",
+        "size": 14572,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/817412fe4352c527ad7da8406269ac67cede1709"
+      },
+      {
+        "path": "tests/ui/test_analysis_sources.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b7d2e381d4a1f47465c9ced7e35923eea0668872",
+        "size": 19069,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/b7d2e381d4a1f47465c9ced7e35923eea0668872"
+      }
+    ],
+    "attempts": [
+      {
+        "path": "evidence/receiving.json",
+        "bytes": 181474,
+        "sha256": "a1c43bcc37baec8d82dafd4a4d7d0becb43573c0ac3c3cac1a8824b14b393193",
+        "scalars": {
+          "commit": "f8f090861326acf7546a822569dd369362fb0f65",
+          "cwd": "/home/jacob/capturesuite-current-receiving-7879c2abc07f-20261008/source",
+          "exit": 1,
+          "expectedPlatformSkipsOnly": true,
+          "finishedUtc": "2026-10-08T20:27:02Z",
+          "host": "hamon-thinkpad",
+          "importedNativeModuleCount": 66,
+          "outerTimeoutSeconds": 300,
+          "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.43",
+          "python": "3.12.15 (main, Oct  3 2026, 01:03:07) [Clang 22.1.3 ]",
+          "qualified": false,
+          "receiver": "7879c2abc07f/native_receiving",
+          "receivingScope": "Current Linux component compatibility; two Windows-only MainWindow cases remain unqualified. Not supported-Windows or full-current-suite acceptance.",
+          "schema": "capture.native-current-source-receiving/1",
+          "seconds": 12.102601286955178,
+          "sourceConserved": true,
+          "sourceScope": "Selected exact source closure, not a complete checkout.",
+          "startedUtc": "2026-10-08T20:26:50Z",
+          "thirdPartyRuntime": "/home/jacob/hamon-capture-composition-f5c5ccd6-tools/venv/bin/python",
+          "timedOut": false,
+          "tree": "4aa2ade8b77170ae94d653aadfdf513e746777e3"
+        },
+        "nested": {
+          "command": 17,
+          "junit": 5,
+          "outsideSelectedSource": 0,
+          "platformMarkerEvidence": 2,
+          "selectedTests": 5,
+          "sourceAfter": 319,
+          "sourceBefore": 319,
+          "thirdPartyVersions": 11,
+          "unqualifiedPlatformCases": 2
+        },
+        "junit": {
+          "errors": 0,
+          "failures": 27,
+          "skipped": 2,
+          "testCount": 79
+        },
+        "caseCount": 79,
+        "skips": [
+          {
+            "classname": "tests.ui.test_analysis_sources",
+            "name": "test_application_sources_survive_timer_and_review_navigation",
+            "skipReason": "MainWindow imports native named-pipe transport",
+            "skipped": true,
+            "time": "0.000"
+          },
+          {
+            "classname": "tests.ui.test_analysis_scope",
+            "name": "test_application_scope_survives_timer_and_review_navigation",
+            "skipReason": "MainWindow imports native named-pipe transport",
+            "skipped": true,
+            "time": "0.000"
+          }
+        ]
+      },
+      {
+        "path": "evidence/attempt-2/receiving.json",
+        "bytes": 182991,
+        "sha256": "00f567f58958aec1cd0418e2ad3bda2203ac5fa9a146c4940ee62af9a77e6a94",
+        "scalars": {
+          "commit": "f8f090861326acf7546a822569dd369362fb0f65",
+          "cwd": "/home/jacob/capturesuite-current-receiving-7879c2abc07f-20261008/source",
+          "exit": 0,
+          "expectedPlatformSkipsOnly": true,
+          "finishedUtc": "2026-10-08T20:29:34Z",
+          "host": "hamon-thinkpad",
+          "importedNativeModuleCount": 76,
+          "outerTimeoutSeconds": 300,
+          "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.43",
+          "python": "3.12.15 (main, Oct  3 2026, 01:03:07) [Clang 22.1.3 ]",
+          "qualified": true,
+          "receiver": "7879c2abc07f/native_receiving",
+          "receivingScope": "Current Linux component compatibility; two Windows-only MainWindow cases remain unqualified. Not supported-Windows or full-current-suite acceptance.",
+          "schema": "capture.native-current-source-receiving/1",
+          "seconds": 19.655857811914757,
+          "sourceConserved": true,
+          "sourceScope": "Selected exact source closure, not a complete checkout.",
+          "startedUtc": "2026-10-08T20:29:14Z",
+          "thirdPartyRuntime": "/home/jacob/hamon-capture-composition-f5c5ccd6-tools/venv/bin/python",
+          "timedOut": false,
+          "tree": "4aa2ade8b77170ae94d653aadfdf513e746777e3"
+        },
+        "nested": {
+          "command": 17,
+          "controlledPythonpath": 11,
+          "junit": 5,
+          "outsideSelectedSource": 0,
+          "platformMarkerEvidence": 2,
+          "priorAttempt": 3,
+          "selectedTests": 5,
+          "sourceAfter": 319,
+          "sourceBefore": 319,
+          "thirdPartyVersions": 11,
+          "unqualifiedPlatformCases": 2
+        },
+        "junit": {
+          "errors": 0,
+          "failures": 0,
+          "skipped": 2,
+          "testCount": 79
+        },
+        "caseCount": 79,
+        "skips": [
+          {
+            "classname": "tests.ui.test_analysis_sources",
+            "name": "test_application_sources_survive_timer_and_review_navigation",
+            "skipReason": "MainWindow imports native named-pipe transport",
+            "skipped": true,
+            "time": "0.000"
+          },
+          {
+            "classname": "tests.ui.test_analysis_scope",
+            "name": "test_application_scope_survives_timer_and_review_navigation",
+            "skipReason": "MainWindow imports native named-pipe transport",
+            "skipped": true,
+            "time": "0.000"
+          }
+        ]
+      }
+    ],
+    "failure_classification": "The first external receiver launcher omitted the repository source root from Python's import path. Its 27 failed cases all failed while importing the repository tests helpers; 50 cases passed and two predeclared Windows-only cases skipped. All evidence and original launcher bytes are retained.",
+    "receiver_correction": "The second external launcher added the selected repository root to PYTHONPATH and sys.path, preserved the exact five test files and all product bytes, expanded import-origin coverage, and used fresh state/output paths. No assertion, deadline, platform marker, or acceptance rule was weakened.",
+    "current_result": {
+      "qualified": true,
+      "tests": 79,
+      "passed": 77,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 2,
+      "exit": 0,
+      "seconds": 19.655857811914757
+    },
+    "skipped_cases": [
+      {
+        "classname": "tests.ui.test_analysis_sources",
+        "name": "test_application_sources_survive_timer_and_review_navigation",
+        "skipReason": "MainWindow imports native named-pipe transport",
+        "skipped": true,
+        "time": "0.000"
+      },
+      {
+        "classname": "tests.ui.test_analysis_scope",
+        "name": "test_application_scope_survives_timer_and_review_navigation",
+        "skipReason": "MainWindow imports native named-pipe transport",
+        "skipped": true,
+        "time": "0.000"
+      }
+    ],
+    "qc_import_state": "Fresh-process QC-only import and report state remained conserved. Explicit job API discovery intentionally retains normal job-library initialization; it is not misclassified as QC-only execution.",
+    "archive": {
+      "filename": "paired-receiving-f8f09086.tar.gz",
+      "bytes": 290157,
+      "sha256": "e5a4b2235299dc9655beba3cc2dae4e7fc7d676b050fe27406bf9e49fe0da1b1",
+      "members": 25,
+      "uncompressed_bytes": 1173767
+    },
+    "independent_reviews": [
+      {
+        "reviewer": "7879c2abc07f/next_production",
+        "review_sha256": "d8ce98e784471bd36788bc9bef13df70a82c8a01ce9db3902f8afcb71e8a2117",
+        "accepted": true,
+        "scope": "Actual frozen receiver contract, JUnit, source conservation and same-process import origins"
+      },
+      {
+        "reviewer": "7879c2abc07f/offhand_review",
+        "review_sha256": "f4afc4ef246fe782d7c54ef7037c74e4065154d572bc8e3f9b5a7a61cde18606",
+        "accepted": true,
+        "scope": "All sealed packet bytes, both attempts, exact source linkage, JUnit, import origins and receiver-only delta"
+      }
+    ]
+  },
+  "historical": {
+    "accepted_head": "7f5548fb12e040f45d7e1f5867d511dc33a618ac",
+    "tested_checkout": "c062c338df1a2e11e927ab9efb189c062f0ea189",
+    "tested_tree": "94f79e2f1f873507572045bfd1727df636076350",
+    "ordinary_windows": {
+      "run": 37821319011,
+      "python_job": 113462781924,
+      "cmake_job": 113462781509,
+      "python_passed": 559,
+      "daemon_not_built_skips": 6,
+      "python_seconds": 102.7499045,
+      "python_process_exit": 0,
+      "python_accepted": true,
+      "ctest_passed": 30,
+      "native_daemon_recovery_passed": 6,
+      "native_process_exit": 0,
+      "native_accepted": true,
+      "native_worktree": "Dirty from expected native build, unchanged during receiving"
+    },
+    "dedicated_receiving": {
+      "run": 37821318986,
+      "job": 113462782489,
+      "receiving_groups": 8,
+      "actual_cli_commands": 15,
+      "browser_groups": 3,
+      "inspected_screenshots": 4
+    },
+    "validity": "These complete historical gates apply to the exact accepted tree only. They are not presented as current-main Windows CI, current full-suite acceptance, or deployment."
+  },
+  "custody": {
+    "intended_new_branch": "receiving/qc-package-review-7879c2abc07f-current-main-20261008",
+    "evidence_prefix": "docs/evidence/qc-package-review-7879c2abc07f/current-main-receiving-20261008/",
+    "method": "Add evidence files to an unchanged 1182-leaf composed source tree and create one previously absent non-main branch, without opening or updating a pull request.",
+    "pr79_source_ref_updated": false,
+    "required_gates_altered": false,
+    "actions_dispatch_rerun_or_schedule": false,
+    "authority": "https://github.com/Jacob-Met/hamon/issues/143#issuecomment-6067592767",
+    "workflows": [
+      {
+        "path": ".github/workflows/camera-native.yml",
+        "git_blob": "931eedfb75258d616a64c18fe26bcf02d9942d9d"
+      },
+      {
+        "path": ".github/workflows/ci.yml",
+        "git_blob": "9c08a4d38d435169f402511c934d1c59701082cf"
+      },
+      {
+        "path": ".github/workflows/qc-package-review-receiving.yml",
+        "git_blob": "ead7560750d6461dc1f191b651143a3bec7fd7fb"
+      },
+      {
+        "path": ".github/workflows/release.yml",
+        "git_blob": "079f99fe630d135933f3c2c725f49874c2d66d1c"
+      }
+    ],
+    "workflow_admission": "All branch push workflows admit only main/master; release admits only v* tags. No create, issues/comments, workflow_run, repository_dispatch or schedule event exists in the complete reviewed tree. The distinct custody branch has no existing pull request and no admitted trigger.",
+    "held_step": "Updating the existing PR79 source branch or merging main would admit retained Actions workflows. Those operations remain held. Unrun required gates do not count as passed.",
+    "latest_main_observed": {
+      "commit": "9e9204f76b105426b0affaa74733175c052f27ba",
+      "tree": "a1b37ec1ab291a90cb2a383aa8f50b797ac09932",
+      "leaves": 1208,
+      "source_scope_note": "Main advanced after the e488-based frozen composition was received. No qualification of this later main or composition of its external-prediction workbench changes is claimed.",
+      "reviewed_workflows": [
+        {
+          "path": ".github/workflows/camera-native.yml",
+          "git_blob": "931eedfb75258d616a64c18fe26bcf02d9942d9d"
+        },
+        {
+          "path": ".github/workflows/ci.yml",
+          "git_blob": "1067e9944ce4836d8cd1673442687333ef7ad564"
+        },
+        {
+          "path": ".github/workflows/release.yml",
+          "git_blob": "079f99fe630d135933f3c2c725f49874c2d66d1c"
+        }
+      ],
+      "root_workflow_recheck": "The complete later tree has three workflow files. The changed CI blob only adds the actual Windows workbench verification step; its event stanza remains pull_request and push main/master. The other camera and release workflow blobs remain exact. The custody branch is excluded by all reviewed latest-default and composed-source triggers.",
+      "pr79_head_observed": "7f5548fb12e040f45d7e1f5867d511dc33a618ac",
+      "custody_branch_absent": true,
+      "existing_pull_requests_for_custody_branch": 0
+    },
+    "main_updated_by_this_custody": false
+  },
+  "files": [
+    {
+      "path": "final-native-browser-receiving-packet.json",
+      "git_blob": "fc4f019e4af5de87256dff9b25c120ef4fde62b5",
+      "bytes": 715501,
+      "sha256": "fa4bb1b0723d572efc4b259c5959a8a4edca21b1dc2531c3f6f2999a639fbb52",
+      "scope": "Exact historical 36-member native CLI and browser receiving packet"
+    },
+    {
+      "path": "final-ordinary-windows-gate-logs.json",
+      "git_blob": "62e3449496bce31c24274bfcb855a2a662df7660",
+      "bytes": 402925,
+      "sha256": "1c18a8c9c9fcc2425b7fc4c808f654f884bf373ec78ed247a3b0fe0a495cd80a",
+      "scope": "Exact historical Python and CMake job log strings"
+    },
+    {
+      "path": "independent-final-gates-and-current-source-review.json",
+      "git_blob": "ac69ae73a237b5c18c1a02f5325f06f38df79910",
+      "bytes": 34225,
+      "sha256": "61e7f3e1e7fb64d66acd5705e6469f58730e0c6869ea6fc8bd06bd297f5bcd6c",
+      "scope": "Independent historical gates and full composed-source review; its then-pending native status is superseded by the paired current-native evidence"
+    },
+    {
+      "path": "current-native-paired-receiving.json",
+      "git_blob": "0c571841398644d0cb42a26969641b6487c043e8",
+      "bytes": 408172,
+      "sha256": "0ac116a923beb7e2d9cfd8f3da392c18ff071e5d9b97ad2f43a59e935f862838",
+      "scope": "Exact sealed current-native paired packet in a UTF-8 envelope"
+    },
+    {
+      "path": "independent-current-native-reviews.json",
+      "git_blob": "6f3d32ccb2ce07cc2ee49b8be4ac6fbfdc466633",
+      "bytes": 37769,
+      "sha256": "1a7d3713b831de657da45a3747260f3cdd843305c762412ef0a14ba196bb7d59",
+      "scope": "Four exact independent current-native and custody review addenda"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7469,
+      "sha256": "94ec6d801527ecb751a39bb3aaab678d7253a5aeb4ba17a42fb7678bedbc3c94",
+      "git_blob": "be0ff0d46e113613da7c8dcc4b951475bbc29fe0",
+      "scope": "Human-readable outcome, exact-source limits, recovery and held integration step"
+    }
+  ]
+}

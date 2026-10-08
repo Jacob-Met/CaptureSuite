@@ -1,0 +1,805 @@
+{
+  "schema": "capture.qc-package-review.independent-source-gate-receiving/1",
+  "reviewer": "estate-7879c2abc07f/offhand_review",
+  "repository": "Jacob-Met/CaptureSuite",
+  "verdict": {
+    "acceptedHistoricalSourceAndGates": true,
+    "acceptedCurrentCompositionSource": true,
+    "currentCompositionNativeReceiving": "Pending separately; no old Windows result is attributed to this composition.",
+    "integration": "No branch, tree, pull request, workflow, merge, installation or deployed state changed by this reviewer. Only the three listed immutable Git blob objects were created."
+  },
+  "acceptedSource": {
+    "head": "7f5548fb12e040f45d7e1f5867d511dc33a618ac",
+    "tree": "94f79e2f1f873507572045bfd1727df636076350",
+    "base": "11cc78297d8d214407aea693548af4de855d61da",
+    "actualCheckout": "c062c338df1a2e11e927ab9efb189c062f0ea189",
+    "actualCheckoutParents": [
+      "11cc78297d8d214407aea693548af4de855d61da",
+      "7f5548fb12e040f45d7e1f5867d511dc33a618ac"
+    ],
+    "actualCheckoutTree": "94f79e2f1f873507572045bfd1727df636076350",
+    "completeLeaves": 1079,
+    "correctedProductParent": "d2e39d1382ee2a5b64f97ef207bf322c7a16ba13",
+    "correctedProductTree": "104ec04e2b723ad11e8e765425b2872b2bf0c96d",
+    "successorDelta": [
+      "docs/design/research/PROGRESS.md",
+      "tests/ui/test_analysis_scope.py"
+    ],
+    "other1077LeavesAndModesExact": true,
+    "scopeTest": {
+      "originalBlob": "2ee653a05e27e8586e74439d2bdc9eccf06505ef",
+      "acceptedBlob": "817412fe4352c527ad7da8406269ac67cede1709",
+      "check": "Removing exactly two time.sleep(0.001) lines and their one explanatory comment recovers the original file byte for byte; no assertion, worker, fixture, event pump, cancellation-lifetime or deadline change."
+    }
+  },
+  "historicalOrdinaryWindows": {
+    "runId": 37821319011,
+    "python": {
+      "jobId": 113462781924,
+      "rawLog": {
+        "bytes": 68447,
+        "sha256": "3f9486b974fb8c88023b3d66df7046193c146de14a3e5ae572608088e3ea5d42"
+      },
+      "receipt": {
+        "schema": "capturesuite.test-receipt.v1",
+        "accepted": true,
+        "process_exit": 0,
+        "counts": {
+          "tests": 565,
+          "passed": 559,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 6
+        },
+        "junit_sha256": "d154115183f9d92751a047022db5c4f6e027ba12b8e4c64249f003572ff6ded8",
+        "problems": [],
+        "scope": "Process and test-evidence consistency, not clinical validation",
+        "seconds": 102.74990449999999,
+        "created_at": "2026-10-08T18:06:45.923121+00:00",
+        "run_directory": "build/evidence/python-20261008T180502Z-72a42b42",
+        "log_sha256": "e6c02703a6c26137666493670b860680f8ee00428b37fa0c2d44b0e509848be7",
+        "source_commit": "c062c338df1a2e11e927ab9efb189c062f0ea189",
+        "source_worktree_dirty": false,
+        "source_tree_sha256": "ef4b0d742317337a8fb5792acfb7cbfadcaaf47f89da44839501e26557ba4c58",
+        "source_file_count": 1079,
+        "github": {
+          "GITHUB_ACTIONS": "true",
+          "GITHUB_EVENT_NAME": "pull_request",
+          "GITHUB_SHA": "c062c338df1a2e11e927ab9efb189c062f0ea189",
+          "GITHUB_REF": "refs/pull/79/merge",
+          "GITHUB_HEAD_REF": "work/qc-package-review-7879c2abc07f-20261008",
+          "GITHUB_BASE_REF": "main",
+          "GITHUB_RUN_ID": "37821319011",
+          "GITHUB_WORKFLOW_REF": "Jacob-Met/CaptureSuite/.github/workflows/ci.yml@refs/pull/79/merge"
+        },
+        "source_unchanged_during_test": true
+      },
+      "ruff": "passed",
+      "enforcedSpdxLicenseCheck": "passed",
+      "readback": "Decoded raw job log and reported JUnit hash were read; JUnit XML bytes were not downloaded independently."
+    },
+    "cmake": {
+      "jobId": 113462781509,
+      "rawLog": {
+        "bytes": 312291,
+        "sha256": "0187b36fb05ed3a8b2c03e6d19a279a9d503b3bbcaab59cdbb8c8d9408f424a7"
+      },
+      "ctest": {
+        "passed": 30,
+        "total": 30,
+        "failed": 0
+      },
+      "nativeDaemonReceipt": {
+        "schema": "capturesuite.native-test-receipt.v1",
+        "accepted": true,
+        "process_exit": 0,
+        "counts": {
+          "tests": 6,
+          "passed": 6,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "cbed7257a469c25436b06c8c2417cd42f1ba1d158706c0ce23899cab51cc556f",
+        "problems": [],
+        "scope": "Process and test-evidence consistency, not clinical validation",
+        "seconds": 4.210607499999696,
+        "created_at": "2026-10-08T18:23:56.814659+00:00",
+        "run_directory": "build/evidence/native-20261008T182351Z-432a7726",
+        "binary_build": "build/windows-release",
+        "binaries": [
+          {
+            "path": "daemon/capture_daemon.exe",
+            "bytes": 1605632,
+            "sha256": "eb44fe57e07b11d31afe8b6f0186e0d700cfb5897bfafc50ef97b73a9f680442"
+          },
+          {
+            "path": "tools/session_doctor/session_doctor.exe",
+            "bytes": 494080,
+            "sha256": "93d5e8e60d20665764fe6972c28b534e346a58ffa0c44ed17285ffcb9a54d1c3"
+          }
+        ],
+        "test_scope": [
+          "tests/protocol/test_daemon_e2e.py::test_multi_modality_record_with_disconnect",
+          "tests/protocol/test_daemon_e2e.py::test_bad_stop_token_rejected",
+          "tests/protocol/test_daemon_e2e.py::test_config_schema_and_apply",
+          "tests/protocol/test_daemon_e2e.py::test_start_all_ready_and_acknowledge_alert",
+          "tests/protocol/test_daemon_e2e.py::test_concurrent_clients_served",
+          "tests/kill_tests/test_kill_preserves_sealed.py::test_kill_preserves_sealed_segment"
+        ],
+        "source_commit": "c062c338df1a2e11e927ab9efb189c062f0ea189",
+        "source_worktree_dirty": true,
+        "github": {
+          "GITHUB_ACTIONS": "true",
+          "GITHUB_EVENT_NAME": "pull_request",
+          "GITHUB_SHA": "c062c338df1a2e11e927ab9efb189c062f0ea189",
+          "GITHUB_REF": "refs/pull/79/merge",
+          "GITHUB_HEAD_REF": "work/qc-package-review-7879c2abc07f-20261008",
+          "GITHUB_BASE_REF": "main",
+          "GITHUB_RUN_ID": "37821319011",
+          "GITHUB_WORKFLOW_REF": "Jacob-Met/CaptureSuite/.github/workflows/ci.yml@refs/pull/79/merge"
+        },
+        "source_tree_sha256": "f1e171a018d94a67b2babb95c9a62d550ad24c1b8e617ee33653c242ca77850a",
+        "source_unchanged_during_test": true,
+        "log_sha256": "0c06c5a814253228e13b7c3d712f2c2c3631d3de6610ee9a3312c02020db3626"
+      },
+      "worktree": "The native receipt explicitly records source_worktree_dirty=true after build and source_unchanged_during_test=true. It is not represented as clean.",
+      "readback": "Decoded raw job log and reported JUnit hash were read; JUnit XML bytes were not downloaded independently."
+    },
+    "rawLogsCustody": {
+      "semanticName": "final-ordinary-windows-gate-logs.json",
+      "encoding": "utf-8",
+      "type": "application/json",
+      "bytes": 402925,
+      "sha256": "1c18a8c9c9fcc2425b7fc4c808f654f884bf373ec78ed247a3b0fe0a495cd80a",
+      "expectedBlob": "62e3449496bce31c24274bfcb855a2a662df7660",
+      "blob": "62e3449496bce31c24274bfcb855a2a662df7660",
+      "readbackExact": true,
+      "allInnerLogHashesVerified": true
+    }
+  },
+  "historicalDedicatedReceiving": {
+    "runId": 37821318986,
+    "jobId": 113462782489,
+    "rawDecodedLog": {
+      "bytes": 1043320,
+      "sha256": "c17c23cce964bf04cf692fb145c426c030f376317601c0957a1f10f7b13a3df2"
+    },
+    "source": {
+      "checkout": "c062c338df1a2e11e927ab9efb189c062f0ea189",
+      "tree": "94f79e2f1f873507572045bfd1727df636076350",
+      "sourceUnchanged": true,
+      "observedSourceFiles": 36
+    },
+    "consumer": {
+      "checks": [
+        "real native collector/renderer inventory two copied finalized mini packages before the advertised multi-package command is required",
+        "actual CLI preserves requested order, original path spelling and distinct package provenance despite equal session identities",
+        "recovered-package warnings, native failure lights, open/unknown gaps and large decimal gap/loss values remain exact without collection-status substitution",
+        "actual native and aggregate HTML retain literal markup/Unicode/multiline identity, precise gap text and only ordinal-relative report links",
+        "malformed, missing and nonfinalized packages remain explicit failures between complete later native reports, without partial bad QC or dropped entries",
+        "every actual invocation conserves all owned input files and directories, retained processing sentinels, maintained fixture and native application state",
+        "a new explicit collection observes then-current metadata and stream rate while every byte/directory of earlier completed review outputs stays exact",
+        "actual CLI accepts all32 ordered positions and refuses zero/33 inputs, occupied and inside-package destinations, aliases and absent output parents"
+      ],
+      "commands": [
+        {
+          "name": "original-or-candidate-two-package-command",
+          "exit": 0,
+          "inputUnchanged": true,
+          "applicationStateUnchanged": true
+        },
+        {
+          "name": "native-warnings-are-still-collected",
+          "exit": 0,
+          "inputUnchanged": true,
+          "applicationStateUnchanged": true
+        },
+        {
+          "name": "isolated-failures-between-good-packages",
+          "exit": 1,
+          "inputUnchanged": true,
+          "applicationStateUnchanged": true
+        },
+        {
+          "name": "fresh-explicit-invocation",
+          "exit": 0,
+          "inputUnchanged": true,
+          "applicationStateUnchanged": true
+        },
+        {
+          "name": "inclusive-thirty-two-package-boundary",
+          "exit": 0,
+          "inputUnchanged": true,
+          "applicationStateUnchanged": true
+        },
+        {
+          "name": "no-requested-package",
+          "exit": 2,
+          "inputUnchanged": true,
+          "applicationStateUnchanged": true
+        },
+        {
+          "name": "thirty-three-requested-packages",
+          "exit": 2,
+          "inputUnchanged": true,
+          "applicationStateUnchanged": true
+        },
+        {
+          "name": "inside-existing-package",
+          "exit": 2,
+          "inputUnchanged": true,
+          "applicationStateUnchanged": true
+        },
+        {
+          "name": "inside-uncreated-descendant",
+          "exit": 2,
+          "inputUnchanged": true,
+          "applicationStateUnchanged": true
+        },
+        {
+          "name": "inside-normalized-parent-alias",
+          "exit": 2,
+          "inputUnchanged": true,
+          "applicationStateUnchanged": true
+        },
+        {
+          "name": "missing-output-parent",
+          "exit": 2,
+          "inputUnchanged": true,
+          "applicationStateUnchanged": true
+        },
+        {
+          "name": "occupied-destination-occupied-directory",
+          "exit": 2,
+          "inputUnchanged": true,
+          "applicationStateUnchanged": true
+        },
+        {
+          "name": "occupied-destination-occupied-file",
+          "exit": 2,
+          "inputUnchanged": true,
+          "applicationStateUnchanged": true
+        },
+        {
+          "name": "occupied-destination-ordered",
+          "exit": 2,
+          "inputUnchanged": true,
+          "applicationStateUnchanged": true
+        },
+        {
+          "name": "occupied-destination-a-first.mmsession",
+          "exit": 2,
+          "inputUnchanged": true,
+          "applicationStateUnchanged": true
+        }
+      ],
+      "allExpectedChecksPassed": true
+    },
+    "browser": {
+      "status": "passed",
+      "version": {
+        "protocolVersion": "1.3",
+        "product": "Chrome/154.0.8037.98",
+        "revision": "@b859317bf11f6be47f9b7799ec690a0a42a1fb33",
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+        "jsVersion": "15.4.80.20"
+      },
+      "checks": [
+        "actual index at 1280x1000: ordered literal rows and links",
+        "actual index at 390x844: ordered literal rows and links",
+        "actual native QC report file opens with exact literal identity and gap evidence"
+      ],
+      "externalPageRequests": [],
+      "pageErrors": [],
+      "profileCleanup": "Owned profile removed"
+    },
+    "directImageInspection": {
+      "paths": [
+        "browser/index-desktop.png",
+        "browser/index-phone.png",
+        "browser/index-phone-failure.png",
+        "browser/native-report-desktop.png"
+      ],
+      "result": "All four hash-verified actual final-head PNGs were directly viewed. New index has no blocking clipping/overlap finding at captured desktop/phone widths. Literal markup, Unicode, multiline identity, failed-package detail and later successful entries remain visible. The unchanged native precision table retains its horizontal scroller.",
+      "boundary": "Actual Windows installed-headless-browser captures; no physical phone, assistive-technology, deployment or new current-composition browser claim."
+    },
+    "packet": {
+      "blob": "fc4f019e4af5de87256dff9b25c120ef4fde62b5",
+      "encoding": "utf-8",
+      "type": "application/json",
+      "bytes": 715501,
+      "sha256": "fa4bb1b0723d572efc4b259c5959a8a4edca21b1dc2531c3f6f2999a639fbb52",
+      "readbackExact": true,
+      "memberCount": 36,
+      "allMemberHashesVerified": true,
+      "semanticName": "final-native-browser-receiving-packet.json",
+      "originalChunkCount": 233,
+      "representation": "The exact original JSON packet decoded from all consecutively numbered base64 log chunks, without reserialization. Each files[] entry carries original bytes as base64.",
+      "members": [
+        {
+          "path": "browser/browser-report.json",
+          "bytes": 24949,
+          "sha256": "3dfff3a37faa294258c6d3ab6a6f2422c6f9cb8871927d9552144b430e52e363"
+        },
+        {
+          "path": "browser/command.json",
+          "bytes": 1330,
+          "sha256": "a16b1ce892e9523f301f282fd35a7f88915e09f7a048f1297b21a6d4527758f3"
+        },
+        {
+          "path": "browser/index-desktop.png",
+          "bytes": 76166,
+          "sha256": "8ee87cf53fe9799b5e484e928043619fca1633a6ba7e6d0ddd586605a86717ac"
+        },
+        {
+          "path": "browser/index-expectations.json",
+          "bytes": 4798,
+          "sha256": "014e41e2622c0efc06a3b0bbba7fb3e7dfed430dd7ea239ee0f89b02ed423428"
+        },
+        {
+          "path": "browser/index-phone-failure.png",
+          "bytes": 43174,
+          "sha256": "29341e87f03fd75fde53233cd503378842b070d51409fbe2e213957db74a2f80"
+        },
+        {
+          "path": "browser/index-phone.png",
+          "bytes": 48053,
+          "sha256": "4e1fa398a89e3a2244d59e62d862e08a7ab944b0e21d82cabf3432fc65aa8c73"
+        },
+        {
+          "path": "browser/native-report-desktop.png",
+          "bytes": 78219,
+          "sha256": "91bd3dc6aa701cc6fe0f164a978cf0388cd4872b4626f9aea82346c5b73c89cf"
+        },
+        {
+          "path": "fresh/index.html",
+          "bytes": 5805,
+          "sha256": "c34f188557c63ff4f0c151c8ef75e61bec114c400fc52eb111e5b12e522ec5b8"
+        },
+        {
+          "path": "fresh/reports/001-qc.html",
+          "bytes": 2291,
+          "sha256": "6a5b635cbf265329838ab22b37bf9cb482163e283be3bca26ad62aa2f6b3a83a"
+        },
+        {
+          "path": "fresh/reports/001-qc.json",
+          "bytes": 1380,
+          "sha256": "36dd1b3994edbe8224ed397a4c6fd43b04f75e326f5693a3c0ecdcc13ddae0e3"
+        },
+        {
+          "path": "fresh/review.json",
+          "bytes": 2350,
+          "sha256": "1b3ccdc34063d86ad06e1a8d3ed0d30e0fedbeb9acb0061ce89ec504cbc8e46e"
+        },
+        {
+          "path": "mixed/index.html",
+          "bytes": 11573,
+          "sha256": "4c275a7a90b88d7c57acb90679c65c4615d221de52776092820f71fabf16c301"
+        },
+        {
+          "path": "mixed/reports/001-qc.html",
+          "bytes": 3493,
+          "sha256": "46ce6041465d247bd1d8490c7d915eacec1b3b474717c1d2ea51231814b8b153"
+        },
+        {
+          "path": "mixed/reports/001-qc.json",
+          "bytes": 3210,
+          "sha256": "7e3f03f5917a66e1d482015536cfbaf0098eead8e6246fef2584bdc41e103807"
+        },
+        {
+          "path": "mixed/reports/003-qc.html",
+          "bytes": 2281,
+          "sha256": "5ef30eef2b488d1bcff4fbb5a8df6140e55bbeb9f771b78684f7e2320a29484b"
+        },
+        {
+          "path": "mixed/reports/003-qc.json",
+          "bytes": 1375,
+          "sha256": "8be8d070a15715282fb490b923f7231059bf19938745db4f2c79c0869b7dbf3d"
+        },
+        {
+          "path": "mixed/reports/005-qc.html",
+          "bytes": 2430,
+          "sha256": "72b1ff599e1d18485aa7e66f877cc7db00d51a2660e5622d13777cf1a2a69979"
+        },
+        {
+          "path": "mixed/reports/005-qc.json",
+          "bytes": 1456,
+          "sha256": "65ef45c7e2967f0bdcb4eece02413c520907007e8933d7f0d9828c339b75284a"
+        },
+        {
+          "path": "mixed/review.json",
+          "bytes": 10982,
+          "sha256": "4f99c9b3c6ec0d9d8659d987f2ac44717dc5ada72af4dc266e82db5bb5d78396"
+        },
+        {
+          "path": "native/001-qc.html",
+          "bytes": 2281,
+          "sha256": "5ef30eef2b488d1bcff4fbb5a8df6140e55bbeb9f771b78684f7e2320a29484b"
+        },
+        {
+          "path": "native/001-qc.json",
+          "bytes": 1375,
+          "sha256": "8be8d070a15715282fb490b923f7231059bf19938745db4f2c79c0869b7dbf3d"
+        },
+        {
+          "path": "native/002-qc.html",
+          "bytes": 2289,
+          "sha256": "9f0a2b121bf900e10a7524dc6fdaaa2648781b61f0986fa5507ce6e0783caa7b"
+        },
+        {
+          "path": "native/002-qc.json",
+          "bytes": 1386,
+          "sha256": "81dbb5518256a16e67864b5b8d412caff52f1ae4f0199e9c1b19a9710ff2e57e"
+        },
+        {
+          "path": "ordered/index.html",
+          "bytes": 7065,
+          "sha256": "38aa7bf1b9eaf030d90d8a8f64cfba2874293223e8a798f0a2d56d5480e04d60"
+        },
+        {
+          "path": "ordered/reports/001-qc.html",
+          "bytes": 2289,
+          "sha256": "9f0a2b121bf900e10a7524dc6fdaaa2648781b61f0986fa5507ce6e0783caa7b"
+        },
+        {
+          "path": "ordered/reports/001-qc.json",
+          "bytes": 1386,
+          "sha256": "81dbb5518256a16e67864b5b8d412caff52f1ae4f0199e9c1b19a9710ff2e57e"
+        },
+        {
+          "path": "ordered/reports/002-qc.html",
+          "bytes": 2281,
+          "sha256": "5ef30eef2b488d1bcff4fbb5a8df6140e55bbeb9f771b78684f7e2320a29484b"
+        },
+        {
+          "path": "ordered/reports/002-qc.json",
+          "bytes": 1375,
+          "sha256": "8be8d070a15715282fb490b923f7231059bf19938745db4f2c79c0869b7dbf3d"
+        },
+        {
+          "path": "ordered/review.json",
+          "bytes": 4483,
+          "sha256": "799e5abc9dea8ee1c92c6a0e2cff1fddaa8647c51a9450aaf063bd2d16263dbb"
+        },
+        {
+          "path": "receiving-report.json",
+          "bytes": 156338,
+          "sha256": "ec0fb990a3443fcb2c98597cf6f9b20a3c5bd21182a896fbd9925a41f9a91e3f"
+        },
+        {
+          "path": "warnings/index.html",
+          "bytes": 7591,
+          "sha256": "9f794eb9d4fb4235346cf6fa3eff231040e4fa0449e2875dfc8edcef7f9bdb71"
+        },
+        {
+          "path": "warnings/reports/001-qc.html",
+          "bytes": 3493,
+          "sha256": "46ce6041465d247bd1d8490c7d915eacec1b3b474717c1d2ea51231814b8b153"
+        },
+        {
+          "path": "warnings/reports/001-qc.json",
+          "bytes": 3210,
+          "sha256": "7e3f03f5917a66e1d482015536cfbaf0098eead8e6246fef2584bdc41e103807"
+        },
+        {
+          "path": "warnings/reports/002-qc.html",
+          "bytes": 2430,
+          "sha256": "72b1ff599e1d18485aa7e66f877cc7db00d51a2660e5622d13777cf1a2a69979"
+        },
+        {
+          "path": "warnings/reports/002-qc.json",
+          "bytes": 1456,
+          "sha256": "65ef45c7e2967f0bdcb4eece02413c520907007e8933d7f0d9828c339b75284a"
+        },
+        {
+          "path": "warnings/review.json",
+          "bytes": 6833,
+          "sha256": "84c4df4c1f2d06727dfbefdf9a48f0c35294b0140a842e426ca3d4531d503e17"
+        }
+      ]
+    }
+  },
+  "freshProcessImport": {
+    "source": "Same accepted final-head ordinary Python log",
+    "qc": {
+      "exit": 0,
+      "stateUnchanged": true,
+      "modulesAfter": [
+        "capture_analysis"
+      ]
+    },
+    "jobApi": {
+      "exit": 0,
+      "nativeObjectIdentity": true,
+      "nativeSignatures": true,
+      "starImportIdentity": true,
+      "defaultParameters": true,
+      "publicDiscovery": true,
+      "unknownAttributeRaisesAttributeError": true,
+      "expectedStateInitialization": "Deliberately requesting actual job APIs initializes existing Matplotlib state; this was not asserted to be QC-only conservation."
+    }
+  },
+  "currentCompositionSource": {
+    "commit": "f8f090861326acf7546a822569dd369362fb0f65",
+    "tree": "4aa2ade8b77170ae94d653aadfdf513e746777e3",
+    "parents": [
+      "e48825b1b37544f4c31912e3c29a3918704f5456",
+      "7f5548fb12e040f45d7e1f5867d511dc33a618ac"
+    ],
+    "currentParentTree": "a0d17ec8df857b295321fef89e04a831fe51e8d6",
+    "currentLeaves": 1173,
+    "composedLeaves": 1182,
+    "changed": [
+      {
+        "path": ".github/workflows/qc-package-review-receiving.yml",
+        "sha": "ead7560750d6461dc1f191b651143a3bec7fd7fb",
+        "mode": "100644",
+        "accepted": "ead7560750d6461dc1f191b651143a3bec7fd7fb"
+      },
+      {
+        "path": "README.md",
+        "sha": "91956537b2ad2c905d3b87b187d72c1687710106",
+        "mode": "100644",
+        "preimage": "14bae7a2f91a88431cf1bca94a0cb8efdbef4aa7",
+        "accepted": "91956537b2ad2c905d3b87b187d72c1687710106"
+      },
+      {
+        "path": "docs/QC_PACKAGE_REVIEW.md",
+        "sha": "d72ee9aa2ff55f42ff8ee6b94c272db242445abc",
+        "mode": "100644",
+        "accepted": "d72ee9aa2ff55f42ff8ee6b94c272db242445abc"
+      },
+      {
+        "path": "docs/design/research/PROGRESS.md",
+        "sha": "7284db4be0e405332d6b1c2c13968fbc8d9621cc",
+        "mode": "100644",
+        "preimage": "6cc7228285bda43912af79ca4b97f9024787d492",
+        "accepted": "f1cefe6d963617ff16bc2170a66f417bbe5f26df"
+      },
+      {
+        "path": "libs/python/capture_analysis/capture_analysis/__init__.py",
+        "sha": "1cc42e80ddd22d004fc71837e4190e053e6d1a7d",
+        "mode": "100644",
+        "preimage": "67a4fb257b771af771edb4010e573ceeab86a51f",
+        "accepted": "1cc42e80ddd22d004fc71837e4190e053e6d1a7d"
+      },
+      {
+        "path": "libs/python/capture_analysis/capture_analysis/qc_packages.py",
+        "sha": "e9ece18a7ffc47d709c407d25d39d9d77fae4cfa",
+        "mode": "100644",
+        "accepted": "e9ece18a7ffc47d709c407d25d39d9d77fae4cfa"
+      },
+      {
+        "path": "tests/analysis/test_qc_import_boundary_receiving_7879.py",
+        "sha": "5fb2876d99f0bf174f0be3b2f0a199de281ee412",
+        "mode": "100644",
+        "accepted": "5fb2876d99f0bf174f0be3b2f0a199de281ee412"
+      },
+      {
+        "path": "tests/analysis/test_qc_package_review_receiving_7879.py",
+        "sha": "4f3fc6695d36cfa525dab393492ab0e6466aae85",
+        "mode": "100644",
+        "accepted": "4f3fc6695d36cfa525dab393492ab0e6466aae85"
+      },
+      {
+        "path": "tests/analysis/test_qc_packages.py",
+        "sha": "7bfefe4380e5992cf6a8275441e6a7a8be48f7c3",
+        "mode": "100644",
+        "accepted": "7bfefe4380e5992cf6a8275441e6a7a8be48f7c3"
+      },
+      {
+        "path": "tests/analysis/test_qc_packages_cli.py",
+        "sha": "0dd0833cc4116306ade46f7d97fe309a6abe8246",
+        "mode": "100644",
+        "accepted": "0dd0833cc4116306ade46f7d97fe309a6abe8246"
+      },
+      {
+        "path": "tests/ui/test_analysis_scope.py",
+        "sha": "817412fe4352c527ad7da8406269ac67cede1709",
+        "mode": "100644",
+        "preimage": "2ee653a05e27e8586e74439d2bdc9eccf06505ef",
+        "accepted": "817412fe4352c527ad7da8406269ac67cede1709"
+      },
+      {
+        "path": "tools/check_qc_package_review_index_7879.mjs",
+        "sha": "2a195f01df5046b6edc3a1da37d78e798bb3b8b1",
+        "mode": "100644",
+        "accepted": "2a195f01df5046b6edc3a1da37d78e798bb3b8b1"
+      },
+      {
+        "path": "tools/review_qc_packages.py",
+        "sha": "e39c2ba4272771765d23db58beafea6bcfa2bcca",
+        "mode": "100644",
+        "accepted": "e39c2ba4272771765d23db58beafea6bcfa2bcca"
+      }
+    ],
+    "removed": [],
+    "completeTreesUntruncated": true,
+    "undeclaredChanges": [],
+    "unrelatedCurrentLeavesAndModesPreserved": 1169,
+    "other12OwnedPathsExactlyAcceptedSource": true,
+    "progress": {
+      "blob": "7284db4be0e405332d6b1c2c13968fbc8d9621cc",
+      "bytes": 73624,
+      "sha256": "890e3e07f68938f6fbe1f2cb033346f7a00265005e83ab1f456ebb34e218c28d",
+      "entireCurrentPrefixExact": true,
+      "entireOriginalAcceptedAppendExact": true,
+      "onlyAdditionalText": "\n\n## 2026-10-08 — QC review current-source continuation without Actions (7879c2abc07f)\n\nThe accepted PR79 head `7f5548fb12e040f45d7e1f5867d511dc33a618ac`\n(tree `94f79e2f1f873507572045bfd1727df636076350`) has completed its\nordinary maintained Windows gate: actual checkout\n`c062c338df1a2e11e927ab9efb189c062f0ea189` uses that exact tree and\npassed 559 tests with six daemon-not-built skips, process exit 0 and accepted\nJUnit/receipt, in 102.7499045 seconds under the unchanged 300-second limit.\nIts separately required QC consumer run also succeeded. These are retained\nresults for that exact source, not a claim about later source.\n\nCurrent-main composition starts at\n`e48825b1b37544f4c31912e3c29a3918704f5456` (tree\n`a0d17ec8df857b295321fef89e04a831fe51e8d6`). It retains the complete\ncurrent progress record and appends the original contribution unchanged.\nThe other twelve owned paths have no content conflict; current desktop source\nselection/job comparison, ML feature-order additions and the diagnostic-only\nrunner verbosity remain intact. The native QC dependency closure, source\nfixtures and dependency manifests are unchanged. Current desktop/job-API\ncoexistence requires its own targeted native receiving.\n\nJacob's 2026-10-08 19:32 UTC no-GitHub-Actions direction is active\n([authoritative relay](https://github.com/Jacob-Met/hamon/issues/143#issuecomment-6067592767)).\nThis preparation creates source objects only. PR79's branch, draft and merge\nremain unchanged because synchronizing or merging it would match the retained\npush/pull-request workflows. No new Actions run, altered gate, native installation\nor completed current-main integration is claimed. Existing successful/failed\nreceipts retain their original source, method and acceptance boundaries.\n"
+    },
+    "currentRunnerPreserved": {
+      "path": "tools/run_ci_tests.py",
+      "blob": "b5717e9f605ee7de6474cf4d3ecba45e5eaa44ba"
+    },
+    "unchangedNativeQcDependencyManifestsAndFixtures": [
+      {
+        "path": "libs/python/capture_analysis/capture_analysis/qc.py",
+        "accepted": "530b86af1247599c127e2d0c3fa5e4d7d12169f6",
+        "current": "530b86af1247599c127e2d0c3fa5e4d7d12169f6",
+        "mode": "100644",
+        "same": true
+      },
+      {
+        "path": "libs/python/capture_analysis/capture_analysis/report_html.py",
+        "accepted": "bb8032024cfce30c6fe9a2bd2c13b0d2cbc2d102",
+        "current": "bb8032024cfce30c6fe9a2bd2c13b0d2cbc2d102",
+        "mode": "100644",
+        "same": true
+      },
+      {
+        "path": "libs/python/capture_analysis/capture_analysis/discover.py",
+        "accepted": "d5c4fa7e06ac6e9139ebfc78fade90a3df5e451a",
+        "current": "d5c4fa7e06ac6e9139ebfc78fade90a3df5e451a",
+        "mode": "100644",
+        "same": true
+      },
+      {
+        "path": "libs/python/capture_analysis/capture_analysis/types.py",
+        "accepted": "2adf26816e0ef9e84e6763cf8bbff69d64697949",
+        "current": "2adf26816e0ef9e84e6763cf8bbff69d64697949",
+        "mode": "100644",
+        "same": true
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/package_reader.py",
+        "accepted": "91fbf913c5af8489968425d7ceac51c04233d3e0",
+        "current": "91fbf913c5af8489968425d7ceac51c04233d3e0",
+        "mode": "100644",
+        "same": true
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/__init__.py",
+        "accepted": "894e3c152a98b6e804de90122572afbcd929b3da",
+        "current": "894e3c152a98b6e804de90122572afbcd929b3da",
+        "mode": "100644",
+        "same": true
+      },
+      {
+        "path": "requirements-ci.txt",
+        "accepted": "044cfa00061e8a368be427c60d72765318d9080a",
+        "current": "044cfa00061e8a368be427c60d72765318d9080a",
+        "mode": "100644",
+        "same": true
+      },
+      {
+        "path": "pyproject.toml",
+        "accepted": "52491c6beebc4b17983fc66bb8765154c33cf6d8",
+        "current": "52491c6beebc4b17983fc66bb8765154c33cf6d8",
+        "mode": "100644",
+        "same": true
+      },
+      {
+        "path": "tests/fixtures/mini_session/events/annotations.json",
+        "accepted": "fe51488c7066f6687ef680d6bfaa4f7768ef205c",
+        "current": "fe51488c7066f6687ef680d6bfaa4f7768ef205c",
+        "mode": "100644",
+        "same": true
+      },
+      {
+        "path": "tests/fixtures/mini_session/events/checkpoints.json",
+        "accepted": "fe51488c7066f6687ef680d6bfaa4f7768ef205c",
+        "current": "fe51488c7066f6687ef680d6bfaa4f7768ef205c",
+        "mode": "100644",
+        "same": true
+      },
+      {
+        "path": "tests/fixtures/mini_session/events/sync_anchors.json",
+        "accepted": "fe51488c7066f6687ef680d6bfaa4f7768ef205c",
+        "current": "fe51488c7066f6687ef680d6bfaa4f7768ef205c",
+        "mode": "100644",
+        "same": true
+      },
+      {
+        "path": "tests/fixtures/mini_session/integrity.json",
+        "accepted": "d10093b866427fcaed78a85e60e600d8657a86a7",
+        "current": "d10093b866427fcaed78a85e60e600d8657a86a7",
+        "mode": "100644",
+        "same": true
+      },
+      {
+        "path": "tests/fixtures/mini_session/manifest.json",
+        "accepted": "800dab5b41774bc043ebdee4714195770e75229b",
+        "current": "800dab5b41774bc043ebdee4714195770e75229b",
+        "mode": "100644",
+        "same": true
+      },
+      {
+        "path": "tests/fixtures/mini_session/processing/.gitkeep",
+        "accepted": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "current": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "mode": "100644",
+        "same": true
+      },
+      {
+        "path": "tests/fixtures/mini_session/sources/sim.emg.main/health/gaps.jsonl",
+        "accepted": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "current": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "mode": "100644",
+        "same": true
+      },
+      {
+        "path": "tests/fixtures/mini_session/sources/sim.emg.main/source.json",
+        "accepted": "9528c95289b4b1b49d11d412b5ab2e3d019b4066",
+        "current": "9528c95289b4b1b49d11d412b5ab2e3d019b4066",
+        "mode": "100644",
+        "same": true
+      },
+      {
+        "path": "tests/fixtures/mini_session/sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",
+        "accepted": "320ce3607fadf57d05cf506987d045cf5b62ad9f",
+        "current": "320ce3607fadf57d05cf506987d045cf5b62ad9f",
+        "mode": "100644",
+        "same": true
+      },
+      {
+        "path": "tests/fixtures/mini_session/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json",
+        "accepted": "12c4db8831572fc4ab3db9ba5f784fa236078e5f",
+        "current": "12c4db8831572fc4ab3db9ba5f784fa236078e5f",
+        "mode": "100644",
+        "same": true
+      },
+      {
+        "path": "tests/fixtures/mini_session/sources/sim.imu.upper/source.json",
+        "accepted": "fcc248c52b8319f5e7fd0067763b74640f0040dd",
+        "current": "fcc248c52b8319f5e7fd0067763b74640f0040dd",
+        "mode": "100644",
+        "same": true
+      },
+      {
+        "path": "tests/fixtures/mini_session/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+        "accepted": "320ce3607fadf57d05cf506987d045cf5b62ad9f",
+        "current": "320ce3607fadf57d05cf506987d045cf5b62ad9f",
+        "mode": "100644",
+        "same": true
+      },
+      {
+        "path": "tests/fixtures/mini_session/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+        "accepted": "9c634d4af594372063fcc612331ba338ae95f8c9",
+        "current": "9c634d4af594372063fcc612331ba338ae95f8c9",
+        "mode": "100644",
+        "same": true
+      }
+    ],
+    "nativeEvidenceBoundary": "Current desktop/job API coexistence requires its own native receiving. Historical 559-pass Windows, 30 CTest, six daemon and dedicated browser results remain bound to accepted tree94f79e2 only."
+  },
+  "sourceReview": {
+    "reviewed": "Complete product model and CLI, lazy package initializer, actual CLI receiver, fresh import/API receiver, malformed admission and filesystem fault tests; complete tree and PROGRESS composition readback.",
+    "blockingFindings": [],
+    "exactBehavior": "Explicit ordered 1–32 package collection; complete native report preservation; per-package admission errors; create-only external destinations; literal escaped index values; lazy actual native job exports.",
+    "boundaries": [
+      "The native collector's existing optional-record behavior remains unchanged.",
+      "Mini-session MCAP placeholders are inventoried, not decoded or certified.",
+      "No current-source full-suite Windows or hardware/deployment claim."
+    ]
+  },
+  "priorEvidenceRefChecked": {
+    "ref": "refs/heads/receiving/qc-package-review-7879c2abc07f-20261008",
+    "commit": "e30735bd78464d63105f61fbd0c556bffd0067c7",
+    "committedAt": "2026-10-08T16:57:00Z",
+    "meaning": "Existing first-candidate failed-phase packet predates the final-head runs; it was preserved unchanged."
+  },
+  "noActions": {
+    "authoritativeRelay": "https://github.com/Jacob-Met/hamon/issues/143#issuecomment-6067592767",
+    "compliance": "No new run, rerun, dispatch, ref update, PR mutation or workflow modification by this reviewer."
+  }
+}
