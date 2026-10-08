@@ -74,6 +74,9 @@ class FrameDecoder:
         while True:
             try:
                 frame, consumed = decode_frame(self._buf)
+            except FrameError:
+                # Invalid wire data must not be buffered as an incomplete frame.
+                raise
             except ValueError:
                 break
             frames.append(frame)
