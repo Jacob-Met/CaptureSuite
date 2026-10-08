@@ -1,0 +1,28 @@
+{
+  "reviewer": "chatgpt:5f566b5ec8ef:coordination",
+  "utc": "2026-10-08T15:08:31.632269+00:00",
+  "decision": "accepted within local arm64 runtime-package receiving scope",
+  "manifest_sha256": "8f5a529db27684e82b57539657a4e0de847b190f31d2d22f5741d786b1d2fc27",
+  "assembly_script_sha256": "c9991e8c88e968b4fe762485e2dc21171f662ca3605f2ef0ddd15f76fa159371",
+  "binary_sha256": "401f7ef7eb1212799c00ff7bdb22ac48a31bf6feb22a17b3a4fefcfc8e485772",
+  "canonical_source": "d43bdea867d6198a707a5f55e29216c76054517e",
+  "native_source": "6a1a32e6240dc89892f340f241b03ef25a8ac8fc",
+  "verified_package_files": 87,
+  "verified_original_inputs": 87,
+  "verified_local_dependency_edges": 1245,
+  "all_actual_arm64_load_commands_equal_manifest": true,
+  "all_rpaths_empty": true,
+  "all_non_system_loads_resolve_inside_package": true,
+  "all_original_bytes_equal_recorded_inputs": true,
+  "commands_log_hash_matches": true,
+  "source_review": [
+    "Unique strict realpath dependency resolution and basename collision refusal precede destination creation.",
+    "Only the new receiver copies receive load-command/rpath and ad-hoc signature changes.",
+    "Current package contains all admitted non-system dependencies with direct local loads; installed Homebrew bytes remain unchanged.",
+    "This review does not execute session_doctor, rebuild or replay process controls, operate on user sessions/hardware, or replace the separately owned historical receiver."
+  ],
+  "limitations": [
+    "Architecture verification is arm64 only; no universal/x86_64 or notarized distribution claim.",
+    "The script refuses an existing destination and does not claim an atomic package transaction after a mid-assembly failure."
+  ]
+}

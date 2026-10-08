@@ -1,0 +1,7 @@
+{
+  "prior_commit": "b7434c2e2589e345695984f64932a45084339c26",
+  "prior_verification": "normal git add reused existing stat entries; both old index blobs remained and strict verification failed before any test",
+  "operation": "targeted git add --renormalize on the same two raw evidence logs with text unset",
+  "attributes": "baseline/docs/evidence/stream-gap-scope-20261008-e827/initial-ci-lint.log: text: unset\nbaseline/docs/evidence/stream-gap-scope-20261008-e827/initial-junit-rejection.log: text: unset",
+  "changed_source_files": 0
+}

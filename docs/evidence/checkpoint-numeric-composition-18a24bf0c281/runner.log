@@ -1,0 +1,8 @@
+{"variant": "baseline", "exit": 0, "window": [5000000000, 7000000000], "rows": 3, "samples": 21, "passed": 7, "failed": 6}
+{"variant": "candidate", "exit": 0, "window": [2000000000, 5000000000], "rows": 5, "samples": 31, "passed": 12, "failed": 1}
+Traceback (most recent call last):
+  File "/Users/me/capturesuite-checkpoint-18a24bf0c281/numeric-composition-0ed1/receive.py", line 270, in <module>
+    run()
+  File "/Users/me/capturesuite-checkpoint-18a24bf0c281/numeric-composition-0ed1/receive.py", line 266, in run
+    raise AssertionError("Receiving matrix did not match the declared baseline/candidate boundary")
+AssertionError: Receiving matrix did not match the declared baseline/candidate boundary

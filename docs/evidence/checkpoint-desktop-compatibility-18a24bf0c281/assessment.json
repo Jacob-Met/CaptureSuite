@@ -1,0 +1,127 @@
+{
+  "repository": "Jacob-Met/CaptureSuite",
+  "upstream_commit": "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e",
+  "upstream_tree": "18e97093f04de23de5e9878fd22c1f5ed986d5f3",
+  "local_source_commit": "6878dcce23a3f439642312d845996746d5d2921c",
+  "local_scoped_baseline": "6d45b033c79965540fe025512c0ea130a14b3a41",
+  "local_history_kind": "two-file snapshot, not upstream ancestry",
+  "frozen_resolver": {
+    "path": "libs/python/capture_analysis/capture_analysis/windows.py",
+    "source_commit": "4fcd0aa4319b6594af637af8644c187fcbff3cf5",
+    "git_blob": "aaafd8db78f82a5a56178135dbed5bfd4f45c634",
+    "sha256": "5cf401b7b7d201225c966b804cfff39c3f6d59669da7e488dd68c4253a829c32",
+    "edited_here": false
+  },
+  "case": "tests/ui/test_analysis_scope.py::test_selected_scope_reaches_real_thread_job_and_mcap_outputs[section]",
+  "fixture_checkpoints": [
+    {
+      "id": "section-one",
+      "name": "Movement",
+      "effectiveTimestampNs": 50000001
+    },
+    {
+      "id": "section-two",
+      "name": "Movement",
+      "effectiveTimestampNs": 150000001
+    }
+  ],
+  "maintained_expected_interval_ns": [
+    50000001,
+    150000001
+  ],
+  "original_selection": "section-one",
+  "adapted_selection": "section-two",
+  "failure_classification": "Source-derived incompatible constants when the original test is composed with the frozen closing-section resolver; no native Qt failure was executed or observed.",
+  "static_verification": {
+    "exact_three_line_test_delta": true,
+    "original_and_candidate_ast_parse": true,
+    "git_diff_check": true,
+    "all_other_test_bytes_unchanged": true,
+    "production_ui_changes": 0,
+    "historical_receipt_changes": 0,
+    "native_qt_case_executed": false
+  },
+  "runtime_status": "NOT_RUN_MISSING_PYSIDE6",
+  "dependency_install_attempted": false,
+  "peer_diff": {
+    "from": "0ed1ccaa023a5327495565d59e1dd0b28b2ee5bd",
+    "to": "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e",
+    "commits": 6,
+    "files": 55,
+    "python_analysis_or_cli_source_changes": [],
+    "non_document_paths": [
+      {
+        "path": "desktop/capture_desktop/app.py",
+        "sha": "363b6acbdcf0ba382bd040903946e6916ab282c9",
+        "status": "modified"
+      },
+      {
+        "path": "desktop/capture_desktop/screen_analysis.py",
+        "sha": "78905bbde5de536dad125b6e4e48a475e9b14272",
+        "status": "modified"
+      },
+      {
+        "path": "desktop/capture_desktop/widgets_analysis_scope.py",
+        "sha": "7b15a34fc1f8a9f31164d4ee9b4d144ff01a8d2d",
+        "status": "added"
+      },
+      {
+        "path": "desktop/capture_desktop/widgets_session_header.py",
+        "sha": "b1f4cbf5ab35ef06b4bf1da45f0be6ffb34b0a4a",
+        "status": "modified"
+      },
+      {
+        "path": "desktop/capture_desktop/widgets_session_timeline.py",
+        "sha": "2d9ba524b1e6231c934f6d037796a53e135a12f8",
+        "status": "modified"
+      },
+      {
+        "path": "libs/cpp/capture_storage/include/capture/storage/atomic_file.hpp",
+        "sha": "86738c28bd5ff7449f50fa6d48def8478486a5a3",
+        "status": "modified"
+      },
+      {
+        "path": "libs/cpp/capture_storage/src/atomic_file.cpp",
+        "sha": "d51815e9f95ec6e3cf1b319386efb44b5bb4ac94",
+        "status": "modified"
+      },
+      {
+        "path": "tests/cpp/CMakeLists.txt",
+        "sha": "ae5b8e9f89870fe4098686a701a3a30cda438f79",
+        "status": "modified"
+      },
+      {
+        "path": "tests/cpp/test_atomic_file_windows.cpp",
+        "sha": "43fe28c3ec2ed49872b59dcc87407cece56466e5",
+        "status": "added"
+      },
+      {
+        "path": "tests/ui/test_analysis_scope.py",
+        "sha": "b1d5d4f9dd06c6f5c1cf05080079191f55e97c95",
+        "status": "added"
+      }
+    ]
+  },
+  "files": [
+    {
+      "path": "tests/ui/test_analysis_scope.py",
+      "mode": "100644",
+      "base_git_blob": "b1d5d4f9dd06c6f5c1cf05080079191f55e97c95",
+      "base_sha256": "9a9237744ac7f4ecfc00f646112caf08b938ffa3a9eee703c4de04fed22026f0",
+      "git_blob": "2ee653a05e27e8586e74439d2bdc9eccf06505ef",
+      "sha256": "bf01b632cf377f09c06dedd2ac09eb9326290f0e35322e0464dc4d52a99421c5",
+      "bytes": 14426,
+      "binary": false
+    },
+    {
+      "path": "docs/design/research/ANALYSIS_SCOPE_SEMANTICS.md",
+      "mode": "100644",
+      "base_git_blob": "2814d8e3d13c934846b84bb1dfbb1f9bb5cb50d1",
+      "base_sha256": "a42b1fe1836bb499eb5fd026567ac0562b46ebfece7390c58187c164ddff1ba0",
+      "git_blob": "68cea4077c84eb0bb4451dec815e9f7053478e43",
+      "sha256": "33b722e7e12f2c696ad93cd002143d64358372d66d8981763ea34db11f723458",
+      "bytes": 6032,
+      "binary": false
+    }
+  ]
+}

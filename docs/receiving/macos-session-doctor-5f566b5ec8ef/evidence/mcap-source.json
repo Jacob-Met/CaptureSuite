@@ -1,0 +1,84 @@
+{
+  "observed_utc": "2026-10-08T14:43:22.858489+00:00",
+  "command": [
+    "git",
+    "clone",
+    "--depth",
+    "1",
+    "--branch",
+    "releases/cpp/v2.1.1",
+    "https://github.com/foxglove/mcap.git",
+    "/Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/dependencies/mcap"
+  ],
+  "exit_code": 0,
+  "duration_seconds": 1.0310575410258025,
+  "commit": "b2953496735e7b89d5b2ea58be73abed85317c5f",
+  "status": "",
+  "files": [
+    {
+      "path": "cpp/mcap/include/mcap/crc32.hpp",
+      "size": 3899,
+      "sha256": "a3b7b6d28559adf8e18ca71012563faf58375137f51fd6937bf5197cdd8fb813"
+    },
+    {
+      "path": "cpp/mcap/include/mcap/errors.hpp",
+      "size": 2947,
+      "sha256": "698c82eb71c7db4a8a31a40e6e4b66785d08372bcbc97ba4b2b5a9a02f378e14"
+    },
+    {
+      "path": "cpp/mcap/include/mcap/internal.hpp",
+      "size": 6761,
+      "sha256": "334e8a4c8d5a4d02f256d460bbef1f2c71fe944a9f934989dc51ad77eb0d93b4"
+    },
+    {
+      "path": "cpp/mcap/include/mcap/intervaltree.hpp",
+      "size": 8957,
+      "sha256": "62c17bb11e811b8ef7ca72b3eca5f4014f4e27049125ac065bc60fcc2f605016"
+    },
+    {
+      "path": "cpp/mcap/include/mcap/mcap.hpp",
+      "size": 58,
+      "sha256": "996cd1457e8ca5fbfcb0a178f765e1ec1f1a8c389a56aa7f0f2d4bc9fc806cc7"
+    },
+    {
+      "path": "cpp/mcap/include/mcap/read_job_queue.hpp",
+      "size": 4260,
+      "sha256": "d4faab3749c538f7a57f9e84ddaf1036a2ee6d9500fcf553715ed0ca51ce4b1a"
+    },
+    {
+      "path": "cpp/mcap/include/mcap/reader.hpp",
+      "size": 26188,
+      "sha256": "d5b279a2d1f3a87d19938d278118c1656181e93cd8f441b84192dd1044d0adb2"
+    },
+    {
+      "path": "cpp/mcap/include/mcap/reader.inl",
+      "size": 68127,
+      "sha256": "310355a2364bff481ce6fe43e6c4bd0dc70a66cb8443d4be7f5f997a55123798"
+    },
+    {
+      "path": "cpp/mcap/include/mcap/types.hpp",
+      "size": 11574,
+      "sha256": "fc133ebc38b3833d91d24a052baac6c5fc1d33754ff4c0a16af47403192221da"
+    },
+    {
+      "path": "cpp/mcap/include/mcap/types.inl",
+      "size": 2711,
+      "sha256": "614e014ebe5cbfc254e631839e51637d74b503991a061eeda84b3e51220fa82a"
+    },
+    {
+      "path": "cpp/mcap/include/mcap/visibility.hpp",
+      "size": 895,
+      "sha256": "dc702161364b8aa7e96061e9b785a85fa673b9ce68f7e7ba58a34325d4e145a9"
+    },
+    {
+      "path": "cpp/mcap/include/mcap/writer.hpp",
+      "size": 16954,
+      "sha256": "3c609a079e029342683efdfbc977c685444e75c5ca5fad16b7be595c63930e69"
+    },
+    {
+      "path": "cpp/mcap/include/mcap/writer.inl",
+      "size": 36543,
+      "sha256": "e5c46d39c0a10cc177669203e20bc096771892523df2a6a3eb74921e9c7d3e4a"
+    }
+  ]
+}

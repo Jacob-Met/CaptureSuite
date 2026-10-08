@@ -1,0 +1,10 @@
+{
+  "native_archive": "/Users/me/capturesuite-checkpoint-18a24bf0c281/checkpoint-evidence.tar.gz",
+  "archive_bytes": 774126,
+  "archive_sha256": "414586feae8ccc75cde233dff932c4883633e4110b0a3d12c4282d957fa8b503",
+  "chunks": 18,
+  "packet_files": 24,
+  "packet_bytes": 972816,
+  "local_payload_hashes_verified": true,
+  "nested_native_payload_hashes_verified": true
+}

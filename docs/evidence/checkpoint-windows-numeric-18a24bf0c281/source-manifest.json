@@ -1,0 +1,39 @@
+{
+  "repository": "Jacob-Met/CaptureSuite",
+  "head": "fef2d0307645de3e3a67592e2778bd560b9dfa69",
+  "base": "d43bdea867d6198a707a5f55e29216c76054517e",
+  "tree": "73b206a257de681295e5669a929c3d61652208f9",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "git_blob": "9ac6683ba4805e210143e5a33e7782da55af0d15",
+      "sha256": "525164ca1f3b9e68561434ab110ba17ed65843a20c23f4c1385fde33f1863a74",
+      "bytes": 3932
+    },
+    {
+      "path": "tests/analysis/test_numeric_receiving.py",
+      "git_blob": "cee5571f3802a2ca452f4591afc2fd4c86c6beba",
+      "sha256": "7ea17b163076315202f235b1a646918bdffbfede95349c57675ef730706794a1",
+      "bytes": 14286
+    },
+    {
+      "path": "libs/python/capture_analysis/capture_analysis/windows.py",
+      "git_blob": "aaafd8db78f82a5a56178135dbed5bfd4f45c634",
+      "sha256": "5cf401b7b7d201225c966b804cfff39c3f6d59669da7e488dd68c4253a829c32",
+      "bytes": 5714
+    },
+    {
+      "path": "libs/python/capture_analysis/capture_analysis/features/numeric_batch.py",
+      "git_blob": "77f19ccb048c93c0f4fca460eef0502180b37717",
+      "sha256": "ecdeb88ca4dd093b973294a53954e9fa0e5d6b4b908225a52d097ef70c7d2154",
+      "bytes": 4030
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "git_blob": "9c08a4d38d435169f402511c934d1c59701082cf",
+      "sha256": "272cb962395776a2648507792faeab2bfdd7f24ecdba59e3f2288b77bc45c114",
+      "bytes": 3743
+    }
+  ],
+  "numeric_test_head_equals_base": true
+}

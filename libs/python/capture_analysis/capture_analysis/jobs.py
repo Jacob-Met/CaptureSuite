@@ -343,6 +343,7 @@ def run(
                 work,
                 summary,
                 ml_bundle_job_id=bundle_id,
+                prediction_path=params.extra.get("prediction_path"),
                 outputs=outputs,
                 warnings=warnings,
             )

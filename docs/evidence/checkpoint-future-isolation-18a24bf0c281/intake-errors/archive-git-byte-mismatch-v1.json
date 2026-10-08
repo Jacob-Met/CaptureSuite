@@ -1,0 +1,105 @@
+{
+  "initial_attempt_pid": 29067,
+  "initial_attempt_exit": 1,
+  "initial_attempt_error": "RuntimeError: Source blob mismatch .cursor/hooks/stop-capture-processes.ps1",
+  "no_tests_ran": true,
+  "no_owner_files_modified": true,
+  "mismatches": [
+    {
+      "path": ".cursor/hooks/stop-capture-processes.ps1",
+      "expected_git_blob": "b8c372e08eda9dc271c3bbf4572c036494f3e3b3",
+      "archive_git_blob": "af7bed5139556fcdbac79b3eca0699dc4a176551",
+      "archive_sha256": "9ce051293d3cebd98a94103155ad1cfbc9c72ffb5b695768b4f96299d8b03198",
+      "archive_bytes": 1461,
+      "crlf_pairs": 42,
+      "bare_cr": 0,
+      "lf_conversion_exactly_matches_git": true,
+      "lf_git_blob": "b8c372e08eda9dc271c3bbf4572c036494f3e3b3",
+      "lf_bytes": 1419
+    },
+    {
+      "path": "plugins/example_sine_py/run_worker.cmd",
+      "expected_git_blob": "484e82624368692768d0122076e832f9b30219bf",
+      "archive_git_blob": "dff347cb19e982d0632fbcf7177250c3bb931c59",
+      "archive_sha256": "513a1f90f0e8160bb2e4829ac12e3d8795044ac885dfeb0ee4eb288cbfc0bfa1",
+      "archive_bytes": 618,
+      "crlf_pairs": 15,
+      "bare_cr": 0,
+      "lf_conversion_exactly_matches_git": true,
+      "lf_git_blob": "484e82624368692768d0122076e832f9b30219bf",
+      "lf_bytes": 603
+    },
+    {
+      "path": "plugins/lsl_bridge/run_worker.cmd",
+      "expected_git_blob": "c80a72fb0edeb44031dd27feb551bb2549f34563",
+      "archive_git_blob": "3177d0c20aa36d90c6c32901555ba1785df46be2",
+      "archive_sha256": "ededbb3e56d0f046ad536914ddea599fbe29465eb9f95029c8040308029cb92c",
+      "archive_bytes": 371,
+      "crlf_pairs": 8,
+      "bare_cr": 0,
+      "lf_conversion_exactly_matches_git": true,
+      "lf_git_blob": "c80a72fb0edeb44031dd27feb551bb2549f34563",
+      "lf_bytes": 363
+    },
+    {
+      "path": "scripts/dev-env.ps1",
+      "expected_git_blob": "dad8f9e88d418c3c8bdc66b82a498dcd332c36d0",
+      "archive_git_blob": "de915b5266a63e2001033237784414cd991c6864",
+      "archive_sha256": "604ef0fa03d4558ef94f263481be8609dff8acd06185959316a61a47f1669a30",
+      "archive_bytes": 1981,
+      "crlf_pairs": 51,
+      "bare_cr": 0,
+      "lf_conversion_exactly_matches_git": true,
+      "lf_git_blob": "dad8f9e88d418c3c8bdc66b82a498dcd332c36d0",
+      "lf_bytes": 1930
+    },
+    {
+      "path": "tools/gstreamer-installers/install-gstreamer.ps1",
+      "expected_git_blob": "ac17d58c3a5df741ca1e39c7c4d606667101b068",
+      "archive_git_blob": "dd8f06d1dae4c1a7b868620bf29207bdd30b20b6",
+      "archive_sha256": "f1c6a7dd3a9cc3ee05b6f9304fea8d99682a8b8e6170375bb5ec147bc0074b3c",
+      "archive_bytes": 3051,
+      "crlf_pairs": 80,
+      "bare_cr": 0,
+      "lf_conversion_exactly_matches_git": true,
+      "lf_git_blob": "ac17d58c3a5df741ca1e39c7c4d606667101b068",
+      "lf_bytes": 2971
+    },
+    {
+      "path": "tools/new_plugin.ps1",
+      "expected_git_blob": "e0f62e0b96f480869c59ed544d81dcbd570d6d8b",
+      "archive_git_blob": "550edcf8eceeda77abe936559b4d71d55762491b",
+      "archive_sha256": "3f50e422f972133c785b49938d6dbd07ceefe1b3deba31e0f74275ba036d1ea6",
+      "archive_bytes": 5290,
+      "crlf_pairs": 161,
+      "bare_cr": 0,
+      "lf_conversion_exactly_matches_git": true,
+      "lf_git_blob": "e0f62e0b96f480869c59ed544d81dcbd570d6d8b",
+      "lf_bytes": 5129
+    },
+    {
+      "path": "tools/run-daemon-gstreamer.ps1",
+      "expected_git_blob": "e87b421d0023dd4f3397a7cf42ffb8f3c29464e3",
+      "archive_git_blob": "580af0ff1ce15e3fb3f6a07cc3e006368dcad68c",
+      "archive_sha256": "bc7aedcedc29317215ed01f03c405462f9c8434920dba96fb561b0b392c2e7b2",
+      "archive_bytes": 2824,
+      "crlf_pairs": 75,
+      "bare_cr": 0,
+      "lf_conversion_exactly_matches_git": true,
+      "lf_git_blob": "e87b421d0023dd4f3397a7cf42ffb8f3c29464e3",
+      "lf_bytes": 2749
+    },
+    {
+      "path": "tools/run-demo.ps1",
+      "expected_git_blob": "efd87ea6d3f038693b7a06afc4d0ab64da114725",
+      "archive_git_blob": "8ae823fd06b928c1f9a2ab88f62722e1cc7ec221",
+      "archive_sha256": "a3796b4b23756129e3e2030a3fba7c5e10f2a64ede2449d57e99de3027c335eb",
+      "archive_bytes": 1295,
+      "crlf_pairs": 36,
+      "bare_cr": 0,
+      "lf_conversion_exactly_matches_git": true,
+      "lf_git_blob": "efd87ea6d3f038693b7a06afc4d0ab64da114725",
+      "lf_bytes": 1259
+    }
+  ]
+}

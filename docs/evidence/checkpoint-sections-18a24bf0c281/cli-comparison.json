@@ -1,0 +1,1649 @@
+[
+  {
+    "label": "baseline",
+    "case": "first",
+    "exit_code": 0,
+    "expected_bounds": [
+      0,
+      2000000000
+    ],
+    "time_range": {
+      "checkpointIds": [
+        "warmup"
+      ],
+      "endSessionNs": 5000000000,
+      "mode": "cp:warmup",
+      "startSessionNs": 2000000000
+    },
+    "status": "completed",
+    "errors": [],
+    "params": {
+      "applySyncAnchors": false,
+      "checkpointSection": "warmup",
+      "command": "features",
+      "endSessionNs": null,
+      "extra": {},
+      "gapPolicy": "mask",
+      "maxRamBytes": 2147483648,
+      "overwriteJobId": "checkpoint-receiving",
+      "sources": [],
+      "startSessionNs": null
+    },
+    "feature": {
+      "rows": 30,
+      "first": {
+        "t_mid_ns": "2050000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "20.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "20.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "last": {
+        "t_mid_ns": "4950000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "49.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "49.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "csv_sha256": "c87c78b47958994b5b7416ab4eec94e6ae83285b5fcbd88553400eee9b314a13",
+      "parquet_sha256": "83135b46967e0219a1222cffc82673500f9e7e69d692d4f0bd5c6a1c23b7e3d8"
+    },
+    "raw_files": 8,
+    "raw_hashes_unchanged": true,
+    "raw_before": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "raw_after": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "full_receipt": "baseline/pytest-tmp/test_real_cli_emits_the_select0/receiving.json"
+  },
+  {
+    "label": "baseline",
+    "case": "middle",
+    "exit_code": 0,
+    "expected_bounds": [
+      2000000000,
+      5000000000
+    ],
+    "time_range": {
+      "checkpointIds": [
+        "Reach – 左"
+      ],
+      "endSessionNs": 5000000000,
+      "mode": "cp:Reach – 左",
+      "startSessionNs": 5000000000
+    },
+    "status": "completed",
+    "errors": [],
+    "params": {
+      "applySyncAnchors": false,
+      "checkpointSection": "Reach – 左",
+      "command": "all",
+      "endSessionNs": null,
+      "extra": {},
+      "gapPolicy": "mask",
+      "maxRamBytes": 2147483648,
+      "overwriteJobId": "checkpoint-receiving",
+      "sources": [],
+      "startSessionNs": null
+    },
+    "feature": {
+      "rows": 1,
+      "first": {
+        "t_mid_ns": "5000000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "50.0",
+        "wrist_acc_mag_std": "0.0",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "50.0",
+        "wrist_acc_x_std": "0.0",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "last": {
+        "t_mid_ns": "5000000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "50.0",
+        "wrist_acc_mag_std": "0.0",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "50.0",
+        "wrist_acc_x_std": "0.0",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "csv_sha256": "97f55d4b457528d0774dfe661ad05cdb07ff27b40f432a53833f3b328d2b7168",
+      "parquet_sha256": "bc0297f522c2de43a85d4c0ecd051a1a4d7d10c75db56742bb6d51529d404556"
+    },
+    "raw_files": 8,
+    "raw_hashes_unchanged": true,
+    "raw_before": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "raw_after": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "full_receipt": "baseline/pytest-tmp/test_real_cli_emits_the_select1/receiving.json"
+  },
+  {
+    "label": "baseline",
+    "case": "last",
+    "exit_code": 0,
+    "expected_bounds": [
+      5000000000,
+      7000000000
+    ],
+    "time_range": {
+      "checkpointIds": [
+        "finish"
+      ],
+      "endSessionNs": 8000000000,
+      "mode": "cp:finish",
+      "startSessionNs": 7000000000
+    },
+    "status": "completed",
+    "errors": [],
+    "params": {
+      "applySyncAnchors": false,
+      "checkpointSection": "finish",
+      "command": "features",
+      "endSessionNs": null,
+      "extra": {},
+      "gapPolicy": "mask",
+      "maxRamBytes": 2147483648,
+      "overwriteJobId": "checkpoint-receiving",
+      "sources": [],
+      "startSessionNs": null
+    },
+    "feature": {
+      "rows": 10,
+      "first": {
+        "t_mid_ns": "7050000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "70.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "70.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "last": {
+        "t_mid_ns": "7950000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "79.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "79.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "csv_sha256": "9310227aea069cb19e87822102562dd6c4dc8000cc8b5bc8c2a2a2f94814a4c7",
+      "parquet_sha256": "d07b6d72a9306b933b9e1dff461313a2e248d48013513bbc17ba4c849fa02147"
+    },
+    "raw_files": 8,
+    "raw_hashes_unchanged": true,
+    "raw_before": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "raw_after": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "full_receipt": "baseline/pytest-tmp/test_real_cli_emits_the_select2/receiving.json"
+  },
+  {
+    "label": "baseline",
+    "case": "zero",
+    "exit_code": 0,
+    "expected_bounds": [
+      0,
+      0
+    ],
+    "time_range": {
+      "checkpointIds": [
+        "zero"
+      ],
+      "endSessionNs": 2000000000,
+      "mode": "cp:zero",
+      "startSessionNs": 0
+    },
+    "status": "completed",
+    "errors": [],
+    "params": {
+      "applySyncAnchors": false,
+      "checkpointSection": "zero",
+      "command": "features",
+      "endSessionNs": null,
+      "extra": {},
+      "gapPolicy": "mask",
+      "maxRamBytes": 2147483648,
+      "overwriteJobId": "checkpoint-receiving",
+      "sources": [],
+      "startSessionNs": null
+    },
+    "feature": {
+      "rows": 20,
+      "first": {
+        "t_mid_ns": "50000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "0.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "0.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "last": {
+        "t_mid_ns": "1950000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "19.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "19.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "csv_sha256": "d174acc7e761777395bc1cd341c43b427e446899995a4ea24ac36b0e1b97881f",
+      "parquet_sha256": "4aae5ea73dc121d8cd38e79829f44c3c46921ee9c2a2cc493df06dcd6af2099c"
+    },
+    "raw_files": 8,
+    "raw_hashes_unchanged": true,
+    "raw_before": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "raw_after": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "full_receipt": "baseline/pytest-tmp/test_real_cli_emits_the_select3/receiving.json"
+  },
+  {
+    "label": "baseline",
+    "case": "tie",
+    "exit_code": 0,
+    "expected_bounds": [
+      5000000000,
+      5000000000
+    ],
+    "time_range": {
+      "checkpointIds": [
+        "tie"
+      ],
+      "endSessionNs": 7000000000,
+      "mode": "cp:tie",
+      "startSessionNs": 5000000000
+    },
+    "status": "completed",
+    "errors": [],
+    "params": {
+      "applySyncAnchors": false,
+      "checkpointSection": "tie",
+      "command": "features",
+      "endSessionNs": null,
+      "extra": {},
+      "gapPolicy": "mask",
+      "maxRamBytes": 2147483648,
+      "overwriteJobId": "checkpoint-receiving",
+      "sources": [],
+      "startSessionNs": null
+    },
+    "feature": {
+      "rows": 20,
+      "first": {
+        "t_mid_ns": "5050000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "50.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "50.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "last": {
+        "t_mid_ns": "6950000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "69.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "69.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "csv_sha256": "603b6dadf3e04f361db1a7a747076956b02a19e360f4fdda06f4911ab68c8983",
+      "parquet_sha256": "64f65fb812d2512e7842594cf3c6ee27d98fa52acb811b8d219fa0d0dd6eaaeb"
+    },
+    "raw_files": 8,
+    "raw_hashes_unchanged": true,
+    "raw_before": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "raw_after": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "full_receipt": "baseline/pytest-tmp/test_real_cli_emits_the_select4/receiving.json"
+  },
+  {
+    "label": "baseline",
+    "case": "edited",
+    "exit_code": 0,
+    "expected_bounds": [
+      2000000000,
+      4000000000
+    ],
+    "time_range": {
+      "checkpointIds": [
+        "reach"
+      ],
+      "endSessionNs": 5000000000,
+      "mode": "cp:reach",
+      "startSessionNs": 4000000000
+    },
+    "status": "completed",
+    "errors": [],
+    "params": {
+      "applySyncAnchors": false,
+      "checkpointSection": "reach",
+      "command": "features",
+      "endSessionNs": null,
+      "extra": {},
+      "gapPolicy": "mask",
+      "maxRamBytes": 2147483648,
+      "overwriteJobId": "checkpoint-receiving",
+      "sources": [],
+      "startSessionNs": null
+    },
+    "feature": {
+      "rows": 10,
+      "first": {
+        "t_mid_ns": "4050000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "40.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "40.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "last": {
+        "t_mid_ns": "4950000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "49.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "49.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "csv_sha256": "469cf3f1c7358d3e94939dc92319d1e11e7eddb6713741f87dea254435c9b266",
+      "parquet_sha256": "daafbab278724b958ec432f3a9dc126b2b05f732c858efeb4ece27f52e4a02c6"
+    },
+    "raw_files": 8,
+    "raw_hashes_unchanged": true,
+    "raw_before": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "447da0b4217af847323d0a350b4725847a2fd5bcd064e5e0578608816ca61a03",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "raw_after": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "447da0b4217af847323d0a350b4725847a2fd5bcd064e5e0578608816ca61a03",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "full_receipt": "baseline/pytest-tmp/test_real_cli_emits_the_select5/receiving.json"
+  },
+  {
+    "label": "baseline",
+    "case": "full",
+    "exit_code": 0,
+    "expected_bounds": [
+      0,
+      8000000000
+    ],
+    "time_range": {
+      "checkpointIds": [],
+      "endSessionNs": 8000000000,
+      "mode": "full",
+      "startSessionNs": 0
+    },
+    "status": "completed",
+    "errors": [],
+    "params": {
+      "applySyncAnchors": false,
+      "checkpointSection": null,
+      "command": "features",
+      "endSessionNs": null,
+      "extra": {},
+      "gapPolicy": "mask",
+      "maxRamBytes": 2147483648,
+      "overwriteJobId": "checkpoint-receiving",
+      "sources": [],
+      "startSessionNs": null
+    },
+    "feature": {
+      "rows": 80,
+      "first": {
+        "t_mid_ns": "50000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "0.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "0.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "last": {
+        "t_mid_ns": "7950000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "79.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "79.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "csv_sha256": "82027a3321b15dcfda38d7e1352b0a89174c53d66e1fff7cfc31b041129f4633",
+      "parquet_sha256": "81e7aa256a763d2c3594a067d070a9482eb97f47fbc7322785a5e79a3762db77"
+    },
+    "raw_files": 8,
+    "raw_hashes_unchanged": true,
+    "raw_before": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "raw_after": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "full_receipt": "baseline/pytest-tmp/test_real_cli_emits_the_select6/receiving.json"
+  },
+  {
+    "label": "baseline",
+    "case": "no-checkpoints",
+    "exit_code": 0,
+    "expected_bounds": [
+      0,
+      8000000000
+    ],
+    "time_range": {
+      "checkpointIds": [],
+      "endSessionNs": 8000000000,
+      "mode": "full",
+      "startSessionNs": 0
+    },
+    "status": "completed",
+    "errors": [],
+    "params": {
+      "applySyncAnchors": false,
+      "checkpointSection": null,
+      "command": "features",
+      "endSessionNs": null,
+      "extra": {},
+      "gapPolicy": "mask",
+      "maxRamBytes": 2147483648,
+      "overwriteJobId": "checkpoint-receiving",
+      "sources": [],
+      "startSessionNs": null
+    },
+    "feature": {
+      "rows": 80,
+      "first": {
+        "t_mid_ns": "50000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "0.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "0.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "last": {
+        "t_mid_ns": "7950000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "79.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "79.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "csv_sha256": "82027a3321b15dcfda38d7e1352b0a89174c53d66e1fff7cfc31b041129f4633",
+      "parquet_sha256": "81e7aa256a763d2c3594a067d070a9482eb97f47fbc7322785a5e79a3762db77"
+    },
+    "raw_files": 8,
+    "raw_hashes_unchanged": true,
+    "raw_before": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "raw_after": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "full_receipt": "baseline/pytest-tmp/test_real_cli_emits_the_select7/receiving.json"
+  },
+  {
+    "label": "baseline",
+    "case": "custom",
+    "exit_code": 0,
+    "expected_bounds": [
+      7000000000,
+      8000000000
+    ],
+    "time_range": {
+      "checkpointIds": [],
+      "endSessionNs": 8000000000,
+      "mode": "custom",
+      "startSessionNs": 7000000000
+    },
+    "status": "completed",
+    "errors": [],
+    "params": {
+      "applySyncAnchors": false,
+      "checkpointSection": null,
+      "command": "features",
+      "endSessionNs": 8000000000,
+      "extra": {},
+      "gapPolicy": "mask",
+      "maxRamBytes": 2147483648,
+      "overwriteJobId": "checkpoint-receiving",
+      "sources": [],
+      "startSessionNs": 7000000000
+    },
+    "feature": {
+      "rows": 10,
+      "first": {
+        "t_mid_ns": "7050000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "70.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "70.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "last": {
+        "t_mid_ns": "7950000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "79.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "79.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "csv_sha256": "9310227aea069cb19e87822102562dd6c4dc8000cc8b5bc8c2a2a2f94814a4c7",
+      "parquet_sha256": "d07b6d72a9306b933b9e1dff461313a2e248d48013513bbc17ba4c849fa02147"
+    },
+    "raw_files": 8,
+    "raw_hashes_unchanged": true,
+    "raw_before": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "raw_after": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "full_receipt": "baseline/pytest-tmp/test_real_cli_emits_the_select8/receiving.json"
+  },
+  {
+    "label": "baseline",
+    "case": "persisted-negative",
+    "exit_code": 0,
+    "expected_bounds": null,
+    "time_range": {
+      "checkpointIds": [
+        "before-start"
+      ],
+      "endSessionNs": 8000000000,
+      "mode": "cp:before-start",
+      "startSessionNs": -1
+    },
+    "status": "completed",
+    "errors": [],
+    "params": {
+      "applySyncAnchors": false,
+      "checkpointSection": "before-start",
+      "command": "features",
+      "endSessionNs": null,
+      "extra": {},
+      "gapPolicy": "mask",
+      "maxRamBytes": 2147483648,
+      "overwriteJobId": "negative-receiving",
+      "sources": [],
+      "startSessionNs": null
+    },
+    "feature": {
+      "rows": 80,
+      "first": {
+        "t_mid_ns": "50000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "0.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "0.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "last": {
+        "t_mid_ns": "7950000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "79.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "79.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "csv_sha256": "82027a3321b15dcfda38d7e1352b0a89174c53d66e1fff7cfc31b041129f4633",
+      "parquet_sha256": "81e7aa256a763d2c3594a067d070a9482eb97f47fbc7322785a5e79a3762db77"
+    },
+    "raw_files": 8,
+    "raw_hashes_unchanged": true,
+    "raw_before": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3fdd9fd16835ac048e068558f55c4780df31bcea632a64331d7ed859a0d14616",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "raw_after": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3fdd9fd16835ac048e068558f55c4780df31bcea632a64331d7ed859a0d14616",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "full_receipt": "baseline/pytest-tmp/test_real_cli_reports_an_inver0/receiving.json"
+  },
+  {
+    "label": "candidate",
+    "case": "first",
+    "exit_code": 0,
+    "expected_bounds": [
+      0,
+      2000000000
+    ],
+    "time_range": {
+      "checkpointIds": [
+        "warmup"
+      ],
+      "endSessionNs": 2000000000,
+      "mode": "cp:warmup",
+      "startSessionNs": 0
+    },
+    "status": "completed",
+    "errors": [],
+    "params": {
+      "applySyncAnchors": false,
+      "checkpointSection": "warmup",
+      "command": "features",
+      "endSessionNs": null,
+      "extra": {},
+      "gapPolicy": "mask",
+      "maxRamBytes": 2147483648,
+      "overwriteJobId": "checkpoint-receiving",
+      "sources": [],
+      "startSessionNs": null
+    },
+    "feature": {
+      "rows": 20,
+      "first": {
+        "t_mid_ns": "50000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "0.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "0.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "last": {
+        "t_mid_ns": "1950000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "19.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "19.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "csv_sha256": "d174acc7e761777395bc1cd341c43b427e446899995a4ea24ac36b0e1b97881f",
+      "parquet_sha256": "4aae5ea73dc121d8cd38e79829f44c3c46921ee9c2a2cc493df06dcd6af2099c"
+    },
+    "raw_files": 8,
+    "raw_hashes_unchanged": true,
+    "raw_before": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "raw_after": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "full_receipt": "candidate/pytest-tmp/test_real_cli_emits_the_select0/receiving.json"
+  },
+  {
+    "label": "candidate",
+    "case": "middle",
+    "exit_code": 0,
+    "expected_bounds": [
+      2000000000,
+      5000000000
+    ],
+    "time_range": {
+      "checkpointIds": [
+        "Reach – 左"
+      ],
+      "endSessionNs": 5000000000,
+      "mode": "cp:Reach – 左",
+      "startSessionNs": 2000000000
+    },
+    "status": "completed",
+    "errors": [],
+    "params": {
+      "applySyncAnchors": false,
+      "checkpointSection": "Reach – 左",
+      "command": "all",
+      "endSessionNs": null,
+      "extra": {},
+      "gapPolicy": "mask",
+      "maxRamBytes": 2147483648,
+      "overwriteJobId": "checkpoint-receiving",
+      "sources": [],
+      "startSessionNs": null
+    },
+    "feature": {
+      "rows": 30,
+      "first": {
+        "t_mid_ns": "2050000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "20.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "20.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "last": {
+        "t_mid_ns": "4950000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "49.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "49.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "csv_sha256": "c87c78b47958994b5b7416ab4eec94e6ae83285b5fcbd88553400eee9b314a13",
+      "parquet_sha256": "83135b46967e0219a1222cffc82673500f9e7e69d692d4f0bd5c6a1c23b7e3d8"
+    },
+    "raw_files": 8,
+    "raw_hashes_unchanged": true,
+    "raw_before": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "raw_after": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "full_receipt": "candidate/pytest-tmp/test_real_cli_emits_the_select1/receiving.json"
+  },
+  {
+    "label": "candidate",
+    "case": "last",
+    "exit_code": 0,
+    "expected_bounds": [
+      5000000000,
+      7000000000
+    ],
+    "time_range": {
+      "checkpointIds": [
+        "finish"
+      ],
+      "endSessionNs": 7000000000,
+      "mode": "cp:finish",
+      "startSessionNs": 5000000000
+    },
+    "status": "completed",
+    "errors": [],
+    "params": {
+      "applySyncAnchors": false,
+      "checkpointSection": "finish",
+      "command": "features",
+      "endSessionNs": null,
+      "extra": {},
+      "gapPolicy": "mask",
+      "maxRamBytes": 2147483648,
+      "overwriteJobId": "checkpoint-receiving",
+      "sources": [],
+      "startSessionNs": null
+    },
+    "feature": {
+      "rows": 20,
+      "first": {
+        "t_mid_ns": "5050000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "50.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "50.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "last": {
+        "t_mid_ns": "6950000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "69.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "69.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "csv_sha256": "603b6dadf3e04f361db1a7a747076956b02a19e360f4fdda06f4911ab68c8983",
+      "parquet_sha256": "64f65fb812d2512e7842594cf3c6ee27d98fa52acb811b8d219fa0d0dd6eaaeb"
+    },
+    "raw_files": 8,
+    "raw_hashes_unchanged": true,
+    "raw_before": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "raw_after": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "full_receipt": "candidate/pytest-tmp/test_real_cli_emits_the_select2/receiving.json"
+  },
+  {
+    "label": "candidate",
+    "case": "zero",
+    "exit_code": 0,
+    "expected_bounds": [
+      0,
+      0
+    ],
+    "time_range": {
+      "checkpointIds": [
+        "zero"
+      ],
+      "endSessionNs": 0,
+      "mode": "cp:zero",
+      "startSessionNs": 0
+    },
+    "status": "completed",
+    "errors": [],
+    "params": {
+      "applySyncAnchors": false,
+      "checkpointSection": "zero",
+      "command": "features",
+      "endSessionNs": null,
+      "extra": {},
+      "gapPolicy": "mask",
+      "maxRamBytes": 2147483648,
+      "overwriteJobId": "checkpoint-receiving",
+      "sources": [],
+      "startSessionNs": null
+    },
+    "feature": {
+      "rows": 1,
+      "first": {
+        "t_mid_ns": "0",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "0.0",
+        "wrist_acc_mag_std": "0.0",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "0.0",
+        "wrist_acc_x_std": "0.0",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "last": {
+        "t_mid_ns": "0",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "0.0",
+        "wrist_acc_mag_std": "0.0",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "0.0",
+        "wrist_acc_x_std": "0.0",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "csv_sha256": "584743ae66a9207325dfff07be9760f6cca240e56b6affd42e4b608f3bbfca1e",
+      "parquet_sha256": "495ac0116b7077e8b12936460f3bf082acb866721e8c5db282c06e1ea0e0e93c"
+    },
+    "raw_files": 8,
+    "raw_hashes_unchanged": true,
+    "raw_before": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "raw_after": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "full_receipt": "candidate/pytest-tmp/test_real_cli_emits_the_select3/receiving.json"
+  },
+  {
+    "label": "candidate",
+    "case": "tie",
+    "exit_code": 0,
+    "expected_bounds": [
+      5000000000,
+      5000000000
+    ],
+    "time_range": {
+      "checkpointIds": [
+        "tie"
+      ],
+      "endSessionNs": 5000000000,
+      "mode": "cp:tie",
+      "startSessionNs": 5000000000
+    },
+    "status": "completed",
+    "errors": [],
+    "params": {
+      "applySyncAnchors": false,
+      "checkpointSection": "tie",
+      "command": "features",
+      "endSessionNs": null,
+      "extra": {},
+      "gapPolicy": "mask",
+      "maxRamBytes": 2147483648,
+      "overwriteJobId": "checkpoint-receiving",
+      "sources": [],
+      "startSessionNs": null
+    },
+    "feature": {
+      "rows": 1,
+      "first": {
+        "t_mid_ns": "5000000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "50.0",
+        "wrist_acc_mag_std": "0.0",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "50.0",
+        "wrist_acc_x_std": "0.0",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "last": {
+        "t_mid_ns": "5000000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "50.0",
+        "wrist_acc_mag_std": "0.0",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "50.0",
+        "wrist_acc_x_std": "0.0",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "csv_sha256": "97f55d4b457528d0774dfe661ad05cdb07ff27b40f432a53833f3b328d2b7168",
+      "parquet_sha256": "bc0297f522c2de43a85d4c0ecd051a1a4d7d10c75db56742bb6d51529d404556"
+    },
+    "raw_files": 8,
+    "raw_hashes_unchanged": true,
+    "raw_before": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "raw_after": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "full_receipt": "candidate/pytest-tmp/test_real_cli_emits_the_select4/receiving.json"
+  },
+  {
+    "label": "candidate",
+    "case": "edited",
+    "exit_code": 0,
+    "expected_bounds": [
+      2000000000,
+      4000000000
+    ],
+    "time_range": {
+      "checkpointIds": [
+        "reach"
+      ],
+      "endSessionNs": 4000000000,
+      "mode": "cp:reach",
+      "startSessionNs": 2000000000
+    },
+    "status": "completed",
+    "errors": [],
+    "params": {
+      "applySyncAnchors": false,
+      "checkpointSection": "reach",
+      "command": "features",
+      "endSessionNs": null,
+      "extra": {},
+      "gapPolicy": "mask",
+      "maxRamBytes": 2147483648,
+      "overwriteJobId": "checkpoint-receiving",
+      "sources": [],
+      "startSessionNs": null
+    },
+    "feature": {
+      "rows": 20,
+      "first": {
+        "t_mid_ns": "2050000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "20.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "20.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "last": {
+        "t_mid_ns": "3950000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "39.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "39.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "csv_sha256": "02916b3613dc3c3fd464fdcfc532491d0bd8f78d10a67b2c3ea34e06cf4b1d7f",
+      "parquet_sha256": "572f14fd77879021bd5d3b1f83ce259ede3b58c2f52b78f58135127710c911ac"
+    },
+    "raw_files": 8,
+    "raw_hashes_unchanged": true,
+    "raw_before": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "447da0b4217af847323d0a350b4725847a2fd5bcd064e5e0578608816ca61a03",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "raw_after": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "447da0b4217af847323d0a350b4725847a2fd5bcd064e5e0578608816ca61a03",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "full_receipt": "candidate/pytest-tmp/test_real_cli_emits_the_select5/receiving.json"
+  },
+  {
+    "label": "candidate",
+    "case": "full",
+    "exit_code": 0,
+    "expected_bounds": [
+      0,
+      8000000000
+    ],
+    "time_range": {
+      "checkpointIds": [],
+      "endSessionNs": 8000000000,
+      "mode": "full",
+      "startSessionNs": 0
+    },
+    "status": "completed",
+    "errors": [],
+    "params": {
+      "applySyncAnchors": false,
+      "checkpointSection": null,
+      "command": "features",
+      "endSessionNs": null,
+      "extra": {},
+      "gapPolicy": "mask",
+      "maxRamBytes": 2147483648,
+      "overwriteJobId": "checkpoint-receiving",
+      "sources": [],
+      "startSessionNs": null
+    },
+    "feature": {
+      "rows": 80,
+      "first": {
+        "t_mid_ns": "50000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "0.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "0.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "last": {
+        "t_mid_ns": "7950000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "79.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "79.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "csv_sha256": "82027a3321b15dcfda38d7e1352b0a89174c53d66e1fff7cfc31b041129f4633",
+      "parquet_sha256": "81e7aa256a763d2c3594a067d070a9482eb97f47fbc7322785a5e79a3762db77"
+    },
+    "raw_files": 8,
+    "raw_hashes_unchanged": true,
+    "raw_before": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "raw_after": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "full_receipt": "candidate/pytest-tmp/test_real_cli_emits_the_select6/receiving.json"
+  },
+  {
+    "label": "candidate",
+    "case": "no-checkpoints",
+    "exit_code": 0,
+    "expected_bounds": [
+      0,
+      8000000000
+    ],
+    "time_range": {
+      "checkpointIds": [],
+      "endSessionNs": 8000000000,
+      "mode": "full",
+      "startSessionNs": 0
+    },
+    "status": "completed",
+    "errors": [],
+    "params": {
+      "applySyncAnchors": false,
+      "checkpointSection": null,
+      "command": "features",
+      "endSessionNs": null,
+      "extra": {},
+      "gapPolicy": "mask",
+      "maxRamBytes": 2147483648,
+      "overwriteJobId": "checkpoint-receiving",
+      "sources": [],
+      "startSessionNs": null
+    },
+    "feature": {
+      "rows": 80,
+      "first": {
+        "t_mid_ns": "50000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "0.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "0.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "last": {
+        "t_mid_ns": "7950000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "79.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "79.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "csv_sha256": "82027a3321b15dcfda38d7e1352b0a89174c53d66e1fff7cfc31b041129f4633",
+      "parquet_sha256": "81e7aa256a763d2c3594a067d070a9482eb97f47fbc7322785a5e79a3762db77"
+    },
+    "raw_files": 8,
+    "raw_hashes_unchanged": true,
+    "raw_before": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "raw_after": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "full_receipt": "candidate/pytest-tmp/test_real_cli_emits_the_select7/receiving.json"
+  },
+  {
+    "label": "candidate",
+    "case": "custom",
+    "exit_code": 0,
+    "expected_bounds": [
+      7000000000,
+      8000000000
+    ],
+    "time_range": {
+      "checkpointIds": [],
+      "endSessionNs": 8000000000,
+      "mode": "custom",
+      "startSessionNs": 7000000000
+    },
+    "status": "completed",
+    "errors": [],
+    "params": {
+      "applySyncAnchors": false,
+      "checkpointSection": null,
+      "command": "features",
+      "endSessionNs": 8000000000,
+      "extra": {},
+      "gapPolicy": "mask",
+      "maxRamBytes": 2147483648,
+      "overwriteJobId": "checkpoint-receiving",
+      "sources": [],
+      "startSessionNs": 7000000000
+    },
+    "feature": {
+      "rows": 10,
+      "first": {
+        "t_mid_ns": "7050000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "70.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "70.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "last": {
+        "t_mid_ns": "7950000000",
+        "valid_fraction": "1.0",
+        "wrist_acc_mag_mean": "79.5",
+        "wrist_acc_mag_std": "0.5",
+        "wrist_gyro_mag_mean": "0.0",
+        "wrist_acc_x_mean": "79.5",
+        "wrist_acc_x_std": "0.5",
+        "wrist_acc_y_mean": "0.0",
+        "wrist_acc_y_std": "0.0",
+        "wrist_acc_z_mean": "0.0",
+        "wrist_acc_z_std": "0.0"
+      },
+      "csv_sha256": "9310227aea069cb19e87822102562dd6c4dc8000cc8b5bc8c2a2a2f94814a4c7",
+      "parquet_sha256": "d07b6d72a9306b933b9e1dff461313a2e248d48013513bbc17ba4c849fa02147"
+    },
+    "raw_files": 8,
+    "raw_hashes_unchanged": true,
+    "raw_before": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "raw_after": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3755d7d4594fdbb46fc3c6f7dff333058fed812515d51eeff6b6427503bd49ae",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "full_receipt": "candidate/pytest-tmp/test_real_cli_emits_the_select8/receiving.json"
+  },
+  {
+    "label": "candidate",
+    "case": "persisted-negative",
+    "exit_code": 1,
+    "expected_bounds": null,
+    "time_range": null,
+    "status": "failed",
+    "errors": [
+      "invalid checkpoint section: start=0 end=-1"
+    ],
+    "params": {
+      "applySyncAnchors": false,
+      "checkpointSection": "before-start",
+      "command": "features",
+      "endSessionNs": null,
+      "extra": {},
+      "gapPolicy": "mask",
+      "maxRamBytes": 2147483648,
+      "overwriteJobId": "negative-receiving",
+      "sources": [],
+      "startSessionNs": null
+    },
+    "feature": null,
+    "raw_files": 8,
+    "raw_hashes_unchanged": true,
+    "raw_before": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3fdd9fd16835ac048e068558f55c4780df31bcea632a64331d7ed859a0d14616",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "raw_after": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "3fdd9fd16835ac048e068558f55c4780df31bcea632a64331d7ed859a0d14616",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "3bc3a807a1bce1281940ed67c6fa05e57611f1893a88898ef4e3483f8e6a161c",
+      "manifest.json": "e38cf767edab1367eca50700be62e9f242fb79c5449f430f1caefafe2f1d4880",
+      "sources/sim.imu.upper/source.json": "6bb856fbdff127e35b93850230554fb01bcefc7b74d3b94947da939688167821",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": "92efaeef480515127fc6ddadc83263c341c5468859654bf946ee536aaf5b279c",
+      "sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": "438861fc327866d9cc78e7404ab881bd83f1cf17ccc4f7340f32fab51d40335f"
+    },
+    "full_receipt": "candidate/pytest-tmp/test_real_cli_reports_an_inver0/receiving.json"
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "repository": "Jacob-Met/CaptureSuite",
+  "head": "fef2d0307645de3e3a67592e2778bd560b9dfa69",
+  "failed_checkout": "171d2f90b83484151c4283542ee3cd71a1beebc4",
+  "tree": "73b206a257de681295e5669a929c3d61652208f9",
+  "failed_run": 37792726943,
+  "failed_job": 113364093148,
+  "baseline_native_commit": "1012a7d9d6ee976bd376f77e9c98c1af49ce48a0",
+  "path": "tests/analysis/test_numeric_receiving.py",
+  "baseline": {
+    "git_blob": "cee5571f3802a2ca452f4591afc2fd4c86c6beba",
+    "sha256": "7ea17b163076315202f235b1a646918bdffbfede95349c57675ef730706794a1",
+    "bytes": 14286
+  },
+  "candidate": {
+    "git_blob": "d2d80dca85375acd58c4970e0c9490ee662c75f9",
+    "sha256": "af72aac15ae863faced59b720a7f25506a7e77de44f32d74f21cc4500daccd14",
+    "bytes": 14363
+  },
+  "only_selector_and_comment_changed": true,
+  "all_existing_assertions_byte_preserved": true,
+  "python_syntax_parsed": true,
+  "tests_rerun": false,
+  "failed_job_log": {
+    "characters": 60307,
+    "bytes": 60309,
+    "sha256": "15f9f068bf30c0af253ff4a112983db9a4a1b2149b4be3ad7b62365673781322"
+  },
+  "artifact_bytes_in_custody": false
+}

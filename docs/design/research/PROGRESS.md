@@ -101,6 +101,39 @@ receiver above remains bound to retained original `16eb17f` atomic source; it
 does not claim qualification of the revised writer. See the packet CURRENT.md
 for the exact companion composition and current fixture replay.
 
+## 2026-10-08 — Analyze the section closed by a captured checkpoint
+
+Contributor `18a24bf0c281 / estate_product`, issue #54: selecting a captured
+checkpoint now resolves the preceding effective checkpoint (or session time
+zero) through the selected checkpoint. The final marker no longer selects the
+tail. Existing timestamp aliases, exact integers, stable ties, inclusive point
+sections and gap helpers are preserved. A persisted negative first marker
+reports invalid inverted bounds without clamping or rewriting the recording.
+
+The same frozen native Python 3.12.8 test file changes from **25 failed / 5
+passed** on the original implementation to **30 passed** on source `4fcd0aa`.
+Ten real CLI cases per implementation check synthetic protobuf MCAP through
+Parquet/CSV output; all eight raw files in every invocation remain exact. The
+candidate also passes **19 existing QC/features/stream-gap checks**, scoped
+Ruff and the existing license checker. Two upstream protobuf deprecation
+warnings remain recorded. Independent future-marker/data invariance and
+inside-section sensitivity receiving passes **26 checks** on the same
+production blob, with its original failures retained separately.
+
+`ANALYSIS.md` records the explicit decision reconciling the captured-checkpoint
+session contract with an older research tagged-start example. Scope UI #53 and
+history #55 keep their owned files. Actual native figures contain the correct
+selected samples; their existing elapsed-axis label discrepancy was retained
+and handed to the current plot/scope owners without editing plot source.
+
+Exact source pins, complete native logs/fixtures/artifacts, actual PNGs and
+byte-preservation receipts are in
+[`docs/evidence/checkpoint-sections-18a24bf0c281/README.md`](../../evidence/checkpoint-sections-18a24bf0c281/README.md).
+The distinct independent review is in
+[`checkpoint-future-isolation-18a24bf0c281`](../../evidence/checkpoint-future-isolation-18a24bf0c281/README.md).
+This is bounded native offline receiving; supported Windows CI, desktop
+composition and physical acquisition retain their separate acceptance gates.
+
 ## 2026-10-08 — Preserve prior analysis jobs on failed replacement
 
 Worker `estate-6267db2cfc6e`, issue #39: portable job IDs and direct output
@@ -721,6 +754,44 @@ remain pending. Raw results, source pins, CLI input/output hashes and receiving
 source equivalence are in
 `../../evidence/qc-gap-details-ultra-20b27c2e-20261008/`.
 
+
+### 2026-10-08 — Add actual GStreamer camera qualification
+
+The additive Native camera worker workflow enables the real Windows camera
+target with the pinned official GStreamer 1.24.13 MSVC SDK. A test-only absolute
+executable selector reuses the existing three camera cases for the original,
+plugin and legacy layouts. The receiving runner requires all three cases in
+each layout, exact worker/DLL identity, an actual missing plugin-local protobuf
+loader refusal, exact restoration, and unchanged source/SDK/binaries.
+
+The SDK is administratively extracted into a fresh hosted-runner directory;
+there is no product installation or machine/user environment change. Existing
+CI, CMake test registration, worker production source and runtime resolver
+ownership are preserved. Portable acceptance controls and independent source
+review precede hosted Windows execution; they do not establish a native camera
+pass. Physical devices and automatic manifest resolution remain outside this
+gate. Scope, reproduction and retained-evidence rules are in
+`../../qualification/camera-native-dd84679589d8/README.md`.
+
+
+### 2026-10-08 — Receive the first actual Windows camera build
+
+The first dedicated camera run (37782737763, actual checkout
+`ea99de704be6f9fe5b272be3ff0043680cd89d88`) verified the SDK, passed the 13
+portable controls and configured the real camera target. Compilation then
+rejected an integer `gboolean` comparison with C++ `TRUE` under MSVC /W4 /WX
+(C4805 promoted to C2220). The one-line repair interprets the existing
+`gst_element_link_many` result by its zero/nonzero value; the encoder probe
+flow and strict warning gate remain intact. Native camera cases did not run.
+
+The standard C++ gate passed 26 CTest and six native daemon/recovery cases.
+Standard Python exited zero with 383 passed and six skipped, but its JUnit
+declared 448 tests for 389 case entries: 59 successful subtests inflated the
+aggregate. The new camera controls now use the same variant loops and assertions
+as ordinary unittest cases. A focused pytest 9.1.1 replay reproduces the original
+72-versus-13 mismatch and receives the successor's 13-versus-13 report with the
+unchanged shared checker. The next hosted run must qualify both narrow repairs.
+
 ## 2026-10-08 — Desktop analysis time scope (estate-234cae4aee53)
 
 Issue #53 adds the missing operator path from the sealed-session header to the
@@ -789,6 +860,64 @@ active worker. Supported-platform CI and independent receiving are recorded
 separately in the accompanying feature evidence; local Linux Qt is not Windows,
 hardware or installed-app qualification. See [figure export](FIGURE_EXPORT.md)
 for the operator workflow, bundle fields and explicit resource/failure bounds.
+
+
+## 2026-10-08 — External prediction evaluation (chatgpt-566d51f04b31-mac)
+
+Issue #57 owns the optional source-bound prediction input on the existing eval
+job. Base e43da3b8 has an intentional identity-teacher simulation. The retained
+five Phase 5/6 tests pass on that base; the new actual-pipeline receiver has
+26 expected feature/refusal failures and one unchanged simulation control pass.
+Native Python 3.12.8 uses the existing analysis dependencies without installation.
+
+Implementation is limited to eval input/scoring/figures, optional CLI dispatch,
+the versioned input contract and tests/docs. #46 retains job publication and
+inventory; #49 and #53–56 retain their numerical/UI/kinematics scopes. Source
+qualification is complete: 158 analysis tests pass and the single native Windows
+junction test is skipped on macOS. Scoped Ruff and the license check pass. PNG
+and Poppler-rendered PDF outputs are readable; a literal model-label rendering
+failure was retained and corrected. The original 26-failure baseline, first
+candidate, line-wrap-only AST checks and final native logs are preserved.
+Independent receiving, source review and supported hosted gates remain pending;
+no model training, held-out design, hardware or clinical result is claimed.
+
+
+Receiving correction: root source review found a half-ULP Pearson centering
+error for two nearly equal reversed samples. The exact native examples at 1.0
+and 180.0 both reproduced correlation 0 instead of -1; an ordinary two-point
+control passed. Translating each normalized series before mean subtraction
+preserves the small offsets without losing overflow resistance. The same two
+regressions now pass, as does a finite +/-1e308 identity control. The corrected
+full analysis suite passes **161 tests**, with the same native Windows junction
+skip and two retained protobuf deprecation warnings. Source matching, masks,
+MAE/RMSE, units and default identity simulation are unchanged. Independent
+receiving and supported hosted gates still remain separate pending gates.
+
+
+## 2026-10-08 — Canonical Mac session-doctor receiver (5f566b5ec8ef)
+
+Built and received the already-merged portable C++ session doctor from exact
+`d43bdea867d6198a707a5f55e29216c76054517e` on macOS 26.6.2 arm64. Configure,
+Release build and all 17 available native CTest cases passed. The 96 qualified
+inputs remain unchanged on receiving base `70f34e3b982523b544a9370d2316a1b69d79bd70`.
+No product, preset, bootstrap, worker, daemon or schema implementation changes
+were needed; the historical Mac port and Linux R3 receiver retain their scopes.
+
+The received package keeps its executable and 86 local libraries together.
+Actual relocation traced all 87 non-system images to the copied directory;
+CLI controls preserve sealed/finalized data, exercise authored tail recovery,
+and retain the original helper filename failure plus its focused loader replay.
+Independent review verified all 87 original/copied files and 1,245 local load
+edges. The final 2,393,685-byte archive includes exact source inputs and project/
+dependency notices; all 246 extracted files match, and the extracted tool runs.
+The first archive and its source-notice correction are both retained.
+
+Six pinned files in the older Mac receiver remain byte-identical. No real
+recordings or hardware were accessed. Mac evidence does not include the Linux
+GNU linker-wrapped cases, Windows, complete Mac UI/daemon, x86_64 or notarization.
+Native artifact paths, exact hashes, recipient usage, raw qualification and
+independent review are in
+[the receiving packet](../../receiving/macos-session-doctor-5f566b5ec8ef/README.md).
 
 
 ## 2026-10-08 — Show retained nested numeric figures in the native gallery (401c5d17da79)
