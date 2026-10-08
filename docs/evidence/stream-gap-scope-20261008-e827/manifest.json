@@ -25,6 +25,37 @@
     "Existing hosted CI and independent receiving are pending at this snapshot.",
     "No daemon, physical hardware, schema, exporter, raw-data or workflow change."
   ],
+  "lint_followup": {
+    "diagnostic": "One Ruff I001: remove blank line between NumPy import and capture_analysis imports. Pytest was skipped.",
+    "diagnostic_log": {
+      "bytes": 2422,
+      "git_blob": "f816c4ddec08a928433444a939f7a9c2acb14979",
+      "sha256": "9075ad8bd2991c38ab29738d405fca0e4e3213af2986b8d00fc89fd2b60b6467"
+    },
+    "diagnostic_log_kind": "Unmodified 40-line diagnostic excerpt from native job log, from I001 through process exit 1.",
+    "formatted_run": {
+      "exit_code": 0,
+      "methods_run": 8,
+      "passing_methods": 8,
+      "raw_log": {
+        "bytes": 1572,
+        "git_blob": "fec104fbc2cf85567c6a9c52260249ae8b8cecb0",
+        "sha256": "11810b4c89f5fd7624a45e8b8caebd1ffa1eb2c92733639f76e31a73dadae5f5"
+      }
+    },
+    "formatted_test": {
+      "bytes": 9452,
+      "git_blob": "caaf1268ee87ae62ed16c04520dcbbfea5dc7d94",
+      "sha256": "879ccf09d69ce552c51dd9167338d719b6958991b06932940e9aa217d87e8df3"
+    },
+    "hosted_followup": "pending",
+    "initial_head": "c2a92268ddfb7031173059f9f81dec7991f23936",
+    "initial_python_conclusion": "failure",
+    "production_unchanged": true,
+    "python_job_id": 113240491876,
+    "test_change": "Remove one blank line only; AST with location attributes omitted is identical. All original baseline/test/log bytes remain retained in initial commit.",
+    "workflow_run_id": 37755974937
+  },
   "production_path": "libs/python/capture_analysis/capture_analysis/windows.py",
   "publication_base_tree": "befabb7f507780a2e4d720ac0ae841327c352df8",
   "publication_parent": "c43b2819b149e1e87d7f957d8b3583881c29ffb4",

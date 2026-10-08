@@ -66,3 +66,21 @@ independent receiving still need their own exact-candidate outcomes. Local pytes
 and Ruff were unavailable. No whole-product, daemon, physical hardware, release,
 or deployment result is inferred from these eight tests. Subsequent acceptance
 belongs in the linked pull request with its exact source and workflow identifiers.
+
+## Native lint receiving follow-up
+
+The first hosted run `37755974937`, Python job `113240491876`, passed dependency
+consistency, the CI contract, and both protobuf/schema generation and byte-drift
+checks, then reported one Ruff I001 in the new test import block. Pytest was skipped.
+`initial-ci-lint.log` retains the unchanged diagnostic through exit 1; it is a
+40-line excerpt from that job's log.
+
+Removed only the blank line between the NumPy import and the analysis imports.
+The test AST, excluding source-location attributes, is identical to the frozen
+test used in the paired runs. The original test remains available at initial
+commit `c2a92268ddfb7031173059f9f81dec7991f23936`, and all original raw outputs are
+retained here. Current test blob: `caaf1268ee87ae62ed16c04520dcbbfea5dc7d94`.
+The formatted test again passes all eight methods locally; its raw output is
+`formatted-candidate.log`. Production source is unchanged. The child commit still
+requires its own native workflow result; the failed predecessor is not counted
+as a successful hosted run.

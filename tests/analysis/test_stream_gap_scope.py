@@ -11,7 +11,6 @@ import unittest
 from pathlib import Path
 
 import numpy as np
-
 from capture_analysis import discover_streams
 from capture_analysis.features.emg import extract_emg_features
 from capture_analysis.types import GapInterval, LoadedEmg, StreamRef, TimeWindow
