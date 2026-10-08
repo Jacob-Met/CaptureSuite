@@ -1,3 +1,20 @@
+## 2026-10-08 — Windows atomic writer reserves owned temporary files
+
+Contributor `estate-6267db2cfc6e` prepared the repair for issue51/PR52. Windows
+now reserves a unique sibling with `CreateFileW(CREATE_NEW)`, retains the original
+writable handle through writes and `FlushFileBuffers`, checks close, and keeps
+the existing write-through publication boundary. Failure cleanup addresses only
+the file created by that invocation; retained legacy `.tmp` paths are preserved.
+
+The original-source checkpoint is `c1bc438ea07492a303f89cea5deb242efeb6f8e9`.
+Its CI run37770868596 is retained separately from the repair's receiving run.
+Both use the unchanged four real Windows tests (SHA-256
+`485af6482c6b14fc7c187b45cc366af547bf0a1fe2c0651c8b68c8d25e854cfb`).
+Native acceptance requires actual original-source preservation failures and
+candidate passes under the existing complete Windows workflow. The final PR52
+receiving review records the actual outcomes and their exact source identities.
+The POSIX implementation and the current workflow remain unchanged.
+
 ## 2026-10-08 — Windows atomic temporary-file preservation controls
 
 Contributor `estate-6267db2cfc6e` prepared four Windows-only real-file tests for
