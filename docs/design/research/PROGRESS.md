@@ -721,3 +721,33 @@ independently accepts the repaired checkpoint picker at `3625449`; the original
 identity failure and corrected rerun are retained. The supported Windows job
 remains required. Source pins, raw control/qualification logs and native custody
 are recorded in `docs/evidence/analysis-scope-234cae4aee53/`.
+
+
+## 2026-10-08 — Selected analysis figures with original provenance (#59)
+
+The native gallery now offers **Export figures…** for the loaded completed job.
+Researchers can preview/check an explicit PNG subset, choose a ZIP destination,
+and retain the exact original images, job manifest and parameters together.
+The versioned bundle index distinguishes actual exported-input digests from
+historical hashes recorded inside the original job metadata. Recorded source
+identity, gaps, units, warnings and tooling remain intact; export does not
+recompute results or make a new scientific/hardware claim.
+
+Source reads, validation, PNG decoding, selection and failed/cancelled export
+leave job/session bytes unchanged. The writer stages beside the destination and
+preserves an existing export until successful publication; replacement requires
+an explicit native confirmation. Clear/reload invalidates the old selection and
+cancels its worker. The gallery's public lifecycle composes with #55 saved-job
+history without editing its screen/package hooks, and all sync/inspector behavior
+remains in its existing implementation.
+
+Local receiving uses the project's Python 3.12 source, actual PySide6/Qt 6.11.2
+controls/event loop, and an actual synthetic MCAP analysis job. The original
+native gallery has no export action; the candidate produces exact selected PNG
+members plus the two original source JSON files and a versioned bundle index.
+Tests include selected/empty/invalid/stale jobs, output failure and retry,
+replacement refusal/acceptance, native keyboard operation, and clear during an
+active worker. Supported-platform CI and independent receiving are recorded
+separately in the accompanying feature evidence; local Linux Qt is not Windows,
+hardware or installed-app qualification. See [figure export](FIGURE_EXPORT.md)
+for the operator workflow, bundle fields and explicit resource/failure bounds.

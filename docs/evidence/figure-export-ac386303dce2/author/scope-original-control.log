@@ -1,0 +1,74 @@
+Original current-main gallery control: /workspace/scratch/ac386303dce2/product-figure-export-scope-control/desktop/capture_desktop/__init__.py
+============================= test session starts ==============================
+platform linux -- Python 3.12.14, pytest-9.1.1, pluggy-1.6.0 -- /opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python
+rootdir: /workspace/scratch/ac386303dce2/product-figure-export
+configfile: pyproject.toml
+collecting ... collected 1 item
+
+tests/ui/test_analysis_scope.py::test_selected_scope_reaches_real_thread_job_and_mcap_outputs[range] This plugin does not support propagateSizeHints()
+This plugin does not support propagateSizeHints()
+This plugin does not support propagateSizeHints()
+This plugin does not support propagateSizeHints()
+This plugin does not support propagateSizeHints()
+This plugin does not support propagateSizeHints()
+Timeout (0:00:20)!
+Thread 0x00007f23c7fff6c0 (most recent call first):
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/matplotlib/backends/backend_agg.py", line 192 in draw_text
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/matplotlib/text.py", line 808 in draw
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/matplotlib/artist.py", line 71 in draw_wrapper
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/matplotlib/axis.py", line 276 in draw
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/matplotlib/artist.py", line 71 in draw_wrapper
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/matplotlib/axis.py", line 1408 in draw
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/matplotlib/artist.py", line 71 in draw_wrapper
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/matplotlib/image.py", line 134 in _draw_list_compositing_images
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/matplotlib/axes/_base.py", line 3226 in draw
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/matplotlib/artist.py", line 71 in draw_wrapper
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/matplotlib/image.py", line 134 in _draw_list_compositing_images
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/matplotlib/figure.py", line 3257 in draw
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/matplotlib/artist.py", line 71 in draw_wrapper
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/matplotlib/artist.py", line 94 in draw_wrapper
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/matplotlib/backends/backend_agg.py", line 382 in draw
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/matplotlib/backends/backend_agg.py", line 429 in _print_pil
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/matplotlib/backends/backend_agg.py", line 481 in print_png
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/matplotlib/backend_bases.py", line 2042 in <lambda>
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/matplotlib/backend_bases.py", line 2186 in print_figure
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/site-packages/matplotlib/figure.py", line 3490 in savefig
+  File "/workspace/scratch/ac386303dce2/product-figure-export/libs/python/capture_analysis/capture_analysis/plots/style.py", line 34 in save_fig
+  File "/workspace/scratch/ac386303dce2/product-figure-export/libs/python/capture_analysis/capture_analysis/plots/modality.py", line 35 in plot_emg_channels
+  File "/workspace/scratch/ac386303dce2/product-figure-export/libs/python/capture_analysis/capture_analysis/plugins/handlers.py", line 73 in handle_emg
+  File "/workspace/scratch/ac386303dce2/product-figure-export/libs/python/capture_analysis/capture_analysis/pipeline.py", line 78 in run_features_and_plots
+  File "/workspace/scratch/ac386303dce2/product-figure-export/libs/python/capture_analysis/capture_analysis/jobs.py", line 351 in run
+  File "/workspace/scratch/ac386303dce2/product-figure-export-scope-control/desktop/capture_desktop/screen_analysis.py", line 71 in run
+
+Thread 0x00007f240b52d740 (most recent call first):
+  File "/workspace/scratch/ac386303dce2/product-figure-export/tests/ui/test_analysis_scope.py", line 129 in test_selected_scope_reaches_real_thread_job_and_mcap_outputs
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/_pytest/python.py", line 167 in pytest_pyfunc_call
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/pluggy/_callers.py", line 121 in _multicall
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/pluggy/_manager.py", line 120 in _hookexec
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/pluggy/_hooks.py", line 512 in __call__
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/_pytest/python.py", line 1707 in runtest
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/_pytest/runner.py", line 184 in pytest_runtest_call
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/pluggy/_callers.py", line 121 in _multicall
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/pluggy/_manager.py", line 120 in _hookexec
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/pluggy/_hooks.py", line 512 in __call__
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/_pytest/runner.py", line 250 in <lambda>
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/_pytest/runner.py", line 361 in from_call
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/_pytest/runner.py", line 249 in call_and_report
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/_pytest/runner.py", line 139 in runtestprotocol
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/_pytest/runner.py", line 118 in pytest_runtest_protocol
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/pluggy/_callers.py", line 121 in _multicall
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/pluggy/_manager.py", line 120 in _hookexec
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/pluggy/_hooks.py", line 512 in __call__
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/_pytest/main.py", line 408 in pytest_runtestloop
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/pluggy/_callers.py", line 121 in _multicall
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/pluggy/_manager.py", line 120 in _hookexec
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/pluggy/_hooks.py", line 512 in __call__
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/_pytest/main.py", line 384 in _main
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/_pytest/main.py", line 330 in wrap_session
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/_pytest/main.py", line 377 in pytest_cmdline_main
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/pluggy/_callers.py", line 121 in _multicall
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/pluggy/_manager.py", line 120 in _hookexec
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/pluggy/_hooks.py", line 512 in __call__
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/_pytest/config/__init__.py", line 229 in _main
+  File "/workspace/scratch/0c6c4d37eb0f/local-evidence-worker/test-deps/_pytest/config/__init__.py", line 201 in main
+  File "<stdin>", line 7 in <module>
