@@ -1,0 +1,118 @@
+{
+  "predecessor": "65b76c9909f0c28d34c9f44f07d306b924955da8",
+  "branch": "review/frame-view-lifetime-72ac1419",
+  "native_code_review_commit": "4359c21f3da93ed863de617331edfc853cf8385d",
+  "native_code_review_tree": "43902c3fc551425acf7c3a2dc8bec177f3f29c61",
+  "product_source_unchanged_after_peer": true,
+  "files": [
+    {
+      "path": "docs/design/research/PROGRESS.md",
+      "bytes": 13920,
+      "sha256": "052c88bcd708f1c168228c80619bae8cef3ff227f76997378d0dab0ddcc2335f",
+      "git_blob": "c5cd0d418ab3ac75674548c53ab20ca8fd16015d"
+    },
+    {
+      "path": "libs/python/capture_protocol/capture_protocol/framing.py",
+      "bytes": 2884,
+      "sha256": "3ff7c7284d9907a2ad516c83fab383a4151996da3f2d5a1d27e24d7c7575d92e",
+      "git_blob": "9dd5021b815b31ab02eaaa814210525ebb543862"
+    },
+    {
+      "path": "tests/protocol/test_framing_view_lifetime.py",
+      "bytes": 3377,
+      "sha256": "79dc7b7a5f9711adf218ed1c46c79b44d1b04dc8aa5830a478f81f7b50795406",
+      "git_blob": "9315b79b656b9eceb6d0a468d95d8b6d5a613ee3"
+    },
+    {
+      "path": "docs/evidence/framing-view-lifetime-72ac1419/README.md",
+      "bytes": 5211,
+      "sha256": "0e4c89e6641ed8ff24ac6e6e183b906637cc95d5404962b00a88bb3d44493f5b",
+      "git_blob": "55bee1844b317231d72d77e52d417648881210a6"
+    },
+    {
+      "path": "docs/evidence/framing-view-lifetime-72ac1419/baseline.log",
+      "bytes": 13901,
+      "sha256": "2d9968c83644579e40e7f4079cd140caf6e4fe0ab0cea50fc6149d80e5ee6a83",
+      "git_blob": "664a6fa65f9840eaadecdaee7f0a455335129735"
+    },
+    {
+      "path": "docs/evidence/framing-view-lifetime-72ac1419/candidate.log",
+      "bytes": 785,
+      "sha256": "48ce10b4b62d83cd46672762c63b55d0cdfaf946faa28a7c57ccb1af430dc899",
+      "git_blob": "940a5cee601b35861a8da8620cddb3b589a20a05"
+    },
+    {
+      "path": "docs/evidence/framing-view-lifetime-72ac1419/peer/REVIEW.md",
+      "bytes": 3860,
+      "sha256": "a3b7329903bb6364a73c3388c689a1417fa02c18d00d92b8ea6151612dc1330f",
+      "git_blob": "bc91a2214b508f9aab8d0e28427e1de52838e277"
+    },
+    {
+      "path": "docs/evidence/framing-view-lifetime-72ac1419/peer/native-tool-output.log",
+      "bytes": 3957,
+      "sha256": "590539d763a79a69e7095126fd8a719ecf2a47e7c32fd8220150b4ef410ec59a",
+      "git_blob": "4d4f68f42c2d793f266f0feb0f77de6f38972855"
+    },
+    {
+      "path": "docs/evidence/framing-view-lifetime-72ac1419/peer/native.json",
+      "bytes": 1828,
+      "sha256": "8071c0c0ddd63627c8f5827d13540020707eebe0c192731d7ecd879489bdd51c",
+      "git_blob": "978556594322b97cd1614a2e204aa48bf8b6f0c2"
+    },
+    {
+      "path": "docs/evidence/framing-view-lifetime-72ac1419/peer/pytest-tool-output.log",
+      "bytes": 1873,
+      "sha256": "6a1e66efc755ae58dfd60777d95eeab03b82e904cf6b7429995978c867345498",
+      "git_blob": "cf4ed04d8fbe2fecdc3a15dd13c35d402261969c"
+    },
+    {
+      "path": "docs/evidence/framing-view-lifetime-72ac1419/peer/receiving.py",
+      "bytes": 5578,
+      "sha256": "68db80f55e9fdda790fb74d4259a77c453597260aca735a6cd2b679877d67df0",
+      "git_blob": "261b029e1b8f9ffceccaf2a25478026ce70edbee"
+    }
+  ],
+  "peer_source_archive": [
+    {
+      "path": "REVIEW.md",
+      "bytes": 3860,
+      "sha256": "a3b7329903bb6364a73c3388c689a1417fa02c18d00d92b8ea6151612dc1330f",
+      "executed_original_sha256": "a3b7329903bb6364a73c3388c689a1417fa02c18d00d92b8ea6151612dc1330f"
+    },
+    {
+      "path": "native-tool-output.log",
+      "bytes": 3957,
+      "sha256": "590539d763a79a69e7095126fd8a719ecf2a47e7c32fd8220150b4ef410ec59a",
+      "executed_original_sha256": "590539d763a79a69e7095126fd8a719ecf2a47e7c32fd8220150b4ef410ec59a"
+    },
+    {
+      "path": "native.json",
+      "bytes": 1828,
+      "sha256": "8071c0c0ddd63627c8f5827d13540020707eebe0c192731d7ecd879489bdd51c",
+      "executed_original_sha256": "8071c0c0ddd63627c8f5827d13540020707eebe0c192731d7ecd879489bdd51c"
+    },
+    {
+      "path": "pytest-tool-output.log",
+      "bytes": 1873,
+      "sha256": "6a1e66efc755ae58dfd60777d95eeab03b82e904cf6b7429995978c867345498",
+      "executed_original_sha256": "6a1e66efc755ae58dfd60777d95eeab03b82e904cf6b7429995978c867345498"
+    },
+    {
+      "path": "receiving.py",
+      "bytes": 5578,
+      "sha256": "68db80f55e9fdda790fb74d4259a77c453597260aca735a6cd2b679877d67df0",
+      "executed_original_sha256": "275a1dce73648f11639d6fdea09d2d88b85d6fd63e86e845008f2dedb3631e17"
+    }
+  ],
+  "qualification": {
+    "original_failed": 9,
+    "original_passed": 18,
+    "candidate_passed": 27,
+    "candidate_failed": 0,
+    "peer_review": "accepted",
+    "peer_focused_passed": 27,
+    "peer_supplemental_passed": 20,
+    "windows_companion_ci": "pending",
+    "integration": "not_performed"
+  }
+}
