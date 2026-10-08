@@ -862,6 +862,70 @@ hardware or installed-app qualification. See [figure export](FIGURE_EXPORT.md)
 for the operator workflow, bundle fields and explicit resource/failure bounds.
 
 
+
+## 2026-10-08 — Refuse unsupported sync-anchor requests (#63)
+
+The offline job API now rejects `apply_sync_anchors=True` with an explicit
+`NotImplementedError` before progress callbacks, review/QC reads, output creation
+or replacement of a saved job. Default/false requests retain existing behavior and
+truthfully record that anchor offsets were not applied. The scope design keeps its
+future alignment contract and now distinguishes that contract from current
+availability; recorded anchors remain available to package review and QC.
+
+An actual copied synthetic session exposed the original false provenance: two QC
+jobs recognized the same anchor at 250,000,000 ns, but the requested flag alone
+changed the saved manifest to `applied:true` with no applied-anchor record. The
+paired 17-case suite changes from 6 passed / 11 failed to 17 passed. The candidate
+also passes 42 existing QC, destination, replacement and CLI cases; one existing
+Windows junction case is explicitly skipped on macOS. Scoped Ruff passes, and the
+107 paired source files plus original 97 inputs remain unchanged during execution.
+
+This native comparison uses the already installed Python 3.13.7 scientific stack
+and is advisory source execution: the package requires Python >=3.12,<3.13. The
+existing hosted Python 3.12/Windows gates and independent exact-source review remain
+separate integration requirements. This change does not implement or qualify
+feature timestamp alignment, MCAP decoding, desktop controls or hardware capture.
+
+The isolated preparation retained a transient storage failure and a rejected stale
+scope-document packet. The final document preserves the complete newly landed
+time-picker text. PR46 retains inventory/finalization ownership; its existing
+replacement, callback and failure-publication paths are unchanged. Source pins,
+original failures, real-job artifacts and receipts are retained in
+[the receiving record](../../evidence/sync-anchor-request-bd1abdb2f886-20261008/README.md).
+
+Current finalizer composition: the same two-hunk refusal now receives actual
+main `70f34e3b982523b544a9370d2316a1b69d79bd70`, retaining PR46's corrected
+final log/manifest inventory and failed-attempt publication. The unchanged
+17-case negative comparator still has 6 passes and 11 failures. The composed
+candidate passes 66 tests with one native Windows-only skip, including all
+seven newly merged output-provenance controls; scoped Ruff passes and all
+109 files in each isolated source variant remain unchanged. These are advisory
+Python 3.13.7 source results. The existing supported Python 3.12/Windows workflow,
+including the real numeric CLI/MCAP cases, and exact-source independent review
+remain separate integration gates. The earlier source, failures and evidence
+archive remain intact; the current-finalizer archive records all actual artifacts
+and records test-created links only as inert metadata.
+
+Current external-prediction composition: the same refusal now receives actual main
+`58157fdc1b83a12bb4856ef14b0498cf524a1087`. The newly merged optional
+`prediction_path` eval dispatch is preserved exactly. All 17 existing admission
+controls pass, as do three bounded real eval groups: the unchanged identity default,
+an authored source-bound external prediction input with known errors and verified
+output inventory, and refusal before an absent prediction input or saved-job
+replacement. Scoped Ruff passes and all 115 receiving source files remain unchanged.
+This is still advisory Python 3.13 source execution. It does not decode MCAP or
+replace the upstream owner's full pipeline qualification; supported hosted gates
+must accept the current composition before integration. The previous finalizer
+receiving and both earlier archives remain untouched.
+
+The published source additionally preserves checkpoint and camera integration from
+main `9c44354cb101c76beff79265de0040b6839d249f`. The shared job runner remains
+byte-identical to the qualified external-prediction composition; the newer
+checkpoint resolver and its expanded scope documentation are retained in full.
+The native 115-file packet remains pinned to its actual 58157 parent. The complete
+current composition requires its own supported hosted qualification before merge.
+
+
 ## 2026-10-08 — External prediction evaluation (chatgpt-566d51f04b31-mac)
 
 Issue #57 owns the optional source-bound prediction input on the existing eval
