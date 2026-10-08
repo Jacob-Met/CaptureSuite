@@ -357,6 +357,8 @@ class MainWindow(QMainWindow):
         self.capture.alert_show_source.connect(self._on_focus)
         self.capture.radar_array_edit_requested.connect(self._edit_radar_array)
         self.review.export_requested.connect(self._on_review_export)
+        self._session_header.scope_changed.connect(self.analysis.set_scope)
+        self.analysis.package_loaded.connect(self._on_analysis_package_loaded)
 
         self.setup.source_selected.connect(self._load_setup_schema)
         self.setup.refresh_requested.connect(self._load_setup_schema)
@@ -662,6 +664,15 @@ class MainWindow(QMainWindow):
                 self._load_setup_schema(sid)
         elif widget is self.analysis:
             self.analysis.refresh_from_state()
+        self._refresh_session_context()
+
+    def _on_analysis_package_loaded(self, summary) -> None:
+        if self.tabs.currentWidget() is not self.analysis:
+            return
+        if summary is None:
+            self._session_header.clear()
+        else:
+            self._session_header.refresh_sealed(summary, selection=self.analysis.scope)
 
     # -- transport actions ---------------------------------------------------
 
@@ -1094,18 +1105,37 @@ class MainWindow(QMainWindow):
             f"Session: {self.state.session_id or '—'}  ·  {self.state.session_state_name()}"
             f"  ·  {path}"
         )
-        if self.state.package_path or self.state.session_id:
-            self._session_header.refresh_live(self.state)
-        elif not self.state.review_mode:
-            self._session_header.clear()
+        self._refresh_session_context()
         self.capture.refresh()
+
+    def _refresh_session_context(self) -> None:
+        if self.tabs.currentWidget() is self.analysis:
+            summary = self.analysis.summary
+            if summary is None:
+                self._session_header.clear()
+            elif (not self._session_header.is_sealed
+                  or self._session_header.package_path != self.analysis.package_path):
+                self._session_header.refresh_sealed(summary, selection=self.analysis.scope)
+        elif self.state.review_mode and self.state.package_path:
+            path = str(Path(self.state.package_path).resolve())
+            if not self._session_header.is_sealed or self._session_header.package_path != path:
+                self._refresh_session_header_sealed(path, recovered=False)
+        elif self.state.package_path or self.state.session_id:
+            self._session_header.refresh_live(self.state)
+        else:
+            self._session_header.clear()
 
     def _refresh_session_header_sealed(self, package_path: str, *, recovered: bool) -> None:
         try:
             from capture_session import load_review_summary
 
             summary = load_review_summary(package_path)
-            self._session_header.refresh_sealed(summary, recovered=recovered)
+            if str(Path(package_path).resolve()) == self.analysis.package_path:
+                self._session_header.refresh_sealed(
+                    summary, recovered=recovered, selection=self.analysis.scope,
+                )
+            else:
+                self._session_header.refresh_sealed(summary, recovered=recovered)
         except Exception:  # noqa: BLE001
             self._session_header.refresh_live(self.state)
 

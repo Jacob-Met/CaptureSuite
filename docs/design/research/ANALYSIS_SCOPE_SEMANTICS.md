@@ -23,10 +23,19 @@ Multiple modes compose: e.g. section **and** source subset.
 
 ## 2. Checkpoint section resolution
 
-1. Load `events/checkpoints.json`.
-2. Find checkpoints tagged with `section=<name>` or preset protocol mapping.
-3. Resolve `t_start` = first checkpoint in section, `t_end` = next section start or session end.
-4. Open gaps in range remain in gap_mask — never filled.
+The current desktop and CLI share `checkpoint_section_window`: load the recorded
+checkpoints, sort by their effective timestamp, and resolve the selected checkpoint
+through the next checkpoint (or the recorded session end for the last checkpoint).
+The desktop passes the stable checkpoint ID and shows it alongside repeated display
+names. The picker displays the backend's exact resolved bounds, including its
+existing fallback when a package omits its duration. Open gaps remain in the mask.
+The current backend also accepts checkpoint names. If a different checkpoint's
+name shadows the selected ID, that section is explicitly unavailable in the
+desktop, with an explanation and Time range fallback. The UI does not offer the
+other checkpoint's bounds under the selected section's name.
+
+Resolution through `section=<name>` tags or protocol presets remains a future
+extension; the desktop does not reinterpret those tags as checkpoint IDs.
 
 If section incomplete: warn in QC; `gap_policy=fail` fails job if gap overlaps section > threshold.
 
@@ -85,7 +94,34 @@ UI shows gap bands on SessionTimeline when selecting range.
 
 ## 7. UI binding
 
-SessionHeader widgets emit `ScopeSelection` dataclass:
+The implemented time picker in `widgets_analysis_scope.py` emits an immutable
+`ScopeSelection` containing `mode`, `section_name`, `start_ns`, and `end_ns`.
+`SessionHeader.scope_changed` also carries the resolved package path. Analysis
+accepts a selection only for its current package, and each worker snapshots it
+before its QThread starts. A later UI selection cannot change the running job.
+
+Full session passes the backend defaults. Checkpoint section passes the checkpoint
+ID; the manifest records the backend's resolved bounds and checkpoint identity.
+Time range converts decimal session seconds to integer nanoseconds without a float
+round trip or rounding away sub-nanosecond input. Both endpoints follow the existing
+inclusive backend window convention. Invalid or reversed bounds disable Run.
+
+Click the sealed timeline to move its cursor. In Time range mode, **Start at cursor**
+and **End at cursor** copy that position into the respective field; typed fields
+support exact nanosecond values. The selected interval is outlined across the lanes
+so recorded gap bands remain visible. Live capture retains its existing clock and
+does not expose these offline controls. Sealed selections survive the normal UI
+refresh and Review/Analysis navigation. Selecting another package starts at Full
+session; a failed open disables analysis and clears its summary.
+
+Time scopes are enabled for Features, Plots, Features + plots and Pose, whose
+existing implementations consume `TimeWindow`. The QC report still describes the
+whole package. QC-only, Kinematics, ML bundle and Eval require Full session in this
+desktop path because they operate on the whole package or their selected input
+jobs. No unsupported command silently falls back to a full-session job.
+
+Source subsets, tag filters and sync-anchor controls remain outside this time-picker
+implementation. The broader planned selection contract is:
 
 ```python
 @dataclass

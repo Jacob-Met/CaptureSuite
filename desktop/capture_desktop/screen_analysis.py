@@ -28,6 +28,7 @@ from .persistence import DesktopPersistence
 from .state import CaptureState, fmt_time
 from .widgets_analysis_jobs import AnalysisJobExtras, peek_ml_bundle_summary
 from .widgets_analysis_plots import FigureGallery, JobInspector
+from .widgets_analysis_scope import WINDOW_COMMANDS, ScopeSelection
 from .widgets_mappings import AnatomicalMappingPanel
 
 
@@ -42,12 +43,15 @@ class _AnalysisWorker(QObject):
         command: str,
         gap_policy: str,
         extra: dict[str, Any] | None = None,
+        *,
+        scope: ScopeSelection | None = None,
     ) -> None:
         super().__init__()
         self._package = package
         self._command = command
         self._gap_policy = gap_policy
         self._extra = dict(extra or {})
+        self._scope = scope or ScopeSelection()
         self._cancel = threading.Event()
 
     def request_cancel(self) -> None:
@@ -58,6 +62,9 @@ class _AnalysisWorker(QObject):
         try:
             from capture_analysis import JobParams, run
 
+            if self._scope.mode != "full" and self._command not in WINDOW_COMMANDS:
+                raise ValueError("This command requires Full session scope.")
+
             def on_progress(stage: str, frac: float) -> None:
                 self.progress.emit(stage, float(frac))
 
@@ -67,6 +74,7 @@ class _AnalysisWorker(QObject):
                     command=self._command,
                     gap_policy=self._gap_policy,
                     extra=self._extra,
+                    **self._scope.job_fields(),
                 ),
                 progress=on_progress,
                 cancel=self._cancel,
@@ -81,6 +89,8 @@ class _AnalysisWorker(QObject):
 class AnalysisScreen(QWidget):
     """Analysis workbench — never talks to the daemon."""
 
+    package_loaded = Signal(object)  # ReviewSummary, or None after a failed open
+
     def __init__(
         self,
         state: CaptureState,
@@ -91,6 +101,8 @@ class AnalysisScreen(QWidget):
         self._state = state
         self._persistence = persistence
         self._package = ""
+        self._summary = None
+        self._scope: ScopeSelection | None = ScopeSelection()
         self._last_job_dir = ""
         self._thread: QThread | None = None
         self._worker: _AnalysisWorker | None = None
@@ -109,6 +121,10 @@ class AnalysisScreen(QWidget):
         self._banner.setObjectName("Dim")
         self._banner.setWordWrap(True)
         root.addWidget(self._banner)
+        self._scope_note = QLabel("Scope: full session")
+        self._scope_note.setWordWrap(True)
+        self._scope_note.setObjectName("Dim")
+        root.addWidget(self._scope_note)
 
         splitter = QSplitter()
         splitter.setChildrenCollapsible(False)
@@ -243,18 +259,55 @@ class AnalysisScreen(QWidget):
         command = str(self._command.currentData() or "qc")
         self._extras.set_command(command)
         self._extras.refresh()
+        self._sync_enabled()
+
+    @property
+    def package_path(self) -> str:
+        return self._package
+
+    @property
+    def summary(self):
+        return self._summary
+
+    @property
+    def scope(self) -> ScopeSelection | None:
+        return self._scope
+
+    def set_scope(self, package_path: str, selection: ScopeSelection | None) -> None:
+        if str(Path(package_path).resolve()) != self._package:
+            return
+        self._scope = selection
+        self._sync_enabled()
+
+    def _scope_error(self) -> str | None:
+        if self._scope is None:
+            return "Correct the scope bounds in the session header before running analysis."
+        try:
+            self._scope.job_fields()
+        except ValueError as exc:
+            return str(exc)
+        if self._scope.mode != "full" and self._command.currentData() not in WINDOW_COMMANDS:
+            return (
+                "This command uses the full session or its input jobs. "
+                "Select Full session to run."
+            )
+        return None
 
     def set_package(self, package_path: str) -> None:
         if not package_path:
             return
-        self._package = package_path
-        self._path.setText(package_path)
-        self._extras.set_package(package_path)
+        resolved = str(Path(package_path).resolve())
+        if resolved != self._package:
+            self._scope = ScopeSelection()
+        self._package = resolved
+        self._path.setText(resolved)
+        self._extras.set_package(resolved)
         self._refresh_summary()
         self._sync_enabled()
+        self.package_loaded.emit(self._summary)
 
     def refresh_from_state(self) -> None:
-        if self._state.package_path:
+        if self._state.package_path and not self._package:
             self.set_package(self._state.package_path)
         self._sync_enabled()
 
@@ -269,8 +322,12 @@ class AnalysisScreen(QWidget):
     def _sync_enabled(self) -> None:
         busy = self._thread is not None and self._thread.isRunning()
         locked = self._recording_locked()
-        has_pkg = bool(self._package)
-        self._btn_run.setEnabled(has_pkg and not busy and not locked)
+        has_pkg = self._summary is not None
+        scope_error = self._scope_error()
+        self._btn_run.setEnabled(has_pkg and not busy and not locked and scope_error is None)
+        self._scope_note.setText(
+            scope_error or f"Scope: {self._scope.describe()}. QC reports cover the full package."
+        )
         self._btn_cancel.setEnabled(busy)
         self._btn_browse.setEnabled(not busy)
         self._btn_use_open.setEnabled(not busy and bool(self._state.package_path))
@@ -287,8 +344,14 @@ class AnalysisScreen(QWidget):
 
             summary = load_review_summary(self._package)
         except Exception as exc:  # noqa: BLE001
+            self._summary = None
+            for card in (
+                self._card_session, self._card_sources, self._card_gaps, self._card_duration,
+            ):
+                card.setText("—")
             self._banner.setText(f"Could not load package: {exc}")
             return
+        self._summary = summary
         self._banner.setText(
             f"State {summary.state}. Jobs write only under processing/jobs/."
         )
@@ -316,7 +379,7 @@ class AnalysisScreen(QWidget):
         self._log.append(line)
 
     def _start_job(self) -> None:
-        if not self._package or (self._thread and self._thread.isRunning()):
+        if self._summary is None or (self._thread and self._thread.isRunning()):
             return
         if self._recording_locked():
             QMessageBox.warning(
@@ -324,6 +387,10 @@ class AnalysisScreen(QWidget):
                 "Analysis",
                 "Stop recording before running offline analysis.",
             )
+            return
+        scope_error = self._scope_error()
+        if scope_error:
+            QMessageBox.warning(self, "Analysis scope", scope_error)
             return
         command = str(self._command.currentData())
         gap_policy = str(self._gap_policy.currentData())
@@ -336,12 +403,13 @@ class AnalysisScreen(QWidget):
         self._gallery.clear()
         self._inspector.clear()
         self._append_log(f"Starting {command} on {self._package}")
+        self._append_log(f"scope={self._scope.describe()}")
         if extra:
             self._append_log(f"extra={extra}")
         self._progress.setValue(0)
 
         thread = QThread(self)
-        worker = _AnalysisWorker(self._package, command, gap_policy, extra)
+        worker = _AnalysisWorker(self._package, command, gap_policy, extra, scope=self._scope)
         worker.moveToThread(thread)
         thread.started.connect(worker.run)
         worker.progress.connect(self._on_progress)

@@ -1,0 +1,70 @@
+{
+  "source_head": "36254496e386568de05148db9bd9fa4d69020dd4",
+  "source_status": "",
+  "backend_windows_sha256": "af40235d55341d2a6b11d7f67a0195779676301fa822b2bd05240d138ee28c50",
+  "picker_sha256": "3f58ffba9125d0ce88fa99317f6aa593fe8aeb4b0dc1d799c95c9c04fb0b73ff",
+  "cases": [
+    {
+      "case": "repeated-label-control",
+      "checkpoints": [
+        {
+          "checkpointId": "earlier-id",
+          "name": "Movement",
+          "effectiveTimestampNs": 1000000001
+        },
+        {
+          "checkpointId": "later-id",
+          "name": "Movement",
+          "effectiveTimestampNs": 4000000003
+        }
+      ],
+      "offered_options": [
+        {
+          "label": "Movement (earlier-id)",
+          "id": "earlier-id"
+        },
+        {
+          "label": "Movement (later-id)",
+          "id": "later-id"
+        }
+      ],
+      "actual_bounds": [
+        4000000003,
+        10000000005
+      ],
+      "expected_bounds": [
+        4000000003,
+        10000000005
+      ],
+      "selection_correct_or_explicitly_unavailable": true
+    },
+    {
+      "case": "id-shadowed-by-earlier-label",
+      "checkpoints": [
+        {
+          "checkpointId": "earlier-id",
+          "name": "later-id",
+          "effectiveTimestampNs": 1000000001
+        },
+        {
+          "checkpointId": "later-id",
+          "name": "Movement",
+          "effectiveTimestampNs": 4000000003
+        }
+      ],
+      "offered_options": [
+        {
+          "label": "later-id (earlier-id)",
+          "id": "earlier-id"
+        }
+      ],
+      "actual_bounds": null,
+      "expected_bounds": [
+        4000000003,
+        10000000005
+      ],
+      "selection_correct_or_explicitly_unavailable": true
+    }
+  ],
+  "accepted": true
+}

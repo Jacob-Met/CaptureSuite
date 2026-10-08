@@ -1,0 +1,32 @@
+{
+  "ruff-configured": {
+    "command": [
+      "/workspace/scratch/234cae4aee53/capturesuite-venv/bin/ruff",
+      "check",
+      "libs/python/capture_protocol",
+      "libs/python/capture_session",
+      "libs/python/capture_analysis",
+      "libs/python/capture_worker",
+      "workers/python_host",
+      "desktop/capture_desktop",
+      "tools",
+      "tests",
+      "plugins/example_sine_py",
+      "plugins/lsl_bridge"
+    ],
+    "exit_code": 0,
+    "duration_seconds": 0.04632232300355099,
+    "output": "All checks passed!\n"
+  },
+  "spdx": {
+    "command": [
+      "/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python",
+      "-B",
+      "tools/check_licenses.py",
+      "--enforce-spdx"
+    ],
+    "exit_code": 0,
+    "duration_seconds": 0.1630106029988383,
+    "output": "license check OK\n"
+  }
+}
