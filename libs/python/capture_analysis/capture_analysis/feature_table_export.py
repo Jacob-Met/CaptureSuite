@@ -289,6 +289,7 @@ def export_feature_table(
                 "delimiter": ",",
                 "header": True,
                 "newlinesInValues": True,
+                "ignoreEmptyLines": False,
                 "nullValues": [""],
                 "stringsCanBeNull": True,
                 "quotedStringsCanBeNull": False,

@@ -9,7 +9,10 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT / "libs/python/capture_analysis"))
+sys.path[:0] = [
+    str(ROOT / "libs" / "python" / name)
+    for name in ("capture_analysis", "capture_session", "capture_protocol")
+]
 
 from capture_analysis.feature_table_export import export_feature_table  # noqa: E402
 

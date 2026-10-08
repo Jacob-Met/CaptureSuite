@@ -16,7 +16,6 @@ import pyarrow as pa
 import pyarrow.csv as arrow_csv
 import pyarrow.parquet as parquet
 import pytest
-
 from capture_analysis.feature_table_export import FeatureTableExportError, export_feature_table
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -104,7 +103,10 @@ def read_csv(output: Path) -> pa.Table:
     schema = pa.ipc.read_schema(pa.BufferReader(base64.b64decode(doc["arrowSchemaBase64"])))
     return arrow_csv.read_csv(
         output / "table.csv",
-        parse_options=arrow_csv.ParseOptions(newlines_in_values=True),
+        parse_options=arrow_csv.ParseOptions(
+            newlines_in_values=doc["csv"]["newlinesInValues"],
+            ignore_empty_lines=doc["csv"]["ignoreEmptyLines"],
+        ),
         convert_options=arrow_csv.ConvertOptions(
             column_types=schema, null_values=[""], strings_can_be_null=True,
             quoted_strings_can_be_null=False,

@@ -99,7 +99,7 @@ schema = pa.ipc.read_schema(
 )
 table = csv.read_csv(
     directory / "table.csv",
-    parse_options=csv.ParseOptions(newlines_in_values=True),
+    parse_options=csv.ParseOptions(newlines_in_values=True, ignore_empty_lines=False),
     convert_options=csv.ConvertOptions(
         column_types=schema,
         null_values=[""],
@@ -110,7 +110,8 @@ table = csv.read_csv(
 ```
 
 The UTF-8 CSV uses comma separation and a header. An unquoted empty field is null;
-a quoted empty string is an actual empty string. Quoted strings such as `"NaN"`,
+a quoted empty string is an actual empty string. Empty lines must be retained:
+they encode null rows in a one-column export. Quoted strings such as `"NaN"`,
 `"null"`, Unicode text, commas, quotes and embedded newlines retain their values.
 Explicit integer types preserve values above 2^53. Floating NaN, infinities and
 nulls remain distinct; CSV does not promise preservation of a NaN's payload bits.
