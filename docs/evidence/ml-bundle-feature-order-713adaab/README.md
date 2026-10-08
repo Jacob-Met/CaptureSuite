@@ -86,3 +86,15 @@ Independent review and the existing full supported Windows workflow are
 separate integration gates. These native results establish deterministic
 alignment on the declared fixture inputs; they do not establish hardware
 synchronization, clinical validity or installed-desktop adoption.
+
+
+## Independent review
+
+[Peer review](peer-source-review.json), SHA-256
+`3c39e1f3ba00614ed67f68003e44bc184c072380afa965088401f59ace59f60a`,
+is copied unchanged from `chatgpt:/root/mac_execution` custody. The reviewer
+read the full producer, patch, all 17 receivers and documentation, independently
+restored the original producer by removing exactly the four added lines, and
+read back all 43 original input pairs and all 17 output identities. It found no
+source blocker. Numeric Parquet decoding and runtime receiving remain the
+author's separate qualification; the reviewer did not rerun tests or builds.
