@@ -1,0 +1,22 @@
+{
+  "repository": "Jacob-Met/CaptureSuite",
+  "head": "677026871c39362e9b6e2c816b841fc6393050f0",
+  "base": "d3edda561322a80bfc1491ae4f4c7b0bb94943ea",
+  "files": [
+    {
+      "path": "workers/camera/CMakeLists.txt",
+      "git_blob": "8b74080cc042c9dc60d6f4569f0c1b6e5b2c7f78",
+      "sha256": "ddb68fccae5e9b5ae66f81ff4859060f27dcc425d6a41c607e9c9c883a6bd842"
+    },
+    {
+      "path": "plugins/camera_gstreamer/plugin.json",
+      "git_blob": "de990e8827dd7581c0ae8d06156977586d2d629e",
+      "sha256": "6f921746e815083b55f5d81d10c660e9b448ff315b48a2082090b34b350eae03"
+    },
+    {
+      "path": "tests/cmake/camera_runtime_packaging.cmake",
+      "git_blob": "82dbdc24282cf8f49810aa91da177a3a784dce02",
+      "sha256": "e13e7934d1875d4fc27dcbdd2a76638e0f721e4830a83dd2710eda7b13395093"
+    }
+  ]
+}

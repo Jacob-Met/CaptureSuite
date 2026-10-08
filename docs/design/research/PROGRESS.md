@@ -378,3 +378,65 @@ enumeration, so this gate is designed not to touch physical webcams. This is not
 positive native execution. Hosted Windows execution of the exact published candidate is
 the remaining acceptance gate. See
 `docs/evidence/native-integration-gate-20260909.json`.
+
+
+## 2026-10-08 — Camera plugin runtime packaging (#34)
+
+ChatGPT worker `dd846795-production` added the existing five camera runtime DLLs
+to the plugin-manifest executable directory as well as the legacy worker directory.
+This fixes the asymmetric post-build copy rule without changing the dependency list,
+worker launch logic, schemas, protocol, or radar packaging.
+
+The same final CMake regression harness executes the actual production staging
+commands against native C++ fixtures. Baseline `742dd7d` fails for a missing
+plugin-local DLL; the repaired source passes Unix Makefiles and Ninja Multi-Config.
+Both layouts retain exact executable/DLL/manifest bytes. Changed-input controls
+reject a plugin-only omission, restore it on rebuild, and reject a missing source
+DLL during the actual build. The test requires only CMake 3.28+ and a C++ compiler:
+
+```sh
+cmake -DWORK_DIR=/absolute/new/scratch/path -P tests/cmake/camera_runtime_packaging.cmake
+```
+
+The DLLs are synthetic text fixtures: these results qualify packaging commands,
+not Windows loader behavior, GStreamer, physical capture or full-product readiness.
+Exact source hashes and retained logs: `docs/evidence/camera-runtime-closure-20261008.json`.
+Owner receiving remains a draft-PR step; no main merge, deployment, release or tag
+is represented by this source qualification.
+
+
+### 2026-10-08 — Receive the parallel linked-library packaging fixture
+
+After the initial coordination comments were temporarily throttled, receiving
+discovered candidate 8167c9ad8b44433409e8f3d66f66c4254f879db3 from
+estate-afe225d6c6be/product_execution (original author: HAMON Product Worker).
+Its production command bytes match this fix; only the explanatory CMake COMMENT
+wording differs. The receiver kept the existing production CMake bytes and imported
+the four linked-library fixture files and three original evidence files unchanged.
+Both package manifests and the original source archive remain retained.
+
+Independent receiving on the ThinkPad passed all 17 checks against this PR source:
+both packaged native executables reached main, and removing only plugin-local
+libprotobuf prevented main. Native ELF libraries use an origin-only runtime path.
+This strengthens native fixture evidence; actual Windows camera/vcpkg/GStreamer
+packaging and physical capture remain outside the observed results. One PR (#38)
+carries both source lineages. Original parent authorship/coordination and existing
+T68 ownership are retained. See docs/evidence/camera-packaging-20261008/receiving-8167c9a.json.
+
+
+### 2026-10-08 — Reconcile final peer evidence and collect the native fixture
+
+The original contributor explicitly accepted the one-PR receiving plan in PR #38
+comment 6056803042. Its published b14a0d4 commit is retained as Git ancestry;
+the four maintained fixture files are unchanged, and eleven final qualification
+files preserve the independent 17-check and six-group Linux evidence. Original
+8167c9a attribution, patch/archive custody and receiving reports remain retained.
+
+The additive pytest wrapper now collects the native linked-library fixture in the
+existing Python CI job, with explicit Visual Studio 2022/x64 selection on Windows
+and retained build/evidence output. It suppresses expected missing-DLL error dialogs
+while preserving and restoring the process error mode. Current main a1b3c966 was
+merged without changing the camera source or either fixture. The final combined
+Linux collection passed 1/1 tests and 17/17 native checks. New-head hosted Windows
+qualification is pending; actual camera/vcpkg/GStreamer receiving remains open.
+See docs/evidence/camera-packaging-20261008/receiving-final-integration.json.

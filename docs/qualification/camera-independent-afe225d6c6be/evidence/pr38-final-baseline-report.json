@@ -1,0 +1,120 @@
+{
+  "source": "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/baseline source with spaces",
+  "platform": "linux",
+  "cmake_sha256": "7eff92acdb7d6b1c328132b8f5a78b3e3a85ffce15fb7fb95f0485934154dfad",
+  "manifest_sha256": "6f921746e815083b55f5d81d10c660e9b448ff315b48a2082090b34b350eae03",
+  "checks": [
+    {
+      "check": "workers/camera/capture_worker_camera.exe: exact staged bytes",
+      "pass": true
+    },
+    {
+      "check": "workers/camera/abseil_dll.dll: exact staged bytes",
+      "pass": true
+    },
+    {
+      "check": "workers/camera/blake3.dll: exact staged bytes",
+      "pass": true
+    },
+    {
+      "check": "workers/camera/libprotobuf.dll: exact staged bytes",
+      "pass": true
+    },
+    {
+      "check": "workers/camera/lz4.dll: exact staged bytes",
+      "pass": true
+    },
+    {
+      "check": "workers/camera/zstd.dll: exact staged bytes",
+      "pass": true
+    },
+    {
+      "check": "workers/camera: native dependency launch",
+      "pass": true,
+      "command": [
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/baseline native work with spaces/build/daemon/Release/workers/camera/capture_worker_camera.exe"
+      ],
+      "returncode": 0,
+      "stdout": "CAMERA_PACKAGING_PROBE_REACHED_MAIN\n",
+      "stderr": ""
+    },
+    {
+      "check": "plugins/camera_gstreamer/capture_worker_camera.exe: exact staged bytes",
+      "pass": true
+    },
+    {
+      "check": "plugins/camera_gstreamer/abseil_dll.dll: exact staged bytes",
+      "pass": false
+    },
+    {
+      "check": "plugins/camera_gstreamer/blake3.dll: exact staged bytes",
+      "pass": false
+    },
+    {
+      "check": "plugins/camera_gstreamer/libprotobuf.dll: exact staged bytes",
+      "pass": false
+    },
+    {
+      "check": "plugins/camera_gstreamer/lz4.dll: exact staged bytes",
+      "pass": false
+    },
+    {
+      "check": "plugins/camera_gstreamer/zstd.dll: exact staged bytes",
+      "pass": false
+    },
+    {
+      "check": "plugins/camera_gstreamer: native dependency launch",
+      "pass": false,
+      "command": [
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/baseline native work with spaces/build/daemon/Release/plugins/camera_gstreamer/capture_worker_camera.exe"
+      ],
+      "returncode": 127,
+      "stdout": "",
+      "stderr": "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/baseline native work with spaces/build/daemon/Release/plugins/camera_gstreamer/capture_worker_camera.exe: error while loading shared libraries: abseil_dll.dll: cannot open shared object file: No such file or directory\n"
+    },
+    {
+      "check": "plugin manifest: exact staged bytes",
+      "pass": true
+    },
+    {
+      "check": "removing only plugin-local libprotobuf.dll prevents main",
+      "pass": false,
+      "reason": "Baseline package already lacks libprotobuf.dll."
+    },
+    {
+      "check": "production source remained unchanged during qualification",
+      "pass": true
+    }
+  ],
+  "commands": [
+    {
+      "command": [
+        "/workspace/scratch/afe225d6c6be/product_execution/toolchain/cmake/data/bin/cmake",
+        "-S",
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/baseline native work with spaces/fixture",
+        "-B",
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/baseline native work with spaces/build",
+        "-DCMAKE_BUILD_TYPE=Release"
+      ],
+      "returncode": 0,
+      "stdout": "-- The CXX compiler identification is GNU 13.3.0\n-- Detecting CXX compiler ABI info\n-- Detecting CXX compiler ABI info - done\n-- Check for working CXX compiler: /usr/bin/c++ - skipped\n-- Detecting CXX compile features\n-- Detecting CXX compile features - done\n-- Configuring done (0.2s)\n-- Generating done (0.0s)\n-- Build files have been written to: /workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/baseline native work with spaces/build\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/workspace/scratch/afe225d6c6be/product_execution/toolchain/cmake/data/bin/cmake",
+        "--build",
+        "/workspace/scratch/afe225d6c6be/coordination_review/camera/pr38-final-review/baseline native work with spaces/build",
+        "--config",
+        "Release",
+        "--parallel",
+        "2"
+      ],
+      "returncode": 0,
+      "stdout": "[  5%] Building CXX object CMakeFiles/capture_daemon.dir/daemon.cpp.o\n[ 10%] Building CXX object CMakeFiles/probe_abseil_dll.dir/dependency.cpp.o\n[ 15%] Linking CXX shared library workers/camera/Release/abseil_dll.dll\n[ 20%] Linking CXX executable daemon/Release/capture_daemon\n[ 20%] Built target probe_abseil_dll\n[ 20%] Built target capture_daemon\n[ 25%] Building CXX object CMakeFiles/probe_blake3.dir/dependency.cpp.o\n[ 30%] Building CXX object CMakeFiles/probe_libprotobuf.dir/dependency.cpp.o\n[ 35%] Linking CXX shared library workers/camera/Release/blake3.dll\n[ 40%] Linking CXX shared library workers/camera/Release/libprotobuf.dll\n[ 40%] Built target probe_blake3\n[ 40%] Built target probe_libprotobuf\n[ 45%] Building CXX object CMakeFiles/probe_lz4.dir/dependency.cpp.o\n[ 50%] Building CXX object CMakeFiles/probe_zstd.dir/dependency.cpp.o\n[ 55%] Linking CXX shared library workers/camera/Release/lz4.dll\n[ 60%] Linking CXX shared library workers/camera/Release/zstd.dll\n[ 60%] Built target probe_lz4\n[ 60%] Built target probe_zstd\n[ 65%] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/src/main.cpp.o\n[ 70%] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/src/camera_enumerate.cpp.o\n[ 75%] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/src/worker_session.cpp.o\n[ 80%] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/src/gst_pipeline.cpp.o\n[ 85%] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/src/capture_mode.cpp.o\n[ 90%] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/src/capture_pipeline.cpp.o\n[ 95%] Building CXX object workers/camera/CMakeFiles/capture_worker_camera.dir/src/uvc_controls.cpp.o\n[100%] Linking CXX executable Release/capture_worker_camera.exe\nCopy capture_worker_camera next to capture_daemon\nCopy abseil_dll.dll next to capture_daemon\nCopy blake3.dll next to capture_daemon\nCopy libprotobuf.dll next to capture_daemon\nCopy lz4.dll next to capture_daemon\nCopy zstd.dll next to capture_daemon\n[100%] Built target capture_worker_camera\n",
+      "stderr": ""
+    }
+  ],
+  "limits": "Native fixture packaging only; no real SDK, camera, daemon or hardware.",
+  "passed": false
+}

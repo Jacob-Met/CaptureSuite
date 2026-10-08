@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "base_prerequisite": "742dd7dc0455cc8c060db06123c8432d919e93eb",
+  "candidate": "8167c9ad8b44433409e8f3d66f66c4254f879db3",
+  "bundle": {
+    "path": "CaptureSuite-camera-runtime-8167c9a.bundle",
+    "sha256": "175aad6c79c78bf6c8461f23e6c5bd87114ba27db5b1ab51f11d378473f506e0"
+  },
+  "files": {
+    "docs/design/research/PROGRESS.md": "dce672655aebf15cf9aa1fcc3ad79b7c3c48b90cd4e6f3b8f0d8f1be51a99a5e",
+    "docs/evidence/camera-packaging-20261008/baseline.json": "480e72d069fae5d8e11de6e7ffa24dff06c36d53cc2a3970433e47bea928a0e3",
+    "docs/evidence/camera-packaging-20261008/candidate.json": "45a32517f668dab4a7b4800bb61d771abab4e88a430709788f7f89fefe612e8b",
+    "docs/evidence/camera-packaging-20261008/receipt.json": "903504c305cf22c315ed10e1b05645aae7ebc7bdf6f2aceaf790f4ac2170e821",
+    "tests/cmake/camera_packaging/CMakeLists.txt": "84e3c12336d99d92bab625c9dcf66edb14eae3a4a6d96e0ae722303230b95ae0",
+    "tests/cmake/camera_packaging/README.md": "1b8bd553537820097b3b3d2e39e21a28acb8ed8778b4b91f84ef91b2ddb3d0a9",
+    "tests/cmake/camera_packaging/check_packaging.py": "8973e4e67cae02ddf9abadfbafa76df3481015ef24db6064877d6430972812b0",
+    "tests/cmake/camera_packaging/probe.cpp": "589b638fa7c213e6db05ba1e04eeda6f437ca3b71ba407f138ef0ee041124e48",
+    "workers/camera/CMakeLists.txt": "e7a0bde4f81d72b67ba73dde75136ed8626cc6578302f6d8fa7c7757743bc98c"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "repository": "Jacob-Met/CaptureSuite",
+  "pull_request": 38,
+  "owner": "dd846795-production",
+  "head_commit": "677026871c39362e9b6e2c816b841fc6393050f0",
+  "base_commit": "d3edda561322a80bfc1491ae4f4c7b0bb94943ea",
+  "body_source_review": "PR body records a separate reviewing agent within the producer task, without Windows/loader qualification.",
+  "pr_comments": 0,
+  "review_submissions": 0,
+  "inline_review_threads": 0,
+  "issue_34_latest_comment": "https://github.com/Jacob-Met/CaptureSuite/issues/34#issuecomment-6055840080",
+  "issue_34_disposition": "Existing producer preparing/owns PR #38; our local candidate will not become a competing implementation.",
+  "comparison_to_our_frozen_product": {
+    "commit": "8167c9ad8b44433409e8f3d66f66c4254f879db3",
+    "difference": "Only CMake COMMENT text changes from: Copy ${_dep}.dll to both camera package directories; to: Copy ${_dep}.dll beside both packaged camera workers.",
+    "runtime_commands": "Byte-identical"
+  },
+  "receiving_gate": "Actual Windows camera worker, loader and vcpkg/GStreamer closure remain unverified. Source receiving and Linux fixtures do not satisfy that gate."
+}
