@@ -13,6 +13,7 @@ set(CAPTURE_PORTABLE_TESTS
 if(WIN32)
   add_executable(capture_core_tests
     ${CAPTURE_PORTABLE_TESTS}
+    test_atomic_file_windows.cpp
     test_sim_engine.cpp
     test_session_package.cpp
     test_recovery.cpp

@@ -1,3 +1,21 @@
+## 2026-10-08 — Windows atomic temporary-file preservation controls
+
+Contributor `estate-6267db2cfc6e` prepared four Windows-only real-file tests for
+the existing atomic writer: a raw-file hardlink at `manifest.json.tmp`,
+a hardlink to the prior manifest while a live handle blocks publication, an
+ordinary retained file at that name, and a raw-file symlink. The tests compare
+actual bytes, Win32 file identities, alias retention and final directory contents.
+They use exclusively reserved fixture directories and the linked production API.
+
+Native Windows compilation and execution are pending. This first publication
+keeps production unchanged so the supported Windows workflow can retain the
+original failure before the separately prepared repair is received. The same
+test bytes must qualify the repair. Only a missing Windows symlink privilege
+may skip that case; the other three cases remain required. The current CI
+workflow, POSIX implementation and separately owned storage fixture are unchanged.
+Source bindings and the planned receiving boundary are recorded in
+`docs/evidence/windows-atomic-temp-preservation-6267db2cfc6e/README.md`.
+
 ## 2026-10-08 — Preserve prior analysis jobs on failed replacement
 
 Worker `estate-6267db2cfc6e`, issue #39: portable job IDs and direct output
