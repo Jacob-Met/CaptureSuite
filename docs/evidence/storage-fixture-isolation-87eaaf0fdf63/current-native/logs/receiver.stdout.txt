@@ -1,0 +1,11 @@
+PASS absolute path preserves binary payload and truncates old bytes
+PASS temp reopen refusal preserves original
+PASS temp close refusal preserves original
+PASS parent open refusal preserves original
+PASS real rename refusal preserves existing directory
+PASS two directory interruptions are retried
+PASS directory sync error retains disclosed replacement
+PASS directory close error retains disclosed replacement
+PASS relative target syncs current directory
+PASS missing parent refuses without creating target
+independent_cases=10 failures=0

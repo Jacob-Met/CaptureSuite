@@ -5,6 +5,35 @@ Plan: [AUTONOMOUS_EXECUTION_PLAN.md](AUTONOMOUS_EXECUTION_PLAN.md)
 
 ---
 
+## 2026-10-08 — Preserve concurrent storage-test evidence (estate-87eaaf0fdf63)
+
+Independent receiving of Linux-port PR #36 found that its new atomic-storage
+test deleted an unrelated invocation's receipt under the shared temporary
+directory while reporting all six assertions passed. The counterexample ran
+against the exact published source with real Catch2 and disposable private
+temporary data on the ThinkPad; no existing worktree or capture was changed.
+
+The test now atomically reserves a unique directory and cleans up only that
+owned path through a scoped fixture. A CMake receiving case runs the actual
+test with a retained sibling receipt and checks its bytes and fixture cleanup.
+The unchanged original fails this receiving case; the corrected candidate
+passes it plus the two native storage tests (11 assertions) under strict GCC
+warnings. The production atomic-file and disk-watchdog sources are unchanged.
+
+The independent review also passed ten actual POSIX atomic-write boundary
+cases, including open/close errors, binary and relative paths, real rename
+refusal and interrupted directory sync. These qualify the stated local
+storage boundary; they do not constitute a full native build, Windows or
+hardware acceptance. Source pins and raw failures are retained in
+`docs/evidence/storage-fixture-isolation-87eaaf0fdf63/`. This companion is
+prepared for the existing PR #36 owner; it has not been merged or deployed.
+
+Current receiving also preserves the producer's writer-close revision
+`05a6b6bd02f05efd2c7380ea4ee8f92942609d4b`. The independent ten-case
+receiver above remains bound to retained original `16eb17f` atomic source; it
+does not claim qualification of the revised writer. See the packet CURRENT.md
+for the exact companion composition and current fixture replay.
+
 ## 2026-10-08 — Writer-close review repair and user receiving (estate-68e476e98b77)
 
 Independent review of PR36 found an additional actual-process durability

@@ -1,0 +1,64 @@
+{
+  "schema": "capturesuite-independent-fixture-review/v1",
+  "uid": 1000,
+  "source_head": "16eb17faacff1b211005fdfdbc7f33fac9b122b6",
+  "source_inputs": [
+    {
+      "path": "libs/cpp/capture_storage/include/capture/storage/atomic_file.hpp",
+      "sha": "971e9e11555f2e1f614b563e9cd34998412bab22",
+      "size": 828
+    },
+    {
+      "path": "libs/cpp/capture_storage/include/capture/storage/disk_watchdog.hpp",
+      "sha": "bc6c1ef947bd4e417ca220a983bee1ac8b04f14d",
+      "size": 1085
+    },
+    {
+      "path": "libs/cpp/capture_storage/src/atomic_file.cpp",
+      "sha": "0fadb72fd907580605f296ff6df0b6c981c48108",
+      "size": 3636
+    },
+    {
+      "path": "libs/cpp/capture_storage/src/disk_watchdog.cpp",
+      "sha": "718425f933703fdee920762de1dc115931950aad",
+      "size": 1854
+    },
+    {
+      "path": "tests/cpp/test_storage_posix.cpp",
+      "sha": "85e062fc57941d260e499c15e2f90565b7f82dfe",
+      "size": 1689
+    }
+  ],
+  "commands": [
+    [
+      "g++",
+      "-std=c++20",
+      "-Wall",
+      "-Wextra",
+      "-Wpedantic",
+      "-Werror",
+      "-I",
+      "/home/jacob/capturesuite-review-87eaaf0fdf63/original/libs/cpp/capture_storage/include",
+      "/home/jacob/capturesuite-review-87eaaf0fdf63/original/tests/cpp/test_storage_posix.cpp",
+      "/home/jacob/capturesuite-review-87eaaf0fdf63/original/libs/cpp/capture_storage/src/atomic_file.cpp",
+      "/home/jacob/capturesuite-review-87eaaf0fdf63/original/libs/cpp/capture_storage/src/disk_watchdog.cpp",
+      "-lCatch2Main",
+      "-lCatch2",
+      "-pthread",
+      "-o",
+      "/home/jacob/capturesuite-review-87eaaf0fdf63/original-storage-tests"
+    ],
+    [
+      "/home/jacob/capturesuite-review-87eaaf0fdf63/original-storage-tests",
+      "[storage][atomic]"
+    ]
+  ],
+  "compile_exit": 0,
+  "test_exit": 0,
+  "binary_sha256": "98699ea0c5c403fe806107fb101ac0a78554e7f4436d9ad2d0b80dd4d078e746",
+  "sentinel_sha256_before": "a6acc843b6130187bd9fdf7ca7c4498fa75a61cb9ea0ddf2bd8851f34220874a",
+  "sentinel_present_after": false,
+  "stdout": "Filters: [storage] [atomic]\nRandomness seeded to: 3952660581\n===============================================================================\nAll tests passed (6 assertions in 1 test case)\n\n",
+  "stderr": "",
+  "timestamp": 1791446945.4757712
+}
