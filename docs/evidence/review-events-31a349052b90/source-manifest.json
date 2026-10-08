@@ -1,0 +1,119 @@
+{
+  "schema": "capturesuite.review-events-source.v1",
+  "worker": "estate-31a349052b90/product_execution",
+  "parent": "9c44354cb101c76beff79265de0040b6839d249f",
+  "parent_tree": "50cd83ef270467490b15f74639413d238aaa15c6",
+  "parent_leaf_count": 1012,
+  "intended_branch": "work/review-events-31a349052b90",
+  "qualified_source_review": "Pending frozen source review; no Qt or target CI acceptance at this checkpoint",
+  "files": [
+    {
+      "path": "docs/evidence/review-events-31a349052b90/baseline/screen_review.py",
+      "mode": "100644",
+      "bytes": 7003,
+      "sha256": "e5aff59de4b194123ca4c4518b34e7b6103326fbd6b0280e2122d984d01072ec",
+      "git_blob": "88a902ca7699faa2964f3fc22ec3348a339905a4"
+    },
+    {
+      "path": "desktop/capture_desktop/review_events.py",
+      "mode": "100644",
+      "bytes": 4382,
+      "sha256": "2a81b2c1ea29c589a76febfcaf57c1454df42411349e44b1b3966044d7b7b15c",
+      "git_blob": "006ce100cf6d1714d327552e06856e74b472abe0"
+    },
+    {
+      "path": "desktop/capture_desktop/widgets_review_events.py",
+      "mode": "100644",
+      "bytes": 8569,
+      "sha256": "0f0bf4ab236213812735425bdea65085e1eb7f0c2762210c52917203ffa68c24",
+      "git_blob": "4d74a42573c88102fd8756f68da2763cd1b21ee5"
+    },
+    {
+      "path": "desktop/capture_desktop/screen_review.py",
+      "mode": "100644",
+      "bytes": 7880,
+      "sha256": "1580f0436a44605ad41a7846968f157214355fe5a7ea5b6b2bb2e8a2846c55d3",
+      "git_blob": "28645161592f80e37ee7855a0d43ccb8b3a44026"
+    },
+    {
+      "path": "tests/test_review_event_model.py",
+      "mode": "100644",
+      "bytes": 7818,
+      "sha256": "e50c46953681bc7e5a0cce6ae049d37697b280ca920f1fabeb3756a8cee702be",
+      "git_blob": "6a1145fabbc9071fc6b84acfe5c17918af83018d"
+    },
+    {
+      "path": "tests/ui/test_review_events.py",
+      "mode": "100644",
+      "bytes": 16109,
+      "sha256": "c761282ed258875dbbdc6741a49d8ecb895e95d0034a35031db076e50e15cc63",
+      "git_blob": "2aafc0d64a6e9b5437ec7a33c84719281ec40ad2"
+    },
+    {
+      "path": "docs/REVIEW_EVENTS.md",
+      "mode": "100644",
+      "bytes": 4799,
+      "sha256": "1b0f4cefb77bc465710c828ca288fe501c0180355f8cfee014acde666f565b6a",
+      "git_blob": "35a415d04add1aa63bbc7ecebaaedad3d4d8164a"
+    },
+    {
+      "path": "docs/design/research/IA_AND_PRODUCT.md",
+      "mode": "100644",
+      "bytes": 9807,
+      "sha256": "7e4ab79c9ce55e8140ee6a09355fe9d147127eb6af29ea39a346de13f7fe442c",
+      "git_blob": "e5094a7110b53ea3f209b7beadc4513f2f3c8510"
+    },
+    {
+      "path": "docs/evidence/review-events-31a349052b90/baseline/test_review_event_model_initial.py",
+      "mode": "100644",
+      "bytes": 7869,
+      "sha256": "a611a5f232ec8997369137359f0f81c4492ea02b914331e3c5e6d6e13d462f49",
+      "git_blob": "85f07bfd661690be2427196a4539cc063696e653"
+    },
+    {
+      "path": "docs/evidence/review-events-31a349052b90/baseline/review_events_model_initial.py",
+      "mode": "100644",
+      "bytes": 4358,
+      "sha256": "6bc8a66f59d4d41c8a4066aecfbf9e8913e4ed185bcdc585004d55168fc325c6",
+      "git_blob": "7e303293267187c8a1cccd0ff72fb5bc55441dbc"
+    },
+    {
+      "path": "docs/evidence/review-events-31a349052b90/local-receipt.json",
+      "mode": "100644",
+      "bytes": 4445,
+      "sha256": "4a7cb98c9b5509b315fd78b07639e3155bfeba2ecc65c61080bf66d87bb2fcdf",
+      "git_blob": "cf5f5c01a52eb384c6cb64e971f99025f9f587af"
+    },
+    {
+      "path": "docs/evidence/review-events-31a349052b90/README.md",
+      "mode": "100644",
+      "bytes": 4471,
+      "sha256": "f222fa873ef37db0207fded4508620ce4d11f52dcbb893b50457078fd30e1d0e",
+      "git_blob": "04c819ef6495c8df7b140d45cfa4217364c314e4"
+    },
+    {
+      "path": "docs/design/research/PROGRESS.md",
+      "mode": "100644",
+      "bytes": 55608,
+      "sha256": "88ffa02e0019d3a39ac77e8e652a41ce18c172510300b312337a94c3f2efb75f",
+      "git_blob": "ee3ea4c8a36a8109fbc669455a24004e3ccf39ae"
+    }
+  ],
+  "baseline_screen_blob": "88a902ca7699faa2964f3fc22ec3348a339905a4",
+  "unchanged_parent_leaves": 1009,
+  "proposed_modified_parent_paths": [
+    "desktop/capture_desktop/screen_review.py",
+    "docs/design/research/IA_AND_PRODUCT.md",
+    "docs/design/research/PROGRESS.md"
+  ],
+  "reader_blob": "91fbf913c5af8489968425d7ceac51c04233d3e0",
+  "native_model_result": "23 passed; original source identities in local-receipt.json",
+  "target_qt_method_count": 6,
+  "target_qt_executed": false,
+  "manifest_self_hash": "Not included; Git tree supplies immutable file identity",
+  "limits": [
+    "Full current-parent leaf and changed-body readback remain publication checks.",
+    "Actual supported Windows full-suite, CTest and native daemon gates remain required.",
+    "No installation, device capture, service, deployment or scientific validity claim."
+  ]
+}

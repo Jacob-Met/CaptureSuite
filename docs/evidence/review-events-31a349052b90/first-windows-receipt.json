@@ -1,0 +1,58 @@
+{
+  "schema": "capturesuite.review-events-first-windows.v1",
+  "kind": "Observed hosted formatting refusal and static one-LF correction",
+  "repository": "Jacob-Met/CaptureSuite",
+  "pr": 83,
+  "head": "53552fcd281185dbb9f15c0ae0b8de790fe40e9e",
+  "checkout": "ae3f4c8472ed588d43cf2fb7e2a7d030de9a4e39",
+  "tree": "d54b8cba8880aed1138ae31976f4b1d3c1d36e1e",
+  "run_id": 37811999360,
+  "job_id": 113430949045,
+  "job_url": "https://github.com/Jacob-Met/CaptureSuite/actions/runs/37811999360/job/113430949045",
+  "observed_result": {
+    "python_job": "failure",
+    "ruff_exit": 1,
+    "diagnostic": "I001: Import block is un-sorted or un-formatted",
+    "location": "tests/test_review_event_model.py:4:1",
+    "requested_fix": "Remove only the blank line after import pytest before from capture_desktop.review_events.",
+    "native_prerequisites": "Dependency installation/check, CI contract, protocol/schema generation and drift checks passed.",
+    "pytest": "Skipped before execution",
+    "license": "Skipped after Ruff failure",
+    "qt_method_executions": 0,
+    "artifact": "Upload step found no build/evidence files; no Python test artifact was produced."
+  },
+  "correction": {
+    "path": "tests/test_review_event_model.py",
+    "original": {
+      "bytes": 7818,
+      "sha256": "e50c46953681bc7e5a0cce6ae049d37697b280ca920f1fabeb3756a8cee702be",
+      "git_blob": "6a1145fabbc9071fc6b84acfe5c17918af83018d"
+    },
+    "corrected": {
+      "bytes": 7817,
+      "sha256": "76ec77b6125b8976490812bd4d5f5fe9c9dd977c6265f8c5f4e9346eb81d5c01",
+      "git_blob": "5f7e3c9208a3289384ab3541bd93e57a0fecf3ac"
+    },
+    "removed_bytes": 1,
+    "semantics": "Only one blank line is removed. Parsed ASTs are identical, including every import and all parametrized assertions.",
+    "ast_comparison": "ast.dump(ast.parse(original), include_attributes=False) == ast.dump(ast.parse(corrected), include_attributes=False)",
+    "ast_identical": true,
+    "model_native_replays": 0,
+    "production_and_qt_receiver_blobs": "Unchanged; earlier independent source review retains its original exact bodies."
+  },
+  "raw_log": {
+    "path": "first-windows-python.log.gz",
+    "decoded": {
+      "bytes": 47368,
+      "sha256": "c5668fd3ebe778245d28f86b6bd05cb9e98404a77b3f13ad025f0158dc52500c",
+      "git_blob": "612dca580b48f702ada6ecdc1048c412896ee8af"
+    },
+    "gzip": {
+      "bytes": 10437,
+      "sha256": "12f8324fb6d0a53812264cbcc8171667c6a791edbb880f0b1925d6a059aade4e",
+      "git_blob": "1634f2d3d84ca2bcad608aa937db1f90439e913c"
+    },
+    "attribution": "Complete text returned by the GitHub decoded job-log connector, encoded as UTF-8 and compressed with gzip mtime=0. Not a downloaded original ZIP byte claim."
+  },
+  "remaining": "The next published head must pass actual existing Windows Ruff/full Python including all six Qt methods and native CMake/CTest/daemon gates. Original failures and source attribution remain retained."
+}

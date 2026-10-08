@@ -1,0 +1,383 @@
+{
+  "schema": "capturesuite.review-events-parent-binding.v1",
+  "publisher": "estate-31a349052b90/product_execution",
+  "kind": "Static source-parent composition; no new native execution",
+  "reviewed_head": "82c950884f894235e99ce058f14531e2eedfa88d",
+  "reviewed_tree": "3a5568085f4fe8bd1af097237262f5af32392051",
+  "original_parent": "9c44354cb101c76beff79265de0040b6839d249f",
+  "original_parent_tree": "50cd83ef270467490b15f74639413d238aaa15c6",
+  "receiving_parent": "3cbb5300bdc79c157370d1b3e599a6c82752d54a",
+  "receiving_parent_tree": "4af105896633559b35823a7aa2710dc30b2f1740",
+  "receiving_parent_leaves": 1057,
+  "intermediate_parent": "a2fd6c58ccc97c7262b97570a85d8aae8dfb978c",
+  "actual_delta": {
+    "changed": [
+      {
+        "path": "docs/design/research/ANALYSIS_SCOPE_SEMANTICS.md",
+        "old": "68cea4077c84eb0bb4451dec815e9f7053478e43",
+        "new": "0e2c79ebf857174f5531ff03f9af6b5354070b31"
+      },
+      {
+        "path": "docs/design/research/PROGRESS.md",
+        "old": "e37395f1ac8971758192605ff9389942ae918025",
+        "new": "928ec029f5a6e289c87ea32cd00b55c978b9af92"
+      },
+      {
+        "path": "libs/python/capture_analysis/capture_analysis/jobs.py",
+        "old": "ad0a551e90e5d06ec38a9218277efa24b0030c75",
+        "new": "dd25dd3d6cc4b583f0fe6cfb352fba10be22352b"
+      }
+    ],
+    "added": [
+      {
+        "path": "docs/evidence/sync-anchor-request-bd1abdb2f886-20261008/README.md",
+        "sha": "e420bee3f9a031d97e008b5eaaab0c0b8e36f649"
+      },
+      {
+        "path": "docs/evidence/sync-anchor-request-bd1abdb2f886-20261008/current-finalizer-evidence.tar.gz",
+        "sha": "b157de2f3644138a5349b23ec90d052cefebfd80"
+      },
+      {
+        "path": "docs/evidence/sync-anchor-request-bd1abdb2f886-20261008/current-finalizer-package.json",
+        "sha": "00f509effd55c92bf53d9f82b20cf2991e7c28d1"
+      },
+      {
+        "path": "docs/evidence/sync-anchor-request-bd1abdb2f886-20261008/current-predictions-evidence.tar.gz",
+        "sha": "0767d2388dadf9b0d3b3baf9750d335ab019b89c"
+      },
+      {
+        "path": "docs/evidence/sync-anchor-request-bd1abdb2f886-20261008/current-predictions-package.json",
+        "sha": "96462a082f59ee279a9f192312e9407dc983c0a2"
+      },
+      {
+        "path": "docs/evidence/sync-anchor-request-bd1abdb2f886-20261008/evidence.tar.gz",
+        "sha": "6476538ae6a8a266f55aacf427549b7983fa1b19"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/BUILD.md",
+        "sha": "dd6c80589e90909b127507ebf5d47e6b07deee02"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/NOTICE.md",
+        "sha": "9f8b25ac483fe730bc42485db71e72ee97df3a48"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/README.md",
+        "sha": "d6d99cfdbaf885dca86a4164dea6fd45369e946a"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/archive-receiving-final.json",
+        "sha": "9cbcd1c64a79e4e51d1df7017a596f8c73e3f020"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/archive-receiving.json",
+        "sha": "3fe7e731af0bb3a97aec4df83b4539e86849c0e7"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/claim.json",
+        "sha": "a4b64c689ae051f5a8cc5ff54cd0692700f80adc"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/coordination-review.json",
+        "sha": "cbb134398249295782ea98f1ce0ef5fbb1010488"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/dependency-notices-manifest.json",
+        "sha": "247223c55387ea0395962a15fe94c8c15dc40869"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/helper-header-correspondence.json",
+        "sha": "da8e7f1f9fd2bbebba0f81650c54f6804d7d998e"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/historical-receiver-custody.json",
+        "sha": "15cfcb6a585b589b2e3d57d97bd71bc8b858dfe0"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/hydration-initial-tool-output.json",
+        "sha": "eb5003edd4338e836f5bc018fd2278642eab40c8"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/mcap-clone.log",
+        "sha": "fad9ad5303248b606774366373014224296e13f4"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/mcap-source.json",
+        "sha": "b5341444a93a79e00906322cb9d5145d1ae5cfe5"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/native-build.log",
+        "sha": "d98d8adefe1a12dde71ceaa411857d2fef153a05"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/native-configure.log",
+        "sha": "fb295180593e938ab7988f9e00d40c3ab44976b9"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/native-ctest.log",
+        "sha": "e17890e1c96e2b7d2270e8b0ec2d5e3795c47bac"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/native-ctest.xml",
+        "sha": "8719e75bb9df4da529930aed8ac13c9d332a4a26"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/native-qualification-first.json",
+        "sha": "010eec622bea6cd76df70d5e88e92a76d4847b00"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/receiver-dependency-replay.json",
+        "sha": "8f9c87ec002c2813215c06367433999019031cdb"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/receiver-process-first.json",
+        "sha": "892d705865739468e1e5b3603d15de50c09dd34e"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/receiving-base.json",
+        "sha": "b149c91fff06cd262e20d58645fb1c372e0dbcb9"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/runtime-package-commands.log",
+        "sha": "72f11267d0683c8adf0cb34ee68ad5814332c34b"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/runtime-package-initial-tool-output.json",
+        "sha": "46718c7b37f43be869a7b101c6c907cef3d47bad"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/runtime-package.json",
+        "sha": "1f18e2276c2061d0f873ce1bc79d25bf94913419"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/source-inputs.json",
+        "sha": "72f60cddd7b0abfaa2faf70683c547309458dcd4"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/evidence/source-notices-manifest.json",
+        "sha": "c96b753465a98ccedb0e272ce9cdf8485bc8c13b"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/package-README.md",
+        "sha": "732dad4b2f2193d1776d1f56b846f6af436abfd1"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/scripts/assemble-local-runtime-corrected.py",
+        "sha": "f3a114e48d9f9c3a76bf9e9b5b279317bbd16467"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/scripts/assemble-local-runtime.py",
+        "sha": "84b4c3a847145182bfd2e571291ef5ec02075ca4"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/scripts/complete-source-notices.py",
+        "sha": "da22f1abd8981595a9698dd18bee5ff62571d1dc"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/scripts/finalize-native-receiver.py",
+        "sha": "49f040616e0f95306d0d1b633c7a376632a298b5"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/scripts/freeze-publication.py",
+        "sha": "499d304783cad1b1fe5edb868d451787f3f5ce1a"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/scripts/hydrate-source-corrected.py",
+        "sha": "942e31d8aa39427103a598b82dffd3ca66b568dc"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/scripts/hydrate-source.py",
+        "sha": "269fb5f9b88277492acb3cb86012c62591355773"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/scripts/prepare-mcap.py",
+        "sha": "85898a5609f420b9aabef50cc5f9e170e760d277"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/scripts/qualify-missing-dependency-replay.py",
+        "sha": "877377fd6191b417d77cc442cf9ae8cef2d02212"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/scripts/qualify-native-portable.py",
+        "sha": "db2dd32c8c2cef2121e1de4b4b2a7047a3a0b862"
+      },
+      {
+        "path": "docs/receiving/macos-session-doctor-5f566b5ec8ef/scripts/qualify-relocated-receiver.py",
+        "sha": "81a9a121c0f76de20cc97e539b00138bb4e17d13"
+      },
+      {
+        "path": "tests/analysis/test_sync_anchor_request.py",
+        "sha": "ead08b6cd74455115fa1e9f2e83e9ea4a72dcd18"
+      }
+    ],
+    "removed": []
+  },
+  "receiving_inputs_unchanged": [
+    {
+      "path": "libs/python/capture_session/capture_session/package_reader.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "91fbf913c5af8489968425d7ceac51c04233d3e0"
+    },
+    {
+      "path": "libs/python/capture_session/capture_session/__init__.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "894e3c152a98b6e804de90122572afbcd929b3da"
+    },
+    {
+      "path": "libs/python/capture_analysis/capture_analysis/discover.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d5c4fa7e06ac6e9139ebfc78fade90a3df5e451a"
+    },
+    {
+      "path": "desktop/capture_desktop/screen_review.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "88a902ca7699faa2964f3fc22ec3348a339905a4"
+    },
+    {
+      "path": "desktop/capture_desktop/state.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "95046ba5ef7f7bbf5685a54b7ae8fd400814148c"
+    },
+    {
+      "path": "desktop/capture_desktop/theme.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e309ce92bf66f65ca7c111698e1f536f05e4dca9"
+    },
+    {
+      "path": "desktop/capture_desktop/__init__.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "48777bd04b62e3b3b877e12311f7257819ab3a07"
+    },
+    {
+      "path": "tests/conftest.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ad9b61fd8e9c1c3d74f91710d4e82dd7d899e6b4"
+    },
+    {
+      "path": "pyproject.toml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "52491c6beebc4b17983fc66bb8765154c33cf6d8"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9c08a4d38d435169f402511c934d1c59701082cf"
+    },
+    {
+      "path": "tools/run_ci_tests.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ef5274ab4c38e4082eca69608532a12a32d50c9f"
+    },
+    {
+      "path": "requirements-ci.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "044cfa00061e8a368be427c60d72765318d9080a"
+    }
+  ],
+  "product_delta_read": "PR66 changes only run_job: adds a six-line refusal for an unsupported apply_sync_anchors request and writes applied:false. The event model/browser and its package loading never invoke run_job. Its new tests and complete source/docs/evidence remain retained.",
+  "progress_composition": "The exact owned prefix at 82c95088 precedes the complete current-parent PROGRESS body. No existing current-parent progress text is changed or omitted.",
+  "frozen_contribution_bodies": [
+    {
+      "path": "docs/evidence/review-events-31a349052b90/baseline/screen_review.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "88a902ca7699faa2964f3fc22ec3348a339905a4"
+    },
+    {
+      "path": "desktop/capture_desktop/review_events.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "006ce100cf6d1714d327552e06856e74b472abe0"
+    },
+    {
+      "path": "desktop/capture_desktop/widgets_review_events.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4d74a42573c88102fd8756f68da2763cd1b21ee5"
+    },
+    {
+      "path": "desktop/capture_desktop/screen_review.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "28645161592f80e37ee7855a0d43ccb8b3a44026"
+    },
+    {
+      "path": "tests/test_review_event_model.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6a1145fabbc9071fc6b84acfe5c17918af83018d"
+    },
+    {
+      "path": "tests/ui/test_review_events.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2aafc0d64a6e9b5437ec7a33c84719281ec40ad2"
+    },
+    {
+      "path": "docs/REVIEW_EVENTS.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "35a415d04add1aa63bbc7ecebaaedad3d4d8164a"
+    },
+    {
+      "path": "docs/design/research/IA_AND_PRODUCT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e5094a7110b53ea3f209b7beadc4513f2f3c8510"
+    },
+    {
+      "path": "docs/evidence/review-events-31a349052b90/baseline/test_review_event_model_initial.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "85f07bfd661690be2427196a4539cc063696e653"
+    },
+    {
+      "path": "docs/evidence/review-events-31a349052b90/baseline/review_events_model_initial.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7e303293267187c8a1cccd0ff72fb5bc55441dbc"
+    },
+    {
+      "path": "docs/evidence/review-events-31a349052b90/local-receipt.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cf5f5c01a52eb384c6cb64e971f99025f9f587af"
+    },
+    {
+      "path": "docs/evidence/review-events-31a349052b90/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "04c819ef6495c8df7b140d45cfa4217364c314e4"
+    },
+    {
+      "path": "docs/evidence/review-events-31a349052b90/source-manifest.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9aa0ea4498b43f8c55ecbc80142f73f3ac475891"
+    }
+  ],
+  "expected_existing_modifications": [
+    "desktop/capture_desktop/screen_review.py",
+    "docs/design/research/IA_AND_PRODUCT.md",
+    "docs/design/research/PROGRESS.md"
+  ],
+  "review": {
+    "engine": "Accepted for ordinary supported Windows CI, not target execution; see independent-review.md",
+    "engine_review_git_blob": "641280d64f65d1f5de4b69e0c246c97dd784253b",
+    "root": "Root accepted independent engine source disposition and authorized the draft after exact current-parent composition."
+  },
+  "execution_attribution": "Original 23-model result retains its executed baseline files and AST bridge in local-receipt.json. Zero local Qt executions and no new model run occurred during this composition.",
+  "remaining_gate": "Existing Windows CI on the actual published head: six Qt methods executed, original-screen negative, physical package/source-preservation receipt and three native PNGs, plus ordinary Python/CMake/native checks. Final root/engine evidence acceptance precedes integration."
+}
