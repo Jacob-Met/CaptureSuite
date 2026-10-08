@@ -113,3 +113,34 @@ dependencies. The repository's supported Windows CI remains the independent
 platform gate. The producer's numeric algorithms, schemas and unrelated
 internal manifest self-digest convention remain unchanged. This packet makes
 no installed, model-training, scientific-performance or hardware claim.
+
+## Landed external evaluator composition
+
+Before publication, PR65 landed as main `58157fdc1b83a12bb4856ef14b0498cf524a1087`.
+The native merge was automatic. [The composition receipt](current-main-composition.json)
+verifies all seven changed owner leaves byte-for-byte and shows that removing
+only this contribution's exact progress block reproduces current main.
+The producer and final metadata test retain their reviewed hashes.
+
+The existing real pose/kinematics/bundle-to-external-eval case passed once on
+native Python 3.12.8. [Its raw JUnit](landed-evaluator/pytest.xml),
+[log](landed-evaluator/pytest.log), and [readback receipt](landed-evaluator/receipt.json)
+remain separate from the original eight-case comparison. The four emitted
+jobs contain 34 output entries whose recorded sizes and digests match their
+final bytes. Their actual status is `completed_with_warnings`.
+
+The optional post-test inventory wrapper then raised `KeyError: outputs` on
+the test-authored four-field feature-input stub. Its source and exact failure
+are retained. A first read-only recovery also assumed the wrong success-status
+spelling; the final readback records actual statuses and verifies each output.
+Neither recovery replays pytest or producer/evaluator code. The pytest return
+code was not persisted before the wrapper failed, so the receipt leaves it
+unavailable and binds the passing case to the raw JUnit and pytest summary.
+
+The tested native staged tree `38015f3dec35025daea4e84d198a00e22cae5327` maps
+exactly to the hosted composition. Mac ENOSPC prevented a small diagnostic
+file write and native merge commit creation; all earlier source and raw test
+outputs remain preserved. Publication used read-only source packets and the
+existing GitHub connection. These additional evidence files do not change
+runtime or tests. Root's original readback driver remains preserved beside its
+native review receipt; the byte-identical review receipt is included here.
