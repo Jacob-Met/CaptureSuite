@@ -1,0 +1,68 @@
+{
+  "schema": "capturesuite.framing-regression.v1",
+  "observed_date": "2026-10-08",
+  "base": "742dd7dc0455cc8c060db06123c8432d919e93eb",
+  "scope": "Python incremental frame validation; no wire-format, C++, daemon, hardware or deployment change",
+  "source": {
+    "path": "libs/python/capture_protocol/capture_protocol/framing.py",
+    "baseline_sha256": "37a7da3810fc880b9a364b31f249284a9044f99e5bff304e51b6f2fe0a6de224",
+    "candidate_sha256": "4bc45fb94866658fe44be9ad0871dc12a9e2b1bfedf88c48fd15e2246f62e08d",
+    "retained_regression_git_blob": "294348abfa4558f5e4418bbc74e9f7fdb9cba64b"
+  },
+  "environment": {
+    "os": "macOS 26.6.2",
+    "build": "25G83",
+    "architecture": "arm64",
+    "python": "3.12.8",
+    "pytest": "8.4.2",
+    "protobuf": "4.25.9",
+    "grpcio_tools": "1.62.3",
+    "compiler_selection": "Own virtual environment PATH excludes host protoc; tools/gen_protos.py falls back to python -m grpc_tools.protoc."
+  },
+  "runs": {
+    "retained_regression_baseline": {
+      "command": "python -m pytest -q tests/protocol/test_framing.py tests/protocol/test_framing_invalid_stream.py",
+      "passed": 6,
+      "failed": 2,
+      "exit_code": 1
+    },
+    "candidate_framing": {
+      "command": "python -m pytest -q tests/protocol/test_framing.py tests/protocol/test_framing_invalid_stream.py tests/protocol/test_framing_stream_transitions.py",
+      "passed": 16,
+      "failed": 0,
+      "exit_code": 0
+    },
+    "paired_protocol": {
+      "command": "python -m pytest -q tests/protocol --continue-on-collection-errors",
+      "baseline": {
+        "passed": 139,
+        "failed": 7,
+        "collection_errors": 4,
+        "exit_code": 1
+      },
+      "candidate": {
+        "passed": 146,
+        "failed": 0,
+        "collection_errors": 4,
+        "exit_code": 1
+      },
+      "generated_source_drift": false
+    }
+  },
+  "collection_errors": {
+    "reason": "Existing Windows-only msvcrt import on macOS",
+    "modules": [
+      "tests/protocol/test_daemon_e2e.py",
+      "tests/protocol/test_lsl_bridge.py",
+      "tests/protocol/test_python_worker_sdk.py",
+      "tests/protocol/test_soak_cleanup.py"
+    ]
+  },
+  "retained_negative_evidence": [
+    "Original two-case incremental-header regression fails on unchanged baseline.",
+    "Initial all-protocol collection has four Windows-only import errors.",
+    "Initial host protoc 7.36.2 regenerates bindings incompatible with required protobuf 4.25.9; drift and failed runs retained, generated source restored before pinned runs.",
+    "Initial optional CI-contract test environment lacked PyYAML; installed in isolated environment before paired qualification."
+  ],
+  "remaining_acceptance": "The repository's Windows CI remains the full application regression gate. These decoder tests do not qualify native connection teardown or physical capture."
+}

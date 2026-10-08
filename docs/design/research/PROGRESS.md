@@ -61,6 +61,26 @@ See `docs/BUILDING-LINUX.md` and `docs/evidence/linux-port-68e476e98b77.json` fo
 source, dependency, test and receiving boundaries. This source receipt does not
 claim a Windows CI, macOS, full-product or hardware pass.
 
+## 2026-10-08 — Incremental protocol error propagation
+
+`FrameDecoder.feed` now propagates `FrameError` for complete bad-magic and
+oversized headers instead of treating these errors as incomplete reads. Valid
+fragmented frames, event/reply correlation, incomplete payload buffering and
+explicit reset behavior retain their existing semantics. The wire format and
+C++/daemon implementations are unchanged.
+
+On macOS 26.6.2 arm64 with Python 3.12.8, the retained two-case regression failed
+against main `742dd7d` (2 failed, 6 passed with existing framing tests) and the
+complete focused framing set passed after the repair (16 passed). A paired run
+of all collectible protocol tests changed from 7 failures/139 passes to 146
+passes. Four pre-existing Windows-only `msvcrt` collection errors remain visible
+in both runs; this is not a full Windows, native daemon or hardware pass.
+The runs selected the declared grpcio-tools 1.62.3 compiler instead of the host's
+incompatible newer protoc and left generated source bytes unchanged. Initial
+compiler-selection failures and the original red result are retained.
+See `docs/evidence/framing-rejection-20261008.json` for exact source hashes,
+commands, environment and the remaining acceptance boundary.
+
 ## 2026-09-09 — Compiler boundary and reliable test evidence
 
 The second hosted Python job passed **151 tests with six explicit daemon skips**.
