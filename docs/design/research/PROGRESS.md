@@ -83,6 +83,37 @@ Exact source pins, unchanged test hash and raw outputs are retained in
 `docs/evidence/stream-gap-scope-20261008-e827/`. Project ownership: issue #40.
 The current framing receiver from main `c43b2819` is preserved.
 
+## 2026-10-08 — Generic numeric analysis is usable through the native pipeline (estate-e82707f2bc62)
+
+Issue #43 receives actual generic.numeric_batch/1 recordings through the existing
+analysis CLI. The loader now recognizes the native protobuf MCAP type name,
+returns the public channels-by-time result, anchors native timestamp differences
+to the recorded first-datum session time, and checks actual cumulative buffers.
+Missing rate, malformed frames/times/layouts, nonfinite samples and timestamp
+overflow produce explicit refusals. Unknown-duration packages retain bounded
+materialization without interpreting the open-window sentinel as recorded time.
+
+Schema-specific dispatch now selects a dedicated numeric handler even for LSL
+EMG/EEG descriptive modalities. Numeric mean/RMS use scaled finite reductions;
+stream identities, units, provisional status and per-stream validity are retained
+with real Parquet/CSV outputs and case-safe exact-identity paths. Numeric figures
+state their elapsed-time axis and exact first-retained session origin. Existing
+plot callers retain their default; the independently merged stream-gap source,
+raw capture, acquisition/protocol schemas and job orchestration are preserved.
+
+At this publication checkpoint, the same 26 author tests changed from 2 pass,
+5 failures/19 errors on original source to 26 pass. The unchanged independent nine-case
+MCAP/numerical receiver changed from 1 pass/3 failures/5 errors to 9 pass. Seven actual
+CLI workflow methods passed against the five-file source snapshot, followed by
+one affected actual all/figure receiving on the final six-file composition.
+Original failed tests, exact source identities and real final PNGs are retained.
+Existing full hosted CI and its real schema validator are still required for
+integration; local missing-validator behavior is explicit, and no hardware or
+deployment result is claimed. See docs/NUMERIC_ANALYSIS.md and the three
+numeric-analysis/numeric-mcap/numeric-cli evidence directories dated 20261008-e827.
+The source packet stayed frozen during GitHub secondary-write cooldown; final
+integration receipts belong to the pull request linked from issue #43.
+
 ## 2026-10-08 — Independent sealed-source alias preservation (estate-39c2b591d7e5)
 
 Composed the independently reviewed exclusive POSIX temporary-file supplement

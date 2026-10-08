@@ -33,6 +33,7 @@ class StreamHandlerSpec:
     modality: str
     entry: str
     requires_mcap: bool = False
+    schema_ids: tuple[str, ...] = ()
 
 
 @dataclass
@@ -58,8 +59,16 @@ class PluginRegistry:
         return fn
 
     def stream_handler_for(self, ref: StreamRef) -> StreamHandlerFn | None:
+        # A wire schema can carry several descriptive modalities (for example
+        # numeric LSL EEG/EMG). Prefer an explicit schema route over modality.
         for spec in self.stream_handlers:
-            if spec.modality != ref.modality:
+            if ref.data_schema_id not in spec.schema_ids:
+                continue
+            if spec.requires_mcap and not ref.mcap_paths:
+                continue
+            return self.resolve_entry(spec.entry)
+        for spec in self.stream_handlers:
+            if spec.schema_ids or spec.modality != ref.modality:
                 continue
             if spec.requires_mcap and not ref.mcap_paths:
                 continue
@@ -101,6 +110,7 @@ def _parse_stream_handlers(raw: dict[str, Any]) -> list[StreamHandlerSpec]:
                 modality=str(row["modality"]),
                 entry=str(row["entry"]),
                 requires_mcap=bool(row.get("requiresMcap", False)),
+                schema_ids=tuple(str(value) for value in row.get("schemaIds", [])),
             )
         )
     return out
