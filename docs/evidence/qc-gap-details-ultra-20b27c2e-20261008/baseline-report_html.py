@@ -7,47 +7,6 @@ from html import escape
 from typing import Any
 
 
-def _seconds(value: str | int | None) -> str:
-    if value is None:
-        return "unknown"
-    ns = int(value)
-    seconds, remainder = divmod(abs(ns), 1_000_000_000)
-    return f"{'-' if ns < 0 else ''}{seconds}.{remainder:09d}"
-
-
-def _gap_rows(qc: dict[str, Any]) -> str:
-    gaps = qc.get("gaps")
-    if not isinstance(gaps, list):
-        return "<tr><td colspan='8'>Gap details are not available in this report.</td></tr>"
-    if not gaps:
-        return "<tr><td colspan='8'>No gap records listed.</td></tr>"
-    unknown = {
-        "open": "unknown (open gap)",
-        "missing_end": "unknown (end not recorded)",
-        "end_before_start": "unknown (end precedes start)",
-    }
-    rows = []
-    for gap in gaps:
-        duration = gap.get("durationNs")
-        duration_text = (
-            _seconds(duration)
-            if duration is not None
-            else unknown.get(gap.get("durationStatus"), "unknown")
-        )
-        cells = (
-            str(gap.get("sourceId") or "(unspecified)"),
-            str(gap.get("streamId") or "(source-wide)"),
-            str(gap.get("cause") or "unknown"),
-            "closed" if gap.get("closed") else "open",
-            _seconds(gap.get("startSessionTimeNs")),
-            _seconds(gap.get("endSessionTimeNs")),
-            duration_text,
-            str(gap.get("estimatedLostCount", "unknown")),
-        )
-        rows.append("<tr>" + "".join(f"<td>{escape(cell)}</td>" for cell in cells) + "</tr>")
-    return "".join(rows)
-
-
 def render_qc_html(qc: dict[str, Any]) -> str:
     lights = qc.get("trafficLights") or {}
     light_rows = "".join(
@@ -85,8 +44,6 @@ th {{ background: #f4f4f4; }}
 .warn {{ color: #9a6700; font-weight: 600; }}
 .fail {{ color: #cf222e; font-weight: 600; }}
 .meta {{ color: #555; font-size: 0.85rem; }}
-.table-scroll {{ overflow-x: auto; }}
-.gaps td:nth-child(n+5) {{ font-family: Consolas, ui-monospace, monospace; }}
 </style>
 </head>
 <body>
@@ -106,18 +63,6 @@ checkpoints {int(qc.get("checkpointCount") or 0)}
 <tr><th>source</th><th>light</th></tr>
 {light_rows or "<tr><td colspan='2'>(none)</td></tr>"}
 </table>
-
-<h2>Recorded gaps</h2>
-<p class="meta">Times are seconds relative to session T0, with nanosecond precision.
-Each row is one reported gap. Loss counts are reported estimates in source-defined units.</p>
-<div class="table-scroll">
-<table class="gaps">
-<tr><th>source</th><th>stream</th><th>cause</th><th>state</th>
-<th>start (session s)</th><th>end (session s)</th><th>duration (s)</th>
-<th>estimated lost count</th></tr>
-{_gap_rows(qc)}
-</table>
-</div>
 
 <h2>Streams</h2>
 <table>
