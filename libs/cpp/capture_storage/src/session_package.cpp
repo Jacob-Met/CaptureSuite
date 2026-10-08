@@ -6,8 +6,14 @@
 
 #include <nlohmann/json.hpp>
 
+#ifdef _WIN32
 #define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
+#else
+#include <unistd.h>
+#include <chrono>
+#include <ctime>
+#endif
 
 #include <cstring>
 #include <fstream>
@@ -32,6 +38,7 @@ SessionPackage::~SessionPackage() {
 }
 
 std::string SessionPackage::wall_now_utc() const {
+#ifdef _WIN32
   SYSTEMTIME st{};
   GetSystemTime(&st);
   std::ostringstream oss;
@@ -40,6 +47,21 @@ std::string SessionPackage::wall_now_utc() const {
       << st.wHour << ':' << std::setw(2) << st.wMinute << ':' << std::setw(2)
       << st.wSecond << '.' << std::setw(3) << st.wMilliseconds << 'Z';
   return oss.str();
+#else
+  using namespace std::chrono;
+  const auto now = system_clock::now();
+  const auto ms_total = duration_cast<milliseconds>(now.time_since_epoch()).count();
+  const std::time_t secs = static_cast<std::time_t>(ms_total / 1000);
+  const int ms = static_cast<int>(ms_total % 1000);
+  std::tm tm{};
+  gmtime_r(&secs, &tm);
+  std::ostringstream oss;
+  oss << std::setfill('0') << std::setw(4) << (tm.tm_year + 1900) << '-'
+      << std::setw(2) << (tm.tm_mon + 1) << '-' << std::setw(2) << tm.tm_mday
+      << 'T' << std::setw(2) << tm.tm_hour << ':' << std::setw(2) << tm.tm_min
+      << ':' << std::setw(2) << tm.tm_sec << '.' << std::setw(3) << ms << 'Z';
+  return oss.str();
+#endif
 }
 
 std::string SessionPackage::state() const {

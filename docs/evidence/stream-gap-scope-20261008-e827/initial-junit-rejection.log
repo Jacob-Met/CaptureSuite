@@ -1,0 +1,63 @@
+2026-10-08T09:26:31.1250202Z ##[group]Run python tools/run_ci_tests.py
+2026-10-08T09:26:31.1250565Z [36;1mpython tools/run_ci_tests.py[0m
+2026-10-08T09:26:31.1289068Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-08T09:26:31.1289396Z env:
+2026-10-08T09:26:31.1289650Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T09:26:31.1290099Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-10-08T09:26:31.1290531Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T09:26:31.1290931Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T09:26:31.1291318Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T09:26:31.1291637Z   QT_QPA_PLATFORM: offscreen
+2026-10-08T09:26:31.1291843Z ##[endgroup]
+2026-10-08T09:26:42.6340325Z ................................................ [ 20%]
+2026-10-08T09:26:42.6341115Z ..................................................ssssss................ [ 51%]
+2026-10-08T09:26:42.6341520Z ........................................................................ [ 82%]
+2026-10-08T09:26:42.6341880Z .........................................                                [100%]
+2026-10-08T09:26:42.6342234Z ============================== warnings summary ===============================
+2026-10-08T09:26:42.6342552Z <frozen importlib._bootstrap>:488
+2026-10-08T09:26:42.6343431Z   <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.MessageMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+2026-10-08T09:26:42.6344270Z 
+2026-10-08T09:26:42.6344368Z <frozen importlib._bootstrap>:488
+2026-10-08T09:26:42.6345223Z   <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.ScalarMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+2026-10-08T09:26:42.6346281Z 
+2026-10-08T09:26:42.6346491Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+2026-10-08T09:26:42.6346919Z =========================== short test summary info ===========================
+2026-10-08T09:26:42.6347410Z SKIPPED [1] tests\protocol\test_daemon_e2e.py:74: capture_daemon.exe not built (run cmake --build)
+2026-10-08T09:26:42.6348025Z SKIPPED [1] tests\protocol\test_daemon_e2e.py:148: capture_daemon.exe not built (run cmake --build)
+2026-10-08T09:26:42.6348621Z SKIPPED [1] tests\protocol\test_daemon_e2e.py:161: capture_daemon.exe not built (run cmake --build)
+2026-10-08T09:26:42.6349217Z SKIPPED [1] tests\protocol\test_daemon_e2e.py:196: capture_daemon.exe not built (run cmake --build)
+2026-10-08T09:26:42.6349800Z SKIPPED [1] tests\protocol\test_daemon_e2e.py:238: capture_daemon.exe not built (run cmake --build)
+2026-10-08T09:26:42.6350408Z SKIPPED [1] tests\protocol\test_daemon_e2e.py:262: capture_daemon.exe not built (run cmake --build)
+2026-10-08T09:26:42.6350896Z 227 passed, 6 skipped, 2 warnings, 24 subtests passed in 9.74s
+2026-10-08T09:26:42.6351134Z 
+2026-10-08T09:26:42.6351197Z {
+2026-10-08T09:26:42.6351392Z   "schema": "capturesuite.test-receipt.v1",
+2026-10-08T09:26:42.6351651Z   "accepted": false,
+2026-10-08T09:26:42.6351838Z   "process_exit": 0,
+2026-10-08T09:26:42.6352012Z   "counts": null,
+2026-10-08T09:26:42.6352344Z   "junit_sha256": "c4d5f7efadb37cb164c4c39bf84667afddc1fbeb11646cbe9e65a8a942aff72b",
+2026-10-08T09:26:42.6352750Z   "problems": [
+2026-10-08T09:26:42.6352953Z     "JUnit unavailable or invalid: ValueError"
+2026-10-08T09:26:42.6353200Z   ],
+2026-10-08T09:26:42.6353470Z   "scope": "Process and test-evidence consistency, not clinical validation",
+2026-10-08T09:26:42.6353823Z   "seconds": 10.560963299999969,
+2026-10-08T09:26:42.6354066Z   "created_at": "2026-10-08T09:26:42.304620+00:00",
+2026-10-08T09:26:42.6354444Z   "run_directory": "build/evidence/python-20261008T092631Z-3346ae35",
+2026-10-08T09:26:42.6357136Z   "log_sha256": "b5e7457de016bad32dc26437f18a4443b503caac565404c9dc2945330deb0a14",
+2026-10-08T09:26:42.6357705Z   "source_commit": "290eeeb782766e45626876ba6c3ea7e84a7378e0",
+2026-10-08T09:26:42.6358099Z   "source_worktree_dirty": false,
+2026-10-08T09:26:42.6358519Z   "source_tree_sha256": "a063e729fbb47408f80e5345d6de1a788452562891ede7b042c7b6d0be1014f0",
+2026-10-08T09:26:42.6358936Z   "source_file_count": 553,
+2026-10-08T09:26:42.6359136Z   "github": {
+2026-10-08T09:26:42.6359317Z     "GITHUB_ACTIONS": "true",
+2026-10-08T09:26:42.6359548Z     "GITHUB_EVENT_NAME": "pull_request",
+2026-10-08T09:26:42.6359855Z     "GITHUB_SHA": "290eeeb782766e45626876ba6c3ea7e84a7378e0",
+2026-10-08T09:26:42.6360155Z     "GITHUB_REF": "refs/pull/41/merge",
+2026-10-08T09:26:42.6360439Z     "GITHUB_HEAD_REF": "fix/stream-gap-scope-e82707f2",
+2026-10-08T09:26:42.6360723Z     "GITHUB_BASE_REF": "main",
+2026-10-08T09:26:42.6360944Z     "GITHUB_RUN_ID": "37756406356",
+2026-10-08T09:26:42.6361350Z     "GITHUB_WORKFLOW_REF": "Jacob-Met/CaptureSuite/.github/workflows/ci.yml@refs/pull/41/merge"
+2026-10-08T09:26:42.6361759Z   },
+2026-10-08T09:26:42.6361942Z   "source_unchanged_during_test": true
+2026-10-08T09:26:42.6362169Z }
+2026-10-08T09:26:42.7342525Z ##[error]Process completed with exit code 1.

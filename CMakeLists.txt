@@ -20,8 +20,19 @@ include(CaptureProtobuf)
 add_subdirectory(libs/cpp/capture_core)
 add_subdirectory(libs/cpp/capture_proto)
 add_subdirectory(libs/cpp/capture_storage)
-add_subdirectory(daemon)
-add_subdirectory(workers/stub)
+if(NOT WIN32 AND
+   (CAPTURE_ENABLE_CAMERA_WORKER OR CAPTURE_ENABLE_RADAR_WORKER))
+  message(FATAL_ERROR
+    "Camera and radar workers currently require Windows. "
+    "Use the portable library/session_doctor build without these workers.")
+endif()
+# The daemon and stub worker use Win32 named pipes, job objects and Media
+# Foundation; they are Windows-only. On other hosts only the portable
+# libraries, session_doctor and the portable tests are built.
+if(WIN32)
+  add_subdirectory(daemon)
+  add_subdirectory(workers/stub)
+endif()
 if(CAPTURE_ENABLE_CAMERA_WORKER)
   # FindGStreamer.cmake requires GSTREAMER_1_0_ROOT_MSVC_X86_64 (or the
   # third_party/gstreamer extract). Configure fails loudly if missing.

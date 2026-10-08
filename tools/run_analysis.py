@@ -93,14 +93,10 @@ def main(argv: list[str] | None = None) -> int:
     )
     try:
         result = run(args.package, params)
-    except NotImplementedError as exc:
-        print(f"FAIL: {exc}", file=sys.stderr)
-        return 1
-    except FileNotFoundError as exc:
-        print(f"FAIL: {exc}", file=sys.stderr)
-        return 1
     except Exception as exc:  # noqa: BLE001
         print(f"FAIL: {exc}", file=sys.stderr)
+        for note in getattr(exc, "__notes__", ()):
+            print(note, file=sys.stderr)
         return 1
 
     print(f"job_id={result.job_id}")

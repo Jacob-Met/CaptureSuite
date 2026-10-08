@@ -1,0 +1,40 @@
+2026-10-08T09:22:30.8859011Z I001 [*] Import block is un-sorted or un-formatted
+2026-10-08T09:22:30.8859653Z   --> tests\analysis\test_stream_gap_scope.py:4:1
+2026-10-08T09:22:30.8860065Z    |
+2026-10-08T09:22:30.8860527Z  2 |   """Receive recorded stream gaps through native masks and feature extraction."""
+2026-10-08T09:22:30.8861126Z  3 |
+2026-10-08T09:22:30.8861384Z  4 | / from __future__ import annotations
+2026-10-08T09:22:30.8861841Z  5 | |
+2026-10-08T09:22:30.8862077Z  6 | | import hashlib
+2026-10-08T09:22:30.8862355Z  7 | | import json
+2026-10-08T09:22:30.8862615Z  8 | | import math
+2026-10-08T09:22:30.8862896Z  9 | | import tempfile
+2026-10-08T09:22:30.8863186Z 10 | | import unittest
+2026-10-08T09:22:30.8863928Z 11 | | from pathlib import Path
+2026-10-08T09:22:30.8864263Z 12 | |
+2026-10-08T09:22:30.8864543Z 13 | | import numpy as np
+2026-10-08T09:22:30.8864818Z 14 | |
+2026-10-08T09:22:30.8865112Z 15 | | from capture_analysis import discover_streams
+2026-10-08T09:22:30.8865658Z 16 | | from capture_analysis.features.emg import extract_emg_features
+2026-10-08T09:22:30.8866362Z 17 | | from capture_analysis.types import GapInterval, LoadedEmg, StreamRef, TimeWindow
+2026-10-08T09:22:30.8866968Z 18 | | from capture_analysis.windows import (
+2026-10-08T09:22:30.8867350Z 19 | |     build_gap_mask,
+2026-10-08T09:22:30.8867652Z 20 | |     enforce_gap_policy,
+2026-10-08T09:22:30.8867951Z 21 | |     gaps_to_intervals,
+2026-10-08T09:22:30.8868248Z 22 | |     validity_mask,
+2026-10-08T09:22:30.8868519Z 23 | | )
+2026-10-08T09:22:30.8868949Z 24 | | from capture_session.package_reader import GapSummary, load_review_summary
+2026-10-08T09:22:30.8869597Z    | |__________________________________________________________________________^
+2026-10-08T09:22:30.8870021Z 25 |
+2026-10-08T09:22:30.8870235Z 26 |   SECOND = 1_000_000_000
+2026-10-08T09:22:30.8870525Z    |
+2026-10-08T09:22:30.8870755Z help: Organize imports
+2026-10-08T09:22:30.8871004Z    |
+2026-10-08T09:22:30.8871226Z 13 | import numpy as np
+2026-10-08T09:22:30.8871570Z    -
+2026-10-08T09:22:30.8871874Z 14 | from capture_analysis import discover_streams
+2026-10-08T09:22:30.8872235Z    |
+2026-10-08T09:22:30.8872373Z 
+2026-10-08T09:22:30.8872472Z Found 1 error.
+2026-10-08T09:22:30.8872782Z [*] 1 fixable with the `--fix` option.
+2026-10-08T09:22:30.9764507Z ##[error]Process completed with exit code 1.

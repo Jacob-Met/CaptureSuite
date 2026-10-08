@@ -1,0 +1,298 @@
+FFFFFF.F.                                                                [100%]
+=================================== FAILURES ===================================
+______________ test_partial_qc_failure_preserves_previous_results ______________
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-3/test_partial_qc_failure_preser0/mini.mmsession')
+previous_job = (PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-3/test_partial_qc_failure_preser0...n': ('directory', ''), 'sim.emg.main/health': ('directory', ''), 'sim.emg.main/health/gaps.jsonl': ('file', b''), ...})
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fe511557bf0>
+
+    def test_partial_qc_failure_preserves_previous_results(
+        package: Path, previous_job, monkeypatch: pytest.MonkeyPatch,
+    ) -> None:
+        def fail_html(_report):
+            raise RuntimeError("injected HTML report failure")
+    
+        with monkeypatch.context() as patch:
+            patch.setattr(jobs, "render_qc_html", fail_html)
+            with pytest.raises(RuntimeError, match="injected HTML report failure"):
+                jobs.run(package, replacement_params())
+    
+>       attempt = assert_failed_attempt(package, previous_job, "injected HTML report failure")
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/analysis/test_job_replacement.py:125: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/analysis/test_job_replacement.py:86: in assert_failed_attempt
+    assert_tree_retained(retained_at or old_dir, old_tree)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-3/test_partial_qc_failure_preser0/mini.mmsession/processing/jobs/qc-test')
+expected = {'.': ('directory', ''), 'job_manifest.json': ('file', b'{\n  "analysisGrids": [],\n  "captureAnalysisVersion": "0.1.0...t/pytest-3/test_partial_qc_failure_preser0/mini.mmsession\njob_id=qc-test\nstatus=completed\nfeature_tables=0\n'), ...}
+
+    def assert_tree_retained(root: Path, expected: dict[str, Any]) -> None:
+        actual = tree_bytes(root)
+        changes = sorted(key for key in actual.keys() | expected.keys()
+                         if actual.get(key) != expected.get(key))
+>       assert not changes, f"Tree changed at {root}: {changes}"
+E       AssertionError: Tree changed at /dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-3/test_partial_qc_failure_preser0/mini.mmsession/processing/jobs/qc-test: ['job_manifest.json', 'logs/job.log', 'params.json', 'reports/qc.html', 'retained-empty-directory', 'review-sentinel.bin']
+E       assert not ['job_manifest.json', 'logs/job.log', 'params.json', 'reports/qc.html', 'retained-empty-directory', 'review-sentinel.bin']
+
+tests/analysis/test_job_replacement.py:41: AssertionError
+_____ test_cancellation_after_real_report_write_preserves_previous_results _____
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-3/test_cancellation_after_real_r0/mini.mmsession')
+previous_job = (PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-3/test_cancellation_after_real_r0...n': ('directory', ''), 'sim.emg.main/health': ('directory', ''), 'sim.emg.main/health/gaps.jsonl': ('file', b''), ...})
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fe511557530>
+
+    def test_cancellation_after_real_report_write_preserves_previous_results(
+        package: Path, previous_job, monkeypatch: pytest.MonkeyPatch,
+    ) -> None:
+        cancel = threading.Event()
+        write_output = jobs._write_output
+        wrote_report = False
+    
+        def cancel_after_report(job_dir, relative, data, kind, outputs):
+            nonlocal wrote_report
+            result = write_output(job_dir, relative, data, kind, outputs)
+            if relative == "reports/qc.json":
+                assert result.is_file()
+                wrote_report = True
+                cancel.set()
+            return result
+    
+        with monkeypatch.context() as patch:
+            patch.setattr(jobs, "_write_output", cancel_after_report)
+            with pytest.raises(InterruptedError, match="analysis cancelled"):
+                jobs.run(package, replacement_params(), cancel=cancel)
+        assert wrote_report
+>       assert_failed_attempt(package, previous_job, "analysis cancelled")
+
+tests/analysis/test_job_replacement.py:151: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/analysis/test_job_replacement.py:86: in assert_failed_attempt
+    assert_tree_retained(retained_at or old_dir, old_tree)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-3/test_cancellation_after_real_r0/mini.mmsession/processing/jobs/qc-test')
+expected = {'.': ('directory', ''), 'job_manifest.json': ('file', b'{\n  "analysisGrids": [],\n  "captureAnalysisVersion": "0.1.0...t/pytest-3/test_cancellation_after_real_r0/mini.mmsession\njob_id=qc-test\nstatus=completed\nfeature_tables=0\n'), ...}
+
+    def assert_tree_retained(root: Path, expected: dict[str, Any]) -> None:
+        actual = tree_bytes(root)
+        changes = sorted(key for key in actual.keys() | expected.keys()
+                         if actual.get(key) != expected.get(key))
+>       assert not changes, f"Tree changed at {root}: {changes}"
+E       AssertionError: Tree changed at /dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-3/test_cancellation_after_real_r0/mini.mmsession/processing/jobs/qc-test: ['job_manifest.json', 'logs/job.log', 'params.json', 'retained-empty-directory', 'review-sentinel.bin']
+E       assert not ['job_manifest.json', 'logs/job.log', 'params.json', 'retained-empty-directory', 'review-sentinel.bin']
+
+tests/analysis/test_job_replacement.py:41: AssertionError
+_____ test_cancellation_from_manifest_callback_preserves_previous_results ______
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-3/test_cancellation_from_manifes0/mini.mmsession')
+previous_job = (PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-3/test_cancellation_from_manifes0...n': ('directory', ''), 'sim.emg.main/health': ('directory', ''), 'sim.emg.main/health/gaps.jsonl': ('file', b''), ...})
+
+    def test_cancellation_from_manifest_callback_preserves_previous_results(
+        package: Path, previous_job,
+    ) -> None:
+        cancel = threading.Event()
+        stages: list[str] = []
+    
+        def progress(stage: str, _fraction: float) -> None:
+            stages.append(stage)
+            if stage == "manifest":
+                cancel.set()
+    
+        with pytest.raises(InterruptedError, match="analysis cancelled"):
+            jobs.run(package, replacement_params(), progress=progress, cancel=cancel)
+        assert "manifest" in stages
+>       assert_failed_attempt(package, previous_job, "analysis cancelled")
+
+tests/analysis/test_job_replacement.py:168: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/analysis/test_job_replacement.py:86: in assert_failed_attempt
+    assert_tree_retained(retained_at or old_dir, old_tree)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-3/test_cancellation_from_manifes0/mini.mmsession/processing/jobs/qc-test')
+expected = {'.': ('directory', ''), 'job_manifest.json': ('file', b'{\n  "analysisGrids": [],\n  "captureAnalysisVersion": "0.1.0...t/pytest-3/test_cancellation_from_manifes0/mini.mmsession\njob_id=qc-test\nstatus=completed\nfeature_tables=0\n'), ...}
+
+    def assert_tree_retained(root: Path, expected: dict[str, Any]) -> None:
+        actual = tree_bytes(root)
+        changes = sorted(key for key in actual.keys() | expected.keys()
+                         if actual.get(key) != expected.get(key))
+>       assert not changes, f"Tree changed at {root}: {changes}"
+E       AssertionError: Tree changed at /dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-3/test_cancellation_from_manifes0/mini.mmsession/processing/jobs/qc-test: ['job_manifest.json', 'params.json', 'retained-empty-directory', 'review-sentinel.bin']
+E       assert not ['job_manifest.json', 'params.json', 'retained-empty-directory', 'review-sentinel.bin']
+
+tests/analysis/test_job_replacement.py:41: AssertionError
+___________ test_promotion_rename_failure_restores_previous_results ____________
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-3/test_promotion_rename_failure_0/mini.mmsession')
+previous_job = (PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-3/test_promotion_rename_failure_0...n': ('directory', ''), 'sim.emg.main/health': ('directory', ''), 'sim.emg.main/health/gaps.jsonl': ('file', b''), ...})
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fe5115a3c20>
+
+    def test_promotion_rename_failure_restores_previous_results(
+        package: Path, previous_job, monkeypatch: pytest.MonkeyPatch,
+    ) -> None:
+        old_dir = previous_job[0]
+        rename = Path.rename
+        injected = False
+    
+        def fail_first_promotion(source: Path, target) -> Path:
+            nonlocal injected
+            # Match the public destination; do not depend on a staging/backup name.
+            if not injected and Path(target).absolute() == old_dir.absolute():
+                injected = True
+                raise OSError("injected replacement rename failure")
+            return rename(source, target)
+    
+        with monkeypatch.context() as patch:
+            patch.setattr(Path, "rename", fail_first_promotion)
+            with pytest.raises(OSError, match="injected replacement rename failure"):
+                jobs.run(package, replacement_params())
+        assert injected, "The native destination rename was not exercised"
+>       assert_failed_attempt(package, previous_job, "injected replacement rename failure")
+
+tests/analysis/test_job_replacement.py:191: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/analysis/test_job_replacement.py:86: in assert_failed_attempt
+    assert_tree_retained(retained_at or old_dir, old_tree)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-3/test_promotion_rename_failure_0/mini.mmsession/processing/jobs/qc-test')
+expected = {'.': ('directory', ''), 'job_manifest.json': ('file', b'{\n  "analysisGrids": [],\n  "captureAnalysisVersion": "0.1.0...t/pytest-3/test_promotion_rename_failure_0/mini.mmsession\njob_id=qc-test\nstatus=completed\nfeature_tables=0\n'), ...}
+
+    def assert_tree_retained(root: Path, expected: dict[str, Any]) -> None:
+        actual = tree_bytes(root)
+        changes = sorted(key for key in actual.keys() | expected.keys()
+                         if actual.get(key) != expected.get(key))
+>       assert not changes, f"Tree changed at {root}: {changes}"
+E       AssertionError: Tree changed at /dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-3/test_promotion_rename_failure_0/mini.mmsession/processing/jobs/qc-test: ['job_manifest.json', 'logs/job.log', 'params.json', 'retained-empty-directory', 'review-sentinel.bin']
+E       assert not ['job_manifest.json', 'logs/job.log', 'params.json', 'retained-empty-directory', 'review-sentinel.bin']
+
+tests/analysis/test_job_replacement.py:41: AssertionError
+_______ test_final_progress_callback_failure_preserves_previous_results ________
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-3/test_final_progress_callback_f0/mini.mmsession')
+previous_job = (PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-3/test_final_progress_callback_f0...n': ('directory', ''), 'sim.emg.main/health': ('directory', ''), 'sim.emg.main/health/gaps.jsonl': ('file', b''), ...})
+
+    def test_final_progress_callback_failure_preserves_previous_results(
+        package: Path, previous_job,
+    ) -> None:
+        stages: list[str] = []
+    
+        def progress(stage: str, _fraction: float) -> None:
+            stages.append(stage)
+            if stage == "done":
+                raise RuntimeError("injected final progress callback failure")
+    
+        with pytest.raises(RuntimeError, match="injected final progress callback failure"):
+            jobs.run(package, replacement_params(), progress=progress)
+        assert "done" in stages
+>       assert_failed_attempt(package, previous_job, "injected final progress callback failure")
+
+tests/analysis/test_job_replacement.py:207: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/analysis/test_job_replacement.py:86: in assert_failed_attempt
+    assert_tree_retained(retained_at or old_dir, old_tree)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-3/test_final_progress_callback_f0/mini.mmsession/processing/jobs/qc-test')
+expected = {'.': ('directory', ''), 'job_manifest.json': ('file', b'{\n  "analysisGrids": [],\n  "captureAnalysisVersion": "0.1.0...t/pytest-3/test_final_progress_callback_f0/mini.mmsession\njob_id=qc-test\nstatus=completed\nfeature_tables=0\n'), ...}
+
+    def assert_tree_retained(root: Path, expected: dict[str, Any]) -> None:
+        actual = tree_bytes(root)
+        changes = sorted(key for key in actual.keys() | expected.keys()
+                         if actual.get(key) != expected.get(key))
+>       assert not changes, f"Tree changed at {root}: {changes}"
+E       AssertionError: Tree changed at /dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-3/test_final_progress_callback_f0/mini.mmsession/processing/jobs/qc-test: ['job_manifest.json', 'params.json', 'retained-empty-directory', 'review-sentinel.bin']
+E       assert not ['job_manifest.json', 'params.json', 'retained-empty-directory', 'review-sentinel.bin']
+
+tests/analysis/test_job_replacement.py:41: AssertionError
+____ test_failed_promotion_and_restoration_report_recoverable_previous_tree ____
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-3/test_failed_promotion_and_rest0/mini.mmsession')
+previous_job = (PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-3/test_failed_promotion_and_rest0...n': ('directory', ''), 'sim.emg.main/health': ('directory', ''), 'sim.emg.main/health/gaps.jsonl': ('file', b''), ...})
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fe5115a2450>
+
+    def test_failed_promotion_and_restoration_report_recoverable_previous_tree(
+        package: Path, previous_job, monkeypatch: pytest.MonkeyPatch,
+    ) -> None:
+        old_dir, old_tree, _raw_tree = previous_job
+        rename = Path.rename
+        failures = 0
+    
+        def fail_all_renames_to_destination(source: Path, target) -> Path:
+            nonlocal failures
+            if Path(target).absolute() == old_dir.absolute():
+                failures += 1
+                raise OSError("injected destination rename failure")
+            return rename(source, target)
+    
+        with monkeypatch.context() as patch:
+            patch.setattr(Path, "rename", fail_all_renames_to_destination)
+            with pytest.raises(OSError, match="injected destination rename failure") as raised:
+                jobs.run(package, replacement_params())
+        assert failures >= 2, "Both publication and attempted restoration must be exercised"
+        markers = [path for path in old_dir.parent.rglob("review-sentinel.bin")
+                   if path.read_bytes() == SENTINEL]
+>       assert len(markers) == 1, "The previous result must remain recoverable exactly once"
+E       AssertionError: The previous result must remain recoverable exactly once
+E       assert 0 == 1
+E        +  where 0 = len([])
+
+tests/analysis/test_job_replacement.py:231: AssertionError
+________ test_post_commit_cleanup_failure_keeps_successful_replacement _________
+
+package = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-3/test_post_commit_cleanup_failu0/mini.mmsession')
+previous_job = (PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-3/test_post_commit_cleanup_failu0...n': ('directory', ''), 'sim.emg.main/health': ('directory', ''), 'sim.emg.main/health/gaps.jsonl': ('file', b''), ...})
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7fe5115ee1b0>
+
+    def test_post_commit_cleanup_failure_keeps_successful_replacement(
+        package: Path, previous_job, monkeypatch: pytest.MonkeyPatch,
+    ) -> None:
+        old_dir, old_tree, raw_tree = previous_job
+        remove_tree = shutil.rmtree
+        retained_previous: list[Path] = []
+    
+        def fail_removing_previous(path, *args, **kwargs):
+            # Detect the previous result by its bytes, independent of backup names.
+            directory = Path(path)
+            for marker in directory.rglob("review-sentinel.bin"):
+                if marker.read_bytes() == SENTINEL:
+                    retained_previous.append(marker.parent)
+                    raise OSError("injected previous-result cleanup failure")
+            return remove_tree(path, *args, **kwargs)
+    
+        with monkeypatch.context() as patch:
+            patch.setattr(shutil, "rmtree", fail_removing_previous)
+>           result = jobs.run(package, replacement_params())
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests/analysis/test_job_replacement.py:275: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+libs/python/capture_analysis/capture_analysis/jobs.py:414: in run
+    shutil.rmtree(job_dir)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+path = PosixPath('/dev/shm/estate-6267db2cfc6e-workspace/runtime-tmp/pytest-of-root/pytest-3/test_post_commit_cleanup_failu0/mini.mmsession/processing/jobs/qc-test')
+args = (), kwargs = {}
+
+    def fail_removing_previous(path, *args, **kwargs):
+        # Detect the previous result by its bytes, independent of backup names.
+        directory = Path(path)
+        for marker in directory.rglob("review-sentinel.bin"):
+            if marker.read_bytes() == SENTINEL:
+                retained_previous.append(marker.parent)
+>               raise OSError("injected previous-result cleanup failure")
+E               OSError: injected previous-result cleanup failure
+
+tests/analysis/test_job_replacement.py:270: OSError
+=========================== short test summary info ============================
+FAILED tests/analysis/test_job_replacement.py::test_partial_qc_failure_preserves_previous_results
+FAILED tests/analysis/test_job_replacement.py::test_cancellation_after_real_report_write_preserves_previous_results
+FAILED tests/analysis/test_job_replacement.py::test_cancellation_from_manifest_callback_preserves_previous_results
+FAILED tests/analysis/test_job_replacement.py::test_promotion_rename_failure_restores_previous_results
+FAILED tests/analysis/test_job_replacement.py::test_final_progress_callback_failure_preserves_previous_results
+FAILED tests/analysis/test_job_replacement.py::test_failed_promotion_and_restoration_report_recoverable_previous_tree
+FAILED tests/analysis/test_job_replacement.py::test_post_commit_cleanup_failure_keeps_successful_replacement
+7 failed, 2 passed in 1.34s
