@@ -71,6 +71,12 @@ between concurrent writers.
 
 Schema: [`schemas/session/jsonschema/analysis_job.schema.json`](../../schemas/session/jsonschema/analysis_job.schema.json).
 
+The manifest's `outputs` inventory records the final bytes and SHA-256 of each
+produced artifact, including `logs/job.log`. The manifest itself is read from its
+fixed path above; its own checksum belongs in an external delivery receipt.
+Finalize the log before serializing either a successful or failed job manifest.
+On success, the returned `JobResult.manifest` matches the stored JSON document.
+
 ## Memory / streaming
 
 | Stream | Rule |

@@ -1,3 +1,26 @@
+## 2026-10-08 — Receive final output provenance on preserved analysis jobs
+
+Receive the landed PR48 replacement contract before completing PR46. The only
+production delta now finalizes the successful diagnostic log before serializing
+the manifest, and removes the impossible self-manifest checksum. The stored
+inventory agrees with the returned result and final artifact bytes. PR48's
+portable destination guards, unique attempts, failed-record handling, previous
+result restoration and CLI/UI recovery notes remain unchanged.
+
+The original seven provenance receivers on landed main gave two passes, four
+remaining successful-inventory failures and one obsolete completion-callback
+expectation. The updated receiver preserves the previous completed revision and
+checks both its inventory and the separately retained failed attempt. With the
+same updated tests, native Python 3.12.8 receiving improves from **19 passed,
+5 failed** to **24 passed, 0 skipped**. This includes the owner's nine replacement
+fault controls, two actual CLI failure controls and six existing QC controls.
+
+The previously qualified PR46 head and all negative evidence remain in custody;
+its Windows CI does not qualify this new composition. Exact-head supported
+Windows CI remains pending. The separately prepared job-ID candidate was
+superseded by the landed owner and is not included. See
+`docs/evidence/analysis-output-provenance-current-receiving-20261008.json`.
+
 ## 2026-10-08 — Preserve prior analysis jobs on failed replacement
 
 Worker `estate-6267db2cfc6e`, issue #39: portable job IDs and direct output

@@ -446,20 +446,6 @@ def run(
             status = "completed_with_warnings"
             manifest["status"] = status
 
-        tick("manifest", 0.9)
-        man_path = work / "job_manifest.json"
-        man_path.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-        outputs.append(
-            {
-                "relativePath": "job_manifest.json",
-                "bytes": man_path.stat().st_size,
-                "sha256": _sha256_file(man_path),
-                "kind": "manifest",
-            }
-        )
-        manifest["outputs"] = outputs
-        man_path.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-
         log_lines.append(f"status={status}")
         log_lines.append(f"feature_tables={len(feature_tables)}")
         _write_output(
@@ -469,6 +455,11 @@ def run(
             "log",
             outputs,
         )
+
+        tick("manifest", 0.9)
+        # Inventory the final artifacts; this manifest cannot checksum itself.
+        man_path = work / "job_manifest.json"
+        man_path.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
         # Callbacks and cancellation remain fallible until publication starts.
         # No callback runs after the previous result has been replaced.

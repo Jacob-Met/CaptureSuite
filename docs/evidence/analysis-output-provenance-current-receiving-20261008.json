@@ -1,0 +1,185 @@
+{
+  "schema": "capture.analysis-provenance-current-receiving/1",
+  "existing_owner": {
+    "actor": "estate-6267db2cfc6e",
+    "issue": 39,
+    "pull_request": 48,
+    "published_head": "ccfa6ed488c446818eee5df9ded8311a76b888d4",
+    "merged_as": "2b3ee0e03fdfffe9d6d66d1c15806563bdf8636e",
+    "merged_utc": "2026-10-08T11:30:08Z"
+  },
+  "base_commit": "72c15d6b623e217291a824e4e4808a385df896a9",
+  "base_tree": "221cf5c7bb3c3392a7c4186ba0bcf5a8664135d1",
+  "base_jobs_sha256": "e7e9dda44eb014d18192563f1e2c0ae78cece850fbc853b0be3919daaf5ee276",
+  "candidate_source_sha256": {
+    "libs/python/capture_analysis/capture_analysis/jobs.py": "004db43bc2fa362e657de2c280c39644056d970551330488524bca5019452bc6",
+    "tests/analysis/test_job_output_provenance.py": "9f041284a595312cd7d75fc36a959d16205bb4cebf6f90bf0f098ef574bf8d0f",
+    "docs/design/ANALYSIS.md": "b8903ae994280930884ced623a7c496679fa90c07ca6b1266dbc3f4642e66562"
+  },
+  "runtime_delta": "Only successful finalization: write final diagnostic log before manifest serialization; omit manifest self-checksum. No new ID, destination, promotion, failure-record or consumer implementation.",
+  "historical_original_receiving": {
+    "test_sha256": "debcaac8e8f91071b479dbd022682d8e58f6dadb57cf57bbf36e0750bda45f62",
+    "tests": 7,
+    "passed": 2,
+    "failed": 5,
+    "classification": "Four remaining successful-output defects; one obsolete done-callback expectation superseded by PR48 prior-result preservation.",
+    "receipt_sha256": "0db89ba709022ee250667d182fe6497db0f9ce3065b2d99ea3b25d0e3e0e49ca",
+    "log_sha256": "0cdc7164b0df09f602cd6a13f77478e83ab7e598960979dfe270c929579bc010",
+    "junit_sha256": "f7376eedd046c6afe0ae9f143949b01454b23240abeffea356f64f3cf9d5c198"
+  },
+  "paired_native_receiving": {
+    "schema": "capture.pr48-provenance-native-pair/1",
+    "base_commit": "72c15d6b623e217291a824e4e4808a385df896a9",
+    "candidate_runtime_patch_sha256": "8adaf1d5a2b2fece2582a4c51159f05ed112419a6949be01f14489cf9d73becd",
+    "same_test_sha256": "9f041284a595312cd7d75fc36a959d16205bb4cebf6f90bf0f098ef574bf8d0f",
+    "scope": [
+      "tests/analysis/test_job_output_provenance.py",
+      "tests/analysis/test_job_replacement.py",
+      "tests/analysis/test_job_failure_cli.py",
+      "tests/analysis/test_phase_a_qc.py"
+    ],
+    "runs": [
+      {
+        "label": "baseline",
+        "command": [
+          "/Users/me/Developer/capturesuite-analysis-provenance-20261008/.venv-analysis/bin/python",
+          "-m",
+          "pytest",
+          "tests/analysis/test_job_output_provenance.py",
+          "tests/analysis/test_job_replacement.py",
+          "tests/analysis/test_job_failure_cli.py",
+          "tests/analysis/test_phase_a_qc.py",
+          "-q",
+          "--basetemp",
+          "/Users/me/Developer/capturesuite-analysis-current-receiving-20261008/out/provenance-receiving-evidence/baseline-paired-fixtures",
+          "--junitxml",
+          "/Users/me/Developer/capturesuite-analysis-current-receiving-20261008/out/provenance-receiving-evidence/baseline-paired.xml"
+        ],
+        "cwd": "/Users/me/Developer/capturesuite-analysis-current-receiving-20261008/out/provenance-receiving-evidence/baseline-current-main",
+        "exit_code": 1,
+        "tests": 24,
+        "failed_cases": [
+          "tests.analysis.test_job_output_provenance.test_recorded_hashes_describe_final_output_bytes",
+          "tests.analysis.test_job_output_provenance.test_persisted_manifest_matches_return_value",
+          "tests.analysis.test_job_output_provenance.test_completed_job_inventories_all_produced_artifacts",
+          "tests.analysis.test_job_output_provenance.test_overwrite_describes_replacement_artifacts",
+          "tests.analysis.test_job_output_provenance.test_done_callback_failure_preserves_prior_job_and_attempt_inventory"
+        ],
+        "skips": 0,
+        "source_before": {
+          "libs/python/capture_analysis/capture_analysis/jobs.py": "e7e9dda44eb014d18192563f1e2c0ae78cece850fbc853b0be3919daaf5ee276",
+          "tests/analysis/test_job_output_provenance.py": "9f041284a595312cd7d75fc36a959d16205bb4cebf6f90bf0f098ef574bf8d0f",
+          "tests/analysis/test_job_replacement.py": "e4480546d7e0653d3ad40cf52ad3f1489499c3810c9814f84145e1000b2b9ebd",
+          "tests/analysis/test_job_failure_cli.py": "77f62b52bc01b6325c2349f6482d407465869587ecc3380c01303e0398b226f6",
+          "tests/analysis/test_phase_a_qc.py": "0be539a3d593e1cf144f4b7f871af90082feaa19a4ac8f234f53a2b232c8cc07"
+        },
+        "source_after": {
+          "libs/python/capture_analysis/capture_analysis/jobs.py": "e7e9dda44eb014d18192563f1e2c0ae78cece850fbc853b0be3919daaf5ee276",
+          "tests/analysis/test_job_output_provenance.py": "9f041284a595312cd7d75fc36a959d16205bb4cebf6f90bf0f098ef574bf8d0f",
+          "tests/analysis/test_job_replacement.py": "e4480546d7e0653d3ad40cf52ad3f1489499c3810c9814f84145e1000b2b9ebd",
+          "tests/analysis/test_job_failure_cli.py": "77f62b52bc01b6325c2349f6482d407465869587ecc3380c01303e0398b226f6",
+          "tests/analysis/test_phase_a_qc.py": "0be539a3d593e1cf144f4b7f871af90082feaa19a4ac8f234f53a2b232c8cc07"
+        },
+        "log_sha256": "d323c00f9ad5e8e63c892a12dc3520604df01ef4f4d55d91610a53b9aa4a9d17",
+        "junit_sha256": "5b9f3680af5ed7f3a8b4b2d88e9f85e7113c2ce55acdecc550ca9d387981a963"
+      },
+      {
+        "label": "candidate",
+        "command": [
+          "/Users/me/Developer/capturesuite-analysis-provenance-20261008/.venv-analysis/bin/python",
+          "-m",
+          "pytest",
+          "tests/analysis/test_job_output_provenance.py",
+          "tests/analysis/test_job_replacement.py",
+          "tests/analysis/test_job_failure_cli.py",
+          "tests/analysis/test_phase_a_qc.py",
+          "-q",
+          "--basetemp",
+          "/Users/me/Developer/capturesuite-analysis-current-receiving-20261008/out/provenance-receiving-evidence/candidate-paired-fixtures",
+          "--junitxml",
+          "/Users/me/Developer/capturesuite-analysis-current-receiving-20261008/out/provenance-receiving-evidence/candidate-paired.xml"
+        ],
+        "cwd": "/Users/me/Developer/capturesuite-analysis-current-receiving-20261008",
+        "exit_code": 0,
+        "tests": 24,
+        "failed_cases": [],
+        "skips": 0,
+        "source_before": {
+          "libs/python/capture_analysis/capture_analysis/jobs.py": "004db43bc2fa362e657de2c280c39644056d970551330488524bca5019452bc6",
+          "tests/analysis/test_job_output_provenance.py": "9f041284a595312cd7d75fc36a959d16205bb4cebf6f90bf0f098ef574bf8d0f",
+          "tests/analysis/test_job_replacement.py": "e4480546d7e0653d3ad40cf52ad3f1489499c3810c9814f84145e1000b2b9ebd",
+          "tests/analysis/test_job_failure_cli.py": "77f62b52bc01b6325c2349f6482d407465869587ecc3380c01303e0398b226f6",
+          "tests/analysis/test_phase_a_qc.py": "0be539a3d593e1cf144f4b7f871af90082feaa19a4ac8f234f53a2b232c8cc07"
+        },
+        "source_after": {
+          "libs/python/capture_analysis/capture_analysis/jobs.py": "004db43bc2fa362e657de2c280c39644056d970551330488524bca5019452bc6",
+          "tests/analysis/test_job_output_provenance.py": "9f041284a595312cd7d75fc36a959d16205bb4cebf6f90bf0f098ef574bf8d0f",
+          "tests/analysis/test_job_replacement.py": "e4480546d7e0653d3ad40cf52ad3f1489499c3810c9814f84145e1000b2b9ebd",
+          "tests/analysis/test_job_failure_cli.py": "77f62b52bc01b6325c2349f6482d407465869587ecc3380c01303e0398b226f6",
+          "tests/analysis/test_phase_a_qc.py": "0be539a3d593e1cf144f4b7f871af90082feaa19a4ac8f234f53a2b232c8cc07"
+        },
+        "log_sha256": "0e956d8be27be782cd6d7fd0f7cc0b30afe78d16eb4c02479a69dbdee892125a",
+        "junit_sha256": "60016d3281a300764bef7b24fdb7fad9db349e7a1b19ad60d1331010b3c38320"
+      }
+    ]
+  },
+  "paired_native_receipt_sha256": "8df929c41fead9946698715f1ad838070ad567cb5e7e05b7ca1a0b5de72d7c1d",
+  "landed_contract_preservation": {
+    "schema": "capture.pr48-source-preservation/1",
+    "base": "72c15d6b623e217291a824e4e4808a385df896a9",
+    "all_non_run_functions_classes_unchanged": {
+      "JobParams": true,
+      "JobResult": true,
+      "_canonical_json": true,
+      "_params_digest": true,
+      "_validate_job_id": true,
+      "_job_id": true,
+      "_job_destination": true,
+      "_sha256_bytes": true,
+      "_sha256_file": true,
+      "_write_output": true,
+      "_try_validate_manifest": true,
+      "hash_sources_tree": true,
+      "_promote_replacement": true
+    },
+    "entire_failure_cleanup_return_tail_identical": true,
+    "failure_tail_sha256": "b2147fe31cd9e287a99c989f0dfe9382aeaa22a1fdeaa25d68ee177a6f111b3a",
+    "unchanged_current_consumers": {
+      "tools/run_analysis.py": "a6def4729ac6a84c5cb13a87032fac0ea53fa7edfc041194b358abb550f78e62",
+      "desktop/capture_desktop/screen_analysis.py": "1437b02b942f44378870540f12c5494d08693329abb5d00ca64c0c264f57633e",
+      "schemas/session/jsonschema/analysis_job.schema.json": "0f16c96cb79596f25e05f2a80545b42d080570adbcb84faaf5db5904f35b0ab1"
+    }
+  },
+  "landed_contract_receipt_sha256": "753ed644fc1a38a2ea66934723e61716f3c0fe50f3799ff5ed4be5af81d748d4",
+  "native_environment": {
+    "platform": "macOS arm64",
+    "python": "3.12.8",
+    "placement": "Existing analysis virtual environment; no dependency installation",
+    "gui_note": "Native scope excludes Qt; supported Windows CI remains necessary."
+  },
+  "old_pr46_custody": {
+    "head": "4c68370c7e8a98390ae75d1020f7eb47db70ae29",
+    "tree": "3702b499f14909954d5ec473944bcc69687960bf",
+    "workflow_run": 37763243225,
+    "python_passed": 234,
+    "python_daemon_skips": 6,
+    "cpp_ctest_passed": 25,
+    "cpp_native_passed": 6,
+    "cpp_skips": 0,
+    "cpp_custody_sha256": "0165ea5dbd74307b22c24cba1f756afe5fd15386de254736e3b93dc66cf9a83a",
+    "qualification_limit": "Historical source only; this completed run does not qualify the current PR48 composition."
+  },
+  "id_successor_disposition": {
+    "native_claim_seq": 3992,
+    "value": "superseded_pending_receiving",
+    "implementation_published": false,
+    "reason": "Existing landed PR48 owner covers the destructive ID/destination scope; preserve its contract."
+  },
+  "initial_static_failure": {
+    "check": "Ruff E501",
+    "disposition": "A 101-character test line was split before paired execution. Original diagnostic retained.",
+    "log_sha256": "616a94af15425b0b5f8b7ab415af29ebbe70348305529e92247cd9c678f0d069"
+  },
+  "supported_windows_gate": "Pending for the new exact published head",
+  "native_evidence_directory": "/Users/me/Developer/capturesuite-analysis-current-receiving-20261008/out/provenance-receiving-evidence"
+}
