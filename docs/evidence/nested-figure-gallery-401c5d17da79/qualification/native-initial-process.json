@@ -1,0 +1,18 @@
+{
+  "command": [
+    "/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python",
+    "-m",
+    "pytest",
+    "tests/ui/test_analysis_nested_gallery.py",
+    "-q",
+    "-ra",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=/dev/shm/capturesuite-gallery-401c5d17da79/tmp/native-focused"
+  ],
+  "exit": 0,
+  "elapsed_seconds": 1.186,
+  "canonical_base": "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e",
+  "gallery_sha256": "852c9059d01fac9ba38edbe228e0920e8cf3298bb8e1a9d6610b148f6d1e7ffb",
+  "test_sha256": "90477416f3efc70b436759eb56348d600b2b5b84f2f7f46ec6b4129c690b9d0a"
+}

@@ -789,3 +789,27 @@ active worker. Supported-platform CI and independent receiving are recorded
 separately in the accompanying feature evidence; local Linux Qt is not Windows,
 hardware or installed-app qualification. See [figure export](FIGURE_EXPORT.md)
 for the operator workflow, bundle fields and explicit resource/failure bounds.
+
+
+## 2026-10-08 — Show retained nested numeric figures in the native gallery (401c5d17da79)
+
+Issue #64 completes the desktop presentation path for the numeric PNG layout
+already produced by merged #49. The gallery now discovers nested saved PNGs,
+shows readable source/stream/channel identities and exact path tooltips, and
+retains legacy flat labels, native image pixels and the linked Sync dashboard.
+Resolved external PNG links and directories named as images are excluded while
+valid sibling figures remain visible. The selected-export owner's construction,
+clear and loaded-job hooks, saved-history runtime, handlers and job formats are
+unchanged.
+
+The independent real negative fixture retained two numeric channel PNGs while
+the old gallery showed only Sync. Final source f2c8b88 passes seven native Qt
+tests and fifteen checks against those exact retained numeric outputs plus a
+real legacy EMG/IMU job. Raw/saved hashes and executed source bytes remain exact.
+The initial six-case receipt, its real-output run, and the subsequent external
+PNG-link failure are retained separately from final qualification. Three actual
+native frames were reviewed with the existing original-resolution scrolling.
+Source pins, methods, limits and exact receipts are in
+docs/evidence/nested-figure-gallery-401c5d17da79/README.md.
+Full hosted Windows acceptance and current owner integration remain separate.
+

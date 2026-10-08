@@ -1,0 +1,12 @@
+{
+  "command": [
+    "/Applications/Xcode.app/Contents/Developer/usr/bin/python3",
+    "tools/check_licenses.py",
+    "--enforce-spdx"
+  ],
+  "exit": 0,
+  "stdout": "license check OK\n",
+  "stderr": "",
+  "scope": "Exact required license structure and all materialized source/evidence in this sparse author checkout; not the complete canonical repository.",
+  "runtime_qualification": "Previously frozen Linux Qt tests and receiving only; this Mac step seals source and runs the bounded static license gate."
+}
