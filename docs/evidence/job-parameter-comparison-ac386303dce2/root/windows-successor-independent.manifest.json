@@ -1,0 +1,136 @@
+{
+  "schema": "hamon.independent-receiving-manifest/1",
+  "capsule_bytes": 53062,
+  "capsule_sha256": "29f4f93cc78992d6d5ffe8ccb173dd6a868664e37be69e0fa59a50aa49ae753b",
+  "capsule_git_blob_sha1": "e521787d484cdccf0507214ff2f988765d6adeb0",
+  "decoded_bytes": 193065,
+  "decoded_sha256": "2e881084cfcd40744db87783382068b29e876001ec7e1ad1b68a2798940e47ff",
+  "members": [
+    {
+      "path": "windows/original-receipt.json",
+      "bytes": 9155,
+      "sha256": "53d296ad73aff18dd3c01235bf75f206cacca89c8f4d6c683ecdda2cbf8897c2",
+      "git_blob_sha1": "ce9392021c5478812643185133be025b8fc958ef"
+    },
+    {
+      "path": "windows/successor-receipt.json",
+      "bytes": 7409,
+      "sha256": "8b2234ceb4d48a996867cc28359eea6ab14b82146689864019c32a6bf19a318d",
+      "git_blob_sha1": "66fe3eee116685bde3f3d76c05c8f3677c7d40e4"
+    },
+    {
+      "path": "windows/native_reader_receiving.py",
+      "bytes": 9291,
+      "sha256": "dc8d41403c16300dd5af8fb9ba5cc820c9e497a3232e79abdca335db9d8a4e1c",
+      "git_blob_sha1": "4ea2c409edb449e0dcac13462bc31ac990f4fcdc"
+    },
+    {
+      "path": "windows/helper-original.py",
+      "bytes": 12523,
+      "sha256": "db744e872ed3f4dfa7d1bd253aa1e4610032e973e31f91a001cc964a0b139948",
+      "git_blob_sha1": "ec2f2695a3982bf262bea58b4e8f39cd0f74303f"
+    },
+    {
+      "path": "windows/helper-successor.py",
+      "bytes": 13045,
+      "sha256": "3fcc013cedffba87cdfdf105f80502b60bcfdca8c298e6b8feb20da2348d0966",
+      "git_blob_sha1": "a8496ac1e07ef649ba5d8b750ea72db45214d408"
+    },
+    {
+      "path": "windows/packet-metadata.json",
+      "bytes": 164,
+      "sha256": "ea6c1b9e4483a58cce344887d4a5022eaf60160b622dc232a234912097027aba",
+      "git_blob_sha1": "68095b54f629f66f400c20a1c85e7b8445684ac4"
+    },
+    {
+      "path": "qt/original-runner.py",
+      "bytes": 5679,
+      "sha256": "bd0daf30a82a299049c37ecfcadd26f2f6c9cd36987ea93c91e2ddd7fd8fd0c3",
+      "git_blob_sha1": "86d173d88e3b65946966fd21f1f122537a6cf048"
+    },
+    {
+      "path": "qt/successor-runner.py",
+      "bytes": 5981,
+      "sha256": "3c2faf8f98d93bc9bd7e932744a91a02a44eec18c3f9237578ff71b83d16cc3e",
+      "git_blob_sha1": "441a58bfe530e20dbdb320e7d29646b23d5a327e"
+    },
+    {
+      "path": "qt/execution.log",
+      "bytes": 1107,
+      "sha256": "e931a0e7f5dd3275376d04983092a20cea7f101dd41568b5665254c66678ac85",
+      "git_blob_sha1": "34a52c2715b565b4c189eaa4b51a3954f16c33f0"
+    },
+    {
+      "path": "qt/keyboard-successor-receiving.json",
+      "bytes": 12309,
+      "sha256": "b28df3cd0bb638ea2350d9edd0febc2679e0b66db3dd521cbc9897df6f753a84",
+      "git_blob_sha1": "eedb6ef4b512ee135eda92e43d085403ec72784a"
+    },
+    {
+      "path": "qt/test_independent_job_comparison.py",
+      "bytes": 17765,
+      "sha256": "dd6399443e79b2346b885c17a0fa7c1efa64403e17638d2bc46cbeacae3f970f",
+      "git_blob_sha1": "b1482e7fa9295cac1f2816719b542ecd6f29fcd5"
+    },
+    {
+      "path": "qt/test_independent_manifest_wrapper.py",
+      "bytes": 4198,
+      "sha256": "1f3610ac80ec603fd87d3370492d1deb231feb1370e6e0677586006b0dfc9d91",
+      "git_blob_sha1": "b95f4278df7c63d00535a2448994a40d2662c108"
+    },
+    {
+      "path": "qt/wrapper-successor-receiving.json",
+      "bytes": 9914,
+      "sha256": "2742a2322a6952b90c007ca3fd95d891fb7a8928a8fdee50b8397a9368943e46",
+      "git_blob_sha1": "b5a50573cedf15bca4f14cbd3640b0a8687ab008"
+    },
+    {
+      "path": "qt/packet-metadata.json",
+      "bytes": 3041,
+      "sha256": "28551b347e0737f1b56b8cfb55f6fc284b7331d5d56d720f5794a3e0c1573dc3",
+      "git_blob_sha1": "f430e1d0655bfc5a4bb3511f8336d189da171400"
+    },
+    {
+      "path": "native/windows-assembly-tool-result.json",
+      "bytes": 1017,
+      "sha256": "4d7da23ca1274aa2c80285a68f96cfe7a3e4e4c06ed3815c9db1a5e29712f2a4",
+      "git_blob_sha1": "f457fba46372414ea72a598a3810deccb60c6f95"
+    },
+    {
+      "path": "native/windows-execution-tool-result.json",
+      "bytes": 13290,
+      "sha256": "66f6bf517d7e8ff569fad605b636504b34ef7cf1d822c0425c6f99e7a5d92685",
+      "git_blob_sha1": "b9656168324732e549177a3c70923b8b27c90798"
+    },
+    {
+      "path": "native/windows-first-command-length-refusal.json",
+      "bytes": 314,
+      "sha256": "d511ec81f786e0fcae1eb07b829e65f6e1a67d56292d6c67f071062d47f52c3b",
+      "git_blob_sha1": "936b7a9f014ab1afeead311247544c24e87fa972"
+    },
+    {
+      "path": "native/windows-python-resolution.json",
+      "bytes": 597,
+      "sha256": "ff0c265b6b32e83123289c536b294fef90856c48caefa076e70d5627e5f29353",
+      "git_blob_sha1": "6890e8b28ca5415ef16b41566a19945cb2da6504"
+    },
+    {
+      "path": "qt/execution-bootstrap.py",
+      "bytes": 3778,
+      "sha256": "7baca055a69eb75f04b76aa8bccab5b3c146ef5871a0ccd280ffc2844f80de70",
+      "git_blob_sha1": "9ffebbfbaa96e8ff44fbb0741055b02c731639d5"
+    },
+    {
+      "path": "source/independent-readback.json",
+      "bytes": 6366,
+      "sha256": "1aa3a5a63d5520c7a76f323e1ac3d93a7a7f7685041895aa385419e526cf7899",
+      "git_blob_sha1": "3600604327de7df4bedd47f35deed735107a2b43"
+    },
+    {
+      "path": "QUALIFICATION.md",
+      "bytes": 3508,
+      "sha256": "83217d19ddbb97bef81919cd085120586a06844ecd6f9ed787e250ca33452702",
+      "git_blob_sha1": "1315a8a700046217f6e6fc496b4f7cf5671fd4ff"
+    }
+  ]
+}

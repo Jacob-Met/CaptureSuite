@@ -1,0 +1,30 @@
+{
+  "schema": "capturesuite.nearest_feature_current_main_composition/1",
+  "base": "11cc78297d8d214407aea693548af4de855d61da",
+  "qualified_native": "e1128160ae9ddc767d3235867bcd1647ddf047b0",
+  "current_main": "a2c89957c2cfe6fd5347d4ac317982449d3baa3a",
+  "tree": "a56d16deacabfdc2d062e76fd49b31c972b6ebb2",
+  "resolved_path": "docs/design/research/PROGRESS.md",
+  "resolution": "Prepend the exact owned entry to current main's complete progress bytes.",
+  "current_main_leaves": 1160,
+  "preserved_unrelated_main_leaves": 1157,
+  "owned_paths": [
+    "docs/design/ML_BUNDLE_METADATA.md",
+    "docs/design/research/PROGRESS.md",
+    "docs/evidence/ml-bundle-feature-order-713adaab/README.md",
+    "docs/evidence/ml-bundle-feature-order-713adaab/freeze_capsule.py",
+    "docs/evidence/ml-bundle-feature-order-713adaab/manifest.json",
+    "docs/evidence/ml-bundle-feature-order-713adaab/peer-source-review.json",
+    "docs/evidence/ml-bundle-feature-order-713adaab/prepublication-static.json",
+    "docs/evidence/ml-bundle-feature-order-713adaab/receiving.tar.gz",
+    "docs/evidence/ml-bundle-feature-order-713adaab/source-verification.json",
+    "docs/evidence/ml-bundle-feature-order-713adaab/verify_source.py",
+    "libs/python/capture_analysis/capture_analysis/ml_bundle/job.py",
+    "tests/analysis/test_ml_bundle_feature_order.py"
+  ],
+  "all_other_main_leaves_exact": true,
+  "python_library_paths_unchanged_between_received_base_and_main": 96,
+  "producer_sha256": "ed67d94ded834d63599797bbd8efb7b26f125bd216f52bcb7f01febb928922ce",
+  "test_sha256": "7a5e226afb9c0f49eadf6d4c25b8bc22575f1fdd04afdac854cf8aa4adee58be",
+  "limits": "Source composition and dependency-byte preservation, not a new runtime execution. Existing native17+14 results retain their original source maps; the complete published composition requires fresh supported Windows CI."
+}

@@ -1,0 +1,217 @@
+{
+  "schema": "capture.job_parameter_comparison.windows_reader_author_index/1",
+  "capsule": {
+    "path": "windows-reader-author.json.gz",
+    "bytes": 352393,
+    "sha256": "17acfea120f5ab31fed7204cd5b582043cdd0448a77c02e7fc7d4a206a28c1e1",
+    "git_blob_sha1": "c20235edcaf297f7c7d8b35caa71e63085930c86"
+  },
+  "decoded_json": {
+    "bytes": 1580143,
+    "sha256": "6902a0a508cc0f906da773f4350a14b0ab78a308b610f9992c0278fc745f3368",
+    "git_blob_sha1": "4ab0b122b0ee1709e2a0cf9837939c871cb73903"
+  },
+  "member_count": 33,
+  "original_member_bytes": 1179022,
+  "members": [
+    {
+      "path": "pr82-windows-original-python.log",
+      "bytes": 62329,
+      "sha256": "dd7af0c4fefa8a0a1185d66d50778a49b243f0eaad016e9e193fd6f086439cb2",
+      "git_blob_sha1": "0cf128c71d0be615faf6622dafc4a04775ee3431"
+    },
+    {
+      "path": "pr82-windows-original-cmake.log",
+      "bytes": 312297,
+      "sha256": "d05c2c95fdfd98acd792d849a402c66886fba4f5dc3333929de24476cbb8dd19",
+      "git_blob_sha1": "ad656a3a0365b748dc03c8041bfbd4e6e64ce7f5"
+    },
+    {
+      "path": "pr82-original-python-runner-receipt.json",
+      "bytes": 1395,
+      "sha256": "a19935f22c2c85a47e179fc5f0fe6a648bfee7578fb2e6e2c8be59a97979d8ae",
+      "git_blob_sha1": "ff875858fb39cc9fe1069b29d430b1f80887000e"
+    },
+    {
+      "path": "pr82-original-cmake-runner-receipt.json",
+      "bytes": 2170,
+      "sha256": "5bc20d9898c856c9f08c4958585fdb92a9e0a2b0b797cda6206d2f19fdf3acb4",
+      "git_blob_sha1": "90cbd8c2a0aa2e55c699d9219634e5691732a7a5"
+    },
+    {
+      "path": "pr82-original-ci-receipt.json",
+      "bytes": 5917,
+      "sha256": "87ad6346c042fec63f73ca7e779e68040bcfe1ff7cf640b085647e2b98bcb629",
+      "git_blob_sha1": "41512f3b28483ceb6179e3b8a1ad0911ce7cbbd0"
+    },
+    {
+      "path": "pr82-original-final-jobs.json",
+      "bytes": 5501,
+      "sha256": "33f7554973f10abd4d8c779b9ed57fcd4ecb7b58d6fc433ba33522fc565ea555",
+      "git_blob_sha1": "0b00020916a04c05d3637ca581d5032f43a647fb"
+    },
+    {
+      "path": "pr82-original-artifact-metadata.json",
+      "bytes": 1704,
+      "sha256": "43f369ccf74b00873370d7b66d888d75fba7d21065e82a7f1d0f7e3445948bb2",
+      "git_blob_sha1": "9836ae52f92195b946167ba102986674845c8cf7"
+    },
+    {
+      "path": "pr82-published-source.json",
+      "bytes": 6526,
+      "sha256": "46e7b4fec123fc65284f554be0fae4d84e93e9cf0cce7846e8f79602c748c00c",
+      "git_blob_sha1": "7cc6507152d97f4d74a3b572abc288e331c7e962"
+    },
+    {
+      "path": "file-read-original.json",
+      "bytes": 1514,
+      "sha256": "eb6fd8215fda4e6671b734a1f46fe237375a896b3b527f6efee2a2b0763e61e9",
+      "git_blob_sha1": "f0b9cb34f9c801500a7d90f2949d335ca98849b8"
+    },
+    {
+      "path": "file-read-original.log",
+      "bytes": 4467,
+      "sha256": "729017b68848b56c93d4dff16067484a5a36380646c8acd3412ddee208e418fa",
+      "git_blob_sha1": "73c9042ce4427b189a507f1e681346f74ab259dc"
+    },
+    {
+      "path": "file-read-original.xml",
+      "bytes": 4886,
+      "sha256": "7b91bacaf4e22831062d56054bece68381abd7d6c0dba2b2c96b4f0c21c784a2",
+      "git_blob_sha1": "74ef2b897f3394d2c506a2e49dad9080801243ef"
+    },
+    {
+      "path": "file-read-qualified.json",
+      "bytes": 3981,
+      "sha256": "8088c14941399cacbcda476750e38c6d515665a444f130f5605c3a057dcd90d0",
+      "git_blob_sha1": "c454aed8d2f3cd7988912465d5ab12b24829fa60"
+    },
+    {
+      "path": "file-read-qualified.log",
+      "bytes": 98,
+      "sha256": "a00d95dfbc084b6eb22229f4a5b545b4452162a59797c0faa121535a79212580",
+      "git_blob_sha1": "74a20cb4817f00fe20ddb389757a8f41d49657f4"
+    },
+    {
+      "path": "file-read-qualified.xml",
+      "bytes": 824,
+      "sha256": "93937752af39a01e48fe882669e0b44e88c7644287493767e12c4d3ae11f01fe",
+      "git_blob_sha1": "952b5a81139756418cd428457185c7f11081e625"
+    },
+    {
+      "path": "portable-ui-qualified.json",
+      "bytes": 4192,
+      "sha256": "cfa841ea11ae3c2041ee44a226d1ab5534e6d8b104cb0a9f85630cf71d3d23eb",
+      "git_blob_sha1": "42408deb604d0607067fbdecf4b9b6be8b1a677e"
+    },
+    {
+      "path": "portable-ui-qualified.log",
+      "bytes": 883,
+      "sha256": "c6f37dd26626b0fc59b230a73e8d07b05e50f97d6c9c142de445bbc8b4ca8e56",
+      "git_blob_sha1": "c47fbc36c413897770d35fcdb5852260c540b5ce"
+    },
+    {
+      "path": "portable-ui-qualified.xml",
+      "bytes": 7301,
+      "sha256": "399cdacab1d25631db72fda556fa0a58e1a308f99c056be166d6a95602fed64a",
+      "git_blob_sha1": "1aa673b181c9474514a855f043af035e4ce57d73"
+    },
+    {
+      "path": "source-freeze-windows-successor.json",
+      "bytes": 1996,
+      "sha256": "3002d17757d1c4cd93e5fa9fb3a472f5829901864f2f3f1a5367652439ff0a95",
+      "git_blob_sha1": "c81514c36bcab6aabd47d5a0aff54f0475705c1f"
+    },
+    {
+      "path": "windows-reader-correction.diff",
+      "bytes": 1674,
+      "sha256": "2ff148b9ae6c2845fbdf7753b0c6b2b2921ab431bd9395ceb160d8c348416fba",
+      "git_blob_sha1": "15782184d335bb69c922f832090e6a217be6a33d"
+    },
+    {
+      "path": "cpython-windows-metadata-evidence.json",
+      "bytes": 11591,
+      "sha256": "5825692b9e742b485a135f066e3ac7f7b29c0dda66045238b732ec0c49f0c425",
+      "git_blob_sha1": "9716c761f119b7fb89d71a41a307842a206d95cc"
+    },
+    {
+      "path": "current-parent-11cc-commit.json",
+      "bytes": 2990,
+      "sha256": "5ff38a56a1776d94ab30c559f93efd6eab5cd95c2552dcb68f0156d09e22c6fa",
+      "git_blob_sha1": "f3efe45d0d944496966cb2cd0b3386e1854ed51e"
+    },
+    {
+      "path": "current-parent-11cc-tree.json",
+      "bytes": 412018,
+      "sha256": "6fc58011f3a37aa53d98a95286f50569d031dc58400fab5487b4bb368e23fcab",
+      "git_blob_sha1": "e1579fde2ca251d7e432cf03ab3b855269001808"
+    },
+    {
+      "path": "current-parent-11cc-delta.json",
+      "bytes": 208083,
+      "sha256": "a5209fc425fae9a6a506ae1d271ae1775b21abc6f87536674bcb0cd2a9a008f4",
+      "git_blob_sha1": "4b062100cb4d0d6e560fdaf24e3e4c012d4faf20"
+    },
+    {
+      "path": "frozen-windows-original/analysis_job_comparison.py",
+      "bytes": 12523,
+      "sha256": "db744e872ed3f4dfa7d1bd253aa1e4610032e973e31f91a001cc964a0b139948",
+      "git_blob_sha1": "ec2f2695a3982bf262bea58b4e8f39cd0f74303f"
+    },
+    {
+      "path": "frozen-windows-original/source-freeze-v2.json",
+      "bytes": 1401,
+      "sha256": "0cfa667e32cda7fe55725799497080641d0e649bc255c39bf739bda61f6d38d3",
+      "git_blob_sha1": "4246917714b7651d28989bd5a9496c0d4392bbf2"
+    },
+    {
+      "path": "frozen-windows-original/test_analysis_job_comparison.py",
+      "bytes": 17558,
+      "sha256": "81e931c5dfe9cd67b3f38117e4e2fd08d1a3b8c395c46cc02ce28839541fbfe0",
+      "git_blob_sha1": "26b8fe1772fb66552f20a22c00fe53c6e689edbb"
+    },
+    {
+      "path": "frozen-windows-original/widgets_analysis_comparison.py",
+      "bytes": 14400,
+      "sha256": "bd0adca471711350b45702bf7c625b28c348321be43c6eaecd047da33304fc1d",
+      "git_blob_sha1": "e770b14c04fe2e36e98a08913ac8f42baa05e980"
+    },
+    {
+      "path": "frozen-windows-original/widgets_analysis_plots.py",
+      "bytes": 10075,
+      "sha256": "3d9e2a5843acf530fbffd4dcb42bccff71822801ce0df0c037a72a3d6e7d07da",
+      "git_blob_sha1": "8938b536f13479a424ffb3cd913a4f3364de8d32"
+    },
+    {
+      "path": "frozen-windows-successor/analysis_job_comparison.py",
+      "bytes": 13045,
+      "sha256": "3fcc013cedffba87cdfdf105f80502b60bcfdca8c298e6b8feb20da2348d0966",
+      "git_blob_sha1": "a8496ac1e07ef649ba5d8b750ea72db45214d408"
+    },
+    {
+      "path": "frozen-windows-successor/test_analysis_job_comparison.py",
+      "bytes": 17558,
+      "sha256": "81e931c5dfe9cd67b3f38117e4e2fd08d1a3b8c395c46cc02ce28839541fbfe0",
+      "git_blob_sha1": "26b8fe1772fb66552f20a22c00fe53c6e689edbb"
+    },
+    {
+      "path": "frozen-windows-successor/test_analysis_job_file_reads.py",
+      "bytes": 3650,
+      "sha256": "2f862646186213e4f9ad4ec1427011fc009887be86bd112b4181776f2d159372",
+      "git_blob_sha1": "518fb9f79ab3a3ea3817b8a36a6b9450ef1198af"
+    },
+    {
+      "path": "frozen-windows-successor/widgets_analysis_comparison.py",
+      "bytes": 14400,
+      "sha256": "bd0adca471711350b45702bf7c625b28c348321be43c6eaecd047da33304fc1d",
+      "git_blob_sha1": "e770b14c04fe2e36e98a08913ac8f42baa05e980"
+    },
+    {
+      "path": "frozen-windows-successor/widgets_analysis_plots.py",
+      "bytes": 10075,
+      "sha256": "3d9e2a5843acf530fbffd4dcb42bccff71822801ce0df0c037a72a3d6e7d07da",
+      "git_blob_sha1": "8938b536f13479a424ffb3cd913a4f3364de8d32"
+    }
+  ],
+  "limits": "The original CI negative remains unaccepted. The four-case paired reader tests run on Linux with documented clock mismatch simulation and real filesystem replacement; separate root Windows 3.13 diagnostics and actual successor Windows 3.12 CI must retain their own runtime/source attribution. Original author and independent capsules are unchanged."
+}

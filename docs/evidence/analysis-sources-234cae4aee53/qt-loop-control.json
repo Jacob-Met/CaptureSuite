@@ -1,0 +1,61 @@
+{
+  "receipt": {
+    "current_git_head": "1953c9bc8823344960c49130e6f4ddabc2369953",
+    "events": [
+      {
+        "event": "worker.finished observed",
+        "seconds": 1.4651753210055176
+      },
+      {
+        "event": "thread.finished observed",
+        "seconds": 1.4707515449990751
+      }
+    ],
+    "last_job_dir": "/dev/shm/capturesuite-234cae4aee53/source-qt-loop-parent-6tcldkkz/loop.mmsession/processing/jobs/20261008T145546Z_68b612fe",
+    "normal_completion": true,
+    "raw_after": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "64828d1836c01d154355917a0281acb093f582e04b75bff3c4421bc288b8f1a4",
+      "manifest.json": "77d52177df967781e855cb78ef991f680842582ebd988ded9c02e04b77a05a97",
+      "sources/folder-a/health/gaps.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sources/folder-a/source.json": "ded4b0b0994a6f370b23cea9d2182bfee6dc36525f7890e7f8e34519271ba4ab",
+      "sources/folder-a/streams/force/segments/000000.mcap": "9467807bbd26f27129ab88b98d18365343c03c7a712fa7434fb234a7973f6400",
+      "sources/folder-a/streams/force/stream.json": "7b5f368f899b5e8d9b40265d8c9ada3e344f689c3185defabd8918334115f9a6",
+      "sources/folder-a/streams/voltage/segments/000000.mcap": "08a2f0ae5432bf5117707e27297063ea65c727b51f1113a587c76a58ec50eeb5",
+      "sources/folder-a/streams/voltage/stream.json": "d9534fcd83e3539b38a4c471f912aadfdd4a7cd87d8069b69a8111741a737c01",
+      "sources/sampler.b/health/gaps.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sources/sampler.b/source.json": "51b11206a43ab0590baa31e0cf19b8f7194fac5875bc73f900f1417bd1d55b23",
+      "sources/sampler.b/streams/temperature/segments/000000.mcap": "237560fe806bf7576bfe9723c09307038c01d9048d32a4a29f9b09711864c8c7",
+      "sources/sampler.b/streams/temperature/stream.json": "a6e2152bd7d97aa6fc3ca23175d84fdb898ce91803c2147de52dc2a9f76c051d"
+    },
+    "raw_before": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "64828d1836c01d154355917a0281acb093f582e04b75bff3c4421bc288b8f1a4",
+      "manifest.json": "77d52177df967781e855cb78ef991f680842582ebd988ded9c02e04b77a05a97",
+      "sources/folder-a/health/gaps.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sources/folder-a/source.json": "ded4b0b0994a6f370b23cea9d2182bfee6dc36525f7890e7f8e34519271ba4ab",
+      "sources/folder-a/streams/force/segments/000000.mcap": "9467807bbd26f27129ab88b98d18365343c03c7a712fa7434fb234a7973f6400",
+      "sources/folder-a/streams/force/stream.json": "7b5f368f899b5e8d9b40265d8c9ada3e344f689c3185defabd8918334115f9a6",
+      "sources/folder-a/streams/voltage/segments/000000.mcap": "08a2f0ae5432bf5117707e27297063ea65c727b51f1113a587c76a58ec50eeb5",
+      "sources/folder-a/streams/voltage/stream.json": "d9534fcd83e3539b38a4c471f912aadfdd4a7cd87d8069b69a8111741a737c01",
+      "sources/sampler.b/health/gaps.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sources/sampler.b/source.json": "51b11206a43ab0590baa31e0cf19b8f7194fac5875bc73f900f1417bd1d55b23",
+      "sources/sampler.b/streams/temperature/segments/000000.mcap": "237560fe806bf7576bfe9723c09307038c01d9048d32a4a29f9b09711864c8c7",
+      "sources/sampler.b/streams/temperature/stream.json": "a6e2152bd7d97aa6fc3ca23175d84fdb898ce91803c2147de52dc2a9f76c051d"
+    },
+    "raw_unchanged": true,
+    "screen_sha256": "7f1486e50773b590e9f06cca0e865ab67ef383677188fa0845a14f38d7336fdb",
+    "seconds": 1.477893782001047,
+    "ui_log": "Starting features on /dev/shm/capturesuite-234cae4aee53/source-qt-loop-parent-6tcldkkz/loop.mmsession\nscope=Full session\nstart (0%)\nqc (15%)\nwrite_qc (25%)\nfeatures_plots (45%)\nmanifest (90%)\ndone (100%)\nDone status=completed job_id=20261008T145546Z_68b612fe\ndir=/dev/shm/capturesuite-234cae4aee53/source-qt-loop-parent-6tcldkkz/loop.mmsession/processing/jobs/20261008T145546Z_68b612fe\nFigures loaded in-app (sync dashboard + gallery tabs).",
+    "ui_thread_cleared": true,
+    "variant": "parent",
+    "wait": "real QEventLoop.exec",
+    "warnings": []
+  },
+  "executed_harness": "import hashlib, json, os, subprocess, sys, tempfile, time, types\nfrom pathlib import Path\nfrom PySide6.QtCore import QCoreApplication, QEvent, QEventLoop, QTimer\nfrom PySide6.QtWidgets import QApplication, QMessageBox\nfrom tests.ui.test_analysis_sources import _package\nfrom tests.analysis.test_numeric_cli_receiving import retained_files\nfrom capture_desktop.state import CaptureState\n\nvariant = sys.argv[1]\nsource = Path.cwd()\nscreen_path = \"desktop/capture_desktop/screen_analysis.py\"\nif variant == \"parent\":\n    code = subprocess.check_output([\"git\", \"show\", \"2f4dcf3:\" + screen_path], text=True)\n    module = types.ModuleType(\"capture_desktop.receiving_parent_screen\")\n    module.__package__ = \"capture_desktop\"\n    exec(compile(code, \"<exact 2f4dcf3 screen_analysis.py>\", \"exec\"), module.__dict__)\n    Screen = module.AnalysisScreen\nelse:\n    code = (source / screen_path).read_text(encoding=\"utf-8\")\n    from capture_desktop.screen_analysis import AnalysisScreen as Screen\n\nstarted = time.monotonic()\nrecord = {\n    \"variant\": variant, \"screen_sha256\": hashlib.sha256(code.encode()).hexdigest(),\n    \"current_git_head\": subprocess.check_output([\"git\", \"rev-parse\", \"HEAD\"], text=True).strip(),\n    \"wait\": \"real QEventLoop.exec\", \"events\": [], \"warnings\": [],\n}\ntemporary = tempfile.TemporaryDirectory(prefix=\"source-qt-loop-\" + variant + \"-\",\n                                       dir=\"/dev/shm/capturesuite-234cae4aee53\")\nroot = Path(temporary.name)\nfor key in (\"LOCALAPPDATA\", \"APPDATA\", \"XDG_CONFIG_HOME\", \"XDG_DATA_HOME\", \"XDG_CACHE_HOME\"):\n    folder = root / key\n    folder.mkdir()\n    os.environ[key] = str(folder)\napp = QApplication.instance() or QApplication([])\napp.setQuitOnLastWindowClosed(False)\npackage = _package(root / \"loop.mmsession\")\nbefore = retained_files(package)\nscreen = Screen(CaptureState())\nscreen.set_package(str(package))\nscreen._command.setCurrentIndex(screen._command.findData(\"features\"))\nscreen.resize(1200, 900)\nscreen.show()\napp.processEvents()\nloop = QEventLoop()\n\ndef event(name):\n    record[\"events\"].append({\"event\": name, \"seconds\": time.monotonic() - started})\n\ndef watch():\n    dialog = QApplication.activeModalWidget()\n    if isinstance(dialog, QMessageBox):\n        record[\"warnings\"].append(dialog.text())\n        dialog.accept()\n\ntimer = QTimer()\ntimer.timeout.connect(watch)\ntimer.start(50)\nscreen._start_job()\nthread = screen._thread\nworker = screen._worker\nassert thread is not None and worker is not None\nworker.finished.connect(lambda result: event(\"worker.finished observed\"))\nworker.failed.connect(lambda text: event(\"worker.failed observed: \" + text))\nthread.finished.connect(lambda: event(\"thread.finished observed\"))\nthread.finished.connect(loop.quit)\nQTimer.singleShot(45_000, loop.quit)\nloop.exec()\napp.processEvents()\nrecord.update(last_job_dir=screen._last_job_dir, ui_thread_cleared=screen._thread is None,\n              ui_log=screen._log.toPlainText(), raw_unchanged=before == retained_files(package),\n              raw_before=before, raw_after=retained_files(package))\nnormal = screen._thread is None\nrecord[\"normal_completion\"] = normal\nif not normal:\n    event(\"normal wait timed out; explicit quit requested for cleanup only\")\n    thread.quit()\n    QTimer.singleShot(3_000, loop.quit)\n    loop.exec()\n    app.processEvents()\n    record[\"cleared_after_explicit_quit\"] = screen._thread is None\nrecord[\"seconds\"] = time.monotonic() - started\nprint(\"RECEIPT=\" + json.dumps(record, sort_keys=True), flush=True)\nif screen._thread is not None:\n    os._exit(4)\ntimer.stop()\nscreen.close()\nscreen.deleteLater()\nQCoreApplication.sendPostedEvents(None, QEvent.Type.DeferredDelete)\napp.processEvents()\ntemporary.cleanup()\nsys.exit(0 if normal else 3)\n",
+  "exit_code": 0
+}

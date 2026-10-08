@@ -1,0 +1,38 @@
+{
+  "canonical_baseline": "30de2119699d49d6108fc57f2816b7c32615f7eb",
+  "freeze": "bounded metadata-reader successor",
+  "frozen_at": "2026-10-08T15:41:06.704764+00:00",
+  "files": [
+    {
+      "path": "desktop/capture_desktop/analysis_job_comparison.py",
+      "bytes": 12523,
+      "sha256": "db744e872ed3f4dfa7d1bd253aa1e4610032e973e31f91a001cc964a0b139948",
+      "git_blob_sha1": "ec2f2695a3982bf262bea58b4e8f39cd0f74303f"
+    },
+    {
+      "path": "desktop/capture_desktop/widgets_analysis_comparison.py",
+      "bytes": 14400,
+      "sha256": "bd0adca471711350b45702bf7c625b28c348321be43c6eaecd047da33304fc1d",
+      "git_blob_sha1": "e770b14c04fe2e36e98a08913ac8f42baa05e980"
+    },
+    {
+      "path": "desktop/capture_desktop/widgets_analysis_plots.py",
+      "bytes": 10075,
+      "sha256": "3d9e2a5843acf530fbffd4dcb42bccff71822801ce0df0c037a72a3d6e7d07da",
+      "git_blob_sha1": "8938b536f13479a424ffb3cd913a4f3364de8d32"
+    },
+    {
+      "path": "tests/ui/test_analysis_job_comparison.py",
+      "bytes": 17558,
+      "sha256": "81e931c5dfe9cd67b3f38117e4e2fd08d1a3b8c395c46cc02ce28839541fbfe0",
+      "git_blob_sha1": "26b8fe1772fb66552f20a22c00fe53c6e689edbb"
+    }
+  ],
+  "unowned_top_level_definitions_preserved": [
+    "FigureGallery",
+    "SyncDashboardView",
+    "_hex_color"
+  ],
+  "prior_freeze": "source-freeze.json",
+  "qualification_receipt": "wrapper-qualified.json"
+}

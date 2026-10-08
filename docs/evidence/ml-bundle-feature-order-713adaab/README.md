@@ -98,3 +98,19 @@ restored the original producer by removing exactly the four added lines, and
 read back all 43 original input pairs and all 17 output identities. It found no
 source blocker. Numeric Parquet decoding and runtime receiving remain the
 author's separate qualification; the reviewer did not rerun tests or builds.
+
+
+## Current-main composition
+
+Before publication, current main advanced to
+`a2c89957c2cfe6fd5347d4ac317982449d3baa3a` with the source picker and saved-job
+parameter comparison. [The composition receipt](current-main-composition.json)
+binds the genuine three-way merge to those owner changes. All 1,157 unrelated
+main leaves remain exact; the complete current progress document is preserved
+after the exact owned addition. All 96 Python library leaves are unchanged
+between the originally received parent and this current main.
+
+The receipt identifies the underlying merged tree before adding this receipt
+and paragraph. Runtime and test bytes retain their reviewed identities.
+The earlier native results remain bound to their original source maps;
+the complete published union receives fresh supported Windows CI.

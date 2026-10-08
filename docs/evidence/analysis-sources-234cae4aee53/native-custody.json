@@ -1,0 +1,69 @@
+{
+  "qualified_commit": "7b2c999584909fd7ef5623e2133b9e8f507031d8",
+  "qualified_tree": "1ca645aa4d29f9fffcf43454cfbbe3682b1b39b2",
+  "bundle": "qualified-source-7b2c999.bundle",
+  "bundle_bytes": 72897,
+  "bundle_sha256": "2f595a8b3e5e73571ccf302523728b18d75249e7cc177b6143b20befcb679cdc",
+  "requires_published_commit": "2f4dcf3ec81a96ac92100f69155879fe42e4f948",
+  "native_evidence_import": {
+    "head": "2f54560bad7634ffc0303e69c43166b0b2990c94",
+    "tree": "0b391eee5fbf5d65303922a1f36c4db853f9f407",
+    "status": "",
+    "transferred_files": [
+      {
+        "path": "docs/evidence/analysis-sources-234cae4aee53/qualification-7b2c999/pytest.log",
+        "bytes": 1073,
+        "sha256": "0262f2ef5e1942d69f558e29d56f1ca17c117b45bf64ee93c94425590b0e2dba"
+      },
+      {
+        "path": "docs/evidence/analysis-sources-234cae4aee53/qualification-7b2c999/pytest.xml",
+        "bytes": 1979,
+        "sha256": "1340ae7999419cc1bedeafa17ac7b85a6de2c45e787187e77960143bcc2cdc79"
+      },
+      {
+        "path": "docs/evidence/analysis-sources-234cae4aee53/qualification-7b2c999/receipt.json",
+        "bytes": 1318,
+        "sha256": "10e1d16a05b1c142ea047b12886a331df0aed69f45f2072c23fcacf00012fb25"
+      },
+      {
+        "path": "docs/evidence/analysis-sources-234cae4aee53/qualification-7b2c999/source-manifest.json",
+        "bytes": 114852,
+        "sha256": "b26ea3ed1c58e0cab2499fb448344f4b7f51bda54ff44502460564b8cfeda86a"
+      },
+      {
+        "path": "docs/evidence/analysis-sources-234cae4aee53/qualification-7b2c999/actual-jobs.json",
+        "bytes": 32233,
+        "sha256": "ad6ed41f7c0dc6c2bf3669ae631139f76020fe980626ccbb27b33b780eb8b70e"
+      },
+      {
+        "path": "docs/evidence/analysis-sources-234cae4aee53/qualification-7b2c999/driver.json",
+        "bytes": 2259,
+        "sha256": "5702df0ccfa7a5a54f187d0f1180dbf7584734a6db8ec182da99b3434fc1f5a7"
+      },
+      {
+        "path": "docs/evidence/analysis-sources-234cae4aee53/presentation-7b2c999/driver.json",
+        "bytes": 2012,
+        "sha256": "732339bd9c6b425f9610551bd72c2ebe7aa8cb6efeb10682a12907c6309e216a"
+      },
+      {
+        "path": "docs/evidence/analysis-sources-234cae4aee53/presentation-7b2c999/failed-filesystem-save.json",
+        "bytes": 2477,
+        "sha256": "5223760924b3049066c6bdf59cfe46cbe5ebf33061b2673a8bfd2bce52988921"
+      },
+      {
+        "path": "docs/evidence/analysis-sources-234cae4aee53/presentation-7b2c999/workbench.png",
+        "bytes": 78978,
+        "sha256": "c36dadd4660cba4686fe547feeab15886d986f4c27bd7864737de07bcc78da3c"
+      },
+      {
+        "path": "docs/evidence/analysis-sources-234cae4aee53/presentation-7b2c999/chooser.png",
+        "bytes": 14427,
+        "sha256": "e94c61ed2dededd6ed420cca0ae9dee8ca5c3044a635eef634ca05403d72b212"
+      }
+    ],
+    "production_sha256": {
+      "desktop/capture_desktop/widgets_analysis_sources.py": "be4c05cbf9b0c801176668933d3bb60204f5c94ce8fea3f85da176575d42c99f",
+      "desktop/capture_desktop/screen_analysis.py": "24c0bef14f448fc7c1e72e9d4f97067deaa6e991bb1f8a0baeba9b33aa34adc1"
+    }
+  }
+}

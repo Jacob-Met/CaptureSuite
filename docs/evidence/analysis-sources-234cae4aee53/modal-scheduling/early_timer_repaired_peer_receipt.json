@@ -1,0 +1,67 @@
+{
+  "schema": "hamon.capture.qt-modal-peer.v1",
+  "role": "independent root receiving",
+  "exact_test_file_sha256": "db5430b670eafcbfb8fe5c05b3abffe31ab9eb5fc4bdcae043615dc921532d29",
+  "source_git_blob": "b7d2e381d4a1f47465c9ced7e35923eea0668872",
+  "runtime": "/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python",
+  "invocation": "python -B -c <exact early_timer_repaired_peer.py contents>",
+  "execution": {
+    "chunk_id": "fcef51",
+    "wall_time_seconds": 0.11336114,
+    "exit_code": 0,
+    "original_token_count": 389,
+    "output": "This plugin does not support propagateSizeHints()\nThis plugin does not support propagateSizeHints()\nThis plugin does not support propagateSizeHints()\nThis plugin does not support propagateSizeHints()\nHAMON_RECEIPT={\"cases\": [{\"elapsed_ms\": 26.996, \"events\": [{\"elapsed_ms\": 24.811, \"event\": \"actual clicked slot opens modal\"}, {\"elapsed_ms\": 26.941, \"event\": \"modal returned\"}], \"forced_early_timer_delivery\": false, \"offered\": [\"sampler.a\"], \"returned\": \"normal\"}, {\"active_modal_after_early_delivery\": false, \"elapsed_ms\": 12.345, \"events\": [{\"elapsed_ms\": 0.641, \"event\": \"deliver pending zero timer before real mouse click\"}, {\"elapsed_ms\": 0.891, \"event\": \"actual clicked slot opens modal\"}, {\"elapsed_ms\": 12.204, \"event\": \"modal returned\"}], \"forced_early_timer_delivery\": true, \"offered\": [\"sampler.a\"], \"returned\": \"normal\"}], \"helper_sha256\": \"e097531c324045781f0f5183a4e1c25b0887d9cde0cdb413a2c4b03845c4e083\", \"purpose\": \"Independent actual Qt receiving of the corrected chooser helper under identical early-timer delivery\", \"pyside\": \"6.11.2\", \"scope\": \"The exact candidate test helper runs against real Qt combo/button/modal/list/button-box controls. A test-driver wrapper explicitly pumps the pending zero timer before forwarding the real chooser click. This checks the corrected helper under the same previously failing event ordering; it does not identify the cause or current test of the separate Windows suite timeout. No production source is changed.\", \"source_git_blob\": \"b7d2e381d4a1f47465c9ced7e35923eea0668872\", \"status\": \"passed\"}\n"
+  },
+  "parsed_receipt": {
+    "cases": [
+      {
+        "elapsed_ms": 26.996,
+        "events": [
+          {
+            "elapsed_ms": 24.811,
+            "event": "actual clicked slot opens modal"
+          },
+          {
+            "elapsed_ms": 26.941,
+            "event": "modal returned"
+          }
+        ],
+        "forced_early_timer_delivery": false,
+        "offered": [
+          "sampler.a"
+        ],
+        "returned": "normal"
+      },
+      {
+        "active_modal_after_early_delivery": false,
+        "elapsed_ms": 12.345,
+        "events": [
+          {
+            "elapsed_ms": 0.641,
+            "event": "deliver pending zero timer before real mouse click"
+          },
+          {
+            "elapsed_ms": 0.891,
+            "event": "actual clicked slot opens modal"
+          },
+          {
+            "elapsed_ms": 12.204,
+            "event": "modal returned"
+          }
+        ],
+        "forced_early_timer_delivery": true,
+        "offered": [
+          "sampler.a"
+        ],
+        "returned": "normal"
+      }
+    ],
+    "helper_sha256": "e097531c324045781f0f5183a4e1c25b0887d9cde0cdb413a2c4b03845c4e083",
+    "purpose": "Independent actual Qt receiving of the corrected chooser helper under identical early-timer delivery",
+    "pyside": "6.11.2",
+    "scope": "The exact candidate test helper runs against real Qt combo/button/modal/list/button-box controls. A test-driver wrapper explicitly pumps the pending zero timer before forwarding the real chooser click. This checks the corrected helper under the same previously failing event ordering; it does not identify the cause or current test of the separate Windows suite timeout. No production source is changed.",
+    "source_git_blob": "b7d2e381d4a1f47465c9ced7e35923eea0668872",
+    "status": "passed"
+  },
+  "limitation": "The tool returns merged process output; this packet does not invent separate raw stdout/stderr files. This demonstrates the helper under forced early timer delivery, not the cause of the separate Windows whole-suite timeout."
+}
