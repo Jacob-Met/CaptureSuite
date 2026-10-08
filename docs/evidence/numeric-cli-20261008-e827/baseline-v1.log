@@ -1,0 +1,61 @@
+test_all_creates_distinct_numeric_tables_and_figures (__main__.NumericCliReceiving.test_all_creates_distinct_numeric_tables_and_figures) ... FAIL
+test_case_only_stream_ids_keep_distinct_paths_and_gap_provenance (__main__.NumericCliReceiving.test_case_only_stream_ids_keep_distinct_paths_and_gap_provenance) ... FAIL
+test_features_source_selection_keeps_sibling_outputs_independent (__main__.NumericCliReceiving.test_features_source_selection_keeps_sibling_outputs_independent) ... FAIL
+test_missing_package_is_a_hard_cli_failure_without_a_job (__main__.NumericCliReceiving.test_missing_package_is_a_hard_cli_failure_without_a_job) ... ok
+test_plots_command_produces_real_numeric_figures_and_series (__main__.NumericCliReceiving.test_plots_command_produces_real_numeric_figures_and_series) ... FAIL
+test_qc_html_inventory_and_manifest_are_available_without_features (__main__.NumericCliReceiving.test_qc_html_inventory_and_manifest_are_available_without_features) ... ok
+test_refused_stream_is_reported_and_strict_warnings_changes_exit (__main__.NumericCliReceiving.test_refused_stream_is_reported_and_strict_warnings_changes_exit) ... FAIL
+
+======================================================================
+FAIL: test_all_creates_distinct_numeric_tables_and_figures (__main__.NumericCliReceiving.test_all_creates_distinct_numeric_tables_and_figures)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric-cli/test_numeric_cli_receiving.py", line 321, in test_all_creates_distinct_numeric_tables_and_figures
+    tables = self.tables_by_identity(job, manifest)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric-cli/test_numeric_cli_receiving.py", line 227, in tables_by_identity
+    self.assertTrue(schema_path.is_file(), "numeric feature schema must be created")
+AssertionError: False is not true : numeric feature schema must be created
+
+======================================================================
+FAIL: test_case_only_stream_ids_keep_distinct_paths_and_gap_provenance (__main__.NumericCliReceiving.test_case_only_stream_ids_keep_distinct_paths_and_gap_provenance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric-cli/test_numeric_cli_receiving.py", line 418, in test_case_only_stream_ids_keep_distinct_paths_and_gap_provenance
+    tables = self.tables_by_identity(job, manifest)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric-cli/test_numeric_cli_receiving.py", line 227, in tables_by_identity
+    self.assertTrue(schema_path.is_file(), "numeric feature schema must be created")
+AssertionError: False is not true : numeric feature schema must be created
+
+======================================================================
+FAIL: test_features_source_selection_keeps_sibling_outputs_independent (__main__.NumericCliReceiving.test_features_source_selection_keeps_sibling_outputs_independent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric-cli/test_numeric_cli_receiving.py", line 348, in test_features_source_selection_keeps_sibling_outputs_independent
+    tables = self.tables_by_identity(job, manifest)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric-cli/test_numeric_cli_receiving.py", line 227, in tables_by_identity
+    self.assertTrue(schema_path.is_file(), "numeric feature schema must be created")
+AssertionError: False is not true : numeric feature schema must be created
+
+======================================================================
+FAIL: test_plots_command_produces_real_numeric_figures_and_series (__main__.NumericCliReceiving.test_plots_command_produces_real_numeric_figures_and_series)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric-cli/test_numeric_cli_receiving.py", line 361, in test_plots_command_produces_real_numeric_figures_and_series
+    self.assertEqual(len(figures), 2)
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_refused_stream_is_reported_and_strict_warnings_changes_exit (__main__.NumericCliReceiving.test_refused_stream_is_reported_and_strict_warnings_changes_exit)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric-cli/test_numeric_cli_receiving.py", line 378, in test_refused_stream_is_reported_and_strict_warnings_changes_exit
+    self.assertEqual(len(manifest["warnings"]), expected_count)
+AssertionError: 1 != 2
+
+----------------------------------------------------------------------
+Ran 7 tests in 13.359s
+
+FAILED (failures=5)

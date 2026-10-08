@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="2.342" timestamp="2026-10-08T21:12:32.655454+09:00" hostname="05aaedaf3e50"><testcase classname="tests.ui.test_analysis_scope" name="test_shadowed_checkpoint_id_is_unavailable_with_time_range_fallback[False]" time="2.151"><failure message="AssertionError: shadowed ID must not offer another checkpoint's bounds&#10;assert ['section-one', 'section-two'] == ['section-one']&#10;  &#10;  Left contains one more item: 'section-two'&#10;  Use -v to get more diff">qapp = &lt;PySide6.QtWidgets.QApplication(0x2eb4b0f0) at 0x7fbb48200b00&gt;
+tmp_path = PosixPath('/dev/shm/capturesuite-234cae4aee53/scope-shadow-before/test_shadowed_checkpoint_id_is0')
+reverse_record_order = False
+
+    @pytest.mark.parametrize("reverse_record_order", [False, True])
+    def test_shadowed_checkpoint_id_is_unavailable_with_time_range_fallback(
+        qapp, tmp_path: Path, reverse_record_order: bool,
+    ):
+        package = _package(tmp_path / "shadowed-id.mmsession")
+        path = package / "events" / "checkpoints.json"
+        checkpoints = json.loads(path.read_text())
+        checkpoints[0]["name"] = "section-two"
+        if reverse_record_order:
+            checkpoints.reverse()
+        path.write_text(json.dumps(checkpoints), encoding="utf-8")
+        raw = _raw_hashes(package)
+        header, screen = _widgets(qapp, package)
+        screen._command.setCurrentIndex(screen._command.findData("features"))
+        picker = header._scope_picker
+        picker._mode.setCurrentIndex(picker._mode.findData("section"))
+        offered = [picker._sections.itemData(i).section_name for i in range(picker._sections.count())]
+&gt;       assert offered == ["section-one"], "shadowed ID must not offer another checkpoint's bounds"
+E       AssertionError: shadowed ID must not offer another checkpoint's bounds
+E       assert ['section-one', 'section-two'] == ['section-one']
+E         
+E         Left contains one more item: 'section-two'
+E         Use -v to get more diff
+
+tests/ui/test_analysis_scope.py:292: AssertionError</failure></testcase><testcase classname="tests.ui.test_analysis_scope" name="test_shadowed_checkpoint_id_is_unavailable_with_time_range_fallback[True]" time="0.045"><failure message="AssertionError: shadowed ID must not offer another checkpoint's bounds&#10;assert ['section-two', 'section-one'] == ['section-one']&#10;  &#10;  At index 0 diff: 'section-two' != 'section-one'&#10;  Left contains one more item: 'section-one'&#10;  Use -v to get more diff">qapp = &lt;PySide6.QtWidgets.QApplication(0x2eb4b0f0) at 0x7fbb48200b00&gt;
+tmp_path = PosixPath('/dev/shm/capturesuite-234cae4aee53/scope-shadow-before/test_shadowed_checkpoint_id_is1')
+reverse_record_order = True
+
+    @pytest.mark.parametrize("reverse_record_order", [False, True])
+    def test_shadowed_checkpoint_id_is_unavailable_with_time_range_fallback(
+        qapp, tmp_path: Path, reverse_record_order: bool,
+    ):
+        package = _package(tmp_path / "shadowed-id.mmsession")
+        path = package / "events" / "checkpoints.json"
+        checkpoints = json.loads(path.read_text())
+        checkpoints[0]["name"] = "section-two"
+        if reverse_record_order:
+            checkpoints.reverse()
+        path.write_text(json.dumps(checkpoints), encoding="utf-8")
+        raw = _raw_hashes(package)
+        header, screen = _widgets(qapp, package)
+        screen._command.setCurrentIndex(screen._command.findData("features"))
+        picker = header._scope_picker
+        picker._mode.setCurrentIndex(picker._mode.findData("section"))
+        offered = [picker._sections.itemData(i).section_name for i in range(picker._sections.count())]
+&gt;       assert offered == ["section-one"], "shadowed ID must not offer another checkpoint's bounds"
+E       AssertionError: shadowed ID must not offer another checkpoint's bounds
+E       assert ['section-two', 'section-one'] == ['section-one']
+E         
+E         At index 0 diff: 'section-two' != 'section-one'
+E         Left contains one more item: 'section-one'
+E         Use -v to get more diff
+
+tests/ui/test_analysis_scope.py:292: AssertionError</failure></testcase></testsuite></testsuites>

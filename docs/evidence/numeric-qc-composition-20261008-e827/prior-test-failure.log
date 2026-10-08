@@ -1,0 +1,32 @@
+test_case_only_stream_ids_keep_distinct_paths_and_gap_provenance (<run_path>.NumericCliReceiving.test_case_only_stream_ids_keep_distinct_paths_and_gap_provenance) ... FAIL
+
+======================================================================
+FAIL: test_case_only_stream_ids_keep_distinct_paths_and_gap_provenance (<run_path>.NumericCliReceiving.test_case_only_stream_ids_keep_distinct_paths_and_gap_provenance)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/dev/shm/e827-numeric-cli-qc-successor/test_numeric_cli_receiving-prior.py", line 416, in test_case_only_stream_ids_keep_distinct_paths_and_gap_provenance
+    self.assert_healthy(proc, manifest)
+  File "/dev/shm/e827-numeric-cli-qc-successor/test_numeric_cli_receiving-prior.py", line 218, in assert_healthy
+    self.assertEqual(manifest["warnings"], expected_warnings)
+AssertionError: Lists differ: ['sampler.a: 1 recorded gap(s); see gap de[62 chars]ma'"] != ["manifest schema validation: No module na[13 chars]ma'"]
+
+First differing element 0:
+'sampler.a: 1 recorded gap(s); see gap details'
+"manifest schema validation: No module named 'jsonschema'"
+
+First list contains 1 additional elements.
+First extra element 1:
+"manifest schema validation: No module named 'jsonschema'"
+
+- ['sampler.a: 1 recorded gap(s); see gap details',
+-  "manifest schema validation: No module named 'jsonschema'"]
+? ^
+
++ ["manifest schema validation: No module named 'jsonschema'"]
+? ^
+
+
+----------------------------------------------------------------------
+Ran 1 test in 2.941s
+
+FAILED (failures=1)

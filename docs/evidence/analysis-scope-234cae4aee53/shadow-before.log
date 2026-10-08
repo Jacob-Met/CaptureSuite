@@ -1,0 +1,88 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+__ test_shadowed_checkpoint_id_is_unavailable_with_time_range_fallback[False] __
+
+qapp = <PySide6.QtWidgets.QApplication(0x2eb4b0f0) at 0x7fbb48200b00>
+tmp_path = PosixPath('/dev/shm/capturesuite-234cae4aee53/scope-shadow-before/test_shadowed_checkpoint_id_is0')
+reverse_record_order = False
+
+    @pytest.mark.parametrize("reverse_record_order", [False, True])
+    def test_shadowed_checkpoint_id_is_unavailable_with_time_range_fallback(
+        qapp, tmp_path: Path, reverse_record_order: bool,
+    ):
+        package = _package(tmp_path / "shadowed-id.mmsession")
+        path = package / "events" / "checkpoints.json"
+        checkpoints = json.loads(path.read_text())
+        checkpoints[0]["name"] = "section-two"
+        if reverse_record_order:
+            checkpoints.reverse()
+        path.write_text(json.dumps(checkpoints), encoding="utf-8")
+        raw = _raw_hashes(package)
+        header, screen = _widgets(qapp, package)
+        screen._command.setCurrentIndex(screen._command.findData("features"))
+        picker = header._scope_picker
+        picker._mode.setCurrentIndex(picker._mode.findData("section"))
+        offered = [picker._sections.itemData(i).section_name for i in range(picker._sections.count())]
+>       assert offered == ["section-one"], "shadowed ID must not offer another checkpoint's bounds"
+E       AssertionError: shadowed ID must not offer another checkpoint's bounds
+E       assert ['section-one', 'section-two'] == ['section-one']
+E         
+E         Left contains one more item: 'section-two'
+E         Use -v to get more diff
+
+tests/ui/test_analysis_scope.py:292: AssertionError
+----------------------------- Captured stderr call -----------------------------
+This plugin does not support propagateSizeHints()
+This plugin does not support propagateSizeHints()
+This plugin does not support propagateSizeHints()
+This plugin does not support propagateSizeHints()
+__ test_shadowed_checkpoint_id_is_unavailable_with_time_range_fallback[True] ___
+
+qapp = <PySide6.QtWidgets.QApplication(0x2eb4b0f0) at 0x7fbb48200b00>
+tmp_path = PosixPath('/dev/shm/capturesuite-234cae4aee53/scope-shadow-before/test_shadowed_checkpoint_id_is1')
+reverse_record_order = True
+
+    @pytest.mark.parametrize("reverse_record_order", [False, True])
+    def test_shadowed_checkpoint_id_is_unavailable_with_time_range_fallback(
+        qapp, tmp_path: Path, reverse_record_order: bool,
+    ):
+        package = _package(tmp_path / "shadowed-id.mmsession")
+        path = package / "events" / "checkpoints.json"
+        checkpoints = json.loads(path.read_text())
+        checkpoints[0]["name"] = "section-two"
+        if reverse_record_order:
+            checkpoints.reverse()
+        path.write_text(json.dumps(checkpoints), encoding="utf-8")
+        raw = _raw_hashes(package)
+        header, screen = _widgets(qapp, package)
+        screen._command.setCurrentIndex(screen._command.findData("features"))
+        picker = header._scope_picker
+        picker._mode.setCurrentIndex(picker._mode.findData("section"))
+        offered = [picker._sections.itemData(i).section_name for i in range(picker._sections.count())]
+>       assert offered == ["section-one"], "shadowed ID must not offer another checkpoint's bounds"
+E       AssertionError: shadowed ID must not offer another checkpoint's bounds
+E       assert ['section-two', 'section-one'] == ['section-one']
+E         
+E         At index 0 diff: 'section-two' != 'section-one'
+E         Left contains one more item: 'section-one'
+E         Use -v to get more diff
+
+tests/ui/test_analysis_scope.py:292: AssertionError
+----------------------------- Captured stderr call -----------------------------
+This plugin does not support propagateSizeHints()
+This plugin does not support propagateSizeHints()
+This plugin does not support propagateSizeHints()
+This plugin does not support propagateSizeHints()
+This plugin does not support propagateSizeHints()
+=============================== warnings summary ===============================
+tests/ui/test_analysis_scope.py::test_shadowed_checkpoint_id_is_unavailable_with_time_range_fallback[False]
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.MessageMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+
+tests/ui/test_analysis_scope.py::test_shadowed_checkpoint_id_is_unavailable_with_time_range_fallback[False]
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.ScalarMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/ui/test_analysis_scope.py::test_shadowed_checkpoint_id_is_unavailable_with_time_range_fallback[False]
+FAILED tests/ui/test_analysis_scope.py::test_shadowed_checkpoint_id_is_unavailable_with_time_range_fallback[True]
+2 failed, 15 deselected, 2 warnings in 2.34s

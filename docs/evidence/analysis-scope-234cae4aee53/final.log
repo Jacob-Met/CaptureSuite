@@ -1,0 +1,16 @@
+................s.......                                                 [100%]
+=============================== warnings summary ===============================
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.MessageMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.ScalarMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+============================= slowest 5 durations ==============================
+42.41s call     tests/ui/test_analysis_scope.py::test_selected_scope_reaches_real_thread_job_and_mcap_outputs[range]
+27.19s call     tests/ui/test_analysis_scope.py::test_selected_scope_reaches_real_thread_job_and_mcap_outputs[section]
+1.40s call     tests/ui/test_analysis_scope.py::test_operator_can_choose_a_sealed_session_scope
+0.44s call     tests/ui/test_analysis_workbench.py::test_job_writes_sync_series_json
+0.06s call     tests/ui/test_analysis_scope.py::test_invalid_scope_blocks_job_before_outputs[0.2-0.1]
+23 passed, 1 skipped, 2 warnings in 72.55s (0:01:12)

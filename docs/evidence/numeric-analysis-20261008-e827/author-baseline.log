@@ -1,0 +1,369 @@
+test_known_gap_masks_samples_and_fail_policy_refuses (test_numeric_batch_pipeline.NumericFeatureTests.test_known_gap_masks_samples_and_fail_policy_refuses) ... ok
+test_large_and_small_finite_values_have_finite_correct_reductions (test_numeric_batch_pipeline.NumericFeatureTests.test_large_and_small_finite_values_have_finite_correct_reductions) ... ERROR
+test_public_feature_shape_and_rate_are_validated (test_numeric_batch_pipeline.NumericFeatureTests.test_public_feature_shape_and_rate_are_validated) ... FAIL
+test_split_does_not_bridge_a_gap_without_samples (test_numeric_batch_pipeline.NumericFeatureTests.test_split_does_not_bridge_a_gap_without_samples) ... FAIL
+test_actual_batch_guard_does_not_trust_descriptor_density (test_numeric_batch_pipeline.NumericLoaderTests.test_actual_batch_guard_does_not_trust_descriptor_density) ... ERROR
+test_actual_budget_accumulates_across_batches (test_numeric_batch_pipeline.NumericLoaderTests.test_actual_budget_accumulates_across_batches) ... ERROR
+test_backward_device_times_are_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_backward_device_times_are_refused) ... ERROR
+test_changing_layout_is_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_changing_layout_is_refused) ... ERROR
+test_empty_and_outside_window_return_valid_public_result (test_numeric_batch_pipeline.NumericLoaderTests.test_empty_and_outside_window_return_valid_public_result) ... ERROR
+test_impossible_budget_refuses_before_iteration (test_numeric_batch_pipeline.NumericLoaderTests.test_impossible_budget_refuses_before_iteration) ... FAIL
+test_incomplete_frame_is_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_incomplete_frame_is_refused) ... ERROR
+test_invalid_channel_names_are_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_invalid_channel_names_are_refused) ... ERROR
+test_json_device_timestamp_overflow_is_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_json_device_timestamp_overflow_is_refused) ... ERROR
+test_json_schema_alias_and_generated_channel_names (test_numeric_batch_pipeline.NumericLoaderTests.test_json_schema_alias_and_generated_channel_names) ... ERROR
+test_json_types_are_not_silently_coerced (test_numeric_batch_pipeline.NumericLoaderTests.test_json_types_are_not_silently_coerced) ... ERROR
+test_missing_native_times_use_rate_and_mark_interpolation (test_numeric_batch_pipeline.NumericLoaderTests.test_missing_native_times_use_rate_and_mark_interpolation) ... ERROR
+test_native_worker_schema_decodes_channels_units_and_session_time (test_numeric_batch_pipeline.NumericLoaderTests.test_native_worker_schema_decodes_channels_units_and_session_time) ... ERROR
+test_nonfinite_samples_are_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_nonfinite_samples_are_refused) ... ERROR
+test_other_schema_is_not_decoded_as_numeric (test_numeric_batch_pipeline.NumericLoaderTests.test_other_schema_is_not_decoded_as_numeric) ... ERROR
+test_partial_device_times_are_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_partial_device_times_are_refused) ... ERROR
+test_rate_is_required_and_finite (test_numeric_batch_pipeline.NumericLoaderTests.test_rate_is_required_and_finite) ... ERROR
+test_session_timestamp_overflow_is_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_session_timestamp_overflow_is_refused) ... ERROR
+test_unpaired_timestamps_are_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_unpaired_timestamps_are_refused) ... ERROR
+test_durationless_two_stream_package_writes_real_numeric_artifacts (test_numeric_batch_pipeline.NumericPipelineTests.test_durationless_two_stream_package_writes_real_numeric_artifacts) ... FAIL
+test_non_numeric_modality_routes_remain_available (test_numeric_batch_pipeline.NumericPipelineTests.test_non_numeric_modality_routes_remain_available) ... ok
+test_schema_route_precedes_descriptive_modality (test_numeric_batch_pipeline.NumericPipelineTests.test_schema_route_precedes_descriptive_modality) ... FAIL
+
+======================================================================
+ERROR: test_large_and_small_finite_values_have_finite_correct_reductions (test_numeric_batch_pipeline.NumericFeatureTests.test_large_and_small_finite_values_have_finite_correct_reductions)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 264, in test_large_and_small_finite_values_have_finite_correct_reductions
+    df, _, _ = extract_numeric_batch_features(loaded, GapMask(self.ref, self.window))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/features/numeric_batch.py", line 55, in extract_numeric_batch_features
+    row[f"{name}_rms"] = float(np.sqrt(np.mean(np.square(col)))) if col.size else 0.0
+                                               ^^^^^^^^^^^^^^
+FloatingPointError: overflow encountered in square
+
+======================================================================
+ERROR: test_actual_batch_guard_does_not_trust_descriptor_density (test_numeric_batch_pipeline.NumericLoaderTests.test_actual_batch_guard_does_not_trust_descriptor_density)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 173, in test_actual_batch_guard_does_not_trust_descriptor_density
+    self.load(ref=underestimated, max_ram_bytes=1_100_000)
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 102, in load
+    return load_numeric_batch(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py", line 79, in load_numeric_batch
+    return LoadedEmg(
+           ^^^^^^^^^^
+TypeError: LoadedEmg.__init__() got an unexpected keyword argument 'stream'
+
+======================================================================
+ERROR: test_actual_budget_accumulates_across_batches (test_numeric_batch_pipeline.NumericLoaderTests.test_actual_budget_accumulates_across_batches)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 181, in test_actual_budget_accumulates_across_batches
+    self.load(max_ram_bytes=1_280_000)
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 102, in load
+    return load_numeric_batch(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py", line 79, in load_numeric_batch
+    return LoadedEmg(
+           ^^^^^^^^^^
+TypeError: LoadedEmg.__init__() got an unexpected keyword argument 'stream'
+
+======================================================================
+ERROR: test_backward_device_times_are_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_backward_device_times_are_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 217, in test_backward_device_times_are_refused
+    self.load()
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 102, in load
+    return load_numeric_batch(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py", line 79, in load_numeric_batch
+    return LoadedEmg(
+           ^^^^^^^^^^
+TypeError: LoadedEmg.__init__() got an unexpected keyword argument 'stream'
+
+======================================================================
+ERROR: test_changing_layout_is_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_changing_layout_is_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 212, in test_changing_layout_is_refused
+    self.load()
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 102, in load
+    return load_numeric_batch(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py", line 79, in load_numeric_batch
+    return LoadedEmg(
+           ^^^^^^^^^^
+TypeError: LoadedEmg.__init__() got an unexpected keyword argument 'stream'
+
+======================================================================
+ERROR: test_empty_and_outside_window_return_valid_public_result (test_numeric_batch_pipeline.NumericLoaderTests.test_empty_and_outside_window_return_valid_public_result)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 142, in test_empty_and_outside_window_return_valid_public_result
+    empty = self.load()
+            ^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 102, in load
+    return load_numeric_batch(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py", line 79, in load_numeric_batch
+    return LoadedEmg(
+           ^^^^^^^^^^
+TypeError: LoadedEmg.__init__() got an unexpected keyword argument 'stream'
+
+======================================================================
+ERROR: test_incomplete_frame_is_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_incomplete_frame_is_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 187, in test_incomplete_frame_is_refused
+    self.load()
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 102, in load
+    return load_numeric_batch(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py", line 79, in load_numeric_batch
+    return LoadedEmg(
+           ^^^^^^^^^^
+TypeError: LoadedEmg.__init__() got an unexpected keyword argument 'stream'
+
+======================================================================
+ERROR: test_invalid_channel_names_are_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_invalid_channel_names_are_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 203, in test_invalid_channel_names_are_refused
+    self.load()
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 102, in load
+    return load_numeric_batch(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py", line 79, in load_numeric_batch
+    return LoadedEmg(
+           ^^^^^^^^^^
+TypeError: LoadedEmg.__init__() got an unexpected keyword argument 'stream'
+
+======================================================================
+ERROR: test_json_device_timestamp_overflow_is_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_json_device_timestamp_overflow_is_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 237, in test_json_device_timestamp_overflow_is_refused
+    self.load()
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 102, in load
+    return load_numeric_batch(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py", line 72, in load_numeric_batch
+    t = np.asarray(times[:n_frames], dtype=np.int64)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OverflowError: Python int too large to convert to C long
+
+======================================================================
+ERROR: test_json_schema_alias_and_generated_channel_names (test_numeric_batch_pipeline.NumericLoaderTests.test_json_schema_alias_and_generated_channel_names)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 125, in test_json_schema_alias_and_generated_channel_names
+    loaded = self.load()
+             ^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 102, in load
+    return load_numeric_batch(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py", line 91, in load_numeric_batch
+    return LoadedEmg(
+           ^^^^^^^^^^
+TypeError: LoadedEmg.__init__() got an unexpected keyword argument 'stream'
+
+======================================================================
+ERROR: test_json_types_are_not_silently_coerced (test_numeric_batch_pipeline.NumericLoaderTests.test_json_types_are_not_silently_coerced)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 247, in test_json_types_are_not_silently_coerced
+    self.load()
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 102, in load
+    return load_numeric_batch(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py", line 91, in load_numeric_batch
+    return LoadedEmg(
+           ^^^^^^^^^^
+TypeError: LoadedEmg.__init__() got an unexpected keyword argument 'stream'
+
+======================================================================
+ERROR: test_missing_native_times_use_rate_and_mark_interpolation (test_numeric_batch_pipeline.NumericLoaderTests.test_missing_native_times_use_rate_and_mark_interpolation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 131, in test_missing_native_times_use_rate_and_mark_interpolation
+    loaded = self.load(ref=replace(self.ref, nominal_rate_hz=4.0))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 102, in load
+    return load_numeric_batch(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py", line 79, in load_numeric_batch
+    return LoadedEmg(
+           ^^^^^^^^^^
+TypeError: LoadedEmg.__init__() got an unexpected keyword argument 'stream'
+
+======================================================================
+ERROR: test_native_worker_schema_decodes_channels_units_and_session_time (test_numeric_batch_pipeline.NumericLoaderTests.test_native_worker_schema_decodes_channels_units_and_session_time)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 112, in test_native_worker_schema_decodes_channels_units_and_session_time
+    loaded = self.load()
+             ^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 102, in load
+    return load_numeric_batch(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py", line 79, in load_numeric_batch
+    return LoadedEmg(
+           ^^^^^^^^^^
+TypeError: LoadedEmg.__init__() got an unexpected keyword argument 'stream'
+
+======================================================================
+ERROR: test_nonfinite_samples_are_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_nonfinite_samples_are_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 223, in test_nonfinite_samples_are_refused
+    self.load()
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 102, in load
+    return load_numeric_batch(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py", line 79, in load_numeric_batch
+    return LoadedEmg(
+           ^^^^^^^^^^
+TypeError: LoadedEmg.__init__() got an unexpected keyword argument 'stream'
+
+======================================================================
+ERROR: test_other_schema_is_not_decoded_as_numeric (test_numeric_batch_pipeline.NumericLoaderTests.test_other_schema_is_not_decoded_as_numeric)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 153, in test_other_schema_is_not_decoded_as_numeric
+    self.assertEqual(self.load().X.size, 0)
+                     ^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 102, in load
+    return load_numeric_batch(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py", line 79, in load_numeric_batch
+    return LoadedEmg(
+           ^^^^^^^^^^
+TypeError: LoadedEmg.__init__() got an unexpected keyword argument 'stream'
+
+======================================================================
+ERROR: test_partial_device_times_are_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_partial_device_times_are_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 192, in test_partial_device_times_are_refused
+    self.load()
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 102, in load
+    return load_numeric_batch(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py", line 79, in load_numeric_batch
+    return LoadedEmg(
+           ^^^^^^^^^^
+TypeError: LoadedEmg.__init__() got an unexpected keyword argument 'stream'
+
+======================================================================
+ERROR: test_rate_is_required_and_finite (test_numeric_batch_pipeline.NumericLoaderTests.test_rate_is_required_and_finite)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 158, in test_rate_is_required_and_finite
+    self.load(ref=replace(self.ref, nominal_rate_hz=rate))
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 102, in load
+    return load_numeric_batch(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py", line 79, in load_numeric_batch
+    return LoadedEmg(
+           ^^^^^^^^^^
+TypeError: LoadedEmg.__init__() got an unexpected keyword argument 'stream'
+
+======================================================================
+ERROR: test_session_timestamp_overflow_is_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_session_timestamp_overflow_is_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 231, in test_session_timestamp_overflow_is_refused
+    self.load(window=TimeWindow(0, (1 << 63) - 1))
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 102, in load
+    return load_numeric_batch(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py", line 79, in load_numeric_batch
+    return LoadedEmg(
+           ^^^^^^^^^^
+TypeError: LoadedEmg.__init__() got an unexpected keyword argument 'stream'
+
+======================================================================
+ERROR: test_unpaired_timestamps_are_refused (test_numeric_batch_pipeline.NumericLoaderTests.test_unpaired_timestamps_are_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 197, in test_unpaired_timestamps_are_refused
+    self.load()
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 102, in load
+    return load_numeric_batch(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py", line 79, in load_numeric_batch
+    return LoadedEmg(
+           ^^^^^^^^^^
+TypeError: LoadedEmg.__init__() got an unexpected keyword argument 'stream'
+
+======================================================================
+FAIL: test_public_feature_shape_and_rate_are_validated (test_numeric_batch_pipeline.NumericFeatureTests.test_public_feature_shape_and_rate_are_validated)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 307, in test_public_feature_shape_and_rate_are_validated
+    with self.assertRaises(ValueError):
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_split_does_not_bridge_a_gap_without_samples (test_numeric_batch_pipeline.NumericFeatureTests.test_split_does_not_bridge_a_gap_without_samples)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 299, in test_split_does_not_bridge_a_gap_without_samples
+    self.assertEqual(df["t_start_ns"].tolist(), [0, 3_000_000_000])
+AssertionError: Lists differ: [0, 500000000, 1000000000] != [0, 3000000000]
+
+First differing element 1:
+500000000
+3000000000
+
+First list contains 1 additional elements.
+First extra element 2:
+1000000000
+
+- [0, 500000000, 1000000000]
++ [0, 3000000000]
+
+======================================================================
+FAIL: test_impossible_budget_refuses_before_iteration (test_numeric_batch_pipeline.NumericLoaderTests.test_impossible_budget_refuses_before_iteration)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 166, in test_impossible_budget_refuses_before_iteration
+    self.load(max_ram_bytes=1)
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 102, in load
+    return load_numeric_batch(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py", line 38, in load_numeric_batch
+    for _name, payload, _log in iter_mcap_messages(
+                                ^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1139, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1143, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/unittest/mock.py", line 1198, in _execute_mock_call
+    raise effect
+AssertionError: iteration must not begin
+
+======================================================================
+FAIL: test_durationless_two_stream_package_writes_real_numeric_artifacts (test_numeric_batch_pipeline.NumericPipelineTests.test_durationless_two_stream_package_writes_real_numeric_artifacts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 388, in test_durationless_two_stream_package_writes_real_numeric_artifacts
+    self.assertEqual(len(tables), 2)
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_schema_route_precedes_descriptive_modality (test_numeric_batch_pipeline.NumericPipelineTests.test_schema_route_precedes_descriptive_modality)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/e82707f2bc62/capturesuite-numeric/baseline/tests/analysis/test_numeric_batch_pipeline.py", line 326, in test_schema_route_precedes_descriptive_modality
+    self.assertEqual(handler.__name__, "handle_numeric", modality)
+AssertionError: 'handle_emg' != 'handle_numeric'
+- handle_emg
++ handle_numeric
+ : numeric
+
+----------------------------------------------------------------------
+Ran 26 tests in 0.059s
+
+FAILED (failures=5, errors=19)

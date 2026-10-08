@@ -1,0 +1,49 @@
+{
+  "schema": "capturesuite.analysis-scope.publication-composition.v1",
+  "main": "e43da3b855475c8aacf815c201fa03eddaeec0f1",
+  "main_tree": "0ab35e58eb95ad6f0f85bd25ebce3378b93f2efa",
+  "accepted_production": "36254496e386568de05148db9bd9fa4d69020dd4",
+  "qualified_source": "951e3c962f2f57e25656ba8e18d9372db74c4856",
+  "composition_tree_before_receipt": "7253cc7273ebfc22b91741b77c7bb67faf5b0095",
+  "composition_method": "ordinary git merge, no conflicts; exact upstream PROGRESS followed by unchanged own entry",
+  "unchanged_main_leaves": 774,
+  "accepted_production_and_test_leaves": {
+    "desktop/capture_desktop/app.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "363b6acbdcf0ba382bd040903946e6916ab282c9"
+    },
+    "desktop/capture_desktop/screen_analysis.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "78905bbde5de536dad125b6e4e48a475e9b14272"
+    },
+    "desktop/capture_desktop/widgets_analysis_scope.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7b15a34fc1f8a9f31164d4ee9b4d144ff01a8d2d"
+    },
+    "desktop/capture_desktop/widgets_session_header.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b1f4cbf5ab35ef06b4bf1da45f0be6ffb34b0a4a"
+    },
+    "desktop/capture_desktop/widgets_session_timeline.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2d9ba524b1e6231c934f6d037796a53e135a12f8"
+    },
+    "tests/ui/test_analysis_scope.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b1d5d4f9dd06c6f5c1cf05080079191f55e97c95"
+    }
+  },
+  "progress_upstream_sha256": "4a8abfef5657395a15f8b302a649b10a0ac3fd109c5330614b953fb113eac629",
+  "progress_upstream_bytes_preserved": true,
+  "errors": [],
+  "limits": [
+    "The focused Python run remains pinned to 951e; no new test execution is claimed for the later C++ fixture changes.",
+    "Only evidence/hash inventory additions follow this source comparison."
+  ]
+}

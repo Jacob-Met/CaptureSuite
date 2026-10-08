@@ -69,6 +69,7 @@ def plot_series(
     ylabel: str,
     title: str,
     color: str = "#3d8bfd",
+    xlabel: str = "session time (s)",
 ) -> None:
     if t_ns.size == 0:
         return
@@ -78,6 +79,6 @@ def plot_series(
     ax.plot(to_seconds(t_ns, t0), y, color=color, linewidth=1.0)
     shade_gaps(ax, gaps, window, t0_ns=t0)
     ax.set_ylabel(ylabel)
-    ax.set_xlabel("session time (s)")
+    ax.set_xlabel(xlabel)
     fig.suptitle(title, fontsize=11)
     save_fig(fig, path)

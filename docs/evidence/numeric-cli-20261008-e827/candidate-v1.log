@@ -1,0 +1,12 @@
+test_all_creates_distinct_numeric_tables_and_figures (__main__.NumericCliReceiving.test_all_creates_distinct_numeric_tables_and_figures) ... ok
+test_case_only_stream_ids_keep_distinct_paths_and_gap_provenance (__main__.NumericCliReceiving.test_case_only_stream_ids_keep_distinct_paths_and_gap_provenance) ... ok
+test_features_source_selection_keeps_sibling_outputs_independent (__main__.NumericCliReceiving.test_features_source_selection_keeps_sibling_outputs_independent) ... ok
+test_missing_package_is_a_hard_cli_failure_without_a_job (__main__.NumericCliReceiving.test_missing_package_is_a_hard_cli_failure_without_a_job) ... ok
+test_plots_command_produces_real_numeric_figures_and_series (__main__.NumericCliReceiving.test_plots_command_produces_real_numeric_figures_and_series) ... ok
+test_qc_html_inventory_and_manifest_are_available_without_features (__main__.NumericCliReceiving.test_qc_html_inventory_and_manifest_are_available_without_features) ... ok
+test_refused_stream_is_reported_and_strict_warnings_changes_exit (__main__.NumericCliReceiving.test_refused_stream_is_reported_and_strict_warnings_changes_exit) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 14.346s
+
+OK

@@ -1,0 +1,75 @@
+{
+  "source_head": "27b557d58658fa8c76875833f997fa7825216abd",
+  "picker_sha256": "4ddb98b825c916e1fb50f5e44b85aec7c354522ef402f6ec83de932da75b5286",
+  "cases": [
+    {
+      "case": "repeated-label-control",
+      "checkpoints": [
+        {
+          "checkpointId": "earlier-id",
+          "name": "Movement",
+          "effectiveTimestampNs": 1000000001
+        },
+        {
+          "checkpointId": "later-id",
+          "name": "Movement",
+          "effectiveTimestampNs": 4000000003
+        }
+      ],
+      "offered_options": [
+        {
+          "label": "Movement (earlier-id)",
+          "id": "earlier-id"
+        },
+        {
+          "label": "Movement (later-id)",
+          "id": "later-id"
+        }
+      ],
+      "actual_bounds": [
+        4000000003,
+        10000000005
+      ],
+      "expected_bounds": [
+        4000000003,
+        10000000005
+      ],
+      "selection_correct_or_explicitly_unavailable": true
+    },
+    {
+      "case": "id-shadowed-by-earlier-label",
+      "checkpoints": [
+        {
+          "checkpointId": "earlier-id",
+          "name": "later-id",
+          "effectiveTimestampNs": 1000000001
+        },
+        {
+          "checkpointId": "later-id",
+          "name": "Movement",
+          "effectiveTimestampNs": 4000000003
+        }
+      ],
+      "offered_options": [
+        {
+          "label": "later-id (earlier-id)",
+          "id": "earlier-id"
+        },
+        {
+          "label": "Movement (later-id)",
+          "id": "later-id"
+        }
+      ],
+      "actual_bounds": [
+        1000000001,
+        4000000003
+      ],
+      "expected_bounds": [
+        4000000003,
+        10000000005
+      ],
+      "selection_correct_or_explicitly_unavailable": false
+    }
+  ],
+  "accepted": false
+}

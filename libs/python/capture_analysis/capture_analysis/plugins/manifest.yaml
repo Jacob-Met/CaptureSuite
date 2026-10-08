@@ -22,8 +22,9 @@ streamHandlers:
     entry: capture_analysis.plugins.handlers:handle_video
   - id: numeric.batch
     modality: numeric
+    schemaIds: [generic.numeric_batch/1]
     requiresMcap: true
-    entry: capture_analysis.plugins.handlers:handle_emg
+    entry: capture_analysis.plugins.numeric:handle_numeric
   - id: test.dummy.v1
     modality: dummy_test
     entry: capture_analysis.plugins.dummy:handle_dummy
