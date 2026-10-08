@@ -1,3 +1,32 @@
+## 2026-10-08 — Describe actual ML-bundle values and configured cadence
+
+Contributor `chatgpt:/root/production_execution`, issue #72, prepared a distinct
+metadata repair after PR46 integration. The ML producer previously declared
+z-score inputs, linear target interpolation and a requested rate that its
+actual Parquet values and center spacing did not implement.
+
+Only the producer's manifest dictionary changes. It now records unnormalized
+inputs/targets, nearest features and inclusive-window median targets. Effective
+integer-hop timing and integer half-width stay separate from original requests.
+The single median-center fallback is explicit, and the rate identifies the
+configured hop rather than claiming an observed or native sensor cadence.
+[The producer contract](../ML_BUNDLE_METADATA.md) documents these fields.
+
+Eight identical final regressions retain eight original failures and pass on
+the candidate under native Python3.12.8. Five existing pose/kinematics/ML/eval/CLI
+cases also pass at the same producer source. Three actual original-input Parquet
+witnesses remain byte-identical after the change, and all twelve original
+fixture files remain intact. Existing output receipts and the public job's
+original parameters agree with their final bytes. Scoped Ruff passes.
+
+Every source byte before and after the metadata dictionary remains unchanged.
+The evaluator, kinematics, sync/checkpoint/UI owners, numerical algorithms,
+schemas and unrelated internal self-digest convention retain their scopes.
+[Source and receiving evidence](../../evidence/ml-bundle-metadata-713adaab/README.md)
+keeps the original failures and the proposed-source results distinct.
+Independent source review and the existing supported Windows CI are separate
+integration gates; no installed or hardware outcome is claimed here.
+
 ## 2026-10-08 — Preserve missing pose evidence in kinematic labels
 
 Worker `estate-406d0fb04c43 / production`, issue #56: non-simulated pose tables

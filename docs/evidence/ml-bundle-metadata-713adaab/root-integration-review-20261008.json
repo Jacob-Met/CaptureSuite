@@ -1,0 +1,51 @@
+{
+  "dictionary_only_change_verified": true,
+  "identical_final_test_bytes_on_original_and_candidate": true,
+  "observed_pins": {
+    "baseline_witness": "d1dd784d7191f752e44b3c6cc9dc468b603df2d0e4f6be326654a6b2a5dd02d8",
+    "paired_witness": "fc27a2bb9f88c7ab2308ec2b8ff66d643823feeacdd4acc77595878236d608d6",
+    "producer": "38b7161f081ef038e6ce464dd3b82ca2b49f775ad8988010243743274d6fc5e6",
+    "runtime_patch": "15b0c08d3caf10b78da08883460d712e133652b000469a8bf88809663589f185",
+    "test": "b2104dd43f464629e284fe946126a65fa5423531f67b9fd165b702f888cd799d"
+  },
+  "original_fixture_files_verified": 12,
+  "received_windows": [
+    {
+      "byte_identical": true,
+      "candidate_manifest_sha256": "f8ba921c23f0773a56a50b36f34626254247090e111bf0e7ac25b047bb852ce4",
+      "candidate_windows": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/out/ml-bundle-metadata-evidence/candidate-witness/regular/ml_bundle/windows.parquet",
+      "name": "regular",
+      "original_windows": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/out/ml-bundle-metadata-evidence/baseline-witness/regular/output/ml_bundle/windows.parquet",
+      "windows_sha256": "2ea9e0861d4a1fa4e1bb198a87d237a906de3972b1dd09372610e05bf848a65a"
+    },
+    {
+      "byte_identical": true,
+      "candidate_manifest_sha256": "15e3b85391449281f0253efcff0b547a21fa0a1866d59331d9125cbbfe2c58ea",
+      "candidate_windows": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/out/ml-bundle-metadata-evidence/candidate-witness/quantized/ml_bundle/windows.parquet",
+      "name": "quantized",
+      "original_windows": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/out/ml-bundle-metadata-evidence/baseline-witness/quantized/output/ml_bundle/windows.parquet",
+      "windows_sha256": "2ea9e0861d4a1fa4e1bb198a87d237a906de3972b1dd09372610e05bf848a65a"
+    },
+    {
+      "byte_identical": true,
+      "candidate_manifest_sha256": "2c4caa5be5b3c4f11d384a283d57cbc415a5adc06218821d23eea2657335c04f",
+      "candidate_windows": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/out/ml-bundle-metadata-evidence/candidate-witness/short_fallback/ml_bundle/windows.parquet",
+      "name": "short_fallback",
+      "original_windows": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/out/ml-bundle-metadata-evidence/baseline-witness/short_fallback/output/ml_bundle/windows.parquet",
+      "windows_sha256": "b7902d8d9a1178b6d6bf16d8cfdaa14eaebeeffb60b376a1ab6f34258137e0a1"
+    }
+  ],
+  "recorded_at": "2026-10-08T15:31:15.828902+00:00",
+  "result": "approved_at_observed_source_pins",
+  "reviewer": "chatgpt:/root/713adaab",
+  "schema": "capture.ml_bundle_metadata.root_review/1",
+  "scope": "Independent source and retained-byte readback. No new producer execution or test pass is claimed.",
+  "source_review": [
+    "Configured rate uses the same positive integer hop as the unchanged center loop.",
+    "Effective window width uses the unchanged symmetric integer bounds; inclusive endpoints are explicit.",
+    "The median_fallback predicate is algebraically identical to the condition that the unchanged regular loop emits no center.",
+    "Normalization none describes transformations applied by this producer; upstream units and preprocessing remain outside this metadata correction.",
+    "Current UI/evaluator reads preserve grid ID, target columns, provisional flag, and actual windows.",
+    "No algorithm, validity, schema, internal self-digest, or public argument changes are introduced."
+  ]
+}
