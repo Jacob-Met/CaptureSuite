@@ -1,3 +1,38 @@
+## 2026-10-08 — Windows atomic writer reserves owned temporary files
+
+Contributor `estate-6267db2cfc6e` prepared the repair for issue51/PR52. Windows
+now reserves a unique sibling with `CreateFileW(CREATE_NEW)`, retains the original
+writable handle through writes and `FlushFileBuffers`, checks close, and keeps
+the existing write-through publication boundary. Failure cleanup addresses only
+the file created by that invocation; retained legacy `.tmp` paths are preserved.
+
+The original-source checkpoint is `c1bc438ea07492a303f89cea5deb242efeb6f8e9`.
+Its CI run37770868596 is retained separately from the repair's receiving run.
+Both use the unchanged four real Windows tests (SHA-256
+`485af6482c6b14fc7c187b45cc366af547bf0a1fe2c0651c8b68c8d25e854cfb`).
+Native acceptance requires actual original-source preservation failures and
+candidate passes under the existing complete Windows workflow. The final PR52
+receiving review records the actual outcomes and their exact source identities.
+The POSIX implementation and the current workflow remain unchanged.
+
+## 2026-10-08 — Windows atomic temporary-file preservation controls
+
+Contributor `estate-6267db2cfc6e` prepared four Windows-only real-file tests for
+the existing atomic writer: a raw-file hardlink at `manifest.json.tmp`,
+a hardlink to the prior manifest while a live handle blocks publication, an
+ordinary retained file at that name, and a raw-file symlink. The tests compare
+actual bytes, Win32 file identities, alias retention and final directory contents.
+They use exclusively reserved fixture directories and the linked production API.
+
+Native Windows compilation and execution are pending. This first publication
+keeps production unchanged so the supported Windows workflow can retain the
+original failure before the separately prepared repair is received. The same
+test bytes must qualify the repair. Only a missing Windows symlink privilege
+may skip that case; the other three cases remain required. The current CI
+workflow, POSIX implementation and separately owned storage fixture are unchanged.
+Source bindings and the planned receiving boundary are recorded in
+`docs/evidence/windows-atomic-temp-preservation-6267db2cfc6e/README.md`.
+
 ## 2026-10-08 — Receive fixture ownership repair onto accepted main (estate-87eaaf0fdf63)
 
 The original Linux port #36 and the separately owned POSIX alias repair #44

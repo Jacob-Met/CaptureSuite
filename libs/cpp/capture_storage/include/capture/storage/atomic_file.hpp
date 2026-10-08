@@ -8,6 +8,9 @@
 namespace capture::storage {
 
 // Write bytes via a temporary file then atomic replace (one writer per path).
+// Windows creates an exclusive sibling, flushes its open handle, then uses
+// MoveFileExW with replacement and write-through flags. Existing path.tmp files
+// and links are not reused or removed.
 // POSIX creates an exclusive temporary file in the opened parent directory;
 // pre-existing files, including path.tmp, are not reused or removed.
 // Success on POSIX requires syncing the written descriptor and parent directory.
