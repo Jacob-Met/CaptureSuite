@@ -45,21 +45,22 @@ def decode_frame(buffer: bytes | bytearray | memoryview) -> tuple[Frame, int]:
     Raises FrameError on bad magic or oversized length.
     Raises ValueError if buffer is incomplete (need more data).
     """
-    view = memoryview(buffer)
-    if len(view) < FRAME_HEADER_SIZE:
-        raise ValueError("incomplete header")
-    magic, payload_len, message_type, correlation_id = _HEADER_STRUCT.unpack_from(view, 0)
-    if magic != FRAME_MAGIC:
-        # Helpful diagnostic: show what we got
-        got = bytes(view[:4])
-        raise FrameError(f"bad magic: expected {FRAME_MAGIC_BYTES!r}, got {got!r}")
-    if payload_len > MAX_PAYLOAD_LEN:
-        raise FrameError(f"payload_len {payload_len} exceeds max {MAX_PAYLOAD_LEN}")
-    total = FRAME_HEADER_SIZE + payload_len
-    if len(view) < total:
-        raise ValueError("incomplete payload")
-    payload = bytes(view[FRAME_HEADER_SIZE:total])
-    return Frame(message_type, correlation_id, payload), total
+    # A retained exception must not keep the caller's mutable buffer exported.
+    with memoryview(buffer) as view:
+        if len(view) < FRAME_HEADER_SIZE:
+            raise ValueError("incomplete header")
+        magic, payload_len, message_type, correlation_id = _HEADER_STRUCT.unpack_from(view, 0)
+        if magic != FRAME_MAGIC:
+            # Helpful diagnostic: show what we got
+            got = bytes(view[:4])
+            raise FrameError(f"bad magic: expected {FRAME_MAGIC_BYTES!r}, got {got!r}")
+        if payload_len > MAX_PAYLOAD_LEN:
+            raise FrameError(f"payload_len {payload_len} exceeds max {MAX_PAYLOAD_LEN}")
+        total = FRAME_HEADER_SIZE + payload_len
+        if len(view) < total:
+            raise ValueError("incomplete payload")
+        payload = bytes(view[FRAME_HEADER_SIZE:total])
+        return Frame(message_type, correlation_id, payload), total
 
 
 class FrameDecoder:

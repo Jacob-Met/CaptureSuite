@@ -1,0 +1,321 @@
+................FFFFFFFF.F.                                              [100%]
+=================================== FAILURES ===================================
+_______________ test_reset_inside_protocol_error_handler[magic] ________________
+
+kind = 'magic'
+
+    @pytest.mark.parametrize("kind", ["magic", "length"])
+    def test_reset_inside_protocol_error_handler(kind: str) -> None:
+        decoder = FrameDecoder()
+        try:
+>           decoder.feed(invalid_header(kind))
+
+tests/protocol/test_framing_view_lifetime.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+libs/python/capture_protocol/capture_protocol/framing.py:76: in feed
+    frame, consumed = decode_frame(self._buf)
+                      ^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+buffer = bytearray(b'\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00%\x00\x00\x00')
+
+    def decode_frame(buffer: bytes | bytearray | memoryview) -> tuple[Frame, int]:
+        """Decode one frame from the start of buffer.
+    
+        Returns (frame, bytes_consumed).
+        Raises FrameError on bad magic or oversized length.
+        Raises ValueError if buffer is incomplete (need more data).
+        """
+        view = memoryview(buffer)
+        if len(view) < FRAME_HEADER_SIZE:
+            raise ValueError("incomplete header")
+        magic, payload_len, message_type, correlation_id = _HEADER_STRUCT.unpack_from(view, 0)
+        if magic != FRAME_MAGIC:
+            # Helpful diagnostic: show what we got
+            got = bytes(view[:4])
+>           raise FrameError(f"bad magic: expected {FRAME_MAGIC_BYTES!r}, got {got!r}")
+E           capture_protocol.framing.FrameError: bad magic: expected b'CSP1', got b'\x00\x00\x00\x00'
+
+libs/python/capture_protocol/capture_protocol/framing.py:55: FrameError
+
+During handling of the above exception, another exception occurred:
+
+kind = 'magic'
+
+    @pytest.mark.parametrize("kind", ["magic", "length"])
+    def test_reset_inside_protocol_error_handler(kind: str) -> None:
+        decoder = FrameDecoder()
+        try:
+            decoder.feed(invalid_header(kind))
+        except FrameError:
+            # The active traceback is still alive here. Reset is the documented
+            # explicit recovery boundary, not a request to wait for garbage collection.
+>           decoder.reset()
+
+tests/protocol/test_framing_view_lifetime.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <capture_protocol.framing.FrameDecoder object at 0x10a37b4a0>
+
+    def reset(self) -> None:
+>       self._buf.clear()
+E       BufferError: Existing exports of data: object cannot be re-sized
+
+libs/python/capture_protocol/capture_protocol/framing.py:87: BufferError
+_______________ test_reset_inside_protocol_error_handler[length] _______________
+
+kind = 'length'
+
+    @pytest.mark.parametrize("kind", ["magic", "length"])
+    def test_reset_inside_protocol_error_handler(kind: str) -> None:
+        decoder = FrameDecoder()
+        try:
+>           decoder.feed(invalid_header(kind))
+
+tests/protocol/test_framing_view_lifetime.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+libs/python/capture_protocol/capture_protocol/framing.py:76: in feed
+    frame, consumed = decode_frame(self._buf)
+                      ^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+buffer = bytearray(b'CSP1\x01\x00\x80\x00\x01\x00\x00\x00%\x00\x00\x00')
+
+    def decode_frame(buffer: bytes | bytearray | memoryview) -> tuple[Frame, int]:
+        """Decode one frame from the start of buffer.
+    
+        Returns (frame, bytes_consumed).
+        Raises FrameError on bad magic or oversized length.
+        Raises ValueError if buffer is incomplete (need more data).
+        """
+        view = memoryview(buffer)
+        if len(view) < FRAME_HEADER_SIZE:
+            raise ValueError("incomplete header")
+        magic, payload_len, message_type, correlation_id = _HEADER_STRUCT.unpack_from(view, 0)
+        if magic != FRAME_MAGIC:
+            # Helpful diagnostic: show what we got
+            got = bytes(view[:4])
+            raise FrameError(f"bad magic: expected {FRAME_MAGIC_BYTES!r}, got {got!r}")
+        if payload_len > MAX_PAYLOAD_LEN:
+>           raise FrameError(f"payload_len {payload_len} exceeds max {MAX_PAYLOAD_LEN}")
+E           capture_protocol.framing.FrameError: payload_len 8388609 exceeds max 8388608
+
+libs/python/capture_protocol/capture_protocol/framing.py:57: FrameError
+
+During handling of the above exception, another exception occurred:
+
+kind = 'length'
+
+    @pytest.mark.parametrize("kind", ["magic", "length"])
+    def test_reset_inside_protocol_error_handler(kind: str) -> None:
+        decoder = FrameDecoder()
+        try:
+            decoder.feed(invalid_header(kind))
+        except FrameError:
+            # The active traceback is still alive here. Reset is the documented
+            # explicit recovery boundary, not a request to wait for garbage collection.
+>           decoder.reset()
+
+tests/protocol/test_framing_view_lifetime.py:28: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <capture_protocol.framing.FrameDecoder object at 0x10a3789e0>
+
+    def reset(self) -> None:
+>       self._buf.clear()
+E       BufferError: Existing exports of data: object cannot be re-sized
+
+libs/python/capture_protocol/capture_protocol/framing.py:87: BufferError
+___ test_saved_protocol_error_allows_reset_and_preserves_diagnostics[magic] ____
+
+kind = 'magic'
+
+    @pytest.mark.parametrize("kind", ["magic", "length"])
+    def test_saved_protocol_error_allows_reset_and_preserves_diagnostics(kind: str) -> None:
+        decoder = FrameDecoder()
+        retained: list[FrameError] = []
+        try:
+            decoder.feed(invalid_header(kind))
+        except FrameError as error:
+            retained.append(error)
+        assert len(retained) == 1
+>       decoder.reset()
+
+tests/protocol/test_framing_view_lifetime.py:43: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <capture_protocol.framing.FrameDecoder object at 0x10a3c8bc0>
+
+    def reset(self) -> None:
+>       self._buf.clear()
+E       BufferError: Existing exports of data: object cannot be re-sized
+
+libs/python/capture_protocol/capture_protocol/framing.py:87: BufferError
+___ test_saved_protocol_error_allows_reset_and_preserves_diagnostics[length] ___
+
+kind = 'length'
+
+    @pytest.mark.parametrize("kind", ["magic", "length"])
+    def test_saved_protocol_error_allows_reset_and_preserves_diagnostics(kind: str) -> None:
+        decoder = FrameDecoder()
+        retained: list[FrameError] = []
+        try:
+            decoder.feed(invalid_header(kind))
+        except FrameError as error:
+            retained.append(error)
+        assert len(retained) == 1
+>       decoder.reset()
+
+tests/protocol/test_framing_view_lifetime.py:43: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <capture_protocol.framing.FrameDecoder object at 0x10a3c9a60>
+
+    def reset(self) -> None:
+>       self._buf.clear()
+E       BufferError: Existing exports of data: object cannot be re-sized
+
+libs/python/capture_protocol/capture_protocol/framing.py:87: BufferError
+_ test_retained_decode_error_does_not_export_the_callers_bytearray[partial-header] _
+
+wire = b'CSP'
+
+    @pytest.mark.parametrize(
+        "wire",
+        [
+            b"CSP",
+            encode_frame(1, b"partial", 1)[:-1],
+            invalid_header("magic"),
+            invalid_header("length"),
+        ],
+        ids=["partial-header", "partial-payload", "bad-magic", "oversized-length"],
+    )
+    def test_retained_decode_error_does_not_export_the_callers_bytearray(wire: bytes) -> None:
+        buffer = bytearray(wire)
+        retained: list[ValueError] = []
+        try:
+            decode_frame(buffer)
+        except ValueError as error:
+            retained.append(error)
+        assert len(retained) == 1
+>       buffer.clear()
+E       BufferError: Existing exports of data: object cannot be re-sized
+
+tests/protocol/test_framing_view_lifetime.py:68: BufferError
+_ test_retained_decode_error_does_not_export_the_callers_bytearray[partial-payload] _
+
+wire = b'CSP1\x07\x00\x00\x00\x01\x00\x00\x00\x01\x00\x00\x00partia'
+
+    @pytest.mark.parametrize(
+        "wire",
+        [
+            b"CSP",
+            encode_frame(1, b"partial", 1)[:-1],
+            invalid_header("magic"),
+            invalid_header("length"),
+        ],
+        ids=["partial-header", "partial-payload", "bad-magic", "oversized-length"],
+    )
+    def test_retained_decode_error_does_not_export_the_callers_bytearray(wire: bytes) -> None:
+        buffer = bytearray(wire)
+        retained: list[ValueError] = []
+        try:
+            decode_frame(buffer)
+        except ValueError as error:
+            retained.append(error)
+        assert len(retained) == 1
+>       buffer.clear()
+E       BufferError: Existing exports of data: object cannot be re-sized
+
+tests/protocol/test_framing_view_lifetime.py:68: BufferError
+_ test_retained_decode_error_does_not_export_the_callers_bytearray[bad-magic] __
+
+wire = b'\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00%\x00\x00\x00'
+
+    @pytest.mark.parametrize(
+        "wire",
+        [
+            b"CSP",
+            encode_frame(1, b"partial", 1)[:-1],
+            invalid_header("magic"),
+            invalid_header("length"),
+        ],
+        ids=["partial-header", "partial-payload", "bad-magic", "oversized-length"],
+    )
+    def test_retained_decode_error_does_not_export_the_callers_bytearray(wire: bytes) -> None:
+        buffer = bytearray(wire)
+        retained: list[ValueError] = []
+        try:
+            decode_frame(buffer)
+        except ValueError as error:
+            retained.append(error)
+        assert len(retained) == 1
+>       buffer.clear()
+E       BufferError: Existing exports of data: object cannot be re-sized
+
+tests/protocol/test_framing_view_lifetime.py:68: BufferError
+_ test_retained_decode_error_does_not_export_the_callers_bytearray[oversized-length] _
+
+wire = b'CSP1\x01\x00\x80\x00\x01\x00\x00\x00%\x00\x00\x00'
+
+    @pytest.mark.parametrize(
+        "wire",
+        [
+            b"CSP",
+            encode_frame(1, b"partial", 1)[:-1],
+            invalid_header("magic"),
+            invalid_header("length"),
+        ],
+        ids=["partial-header", "partial-payload", "bad-magic", "oversized-length"],
+    )
+    def test_retained_decode_error_does_not_export_the_callers_bytearray(wire: bytes) -> None:
+        buffer = bytearray(wire)
+        retained: list[ValueError] = []
+        try:
+            decode_frame(buffer)
+        except ValueError as error:
+            retained.append(error)
+        assert len(retained) == 1
+>       buffer.clear()
+E       BufferError: Existing exports of data: object cannot be re-sized
+
+tests/protocol/test_framing_view_lifetime.py:68: BufferError
+_ test_decoder_releases_only_its_own_memoryview[\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00%\x00\x00\x00] _
+
+wire = b'\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00%\x00\x00\x00'
+
+    @pytest.mark.parametrize("wire", [encode_frame(1, b"owned", 5), invalid_header("magic")])
+    def test_decoder_releases_only_its_own_memoryview(wire: bytes) -> None:
+        buffer = bytearray(wire)
+        caller_view = memoryview(buffer)
+        retained: list[ValueError] = []
+        try:
+            decode_frame(caller_view)
+        except ValueError as error:
+            retained.append(error)
+        # The caller still owns this view, including when the parser failed.
+        assert caller_view.tobytes() == wire
+        caller_view.release()
+>       buffer.clear()
+E       BufferError: Existing exports of data: object cannot be re-sized
+
+tests/protocol/test_framing_view_lifetime.py:87: BufferError
+=============================== warnings summary ===============================
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.MessageMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+
+<frozen importlib._bootstrap>:488
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.ScalarMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/protocol/test_framing_view_lifetime.py::test_reset_inside_protocol_error_handler[magic]
+FAILED tests/protocol/test_framing_view_lifetime.py::test_reset_inside_protocol_error_handler[length]
+FAILED tests/protocol/test_framing_view_lifetime.py::test_saved_protocol_error_allows_reset_and_preserves_diagnostics[magic]
+FAILED tests/protocol/test_framing_view_lifetime.py::test_saved_protocol_error_allows_reset_and_preserves_diagnostics[length]
+FAILED tests/protocol/test_framing_view_lifetime.py::test_retained_decode_error_does_not_export_the_callers_bytearray[partial-header]
+FAILED tests/protocol/test_framing_view_lifetime.py::test_retained_decode_error_does_not_export_the_callers_bytearray[partial-payload]
+FAILED tests/protocol/test_framing_view_lifetime.py::test_retained_decode_error_does_not_export_the_callers_bytearray[bad-magic]
+FAILED tests/protocol/test_framing_view_lifetime.py::test_retained_decode_error_does_not_export_the_callers_bytearray[oversized-length]
+FAILED tests/protocol/test_framing_view_lifetime.py::test_decoder_releases_only_its_own_memoryview[\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00%\x00\x00\x00]
+9 failed, 18 passed, 2 warnings in 0.13s
