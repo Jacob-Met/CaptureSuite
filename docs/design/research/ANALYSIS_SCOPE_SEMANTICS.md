@@ -43,6 +43,16 @@ If section incomplete: warn in QC; `gap_policy=fail` fails job if gap overlaps s
 
 ## 3. Sync anchors
 
+**Current availability (2026-10-08):** Anchor-based alignment is not implemented in
+`jobs.run`. A request with `apply_sync_anchors=True` raises `NotImplementedError`
+before progress callbacks, analysis reads, output creation or replacement of a saved
+job. The default/false request runs the existing analysis without anchor offsets and records
+`syncAnchorsApplied: {applied: false, anchors: []}`; recorded anchors remain available
+to package review and QC. This is not evidence of cross-stream alignment.
+
+The following table retains the intended alignment contract for a future
+implementation; accepting the request alone does not satisfy it.
+
 | Flag | Behavior |
 |------|----------|
 | `apply_sync_anchors=true` | Apply per-modality offset from `sync_anchors.json` before feature alignment |

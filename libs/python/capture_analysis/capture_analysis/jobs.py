@@ -226,6 +226,12 @@ def run(
             f"command {params.command!r} not supported yet (supported: {sorted(allowed)})"
         )
 
+    if params.apply_sync_anchors:
+        raise NotImplementedError(
+            "sync-anchor alignment is not implemented; use apply_sync_anchors=False "
+            "to run without anchor alignment"
+        )
+
     tick("start", 0.0)
     qc_dict: dict[str, Any] = {}
     summary = load_review_summary(root)
@@ -417,7 +423,7 @@ def run(
             },
             "analysisGrids": [],
             "syncAnchorsApplied": {
-                "applied": params.apply_sync_anchors,
+                "applied": False,
                 "anchors": [],
             },
             "paramsDigest": digest,

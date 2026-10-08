@@ -697,3 +697,34 @@ independently accepts the repaired checkpoint picker at `3625449`; the original
 identity failure and corrected rerun are retained. The supported Windows job
 remains required. Source pins, raw control/qualification logs and native custody
 are recorded in `docs/evidence/analysis-scope-234cae4aee53/`.
+
+
+## 2026-10-08 — Refuse unsupported sync-anchor requests (#63)
+
+The offline job API now rejects `apply_sync_anchors=True` with an explicit
+`NotImplementedError` before progress callbacks, review/QC reads, output creation
+or replacement of a saved job. Default/false requests retain existing behavior and
+truthfully record that anchor offsets were not applied. The scope design keeps its
+future alignment contract and now distinguishes that contract from current
+availability; recorded anchors remain available to package review and QC.
+
+An actual copied synthetic session exposed the original false provenance: two QC
+jobs recognized the same anchor at 250,000,000 ns, but the requested flag alone
+changed the saved manifest to `applied:true` with no applied-anchor record. The
+paired 17-case suite changes from 6 passed / 11 failed to 17 passed. The candidate
+also passes 42 existing QC, destination, replacement and CLI cases; one existing
+Windows junction case is explicitly skipped on macOS. Scoped Ruff passes, and the
+107 paired source files plus original 97 inputs remain unchanged during execution.
+
+This native comparison uses the already installed Python 3.13.7 scientific stack
+and is advisory source execution: the package requires Python >=3.12,<3.13. The
+existing hosted Python 3.12/Windows gates and independent exact-source review remain
+separate integration requirements. This change does not implement or qualify
+feature timestamp alignment, MCAP decoding, desktop controls or hardware capture.
+
+The isolated preparation retained a transient storage failure and a rejected stale
+scope-document packet. The final document preserves the complete newly landed
+time-picker text. PR46 retains inventory/finalization ownership; its existing
+replacement, callback and failure-publication paths are unchanged. Source pins,
+original failures, real-job artifacts and receipts are retained in
+[the receiving record](../../evidence/sync-anchor-request-bd1abdb2f886-20261008/README.md).
