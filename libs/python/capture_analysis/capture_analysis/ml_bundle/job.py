@@ -222,19 +222,31 @@ def run_ml_bundle_job(
         "analysisGrids": [
             {
                 "gridId": "radar_kinematics_v1",
-                "rateHz": float(grid_rate_hz),
-                "method": "linear_interp_labels",
+                "rateHz": 1e9 / hop_ns,
+                "method": "nearest_feature_window_median_targets",
                 "sourceStreams": [feat_stream, "kinematics.teacher"],
                 "params": {
-                    "windowSec": window_sec,
-                    "windowHopSec": hop_sec,
+                    "windowSec": (2 * (win_ns // 2)) / 1e9,
+                    "windowHopSec": hop_ns / 1e9,
+                    "requestedWindowSec": window_sec,
+                    "requestedHopSec": hop_sec,
+                    "requestedRateHz": float(grid_rate_hz),
+                    "hopNs": hop_ns,
+                    "halfWindowNs": win_ns // 2,
+                    "windowBounds": "inclusive",
+                    "rateBasis": "configured_integer_hop",
+                    "centerPolicy": (
+                        "median_fallback"
+                        if 2 * (win_ns // 2) > t1 - t0
+                        else "regular_hop"
+                    ),
                     "featureKind": "motion_energy",
                 },
             }
         ],
         "window": {
-            "windowSec": window_sec,
-            "hopSec": hop_sec,
+            "windowSec": (2 * (win_ns // 2)) / 1e9,
+            "hopSec": hop_ns / 1e9,
             "targetTime": "center",
         },
         "targetColumns": y_cols,
@@ -244,8 +256,8 @@ def run_ml_bundle_job(
             "radarStreamIds": [feat_stream],
         },
         "normalization": {
-            "input": "per_session_zscore",
-            "target": "raw_degrees",
+            "input": "none",
+            "target": "none",
         },
         "tensorFormat": "parquet_blob",
         "provisional": True,
