@@ -112,6 +112,10 @@ def _machine_profile() -> dict:
     }
 
 
+class BundleOutputError(ValueError):
+    """The selected output would replace data or modify the source package."""
+
+
 def build_bundle(
     package: Path,
     output: Path,
@@ -122,6 +126,18 @@ def build_bundle(
     package = package.resolve()
     if not package.is_dir():
         raise FileNotFoundError(f"session package not found: {package}")
+
+    try:
+        output.lstat()
+    except FileNotFoundError:
+        pass
+    else:
+        raise BundleOutputError(f"output already exists: {output}")
+    output = output.resolve()
+    if output.is_relative_to(package):
+        raise BundleOutputError(
+            f"output must be outside the session package: {output}"
+        )
 
     included: list[str] = []
     excluded: list[str] = []
@@ -179,7 +195,7 @@ def build_bundle(
         )
 
         output.parent.mkdir(parents=True, exist_ok=True)
-        with zipfile.ZipFile(output, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+        with zipfile.ZipFile(output, "x", compression=zipfile.ZIP_DEFLATED) as zf:
             for path in root.rglob("*"):
                 if path.is_file():
                     zf.write(path, path.relative_to(root).as_posix())
@@ -197,7 +213,7 @@ def main(argv: list[str] | None = None) -> int:
         "--output",
         type=Path,
         default=None,
-        help="Output zip path (default: ./capture_diag_<utc>.zip)",
+        help="New zip path outside the session package (default: ./capture_diag_<utc>.zip)",
     )
     parser.add_argument(
         "--include-raw",
@@ -211,12 +227,15 @@ def main(argv: list[str] | None = None) -> int:
     )
     args = parser.parse_args(argv)
     output = args.output or Path(f"capture_diag_{_utc_stamp()}.zip")
-    summary = build_bundle(
-        args.package,
-        output,
-        include_raw=args.include_raw,
-        include_identifiers=args.include_identifiers,
-    )
+    try:
+        summary = build_bundle(
+            args.package,
+            output,
+            include_raw=args.include_raw,
+            include_identifiers=args.include_identifiers,
+        )
+    except (BundleOutputError, FileExistsError) as exc:
+        parser.error(f"{exc}. Choose a new output path outside the session package.")
     print(f"Wrote {output}")
     print(f"Included {len(summary['included'])} files; "
           f"excluded {summary['excluded_count']} (raw/processing by default).")

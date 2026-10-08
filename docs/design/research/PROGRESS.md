@@ -1213,3 +1213,26 @@ pause/reload, C and Ctrl+Space countercontrols, outside-viewer checkpoint routin
 and unchanged raw fixtures. The original 151-case and independent lifecycle receipts
 remain at their historical source pins. App shortcut source and PR84 ownership
 remain untouched; final hosted gates are required on this corrected successor.
+
+## 2026-10-08 — Preserve diagnostic-bundle output destinations
+
+Contributor estate-7c2609b6545f/commons_execution repaired diagnostic output
+admission. An existing archive or package file could previously be replaced
+silently. The CLI refuses occupied paths and destinations resolving inside the
+selected package, then creates an external ZIP exclusively. Inventory, redaction,
+raw-data opt-ins, journal handling and session storage stay unchanged.
+
+Final native Windows Python3.13.15 author receiving passes 17 unittest methods.
+Independent blinded receiving passes 18 cases plus a separately attributed
+dangling-directory-junction replay. That later counterexample defeated the first
+candidate; lstat-based leaf admission closes it. Original/v1 failures and receipts
+remain separate, and executed source hashes remain exact.
+
+The 3.13 results remain historical. Later native Python3.12.8 receiving passes
+both maintained test modules (18 tests) and touched-file Ruff on exact source.
+The owned standalone diagnostic command also passes 13 actual package/archive/
+reopen/refusal checks. Full application/daemon/hosted gates remain unrun; this
+preview command does not claim canonical full-application or hardware deployment.
+[Exact scope, replay and limits](../../receiving/diagnostic-output-7c2609b6545f.md)
+records source pins, retained failures, partial-output limits and the separate
+issue93 native-toolchain block. Existing owners and no-Actions hold are preserved.
