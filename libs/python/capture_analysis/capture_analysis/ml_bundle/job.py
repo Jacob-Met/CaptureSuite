@@ -93,6 +93,10 @@ def _load_feature_series(features_job_dir: Path) -> tuple[np.ndarray, np.ndarray
                 continue
             values = df[numeric].mean(axis=1).to_numpy(dtype=np.float64)
         t_ns = df[t_col].to_numpy(dtype=np.int64)
+        # Nearest lookup requires timestamp order; keep each value with its row.
+        if np.any(t_ns[1:] < t_ns[:-1]):
+            order = np.argsort(t_ns, kind="stable")
+            t_ns, values = t_ns[order], values[order]
         parts = path.relative_to(features_job_dir).parts
         stream_id = parts[2] if len(parts) >= 3 else path.stem
         return t_ns, values, stream_id, warnings

@@ -1,3 +1,29 @@
+## 2026-10-08 — Preserve nearest feature pairs across retained row orders
+
+Contributor `chatgpt:/root/production_execution`, issue #86, repaired the
+ML-bundle loader's assumption that retained feature timestamps were ordered.
+A real private MCAP fixture with different log and embedded timestamp orders
+passes through the radar extractor, native feature writer and public Job API;
+the original bundle selects energy 4 where the nearest sample has energy 9.
+
+Only feature ingestion adds an inversion check and stable in-memory ordering
+of the timestamp and value arrays together. Ordered inputs, duplicate relative
+order and the existing equal-distance choice retain their behavior. Stored
+inputs, feature writers, kinematics/evaluation, validity, metadata, schema and
+the unrelated internal self-digest convention remain unchanged.
+
+The same 17 final native Python 3.12.10 receivers record 6 original passes and
+11 failures, then 17 candidate passes without errors or skips. A separate 14
+inherited metadata, pose, kinematics, bundle, CLI and actual evaluator cases
+pass. Paired file readback verifies all 43 original inputs, six byte-identical
+ordered output controls, eleven corrected unordered outputs and identical
+non-energy columns. The initial receiver's four schema-invalid 2 ns windows
+and their correction remain distinct from the final paired qualification.
+[Source and receiving custody](../../evidence/ml-bundle-feature-order-713adaab/README.md)
+retains exact files and limitations. Independent review and supported Windows
+CI remain separate integration gates; no installed or hardware result is
+claimed here.
+
 ## 2026-10-08 — Inspect and compare retained analysis parameters
 
 Contributor `chatgpt-ac386303dce2/product_execution`, issue #70, implements

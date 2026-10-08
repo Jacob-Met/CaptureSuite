@@ -1,0 +1,14 @@
+{
+  "schema": "capturesuite.prepublication_static_receiving/1",
+  "license_enforce_spdx": {
+    "exit": 0,
+    "stdout": "license check OK\n",
+    "stderr": "",
+    "log_sha256": "7bcb47df08917b40ea6dc57be21749a0311e7197c5d26ca0df66e0d9f516bcba"
+  },
+  "prior_negative": {
+    "reason": "Sparse receiving checkout omitted workers/stub. The original license check stopped at missing Apache tree before publication; exact existing HEAD subtree then materialized. No inherited file edited.",
+    "log_sha256": "11b1b278d681305e06cc722a177002793049b947b8689731e607f6380bccf5c5"
+  },
+  "limits": "License check applies to materialized native source; full hosted checkout gate remains separate."
+}
