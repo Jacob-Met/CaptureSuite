@@ -1,0 +1,43 @@
+{
+  "schema": "capturesuite.test-receipt.v1",
+  "accepted": true,
+  "process_exit": 0,
+  "counts": {
+    "tests": 11,
+    "passed": 10,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 1
+  },
+  "junit_sha256": "1340ae7999419cc1bedeafa17ac7b85a6de2c45e787187e77960143bcc2cdc79",
+  "problems": [],
+  "scope": "Focused source selection UI and MCAP receiving; Windows MainWindow is a separate gate",
+  "command": [
+    "/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python",
+    "-m",
+    "pytest",
+    "tests/ui/test_analysis_sources.py",
+    "-q",
+    "-ra",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=/dev/shm/capturesuite-234cae4aee53/source-candidate-7b2c999",
+    "--junitxml=/dev/shm/capturesuite-scope-compose-234cae4aee53/build/evidence/analysis-sources-234cae4aee53/qualification-7b2c999/pytest.xml",
+    "-o",
+    "faulthandler_timeout=45"
+  ],
+  "source_commit": "7b2c999584909fd7ef5623e2133b9e8f507031d8",
+  "source_worktree_dirty": false,
+  "source_tree_sha256": "8d091cf964c96ffefb936e49144781a282987204c72078a0382b1871e48d8f80",
+  "source_file_count": 886,
+  "source_unchanged_during_test": true,
+  "seconds": 3.8435454379941802,
+  "runtime": {
+    "pytest": "9.1.1",
+    "PySide6": "6.11.2",
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "mcap": "1.5.0",
+    "pyarrow": "25.0.1"
+  }
+}

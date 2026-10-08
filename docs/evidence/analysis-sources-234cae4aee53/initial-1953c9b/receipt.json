@@ -1,0 +1,40 @@
+{
+  "schema": "capturesuite.test-receipt.v1",
+  "accepted": false,
+  "process_exit": null,
+  "counts": null,
+  "junit_sha256": null,
+  "problems": [
+    "Test process did not exit successfully",
+    "JUnit unavailable or invalid: FileNotFoundError"
+  ],
+  "scope": "Focused source selection UI and MCAP receiving; Windows MainWindow is a separate gate",
+  "command": [
+    "/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python",
+    "-m",
+    "pytest",
+    "tests/ui/test_analysis_sources.py",
+    "-q",
+    "-ra",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=/dev/shm/capturesuite-234cae4aee53/source-candidate-1953c9b",
+    "--junitxml=/dev/shm/capturesuite-scope-compose-234cae4aee53/build/evidence/analysis-sources-234cae4aee53/initial-1953c9b/pytest.xml",
+    "-o",
+    "faulthandler_timeout=45"
+  ],
+  "source_commit": "1953c9bc8823344960c49130e6f4ddabc2369953",
+  "source_worktree_dirty": false,
+  "source_tree_sha256": "d89776a1f4146aae199ef8fcae41acb4100c4ecee72d5beb0b301af500ddabe7",
+  "source_file_count": 879,
+  "source_unchanged_during_test": true,
+  "seconds": 180.1090507359986,
+  "runtime": {
+    "pytest": "9.1.1",
+    "PySide6": "6.11.2",
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "mcap": "1.5.0",
+    "pyarrow": "25.0.1"
+  }
+}

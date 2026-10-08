@@ -29,6 +29,7 @@ from .state import CaptureState, fmt_time
 from .widgets_analysis_jobs import AnalysisJobExtras, peek_ml_bundle_summary
 from .widgets_analysis_plots import FigureGallery, JobInspector
 from .widgets_analysis_scope import WINDOW_COMMANDS, ScopeSelection
+from .widgets_analysis_sources import SOURCE_COMMANDS, AnalysisSourcePicker
 from .widgets_mappings import AnatomicalMappingPanel
 
 
@@ -45,6 +46,7 @@ class _AnalysisWorker(QObject):
         extra: dict[str, Any] | None = None,
         *,
         scope: ScopeSelection | None = None,
+        sources: tuple[str, ...] = (),
     ) -> None:
         super().__init__()
         self._package = package
@@ -52,6 +54,7 @@ class _AnalysisWorker(QObject):
         self._gap_policy = gap_policy
         self._extra = dict(extra or {})
         self._scope = scope or ScopeSelection()
+        self._sources = tuple(sources)
         self._cancel = threading.Event()
 
     def request_cancel(self) -> None:
@@ -64,6 +67,8 @@ class _AnalysisWorker(QObject):
 
             if self._scope.mode != "full" and self._command not in WINDOW_COMMANDS:
                 raise ValueError("This command requires Full session scope.")
+            if self._sources and self._command not in SOURCE_COMMANDS:
+                raise ValueError("This command requires All recorded sources.")
 
             def on_progress(stage: str, frac: float) -> None:
                 self.progress.emit(stage, float(frac))
@@ -73,6 +78,7 @@ class _AnalysisWorker(QObject):
                 JobParams(
                     command=self._command,
                     gap_policy=self._gap_policy,
+                    sources=list(self._sources),
                     extra=self._extra,
                     **self._scope.job_fields(),
                 ),
@@ -149,6 +155,8 @@ class AnalysisScreen(QWidget):
         splitter.setStretchFactor(0, 0)
         splitter.setStretchFactor(1, 3)
         splitter.setStretchFactor(2, 1)
+        self.package_loaded.connect(self._sources.load_package)
+        self._sources.changed.connect(self._sync_enabled)
 
     def _build_controls(self, root: QVBoxLayout) -> None:
         path_row = QHBoxLayout()
@@ -215,6 +223,8 @@ class AnalysisScreen(QWidget):
         gap_row.addWidget(self._gap_policy, 1)
         opts.addLayout(gap_row)
         root.addLayout(opts)
+        self._sources = AnalysisSourcePicker()
+        root.addWidget(self._sources)
 
         self._extras = AnalysisJobExtras()
         self._extras.set_command("qc")
@@ -319,12 +329,19 @@ class AnalysisScreen(QWidget):
             control_pb2.SESSION_STATE_ARMING,
         )
 
+    def _source_error(self) -> str | None:
+        return self._sources.error_for(str(self._command.currentData() or "qc"))
+
     def _sync_enabled(self) -> None:
         busy = self._thread is not None and self._thread.isRunning()
         locked = self._recording_locked()
         has_pkg = self._summary is not None
         scope_error = self._scope_error()
-        self._btn_run.setEnabled(has_pkg and not busy and not locked and scope_error is None)
+        self._sources.set_command(str(self._command.currentData() or "qc"))
+        source_error = self._source_error()
+        self._btn_run.setEnabled(
+            has_pkg and not busy and not locked and scope_error is None and source_error is None
+        )
         self._scope_note.setText(
             scope_error or f"Scope: {self._scope.describe()}. QC reports cover the full package."
         )
@@ -393,6 +410,12 @@ class AnalysisScreen(QWidget):
             QMessageBox.warning(self, "Analysis scope", scope_error)
             return
         command = str(self._command.currentData())
+        self._sources.refresh_inventory()
+        source_error = self._source_error()
+        if source_error:
+            QMessageBox.warning(self, "Analysis sources", source_error)
+            return
+        sources = self._sources.snapshot(command)
         gap_policy = str(self._gap_policy.currentData())
         err = self._extras.validate_for(command)
         if err:
@@ -404,12 +427,15 @@ class AnalysisScreen(QWidget):
         self._inspector.clear()
         self._append_log(f"Starting {command} on {self._package}")
         self._append_log(f"scope={self._scope.describe()}")
+        self._append_log(f"sources={sources or 'All recorded sources'}")
         if extra:
             self._append_log(f"extra={extra}")
         self._progress.setValue(0)
 
         thread = QThread(self)
-        worker = _AnalysisWorker(self._package, command, gap_policy, extra, scope=self._scope)
+        worker = _AnalysisWorker(
+            self._package, command, gap_policy, extra, scope=self._scope, sources=sources
+        )
         worker.moveToThread(thread)
         thread.started.connect(worker.run)
         worker.progress.connect(self._on_progress)

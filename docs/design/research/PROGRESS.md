@@ -821,3 +821,30 @@ full analysis suite passes **161 tests**, with the same native Windows junction
 skip and two retained protobuf deprecation warnings. Source matching, masks,
 MAE/RMSE, units and default identity simulation are unchanged. Independent
 receiving and supported hosted gates still remain separate pending gates.
+
+
+## 2026-10-08 — Desktop analysis source selection (estate-234cae4aee53)
+
+Issue #62 adds All recorded sources / Selected sources to the Analysis workbench,
+using exact discovered descriptor IDs and the existing JobParams.sources path.
+The native chooser preserves explicit choices across refreshes, blocks empty or
+vanished subsets, and keeps package-wide QC visible. Each worker snapshots the
+source IDs before starting; the separate time scope composes unchanged. Source
+selection is available only to the existing consuming commands.
+
+The original clean 2f4dcf3 parent fails the actual Qt missing-control gate while
+the same fixture verifies the review-folder / analysis-descriptor identity
+difference. An earlier standalone baseline produced a completed numeric job but
+did not return from its Qt lifetime; that incomplete attempt is retained without
+a UI or raw-preservation pass. The candidate's focused actual-chooser/thread/MCAP
+gate passed at 7b2c999 (10 passed, one explicit Linux MainWindow skip), with all
+886 source files and all raw package hashes unchanged. The same real QEventLoop
+receiver completes on the untouched parent and candidate; only the test wait
+mechanism changed. Supported Windows MainWindow qualification remains pending.
+
+Shared-screen edits stay within control construction, existing package_loaded
+signal wiring, source admission, and worker parameter handoff. Package lifecycle,
+history/selection/completion, backend jobs/pipeline, galleries and raw storage
+remain with their current owners. The ownership fence is coordinated in #55 and
+HAMON #140. Details: ANALYSIS_SOURCE_SELECTION.md and
+docs/evidence/analysis-sources-234cae4aee53/.

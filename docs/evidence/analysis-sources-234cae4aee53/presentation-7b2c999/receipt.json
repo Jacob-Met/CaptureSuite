@@ -1,0 +1,24 @@
+{
+  "source_commit": "7b2c999584909fd7ef5623e2133b9e8f507031d8",
+  "platform": "Linux offscreen Qt",
+  "raw_unchanged": true,
+  "visually_inspected": true,
+  "observations": [
+    "Sources mode and Choose button fit the existing Analysis control column; exact selected ID remains visible.",
+    "Native checkbox dialog displays exact discovered IDs and explicitly states that QC covers the complete package.",
+    "Existing long package and session labels clip in the inherited narrow control column; this scope does not alter that layout."
+  ],
+  "not_claimed": "These are not Windows screenshots or a presentation of later composed source.",
+  "images": [
+    {
+      "path": "docs/evidence/analysis-sources-234cae4aee53/presentation-7b2c999/workbench.png",
+      "bytes": 78978,
+      "sha256": "c36dadd4660cba4686fe547feeab15886d986f4c27bd7864737de07bcc78da3c"
+    },
+    {
+      "path": "docs/evidence/analysis-sources-234cae4aee53/presentation-7b2c999/chooser.png",
+      "bytes": 14427,
+      "sha256": "e94c61ed2dededd6ed420cca0ae9dee8ca5c3044a635eef634ca05403d72b212"
+    }
+  ]
+}
