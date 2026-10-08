@@ -1,0 +1,8 @@
+{
+  "source_commit": "2f4dcf3ec81a96ac92100f69155879fe42e4f948",
+  "process_exit": 1,
+  "expected_failure": "Analysis has no operator-accessible recorded-source picker",
+  "reader_fixture": "Valid numeric MCAP package: directory folder-a, descriptor sampler.a",
+  "source_changes": "Only the new control test; all production bytes are the untouched parent",
+  "pytest_command": "python -m pytest tests/ui/test_analysis_sources.py::test_operator_can_choose_exact_recorded_sources -q -p no:cacheprovider --basetemp=/dev/shm/capturesuite-234cae4aee53/source-control-pytest -o faulthandler_timeout=45"
+}

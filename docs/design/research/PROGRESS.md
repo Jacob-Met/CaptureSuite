@@ -1,3 +1,32 @@
+## 2026-10-08 — Describe actual ML-bundle values and configured cadence
+
+Contributor `chatgpt:/root/production_execution`, issue #72, prepared a distinct
+metadata repair after PR46 integration. The ML producer previously declared
+z-score inputs, linear target interpolation and a requested rate that its
+actual Parquet values and center spacing did not implement.
+
+Only the producer's manifest dictionary changes. It now records unnormalized
+inputs/targets, nearest features and inclusive-window median targets. Effective
+integer-hop timing and integer half-width stay separate from original requests.
+The single median-center fallback is explicit, and the rate identifies the
+configured hop rather than claiming an observed or native sensor cadence.
+[The producer contract](../ML_BUNDLE_METADATA.md) documents these fields.
+
+Eight identical final regressions retain eight original failures and pass on
+the candidate under native Python3.12.8. Five existing pose/kinematics/ML/eval/CLI
+cases also pass at the same producer source. Three actual original-input Parquet
+witnesses remain byte-identical after the change, and all twelve original
+fixture files remain intact. Existing output receipts and the public job's
+original parameters agree with their final bytes. Scoped Ruff passes.
+
+Every source byte before and after the metadata dictionary remains unchanged.
+The evaluator, kinematics, sync/checkpoint/UI owners, numerical algorithms,
+schemas and unrelated internal self-digest convention retain their scopes.
+[Source and receiving evidence](../../evidence/ml-bundle-metadata-713adaab/README.md)
+keeps the original failures and the proposed-source results distinct.
+Independent source review and the existing supported Windows CI are separate
+integration gates; no installed or hardware outcome is claimed here.
+
 ## 2026-10-08 — Preserve missing pose evidence in kinematic labels
 
 Worker `estate-406d0fb04c43 / production`, issue #56: non-simulated pose tables
@@ -983,6 +1012,45 @@ Native artifact paths, exact hashes, recipient usage, raw qualification and
 independent review are in
 [the receiving packet](../../receiving/macos-session-doctor-5f566b5ec8ef/README.md).
 
+
+## 2026-10-08 — Desktop analysis source selection (estate-234cae4aee53)
+
+Issue #62 adds All recorded sources / Selected sources to the Analysis workbench,
+using exact discovered descriptor IDs and the existing JobParams.sources path.
+The native chooser preserves explicit choices across refreshes, blocks empty or
+vanished subsets, and keeps package-wide QC visible. Each worker snapshots the
+source IDs before starting; the separate time scope composes unchanged. Source
+selection is available only to the existing consuming commands.
+
+The original clean 2f4dcf3 parent fails the actual Qt missing-control gate while
+the same fixture verifies the review-folder / analysis-descriptor identity
+difference. An earlier standalone baseline produced a completed numeric job but
+did not return from its Qt lifetime; that incomplete attempt is retained without
+a UI or raw-preservation pass. The candidate's focused actual-chooser/thread/MCAP
+gate passed at 7b2c999 (10 passed, one explicit Linux MainWindow skip), with all
+886 source files and all raw package hashes unchanged. The same real QEventLoop
+receiver completes on the untouched parent and candidate; only the test wait
+mechanism changed.
+
+Frozen Windows diagnostic 37809372315 passed 490 tests with six explicit daemon
+skips in 194.36 seconds, including all 11 source-selection cases and MainWindow.
+It changes observation only, retains the 300-second deadline, and skips CMake
+only on its diagnostic branch; it is not the ordinary full PR gate. The prior
+300-second timeout and its raw evidence remain distinct. Independent actual Qt
+receiving also reproduced and accepted a test-only early-timer chooser repair;
+one explicit early-delivery regression now guards that helper. Current main's
+checkpoint, sync-request refusal and camera changes compose without changing
+either accepted source-selection production blob. The ordinary Windows gate
+on the complete union remains pending. The offscreen Windows screenshot has
+missing glyphs; readable Windows presentation is not claimed.
+
+Shared-screen edits stay within control construction, existing package_loaded
+signal wiring, source admission, and worker parameter handoff. Package lifecycle,
+history/selection/completion, backend jobs/pipeline, galleries and raw storage
+remain with their current owners. The ownership fence is coordinated in #55 and
+HAMON #140. Details: ANALYSIS_SOURCE_SELECTION.md and
+docs/evidence/analysis-sources-234cae4aee53/.
+
 ## 2026-10-08 — Native external-prediction evaluation (#69; HAMON 6e5752b49b6f)
 
 The native Analysis workbench now exposes the existing #57/PR65 evaluator with
@@ -1024,3 +1092,8 @@ are recorded separately with their exact source identities.
 ### PR84 Windows chooser receiving correction (2026-10-08)
 
 The first ordinary Windows gate timed out before JUnit. An isolated unchanged-source full-order diagnostic identified the actual Qt test helper stripping a significant leading filename space, then waiting inside a file-not-found QMessageBox. Production chooser behavior is unchanged. The helper now uses verified literal filename entry and independent bounded modal cleanup, with an actual missing-file unwind regression. The normal 300-second runner and selection remain exact; a read-only post-Pytest step prints and checks the actual named MainWindow and chooser JUnit cases. Original failure and diagnostic evidence are preserved in `docs/evidence/analysis-predictions-windows-correction-6e5752b49b6f/`; supported Windows acceptance remains pending until that actual successor gate completes.
+
+
+### PR84 exact Windows diagnosis and current picker composition (2026-10-08)
+
+The second unchanged-source diagnostic separates three actual failures and a later inherited receiving stall: inline CI observation violated the one-command contract; even quoted filename entry lost significant leading space through Qt's model; MainWindow's global checkpoint Space shortcut consumed native Clear activation; the existing scope-test QTest.qWait loop stalled a real plotting worker. Original ordinary and diagnostic failures are retained, not relabeled. The next candidate uses the independently received actual file-view selection approach, retains bounded modal cleanup, protects only unmodified Space on a focused descendant Analysis QPushButton, and preserves global shortcut behavior in a real countercontrol. JUnit observation moves to one explicit Python command. The scope wait correction is independently owned and preserves its original receiving assertions/bound. The full current source picker and current progress text are preserved in this composition. The unchanged ordinary300-second Windows gate must qualify the resulting exact checkout before adoption.

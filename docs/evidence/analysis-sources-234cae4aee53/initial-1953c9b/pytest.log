@@ -1,0 +1,39 @@
+.Timeout (0:00:45)!
+Thread 0x00007f69a3fff6c0 (most recent call first):
+  <no Python frame>
+
+Thread 0x00007f69e8c2f740 (most recent call first):
+  File "/dev/shm/capturesuite-scope-compose-234cae4aee53/tests/ui/test_analysis_sources.py", line 137 in _wait_for_job
+  File "/dev/shm/capturesuite-scope-compose-234cae4aee53/tests/ui/test_analysis_sources.py", line 174 in test_source_choice_reaches_real_thread_job_and_mcap_outputs
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/_pytest/python.py", line 167 in pytest_pyfunc_call
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/pluggy/_callers.py", line 121 in _multicall
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/pluggy/_manager.py", line 120 in _hookexec
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/pluggy/_hooks.py", line 512 in __call__
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/_pytest/python.py", line 1707 in runtest
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/_pytest/runner.py", line 184 in pytest_runtest_call
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/pluggy/_callers.py", line 121 in _multicall
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/pluggy/_manager.py", line 120 in _hookexec
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/pluggy/_hooks.py", line 512 in __call__
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/_pytest/runner.py", line 250 in <lambda>
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/_pytest/runner.py", line 361 in from_call
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/_pytest/runner.py", line 249 in call_and_report
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/_pytest/runner.py", line 139 in runtestprotocol
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/_pytest/runner.py", line 118 in pytest_runtest_protocol
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/pluggy/_callers.py", line 121 in _multicall
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/pluggy/_manager.py", line 120 in _hookexec
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/pluggy/_hooks.py", line 512 in __call__
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/_pytest/main.py", line 408 in pytest_runtestloop
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/pluggy/_callers.py", line 121 in _multicall
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/pluggy/_manager.py", line 120 in _hookexec
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/pluggy/_hooks.py", line 512 in __call__
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/_pytest/main.py", line 384 in _main
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/_pytest/main.py", line 330 in wrap_session
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/_pytest/main.py", line 377 in pytest_cmdline_main
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/pluggy/_callers.py", line 121 in _multicall
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/pluggy/_manager.py", line 120 in _hookexec
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/pluggy/_hooks.py", line 512 in __call__
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/_pytest/config/__init__.py", line 229 in _main
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/_pytest/config/__init__.py", line 253 in _console_main
+  File "/workspace/scratch/234cae4aee53/capturesuite-venv/lib/python3.12/site-packages/pytest/__main__.py", line 9 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 198 in _run_module_as_main

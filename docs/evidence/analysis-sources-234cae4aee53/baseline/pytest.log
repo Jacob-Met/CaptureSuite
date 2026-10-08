@@ -1,0 +1,40 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______________ test_operator_can_choose_exact_recorded_sources ________________
+
+qapp = <PySide6.QtWidgets.QApplication(0x414a4490) at 0x7f3ebcced8c0>
+tmp_path = PosixPath('/dev/shm/capturesuite-234cae4aee53/source-control-pytest/test_operator_can_choose_exact0')
+
+    def test_operator_can_choose_exact_recorded_sources(qapp, tmp_path: Path):
+        from capture_analysis.discover import discover_streams
+        from capture_session import load_review_summary
+        from PySide6.QtWidgets import QComboBox
+    
+        package = _package(tmp_path / "sources μ.mmsession")
+        assert load_review_summary(package).source_ids == ["folder-a", "sampler.b"]
+        assert sorted({ref.source_id for ref in discover_streams(package)}) == [
+            "sampler.a", "sampler.b",
+        ]
+        screen = _screen(qapp, package)
+        try:
+            modes = [w for w in screen.findChildren(QComboBox)
+                     if w.accessibleName() == "Analysis source mode"]
+>           assert len(modes) == 1, "Analysis has no operator-accessible recorded-source picker"
+E           AssertionError: Analysis has no operator-accessible recorded-source picker
+E           assert 0 == 1
+E            +  where 0 = len([])
+
+tests/ui/test_analysis_sources.py:62: AssertionError
+----------------------------- Captured stderr call -----------------------------
+This plugin does not support propagateSizeHints()
+=============================== warnings summary ===============================
+tests/ui/test_analysis_sources.py::test_operator_can_choose_exact_recorded_sources
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.MessageMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+
+tests/ui/test_analysis_sources.py::test_operator_can_choose_exact_recorded_sources
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.ScalarMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/ui/test_analysis_sources.py::test_operator_can_choose_exact_recorded_sources
+1 failed, 2 warnings in 2.35s

@@ -1,0 +1,4850 @@
+{
+  "schema": "capturesuite.source-composition.v1",
+  "main": "58157fdc1b83a12bb4856ef14b0498cf524a1087",
+  "main_tree": "51c711928a28dc02e100fcdea44cd34512318113",
+  "candidate_native": "085446bd6144150341a71a55c00a3050d7575cd2",
+  "candidate_public": "4589d344691368c19e626ffd6d174327d3e482cf",
+  "base": "70f34e3b982523b544a9370d2316a1b69d79bd70",
+  "commit": "6a0824c595f072565407144c1ba07f34b7501a87",
+  "parents": [
+    "085446bd6144150341a71a55c00a3050d7575cd2",
+    "58157fdc1b83a12bb4856ef14b0498cf524a1087"
+  ],
+  "tree": "96d1b97b097803d964e99f7a7f4f58f38cd02bb4",
+  "leaves": {
+    ".clangd": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f323607abde82bd496b552bddf20c99f4575949d"
+    },
+    ".cursor/hooks.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2feb28b10112af80f07f177552643a0e1f93c5bc"
+    },
+    ".cursor/hooks/stop-capture-processes.ps1": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b8c372e08eda9dc271c3bbf4572c036494f3e3b3"
+    },
+    ".cursor/rules/add-acquisition-plugin.mdc": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3aa763d23dd10d07506f19e8b0f74956a3e25848"
+    },
+    ".cursor/rules/camera-worker-gstreamer.mdc": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a6d2cc58c375d98692b7fff61344d9ed4e751fd7"
+    },
+    ".cursor/rules/config-schema-revision.mdc": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "404683553ca584cfa74fe8d28bd9239ffcbb6ab6"
+    },
+    ".cursor/rules/local-toolchain.mdc": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "41884e93ad8d3a1a63411111794d82a148ca692b"
+    },
+    ".cursor/rules/worker-pipe-io.mdc": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4673679be8de4957ee28637456da4b8927f69cd5"
+    },
+    ".editorconfig": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fdf22804609810f2378466430ed222f88a7c4399"
+    },
+    ".gitattributes": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7edc3c048fdc468135da377395b66fc0965eb755"
+    },
+    ".github/ISSUE_TEMPLATE/bug_report.yml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "481039eeca81620c1518ffe9c5439533843e9ef7"
+    },
+    ".github/ISSUE_TEMPLATE/plugin_request.yml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d833f76c7b8228ec28ba6a3d67b5832a3858d0bc"
+    },
+    ".github/PULL_REQUEST_TEMPLATE.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2076e3ce87b0d3de8fb654b3fee76ac0ef2bab16"
+    },
+    ".github/dependabot.yml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7e0e1e9bea349db24a3f579df49f0908b61c121e"
+    },
+    ".github/workflows/ci.yml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9c08a4d38d435169f402511c934d1c59701082cf"
+    },
+    ".github/workflows/release.yml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "079f99fe630d135933f3c2c725f49874c2d66d1c"
+    },
+    ".gitignore": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ab92b7cfa757440b843f12dfca79641fdb066bb5"
+    },
+    ".pre-commit-config.yaml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8600fc65e089580d79232f3eb4ddaac7b2dedc91"
+    },
+    ".vscode/extensions.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "602831df8b95233e7d43bfc07b974f16bf073fe3"
+    },
+    ".vscode/settings.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f434902c2cf736a47c04a3da82df6ce2ff4fe67f"
+    },
+    "AGENTS.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9ac6683ba4805e210143e5a33e7782da55af0d15"
+    },
+    "CHANGELOG.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "31cf0c64a43f8b98d8993e90a7cf339338ace0dd"
+    },
+    "CITATION.cff": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "149a09fdc96cfbecbd31f6793987b878d6554f86"
+    },
+    "CMakeLists.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8d5da4419dcaa3c9ed23173f40c22440815dc15e"
+    },
+    "CMakePresets.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dfafa2e6e351a1d4b758e53e1ac95cb4b1f643c6"
+    },
+    "CMakeUserPresets.example.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "63e4b417d572d65d20469ea9f080fad7c095af33"
+    },
+    "CODE_OF_CONDUCT.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cf62128365869b1573b28b1027772e4885dec1fe"
+    },
+    "CONTRIBUTING.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "07ce652a85c16bfed220192076f22ce6d602d211"
+    },
+    "LICENSE": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7"
+    },
+    "LICENSING.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "44df160df06a04305cc457c4bf296552e5c38c80"
+    },
+    "NOTICE": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8cf2966222285708edcab8bee8a309878d3fb5d0"
+    },
+    "README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "14bae7a2f91a88431cf1bca94a0cb8efdbef4aa7"
+    },
+    "SECURITY.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "02b8a8e00d9afef505992c56a77db988f42a7d71"
+    },
+    "cmake/CaptureProtobuf.cmake": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8af02dd2504815968c1b9adb702e74366d1a38ce"
+    },
+    "cmake/CompilerWarnings.cmake": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eb182f0e2566f00787ab836dc62f92b85e5ba4c5"
+    },
+    "cmake/FindGStreamer.cmake": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9a907b1d620c72b315f644b24d03edc9534aecc2"
+    },
+    "cmake/FindInfineonRadar.cmake": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dc314675d2e5203c65bbdc610ec27fb7c869c435"
+    },
+    "cmake/linux-shims/unofficial-mcap/unofficial-mcapConfig.cmake": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e5d2039ab2c5d76446c694751e94c90e45a4a12c"
+    },
+    "cmake/linux-shims/unofficial-sqlite3/unofficial-sqlite3Config.cmake": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "27465119af56bda3a4770dab77bba903c8328313"
+    },
+    "daemon/CMakeLists.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7b59bbc2c6391360dfc28cdcab8b1837e168ba08"
+    },
+    "daemon/include/capture_daemon/camera_capture.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ed68fbf1da66f9b5ca0e26cda15c268fd969ed7d"
+    },
+    "daemon/include/capture_daemon/camera_worker_bridge.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a31da396a20d1dae1c44aa04dbb8df37332fb9f8"
+    },
+    "daemon/include/capture_daemon/control_server.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "29bf56a7802034a92ae59ee6c70e4cf4978dae1e"
+    },
+    "daemon/include/capture_daemon/external_worker_bridge.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "09e8c93d0ba0bf65667ae19c1e05569d3825bb85"
+    },
+    "daemon/include/capture_daemon/handshake.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e65ec35a477986db85e0477d8d8f3b837ef88b49"
+    },
+    "daemon/include/capture_daemon/plugin_registry.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "09158e442053e0b722c782a8f22737f34d481001"
+    },
+    "daemon/include/capture_daemon/preview_types.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "79d185b4cdfaa19f9d6895e25eefdfbeec3d4f91"
+    },
+    "daemon/include/capture_daemon/process_security.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0340acff6e78deb3749afc7599ea3a93676c27f1"
+    },
+    "daemon/include/capture_daemon/radar_worker_bridge.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "670ab89923e3f333ed3b9e8ef318935aa54e6f7a"
+    },
+    "daemon/include/capture_daemon/sim_engine.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "52747a3ee5cad052f30269669c99d12f140101ac"
+    },
+    "daemon/include/capture_daemon/worker_host.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "399ee7f015b5fb5dbefb3c63faad6fa906e58397"
+    },
+    "daemon/src/camera_capture.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "afa78c4b1436e70a385687d6dadb8741616bb175"
+    },
+    "daemon/src/camera_worker_bridge.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ae1f84819cede4f5b7bf4745ada87f7189ce92ad"
+    },
+    "daemon/src/control_server.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "998d72af7bbd78ac111a219546e1f5ebd088280e"
+    },
+    "daemon/src/external_worker_bridge.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2381ed877e399176dc3c049da74f740dbe63a6be"
+    },
+    "daemon/src/handshake.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8e3cdff69722afcabe764d970b53014edeb92002"
+    },
+    "daemon/src/main.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0a1d35f2cdc999b2a60af2def432bff8b31a6b05"
+    },
+    "daemon/src/plugin_registry.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "097a885e481b1789b80ff2404ad47dfdee544948"
+    },
+    "daemon/src/process_security.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3690984886be3fb93569bd6c116885aab16d4aee"
+    },
+    "daemon/src/radar_worker_bridge.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6146e8c3f6007f100f2e9838f8539abd7492271a"
+    },
+    "daemon/src/sim_engine.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fe6f8b269588cb0465f7a7e534b8f6eb8d60c3a0"
+    },
+    "daemon/src/worker_host.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bb4a9d7ca51e1a012afc8c75ac25f56a21cca680"
+    },
+    "desktop/capture_desktop/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "48777bd04b62e3b3b877e12311f7257819ab3a07"
+    },
+    "desktop/capture_desktop/__main__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f78ccce984b725bf7263407d5b4b2d4c56131433"
+    },
+    "desktop/capture_desktop/analysis_figure_export.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3c7b5c2be3639b6086551eb8d2dda18aa1507b44"
+    },
+    "desktop/capture_desktop/app.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "363b6acbdcf0ba382bd040903946e6916ab282c9"
+    },
+    "desktop/capture_desktop/daemon_link.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "620e5a753fbd8448c3a57fcfa6a8b8540ac0bcd0"
+    },
+    "desktop/capture_desktop/export_wizard.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b22d0098eb9af3860c654591e411dbab68a0f05d"
+    },
+    "desktop/capture_desktop/main.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "90ad2adebae1f52ffabb889efe43a31dca1b6454"
+    },
+    "desktop/capture_desktop/persistence.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2f2da2bfda654009baa0e723465c82c1690a0676"
+    },
+    "desktop/capture_desktop/schema_form.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2d5fa62b1448e168e639e3e8879989a3461e1053"
+    },
+    "desktop/capture_desktop/screen_analysis.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f1fa58d8dfab1905dc2697ff9146dce73b7e3e37"
+    },
+    "desktop/capture_desktop/screen_capture.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b2d3cf05d57484f5efdbb0df85e5f0a065dab3d9"
+    },
+    "desktop/capture_desktop/screen_presets.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c143fb87629fb90f656a7a3b4b9f3c136b03f596"
+    },
+    "desktop/capture_desktop/screen_review.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "88a902ca7699faa2964f3fc22ec3348a339905a4"
+    },
+    "desktop/capture_desktop/screen_settings.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fe6d1e8884b7300e4cb5039b8e86679339e43b4d"
+    },
+    "desktop/capture_desktop/screen_setup.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1df45aac30d63d6ab2e8ddc7efe0db394c513ab1"
+    },
+    "desktop/capture_desktop/state.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "95046ba5ef7f7bbf5685a54b7ae8fd400814148c"
+    },
+    "desktop/capture_desktop/theme.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e309ce92bf66f65ca7c111698e1f536f05e4dca9"
+    },
+    "desktop/capture_desktop/widgets_analysis_jobs.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c4d2f4513032d744f1f8066f0c887cda71d9b911"
+    },
+    "desktop/capture_desktop/widgets_analysis_plots.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2d6cbf65e20a9ec813254f380b51cebe203647b4"
+    },
+    "desktop/capture_desktop/widgets_analysis_scope.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7b15a34fc1f8a9f31164d4ee9b4d144ff01a8d2d"
+    },
+    "desktop/capture_desktop/widgets_analysis_sources.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8d88966a9c9c2813052c2a97725116e3a90da917"
+    },
+    "desktop/capture_desktop/widgets_figure_export.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "de619492f9b360608c58ecd04002def52be5f7a0"
+    },
+    "desktop/capture_desktop/widgets_mappings.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "62dd1b137ffc54a05aa81f37eb8627dd12e0032a"
+    },
+    "desktop/capture_desktop/widgets_modality_expanded.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "70d67f7405730707ad67d1da0e71a7e87bf8b68e"
+    },
+    "desktop/capture_desktop/widgets_preview.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d0a760164a413616ab406a54d81c7b3f9b30d638"
+    },
+    "desktop/capture_desktop/widgets_radar_array.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d270e7aa8b36a9a6376cfbd76a46ec6448bb9ae4"
+    },
+    "desktop/capture_desktop/widgets_session_header.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b1f4cbf5ab35ef06b4bf1da45f0be6ffb34b0a4a"
+    },
+    "desktop/capture_desktop/widgets_session_timeline.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2d9ba524b1e6231c934f6d037796a53e135a12f8"
+    },
+    "desktop/pyproject.toml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dada23f8692dfda4c7c07fc012608844c7f41ab9"
+    },
+    "docs/BUILDING-LINUX.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "202ecfd5ffffc58e7f55a6ab663a7fb55a0b3177"
+    },
+    "docs/NUMERIC_ANALYSIS.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b5a72eb5de05b51a63c68c7aa23e5d540c3de1db"
+    },
+    "docs/RELEASE_CHECKLIST.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3900056a9b6448ad442d8ef862d617ac6f290194"
+    },
+    "docs/design/ANALYSIS.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "077afcf3943762479d98b39a9f45b72b414007e1"
+    },
+    "docs/design/BUILD_TOOLCHAIN.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "06288f0f5685fc741df607c1dce03742b66deebe"
+    },
+    "docs/design/CONFIGURATION_UI.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "31145c46ad16f6ee7ab09ce98cb056e6cd75c038"
+    },
+    "docs/design/DATA_COLLECTION_PROTOCOL.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "afdb967c186f17deec65f928f601e51004718b12"
+    },
+    "docs/design/DESIGN_SYSTEM.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7c9a1f8306e2f866a1e9c41d4455a0f000ef59c8"
+    },
+    "docs/design/KINEMATICS_PIPELINE.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4206818b8834c56db530ca939b04cfe59e73aff6"
+    },
+    "docs/design/OPERATIONS.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "34570cf47303be2dfc8151c3943aedc9daaccc8d"
+    },
+    "docs/design/PLUGIN_REGISTRY.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "af02ba26b58b78e1f12beb9d7871671379750d7e"
+    },
+    "docs/design/PREVIEW_TRANSPORT.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cd91658e858d236e55405d65958142bfb5e565fd"
+    },
+    "docs/design/PROTOCOL.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5d26a0e44c5c2662630fb6547f711d09818e3fee"
+    },
+    "docs/design/RADAR_ARRAY.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0443decd2c0a8668b3374b6257669f8970e9fb5c"
+    },
+    "docs/design/RADAR_PIPELINE.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3180b1d3c7f1ef7806692eddca4830b35ec88730"
+    },
+    "docs/design/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eaf766a9de2084c4e4548456fbff1ffe1f8a5928"
+    },
+    "docs/design/RECOVERY.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "458c21317a990f4de0ea8a9c60c6de009902088c"
+    },
+    "docs/design/SESSION_FORMAT.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ce6e651af320735a7831cc85c92abdab558cff0a"
+    },
+    "docs/design/SETTINGS_REGISTRY.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dd3dac0d1b180993eaf3280eb181783e27f76efc"
+    },
+    "docs/design/STATE_MACHINES.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3774f8937e40e98cecb7115610da5be380a21058"
+    },
+    "docs/design/TIMING.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "540edf7d09bbd04b01511a25f7d7b1e51f68ddb1"
+    },
+    "docs/design/UI_CONTRACT.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bd09dd0972fce2e3558c4ce843459602a8968172"
+    },
+    "docs/design/VENDOR_SPIKE.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f0c84425c04118a48f05625e512d9ee27310ea29"
+    },
+    "docs/design/VIDEO_PIPELINE.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3f2807d792509e9bc923d16d47520196aff97175"
+    },
+    "docs/design/WORKER_HOST.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a99077392091a0d63791a94a71f5479cde693afd"
+    },
+    "docs/design/adapters/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "013982f5aa2a372bbe25383f864be9ebc6808349"
+    },
+    "docs/design/adapters/delsys.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "13677cdf70eb95d23898246a2a3dfb0ebc0fc9b8"
+    },
+    "docs/design/adapters/infineon_bgt60ltr11aip.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "088d6f1bc03732621a178607236046faa641b082"
+    },
+    "docs/design/adapters/infineon_bgt60tr13c.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e4b5c6395fb9f21936a7e34459c03f0b490190ed"
+    },
+    "docs/design/adapters/notes/.gitkeep": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/design/adapters/notes/infineon_bgt60tr13c_2026-08-08.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d301a6461acc18a7bc8796c63fd0e50b559d30bc"
+    },
+    "docs/design/adapters/xsens.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "86c2ecab099ef6af7c082d55faab1f3bb7e4af62"
+    },
+    "docs/design/research/ACQUISITION_PLUGIN_CONTRACT.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a219ef78ea78331cf3e4d8b2a4eedca6eaf185be"
+    },
+    "docs/design/research/ANALYSIS_PLUGIN_ARCHITECTURE.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c5c7c9c2160e99148e1d9be8d172dcb01e6b1c81"
+    },
+    "docs/design/research/ANALYSIS_SCOPE_SEMANTICS.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2814d8e3d13c934846b84bb1dfbb1f9bb5cb50d1"
+    },
+    "docs/design/research/ANALYSIS_SOURCE_SELECTION.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "201f02247da3ac0465a8a8ec60093abe4cf515fa"
+    },
+    "docs/design/research/ANALYSIS_WORKBENCH.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8ab2b8bcb3673ecd13981be33004b4a021eebb3a"
+    },
+    "docs/design/research/AUTONOMOUS_EXECUTION_PLAN.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "77d4576009f677f62b301bd6d352d9b40328c471"
+    },
+    "docs/design/research/COMPETITIVE_AUDIT.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "516035a7b0abfa2851f92574cece14c5dc70a71b"
+    },
+    "docs/design/research/ETHICS_AND_PRIVACY.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c40615f983c06f0eca85cbb4ceeb364983d3a67f"
+    },
+    "docs/design/research/EXTENSION_MODALITIES.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1c75b34a0a8a19a978c57128624621bd7b4e2530"
+    },
+    "docs/design/research/FEATURE_CATALOG_RESEARCH.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2a20e3bb63162dd8a6332a8b1b3da6bab46ba131"
+    },
+    "docs/design/research/FIGURE_EXPORT.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "164557e94d4f75c5bbd3c2c4a1c490d7c40aded2"
+    },
+    "docs/design/research/IA_AND_PRODUCT.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "681a6fd14bc295c10fb1416ae91a3526170ada48"
+    },
+    "docs/design/research/IMPLEMENTATION_ROADMAP_FROM_RESEARCH.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8a181c357157f293c3b4224db871fefdd1e72c84"
+    },
+    "docs/design/research/MODALITY_DEPTH_camera.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "67fa1a52c1031e142516658cd43cbe19ba1803ed"
+    },
+    "docs/design/research/MODALITY_DEPTH_emg.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "25958ee4fcc3b9361f6e85ff0935fd8ef56a0285"
+    },
+    "docs/design/research/MODALITY_DEPTH_imu.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5feee8c6598e4ba4572c9e5ea0425b6ce0d2f90b"
+    },
+    "docs/design/research/MODALITY_DEPTH_radar_doppler.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cb46505c8d295298120c4c412a1e176e3039a3d9"
+    },
+    "docs/design/research/MODALITY_DEPTH_radar_fmcw.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0dbd8e335851c318762f9394526641063b82b1ad"
+    },
+    "docs/design/research/OPERATOR_AND_PLUGIN_DOCS_OUTLINE.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "198c68049fc3d8f133ec98d3316299e5fb8d033b"
+    },
+    "docs/design/research/PERFORMANCE_SLO_RESEARCH.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4c54d55445746d8a9d623c1527984ce7989572df"
+    },
+    "docs/design/research/POSE_HAND_TEACHER_POLICY.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7992975ade615855ef26f63cc0d9733d87600aba"
+    },
+    "docs/design/research/PRESETS_AND_SETTINGS_UX.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "29dd7b0769ab9e4746918f10aac16eeb6147df7b"
+    },
+    "docs/design/research/PROGRESS.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d873c19bfe91d52cae8a3b475aa98e6f0d49d45d"
+    },
+    "docs/design/research/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9a654d467d0d1a2f404af78e17e576c6b07fa980"
+    },
+    "docs/design/research/REVIEW_AND_EXPORT_UX.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c8f9e49f725bd0a9685b23812a1c1b2209aa305c"
+    },
+    "docs/design/research/UROLOGYMOCAP_MERGE_RESEARCH.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f20f97d3452ecd741ab60f6f839917a1cf309dc8"
+    },
+    "docs/design/research/notes/.gitkeep": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/design/research/schemas/analysis_job_dag.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2cf3c4148f78e9bc557066b4fdfc2f0965116ce2"
+    },
+    "docs/design/research/schemas/analysis_plugin_manifest.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9bca7c1563a8570a5287bbfac3aaba218c84b04b"
+    },
+    "docs/design/research/schemas/formula_registry.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c0f9af903bcf7ae05ebc4929bb61fb51da182766"
+    },
+    "docs/evidence/analysis-job-preservation-6267db2cfc6e/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "be1d74adf2cfb742bb34f0890f7b9138466c1fa7"
+    },
+    "docs/evidence/analysis-job-preservation-6267db2cfc6e/baseline-destinations.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d20918bcdff8fb3f46d5c193293d2dd4d2b0fd8b"
+    },
+    "docs/evidence/analysis-job-preservation-6267db2cfc6e/baseline-replacement.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3dd75e1fd7a2e663c1bfe9b9076f102b35491473"
+    },
+    "docs/evidence/analysis-job-preservation-6267db2cfc6e/composed-candidate.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "673de4a197468ff65ace944e59dae00f978bfdf9"
+    },
+    "docs/evidence/analysis-job-preservation-6267db2cfc6e/consumer/baseline-cli.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a967226102ece9f806b7500bf5abfd703fd1e239"
+    },
+    "docs/evidence/analysis-job-preservation-6267db2cfc6e/consumer/candidate-cli-and-ui-collection.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f24a76c79743646caba47da99ab0f0719cfba5cd"
+    },
+    "docs/evidence/analysis-job-preservation-6267db2cfc6e/consumer/receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4be6360094212043cf3fc28dcacb9303e4a9d56f"
+    },
+    "docs/evidence/analysis-job-preservation-6267db2cfc6e/receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "14fced5dabb885cf92eb9669500ae1a88a9004e9"
+    },
+    "docs/evidence/analysis-job-preservation-6267db2cfc6e/ruff.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1f5f344d054fae10f39140fb7199c99321d9190a"
+    },
+    "docs/evidence/analysis-output-provenance-20261008.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b77fb58ffe3cea14a9f0dba8f70256ab24a9ebc9"
+    },
+    "docs/evidence/analysis-output-provenance-current-receiving-20261008.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7fef0e5aa2e9a91c1fb2a4d331cce219a818db0b"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d99a3e1aa6dfc63ea92463478c15834b34880b1c"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/admission.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "64f1ff5b6f205da63178e1cd2cea823af0dfb2e3"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/admission.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2b95c3c80c2c23aacf44a71c76aebcc5462df54a"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/artifact-hashes.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d210303a8bd8f1c13d2d7a833a4107affcd3e1c5"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/baseline.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "196c84af0dd1a2282cd407ab4ed864846d3f4b1b"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/baseline.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9c5a77828c689c020727167f116e9d4ac0636dfe"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/cancelled-by-first-harness-manifest.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "02cf4b96933898aa9dafb913da38ae862ea1f19e"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/composed-first.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5f14ef8bdc7f2ba8cdd27058ee5f735f041f9d96"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/composed-first.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d9f031e1a116059be52b725b152e263adc7171f4"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/final-receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "af4a7fc3feff3f57b4541526fa8aa606b4787609"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/final-source-manifest.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "43c953e3c8c4aa391a71f99ca42e31b920de7c80"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/final.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a08c13c77f7924f273b5b8afdf2e36de8c3dfac1"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/final.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d70ae2ee89bfa2145efd250fbea30e75476da4c8"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/first.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2361de785e7dbb81f7100ff051cb154c0564b35f"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/peer-checkpoint-after-harness.py.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "99bc56420f54384d92252ca76e6f1b2f48077709"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/peer-checkpoint-after.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "43c067c32c147399b86c078b7af7f1260805aa4d"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/peer-checkpoint-before.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "43e81ebdf5cb64a6428d120dd1e1d92da670d6d2"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/peer-checkpoint-harness.py.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "caf37e0d70fa63b64ec08afbe00be153947cd9f2"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/publication-composition.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f5a3d30c6b214ee33ab343037c2fcf234063b632"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/qualified-receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5500aded0f9636f7bb806b8beb6c4f6eb7e22a8c"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/qualified-source-manifest.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "53096bc0e5195779904391cfd14ee85cbd3f3761"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/qualified.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cd86646a34e1146e70a80a8522cc07ed747af019"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/r2-receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "32b1277e5fa414c82412b2b49d69ee47d58ed766"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/r2-source-manifest.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "baefdd6b9e3220c611e3afb2769e4d123dafd400"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/r2.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0edbd2f63830e2cf1d18da30c9c75e474b229f56"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/r2.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c4539c69b79c6ae9af901884935f2df33c1fffe0"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3144cad4c440b16fa86f71a8cc8796ad6830005a"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/received-windows-37779913252/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d20b7d98faee422f1c4be14d2bcdb7bbc3d729db"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/received-windows-37779913252/integration-receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bef1f3fb84d151eeafbfd55b69bbd0be383a53cc"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/received-windows-37779913252/native-receiving.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "600502fc2e5c36bc3ffebdcebfd2d7d46dfca920"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/received-windows-37779913252/numeric-composition/actual-job-results.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4a2203688e1577372a31e4f514a9a36c889362c9"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/received-windows-37779913252/numeric-composition/numeric-ui-output.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0ef8957163790d8655eb20c9bf0dc609be829067"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/received-windows-37779913252/numeric-composition/pytest.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dd6e9c5984da5b89b6d61b8c04e0b88e279f7635"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/received-windows-37779913252/numeric-composition/pytest.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f71e202bf97a4d8ef64efdba982d4e49f3815065"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/received-windows-37779913252/numeric-composition/qualified-commit.raw": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2d5df0f4fd87b46a05b73e41265736aef8044abc"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/received-windows-37779913252/numeric-composition/receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c2996a44416486e2a18dac0a0be9e33597ef4756"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/received-windows-37779913252/numeric-composition/source-composition.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8c5ea0044a38b2a7a83f70db724c4ca335346623"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/received-windows-37779913252/numeric-composition/source-manifest.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2a00482162f03da95979a58ee6a6e2b58edf2c7e"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/received-windows-37779913252/numeric-composition/test_numeric_scope.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "52b50d17482ed3af5c2520bfa774efdda80cf4c1"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/received-windows-37779913252/python-receiving.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2eb044f80bd5a0d52b424dec34f64d84329db8ee"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/ruff-configured.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1f5f344d054fae10f39140fb7199c99321d9190a"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/ruff.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1f5f344d054fae10f39140fb7199c99321d9190a"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/shadow-after.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "539f0f2f1007e227c40a852810d89a1551105d33"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/shadow-after.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ccd6fb42ac51deb7340a36d31333f7ed39efd8da"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/shadow-before.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "114acd58879d60441d3d45dcf926b78ac45c309a"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/shadow-before.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6a5fa3d47d5de70b12a581d5517593821f79d58e"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/source-controls/premature-cleanup-test-27b.py.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7e9ac7bae8130a5e8486fb5b56e5319e93d985f2"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/source-controls/rejected-picker-27b.py.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b917991f678493818e1576f9447c48809f18fe3"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/source-gates.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2882a9eeecc42e0ddace6da0b774e792e7aa3b2a"
+    },
+    "docs/evidence/analysis-scope-234cae4aee53/spdx.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "88d586256a9477a79654263f0809cc38c0a6dde1"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fdda828e1e1cf475619cc257c9627a79d241f42e"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/baseline/control.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4a96cc27b0478de59e766c71751caad1059535f1"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/baseline/pytest.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9978c178fc416a20cc41679225e22e209ccb8f58"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/baseline/standalone-incomplete.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "13676f24bbd355a07faf55c645a7b0081740d96c"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/baseline/standalone_incomplete.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7ef179fa587f4c6377a773a9d627d6cba49bbf97"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/baseline/test_analysis_sources.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "71d20ea667c25480d4892061aa0c1c347cdf7e32"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/capacity-cache-retirement.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "da6aa1c8515985358440388603242144072f11ee"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/composition-70f34e3.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ed043dd1dc68e6481408c58fa0427dfdde1f8f95"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/initial-1953c9b/driver.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b02bf6a19d4329dd87b686fd79bb8d8106884ee2"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/initial-1953c9b/pytest.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a19d3ce466fa60f093a9d22272469ddbfca331fe"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/initial-1953c9b/receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "07681b9df231a6ff3daf0e3ba5a8007808c9f65d"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/initial-1953c9b/source-manifest.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "42aaf1062dab3e6a23f46a6c0f946a0dbec10ccf"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/native-custody.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d32bc2a62135764765bf66eb5ff99c46c6893795"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/presentation-7b2c999/chooser.png": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3af30d77ab7dfeb66402836a5a510986b55b0d01"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/presentation-7b2c999/driver.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "200e27ec6e0ab53b482a1d5568c33aa673a2ae7b"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/presentation-7b2c999/failed-filesystem-save.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9b3abd3fe349158ded11a19b614b1e174ea8e873"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/presentation-7b2c999/receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5a95d22fd94b6416b8c5f8ab8f404e4ebe07904c"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/presentation-7b2c999/workbench.png": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "05a1f9fb147bcb431810a402888d6bc3741372f4"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/qt-loop-candidate.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4fdaf40dc90d69ec1a0eb560f8d3a211474da318"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/qt-loop-control.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4e0a4ab94690bce2fab98acefe689036308259ed"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/qualification-7b2c999/actual-jobs.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "64b8df5481875e1d5207d28fc55371348b192420"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/qualification-7b2c999/driver.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6fdb7351f48b755246b5b0e7509163725aa1f906"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/qualification-7b2c999/pytest.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9ce5209ad006ea8e4708b5f242cce47752ed1ab5"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/qualification-7b2c999/pytest.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cda9e44077f771e505594eabe89c03aa30d0d09f"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/qualification-7b2c999/receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b317c7a9f51dbfc1f43fe4afcd29f6e4718d368c"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/qualification-7b2c999/source-manifest.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e9da288ac957a2fb1578946a58c127e2c5c9e357"
+    },
+    "docs/evidence/analysis-sources-234cae4aee53/qualified-source-7b2c999.bundle": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9b58b43621162318ec200b852ccfd691bc6f1c26"
+    },
+    "docs/evidence/camera-packaging-20261008/baseline.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f3c06528465fd76478b65498da1ae778a9836175"
+    },
+    "docs/evidence/camera-packaging-20261008/candidate.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2e03fa5b9d966edc020feb972c30145b21dcc76b"
+    },
+    "docs/evidence/camera-packaging-20261008/package-8167c9a.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "16153dbbb150ab1c868ad9648e837e12f28f2e15"
+    },
+    "docs/evidence/camera-packaging-20261008/receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "80604fc35ceebe306c6b47e772f1f502cedea56c"
+    },
+    "docs/evidence/camera-packaging-20261008/receiving-8167c9a.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "051c12bb314b8a747c4297063ea44d1c850bfa39"
+    },
+    "docs/evidence/camera-packaging-20261008/receiving-final-integration.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c12c4956bec7a9b65b27d318a48983a9cf0bac25"
+    },
+    "docs/evidence/camera-packaging-20261008/receiving-linked-report.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "950ef2ec94d614d50a18d5b83c478a2fdfb9a1b0"
+    },
+    "docs/evidence/camera-packaging-20261008/thin-package-8167c9a.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "02e78db6b04df3741fc548aac954e191977902b8"
+    },
+    "docs/evidence/camera-runtime-closure-20261008.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c44bd65fa10732e5a298c532ed80d8da31399b65"
+    },
+    "docs/evidence/ci-recovery-20260909-round2.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4ffdc908313e72a7e384307b23a6b2d2e88238c5"
+    },
+    "docs/evidence/ci-recovery-20260909-round3.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bbaa25ca82449d6deb44707cdb5233fcca0c713e"
+    },
+    "docs/evidence/ci-recovery-20260909.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eac4c810bec0158a567aed97a0fea21520b7facf"
+    },
+    "docs/evidence/cleanup-regression-20260909.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6d84e2fea2c84e4b76a6759a4b92041e83bf3fba"
+    },
+    "docs/evidence/export-selection-20261008/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "af340200cd9825ada30813e0cf6dbd5e770dd8b3"
+    },
+    "docs/evidence/export-selection-20261008/artifact-hashes.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c7c02100befc6bcdc4ff15bb82d2b32b7cdfedb1"
+    },
+    "docs/evidence/export-selection-20261008/before-pr30.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "75bb080123927b7d9f383e57087775ecc78a5c5b"
+    },
+    "docs/evidence/export-selection-20261008/before-pr30.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ed8e962c908c9524aeb5a0d46f87b54c86b517ad"
+    },
+    "docs/evidence/export-selection-20261008/candidate-analysis.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a4563058d19e81fc6cb445eb35a38e163d1bd51"
+    },
+    "docs/evidence/export-selection-20261008/candidate-analysis.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7e5478e824ed72b93568eec8b1dfdd201c8b7f08"
+    },
+    "docs/evidence/export-selection-20261008/candidate-full-suite.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2c06f7e8083654fc48579ff749f311e69b4c64e3"
+    },
+    "docs/evidence/export-selection-20261008/candidate-receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e10030662c4f3ce7d8e1a8a5ea6ab6df4fff9b04"
+    },
+    "docs/evidence/export-selection-20261008/candidate-source-manifest.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5b40ef375f05aaaf849133b2c06454d3c168ac0d"
+    },
+    "docs/evidence/export-selection-20261008/ci-contract.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1017b8e27cdd7a51ce21e0477b0d6f0a16b93f46"
+    },
+    "docs/evidence/export-selection-20261008/license.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "88d586256a9477a79654263f0809cc38c0a6dde1"
+    },
+    "docs/evidence/export-selection-20261008/main-full-suite.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "39eb06a5102200e7eabbe3cae6622ca3c5ce8104"
+    },
+    "docs/evidence/export-selection-20261008/r2/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ff09293861b288cc03eb8e43b4009ef2c2b1cb2b"
+    },
+    "docs/evidence/export-selection-20261008/r2/after-export-tests.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b935facdb164da694a2cfe77929566ca5dd29b70"
+    },
+    "docs/evidence/export-selection-20261008/r2/after-export-tests.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "324fa1d50c7b3fb4ab2cdb25f7423e2bd5b791da"
+    },
+    "docs/evidence/export-selection-20261008/r2/analysis.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c9ec1d6eb80fb4662a96698a7d8b71648b245a7b"
+    },
+    "docs/evidence/export-selection-20261008/r2/analysis.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "67b76f289b6cfc7d27287940218c9e73edc4eef5"
+    },
+    "docs/evidence/export-selection-20261008/r2/artifact-hashes.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ce228336cc4db0f40e0916c2244185b8d414e6de"
+    },
+    "docs/evidence/export-selection-20261008/r2/author-after-pathmax.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "beb896e19ba4fe55e935d33a1e6c97281c1fe20d"
+    },
+    "docs/evidence/export-selection-20261008/r2/before-output-faults.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b1adf31a47e2154452dbe23919b7c4ff2359bc84"
+    },
+    "docs/evidence/export-selection-20261008/r2/before-output-faults.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "da1feb9e2e8bd585e1630a295c2fe78e2a51ba10"
+    },
+    "docs/evidence/export-selection-20261008/r2/ci-contract.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1017b8e27cdd7a51ce21e0477b0d6f0a16b93f46"
+    },
+    "docs/evidence/export-selection-20261008/r2/invalid-enospc-attempt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d92e4f454e40706986471c42e1399624079ab243"
+    },
+    "docs/evidence/export-selection-20261008/r2/license.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "88d586256a9477a79654263f0809cc38c0a6dde1"
+    },
+    "docs/evidence/export-selection-20261008/r2/original-pr30-pathmax.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7a8ee85b450c422cb8f60de191434f4c4b39d4ac"
+    },
+    "docs/evidence/export-selection-20261008/r2/peer-after.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d1d3cd0800f000e6ba8c663bcc15e431bce113aa"
+    },
+    "docs/evidence/export-selection-20261008/r2/peer-before.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1ea8f57e321e8f0417705b2b162788847b129d74"
+    },
+    "docs/evidence/export-selection-20261008/r2/peer-harness.py.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "55e847928ed1ef992f1bec22bd6ce8792e30901a"
+    },
+    "docs/evidence/export-selection-20261008/r2/receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b44c4f3b5a1e473353158a36239342c3733c6f0b"
+    },
+    "docs/evidence/export-selection-20261008/r2/ruff.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1f5f344d054fae10f39140fb7199c99321d9190a"
+    },
+    "docs/evidence/export-selection-20261008/r2/source-manifest.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "41c575ffc3983e3cf4134aae674b07aae3ec9c89"
+    },
+    "docs/evidence/export-selection-20261008/r3/.gitattributes": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3c9ba995ae7a3b6982d736b9f756d0d1a892ae8b"
+    },
+    "docs/evidence/export-selection-20261008/r3/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a41cd5d06d265598fb8658c63f25fc846c644460"
+    },
+    "docs/evidence/export-selection-20261008/r3/analysis.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "721263b0e8edf00cad1d400d916a8500c7766ca1"
+    },
+    "docs/evidence/export-selection-20261008/r3/analysis.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f12482f232770e6e232f0a73cce7c0c966da15ad"
+    },
+    "docs/evidence/export-selection-20261008/r3/artifact-hashes.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fa89838f383f77d4505015cb11f3d202b99b9ffb"
+    },
+    "docs/evidence/export-selection-20261008/r3/before-console-encoding.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b48544da1c6f981dbfea2d8249ed940fb60a8e31"
+    },
+    "docs/evidence/export-selection-20261008/r3/before-console-encoding.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "81ac22a27820dc1295254b840bd46b5855d67cda"
+    },
+    "docs/evidence/export-selection-20261008/r3/composed-main-522/analysis.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3c2227ff89fb64f7d252e83a05df685708408f49"
+    },
+    "docs/evidence/export-selection-20261008/r3/composed-main-522/analysis.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "36f6901acc0c299f86419e461e127f0ec24df041"
+    },
+    "docs/evidence/export-selection-20261008/r3/composed-main-522/receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a6296920b89ad45528b6e526713c1a7e17fc0a61"
+    },
+    "docs/evidence/export-selection-20261008/r3/composed-main-522/source-manifest.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2a3150fa8d5bb998393a421503221d3789be42a6"
+    },
+    "docs/evidence/export-selection-20261008/r3/peer-console-receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5c4bd27449a94d7099ab376db5367e454e2c0c45"
+    },
+    "docs/evidence/export-selection-20261008/r3/receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a6090a341883fd49fa27d6c79882781be18f0ed1"
+    },
+    "docs/evidence/export-selection-20261008/r3/source-manifest.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c954abbfba768d15c9996a3ab320e6a3a46aff20"
+    },
+    "docs/evidence/export-selection-20261008/r3/windows-first-run.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2e5cb9ca9af76403af7cd7c77ea8ed7075e80f25"
+    },
+    "docs/evidence/export-selection-20261008/r3/windows-first/pytest.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "724c889b79b7ab882db8b0e7c19a65b658e166de"
+    },
+    "docs/evidence/export-selection-20261008/r3/windows-first/pytest.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4451d3f1b466f3f4953c9268430ccfdccd9ea7ad"
+    },
+    "docs/evidence/export-selection-20261008/r3/windows-first/receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "78af7d5b714708c91f5c2c5b6da6988a6c30597d"
+    },
+    "docs/evidence/export-selection-20261008/r3/windows-first/source-manifest.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7283a48f2bc84faf907641e3c5675153add964d6"
+    },
+    "docs/evidence/export-selection-20261008/ruff.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1f5f344d054fae10f39140fb7199c99321d9190a"
+    },
+    "docs/evidence/export-selection-20261008/source-pins.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d691f4bd94c579b33d02944897b7214341be0a8c"
+    },
+    "docs/evidence/figure-export-ac386303dce2/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9a4e8f51fd19215ec6b88ab2e4ffcec16dd3d048"
+    },
+    "docs/evidence/figure-export-ac386303dce2/SHA256.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5bcb9929ea88e8ed74568bad170748eebb1ca03d"
+    },
+    "docs/evidence/figure-export-ac386303dce2/author/author-first-combined.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "33d1aeb3f563a28abf3308dcd1c7beb1668c958b"
+    },
+    "docs/evidence/figure-export-ac386303dce2/author/author-qualified.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "57f271999c3dfac0726c064694cba92e35859393"
+    },
+    "docs/evidence/figure-export-ac386303dce2/author/author-receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0c549c0fbc630eb2c84f3e280a4a6bbb50a4ead8"
+    },
+    "docs/evidence/figure-export-ac386303dce2/author/author-tests.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d705f061960b1a53c7e03a804280eb0660227c10"
+    },
+    "docs/evidence/figure-export-ac386303dce2/author/baseline-absence.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f2173698011acf72b0ba075e46594a234be206ef"
+    },
+    "docs/evidence/figure-export-ac386303dce2/author/current-main-feature.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a46dfa4dcbf75c00f3fa31eb7cabb40e02e24956"
+    },
+    "docs/evidence/figure-export-ac386303dce2/author/current-main-feature.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "aa2a18c2e4985cfac366325fb198357d274c4c83"
+    },
+    "docs/evidence/figure-export-ac386303dce2/author/current-main-interrupted.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cba5565427d37eddce6ff9351d47d12370d37454"
+    },
+    "docs/evidence/figure-export-ac386303dce2/author/dialog-disabled-qualified.png": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d6b9c20c63abcfd4e3847a919683ff9a7094b26e"
+    },
+    "docs/evidence/figure-export-ac386303dce2/author/native-preview-export.zip": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ea42351f4cd252108289baca8b732f6114e1ce52"
+    },
+    "docs/evidence/figure-export-ac386303dce2/author/runtime.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "254fcbbb03b769b789a16e9961201eb39b156248"
+    },
+    "docs/evidence/figure-export-ac386303dce2/author/scope-diagnostic.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9990a9c848da593870a099ac463f42ed61e275fd"
+    },
+    "docs/evidence/figure-export-ac386303dce2/author/scope-original-control.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8772a1b9f35088778de926b3d7d3df0de3b92617"
+    },
+    "docs/evidence/figure-export-ac386303dce2/author/source-freeze.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "111910b24ddd4472cab2f3488af795967049ba6e"
+    },
+    "docs/evidence/figure-export-ac386303dce2/root_receiving/REVIEW.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f3f12b4774197319e1e388dc038f4afbe20bad52"
+    },
+    "docs/evidence/figure-export-ac386303dce2/root_receiving/independent-receiving.json.gz": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "04b4c405bf74c2b2336d134600f09aa35f60cf14"
+    },
+    "docs/evidence/figure-export-ac386303dce2/root_receiving/source-binding-v1.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "86ef5132470272f651db260c39694ee6309c5ed2"
+    },
+    "docs/evidence/figure-export-ac386303dce2/root_receiving/test_independent_figure_export.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c6264251ca30af4a5f3e3fd1262602d63e0219d3"
+    },
+    "docs/evidence/framing-rejection-20261008.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f89b6d5451650a5ecc0fbfab824ca623ff9b0641"
+    },
+    "docs/evidence/framing-view-lifetime-72ac1419/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "55bee1844b317231d72d77e52d417648881210a6"
+    },
+    "docs/evidence/framing-view-lifetime-72ac1419/baseline.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "664a6fa65f9840eaadecdaee7f0a455335129735"
+    },
+    "docs/evidence/framing-view-lifetime-72ac1419/candidate.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "940a5cee601b35861a8da8620cddb3b589a20a05"
+    },
+    "docs/evidence/framing-view-lifetime-72ac1419/manifest.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "540f8d1d554cca416503935839271b5c28e88a4f"
+    },
+    "docs/evidence/framing-view-lifetime-72ac1419/peer/REVIEW.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bc91a2214b508f9aab8d0e28427e1de52838e277"
+    },
+    "docs/evidence/framing-view-lifetime-72ac1419/peer/native-tool-output.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4d4f68f42c2d793f266f0feb0f77de6f38972855"
+    },
+    "docs/evidence/framing-view-lifetime-72ac1419/peer/native.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "978556594322b97cd1614a2e204aa48bf8b6f0c2"
+    },
+    "docs/evidence/framing-view-lifetime-72ac1419/peer/pytest-tool-output.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cf4ed04d8fbe2fecdc3a15dd13c35d402261969c"
+    },
+    "docs/evidence/framing-view-lifetime-72ac1419/peer/receiving.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "261b029e1b8f9ffceccaf2a25478026ce70edbee"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5eee94afdfc2af12ad806fb816c3a9bf7f56f480"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/author-receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c51c2acc07ef57aae579c908f1fe3c31bb4b472c"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/baseline-native-readback.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2110facf1a59ad9c1656aed76a09fad3cf8496cf"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/baseline-runtime.tar.gz": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e973cff1bb0a0bffd768bf9fcef5400834ab2280"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/baseline-source-manifest.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "90416594a540a5227a70071b7597c87b291ff8de"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/baseline-tests.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dc03cfdffaabb0209fd855482e78abb21179a658"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/baseline-tests.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "16860275d5331b2398cf48b0a2dca14601534df8"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/baseline-tests.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ed4db6467dd4d1410cc51e45097269ced09ef5c6"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/candidate-native-readback.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "369ab414496f49d86b28afa8a7a78b6b1e7a4e92"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/candidate-source-manifest.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4fb157009d615aef9c7e000355df2d1750d56392"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/candidate-tests.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "15e3c7ebfc9af89e52f7d9ad5c31aaac0bf22d9f"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/candidate-tests.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c124b9b2ffcbebd9cc3e5f87ac061017abf78741"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/candidate-tests.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6c202590a276a097c6b037d7939dce273fc5aaf2"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/environment.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "345664d3eb842ccc52018d36bd81cd9e892463ff"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/manifest.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e96529b2c4475276c8483ca62414875ff049b596"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/product.patch": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5f5581fb530ed1ee5f45ae89116dd772b2c00ca8"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/static-checks.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fb1093707700a5fbbc746d7fcb3d4d6a29f6f0c6"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/test-artifact-manifest.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b84b3cbc9bc474efa700cc7e1d632b162628ef1a"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/test-artifacts.tar.gz": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "692f10a8452e12ef0060177a89648ba0e247e9fc"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/author/test_kinematics_validity.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7cf66857bcbeb9b72851ad53ce7c08f97d528fc8"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/current/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5e3b6e546922665e6639b3a4f49c837983fc56f5"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/current/junit.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e574c6fab6ed3890ac856040421e2a576f385607"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/current/manifest.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "741306eabe2798bdc0927e34773cf9f7478b312a"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/current/process.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7e1ead8287c87a8d972a2cf50390981926c5dd1a"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/current/receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "75d0d3aee60e47679da6672ee3e9c8ec07b16d8f"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/current/receive-current-seam.cjs": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cdc7717acd47e6776ca9c1afc100e429cc6e5ea9"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/current/source-manifest.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6cb4dfce021abbeaff5e7e1b36f10c5822c9cdb6"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/current/test-artifact-manifest.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4747226f7cb788048bdf0593ad3f82911da0b4eb"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/current/test-artifacts.tar.gz": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "30a23f4ce7066ac1db085ea21179b763f3ad0829"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/independent/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "355804bd71cd836250a57126b3fee28a47f233be"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/independent/independent-cli-artifacts.tar.gz": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "739fc581cae5561014b45049f225a2d4abdc2a6f"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/independent/manifest.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b58ee77faebd30f53581475d4f4a931cf54c64e6"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/independent/receiving.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4e63e2efd9e71728329abf66fe283597ee8ee815"
+    },
+    "docs/evidence/kinematics-validity-20261008-406d0fb04c43/independent/source-review.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bbfb3c062188f4287388741cfd526d07249f5177"
+    },
+    "docs/evidence/linux-port-68e476e98b77-r2.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f4f6df47b2f6fa67c197b92e66d88e56582984fd"
+    },
+    "docs/evidence/linux-port-68e476e98b77.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b0a98a9e54f24310214adb742a48e02a9e90c0bd"
+    },
+    "docs/evidence/msvc-environment-portability-20260909.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "51cdb9d3369aed43c4221f2080f3e8b9b6e2c37d"
+    },
+    "docs/evidence/native-integration-gate-20260909.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ff7b4ddba96784e2a3e535bc3e62804aa0e9a062"
+    },
+    "docs/evidence/numeric-analysis-20261008-e827/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0f864c14ccb1c2da1060fb0f8a53fd3d5d5e65ab"
+    },
+    "docs/evidence/numeric-analysis-20261008-e827/author-baseline.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a5e108e96572632d80aab9997851c11071c89cbf"
+    },
+    "docs/evidence/numeric-analysis-20261008-e827/author-candidate.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f6f59c422c4cfc27b26de38fb33b1e5631f23fef"
+    },
+    "docs/evidence/numeric-analysis-20261008-e827/source-freeze-v1.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4d643dfb81759ad73e78e41276a88ebd977055ce"
+    },
+    "docs/evidence/numeric-analysis-20261008-e827/source-freeze.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7f0254f1c45d1e3fc82aa7ed4eabe801beea73c8"
+    },
+    "docs/evidence/numeric-cli-20261008-e827/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "09616527525f77008c01f1948254e1bcaaef859c"
+    },
+    "docs/evidence/numeric-cli-20261008-e827/axis-followup.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8bfecc5b4b7fb472d836cf6b56da0dbc181201af"
+    },
+    "docs/evidence/numeric-cli-20261008-e827/axis-followup.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ca91504be7ae9113110c0a46ce9e8fc6d77fa61b"
+    },
+    "docs/evidence/numeric-cli-20261008-e827/baseline-v1.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ca334fca31c3b0f5ff3400fff76ec3166da31ed1"
+    },
+    "docs/evidence/numeric-cli-20261008-e827/candidate-v1.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5a66e48552d1e7f7b0ed8031e59b3da7d608a1ca"
+    },
+    "docs/evidence/numeric-cli-20261008-e827/figures/stream-lowercase-a.png": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "29bb45fff074398a470be8e3e6010a5a7efc0541"
+    },
+    "docs/evidence/numeric-cli-20261008-e827/figures/stream-uppercase-a.png": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bf75f0eec516976492dc4ee086a4fb8498200d88"
+    },
+    "docs/evidence/numeric-cli-20261008-e827/receiving.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "74fde277d6a04cc93ef2406f472371ac9321e74f"
+    },
+    "docs/evidence/numeric-mcap-20261008-e827/baseline-receiving.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7b83ca2aa361341aa2508867b4eeab63d9999df0"
+    },
+    "docs/evidence/numeric-mcap-20261008-e827/baseline-source-hashes.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4d1ebe6d05849c471723513464e8527edb3b2185"
+    },
+    "docs/evidence/numeric-mcap-20261008-e827/candidate-receiving.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a80578e171641eca29a4f718572b7b9fc10147b4"
+    },
+    "docs/evidence/numeric-mcap-20261008-e827/candidate-source-hashes.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4860645372b2bb0e860f03209fe3241fa24fd61a"
+    },
+    "docs/evidence/numeric-mcap-20261008-e827/native-test-provenance.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "540926726da1e77702a845aa53f7b582bc853eda"
+    },
+    "docs/evidence/numeric-mcap-20261008-e827/receiving-receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3148e21773644ed26d1f7a503848dfd54675e1d7"
+    },
+    "docs/evidence/numeric-mcap-20261008-e827/test_numeric_receiving.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f274dd7f3e3157c0fe48138dceeb34387ee3b11b"
+    },
+    "docs/evidence/numeric-qc-composition-20261008-e827/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ef48d0cad817672e9ae92d2407cfdd1cc208ea9d"
+    },
+    "docs/evidence/numeric-qc-composition-20261008-e827/prior-one-case-receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "08edc2e851a0391d36247c2b283cef5a301198a1"
+    },
+    "docs/evidence/numeric-qc-composition-20261008-e827/prior-test-failure.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a89c5544cb990c7c4c0baf10378c9f8837138b26"
+    },
+    "docs/evidence/numeric-qc-composition-20261008-e827/source-freeze.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "580b6db41809c6833ce6ff1f5bf417f258bbbb81"
+    },
+    "docs/evidence/numeric-qc-composition-20261008-e827/successor-one-case-receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2a56ed3afeb2b3cf43ef18076fe63207a851a304"
+    },
+    "docs/evidence/numeric-qc-composition-20261008-e827/successor-test-pass.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ec29ca92ffb235cb02ce1bc1138874519c634a41"
+    },
+    "docs/evidence/numeric-qc-composition-20261008-e827/test-only.patch": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "93b7213809ce8f03c045151c7c3cd247e04a4539"
+    },
+    "docs/evidence/offline-demo-20260909.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d555c860876d539255ad0116626c39fe1b29cb9c"
+    },
+    "docs/evidence/posix-alias-receiving-39c2b591d7e5.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "34d6840186a42cec7ba1e4650de0f949c3382c9f"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a3b573b445134d0016365518ceffba8135d228f4"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/baseline-analysis-initial-storage.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7b261aca45dfbd6a9a33a528586eeafb14d34e11"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/baseline-analysis-initial-storage.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ac3795b3a8bff0ef12746c5d1ac4bdc4e6695c26"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/baseline-analysis.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f27f13bbf8df77319ed8c5ad4b66eed0e14a0e0b"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/baseline-analysis.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "86d57878e383fb9bbd8ae090f6dd7e47acb1e3f0"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/baseline-control.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3d967a3178d82e68c5d4dedb042f48986ed96044"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/baseline-qc.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7221b26a129b7915a42fed900908a04eae213454"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/baseline-regressions.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6bfe7846a42b7504d9f82fa53341fdb08e4ed0b8"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/baseline-report_html.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a0bb34d71fe03a4426ef0479619fa8d22a7bc8fa"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/baseline-reproduction.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bfe96538b9d3d050b4cca03feaded342f3d8b1d6"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/candidate-analysis-initial-storage.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "11157c6a870116d48fa157bef47391ca8d4b98d8"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/candidate-analysis.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d5566d13da7e4880f3413469c7bfe84c23c121c5"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/candidate-analysis.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1140355f60f18080fbfeecd34b5f8e9c28c02434"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/candidate-cli-receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f5e5b3b7a698155e83199e3b6c56569fef64509e"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/candidate-qc.html": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bcb7967eab58a3e873796c469635dea7b97dfc81"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/candidate-regressions.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3db30bcaf1d58533263a3dc42ea27b1ffec4ee83"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/execution-commands.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2c53b1f9664e0051197d072f837e85ac0c9a8641"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/independent-review/REVIEW.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "aa5126c8f04f6e08c9be3d7d511a4da50204969b"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/independent-review/baseline-result.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f2cd8035d1bc4ffe9a4303669a81af53e90cbfae"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/independent-review/baseline-result.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c603204b87dd99124b0451d6b90acc1949de4ad2"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/independent-review/candidate-result.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2fa9f7b61e5875ab2eb72721e0dfd95777fbc822"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/independent-review/candidate-result.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "38ecd6cfa6b6600d0a4147d839104985615cfad3"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/independent-review/evidence/baseline/independent-gap.html": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "384392840fe9f08d157ce8c5d4ebd9b5cec72ef1"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/independent-review/evidence/baseline/independent-gap.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b4b76e2b3b0627cbe9af9e50ed1aedc9d8085f1f"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/independent-review/evidence/baseline/independent-no-gap.html": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "59f820b98951b84bd2295f74c54332bd9d3847b1"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/independent-review/evidence/baseline/independent-no-gap.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f119e41183ef849c5d8b345d5720fcfc0717df9c"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/independent-review/evidence/candidate/independent-gap.html": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "23f6af868e2b56005c9ee68c3e06a5ee49079010"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/independent-review/evidence/candidate/independent-gap.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4b0947adaacd85d59ee375b0ddae6396ceee925c"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/independent-review/evidence/candidate/independent-no-gap.html": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ec187016d82733d8f01ae82d5fbcd8d13446ea2c"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/independent-review/evidence/candidate/independent-no-gap.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "adeafb345f0deb5d0107819fa9d92763f20e640e"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/independent-review/execution-receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "89bfc9b4304c31883e48bad4341cf68cfefa6fc1"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/independent-review/owner-current-drift.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5ab84a0d353f462737f499af67f8b756b3cee830"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/independent-review/primary-receiving.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8931e36901259343ab5ac491577683c65e765629"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/independent-review/run_review.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2938d5a291b604a46b02ca56b965ba066a39e0d2"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/independent-review/source-closure.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5f285b8efa5c7039886d6792e8c8ae2051b0c313"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/independent-review/test_independent_capture_receiving.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3394814ce8d00ba9856ecfad3ba305981fe8eaae"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/patch-receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0c58673c16a8c2d191fb0025640383290ee31475"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/qualification.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5959e6fbe4d14316be7971a501f0a763332d15e3"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/receiving-93254f12/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b96dc93c4cee38babc1aaaf0c09fc9cf00a7896f"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/receiving-93254f12/baseline-result.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8dfae5d0eab0628ed015f5397afad5624359400c"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/receiving-93254f12/baseline-result.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fd767082b52bf3200bfedfbe57cc301574935be2"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/receiving-93254f12/candidate-result.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "695f19f2ba5321e1c0fca26971511914069dd538"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/receiving-93254f12/candidate-result.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "81653bbb29a4148a1d44e8ab16a590d2ca812053"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/receiving-93254f12/evidence/baseline/independent-gap.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "261e4d6bc35634364084cf3333d25103881768b8"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/receiving-93254f12/evidence/baseline/independent-no-gap.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "507e93af8ae56d0d5d09f0ec96219263b95b6482"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/receiving-93254f12/evidence/candidate/independent-gap.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a95ed8224c2d4c6b5c970ebc37fe18d177c40b0c"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/receiving-93254f12/evidence/candidate/independent-no-gap.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1e628910191b4551440f3b793b317bbb7430de0b"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/receiving-93254f12/execution-receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fa34e3b13a4997f6ef7ebc09b38153d6eeb69768"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/receiving-93254f12/receiving-equivalence.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2c6c4b69995ec9041050c7544f701caaeafa96b0"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/receiving-93254f12/source-closure.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dde4cc64632d8a84e7a9f752974e851586b33850"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/receiving-equivalence.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4480897f7959a847c180e0bd919f66241b7e88ee"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/review.patch": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "646eea941b6089238e2b7c9eaf0ca405b7d96a2f"
+    },
+    "docs/evidence/qc-gap-details-ultra-20b27c2e-20261008/run_candidate_witness.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f674a8bbbc4e8ca54925b8fb0f87eb3156523736"
+    },
+    "docs/evidence/registry-readonly-234cae4aee53/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "81fda3639beffb98ec2487b7042c21647e803d43"
+    },
+    "docs/evidence/registry-readonly-234cae4aee53/baseline.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "61e9e74410750ba6c398bc0c2ac5823628f4c426"
+    },
+    "docs/evidence/registry-readonly-234cae4aee53/baseline.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ab3f6d8f81c4e9272077e5855d47228ce83e6f2c"
+    },
+    "docs/evidence/registry-readonly-234cae4aee53/candidate.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6b94dc0b8ec0daf4f502286b227bd9cccca490dd"
+    },
+    "docs/evidence/registry-readonly-234cae4aee53/candidate.xml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8afcba174b8840584dec10997c99be3ab5b4b42e"
+    },
+    "docs/evidence/registry-readonly-234cae4aee53/peer-result.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "66aa6fe8cad8fa9a8fb00b64705edd1e00c1e735"
+    },
+    "docs/evidence/registry-readonly-234cae4aee53/peer-script.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5add2697ded880e3cb9c13059907c5a1eee31742"
+    },
+    "docs/evidence/registry-readonly-234cae4aee53/receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cf1beefefc529bc8c7a993dad589b1bb87a34313"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/CURRENT.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bfaf36f5c4f309635b6e2550cf4563c70d10a2fb"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/MAINLINE.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6b6c05ee7e97e989c30c6725ce309df13094b83f"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/PINNED-MAIN-ALIGNMENT.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5cf97e93d7f9b8707646116cb3d0aad162932d03"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "68f53534c726fa408a3e7f36df362b2cc3dd3d7e"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/current-native/current-replay-receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f00dbbcd78548483d8496517959bda983dfa5413"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/current-native/logs/candidate-compile.stderr.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/current-native/logs/candidate-compile.stdout.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/current-native/logs/original-compile.stderr.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/current-native/logs/original-compile.stdout.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/current-native/logs/original-receiving.stderr.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d62b2f07197a9e4995b85d7efb5a34e67024a413"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/current-native/logs/original-receiving.stdout.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/current-native/logs/receiver-compile.stderr.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/current-native/logs/receiver-compile.stdout.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/current-native/logs/receiver.stderr.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/current-native/logs/receiver.stdout.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "99283b2f5acca24b4253388e2ae1a20e8fb3555b"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/current-native/logs/receiving.stderr.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/current-native/logs/receiving.stdout.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8fc968759fe93457aa50aaecdc8ce2b43037610c"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/current-native/logs/storage-tests.stderr.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/current-native/logs/storage-tests.stdout.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "73868a35ce7458a87e08be4b450649b73c903fd0"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/mainline-native/LastTest.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3ee7162ea753dfcd1fa47535575a2ca5dd23dad8"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/mainline-native/merge-accepted-main.stderr.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2824b3450345620e9771e943a11be15a64fc45d5"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/mainline-native/merge-accepted-main.stdout.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b75304ac4d705a81bc910d0561fd33c821867af0"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/mainline-native/native-full-build.stderr.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/mainline-native/native-full-build.stdout.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4e147d9cc0778d08e317baeb7876ed1887bf4ffe"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/mainline-native/normalized-source-check.stderr.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/mainline-native/post-build-guard-refusal.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "01bf86e0d601d04632b9521aba71c7b7c81c2ac5"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/mainline-native/previous-hosted-gate.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d8836681b4fb21ca6dace82a0b81498dcef527cd"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/mainline-native/qualification.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ff15f06c8f75e6cb28027bdf45592e1c026315f6"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native-evidence-manifest.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f1da6336dd502dcde241ad2eb4ede07b06683b33"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/baseline-result.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "289585c0b4eeebf9b82a177da30da9385d714d4e"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/baseline.stderr.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/baseline.stdout.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cbc094718e40b8ee8e0403add6009d72d74ec38d"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/candidate-compile.stderr.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/candidate-compile.stdout.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/candidate-storage-suite.stderr.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/candidate-storage-suite.stdout.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c6d3cc1815ca6e7ab2800c90b63d1cbf313098dc"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/cmake-candidate.stderr.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/cmake-candidate.stdout.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8fc968759fe93457aa50aaecdc8ce2b43037610c"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/cmake-original.stderr.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5618d9822ded8f125d55f7c806b3e79e57af0e5a"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/cmake-original.stdout.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/original-compile.stderr.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/original-compile.stdout.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/repair-result.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e93ba72a7b936d69671615a011f15b8d5461d6e9"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/version-catch2.stderr.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/version-catch2.stdout.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a76ccff2a6e0d561f35467c9321be8c26885fe12"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/version-cmake.stderr.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/version-cmake.stdout.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "19eaad503154ee3abb5f491a2fa7b8979eb8a59d"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/version-compiler.stderr.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/native/version-compiler.stdout.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "08251a01aea75d39a288b2b48fef9e430fb8ae81"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/original/atomic_file.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0fadb72fd907580605f296ff6df0b6c981c48108"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/original/test_storage_posix.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "85e062fc57941d260e499c15e2f90565b7f82dfe"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/publication-alignment.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "82a01350e68a52344061bcbae0dbee0ff405b2e3"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/receiver-compile.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f617d875eb94fc7bb4d38a383bc9dce91648f5f1"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/receiver-run.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5d328988a7ddd31e60b766cf97e2423d8a7d41fd"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/receiver_atomic.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "42058d551985f69f709560c80991222795428ff3"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/replay.sh": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1e888ad7443f4d7ddbd7270aae8b1e0be7dd95cb"
+    },
+    "docs/evidence/storage-fixture-isolation-87eaaf0fdf63/source-manifest-verified.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d3fd58b0a025a827c69098cc804d3ba299afe3f4"
+    },
+    "docs/evidence/stream-gap-scope-20261008-e827/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cfb5f0dcb96af079ad56dd0a8b3f6a8d291a719d"
+    },
+    "docs/evidence/stream-gap-scope-20261008-e827/baseline.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0e6c063261bdcbf201c3c9256d23d5d3fdc6863a"
+    },
+    "docs/evidence/stream-gap-scope-20261008-e827/candidate.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "60a10f5013351d32e566f2182f4a03d1bfaba242"
+    },
+    "docs/evidence/stream-gap-scope-20261008-e827/final-baseline.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a429273782e1f4fc9def9bf7872677d3f32b4d85"
+    },
+    "docs/evidence/stream-gap-scope-20261008-e827/final-candidate.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c65f41f5492d43520fb68ee433ae7c0ba1e853db"
+    },
+    "docs/evidence/stream-gap-scope-20261008-e827/formatted-candidate.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fec104fbc2cf85567c6a9c52260249ae8b8cecb0"
+    },
+    "docs/evidence/stream-gap-scope-20261008-e827/initial-ci-lint.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f816c4ddec08a928433444a939f7a9c2acb14979"
+    },
+    "docs/evidence/stream-gap-scope-20261008-e827/initial-junit-rejection.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b1f63ef9cb0900f8120efc35ccf528171c3ab84d"
+    },
+    "docs/evidence/stream-gap-scope-20261008-e827/manifest.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "094659ecccdf62a914b3e88bc237e96b26b331d3"
+    },
+    "docs/evidence/windows-atomic-temp-preservation-6267db2cfc6e/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3a30d0f1a3b1fee91bdfc076baa54023a38e0f58"
+    },
+    "docs/evidence/windows-atomic-temp-preservation-6267db2cfc6e/receiving/baseline-cmake.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0a2696d883bc532c8a9437d317b7d24c6d54360f"
+    },
+    "docs/evidence/windows-atomic-temp-preservation-6267db2cfc6e/receiving/candidate-cmake.log": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7ceeceb1d23733e177b76d085fedd9f610cb942e"
+    },
+    "docs/evidence/windows-atomic-temp-preservation-6267db2cfc6e/receiving/catch2-skip-review.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1afca190a8b0d172b647263698032b21f5a3b996"
+    },
+    "docs/evidence/windows-atomic-temp-preservation-6267db2cfc6e/receiving/native-receiving.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1d922a7bc1b352f7541f12fdd297f770cbe23d3d"
+    },
+    "docs/evidence/windows-ci-recovery-showcase-20261003.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "56bb91173bc94a895d9295311a488b8e2f2a255f"
+    },
+    "docs/operator/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "541cb2f925863c675abec9729ba14bb5b5e2a842"
+    },
+    "docs/plugins/01_overview.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "75fd89c961c8b01d0938736f3b51aeca79e9a790"
+    },
+    "docs/plugins/02_python_quickstart.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7c7d1968c68cf1085a4f3cdc7dfcda2f159ea6f1"
+    },
+    "docs/plugins/03_lsl_bridge.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "50ddfa95e24bff98f2af782ec8862fd93cb11182"
+    },
+    "docs/plugins/04_cpp_worker.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "934e39ec6c8282cf744c3eeff7ae0aeea3d482fc"
+    },
+    "docs/plugins/05_manifest_reference.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3dd755709193514b6c33f1dd13b201bc495ae730"
+    },
+    "docs/plugins/06_analysis_plugins.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "90633d081c50edc44edd171d6fb8c2ce1218e7bc"
+    },
+    "docs/plugins/07_testing_and_validation.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ccfdf8cbe62640be1ca2b813aa0a567f2bd352ae"
+    },
+    "docs/plugins/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8f2e42710bf95ceaf55bddead10d67f253d0bc80"
+    },
+    "docs/prompts/01_vendor_spike.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "68b3161eec65517bf4860e3c75f8dade2274e052"
+    },
+    "docs/prompts/02_python_plugin.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1c88df5f627b4d32dcde7d8157dadd2e8c379838"
+    },
+    "docs/prompts/03_cpp_plugin.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5643fe578fd92c73cf6e5361cd45d79a21576ffc"
+    },
+    "docs/prompts/04_analysis_schema.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "396631073c022b9615e87b289bdaf143e8d8c588"
+    },
+    "docs/prompts/05_lsl_only.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c290f2110e4783097de72c769b20d4e344c945d3"
+    },
+    "docs/prompts/06_extend_existing_plugin.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2b9ab0138a427b323bef71275fa6b74d3c1eb086"
+    },
+    "docs/prompts/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "563dc310036b78a5817fbdd1712764443b1a9717"
+    },
+    "docs/qualification/camera-independent-afe225d6c6be/PR38_RECEIVING.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6d516643aee2400807032aa5cbc1ebc0518c46c6"
+    },
+    "docs/qualification/camera-independent-afe225d6c6be/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d371385d8d19c97b76369cb6df01d953bb3e742f"
+    },
+    "docs/qualification/camera-independent-afe225d6c6be/evidence/pr38-final-baseline-report.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "823a494a0d5b87eeac326ec205f91d5e465c817d"
+    },
+    "docs/qualification/camera-independent-afe225d6c6be/evidence/pr38-final-independent-review.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a273c7e42b06a16d706e58eb6c17b8a2924600fb"
+    },
+    "docs/qualification/camera-independent-afe225d6c6be/evidence/pr38-final-native-report.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "23c4fb2decfb6f3c67b7da273653f02a11bb5b79"
+    },
+    "docs/qualification/camera-independent-afe225d6c6be/evidence/pr38-only-comment.diff": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a654cf8e665b37f2ac7ef57e5ca2a6169843c3ab"
+    },
+    "docs/qualification/camera-independent-afe225d6c6be/evidence/pr38-review-receipt.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9de136d7593c97053bb844d3d0c23a2f654229ad"
+    },
+    "docs/qualification/camera-independent-afe225d6c6be/evidence/review-helper-final-ruff.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "25136b675f58c2fe3fdb3ed7a920a8d156c9aa0f"
+    },
+    "docs/qualification/camera-independent-afe225d6c6be/ownership-refresh.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4f882db8620f184612446916243dd461a5886028"
+    },
+    "docs/qualification/camera-independent-afe225d6c6be/review_packaging.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9832edd727be73cf3353b3f254068d0a48b0eab8"
+    },
+    "docs/qualification/camera-independent-afe225d6c6be/source-pins.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7301ac394a309676ba5333959ded324f02caa1fd"
+    },
+    "docs/spec/AGENTS.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4848b5e7519c012a8ff4ac5e6b82f5ef7bf0a9ab"
+    },
+    "docs/spec/ARCHITECTURE.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "143a184cf86a9373143d23ebf27990d7ac96f994"
+    },
+    "docs/spec/CURSOR_CONTEXT.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f7843f78c11858e1ef740e9ba37863881ecfe3aa"
+    },
+    "docs/spec/DATA_MODEL.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ea009dd0a46427aecc66a3341c0eacf285a8448d"
+    },
+    "docs/spec/DECISIONS_LOG.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d66f5a7724f90735bf502f5b85d0fa618cc211d9"
+    },
+    "docs/spec/DEVICE_INTEGRATIONS.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e93466b3000a52720ca8cb44c5e29c1c0120a6ea"
+    },
+    "docs/spec/FUTURE_ANALYSIS_NOTES.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "77f10058e020e14115ec161aaa70f8534a30d63d"
+    },
+    "docs/spec/HARDWARE_INFO_TO_COLLECT.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "78b87fa9fbb7602de9e2fc649a4d3bcc84802ab7"
+    },
+    "docs/spec/IMPLEMENTATION_PLAN.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c2b0cdb90d5c5d9a57c72d0c5a1c206f233f0d4f"
+    },
+    "docs/spec/MASTER_SPEC.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e29fddfb38c4711563cf4a24926c45cab3a56669"
+    },
+    "docs/spec/PRESETS_SETTINGS.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d048c686eb76bca4478427b1cb291c716090cdbc"
+    },
+    "docs/spec/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5c3f0be471ab06da8c83cdb353a64469adf23eb5"
+    },
+    "docs/spec/RELIABILITY_TESTING.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "406f01bb7031bd0efe675cbed7dcb37bb34e7707"
+    },
+    "docs/spec/START_HERE_IN_CURSOR.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "06922e7d403dbf36eef81a8e865e16f8b267f069"
+    },
+    "docs/spec/STORAGE_EXPORT.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a9e8cde17832005140041023b58f32d91364f271"
+    },
+    "docs/spec/UI_UX.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e1218efb92a101860d138366cc9390fd5d1262c9"
+    },
+    "docs/spec/scope.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ee5fec6ed7b12be52fcb6334e1a6f45cecfec436"
+    },
+    "libs/cpp/capture_core/CMakeLists.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fc9c644d63836c1d943aeebf84c474762a6c943c"
+    },
+    "libs/cpp/capture_core/include/capture/clock.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8798c43e3b10adc61d14b1ea7f44cc124b460cad"
+    },
+    "libs/cpp/capture_core/include/capture/env.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "487e49f9be3721877078a0f7dbba2dc33c2b28ea"
+    },
+    "libs/cpp/capture_core/include/capture/framing.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0484098dbab9356d569fa8d8bca56fa1bece208a"
+    },
+    "libs/cpp/capture_core/include/capture/logging.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e0becdf4a16df8ba50307e3a872cc46199d47186"
+    },
+    "libs/cpp/capture_core/include/capture/recording_buffer.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4a79b787d8b4e9a4eb596425f5b0ce9461dd71b5"
+    },
+    "libs/cpp/capture_core/include/capture/session_fsm.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f1897ff9a88af8595f836d6ae1b5a660681823b6"
+    },
+    "libs/cpp/capture_core/include/capture/source_fsm.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "93d8dc211f061b5da9d0475b4410af91cc0357ef"
+    },
+    "libs/cpp/capture_core/include/capture/version.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a3124766845272bc4d95b0cb2e437fa2ebd07d1f"
+    },
+    "libs/cpp/capture_core/src/clock.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "852e22f3e85f0431bd52d9db6583903d88326da4"
+    },
+    "libs/cpp/capture_core/src/framing.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "73e62212ed18224d75f125d600b5cd42e8bb190a"
+    },
+    "libs/cpp/capture_core/src/logging.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ec20643f697bbbdc37a9a15b98519482d2626363"
+    },
+    "libs/cpp/capture_core/src/recording_buffer.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9867e9aa4411b47517e54e8893123ab104885483"
+    },
+    "libs/cpp/capture_core/src/session_fsm.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f3220df9011adee97b765473af633c211bebf49f"
+    },
+    "libs/cpp/capture_core/src/source_fsm.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "caa3461741f3fe8b5f7a02252e003fe8379c5d19"
+    },
+    "libs/cpp/capture_core/src/version.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "281f0c791be6e293b90aa74424291fd68e42aaee"
+    },
+    "libs/cpp/capture_proto/CMakeLists.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2d94fcb425c0855ebe4d3ad55d140a01e58d403f"
+    },
+    "libs/cpp/capture_storage/CMakeLists.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "75acac9fbd00a6386df77aa8588dc5c2d2c00e1a"
+    },
+    "libs/cpp/capture_storage/include/capture/storage/atomic_file.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "86738c28bd5ff7449f50fa6d48def8478486a5a3"
+    },
+    "libs/cpp/capture_storage/include/capture/storage/disk_watchdog.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bc6c1ef947bd4e417ca220a983bee1ac8b04f14d"
+    },
+    "libs/cpp/capture_storage/include/capture/storage/hash.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8fc363d6f087e4f200993b4f91793aa6440b4c55"
+    },
+    "libs/cpp/capture_storage/include/capture/storage/journal.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2175a4573da63fa5f11a58225037b5448e0ca103"
+    },
+    "libs/cpp/capture_storage/include/capture/storage/mcap_stream_writer.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "37122e4416fa62ccc778899cd59675f9b0e54f0f"
+    },
+    "libs/cpp/capture_storage/include/capture/storage/recovery.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "67ec14e8a84511d1cc493cee724f2c2ad27c930e"
+    },
+    "libs/cpp/capture_storage/include/capture/storage/session_package.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "069cc4aa7a94b4096d36d58b00a71de38f782990"
+    },
+    "libs/cpp/capture_storage/include/capture/storage/video_writer.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f4b019970ddc92c0f774f5589ffa30fdb442a6b7"
+    },
+    "libs/cpp/capture_storage/src/atomic_file.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d51815e9f95ec6e3cf1b319386efb44b5bb4ac94"
+    },
+    "libs/cpp/capture_storage/src/disk_watchdog.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "718425f933703fdee920762de1dc115931950aad"
+    },
+    "libs/cpp/capture_storage/src/hash.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0f5a22cf8456b69ad34c57ecdb3f90c473f7a2e6"
+    },
+    "libs/cpp/capture_storage/src/journal.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "af412e722bb877907f8776d70c097799be41459f"
+    },
+    "libs/cpp/capture_storage/src/mcap_impl.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6bedec1f189d70ea12c29e847ba8f0069471b3cd"
+    },
+    "libs/cpp/capture_storage/src/mcap_stream_writer.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7c695635b17b44532aea29f2e575e2cd0a821d02"
+    },
+    "libs/cpp/capture_storage/src/recovery.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "96900b3854569112638ebb6750ada9f3190040df"
+    },
+    "libs/cpp/capture_storage/src/session_package.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4b9579fac871b70795a9a8a7dfe7d8c67e1e5760"
+    },
+    "libs/python/capture_analysis/capture_analysis/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "67a4fb257b771af771edb4010e573ceeab86a51f"
+    },
+    "libs/python/capture_analysis/capture_analysis/discover.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d5c4fa7e06ac6e9139ebfc78fade90a3df5e451a"
+    },
+    "libs/python/capture_analysis/capture_analysis/eval/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "140fcb2784c4b73ddf69d21ddccfdcc8191cc0aa"
+    },
+    "libs/python/capture_analysis/capture_analysis/eval/job.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "814cad848e7b2fcce329d407ca10cc1d87f185cf"
+    },
+    "libs/python/capture_analysis/capture_analysis/eval/predictions.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f2e0e0c240d5d7018ef32d7a8075d06b1c53d7ce"
+    },
+    "libs/python/capture_analysis/capture_analysis/features/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e52dc3839105744e19193f8fc8067b818389a20b"
+    },
+    "libs/python/capture_analysis/capture_analysis/features/emg.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7f7536500a63ddc8b06774b8da65df8d56cd4f2b"
+    },
+    "libs/python/capture_analysis/capture_analysis/features/imu.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0ee47b3d579e4c3732634958dda21ae724beca9e"
+    },
+    "libs/python/capture_analysis/capture_analysis/features/io.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b998063a5036b73a67b773f70c193b1f9827c248"
+    },
+    "libs/python/capture_analysis/capture_analysis/features/numeric_batch.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "77f19ccb048c93c0f4fca460eef0502180b37717"
+    },
+    "libs/python/capture_analysis/capture_analysis/features/radar_doppler.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ee20f7314cb1af4512901d6009f73e3dddf9025c"
+    },
+    "libs/python/capture_analysis/capture_analysis/features/radar_frame.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e798dee0fb72dd261b504a99ac76f815515dda9e"
+    },
+    "libs/python/capture_analysis/capture_analysis/features/video_qc.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fa73c80d39a0d699f80d7e877b37167cf8b48b6a"
+    },
+    "libs/python/capture_analysis/capture_analysis/grids.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2e03f79d9317d2d97b721321130a9a5e6212b111"
+    },
+    "libs/python/capture_analysis/capture_analysis/jobs.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ad0a551e90e5d06ec38a9218277efa24b0030c75"
+    },
+    "libs/python/capture_analysis/capture_analysis/kinematics/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "aaf360b8a0085f89b95cd976857f0933596098a7"
+    },
+    "libs/python/capture_analysis/capture_analysis/kinematics/compute.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fb8be59b00e15d9c264aad0983cf75a757c9e210"
+    },
+    "libs/python/capture_analysis/capture_analysis/kinematics/job.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fb8be113d8699427072f6dbcdae222a37738ac18"
+    },
+    "libs/python/capture_analysis/capture_analysis/kinematics/registry.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a28cfd708c90552401fb0b3157c60f713a06e14f"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eb6fae21d4bb79055f8d1af1528e846020f21459"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/base.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "941a6aa3cea6777f90534ea634cccf8fdd319a3f"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/emg.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c35d22af7bdeea570e6ae45a713428627e90894c"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/imu.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8823f04bd089789ca4cbff6602154bf066d4161d"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/mcap_iter.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b61ca0a914e4d3909790839774327aa5824c1b71"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "668e5397d6a603d8665fe639b3218128bbda72c2"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/radar_doppler.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fc87bfb7fbbeb98ad8d5d11b3438b2d04882de6c"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/radar_frame.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a44af5392ba2b5b8b64de685f42772b141f1b8b1"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/video.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6a192cd5999b45df08c666b9dad21dc29cf91824"
+    },
+    "libs/python/capture_analysis/capture_analysis/ml_bundle/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "619d634ebf6fcc82a7871ad9c463660a24fd65ae"
+    },
+    "libs/python/capture_analysis/capture_analysis/ml_bundle/job.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "59c2e4df46aa041e48aaf7184a3dd0ba345aff6d"
+    },
+    "libs/python/capture_analysis/capture_analysis/pipeline.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8113ab4cb51678a122bbb702a23f2200c9333233"
+    },
+    "libs/python/capture_analysis/capture_analysis/plots/modality.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1de343cc2e11e663501ba190441325d5637d1492"
+    },
+    "libs/python/capture_analysis/capture_analysis/plots/style.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3725e840e5eb046accea79d4b6376f902392dac8"
+    },
+    "libs/python/capture_analysis/capture_analysis/plots/sync_dashboard.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "828204e998a46b9571b3a2b3ba08acd9fc6caa31"
+    },
+    "libs/python/capture_analysis/capture_analysis/plugins/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "39c9c93eab1f5abf65ea73299c34b05ec184dd63"
+    },
+    "libs/python/capture_analysis/capture_analysis/plugins/dummy.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0152651c271234bf38252bed51efda3a3fc19c0f"
+    },
+    "libs/python/capture_analysis/capture_analysis/plugins/handlers.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "03c8589064dfc4c6cfec6e4d00b7f46b10014414"
+    },
+    "libs/python/capture_analysis/capture_analysis/plugins/manifest.yaml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0628968ee3965170b486306f974c81dd4eb84a53"
+    },
+    "libs/python/capture_analysis/capture_analysis/plugins/numeric.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d8adbc1d90dbfdeac0cd9179c95f027532c1a5d4"
+    },
+    "libs/python/capture_analysis/capture_analysis/plugins/registry.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3c582e1ab0de2b22956ac47fb628227eacdd1faf"
+    },
+    "libs/python/capture_analysis/capture_analysis/pose/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "108be2956adfed6328f397d88a3b61ebada0ac48"
+    },
+    "libs/python/capture_analysis/capture_analysis/pose/job.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a1a3f2436b0ac8decc551f84e76fa6c4c6e602d"
+    },
+    "libs/python/capture_analysis/capture_analysis/qc.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "530b86af1247599c127e2d0c3fa5e4d7d12169f6"
+    },
+    "libs/python/capture_analysis/capture_analysis/report_html.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bb8032024cfce30c6fe9a2bd2c13b0d2cbc2d102"
+    },
+    "libs/python/capture_analysis/capture_analysis/types.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2adf26816e0ef9e84e6763cf8bbff69d64697949"
+    },
+    "libs/python/capture_analysis/capture_analysis/version.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d04b8cc1dd9271ca3ccf836d97436d9a961417c6"
+    },
+    "libs/python/capture_analysis/capture_analysis/windows.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "80bea6bd69365a48c5b204c26d054b8ae179437a"
+    },
+    "libs/python/capture_analysis/pyproject.toml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6db8b1158b14da660128d7ac0ceacb45b8eb9924"
+    },
+    "libs/python/capture_protocol/LICENSE": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d645695673349e3947e8e5ae42332d0ac3164cd7"
+    },
+    "libs/python/capture_protocol/NOTICE": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7f9ac0678aa56452f06e6e5f3badc9a873e2008a"
+    },
+    "libs/python/capture_protocol/capture_protocol/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0e7ab2cf8689d3adbc689c283e8a23d12607b2d0"
+    },
+    "libs/python/capture_protocol/capture_protocol/codec.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3034065efca2c52e34c3e67e147bdda526d2c8db"
+    },
+    "libs/python/capture_protocol/capture_protocol/config_schema.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c9b4a694e620e5597d338230fcb0f25ea3a757f6"
+    },
+    "libs/python/capture_protocol/capture_protocol/constants.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2542cda6bdb6a83d4334336f34d92f80040bc4a0"
+    },
+    "libs/python/capture_protocol/capture_protocol/control_client.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "45e1c4b535ece8d7178cd6b32ab1affcc9e73e92"
+    },
+    "libs/python/capture_protocol/capture_protocol/framing.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9dd5021b815b31ab02eaaa814210525ebb543862"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "16ae7d90a122b4973139c563ac0f72efa061b1de"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/arrays_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a29ed506c4dd33f697ba74d13b6e8a9c945c6b6d"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/common_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "66031212a0da44800dcc671b0d4bf0cd39e71f06"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/control_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0597489cf8609a76e2094270965039da9b739ca3"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/emg_batch_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d8495ebeb8ab140824eaa5412be0779cf929ec6a"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/imu_frame_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "54bbf93dc638cdab95f49744ea7e0b43fefad374"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/numeric_batch_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "beedaaae054bfb083af3642c96ca7c64af14cc8d"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/radar_doppler_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ad8fe84317d2f4049682f70bead19f90c6932457"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/radar_frame_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cef636d7b030b037b23331eec9a86f3b152bc358"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/video_timing_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "17937a141a9a2d81858cf52d74bc4705afc940b7"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/events_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "030bd4a90be609403e7709605607d8d5b993776e"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/health_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b27bd32ec488168871ca2342062eb576d56a9e8e"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/presets_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d20925410185e5cf52bbc56e438534c1c5ff1102"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/preview_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cb04387df1614a8b9d9755a702129bbbb8d6374e"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/project_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a8e71f0a426858cc679cb87ce31d1379e70a2817"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/source_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b72752efedc743d236713e51283dce923a526f55"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/storage_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4dd1b48ab16900c5c3e88d9788cebf83ee93cc5a"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/worker_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7f3a4fc372384523638853f4bd458f49b664ba70"
+    },
+    "libs/python/capture_protocol/capture_protocol/handshake.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9386e73b3c1eecb683d9d0ca98ad415268e307af"
+    },
+    "libs/python/capture_protocol/capture_protocol/structured_log.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fc9c97b288280f4473c6b3c5b5e6ff07332fad49"
+    },
+    "libs/python/capture_protocol/pyproject.toml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fa71ca45874d34076208507180c69c7a0e38fa76"
+    },
+    "libs/python/capture_session/capture_session/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "894e3c152a98b6e804de90122572afbcd929b3da"
+    },
+    "libs/python/capture_session/capture_session/app_paths.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "46332cea7c62dd44247b219937ae6c8fbc747017"
+    },
+    "libs/python/capture_session/capture_session/package_reader.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "91fbf913c5af8489968425d7ceac51c04233d3e0"
+    },
+    "libs/python/capture_session/capture_session/registry.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c1d7799e1d2099424221b2f4af216a43a972c67a"
+    },
+    "libs/python/capture_session/capture_session/settings_store.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "41b99cdaa78011d3d9b753c3131f32c72af9699f"
+    },
+    "libs/python/capture_session/pyproject.toml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c83450d780e97e5bd90feb48cef140917b6e47ff"
+    },
+    "libs/python/capture_worker/LICENSE": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d645695673349e3947e8e5ae42332d0ac3164cd7"
+    },
+    "libs/python/capture_worker/NOTICE": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d74f1cbf89d4c89f70b3e75ab71cfadea8b7128f"
+    },
+    "libs/python/capture_worker/capture_worker/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4bf1fc6b13bc4f5daab79d937ea89cf6c120cce3"
+    },
+    "libs/python/capture_worker/capture_worker/__main__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a1047121f4173802074eeb66e5dcaf6c542c29c1"
+    },
+    "libs/python/capture_worker/capture_worker/cli.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eb2d869f951f0205085b074d067282990657b5a0"
+    },
+    "libs/python/capture_worker/capture_worker/preview.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c47abe8a118ea022931843bde802132548194eef"
+    },
+    "libs/python/capture_worker/capture_worker/transport.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2e5e159bee3a0b5aa69bf90f62906feeffe23c8c"
+    },
+    "libs/python/capture_worker/capture_worker/worker.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d5ed2999fbb958116d73a8fa6319356d8b7d751a"
+    },
+    "libs/python/capture_worker/capture_worker/writer.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b3d194cc71dfa0d21884936a6ed5f7bdc95b3eb4"
+    },
+    "libs/python/capture_worker/pyproject.toml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5d79642edc9c1809fda636d5dcd78ad33e67abcc"
+    },
+    "plugins/camera_gstreamer/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "151eb255bf92d903b49e3c86d9eb6ab525a16f11"
+    },
+    "plugins/camera_gstreamer/plugin.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "de990e8827dd7581c0ae8d06156977586d2d629e"
+    },
+    "plugins/example_sine_py/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2c98bc7d1c44a5031475e5e593b46377d6011731"
+    },
+    "plugins/example_sine_py/example_sine.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d64dc15e85474d5a80f8e18bcc03952217f71e20"
+    },
+    "plugins/example_sine_py/plugin.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c1deed53c2a4ce1e0df2bd4a35b3164beb3ffb69"
+    },
+    "plugins/example_sine_py/run_worker.cmd": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "484e82624368692768d0122076e832f9b30219bf"
+    },
+    "plugins/lsl_bridge/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eecc8c44e3883e5677785257a3e990b0915e323d"
+    },
+    "plugins/lsl_bridge/lsl_bridge.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0b44ff7fd89170e2f78fb7595b00eacf004bc3db"
+    },
+    "plugins/lsl_bridge/plugin.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0cee251bb19dc4e4d4aa1bae08d10a047eab88ba"
+    },
+    "plugins/lsl_bridge/run_worker.cmd": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c80a72fb0edeb44031dd27feb551bb2549f34563"
+    },
+    "plugins/radar_infineon/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4320f021004a5a1b0f7367ac82cb541b0e6c8f78"
+    },
+    "plugins/radar_infineon/plugin.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fddfa24fa7ce74c9726e83dd3d434c5f052d4e81"
+    },
+    "pyproject.toml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "52491c6beebc4b17983fc66bb8765154c33cf6d8"
+    },
+    "requirements-ci.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "044cfa00061e8a368be427c60d72765318d9080a"
+    },
+    "requirements-native-ci.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "20dfdde094e96e5e5242eaa336a3dc5d653d6cd8"
+    },
+    "schemas/LICENSE": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d645695673349e3947e8e5ae42332d0ac3164cd7"
+    },
+    "schemas/NOTICE": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "12b0bd20065311a681549056f9b8f87712779f0d"
+    },
+    "schemas/activity_catalog/1.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3f8b58d880bb333632994163207d7871e3fb0699"
+    },
+    "schemas/activity_catalog/activity_catalog.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f3750e0673c1dc8255094c2d6f0721508208e462"
+    },
+    "schemas/eval/predictions.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d8656895faec8b2ff6bad9b3b45448652eed4286"
+    },
+    "schemas/kinematics/kinematics_columns.registry.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "19fe5783ceb5d37898ccf209a85ad56a14be5c42"
+    },
+    "schemas/kinematics/kinematics_columns.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9295e8c721a7295c9b79f271345d12f431304982"
+    },
+    "schemas/ml_bundle/ml_bundle.manifest.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4f3d8cb50f69bc2a8fa1c2dbdfa5a6d67cb6e22b"
+    },
+    "schemas/plugin/examples/camera.gstreamer.plugin.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "de990e8827dd7581c0ae8d06156977586d2d629e"
+    },
+    "schemas/plugin/examples/radar.ifx.plugin.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fddfa24fa7ce74c9726e83dd3d434c5f052d4e81"
+    },
+    "schemas/plugin/examples/sim.builtin.plugin.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a93c247c18521402fa632d5e93ed3e8dd502e9bd"
+    },
+    "schemas/plugin/plugin_manifest.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7612cc6b2b87fbb61fbd7fa93f2e57fe32e88552"
+    },
+    "schemas/proto/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f802d5b6cf9952a34f353d303ed210fb1a4090ef"
+    },
+    "schemas/proto/capture/v1/arrays.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c5b55de37045dc8e799dc4cf8bef556db0e964f1"
+    },
+    "schemas/proto/capture/v1/common.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c38e56ac40c188633c9a865451580f329738be29"
+    },
+    "schemas/proto/capture/v1/control.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c92be1245457aeab42651c480a4acf87e375e2d7"
+    },
+    "schemas/proto/capture/v1/data/emg_batch.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cfe8b3e6d242a5157d1a48904ff0ddb1a87a4784"
+    },
+    "schemas/proto/capture/v1/data/imu_frame.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dedf652d7296e75c25b4ffc6008157a0eb72a005"
+    },
+    "schemas/proto/capture/v1/data/numeric_batch.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ec43fd3406130ed2d6743de09e0076dd55f16639"
+    },
+    "schemas/proto/capture/v1/data/radar_doppler.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a9d7c291dd4e1e9d4e306294c9ccaca7a972c3b6"
+    },
+    "schemas/proto/capture/v1/data/radar_frame.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b9bcba12f1f23cc87dc9403409a937d2965e0e1f"
+    },
+    "schemas/proto/capture/v1/data/video_timing.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "25d1618ec84d2b69b3856999bb0cd8714a16b720"
+    },
+    "schemas/proto/capture/v1/events.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c7f5943e568552803d53dd322d51cce1e361f4ab"
+    },
+    "schemas/proto/capture/v1/health.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "431d818649fbecc2ba4a814cb19e0a81b3cb1cb5"
+    },
+    "schemas/proto/capture/v1/presets.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "36ad3689aa9af4a90661d84a295bc3f8495483cb"
+    },
+    "schemas/proto/capture/v1/preview.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fba83363cf291255f13c96335e38826a003a5a1b"
+    },
+    "schemas/proto/capture/v1/project.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fe6e0b493683ec4f26f8c29f854eef34b7b362e9"
+    },
+    "schemas/proto/capture/v1/source.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "263f77bdad4210a2def3eaee28354aaebd7664ae"
+    },
+    "schemas/proto/capture/v1/storage.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f141fcc0b185b5328a1aa5c89cc6c77e202b7030"
+    },
+    "schemas/proto/capture/v1/worker.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6614ea6b3588abfaf9ef26db04de7c22b3d3b9f7"
+    },
+    "schemas/session/examples/minimal_session/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0ffbfe7d25bf1f9176674be646e3c63ddd469f31"
+    },
+    "schemas/session/golden/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "35b0bcd21e84d4705eee15329eaa89fe5caa5a14"
+    },
+    "schemas/session/jsonschema/analysis_feature_schema.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "56e8627596a956b647cb2de52756ca7329d9226e"
+    },
+    "schemas/session/jsonschema/analysis_job.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0837e193dd28a3ef1fc8ecd7e0727ca96b75db43"
+    },
+    "schemas/session/jsonschema/annotation.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "686fbf750e5467379cfd206a7746fdbb2082a7d6"
+    },
+    "schemas/session/jsonschema/checkpoint.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "290c505abab0c84203e471d599f7f21c1d146e9b"
+    },
+    "schemas/session/jsonschema/clock_mapping.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "883dbb9e309e0045613a85aa98c905aee9c90fa6"
+    },
+    "schemas/session/jsonschema/device_array.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "261041151417e65a448ce6990581ec5c89bc0c9a"
+    },
+    "schemas/session/jsonschema/gap_event.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3220405e13c712578bb6902560307e2b7f0e56aa"
+    },
+    "schemas/session/jsonschema/health_snapshot.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cdd950437a61addf2d6ff02129edf2440c4ab812"
+    },
+    "schemas/session/jsonschema/index.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c6b4ac925ecc0b2185ddda7c4cfce3d2514daab1"
+    },
+    "schemas/session/jsonschema/integrity_file_entry.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d990d95d712475e275e94e26e4df7aa8dff06120"
+    },
+    "schemas/session/jsonschema/integrity_manifest.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fc74612f8fdba102c5b4051f7fbfcddc66a13bd3"
+    },
+    "schemas/session/jsonschema/logical_slot.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c72b8feeb729532a3796846405e202addfcc8420"
+    },
+    "schemas/session/jsonschema/physical_device.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bbf80cc0a8ca24570f8d87fbd3fd209cc96021d1"
+    },
+    "schemas/session/jsonschema/preset_snapshot.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "93d1f6cfeceb23f495c1ad372874ad1df21b5ac2"
+    },
+    "schemas/session/jsonschema/radar_array.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d30c1c1509bdaa3208fbbd886c26c1a8c8781cc4"
+    },
+    "schemas/session/jsonschema/sensor_instance.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "62a431d85b50d4ddd1586b025eb3da6dd2715981"
+    },
+    "schemas/session/jsonschema/session_identity.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "11582b43940dddbf8b7b8b971047c430951e3928"
+    },
+    "schemas/session/jsonschema/session_manifest.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bcef59d89aa923371f3be8cbe67d57d22f45c203"
+    },
+    "schemas/session/jsonschema/source_instance.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9c35b558389ce8f371a2ad49bef71db357f956cb"
+    },
+    "schemas/session/jsonschema/stream_descriptor.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9590ba6ae1cddb682824799e2b513a026972da52"
+    },
+    "schemas/session/jsonschema/sync_anchor.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a97b824946aa935b7d9b155dba4a2c731d615a95"
+    },
+    "schemas/session/jsonschema/timing_header.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "59de95b9798425613dbc17bce7e46f3c02c58144"
+    },
+    "schemas/session/migrations/registry.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "83107e723970d95da8253c082dc638b7c750c95b"
+    },
+    "scripts/build-linux.sh": {
+      "mode": "100755",
+      "type": "blob",
+      "sha": "30a27f5b8707a2b87907f40a230239b70c6a359a"
+    },
+    "scripts/dev-env.ps1": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dad8f9e88d418c3c8bdc66b82a498dcd332c36d0"
+    },
+    "tests/analysis/test_export_selection_mcap.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "92d6ad922a88a0f147d79faf9b9b69a2f3537d00"
+    },
+    "tests/analysis/test_export_sidecar.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8c265bb2498c7286298bec712361ca44f224c088"
+    },
+    "tests/analysis/test_external_predictions.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "20dc6f0e88cd43daaa192c863846174f48c28be8"
+    },
+    "tests/analysis/test_job_destinations.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6f226b0b047f570d1022f5de3dbf26563deda8b5"
+    },
+    "tests/analysis/test_job_failure_cli.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "70ebbbc0db3d7b26a00c9936634f28f6244e8232"
+    },
+    "tests/analysis/test_job_output_provenance.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "68341362754f05021763ea83aede1d63142e2eef"
+    },
+    "tests/analysis/test_job_replacement.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4306dcce94f781c0c979236d8575b2b68d3cc6cf"
+    },
+    "tests/analysis/test_kinematics_ml_bundle.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ee62938fce9cfcb318f647b070d03b23463e1c90"
+    },
+    "tests/analysis/test_kinematics_validity.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7cf66857bcbeb9b72851ad53ce7c08f97d528fc8"
+    },
+    "tests/analysis/test_numeric_batch_pipeline.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9485adb27d02ab88e65d87576a06b86869a0360b"
+    },
+    "tests/analysis/test_numeric_cli_receiving.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0dabc2786a771903322e240039522c0bbdea8f9a"
+    },
+    "tests/analysis/test_numeric_receiving.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cee5571f3802a2ca452f4591afc2fd4c86c6beba"
+    },
+    "tests/analysis/test_offline_demo.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7395a37b420f91bc3d425ccd718786299bfff9d3"
+    },
+    "tests/analysis/test_phase_a_qc.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "26ba50397f91d3ab4ba1ea04fcd56130afba83f5"
+    },
+    "tests/analysis/test_phase_b_features.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "653956c584ba077b2c93afc0585a1bfa9690a2d7"
+    },
+    "tests/analysis/test_plugin_registry.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cbe5cedff9c83d42606fb357c8f66c024bc7f9b5"
+    },
+    "tests/analysis/test_pose_job.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a62eebfa37acf625c6a480a5f55275ac91164194"
+    },
+    "tests/analysis/test_qc_gap_details.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "593ca17abe543b579e4930d36e4b900c54ce0bb8"
+    },
+    "tests/analysis/test_stream_gap_scope.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7b239c2ac7c002164732eeded969c628464e61df"
+    },
+    "tests/cmake/camera_packaging/CMakeLists.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f84d04715d6055eae99300393a6f11061b1a518e"
+    },
+    "tests/cmake/camera_packaging/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cdc27183b1e3f93b474ca99e6c516e9a123cd29b"
+    },
+    "tests/cmake/camera_packaging/check_packaging.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "11b8ae6f76b96a927be061e41f319062e949050a"
+    },
+    "tests/cmake/camera_packaging/probe.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "36e87632ea06045606fb3dc0cfd46435f5c67f50"
+    },
+    "tests/cmake/camera_runtime_packaging.cmake": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "82dbdc24282cf8f49810aa91da177a3a784dce02"
+    },
+    "tests/cmake/portable_storage/fixture_isolation.cmake": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d0762d52b73ef8df127b81e7a6d5e3084c88eacd"
+    },
+    "tests/cmake/portable_storage/session_doctor.cmake": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e503895519cca82d42a6ab358fa232be70e1af7c"
+    },
+    "tests/cmake/test_camera_packaging.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "69d92e06f70fab9d54bd4a666aa92d4df57993e1"
+    },
+    "tests/cmake/warning_boundary/CMakeLists.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "06587037c12f339d98a29d4a251272b1b8da40e3"
+    },
+    "tests/cmake/warning_boundary/control.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f49d30b87fa06add43be3f12cdd14fc3bbe7e85d"
+    },
+    "tests/cmake/warning_boundary/env_helper.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "731ddea75e4e9be988ad2cb2545dbcc9042024c5"
+    },
+    "tests/cmake/warning_boundary/generated/protoc_pattern.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0ef598994469bb6696b6eddad09ce271fbf6d0a7"
+    },
+    "tests/cmake/warning_boundary/generated_header.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ca9f4c2a0cf8b8c78a8db9b223c7d75b0e588ff6"
+    },
+    "tests/cmake/warning_boundary/owned_conversion.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "55d574e2894d301ffd2e0c20f87c7d9f29e3a98e"
+    },
+    "tests/conftest.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ad9b61fd8e9c1c3d74f91710d4e82dd7d899e6b4"
+    },
+    "tests/cpp/CMakeLists.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ae5b8e9f89870fe4098686a701a3a30cda438f79"
+    },
+    "tests/cpp/test_atomic_file_posix.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "55f7e8a7a5414e682082f82f47ce9c65b7c6bb96"
+    },
+    "tests/cpp/test_atomic_file_posix_identity.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bb6b239ab5baf27db910ff53acd260a320732b09"
+    },
+    "tests/cpp/test_atomic_file_windows.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "43fe28c3ec2ed49872b59dcc87407cece56466e5"
+    },
+    "tests/cpp/test_clock.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c63845c8d064700e1ef20730e7b2bb58b1f3cb3e"
+    },
+    "tests/cpp/test_env.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1c04a9096a55d6e999bb6f33058d7f37e3373f20"
+    },
+    "tests/cpp/test_framing.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2bb2e2c1f08b0b64c099744eb2b34392678e732b"
+    },
+    "tests/cpp/test_logging.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4296e08f46e6494bfe9defb64045a30effb49767"
+    },
+    "tests/cpp/test_recovery.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9664cb56222706e68cd098356daa3c01000ea54f"
+    },
+    "tests/cpp/test_session_fsm.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "db8308c51c871fe796c632f5288aed118ba771a7"
+    },
+    "tests/cpp/test_session_package.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "500129fe02aa67f010c723f78deca98df59966b5"
+    },
+    "tests/cpp/test_sim_engine.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3df04153c00cf9880c8725eb44d5fd3a5585e88e"
+    },
+    "tests/cpp/test_source_fsm.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b16545c7347d8d49b2d8b1f7b007a25644e4f9f3"
+    },
+    "tests/cpp/test_storage_posix.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "514ac79df732038fe9ed0b47b34121a337e21fbd"
+    },
+    "tests/cpp/test_worker_host.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "874b2a2053c03d2da0a403899f7d22599f00a722"
+    },
+    "tests/fixtures/mini_session/events/annotations.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fe51488c7066f6687ef680d6bfaa4f7768ef205c"
+    },
+    "tests/fixtures/mini_session/events/checkpoints.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fe51488c7066f6687ef680d6bfaa4f7768ef205c"
+    },
+    "tests/fixtures/mini_session/events/sync_anchors.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fe51488c7066f6687ef680d6bfaa4f7768ef205c"
+    },
+    "tests/fixtures/mini_session/integrity.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d10093b866427fcaed78a85e60e600d8657a86a7"
+    },
+    "tests/fixtures/mini_session/manifest.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "800dab5b41774bc043ebdee4714195770e75229b"
+    },
+    "tests/fixtures/mini_session/processing/.gitkeep": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "tests/fixtures/mini_session/sources/sim.emg.main/health/gaps.jsonl": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "tests/fixtures/mini_session/sources/sim.emg.main/source.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9528c95289b4b1b49d11d412b5ab2e3d019b4066"
+    },
+    "tests/fixtures/mini_session/sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "320ce3607fadf57d05cf506987d045cf5b62ad9f"
+    },
+    "tests/fixtures/mini_session/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "12c4db8831572fc4ab3db9ba5f784fa236078e5f"
+    },
+    "tests/fixtures/mini_session/sources/sim.imu.upper/source.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fcc248c52b8319f5e7fd0067763b74640f0040dd"
+    },
+    "tests/fixtures/mini_session/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "320ce3607fadf57d05cf506987d045cf5b62ad9f"
+    },
+    "tests/fixtures/mini_session/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9c634d4af594372063fcc612331ba338ae95f8c9"
+    },
+    "tests/fixtures/vendor_replay/emg/sample_batches.jsonl": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "30e8196c597ca73b95e69acd513007f3aaeee65c"
+    },
+    "tests/kill_tests/test_kill_preserves_sealed.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f3c33b9389b2be1e0e2dcd03b57cace7f21f2f5a"
+    },
+    "tests/protocol/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d158e0a86407cbe2e0046b6e254848cda33fa930"
+    },
+    "tests/protocol/test_ci_contract.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7ba10d6d692f01cc12f9c3f637358b55283b3be0"
+    },
+    "tests/protocol/test_ci_evidence.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2c8add9471f9f4a19abf207f90579157ce3fb727"
+    },
+    "tests/protocol/test_codegen_bytes.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f8483235efb9dabe7825d8d39b25bc77851233c6"
+    },
+    "tests/protocol/test_codegen_fresh.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d1709ecdc23041b68daec01d759c52272782cafc"
+    },
+    "tests/protocol/test_config_schema.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a8a8f7507791e7d68ca302fc5a3dc9e745754093"
+    },
+    "tests/protocol/test_cpp_portability_contract.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "92e220f58f58abe2293756bc9e335d003d14c614"
+    },
+    "tests/protocol/test_daemon_e2e.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ea3dec7f45f56c0400d2fc3514513dc10d1e3cee"
+    },
+    "tests/protocol/test_diagnostic_bundle.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bc3eff2591040cfd6be14eaeb92a3e6924fba247"
+    },
+    "tests/protocol/test_framing.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bd6d6705f6156ea54a1805255227b9435b05aa63"
+    },
+    "tests/protocol/test_framing_invalid_stream.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "294348abfa4558f5e4418bbc74e9f7fdb9cba64b"
+    },
+    "tests/protocol/test_framing_stream_transitions.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4bad86accd4df1e227ecef3a9a097ba6fb8370c4"
+    },
+    "tests/protocol/test_framing_view_lifetime.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9315b79b656b9eceb6d0a468d95d8b6d5a613ee3"
+    },
+    "tests/protocol/test_handshake.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6e626b35a9f45ac503e47e1a542c54a46a4069d1"
+    },
+    "tests/protocol/test_lsl_bridge.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0d8dc6ff29c4a93c6ca1ee7ec6f007d69d03b8a0"
+    },
+    "tests/protocol/test_native_ci_runner.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8ed66a49e293db170bf03691777969a80889ad4f"
+    },
+    "tests/protocol/test_native_support.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7166732bb04132d3ca9ca444644ed8abca9eec17"
+    },
+    "tests/protocol/test_python_worker_sdk.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "75efd482db782e02bfe3ff47de81f9b3ecfa5b15"
+    },
+    "tests/protocol/test_registry_readonly_receiving.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "99ec41e27c799a85fbb0d6586a5198fb54a293de"
+    },
+    "tests/protocol/test_runtime_isolation.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "059ae8e0072feb2bd05c66c94bd00664f660f55b"
+    },
+    "tests/protocol/test_schema_roundtrip.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3c84327c7afcec835a63353a205f53ac042f1c08"
+    },
+    "tests/protocol/test_session_schemas.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a561c4aa455d1448e6211c1965b1e7ee614e2fb1"
+    },
+    "tests/protocol/test_settings_registry.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3972c736dbbf03574195594a26cf94c8238bcf74"
+    },
+    "tests/protocol/test_sim_advertise.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a3b8a6bf72194f730d78de208b2e0a8cfb555ac6"
+    },
+    "tests/protocol/test_soak_cleanup.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4ea03d9ee72f2ef932bd967aa1d33834cceb675b"
+    },
+    "tests/protocol/test_structured_log.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2e26c7ac27272508ebfd5eced74f627d89a0901d"
+    },
+    "tests/ui/test_analysis_failure_notes.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9a21d6499b217973e63ac51f5235d43492f4412a"
+    },
+    "tests/ui/test_analysis_figure_export.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3661c1283496def6514179e4e4d872e9e91f2aaa"
+    },
+    "tests/ui/test_analysis_scope.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b1d5d4f9dd06c6f5c1cf05080079191f55e97c95"
+    },
+    "tests/ui/test_analysis_sources.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bb6f9964f5fb67774bb59ad83065f9a54c28260e"
+    },
+    "tests/ui/test_analysis_workbench.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b247571e69294996a48a7efacc2f6db65550de5a"
+    },
+    "tests/ui/test_desktop_smoke.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e4f25741175add8bb4de39f2cb5884616abc9d2e"
+    },
+    "tests/ui/test_modality_phase4.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "28a906fce0e25d9e81815feb192c46ae176f4f23"
+    },
+    "tools/_run_faults_soak.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e570f7e0096fc6f046b04c742e75cd3d989dd201"
+    },
+    "tools/check_ci_contract.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6c6dc5f45d65c0c2e1f42dfe97a01f4687c44b91"
+    },
+    "tools/check_cpp_warning_boundary.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "191e332338230d063fe398899d1f9937311151c6"
+    },
+    "tools/check_licenses.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e7ee0980488060dbae3f58034c30d4232fb9f52f"
+    },
+    "tools/demo_qc.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a165ba9742318913418a41d7822a2eb089e7da3"
+    },
+    "tools/diagnostic_bundle/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5bb1373b43932769c0f816acfd30e52a6d508626"
+    },
+    "tools/diagnostic_bundle/__main__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f1402d8d4811d0b3f289e783d10cad2ef69d7f68"
+    },
+    "tools/export_session.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "66a8f344cbdf5cf1c4f5c9e6fa8e62481fb18066"
+    },
+    "tools/gen_protos.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "defcc1f4ffceaae67b8130848b8209db2ba9df76"
+    },
+    "tools/gen_session_schemas.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1aa5e9352d03f687ab0ea54825f86c5f86ff28f5"
+    },
+    "tools/gstreamer-installers/install-gstreamer.ps1": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ac17d58c3a5df741ca1e39c7c4d606667101b068"
+    },
+    "tools/native_test_support.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "996525e16f10b6809182c5af1c824a30c050cc70"
+    },
+    "tools/new_plugin.ps1": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e0f62e0b96f480869c59ed544d81dcbd570d6d8b"
+    },
+    "tools/plugin_templates/README.md.tmpl": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d93ef9ece37d11752fa63722859dd661bb2dd3b8"
+    },
+    "tools/plugin_templates/python/run_worker.cmd.tmpl": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "265dcc85acea5128f9b0963b979d1c230192e9ba"
+    },
+    "tools/plugin_templates/python/test_plugin.py.tmpl": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "666c49c183f06697ed123c86337fbb783bd66348"
+    },
+    "tools/plugin_templates/python/worker.py.tmpl": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6bf7ba09e3359a3671970c26d39b0ec544cc4b7d"
+    },
+    "tools/probe_camera_preview.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8de0584ae811a00717b2948dbc53278b0e74c0e9"
+    },
+    "tools/probe_cameras.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "28612237bbc6e7f85a2682b0f53cb5c54d939a82"
+    },
+    "tools/probe_capture_modes.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9be767ebb71648ded619f80ca71a65a9ec6fddf4"
+    },
+    "tools/probe_dual_radar_record.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e324c28e4142041814d7c3095fd65750a590ee56"
+    },
+    "tools/probe_inject_disconnect.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7e3e6a3b733f6422cfaf94c1a9b24b5e073d5f15"
+    },
+    "tools/probe_kill_worker_mid_record.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fd450c99894c000637d182543614b83a1a91156d"
+    },
+    "tools/probe_ltr11_record.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8eaea013d498250d15f94c73aafc1706c3c22e78"
+    },
+    "tools/probe_multi_cam_record.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e9def1478d6ec18eb2269af76581341255d09f6e"
+    },
+    "tools/probe_open_recover_export.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d4f0c7006795268fde001fd9ea1d7ea1b63b15f2"
+    },
+    "tools/probe_preflight.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "61b8934432f0a8332ef4e2a002101db902d52b26"
+    },
+    "tools/probe_preview.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4373cc05ad274e6b0fa85fefe081a788b1d5860d"
+    },
+    "tools/probe_radar_chirp_config.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ac4b33c0b78dee789c888cf86fdf9bd4f467f779"
+    },
+    "tools/probe_radar_doppler_live.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "db558d1556db73d6ba22380bcb4f4a23c90e52a1"
+    },
+    "tools/probe_radar_preview_views.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "50012a51746cfe0b26a5e21ed1b3bf30e15534cb"
+    },
+    "tools/probe_radar_record.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e27a66c6cfd0f82225bf8f8b410a03760f749274"
+    },
+    "tools/probe_radar_worker.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5b64ae5d90aa261bd7b95c75e9b612e5ce9ea536"
+    },
+    "tools/probe_sim_imu_emg_record.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b6423f2ee353e52fc8a8c4985d65ceebc1b830ac"
+    },
+    "tools/probe_ui_actions.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "438801bcf0d1f6a9869bbb4254a841e0febaeeff"
+    },
+    "tools/probe_worker_reopen.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e0d8c6233d2ade5b697b009f3371a9d1a1df4395"
+    },
+    "tools/run-daemon-gstreamer.ps1": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e87b421d0023dd4f3397a7cf42ffb8f3c29464e3"
+    },
+    "tools/run-demo.ps1": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "efd87ea6d3f038693b7a06afc4d0ab64da114725"
+    },
+    "tools/run_analysis.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a846e6e0550ec4ba1db12a1b989d5e03cfdd69b6"
+    },
+    "tools/run_ci_tests.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ef5274ab4c38e4082eca69608532a12a32d50c9f"
+    },
+    "tools/run_native_ci_tests.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2723a034a9a53c84d123f4fc58ecedf61646c5fd"
+    },
+    "tools/run_premanual_debug.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d4f4a56b1d4b923381cfcad554185ff213f9b8e9"
+    },
+    "tools/session_doctor/CMakeLists.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f2ae86414a8da98bbbf3fde5d5b4508729871cbf"
+    },
+    "tools/session_doctor/main.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "067cce0d81101b5964e20c465669526bc7c39278"
+    },
+    "tools/soak_camera_radar.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9181e5ad107e416e6d4f1988b8d56f1beb2bef94"
+    },
+    "tools/soak_multi_cam.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7ce1430e399ac7103a979845759a1dd1541d5a67"
+    },
+    "tools/vendor_spike/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "06178f528ad484036d49ab1b45704d8c3c13e155"
+    },
+    "tools/vendor_spike/ifx_live_preview.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2a44f9d1a1c65a7634a675fd46fab26ac32201cf"
+    },
+    "tools/vendor_spike/ingest_replay_fixture.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9e687a5e5d9f14a9f2aa5237495a7dc4f32cb9dc"
+    },
+    "tools/vendor_spike/spike_checklist.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a7a8b7302a5fb24742e6651a36bb62c23adcba3c"
+    },
+    "tools/vendor_spike/spike_dual_radar_interference.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ce23f132f84564821a18c876a9ba13bc9954afc7"
+    },
+    "tools/vendor_spike/spike_infineon_bgt60tr13c.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e166edc9a3e43f7c1ceb8cc440118a46cd8639b0"
+    },
+    "vcpkg.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "782814bd953d9630a67f8ba37b9eca30761139ca"
+    },
+    "workers/camera/CMakeLists.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b74080cc042c9dc60d6f4569f0c1b6e5b2c7f78"
+    },
+    "workers/camera/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0d19eca0dccb4140b09d804ff74ed13fc86ce078"
+    },
+    "workers/camera/include/camera_worker/camera_enumerate.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "11739ff1b3a918db0c76740c4dee78f589c889e4"
+    },
+    "workers/camera/include/camera_worker/capture_mode.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0dfbc74ac8ff9154a24b84b32431d7c309f6de01"
+    },
+    "workers/camera/include/camera_worker/capture_pipeline.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3f55ca292f7275433c8a9fba55296754056b432d"
+    },
+    "workers/camera/include/camera_worker/gst_pipeline.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6a743bf0616bc1a98d6983d628e39698bda61ae6"
+    },
+    "workers/camera/include/camera_worker/uvc_controls.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e4dd4e71344a66ed02a6150dadf7ef609e9f3c4f"
+    },
+    "workers/camera/include/camera_worker/worker_session.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "70944a26e0dfd0e6ed9875c13318af55c978fffa"
+    },
+    "workers/camera/src/camera_enumerate.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "de7d6afb29cdd4454e98d02df641450d9ca4c8d8"
+    },
+    "workers/camera/src/capture_mode.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a1d16c0b09a1e405fde7ac1c378071c8464ed4d"
+    },
+    "workers/camera/src/capture_pipeline.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "af73d91c9da775fd74749362ed3b2440dfc318f6"
+    },
+    "workers/camera/src/gst_pipeline.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "520fa881a20693adcc21b11a00ac4819063c8df2"
+    },
+    "workers/camera/src/main.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "365d75fce77548704134993b03dfeba61e78eb86"
+    },
+    "workers/camera/src/uvc_controls.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4b60d608f2a59073b5c30722f61d58a85f83d73a"
+    },
+    "workers/camera/src/worker_session.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ee7f233b1562ac699372be55e328f044a832e597"
+    },
+    "workers/delsys/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "65a1051b4d1d9d8c1e1b1c0275c4d5f7d87676cb"
+    },
+    "workers/python_host/capture_sim/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2646a1792544ac97cba76fd7d7246c313604351e"
+    },
+    "workers/python_host/capture_sim/advertise.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c93044ce53b7a38d2e7db9fcbad83174b394ffd2"
+    },
+    "workers/radar/CMakeLists.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4d796b3270725cf3aade1c117741eca350865abd"
+    },
+    "workers/radar/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "201cb6d89a2c2c246fe5e73aecbd47615dae8c98"
+    },
+    "workers/radar/include/radar_worker/capture_pipeline.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b926e1b2b04abd296717e0a77ae34d5ead7fc5eb"
+    },
+    "workers/radar/include/radar_worker/ifx_device.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "110a1f78d6a6cc85f98b30d1a57a84fb211def73"
+    },
+    "workers/radar/include/radar_worker/worker_session.hpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "358badffa5f267ccaeb1e6c95339680ee50cd6f1"
+    },
+    "workers/radar/src/capture_pipeline.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b1ea36ca3d9363ac16f134d9a2b468865ed6b585"
+    },
+    "workers/radar/src/ifx_device.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f3fc9e918c410151677b88e1e3ffefbf9d254ee1"
+    },
+    "workers/radar/src/main.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6dc745cbf63248083b6f2db6529f99b3cc5182c0"
+    },
+    "workers/radar/src/worker_session.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e78810a590c1dc6887e8973eb600a7b0bb524c81"
+    },
+    "workers/stub/CMakeLists.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "791b5f5c75e5cc19b890ce36f37dc9ee4ecf2d23"
+    },
+    "workers/stub/LICENSE": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d645695673349e3947e8e5ae42332d0ac3164cd7"
+    },
+    "workers/stub/NOTICE": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ced21015a46d371720c6804cbc253c1477f8be0d"
+    },
+    "workers/stub/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "24a66e7708e68677a5d52bb911554b70fc6e2e6a"
+    },
+    "workers/stub/main.cpp": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f53a6da69341dcd41c61fd73fc093f210dd64c9f"
+    },
+    "workers/xsens/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "13a459d0a45a32bb6d7a15388d8b30f2acb0b29c"
+    }
+  },
+  "preserved_candidate_leaves": 44,
+  "preserved_main_leaves": 920,
+  "only_overlap": [
+    "docs/design/research/PROGRESS.md"
+  ],
+  "errors": 0,
+  "progress": "Exact new-main bytes plus unchanged own entry.",
+  "dependency_review": "New external-evaluation modules/CLI/schema/tests retained. jobs.py adds only prediction_path within Eval; subsets remain unavailable for that command. No source picker, screen, feature pipeline or receiving fixture delta.",
+  "runtime_gate": "Required Windows complete-union workflow follows this composition; original 7b2 local receipt is unchanged."
+}

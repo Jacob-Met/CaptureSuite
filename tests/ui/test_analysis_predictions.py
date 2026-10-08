@@ -49,7 +49,7 @@ def _chosen(control, monkeypatch, filename):
 
 def _real_choose(control, filename: Path | None):
     """Drive the actual Qt file dialog with literal names and bounded cleanup."""
-    from PySide6.QtWidgets import QLineEdit
+    from PySide6.QtWidgets import QAbstractItemView, QDialogButtonBox, QLineEdit
 
     previous = QApplication.testAttribute(Qt.ApplicationAttribute.AA_DontUseNativeDialogs)
     QApplication.setAttribute(Qt.ApplicationAttribute.AA_DontUseNativeDialogs, True)
@@ -57,6 +57,9 @@ def _real_choose(control, filename: Path | None):
     failures = []
     started = time.monotonic()
     attempted = False
+    prepared = False
+    row_clicked = False
+    selection_ticks = 0
     driver = QTimer()
     watchdog = QTimer()
 
@@ -80,7 +83,7 @@ def _real_choose(control, filename: Path | None):
             unwind("The actual Qt file dialog did not complete within five seconds.")
 
     def finish():
-        nonlocal attempted
+        nonlocal attempted, prepared, row_clicked, selection_ticks
         try:
             active = QApplication.activeModalWidget()
             if failures or attempted or not isinstance(active, QFileDialog):
@@ -91,30 +94,73 @@ def _real_choose(control, filename: Path | None):
                 selected.append(None)
                 active.reject()
                 return
-
-            edit = active.findChild(QLineEdit, "fileNameEdit")
-            if edit is None:
+            if not prepared:
+                active.selectNameFilter("All files (*)")
+                active.setDirectory(str(filename.parent))
+                prepared = True
                 return
-            active.setDirectory(str(filename.parent))
-            # QFileDialog.selectFile strips leading spaces on Windows Qt 6.12.
-            # Quoted filename entry is Qt's literal-name input syntax; retain
-            # the significant spaces in the fixture and verify before accepting.
-            assert '"' not in filename.name
-            edit.setText(f'"{filename.name}"')
+
+            # Existing fixtures are selected through the actual file view.
+            # QFileSystemModel path lookup can trim significant leading spaces
+            # on Windows; enumerating and clicking its literal row avoids that.
+            if filename.is_file() and not row_clicked:
+                for view in active.findChildren(QAbstractItemView):
+                    if not view.isVisible() or view.objectName() not in ("listView", "treeView"):
+                        continue
+                    model = view.model()
+                    for row in range(model.rowCount(view.rootIndex())):
+                        index = model.index(row, 0, view.rootIndex())
+                        if index.data() != filename.name:
+                            continue
+                        view.scrollTo(index)
+                        rectangle = view.visualRect(index)
+                        if not rectangle.isValid():
+                            continue
+                        QTest.mouseClick(
+                            view.viewport(), Qt.MouseButton.LeftButton, pos=rectangle.center()
+                        )
+                        row_clicked = True
+                        return
+                return
+            if not filename.is_file():
+                # The deliberate missing-file regression exercises Qt's error
+                # dialog and the independent watchdog, rather than a mock.
+                edit = active.findChild(QLineEdit, "fileNameEdit")
+                assert edit is not None
+                edit.setFocus()
+                edit.setText(f'"{filename.name}"')
+            else:
+                selection_ticks += 1
+                if selection_ticks < 3:
+                    return
+
             actual = active.selectedFiles()
             assert len(actual) == 1 and Path(actual[0]) == filename, (
                 f"Qt selected {actual!r}, expected literal path {str(filename)!r}"
             )
+            if filename.is_file():
+                assert Path(actual[0]).samefile(filename)
+                assert Path(actual[0]).name == filename.name
             selected.extend(actual)
             attempted = True
             driver.stop()
-            active.accept()
+            if filename.is_file():
+                box = active.findChild(QDialogButtonBox)
+                assert box is not None
+                button = next(
+                    button for button in box.buttons()
+                    if box.buttonRole(button) == QDialogButtonBox.ButtonRole.AcceptRole
+                )
+                assert button.isEnabled()
+                QTest.mouseClick(button, Qt.MouseButton.LeftButton)
+            else:
+                active.accept()
         except Exception as exc:
             unwind(f"Actual Qt file choice failed: {exc!r}")
 
     driver.timeout.connect(finish)
     watchdog.timeout.connect(check_deadline)
-    driver.start(10)
+    driver.start(40)
     watchdog.start(25)
     try:
         control._choose_button.click()
@@ -517,6 +563,25 @@ def _settle_control_layout(screen, qapp):
     assert ready(), "Evaluation controls or wrapped instructions are clipped."
 
 
+def _activate_window(window, qapp):
+    QApplication.setActiveWindow(window)  # Qt activation; no OS-focus claim.
+    loop = QEventLoop()
+    poll = QTimer()
+    poll.timeout.connect(
+        lambda: loop.quit() if QApplication.activeWindow() is window else None
+    )
+    deadline = QTimer()
+    deadline.setSingleShot(True)
+    deadline.timeout.connect(loop.quit)
+    poll.start(10)
+    deadline.start(3000)
+    loop.exec()
+    poll.stop()
+    deadline.stop()
+    qapp.processEvents()
+    assert QApplication.activeWindow() is window
+
+
 def _check_scroll_keyboard(screen, window, qapp):
     from PySide6.QtCore import QPoint, QRect
     from PySide6.QtWidgets import QScrollArea
@@ -533,7 +598,7 @@ def _check_scroll_keyboard(screen, window, qapp):
         rect = QRect(widget.mapTo(scroll.viewport(), QPoint()), widget.size())
         return scroll.viewport().rect().contains(rect)
 
-    QApplication.setActiveWindow(window)  # Explicit Qt focus, not OS activation.
+    _activate_window(window, qapp)
     scroll.verticalScrollBar().setValue(0)
     screen._btn_browse.setFocus()
     run_initially_clipped = not visible(screen._btn_run)
@@ -584,6 +649,54 @@ def test_evaluation_controls_scroll_without_clipping(qapp, tmp_path, monkeypatch
         _check_scroll_keyboard(screen, screen, qapp)
     finally:
         _finish_screen(screen, qapp)
+
+
+
+def test_analysis_button_space_overrides_only_its_application_shortcut(
+    qapp, tmp_path, monkeypatch
+):
+    from capture_desktop.screen_analysis import AnalysisScreen
+    from capture_desktop.state import CaptureState
+    from PySide6.QtGui import QKeySequence, QShortcut
+
+    screen = AnalysisScreen(CaptureState())
+    seen = []
+    shortcuts = []
+    for key in ("Space", "C", "Ctrl+Space"):
+        shortcut = QShortcut(QKeySequence(key), screen)
+        shortcut.setContext(Qt.ShortcutContext.ApplicationShortcut)
+        shortcut.activated.connect(lambda name=key: seen.append(name))
+        shortcuts.append(shortcut)
+    try:
+        screen._command.setCurrentIndex(screen._command.findData("eval"))
+        screen.resize(1280, 960)
+        screen.show()
+        _activate_window(screen, qapp)
+        control = _external(screen._extras)
+        path = tmp_path / "selected.json"
+        path.write_text("{}")
+        _chosen(control, monkeypatch, path)
+        control._clear_button.setFocus()
+        assert QApplication.focusWidget() is control._clear_button
+        QTest.keyClick(control._clear_button, Qt.Key.Key_Space)
+        assert control._path.text() == ""
+        assert seen == []
+
+        control._choose_button.setFocus()
+        QTest.keyClick(control._choose_button, Qt.Key.Key_C)
+        QTest.keyClick(
+            control._choose_button, Qt.Key.Key_Space, Qt.KeyboardModifier.ControlModifier
+        )
+        assert seen == ["C", "Ctrl+Space"]
+        screen._banner.setFocusPolicy(Qt.FocusPolicy.StrongFocus)
+        screen._banner.setFocus()
+        assert QApplication.focusWidget() is screen._banner
+        QTest.keyClick(screen._banner, Qt.Key.Key_Space)
+        assert seen == ["C", "Ctrl+Space", "Space"]
+    finally:
+        screen.close()
+        screen.deleteLater()
+        qapp.processEvents()
 
 
 @pytest.mark.skipif(os.name != "nt", reason="Real MainWindow imports Windows named-pipe APIs.")

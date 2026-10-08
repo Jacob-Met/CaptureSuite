@@ -1,0 +1,40 @@
+{
+  "author": {
+    "date": "2026-10-08T15:10:14Z",
+    "email": "150724801+Jacob-Met@users.noreply.github.com",
+    "name": "Jacob Metoyer"
+  },
+  "committer": {
+    "date": "2026-10-08T15:10:14Z",
+    "email": "noreply@github.com",
+    "name": "GitHub"
+  },
+  "html_url": "https://github.com/Jacob-Met/CaptureSuite/commit/1ba60a5a302a4944628e576ffbc7ab3f28026c1d",
+  "message": "Merge d7459fa62dd7a57d5565214e10638e055ad5877c into 70f34e3b982523b544a9370d2316a1b69d79bd70",
+  "node_id": "C_kwDOUMvfKdoAKDFiYTYwYTVhMzAyYTQ5NDQ2MjhlNTc2ZmZiYzdhYjNmMjgwMjZjMWQ",
+  "parents": [
+    {
+      "html_url": "https://github.com/Jacob-Met/CaptureSuite/commit/70f34e3b982523b544a9370d2316a1b69d79bd70",
+      "sha": "70f34e3b982523b544a9370d2316a1b69d79bd70",
+      "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/commits/70f34e3b982523b544a9370d2316a1b69d79bd70"
+    },
+    {
+      "html_url": "https://github.com/Jacob-Met/CaptureSuite/commit/d7459fa62dd7a57d5565214e10638e055ad5877c",
+      "sha": "d7459fa62dd7a57d5565214e10638e055ad5877c",
+      "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/commits/d7459fa62dd7a57d5565214e10638e055ad5877c"
+    }
+  ],
+  "sha": "1ba60a5a302a4944628e576ffbc7ab3f28026c1d",
+  "tree": {
+    "sha": "51c711928a28dc02e100fcdea44cd34512318113",
+    "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/trees/51c711928a28dc02e100fcdea44cd34512318113"
+  },
+  "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/commits/1ba60a5a302a4944628e576ffbc7ab3f28026c1d",
+  "verification": {
+    "payload": "tree 51c711928a28dc02e100fcdea44cd34512318113\nparent 70f34e3b982523b544a9370d2316a1b69d79bd70\nparent d7459fa62dd7a57d5565214e10638e055ad5877c\nauthor Jacob Metoyer <150724801+Jacob-Met@users.noreply.github.com> 1791472214 +0000\ncommitter GitHub <noreply@github.com> 1791472214 +0000\n\nMerge d7459fa62dd7a57d5565214e10638e055ad5877c into 70f34e3b982523b544a9370d2316a1b69d79bd70\n",
+    "reason": "valid",
+    "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJqx7JWCRC1aQ7uu5UhlAAAPyMQAJEdS5tvxFDFp+KIW3r6r6Zm\nQn4WHW+uACeoJ6vpJKjMLSghcV+WDDzT8EPeC8AiGzXhLXdzYXUxRbR6WK1rzflS\nlfw0R/tIga+CaCRN7lt23mh2DGpgricnNNg9j+iN9C5ABxkleHPVa7vIr/xSvxsR\nTz6vkHc0a/Cg99ZZwKYIpUvqOP2n8h3yR7YDQqJMvAl9OUthXSGL3PO8BxA6UOWR\ntMPnMSpJ6w+480+MVunj0NJapPeZrFwRMT4mLUTc3XijmhvYhPjcYskhBO7SxyGp\nroICs7c9WndXPU0lY9D2dvgZ3FhJlF/vJhmb+5xv2o8fDztIF0c4xRJT350aD8+9\nFtTiVfUlkK10quXBh1RQOBgOZXZaJqmUEZGVM8Zb1wcFJNGDqyhb4GtalGQ9woAt\nIuC2gE5BzfkQDZB5VDqiP4zTy4VxgSYB/zdqYJ5SciRAQb+mXtc/tmVklQq84QhJ\nDuzfSm87/4OYfPQR3axxioPgqEi62OU0eP+vKHhLEkp7447wMwMs5HTgX1XplTsJ\niJBMh8IfKE6RMwXoFXBrhbLudEytwxQ9JGdDY0K9ORBs+jpp4841GmImIEthhOH1\neT5oFuwfaK4q2k0QHxwJ88Q3MzHyEs3+I6i5/xmcbAyoXdKriJAX38k94T8D5Ac9\nWDFIZ6pnwM75cpWWMKdw\n=q1uZ\n-----END PGP SIGNATURE-----\n",
+    "verified": true,
+    "verified_at": "2026-10-08T15:10:14Z"
+  }
+}

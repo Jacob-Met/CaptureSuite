@@ -1,0 +1,97 @@
+name: Capture84 exact-source Windows diagnosis
+
+on:
+  push:
+    branches: ["diagnostic/capture84-windows-6e5752b49b6f"]
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: windows-2022
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: e548c4fc1d86e5762deb27fe1e82d6fd494ddf7b
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install existing project CI dependencies
+        run: python -m pip install -r requirements-ci.txt
+      - name: Reproduce existing generated-source preparation
+        run: |
+          python tools/gen_protos.py
+          python tools/gen_session_schemas.py
+          git diff --exit-code
+      - name: Observe unchanged suite with a bounded diagnostic process
+        shell: pwsh
+        env:
+          QT_QPA_PLATFORM: offscreen
+          PYTHONIOENCODING: utf-8
+          PYTHONUNBUFFERED: "1"
+          PYTHONDONTWRITEBYTECODE: "1"
+        run: |
+          @'
+          import hashlib, json, os, pathlib, platform, subprocess, sys, time
+          from tools.run_ci_tests import source_snapshot
+          import PySide6
+          root = pathlib.Path.cwd()
+          out = root / "build/evidence/prediction-input-windows-diagnostic"
+          out.mkdir(parents=True, exist_ok=False)
+          expected = "e548c4fc1d86e5762deb27fe1e82d6fd494ddf7b"
+          before = source_snapshot(root)
+          assert before["commit"] == expected and not before["worktree_dirty"]
+          (out / "source-before.json").write_text(json.dumps(before, indent=2)+"\n", encoding="utf-8")
+          plugin = "# SPDX-License-Identifier: GPL-3.0-only\n\"\"\"Read-only node and Qt modal observations for the isolated Windows diagnosis.\"\"\"\nimport json\nimport time\nimport sys\n\n_timers = []\n_started = time.monotonic()\n_old_profile = None\n\ndef _emit(kind, **fields):\n    print(\"CAPTURE_DIAGNOSTIC \" + json.dumps(\n        {\"kind\": kind, \"elapsed\": time.monotonic() - _started, **fields},\n        ensure_ascii=True, sort_keys=True), flush=True)\n\ndef pytest_collection_finish(session):\n    _emit(\"collection\", count=len(session.items),\n          node_ids=[item.nodeid for item in session.items])\n\ndef pytest_runtest_call(item):\n    _emit(\"call\", node_id=item.nodeid)\n    if item.path.parent.name != \"ui\":\n        return\n    from PySide6.QtCore import QTimer, Qt\n    from PySide6.QtWidgets import QApplication, QFileDialog, QLineEdit\n    global _old_profile\n    _old_profile = sys.getprofile()\n    def profile(frame, event, _arg):\n        if (event in (\"call\", \"return\")\n                and frame.f_code.co_name == \"finish\"\n                and frame.f_code.co_filename.endswith(\"test_analysis_predictions.py\")):\n            fields = {\"event\": event, \"node_id\": item.nodeid,\n                      \"dont_use_native\": QApplication.testAttribute(\n                          Qt.ApplicationAttribute.AA_DontUseNativeDialogs)}\n            dialog = frame.f_locals.get(\"dialog\", frame.f_locals.get(\"active\"))\n            try:\n                if isinstance(dialog, QFileDialog):\n                    fields.update(dialog_class=type(dialog).__name__,\n                                  visible=dialog.isVisible(),\n                                  selected_files=dialog.selectedFiles())\n            except RuntimeError as exc:\n                fields[\"dialog_read_error\"] = str(exc)\n            _emit(\"finish-callback\", **fields)\n    sys.setprofile(profile)\n    app = QApplication.instance()\n    if app is None:\n        return\n    ticks = [0]\n    def observe():\n        ticks[0] += 1\n        active = QApplication.activeModalWidget()\n        dialogs = []\n        for widget in app.topLevelWidgets():\n            if isinstance(widget, QFileDialog):\n                filename = widget.findChild(QLineEdit, \"fileNameEdit\")\n                dialogs.append({\n                    \"class\": type(widget).__name__,\n                    \"title\": widget.windowTitle(),\n                    \"visible\": widget.isVisible(),\n                    \"modal\": widget.isModal(),\n                    \"directory\": widget.directory().path(),\n                    \"selected_files\": widget.selectedFiles(),\n                    \"filename_edit\": None if filename is None else filename.text(),\n                })\n        _emit(\"qt-modal\", node_id=item.nodeid, tick=ticks[0],\n              dont_use_native=QApplication.testAttribute(\n                  Qt.ApplicationAttribute.AA_DontUseNativeDialogs),\n              active_class=None if active is None else type(active).__name__,\n              active_title=None if active is None else active.windowTitle(),\n              dialogs=dialogs)\n    timer = QTimer(app)\n    timer.timeout.connect(observe)\n    timer.start(2000)\n    _timers.append(timer)\n    observe()\n\ndef pytest_runtest_teardown(item):\n    if item.path.parent.name == \"ui\":\n        sys.setprofile(_old_profile)\n    while _timers:\n        timer = _timers.pop()\n        timer.stop()\n        timer.deleteLater()\n    _emit(\"teardown\", node_id=item.nodeid)\n\n\ndef pytest_runtest_logreport(report):\n    _emit(\"report\", node_id=report.nodeid, phase=report.when, outcome=report.outcome)\n    if report.failed:\n        _emit(\"failure\", node_id=report.nodeid, phase=report.when,\n              longrepr=str(report.longrepr),\n              sections=[{\"name\": name, \"content\": content}\n                        for name, content in report.sections])\n"
+          (out / "capture_prediction_observer.py").write_text(plugin, encoding="utf-8", newline="\n")
+          env = dict(os.environ)
+          env["QT_QPA_PLATFORM"] = "offscreen"
+          env["PYTHONUNBUFFERED"] = "1"
+          env["PYTHONIOENCODING"] = "utf-8"
+          env["PYTHONDONTWRITEBYTECODE"] = "1"
+          env["PYTHONPATH"] = str(out) + os.pathsep + str(root)
+          env["PYTEST_PLUGINS"] = "capture_prediction_observer"
+          command = [sys.executable, "-u", "-B", "-m", "pytest", "tests", "-vv", "-s",
+                     "-o", "faulthandler_timeout=20", "--ignore=tests/kill_tests",
+                     "--junitxml="+str(out / "pytest.xml")]
+          started=time.monotonic()
+          timeout=False
+          try:
+              result=subprocess.run(command,cwd=root,env=env,stdout=subprocess.PIPE,
+                                    stderr=subprocess.STDOUT,timeout=150)
+              raw=result.stdout
+              code=result.returncode
+          except subprocess.TimeoutExpired as exc:
+              timeout=True
+              raw=exc.stdout or b""
+              code=None
+          (out / "pytest.log").write_bytes(raw)
+          print(raw.decode("utf-8",errors="replace"),flush=True)
+          after=source_snapshot(root)
+          receipt={"kind":"diagnosis-only","source":expected,
+                   "source_unchanged":before==after,
+                   "source_file_count":len(before["files"]),
+                   "source_tree_sha256":before["tree_sha256"],
+                   "python":sys.version,"platform":platform.platform(),
+                   "pyside":PySide6.__version__,"command":command,
+                   "timeout_seconds":150,"timed_out":timeout,"process_exit":code,
+                   "seconds":time.monotonic()-started,
+                   "log_sha256":hashlib.sha256(raw).hexdigest(),
+                   "observer_sha256":hashlib.sha256(plugin.encode()).hexdigest(),
+                   "observer":"read-only node/Qt modal fields; no file-dialog or worker replacement",
+                   "ordinary_ci_gate_accepted":False}
+          (out / "receipt.json").write_text(json.dumps(receipt,indent=2)+"\n",encoding="utf-8")
+          print(json.dumps(receipt,indent=2),flush=True)
+          sys.exit(1 if timeout or code != 0 or before != after else 0)
+          
+          '@ | python -u -
+      - name: Retain exact diagnostic evidence
+        if: always()
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+        with:
+          name: capture84-windows-diagnostic
+          path: build/evidence/prediction-input-windows-diagnostic/
+          if-no-files-found: error
+          retention-days: 7

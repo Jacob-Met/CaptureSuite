@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main, master]
+    branches: [main, master, estate/234cae4aee53-analysis-sources-diagnostic]
   pull_request:
 
 jobs:
@@ -36,10 +36,8 @@ jobs:
       - name: Pytest
         env:
           QT_QPA_PLATFORM: offscreen
+          PYTEST_ADDOPTS: "-vv --durations=25 -o faulthandler_timeout=45"
         run: python tools/run_ci_tests.py
-      - name: Verify actual Windows workbench cases
-        if: always()
-        run: python tools/verify_prediction_workbench_ci.py
       - name: Preserve Python test evidence
         if: always()
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
@@ -50,6 +48,7 @@ jobs:
           retention-days: 7
 
   cmake:
+    if: ${{ github.ref != 'refs/heads/estate/234cae4aee53-analysis-sources-diagnostic' }}
     runs-on: windows-2022
     timeout-minutes: 45
     steps:
