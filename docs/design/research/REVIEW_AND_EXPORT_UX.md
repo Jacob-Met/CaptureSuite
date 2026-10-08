@@ -122,3 +122,36 @@ Preset type: `export` ([PRESETS_AND_SETTINGS_UX.md](PRESETS_AND_SETTINGS_UX.md))
 - [RECOVERY.md](../RECOVERY.md)
 - [SESSION_FORMAT.md](../SESSION_FORMAT.md)
 - [IMPLEMENTATION_PLAN.md](../../../docs/spec/IMPLEMENTATION_PLAN.md) M11
+
+## Decision 2026-10-08: Selected export output integrity
+
+**Reason:** Real MCAP receiving of the T68 modality-selection candidate found two
+ways for exported contents to disagree with the chosen streams. An IMU stream
+after an EMG stream under one neutral source ID was skipped because discovery
+looked only at the first message. Reusing an earlier destination retained its
+unselected files even though the replacement manifest described only the new
+selection.
+
+The continuous exporter matches the registered schema of each decoded message.
+One source may contain several modalities, in separate streams or one MCAP; its
+ID and first message do not determine its complete contents. EMG/IMU output files
+are created only when a selected matching message is decoded. Source timestamps,
+raw files and the requested-versus-actual sidecar fields retain their meaning.
+
+Output creation, writing and close failures abort the export with an actionable
+message and a nonzero result before a success manifest is written. The existing
+policy for unreadable input remains isolated to input consumption; it cannot
+suppress a failure to write a selected stream. Partial failed output is retained
+for inspection rather than represented as a completed export.
+
+The destination must be a new or empty directory. An existing empty folder from
+the desktop picker remains supported. A nonempty destination is rejected before
+export writes, with an instruction to choose another folder. Existing output is
+preserved; the exporter neither deletes old files nor combines results from
+different selections. Default exports still use the package's `exports/` folder.
+
+**Files:** `tools/export_session.py`, `desktop/capture_desktop/export_wizard.py`,
+`tests/analysis/test_export_selection_mcap.py`.
+
+The receiving record is in
+[`docs/evidence/export-selection-20261008/`](../../evidence/export-selection-20261008/).

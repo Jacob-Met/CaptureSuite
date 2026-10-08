@@ -1,0 +1,17 @@
+{
+  "repository": "Jacob-Met/CaptureSuite",
+  "pull_request": 45,
+  "run_id": 37758185607,
+  "head_sha": "1ae47ae44a4a07d732a2c773c9cb62dc17253d01",
+  "merge_sha": "1fc4ed6f67a5288c16ee043c0ee4d4c759b68d1f",
+  "python_job_id": 113247853290,
+  "python_artifact_id": 11541077528,
+  "python_artifact_sha256": "eb11dd61fcd25e45fee7deb604a0eee5376e3aa057a4229b17b42a1a601d6d52",
+  "python_conclusion": "failure",
+  "cmake_job_id": 113247852980,
+  "cmake_conclusion": "success",
+  "cmake_artifact_id": 11541637384,
+  "cmake_artifact_sha256": "b26f2b0d44f279a250eb71efc2bf132a86179d25ffc8fd08fed0a32ca1f16a8a",
+  "cmake_artifact_downloaded": false,
+  "boundary": "First Windows run; Python failed and this run is not accepted as whole-repository success. CMake job metadata reports all steps including native daemon/recovery integration passed."
+}

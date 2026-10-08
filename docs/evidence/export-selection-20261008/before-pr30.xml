@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="7" skipped="0" tests="12" time="2.754" timestamp="2026-10-08T17:21:30.700113+09:00" hostname="05aaedaf3e50"><testcase classname="tests.analysis.test_export_selection_mcap" name="test_real_mcap_selection_preserves_input_and_timestamps[selected0]" time="0.220" /><testcase classname="tests.analysis.test_export_selection_mcap" name="test_real_mcap_selection_preserves_input_and_timestamps[selected1]" time="0.215" /><testcase classname="tests.analysis.test_export_selection_mcap" name="test_real_mcap_selection_preserves_input_and_timestamps[selected2]" time="0.154" /><testcase classname="tests.analysis.test_export_selection_mcap" name="test_selected_modality_can_follow_another_schema[selected0-separate-streams]" time="0.204"><failure message="AssertionError: wrote /tmp/pytest-of-root/pytest-120/test_selected_modality_can_fol0/selected/export_manifest.json&#10;  radar 0 video 0 imu 0 emg 0&#10;  FAIL --verify: finalized package exported zero streams&#10;  &#10;assert 1 == 0&#10; +  where 1 = CompletedProcess(args=['/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python', '/workspace/scratch/234cae4aee5...xport_manifest.json\nradar 0 video 0 imu 0 emg 0\nFAIL --verify: finalized package exported zero streams\n', stderr='').returncode">package = PosixPath('/tmp/pytest-of-root/pytest-120/test_selected_modality_can_fol0/synthetic.mmsession')
+layout = 'separate-streams', selected = ('imu',)
+
+    @pytest.mark.parametrize("layout", ["separate-streams", "multiplexed"])
+    @pytest.mark.parametrize("selected", [("imu",), ("emg", "imu")])
+    def test_selected_modality_can_follow_another_schema(package: Path, layout, selected) -&gt; None:
+        """A source's first message or name cannot determine all of its modalities."""
+        source = package / "sources/device-17/streams"
+        if layout == "multiplexed":
+            _write_mcap(source / "mixed/segments/000.mcap", ("emg", "imu"))
+        else:
+            _write_mcap(source / "a/segments/000.mcap", ("emg",))
+            _write_mcap(source / "b/segments/000.mcap", ("imu",))
+        before = _hash_files(package)
+        out = package.parent / "selected"
+        result = _export(package, out, selected)
+&gt;       assert result.returncode == 0, result.stdout + result.stderr
+E       AssertionError: wrote /tmp/pytest-of-root/pytest-120/test_selected_modality_can_fol0/selected/export_manifest.json
+E         radar 0 video 0 imu 0 emg 0
+E         FAIL --verify: finalized package exported zero streams
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python', '/workspace/scratch/234cae4aee5...xport_manifest.json\nradar 0 video 0 imu 0 emg 0\nFAIL --verify: finalized package exported zero streams\n', stderr='').returncode
+
+tests/analysis/test_export_selection_mcap.py:137: AssertionError</failure></testcase><testcase classname="tests.analysis.test_export_selection_mcap" name="test_selected_modality_can_follow_another_schema[selected0-multiplexed]" time="0.223"><failure message="AssertionError: wrote /tmp/pytest-of-root/pytest-120/test_selected_modality_can_fol1/selected/export_manifest.json&#10;  radar 0 video 0 imu 0 emg 0&#10;  FAIL --verify: finalized package exported zero streams&#10;  &#10;assert 1 == 0&#10; +  where 1 = CompletedProcess(args=['/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python', '/workspace/scratch/234cae4aee5...xport_manifest.json\nradar 0 video 0 imu 0 emg 0\nFAIL --verify: finalized package exported zero streams\n', stderr='').returncode">package = PosixPath('/tmp/pytest-of-root/pytest-120/test_selected_modality_can_fol1/synthetic.mmsession')
+layout = 'multiplexed', selected = ('imu',)
+
+    @pytest.mark.parametrize("layout", ["separate-streams", "multiplexed"])
+    @pytest.mark.parametrize("selected", [("imu",), ("emg", "imu")])
+    def test_selected_modality_can_follow_another_schema(package: Path, layout, selected) -&gt; None:
+        """A source's first message or name cannot determine all of its modalities."""
+        source = package / "sources/device-17/streams"
+        if layout == "multiplexed":
+            _write_mcap(source / "mixed/segments/000.mcap", ("emg", "imu"))
+        else:
+            _write_mcap(source / "a/segments/000.mcap", ("emg",))
+            _write_mcap(source / "b/segments/000.mcap", ("imu",))
+        before = _hash_files(package)
+        out = package.parent / "selected"
+        result = _export(package, out, selected)
+&gt;       assert result.returncode == 0, result.stdout + result.stderr
+E       AssertionError: wrote /tmp/pytest-of-root/pytest-120/test_selected_modality_can_fol1/selected/export_manifest.json
+E         radar 0 video 0 imu 0 emg 0
+E         FAIL --verify: finalized package exported zero streams
+E         
+E       assert 1 == 0
+E        +  where 1 = CompletedProcess(args=['/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python', '/workspace/scratch/234cae4aee5...xport_manifest.json\nradar 0 video 0 imu 0 emg 0\nFAIL --verify: finalized package exported zero streams\n', stderr='').returncode
+
+tests/analysis/test_export_selection_mcap.py:137: AssertionError</failure></testcase><testcase classname="tests.analysis.test_export_selection_mcap" name="test_selected_modality_can_follow_another_schema[selected1-separate-streams]" time="0.202"><failure message="AssertionError: ('imu', {'package': '/tmp/pytest-of-root/pytest-120/test_selected_modality_can_fol2/synthetic.mmsession', 'export_schema': 'capture.export_manifest/1', 'modalities': ['emg', 'imu'], 'radar': [], ...})&#10;assert False == ('imu' in ('emg', 'imu'))&#10; +  where False = bool([])">package = PosixPath('/tmp/pytest-of-root/pytest-120/test_selected_modality_can_fol2/synthetic.mmsession')
+layout = 'separate-streams', selected = ('emg', 'imu')
+
+    @pytest.mark.parametrize("layout", ["separate-streams", "multiplexed"])
+    @pytest.mark.parametrize("selected", [("imu",), ("emg", "imu")])
+    def test_selected_modality_can_follow_another_schema(package: Path, layout, selected) -&gt; None:
+        """A source's first message or name cannot determine all of its modalities."""
+        source = package / "sources/device-17/streams"
+        if layout == "multiplexed":
+            _write_mcap(source / "mixed/segments/000.mcap", ("emg", "imu"))
+        else:
+            _write_mcap(source / "a/segments/000.mcap", ("emg",))
+            _write_mcap(source / "b/segments/000.mcap", ("imu",))
+        before = _hash_files(package)
+        out = package.parent / "selected"
+        result = _export(package, out, selected)
+        assert result.returncode == 0, result.stdout + result.stderr
+&gt;       _assert_selected(out, selected)
+
+tests/analysis/test_export_selection_mcap.py:138: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+out = PosixPath('/tmp/pytest-of-root/pytest-120/test_selected_modality_can_fol2/selected')
+selected = ('emg', 'imu')
+
+    def _assert_selected(out: Path, selected: tuple[str, ...]) -&gt; dict:
+        manifest = json.loads((out / "export_manifest.json").read_text(encoding="utf-8"))
+        for kind in KINDS:
+&gt;           assert bool(manifest[kind]) == (kind in selected), (kind, manifest)
+E           AssertionError: ('imu', {'package': '/tmp/pytest-of-root/pytest-120/test_selected_modality_can_fol2/synthetic.mmsession', 'export_schema': 'capture.export_manifest/1', 'modalities': ['emg', 'imu'], 'radar': [], ...})
+E           assert False == ('imu' in ('emg', 'imu'))
+E            +  where False = bool([])
+
+tests/analysis/test_export_selection_mcap.py:90: AssertionError</failure></testcase><testcase classname="tests.analysis.test_export_selection_mcap" name="test_selected_modality_can_follow_another_schema[selected1-multiplexed]" time="0.182"><failure message="AssertionError: ('imu', {'package': '/tmp/pytest-of-root/pytest-120/test_selected_modality_can_fol3/synthetic.mmsession', 'export_schema': 'capture.export_manifest/1', 'modalities': ['emg', 'imu'], 'radar': [], ...})&#10;assert False == ('imu' in ('emg', 'imu'))&#10; +  where False = bool([])">package = PosixPath('/tmp/pytest-of-root/pytest-120/test_selected_modality_can_fol3/synthetic.mmsession')
+layout = 'multiplexed', selected = ('emg', 'imu')
+
+    @pytest.mark.parametrize("layout", ["separate-streams", "multiplexed"])
+    @pytest.mark.parametrize("selected", [("imu",), ("emg", "imu")])
+    def test_selected_modality_can_follow_another_schema(package: Path, layout, selected) -&gt; None:
+        """A source's first message or name cannot determine all of its modalities."""
+        source = package / "sources/device-17/streams"
+        if layout == "multiplexed":
+            _write_mcap(source / "mixed/segments/000.mcap", ("emg", "imu"))
+        else:
+            _write_mcap(source / "a/segments/000.mcap", ("emg",))
+            _write_mcap(source / "b/segments/000.mcap", ("imu",))
+        before = _hash_files(package)
+        out = package.parent / "selected"
+        result = _export(package, out, selected)
+        assert result.returncode == 0, result.stdout + result.stderr
+&gt;       _assert_selected(out, selected)
+
+tests/analysis/test_export_selection_mcap.py:138: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+out = PosixPath('/tmp/pytest-of-root/pytest-120/test_selected_modality_can_fol3/selected')
+selected = ('emg', 'imu')
+
+    def _assert_selected(out: Path, selected: tuple[str, ...]) -&gt; dict:
+        manifest = json.loads((out / "export_manifest.json").read_text(encoding="utf-8"))
+        for kind in KINDS:
+&gt;           assert bool(manifest[kind]) == (kind in selected), (kind, manifest)
+E           AssertionError: ('imu', {'package': '/tmp/pytest-of-root/pytest-120/test_selected_modality_can_fol3/synthetic.mmsession', 'export_schema': 'capture.export_manifest/1', 'modalities': ['emg', 'imu'], 'radar': [], ...})
+E           assert False == ('imu' in ('emg', 'imu'))
+E            +  where False = bool([])
+
+tests/analysis/test_export_selection_mcap.py:90: AssertionError</failure></testcase><testcase classname="tests.analysis.test_export_selection_mcap" name="test_native_wizard_selection_and_requested_actual_sidecar" time="0.305" /><testcase classname="tests.analysis.test_export_selection_mcap" name="test_reused_destination_does_not_leave_unselected_streams" time="0.385"><failure message="AssertionError: A second selection must not mix stale outputs into an export&#10;assert 0 != 0&#10; +  where 0 = CompletedProcess(args=['/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python', '/workspace/scratch/234cae4aee5...ot/pytest-120/test_reused_destination_does_n0/selected/export_manifest.json\nradar 0 video 0 imu 0 emg 1\n', stderr='').returncode">package = PosixPath('/tmp/pytest-of-root/pytest-120/test_reused_destination_does_n0/synthetic.mmsession')
+
+    def test_reused_destination_does_not_leave_unselected_streams(package: Path) -&gt; None:
+        _write_mcap(package / "sources/device-A/streams/one/segments/000.mcap", ("emg",))
+        _write_mcap(package / "sources/device-B/streams/two/segments/000.mcap", ("imu",))
+        out = package.parent / "selected"
+        first = _export(package, out, ("imu",))
+        assert first.returncode == 0, first.stdout + first.stderr
+        before = _hash_files(out)
+        second = _export(package, out, ("emg",))
+&gt;       assert second.returncode != 0, "A second selection must not mix stale outputs into an export"
+E       AssertionError: A second selection must not mix stale outputs into an export
+E       assert 0 != 0
+E        +  where 0 = CompletedProcess(args=['/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python', '/workspace/scratch/234cae4aee5...ot/pytest-120/test_reused_destination_does_n0/selected/export_manifest.json\nradar 0 video 0 imu 0 emg 1\n', stderr='').returncode
+
+tests/analysis/test_export_selection_mcap.py:179: AssertionError</failure></testcase><testcase classname="tests.analysis.test_export_selection_mcap" name="test_existing_empty_destination_is_supported" time="0.196" /><testcase classname="tests.analysis.test_export_selection_mcap" name="test_existing_destination_contents_are_preserved[unrelated-file]" time="0.135"><failure message="AssertionError: assert 0 != 0&#10; +  where 0 = CompletedProcess(args=['/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python', '/workspace/scratch/234cae4aee5...st-120/test_existing_destination_cont0/existing folder/export_manifest.json\nradar 0 video 0 imu 0 emg 1\n', stderr='').returncode">package = PosixPath('/tmp/pytest-of-root/pytest-120/test_existing_destination_cont0/synthetic.mmsession')
+contents = 'unrelated-file'
+
+    @pytest.mark.parametrize("contents", ["unrelated-file", "empty-subfolder"])
+    def test_existing_destination_contents_are_preserved(package: Path, contents) -&gt; None:
+        _write_mcap(package / "sources/device-A/streams/one/segments/000.mcap", ("emg",))
+        out = package.parent / "existing folder"
+        out.mkdir()
+        if contents == "empty-subfolder":
+            (out / "other-work").mkdir()
+        else:
+            (out / "notes.txt").write_text("Do not replace this work.", encoding="utf-8")
+        before = _hash_files(out)
+        source_before = _hash_files(package)
+        result = _export(package, out, ("emg",))
+&gt;       assert result.returncode != 0
+E       AssertionError: assert 0 != 0
+E        +  where 0 = CompletedProcess(args=['/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python', '/workspace/scratch/234cae4aee5...st-120/test_existing_destination_cont0/existing folder/export_manifest.json\nradar 0 video 0 imu 0 emg 1\n', stderr='').returncode
+
+tests/analysis/test_export_selection_mcap.py:205: AssertionError</failure></testcase><testcase classname="tests.analysis.test_export_selection_mcap" name="test_existing_destination_contents_are_preserved[empty-subfolder]" time="0.192"><failure message="AssertionError: assert 0 != 0&#10; +  where 0 = CompletedProcess(args=['/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python', '/workspace/scratch/234cae4aee5...st-120/test_existing_destination_cont1/existing folder/export_manifest.json\nradar 0 video 0 imu 0 emg 1\n', stderr='').returncode">package = PosixPath('/tmp/pytest-of-root/pytest-120/test_existing_destination_cont1/synthetic.mmsession')
+contents = 'empty-subfolder'
+
+    @pytest.mark.parametrize("contents", ["unrelated-file", "empty-subfolder"])
+    def test_existing_destination_contents_are_preserved(package: Path, contents) -&gt; None:
+        _write_mcap(package / "sources/device-A/streams/one/segments/000.mcap", ("emg",))
+        out = package.parent / "existing folder"
+        out.mkdir()
+        if contents == "empty-subfolder":
+            (out / "other-work").mkdir()
+        else:
+            (out / "notes.txt").write_text("Do not replace this work.", encoding="utf-8")
+        before = _hash_files(out)
+        source_before = _hash_files(package)
+        result = _export(package, out, ("emg",))
+&gt;       assert result.returncode != 0
+E       AssertionError: assert 0 != 0
+E        +  where 0 = CompletedProcess(args=['/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python', '/workspace/scratch/234cae4aee5...st-120/test_existing_destination_cont1/existing folder/export_manifest.json\nradar 0 video 0 imu 0 emg 1\n', stderr='').returncode
+
+tests/analysis/test_export_selection_mcap.py:205: AssertionError</failure></testcase></testsuite></testsuites>

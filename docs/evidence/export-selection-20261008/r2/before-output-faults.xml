@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="6" time="0.374" timestamp="2026-10-08T17:57:04.239113+09:00" hostname="05aaedaf3e50"><testcase classname="tests.analysis.test_export_selection_mcap" name="test_output_failure_is_fatal_with_another_selected_stream[mkdir]" time="0.159"><failure message="assert 0 == 1">package = PosixPath('/tmp/pytest-of-root/pytest-198/test_output_failure_is_fatal_w0/synthetic.mmsession')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ff2c704ec30&gt;
+capsys = &lt;_pytest.capture.CaptureFixture object at 0x7ff2c704edb0&gt;
+operation = 'mkdir'
+
+    @pytest.mark.parametrize("operation", ["mkdir", "open", "write", "close"])
+    def test_output_failure_is_fatal_with_another_selected_stream(
+        package: Path, monkeypatch, capsys, operation
+    ) -&gt; None:
+        import export_session
+    
+        _write_mcap(package / "sources/device-A/streams/one/segments/000.mcap", ("emg",))
+        _write_mcap(package / "sources/device-B/streams/two/segments/000.mcap", ("imu",))
+        before = _hash_files(package)
+        out = package.parent / "output-fault"
+        dest = out / "imu/device-B"
+        real_mkdir = Path.mkdir
+        real_open = Path.open
+    
+        def failed_mkdir(path, *args, **kwargs):
+            if path == dest:
+                raise PermissionError(errno.EACCES, "synthetic output directory denied")
+            return real_mkdir(path, *args, **kwargs)
+    
+        class FailedOutput:
+            def __init__(self, stream):
+                self.stream = stream
+    
+            def __enter__(self):
+                self.stream.__enter__()
+                return self
+    
+            def write(self, value):
+                if operation == "write":
+                    raise OSError(errno.ENOSPC, "synthetic output full")
+                return self.stream.write(value)
+    
+            def __exit__(self, *args):
+                result = self.stream.__exit__(*args)
+                if operation == "close":
+                    raise OSError(errno.ENOSPC, "synthetic output flush failed")
+                return result
+    
+        def failed_open(path, *args, **kwargs):
+            if path != dest / "frames.jsonl":
+                return real_open(path, *args, **kwargs)
+            if operation == "open":
+                raise PermissionError(errno.EACCES, "synthetic output file denied")
+            return FailedOutput(real_open(path, *args, **kwargs))
+    
+        if operation == "mkdir":
+            monkeypatch.setattr(Path, "mkdir", failed_mkdir)
+        else:
+            monkeypatch.setattr(Path, "open", failed_open)
+        code = export_session.main(
+            [str(package), str(out), "--modalities", "emg,imu", "--verify"]
+        )
+&gt;       assert code == 1
+E       assert 0 == 1
+
+tests/analysis/test_export_selection_mcap.py:267: AssertionError</failure></testcase><testcase classname="tests.analysis.test_export_selection_mcap" name="test_output_failure_is_fatal_with_another_selected_stream[open]" time="0.007"><failure message="assert 0 == 1">package = PosixPath('/tmp/pytest-of-root/pytest-198/test_output_failure_is_fatal_w1/synthetic.mmsession')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ff2c704ebd0&gt;
+capsys = &lt;_pytest.capture.CaptureFixture object at 0x7ff2c704ec00&gt;
+operation = 'open'
+
+    @pytest.mark.parametrize("operation", ["mkdir", "open", "write", "close"])
+    def test_output_failure_is_fatal_with_another_selected_stream(
+        package: Path, monkeypatch, capsys, operation
+    ) -&gt; None:
+        import export_session
+    
+        _write_mcap(package / "sources/device-A/streams/one/segments/000.mcap", ("emg",))
+        _write_mcap(package / "sources/device-B/streams/two/segments/000.mcap", ("imu",))
+        before = _hash_files(package)
+        out = package.parent / "output-fault"
+        dest = out / "imu/device-B"
+        real_mkdir = Path.mkdir
+        real_open = Path.open
+    
+        def failed_mkdir(path, *args, **kwargs):
+            if path == dest:
+                raise PermissionError(errno.EACCES, "synthetic output directory denied")
+            return real_mkdir(path, *args, **kwargs)
+    
+        class FailedOutput:
+            def __init__(self, stream):
+                self.stream = stream
+    
+            def __enter__(self):
+                self.stream.__enter__()
+                return self
+    
+            def write(self, value):
+                if operation == "write":
+                    raise OSError(errno.ENOSPC, "synthetic output full")
+                return self.stream.write(value)
+    
+            def __exit__(self, *args):
+                result = self.stream.__exit__(*args)
+                if operation == "close":
+                    raise OSError(errno.ENOSPC, "synthetic output flush failed")
+                return result
+    
+        def failed_open(path, *args, **kwargs):
+            if path != dest / "frames.jsonl":
+                return real_open(path, *args, **kwargs)
+            if operation == "open":
+                raise PermissionError(errno.EACCES, "synthetic output file denied")
+            return FailedOutput(real_open(path, *args, **kwargs))
+    
+        if operation == "mkdir":
+            monkeypatch.setattr(Path, "mkdir", failed_mkdir)
+        else:
+            monkeypatch.setattr(Path, "open", failed_open)
+        code = export_session.main(
+            [str(package), str(out), "--modalities", "emg,imu", "--verify"]
+        )
+&gt;       assert code == 1
+E       assert 0 == 1
+
+tests/analysis/test_export_selection_mcap.py:267: AssertionError</failure></testcase><testcase classname="tests.analysis.test_export_selection_mcap" name="test_output_failure_is_fatal_with_another_selected_stream[write]" time="0.007"><failure message="assert 0 == 1">package = PosixPath('/tmp/pytest-of-root/pytest-198/test_output_failure_is_fatal_w2/synthetic.mmsession')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ff2add8a960&gt;
+capsys = &lt;_pytest.capture.CaptureFixture object at 0x7ff2add8ab70&gt;
+operation = 'write'
+
+    @pytest.mark.parametrize("operation", ["mkdir", "open", "write", "close"])
+    def test_output_failure_is_fatal_with_another_selected_stream(
+        package: Path, monkeypatch, capsys, operation
+    ) -&gt; None:
+        import export_session
+    
+        _write_mcap(package / "sources/device-A/streams/one/segments/000.mcap", ("emg",))
+        _write_mcap(package / "sources/device-B/streams/two/segments/000.mcap", ("imu",))
+        before = _hash_files(package)
+        out = package.parent / "output-fault"
+        dest = out / "imu/device-B"
+        real_mkdir = Path.mkdir
+        real_open = Path.open
+    
+        def failed_mkdir(path, *args, **kwargs):
+            if path == dest:
+                raise PermissionError(errno.EACCES, "synthetic output directory denied")
+            return real_mkdir(path, *args, **kwargs)
+    
+        class FailedOutput:
+            def __init__(self, stream):
+                self.stream = stream
+    
+            def __enter__(self):
+                self.stream.__enter__()
+                return self
+    
+            def write(self, value):
+                if operation == "write":
+                    raise OSError(errno.ENOSPC, "synthetic output full")
+                return self.stream.write(value)
+    
+            def __exit__(self, *args):
+                result = self.stream.__exit__(*args)
+                if operation == "close":
+                    raise OSError(errno.ENOSPC, "synthetic output flush failed")
+                return result
+    
+        def failed_open(path, *args, **kwargs):
+            if path != dest / "frames.jsonl":
+                return real_open(path, *args, **kwargs)
+            if operation == "open":
+                raise PermissionError(errno.EACCES, "synthetic output file denied")
+            return FailedOutput(real_open(path, *args, **kwargs))
+    
+        if operation == "mkdir":
+            monkeypatch.setattr(Path, "mkdir", failed_mkdir)
+        else:
+            monkeypatch.setattr(Path, "open", failed_open)
+        code = export_session.main(
+            [str(package), str(out), "--modalities", "emg,imu", "--verify"]
+        )
+&gt;       assert code == 1
+E       assert 0 == 1
+
+tests/analysis/test_export_selection_mcap.py:267: AssertionError</failure></testcase><testcase classname="tests.analysis.test_export_selection_mcap" name="test_output_failure_is_fatal_with_another_selected_stream[close]" time="0.005"><failure message="OSError: [Errno 28] synthetic output flush failed">package = PosixPath('/tmp/pytest-of-root/pytest-198/test_output_failure_is_fatal_w3/synthetic.mmsession')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x7ff2add8bf50&gt;
+capsys = &lt;_pytest.capture.CaptureFixture object at 0x7ff2add8a5d0&gt;
+operation = 'close'
+
+    @pytest.mark.parametrize("operation", ["mkdir", "open", "write", "close"])
+    def test_output_failure_is_fatal_with_another_selected_stream(
+        package: Path, monkeypatch, capsys, operation
+    ) -&gt; None:
+        import export_session
+    
+        _write_mcap(package / "sources/device-A/streams/one/segments/000.mcap", ("emg",))
+        _write_mcap(package / "sources/device-B/streams/two/segments/000.mcap", ("imu",))
+        before = _hash_files(package)
+        out = package.parent / "output-fault"
+        dest = out / "imu/device-B"
+        real_mkdir = Path.mkdir
+        real_open = Path.open
+    
+        def failed_mkdir(path, *args, **kwargs):
+            if path == dest:
+                raise PermissionError(errno.EACCES, "synthetic output directory denied")
+            return real_mkdir(path, *args, **kwargs)
+    
+        class FailedOutput:
+            def __init__(self, stream):
+                self.stream = stream
+    
+            def __enter__(self):
+                self.stream.__enter__()
+                return self
+    
+            def write(self, value):
+                if operation == "write":
+                    raise OSError(errno.ENOSPC, "synthetic output full")
+                return self.stream.write(value)
+    
+            def __exit__(self, *args):
+                result = self.stream.__exit__(*args)
+                if operation == "close":
+                    raise OSError(errno.ENOSPC, "synthetic output flush failed")
+                return result
+    
+        def failed_open(path, *args, **kwargs):
+            if path != dest / "frames.jsonl":
+                return real_open(path, *args, **kwargs)
+            if operation == "open":
+                raise PermissionError(errno.EACCES, "synthetic output file denied")
+            return FailedOutput(real_open(path, *args, **kwargs))
+    
+        if operation == "mkdir":
+            monkeypatch.setattr(Path, "mkdir", failed_mkdir)
+        else:
+            monkeypatch.setattr(Path, "open", failed_open)
+&gt;       code = export_session.main(
+            [str(package), str(out), "--modalities", "emg,imu", "--verify"]
+        )
+
+tests/analysis/test_export_selection_mcap.py:264: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tools/export_session.py:416: in main
+    export_imu_emg(root, out, manifest, modalities)
+tools/export_session.py:240: in export_imu_emg
+    with ExitStack() as outputs:
+         ^^^^^^^^^^^
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py:610: in __exit__
+    raise exc_details[1]
+/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py:595: in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;test_export_selection_mcap.test_output_failure_is_fatal_with_another_selected_stream.&lt;locals&gt;.FailedOutput object at 0x7ff2add8a360&gt;
+args = (None, None, None)
+
+    def __exit__(self, *args):
+        result = self.stream.__exit__(*args)
+        if operation == "close":
+&gt;           raise OSError(errno.ENOSPC, "synthetic output flush failed")
+E           OSError: [Errno 28] synthetic output flush failed
+
+tests/analysis/test_export_selection_mcap.py:250: OSError</failure></testcase><testcase classname="tests.analysis.test_export_selection_mcap" name="test_existing_input_read_failure_policy_is_preserved[open]" time="0.006" /><testcase classname="tests.analysis.test_export_selection_mcap" name="test_existing_input_read_failure_policy_is_preserved[iterate]" time="0.006" /></testsuite></testsuites>

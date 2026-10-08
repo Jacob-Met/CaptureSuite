@@ -1,0 +1,37 @@
+{
+  "schema": "capturesuite.test-receipt.v1",
+  "accepted": false,
+  "process_exit": 1,
+  "counts": {
+    "tests": 255,
+    "passed": 246,
+    "failures": 3,
+    "errors": 0,
+    "skipped": 6
+  },
+  "junit_sha256": "d1b0c4808c03e606551b2991cd8fb90ca66ad998df5346ab5536375d8a69efee",
+  "problems": [
+    "Test process did not exit successfully",
+    "JUnit contains failing or errored cases"
+  ],
+  "scope": "Process and test-evidence consistency, not clinical validation",
+  "seconds": 12.731095499999924,
+  "created_at": "2026-10-08T09:41:35.532136+00:00",
+  "run_directory": "build/evidence/python-20261008T094122Z-791110c5",
+  "log_sha256": "639b81e766d2934d834778c915b2bb20dbbed711b1d7a0f33705b3e4d43292f5",
+  "source_commit": "1fc4ed6f67a5288c16ee043c0ee4d4c759b68d1f",
+  "source_worktree_dirty": false,
+  "source_tree_sha256": "786e27ec08385044d9113287bdcbc45b65856b58bbbdbf68627fb75fdec3ca70",
+  "source_file_count": 580,
+  "github": {
+    "GITHUB_ACTIONS": "true",
+    "GITHUB_EVENT_NAME": "pull_request",
+    "GITHUB_SHA": "1fc4ed6f67a5288c16ee043c0ee4d4c759b68d1f",
+    "GITHUB_REF": "refs/pull/45/merge",
+    "GITHUB_HEAD_REF": "estate/234cae4aee53-export-receiving",
+    "GITHUB_BASE_REF": "main",
+    "GITHUB_RUN_ID": "37758185607",
+    "GITHUB_WORKFLOW_REF": "Jacob-Met/CaptureSuite/.github/workflows/ci.yml@refs/pull/45/merge"
+  },
+  "source_unchanged_during_test": true
+}
