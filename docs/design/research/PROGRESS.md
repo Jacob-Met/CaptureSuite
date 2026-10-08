@@ -1011,3 +1011,49 @@ GNU linker-wrapped cases, Windows, complete Mac UI/daemon, x86_64 or notarizatio
 Native artifact paths, exact hashes, recipient usage, raw qualification and
 independent review are in
 [the receiving packet](../../receiving/macos-session-doctor-5f566b5ec8ef/README.md).
+
+
+## 2026-10-08 — Explicit multi-package QC review (7879c2abc07f)
+
+Issue #74 adds `tools/review_qc_packages.py --output NEW_DIR PACKAGE...` for
+1–32 explicitly selected finalized or recovered packages. The new external
+review retains caller order, distinct paths with equal IDs, literal identities,
+per-package failures and each complete native JSON/HTML report. Existing and
+inside-package destinations are refused before creation; read-only collection
+does not start a job, alter raw/session/processing data or update application state.
+
+The independently frozen actual CLI consumer preserved the original missing
+entrypoint failure, then caught a real application-state write in the first
+candidate. A separate fresh-process receiver identified eager package job imports
+creating a Matplotlib font cache during QC-only import. The coordinated package
+initializer now defers only the four existing job exports until requested; their
+real identities, signatures, public names and explicit/star-import behavior remain
+intact. The native collector, renderer, jobs, pipeline and plotting sources stay
+unchanged.
+
+Supported hosted Windows/Python 3.12 receiving on corrected source
+`d2e39d1382ee2a5b64f97ef207bf322c7a16ba13` passes all eight independent
+CLI groups (15 actual commands), fresh QC-state/API controls, three real
+file-open browser groups, 30 CTest cases and six daemon/recovery cases.
+Both independent reviewers verified the 36 fixed artifacts and four actual
+desktop/phone PNGs. Native JSON/HTML remains exact; the existing report's wide
+precision table retains its horizontal scroller.
+
+Normal maintained Python executions reached the unchanged 300-second limit.
+An isolated verbose control passed 559 cases with six existing skips in
+297.02 seconds and located two existing real threaded scope tests taking
+96.39/92.59 seconds. Coordinated issue #53 follow-through adds only a one
+millisecond Python yield after each existing Qt wait in the worker completion
+and cancellation loops. The same complete suite then passes 559 cases with
+the same six skips in 137.45 seconds; those scope cases take 3.20/3.24 seconds.
+Every assertion, Qt event pump, fixture, actual MCAP/provenance check and both
+120/300-second deadlines remain intact. This receiving adjustment does not
+change production worker scheduling or expand the global timeout.
+
+The original source/failures, raw hosted logs, exact import diagnosis, current
+artifacts and independent reviews are retained on the dedicated
+[QC receiving branch](https://github.com/Jacob-Met/CaptureSuite/tree/receiving/qc-package-review-7879c2abc07f-20261008/docs/evidence/qc-package-review-7879c2abc07f).
+The composed PR still requires its ordinary current-source gates and final
+independent integration review. These synthetic fixture checks do not decode the
+two placeholder MCAP files used by QC, rehash raw streams, certify scientific
+validity, infer participant identity or validate physical hardware.
