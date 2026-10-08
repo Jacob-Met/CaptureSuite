@@ -1,0 +1,13 @@
+{
+  "content": [
+    {
+      "type": "text",
+      "text": "[Reading 4 lines from line 1 (total: 5 lines, 0 remaining)]\n\n  File \"/Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/assemble-local-runtime.py\", line 44, in <module>\n    raise RuntimeError(f\"Unrecognized non-system dependency: {dependency}\")\nRuntimeError: Unrecognized non-system dependency: @rpath/libutf8_validity.36.2.0.dylib\n\n✅ Process completed with exit code 1 (runtime: 0.33s)"
+    },
+    {
+      "type": "text",
+      "text": "\n[executed on device: Mac.lan (0e3d582f-e25b-44b2-8418-9639fc4e4e33)]"
+    }
+  ],
+  "isError": false
+}

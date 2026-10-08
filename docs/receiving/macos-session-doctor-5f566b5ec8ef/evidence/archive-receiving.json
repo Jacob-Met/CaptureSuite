@@ -1,0 +1,1479 @@
+{
+  "schema": "capturesuite.native-receiver-archive/1",
+  "created_utc": "2026-10-08T15:09:30.374797+00:00",
+  "archive": {
+    "path": "/Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/distribution/CaptureSuite-Session-Doctor-d43bdea-macos-arm64.tar.gz",
+    "size": 2387273,
+    "sha256": "7093ebce7339d67867a7af181515db6eb9bd795ffd6f9e2178aca3adc3643b72"
+  },
+  "package": "/Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/receiver/CaptureSuite-Session-Doctor-d43bdea-macos-arm64",
+  "contents_sha256": "2fcc9a5a2edb7c703a00a16ab297ad62014c1c6b6376effb571c5862d8894147",
+  "sha256sums_sha256": "f3c15c8dd8a2d630972e5289e0effc8d9f997e08a7342a6e5a1114cf47ff44b4",
+  "payload_files": 241,
+  "payload_bytes": 14022077,
+  "files": [
+    {
+      "path": "BUILD.md",
+      "size": 3160,
+      "sha256": "518b226d74c5b619ec9b366bf654100a5b724eef0aad885fb08e6505c348b006",
+      "mode": "100644"
+    },
+    {
+      "path": "CONTENTS.json",
+      "size": 48497,
+      "sha256": "2fcc9a5a2edb7c703a00a16ab297ad62014c1c6b6376effb571c5862d8894147",
+      "mode": "100644"
+    },
+    {
+      "path": "NOTICE.md",
+      "size": 1249,
+      "sha256": "1617b97d886b7d005b16abb97cd2fb23949192cf23f17599719221d85556d77e",
+      "mode": "100644"
+    },
+    {
+      "path": "README.md",
+      "size": 4581,
+      "sha256": "91b4eb83696f06b0173e8b841e98bdc249dc480bbd801e191ae9e4f57450fdba",
+      "mode": "100644"
+    },
+    {
+      "path": "SHA256SUMS",
+      "size": 26509,
+      "sha256": "f3c15c8dd8a2d630972e5289e0effc8d9f997e08a7342a6e5a1114cf47ff44b4",
+      "mode": "100644"
+    },
+    {
+      "path": "bin/session_doctor",
+      "size": 714272,
+      "sha256": "401f7ef7eb1212799c00ff7bdb22ac48a31bf6feb22a17b3a4fefcfc8e485772",
+      "mode": "100755"
+    },
+    {
+      "path": "dependency-records/abseil.rb",
+      "size": 2078,
+      "sha256": "2ee3fc8181eddc13cee069d2e741b47edeffd21bea966a750b1f74988ae740ae",
+      "mode": "100644"
+    },
+    {
+      "path": "dependency-records/blake3.rb",
+      "size": 1825,
+      "sha256": "be86521c5f6d36a17c5590f2281754ce2cd25807111bced23059a1a5f39e0ff7",
+      "mode": "100644"
+    },
+    {
+      "path": "dependency-records/fmt.rb",
+      "size": 1260,
+      "sha256": "1382b417447f725f0ca36fa965ec6d5b3e505a7982f4d1c7a410c450d5875ab5",
+      "mode": "100644"
+    },
+    {
+      "path": "dependency-records/lz4.rb",
+      "size": 1010,
+      "sha256": "25463465ff98da6204feebc4aa26a520f2db9e8e25202d38b283ead478d9efbc",
+      "mode": "100644"
+    },
+    {
+      "path": "dependency-records/protobuf.rb",
+      "size": 1724,
+      "sha256": "9cb50082026658097e2ec4d8391d3f73debb6417c92fa43d7b71ed2c9cd07048",
+      "mode": "100644"
+    },
+    {
+      "path": "dependency-records/spdlog.rb",
+      "size": 1852,
+      "sha256": "2fb848e81e56e3c91191e05d68f272eb0cee2d2cdc9dd7d22af9b9d5253c6032",
+      "mode": "100644"
+    },
+    {
+      "path": "dependency-records/zstd.rb",
+      "size": 2573,
+      "sha256": "9a9b0183896886e82b915af4db576f27d34d1cee7757d6c5beb0e1eb74c68e0d",
+      "mode": "100644"
+    },
+    {
+      "path": "lib/libabsl_base.2608.0.0.dylib",
+      "size": 74784,
+      "sha256": "de1af27e2c5a5575f140290a1d733d9e207bb9af97132339f38a0bcb0c75b39e",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_base_cpu_detect.2608.0.0.dylib",
+      "size": 52480,
+      "sha256": "b9d00455fcb19886e96b4c25c73eaa3882f537200a6a63034d82559eff8ebcc7",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_city.2608.0.0.dylib",
+      "size": 35216,
+      "sha256": "fdfb39934c4eede7485eeac5ffd90cd1faf6b754d8c41afed25adb4bd10534c6",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_civil_time.2608.0.0.dylib",
+      "size": 57632,
+      "sha256": "57093aef8040ece0af4359b90cec631542327ef50ac87f4a84924611c03e5e80",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_cord.2608.0.0.dylib",
+      "size": 164368,
+      "sha256": "81fecd2ad50efea3b1f4b976f65d9c79bed2b57de8bf93a68ca1e8d9a44df240",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_cord_internal.2608.0.0.dylib",
+      "size": 118176,
+      "sha256": "e98c2232c79a9afa1bb2b6b4cd810b34a3f4eff1825922735647879f1878df6d",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_cordz_functions.2608.0.0.dylib",
+      "size": 51552,
+      "sha256": "5c8d1c8b5c62eeb51b2a8324dda93b6504dddd976f9fe6d87b77fe3d0d4aeb49",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_cordz_handle.2608.0.0.dylib",
+      "size": 89104,
+      "sha256": "ab7156c0dbe4239721f14fc942217764fc6f0ce6aad7246232ead59f42d5e7cb",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_cordz_info.2608.0.0.dylib",
+      "size": 106608,
+      "sha256": "5b2a3b894740f2538dc0896640e2406fa672467cce49f1d747bcdafde08d53a7",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_crc32c.2608.0.0.dylib",
+      "size": 91680,
+      "sha256": "5d4ffb7149638d67b29771f3c30fef53a853d9cf4f18854139cec8bcf95272ee",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_crc_cord_state.2608.0.0.dylib",
+      "size": 74528,
+      "sha256": "5bfb0531d3290d3c73b840bb50bdd24ca27d7c5890c7b358ebc16e5be545fdd0",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_crc_internal.2608.0.0.dylib",
+      "size": 79360,
+      "sha256": "709b638da517a8d628a9cf1d866a35354127ba12464e30c2a998fcb8052cd22a",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_debugging_internal.2608.0.0.dylib",
+      "size": 34912,
+      "sha256": "0779fcc5dc5605cfa2aca4892b3652b16a420c0fd8f5a0a91d78f27c18c93a74",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_decode_rust_punycode.2608.0.0.dylib",
+      "size": 51824,
+      "sha256": "88279c032336bf8634c7f7d339647f28a1f90244e759a9c372fe16bb72f92b35",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_demangle_internal.2608.0.0.dylib",
+      "size": 90976,
+      "sha256": "300ce659cceb99bfe86087b0bb65d8979958547eaf4f835feae485343e6505c1",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_demangle_rust.2608.0.0.dylib",
+      "size": 69168,
+      "sha256": "a9b8507d1ff09fc3ef50d60956764b98025ff44c45eb1d660c03f5bb864db3a3",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_die_if_null.2608.0.0.dylib",
+      "size": 102192,
+      "sha256": "dfc973c1c2b27c14109e81cef1b93b0309b9c74800b22ba667b80a5c7f4cbad8",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_examine_stack.2608.0.0.dylib",
+      "size": 69136,
+      "sha256": "0570cff881a21125fe4d1433ab10c3e1d411e227ca2b7cd53d3351b8f7ca5a71",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_exponential_biased.2608.0.0.dylib",
+      "size": 51776,
+      "sha256": "722e01b0d928c0e89e84f082dbdf97f73454e8ff9b858bf52c8d177bfbcb8a11",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_flags_commandlineflag.2608.0.0.dylib",
+      "size": 68672,
+      "sha256": "243ec994c1c7c295925f82d63fb6ba1d96a3c8ef18c01563f936c8fea664ee4a",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_flags_commandlineflag_internal.2608.0.0.dylib",
+      "size": 52160,
+      "sha256": "38305646fed0afa0e01ad1b22639a074ad17d2cf0cd9918b9ac8ad05e37c765d",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_flags_config.2608.0.0.dylib",
+      "size": 99648,
+      "sha256": "6259891a14c39dca4f7d7cafdbe55b68d3b49224b75bf3062c933b6a6f43c3ef",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_flags_internal.2608.0.0.dylib",
+      "size": 117776,
+      "sha256": "7e0c480bc661e6516d851603ac67d2e4e33237a0e351ba00643b8cab9d9debaf",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_flags_marshalling.2608.0.0.dylib",
+      "size": 89712,
+      "sha256": "82f9634dd2f724a5f96f11595b0685ec27097853ba58d45da0f149366a51c06a",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_flags_private_handle_accessor.2608.0.0.dylib",
+      "size": 52832,
+      "sha256": "7f041485b7db38b6341669e2ff1bc1d86e4f27c7b32530e716748293a0d3e71d",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_flags_program_name.2608.0.0.dylib",
+      "size": 87568,
+      "sha256": "b50a1a8148e947edd3d933436942ef9e942d09796e0fc113fbcf4085c4766472",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_flags_reflection.2608.0.0.dylib",
+      "size": 139504,
+      "sha256": "a723e54de2a25557cdbe64a441e3b78ae39c021513e0a1c4f65f9372f71c6ddd",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_graphcycles_internal.2608.0.0.dylib",
+      "size": 74048,
+      "sha256": "a3a8de8c85f7cd7accb66c378b6dbf51de8720b2d6019fb6ed521c855d57052f",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_hardening.2608.0.0.dylib",
+      "size": 34912,
+      "sha256": "2d46c100aece766db6e235cdab5b124633c76c30047edad558cdb55fefd29f56",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_hash.2608.0.0.dylib",
+      "size": 68864,
+      "sha256": "9ce6f0c696f017e33d631a3b8995c763407a45c4e474ea288eed0a10ebe4cd76",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_hashtablez_sampler.2608.0.0.dylib",
+      "size": 107184,
+      "sha256": "fdb49e4b1ec486edbb18364cfc0e19bf78b268e8dfe78b7e78c8a7f07fee9cfc",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_int128.2608.0.0.dylib",
+      "size": 58048,
+      "sha256": "091d96e3f0d65992da48e381728065436afc04b532542394e32ffec171c702a6",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_kernel_timeout_internal.2608.0.0.dylib",
+      "size": 70928,
+      "sha256": "7b5f3e0df6d9e24943047931c9762303dd51e2c8c244d7e746ed2baf0e267cc0",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_leak_check.2608.0.0.dylib",
+      "size": 35600,
+      "sha256": "a50d1730f3cbc15625acc3cf2e37a86f2dd95e14b03cf99ad1a7c9cb42c68995",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_log_entry.2608.0.0.dylib",
+      "size": 72176,
+      "sha256": "d755b33bf252c7e8c8fb3c24ec5907e4d8251bb6cbdbbe30ecb6980ff237ed2a",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_log_globals.2608.0.0.dylib",
+      "size": 106656,
+      "sha256": "92cdaebfebe6fc23300b3e229befa61f1e6a4bb264cf4929516d5a0d31c52b18",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_log_initialize.2608.0.0.dylib",
+      "size": 84592,
+      "sha256": "22f623910505664bd1e7c2bcbf7bbb8ef98bd721ec821f7e148391ede125e5b5",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_log_internal_check_op.2608.0.0.dylib",
+      "size": 112544,
+      "sha256": "b28b4d75452dd0bec6d21daf0036b79d790790c528b54c13c5e862690b378504",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_log_internal_conditions.2608.0.0.dylib",
+      "size": 52032,
+      "sha256": "b2f528ee549d1dd7f375bce363ca7354766c7ac2edc1f4e138bc19dab474105f",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_log_internal_fnmatch.2608.0.0.dylib",
+      "size": 51776,
+      "sha256": "bd267010cf3e1766a148d70cde55c3286bb2020fc62fad46c66f42de023d5f42",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_log_internal_format.2608.0.0.dylib",
+      "size": 71920,
+      "sha256": "42240e564e02e48c2b1e135aaf867d39f87e169f6e30b788c068b2fc099598b4",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_log_internal_globals.2608.0.0.dylib",
+      "size": 86640,
+      "sha256": "a787b36446c5f9a877897e492c0b06cd78ab22fd726d0ef83b3a9c8c8d2a0930",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_log_internal_log_sink_set.2608.0.0.dylib",
+      "size": 109024,
+      "sha256": "93d255d34223ad9c7a6471bde28a0221b0d75745ba89a9cac2391c0b13e47d2e",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_log_internal_message.2608.0.0.dylib",
+      "size": 148032,
+      "sha256": "4a340a3368531c6267dc59c7c0102c615e89f8582d9a48589b2832d5fc872e85",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_log_internal_nullguard.2608.0.0.dylib",
+      "size": 35104,
+      "sha256": "9abedac01c28e1313ba288f195a5bf6c9a96963248f8031b4c787b7718c9cc85",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_log_internal_proto.2608.0.0.dylib",
+      "size": 68768,
+      "sha256": "f9588e062ac1f5be6724d088d87ef621538251a4d7ef7691b41a444dc8585671",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_log_internal_structured_proto.2608.0.0.dylib",
+      "size": 73232,
+      "sha256": "c03b6cab653d69ffbb2b6a4ef7de25f1b6ecfaa5b4acf114aad1e7da35b2a5b0",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_log_severity.2608.0.0.dylib",
+      "size": 54448,
+      "sha256": "ef45b9a080061d653e8f21a77ef87a3090fe4a6a5718f9cb386ccf8149d7c085",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_log_sink.2608.0.0.dylib",
+      "size": 68336,
+      "sha256": "15961cba657376b4adca5221797a9ce966d0a99322666e382b606bf08547b10d",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_malloc_internal.2608.0.0.dylib",
+      "size": 57712,
+      "sha256": "9e9a4953ff872dae7d376387552a66151438edea302f6081f416ee20de793391",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_random_distributions.2608.0.0.dylib",
+      "size": 70016,
+      "sha256": "75ac0f343ed86003521d69cbf5c25f32e2706dd2270b89a0782209f88400cf11",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_random_internal_entropy_pool.2608.0.0.dylib",
+      "size": 104720,
+      "sha256": "91a991aa16f74bccd3c73c5ba271865a1f880a21e4efce193d3b09e5f7e0edaa",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_random_internal_platform.2608.0.0.dylib",
+      "size": 35024,
+      "sha256": "bb0e47fd03372554558adc1807e928bac6d15be1e0aff4edbe32bfa91eadc2f3",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_random_internal_randen.2608.0.0.dylib",
+      "size": 52752,
+      "sha256": "50950d34b6a9249083458db8296f6b476941d0b42946dd9dc696459f370770ef",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_random_internal_randen_hwaes.2608.0.0.dylib",
+      "size": 52512,
+      "sha256": "087c69e6fd2f3209384f32f8db507276b4e1a81f15ec05515dd4166a0e00fac7",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_random_internal_randen_hwaes_impl.2608.0.0.dylib",
+      "size": 51872,
+      "sha256": "028312a0d854accb29bcc8fdb53f42c0ed93ac4d1fab9348ec91da9cb38470d6",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_random_internal_randen_slow.2608.0.0.dylib",
+      "size": 51904,
+      "sha256": "997a3d843a13e0dd80e21a6115c0211ba419f5775df3326e9e89e30305288454",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_random_internal_seed_material.2608.0.0.dylib",
+      "size": 69136,
+      "sha256": "fc57c06d1ce8b2b392f0efea2f3bd992f67d80b53ecb6eeed7e5717c52e5c58b",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_random_seed_gen_exception.2608.0.0.dylib",
+      "size": 52560,
+      "sha256": "ab2335b95fe2313097fa3131931821a2bbcaf1c6c864024b9ba644ef71eeef4f",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_random_seed_sequences.2608.0.0.dylib",
+      "size": 86240,
+      "sha256": "20cfb2ab1c80f04009796a940bc33aeb6ce0fb0b882ced5158e528e4823b6e6e",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_raw_hash_set.2608.0.0.dylib",
+      "size": 132496,
+      "sha256": "9e8c27323696a2de6aa241cdbe6559f759835124ca94f8b6cedaf0412bc1d8af",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_raw_logging_internal.2608.0.0.dylib",
+      "size": 70480,
+      "sha256": "1b07cceadb6ba2203a940a4ae5bfe3a139c9346d1b3434ec2c6cf462be0878aa",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_source_location.2608.0.0.dylib",
+      "size": 34768,
+      "sha256": "6a5696f679e68d741f9eb700cc0c6299e4dd42d43b679dd4d967b4fe5f5656ac",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_spinlock_wait.2608.0.0.dylib",
+      "size": 52416,
+      "sha256": "a354159e9906b1f875e752fbdbe27d6429e7573fe868f8d88fa81db86cd446e7",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_stacktrace.2608.0.0.dylib",
+      "size": 69792,
+      "sha256": "c570591037f64ec41ae44ca0fb79cfec4acc5b8494b4dee4c3bebf5128667867",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_status.2608.0.0.dylib",
+      "size": 158784,
+      "sha256": "91bf5ca615cfa9255f7636f17490a4e1dbc22790289263693a5c79ab8786716a",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_statusor.2608.0.0.dylib",
+      "size": 106928,
+      "sha256": "f8f9505c785b12974d5ce01ded8638edfd47dd7809a423b5033338066f76d3c7",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_str_format_internal.2608.0.0.dylib",
+      "size": 142128,
+      "sha256": "51cdb564dbf1b313099e01b515055c3b3c62b896db1f729413853f8f971478c7",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_strerror.2608.0.0.dylib",
+      "size": 53680,
+      "sha256": "8d65848d030f49ba5addce40a38ce5444e0844dba66b5e72eb762b0a6b57ed35",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_strings.2608.0.0.dylib",
+      "size": 173168,
+      "sha256": "daba7413b0431bbd4b30f3a3fd981c611ec4aaf036c4f5591b03ffc84074eafb",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_strings_internal.2608.0.0.dylib",
+      "size": 56272,
+      "sha256": "43048a07a86612c06305a956f20ca57127ab5cb11c61d8a70ccb100f8f4934cc",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_symbolize.2608.0.0.dylib",
+      "size": 70496,
+      "sha256": "40682206af3443a8fb6493e394d123f04582f69d00c60b20337e0fedeca502c3",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_synchronization.2608.0.0.dylib",
+      "size": 141184,
+      "sha256": "57f6721dc8e83a2d79793562c0eb8e5048f427f198f1d952b958823374d86fc0",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_throw_delegate.2608.0.0.dylib",
+      "size": 60208,
+      "sha256": "44c14335db7d32c0465ec0589f84735312db6ba232c5473532063f19132b4974",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_time.2608.0.0.dylib",
+      "size": 111920,
+      "sha256": "b29053c5e5f1453645f7382ee1b851ea6dbef2c25967b791d1b0827f0d2fdd11",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_time_zone.2608.0.0.dylib",
+      "size": 165168,
+      "sha256": "009d0e28cfdcf791b469063272dbf6f629a6b20262b8f4bfddcb1fdcee86cc7f",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_tracing_internal.2608.0.0.dylib",
+      "size": 35104,
+      "sha256": "552f61f2e6c1d2b5654d6360ebf97234b105dbbb49b705f72259907d25715a46",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_utf8_for_code_point.2608.0.0.dylib",
+      "size": 35024,
+      "sha256": "64ecc7652fd142af41f64f906dd4c9e9ec63a51fbbe15477c9bbbc8e5e5be9bf",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libabsl_vlog_config_internal.2608.0.0.dylib",
+      "size": 94944,
+      "sha256": "8d2d5fc8db8658518002bbb341751d85bca3cc3308b6fb3bf1c344a888c103e3",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libblake3.1.8.7.dylib",
+      "size": 68880,
+      "sha256": "3ce17ab0574c0e18aa681a44a8ca8206e1278f4441aabb3bd9c3d2084449658b",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libfmt.12.2.0.dylib",
+      "size": 174720,
+      "sha256": "494003df44e3ff54c0a9d2acf069456888ae0f5aebce1f92d7e5ce8eb367cea3",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/liblz4.1.10.0.dylib",
+      "size": 176032,
+      "sha256": "c04f554eeec0c68f3ded0a932d86eb1e7bac4fd0d3e207b8d2517896c94d216b",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libprotobuf.36.2.0.dylib",
+      "size": 3066864,
+      "sha256": "15e9f5e84778459578137810c51b51b9340192da1c10b2f09fa9d29a29c85131",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libspdlog.1.17.0.dylib",
+      "size": 449376,
+      "sha256": "cb5668433902a640c5beffd1ff2808d2fbca2188a7b8e587ddc42bc8f7ef2547",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libutf8_validity.36.2.0.dylib",
+      "size": 51504,
+      "sha256": "0ee2ffaa6025ff867abf087232026efcde34a70bdc882a96a6b45c099583acc4",
+      "mode": "100755"
+    },
+    {
+      "path": "lib/libzstd.1.5.7.dylib",
+      "size": 649648,
+      "sha256": "d9eed41016de89571ced0339935dc95d33a3b699902b3b76fd3ff7ca7e13bff7",
+      "mode": "100755"
+    },
+    {
+      "path": "notices/CaptureSuite/LICENSE",
+      "size": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+      "mode": "100644"
+    },
+    {
+      "path": "notices/abseil/LICENSE",
+      "size": 11361,
+      "sha256": "c79a7fea0e3cac04cd43f20e7b648e5a0ff8fa5344e644b0ee09ca1162b62747",
+      "mode": "100644"
+    },
+    {
+      "path": "notices/blake3/LICENSE_A2",
+      "size": 11361,
+      "sha256": "00fcc7a934ddbc9ece2a7cc063ac788e284b703b1d705ccbba72d462aa97921e",
+      "mode": "100644"
+    },
+    {
+      "path": "notices/blake3/LICENSE_A2LLVM",
+      "size": 12267,
+      "sha256": "a5695f57ea0c221e0e8b7d784ff774c35e88c3d3270353646a925880bb3492cc",
+      "mode": "100644"
+    },
+    {
+      "path": "notices/blake3/LICENSE_CC0",
+      "size": 7048,
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
+      "mode": "100644"
+    },
+    {
+      "path": "notices/fmt/LICENSE",
+      "size": 1094,
+      "sha256": "a65fcc5a1095fc33cc37e4fff69366e49d7e92f613558a2b95ed1b70e33758b4",
+      "mode": "100644"
+    },
+    {
+      "path": "notices/lz4/LICENSE",
+      "size": 646,
+      "sha256": "4bc9c403f6b679cc076dee210e0e21c27b4e8f6d3fb43d85364c76657bfaaac5",
+      "mode": "100644"
+    },
+    {
+      "path": "notices/manifest.json",
+      "size": 3552,
+      "sha256": "c13b87344fe7848f7c51d6222ced3bc7b2146dd4d55c76b142a44484668d1d18",
+      "mode": "100644"
+    },
+    {
+      "path": "notices/mcap/LICENSE",
+      "size": 1077,
+      "sha256": "da11235665c17d4c1634072dae92b8ba1b38d6fdde2ccf19a6bbede33253f58d",
+      "mode": "100644"
+    },
+    {
+      "path": "notices/protobuf/LICENSE",
+      "size": 1732,
+      "sha256": "6e5e117324afd944dcf67f36cf329843bc1a92229a8cd9bb573d7a83130fea7d",
+      "mode": "100644"
+    },
+    {
+      "path": "notices/spdlog/LICENSE",
+      "size": 1323,
+      "sha256": "d678c20826e1392578508e1c78649a1e3c31bda05ef4388d967dbd654461b140",
+      "mode": "100644"
+    },
+    {
+      "path": "notices/zstd/COPYING",
+      "size": 18091,
+      "sha256": "f9c375a1be4a41f7b70301dd83c91cb89e41567478859b77eef375a52d782505",
+      "mode": "100644"
+    },
+    {
+      "path": "notices/zstd/LICENSE",
+      "size": 1549,
+      "sha256": "7055266497633c9025b777c78eb7235af13922117480ed5c674677adc381c9d8",
+      "mode": "100644"
+    },
+    {
+      "path": "qualification/assemble-local-runtime-corrected.py",
+      "size": 7801,
+      "sha256": "c9991e8c88e968b4fe762485e2dc21171f662ca3605f2ef0ddd15f76fa159371",
+      "mode": "100644"
+    },
+    {
+      "path": "qualification/assemble-local-runtime.py",
+      "size": 6619,
+      "sha256": "a9d75edb28e23560b98d15f3eecb948a37b122d3c54c6fa93a04efc61d8ed49d",
+      "mode": "100644"
+    },
+    {
+      "path": "qualification/hydration-initial-tool-output.json",
+      "size": 1045,
+      "sha256": "36a252af9cc17cd6b3b07d554a91abb1c1e1457b5b675dbc982b78ceec973fc8",
+      "mode": "100644"
+    },
+    {
+      "path": "qualification/mcap-source.json",
+      "size": 2626,
+      "sha256": "a76bfed1856a54c7822e9996221650a17c76cdf598ddd0e329f9a47ea7ecb741",
+      "mode": "100644"
+    },
+    {
+      "path": "qualification/native-build.log",
+      "size": 5734,
+      "sha256": "1ae8c97c0854dc87207368c8e43b9cf17ab4187c69a9dab52a850759fb5ace14",
+      "mode": "100644"
+    },
+    {
+      "path": "qualification/native-configure.log",
+      "size": 1243,
+      "sha256": "b88bce99fd97032c704385d0057850f6678ae664a99d2d8eee0bc3c14d837fb0",
+      "mode": "100644"
+    },
+    {
+      "path": "qualification/native-ctest.log",
+      "size": 2842,
+      "sha256": "db48edfaeab0a4020072ce6080a855b6daced660a50f014bed63b91236ecfd80",
+      "mode": "100644"
+    },
+    {
+      "path": "qualification/native-ctest.xml",
+      "size": 6876,
+      "sha256": "51ee37e478d1cd3d1221703acf2f59856ca1b870fcaa56fde288017029dd86a2",
+      "mode": "100644"
+    },
+    {
+      "path": "qualification/native-qualification-first.json",
+      "size": 2849,
+      "sha256": "12e9e24bd6c34cce1f8f3044890bd4509a31175f968f43985625ed0eac738f70",
+      "mode": "100644"
+    },
+    {
+      "path": "qualification/qualify-missing-dependency-replay.py",
+      "size": 2993,
+      "sha256": "381feed04dbd0c4bf37fbedf28bcd0007b0505027f372600b1a96fdf9a35983f",
+      "mode": "100644"
+    },
+    {
+      "path": "qualification/qualify-native-portable.py",
+      "size": 3431,
+      "sha256": "f1babfc3b8b658877b8b9883060f7d3090452d630ae7e31b24f2c92339c7b7c0",
+      "mode": "100644"
+    },
+    {
+      "path": "qualification/qualify-relocated-receiver.py",
+      "size": 10555,
+      "sha256": "0e667a21a3e5c36eb8b7136580930b862d2ddb3597c08a1b287ac1ea1df2353e",
+      "mode": "100644"
+    },
+    {
+      "path": "qualification/receiver-dependency-replay.json",
+      "size": 1688,
+      "sha256": "852f07541bd9e085b27e8a2c9ef634e6d0514466a146a97a55b687e10280f956",
+      "mode": "100644"
+    },
+    {
+      "path": "qualification/receiver-process-first.json",
+      "size": 128889,
+      "sha256": "723c60ca71de246895790e6d4993f5cfe0cf0156c96c10e31752966917e072d9",
+      "mode": "100644"
+    },
+    {
+      "path": "qualification/runtime-package-commands.log",
+      "size": 236885,
+      "sha256": "2e468aa39a07ea2c576bdb15edbe329c632b6106e2503b46b40f540ce5c04b64",
+      "mode": "100644"
+    },
+    {
+      "path": "qualification/runtime-package-initial-tool-output.json",
+      "size": 629,
+      "sha256": "217c47e67b365bec1045cda70e50bcd6cab32e64e92ac5790eb4c94d5ea216e2",
+      "mode": "100644"
+    },
+    {
+      "path": "qualification/runtime-package.json",
+      "size": 627204,
+      "sha256": "8f5a529db27684e82b57539657a4e0de847b190f31d2d22f5741d786b1d2fc27",
+      "mode": "100644"
+    },
+    {
+      "path": "qualification/source-inputs.json",
+      "size": 26120,
+      "sha256": "9ffa7503ba8e8935b89612c48f7a1a5647043c6c4f4078a6f6dfef511d2efb8b",
+      "mode": "100644"
+    },
+    {
+      "path": "runtime-manifest.json",
+      "size": 627204,
+      "sha256": "8f5a529db27684e82b57539657a4e0de847b190f31d2d22f5741d786b1d2fc27",
+      "mode": "100644"
+    },
+    {
+      "path": "source/AGENTS.md",
+      "size": 3932,
+      "sha256": "525164ca1f3b9e68561434ab110ba17ed65843a20c23f4c1385fde33f1863a74",
+      "mode": "100644"
+    },
+    {
+      "path": "source/CMakeLists.txt",
+      "size": 1746,
+      "sha256": "6b7bbb235e2bfc3588084bddb484df303ec7b93f588425a6dd67244525938f87",
+      "mode": "100644"
+    },
+    {
+      "path": "source/CMakePresets.json",
+      "size": 2253,
+      "sha256": "46e947d2287d58710b7ae456cc9e88280cbe434e88e70e733d981813913b1d2a",
+      "mode": "100644"
+    },
+    {
+      "path": "source/LICENSE",
+      "size": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+      "mode": "100644"
+    },
+    {
+      "path": "source/README.md",
+      "size": 4582,
+      "sha256": "0ea3c41ee6af89971f06acb4077d5065fee7465ccfdfd13ac2a00f1c431b4620",
+      "mode": "100644"
+    },
+    {
+      "path": "source/cmake/CaptureProtobuf.cmake",
+      "size": 766,
+      "sha256": "753a1d7f3041039002363b456eca08bf42a3df6d3cba61ac6b177010e0012d51",
+      "mode": "100644"
+    },
+    {
+      "path": "source/cmake/CompilerWarnings.cmake",
+      "size": 434,
+      "sha256": "91e124a89d77adbc27151d790a1da0f778427d71c5bb9cc39ef61ef724d55e48",
+      "mode": "100644"
+    },
+    {
+      "path": "source/cmake/FindGStreamer.cmake",
+      "size": 2488,
+      "sha256": "27e76cde610886d9f0f21c80b20ddff0b12453f53cd64d169176cfa736b4cb27",
+      "mode": "100644"
+    },
+    {
+      "path": "source/cmake/FindInfineonRadar.cmake",
+      "size": 2873,
+      "sha256": "bde924e0d46870a3d5e9192a438f6a31ad7466e5555417c346bd44edfdaa9ce6",
+      "mode": "100644"
+    },
+    {
+      "path": "source/cmake/linux-shims/unofficial-mcap/unofficial-mcapConfig.cmake",
+      "size": 856,
+      "sha256": "bd9e56246490dfed7ef6ed01794103b69c5b5831fd2e2ea0875e2fb615a8ebf5",
+      "mode": "100644"
+    },
+    {
+      "path": "source/cmake/linux-shims/unofficial-sqlite3/unofficial-sqlite3Config.cmake",
+      "size": 401,
+      "sha256": "4e696e8bcb6272ecaefa0ea17ea8235f466b861d7436b9da6fdf8d925b867bb2",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_core/CMakeLists.txt",
+      "size": 510,
+      "sha256": "b7c06abbdac55362a4dbb914bb7fe532b0d7f70a7f6adfd8275de72516dd8b61",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_core/include/capture/clock.hpp",
+      "size": 1340,
+      "sha256": "dd6e4af30cd863ae079b116f56503bbd2e3c56a498ba20ce208a3440efedc9fd",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_core/include/capture/env.hpp",
+      "size": 758,
+      "sha256": "126613decca8f79d929e683ec377882efae76fbcb08b104f5793b69ac09e68de",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_core/include/capture/framing.hpp",
+      "size": 1204,
+      "sha256": "9616559dd78065e71a77088d054865abc594566b0287fcdecdd67e29d62fd434",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_core/include/capture/logging.hpp",
+      "size": 1511,
+      "sha256": "985622912c08344744159defd6ac2251999cc886619638f520fec09a275999e6",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_core/include/capture/recording_buffer.hpp",
+      "size": 1625,
+      "sha256": "21abbc5561ec464287d3591641d47b0ea28c320b4491ae6762cc70667fc05dbe",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_core/include/capture/session_fsm.hpp",
+      "size": 1275,
+      "sha256": "3bde3ff2811684a4ab9818398080cb4dffc0426a19b363cd7ba4ab7907a6cb60",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_core/include/capture/source_fsm.hpp",
+      "size": 1522,
+      "sha256": "c6b58b11daaf57cbd42bf1facc04b4951692530572e8df6aed09f0a23fcd7ae5",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_core/include/capture/version.hpp",
+      "size": 240,
+      "sha256": "cce279f24b013a45334d388411f3f1e00e53e58cb00d0ef8fe424fbaad3567f6",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_core/src/clock.cpp",
+      "size": 5833,
+      "sha256": "b558f737730f05b82635443b3f9b36da9c6253fe5dee5401ddec8ef7528fb78a",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_core/src/framing.cpp",
+      "size": 2806,
+      "sha256": "3930e7083f0ec4de8a524842f41164cc2a359e17adef39bf4b4c25b6208770b2",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_core/src/logging.cpp",
+      "size": 6853,
+      "sha256": "dddd7841492ae62485e6c842c3d71d444d3bac2073aecc8b951c5a32a1c5e37d",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_core/src/recording_buffer.cpp",
+      "size": 2493,
+      "sha256": "80260f41bd62908b881315e68e9e0d53ece568943c35d8b71785c3d22babcf08",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_core/src/session_fsm.cpp",
+      "size": 3213,
+      "sha256": "7c196973c6ae7fb35c51b1acd4089453c181723b029279f71bc19be32715d158",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_core/src/source_fsm.cpp",
+      "size": 4455,
+      "sha256": "e75a65f40c74aebee9ab2b94fa8f35402768eb6540d008d71286a4e6bc2d930a",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_core/src/version.cpp",
+      "size": 179,
+      "sha256": "48abf97dd7465ef868fae2482750010736a82a7133f95d8144400c2cb1413a04",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_proto/CMakeLists.txt",
+      "size": 3165,
+      "sha256": "3574332240a8701f38636e54512bb100e24e04ea42e7594ff64347f9915a7d1f",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_storage/CMakeLists.txt",
+      "size": 1135,
+      "sha256": "a94f5c8b94efa778b3f754d2f689f2ded344ab35a8abf85193b0055451cb46b9",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_storage/include/capture/storage/atomic_file.hpp",
+      "size": 1175,
+      "sha256": "9b4c91f6b8b7123b89124e8d705cf0432a0b695427a110e27cf68f882cceb6e7",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_storage/include/capture/storage/disk_watchdog.hpp",
+      "size": 1085,
+      "sha256": "c71a6dc077d7dab898f1740fd63b3ed3e632a0648dbe0044d8d08ea8899aedc0",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_storage/include/capture/storage/hash.hpp",
+      "size": 351,
+      "sha256": "b668c5e0b8339b29fb79ba721d2df147a8baf34f5883fa88b48bbee4a44930d1",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_storage/include/capture/storage/journal.hpp",
+      "size": 1063,
+      "sha256": "2b605488bedfb79832d795eb782ced3e6a9e5b305a99a0147e1b0cbfc9386d24",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_storage/include/capture/storage/mcap_stream_writer.hpp",
+      "size": 3772,
+      "sha256": "6a0d30f38230a5a57e9b432e2d642f1d83f84380f8bc58ecf574f9aecad95110",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_storage/include/capture/storage/recovery.hpp",
+      "size": 522,
+      "sha256": "7e9a93aee36df1509b2acdc26032fff82e60eadc2f76ae21e659b651c720613a",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_storage/include/capture/storage/session_package.hpp",
+      "size": 5757,
+      "sha256": "dbcc3fa85d8ae23520d31ebc93759bc63ed5086a18df8704dfbc71c20ae3400a",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_storage/include/capture/storage/video_writer.hpp",
+      "size": 1146,
+      "sha256": "4916bbf9e32ee5c95962faa2c9a850327f1372a1c9c25a7acb33f78d12ad437f",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_storage/src/atomic_file.cpp",
+      "size": 7784,
+      "sha256": "e5f67fb5c83c73b7a31503f1689303737cd00b48ae764553127b5a3c68be12f6",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_storage/src/disk_watchdog.cpp",
+      "size": 1854,
+      "sha256": "d2781ecb8a9a31f9aceeb0b053ab1b9ea9d9c73ea43c0a2266bb9e62b2ac3068",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_storage/src/hash.cpp",
+      "size": 1446,
+      "sha256": "177d3bc1ed0d20b6f601b6a7538ab3f50b6a803925d96471b07ed5712ac30940",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_storage/src/journal.cpp",
+      "size": 4018,
+      "sha256": "36dd6497f4c6ef9486d30cd848c3234cfdba014e28c5cfe6c8de8c3dd4b3056a",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_storage/src/mcap_impl.cpp",
+      "size": 94,
+      "sha256": "ea6ebdb3cd032aeff4ca863621caf4fddd98f232bfa5c477a75f72a4cca764fe",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_storage/src/mcap_stream_writer.cpp",
+      "size": 11686,
+      "sha256": "88e0e60971e24da4c900df07c4c577d56b3230f68557e01a964848602f2d1b49",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_storage/src/recovery.cpp",
+      "size": 10870,
+      "sha256": "edcdd4a66845bb3270022afb5a90f02a95ab2610ac2a628ae6ec78490bc847d0",
+      "mode": "100644"
+    },
+    {
+      "path": "source/libs/cpp/capture_storage/src/session_package.cpp",
+      "size": 20331,
+      "sha256": "edd538bfb9e89bd6fd4611490a8e32c80b8337ff9fceeca4221642fef9362e75",
+      "mode": "100644"
+    },
+    {
+      "path": "source/schemas/proto/README.md",
+      "size": 337,
+      "sha256": "1411f195c911b26e016d478428225b174035357e040c222946fe486185fa32e4",
+      "mode": "100644"
+    },
+    {
+      "path": "source/schemas/proto/capture/v1/arrays.proto",
+      "size": 1151,
+      "sha256": "06360f104803070dff7de92fa40401466d3a68e564dbe96aca839ec4fef7db50",
+      "mode": "100644"
+    },
+    {
+      "path": "source/schemas/proto/capture/v1/common.proto",
+      "size": 6090,
+      "sha256": "a9f403a8835b0620eaedef1fdec7bfed09d3f649397b55b12900fe83c5a541d9",
+      "mode": "100644"
+    },
+    {
+      "path": "source/schemas/proto/capture/v1/control.proto",
+      "size": 7970,
+      "sha256": "7a4b9ad274badc40e0139a7554164183a54ff511fce1ef780305d90642688d84",
+      "mode": "100644"
+    },
+    {
+      "path": "source/schemas/proto/capture/v1/data/emg_batch.proto",
+      "size": 490,
+      "sha256": "6eaed7210149c82877476cb391d73624b1bb25f7f4b2f822745224e79a743dc6",
+      "mode": "100644"
+    },
+    {
+      "path": "source/schemas/proto/capture/v1/data/imu_frame.proto",
+      "size": 651,
+      "sha256": "44c5b700c7e976b3c092b77ae49e21b383899d053d16f55e06b7bc59e2e38ff1",
+      "mode": "100644"
+    },
+    {
+      "path": "source/schemas/proto/capture/v1/data/numeric_batch.proto",
+      "size": 628,
+      "sha256": "068b62f517b057b448aec26c507b05044f1e9d25c91318657671558fcc8de07b",
+      "mode": "100644"
+    },
+    {
+      "path": "source/schemas/proto/capture/v1/data/radar_doppler.proto",
+      "size": 699,
+      "sha256": "99d1549779e8ab294c6ed80e1341efc1cd612b2c13eef59fe51f32da7679d6f1",
+      "mode": "100644"
+    },
+    {
+      "path": "source/schemas/proto/capture/v1/data/radar_frame.proto",
+      "size": 904,
+      "sha256": "844921a2bbc1732d2e3811d85d1d1863ade60346c2897dd6ef1bede3e9ac3156",
+      "mode": "100644"
+    },
+    {
+      "path": "source/schemas/proto/capture/v1/data/video_timing.proto",
+      "size": 801,
+      "sha256": "717aff65762679bd4363c2c8df38c18047e6012816feb63b56f9e00a6e9e7514",
+      "mode": "100644"
+    },
+    {
+      "path": "source/schemas/proto/capture/v1/events.proto",
+      "size": 1909,
+      "sha256": "ac91ca3d1c2806342ebc5c63512b78d1e2bd1c0c7386b3bbe1f78d5049cc2072",
+      "mode": "100644"
+    },
+    {
+      "path": "source/schemas/proto/capture/v1/health.proto",
+      "size": 2679,
+      "sha256": "4888b25c2b527b3161efa391b009eabb9ead1fd568c8ce25ffaa96f235e9bbce",
+      "mode": "100644"
+    },
+    {
+      "path": "source/schemas/proto/capture/v1/presets.proto",
+      "size": 574,
+      "sha256": "55adc5f64d26df5b03bed14505a213fbb3ed6925861156b0cfa6e525dd67b461",
+      "mode": "100644"
+    },
+    {
+      "path": "source/schemas/proto/capture/v1/preview.proto",
+      "size": 2688,
+      "sha256": "ac74cd566c62b517298a228f1487103e72b6fe959eece920bc3951dc3e927c5b",
+      "mode": "100644"
+    },
+    {
+      "path": "source/schemas/proto/capture/v1/project.proto",
+      "size": 684,
+      "sha256": "5ba4dfc4158458707b28aee6cf0a01e86798c156ae0499414be314906589c555",
+      "mode": "100644"
+    },
+    {
+      "path": "source/schemas/proto/capture/v1/source.proto",
+      "size": 3092,
+      "sha256": "5f353365bbff5fec722cf3dafc8585afeded5153ce6cd9abcb29326cc9982425",
+      "mode": "100644"
+    },
+    {
+      "path": "source/schemas/proto/capture/v1/storage.proto",
+      "size": 1894,
+      "sha256": "4b7ac9342b0497428708299075e615698dc62846e22d0a76f7213841aec51cf1",
+      "mode": "100644"
+    },
+    {
+      "path": "source/schemas/proto/capture/v1/worker.proto",
+      "size": 3747,
+      "sha256": "8ae3774630330103a86137d3d7bea09f35997470d66b2829489089f4a3f7ff6d",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/cmake/portable_storage/fixture_isolation.cmake",
+      "size": 1745,
+      "sha256": "ad04e619453d94a10e04d5a11bc4155d6f6f62c47dbbe5b2f3e958f151f89a27",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/cmake/portable_storage/session_doctor.cmake",
+      "size": 3852,
+      "sha256": "afc37e9f36b94309b807e46c8f0fc3b338c458448a83e2f7ec2a08386e8bedbe",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/cpp/CMakeLists.txt",
+      "size": 4061,
+      "sha256": "78d008caac4721076791b3d1303ceca8dac97070c8dbd12cb5a0df8bd9edd446",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/cpp/test_atomic_file_posix.cpp",
+      "size": 8933,
+      "sha256": "ea35516f3f6c81f6701c356cab57c6d55fd0e8e273a8a771599a5f982bee2ef9",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/cpp/test_atomic_file_posix_identity.cpp",
+      "size": 9708,
+      "sha256": "347f85f5087c674199120d196c3457ae688fe698c2fd6fde119a307cc9fc9702",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/cpp/test_atomic_file_windows.cpp",
+      "size": 9852,
+      "sha256": "485af6482c6b14fc7c187b45cc366af547bf0a1fe2c0651c8b68c8d25e854cfb",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/cpp/test_clock.cpp",
+      "size": 996,
+      "sha256": "8dd2a640ff75ce79baef468093558f5eee77a6c4fd2f993bab0e9a6b49237a67",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/cpp/test_env.cpp",
+      "size": 833,
+      "sha256": "26be1962f3d7b460618c401928c3938402fe70bc656dfbcde9a0bfb112d6410e",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/cpp/test_framing.cpp",
+      "size": 1274,
+      "sha256": "5a90ac7cedfcca0eeff7668253491557ac7ead96860b217642444efeddf3dc57",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/cpp/test_logging.cpp",
+      "size": 1469,
+      "sha256": "eb5f1ec38441b86d3c62941505b0f1240a191afac5e9ebb7f2f27561a71d5cc1",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/cpp/test_recovery.cpp",
+      "size": 2955,
+      "sha256": "7cf1003bb0d420179ed685201d687987d5047f6a5a10fe9b7458dbb3ef94156e",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/cpp/test_session_fsm.cpp",
+      "size": 1568,
+      "sha256": "7d22f716da0a897ef35649411b1e2774ca4b37346788d517a55d26e1ba1640c3",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/cpp/test_session_package.cpp",
+      "size": 3993,
+      "sha256": "94e0d8a428768f2234d302257fac54e79854f3ebfc21207359f92cf7bce412e7",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/cpp/test_sim_engine.cpp",
+      "size": 5906,
+      "sha256": "924d452da93b46b7105a80b11d95d2d2375288f70c98dddc6693ac76611a1970",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/cpp/test_source_fsm.cpp",
+      "size": 1715,
+      "sha256": "a67f55fd179461b4402d00c4f795f16e14bb3e373bab83f7d2b1a2385baaf098",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/cpp/test_storage_posix.cpp",
+      "size": 2734,
+      "sha256": "daab7555a3834319346db06caee40a5280c7a045ffe645f58a5a806832620393",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/cpp/test_worker_host.cpp",
+      "size": 11683,
+      "sha256": "0df83120ed7085387896618ef6606db60179207e5e5b5c74549faab425e99bf7",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/fixtures/mini_session/events/annotations.json",
+      "size": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/fixtures/mini_session/events/checkpoints.json",
+      "size": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/fixtures/mini_session/events/sync_anchors.json",
+      "size": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/fixtures/mini_session/integrity.json",
+      "size": 227,
+      "sha256": "af5d9bacd3eace7e831d48dee83eb5d9f578f4f4819d92218c4b55b0cb3ed556",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/fixtures/mini_session/manifest.json",
+      "size": 235,
+      "sha256": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/fixtures/mini_session/processing/.gitkeep",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/fixtures/mini_session/sources/sim.emg.main/health/gaps.jsonl",
+      "size": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/fixtures/mini_session/sources/sim.emg.main/source.json",
+      "size": 112,
+      "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/fixtures/mini_session/sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap",
+      "size": 28,
+      "sha256": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/fixtures/mini_session/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json",
+      "size": 216,
+      "sha256": "8f8c02b89fd93e55643151e5222488e1174dd97a6b7a74f3ae5da8215b4d68e1",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/fixtures/mini_session/sources/sim.imu.upper/source.json",
+      "size": 118,
+      "sha256": "a6198f509edc557c1e1d8583a767a540962977751c80a1b6491e3d594b60c7a8",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/fixtures/mini_session/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+      "size": 28,
+      "sha256": "3c4d91b3bf5d48dcf54a598fff5b1b4ee42260b756d6f5df3986da496c6a9649",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tests/fixtures/mini_session/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json",
+      "size": 219,
+      "sha256": "ec39026bed1b833d4decb0ef7b0efb94c5557a5647bc50addc060bef3a30d50d",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tools/session_doctor/CMakeLists.txt",
+      "size": 230,
+      "sha256": "b90608806aad8ad1acd75d174677569b85af2784333dd7cb1c01586a0c879869",
+      "mode": "100644"
+    },
+    {
+      "path": "source/tools/session_doctor/main.cpp",
+      "size": 737,
+      "sha256": "bf44c1bdcc86cec2acc1b2ce79a02301705bc801fa73672ed0c1b9f6ddf08831",
+      "mode": "100644"
+    },
+    {
+      "path": "source/vcpkg.json",
+      "size": 395,
+      "sha256": "e7554965950795541ab98bca74dad474880b7ae0393f5d6ebe4c21a03f727359",
+      "mode": "100644"
+    },
+    {
+      "path": "source-dependencies/mcap/cpp/mcap/include/mcap/crc32.hpp",
+      "size": 3899,
+      "sha256": "a3b7b6d28559adf8e18ca71012563faf58375137f51fd6937bf5197cdd8fb813",
+      "mode": "100644"
+    },
+    {
+      "path": "source-dependencies/mcap/cpp/mcap/include/mcap/errors.hpp",
+      "size": 2947,
+      "sha256": "698c82eb71c7db4a8a31a40e6e4b66785d08372bcbc97ba4b2b5a9a02f378e14",
+      "mode": "100644"
+    },
+    {
+      "path": "source-dependencies/mcap/cpp/mcap/include/mcap/internal.hpp",
+      "size": 6761,
+      "sha256": "334e8a4c8d5a4d02f256d460bbef1f2c71fe944a9f934989dc51ad77eb0d93b4",
+      "mode": "100644"
+    },
+    {
+      "path": "source-dependencies/mcap/cpp/mcap/include/mcap/intervaltree.hpp",
+      "size": 8957,
+      "sha256": "62c17bb11e811b8ef7ca72b3eca5f4014f4e27049125ac065bc60fcc2f605016",
+      "mode": "100644"
+    },
+    {
+      "path": "source-dependencies/mcap/cpp/mcap/include/mcap/mcap.hpp",
+      "size": 58,
+      "sha256": "996cd1457e8ca5fbfcb0a178f765e1ec1f1a8c389a56aa7f0f2d4bc9fc806cc7",
+      "mode": "100644"
+    },
+    {
+      "path": "source-dependencies/mcap/cpp/mcap/include/mcap/read_job_queue.hpp",
+      "size": 4260,
+      "sha256": "d4faab3749c538f7a57f9e84ddaf1036a2ee6d9500fcf553715ed0ca51ce4b1a",
+      "mode": "100644"
+    },
+    {
+      "path": "source-dependencies/mcap/cpp/mcap/include/mcap/reader.hpp",
+      "size": 26188,
+      "sha256": "d5b279a2d1f3a87d19938d278118c1656181e93cd8f441b84192dd1044d0adb2",
+      "mode": "100644"
+    },
+    {
+      "path": "source-dependencies/mcap/cpp/mcap/include/mcap/reader.inl",
+      "size": 68127,
+      "sha256": "310355a2364bff481ce6fe43e6c4bd0dc70a66cb8443d4be7f5f997a55123798",
+      "mode": "100644"
+    },
+    {
+      "path": "source-dependencies/mcap/cpp/mcap/include/mcap/types.hpp",
+      "size": 11574,
+      "sha256": "fc133ebc38b3833d91d24a052baac6c5fc1d33754ff4c0a16af47403192221da",
+      "mode": "100644"
+    },
+    {
+      "path": "source-dependencies/mcap/cpp/mcap/include/mcap/types.inl",
+      "size": 2711,
+      "sha256": "614e014ebe5cbfc254e631839e51637d74b503991a061eeda84b3e51220fa82a",
+      "mode": "100644"
+    },
+    {
+      "path": "source-dependencies/mcap/cpp/mcap/include/mcap/visibility.hpp",
+      "size": 895,
+      "sha256": "dc702161364b8aa7e96061e9b785a85fa673b9ce68f7e7ba58a34325d4e145a9",
+      "mode": "100644"
+    },
+    {
+      "path": "source-dependencies/mcap/cpp/mcap/include/mcap/writer.hpp",
+      "size": 16954,
+      "sha256": "3c609a079e029342683efdfbc977c685444e75c5ca5fad16b7be595c63930e69",
+      "mode": "100644"
+    },
+    {
+      "path": "source-dependencies/mcap/cpp/mcap/include/mcap/writer.inl",
+      "size": 36543,
+      "sha256": "e5c46d39c0a10cc177669203e20bc096771892523df2a6a3eb74921e9c7d3e4a",
+      "mode": "100644"
+    },
+    {
+      "path": "source-manifest.json",
+      "size": 26120,
+      "sha256": "9ffa7503ba8e8935b89612c48f7a1a5647043c6c4f4078a6f6dfef511d2efb8b",
+      "mode": "100644"
+    }
+  ],
+  "extracted": "/Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/archive-receiving/extracted/CaptureSuite-Session-Doctor-d43bdea-macos-arm64",
+  "exact_extracted_files": 241,
+  "help": {
+    "exit": 0,
+    "stdout": "Usage: session_doctor <path-to-session.mmsession>\n",
+    "stderr": "",
+    "path": "/usr/bin:/bin:/usr/sbin:/sbin",
+    "cwd": "/Users/me/capturesuite-macos-session-doctor-20261008-5f566b5ec8ef/archive-receiving/unrelated-working-directory"
+  },
+  "source_inputs_unchanged": 96,
+  "runtime_files_unchanged": 87,
+  "source_git_status": "",
+  "qualification_phases": {
+    "native_ctest": "17/17 passed; Linux GNU linker-wrapped cases unavailable on Mac",
+    "first_process": "7 passed; final case had harness filename failure before operation",
+    "dependency_replay": "1 focused replay passed; source and runtime unchanged"
+  }
+}
