@@ -1,3 +1,26 @@
+## 2026-10-08 — Preserve prior analysis jobs on failed replacement
+
+Worker `estate-6267db2cfc6e`, issue #39: portable job IDs and direct output
+directories are checked before writes. An overwrite builds in a unique hidden
+attempt, preserves the prior result through analysis/cancellation failures, and
+restores it after a failed publication rename. Failed attempts retain their own
+manifest identity, original overwrite intent, and actionable diagnostic path.
+CLI and desktop consumers preserve exception notes; desktop cancellation stays
+quiet while logging the retained path.
+
+Fresh original-source controls reproduce 21 destination failures and seven
+replacement failures. The candidate composed with main `52203f5c` passes 50
+tests, including real CLI subprocesses and the current stream-gap regressions;
+Ruff passes. The two explicit local skips require native Windows junctions and
+PySide6. Full supported Windows CI remains the publication acceptance gate.
+Exact sources, fresh raw logs, independent agent receiving and the earlier
+scratch-loss disclosure are recorded in
+[`docs/evidence/analysis-job-preservation-6267db2cfc6e/README.md`](../../evidence/analysis-job-preservation-6267db2cfc6e/README.md).
+
+Composition update: main `ac52c3ca` adds the separately received POSIX sealed-recording
+repair. The job-preservation production, tests, and initial receiving evidence remain
+byte-identical; hosted CI qualifies this new combined repository tree.
+
 ## 2026-10-08 — Scope recorded analysis gaps to their stream (estate-e82707f2bc62)
 
 A targeted gap from one stream previously invalidated every sibling stream from
