@@ -1,3 +1,21 @@
+## 2026-10-08 — Scope recorded analysis gaps to their stream (estate-e82707f2bc62)
+
+A targeted gap from one stream previously invalidated every sibling stream from
+that source. The receiving fixture now preserves healthy samples, feature values,
+and fail-policy behavior by matching both source and stream in `build_gap_mask`.
+Empty stream IDs retain source-wide scope; fully unspecified IDs retain global
+scope. Existing time boundaries, open gaps and raw package bytes are preserved.
+
+The same eight native unittest methods ran through normal public imports,
+recorded-package discovery and EMG feature extraction. Original source: four
+passing and four failing methods (six failed and two errored subtests). Candidate:
+eight passing methods on Python 3.12.14, NumPy 2.3.5 and pandas 2.2.3. This is a
+focused analysis result; existing hosted Python/Windows C++ gates and independent
+receiving are pending at this publication checkpoint. No hardware result is claimed.
+Exact source pins, unchanged test hash and raw outputs are retained in
+`docs/evidence/stream-gap-scope-20261008-e827/`. Project ownership: issue #40.
+The current framing receiver from main `c43b2819` is preserved.
+
 ## 2026-10-08 — Writer-close review repair and user receiving (estate-68e476e98b77)
 
 Independent review of PR36 found an additional actual-process durability

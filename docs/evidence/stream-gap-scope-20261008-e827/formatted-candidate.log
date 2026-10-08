@@ -1,0 +1,13 @@
+test_fail_policy_accepts_healthy_stream_when_only_sibling_is_interrupted (test_stream_gap_scope.StreamGapScopeTests.test_fail_policy_accepts_healthy_stream_when_only_sibling_is_interrupted) ... ok
+test_healthy_feature_values_keep_all_samples_despite_a_sibling_gap (test_stream_gap_scope.StreamGapScopeTests.test_healthy_feature_values_keep_all_samples_despite_a_sibling_gap) ... ok
+test_matching_gap_still_masks_samples_and_rejects_fail_policy (test_stream_gap_scope.StreamGapScopeTests.test_matching_gap_still_masks_samples_and_rejects_fail_policy) ... ok
+test_other_sources_and_nonoverlapping_gaps_preserve_valid_samples (test_stream_gap_scope.StreamGapScopeTests.test_other_sources_and_nonoverlapping_gaps_preserve_valid_samples) ... ok
+test_recorded_gap_does_not_mask_another_stream_from_the_same_source (test_stream_gap_scope.StreamGapScopeTests.test_recorded_gap_does_not_mask_another_stream_from_the_same_source) ... ok
+test_source_wide_gap_still_masks_all_streams_of_that_source (test_stream_gap_scope.StreamGapScopeTests.test_source_wide_gap_still_masks_all_streams_of_that_source) ... ok
+test_targeted_open_gap_does_not_remove_the_rest_of_a_sibling_stream (test_stream_gap_scope.StreamGapScopeTests.test_targeted_open_gap_does_not_remove_the_rest_of_a_sibling_stream) ... ok
+test_unspecified_source_and_stream_keep_existing_global_gap_behavior (test_stream_gap_scope.StreamGapScopeTests.test_unspecified_source_and_stream_keep_existing_global_gap_behavior) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.021s
+
+OK
