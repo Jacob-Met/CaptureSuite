@@ -30,8 +30,17 @@ def run_eval_job(
     ml_bundle_job_id: str,
     outputs: list[dict[str, Any]],
     warnings: list[str],
+    prediction_path: str | Path | None = None,
 ) -> dict[str, Any]:
-    """Write eval/eval_report.json + predictions.parquet (teacher vs sim baseline)."""
+    """Write eval artifacts from external predictions or the explicit sim baseline."""
+    if prediction_path is not None:
+        from capture_analysis.eval.predictions import run_external_eval
+
+        return run_external_eval(
+            package_root, work, summary, ml_bundle_job_id=ml_bundle_job_id,
+            prediction_path=prediction_path, outputs=outputs, warnings=warnings,
+        )
+
     import numpy as np
     import pandas as pd
 
