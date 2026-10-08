@@ -76,6 +76,24 @@ Its `median_fallback` policy makes clear that the configured rate is not an
 observed cadence. The paired witness receipt is
 `fc27a2bb9f88c7ab2308ec2b8ff66d643823feeacdd4acc77595878236d608d6`.
 
+## Independent review
+
+Two reviewers inspected the exact producer, final tests, schema and consumer
+contract without replaying the producer or changing its source:
+
+- [Root's native byte readback](root-integration-review-20261008.json), SHA-256
+  `72ad72d7b93519705f34a1b6893414d9dc976a9afe8452fc4bfe57f010c71441`,
+  verifies the dictionary boundary, identical final test copies, all twelve
+  original fixture hashes and actual byte equality of the three window files.
+- [The peer source/receipt review](peer-ml-bundle-review.json), SHA-256
+  `4d432045f95ddf17584dd517cde2d2a6748af8dd2db75fd7192a0c634fc93b0e`,
+  independently checks the source boundary, final test identity, metadata
+  semantics, current consumers and the pinned pending external evaluator.
+
+These receipts are separate from the frozen archive and preserve each reviewer's
+actual scope and attribution. They establish independent review and byte
+readback, not additional test passes.
+
 ## Contract and limits
 
 [The producer contract](../../design/ML_BUNDLE_METADATA.md) distinguishes
