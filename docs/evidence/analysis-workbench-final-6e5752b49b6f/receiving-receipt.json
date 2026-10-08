@@ -1,0 +1,132 @@
+{
+  "schema": "capturesuite.root-final-main-receiving.v1",
+  "checkout": "9e9204f76b105426b0affaa74733175c052f27ba",
+  "logs": {
+    "python": {
+      "bytes": 166794,
+      "sha256": "589a9a543681b6b98f01e5611523c59f9ff1b37e1e114d2f8dac059b58520301",
+      "git_blob": "b7bcdb809d278bef023f690f48806091a0339ae7"
+    },
+    "cmake": {
+      "bytes": 311035,
+      "sha256": "0b29cb6baee6104deb9c61f37f39f4f67914c8e28ff7786bbb27f642a0498424",
+      "git_blob": "f03b4dd07e027ae6fe65cb900c2ba3263f0ed82a"
+    }
+  },
+  "accepted": true,
+  "python_receipt": {
+    "schema": "capturesuite.test-receipt.v1",
+    "accepted": true,
+    "process_exit": 0,
+    "counts": {
+      "tests": 663,
+      "passed": 657,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 6
+    },
+    "junit_sha256": "ab07b6b5f975faac1e816175178c527c72cbd179c783586802510281cf40c409",
+    "problems": [],
+    "scope": "Process and test-evidence consistency, not clinical validation",
+    "seconds": 117.42558380000014,
+    "created_at": "2026-10-08T20:42:08.800469+00:00",
+    "run_directory": "build/evidence/python-20261008T204010Z-51c87b8d",
+    "log_sha256": "ca532ac4a5afa379da09e250f52000c15f48e39efbb9bcd77b9630b0b9e82a62",
+    "source_commit": "9e9204f76b105426b0affaa74733175c052f27ba",
+    "source_worktree_dirty": false,
+    "source_tree_sha256": "f474aba0c4ecb9abefa1997c1a820ba067adaf7cc12d99c248fe5e23edddc6f3",
+    "source_file_count": 1208,
+    "github": {
+      "GITHUB_ACTIONS": "true",
+      "GITHUB_EVENT_NAME": "push",
+      "GITHUB_SHA": "9e9204f76b105426b0affaa74733175c052f27ba",
+      "GITHUB_REF": "refs/heads/main",
+      "GITHUB_RUN_ID": "37840896851",
+      "GITHUB_WORKFLOW_REF": "Jacob-Met/CaptureSuite/.github/workflows/ci.yml@refs/heads/main"
+    },
+    "source_unchanged_during_test": true
+  },
+  "native_receipt": {
+    "schema": "capturesuite.native-test-receipt.v1",
+    "accepted": true,
+    "process_exit": 0,
+    "counts": {
+      "tests": 6,
+      "passed": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "junit_sha256": "d448cd353db32d14db73e21c38ccb7145e9f8d48ac2c79b480ecf9cd6102de0c",
+    "problems": [],
+    "scope": "Process and test-evidence consistency, not clinical validation",
+    "seconds": 3.9440285000000586,
+    "created_at": "2026-10-08T20:51:04.128232+00:00",
+    "run_directory": "build/evidence/native-20261008T205059Z-3ed2d628",
+    "binary_build": "build/windows-release",
+    "binaries": [
+      {
+        "path": "daemon/capture_daemon.exe",
+        "bytes": 1605632,
+        "sha256": "180794da1a2f3ad2d558efc7f4d2e91e3b8d4eb00f1ff78ed5c43172d41aab85"
+      },
+      {
+        "path": "tools/session_doctor/session_doctor.exe",
+        "bytes": 494080,
+        "sha256": "23f5acb67190e6d0fce2ebcfa03345772357539466049e35647461a2a42e6dc7"
+      }
+    ],
+    "test_scope": [
+      "tests/protocol/test_daemon_e2e.py::test_multi_modality_record_with_disconnect",
+      "tests/protocol/test_daemon_e2e.py::test_bad_stop_token_rejected",
+      "tests/protocol/test_daemon_e2e.py::test_config_schema_and_apply",
+      "tests/protocol/test_daemon_e2e.py::test_start_all_ready_and_acknowledge_alert",
+      "tests/protocol/test_daemon_e2e.py::test_concurrent_clients_served",
+      "tests/kill_tests/test_kill_preserves_sealed.py::test_kill_preserves_sealed_segment"
+    ],
+    "source_commit": "9e9204f76b105426b0affaa74733175c052f27ba",
+    "source_worktree_dirty": true,
+    "github": {
+      "GITHUB_ACTIONS": "true",
+      "GITHUB_EVENT_NAME": "push",
+      "GITHUB_SHA": "9e9204f76b105426b0affaa74733175c052f27ba",
+      "GITHUB_REF": "refs/heads/main",
+      "GITHUB_RUN_ID": "37840896851",
+      "GITHUB_WORKFLOW_REF": "Jacob-Met/CaptureSuite/.github/workflows/ci.yml@refs/heads/main"
+    },
+    "source_tree_sha256": "d7381e84fdc144fc36a82f8f9a05a76d3346d02df3afbe0e99db5dd7be397d21",
+    "source_unchanged_during_test": true,
+    "log_sha256": "3ebee96a1502b9cafbbc3b4db7c5572ae49c45c2bc03237f22e806cc82e52a30"
+  },
+  "ctest": {
+    "passed": 30,
+    "failed": 0
+  },
+  "emitted_workbench_xml_cases": 32,
+  "required_cases": {
+    "test_evaluation_controls_in_actual_minimum_main_window": {
+      "seconds": 0.303,
+      "properties": {}
+    },
+    "test_actual_qt_file_choice_cancel_and_reselection": {
+      "seconds": 0.521,
+      "properties": {}
+    },
+    "test_actual_qt_file_choice_error_unwinds_without_replacing_path": {
+      "seconds": 0.11,
+      "properties": {}
+    },
+    "test_analysis_button_space_overrides_only_its_application_shortcut": {
+      "seconds": 0.064,
+      "properties": {}
+    },
+    "test_actual_qt_leading_space_is_exact_or_refuses_without_replacing_path": {
+      "seconds": 5.267,
+      "properties": {
+        "literal_file_choice": "bounded-refusal"
+      }
+    }
+  },
+  "junit_complete_bytes": 94606,
+  "full_junit_scope": "Hosted read-only observer hashed complete JUnit and emitted every workbench testcase; no local artifact ZIP download or fresh test execution."
+}

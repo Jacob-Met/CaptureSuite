@@ -1,0 +1,1389 @@
+﻿2026-10-08T20:38:07.7948802Z Current runner version: '2.337.0'
+2026-10-08T20:38:07.7973723Z ##[group]Runner Image Provisioner
+2026-10-08T20:38:07.7974559Z Hosted Compute Agent
+2026-10-08T20:38:07.7975095Z Version: 20261002.596
+2026-10-08T20:38:07.7975661Z Commit: c3d12f3313a95f25162a1503be624f3b0617f8c0
+2026-10-08T20:38:07.7976359Z Build Date: 2026-10-02T22:28:27Z
+2026-10-08T20:38:07.7976987Z Worker ID: {71c23f99-16ae-4a52-a284-999d5c51e936}
+2026-10-08T20:38:07.7977623Z Region: westus
+2026-10-08T20:38:07.7978102Z Cloud: Azure
+2026-10-08T20:38:07.7978567Z ##[endgroup]
+2026-10-08T20:38:07.7979841Z ##[group]Operating System
+2026-10-08T20:38:07.7980500Z Microsoft Windows Server 2022
+2026-10-08T20:38:07.7981063Z 10.0.20348
+2026-10-08T20:38:07.7981558Z Datacenter
+2026-10-08T20:38:07.7982029Z ##[endgroup]
+2026-10-08T20:38:07.7982516Z ##[group]Runner Image
+2026-10-08T20:38:07.7983037Z Image: windows-2022
+2026-10-08T20:38:07.7983521Z Version: 20261004.326.1
+2026-10-08T20:38:07.7984866Z Included Software: https://github.com/actions/runner-images/blob/win22/20261004.326/images/windows/Windows2022-Readme.md
+2026-10-08T20:38:07.7986645Z Image Release: https://github.com/actions/runner-images/releases/tag/win22%2F20261004.326
+2026-10-08T20:38:07.7987566Z ##[endgroup]
+2026-10-08T20:38:07.7988653Z ##[group]GITHUB_TOKEN Permissions
+2026-10-08T20:38:07.7990870Z Contents: read
+2026-10-08T20:38:07.7991415Z Metadata: read
+2026-10-08T20:38:07.7991981Z Packages: read
+2026-10-08T20:38:07.7992504Z ##[endgroup]
+2026-10-08T20:38:07.7994476Z Secret source: Actions
+2026-10-08T20:38:07.7995308Z Cache mode: write
+2026-10-08T20:38:07.7996049Z Prepare workflow directory
+2026-10-08T20:38:07.8318875Z Prepare all required actions
+2026-10-08T20:38:07.8366046Z Getting action download info
+2026-10-08T20:38:08.2474962Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-08T20:38:08.3490334Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-08T20:38:08.5993457Z Download action repository 'actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a' (SHA:043fb46d1a93c77aae656e7c1c64a875d1fc6a0a)
+2026-10-08T20:38:08.8911717Z Complete job name: python
+2026-10-08T20:38:09.0509259Z ##[group]Run actions/checkout@v4
+2026-10-08T20:38:09.0510352Z with:
+2026-10-08T20:38:09.0510839Z   repository: Jacob-Met/CaptureSuite
+2026-10-08T20:38:09.0515493Z   token: ***
+2026-10-08T20:38:09.0515955Z   ssh-strict: true
+2026-10-08T20:38:09.0516414Z   ssh-user: git
+2026-10-08T20:38:09.0516880Z   persist-credentials: true
+2026-10-08T20:38:09.0517397Z   clean: true
+2026-10-08T20:38:09.0517864Z   sparse-checkout-cone-mode: true
+2026-10-08T20:38:09.0518410Z   fetch-depth: 1
+2026-10-08T20:38:09.0518866Z   fetch-tags: false
+2026-10-08T20:38:09.0519340Z   show-progress: true
+2026-10-08T20:38:09.0519806Z   lfs: false
+2026-10-08T20:38:09.0520231Z   submodules: false
+2026-10-08T20:38:09.0520703Z   set-safe-directory: true
+2026-10-08T20:38:09.0521237Z   allow-unsafe-pr-checkout: false
+2026-10-08T20:38:09.0522034Z ##[endgroup]
+2026-10-08T20:38:09.1885946Z Syncing repository: Jacob-Met/CaptureSuite
+2026-10-08T20:38:09.1887832Z ##[group]Getting Git version info
+2026-10-08T20:38:09.1888620Z Working directory is 'D:\a\CaptureSuite\CaptureSuite'
+2026-10-08T20:38:09.2803077Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-10-08T20:38:09.5654676Z git version 2.56.0.windows.1
+2026-10-08T20:38:09.5695526Z ##[endgroup]
+2026-10-08T20:38:09.5713160Z Temporarily overriding HOME='D:\a\_temp\79b69854-c052-4171-b1ba-49f1be3d1718' before making global git config changes
+2026-10-08T20:38:09.5715136Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-08T20:38:09.5723462Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\CaptureSuite\CaptureSuite
+2026-10-08T20:38:09.6226594Z Deleting the contents of 'D:\a\CaptureSuite\CaptureSuite'
+2026-10-08T20:38:09.6232055Z ##[group]Initializing the repository
+2026-10-08T20:38:09.6240767Z [command]"C:\Program Files\Git\bin\git.exe" init D:\a\CaptureSuite\CaptureSuite
+2026-10-08T20:38:09.7204340Z Initialized empty Git repository in D:/a/CaptureSuite/CaptureSuite/.git/
+2026-10-08T20:38:09.7238614Z [command]"C:\Program Files\Git\bin\git.exe" remote add origin https://github.com/Jacob-Met/CaptureSuite
+2026-10-08T20:38:09.7764812Z ##[endgroup]
+2026-10-08T20:38:09.7766417Z ##[group]Disabling automatic garbage collection
+2026-10-08T20:38:09.7772932Z [command]"C:\Program Files\Git\bin\git.exe" config --local gc.auto 0
+2026-10-08T20:38:09.8046876Z ##[endgroup]
+2026-10-08T20:38:09.8048689Z ##[group]Setting up auth
+2026-10-08T20:38:09.8058945Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-10-08T20:38:09.8335516Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-10-08T20:38:11.1248687Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-08T20:38:11.1544220Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-10-08T20:38:11.7031817Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-08T20:38:11.7319968Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-10-08T20:38:12.1613767Z [command]"C:\Program Files\Git\bin\git.exe" config --local http.https://github.com/.extraheader "AUTHORIZATION: basic ***"
+2026-10-08T20:38:12.1906646Z ##[endgroup]
+2026-10-08T20:38:12.1907915Z ##[group]Fetching the repository
+2026-10-08T20:38:12.1922184Z [command]"C:\Program Files\Git\bin\git.exe" -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +9e9204f76b105426b0affaa74733175c052f27ba:refs/remotes/origin/main
+2026-10-08T20:38:13.7946388Z From https://github.com/Jacob-Met/CaptureSuite
+2026-10-08T20:38:13.7947070Z  * [new ref]         9e9204f76b105426b0affaa74733175c052f27ba -> origin/main
+2026-10-08T20:38:13.7974064Z ##[endgroup]
+2026-10-08T20:38:13.7974517Z ##[group]Determining the checkout info
+2026-10-08T20:38:13.7976799Z ##[endgroup]
+2026-10-08T20:38:13.7985396Z [command]"C:\Program Files\Git\bin\git.exe" sparse-checkout disable
+2026-10-08T20:38:13.8375057Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all extensions.worktreeConfig
+2026-10-08T20:38:13.8640734Z ##[group]Checking out the ref
+2026-10-08T20:38:13.8648258Z [command]"C:\Program Files\Git\bin\git.exe" checkout --progress --force -B main refs/remotes/origin/main
+2026-10-08T20:38:14.2091671Z Switched to a new branch 'main'
+2026-10-08T20:38:14.2113011Z branch 'main' set up to track 'origin/main'.
+2026-10-08T20:38:14.2162124Z ##[endgroup]
+2026-10-08T20:38:14.2527304Z [command]"C:\Program Files\Git\bin\git.exe" log -1 --format=%H
+2026-10-08T20:38:14.2782331Z 9e9204f76b105426b0affaa74733175c052f27ba
+2026-10-08T20:38:14.3278253Z ##[group]Run actions/setup-python@v5
+2026-10-08T20:38:14.3278656Z with:
+2026-10-08T20:38:14.3278860Z   python-version: 3.12
+2026-10-08T20:38:14.3279113Z   check-latest: false
+2026-10-08T20:38:14.3281645Z   token: ***
+2026-10-08T20:38:14.3281859Z   update-environment: true
+2026-10-08T20:38:14.3282100Z   allow-prereleases: false
+2026-10-08T20:38:14.3282342Z   freethreaded: false
+2026-10-08T20:38:14.3282583Z ##[endgroup]
+2026-10-08T20:38:14.4784604Z ##[group]Installed versions
+2026-10-08T20:38:14.5048194Z (node:2120) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-08T20:38:14.5049567Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-08T20:38:14.5051733Z Successfully set up CPython (3.12.10)
+2026-10-08T20:38:14.5052518Z ##[endgroup]
+2026-10-08T20:38:14.5303477Z ##[group]Run python -m pip install -r requirements-ci.txt
+2026-10-08T20:38:14.5304048Z [36;1mpython -m pip install -r requirements-ci.txt[0m
+2026-10-08T20:38:14.5443440Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-08T20:38:14.5444137Z env:
+2026-10-08T20:38:14.5444493Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:38:14.5445145Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-10-08T20:38:14.5445778Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:38:14.5446336Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:38:14.5446894Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:38:14.5447338Z ##[endgroup]
+2026-10-08T20:38:26.5272888Z Obtaining file:///D:/a/CaptureSuite/CaptureSuite/libs/python/capture_protocol (from -r requirements-ci.txt (line 3))
+2026-10-08T20:38:26.5376308Z   Installing build dependencies: started
+2026-10-08T20:38:29.4847871Z   Installing build dependencies: finished with status 'done'
+2026-10-08T20:38:29.4863491Z   Checking if build backend supports build_editable: started
+2026-10-08T20:38:30.0602135Z   Checking if build backend supports build_editable: finished with status 'done'
+2026-10-08T20:38:30.0626253Z   Getting requirements to build editable: started
+2026-10-08T20:38:30.6039144Z   Getting requirements to build editable: finished with status 'done'
+2026-10-08T20:38:30.6067563Z   Preparing editable metadata (pyproject.toml): started
+2026-10-08T20:38:30.9227190Z   Preparing editable metadata (pyproject.toml): finished with status 'done'
+2026-10-08T20:38:30.9273086Z Obtaining file:///D:/a/CaptureSuite/CaptureSuite/libs/python/capture_session (from -r requirements-ci.txt (line 4))
+2026-10-08T20:38:30.9298726Z   Installing build dependencies: started
+2026-10-08T20:38:32.5963084Z   Installing build dependencies: finished with status 'done'
+2026-10-08T20:38:32.5978359Z   Checking if build backend supports build_editable: started
+2026-10-08T20:38:33.2033883Z   Checking if build backend supports build_editable: finished with status 'done'
+2026-10-08T20:38:33.2066832Z   Getting requirements to build editable: started
+2026-10-08T20:38:33.7343906Z   Getting requirements to build editable: finished with status 'done'
+2026-10-08T20:38:33.7371145Z   Preparing editable metadata (pyproject.toml): started
+2026-10-08T20:38:34.0402059Z   Preparing editable metadata (pyproject.toml): finished with status 'done'
+2026-10-08T20:38:34.0450167Z Obtaining file:///D:/a/CaptureSuite/CaptureSuite/libs/python/capture_analysis
+2026-10-08T20:38:34.0475607Z   Installing build dependencies: started
+2026-10-08T20:38:35.8574713Z   Installing build dependencies: finished with status 'done'
+2026-10-08T20:38:35.8589692Z   Checking if build backend supports build_editable: started
+2026-10-08T20:38:36.3161327Z   Checking if build backend supports build_editable: finished with status 'done'
+2026-10-08T20:38:36.3185618Z   Getting requirements to build editable: started
+2026-10-08T20:38:36.8391201Z   Getting requirements to build editable: finished with status 'done'
+2026-10-08T20:38:36.8420000Z   Preparing editable metadata (pyproject.toml): started
+2026-10-08T20:38:37.1677235Z   Preparing editable metadata (pyproject.toml): finished with status 'done'
+2026-10-08T20:38:37.1728931Z Obtaining file:///D:/a/CaptureSuite/CaptureSuite/libs/python/capture_worker (from -r requirements-ci.txt (line 6))
+2026-10-08T20:38:37.1754332Z   Installing build dependencies: started
+2026-10-08T20:38:38.8651216Z   Installing build dependencies: finished with status 'done'
+2026-10-08T20:38:38.8667599Z   Checking if build backend supports build_editable: started
+2026-10-08T20:38:39.4728809Z   Checking if build backend supports build_editable: finished with status 'done'
+2026-10-08T20:38:39.4752419Z   Getting requirements to build editable: started
+2026-10-08T20:38:40.5219260Z   Getting requirements to build editable: finished with status 'done'
+2026-10-08T20:38:40.5245933Z   Preparing editable metadata (pyproject.toml): started
+2026-10-08T20:38:41.0033447Z   Preparing editable metadata (pyproject.toml): finished with status 'done'
+2026-10-08T20:38:41.0083492Z Obtaining file:///D:/a/CaptureSuite/CaptureSuite/desktop
+2026-10-08T20:38:41.0108227Z   Installing build dependencies: started
+2026-10-08T20:38:42.7797145Z   Installing build dependencies: finished with status 'done'
+2026-10-08T20:38:42.7812813Z   Checking if build backend supports build_editable: started
+2026-10-08T20:38:43.3967068Z   Checking if build backend supports build_editable: finished with status 'done'
+2026-10-08T20:38:43.3989628Z   Getting requirements to build editable: started
+2026-10-08T20:38:43.9293915Z   Getting requirements to build editable: finished with status 'done'
+2026-10-08T20:38:43.9321934Z   Preparing editable metadata (pyproject.toml): started
+2026-10-08T20:38:44.2380810Z   Preparing editable metadata (pyproject.toml): finished with status 'done'
+2026-10-08T20:38:45.0558784Z Collecting grpcio-tools<1.63,>=1.62 (from -r requirements-ci.txt (line 8))
+2026-10-08T20:38:45.2156690Z   Downloading grpcio_tools-1.62.3-cp312-cp312-win_amd64.whl.metadata (6.4 kB)
+2026-10-08T20:38:45.2496495Z Collecting mcap<2,>=1.1 (from -r requirements-ci.txt (line 9))
+2026-10-08T20:38:45.2552206Z   Downloading mcap-1.5.0-py3-none-any.whl.metadata (380 bytes)
+2026-10-08T20:38:45.3226566Z Collecting pytest>=8 (from -r requirements-ci.txt (line 10))
+2026-10-08T20:38:45.3265477Z   Downloading pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
+2026-10-08T20:38:45.3659220Z Collecting pytest-cov>=5 (from -r requirements-ci.txt (line 11))
+2026-10-08T20:38:45.3695016Z   Downloading pytest_cov-7.1.0-py3-none-any.whl.metadata (32 kB)
+2026-10-08T20:38:45.8657314Z Collecting ruff<1,>=0.6 (from -r requirements-ci.txt (line 12))
+2026-10-08T20:38:45.8941943Z   Downloading ruff-0.16.10-py3-none-win_amd64.whl.metadata (21 kB)
+2026-10-08T20:38:46.1888412Z Collecting protobuf<5,>=4.25 (from capture-protocol==0.1.0->-r requirements-ci.txt (line 3))
+2026-10-08T20:38:46.2114049Z   Downloading protobuf-4.25.9-cp310-abi3-win_amd64.whl.metadata (541 bytes)
+2026-10-08T20:38:46.3392652Z Collecting jsonschema>=4.21 (from capture-session==0.1.0->-r requirements-ci.txt (line 4))
+2026-10-08T20:38:46.3598540Z   Downloading jsonschema-4.26.0-py3-none-any.whl.metadata (7.6 kB)
+2026-10-08T20:38:46.4451678Z Collecting pyyaml>=6.0 (from capture-analysis==0.1.0)
+2026-10-08T20:38:46.4486801Z   Downloading pyyaml-6.0.3-cp312-cp312-win_amd64.whl.metadata (2.4 kB)
+2026-10-08T20:38:46.5631340Z Collecting PySide6<7,>=6.6 (from capture-desktop==0.1.0)
+2026-10-08T20:38:46.5838722Z   Downloading pyside6-6.12.0-cp310-abi3-win_amd64.whl.metadata (5.7 kB)
+2026-10-08T20:38:46.9000425Z Collecting numpy>=1.26 (from capture-analysis==0.1.0)
+2026-10-08T20:38:46.9042186Z   Downloading numpy-2.5.3-cp312-cp312-win_amd64.whl.metadata (6.6 kB)
+2026-10-08T20:38:47.1227196Z Collecting scipy>=1.11 (from capture-analysis==0.1.0)
+2026-10-08T20:38:47.1424504Z   Downloading scipy-1.18.1-cp312-cp312-win_amd64.whl.metadata (61 kB)
+2026-10-08T20:38:47.4470183Z Collecting pandas>=2.1 (from capture-analysis==0.1.0)
+2026-10-08T20:38:47.4530019Z   Downloading pandas-3.0.6-cp312-cp312-win_amd64.whl.metadata (19 kB)
+2026-10-08T20:38:47.5955876Z Collecting pyarrow>=14.0 (from capture-analysis==0.1.0)
+2026-10-08T20:38:47.6145715Z   Downloading pyarrow-25.0.1-cp312-cp312-win_amd64.whl.metadata (3.0 kB)
+2026-10-08T20:38:47.7967369Z Collecting matplotlib>=3.8 (from capture-analysis==0.1.0)
+2026-10-08T20:38:47.8013380Z   Downloading matplotlib-3.11.2-cp312-cp312-win_amd64.whl.metadata (80 kB)
+2026-10-08T20:38:47.8587569Z Collecting pyqtgraph>=0.13 (from capture-desktop==0.1.0)
+2026-10-08T20:38:47.8619272Z   Downloading pyqtgraph-0.14.0-py3-none-any.whl.metadata (1.5 kB)
+2026-10-08T20:38:48.4338285Z Collecting grpcio>=1.62.3 (from grpcio-tools<1.63,>=1.62->-r requirements-ci.txt (line 8))
+2026-10-08T20:38:48.4395958Z   Downloading grpcio-1.84.0-cp312-cp312-win_amd64.whl.metadata (3.9 kB)
+2026-10-08T20:38:48.5416558Z Collecting setuptools (from grpcio-tools<1.63,>=1.62->-r requirements-ci.txt (line 8))
+2026-10-08T20:38:48.5442117Z   Using cached setuptools-84.0.0-py3-none-any.whl.metadata (6.6 kB)
+2026-10-08T20:38:48.6234781Z Collecting lz4 (from mcap<2,>=1.1->-r requirements-ci.txt (line 9))
+2026-10-08T20:38:48.6473008Z   Downloading lz4-4.4.5-cp312-cp312-win_amd64.whl.metadata (3.9 kB)
+2026-10-08T20:38:48.7368837Z Collecting zstandard (from mcap<2,>=1.1->-r requirements-ci.txt (line 9))
+2026-10-08T20:38:48.7418341Z   Downloading zstandard-0.25.0-cp312-cp312-win_amd64.whl.metadata (3.3 kB)
+2026-10-08T20:38:48.8025741Z Collecting PySide6_Essentials==6.12.0 (from PySide6<7,>=6.6->capture-desktop==0.1.0)
+2026-10-08T20:38:48.8063947Z   Downloading pyside6_essentials-6.12.0-cp310-abi3-win_amd64.whl.metadata (3.9 kB)
+2026-10-08T20:38:48.8466205Z Collecting PySide6_Addons==6.12.0 (from PySide6<7,>=6.6->capture-desktop==0.1.0)
+2026-10-08T20:38:48.8504104Z   Downloading pyside6_addons-6.12.0-cp310-abi3-win_amd64.whl.metadata (4.4 kB)
+2026-10-08T20:38:48.8812053Z Collecting PySide6_WebEngine==6.12.0.140 (from PySide6<7,>=6.6->capture-desktop==0.1.0)
+2026-10-08T20:38:48.8866959Z   Downloading pyside6_webengine-6.12.0.140-cp310-abi3-win_amd64.whl.metadata (3.7 kB)
+2026-10-08T20:38:48.9325162Z Collecting PySide6_Pdf==6.12.0.140 (from PySide6<7,>=6.6->capture-desktop==0.1.0)
+2026-10-08T20:38:48.9361335Z   Downloading pyside6_pdf-6.12.0.140-cp310-abi3-win_amd64.whl.metadata (3.6 kB)
+2026-10-08T20:38:48.9786825Z Collecting shiboken6==6.12.0 (from PySide6_Essentials==6.12.0->PySide6<7,>=6.6->capture-desktop==0.1.0)
+2026-10-08T20:38:48.9822938Z   Downloading shiboken6-6.12.0-cp310-abi3-win_amd64.whl.metadata (2.6 kB)
+2026-10-08T20:38:48.9992694Z Requirement already satisfied: colorama>=0.4 in C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\site-packages (from pytest>=8->-r requirements-ci.txt (line 10)) (0.4.6)
+2026-10-08T20:38:49.0145672Z Collecting iniconfig>=1.0.1 (from pytest>=8->-r requirements-ci.txt (line 10))
+2026-10-08T20:38:49.0181828Z   Downloading iniconfig-2.3.1-py3-none-any.whl.metadata (2.8 kB)
+2026-10-08T20:38:49.0339719Z Requirement already satisfied: packaging>=22 in C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\site-packages (from pytest>=8->-r requirements-ci.txt (line 10)) (26.3)
+2026-10-08T20:38:49.0706606Z Collecting pluggy<2,>=1.5 (from pytest>=8->-r requirements-ci.txt (line 10))
+2026-10-08T20:38:49.0752788Z   Downloading pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+2026-10-08T20:38:49.1149065Z Collecting pygments>=2.7.2 (from pytest>=8->-r requirements-ci.txt (line 10))
+2026-10-08T20:38:49.1239198Z   Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+2026-10-08T20:38:49.6044294Z Collecting coverage>=7.10.6 (from coverage[toml]>=7.10.6->pytest-cov>=5->-r requirements-ci.txt (line 11))
+2026-10-08T20:38:49.6084267Z   Downloading coverage-7.16.2-cp312-cp312-win_amd64.whl.metadata (8.4 kB)
+2026-10-08T20:38:49.6684115Z Collecting typing-extensions~=4.12 (from grpcio>=1.62.3->grpcio-tools<1.63,>=1.62->-r requirements-ci.txt (line 8))
+2026-10-08T20:38:49.6730765Z   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+2026-10-08T20:38:49.7080616Z Collecting attrs>=22.2.0 (from jsonschema>=4.21->capture-session==0.1.0->-r requirements-ci.txt (line 4))
+2026-10-08T20:38:49.7116253Z   Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+2026-10-08T20:38:49.7459516Z Collecting jsonschema-specifications>=2023.03.6 (from jsonschema>=4.21->capture-session==0.1.0->-r requirements-ci.txt (line 4))
+2026-10-08T20:38:49.7496685Z   Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl.metadata (2.9 kB)
+2026-10-08T20:38:49.8114601Z Collecting referencing>=0.28.4 (from jsonschema>=4.21->capture-session==0.1.0->-r requirements-ci.txt (line 4))
+2026-10-08T20:38:49.8151295Z   Downloading referencing-0.37.0-py3-none-any.whl.metadata (2.8 kB)
+2026-10-08T20:38:50.1128099Z Collecting rpds-py>=0.25.0 (from jsonschema>=4.21->capture-session==0.1.0->-r requirements-ci.txt (line 4))
+2026-10-08T20:38:50.1168156Z   Downloading rpds_py-2026.9.1-cp312-cp312-win_amd64.whl.metadata (4.2 kB)
+2026-10-08T20:38:50.2136683Z Collecting contourpy>=1.0.1 (from matplotlib>=3.8->capture-analysis==0.1.0)
+2026-10-08T20:38:50.2176622Z   Downloading contourpy-1.4.0-cp312-cp312-win_amd64.whl.metadata (3.8 kB)
+2026-10-08T20:38:50.2664188Z Collecting cycler>=0.10 (from matplotlib>=3.8->capture-analysis==0.1.0)
+2026-10-08T20:38:50.2698390Z   Downloading cycler-0.12.1-py3-none-any.whl.metadata (3.8 kB)
+2026-10-08T20:38:50.4513193Z Collecting fonttools>=4.28.2 (from matplotlib>=3.8->capture-analysis==0.1.0)
+2026-10-08T20:38:50.4560362Z   Downloading fonttools-4.66.1-cp312-cp312-win_amd64.whl.metadata (132 kB)
+2026-10-08T20:38:50.5610775Z Collecting kiwisolver>=1.3.1 (from matplotlib>=3.8->capture-analysis==0.1.0)
+2026-10-08T20:38:50.5664050Z   Downloading kiwisolver-1.5.1-cp312-cp312-win_amd64.whl.metadata (5.2 kB)
+2026-10-08T20:38:50.7898959Z Collecting pillow>=9 (from matplotlib>=3.8->capture-analysis==0.1.0)
+2026-10-08T20:38:50.7944692Z   Downloading pillow-12.3.0-cp312-cp312-win_amd64.whl.metadata (9.3 kB)
+2026-10-08T20:38:50.8585579Z Collecting pyparsing>=3 (from matplotlib>=3.8->capture-analysis==0.1.0)
+2026-10-08T20:38:50.8624704Z   Downloading pyparsing-3.3.3-py3-none-any.whl.metadata (5.9 kB)
+2026-10-08T20:38:50.8966961Z Collecting python-dateutil>=2.7 (from matplotlib>=3.8->capture-analysis==0.1.0)
+2026-10-08T20:38:50.9001902Z   Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+2026-10-08T20:38:50.9477421Z Collecting tzdata (from pandas>=2.1->capture-analysis==0.1.0)
+2026-10-08T20:38:50.9523877Z   Downloading tzdata-2026.5-py2.py3-none-any.whl.metadata (1.4 kB)
+2026-10-08T20:38:51.0097822Z Collecting six>=1.5 (from python-dateutil>=2.7->matplotlib>=3.8->capture-analysis==0.1.0)
+2026-10-08T20:38:51.0130074Z   Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+2026-10-08T20:38:51.0446631Z Downloading grpcio_tools-1.62.3-cp312-cp312-win_amd64.whl (1.1 MB)
+2026-10-08T20:38:51.0717969Z    ---------------------------------------- 1.1/1.1 MB 49.4 MB/s  0:00:00
+2026-10-08T20:38:51.0751076Z Downloading mcap-1.5.0-py3-none-any.whl (21 kB)
+2026-10-08T20:38:51.0928171Z Downloading ruff-0.16.10-py3-none-win_amd64.whl (10.6 MB)
+2026-10-08T20:38:51.1647675Z    ---------------------------------------- 10.6/10.6 MB 163.9 MB/s  0:00:00
+2026-10-08T20:38:51.1692510Z Downloading protobuf-4.25.9-cp310-abi3-win_amd64.whl (413 kB)
+2026-10-08T20:38:51.1875168Z Downloading pyside6-6.12.0-cp310-abi3-win_amd64.whl (578 kB)
+2026-10-08T20:38:51.2058037Z    ---------------------------------------- 579.0/579.0 kB 19.8 MB/s  0:00:00
+2026-10-08T20:38:51.2249950Z Downloading pyside6_addons-6.12.0-cp310-abi3-win_amd64.whl (40.5 MB)
+2026-10-08T20:38:52.0257193Z    ---------------------------------------- 40.5/40.5 MB 51.5 MB/s  0:00:00
+2026-10-08T20:38:52.0322792Z Downloading pyside6_essentials-6.12.0-cp310-abi3-win_amd64.whl (82.2 MB)
+2026-10-08T20:38:53.0004218Z    ---------------------------------------- 82.2/82.2 MB 84.5 MB/s  0:00:00
+2026-10-08T20:38:53.0048186Z Downloading pyside6_pdf-6.12.0.140-cp310-abi3-win_amd64.whl (3.0 MB)
+2026-10-08T20:38:53.0407388Z    ---------------------------------------- 3.0/3.0 MB 87.8 MB/s  0:00:00
+2026-10-08T20:38:53.0451401Z Downloading pyside6_webengine-6.12.0.140-cp310-abi3-win_amd64.whl (131.7 MB)
+2026-10-08T20:38:54.7798051Z    ---------------------------------------- 131.7/131.7 MB 76.5 MB/s  0:00:01
+2026-10-08T20:38:54.7842749Z Downloading shiboken6-6.12.0-cp310-abi3-win_amd64.whl (1.3 MB)
+2026-10-08T20:38:54.8220189Z    ---------------------------------------- 1.3/1.3 MB 32.4 MB/s  0:00:00
+2026-10-08T20:38:54.8261724Z Downloading pytest-9.1.1-py3-none-any.whl (386 kB)
+2026-10-08T20:38:54.8940519Z Downloading pluggy-1.6.0-py3-none-any.whl (20 kB)
+2026-10-08T20:38:54.9691792Z Downloading pytest_cov-7.1.0-py3-none-any.whl (22 kB)
+2026-10-08T20:38:55.0457300Z Downloading coverage-7.16.2-cp312-cp312-win_amd64.whl (226 kB)
+2026-10-08T20:38:55.1036475Z Downloading grpcio-1.84.0-cp312-cp312-win_amd64.whl (5.3 MB)
+2026-10-08T20:38:55.1903692Z    ---------------------------------------- 5.3/5.3 MB 53.1 MB/s  0:00:00
+2026-10-08T20:38:55.1938452Z Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+2026-10-08T20:38:55.3117296Z Downloading iniconfig-2.3.1-py3-none-any.whl (7.6 kB)
+2026-10-08T20:38:55.3745225Z Downloading jsonschema-4.26.0-py3-none-any.whl (90 kB)
+2026-10-08T20:38:55.4402726Z Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+2026-10-08T20:38:55.6459762Z Downloading jsonschema_specifications-2025.9.1-py3-none-any.whl (18 kB)
+2026-10-08T20:38:55.7102433Z Downloading matplotlib-3.11.2-cp312-cp312-win_amd64.whl (9.3 MB)
+2026-10-08T20:38:55.8124641Z    ---------------------------------------- 9.3/9.3 MB 83.4 MB/s  0:00:00
+2026-10-08T20:38:55.8205345Z Downloading contourpy-1.4.0-cp312-cp312-win_amd64.whl (234 kB)
+2026-10-08T20:38:55.9090183Z Downloading cycler-0.12.1-py3-none-any.whl (8.3 kB)
+2026-10-08T20:38:55.9267598Z Downloading fonttools-4.66.1-cp312-cp312-win_amd64.whl (2.5 MB)
+2026-10-08T20:38:55.9854279Z    ---------------------------------------- 2.5/2.5 MB 35.3 MB/s  0:00:00
+2026-10-08T20:38:55.9890674Z Downloading kiwisolver-1.5.1-cp312-cp312-win_amd64.whl (70 kB)
+2026-10-08T20:38:56.0721310Z Downloading numpy-2.5.3-cp312-cp312-win_amd64.whl (12.6 MB)
+2026-10-08T20:38:56.1569354Z    ---------------------------------------- 12.6/12.6 MB 130.9 MB/s  0:00:00
+2026-10-08T20:38:56.1628591Z Downloading pandas-3.0.6-cp312-cp312-win_amd64.whl (9.7 MB)
+2026-10-08T20:38:56.2788424Z    ---------------------------------------- 9.7/9.7 MB 86.2 MB/s  0:00:00
+2026-10-08T20:38:56.2830832Z Downloading pillow-12.3.0-cp312-cp312-win_amd64.whl (7.2 MB)
+2026-10-08T20:38:56.3887716Z    ---------------------------------------- 7.2/7.2 MB 74.1 MB/s  0:00:00
+2026-10-08T20:38:56.3965443Z Downloading pyarrow-25.0.1-cp312-cp312-win_amd64.whl (28.0 MB)
+2026-10-08T20:38:56.6816598Z    ---------------------------------------- 28.0/28.0 MB 98.5 MB/s  0:00:00
+2026-10-08T20:38:56.6860842Z Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+2026-10-08T20:38:56.7255921Z    ---------------------------------------- 1.3/1.3 MB 31.9 MB/s  0:00:00
+2026-10-08T20:38:56.7291637Z Downloading pyparsing-3.3.3-py3-none-any.whl (126 kB)
+2026-10-08T20:38:56.7507097Z Downloading pyqtgraph-0.14.0-py3-none-any.whl (1.9 MB)
+2026-10-08T20:38:56.7951196Z    ---------------------------------------- 1.9/1.9 MB 53.6 MB/s  0:00:00
+2026-10-08T20:38:56.7989410Z Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+2026-10-08T20:38:56.8176550Z Downloading pyyaml-6.0.3-cp312-cp312-win_amd64.whl (154 kB)
+2026-10-08T20:38:56.8374925Z Downloading referencing-0.37.0-py3-none-any.whl (26 kB)
+2026-10-08T20:38:57.3145060Z Downloading rpds_py-2026.9.1-cp312-cp312-win_amd64.whl (222 kB)
+2026-10-08T20:38:57.3697584Z Downloading scipy-1.18.1-cp312-cp312-win_amd64.whl (36.7 MB)
+2026-10-08T20:38:57.7305147Z    ---------------------------------------- 36.7/36.7 MB 101.4 MB/s  0:00:00
+2026-10-08T20:38:57.7341454Z Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+2026-10-08T20:38:57.8000594Z Downloading lz4-4.4.5-cp312-cp312-win_amd64.whl (99 kB)
+2026-10-08T20:38:57.8635088Z Using cached setuptools-84.0.0-py3-none-any.whl (818 kB)
+2026-10-08T20:38:57.8689146Z Downloading tzdata-2026.5-py2.py3-none-any.whl (347 kB)
+2026-10-08T20:38:57.8932553Z Downloading zstandard-0.25.0-cp312-cp312-win_amd64.whl (506 kB)
+2026-10-08T20:38:58.5044131Z Building wheels for collected packages: capture-protocol, capture-session, capture-analysis, capture-worker, capture-desktop
+2026-10-08T20:38:58.5078069Z   Building editable for capture-protocol (pyproject.toml): started
+2026-10-08T20:38:58.8753076Z   Building editable for capture-protocol (pyproject.toml): finished with status 'done'
+2026-10-08T20:38:58.8784789Z   Created wheel for capture-protocol: filename=capture_protocol-0.1.0-0.editable-py3-none-any.whl size=7398 sha256=cef84c9b0aa8b986a5b2799c3f7ee64b2a56fa6dc449f5580ca4f3b4c567c6c4
+2026-10-08T20:38:58.8786466Z   Stored in directory: C:\Users\runneradmin\AppData\Local\Temp\pip-ephem-wheel-cache-4j2palaq\wheels\be\38\74\adf0f9a8f0ba8d26599b299cff33b892a58ed35959c9e09acd
+2026-10-08T20:38:58.8832971Z   Building editable for capture-session (pyproject.toml): started
+2026-10-08T20:38:59.2101270Z   Building editable for capture-session (pyproject.toml): finished with status 'done'
+2026-10-08T20:38:59.2135740Z   Created wheel for capture-session: filename=capture_session-0.1.0-0.editable-py3-none-any.whl size=2863 sha256=822c50ee233b73ac745c6534b923abf2a57c547947e83b10f21ff953b5aed1b6
+2026-10-08T20:38:59.2138199Z   Stored in directory: C:\Users\runneradmin\AppData\Local\Temp\pip-ephem-wheel-cache-4j2palaq\wheels\49\8f\6e\163bd066522d89fdd0906cf22a1687ebc628821c7980903be9
+2026-10-08T20:38:59.2181415Z   Building editable for capture-analysis (pyproject.toml): started
+2026-10-08T20:38:59.5687001Z   Building editable for capture-analysis (pyproject.toml): finished with status 'done'
+2026-10-08T20:38:59.5718822Z   Created wheel for capture-analysis: filename=capture_analysis-0.1.0-0.editable-py3-none-any.whl size=3050 sha256=331283e1bc3a76389ace59f67f3a279f2af9c0a85d70263a0a5874d4f37521ed
+2026-10-08T20:38:59.5721498Z   Stored in directory: C:\Users\runneradmin\AppData\Local\Temp\pip-ephem-wheel-cache-4j2palaq\wheels\f4\d1\58\14e4976a0c15c2c470fc12f9a2873cc8c4bc7bd989766b97b4
+2026-10-08T20:38:59.5766667Z   Building editable for capture-worker (pyproject.toml): started
+2026-10-08T20:38:59.9219311Z   Building editable for capture-worker (pyproject.toml): finished with status 'done'
+2026-10-08T20:38:59.9248790Z   Created wheel for capture-worker: filename=capture_worker-0.1.0-0.editable-py3-none-any.whl size=7659 sha256=f64178861fc6652e425300dfa34ad920e63ce12dcc8f19627bb20ac1f5ff2d96
+2026-10-08T20:38:59.9251053Z   Stored in directory: C:\Users\runneradmin\AppData\Local\Temp\pip-ephem-wheel-cache-4j2palaq\wheels\91\10\bd\b56fd1c22822b4cd753ca217f259119db33a4fa54b26c297ee
+2026-10-08T20:38:59.9297142Z   Building editable for capture-desktop (pyproject.toml): started
+2026-10-08T20:39:00.2714929Z   Building editable for capture-desktop (pyproject.toml): finished with status 'done'
+2026-10-08T20:39:00.2745363Z   Created wheel for capture-desktop: filename=capture_desktop-0.1.0-0.editable-py3-none-any.whl size=3184 sha256=3e27267907dd42d65a70688e1ea565c6d24bf933013ab9f4ab1f66df4eb711df
+2026-10-08T20:39:00.2747647Z   Stored in directory: C:\Users\runneradmin\AppData\Local\Temp\pip-ephem-wheel-cache-4j2palaq\wheels\04\f4\80\083223dba330947d948f2d768e3de9f1e54ae638d0a391d614
+2026-10-08T20:39:00.2770512Z Successfully built capture-protocol capture-session capture-analysis capture-worker capture-desktop
+2026-10-08T20:39:00.4426249Z Installing collected packages: zstandard, tzdata, typing-extensions, six, shiboken6, setuptools, ruff, rpds-py, pyyaml, pyparsing, pygments, pyarrow, protobuf, pluggy, pillow, numpy, lz4, kiwisolver, iniconfig, fonttools, cycler, coverage, attrs, scipy, referencing, python-dateutil, pytest, PySide6_Essentials, pyqtgraph, mcap, grpcio, contourpy, capture-protocol, pytest-cov, PySide6_Pdf, PySide6_Addons, pandas, matplotlib, jsonschema-specifications, grpcio-tools, capture-worker, PySide6_WebEngine, jsonschema, PySide6, capture-session, capture-desktop, capture-analysis
+2026-10-08T20:39:50.3042131Z 
+2026-10-08T20:39:50.3095122Z Successfully installed PySide6-6.12.0 PySide6_Addons-6.12.0 PySide6_Essentials-6.12.0 PySide6_Pdf-6.12.0.140 PySide6_WebEngine-6.12.0.140 attrs-26.1.0 capture-analysis-0.1.0 capture-desktop-0.1.0 capture-protocol-0.1.0 capture-session-0.1.0 capture-worker-0.1.0 contourpy-1.4.0 coverage-7.16.2 cycler-0.12.1 fonttools-4.66.1 grpcio-1.84.0 grpcio-tools-1.62.3 iniconfig-2.3.1 jsonschema-4.26.0 jsonschema-specifications-2025.9.1 kiwisolver-1.5.1 lz4-4.4.5 matplotlib-3.11.2 mcap-1.5.0 numpy-2.5.3 pandas-3.0.6 pillow-12.3.0 pluggy-1.6.0 protobuf-4.25.9 pyarrow-25.0.1 pygments-2.21.0 pyparsing-3.3.3 pyqtgraph-0.14.0 pytest-9.1.1 pytest-cov-7.1.0 python-dateutil-2.9.0.post0 pyyaml-6.0.3 referencing-0.37.0 rpds-py-2026.9.1 ruff-0.16.10 scipy-1.18.1 setuptools-84.0.0 shiboken6-6.12.0 six-1.17.0 typing-extensions-4.16.0 tzdata-2026.5 zstandard-0.25.0
+2026-10-08T20:39:52.0666805Z ##[group]Run python -m pip check
+2026-10-08T20:39:52.0667198Z [36;1mpython -m pip check[0m
+2026-10-08T20:39:52.0707746Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-08T20:39:52.0708205Z env:
+2026-10-08T20:39:52.0708502Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:39:52.0708995Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-10-08T20:39:52.0709469Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:39:52.0709915Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:39:52.0710327Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:39:52.0710653Z ##[endgroup]
+2026-10-08T20:39:52.7503345Z No broken requirements found.
+2026-10-08T20:39:52.9032518Z ##[group]Run python tools/check_ci_contract.py --check-environment
+2026-10-08T20:39:52.9033108Z [36;1mpython tools/check_ci_contract.py --check-environment[0m
+2026-10-08T20:39:52.9073250Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-08T20:39:52.9073623Z env:
+2026-10-08T20:39:52.9073913Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:39:52.9074428Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-10-08T20:39:52.9074933Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:39:52.9075378Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:39:52.9075845Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:39:52.9076191Z ##[endgroup]
+2026-10-08T20:39:59.2827484Z Matplotlib is building the font cache; this may take a moment.
+2026-10-08T20:40:06.9926340Z {
+2026-10-08T20:40:06.9926865Z   "accepted": true,
+2026-10-08T20:40:06.9929081Z   "errors": []
+2026-10-08T20:40:06.9929475Z }
+2026-10-08T20:40:07.2565831Z ##[group]Run python tools/gen_protos.py
+2026-10-08T20:40:07.2566241Z [36;1mpython tools/gen_protos.py[0m
+2026-10-08T20:40:07.2623644Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-08T20:40:07.2624270Z env:
+2026-10-08T20:40:07.2624740Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:07.2625593Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-10-08T20:40:07.2626448Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:07.2627123Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:07.2627590Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:07.2627930Z ##[endgroup]
+2026-10-08T20:40:07.6818924Z Running: C:\hostedtoolcache\windows\Python\3.12.10\x64\python.exe -m grpc_tools.protoc --proto_path=D:\a\CaptureSuite\CaptureSuite\schemas\proto --python_out=D:\a\CaptureSuite\CaptureSuite\libs\python\capture_protocol\capture_protocol\generated --descriptor_set_out=D:\a\CaptureSuite\CaptureSuite\build\generated\capture_v1.desc --include_imports --proto_path=C:\hostedtoolcache\windows\Python\3.12.10\x64\Lib\site-packages\grpc_tools\_proto capture/v1/arrays.proto capture/v1/common.proto capture/v1/control.proto capture/v1/data/emg_batch.proto capture/v1/data/imu_frame.proto capture/v1/data/numeric_batch.proto capture/v1/data/radar_doppler.proto capture/v1/data/radar_frame.proto capture/v1/data/video_timing.proto capture/v1/events.proto capture/v1/health.proto capture/v1/presets.proto capture/v1/preview.proto capture/v1/project.proto capture/v1/source.proto capture/v1/storage.proto capture/v1/worker.proto
+2026-10-08T20:40:07.6825497Z Wrote Python bindings under D:\a\CaptureSuite\CaptureSuite\libs\python\capture_protocol\capture_protocol\generated
+2026-10-08T20:40:07.6826470Z Wrote descriptor set D:\a\CaptureSuite\CaptureSuite\build\generated\capture_v1.desc
+2026-10-08T20:40:07.8128199Z ##[group]Run git diff --exit-code -- libs/python/capture_protocol/capture_protocol/generated
+2026-10-08T20:40:07.8128947Z [36;1mgit diff --exit-code -- libs/python/capture_protocol/capture_protocol/generated[0m
+2026-10-08T20:40:07.8168948Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-08T20:40:07.8169311Z env:
+2026-10-08T20:40:07.8169584Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:07.8170071Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-10-08T20:40:07.8170556Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:07.8170996Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:07.8171399Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:07.8171713Z ##[endgroup]
+2026-10-08T20:40:08.2895923Z ##[group]Run python tools/gen_session_schemas.py
+2026-10-08T20:40:08.2896602Z [36;1mpython tools/gen_session_schemas.py[0m
+2026-10-08T20:40:08.2937648Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-08T20:40:08.2938005Z env:
+2026-10-08T20:40:08.2938284Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:08.2938776Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-10-08T20:40:08.2939249Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:08.2939658Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:08.2940064Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:08.2940401Z ##[endgroup]
+2026-10-08T20:40:08.6228463Z Wrote 19 schemas to D:\a\CaptureSuite\CaptureSuite\schemas\session\jsonschema
+2026-10-08T20:40:08.7289864Z ##[group]Run git diff --exit-code -- schemas/session/jsonschema
+2026-10-08T20:40:08.7290407Z [36;1mgit diff --exit-code -- schemas/session/jsonschema[0m
+2026-10-08T20:40:08.7329879Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-08T20:40:08.7330227Z env:
+2026-10-08T20:40:08.7330497Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:08.7330977Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-10-08T20:40:08.7331460Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:08.7331877Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:08.7332288Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:08.7332636Z ##[endgroup]
+2026-10-08T20:40:09.0988948Z ##[group]Run ruff check libs/python/capture_protocol libs/python/capture_session libs/python/capture_analysis libs/python/capture_worker workers/python_host desktop/capture_desktop tools tests plugins/example_sine_py plugins/lsl_bridge
+2026-10-08T20:40:09.0990742Z [36;1mruff check libs/python/capture_protocol libs/python/capture_session libs/python/capture_analysis libs/python/capture_worker workers/python_host desktop/capture_desktop tools tests plugins/example_sine_py plugins/lsl_bridge[0m
+2026-10-08T20:40:09.1030921Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-08T20:40:09.1031351Z env:
+2026-10-08T20:40:09.1031673Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:09.1032161Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-10-08T20:40:09.1032646Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:09.1033095Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:09.1033662Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:09.1033988Z ##[endgroup]
+2026-10-08T20:40:09.4861916Z All checks passed!
+2026-10-08T20:40:09.5897386Z ##[group]Run python tools/check_licenses.py --enforce-spdx
+2026-10-08T20:40:09.5897976Z [36;1mpython tools/check_licenses.py --enforce-spdx[0m
+2026-10-08T20:40:09.5937856Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-08T20:40:09.5938219Z env:
+2026-10-08T20:40:09.5938492Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:09.5938967Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-10-08T20:40:09.5939431Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:09.5939845Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:09.5940249Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:09.5940585Z ##[endgroup]
+2026-10-08T20:40:10.3222410Z license check OK
+2026-10-08T20:40:10.4300146Z ##[group]Run python tools/run_ci_tests.py
+2026-10-08T20:40:10.4300565Z [36;1mpython tools/run_ci_tests.py[0m
+2026-10-08T20:40:10.4341144Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-08T20:40:10.4341513Z env:
+2026-10-08T20:40:10.4341795Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:10.4342304Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-10-08T20:40:10.4342816Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:10.4343255Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:10.4343693Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:40:10.4344041Z   QT_QPA_PLATFORM: offscreen
+2026-10-08T20:40:10.4344272Z ##[endgroup]
+2026-10-08T20:42:08.8117124Z ============================= test session starts =============================
+2026-10-08T20:42:08.8118771Z platform win32 -- Python 3.12.10, pytest-9.1.1, pluggy-1.6.0 -- C:\hostedtoolcache\windows\Python\3.12.10\x64\python.exe
+2026-10-08T20:42:08.8119379Z cachedir: .pytest_cache
+2026-10-08T20:42:08.8119650Z rootdir: D:\a\CaptureSuite\CaptureSuite
+2026-10-08T20:42:08.8119961Z configfile: pyproject.toml
+2026-10-08T20:42:08.8120248Z plugins: platformdirs-4.12.3, cov-7.1.0
+2026-10-08T20:42:08.8120563Z collecting ... collected 663 items
+2026-10-08T20:42:08.8120759Z 
+2026-10-08T20:42:08.8121259Z tests/analysis/test_checkpoint_sections.py::test_named_checkpoint_closes_its_preceding_section[warmup-expected0] PASSED [  0%]
+2026-10-08T20:42:08.8122288Z tests/analysis/test_checkpoint_sections.py::test_named_checkpoint_closes_its_preceding_section[reach-expected1] PASSED [  0%]
+2026-10-08T20:42:08.8123346Z tests/analysis/test_checkpoint_sections.py::test_named_checkpoint_closes_its_preceding_section[Reach \u2013 \u5de6-expected2] PASSED [  0%]
+2026-10-08T20:42:08.8124400Z tests/analysis/test_checkpoint_sections.py::test_named_checkpoint_closes_its_preceding_section[finish-expected3] PASSED [  0%]
+2026-10-08T20:42:08.8125392Z tests/analysis/test_checkpoint_sections.py::test_named_checkpoint_closes_its_preceding_section[zero-expected4] PASSED [  0%]
+2026-10-08T20:42:08.8126362Z tests/analysis/test_checkpoint_sections.py::test_named_checkpoint_closes_its_preceding_section[tie-expected5] PASSED [  0%]
+2026-10-08T20:42:08.8127417Z tests/analysis/test_checkpoint_sections.py::test_existing_timestamp_aliases_keep_exact_closing_bounds[effectiveTimestampNs] PASSED [  1%]
+2026-10-08T20:42:08.8128492Z tests/analysis/test_checkpoint_sections.py::test_existing_timestamp_aliases_keep_exact_closing_bounds[effective_timestamp_ns] PASSED [  1%]
+2026-10-08T20:42:08.8129466Z tests/analysis/test_checkpoint_sections.py::test_existing_timestamp_aliases_keep_exact_closing_bounds[originalTimestampNs] PASSED [  1%]
+2026-10-08T20:42:08.8130419Z tests/analysis/test_checkpoint_sections.py::test_existing_timestamp_aliases_keep_exact_closing_bounds[original_timestamp_ns] PASSED [  1%]
+2026-10-08T20:42:08.8131605Z tests/analysis/test_checkpoint_sections.py::test_existing_timestamp_aliases_keep_exact_closing_bounds[timestampNs] PASSED [  1%]
+2026-10-08T20:42:08.8132476Z tests/analysis/test_checkpoint_sections.py::test_existing_timestamp_aliases_keep_exact_closing_bounds[timestamp_ns] PASSED [  1%]
+2026-10-08T20:42:08.8133334Z tests/analysis/test_checkpoint_sections.py::test_edited_effective_times_change_order_without_rewriting_originals PASSED [  1%]
+2026-10-08T20:42:08.8134118Z tests/analysis/test_checkpoint_sections.py::test_effective_zero_is_retained_and_null_falls_back PASSED [  2%]
+2026-10-08T20:42:08.8134881Z tests/analysis/test_checkpoint_sections.py::test_decimal_nanoseconds_remain_exact_beyond_float_precision PASSED [  2%]
+2026-10-08T20:42:08.8135756Z tests/analysis/test_checkpoint_sections.py::test_missing_section_is_not_silently_replaced[checkpoints0-missing-no checkpoints] PASSED [  2%]
+2026-10-08T20:42:08.8138978Z tests/analysis/test_checkpoint_sections.py::test_missing_section_is_not_silently_replaced[checkpoints1-missing-section not found] PASSED [  2%]
+2026-10-08T20:42:08.8140120Z tests/analysis/test_checkpoint_sections.py::test_out_of_session_first_checkpoint_cannot_form_an_inverted_window PASSED [  2%]
+2026-10-08T20:42:08.8141028Z tests/analysis/test_checkpoint_sections.py::test_later_signed_adjacent_endpoints_are_not_clamped PASSED [  2%]
+2026-10-08T20:42:08.8141843Z tests/analysis/test_checkpoint_sections.py::test_full_custom_and_explicit_section_precedence_remain_unchanged PASSED [  3%]
+2026-10-08T20:42:08.8142789Z tests/analysis/test_checkpoint_sections.py::test_real_cli_emits_the_selected_section_without_changing_raw[first-arguments0-bounds0-features] PASSED [  3%]
+2026-10-08T20:42:08.8143830Z tests/analysis/test_checkpoint_sections.py::test_real_cli_emits_the_selected_section_without_changing_raw[middle-arguments1-bounds1-all] PASSED [  3%]
+2026-10-08T20:42:08.8144874Z tests/analysis/test_checkpoint_sections.py::test_real_cli_emits_the_selected_section_without_changing_raw[last-arguments2-bounds2-features] PASSED [  3%]
+2026-10-08T20:42:08.8145907Z tests/analysis/test_checkpoint_sections.py::test_real_cli_emits_the_selected_section_without_changing_raw[zero-arguments3-bounds3-features] PASSED [  3%]
+2026-10-08T20:42:08.8146938Z tests/analysis/test_checkpoint_sections.py::test_real_cli_emits_the_selected_section_without_changing_raw[tie-arguments4-bounds4-features] PASSED [  3%]
+2026-10-08T20:42:08.8147982Z tests/analysis/test_checkpoint_sections.py::test_real_cli_emits_the_selected_section_without_changing_raw[edited-arguments5-bounds5-features] PASSED [  3%]
+2026-10-08T20:42:08.8149121Z tests/analysis/test_checkpoint_sections.py::test_real_cli_emits_the_selected_section_without_changing_raw[full-arguments6-bounds6-features] PASSED [  4%]
+2026-10-08T20:42:08.8150256Z tests/analysis/test_checkpoint_sections.py::test_real_cli_emits_the_selected_section_without_changing_raw[no-checkpoints-arguments7-bounds7-features] PASSED [  4%]
+2026-10-08T20:42:08.8151358Z tests/analysis/test_checkpoint_sections.py::test_real_cli_emits_the_selected_section_without_changing_raw[custom-arguments8-bounds8-features] PASSED [  4%]
+2026-10-08T20:42:08.8152266Z tests/analysis/test_checkpoint_sections.py::test_real_cli_reports_an_inverted_persisted_checkpoint PASSED [  4%]
+2026-10-08T20:42:08.8153062Z tests/analysis/test_export_selection_mcap.py::test_real_mcap_selection_preserves_input_and_timestamps[selected0] PASSED [  4%]
+2026-10-08T20:42:08.8153894Z tests/analysis/test_export_selection_mcap.py::test_real_mcap_selection_preserves_input_and_timestamps[selected1] PASSED [  4%]
+2026-10-08T20:42:08.8154739Z tests/analysis/test_export_selection_mcap.py::test_real_mcap_selection_preserves_input_and_timestamps[selected2] PASSED [  4%]
+2026-10-08T20:42:08.8155524Z tests/analysis/test_export_selection_mcap.py::test_unicode_destination_with_legacy_pipe_encoding PASSED [  5%]
+2026-10-08T20:42:08.8156489Z tests/analysis/test_export_selection_mcap.py::test_selected_modality_can_follow_another_schema[selected0-separate-streams] PASSED [  5%]
+2026-10-08T20:42:08.8157392Z tests/analysis/test_export_selection_mcap.py::test_selected_modality_can_follow_another_schema[selected0-multiplexed] PASSED [  5%]
+2026-10-08T20:42:08.8158297Z tests/analysis/test_export_selection_mcap.py::test_selected_modality_can_follow_another_schema[selected1-separate-streams] PASSED [  5%]
+2026-10-08T20:42:08.8159192Z tests/analysis/test_export_selection_mcap.py::test_selected_modality_can_follow_another_schema[selected1-multiplexed] PASSED [  5%]
+2026-10-08T20:42:08.8160017Z tests/analysis/test_export_selection_mcap.py::test_native_wizard_selection_and_requested_actual_sidecar PASSED [  5%]
+2026-10-08T20:42:08.8160870Z tests/analysis/test_export_selection_mcap.py::test_reused_destination_does_not_leave_unselected_streams PASSED [  6%]
+2026-10-08T20:42:08.8161964Z tests/analysis/test_export_selection_mcap.py::test_existing_empty_destination_is_supported PASSED [  6%]
+2026-10-08T20:42:08.8163381Z tests/analysis/test_export_selection_mcap.py::test_existing_destination_contents_are_preserved[unrelated-file] PASSED [  6%]
+2026-10-08T20:42:08.8164304Z tests/analysis/test_export_selection_mcap.py::test_existing_destination_contents_are_preserved[empty-subfolder] PASSED [  6%]
+2026-10-08T20:42:08.8165155Z tests/analysis/test_export_selection_mcap.py::test_output_failure_is_fatal_with_another_selected_stream[mkdir] PASSED [  6%]
+2026-10-08T20:42:08.8165969Z tests/analysis/test_export_selection_mcap.py::test_output_failure_is_fatal_with_another_selected_stream[open] PASSED [  6%]
+2026-10-08T20:42:08.8166984Z tests/analysis/test_export_selection_mcap.py::test_output_failure_is_fatal_with_another_selected_stream[write] PASSED [  6%]
+2026-10-08T20:42:08.8167809Z tests/analysis/test_export_selection_mcap.py::test_output_failure_is_fatal_with_another_selected_stream[close] PASSED [  7%]
+2026-10-08T20:42:08.8168623Z tests/analysis/test_export_selection_mcap.py::test_existing_input_read_failure_policy_is_preserved[open] PASSED [  7%]
+2026-10-08T20:42:08.8169421Z tests/analysis/test_export_selection_mcap.py::test_existing_input_read_failure_policy_is_preserved[iterate] PASSED [  7%]
+2026-10-08T20:42:08.8170126Z tests/analysis/test_export_sidecar.py::test_export_writes_manifest_and_sidecar PASSED [  7%]
+2026-10-08T20:42:08.8170717Z tests/analysis/test_export_sidecar.py::test_parse_modalities_defaults_to_all PASSED [  7%]
+2026-10-08T20:42:08.8171550Z tests/analysis/test_export_sidecar.py::test_parse_modalities_subset PASSED [  7%]
+2026-10-08T20:42:08.8172576Z tests/analysis/test_export_sidecar.py::test_parse_modalities_empty_rejected PASSED [  7%]
+2026-10-08T20:42:08.8173653Z tests/analysis/test_export_sidecar.py::test_parse_modalities_unknown_rejected PASSED [  8%]
+2026-10-08T20:42:08.8174620Z tests/analysis/test_export_sidecar.py::test_main_rejects_empty_selection PASSED [  8%]
+2026-10-08T20:42:08.8175640Z tests/analysis/test_export_sidecar.py::test_main_rejects_unknown_modality PASSED [  8%]
+2026-10-08T20:42:08.8176683Z tests/analysis/test_export_sidecar.py::test_main_radar_only_selection PASSED [  8%]
+2026-10-08T20:42:08.8177736Z tests/analysis/test_export_sidecar.py::test_main_no_flag_exports_all_modalities PASSED [  8%]
+2026-10-08T20:42:08.8178897Z tests/analysis/test_export_sidecar.py::test_main_dispatches_only_selected_modalities PASSED [  8%]
+2026-10-08T20:42:08.8179963Z tests/analysis/test_export_sidecar.py::test_imu_emg_kind_filter PASSED   [  9%]
+2026-10-08T20:42:08.8180888Z tests/analysis/test_export_sidecar.py::test_wizard_builds_modalities_flag PASSED [  9%]
+2026-10-08T20:42:08.8181978Z tests/analysis/test_export_sidecar.py::test_wizard_run_export_propagates_selection_and_sidecar PASSED [  9%]
+2026-10-08T20:42:08.8183324Z tests/analysis/test_external_predictions.py::test_external_predictions_measure_errors_and_preserve_identity PASSED [  9%]
+2026-10-08T20:42:08.8184856Z tests/analysis/test_external_predictions.py::test_invalid_predictions_refused_before_eval_outputs[windows_digest] PASSED [  9%]
+2026-10-08T20:42:08.8185959Z tests/analysis/test_external_predictions.py::test_invalid_predictions_refused_before_eval_outputs[manifest_digest] PASSED [  9%]
+2026-10-08T20:42:08.8186794Z tests/analysis/test_external_predictions.py::test_invalid_predictions_refused_before_eval_outputs[missing] PASSED [  9%]
+2026-10-08T20:42:08.8187712Z tests/analysis/test_external_predictions.py::test_invalid_predictions_refused_before_eval_outputs[duplicate] PASSED [ 10%]
+2026-10-08T20:42:08.8189189Z tests/analysis/test_external_predictions.py::test_invalid_predictions_refused_before_eval_outputs[foreign] PASSED [ 10%]
+2026-10-08T20:42:08.8190682Z tests/analysis/test_external_predictions.py::test_invalid_predictions_refused_before_eval_outputs[timestamp] PASSED [ 10%]
+2026-10-08T20:42:08.8192203Z tests/analysis/test_external_predictions.py::test_invalid_predictions_refused_before_eval_outputs[float_time] PASSED [ 10%]
+2026-10-08T20:42:08.8193938Z tests/analysis/test_external_predictions.py::test_invalid_predictions_refused_before_eval_outputs[bool_time] PASSED [ 10%]
+2026-10-08T20:42:08.8195579Z tests/analysis/test_external_predictions.py::test_invalid_predictions_refused_before_eval_outputs[missing_target] PASSED [ 10%]
+2026-10-08T20:42:08.8197199Z tests/analysis/test_external_predictions.py::test_invalid_predictions_refused_before_eval_outputs[foreign_target] PASSED [ 11%]
+2026-10-08T20:42:08.8198774Z tests/analysis/test_external_predictions.py::test_invalid_predictions_refused_before_eval_outputs[bool_value] PASSED [ 11%]
+2026-10-08T20:42:08.8200331Z tests/analysis/test_external_predictions.py::test_invalid_predictions_refused_before_eval_outputs[infinite_value] PASSED [ 11%]
+2026-10-08T20:42:08.8201935Z tests/analysis/test_external_predictions.py::test_invalid_predictions_refused_before_eval_outputs[wrong_schema] PASSED [ 11%]
+2026-10-08T20:42:08.8203371Z tests/analysis/test_external_predictions.py::test_invalid_bound_bundle_refused[integer_mask] PASSED [ 11%]
+2026-10-08T20:42:08.8204630Z tests/analysis/test_external_predictions.py::test_invalid_bound_bundle_refused[null_mask] PASSED [ 11%]
+2026-10-08T20:42:08.8205901Z tests/analysis/test_external_predictions.py::test_invalid_bound_bundle_refused[float_time] PASSED [ 11%]
+2026-10-08T20:42:08.8207198Z tests/analysis/test_external_predictions.py::test_invalid_bound_bundle_refused[duplicate_id] PASSED [ 12%]
+2026-10-08T20:42:08.8208543Z tests/analysis/test_external_predictions.py::test_invalid_bound_bundle_refused[foreign_session] PASSED [ 12%]
+2026-10-08T20:42:08.8209955Z tests/analysis/test_external_predictions.py::test_invalid_bound_bundle_refused[stale_windows_digest] PASSED [ 12%]
+2026-10-08T20:42:08.8211323Z tests/analysis/test_external_predictions.py::test_unavailable_teacher_is_excluded_per_target PASSED [ 12%]
+2026-10-08T20:42:08.8212679Z tests/analysis/test_external_predictions.py::test_no_valid_pairs_are_unavailable_not_zero_error PASSED [ 12%]
+2026-10-08T20:42:08.8214012Z tests/analysis/test_external_predictions.py::test_constant_target_has_undefined_correlation PASSED [ 12%]
+2026-10-08T20:42:08.8215345Z tests/analysis/test_external_predictions.py::test_unrepresentable_residual_refused_before_output PASSED [ 12%]
+2026-10-08T20:42:08.8216579Z tests/analysis/test_external_predictions.py::test_actual_cli_receives_prediction_file PASSED [ 13%]
+2026-10-08T20:42:08.8217911Z tests/analysis/test_external_predictions.py::test_default_identity_fixture_remains_explicit PASSED [ 13%]
+2026-10-08T20:42:08.8219234Z tests/analysis/test_external_predictions.py::test_real_pose_kinematics_bundle_to_external_eval PASSED [ 13%]
+2026-10-08T20:42:08.8220445Z tests/analysis/test_external_predictions.py::test_model_label_is_literal_text PASSED [ 13%]
+2026-10-08T20:42:08.8221763Z tests/analysis/test_external_predictions.py::test_versioned_prediction_schema_accepts_actual_input PASSED [ 13%]
+2026-10-08T20:42:08.8223093Z tests/analysis/test_external_predictions.py::test_pearson_near_constant_reversed_pairs[values0] PASSED [ 13%]
+2026-10-08T20:42:08.8224643Z tests/analysis/test_external_predictions.py::test_pearson_near_constant_reversed_pairs[values1] PASSED [ 14%]
+2026-10-08T20:42:08.8226028Z tests/analysis/test_external_predictions.py::test_pearson_large_finite_pairs_keep_overflow_resistance PASSED [ 14%]
+2026-10-08T20:42:08.8227453Z tests/analysis/test_job_destinations.py::test_raw_sources_cannot_be_an_overwrite_destination[traversal] PASSED [ 14%]
+2026-10-08T20:42:08.8228911Z tests/analysis/test_job_destinations.py::test_raw_sources_cannot_be_an_overwrite_destination[absolute] PASSED [ 14%]
+2026-10-08T20:42:08.8230271Z tests/analysis/test_job_destinations.py::test_job_ids_are_portable_single_visible_names[] PASSED [ 14%]
+2026-10-08T20:42:08.8231511Z tests/analysis/test_job_destinations.py::test_job_ids_are_portable_single_visible_names[.] PASSED [ 14%]
+2026-10-08T20:42:08.8232785Z tests/analysis/test_job_destinations.py::test_job_ids_are_portable_single_visible_names[..] PASSED [ 14%]
+2026-10-08T20:42:08.8234288Z tests/analysis/test_job_destinations.py::test_job_ids_are_portable_single_visible_names[nested/job] PASSED [ 15%]
+2026-10-08T20:42:08.8235698Z tests/analysis/test_job_destinations.py::test_job_ids_are_portable_single_visible_names[nested\\job] PASSED [ 15%]
+2026-10-08T20:42:08.8237063Z tests/analysis/test_job_destinations.py::test_job_ids_are_portable_single_visible_names[C:job] PASSED [ 15%]
+2026-10-08T20:42:08.8237813Z tests/analysis/test_job_destinations.py::test_job_ids_are_portable_single_visible_names[qc.] PASSED [ 15%]
+2026-10-08T20:42:08.8238505Z tests/analysis/test_job_destinations.py::test_job_ids_are_portable_single_visible_names[qc ] PASSED [ 15%]
+2026-10-08T20:42:08.8239208Z tests/analysis/test_job_destinations.py::test_job_ids_are_portable_single_visible_names[NUL.txt] PASSED [ 15%]
+2026-10-08T20:42:08.8240134Z tests/analysis/test_job_destinations.py::test_job_ids_are_portable_single_visible_names[qc?one] PASSED [ 15%]
+2026-10-08T20:42:08.8240929Z tests/analysis/test_job_destinations.py::test_job_ids_are_portable_single_visible_names[.attempt_existing] PASSED [ 16%]
+2026-10-08T20:42:08.8241698Z tests/analysis/test_job_destinations.py::test_job_ids_are_portable_single_visible_names[qc\x00one] PASSED [ 16%]
+2026-10-08T20:42:08.8242453Z tests/analysis/test_job_destinations.py::test_linked_output_paths_are_rejected[raw-sources-processing] PASSED [ 16%]
+2026-10-08T20:42:08.8243212Z tests/analysis/test_job_destinations.py::test_linked_output_paths_are_rejected[raw-sources-jobs] PASSED [ 16%]
+2026-10-08T20:42:08.8243937Z tests/analysis/test_job_destinations.py::test_linked_output_paths_are_rejected[raw-sources-job] PASSED [ 16%]
+2026-10-08T20:42:08.8244694Z tests/analysis/test_job_destinations.py::test_linked_output_paths_are_rejected[outside-package-processing] PASSED [ 16%]
+2026-10-08T20:42:08.8245475Z tests/analysis/test_job_destinations.py::test_linked_output_paths_are_rejected[outside-package-jobs] PASSED [ 17%]
+2026-10-08T20:42:08.8246233Z tests/analysis/test_job_destinations.py::test_linked_output_paths_are_rejected[outside-package-job] PASSED [ 17%]
+2026-10-08T20:42:08.8246936Z tests/analysis/test_job_destinations.py::test_dangling_destination_link_is_rejected PASSED [ 17%]
+2026-10-08T20:42:08.8247744Z tests/analysis/test_job_destinations.py::test_ordinary_jobs_preserve_raw_sources[None] PASSED [ 17%]
+2026-10-08T20:42:08.8248428Z tests/analysis/test_job_destinations.py::test_ordinary_jobs_preserve_raw_sources[qc-test] PASSED [ 17%]
+2026-10-08T20:42:08.8249141Z tests/analysis/test_job_destinations.py::test_ordinary_jobs_preserve_raw_sources[walking trial_\xe9] PASSED [ 17%]
+2026-10-08T20:42:08.8249835Z tests/analysis/test_job_destinations.py::test_package_root_link_remains_supported PASSED [ 17%]
+2026-10-08T20:42:08.8250519Z tests/analysis/test_job_destinations.py::test_windows_output_junction_cannot_redirect_into_sources PASSED [ 18%]
+2026-10-08T20:42:08.8251210Z tests/analysis/test_job_failure_cli.py::test_cli_reports_retained_failed_replacement PASSED [ 18%]
+2026-10-08T20:42:08.8252050Z tests/analysis/test_job_failure_cli.py::test_cli_plain_failure_keeps_exit_status PASSED [ 18%]
+2026-10-08T20:42:08.8253285Z tests/analysis/test_job_output_provenance.py::test_recorded_hashes_describe_final_output_bytes PASSED [ 18%]
+2026-10-08T20:42:08.8254602Z tests/analysis/test_job_output_provenance.py::test_persisted_manifest_matches_return_value PASSED [ 18%]
+2026-10-08T20:42:08.8255942Z tests/analysis/test_job_output_provenance.py::test_completed_job_inventories_all_produced_artifacts PASSED [ 18%]
+2026-10-08T20:42:08.8257294Z tests/analysis/test_job_output_provenance.py::test_overwrite_describes_replacement_artifacts PASSED [ 19%]
+2026-10-08T20:42:08.8258605Z tests/analysis/test_job_output_provenance.py::test_failed_job_inventories_diagnostic_log PASSED [ 19%]
+2026-10-08T20:42:08.8259901Z tests/analysis/test_job_output_provenance.py::test_late_failure_records_final_diagnostic_bytes PASSED [ 19%]
+2026-10-08T20:42:08.8262118Z tests/analysis/test_job_output_provenance.py::test_done_callback_failure_preserves_prior_job_and_attempt_inventory PASSED [ 19%]
+2026-10-08T20:42:08.8263624Z tests/analysis/test_job_replacement.py::test_partial_qc_failure_preserves_previous_results PASSED [ 19%]
+2026-10-08T20:42:08.8264556Z tests/analysis/test_job_replacement.py::test_cancellation_after_real_report_write_preserves_previous_results PASSED [ 19%]
+2026-10-08T20:42:08.8265385Z tests/analysis/test_job_replacement.py::test_cancellation_from_manifest_callback_preserves_previous_results PASSED [ 19%]
+2026-10-08T20:42:08.8266163Z tests/analysis/test_job_replacement.py::test_promotion_rename_failure_restores_previous_results PASSED [ 20%]
+2026-10-08T20:42:08.8266927Z tests/analysis/test_job_replacement.py::test_final_progress_callback_failure_preserves_previous_results PASSED [ 20%]
+2026-10-08T20:42:08.8267739Z tests/analysis/test_job_replacement.py::test_failed_promotion_and_restoration_report_recoverable_previous_tree PASSED [ 20%]
+2026-10-08T20:42:08.8268534Z tests/analysis/test_job_replacement.py::test_successful_replacement_publishes_new_results PASSED [ 20%]
+2026-10-08T20:42:08.8269271Z tests/analysis/test_job_replacement.py::test_post_commit_cleanup_failure_keeps_successful_replacement PASSED [ 20%]
+2026-10-08T20:42:08.8269963Z tests/analysis/test_job_replacement.py::test_new_failed_job_remains_recorded PASSED [ 20%]
+2026-10-08T20:42:08.8270565Z tests/analysis/test_kinematics_ml_bundle.py::test_radar_to_teacher_ml_bundle PASSED [ 20%]
+2026-10-08T20:42:08.8271158Z tests/analysis/test_kinematics_ml_bundle.py::test_kinematics_from_pose_job PASSED [ 21%]
+2026-10-08T20:42:08.8271722Z tests/analysis/test_kinematics_ml_bundle.py::test_ml_bundle_end_to_end PASSED [ 21%]
+2026-10-08T20:42:08.8272268Z tests/analysis/test_kinematics_ml_bundle.py::test_eval_from_ml_bundle PASSED [ 21%]
+2026-10-08T20:42:08.8272847Z tests/analysis/test_kinematics_ml_bundle.py::test_run_analysis_cli_kinematics PASSED [ 21%]
+2026-10-08T20:42:08.8273473Z tests/analysis/test_kinematics_validity.py::test_complete_pose_geometry_is_unchanged PASSED [ 21%]
+2026-10-08T20:42:08.8274397Z tests/analysis/test_kinematics_validity.py::test_missing_hips_mask_shoulders_without_replacing_elbow_geometry PASSED [ 21%]
+2026-10-08T20:42:08.8275897Z tests/analysis/test_kinematics_validity.py::test_frame_dropout_masks_only_dependent_joint_and_derived_labels PASSED [ 22%]
+2026-10-08T20:42:08.8277400Z tests/analysis/test_kinematics_validity.py::test_unusable_landmark_never_makes_a_valid_angle[x-nan] PASSED [ 22%]
+2026-10-08T20:42:08.8278930Z tests/analysis/test_kinematics_validity.py::test_unusable_landmark_never_makes_a_valid_angle[y-inf] PASSED [ 22%]
+2026-10-08T20:42:08.8280432Z tests/analysis/test_kinematics_validity.py::test_unusable_landmark_never_makes_a_valid_angle[confidence-nan] PASSED [ 22%]
+2026-10-08T20:42:08.8282062Z tests/analysis/test_kinematics_validity.py::test_unusable_landmark_never_makes_a_valid_angle[confidence-inf] PASSED [ 22%]
+2026-10-08T20:42:08.8283292Z tests/analysis/test_kinematics_validity.py::test_unusable_landmark_never_makes_a_valid_angle[confidence-0.1] PASSED [ 22%]
+2026-10-08T20:42:08.8284896Z tests/analysis/test_kinematics_validity.py::test_coincident_joint_masks_only_undefined_angles PASSED [ 22%]
+2026-10-08T20:42:08.8286373Z tests/analysis/test_kinematics_validity.py::test_confidence_is_per_required_landmark_not_whole_body_mean PASSED [ 23%]
+2026-10-08T20:42:08.8287683Z tests/analysis/test_kinematics_validity.py::test_custom_confidence_threshold_applies_to_each_required_landmark PASSED [ 23%]
+2026-10-08T20:42:08.8288537Z tests/analysis/test_kinematics_validity.py::test_explicit_sim_teacher_keeps_existing_synthetic_values_and_flags PASSED [ 23%]
+2026-10-08T20:42:08.8289633Z tests/analysis/test_kinematics_validity.py::test_sparse_non_sim_pose_cli_retains_missing_data_and_source_bytes PASSED [ 23%]
+2026-10-08T20:42:08.8290522Z tests/analysis/test_ml_bundle_feature_order.py::test_nearest_values_follow_timestamp_pairs_in_any_row_order[0-100000000-order0] PASSED [ 23%]
+2026-10-08T20:42:08.8291608Z tests/analysis/test_ml_bundle_feature_order.py::test_nearest_values_follow_timestamp_pairs_in_any_row_order[0-100000000-order1] PASSED [ 23%]
+2026-10-08T20:42:08.8292531Z tests/analysis/test_ml_bundle_feature_order.py::test_nearest_values_follow_timestamp_pairs_in_any_row_order[0-100000000-order2] PASSED [ 23%]
+2026-10-08T20:42:08.8293438Z tests/analysis/test_ml_bundle_feature_order.py::test_nearest_values_follow_timestamp_pairs_in_any_row_order[0-100000000-order3] PASSED [ 24%]
+2026-10-08T20:42:08.8294397Z tests/analysis/test_ml_bundle_feature_order.py::test_nearest_values_follow_timestamp_pairs_in_any_row_order[9007199254740993-100000000-order0] PASSED [ 24%]
+2026-10-08T20:42:08.8295392Z tests/analysis/test_ml_bundle_feature_order.py::test_nearest_values_follow_timestamp_pairs_in_any_row_order[9007199254740993-100000000-order1] PASSED [ 24%]
+2026-10-08T20:42:08.8296384Z tests/analysis/test_ml_bundle_feature_order.py::test_nearest_values_follow_timestamp_pairs_in_any_row_order[9007199254740993-100000000-order2] PASSED [ 24%]
+2026-10-08T20:42:08.8297385Z tests/analysis/test_ml_bundle_feature_order.py::test_nearest_values_follow_timestamp_pairs_in_any_row_order[9007199254740993-100000000-order3] PASSED [ 24%]
+2026-10-08T20:42:08.8298329Z tests/analysis/test_ml_bundle_feature_order.py::test_adjacent_nanoseconds_above_float_precision_keep_exact_pairing[order0] PASSED [ 24%]
+2026-10-08T20:42:08.8299235Z tests/analysis/test_ml_bundle_feature_order.py::test_adjacent_nanoseconds_above_float_precision_keep_exact_pairing[order1] PASSED [ 25%]
+2026-10-08T20:42:08.8300099Z tests/analysis/test_ml_bundle_feature_order.py::test_duplicate_feature_times_keep_their_relative_order[order0] PASSED [ 25%]
+2026-10-08T20:42:08.8300914Z tests/analysis/test_ml_bundle_feature_order.py::test_duplicate_feature_times_keep_their_relative_order[order1] PASSED [ 25%]
+2026-10-08T20:42:08.8301716Z tests/analysis/test_ml_bundle_feature_order.py::test_equal_distance_still_selects_the_later_timestamp[order0] PASSED [ 25%]
+2026-10-08T20:42:08.8302521Z tests/analysis/test_ml_bundle_feature_order.py::test_equal_distance_still_selects_the_later_timestamp[order1] PASSED [ 25%]
+2026-10-08T20:42:08.8303288Z tests/analysis/test_ml_bundle_feature_order.py::test_numeric_column_mean_keeps_its_timestamp_pair PASSED [ 25%]
+2026-10-08T20:42:08.8303975Z tests/analysis/test_ml_bundle_feature_order.py::test_single_feature_row_remains_usable PASSED [ 25%]
+2026-10-08T20:42:08.8304748Z tests/analysis/test_ml_bundle_feature_order.py::test_native_radar_features_reach_job_api_with_embedded_times_out_of_order PASSED [ 26%]
+2026-10-08T20:42:08.8305563Z tests/analysis/test_ml_bundle_metadata.py::test_raw_features_and_targets_are_not_declared_normalized PASSED [ 26%]
+2026-10-08T20:42:08.8306328Z tests/analysis/test_ml_bundle_metadata.py::test_declared_method_matches_nearest_features_and_window_medians PASSED [ 26%]
+2026-10-08T20:42:08.8307109Z tests/analysis/test_ml_bundle_metadata.py::test_rate_and_hop_describe_integer_output_spacing[0.05-20.0] PASSED [ 26%]
+2026-10-08T20:42:08.8308632Z tests/analysis/test_ml_bundle_metadata.py::test_rate_and_hop_describe_integer_output_spacing[0.3-20.0] PASSED [ 26%]
+2026-10-08T20:42:08.8309422Z tests/analysis/test_ml_bundle_metadata.py::test_rate_and_hop_describe_integer_output_spacing[0.3000000009-99.0] PASSED [ 26%]
+2026-10-08T20:42:08.8310243Z tests/analysis/test_ml_bundle_metadata.py::test_quantized_window_records_actual_bounds_and_requested_duration PASSED [ 26%]
+2026-10-08T20:42:08.8311052Z tests/analysis/test_ml_bundle_metadata.py::test_short_source_explicitly_identifies_the_median_center_fallback PASSED [ 27%]
+2026-10-08T20:42:08.8311860Z tests/analysis/test_ml_bundle_metadata.py::test_job_api_keeps_requested_parameters_and_final_artifact_receipts PASSED [ 27%]
+2026-10-08T20:42:08.8312742Z tests/analysis/test_numeric_batch_pipeline.py::NumericLoaderTests::test_actual_batch_guard_does_not_trust_descriptor_density PASSED [ 27%]
+2026-10-08T20:42:08.8313715Z tests/analysis/test_numeric_batch_pipeline.py::NumericLoaderTests::test_actual_budget_accumulates_across_batches PASSED [ 27%]
+2026-10-08T20:42:08.8314564Z tests/analysis/test_numeric_batch_pipeline.py::NumericLoaderTests::test_backward_device_times_are_refused PASSED [ 27%]
+2026-10-08T20:42:08.8315337Z tests/analysis/test_numeric_batch_pipeline.py::NumericLoaderTests::test_changing_layout_is_refused PASSED [ 27%]
+2026-10-08T20:42:08.8316179Z tests/analysis/test_numeric_batch_pipeline.py::NumericLoaderTests::test_empty_and_outside_window_return_valid_public_result PASSED [ 28%]
+2026-10-08T20:42:08.8317181Z tests/analysis/test_numeric_batch_pipeline.py::NumericLoaderTests::test_impossible_budget_refuses_before_iteration PASSED [ 28%]
+2026-10-08T20:42:08.8318322Z tests/analysis/test_numeric_batch_pipeline.py::NumericLoaderTests::test_incomplete_frame_is_refused PASSED [ 28%]
+2026-10-08T20:42:08.8319098Z tests/analysis/test_numeric_batch_pipeline.py::NumericLoaderTests::test_invalid_channel_names_are_refused PASSED [ 28%]
+2026-10-08T20:42:08.8319954Z tests/analysis/test_numeric_batch_pipeline.py::NumericLoaderTests::test_json_device_timestamp_overflow_is_refused PASSED [ 28%]
+2026-10-08T20:42:08.8320827Z tests/analysis/test_numeric_batch_pipeline.py::NumericLoaderTests::test_json_schema_alias_and_generated_channel_names PASSED [ 28%]
+2026-10-08T20:42:08.8321679Z tests/analysis/test_numeric_batch_pipeline.py::NumericLoaderTests::test_json_types_are_not_silently_coerced PASSED [ 28%]
+2026-10-08T20:42:08.8322545Z tests/analysis/test_numeric_batch_pipeline.py::NumericLoaderTests::test_missing_native_times_use_rate_and_mark_interpolation PASSED [ 29%]
+2026-10-08T20:42:08.8323500Z tests/analysis/test_numeric_batch_pipeline.py::NumericLoaderTests::test_native_worker_schema_decodes_channels_units_and_session_time PASSED [ 29%]
+2026-10-08T20:42:08.8324401Z tests/analysis/test_numeric_batch_pipeline.py::NumericLoaderTests::test_nonfinite_samples_are_refused PASSED [ 29%]
+2026-10-08T20:42:08.8325205Z tests/analysis/test_numeric_batch_pipeline.py::NumericLoaderTests::test_other_schema_is_not_decoded_as_numeric PASSED [ 29%]
+2026-10-08T20:42:08.8326028Z tests/analysis/test_numeric_batch_pipeline.py::NumericLoaderTests::test_partial_device_times_are_refused PASSED [ 29%]
+2026-10-08T20:42:08.8326807Z tests/analysis/test_numeric_batch_pipeline.py::NumericLoaderTests::test_rate_is_required_and_finite PASSED [ 29%]
+2026-10-08T20:42:08.8327596Z tests/analysis/test_numeric_batch_pipeline.py::NumericLoaderTests::test_session_timestamp_overflow_is_refused PASSED [ 30%]
+2026-10-08T20:42:08.8328408Z tests/analysis/test_numeric_batch_pipeline.py::NumericLoaderTests::test_unpaired_timestamps_are_refused PASSED [ 30%]
+2026-10-08T20:42:08.8329250Z tests/analysis/test_numeric_batch_pipeline.py::NumericFeatureTests::test_known_gap_masks_samples_and_fail_policy_refuses PASSED [ 30%]
+2026-10-08T20:42:08.8330193Z tests/analysis/test_numeric_batch_pipeline.py::NumericFeatureTests::test_large_and_small_finite_values_have_finite_correct_reductions PASSED [ 30%]
+2026-10-08T20:42:08.8331233Z tests/analysis/test_numeric_batch_pipeline.py::NumericFeatureTests::test_public_feature_shape_and_rate_are_validated PASSED [ 30%]
+2026-10-08T20:42:08.8332133Z tests/analysis/test_numeric_batch_pipeline.py::NumericFeatureTests::test_split_does_not_bridge_a_gap_without_samples PASSED [ 30%]
+2026-10-08T20:42:08.8333080Z tests/analysis/test_numeric_batch_pipeline.py::NumericPipelineTests::test_durationless_two_stream_package_writes_real_numeric_artifacts PASSED [ 30%]
+2026-10-08T20:42:08.8334034Z tests/analysis/test_numeric_batch_pipeline.py::NumericPipelineTests::test_non_numeric_modality_routes_remain_available PASSED [ 31%]
+2026-10-08T20:42:08.8334920Z tests/analysis/test_numeric_batch_pipeline.py::NumericPipelineTests::test_schema_route_precedes_descriptive_modality PASSED [ 31%]
+2026-10-08T20:42:08.8335805Z tests/analysis/test_numeric_cli_receiving.py::NumericCliReceiving::test_all_creates_distinct_numeric_tables_and_figures PASSED [ 31%]
+2026-10-08T20:42:08.8336828Z tests/analysis/test_numeric_cli_receiving.py::NumericCliReceiving::test_case_only_stream_ids_keep_distinct_paths_and_gap_provenance PASSED [ 31%]
+2026-10-08T20:42:08.8337815Z tests/analysis/test_numeric_cli_receiving.py::NumericCliReceiving::test_features_source_selection_keeps_sibling_outputs_independent PASSED [ 31%]
+2026-10-08T20:42:08.8338807Z tests/analysis/test_numeric_cli_receiving.py::NumericCliReceiving::test_missing_package_is_a_hard_cli_failure_without_a_job PASSED [ 31%]
+2026-10-08T20:42:08.8339739Z tests/analysis/test_numeric_cli_receiving.py::NumericCliReceiving::test_plots_command_produces_real_numeric_figures_and_series PASSED [ 31%]
+2026-10-08T20:42:08.8340702Z tests/analysis/test_numeric_cli_receiving.py::NumericCliReceiving::test_qc_html_inventory_and_manifest_are_available_without_features PASSED [ 32%]
+2026-10-08T20:42:08.8341681Z tests/analysis/test_numeric_cli_receiving.py::NumericCliReceiving::test_refused_stream_is_reported_and_strict_warnings_changes_exit PASSED [ 32%]
+2026-10-08T20:42:08.8342629Z tests/analysis/test_numeric_receiving.py::NumericReceiving::test_actual_payload_budget_is_not_hidden_by_small_descriptor PASSED [ 32%]
+2026-10-08T20:42:08.8343545Z tests/analysis/test_numeric_receiving.py::NumericReceiving::test_durationless_public_job_admits_small_native_recording PASSED [ 32%]
+2026-10-08T20:42:08.8344433Z tests/analysis/test_numeric_receiving.py::NumericReceiving::test_durationless_public_job_reports_small_budget_refusal PASSED [ 32%]
+2026-10-08T20:42:08.8345288Z tests/analysis/test_numeric_receiving.py::NumericReceiving::test_finite_large_values_keep_finite_mean_and_rms PASSED [ 32%]
+2026-10-08T20:42:08.8346119Z tests/analysis/test_numeric_receiving.py::NumericReceiving::test_missing_rate_refuses_to_invent_timebase PASSED [ 33%]
+2026-10-08T20:42:08.8346981Z tests/analysis/test_numeric_receiving.py::NumericReceiving::test_native_mcap_segments_are_anchored_sorted_and_clipped_together PASSED [ 33%]
+2026-10-08T20:42:08.8347850Z tests/analysis/test_numeric_receiving.py::NumericReceiving::test_partial_device_timestamps_are_rejected PASSED [ 33%]
+2026-10-08T20:42:08.8348634Z tests/analysis/test_numeric_receiving.py::NumericReceiving::test_partial_frame_payload_is_rejected PASSED [ 33%]
+2026-10-08T20:42:08.8349506Z tests/analysis/test_numeric_receiving.py::NumericReceiving::test_public_checkpoint_job_exports_exact_native_bounds_math_and_metadata PASSED [ 33%]
+2026-10-08T20:42:08.8350350Z tests/analysis/test_offline_demo.py::test_offline_demo_emits_reports_and_preserves_original PASSED [ 33%]
+2026-10-08T20:42:08.8350969Z tests/analysis/test_offline_demo.py::test_existing_output_is_preserved PASSED [ 33%]
+2026-10-08T20:42:08.8351527Z tests/analysis/test_offline_demo.py::test_output_cannot_be_under_fixture PASSED [ 34%]
+2026-10-08T20:42:08.8352094Z tests/analysis/test_offline_demo.py::test_engine_failure_preserves_original PASSED [ 34%]
+2026-10-08T20:42:08.8352685Z tests/analysis/test_offline_demo.py::test_missing_output_parent_reports_failure PASSED [ 34%]
+2026-10-08T20:42:08.8353321Z tests/analysis/test_phase_a_qc.py::test_discover_streams_reads_descriptor_rate_and_units PASSED [ 34%]
+2026-10-08T20:42:08.8353997Z tests/analysis/test_phase_a_qc.py::test_require_rate_fails_when_missing PASSED [ 34%]
+2026-10-08T20:42:08.8354531Z tests/analysis/test_phase_a_qc.py::test_ram_guard_trips PASSED           [ 34%]
+2026-10-08T20:42:08.8355066Z tests/analysis/test_phase_a_qc.py::test_qc_job_writes_manifest_and_reports PASSED [ 34%]
+2026-10-08T20:42:08.8355616Z tests/analysis/test_phase_a_qc.py::test_analysis_job_schema_validates PASSED [ 35%]
+2026-10-08T20:42:08.8356129Z tests/analysis/test_phase_a_qc.py::test_cli_qc PASSED                    [ 35%]
+2026-10-08T20:42:08.8356634Z tests/analysis/test_phase_b_features.py::test_emg_analytic_rms_mav PASSED [ 35%]
+2026-10-08T20:42:08.8357163Z tests/analysis/test_phase_b_features.py::test_gap_mask_valid_fraction PASSED [ 35%]
+2026-10-08T20:42:08.8357683Z tests/analysis/test_phase_b_features.py::test_gap_policy_fail PASSED     [ 35%]
+2026-10-08T20:42:08.8358753Z tests/analysis/test_phase_b_features.py::test_job_all_on_synthetic_mcap PASSED [ 35%]
+2026-10-08T20:42:08.8359385Z tests/analysis/test_phase_b_features.py::test_square_wave_zero_crossings PASSED [ 36%]
+2026-10-08T20:42:08.8359945Z tests/analysis/test_plugin_registry.py::test_bundled_manifest_loads PASSED [ 36%]
+2026-10-08T20:42:08.8360514Z tests/analysis/test_plugin_registry.py::test_dummy_extractor_via_manifest_only PASSED [ 36%]
+2026-10-08T20:42:08.8361131Z tests/analysis/test_plugin_registry.py::test_dummy_stream_handler_writes_parquet PASSED [ 36%]
+2026-10-08T20:42:08.8361766Z tests/analysis/test_plugin_registry.py::test_pipeline_uses_registry_not_modality_elif PASSED [ 36%]
+2026-10-08T20:42:08.8362366Z tests/analysis/test_pose_job.py::test_pose_job_writes_landmarks_parquet PASSED [ 36%]
+2026-10-08T20:42:08.8362891Z tests/analysis/test_pose_job.py::test_pose_job_two_camera_session PASSED [ 36%]
+2026-10-08T20:42:08.8363403Z tests/analysis/test_pose_job.py::test_run_analysis_cli_pose PASSED       [ 37%]
+2026-10-08T20:42:08.8364013Z tests/analysis/test_qc_gap_details.py::test_closed_gap_is_attributed_in_json_and_source_status PASSED [ 37%]
+2026-10-08T20:42:08.8364770Z tests/analysis/test_qc_gap_details.py::test_duration_requires_a_closed_consistent_interval[2-5-True-3-known] PASSED [ 37%]
+2026-10-08T20:42:08.8365567Z tests/analysis/test_qc_gap_details.py::test_duration_requires_a_closed_consistent_interval[0-0-True-0-known] PASSED [ 37%]
+2026-10-08T20:42:08.8366385Z tests/analysis/test_qc_gap_details.py::test_duration_requires_a_closed_consistent_interval[-1-1-True-2-known] PASSED [ 37%]
+2026-10-08T20:42:08.8367301Z tests/analysis/test_qc_gap_details.py::test_duration_requires_a_closed_consistent_interval[9223372036854775806-9223372036854775807-True-1-known] PASSED [ 37%]
+2026-10-08T20:42:08.8368251Z tests/analysis/test_qc_gap_details.py::test_duration_requires_a_closed_consistent_interval[2-None-False-None-open] PASSED [ 38%]
+2026-10-08T20:42:08.8369124Z tests/analysis/test_qc_gap_details.py::test_duration_requires_a_closed_consistent_interval[2-None-True-None-missing_end] PASSED [ 38%]
+2026-10-08T20:42:08.8369990Z tests/analysis/test_qc_gap_details.py::test_duration_requires_a_closed_consistent_interval[2-5-False-None-open] PASSED [ 38%]
+2026-10-08T20:42:08.8370844Z tests/analysis/test_qc_gap_details.py::test_duration_requires_a_closed_consistent_interval[5-2-True-None-end_before_start] PASSED [ 38%]
+2026-10-08T20:42:08.8371639Z tests/analysis/test_qc_gap_details.py::test_native_writer_keys_and_directory_source_fallback PASSED [ 38%]
+2026-10-08T20:42:08.8372359Z tests/analysis/test_qc_gap_details.py::test_causes_and_overlapping_records_are_preserved_separately PASSED [ 38%]
+2026-10-08T20:42:08.8373073Z tests/analysis/test_qc_gap_details.py::test_gap_cannot_downgrade_an_existing_failed_source PASSED [ 38%]
+2026-10-08T20:42:08.8373771Z tests/analysis/test_qc_gap_details.py::test_gap_source_without_a_discovered_stream_is_still_visible PASSED [ 39%]
+2026-10-08T20:42:08.8374413Z tests/analysis/test_qc_gap_details.py::test_no_gap_control_remains_green PASSED [ 39%]
+2026-10-08T20:42:08.8375173Z tests/analysis/test_qc_gap_details.py::test_html_keeps_nanosecond_precision[2000000000-4500000000-expected0] PASSED [ 39%]
+2026-10-08T20:42:08.8375907Z tests/analysis/test_qc_gap_details.py::test_html_keeps_nanosecond_precision[-1-1-expected1] PASSED [ 39%]
+2026-10-08T20:42:08.8376693Z tests/analysis/test_qc_gap_details.py::test_html_keeps_nanosecond_precision[9223372036854775806-9223372036854775807-expected2] PASSED [ 39%]
+2026-10-08T20:42:08.8377526Z tests/analysis/test_qc_gap_details.py::test_html_unknown_duration_is_never_displayed_as_zero[None-False] PASSED [ 39%]
+2026-10-08T20:42:08.8378293Z tests/analysis/test_qc_gap_details.py::test_html_unknown_duration_is_never_displayed_as_zero[None-True] PASSED [ 39%]
+2026-10-08T20:42:08.8379034Z tests/analysis/test_qc_gap_details.py::test_html_unknown_duration_is_never_displayed_as_zero[1-True] PASSED [ 40%]
+2026-10-08T20:42:08.8379838Z tests/analysis/test_qc_gap_details.py::test_html_unknown_duration_is_never_displayed_as_zero[5-False] PASSED [ 40%]
+2026-10-08T20:42:08.8380543Z tests/analysis/test_qc_gap_details.py::test_html_escapes_recorded_identifiers_and_cause PASSED [ 40%]
+2026-10-08T20:42:08.8381233Z tests/analysis/test_qc_gap_details.py::test_legacy_html_distinguishes_missing_details_from_no_gaps PASSED [ 40%]
+2026-10-08T20:42:08.8381973Z tests/analysis/test_qc_gap_details.py::test_native_job_binds_report_bytes_and_preserves_all_raw_inputs PASSED [ 40%]
+2026-10-08T20:42:08.8382722Z tests/analysis/test_qc_gap_details.py::test_actual_cli_emits_gap_details_and_preserves_inputs PASSED [ 40%]
+2026-10-08T20:42:08.8383578Z tests/analysis/test_stream_gap_scope.py::StreamGapScopeTests::test_fail_policy_accepts_healthy_stream_when_only_sibling_is_interrupted PASSED [ 41%]
+2026-10-08T20:42:08.8384561Z tests/analysis/test_stream_gap_scope.py::StreamGapScopeTests::test_healthy_feature_values_keep_all_samples_despite_a_sibling_gap PASSED [ 41%]
+2026-10-08T20:42:08.8385504Z tests/analysis/test_stream_gap_scope.py::StreamGapScopeTests::test_matching_gap_still_masks_samples_and_rejects_fail_policy PASSED [ 41%]
+2026-10-08T20:42:08.8386439Z tests/analysis/test_stream_gap_scope.py::StreamGapScopeTests::test_other_sources_and_nonoverlapping_gaps_preserve_valid_samples PASSED [ 41%]
+2026-10-08T20:42:08.8387385Z tests/analysis/test_stream_gap_scope.py::StreamGapScopeTests::test_recorded_gap_does_not_mask_another_stream_from_the_same_source PASSED [ 41%]
+2026-10-08T20:42:08.8388319Z tests/analysis/test_stream_gap_scope.py::StreamGapScopeTests::test_source_wide_gap_still_masks_all_streams_of_that_source PASSED [ 41%]
+2026-10-08T20:42:08.8389237Z tests/analysis/test_stream_gap_scope.py::StreamGapScopeTests::test_targeted_open_gap_does_not_remove_the_rest_of_a_sibling_stream PASSED [ 41%]
+2026-10-08T20:42:08.8390197Z tests/analysis/test_stream_gap_scope.py::StreamGapScopeTests::test_unspecified_source_and_stream_keep_existing_global_gap_behavior PASSED [ 42%]
+2026-10-08T20:42:08.8391112Z tests/analysis/test_sync_anchor_request.py::test_native_timestamp_qc_retains_anchor_inventory[default-no-anchors] PASSED [ 42%]
+2026-10-08T20:42:08.8391983Z tests/analysis/test_sync_anchor_request.py::test_native_timestamp_qc_retains_anchor_inventory[default-recorded-anchor] PASSED [ 42%]
+2026-10-08T20:42:08.8392876Z tests/analysis/test_sync_anchor_request.py::test_native_timestamp_qc_retains_anchor_inventory[explicit-false-no-anchors] PASSED [ 42%]
+2026-10-08T20:42:08.8393797Z tests/analysis/test_sync_anchor_request.py::test_native_timestamp_qc_retains_anchor_inventory[explicit-false-recorded-anchor] PASSED [ 42%]
+2026-10-08T20:42:08.8394693Z tests/analysis/test_sync_anchor_request.py::test_requested_alignment_is_refused_without_producing_a_job[no-anchors] PASSED [ 42%]
+2026-10-08T20:42:08.8395559Z tests/analysis/test_sync_anchor_request.py::test_requested_alignment_is_refused_without_producing_a_job[recorded-anchor] PASSED [ 42%]
+2026-10-08T20:42:08.8396391Z tests/analysis/test_sync_anchor_request.py::test_rejected_alignment_preserves_the_complete_previous_job PASSED [ 43%]
+2026-10-08T20:42:08.8397271Z tests/analysis/test_sync_anchor_request.py::test_unsupported_request_precedes_manifest_reads_and_progress[qc] PASSED [ 43%]
+2026-10-08T20:42:08.8398110Z tests/analysis/test_sync_anchor_request.py::test_unsupported_request_precedes_manifest_reads_and_progress[features] PASSED [ 43%]
+2026-10-08T20:42:08.8398966Z tests/analysis/test_sync_anchor_request.py::test_unsupported_request_precedes_manifest_reads_and_progress[plots] PASSED [ 43%]
+2026-10-08T20:42:08.8399796Z tests/analysis/test_sync_anchor_request.py::test_unsupported_request_precedes_manifest_reads_and_progress[all] PASSED [ 43%]
+2026-10-08T20:42:08.8400618Z tests/analysis/test_sync_anchor_request.py::test_unsupported_request_precedes_manifest_reads_and_progress[pose] PASSED [ 43%]
+2026-10-08T20:42:08.8401466Z tests/analysis/test_sync_anchor_request.py::test_unsupported_request_precedes_manifest_reads_and_progress[kinematics] PASSED [ 44%]
+2026-10-08T20:42:08.8402404Z tests/analysis/test_sync_anchor_request.py::test_unsupported_request_precedes_manifest_reads_and_progress[ml_bundle] PASSED [ 44%]
+2026-10-08T20:42:08.8403255Z tests/analysis/test_sync_anchor_request.py::test_unsupported_request_precedes_manifest_reads_and_progress[eval] PASSED [ 44%]
+2026-10-08T20:42:08.8404057Z tests/analysis/test_sync_anchor_request.py::test_existing_unknown_command_admission_is_preserved[False] PASSED [ 44%]
+2026-10-08T20:42:08.8404817Z tests/analysis/test_sync_anchor_request.py::test_existing_unknown_command_admission_is_preserved[True] PASSED [ 44%]
+2026-10-08T20:42:08.8405474Z tests/cmake/test_camera_packaging.py::test_camera_runtime_native_loader PASSED [ 44%]
+2026-10-08T20:42:08.8406243Z tests/protocol/test_camera_ci_qualification.py::CameraReceiptControls::test_failed_expected_failure_and_skipped_totals_are_rejected PASSED [ 44%]
+2026-10-08T20:42:08.8407195Z tests/protocol/test_camera_ci_qualification.py::CameraReceiptControls::test_failure_exception_and_skip_nodes_are_rejected PASSED [ 45%]
+2026-10-08T20:42:08.8408118Z tests/protocol/test_camera_ci_qualification.py::CameraReceiptControls::test_invalid_pe_bytes_cannot_supply_binary_identity PASSED [ 45%]
+2026-10-08T20:42:08.8409085Z tests/protocol/test_camera_ci_qualification.py::CameraReceiptControls::test_missing_duplicate_and_malformed_count_evidence_is_rejected PASSED [ 45%]
+2026-10-08T20:42:08.8410078Z tests/protocol/test_camera_ci_qualification.py::CameraReceiptControls::test_native_case_totals_are_distinct_from_assertion_totals PASSED [ 45%]
+2026-10-08T20:42:08.8410989Z tests/protocol/test_camera_ci_qualification.py::CameraReceiptControls::test_nested_or_unfinished_case_is_rejected PASSED [ 45%]
+2026-10-08T20:42:08.8411893Z tests/protocol/test_camera_ci_qualification.py::CameraReceiptControls::test_nonzero_timeout_and_noninteger_exits_are_rejected PASSED [ 45%]
+2026-10-08T20:42:08.8412863Z tests/protocol/test_camera_ci_qualification.py::CameraReceiptControls::test_per_case_failure_or_skip_cannot_hide_behind_success_totals PASSED [ 46%]
+2026-10-08T20:42:08.8413842Z tests/protocol/test_camera_ci_qualification.py::CameraReceiptControls::test_pipe_listening_success_is_not_a_client_connection PASSED [ 46%]
+2026-10-08T20:42:08.8414791Z tests/protocol/test_camera_ci_qualification.py::CameraReceiptControls::test_sdk_manifest_binds_logs_and_complete_binary_files PASSED [ 46%]
+2026-10-08T20:42:08.8415793Z tests/protocol/test_camera_ci_qualification.py::CameraReceiptControls::test_sdk_receipt_requires_both_pins_and_successful_extraction_and_probe PASSED [ 46%]
+2026-10-08T20:42:08.8416787Z tests/protocol/test_camera_ci_qualification.py::CameraReceiptControls::test_truncated_unrelated_and_entity_xml_is_rejected PASSED [ 46%]
+2026-10-08T20:42:08.8417750Z tests/protocol/test_camera_ci_qualification.py::CameraReceiptControls::test_zero_or_wrong_camera_selection_is_rejected PASSED [ 46%]
+2026-10-08T20:42:08.8418460Z tests/protocol/test_ci_contract.py::test_real_repository_contract PASSED [ 46%]
+2026-10-08T20:42:08.8419070Z tests/protocol/test_ci_contract.py::test_valid_complete_contract PASSED  [ 47%]
+2026-10-08T20:42:08.8419659Z tests/protocol/test_ci_contract.py::test_invalid_registry_pin_is_rejected[2024.12.16] PASSED [ 47%]
+2026-10-08T20:42:08.8420289Z tests/protocol/test_ci_contract.py::test_invalid_registry_pin_is_rejected[b322364] PASSED [ 47%]
+2026-10-08T20:42:08.8421047Z tests/protocol/test_ci_contract.py::test_invalid_registry_pin_is_rejected[zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz] PASSED [ 47%]
+2026-10-08T20:42:08.8421792Z tests/protocol/test_ci_contract.py::test_invalid_registry_pin_is_rejected[42] PASSED [ 47%]
+2026-10-08T20:42:08.8422392Z tests/protocol/test_ci_contract.py::test_invalid_registry_pin_is_rejected[None] PASSED [ 47%]
+2026-10-08T20:42:08.8423008Z tests/protocol/test_ci_contract.py::test_divergent_workflow_pin_is_rejected[ci.yml] PASSED [ 47%]
+2026-10-08T20:42:08.8423664Z tests/protocol/test_ci_contract.py::test_divergent_workflow_pin_is_rejected[release.yml] PASSED [ 48%]
+2026-10-08T20:42:08.8424358Z tests/protocol/test_ci_contract.py::test_missing_manifest_is_a_diagnostic PASSED [ 48%]
+2026-10-08T20:42:08.8424951Z tests/protocol/test_ci_contract.py::test_optional_dependencies_cannot_be_omitted PASSED [ 48%]
+2026-10-08T20:42:08.8425627Z tests/protocol/test_ci_contract.py::test_missing_runtime_gates_are_rejected[--check-environment] PASSED [ 48%]
+2026-10-08T20:42:08.8426339Z tests/protocol/test_ci_contract.py::test_missing_runtime_gates_are_rejected[--no-tests=error] PASSED [ 48%]
+2026-10-08T20:42:08.8427084Z tests/protocol/test_ci_contract.py::test_missing_native_integration_gate_is_rejected[session_doctor -j 4] PASSED [ 48%]
+2026-10-08T20:42:08.8427995Z tests/protocol/test_ci_contract.py::test_missing_native_integration_gate_is_rejected[python -m pip install -r requirements-native-ci.txt] PASSED [ 49%]
+2026-10-08T20:42:08.8429309Z tests/protocol/test_ci_contract.py::test_missing_native_integration_gate_is_rejected[CAPTURE_TEST_BUILD_DIR: build/windows-release] PASSED [ 49%]
+2026-10-08T20:42:08.8430275Z tests/protocol/test_ci_contract.py::test_missing_native_integration_gate_is_rejected[python tools/run_native_ci_tests.py] PASSED [ 49%]
+2026-10-08T20:42:08.8431142Z tests/protocol/test_ci_contract.py::test_missing_native_integration_gate_is_rejected[build/evidence/native-*/] PASSED [ 49%]
+2026-10-08T20:42:08.8432157Z tests/protocol/test_ci_contract.py::test_native_dependency_file_cannot_drop_capture_session PASSED [ 49%]
+2026-10-08T20:42:08.8433111Z tests/protocol/test_ci_contract.py::test_broken_import_is_reported_without_aborting_other_checks PASSED [ 49%]
+2026-10-08T20:42:08.8433857Z tests/protocol/test_ci_contract.py::test_required_registry_ports_and_features PASSED [ 49%]
+2026-10-08T20:42:08.8434501Z tests/protocol/test_ci_contract.py::test_historical_missing_mcap_is_caught_before_cmake PASSED [ 50%]
+2026-10-08T20:42:08.8435120Z tests/protocol/test_ci_contract.py::test_missing_port_feature_is_explicit PASSED [ 50%]
+2026-10-08T20:42:08.8435693Z tests/protocol/test_ci_contract.py::test_unreadable_registry_is_not_success PASSED [ 50%]
+2026-10-08T20:42:08.8436266Z tests/protocol/test_ci_contract.py::test_port_paths_cannot_escape_registry PASSED [ 50%]
+2026-10-08T20:42:08.8436856Z tests/protocol/test_ci_contract.py::test_each_native_ci_check_fails_its_own_step PASSED [ 50%]
+2026-10-08T20:42:08.8437469Z tests/protocol/test_ci_contract.py::test_only_generated_proto_headers_are_external PASSED [ 50%]
+2026-10-08T20:42:08.8438080Z tests/protocol/test_ci_evidence.py::test_success_needs_process_and_test_evidence PASSED [ 50%]
+2026-10-08T20:42:08.8438747Z tests/protocol/test_ci_evidence.py::test_native_crash_never_becomes_a_pass[1] PASSED [ 51%]
+2026-10-08T20:42:08.8439870Z tests/protocol/test_ci_evidence.py::test_native_crash_never_becomes_a_pass[3221226356] PASSED [ 51%]
+2026-10-08T20:42:08.8440990Z tests/protocol/test_ci_evidence.py::test_native_crash_never_becomes_a_pass[None] PASSED [ 51%]
+2026-10-08T20:42:08.8442130Z tests/protocol/test_ci_evidence.py::test_native_crash_never_becomes_a_pass[False] PASSED [ 51%]
+2026-10-08T20:42:08.8443623Z tests/protocol/test_ci_evidence.py::test_native_crash_never_becomes_a_pass[0] PASSED [ 51%]
+2026-10-08T20:42:08.8444756Z tests/protocol/test_ci_evidence.py::test_missing_junit_is_not_zero_failures PASSED [ 51%]
+2026-10-08T20:42:08.8446166Z tests/protocol/test_ci_evidence.py::test_empty_suite_is_not_success PASSED [ 52%]
+2026-10-08T20:42:08.8446883Z tests/protocol/test_ci_evidence.py::test_skips_are_separate_and_reject_everything_does_not_pass PASSED [ 52%]
+2026-10-08T20:42:08.8447633Z tests/protocol/test_ci_evidence.py::test_failing_case_overrides_success_exit[failure-failures] PASSED [ 52%]
+2026-10-08T20:42:08.8448342Z tests/protocol/test_ci_evidence.py::test_failing_case_overrides_success_exit[error-errors] PASSED [ 52%]
+2026-10-08T20:42:08.8449018Z tests/protocol/test_ci_evidence.py::test_summary_cannot_claim_more_cases_than_exist PASSED [ 52%]
+2026-10-08T20:42:08.8449831Z tests/protocol/test_ci_evidence.py::test_unsupported_xml_is_rejected[not xml] PASSED [ 52%]
+2026-10-08T20:42:08.8450751Z tests/protocol/test_ci_evidence.py::test_unsupported_xml_is_rejected[<report/>] PASSED [ 52%]
+2026-10-08T20:42:08.8451523Z tests/protocol/test_ci_evidence.py::test_unsupported_xml_is_rejected[<!DOCTYPE testsuite [<!ENTITY x "x">]><testsuite/>] PASSED [ 53%]
+2026-10-08T20:42:08.8452298Z tests/protocol/test_ci_evidence.py::test_oversized_input_is_bounded PASSED [ 53%]
+2026-10-08T20:42:08.8452921Z tests/protocol/test_ci_evidence.py::test_single_ctest_style_suite_and_input_immutability PASSED [ 53%]
+2026-10-08T20:42:08.8453634Z tests/protocol/test_ci_evidence.py::test_unsupported_encoding_cannot_hide_entity_declarations PASSED [ 53%]
+2026-10-08T20:42:08.8454369Z tests/protocol/test_ci_evidence.py::test_dirty_source_is_not_mislabeled_as_the_head_commit PASSED [ 53%]
+2026-10-08T20:42:08.8455036Z tests/protocol/test_ci_evidence.py::test_snapshot_includes_new_and_deleted_source PASSED [ 53%]
+2026-10-08T20:42:08.8455755Z tests/protocol/test_ci_evidence.py::test_github_context_is_allowlisted_and_absence_is_explicitly_empty PASSED [ 53%]
+2026-10-08T20:42:08.8456505Z tests/protocol/test_codegen_bytes.py::test_rewritten_proto_imports_are_lf_and_idempotent PASSED [ 54%]
+2026-10-08T20:42:08.8457212Z tests/protocol/test_codegen_bytes.py::test_json_schema_generator_writes_canonical_lf_bytes PASSED [ 54%]
+2026-10-08T20:42:08.8458002Z tests/protocol/test_codegen_fresh.py::test_gen_protos_is_idempotent PASSED [ 54%]
+2026-10-08T20:42:08.8458616Z tests/protocol/test_codegen_fresh.py::test_session_schemas_match_regeneration PASSED [ 54%]
+2026-10-08T20:42:08.8459377Z tests/protocol/test_config_schema.py::test_iter_fields_groups_and_order PASSED [ 54%]
+2026-10-08T20:42:08.8459956Z tests/protocol/test_config_schema.py::test_merge_current_overrides_defaults PASSED [ 54%]
+2026-10-08T20:42:08.8460566Z tests/protocol/test_config_schema.py::test_validate_rejects_out_of_range_and_unknown PASSED [ 55%]
+2026-10-08T20:42:08.8461173Z tests/protocol/test_config_schema.py::test_validate_accepts_legal_document PASSED [ 55%]
+2026-10-08T20:42:08.8461742Z tests/protocol/test_config_schema.py::test_dirty_summary_flags_restart PASSED [ 55%]
+2026-10-08T20:42:08.8462361Z tests/protocol/test_config_schema.py::test_match_preset_rejects_unknown_and_revision_mismatch PASSED [ 55%]
+2026-10-08T20:42:08.8463161Z tests/protocol/test_cpp_portability_contract.py::test_real_owned_sources_have_no_direct_getenv PASSED [ 55%]
+2026-10-08T20:42:08.8464283Z tests/protocol/test_cpp_portability_contract.py::test_direct_getenv_is_reported_but_safe_helper_header_is_exempt PASSED [ 55%]
+2026-10-08T20:42:08.8488617Z tests/protocol/test_cpp_portability_contract.py::test_dupenv_s_does_not_trigger PASSED [ 55%]
+2026-10-08T20:42:08.8489755Z tests/protocol/test_daemon_e2e.py::test_multi_modality_record_with_disconnect SKIPPED [ 56%]
+2026-10-08T20:42:08.8490747Z tests/protocol/test_daemon_e2e.py::test_bad_stop_token_rejected SKIPPED  [ 56%]
+2026-10-08T20:42:08.8491724Z tests/protocol/test_daemon_e2e.py::test_config_schema_and_apply SKIPPED  [ 56%]
+2026-10-08T20:42:08.8493057Z tests/protocol/test_daemon_e2e.py::test_camera_apply_config_proxied_when_worker_present SKIPPED [ 56%]
+2026-10-08T20:42:08.8494257Z tests/protocol/test_daemon_e2e.py::test_start_all_ready_and_acknowledge_alert SKIPPED [ 56%]
+2026-10-08T20:42:08.8495309Z tests/protocol/test_daemon_e2e.py::test_concurrent_clients_served SKIPPED [ 56%]
+2026-10-08T20:42:08.8496464Z tests/protocol/test_diagnostic_bundle.py::test_diagnostic_bundle_excludes_raw_by_default PASSED [ 57%]
+2026-10-08T20:42:08.8497620Z tests/protocol/test_framing.py::test_round_trip_empty_payload PASSED     [ 57%]
+2026-10-08T20:42:08.8498568Z tests/protocol/test_framing.py::test_round_trip_payload PASSED           [ 57%]
+2026-10-08T20:42:08.8499491Z tests/protocol/test_framing.py::test_bad_magic_raises PASSED             [ 57%]
+2026-10-08T20:42:08.8500465Z tests/protocol/test_framing.py::test_oversized_payload_rejected_on_encode PASSED [ 57%]
+2026-10-08T20:42:08.8501668Z tests/protocol/test_framing.py::test_incomplete_buffer PASSED            [ 57%]
+2026-10-08T20:42:08.8502605Z tests/protocol/test_framing.py::test_incremental_decoder PASSED          [ 57%]
+2026-10-08T20:42:08.8503867Z tests/protocol/test_framing_invalid_stream.py::test_incremental_decoder_rejects_invalid_complete_header[bad-magic] PASSED [ 58%]
+2026-10-08T20:42:08.8505561Z tests/protocol/test_framing_invalid_stream.py::test_incremental_decoder_rejects_invalid_complete_header[oversized-payload] PASSED [ 58%]
+2026-10-08T20:42:08.8507211Z tests/protocol/test_framing_stream_transitions.py::test_invalid_header_rejection_at_every_read_boundary[bad-magic] PASSED [ 58%]
+2026-10-08T20:42:08.8508853Z tests/protocol/test_framing_stream_transitions.py::test_invalid_header_rejection_at_every_read_boundary[oversized-payload] PASSED [ 58%]
+2026-10-08T20:42:08.8510323Z tests/protocol/test_framing_stream_transitions.py::test_valid_stream_at_every_read_boundary PASSED [ 58%]
+2026-10-08T20:42:08.8511763Z tests/protocol/test_framing_stream_transitions.py::test_partial_payload_then_complete_and_partial_next_header PASSED [ 58%]
+2026-10-08T20:42:08.8513271Z tests/protocol/test_framing_stream_transitions.py::test_valid_prefix_does_not_mask_invalid_next_header[0] PASSED [ 58%]
+2026-10-08T20:42:08.8514760Z tests/protocol/test_framing_stream_transitions.py::test_valid_prefix_does_not_mask_invalid_next_header[8388609] PASSED [ 59%]
+2026-10-08T20:42:08.8516291Z tests/protocol/test_framing_stream_transitions.py::test_invalid_frame_is_not_skipped_to_find_later_valid_data PASSED [ 59%]
+2026-10-08T20:42:08.8517860Z tests/protocol/test_framing_stream_transitions.py::test_maximum_legal_payload_header_is_incomplete_without_body PASSED [ 59%]
+2026-10-08T20:42:08.8519383Z tests/protocol/test_framing_view_lifetime.py::test_reset_inside_protocol_error_handler[magic] PASSED [ 59%]
+2026-10-08T20:42:08.8520612Z tests/protocol/test_framing_view_lifetime.py::test_reset_inside_protocol_error_handler[length] PASSED [ 59%]
+2026-10-08T20:42:08.8521453Z tests/protocol/test_framing_view_lifetime.py::test_saved_protocol_error_allows_reset_and_preserves_diagnostics[magic] PASSED [ 59%]
+2026-10-08T20:42:08.8522337Z tests/protocol/test_framing_view_lifetime.py::test_saved_protocol_error_allows_reset_and_preserves_diagnostics[length] PASSED [ 60%]
+2026-10-08T20:42:08.8523689Z tests/protocol/test_framing_view_lifetime.py::test_retained_decode_error_does_not_export_the_callers_bytearray[partial-header] PASSED [ 60%]
+2026-10-08T20:42:08.8524806Z tests/protocol/test_framing_view_lifetime.py::test_retained_decode_error_does_not_export_the_callers_bytearray[partial-payload] PASSED [ 60%]
+2026-10-08T20:42:08.8525728Z tests/protocol/test_framing_view_lifetime.py::test_retained_decode_error_does_not_export_the_callers_bytearray[bad-magic] PASSED [ 60%]
+2026-10-08T20:42:08.8526643Z tests/protocol/test_framing_view_lifetime.py::test_retained_decode_error_does_not_export_the_callers_bytearray[oversized-length] PASSED [ 60%]
+2026-10-08T20:42:08.8527815Z tests/protocol/test_framing_view_lifetime.py::test_decoder_releases_only_its_own_memoryview[CSP1\x05\x00\x00\x00\x01\x00\x00\x00\x05\x00\x00\x00owned] PASSED [ 60%]
+2026-10-08T20:42:08.8528893Z tests/protocol/test_framing_view_lifetime.py::test_decoder_releases_only_its_own_memoryview[\x00\x00\x00\x00\x00\x00\x00\x00\x01\x00\x00\x00%\x00\x00\x00] PASSED [ 60%]
+2026-10-08T20:42:08.8529827Z tests/protocol/test_framing_view_lifetime.py::test_returned_payload_is_owned_after_input_buffer_changes PASSED [ 61%]
+2026-10-08T20:42:08.8530666Z tests/protocol/test_handshake.py::test_worker_hello_accepted PASSED      [ 61%]
+2026-10-08T20:42:08.8531187Z tests/protocol/test_handshake.py::test_major_mismatch_rejected PASSED    [ 61%]
+2026-10-08T20:42:08.8531709Z tests/protocol/test_handshake.py::test_plugin_range_excludes_daemon PASSED [ 61%]
+2026-10-08T20:42:08.8532231Z tests/protocol/test_handshake.py::test_worker_missing_plugin_id PASSED   [ 61%]
+2026-10-08T20:42:08.8532734Z tests/protocol/test_handshake.py::test_ui_hello_accepted PASSED          [ 61%]
+2026-10-08T20:42:08.8533336Z tests/protocol/test_handshake.py::test_hello_round_trip_bytes PASSED     [ 61%]
+2026-10-08T20:42:08.8533894Z tests/protocol/test_lsl_bridge.py::test_lsl_discover_without_pylsl_is_honest PASSED [ 62%]
+2026-10-08T20:42:08.8534438Z tests/protocol/test_lsl_bridge.py::test_lsl_config_roundtrip PASSED      [ 62%]
+2026-10-08T20:42:08.8534969Z tests/protocol/test_native_ci_runner.py::test_zero_skip_success_is_accepted PASSED [ 62%]
+2026-10-08T20:42:08.8535544Z tests/protocol/test_native_ci_runner.py::test_skipped_native_test_is_rejected PASSED [ 62%]
+2026-10-08T20:42:08.8536209Z tests/protocol/test_native_ci_runner.py::test_nonzero_process_exit_is_rejected_even_with_clean_junit PASSED [ 62%]
+2026-10-08T20:42:08.8536903Z tests/protocol/test_native_ci_runner.py::test_build_must_be_explicit_and_inside_repo PASSED [ 62%]
+2026-10-08T20:42:08.8537543Z tests/protocol/test_native_ci_runner.py::test_changed_binary_bytes_change_receipt_hash PASSED [ 63%]
+2026-10-08T20:42:08.8538151Z tests/protocol/test_native_ci_runner.py::test_missing_binary_is_rejected PASSED [ 63%]
+2026-10-08T20:42:08.8538793Z tests/protocol/test_native_ci_runner.py::test_native_scope_is_explicit_core_sim_and_recovery PASSED [ 63%]
+2026-10-08T20:42:08.8539465Z tests/protocol/test_native_support.py::test_explicit_missing_build_fails_instead_of_skip PASSED [ 63%]
+2026-10-08T20:42:08.8540160Z tests/protocol/test_native_support.py::test_supported_build_is_discovered[windows-release/daemon] PASSED [ 63%]
+2026-10-08T20:42:08.8540909Z tests/protocol/test_native_support.py::test_supported_build_is_discovered[windows-debug/daemon/Debug] PASSED [ 63%]
+2026-10-08T20:42:08.8541634Z tests/protocol/test_native_support.py::test_explicit_build_does_not_fall_back_to_other_binary PASSED [ 63%]
+2026-10-08T20:42:08.8542321Z tests/protocol/test_native_support.py::test_native_state_does_not_touch_existing_instance PASSED [ 64%]
+2026-10-08T20:42:08.8542984Z tests/protocol/test_native_support.py::test_native_state_cannot_silently_reuse_directory PASSED [ 64%]
+2026-10-08T20:42:08.8543626Z tests/protocol/test_native_support.py::test_cleanup_addresses_only_given_process PASSED [ 64%]
+2026-10-08T20:42:08.8544264Z tests/protocol/test_native_support.py::test_cleanup_timeout_kills_then_reaps_same_process PASSED [ 64%]
+2026-10-08T20:42:08.8544886Z tests/protocol/test_native_support.py::test_finished_process_not_signalled PASSED [ 64%]
+2026-10-08T20:42:08.8545506Z tests/protocol/test_python_worker_sdk.py::test_sine_worker_discovers_numeric_batch_source PASSED [ 64%]
+2026-10-08T20:42:08.8546129Z tests/protocol/test_python_worker_sdk.py::test_sine_config_schema_and_apply PASSED [ 65%]
+2026-10-08T20:42:08.8546727Z tests/protocol/test_python_worker_sdk.py::test_hello_ack_path_with_memory_transport PASSED [ 65%]
+2026-10-08T20:42:08.8547346Z tests/protocol/test_python_worker_sdk.py::test_identify_discover_via_handle_frame PASSED [ 65%]
+2026-10-08T20:42:08.8547948Z tests/protocol/test_python_worker_sdk.py::test_framed_hello_round_trip_bytes PASSED [ 65%]
+2026-10-08T20:42:08.8548611Z tests/protocol/test_python_worker_sdk.py::test_preview_helper_builds_trace PASSED [ 65%]
+2026-10-08T20:42:08.8549174Z tests/protocol/test_python_worker_sdk.py::test_mcap_segment_writer PASSED [ 65%]
+2026-10-08T20:42:08.8549892Z tests/protocol/test_registry_readonly_receiving.py::test_future_registry_preserves_files_and_public_data[registry.sqlite] PASSED [ 65%]
+2026-10-08T20:42:08.8550863Z tests/protocol/test_registry_readonly_receiving.py::test_future_registry_preserves_files_and_public_data[registry #future% \u96ea.sqlite] PASSED [ 66%]
+2026-10-08T20:42:08.8551783Z tests/protocol/test_registry_readonly_receiving.py::test_future_wal_registry_reads_committed_tail_without_writing PASSED [ 66%]
+2026-10-08T20:42:08.8552625Z tests/protocol/test_registry_readonly_receiving.py::test_existing_empty_database_still_migrates_and_accepts_writes PASSED [ 66%]
+2026-10-08T20:42:08.8553407Z tests/protocol/test_runtime_isolation.py::test_application_state_is_private_to_this_test_session PASSED [ 66%]
+2026-10-08T20:42:08.8554744Z tests/protocol/test_schema_roundtrip.py::test_timing_header_round_trip PASSED [ 66%]
+2026-10-08T20:42:08.8555873Z tests/protocol/test_schema_roundtrip.py::test_checkpoint_preserves_original_and_effective PASSED [ 66%]
+2026-10-08T20:42:08.8557086Z tests/protocol/test_schema_roundtrip.py::test_gap_event_taxonomy PASSED  [ 66%]
+2026-10-08T20:42:08.8558322Z tests/protocol/test_schema_roundtrip.py::test_radar_array_software_coordinated_only_default PASSED [ 67%]
+2026-10-08T20:42:08.8559556Z tests/protocol/test_schema_roundtrip.py::test_session_manifest_round_trip PASSED [ 67%]
+2026-10-08T20:42:08.8560696Z tests/protocol/test_schema_roundtrip.py::test_emg_batch_embeds_timing_header PASSED [ 67%]
+2026-10-08T20:42:08.8561400Z tests/protocol/test_schema_roundtrip.py::test_imu_frame_embeds_timing_header PASSED [ 67%]
+2026-10-08T20:42:08.8561977Z tests/protocol/test_schema_roundtrip.py::test_stream_descriptor_classes PASSED [ 67%]
+2026-10-08T20:42:08.8562983Z tests/protocol/test_session_schemas.py::test_schema_index_lists_committed_files PASSED [ 67%]
+2026-10-08T20:42:08.8564293Z tests/protocol/test_session_schemas.py::test_each_schema_is_draft2020[analysis_feature_schema.schema.json] PASSED [ 68%]
+2026-10-08T20:42:08.8565837Z tests/protocol/test_session_schemas.py::test_each_schema_is_draft2020[analysis_job.schema.json] PASSED [ 68%]
+2026-10-08T20:42:08.8566841Z tests/protocol/test_session_schemas.py::test_each_schema_is_draft2020[annotation.schema.json] PASSED [ 68%]
+2026-10-08T20:42:08.8567550Z tests/protocol/test_session_schemas.py::test_each_schema_is_draft2020[checkpoint.schema.json] PASSED [ 68%]
+2026-10-08T20:42:08.8568500Z tests/protocol/test_session_schemas.py::test_each_schema_is_draft2020[clock_mapping.schema.json] PASSED [ 68%]
+2026-10-08T20:42:08.8569217Z tests/protocol/test_session_schemas.py::test_each_schema_is_draft2020[device_array.schema.json] PASSED [ 68%]
+2026-10-08T20:42:08.8569924Z tests/protocol/test_session_schemas.py::test_each_schema_is_draft2020[gap_event.schema.json] PASSED [ 68%]
+2026-10-08T20:42:08.8570653Z tests/protocol/test_session_schemas.py::test_each_schema_is_draft2020[health_snapshot.schema.json] PASSED [ 69%]
+2026-10-08T20:42:08.8571409Z tests/protocol/test_session_schemas.py::test_each_schema_is_draft2020[integrity_file_entry.schema.json] PASSED [ 69%]
+2026-10-08T20:42:08.8572170Z tests/protocol/test_session_schemas.py::test_each_schema_is_draft2020[integrity_manifest.schema.json] PASSED [ 69%]
+2026-10-08T20:42:08.8572898Z tests/protocol/test_session_schemas.py::test_each_schema_is_draft2020[logical_slot.schema.json] PASSED [ 69%]
+2026-10-08T20:42:08.8573606Z tests/protocol/test_session_schemas.py::test_each_schema_is_draft2020[physical_device.schema.json] PASSED [ 69%]
+2026-10-08T20:42:08.8574322Z tests/protocol/test_session_schemas.py::test_each_schema_is_draft2020[preset_snapshot.schema.json] PASSED [ 69%]
+2026-10-08T20:42:08.8575040Z tests/protocol/test_session_schemas.py::test_each_schema_is_draft2020[radar_array.schema.json] PASSED [ 69%]
+2026-10-08T20:42:08.8575916Z tests/protocol/test_session_schemas.py::test_each_schema_is_draft2020[sensor_instance.schema.json] PASSED [ 70%]
+2026-10-08T20:42:08.8576642Z tests/protocol/test_session_schemas.py::test_each_schema_is_draft2020[session_identity.schema.json] PASSED [ 70%]
+2026-10-08T20:42:08.8577376Z tests/protocol/test_session_schemas.py::test_each_schema_is_draft2020[session_manifest.schema.json] PASSED [ 70%]
+2026-10-08T20:42:08.8578102Z tests/protocol/test_session_schemas.py::test_each_schema_is_draft2020[source_instance.schema.json] PASSED [ 70%]
+2026-10-08T20:42:08.8578838Z tests/protocol/test_session_schemas.py::test_each_schema_is_draft2020[stream_descriptor.schema.json] PASSED [ 70%]
+2026-10-08T20:42:08.8579561Z tests/protocol/test_session_schemas.py::test_each_schema_is_draft2020[sync_anchor.schema.json] PASSED [ 70%]
+2026-10-08T20:42:08.8580266Z tests/protocol/test_session_schemas.py::test_each_schema_is_draft2020[timing_header.schema.json] PASSED [ 71%]
+2026-10-08T20:42:08.8581479Z tests/protocol/test_session_schemas.py::test_manifest_example_validates PASSED [ 71%]
+2026-10-08T20:42:08.8582111Z tests/protocol/test_session_schemas.py::test_checkpoint_example_validates PASSED [ 71%]
+2026-10-08T20:42:08.8582781Z tests/protocol/test_settings_registry.py::test_settings_atomic_roundtrip_preserves_unknown_keys PASSED [ 71%]
+2026-10-08T20:42:08.8583487Z tests/protocol/test_settings_registry.py::test_settings_geometry_per_fingerprint PASSED [ 71%]
+2026-10-08T20:42:08.8584127Z tests/protocol/test_settings_registry.py::test_registry_migrates_and_tracks_sessions PASSED [ 71%]
+2026-10-08T20:42:08.8584761Z tests/protocol/test_settings_registry.py::test_registry_newer_schema_opens_readonly PASSED [ 71%]
+2026-10-08T20:42:08.8585505Z tests/protocol/test_settings_registry.py::test_registry_newer_schema_connection_is_readonly_and_open_is_non_mutating PASSED [ 72%]
+2026-10-08T20:42:08.8586273Z tests/protocol/test_sim_advertise.py::test_manifest_includes_four_v1_families_and_custom PASSED [ 72%]
+2026-10-08T20:42:08.8586914Z tests/protocol/test_sim_advertise.py::test_streams_carry_versioned_data_schema_ids PASSED [ 72%]
+2026-10-08T20:42:08.8587524Z tests/protocol/test_sim_advertise.py::test_custom_force_uses_generic_numeric_batch PASSED [ 72%]
+2026-10-08T20:42:08.8588134Z tests/protocol/test_sim_advertise.py::test_hardware_identity_not_replaced_by_alias PASSED [ 72%]
+2026-10-08T20:42:08.8588740Z tests/protocol/test_sim_advertise.py::test_handshake_then_identify_advertise PASSED [ 72%]
+2026-10-08T20:42:08.8589320Z tests/protocol/test_sim_advertise.py::test_discover_and_stream_descriptors PASSED [ 73%]
+2026-10-08T20:42:08.8589928Z tests/protocol/test_sim_advertise.py::test_preview_descriptor_kinds_match_ui_contract PASSED [ 73%]
+2026-10-08T20:42:08.8590524Z tests/protocol/test_sim_advertise.py::test_hello_frame_bytes_round_trip PASSED [ 73%]
+2026-10-08T20:42:08.8591137Z tests/protocol/test_soak_cleanup.py::test_capture_error_is_not_swallowed_by_stop_refusal[0] PASSED [ 73%]
+2026-10-08T20:42:08.8591818Z tests/protocol/test_soak_cleanup.py::test_capture_error_is_not_swallowed_by_stop_refusal[7] PASSED [ 73%]
+2026-10-08T20:42:08.8592479Z tests/protocol/test_soak_cleanup.py::test_missing_arrays_after_start_still_requests_stop PASSED [ 73%]
+2026-10-08T20:42:08.8593093Z tests/protocol/test_soak_cleanup.py::test_synthetic_success_still_finalizes PASSED [ 73%]
+2026-10-08T20:42:08.8593719Z tests/protocol/test_soak_cleanup.py::test_stop_error_never_reports_success[request_code-7] PASSED [ 74%]
+2026-10-08T20:42:08.8594369Z tests/protocol/test_soak_cleanup.py::test_stop_error_never_reports_success[stop_code-7] PASSED [ 74%]
+2026-10-08T20:42:08.8595022Z tests/protocol/test_soak_cleanup.py::test_stop_error_never_reports_success[final_state-0] PASSED [ 74%]
+2026-10-08T20:42:08.8595681Z tests/protocol/test_soak_cleanup.py::test_interrupt_remains_visible_after_stop_refusal PASSED [ 74%]
+2026-10-08T20:42:08.8596277Z tests/protocol/test_structured_log.py::test_structured_log_json_fields PASSED [ 74%]
+2026-10-08T20:42:08.8596976Z tests/ui/test_analysis_failure_notes.py::test_worker_failure_note_reaches_warning_and_log PASSED [ 74%]
+2026-10-08T20:42:08.8597673Z tests/ui/test_analysis_failure_notes.py::test_worker_cancellation_logs_note_without_failure_dialog PASSED [ 74%]
+2026-10-08T20:42:08.8598368Z tests/ui/test_analysis_figure_export.py::test_exact_subset_and_all_original_provenance PASSED [ 75%]
+2026-10-08T20:42:08.8599026Z tests/ui/test_analysis_figure_export.py::test_invalid_selection_creates_nothing[selected0] PASSED [ 75%]
+2026-10-08T20:42:08.8599697Z tests/ui/test_analysis_figure_export.py::test_invalid_selection_creates_nothing[selected1] PASSED [ 75%]
+2026-10-08T20:42:08.8600355Z tests/ui/test_analysis_figure_export.py::test_invalid_selection_creates_nothing[selected2] PASSED [ 75%]
+2026-10-08T20:42:08.8601074Z tests/ui/test_analysis_figure_export.py::test_malformed_job_is_refused[schemaId-capture.analysis_job/999] PASSED [ 75%]
+2026-10-08T20:42:08.8602308Z tests/ui/test_analysis_figure_export.py::test_malformed_job_is_refused[jobId-other-job] PASSED [ 75%]
+2026-10-08T20:42:08.8603004Z tests/ui/test_analysis_figure_export.py::test_malformed_job_is_refused[status-failed] PASSED [ 76%]
+2026-10-08T20:42:08.8603651Z tests/ui/test_analysis_figure_export.py::test_malformed_job_is_refused[sessionId-None] PASSED [ 76%]
+2026-10-08T20:42:08.8604522Z tests/ui/test_analysis_figure_export.py::test_malformed_job_is_refused[paramsDigest-0000000000000000000000000000000000000000000000000000000000000000] PASSED [ 76%]
+2026-10-08T20:42:08.8605389Z tests/ui/test_analysis_figure_export.py::test_malformed_job_is_refused[outputs-value5] PASSED [ 76%]
+2026-10-08T20:42:08.8606027Z tests/ui/test_analysis_figure_export.py::test_malformed_job_is_refused[outputs-value6] PASSED [ 76%]
+2026-10-08T20:42:08.8606777Z tests/ui/test_analysis_figure_export.py::test_invalid_or_ambiguous_output_inventory[relativePath-../outside.png] PASSED [ 76%]
+2026-10-08T20:42:08.8607626Z tests/ui/test_analysis_figure_export.py::test_invalid_or_ambiguous_output_inventory[relativePath-/absolute.png] PASSED [ 76%]
+2026-10-08T20:42:08.8608465Z tests/ui/test_analysis_figure_export.py::test_invalid_or_ambiguous_output_inventory[relativePath-C:\\outside.png] PASSED [ 77%]
+2026-10-08T20:42:08.8609303Z tests/ui/test_analysis_figure_export.py::test_invalid_or_ambiguous_output_inventory[relativePath-figures/CON.png] PASSED [ 77%]
+2026-10-08T20:42:08.8610144Z tests/ui/test_analysis_figure_export.py::test_invalid_or_ambiguous_output_inventory[relativePath-figures/ALPHA.png] PASSED [ 77%]
+2026-10-08T20:42:08.8610924Z tests/ui/test_analysis_figure_export.py::test_invalid_or_ambiguous_output_inventory[bytes-True] PASSED [ 77%]
+2026-10-08T20:42:08.8611623Z tests/ui/test_analysis_figure_export.py::test_invalid_or_ambiguous_output_inventory[bytes--1] PASSED [ 77%]
+2026-10-08T20:42:08.8612312Z tests/ui/test_analysis_figure_export.py::test_invalid_or_ambiguous_output_inventory[sha256-bad] PASSED [ 77%]
+2026-10-08T20:42:08.8613138Z tests/ui/test_analysis_figure_export.py::test_changed_source_preserves_previous_export_and_all_other_inputs[job_manifest.json] PASSED [ 77%]
+2026-10-08T20:42:08.8614046Z tests/ui/test_analysis_figure_export.py::test_changed_source_preserves_previous_export_and_all_other_inputs[params.json] PASSED [ 78%]
+2026-10-08T20:42:08.8614939Z tests/ui/test_analysis_figure_export.py::test_changed_source_preserves_previous_export_and_all_other_inputs[figures/alpha.png] PASSED [ 78%]
+2026-10-08T20:42:08.8615803Z tests/ui/test_analysis_figure_export.py::test_only_selected_pngs_are_required_and_unrecorded_files_are_excluded PASSED [ 78%]
+2026-10-08T20:42:08.8616565Z tests/ui/test_analysis_figure_export.py::test_matching_hash_does_not_turn_invalid_png_into_a_figure PASSED [ 78%]
+2026-10-08T20:42:08.8617264Z tests/ui/test_analysis_figure_export.py::test_linked_png_cannot_substitute_an_external_file PASSED [ 78%]
+2026-10-08T20:42:08.8617919Z tests/ui/test_analysis_figure_export.py::test_source_session_destinations_are_refused PASSED [ 78%]
+2026-10-08T20:42:08.8618788Z tests/ui/test_analysis_figure_export.py::test_ambiguous_or_unreadable_manifest_cannot_enable_export[array] PASSED [ 79%]
+2026-10-08T20:42:08.8619603Z tests/ui/test_analysis_figure_export.py::test_ambiguous_or_unreadable_manifest_cannot_enable_export[duplicate-key] PASSED [ 79%]
+2026-10-08T20:42:08.8620428Z tests/ui/test_analysis_figure_export.py::test_ambiguous_or_unreadable_manifest_cannot_enable_export[nonfinite] PASSED [ 79%]
+2026-10-08T20:42:08.8621252Z tests/ui/test_analysis_figure_export.py::test_ambiguous_or_unreadable_manifest_cannot_enable_export[invalid-utf8] PASSED [ 79%]
+2026-10-08T20:42:08.8622117Z tests/ui/test_analysis_figure_export.py::test_ambiguous_or_unreadable_manifest_cannot_enable_export[deep-nonschema-object] PASSED [ 79%]
+2026-10-08T20:42:08.8622968Z tests/ui/test_analysis_figure_export.py::test_output_failure_preserves_previous_file_and_retry_succeeds[write] PASSED [ 79%]
+2026-10-08T20:42:08.8623847Z tests/ui/test_analysis_figure_export.py::test_output_failure_preserves_previous_file_and_retry_succeeds[flush] PASSED [ 79%]
+2026-10-08T20:42:08.8624661Z tests/ui/test_analysis_figure_export.py::test_output_failure_preserves_previous_file_and_retry_succeeds[publish] PASSED [ 80%]
+2026-10-08T20:42:08.8625430Z tests/ui/test_analysis_figure_export.py::test_new_destination_does_not_replace_a_raced_in_user_file PASSED [ 80%]
+2026-10-08T20:42:08.8626129Z tests/ui/test_analysis_figure_export.py::test_qt_selection_keyboard_export_and_clear_reload PASSED [ 80%]
+2026-10-08T20:42:08.8626823Z tests/ui/test_analysis_figure_export.py::test_empty_invalid_and_cancelled_destination_are_truthful PASSED [ 80%]
+2026-10-08T20:42:08.8627567Z tests/ui/test_analysis_figure_export.py::test_native_ui_failed_export_can_retry_with_explicit_replacement PASSED [ 80%]
+2026-10-08T20:42:08.8628345Z tests/ui/test_analysis_figure_export.py::test_clear_cancels_running_worker_before_a_new_job_can_be_exported PASSED [ 80%]
+2026-10-08T20:42:08.8629115Z tests/ui/test_analysis_figure_export.py::test_actual_analysis_job_figures_export_through_native_dialog PASSED [ 80%]
+2026-10-08T20:42:08.8630485Z tests/ui/test_analysis_job_comparison.py::test_original_bytes_provenance_and_decoded_views_are_immutable PASSED [ 81%]
+2026-10-08T20:42:08.8631695Z tests/ui/test_analysis_job_comparison.py::test_structured_diff_preserves_paths_types_absence_and_array_order PASSED [ 81%]
+2026-10-08T20:42:08.8632521Z tests/ui/test_analysis_job_comparison.py::test_equal_settings_do_not_require_equal_job_or_recorded_capture_hashes PASSED [ 81%]
+2026-10-08T20:42:08.8633296Z tests/ui/test_analysis_job_comparison.py::test_manifest_numeric_overflow_is_not_infinite_provenance PASSED [ 81%]
+2026-10-08T20:42:08.8633982Z tests/ui/test_analysis_job_comparison.py::test_oversized_diff_is_refused_as_a_whole PASSED [ 81%]
+2026-10-08T20:42:08.8634735Z tests/ui/test_analysis_job_comparison.py::test_malformed_input_is_refused_without_changing_any_other_bytes[params.json-[]] PASSED [ 81%]
+2026-10-08T20:42:08.8635683Z tests/ui/test_analysis_job_comparison.py::test_malformed_input_is_refused_without_changing_any_other_bytes[params.json-{"a":1,"a":2}] PASSED [ 82%]
+2026-10-08T20:42:08.8636641Z tests/ui/test_analysis_job_comparison.py::test_malformed_input_is_refused_without_changing_any_other_bytes[params.json-{"value":NaN}] PASSED [ 82%]
+2026-10-08T20:42:08.8637616Z tests/ui/test_analysis_job_comparison.py::test_malformed_input_is_refused_without_changing_any_other_bytes[params.json-{"value":Infinity}] PASSED [ 82%]
+2026-10-08T20:42:08.8638597Z tests/ui/test_analysis_job_comparison.py::test_malformed_input_is_refused_without_changing_any_other_bytes[params.json-{"value":1e999}] PASSED [ 82%]
+2026-10-08T20:42:08.8639578Z tests/ui/test_analysis_job_comparison.py::test_malformed_input_is_refused_without_changing_any_other_bytes[params.json-{"invalid":"\xff"}] PASSED [ 82%]
+2026-10-08T20:42:08.8640536Z tests/ui/test_analysis_job_comparison.py::test_malformed_input_is_refused_without_changing_any_other_bytes[job_manifest.json-[]] PASSED [ 82%]
+2026-10-08T20:42:08.8641620Z tests/ui/test_analysis_job_comparison.py::test_malformed_input_is_refused_without_changing_any_other_bytes[job_manifest.json-{"a":1,"a":2}] PASSED [ 82%]
+2026-10-08T20:42:08.8642576Z tests/ui/test_analysis_job_comparison.py::test_malformed_input_is_refused_without_changing_any_other_bytes[job_manifest.json-{] PASSED [ 83%]
+2026-10-08T20:42:08.8643448Z tests/ui/test_analysis_job_comparison.py::test_invalid_manifest_admission[schemaId-capture.analysis_job/999] PASSED [ 83%]
+2026-10-08T20:42:08.8644214Z tests/ui/test_analysis_job_comparison.py::test_invalid_manifest_admission[jobId-different-job] PASSED [ 83%]
+2026-10-08T20:42:08.8644913Z tests/ui/test_analysis_job_comparison.py::test_invalid_manifest_admission[status-failed] PASSED [ 83%]
+2026-10-08T20:42:08.8645576Z tests/ui/test_analysis_job_comparison.py::test_invalid_manifest_admission[status-value3] PASSED [ 83%]
+2026-10-08T20:42:08.8646294Z tests/ui/test_analysis_job_comparison.py::test_invalid_manifest_admission[sessionId-] PASSED [ 83%]
+2026-10-08T20:42:08.8646949Z tests/ui/test_analysis_job_comparison.py::test_invalid_manifest_admission[sessionId-1] PASSED [ 84%]
+2026-10-08T20:42:08.8647831Z tests/ui/test_analysis_job_comparison.py::test_invalid_manifest_admission[paramsDigest-0000000000000000000000000000000000000000000000000000000000000000] PASSED [ 84%]
+2026-10-08T20:42:08.8648723Z tests/ui/test_analysis_job_comparison.py::test_invalid_manifest_admission[outputs-value7] PASSED [ 84%]
+2026-10-08T20:42:08.8649393Z tests/ui/test_analysis_job_comparison.py::test_invalid_manifest_admission[outputs-value8] PASSED [ 84%]
+2026-10-08T20:42:08.8650099Z tests/ui/test_analysis_job_comparison.py::test_invalid_manifest_admission[outputs-params.json] PASSED [ 84%]
+2026-10-08T20:42:08.8650859Z tests/ui/test_analysis_job_comparison.py::test_parameter_output_entry_must_bind_actual_bytes_once[duplicate] PASSED [ 84%]
+2026-10-08T20:42:08.8651647Z tests/ui/test_analysis_job_comparison.py::test_parameter_output_entry_must_bind_actual_bytes_once[kind] PASSED [ 84%]
+2026-10-08T20:42:08.8652410Z tests/ui/test_analysis_job_comparison.py::test_parameter_output_entry_must_bind_actual_bytes_once[bytes] PASSED [ 85%]
+2026-10-08T20:42:08.8653193Z tests/ui/test_analysis_job_comparison.py::test_parameter_output_entry_must_bind_actual_bytes_once[bool-bytes] PASSED [ 85%]
+2026-10-08T20:42:08.8653962Z tests/ui/test_analysis_job_comparison.py::test_parameter_output_entry_must_bind_actual_bytes_once[sha] PASSED [ 85%]
+2026-10-08T20:42:08.8654704Z tests/ui/test_analysis_job_comparison.py::test_bound_size_depth_and_ambiguous_json_are_not_displayed PASSED [ 85%]
+2026-10-08T20:42:08.8655534Z tests/ui/test_analysis_job_comparison.py::test_stale_inputs_are_refused_then_explicit_reload_reads_current_bytes[params.json] PASSED [ 85%]
+2026-10-08T20:42:08.8656461Z tests/ui/test_analysis_job_comparison.py::test_stale_inputs_are_refused_then_explicit_reload_reads_current_bytes[job_manifest.json] PASSED [ 85%]
+2026-10-08T20:42:08.8657307Z tests/ui/test_analysis_job_comparison.py::test_directory_replacement_is_not_the_original_snapshot PASSED [ 85%]
+2026-10-08T20:42:08.8657966Z tests/ui/test_analysis_job_comparison.py::test_linked_input_files_are_refused PASSED [ 86%]
+2026-10-08T20:42:08.8658688Z tests/ui/test_analysis_job_comparison.py::test_comparison_requires_the_same_session_and_physical_jobs_parent[False] PASSED [ 86%]
+2026-10-08T20:42:08.8659541Z tests/ui/test_analysis_job_comparison.py::test_comparison_requires_the_same_session_and_physical_jobs_parent[True] PASSED [ 86%]
+2026-10-08T20:42:08.8660381Z tests/ui/test_analysis_job_comparison.py::test_native_keyboard_selection_cancellation_full_values_and_clear_reload PASSED [ 86%]
+2026-10-08T20:42:08.8661186Z tests/ui/test_analysis_job_comparison.py::test_native_invalid_choice_clears_comparison_and_reload_recovers PASSED [ 86%]
+2026-10-08T20:42:08.8662039Z tests/ui/test_analysis_job_comparison.py::test_inspector_displays_malformed_manifest_refusal_without_a_comparison[array-root] PASSED [ 86%]
+2026-10-08T20:42:08.8663077Z tests/ui/test_analysis_job_comparison.py::test_inspector_displays_malformed_manifest_refusal_without_a_comparison[invalid-output-row] PASSED [ 87%]
+2026-10-08T20:42:08.8664040Z tests/ui/test_analysis_job_comparison.py::test_inspector_displays_malformed_manifest_refusal_without_a_comparison[invalid-utf8] PASSED [ 87%]
+2026-10-08T20:42:08.8665012Z tests/ui/test_analysis_job_comparison.py::test_inspector_displays_malformed_manifest_refusal_without_a_comparison[deep-unknown-identity] PASSED [ 87%]
+2026-10-08T20:42:08.8665944Z tests/ui/test_analysis_job_comparison.py::test_inspector_refuses_linked_manifest_before_showing_external_metadata PASSED [ 87%]
+2026-10-08T20:42:08.8666797Z tests/ui/test_analysis_job_comparison.py::test_inspector_keeps_failed_job_metadata_and_outputs_without_saved_parameters PASSED [ 87%]
+2026-10-08T20:42:08.8667579Z tests/ui/test_analysis_job_comparison.py::test_native_real_qc_pair_keeps_all_saved_source_bytes PASSED [ 87%]
+2026-10-08T20:42:08.8668352Z tests/ui/test_analysis_job_file_reads.py::test_stable_file_allows_distinct_path_and_handle_ctime PASSED [ 87%]
+2026-10-08T20:42:08.8669083Z tests/ui/test_analysis_job_file_reads.py::test_change_in_handle_metadata_during_read_is_still_refused PASSED [ 88%]
+2026-10-08T20:42:08.8669866Z tests/ui/test_analysis_job_file_reads.py::test_replaced_path_after_handle_close_is_refused_even_with_identical_bytes PASSED [ 88%]
+2026-10-08T20:42:08.8670654Z tests/ui/test_analysis_job_file_reads.py::test_another_file_opened_after_path_inspection_is_refused PASSED [ 88%]
+2026-10-08T20:42:08.8671406Z tests/ui/test_analysis_predictions.py::test_default_identity_and_roundtrip_omit_the_retained_external_path PASSED [ 88%]
+2026-10-08T20:42:08.8672146Z tests/ui/test_analysis_predictions.py::test_empty_external_choice_is_explicit_and_actionable PASSED [ 88%]
+2026-10-08T20:42:08.8672829Z tests/ui/test_analysis_predictions.py::test_actual_qt_file_choice_cancel_and_reselection PASSED [ 88%]
+2026-10-08T20:42:08.8673591Z tests/ui/test_analysis_predictions.py::test_actual_qt_leading_space_is_exact_or_refuses_without_replacing_path PASSED [ 88%]
+2026-10-08T20:42:08.8674375Z tests/ui/test_analysis_predictions.py::test_actual_qt_file_choice_error_unwinds_without_replacing_path PASSED [ 89%]
+2026-10-08T20:42:08.8675118Z tests/ui/test_analysis_predictions.py::test_clear_keeps_external_and_moves_keyboard_focus_to_choose PASSED [ 89%]
+2026-10-08T20:42:08.8675840Z tests/ui/test_analysis_predictions.py::test_unavailable_file_never_becomes_identity[missing] PASSED [ 89%]
+2026-10-08T20:42:08.8676542Z tests/ui/test_analysis_predictions.py::test_unavailable_file_never_becomes_identity[directory] PASSED [ 89%]
+2026-10-08T20:42:08.8677230Z tests/ui/test_analysis_predictions.py::test_unavailable_file_never_becomes_identity[nul] PASSED [ 89%]
+2026-10-08T20:42:08.8677900Z tests/ui/test_analysis_predictions.py::test_removed_file_choice_is_retained_for_reselection PASSED [ 89%]
+2026-10-08T20:42:08.8678671Z tests/ui/test_analysis_predictions.py::test_other_commands_never_receive_prediction_path_and_keep_legacy_fields[qc] PASSED [ 90%]
+2026-10-08T20:42:08.8679542Z tests/ui/test_analysis_predictions.py::test_other_commands_never_receive_prediction_path_and_keep_legacy_fields[features] PASSED [ 90%]
+2026-10-08T20:42:08.8680426Z tests/ui/test_analysis_predictions.py::test_other_commands_never_receive_prediction_path_and_keep_legacy_fields[plots] PASSED [ 90%]
+2026-10-08T20:42:08.8681282Z tests/ui/test_analysis_predictions.py::test_other_commands_never_receive_prediction_path_and_keep_legacy_fields[all] PASSED [ 90%]
+2026-10-08T20:42:08.8682138Z tests/ui/test_analysis_predictions.py::test_other_commands_never_receive_prediction_path_and_keep_legacy_fields[pose] PASSED [ 90%]
+2026-10-08T20:42:08.8683020Z tests/ui/test_analysis_predictions.py::test_other_commands_never_receive_prediction_path_and_keep_legacy_fields[kinematics] PASSED [ 90%]
+2026-10-08T20:42:08.8683921Z tests/ui/test_analysis_predictions.py::test_other_commands_never_receive_prediction_path_and_keep_legacy_fields[ml_bundle] PASSED [ 90%]
+2026-10-08T20:42:08.8684841Z tests/ui/test_analysis_predictions.py::test_same_package_refresh_keeps_choice_and_new_package_clears_only_file PASSED [ 91%]
+2026-10-08T20:42:08.8685614Z tests/ui/test_analysis_predictions.py::test_old_modal_choice_cannot_replace_newer_context[package] PASSED [ 91%]
+2026-10-08T20:42:08.8686343Z tests/ui/test_analysis_predictions.py::test_old_modal_choice_cannot_replace_newer_context[command] PASSED [ 91%]
+2026-10-08T20:42:08.8687047Z tests/ui/test_analysis_predictions.py::test_old_modal_choice_cannot_replace_newer_context[mode] PASSED [ 91%]
+2026-10-08T20:42:08.8687740Z tests/ui/test_analysis_predictions.py::test_old_modal_choice_cannot_replace_newer_context[busy] PASSED [ 91%]
+2026-10-08T20:42:08.8688432Z tests/ui/test_analysis_predictions.py::test_old_modal_choice_cannot_replace_newer_context[clear] PASSED [ 91%]
+2026-10-08T20:42:08.8689195Z tests/ui/test_analysis_predictions.py::test_old_modal_choice_cannot_replace_newer_context[newer] PASSED [ 92%]
+2026-10-08T20:42:08.8689939Z tests/ui/test_analysis_predictions.py::test_reserved_not_yet_started_worker_disables_run_and_allows_cancel PASSED [ 92%]
+2026-10-08T20:42:08.8690676Z tests/ui/test_analysis_predictions.py::test_actual_external_file_runs_through_native_workbench PASSED [ 92%]
+2026-10-08T20:42:08.8691398Z tests/ui/test_analysis_predictions.py::test_invalid_external_file_refuses_without_identity_then_retries PASSED [ 92%]
+2026-10-08T20:42:08.8692143Z tests/ui/test_analysis_predictions.py::test_explicit_identity_after_external_choice_uses_original_job PASSED [ 92%]
+2026-10-08T20:42:08.8692864Z tests/ui/test_analysis_predictions.py::test_evaluation_controls_scroll_without_clipping[size0] PASSED [ 92%]
+2026-10-08T20:42:08.8693558Z tests/ui/test_analysis_predictions.py::test_evaluation_controls_scroll_without_clipping[size1] PASSED [ 92%]
+2026-10-08T20:42:08.8694290Z tests/ui/test_analysis_predictions.py::test_analysis_button_space_overrides_only_its_application_shortcut PASSED [ 93%]
+2026-10-08T20:42:08.8695022Z tests/ui/test_analysis_predictions.py::test_evaluation_controls_in_actual_minimum_main_window PASSED [ 93%]
+2026-10-08T20:42:08.8695658Z tests/ui/test_analysis_scope.py::test_operator_can_choose_a_sealed_session_scope PASSED [ 93%]
+2026-10-08T20:42:08.8696313Z tests/ui/test_analysis_scope.py::test_selected_scope_reaches_real_thread_job_and_mcap_outputs[range] PASSED [ 93%]
+2026-10-08T20:42:08.8697040Z tests/ui/test_analysis_scope.py::test_selected_scope_reaches_real_thread_job_and_mcap_outputs[section] PASSED [ 93%]
+2026-10-08T20:42:08.8697717Z tests/ui/test_analysis_scope.py::test_invalid_scope_blocks_job_before_outputs[0.2-0.1] PASSED [ 93%]
+2026-10-08T20:42:08.8698335Z tests/ui/test_analysis_scope.py::test_invalid_scope_blocks_job_before_outputs[0.1-0.1] PASSED [ 93%]
+2026-10-08T20:42:08.8698954Z tests/ui/test_analysis_scope.py::test_invalid_scope_blocks_job_before_outputs[NaN-1] PASSED [ 94%]
+2026-10-08T20:42:08.8699569Z tests/ui/test_analysis_scope.py::test_invalid_scope_blocks_job_before_outputs[inf-1] PASSED [ 94%]
+2026-10-08T20:42:08.8700206Z tests/ui/test_analysis_scope.py::test_invalid_scope_blocks_job_before_outputs[0.0000000001-1] PASSED [ 94%]
+2026-10-08T20:42:08.8700924Z tests/ui/test_analysis_scope.py::test_invalid_scope_blocks_job_before_outputs[1.00000000000000000000000000001-2] PASSED [ 94%]
+2026-10-08T20:42:08.8701615Z tests/ui/test_analysis_scope.py::test_invalid_scope_blocks_job_before_outputs[-1] PASSED [ 94%]
+2026-10-08T20:42:08.8702266Z tests/ui/test_analysis_scope.py::test_invalid_scope_blocks_job_before_outputs[0-9223372036.854775808] PASSED [ 94%]
+2026-10-08T20:42:08.8702910Z tests/ui/test_analysis_scope.py::test_scope_command_limits_and_package_identity PASSED [ 95%]
+2026-10-08T20:42:08.8703527Z tests/ui/test_analysis_scope.py::test_timeline_cursor_marks_range_without_losing_gaps PASSED [ 95%]
+2026-10-08T20:42:08.8704167Z tests/ui/test_analysis_scope.py::test_invalid_scope_stays_invalid_across_header_refresh PASSED [ 95%]
+2026-10-08T20:42:08.8705482Z tests/ui/test_analysis_scope.py::test_shadowed_checkpoint_id_is_unavailable_with_time_range_fallback[False] PASSED [ 95%]
+2026-10-08T20:42:08.8706267Z tests/ui/test_analysis_scope.py::test_shadowed_checkpoint_id_is_unavailable_with_time_range_fallback[True] PASSED [ 95%]
+2026-10-08T20:42:08.8707000Z tests/ui/test_analysis_scope.py::test_application_scope_survives_timer_and_review_navigation PASSED [ 95%]
+2026-10-08T20:42:08.8707653Z tests/ui/test_analysis_sources.py::test_operator_can_choose_exact_recorded_sources PASSED [ 95%]
+2026-10-08T20:42:08.8708270Z tests/ui/test_analysis_sources.py::test_chooser_tolerates_timer_delivery_before_click PASSED [ 96%]
+2026-10-08T20:42:08.8708957Z tests/ui/test_analysis_sources.py::test_source_choice_reaches_real_thread_job_and_mcap_outputs[None] PASSED [ 96%]
+2026-10-08T20:42:08.8709713Z tests/ui/test_analysis_sources.py::test_source_choice_reaches_real_thread_job_and_mcap_outputs[sampler.a] PASSED [ 96%]
+2026-10-08T20:42:08.8710555Z tests/ui/test_analysis_sources.py::test_source_choice_reaches_real_thread_job_and_mcap_outputs[sampler.b] PASSED [ 96%]
+2026-10-08T20:42:08.8711641Z tests/ui/test_analysis_sources.py::test_empty_selected_sources_never_become_all_sources PASSED [ 96%]
+2026-10-08T20:42:08.8712375Z tests/ui/test_analysis_sources.py::test_vanished_selection_stays_invalid_and_is_rechecked_at_launch[False] PASSED [ 96%]
+2026-10-08T20:42:08.8713152Z tests/ui/test_analysis_sources.py::test_vanished_selection_stays_invalid_and_is_rechecked_at_launch[True] PASSED [ 96%]
+2026-10-08T20:42:08.8713835Z tests/ui/test_analysis_sources.py::test_cancel_command_limits_and_package_identity PASSED [ 97%]
+2026-10-08T20:42:08.8714452Z tests/ui/test_analysis_sources.py::test_unreadable_inventory_refuses_explicit_subset PASSED [ 97%]
+2026-10-08T20:42:08.8715105Z tests/ui/test_analysis_sources.py::test_worker_refuses_a_subset_for_a_nonconsuming_command PASSED [ 97%]
+2026-10-08T20:42:08.8715804Z tests/ui/test_analysis_sources.py::test_application_sources_survive_timer_and_review_navigation PASSED [ 97%]
+2026-10-08T20:42:08.8716443Z tests/ui/test_analysis_workbench.py::test_analysis_screen_no_plot_startfile PASSED [ 97%]
+2026-10-08T20:42:08.8717001Z tests/ui/test_analysis_workbench.py::test_analysis_job_extras_validate PASSED [ 97%]
+2026-10-08T20:42:08.8717575Z tests/ui/test_analysis_workbench.py::test_sync_dashboard_view_loads_series_json PASSED [ 98%]
+2026-10-08T20:42:08.8718146Z tests/ui/test_analysis_workbench.py::test_job_writes_sync_series_json PASSED [ 98%]
+2026-10-08T20:42:08.8718710Z tests/ui/test_desktop_smoke.py::test_theme_tokens_dark_and_light PASSED  [ 98%]
+2026-10-08T20:42:08.8719213Z tests/ui/test_desktop_smoke.py::test_theme_apply_switches_palette PASSED [ 98%]
+2026-10-08T20:42:08.8719720Z tests/ui/test_desktop_smoke.py::test_session_timeline_from_fixture PASSED [ 98%]
+2026-10-08T20:42:08.8720215Z tests/ui/test_desktop_smoke.py::test_theme_exports PASSED                [ 98%]
+2026-10-08T20:42:08.8720702Z tests/ui/test_desktop_smoke.py::test_preview_widgets_empty PASSED        [ 98%]
+2026-10-08T20:42:08.8721217Z tests/ui/test_desktop_smoke.py::test_main_window_constructs_without_daemon PASSED [ 99%]
+2026-10-08T20:42:08.8721750Z tests/ui/test_desktop_smoke.py::test_instance_json_path_documented PASSED [ 99%]
+2026-10-08T20:42:08.8722286Z tests/ui/test_desktop_smoke.py::test_ui_application_matches_process_singleton PASSED [ 99%]
+2026-10-08T20:42:08.8722859Z tests/ui/test_modality_phase4.py::test_emg_expanded_shows_provisional_badge PASSED [ 99%]
+2026-10-08T20:42:08.8723436Z tests/ui/test_modality_phase4.py::test_radar_array_lines_when_multiple_selected PASSED [ 99%]
+2026-10-08T20:42:08.8723999Z tests/ui/test_modality_phase4.py::test_preset_library_lists_all_ten_types PASSED [ 99%]
+2026-10-08T20:42:08.8724525Z tests/ui/test_modality_phase4.py::test_vendor_replay_fixture_exists PASSED [100%]
+2026-10-08T20:42:08.8724835Z 
+2026-10-08T20:42:08.8724967Z ============================== warnings summary ===============================
+2026-10-08T20:42:08.8725417Z <frozen importlib._bootstrap>:488
+2026-10-08T20:42:08.8726308Z   <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.MessageMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+2026-10-08T20:42:08.8727130Z 
+2026-10-08T20:42:08.8727225Z <frozen importlib._bootstrap>:488
+2026-10-08T20:42:08.8728080Z   <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.ScalarMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+2026-10-08T20:42:08.8728878Z 
+2026-10-08T20:42:08.8729198Z tests/ui/test_analysis_predictions.py::test_actual_qt_leading_space_is_exact_or_refuses_without_replacing_path
+2026-10-08T20:42:08.8730041Z   tests\ui\test_analysis_predictions.py:217: PytestWarning: record_property is incompatible with junit_family 'xunit2' (use 'legacy' or 'xunit1')
+2026-10-08T20:42:08.8730850Z     def test_actual_qt_leading_space_is_exact_or_refuses_without_replacing_path(
+2026-10-08T20:42:08.8731156Z 
+2026-10-08T20:42:08.8731417Z tests/ui/test_analysis_predictions.py::test_evaluation_controls_scroll_without_clipping[size0]
+2026-10-08T20:42:08.8732035Z tests/ui/test_analysis_predictions.py::test_evaluation_controls_scroll_without_clipping[size1]
+2026-10-08T20:42:08.8732684Z tests/ui/test_analysis_predictions.py::test_analysis_button_space_overrides_only_its_application_shortcut
+2026-10-08T20:42:08.8733333Z tests/ui/test_analysis_predictions.py::test_evaluation_controls_in_actual_minimum_main_window
+2026-10-08T20:42:08.8734410Z   D:\a\CaptureSuite\CaptureSuite\tests\ui\test_analysis_predictions.py:602: DeprecationWarning: Function: 'QApplication.setActiveWindow(QWidget *act)' is marked as deprecated, please check the documentation for more information.
+2026-10-08T20:42:08.8735463Z     QApplication.setActiveWindow(window)  # Qt activation; no OS-focus claim.
+2026-10-08T20:42:08.8735783Z 
+2026-10-08T20:42:08.8735986Z -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+2026-10-08T20:42:08.8736603Z - generated xml file: D:\a\CaptureSuite\CaptureSuite\build\evidence\python-20261008T204010Z-51c87b8d\pytest.xml -
+2026-10-08T20:42:08.8737163Z ============================ slowest 20 durations =============================
+2026-10-08T20:42:08.8737627Z 17.19s call     tests/cmake/test_camera_packaging.py::test_camera_runtime_native_loader
+2026-10-08T20:42:08.8738302Z 5.23s call     tests/ui/test_analysis_predictions.py::test_actual_qt_leading_space_is_exact_or_refuses_without_replacing_path
+2026-10-08T20:42:08.8739077Z 4.59s call     tests/ui/test_analysis_figure_export.py::test_native_ui_failed_export_can_retry_with_explicit_replacement
+2026-10-08T20:42:08.8739813Z 3.71s call     tests/ui/test_analysis_figure_export.py::test_actual_analysis_job_figures_export_through_native_dialog
+2026-10-08T20:42:08.8740542Z 3.20s call     tests/ui/test_analysis_scope.py::test_selected_scope_reaches_real_thread_job_and_mcap_outputs[section]
+2026-10-08T20:42:08.8741255Z 3.11s call     tests/ui/test_analysis_scope.py::test_selected_scope_reaches_real_thread_job_and_mcap_outputs[range]
+2026-10-08T20:42:08.8742088Z 2.75s call     tests/analysis/test_numeric_cli_receiving.py::NumericCliReceiving::test_refused_stream_is_reported_and_strict_warnings_changes_exit
+2026-10-08T20:42:08.8742900Z 2.40s call     tests/ui/test_analysis_figure_export.py::test_qt_selection_keyboard_export_and_clear_reload
+2026-10-08T20:42:08.8743667Z 2.23s call     tests/analysis/test_numeric_cli_receiving.py::NumericCliReceiving::test_all_creates_distinct_numeric_tables_and_figures
+2026-10-08T20:42:08.8744427Z 2.17s call     tests/analysis/test_external_predictions.py::test_actual_cli_receives_prediction_file
+2026-10-08T20:42:08.8745221Z 2.12s call     tests/analysis/test_numeric_cli_receiving.py::NumericCliReceiving::test_case_only_stream_ids_keep_distinct_paths_and_gap_provenance
+2026-10-08T20:42:08.8746082Z 2.04s call     tests/analysis/test_job_failure_cli.py::test_cli_reports_retained_failed_replacement
+2026-10-08T20:42:08.8746737Z 2.01s call     tests/analysis/test_external_predictions.py::test_real_pose_kinematics_bundle_to_external_eval
+2026-10-08T20:42:08.8747544Z 1.75s call     tests/analysis/test_numeric_cli_receiving.py::NumericCliReceiving::test_plots_command_produces_real_numeric_figures_and_series
+2026-10-08T20:42:08.8748501Z 1.72s call     tests/analysis/test_checkpoint_sections.py::test_real_cli_emits_the_selected_section_without_changing_raw[middle-arguments1-bounds1-all]
+2026-10-08T20:42:08.8749366Z 1.60s call     tests/ui/test_analysis_predictions.py::test_invalid_external_file_refuses_without_identity_then_retries
+2026-10-08T20:42:08.8750244Z 1.58s call     tests/analysis/test_checkpoint_sections.py::test_real_cli_emits_the_selected_section_without_changing_raw[first-arguments0-bounds0-features]
+2026-10-08T20:42:08.8751308Z 1.55s call     tests/analysis/test_numeric_cli_receiving.py::NumericCliReceiving::test_features_source_selection_keeps_sibling_outputs_independent
+2026-10-08T20:42:08.8752347Z 1.54s call     tests/analysis/test_checkpoint_sections.py::test_real_cli_emits_the_selected_section_without_changing_raw[no-checkpoints-arguments7-bounds7-features]
+2026-10-08T20:42:08.8753399Z 1.52s call     tests/analysis/test_checkpoint_sections.py::test_real_cli_emits_the_selected_section_without_changing_raw[full-arguments6-bounds6-features]
+2026-10-08T20:42:08.8754088Z =========================== short test summary info ===========================
+2026-10-08T20:42:08.8754587Z SKIPPED [1] tests\protocol\test_daemon_e2e.py:74: capture_daemon.exe not built (run cmake --build)
+2026-10-08T20:42:08.8755213Z SKIPPED [1] tests\protocol\test_daemon_e2e.py:148: capture_daemon.exe not built (run cmake --build)
+2026-10-08T20:42:08.8755822Z SKIPPED [1] tests\protocol\test_daemon_e2e.py:161: capture_daemon.exe not built (run cmake --build)
+2026-10-08T20:42:08.8757122Z SKIPPED [1] tests\protocol\test_daemon_e2e.py:196: capture_daemon.exe not built (run cmake --build)
+2026-10-08T20:42:08.8757923Z SKIPPED [1] tests\protocol\test_daemon_e2e.py:238: capture_daemon.exe not built (run cmake --build)
+2026-10-08T20:42:09.4655566Z SKIPPED [1] tests\protocol\test_daemon_e2e.py:262: capture_daemon.exe not built (run cmake --build)
+2026-10-08T20:42:09.4656660Z =========== 657 passed, 6 skipped, 7 warnings in 116.55s (0:01:56) ============
+2026-10-08T20:42:09.4657159Z 
+2026-10-08T20:42:09.4657306Z {
+2026-10-08T20:42:09.4657661Z   "schema": "capturesuite.test-receipt.v1",
+2026-10-08T20:42:09.4658144Z   "accepted": true,
+2026-10-08T20:42:09.4658485Z   "process_exit": 0,
+2026-10-08T20:42:09.4658816Z   "counts": {
+2026-10-08T20:42:09.4659118Z     "tests": 663,
+2026-10-08T20:42:09.4659434Z     "passed": 657,
+2026-10-08T20:42:09.4659757Z     "failures": 0,
+2026-10-08T20:42:09.4660068Z     "errors": 0,
+2026-10-08T20:42:09.4660351Z     "skipped": 6
+2026-10-08T20:42:09.4660622Z   },
+2026-10-08T20:42:09.4661084Z   "junit_sha256": "ab07b6b5f975faac1e816175178c527c72cbd179c783586802510281cf40c409",
+2026-10-08T20:42:09.4661675Z   "problems": [],
+2026-10-08T20:42:09.4662122Z   "scope": "Process and test-evidence consistency, not clinical validation",
+2026-10-08T20:42:09.4662661Z   "seconds": 117.42558380000014,
+2026-10-08T20:42:09.4663018Z   "created_at": "2026-10-08T20:42:08.800469+00:00",
+2026-10-08T20:42:09.4663542Z   "run_directory": "build/evidence/python-20261008T204010Z-51c87b8d",
+2026-10-08T20:42:09.4664244Z   "log_sha256": "ca532ac4a5afa379da09e250f52000c15f48e39efbb9bcd77b9630b0b9e82a62",
+2026-10-08T20:42:09.4664915Z   "source_commit": "9e9204f76b105426b0affaa74733175c052f27ba",
+2026-10-08T20:42:09.4665378Z   "source_worktree_dirty": false,
+2026-10-08T20:42:09.4665972Z   "source_tree_sha256": "f474aba0c4ecb9abefa1997c1a820ba067adaf7cc12d99c248fe5e23edddc6f3",
+2026-10-08T20:42:09.4666619Z   "source_file_count": 1208,
+2026-10-08T20:42:09.4667194Z   "github": {
+2026-10-08T20:42:09.4667462Z     "GITHUB_ACTIONS": "true",
+2026-10-08T20:42:09.4667788Z     "GITHUB_EVENT_NAME": "push",
+2026-10-08T20:42:09.4668190Z     "GITHUB_SHA": "9e9204f76b105426b0affaa74733175c052f27ba",
+2026-10-08T20:42:09.4668650Z     "GITHUB_REF": "refs/heads/main",
+2026-10-08T20:42:09.4668998Z     "GITHUB_RUN_ID": "37840896851",
+2026-10-08T20:42:09.4669573Z     "GITHUB_WORKFLOW_REF": "Jacob-Met/CaptureSuite/.github/workflows/ci.yml@refs/heads/main"
+2026-10-08T20:42:09.4670182Z   },
+2026-10-08T20:42:09.4670434Z   "source_unchanged_during_test": true
+2026-10-08T20:42:09.4670728Z }
+2026-10-08T20:42:09.5657209Z ##[group]Run python tools/verify_prediction_workbench_ci.py
+2026-10-08T20:42:09.5657744Z [36;1mpython tools/verify_prediction_workbench_ci.py[0m
+2026-10-08T20:42:09.5752603Z shell: C:\Program Files\PowerShell\7\pwsh.EXE -command ". '{0}'"
+2026-10-08T20:42:09.5752968Z env:
+2026-10-08T20:42:09.5753259Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:42:09.5753751Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-10-08T20:42:09.5754207Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:42:09.5754613Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:42:09.5755010Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:42:09.5755321Z ##[endgroup]
+2026-10-08T20:42:09.8548028Z {
+2026-10-08T20:42:09.8548377Z   "source_commit": "9e9204f76b105426b0affaa74733175c052f27ba",
+2026-10-08T20:42:09.8549427Z   "source_tree_sha256": "f474aba0c4ecb9abefa1997c1a820ba067adaf7cc12d99c248fe5e23edddc6f3",
+2026-10-08T20:42:09.8550520Z   "junit_sha256": "ab07b6b5f975faac1e816175178c527c72cbd179c783586802510281cf40c409",
+2026-10-08T20:42:09.8551274Z   "junit_bytes": 94606,
+2026-10-08T20:42:09.8551617Z   "workbench_cases": [
+2026-10-08T20:42:09.8551950Z     {
+2026-10-08T20:42:09.8552487Z       "name": "test_default_identity_and_roundtrip_omit_the_retained_external_path",
+2026-10-08T20:42:09.8553943Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_default_identity_and_roundtrip_omit_the_retained_external_path\" time=\"0.016\" />"
+2026-10-08T20:42:09.8555154Z     },
+2026-10-08T20:42:09.8555436Z     {
+2026-10-08T20:42:09.8555876Z       "name": "test_empty_external_choice_is_explicit_and_actionable",
+2026-10-08T20:42:09.8557152Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_empty_external_choice_is_explicit_and_actionable\" time=\"0.015\" />"
+2026-10-08T20:42:09.8558265Z     },
+2026-10-08T20:42:09.8558527Z     {
+2026-10-08T20:42:09.8558900Z       "name": "test_actual_qt_file_choice_cancel_and_reselection",
+2026-10-08T20:42:09.8560008Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_actual_qt_file_choice_cancel_and_reselection\" time=\"0.521\" />"
+2026-10-08T20:42:09.8560929Z     },
+2026-10-08T20:42:09.8561176Z     {
+2026-10-08T20:42:09.8561721Z       "name": "test_actual_qt_leading_space_is_exact_or_refuses_without_replacing_path",
+2026-10-08T20:42:09.8563805Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_actual_qt_leading_space_is_exact_or_refuses_without_replacing_path\" time=\"5.267\"><properties><property name=\"literal_file_choice\" value=\"bounded-refusal\" /></properties></testcase>"
+2026-10-08T20:42:09.8565627Z     },
+2026-10-08T20:42:09.8565894Z     {
+2026-10-08T20:42:09.8566378Z       "name": "test_actual_qt_file_choice_error_unwinds_without_replacing_path",
+2026-10-08T20:42:09.8567656Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_actual_qt_file_choice_error_unwinds_without_replacing_path\" time=\"0.110\" />"
+2026-10-08T20:42:09.8568795Z     },
+2026-10-08T20:42:09.8569031Z     {
+2026-10-08T20:42:09.8569462Z       "name": "test_clear_keeps_external_and_moves_keyboard_focus_to_choose",
+2026-10-08T20:42:09.8570862Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_clear_keeps_external_and_moves_keyboard_focus_to_choose\" time=\"0.018\" />"
+2026-10-08T20:42:09.8572211Z     },
+2026-10-08T20:42:09.8572438Z     {
+2026-10-08T20:42:09.8572784Z       "name": "test_unavailable_file_never_becomes_identity[missing]",
+2026-10-08T20:42:09.8574016Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_unavailable_file_never_becomes_identity[missing]\" time=\"0.016\" />"
+2026-10-08T20:42:09.8575128Z     },
+2026-10-08T20:42:09.8575400Z     {
+2026-10-08T20:42:09.8578830Z       "name": "test_unavailable_file_never_becomes_identity[directory]",
+2026-10-08T20:42:09.8580208Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_unavailable_file_never_becomes_identity[directory]\" time=\"0.016\" />"
+2026-10-08T20:42:09.8581327Z     },
+2026-10-08T20:42:09.8581601Z     {
+2026-10-08T20:42:09.8582017Z       "name": "test_unavailable_file_never_becomes_identity[nul]",
+2026-10-08T20:42:09.8583196Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_unavailable_file_never_becomes_identity[nul]\" time=\"0.016\" />"
+2026-10-08T20:42:09.8584235Z     },
+2026-10-08T20:42:09.8584506Z     {
+2026-10-08T20:42:09.8584913Z       "name": "test_removed_file_choice_is_retained_for_reselection",
+2026-10-08T20:42:09.8586180Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_removed_file_choice_is_retained_for_reselection\" time=\"0.017\" />"
+2026-10-08T20:42:09.8587225Z     },
+2026-10-08T20:42:09.8587508Z     {
+2026-10-08T20:42:09.8588090Z       "name": "test_other_commands_never_receive_prediction_path_and_keep_legacy_fields[qc]",
+2026-10-08T20:42:09.8589641Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_other_commands_never_receive_prediction_path_and_keep_legacy_fields[qc]\" time=\"0.019\" />"
+2026-10-08T20:42:09.8590844Z     },
+2026-10-08T20:42:09.8591105Z     {
+2026-10-08T20:42:09.8591692Z       "name": "test_other_commands_never_receive_prediction_path_and_keep_legacy_fields[features]",
+2026-10-08T20:42:09.8593209Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_other_commands_never_receive_prediction_path_and_keep_legacy_fields[features]\" time=\"0.020\" />"
+2026-10-08T20:42:09.8594419Z     },
+2026-10-08T20:42:09.8594677Z     {
+2026-10-08T20:42:09.8595279Z       "name": "test_other_commands_never_receive_prediction_path_and_keep_legacy_fields[plots]",
+2026-10-08T20:42:09.8596833Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_other_commands_never_receive_prediction_path_and_keep_legacy_fields[plots]\" time=\"0.019\" />"
+2026-10-08T20:42:09.8598039Z     },
+2026-10-08T20:42:09.8598302Z     {
+2026-10-08T20:42:09.8598910Z       "name": "test_other_commands_never_receive_prediction_path_and_keep_legacy_fields[all]",
+2026-10-08T20:42:09.8600475Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_other_commands_never_receive_prediction_path_and_keep_legacy_fields[all]\" time=\"0.020\" />"
+2026-10-08T20:42:09.8601697Z     },
+2026-10-08T20:42:09.8601968Z     {
+2026-10-08T20:42:09.8602592Z       "name": "test_other_commands_never_receive_prediction_path_and_keep_legacy_fields[pose]",
+2026-10-08T20:42:09.8604144Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_other_commands_never_receive_prediction_path_and_keep_legacy_fields[pose]\" time=\"0.019\" />"
+2026-10-08T20:42:09.8605313Z     },
+2026-10-08T20:42:09.8605581Z     {
+2026-10-08T20:42:09.8606194Z       "name": "test_other_commands_never_receive_prediction_path_and_keep_legacy_fields[kinematics]",
+2026-10-08T20:42:09.8607763Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_other_commands_never_receive_prediction_path_and_keep_legacy_fields[kinematics]\" time=\"0.019\" />"
+2026-10-08T20:42:09.8608943Z     },
+2026-10-08T20:42:09.8609436Z     {
+2026-10-08T20:42:09.8610074Z       "name": "test_other_commands_never_receive_prediction_path_and_keep_legacy_fields[ml_bundle]",
+2026-10-08T20:42:09.8611694Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_other_commands_never_receive_prediction_path_and_keep_legacy_fields[ml_bundle]\" time=\"0.019\" />"
+2026-10-08T20:42:09.8612905Z     },
+2026-10-08T20:42:09.8613147Z     {
+2026-10-08T20:42:09.8613629Z       "name": "test_same_package_refresh_keeps_choice_and_new_package_clears_only_file",
+2026-10-08T20:42:09.8615763Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_same_package_refresh_keeps_choice_and_new_package_clears_only_file\" time=\"0.018\" />"
+2026-10-08T20:42:09.8616849Z     },
+2026-10-08T20:42:09.8617084Z     {
+2026-10-08T20:42:09.8617509Z       "name": "test_old_modal_choice_cannot_replace_newer_context[package]",
+2026-10-08T20:42:09.8618784Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_old_modal_choice_cannot_replace_newer_context[package]\" time=\"0.019\" />"
+2026-10-08T20:42:09.8619862Z     },
+2026-10-08T20:42:09.8620124Z     {
+2026-10-08T20:42:09.8620561Z       "name": "test_old_modal_choice_cannot_replace_newer_context[command]",
+2026-10-08T20:42:09.8621788Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_old_modal_choice_cannot_replace_newer_context[command]\" time=\"0.021\" />"
+2026-10-08T20:42:09.8622850Z     },
+2026-10-08T20:42:09.8623102Z     {
+2026-10-08T20:42:09.8623524Z       "name": "test_old_modal_choice_cannot_replace_newer_context[mode]",
+2026-10-08T20:42:09.8624705Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_old_modal_choice_cannot_replace_newer_context[mode]\" time=\"0.019\" />"
+2026-10-08T20:42:09.8625685Z     },
+2026-10-08T20:42:09.8625938Z     {
+2026-10-08T20:42:09.8626360Z       "name": "test_old_modal_choice_cannot_replace_newer_context[busy]",
+2026-10-08T20:42:09.8627578Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_old_modal_choice_cannot_replace_newer_context[busy]\" time=\"0.019\" />"
+2026-10-08T20:42:09.8628614Z     },
+2026-10-08T20:42:09.8628858Z     {
+2026-10-08T20:42:09.8629275Z       "name": "test_old_modal_choice_cannot_replace_newer_context[clear]",
+2026-10-08T20:42:09.8630428Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_old_modal_choice_cannot_replace_newer_context[clear]\" time=\"0.020\" />"
+2026-10-08T20:42:09.8631044Z     },
+2026-10-08T20:42:09.8631208Z     {
+2026-10-08T20:42:09.8631476Z       "name": "test_old_modal_choice_cannot_replace_newer_context[newer]",
+2026-10-08T20:42:09.8632201Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_old_modal_choice_cannot_replace_newer_context[newer]\" time=\"0.020\" />"
+2026-10-08T20:42:09.8634065Z     },
+2026-10-08T20:42:09.8634283Z     {
+2026-10-08T20:42:09.8634621Z       "name": "test_reserved_not_yet_started_worker_disables_run_and_allows_cancel",
+2026-10-08T20:42:09.8635392Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_reserved_not_yet_started_worker_disables_run_and_allows_cancel\" time=\"0.044\" />"
+2026-10-08T20:42:09.8636033Z     },
+2026-10-08T20:42:09.8636188Z     {
+2026-10-08T20:42:09.8636441Z       "name": "test_actual_external_file_runs_through_native_workbench",
+2026-10-08T20:42:09.8637276Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_actual_external_file_runs_through_native_workbench\" time=\"1.328\" />"
+2026-10-08T20:42:09.8638045Z     },
+2026-10-08T20:42:09.8638203Z     {
+2026-10-08T20:42:09.8638485Z       "name": "test_invalid_external_file_refuses_without_identity_then_retries",
+2026-10-08T20:42:09.8639242Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_invalid_external_file_refuses_without_identity_then_retries\" time=\"1.605\" />"
+2026-10-08T20:42:09.8640051Z     },
+2026-10-08T20:42:09.8640220Z     {
+2026-10-08T20:42:09.8640496Z       "name": "test_explicit_identity_after_external_choice_uses_original_job",
+2026-10-08T20:42:09.8641251Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_explicit_identity_after_external_choice_uses_original_job\" time=\"0.418\" />"
+2026-10-08T20:42:09.8641891Z     },
+2026-10-08T20:42:09.8642053Z     {
+2026-10-08T20:42:09.8642314Z       "name": "test_evaluation_controls_scroll_without_clipping[size0]",
+2026-10-08T20:42:09.8643109Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_evaluation_controls_scroll_without_clipping[size0]\" time=\"0.098\" />"
+2026-10-08T20:42:09.8643714Z     },
+2026-10-08T20:42:09.8643892Z     {
+2026-10-08T20:42:09.8644147Z       "name": "test_evaluation_controls_scroll_without_clipping[size1]",
+2026-10-08T20:42:09.8644842Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_evaluation_controls_scroll_without_clipping[size1]\" time=\"0.093\" />"
+2026-10-08T20:42:09.8645440Z     },
+2026-10-08T20:42:09.8645595Z     {
+2026-10-08T20:42:09.8645973Z       "name": "test_analysis_button_space_overrides_only_its_application_shortcut",
+2026-10-08T20:42:09.8646869Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_analysis_button_space_overrides_only_its_application_shortcut\" time=\"0.064\" />"
+2026-10-08T20:42:09.8647512Z     },
+2026-10-08T20:42:09.8647674Z     {
+2026-10-08T20:42:09.8647930Z       "name": "test_evaluation_controls_in_actual_minimum_main_window",
+2026-10-08T20:42:09.8648614Z       "xml": "<testcase classname=\"tests.ui.test_analysis_predictions\" name=\"test_evaluation_controls_in_actual_minimum_main_window\" time=\"0.303\" />"
+2026-10-08T20:42:09.8649200Z     }
+2026-10-08T20:42:09.8649348Z   ]
+2026-10-08T20:42:09.8649503Z }
+2026-10-08T20:42:09.9853178Z ##[group]Run actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+2026-10-08T20:42:09.9853682Z with:
+2026-10-08T20:42:09.9853888Z   name: python-test-evidence
+2026-10-08T20:42:09.9854138Z   path: build/evidence/
+2026-10-08T20:42:09.9854356Z   if-no-files-found: warn
+2026-10-08T20:42:09.9854577Z   retention-days: 7
+2026-10-08T20:42:09.9854779Z   compression-level: 6
+2026-10-08T20:42:09.9854982Z   overwrite: false
+2026-10-08T20:42:09.9855185Z   include-hidden-files: false
+2026-10-08T20:42:09.9855406Z   archive: true
+2026-10-08T20:42:09.9855579Z env:
+2026-10-08T20:42:09.9855832Z   pythonLocation: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:42:09.9856298Z   PKG_CONFIG_PATH: C:\hostedtoolcache\windows\Python\3.12.10\x64/lib/pkgconfig
+2026-10-08T20:42:09.9856762Z   Python_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:42:09.9857170Z   Python2_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:42:09.9857607Z   Python3_ROOT_DIR: C:\hostedtoolcache\windows\Python\3.12.10\x64
+2026-10-08T20:42:09.9857932Z ##[endgroup]
+2026-10-08T20:42:10.2946449Z With the provided path, there will be 282 files uploaded
+2026-10-08T20:42:10.2952946Z Artifact name is valid!
+2026-10-08T20:42:10.2954797Z Root directory input is valid!
+2026-10-08T20:42:10.7128330Z Uploading artifact: python-test-evidence.zip
+2026-10-08T20:42:10.7173568Z Beginning upload of artifact content to blob storage
+2026-10-08T20:42:12.0371009Z Uploaded bytes 1640896
+2026-10-08T20:42:12.1162057Z Finished uploading artifact content to blob storage!
+2026-10-08T20:42:12.1163871Z SHA256 digest of uploaded artifact is 85f78e0532e84230448cfc46965b19018691c4c65baa610827f7ffdb397a6867
+2026-10-08T20:42:12.1164936Z Finalizing artifact upload
+2026-10-08T20:42:12.5086776Z Artifact python-test-evidence successfully finalized. Artifact ID 11578395536
+2026-10-08T20:42:12.5088256Z Artifact python-test-evidence has been successfully uploaded! Final size is 1640896 bytes. Artifact ID is 11578395536
+2026-10-08T20:42:12.5094473Z Artifact download URL: https://github.com/Jacob-Met/CaptureSuite/actions/runs/37840896851/artifacts/11578395536
+2026-10-08T20:42:12.5385781Z Post job cleanup.
+2026-10-08T20:42:12.6739016Z (node:6512) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-08T20:42:12.6740112Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-08T20:42:12.6989564Z Post job cleanup.
+2026-10-08T20:42:12.9206768Z [command]"C:\Program Files\Git\bin\git.exe" version
+2026-10-08T20:42:12.9470078Z git version 2.56.0.windows.1
+2026-10-08T20:42:12.9527722Z Temporarily overriding HOME='D:\a\_temp\b6e2348a-4787-46c5-abc1-5ea6540945a9' before making global git config changes
+2026-10-08T20:42:12.9528695Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-08T20:42:12.9538991Z [command]"C:\Program Files\Git\bin\git.exe" config --global --add safe.directory D:\a\CaptureSuite\CaptureSuite
+2026-10-08T20:42:12.9822800Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp core\.sshCommand
+2026-10-08T20:42:13.0101726Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :\""
+2026-10-08T20:42:13.4557980Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-08T20:42:13.4806349Z http.https://github.com/.extraheader
+2026-10-08T20:42:13.4839620Z [command]"C:\Program Files\Git\bin\git.exe" config --local --unset-all http.https://github.com/.extraheader
+2026-10-08T20:42:13.5118160Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "sh -c \"git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :\""
+2026-10-08T20:42:13.9552847Z [command]"C:\Program Files\Git\bin\git.exe" config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-08T20:42:13.9834747Z [command]"C:\Program Files\Git\bin\git.exe" submodule foreach --recursive "git config --local --show-origin --name-only --get-regexp remote.origin.url"
+2026-10-08T20:42:14.4420819Z Cleaning up orphan processes
+2026-10-08T20:42:14.4682751Z Terminate orphan process: pid (4612) (vctip)
+2026-10-08T20:42:14.4753151Z Terminate orphan process: pid (4780) (MSBuild)
+2026-10-08T20:42:14.4914425Z Terminate orphan process: pid (4684) (conhost)
+2026-10-08T20:42:14.4930235Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

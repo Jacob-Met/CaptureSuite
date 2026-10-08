@@ -1,0 +1,93 @@
+{
+  "schema": "hamon.capture.analysis-workbench.integration.v1",
+  "worker": "estate-6e5752b49b6f/root",
+  "integrated": true,
+  "deployed": false,
+  "qualified_head": "8c88dde13093aec070b73683606e936dc0a4d232",
+  "qualified_head_tree": "124d8a691ed240661c4ba56c84219692bff6b228",
+  "premerge_main": "e48825b1b37544f4c31912e3c29a3918704f5456",
+  "merge": "9e9204f76b105426b0affaa74733175c052f27ba",
+  "parents": [
+    "e48825b1b37544f4c31912e3c29a3918704f5456",
+    "8c88dde13093aec070b73683606e936dc0a4d232"
+  ],
+  "precomputed_and_actual_tree": "a1b37ec1ab291a90cb2a383aa8f50b797ac09932",
+  "full_tree": {
+    "leaves": 1208,
+    "current_unowned_leaves_preserved": 1167,
+    "contribution_paths": 41,
+    "contribution_additions": 35,
+    "non_progress_contribution_blobs_exact": 40,
+    "unexpected_paths": 0,
+    "dropped_paths": 0
+  },
+  "progress": {
+    "path": "docs/design/research/PROGRESS.md",
+    "current_chars": 68766,
+    "exact_qualified_append_chars": 5399,
+    "composed_chars": 74165,
+    "blob": "a8bd0bd47815fa20108cd37ee3ff57e85e9a92a4",
+    "complete_content_readback_equal": true
+  },
+  "own_actual_hosted_checkout": "7d39a84d771506f0793e483b5fe63344a533530c",
+  "own_hosted_tree": "82bfa0ef7bd72ee33c3cd1dd4b401415564cc9d5",
+  "own_run": 37833803462,
+  "python": {
+    "job": 113505614565,
+    "passed": 640,
+    "skipped": 6,
+    "failed": 0,
+    "wrapper_seconds": 98.773261,
+    "source_clean": true,
+    "source_unchanged": true,
+    "source_files": 1195,
+    "junit_bytes": 91846,
+    "junit_sha256": "6dcd60ff68b61e1e0c68eff8e59f2df75fa336881d9f034641ac63ebeb21302c",
+    "all_32_workbench_cases_passed": true,
+    "literal_name_branch": "bounded-refusal",
+    "receipt_comment": 6067946692
+  },
+  "native": {
+    "job": 113505614092,
+    "ctest_passed": 30,
+    "ctest_total": 30,
+    "daemon_passed": 6,
+    "daemon_skipped": 0,
+    "source_worktree_dirty": true,
+    "source_unchanged_during_test": true,
+    "junit_sha256": "3f31a600618d73e544cbc005ea6baaec5499ff0c6cffc3f1e5c0a8f012192ec4",
+    "receipt_comment": 6068268696
+  },
+  "late_upstream": {
+    "actual_checkout": "8445056bdb467a061091f45e3357992fa306df0f",
+    "tree": "a0d17ec8df857b295321fef89e04a831fe51e8d6",
+    "ordinary_run": 37833165167,
+    "python_passed": 625,
+    "python_skipped": 6,
+    "ctest_passed": 30,
+    "daemon_passed": 6,
+    "camera_run": 37833165064,
+    "camera_is_synthetic": true,
+    "receipt_comment": 6068615816
+  },
+  "receiving_boundary": "Final composition admitted by exact full-tree/source preservation plus separately received branch gates; no completed full-suite execution at final merge is claimed here.",
+  "issue69": {
+    "state": "closed",
+    "reason": "completed",
+    "closed_at": "2026-10-08T20:38:02Z"
+  },
+  "actions_hold": {
+    "primary_comment": 6067592767,
+    "first_recovered_by_root": "After the merge and its readback, through the newest HAMON140 page.",
+    "new_triggering_writes": "held",
+    "run_triggered_before_recovery": 37840896851,
+    "observed_at": "2026-10-08 20:41:02 UTC",
+    "status": "in_progress",
+    "jobs": [
+      113529694748,
+      113529695220
+    ],
+    "cancelled_by_this_worker": false,
+    "blocker": "Enabled GitHub connector has no cancellation or workflow-disable method; no alternate identity or unsupported endpoint was used."
+  }
+}

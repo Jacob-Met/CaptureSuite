@@ -1,0 +1,13 @@
+{
+  "r0": {
+    "exit_code": 1,
+    "input": "non-TTY process received EOF before payload",
+    "accepted": false
+  },
+  "r1": {
+    "exit_code": 0,
+    "input": "raw non-echo terminal, one complete JSON line",
+    "accepted": true
+  },
+  "no_fresh_tests": true
+}
