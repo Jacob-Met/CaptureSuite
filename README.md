@@ -58,6 +58,9 @@ existing output directory, and preserves failure output for diagnosis. It does
 not establish hardware performance, clinical validity, or full product readiness.
 Tests: `tests/analysis/test_offline_demo.py`.
 
+For several existing finalized packages, use [Review QC across selected packages](docs/QC_PACKAGE_REVIEW.md)
+to retain one external index and separate native reports.
+
 ## Simulation walkthrough (after build prerequisites)
 
 ```powershell

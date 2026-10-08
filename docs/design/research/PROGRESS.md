@@ -1122,3 +1122,79 @@ history/selection/completion, backend jobs/pipeline, galleries and raw storage
 remain with their current owners. The ownership fence is coordinated in #55 and
 HAMON #140. Details: ANALYSIS_SOURCE_SELECTION.md and
 docs/evidence/analysis-sources-234cae4aee53/.
+
+
+## 2026-10-08 — Explicit multi-package QC review (7879c2abc07f)
+
+Issue #74 adds `tools/review_qc_packages.py --output NEW_DIR PACKAGE...` for
+1–32 explicitly selected finalized or recovered packages. The new external
+review retains caller order, distinct paths with equal IDs, literal identities,
+per-package failures and each complete native JSON/HTML report. Existing and
+inside-package destinations are refused before creation; read-only collection
+does not start a job, alter raw/session/processing data or update application state.
+
+The independently frozen actual CLI consumer preserved the original missing
+entrypoint failure, then caught a real application-state write in the first
+candidate. A separate fresh-process receiver identified eager package job imports
+creating a Matplotlib font cache during QC-only import. The coordinated package
+initializer now defers only the four existing job exports until requested; their
+real identities, signatures, public names and explicit/star-import behavior remain
+intact. The native collector, renderer, jobs, pipeline and plotting sources stay
+unchanged.
+
+Supported hosted Windows/Python 3.12 receiving on corrected source
+`d2e39d1382ee2a5b64f97ef207bf322c7a16ba13` passes all eight independent
+CLI groups (15 actual commands), fresh QC-state/API controls, three real
+file-open browser groups, 30 CTest cases and six daemon/recovery cases.
+Both independent reviewers verified the 36 fixed artifacts and four actual
+desktop/phone PNGs. Native JSON/HTML remains exact; the existing report's wide
+precision table retains its horizontal scroller.
+
+Normal maintained Python executions reached the unchanged 300-second limit.
+An isolated verbose control passed 559 cases with six existing skips in
+297.02 seconds and located two existing real threaded scope tests taking
+96.39/92.59 seconds. Coordinated issue #53 follow-through adds only a one
+millisecond Python yield after each existing Qt wait in the worker completion
+and cancellation loops. The same complete suite then passes 559 cases with
+the same six skips in 137.45 seconds; those scope cases take 3.20/3.24 seconds.
+Every assertion, Qt event pump, fixture, actual MCAP/provenance check and both
+120/300-second deadlines remain intact. This receiving adjustment does not
+change production worker scheduling or expand the global timeout.
+
+The original source/failures, raw hosted logs, exact import diagnosis, current
+artifacts and independent reviews are retained on the dedicated
+[QC receiving branch](https://github.com/Jacob-Met/CaptureSuite/tree/receiving/qc-package-review-7879c2abc07f-20261008/docs/evidence/qc-package-review-7879c2abc07f).
+The composed PR still requires its ordinary current-source gates and final
+independent integration review. These synthetic fixture checks do not decode the
+two placeholder MCAP files used by QC, rehash raw streams, certify scientific
+validity, infer participant identity or validate physical hardware.
+
+
+## 2026-10-08 — QC review current-source continuation without Actions (7879c2abc07f)
+
+The accepted PR79 head `7f5548fb12e040f45d7e1f5867d511dc33a618ac`
+(tree `94f79e2f1f873507572045bfd1727df636076350`) has completed its
+ordinary maintained Windows gate: actual checkout
+`c062c338df1a2e11e927ab9efb189c062f0ea189` uses that exact tree and
+passed 559 tests with six daemon-not-built skips, process exit 0 and accepted
+JUnit/receipt, in 102.7499045 seconds under the unchanged 300-second limit.
+Its separately required QC consumer run also succeeded. These are retained
+results for that exact source, not a claim about later source.
+
+Current-main composition starts at
+`e48825b1b37544f4c31912e3c29a3918704f5456` (tree
+`a0d17ec8df857b295321fef89e04a831fe51e8d6`). It retains the complete
+current progress record and appends the original contribution unchanged.
+The other twelve owned paths have no content conflict; current desktop source
+selection/job comparison, ML feature-order additions and the diagnostic-only
+runner verbosity remain intact. The native QC dependency closure, source
+fixtures and dependency manifests are unchanged. Current desktop/job-API
+coexistence requires its own targeted native receiving.
+
+Jacob's 2026-10-08 19:32 UTC no-GitHub-Actions direction is active
+([authoritative relay](https://github.com/Jacob-Met/hamon/issues/143#issuecomment-6067592767)).
+This preparation creates source objects only. PR79's branch, draft and merge
+remain unchanged because synchronizing or merging it would match the retained
+push/pull-request workflows. No new Actions run, altered gate, native installation
+or completed current-main integration is claimed. Existing successful/failed
+receipts retain their original source, method and acceptance boundaries.
