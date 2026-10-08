@@ -16,6 +16,7 @@ from PySide6.QtWidgets import (
 
 from . import theme
 from .state import CaptureState, fmt_time
+from .widgets_review_video import RecordedVideoReview
 
 
 class ReviewScreen(QWidget):
@@ -90,6 +91,9 @@ class ReviewScreen(QWidget):
             lists.addLayout(col, 1)
         root.addLayout(lists, 1)
 
+        self._recorded_video = RecordedVideoReview()
+        root.addWidget(self._recorded_video)
+
         actions = QHBoxLayout()
         self._btn_export = QPushButton("Export…")
         self._btn_export.setEnabled(False)
@@ -102,6 +106,7 @@ class ReviewScreen(QWidget):
         root.addLayout(actions)
 
     def load_package(self, package_path: str, *, recovered: bool = False) -> None:
+        self._recorded_video.reset("Loading package…")
         self._package = package_path
         self._path_label.setText(package_path)
         self._btn_export.setEnabled(bool(package_path))
@@ -112,6 +117,8 @@ class ReviewScreen(QWidget):
         except Exception as exc:  # noqa: BLE001
             self._banner.setText(f"Could not load package: {exc}")
             return
+
+        self._recorded_video.load_package(package_path, state=summary.state)
 
         recover_note = ""
         if recovered or summary.recovery_reports:

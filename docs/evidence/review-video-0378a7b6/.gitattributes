@@ -1,0 +1,2 @@
+# Preserve exact native receiving bytes, including original CRLF receipts.
+* -text

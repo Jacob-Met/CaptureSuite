@@ -1174,3 +1174,42 @@ The second unchanged-source diagnostic separates three actual failures and a lat
 ### PR84 exact file-model boundary and owned scope receiving (2026-10-08)
 
 The unchanged-source Windows probe directly distinguished the literal OS filename from Qt6.12 widget-model normalization. Successful real chooser receiving now uses a representable Unicode/internal-space filename; the original leading-space fixture separately requires exact identity or bounded refusal with prior path unchanged, recording the actual branch in JUnit. No product path normalization or native Windows-dialog claim is introduced. The exact owner-authored PR79 scope wait blob817412fe is adopted with estate-7879c2abc07f credit, preserving every existing bound/assertion and excluding its unrelated QC source. The current picker, narrow focused-button Space correction, one-command read-only JUnit gate, original failures and native receiving packets are preserved. Ordinary full-suite Windows acceptance is still pending for this exact composition.
+
+
+## 2026-10-08 — Native recorded-video segment review (chatgpt-0378a7b6b7c2/mac_product)
+
+Issue #89 adds explicit retained-video selection, play/pause and seeking to Review.
+Source/stream/package-relative identities distinguish equal segment filenames.
+The media clock is segment-local; there is no inferred camera/checkpoint alignment,
+gap interpolation or audio playback. Native asynchronous signals are guarded by
+player identity and selection generation. Missing/invalid media, changed/failed
+package loads and hidden views retire or pause the old media with actionable state.
+
+The original actual Review screen loaded a two-stream, four-file synthetic package
+and had no playback controls. The candidate's real Qt decoder received red/blue/green
+frames, explicit pause and 1500/2000 ms seek. All 15 focused model/UI cases passed;
+the complete inherited UI suite plus new model cases passed 151 tests in 256.11 s.
+Independent MSI review accepted the exact three production hashes and a distinct
+six-group native oracle: rapid A→B→A, 14 retired-player signal emissions, independent
+identity/generation challenges, fractional seek despite a large checkpoint clock,
+error/reload and failed-package retirement. First receiver/setup failures remain
+retained separately from successful observations. Original source leaves outside
+the seven-line Review hook and every original raw fixture byte were preserved.
+
+Readable dark/light/compact control captures and actual decoded QVideoSink pixels
+are qualified separately: offscreen QWidget captures omit the GPU video surface,
+and a Windows-platform HWND grab returned an entirely black image. Onscreen GPU
+presentation is not claimed. The standard native QVideoWidget renderer remains
+unchanged. Existing supported hosted Windows Python and C++/native gates and final
+current-main receiving remain required before integration. See
+[operator steps](../../operator/RECORDED_VIDEO_REVIEW.md) and
+[full evidence and limits](../../evidence/review-video-0378a7b6/README.md).
+
+Follow-up actual MainWindow receiving found the existing global checkpoint Space
+shortcut consuming the new focused Play button. The original failure is retained.
+A narrow viewer-local unmodified-Space override on its three buttons now passes
+24 native model/video/desktop cases, including actual application toggle/play/
+pause/reload, C and Ctrl+Space countercontrols, outside-viewer checkpoint routing
+and unchanged raw fixtures. The original 151-case and independent lifecycle receipts
+remain at their historical source pins. App shortcut source and PR84 ownership
+remain untouched; final hosted gates are required on this corrected successor.

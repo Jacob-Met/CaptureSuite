@@ -1,0 +1,550 @@
+{
+  "outcome": "pass",
+  "sourceSha256": "126c4ec87d5af60d151292ff1b2d7f7f3d5ad2f63112507c71d05385bf80f594",
+  "sourceStable": true,
+  "cases": 90,
+  "claimed": 3,
+  "rows": [
+    {
+      "control": "play",
+      "key": "Space",
+      "modifiers": "none",
+      "claimed": true
+    },
+    {
+      "control": "play",
+      "key": "Space",
+      "modifiers": "ctrl",
+      "claimed": false
+    },
+    {
+      "control": "play",
+      "key": "Space",
+      "modifiers": "alt",
+      "claimed": false
+    },
+    {
+      "control": "play",
+      "key": "Space",
+      "modifiers": "shift",
+      "claimed": false
+    },
+    {
+      "control": "play",
+      "key": "Space",
+      "modifiers": "meta",
+      "claimed": false
+    },
+    {
+      "control": "play",
+      "key": "C",
+      "modifiers": "none",
+      "claimed": false
+    },
+    {
+      "control": "play",
+      "key": "C",
+      "modifiers": "ctrl",
+      "claimed": false
+    },
+    {
+      "control": "play",
+      "key": "C",
+      "modifiers": "alt",
+      "claimed": false
+    },
+    {
+      "control": "play",
+      "key": "C",
+      "modifiers": "shift",
+      "claimed": false
+    },
+    {
+      "control": "play",
+      "key": "C",
+      "modifiers": "meta",
+      "claimed": false
+    },
+    {
+      "control": "play",
+      "key": "Return",
+      "modifiers": "none",
+      "claimed": false
+    },
+    {
+      "control": "play",
+      "key": "Return",
+      "modifiers": "ctrl",
+      "claimed": false
+    },
+    {
+      "control": "play",
+      "key": "Return",
+      "modifiers": "alt",
+      "claimed": false
+    },
+    {
+      "control": "play",
+      "key": "Return",
+      "modifiers": "shift",
+      "claimed": false
+    },
+    {
+      "control": "play",
+      "key": "Return",
+      "modifiers": "meta",
+      "claimed": false
+    },
+    {
+      "control": "reload",
+      "key": "Space",
+      "modifiers": "none",
+      "claimed": true
+    },
+    {
+      "control": "reload",
+      "key": "Space",
+      "modifiers": "ctrl",
+      "claimed": false
+    },
+    {
+      "control": "reload",
+      "key": "Space",
+      "modifiers": "alt",
+      "claimed": false
+    },
+    {
+      "control": "reload",
+      "key": "Space",
+      "modifiers": "shift",
+      "claimed": false
+    },
+    {
+      "control": "reload",
+      "key": "Space",
+      "modifiers": "meta",
+      "claimed": false
+    },
+    {
+      "control": "reload",
+      "key": "C",
+      "modifiers": "none",
+      "claimed": false
+    },
+    {
+      "control": "reload",
+      "key": "C",
+      "modifiers": "ctrl",
+      "claimed": false
+    },
+    {
+      "control": "reload",
+      "key": "C",
+      "modifiers": "alt",
+      "claimed": false
+    },
+    {
+      "control": "reload",
+      "key": "C",
+      "modifiers": "shift",
+      "claimed": false
+    },
+    {
+      "control": "reload",
+      "key": "C",
+      "modifiers": "meta",
+      "claimed": false
+    },
+    {
+      "control": "reload",
+      "key": "Return",
+      "modifiers": "none",
+      "claimed": false
+    },
+    {
+      "control": "reload",
+      "key": "Return",
+      "modifiers": "ctrl",
+      "claimed": false
+    },
+    {
+      "control": "reload",
+      "key": "Return",
+      "modifiers": "alt",
+      "claimed": false
+    },
+    {
+      "control": "reload",
+      "key": "Return",
+      "modifiers": "shift",
+      "claimed": false
+    },
+    {
+      "control": "reload",
+      "key": "Return",
+      "modifiers": "meta",
+      "claimed": false
+    },
+    {
+      "control": "toggle",
+      "key": "Space",
+      "modifiers": "none",
+      "claimed": true
+    },
+    {
+      "control": "toggle",
+      "key": "Space",
+      "modifiers": "ctrl",
+      "claimed": false
+    },
+    {
+      "control": "toggle",
+      "key": "Space",
+      "modifiers": "alt",
+      "claimed": false
+    },
+    {
+      "control": "toggle",
+      "key": "Space",
+      "modifiers": "shift",
+      "claimed": false
+    },
+    {
+      "control": "toggle",
+      "key": "Space",
+      "modifiers": "meta",
+      "claimed": false
+    },
+    {
+      "control": "toggle",
+      "key": "C",
+      "modifiers": "none",
+      "claimed": false
+    },
+    {
+      "control": "toggle",
+      "key": "C",
+      "modifiers": "ctrl",
+      "claimed": false
+    },
+    {
+      "control": "toggle",
+      "key": "C",
+      "modifiers": "alt",
+      "claimed": false
+    },
+    {
+      "control": "toggle",
+      "key": "C",
+      "modifiers": "shift",
+      "claimed": false
+    },
+    {
+      "control": "toggle",
+      "key": "C",
+      "modifiers": "meta",
+      "claimed": false
+    },
+    {
+      "control": "toggle",
+      "key": "Return",
+      "modifiers": "none",
+      "claimed": false
+    },
+    {
+      "control": "toggle",
+      "key": "Return",
+      "modifiers": "ctrl",
+      "claimed": false
+    },
+    {
+      "control": "toggle",
+      "key": "Return",
+      "modifiers": "alt",
+      "claimed": false
+    },
+    {
+      "control": "toggle",
+      "key": "Return",
+      "modifiers": "shift",
+      "claimed": false
+    },
+    {
+      "control": "toggle",
+      "key": "Return",
+      "modifiers": "meta",
+      "claimed": false
+    },
+    {
+      "control": "choice",
+      "key": "Space",
+      "modifiers": "none",
+      "claimed": false
+    },
+    {
+      "control": "choice",
+      "key": "Space",
+      "modifiers": "ctrl",
+      "claimed": false
+    },
+    {
+      "control": "choice",
+      "key": "Space",
+      "modifiers": "alt",
+      "claimed": false
+    },
+    {
+      "control": "choice",
+      "key": "Space",
+      "modifiers": "shift",
+      "claimed": false
+    },
+    {
+      "control": "choice",
+      "key": "Space",
+      "modifiers": "meta",
+      "claimed": false
+    },
+    {
+      "control": "choice",
+      "key": "C",
+      "modifiers": "none",
+      "claimed": false
+    },
+    {
+      "control": "choice",
+      "key": "C",
+      "modifiers": "ctrl",
+      "claimed": false
+    },
+    {
+      "control": "choice",
+      "key": "C",
+      "modifiers": "alt",
+      "claimed": false
+    },
+    {
+      "control": "choice",
+      "key": "C",
+      "modifiers": "shift",
+      "claimed": false
+    },
+    {
+      "control": "choice",
+      "key": "C",
+      "modifiers": "meta",
+      "claimed": false
+    },
+    {
+      "control": "choice",
+      "key": "Return",
+      "modifiers": "none",
+      "claimed": false
+    },
+    {
+      "control": "choice",
+      "key": "Return",
+      "modifiers": "ctrl",
+      "claimed": false
+    },
+    {
+      "control": "choice",
+      "key": "Return",
+      "modifiers": "alt",
+      "claimed": false
+    },
+    {
+      "control": "choice",
+      "key": "Return",
+      "modifiers": "shift",
+      "claimed": false
+    },
+    {
+      "control": "choice",
+      "key": "Return",
+      "modifiers": "meta",
+      "claimed": false
+    },
+    {
+      "control": "seek",
+      "key": "Space",
+      "modifiers": "none",
+      "claimed": false
+    },
+    {
+      "control": "seek",
+      "key": "Space",
+      "modifiers": "ctrl",
+      "claimed": false
+    },
+    {
+      "control": "seek",
+      "key": "Space",
+      "modifiers": "alt",
+      "claimed": false
+    },
+    {
+      "control": "seek",
+      "key": "Space",
+      "modifiers": "shift",
+      "claimed": false
+    },
+    {
+      "control": "seek",
+      "key": "Space",
+      "modifiers": "meta",
+      "claimed": false
+    },
+    {
+      "control": "seek",
+      "key": "C",
+      "modifiers": "none",
+      "claimed": false
+    },
+    {
+      "control": "seek",
+      "key": "C",
+      "modifiers": "ctrl",
+      "claimed": false
+    },
+    {
+      "control": "seek",
+      "key": "C",
+      "modifiers": "alt",
+      "claimed": false
+    },
+    {
+      "control": "seek",
+      "key": "C",
+      "modifiers": "shift",
+      "claimed": false
+    },
+    {
+      "control": "seek",
+      "key": "C",
+      "modifiers": "meta",
+      "claimed": false
+    },
+    {
+      "control": "seek",
+      "key": "Return",
+      "modifiers": "none",
+      "claimed": false
+    },
+    {
+      "control": "seek",
+      "key": "Return",
+      "modifiers": "ctrl",
+      "claimed": false
+    },
+    {
+      "control": "seek",
+      "key": "Return",
+      "modifiers": "alt",
+      "claimed": false
+    },
+    {
+      "control": "seek",
+      "key": "Return",
+      "modifiers": "shift",
+      "claimed": false
+    },
+    {
+      "control": "seek",
+      "key": "Return",
+      "modifiers": "meta",
+      "claimed": false
+    },
+    {
+      "control": "foreign",
+      "key": "Space",
+      "modifiers": "none",
+      "claimed": false
+    },
+    {
+      "control": "foreign",
+      "key": "Space",
+      "modifiers": "ctrl",
+      "claimed": false
+    },
+    {
+      "control": "foreign",
+      "key": "Space",
+      "modifiers": "alt",
+      "claimed": false
+    },
+    {
+      "control": "foreign",
+      "key": "Space",
+      "modifiers": "shift",
+      "claimed": false
+    },
+    {
+      "control": "foreign",
+      "key": "Space",
+      "modifiers": "meta",
+      "claimed": false
+    },
+    {
+      "control": "foreign",
+      "key": "C",
+      "modifiers": "none",
+      "claimed": false
+    },
+    {
+      "control": "foreign",
+      "key": "C",
+      "modifiers": "ctrl",
+      "claimed": false
+    },
+    {
+      "control": "foreign",
+      "key": "C",
+      "modifiers": "alt",
+      "claimed": false
+    },
+    {
+      "control": "foreign",
+      "key": "C",
+      "modifiers": "shift",
+      "claimed": false
+    },
+    {
+      "control": "foreign",
+      "key": "C",
+      "modifiers": "meta",
+      "claimed": false
+    },
+    {
+      "control": "foreign",
+      "key": "Return",
+      "modifiers": "none",
+      "claimed": false
+    },
+    {
+      "control": "foreign",
+      "key": "Return",
+      "modifiers": "ctrl",
+      "claimed": false
+    },
+    {
+      "control": "foreign",
+      "key": "Return",
+      "modifiers": "alt",
+      "claimed": false
+    },
+    {
+      "control": "foreign",
+      "key": "Return",
+      "modifiers": "shift",
+      "claimed": false
+    },
+    {
+      "control": "foreign",
+      "key": "Return",
+      "modifiers": "meta",
+      "claimed": false
+    }
+  ],
+  "boundary": "Direct native Qt ShortcutOverride boundary matrix; owner separately qualifies actual MainWindow routing."
+}

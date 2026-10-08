@@ -1,0 +1,12 @@
+{
+  "at": "2026-10-08T19:59:37Z",
+  "remote_head": "e9728100b7c27b175b04e0fc776f8d9984713698",
+  "native_head": "7dcbe504302a613f26a6aa0b2f31dfcc828e5517",
+  "tree": "0654a1fedd1058c5d074d0374ac3a76a43e4c758",
+  "base": "a2c89957c2cfe6fd5347d4ac317982449d3baa3a",
+  "contribution_paths_exact": 59,
+  "complete_tree_exact": true,
+  "own_worktree_clean": true,
+  "first_tracking_ref_probe": "single-branch clone did not create origin/estate ref; known fetched commit object read directly",
+  "merged": false
+}

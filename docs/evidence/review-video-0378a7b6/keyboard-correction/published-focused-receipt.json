@@ -1,0 +1,21 @@
+{
+  "at": "2026-10-08T20:01:27Z",
+  "head": "e9728100b7c27b175b04e0fc776f8d9984713698",
+  "tree": "0654a1fedd1058c5d074d0374ac3a76a43e4c758",
+  "exit_code": 0,
+  "counts": {
+    "tests": 15,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "source_imports": [
+    "C:\\Users\\minec\\hamon-0378a7b6-capture-runtime\\published-source\\desktop\\capture_desktop\\review_video.py",
+    "C:\\Users\\minec\\hamon-0378a7b6-capture-runtime\\published-source\\desktop\\capture_desktop\\widgets_review_video.py"
+  ],
+  "source_leaves_unchanged": 1215,
+  "clean": true,
+  "scope": "Public Git receiving of same reviewed source in fresh worktree, same supported native runtime; not an independent implementation or onscreen GPU claim",
+  "junit_sha256": "99d4be12679b38d49ebe9f41c373cd83048b7f256792825f8aea8aeceb99be16",
+  "log_sha256": "7386f6a943312456ba24e56063480498eb6d0deb972dd143ed85b1e489dee66a"
+}
