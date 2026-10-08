@@ -1213,3 +1213,49 @@ pause/reload, C and Ctrl+Space countercontrols, outside-viewer checkpoint routin
 and unchanged raw fixtures. The original 151-case and independent lifecycle receipts
 remain at their historical source pins. App shortcut source and PR84 ownership
 remain untouched; final hosted gates are required on this corrected successor.
+
+## 2026-10-08 — Inspect retained feature tables in the native job inspector
+
+Issue #92, owner 7879c2abc07f/next_production, adds a read-only table selector
+and native preview to the loaded Analysis job inspector. Exact retained columns,
+Arrow types, recorded units and calibration metadata accompany the first
+200 rows and the original row count. Integer timestamps and uint64 values stay
+exact; null, NaN and literal strings remain distinct. Loading another job closes
+and invalidates the previous preview.
+
+The source is two new native modules and five additive JobInspector lines.
+Existing comparison, FigureGallery, history, Analysis screen, feature producer,
+exporter, scientific and workflow source remains unchanged. Completed-job and
+parameter admission reuse the existing comparison reader. Table/schema identity,
+literal contained paths, source revalidation and resource limits precede display.
+Independent review identified dictionary-encoded expansion before candidate
+acceptance; the reader now admits one Arrow row at a time.
+
+Initial native reader receiving passed 34 cases. The corrected one-row reader
+passes 35 cases, including actual current feature-writer output and a safe
+dictionary amplification witness. The widget and independent native Qt receiving
+are separately recorded at their exact source pins. Existing supported-platform
+integration gates and installed-runtime ownership are retained. This contribution
+does not execute GitHub Actions or claim hardware or scientific validation.
+See [the feature and receiving contract](FEATURE_TABLE_PREVIEW.md).
+
+### Native qualification and source custody (7879c2abc07f)
+
+The final source is preserved at commit 9aa4fd1d913e1be5a8cc8908149826ec2f6f59e7
+on the original 9e9204f76b105426b0affaa74733175c052f27ba base. The same 90 native
+author cases pass with zero failures, errors or skips. The unchanged independent
+consumer passes all 21 groups after its original absent-selection enablement
+finding was corrected. A separate actual AnalysisScreen Run/QC continuation
+completed a real fixture QC job, closed the old preview, rejected its late result,
+and preserved all 12 raw fixture files and seven prior retained job files.
+The original candidate failure and the separate receiver-only deleted-Qt-object
+assertion correction remain preserved with their first-attempt evidence.
+
+Current-source composition retains the recorded-video contribution from
+3960c0c756cd4e9facbde0d76eaaa3c31ab7c167 and its complete PROGRESS prefix before
+appending this feature's original entry and this qualification note. Receiving
+results remain tied to the 321-file qualified 9e-based source projection; they
+are not relabeled as execution against the later composition. Required supported
+Windows integration and installed-runtime adoption remain pending. The active
+no-Actions instruction holds PR updates, merges, and other triggering steps;
+this custody work does not dispatch workflows or alter their gates.

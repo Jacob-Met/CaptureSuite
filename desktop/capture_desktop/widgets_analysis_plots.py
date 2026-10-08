@@ -19,6 +19,7 @@ from PySide6.QtWidgets import (
 from . import theme
 from .analysis_job_comparison import JobParameterError, read_job_manifest
 from .widgets_analysis_comparison import JobParameterBar
+from .widgets_analysis_feature_preview import FeatureTableBar
 from .widgets_figure_export import FigureExportBar
 
 try:
@@ -206,6 +207,8 @@ class JobInspector(QWidget):
         layout.addWidget(self._meta)
         self._parameters = JobParameterBar()
         layout.addWidget(self._parameters)
+        self._features = FeatureTableBar()
+        layout.addWidget(self._features)
         scroll = QScrollArea()
         scroll.setWidgetResizable(True)
         self._outputs_host = QWidget()
@@ -218,6 +221,7 @@ class JobInspector(QWidget):
     def clear(self) -> None:
         self._meta.setText("No job loaded")
         self._parameters.clear()
+        self._features.clear()
         while self._outputs_layout.count():
             item = self._outputs_layout.takeAt(0)
             w = item.widget()
@@ -228,6 +232,7 @@ class JobInspector(QWidget):
     def load_job_dir(self, job_dir: Path) -> None:
         self.clear()
         self._parameters.load_job_dir(job_dir)
+        self._features.load_job_dir(job_dir)
         manifest_path = job_dir / "job_manifest.json"
         if not manifest_path.is_file():
             self._meta.setText(f"No job_manifest.json in {job_dir}")
