@@ -166,8 +166,6 @@ def test_png_discovery_refuses_external_file_links_and_directories(qapp, tmp_pat
         foreign.symlink_to(outside)
     except OSError as exc:
         pytest.skip(f"This filesystem cannot create the symlink fixture: {exc}")
-    link_before = foreign.readlink()
-    assert foreign.samefile(outside)
     (job / "figures/not_a_file.png").mkdir()
     before = _hashes(tmp_path)
     gallery = FigureGallery()
@@ -175,7 +173,6 @@ def test_png_discovery_refuses_external_file_links_and_directories(qapp, tmp_pat
     assert _titles(gallery) == ["Sync", "nested / good"]
     assert _color(gallery, 1) == "#22aa55"
     assert gallery._tabs.tabToolTip(1) == "nested/good.png"
-    # Windows may retain an extended-length prefix in the link target.
-    assert foreign.readlink() == link_before
+    assert foreign.readlink() == outside
     assert _hashes(tmp_path) == before
     gallery.close()

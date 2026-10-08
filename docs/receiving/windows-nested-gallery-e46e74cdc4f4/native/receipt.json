@@ -1,0 +1,83 @@
+{
+  "schema": "capturesuite.pr80.windows-link-assertion-receiving.v1",
+  "accepted": true,
+  "scope": "Actual Windows filesystem and exact original/candidate assertion statements; no Qt/gallery invocation",
+  "gallery_invoked": false,
+  "source_ref": "bd390a9d497e567cd868ba4029b74bbd509b4a78",
+  "source": {
+    "original": {
+      "git_blob": "0874d6b51b22cbbeaa8b1e309ed92418efcec2c6",
+      "sha256": "727340556a0d8e4178b62157ba9680a59d1c43158abb1bf979b21be8c98c591f",
+      "bytes": 7142
+    },
+    "candidate": {
+      "git_blob": "746084780e126b103489902f119b8e46c2fd8c98",
+      "sha256": "566ff56a05014d47ffd887976751c06f259957a908ec34528725a039269b434f",
+      "bytes": 7291
+    }
+  },
+  "preservation": {
+    "all_other_function_ast_nodes_identical": true,
+    "source_bytes_unchanged": true,
+    "healthy_fixture_target_bytes_unchanged": true
+  },
+  "checks": [
+    {
+      "name": "original_assertion_on_actual_absolute_windows_link",
+      "status": "rejected",
+      "exception": "AssertionError",
+      "message": "",
+      "raw_readlink": "\\\\?\\C:\\Users\\minec\\hamon-cs80-receiving-e46e74cdc4f4\\native-20261008T171644Z\\absolute\\external.png",
+      "authored_target": "C:\\Users\\minec\\hamon-cs80-receiving-e46e74cdc4f4\\native-20261008T171644Z\\absolute\\external.png",
+      "samefile": true
+    },
+    {
+      "name": "candidate_exact_assertions_unchanged_absolute_link",
+      "guard": {
+        "status": "passed"
+      },
+      "after": {
+        "status": "passed"
+      },
+      "raw_target_unchanged": true
+    },
+    {
+      "name": "candidate_exact_assertions_unchanged_relative_link",
+      "guard": {
+        "status": "passed"
+      },
+      "after": {
+        "status": "passed"
+      },
+      "raw_readlink": "..\\..\\external.png",
+      "samefile": true
+    },
+    {
+      "name": "negative_same_bytes_different_target",
+      "status": "rejected",
+      "exception": "AssertionError",
+      "message": "",
+      "targets_have_equal_bytes": true
+    },
+    {
+      "name": "negative_link_replaced_by_regular_file",
+      "status": "rejected",
+      "exception": "OSError",
+      "message": "[WinError 4390] The file or directory is not a reparse point: 'C:\\\\Users\\\\minec\\\\hamon-cs80-receiving-e46e74cdc4f4\\\\native-20261008T171644Z\\\\replaced_regular\\\\job\\\\figures\\\\foreign.png'"
+    },
+    {
+      "name": "negative_initial_wrong_identity_same_bytes",
+      "status": "rejected",
+      "exception": "AssertionError",
+      "message": "",
+      "targets_have_equal_bytes": true
+    }
+  ],
+  "python": {
+    "executable": "C:\\Program Files\\WindowsApps\\PythonSoftwareFoundation.Python.3.11_3.11.2544.0_x64__qbz5n2kfra8p0\\python.exe",
+    "version": "3.11.9 (tags/v3.11.9:de54cf5, Apr  2 2024, 10:12:12) [MSC v.1938 64 bit (AMD64)]"
+  },
+  "platform": "Windows-10-10.0.19045-SP0",
+  "receipt_directory": "C:\\Users\\minec\\hamon-cs80-receiving-e46e74cdc4f4\\native-20261008T171644Z",
+  "time_utc": "2026-10-08T17:16:44Z"
+}
