@@ -47,9 +47,8 @@ prior filesystem PNG failure caused by ENOSPC. These images are not Windows
 presentation and do not claim the later composed source was executed.
 
 The Windows MainWindow test also saves its displayed window into build/evidence
-for the supported-platform receiving run. This evidence capture and two
-import-spacing cleanups follow the local 7b2c999 qualification; production source
-remains byte-for-byte equal.
+for the supported-platform receiving run. This evidence-only addition follows
+the local 7b2c999 qualification; production source remains byte-for-byte equal.
 
 ## Current-main composition and native custody
 
@@ -64,3 +63,16 @@ qualified-source-7b2c999.bundle preserves the exact local qualified history and
 tree. It requires the already-published 2f4dcf3 commit; native-custody.json records
 its bytes and digest. The existing Mac source checkout also retains the later
 complete composition. No additional dependency environment was allocated.
+
+## First supported Windows attempt
+
+windows-37803865986/ retains the actual Python job log and exact c4149a1 merge
+checkout. Ruff stopped before pytest because the publication test omitted two
+blank lines separating repository test imports. The prior passing stdin check
+used a filename relative to the workspace, so its import classification differed
+from the repository's actual check. That mistaken invocation is retained.
+
+The controlled check with the actual repository working directory and an
+absolute stdin filename rejects that same source and accepts the restored
+original spacing. The parsed Python AST is identical; no product or lifecycle
+source changed. No Python runtime or MainWindow pass is claimed from that run.

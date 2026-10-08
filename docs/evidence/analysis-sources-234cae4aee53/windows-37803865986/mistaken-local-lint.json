@@ -1,0 +1,24 @@
+{
+  "accepted_as_windows_qualification": false,
+  "cwd": "/workspace/scratch/234cae4aee53",
+  "command": [
+    "/workspace/scratch/234cae4aee53/capturesuite-venv/bin/python",
+    "-m",
+    "ruff",
+    "check",
+    "--config",
+    "/dev/shm/capturesuite-scope-compose-234cae4aee53/pyproject.toml",
+    "--stdin-filename",
+    "tests/ui/test_analysis_sources.py",
+    "-"
+  ],
+  "stdin_source_sha256": "c6642212103c67b42443a39cc235b4d6eda0605b239d25ed28c5071ff4088431",
+  "result": {
+    "chunk_id": "5e7345",
+    "wall_time_seconds": 0.000027431,
+    "exit_code": 0,
+    "original_token_count": 6,
+    "output": "All checks passed!\n\n\n"
+  },
+  "interpretation": "The command passed, but its workspace-relative stdin path failed to reproduce Ruff's first-party test import classification. The actual repository-cwd/absolute-path controlled check in receipt.json rejects the same source."
+}

@@ -157,6 +157,7 @@ def test_source_choice_reaches_real_thread_job_and_mcap_outputs(
     from capture_desktop.widgets_analysis_scope import ScopeSelection
     from PySide6.QtCore import Qt
     from PySide6.QtTest import QTest
+
     from tests.analysis.test_numeric_cli_receiving import retained_files
 
     package = _package(tmp_path / "source choice μ.mmsession")
@@ -372,6 +373,7 @@ def test_worker_refuses_a_subset_for_a_nonconsuming_command(tmp_path: Path):
 def test_application_sources_survive_timer_and_review_navigation(qapp, tmp_path: Path):
     from capture_desktop.app import MainWindow
     from PySide6.QtTest import QTest
+
     from tests.ui.test_analysis_scope import _close_widgets
 
     package = _package(tmp_path / "shell.mmsession")
