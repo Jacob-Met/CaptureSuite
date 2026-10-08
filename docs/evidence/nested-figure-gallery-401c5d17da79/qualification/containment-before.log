@@ -1,0 +1,34 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________ test_png_discovery_refuses_external_file_links_and_directories ________
+
+qapp = <PySide6.QtWidgets.QApplication(0x4897c50) at 0x7f7d7223ccc0>
+tmp_path = PosixPath('/dev/shm/capturesuite-gallery-401c5d17da79/tmp/containment-before/test_png_discovery_refuses_ext0')
+
+    def test_png_discovery_refuses_external_file_links_and_directories(qapp, tmp_path):
+        from capture_desktop.widgets_analysis_plots import FigureGallery
+    
+        job = tmp_path / "job"
+        outside = tmp_path / "external.png"
+        _png(outside, "#aa1122")
+        _png(job / "figures/nested/good.png", "#22aa55")
+        foreign = job / "figures/foreign.png"
+        try:
+            foreign.symlink_to(outside)
+        except OSError as exc:
+            pytest.skip(f"This filesystem cannot create the symlink fixture: {exc}")
+        (job / "figures/not_a_file.png").mkdir()
+        before = _hashes(tmp_path)
+        gallery = FigureGallery()
+        gallery.load_job_dir(job)
+>       assert _titles(gallery) == ["Sync", "nested / good"]
+E       AssertionError: assert ['Sync', 'for...ested / good'] == ['Sync', 'nested / good']
+E         
+E         At index 1 diff: 'foreign' != 'nested / good'
+E         Left contains one more item: 'nested / good'
+E         Use -v to get more diff
+
+tests/ui/test_analysis_nested_gallery.py:173: AssertionError
+=========================== short test summary info ============================
+FAILED tests/ui/test_analysis_nested_gallery.py::test_png_discovery_refuses_external_file_links_and_directories
+1 failed in 0.87s

@@ -1,0 +1,28 @@
+{
+  "schema": "capturesuite.pr80.root-source-review.v1",
+  "reviewer": "chatgpt:/root",
+  "received_by": "chatgpt:/root/source_frontier",
+  "decision": "accept narrow Windows test-fixture correction for local successor and owner-path integration",
+  "source_parent": "bd390a9d497e567cd868ba4029b74bbd509b4a78",
+  "original_test_blob": "0874d6b51b22cbbeaa8b1e309ed92418efcec2c6",
+  "candidate_test_blob": "746084780e126b103489902f119b8e46c2fd8c98",
+  "candidate_test_sha256": "566ff56a05014d47ffd887976751c06f259957a908ec34528725a039269b434f",
+  "native_receipt_sha256": "a47567302f0e0b5b3cf2b205527856aaa1d1a5d48e87ba4d2c22d20027afab48",
+  "native_method_sha256": "314a5b53ec2ac56a05a57f0ff6ba7e29a7f49a048ec5ab65adf1c160e5cfba9b",
+  "reviewed_inputs": [
+    ".git/source-review.json",
+    "native/receipt.json",
+    "native/receive_windows_links.py"
+  ],
+  "unchanged_parent_leaves_and_modes": 1070,
+  "findings": [
+    "One existing test source changes; exact candidate blob is root-authored.",
+    "Native absolute and relative identity controls plus changed-link/regular-file/wrong-initial-target negative controls are discriminating.",
+    "All other AST nodes in the affected test function remain equal.",
+    "No Qt/gallery invocation; actual Windows Python 3.11.9 assertion receiving is distinct from the Python3.12 hosted baseline."
+  ],
+  "limits": [
+    "Updated-head hosted full suite remains required.",
+    "No production-gallery source change, remote source write, PR state transition, main merge, deployment, or ownership transfer is approved by this receipt."
+  ]
+}

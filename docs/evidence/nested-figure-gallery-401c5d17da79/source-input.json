@@ -1,0 +1,16 @@
+{
+  "source": "/dev/shm/capturesuite-gallery-401c5d17da79/source",
+  "authored_base": "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e",
+  "canonical_gallery_current_through": "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e",
+  "gallery_sha256": "85c73f881ee7d60ef2f868f7ff73fc57c0a4ef99a717f7f5015534db23e1ab86",
+  "sparse": true,
+  "objects_read_only": "/dev/shm/hamon-401c5d17da79-capture-history-pr/objects.git/objects",
+  "free_bytes": 6275072,
+  "setup_note": "An initial normal shared clone could not walk the donor incomplete parent graph. This explicit sparse repository declares the genuine0ed commit as its shallow boundary; no donor object or metadata was changed.",
+  "initial_pre_edit_anchor": "0ed1ccaa023a5327495565d59e1dd0b28b2ee5bd",
+  "shallow_boundaries": [
+    "0ed1ccaa023a5327495565d59e1dd0b28b2ee5bd",
+    "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e"
+  ],
+  "current_tree": "18e97093f04de23de5e9878fd22c1f5ed986d5f3"
+}
