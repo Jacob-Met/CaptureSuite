@@ -1,0 +1,63 @@
+{
+  "archive": "C:\\Users\\minec\\hamon\\stage\\capturesuite-feature-export-author-03ac6e86ba72\\author-qualification-03ac6e86ba72.tar.gz",
+  "bytes": 208303,
+  "exactSnapshotsChecked": {
+    "v1": {
+      "docs/FEATURE_TABLE_EXPORT.md": {
+        "bytes": 7696,
+        "sha256": "ceeb68c6e18184e140cd2aec3a75b1f092dbd51685d99548b6f657e84990b215"
+      },
+      "libs/python/capture_analysis/capture_analysis/feature_table_export.py": {
+        "bytes": 16222,
+        "sha256": "958b94a8bdeb4c1469c6b08c8efdfced914b824e69ba1877956e5776cdb6feb5"
+      },
+      "tests/analysis/test_feature_table_export.py": {
+        "bytes": 19028,
+        "sha256": "450f0a6a02275d5857e82adc78ca77d9961e1c89e7af11ab613c5a884d469583"
+      },
+      "tools/export_feature_table.py": {
+        "bytes": 1787,
+        "sha256": "a7f78b24175300f6079d975287386e26e7b99096f517e86189931a7bbf385dc1"
+      }
+    },
+    "v2": {
+      "docs/FEATURE_TABLE_EXPORT.md": {
+        "bytes": 7696,
+        "sha256": "ceeb68c6e18184e140cd2aec3a75b1f092dbd51685d99548b6f657e84990b215"
+      },
+      "libs/python/capture_analysis/capture_analysis/feature_table_export.py": {
+        "bytes": 16222,
+        "sha256": "958b94a8bdeb4c1469c6b08c8efdfced914b824e69ba1877956e5776cdb6feb5"
+      },
+      "tests/analysis/test_feature_table_export.py": {
+        "bytes": 19028,
+        "sha256": "450f0a6a02275d5857e82adc78ca77d9961e1c89e7af11ab613c5a884d469583"
+      },
+      "tools/export_feature_table.py": {
+        "bytes": 1860,
+        "sha256": "538e1e795f5e46453e550a8473ccf15feefa2a1e56182e17c5335bdab1a2edda"
+      }
+    },
+    "v3": {
+      "docs/FEATURE_TABLE_EXPORT.md": {
+        "bytes": 7798,
+        "sha256": "d545816e8e2fc93f333d2b6ef8bd2f3fc08a3575e9ddf31412b575658463db29"
+      },
+      "libs/python/capture_analysis/capture_analysis/feature_table_export.py": {
+        "bytes": 16265,
+        "sha256": "e931297c36ec860a117fd305453db5f0be01e8e902c04333f9c5b1cf1f260469"
+      },
+      "tests/analysis/test_feature_table_export.py": {
+        "bytes": 19140,
+        "sha256": "37ada27b4bf5ef4883c5eac99164010f1ad50ffc46b85ddbc1f9a66c4e1837be"
+      },
+      "tools/export_feature_table.py": {
+        "bytes": 1860,
+        "sha256": "538e1e795f5e46453e550a8473ccf15feefa2a1e56182e17c5335bdab1a2edda"
+      }
+    }
+  },
+  "files": 853,
+  "linksRecorded": 40,
+  "sha256": "e93aa2c5b0f24b7bc19954539e949f195e9f92aaba418760d5107f56c706e1b0"
+}

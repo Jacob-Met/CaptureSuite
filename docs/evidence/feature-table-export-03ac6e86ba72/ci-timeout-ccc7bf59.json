@@ -1,0 +1,40 @@
+{
+  "schema": "capturesuite.feature-export.hosted-gate-observation/1",
+  "candidateCommit": "ccc7bf599a87419b171f817f268715a94cd6b19e",
+  "runId": 37810948047,
+  "runUrl": "https://github.com/Jacob-Met/CaptureSuite/actions/runs/37810948047",
+  "pythonJobId": 113427322075,
+  "checkedOutMergeCommit": "bc3835451e79588ab5b78b0fce35cf383666ba10",
+  "python": "3.12.10",
+  "pyarrow": "25.0.1",
+  "platform": "Windows hosted runner",
+  "observedGate": {
+    "accepted": false,
+    "process_exit": null,
+    "counts": null,
+    "junit_sha256": null,
+    "seconds": 300.0230475999999,
+    "problems": [
+      "Test process did not exit successfully",
+      "JUnit unavailable or invalid: FileNotFoundError"
+    ],
+    "source_unchanged_during_test": true
+  },
+  "precedingStepsPassed": [
+    "Dependency consistency",
+    "CI contract",
+    "Protobuf generation and drift",
+    "Session-schema generation and drift",
+    "Ruff",
+    "License"
+  ],
+  "testProgress": "Dots through 85% plus 53 further test markers, with six skip markers. No completed test-count/JUnit result.",
+  "artifact": {
+    "id": 11564663988,
+    "url": "https://github.com/Jacob-Met/CaptureSuite/actions/runs/37810948047/artifacts/11564663988",
+    "bytes": 1597618,
+    "sha256": "5d2dd92865209795bfb7d48711bb712ca8cf08147e03fdbbcd6b12b512831b39"
+  },
+  "conclusion": "The existing 300-second process deadline was reached. This is a failed hosted gate. The unresolved test region and cause remain under root review; no infrastructure cause or product acceptance is inferred.",
+  "workflowOrDeadlineChanges": false
+}
