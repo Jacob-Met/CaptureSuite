@@ -1,0 +1,18 @@
+{
+  "actual_merge": "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e",
+  "actual_tree": "18e97093f04de23de5e9878fd22c1f5ed986d5f3",
+  "actual_parents": [
+    "284d168d7614e2465bafba1092d8cbe4b6e13b40",
+    "adc370116c54b0ee12bb79912aa59d49b4ed0234"
+  ],
+  "actual_leaves": 857,
+  "qualified_nonprogress_leaves": 44,
+  "unowned_parent_leaves": 812,
+  "progress": "Exact current-main bytes plus unchanged scope entry, independently constructed in the native premerge proof; actual tree equals that proof.",
+  "errors": [],
+  "windows_checkout": "6c1173d492b8caebbe71098f208385058b5dda14",
+  "windows_tree": "02a0edc59b2f8dc0159282f67dfdd4ae0cf69ad9",
+  "numeric_receiving_source": "64f25af9957ea0e0e40f9f02ebb45d63185ac049",
+  "numeric_receiving_tree": "6d849a6cfeba945b12b5ddc8570b45e2f64ce658",
+  "qualification_boundaries": "The original Windows execution, later three-job numeric composition and final native Git composition remain distinct."
+}

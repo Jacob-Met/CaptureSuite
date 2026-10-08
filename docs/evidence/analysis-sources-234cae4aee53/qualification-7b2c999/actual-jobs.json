@@ -1,0 +1,824 @@
+[
+  {
+    "feature_identities": [
+      [
+        "sampler.a",
+        "force"
+      ],
+      [
+        "sampler.a",
+        "voltage"
+      ],
+      [
+        "sampler.b",
+        "temperature"
+      ]
+    ],
+    "feature_rows": {
+      "features/numeric/source-73616d706c65722e61/stream-666f726365/windows.parquet": [
+        {
+          "gap_fraction": 0,
+          "input 1_mean": 3.45,
+          "input 1_rms": 3.4619358746227524,
+          "rate_hz": 20,
+          "t_end_ns": 2000000000,
+          "t_start_ns": 1000000000
+        },
+        {
+          "gap_fraction": 0,
+          "input 1_mean": 3.45,
+          "input 1_rms": 3.4619358746227524,
+          "rate_hz": 20,
+          "t_end_ns": 2500000000,
+          "t_start_ns": 1500000000
+        },
+        {
+          "gap_fraction": 0,
+          "input 1_mean": 3.45,
+          "input 1_rms": 3.4619358746227524,
+          "rate_hz": 20,
+          "t_end_ns": 3000000000,
+          "t_start_ns": 2000000000
+        },
+        {
+          "gap_fraction": 0,
+          "input 1_mean": 3.45,
+          "input 1_rms": 3.4619358746227524,
+          "rate_hz": 20,
+          "t_end_ns": 3500000000,
+          "t_start_ns": 2500000000
+        },
+        {
+          "gap_fraction": 0,
+          "input 1_mean": 3.45,
+          "input 1_rms": 3.4619358746227524,
+          "rate_hz": 20,
+          "t_end_ns": 4000000000,
+          "t_start_ns": 3000000000
+        }
+      ],
+      "features/numeric/source-73616d706c65722e61/stream-766f6c74616765/windows.parquet": [
+        {
+          "gap_fraction": 0,
+          "input 1_mean": 1.45,
+          "input 1_rms": 1.4781745499094483,
+          "rate_hz": 20,
+          "t_end_ns": 2000000000,
+          "t_start_ns": 1000000000
+        },
+        {
+          "gap_fraction": 0,
+          "input 1_mean": 1.45,
+          "input 1_rms": 1.4781745499094483,
+          "rate_hz": 20,
+          "t_end_ns": 2500000000,
+          "t_start_ns": 1500000000
+        },
+        {
+          "gap_fraction": 0,
+          "input 1_mean": 1.45,
+          "input 1_rms": 1.4781745499094483,
+          "rate_hz": 20,
+          "t_end_ns": 3000000000,
+          "t_start_ns": 2000000000
+        },
+        {
+          "gap_fraction": 0,
+          "input 1_mean": 1.45,
+          "input 1_rms": 1.4781745499094483,
+          "rate_hz": 20,
+          "t_end_ns": 3500000000,
+          "t_start_ns": 2500000000
+        },
+        {
+          "gap_fraction": 0,
+          "input 1_mean": 1.45,
+          "input 1_rms": 1.4781745499094483,
+          "rate_hz": 20,
+          "t_end_ns": 4000000000,
+          "t_start_ns": 3000000000
+        }
+      ],
+      "features/numeric/source-73616d706c65722e62/stream-74656d7065726174757265/windows.parquet": [
+        {
+          "gap_fraction": 0,
+          "input 1_mean": 7.449999999999999,
+          "input 1_rms": 7.455534856735632,
+          "rate_hz": 20,
+          "t_end_ns": 2000000000,
+          "t_start_ns": 1000000000
+        },
+        {
+          "gap_fraction": 0,
+          "input 1_mean": 7.449999999999999,
+          "input 1_rms": 7.455534856735632,
+          "rate_hz": 20,
+          "t_end_ns": 2500000000,
+          "t_start_ns": 1500000000
+        },
+        {
+          "gap_fraction": 0,
+          "input 1_mean": 7.449999999999999,
+          "input 1_rms": 7.455534856735632,
+          "rate_hz": 20,
+          "t_end_ns": 3000000000,
+          "t_start_ns": 2000000000
+        },
+        {
+          "gap_fraction": 0,
+          "input 1_mean": 7.449999999999999,
+          "input 1_rms": 7.455534856735632,
+          "rate_hz": 20,
+          "t_end_ns": 3500000000,
+          "t_start_ns": 2500000000
+        },
+        {
+          "gap_fraction": 0,
+          "input 1_mean": 7.449999999999999,
+          "input 1_rms": 7.455534856735632,
+          "rate_hz": 20,
+          "t_end_ns": 4000000000,
+          "t_start_ns": 3000000000
+        }
+      ]
+    },
+    "manifest": {
+      "analysisGrids": [],
+      "captureAnalysisVersion": "0.1.0",
+      "createdUtc": "2026-10-08T15:02:51Z",
+      "errors": [],
+      "evalWindowCount": null,
+      "featureTables": [
+        {
+          "featureSchemaVersion": 1,
+          "relativePath": "features/numeric/source-73616d706c65722e61/stream-666f726365/windows.parquet",
+          "rows": 5
+        },
+        {
+          "featureSchemaVersion": 1,
+          "relativePath": "features/numeric/source-73616d706c65722e61/stream-766f6c74616765/windows.parquet",
+          "rows": 5
+        },
+        {
+          "featureSchemaVersion": 1,
+          "relativePath": "features/numeric/source-73616d706c65722e62/stream-74656d7065726174757265/windows.parquet",
+          "rows": 5
+        }
+      ],
+      "gapPolicy": "mask",
+      "gapSummary": {
+        "closed": 0,
+        "maskedNs": 0,
+        "open": 0,
+        "validFraction": null
+      },
+      "jobId": "20261008T150251Z_68b612fe",
+      "kinematicsRows": null,
+      "manifestSha256": "77d52177df967781e855cb78ef991f680842582ebd988ded9c02e04b77a05a97",
+      "mlBundleWindowCount": null,
+      "modalities": [
+        "eeg",
+        "emg",
+        "numeric"
+      ],
+      "outputs": [
+        {
+          "bytes": 245,
+          "kind": "params",
+          "relativePath": "params.json",
+          "sha256": "651134af8208b12550a8b184a7d880f53615fa65965a39988de22d098ba58a16"
+        },
+        {
+          "bytes": 1660,
+          "kind": "qc_json",
+          "relativePath": "reports/qc.json",
+          "sha256": "4a140fc764153232522756100442b277f11bf43b08b09bbe37ea7dcba6bbcb7b"
+        },
+        {
+          "bytes": 2382,
+          "kind": "qc_html",
+          "relativePath": "reports/qc.html",
+          "sha256": "b10b0f604b8596a36cb7fa71a9a45945d183c7b4280c394912f791183b0b9677"
+        },
+        {
+          "bytes": 4214,
+          "kind": "feature_parquet",
+          "relativePath": "features/numeric/source-73616d706c65722e61/stream-666f726365/windows.parquet",
+          "sha256": "bc2d49b74f36240aa70f8ab56ee72c0846428be6bd5a6f9406338d4f817a4c5a"
+        },
+        {
+          "bytes": 341,
+          "kind": "feature_csv",
+          "relativePath": "features/numeric/source-73616d706c65722e61/stream-666f726365/windows.csv",
+          "sha256": "f2b965d97682cd7c53da3b0080a1c8cb3fa3d21b1f3e75200753cb9c285288f1"
+        },
+        {
+          "bytes": 4214,
+          "kind": "feature_parquet",
+          "relativePath": "features/numeric/source-73616d706c65722e61/stream-766f6c74616765/windows.parquet",
+          "sha256": "44189482a3880f498cd89ce5f806c4bfdc3a6b4ea9f740dbedd36d7f88d4b8bc"
+        },
+        {
+          "bytes": 341,
+          "kind": "feature_csv",
+          "relativePath": "features/numeric/source-73616d706c65722e61/stream-766f6c74616765/windows.csv",
+          "sha256": "871a48598c75f54b8b6b6d8fcc6995a11a930e3d92c2deba3ee6bd4c392fd316"
+        },
+        {
+          "bytes": 4214,
+          "kind": "feature_parquet",
+          "relativePath": "features/numeric/source-73616d706c65722e62/stream-74656d7065726174757265/windows.parquet",
+          "sha256": "f3474539ae5399f36bb979f7ce3ea7ad3de555e553763353f66ba382a0b0dae3"
+        },
+        {
+          "bytes": 401,
+          "kind": "feature_csv",
+          "relativePath": "features/numeric/source-73616d706c65722e62/stream-74656d7065726174757265/windows.csv",
+          "sha256": "4a97478272349a7a6dbfbfa15a60310501373a053c8efb148987448cde428f33"
+        },
+        {
+          "bytes": 6191,
+          "kind": "feature_schema",
+          "relativePath": "features/_schema.json",
+          "sha256": "f94e12aa77e9ec781b9ab5211a0934bddbb52afa6ce6c8fc39e5b6851f892dfe"
+        },
+        {
+          "bytes": 4490,
+          "kind": "manifest",
+          "relativePath": "job_manifest.json",
+          "sha256": "d727f524602426ac3f0c01e90cc8dceccd8a0f57e1a1cad6c795bf680102ed65"
+        }
+      ],
+      "packagePath": "/dev/shm/capturesuite-234cae4aee53/source-candidate-7b2c999/test_source_choice_reaches_rea0/source choice μ.mmsession",
+      "packageState": "finalized",
+      "paramsDigest": "68b612fe9384d6b32e3ab66c9a66299180e2fe88b7db30e68375eb7a9e0a2131",
+      "pluginIds": [
+        "emg.envelope.v1",
+        "imu.kinematics.v1",
+        "radar.rd_energy.v1",
+        "radar_doppler.mag.v1",
+        "video.timing_qc.v1",
+        "numeric.basic.v1",
+        "test.dummy.feature.v1"
+      ],
+      "pluginManifestVersion": "1.0.0",
+      "poseJobId": null,
+      "poseModelId": null,
+      "poseTables": [],
+      "schemaId": "capture.analysis_job/1",
+      "sessionId": "independent-numeric-cli",
+      "sourcesSelected": [
+        "sampler.a",
+        "sampler.b"
+      ],
+      "status": "completed",
+      "syncAnchorsApplied": {
+        "anchors": [],
+        "applied": false
+      },
+      "timeRange": {
+        "checkpointIds": [],
+        "endSessionNs": 4000000000,
+        "mode": "full",
+        "startSessionNs": 0
+      },
+      "tooling": {
+        "captureAnalysis": "0.1.0",
+        "matplotlib": "3.11.2",
+        "numpy": "2.5.3",
+        "pandas": "3.0.6",
+        "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+        "python": "3.12.14",
+        "scipy": "1.18.1"
+      },
+      "warnings": []
+    },
+    "params": {
+      "applySyncAnchors": false,
+      "checkpointSection": null,
+      "command": "features",
+      "endSessionNs": null,
+      "extra": {},
+      "gapPolicy": "mask",
+      "maxRamBytes": 2147483648,
+      "overwriteJobId": null,
+      "sources": [],
+      "startSessionNs": null
+    },
+    "qc_source_ids": [
+      "sampler.a",
+      "sampler.b"
+    ],
+    "raw_after": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "64828d1836c01d154355917a0281acb093f582e04b75bff3c4421bc288b8f1a4",
+      "manifest.json": "77d52177df967781e855cb78ef991f680842582ebd988ded9c02e04b77a05a97",
+      "sources/folder-a/health/gaps.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sources/folder-a/source.json": "ded4b0b0994a6f370b23cea9d2182bfee6dc36525f7890e7f8e34519271ba4ab",
+      "sources/folder-a/streams/force/segments/000000.mcap": "9467807bbd26f27129ab88b98d18365343c03c7a712fa7434fb234a7973f6400",
+      "sources/folder-a/streams/force/stream.json": "7b5f368f899b5e8d9b40265d8c9ada3e344f689c3185defabd8918334115f9a6",
+      "sources/folder-a/streams/voltage/segments/000000.mcap": "08a2f0ae5432bf5117707e27297063ea65c727b51f1113a587c76a58ec50eeb5",
+      "sources/folder-a/streams/voltage/stream.json": "d9534fcd83e3539b38a4c471f912aadfdd4a7cd87d8069b69a8111741a737c01",
+      "sources/sampler.b/health/gaps.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sources/sampler.b/source.json": "51b11206a43ab0590baa31e0cf19b8f7194fac5875bc73f900f1417bd1d55b23",
+      "sources/sampler.b/streams/temperature/segments/000000.mcap": "237560fe806bf7576bfe9723c09307038c01d9048d32a4a29f9b09711864c8c7",
+      "sources/sampler.b/streams/temperature/stream.json": "a6e2152bd7d97aa6fc3ca23175d84fdb898ce91803c2147de52dc2a9f76c051d"
+    },
+    "raw_before": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "64828d1836c01d154355917a0281acb093f582e04b75bff3c4421bc288b8f1a4",
+      "manifest.json": "77d52177df967781e855cb78ef991f680842582ebd988ded9c02e04b77a05a97",
+      "sources/folder-a/health/gaps.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sources/folder-a/source.json": "ded4b0b0994a6f370b23cea9d2182bfee6dc36525f7890e7f8e34519271ba4ab",
+      "sources/folder-a/streams/force/segments/000000.mcap": "9467807bbd26f27129ab88b98d18365343c03c7a712fa7434fb234a7973f6400",
+      "sources/folder-a/streams/force/stream.json": "7b5f368f899b5e8d9b40265d8c9ada3e344f689c3185defabd8918334115f9a6",
+      "sources/folder-a/streams/voltage/segments/000000.mcap": "08a2f0ae5432bf5117707e27297063ea65c727b51f1113a587c76a58ec50eeb5",
+      "sources/folder-a/streams/voltage/stream.json": "d9534fcd83e3539b38a4c471f912aadfdd4a7cd87d8069b69a8111741a737c01",
+      "sources/sampler.b/health/gaps.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sources/sampler.b/source.json": "51b11206a43ab0590baa31e0cf19b8f7194fac5875bc73f900f1417bd1d55b23",
+      "sources/sampler.b/streams/temperature/segments/000000.mcap": "237560fe806bf7576bfe9723c09307038c01d9048d32a4a29f9b09711864c8c7",
+      "sources/sampler.b/streams/temperature/stream.json": "a6e2152bd7d97aa6fc3ca23175d84fdb898ce91803c2147de52dc2a9f76c051d"
+    },
+    "raw_unchanged": true,
+    "requested_source": null
+  },
+  {
+    "feature_identities": [
+      [
+        "sampler.a",
+        "force"
+      ],
+      [
+        "sampler.a",
+        "voltage"
+      ]
+    ],
+    "feature_rows": {
+      "features/numeric/source-73616d706c65722e61/stream-666f726365/windows.parquet": [
+        {
+          "gap_fraction": 0,
+          "input 1_mean": 3.45,
+          "input 1_rms": 3.4619358746227524,
+          "rate_hz": 20,
+          "t_end_ns": 2000000000,
+          "t_start_ns": 1000000000
+        },
+        {
+          "gap_fraction": 0,
+          "input 1_mean": 3.45,
+          "input 1_rms": 3.4619358746227524,
+          "rate_hz": 20,
+          "t_end_ns": 2500000000,
+          "t_start_ns": 1500000000
+        },
+        {
+          "gap_fraction": 0,
+          "input 1_mean": 3.45,
+          "input 1_rms": 3.4619358746227524,
+          "rate_hz": 20,
+          "t_end_ns": 3000000000,
+          "t_start_ns": 2000000000
+        },
+        {
+          "gap_fraction": 0,
+          "input 1_mean": 3.45,
+          "input 1_rms": 3.4619358746227524,
+          "rate_hz": 20,
+          "t_end_ns": 3500000000,
+          "t_start_ns": 2500000000
+        },
+        {
+          "gap_fraction": 0,
+          "input 1_mean": 3.45,
+          "input 1_rms": 3.4619358746227524,
+          "rate_hz": 20,
+          "t_end_ns": 4000000000,
+          "t_start_ns": 3000000000
+        }
+      ],
+      "features/numeric/source-73616d706c65722e61/stream-766f6c74616765/windows.parquet": [
+        {
+          "gap_fraction": 0,
+          "input 1_mean": 1.45,
+          "input 1_rms": 1.4781745499094483,
+          "rate_hz": 20,
+          "t_end_ns": 2000000000,
+          "t_start_ns": 1000000000
+        },
+        {
+          "gap_fraction": 0,
+          "input 1_mean": 1.45,
+          "input 1_rms": 1.4781745499094483,
+          "rate_hz": 20,
+          "t_end_ns": 2500000000,
+          "t_start_ns": 1500000000
+        },
+        {
+          "gap_fraction": 0,
+          "input 1_mean": 1.45,
+          "input 1_rms": 1.4781745499094483,
+          "rate_hz": 20,
+          "t_end_ns": 3000000000,
+          "t_start_ns": 2000000000
+        },
+        {
+          "gap_fraction": 0,
+          "input 1_mean": 1.45,
+          "input 1_rms": 1.4781745499094483,
+          "rate_hz": 20,
+          "t_end_ns": 3500000000,
+          "t_start_ns": 2500000000
+        },
+        {
+          "gap_fraction": 0,
+          "input 1_mean": 1.45,
+          "input 1_rms": 1.4781745499094483,
+          "rate_hz": 20,
+          "t_end_ns": 4000000000,
+          "t_start_ns": 3000000000
+        }
+      ]
+    },
+    "manifest": {
+      "analysisGrids": [],
+      "captureAnalysisVersion": "0.1.0",
+      "createdUtc": "2026-10-08T15:02:51Z",
+      "errors": [],
+      "evalWindowCount": null,
+      "featureTables": [
+        {
+          "featureSchemaVersion": 1,
+          "relativePath": "features/numeric/source-73616d706c65722e61/stream-666f726365/windows.parquet",
+          "rows": 5
+        },
+        {
+          "featureSchemaVersion": 1,
+          "relativePath": "features/numeric/source-73616d706c65722e61/stream-766f6c74616765/windows.parquet",
+          "rows": 5
+        }
+      ],
+      "gapPolicy": "mask",
+      "gapSummary": {
+        "closed": 0,
+        "maskedNs": 0,
+        "open": 0,
+        "validFraction": null
+      },
+      "jobId": "20261008T150251Z_a668c880",
+      "kinematicsRows": null,
+      "manifestSha256": "77d52177df967781e855cb78ef991f680842582ebd988ded9c02e04b77a05a97",
+      "mlBundleWindowCount": null,
+      "modalities": [
+        "eeg",
+        "emg",
+        "numeric"
+      ],
+      "outputs": [
+        {
+          "bytes": 264,
+          "kind": "params",
+          "relativePath": "params.json",
+          "sha256": "ec5007d854bff632e47695171a8c929ab5feab6ae79ac5e8281f33e1cb7f160d"
+        },
+        {
+          "bytes": 1660,
+          "kind": "qc_json",
+          "relativePath": "reports/qc.json",
+          "sha256": "559578358b728cefcb0ef79628da0a76f7ac9f7291cfbe1c8506363ffbe3c4ac"
+        },
+        {
+          "bytes": 2382,
+          "kind": "qc_html",
+          "relativePath": "reports/qc.html",
+          "sha256": "5ae9e125153922737c78213188ef17461a33781a5b78646546bac56ec571b4f0"
+        },
+        {
+          "bytes": 4214,
+          "kind": "feature_parquet",
+          "relativePath": "features/numeric/source-73616d706c65722e61/stream-666f726365/windows.parquet",
+          "sha256": "bc2d49b74f36240aa70f8ab56ee72c0846428be6bd5a6f9406338d4f817a4c5a"
+        },
+        {
+          "bytes": 341,
+          "kind": "feature_csv",
+          "relativePath": "features/numeric/source-73616d706c65722e61/stream-666f726365/windows.csv",
+          "sha256": "f2b965d97682cd7c53da3b0080a1c8cb3fa3d21b1f3e75200753cb9c285288f1"
+        },
+        {
+          "bytes": 4214,
+          "kind": "feature_parquet",
+          "relativePath": "features/numeric/source-73616d706c65722e61/stream-766f6c74616765/windows.parquet",
+          "sha256": "44189482a3880f498cd89ce5f806c4bfdc3a6b4ea9f740dbedd36d7f88d4b8bc"
+        },
+        {
+          "bytes": 341,
+          "kind": "feature_csv",
+          "relativePath": "features/numeric/source-73616d706c65722e61/stream-766f6c74616765/windows.csv",
+          "sha256": "871a48598c75f54b8b6b6d8fcc6995a11a930e3d92c2deba3ee6bd4c392fd316"
+        },
+        {
+          "bytes": 4139,
+          "kind": "feature_schema",
+          "relativePath": "features/_schema.json",
+          "sha256": "5ca5504a590df140267cd071e44fe7574542786c904fd417310299274eaa704b"
+        },
+        {
+          "bytes": 3778,
+          "kind": "manifest",
+          "relativePath": "job_manifest.json",
+          "sha256": "a5f36bb4eaa112df44bbe49d549534c28e360cfa7c9895306019d41a145b0e5b"
+        }
+      ],
+      "packagePath": "/dev/shm/capturesuite-234cae4aee53/source-candidate-7b2c999/test_source_choice_reaches_rea1/source choice μ.mmsession",
+      "packageState": "finalized",
+      "paramsDigest": "a668c88088907c8c651dcbddb98adf6e8b51e9d49ca8f8d886a0443200995af2",
+      "pluginIds": [
+        "emg.envelope.v1",
+        "imu.kinematics.v1",
+        "radar.rd_energy.v1",
+        "radar_doppler.mag.v1",
+        "video.timing_qc.v1",
+        "numeric.basic.v1",
+        "test.dummy.feature.v1"
+      ],
+      "pluginManifestVersion": "1.0.0",
+      "poseJobId": null,
+      "poseModelId": null,
+      "poseTables": [],
+      "schemaId": "capture.analysis_job/1",
+      "sessionId": "independent-numeric-cli",
+      "sourcesSelected": [
+        "sampler.a"
+      ],
+      "status": "completed",
+      "syncAnchorsApplied": {
+        "anchors": [],
+        "applied": false
+      },
+      "timeRange": {
+        "checkpointIds": [],
+        "endSessionNs": 4000000000,
+        "mode": "full",
+        "startSessionNs": 0
+      },
+      "tooling": {
+        "captureAnalysis": "0.1.0",
+        "matplotlib": "3.11.2",
+        "numpy": "2.5.3",
+        "pandas": "3.0.6",
+        "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+        "python": "3.12.14",
+        "scipy": "1.18.1"
+      },
+      "warnings": []
+    },
+    "params": {
+      "applySyncAnchors": false,
+      "checkpointSection": null,
+      "command": "features",
+      "endSessionNs": null,
+      "extra": {},
+      "gapPolicy": "mask",
+      "maxRamBytes": 2147483648,
+      "overwriteJobId": null,
+      "sources": [
+        "sampler.a"
+      ],
+      "startSessionNs": null
+    },
+    "qc_source_ids": [
+      "sampler.a",
+      "sampler.b"
+    ],
+    "raw_after": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "64828d1836c01d154355917a0281acb093f582e04b75bff3c4421bc288b8f1a4",
+      "manifest.json": "77d52177df967781e855cb78ef991f680842582ebd988ded9c02e04b77a05a97",
+      "sources/folder-a/health/gaps.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sources/folder-a/source.json": "ded4b0b0994a6f370b23cea9d2182bfee6dc36525f7890e7f8e34519271ba4ab",
+      "sources/folder-a/streams/force/segments/000000.mcap": "9467807bbd26f27129ab88b98d18365343c03c7a712fa7434fb234a7973f6400",
+      "sources/folder-a/streams/force/stream.json": "7b5f368f899b5e8d9b40265d8c9ada3e344f689c3185defabd8918334115f9a6",
+      "sources/folder-a/streams/voltage/segments/000000.mcap": "08a2f0ae5432bf5117707e27297063ea65c727b51f1113a587c76a58ec50eeb5",
+      "sources/folder-a/streams/voltage/stream.json": "d9534fcd83e3539b38a4c471f912aadfdd4a7cd87d8069b69a8111741a737c01",
+      "sources/sampler.b/health/gaps.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sources/sampler.b/source.json": "51b11206a43ab0590baa31e0cf19b8f7194fac5875bc73f900f1417bd1d55b23",
+      "sources/sampler.b/streams/temperature/segments/000000.mcap": "237560fe806bf7576bfe9723c09307038c01d9048d32a4a29f9b09711864c8c7",
+      "sources/sampler.b/streams/temperature/stream.json": "a6e2152bd7d97aa6fc3ca23175d84fdb898ce91803c2147de52dc2a9f76c051d"
+    },
+    "raw_before": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "64828d1836c01d154355917a0281acb093f582e04b75bff3c4421bc288b8f1a4",
+      "manifest.json": "77d52177df967781e855cb78ef991f680842582ebd988ded9c02e04b77a05a97",
+      "sources/folder-a/health/gaps.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sources/folder-a/source.json": "ded4b0b0994a6f370b23cea9d2182bfee6dc36525f7890e7f8e34519271ba4ab",
+      "sources/folder-a/streams/force/segments/000000.mcap": "9467807bbd26f27129ab88b98d18365343c03c7a712fa7434fb234a7973f6400",
+      "sources/folder-a/streams/force/stream.json": "7b5f368f899b5e8d9b40265d8c9ada3e344f689c3185defabd8918334115f9a6",
+      "sources/folder-a/streams/voltage/segments/000000.mcap": "08a2f0ae5432bf5117707e27297063ea65c727b51f1113a587c76a58ec50eeb5",
+      "sources/folder-a/streams/voltage/stream.json": "d9534fcd83e3539b38a4c471f912aadfdd4a7cd87d8069b69a8111741a737c01",
+      "sources/sampler.b/health/gaps.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sources/sampler.b/source.json": "51b11206a43ab0590baa31e0cf19b8f7194fac5875bc73f900f1417bd1d55b23",
+      "sources/sampler.b/streams/temperature/segments/000000.mcap": "237560fe806bf7576bfe9723c09307038c01d9048d32a4a29f9b09711864c8c7",
+      "sources/sampler.b/streams/temperature/stream.json": "a6e2152bd7d97aa6fc3ca23175d84fdb898ce91803c2147de52dc2a9f76c051d"
+    },
+    "raw_unchanged": true,
+    "requested_source": "sampler.a"
+  },
+  {
+    "feature_identities": [
+      [
+        "sampler.b",
+        "temperature"
+      ]
+    ],
+    "feature_rows": {
+      "features/numeric/source-73616d706c65722e62/stream-74656d7065726174757265/windows.parquet": [
+        {
+          "gap_fraction": 0,
+          "input 1_mean": 7.45,
+          "input 1_rms": 7.455534856735632,
+          "rate_hz": 20,
+          "t_end_ns": 2250000000,
+          "t_start_ns": 1250000000
+        }
+      ]
+    },
+    "manifest": {
+      "analysisGrids": [],
+      "captureAnalysisVersion": "0.1.0",
+      "createdUtc": "2026-10-08T15:02:51Z",
+      "errors": [],
+      "evalWindowCount": null,
+      "featureTables": [
+        {
+          "featureSchemaVersion": 1,
+          "relativePath": "features/numeric/source-73616d706c65722e62/stream-74656d7065726174757265/windows.parquet",
+          "rows": 1
+        }
+      ],
+      "gapPolicy": "mask",
+      "gapSummary": {
+        "closed": 0,
+        "maskedNs": 0,
+        "open": 0,
+        "validFraction": null
+      },
+      "jobId": "20261008T150251Z_9395bfcb",
+      "kinematicsRows": null,
+      "manifestSha256": "77d52177df967781e855cb78ef991f680842582ebd988ded9c02e04b77a05a97",
+      "mlBundleWindowCount": null,
+      "modalities": [
+        "eeg",
+        "emg",
+        "numeric"
+      ],
+      "outputs": [
+        {
+          "bytes": 276,
+          "kind": "params",
+          "relativePath": "params.json",
+          "sha256": "9095730679c2b2fa3986f843a01bf257075598770c6613ca0ba2c1ac738a9e2e"
+        },
+        {
+          "bytes": 1660,
+          "kind": "qc_json",
+          "relativePath": "reports/qc.json",
+          "sha256": "11677feee018405d63027b0fdea07c988d4a781752b978c04f474855ffc5f59f"
+        },
+        {
+          "bytes": 2382,
+          "kind": "qc_html",
+          "relativePath": "reports/qc.html",
+          "sha256": "3dcf424d61e50f88264b082c9f9204a379a9382860652b6d71575497676f14b0"
+        },
+        {
+          "bytes": 4154,
+          "kind": "feature_parquet",
+          "relativePath": "features/numeric/source-73616d706c65722e62/stream-74656d7065726174757265/windows.parquet",
+          "sha256": "0d70d056407080defff12e4b82b986e7684531335c2ee4c6886fdc001dd9b3ef"
+        },
+        {
+          "bytes": 120,
+          "kind": "feature_csv",
+          "relativePath": "features/numeric/source-73616d706c65722e62/stream-74656d7065726174757265/windows.csv",
+          "sha256": "e0b3897ba941a45252a8e350ff02105aef01aa397da2161c88c4b5175e30e136"
+        },
+        {
+          "bytes": 2123,
+          "kind": "feature_schema",
+          "relativePath": "features/_schema.json",
+          "sha256": "81a08ed259a9681cebe76714b79fec94b3508a129d1aa3505c62adea4c0a22db"
+        },
+        {
+          "bytes": 3154,
+          "kind": "manifest",
+          "relativePath": "job_manifest.json",
+          "sha256": "e112cdffcb52cddbdaefc69c96f5b9f5e39a3ed7ce1720d254e0ae6edc5d4d7f"
+        }
+      ],
+      "packagePath": "/dev/shm/capturesuite-234cae4aee53/source-candidate-7b2c999/test_source_choice_reaches_rea2/source choice μ.mmsession",
+      "packageState": "finalized",
+      "paramsDigest": "9395bfcb5e7fcd9922cd3fa0259bf580de435ed5769aa1a927673d25f387778a",
+      "pluginIds": [
+        "emg.envelope.v1",
+        "imu.kinematics.v1",
+        "radar.rd_energy.v1",
+        "radar_doppler.mag.v1",
+        "video.timing_qc.v1",
+        "numeric.basic.v1",
+        "test.dummy.feature.v1"
+      ],
+      "pluginManifestVersion": "1.0.0",
+      "poseJobId": null,
+      "poseModelId": null,
+      "poseTables": [],
+      "schemaId": "capture.analysis_job/1",
+      "sessionId": "independent-numeric-cli",
+      "sourcesSelected": [
+        "sampler.b"
+      ],
+      "status": "completed",
+      "syncAnchorsApplied": {
+        "anchors": [],
+        "applied": false
+      },
+      "timeRange": {
+        "checkpointIds": [],
+        "endSessionNs": 2400000001,
+        "mode": "custom",
+        "startSessionNs": 1200000001
+      },
+      "tooling": {
+        "captureAnalysis": "0.1.0",
+        "matplotlib": "3.11.2",
+        "numpy": "2.5.3",
+        "pandas": "3.0.6",
+        "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+        "python": "3.12.14",
+        "scipy": "1.18.1"
+      },
+      "warnings": []
+    },
+    "params": {
+      "applySyncAnchors": false,
+      "checkpointSection": null,
+      "command": "features",
+      "endSessionNs": 2400000001,
+      "extra": {},
+      "gapPolicy": "mask",
+      "maxRamBytes": 2147483648,
+      "overwriteJobId": null,
+      "sources": [
+        "sampler.b"
+      ],
+      "startSessionNs": 1200000001
+    },
+    "qc_source_ids": [
+      "sampler.a",
+      "sampler.b"
+    ],
+    "raw_after": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "64828d1836c01d154355917a0281acb093f582e04b75bff3c4421bc288b8f1a4",
+      "manifest.json": "77d52177df967781e855cb78ef991f680842582ebd988ded9c02e04b77a05a97",
+      "sources/folder-a/health/gaps.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sources/folder-a/source.json": "ded4b0b0994a6f370b23cea9d2182bfee6dc36525f7890e7f8e34519271ba4ab",
+      "sources/folder-a/streams/force/segments/000000.mcap": "9467807bbd26f27129ab88b98d18365343c03c7a712fa7434fb234a7973f6400",
+      "sources/folder-a/streams/force/stream.json": "7b5f368f899b5e8d9b40265d8c9ada3e344f689c3185defabd8918334115f9a6",
+      "sources/folder-a/streams/voltage/segments/000000.mcap": "08a2f0ae5432bf5117707e27297063ea65c727b51f1113a587c76a58ec50eeb5",
+      "sources/folder-a/streams/voltage/stream.json": "d9534fcd83e3539b38a4c471f912aadfdd4a7cd87d8069b69a8111741a737c01",
+      "sources/sampler.b/health/gaps.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sources/sampler.b/source.json": "51b11206a43ab0590baa31e0cf19b8f7194fac5875bc73f900f1417bd1d55b23",
+      "sources/sampler.b/streams/temperature/segments/000000.mcap": "237560fe806bf7576bfe9723c09307038c01d9048d32a4a29f9b09711864c8c7",
+      "sources/sampler.b/streams/temperature/stream.json": "a6e2152bd7d97aa6fc3ca23175d84fdb898ce91803c2147de52dc2a9f76c051d"
+    },
+    "raw_before": {
+      "events/annotations.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/checkpoints.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "events/sync_anchors.json": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "integrity.json": "64828d1836c01d154355917a0281acb093f582e04b75bff3c4421bc288b8f1a4",
+      "manifest.json": "77d52177df967781e855cb78ef991f680842582ebd988ded9c02e04b77a05a97",
+      "sources/folder-a/health/gaps.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sources/folder-a/source.json": "ded4b0b0994a6f370b23cea9d2182bfee6dc36525f7890e7f8e34519271ba4ab",
+      "sources/folder-a/streams/force/segments/000000.mcap": "9467807bbd26f27129ab88b98d18365343c03c7a712fa7434fb234a7973f6400",
+      "sources/folder-a/streams/force/stream.json": "7b5f368f899b5e8d9b40265d8c9ada3e344f689c3185defabd8918334115f9a6",
+      "sources/folder-a/streams/voltage/segments/000000.mcap": "08a2f0ae5432bf5117707e27297063ea65c727b51f1113a587c76a58ec50eeb5",
+      "sources/folder-a/streams/voltage/stream.json": "d9534fcd83e3539b38a4c471f912aadfdd4a7cd87d8069b69a8111741a737c01",
+      "sources/sampler.b/health/gaps.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sources/sampler.b/source.json": "51b11206a43ab0590baa31e0cf19b8f7194fac5875bc73f900f1417bd1d55b23",
+      "sources/sampler.b/streams/temperature/segments/000000.mcap": "237560fe806bf7576bfe9723c09307038c01d9048d32a4a29f9b09711864c8c7",
+      "sources/sampler.b/streams/temperature/stream.json": "a6e2152bd7d97aa6fc3ca23175d84fdb898ce91803c2147de52dc2a9f76c051d"
+    },
+    "raw_unchanged": true,
+    "requested_source": "sampler.b"
+  }
+]
