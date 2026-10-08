@@ -1,0 +1,8 @@
+{
+  "base": "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e",
+  "command": "python -B -m pytest tests/ui/test_analysis_figure_export.py tests/ui/test_analysis_workbench.py tests/ui/test_analysis_scope.py -q -p no:cacheprovider",
+  "result": "interrupted after carried scope worker stalled; not accepted",
+  "exitCode": 130,
+  "observedCompletion": "Feature and workbench progress followed by an unresolved scope-worker wait; no complete JUnit was produced.",
+  "nextStep": "bounded isolated scope replay with faulthandler and preserved stdout"
+}
