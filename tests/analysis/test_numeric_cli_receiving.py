@@ -402,10 +402,15 @@ class NumericCliReceiving(unittest.TestCase):
         # through manifest output paths; this page does not claim figure links.
         self.assertEqual(html.links, [])
         self.assertEqual(len(json.loads((job / "reports" / "qc.json").read_text())["streams"]), 3)
-        entry = next(x for x in manifest["outputs"] if x["kind"] == "manifest")
+        # A manifest cannot inventory its own final checksum. Retain this
+        # historical diagnostic when present, and record its external digest.
+        entry = next((x for x in manifest["outputs"] if x["kind"] == "manifest"), None)
+        manifest_digest = sha256(job / "job_manifest.json")
+        RECORDS[-1]["existing_manifest_self_entry_present"] = entry is not None
         RECORDS[-1]["existing_manifest_self_digest_matches"] = (
-            entry["sha256"] == sha256(job / "job_manifest.json")
+            entry["sha256"] == manifest_digest if entry is not None else None
         )
+        RECORDS[-1]["manifest_file_sha256"] = manifest_digest
         RECORDS[-1]["existing_log_listed_in_persisted_manifest"] = any(
             x["relativePath"] == "logs/job.log" for x in manifest["outputs"]
         )

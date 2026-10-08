@@ -1,0 +1,64 @@
+{
+  "base_commit": "e43da3b855475c8aacf815c201fa03eddaeec0f1",
+  "received_at": "2026-10-08T13:39:57.472Z",
+  "source_repository": "Jacob-Met/CaptureSuite",
+  "component_scope": "exact gallery/export/theme/__init__ imports; source snapshot only, no full application qualification implied",
+  "records": [
+    {
+      "stage": "baseline",
+      "path": "desktop/capture_desktop/widgets_analysis_plots.py",
+      "bytes": 9382,
+      "sha256": "85c73f881ee7d60ef2f868f7ff73fc57c0a4ef99a717f7f5015534db23e1ab86",
+      "git_blob": "bb6c3033b5e4ed96a2e08857d38715b836926bf5"
+    },
+    {
+      "stage": "baseline",
+      "path": "desktop/capture_desktop/theme.py",
+      "bytes": 12072,
+      "sha256": "c77f24e1afeb06400385bd0d535800f13dc15d972891e1ff8af504cbe5c818f3",
+      "git_blob": "e309ce92bf66f65ca7c111698e1f536f05e4dca9"
+    },
+    {
+      "stage": "candidate-v1",
+      "path": "desktop/capture_desktop/theme.py",
+      "bytes": 12072,
+      "sha256": "c77f24e1afeb06400385bd0d535800f13dc15d972891e1ff8af504cbe5c818f3",
+      "git_blob": "e309ce92bf66f65ca7c111698e1f536f05e4dca9"
+    },
+    {
+      "stage": "baseline",
+      "path": "desktop/capture_desktop/__init__.py",
+      "bytes": 119,
+      "sha256": "8426c94323c4cca0879b8612345e3577d0a75f6239237a28d79d94a42004c3b5",
+      "git_blob": "48777bd04b62e3b3b877e12311f7257819ab3a07"
+    },
+    {
+      "stage": "candidate-v1",
+      "path": "desktop/capture_desktop/__init__.py",
+      "bytes": 119,
+      "sha256": "8426c94323c4cca0879b8612345e3577d0a75f6239237a28d79d94a42004c3b5",
+      "git_blob": "48777bd04b62e3b3b877e12311f7257819ab3a07"
+    },
+    {
+      "stage": "candidate-v1",
+      "path": "desktop/capture_desktop/analysis_figure_export.py",
+      "bytes": 14037,
+      "sha256": "cf510ab0f9693ed6961623099be30921eb64ee1d435d00c954ef229334ffb471",
+      "git_blob": "3c7b5c2be3639b6086551eb8d2dda18aa1507b44"
+    },
+    {
+      "stage": "candidate-v1",
+      "path": "desktop/capture_desktop/widgets_figure_export.py",
+      "bytes": 13060,
+      "sha256": "85ddb60f75b1493d75ffbcf943c9c4461bd3bf9a2c14e9b7602e249bdfebef1d",
+      "git_blob": "2e99e3f45a5b74cbb3de25b197eebbf407e88e31"
+    },
+    {
+      "stage": "candidate-v1",
+      "path": "desktop/capture_desktop/widgets_analysis_plots.py",
+      "bytes": 9617,
+      "sha256": "86bf46e07f9978cb3403b88c485107bad9c7110e3ee5b0722fa7e97f697d1db7",
+      "git_blob": "2d6cbf65e20a9ec813254f380b51cebe203647b4"
+    }
+  ]
+}

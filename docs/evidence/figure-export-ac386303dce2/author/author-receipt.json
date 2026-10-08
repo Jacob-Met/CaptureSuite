@@ -1,0 +1,57 @@
+{
+  "originalBase": "e43da3b855475c8aacf815c201fa03eddaeec0f1",
+  "currentBase": "3e3ecc5ecc1cfc79c79901eb5cffe10b0ec5852e",
+  "currentTree": "18e97093f04de23de5e9878fd22c1f5ed986d5f3",
+  "newFeatureCases": 40,
+  "currentFeatureWorkbench": {
+    "passed": 43,
+    "failed": 0,
+    "skipped": 1,
+    "skipReason": "pre-existing SyncDashboard test requires absent optional pyqtgraph",
+    "exitCode": 0,
+    "seconds": 8.09,
+    "junit": "current-main-feature.xml",
+    "log": "current-main-feature.log"
+  },
+  "scopeExploration": {
+    "combinedExitCode": 130,
+    "accepted": false,
+    "candidateRange": {
+      "exitCode": 0,
+      "passed": 1,
+      "seconds": 32.46,
+      "log": "scope-diagnostic.log"
+    },
+    "unchangedCurrentGalleryRange": {
+      "exitCode": 124,
+      "timeoutSeconds": 60,
+      "log": "scope-original-control.log"
+    },
+    "observedStack": "existing Matplotlib Agg savefig, before gallery/export loading",
+    "disposition": "No source adapter; no whole-scope/Linux qualification claim. Actual proposed-head Windows CI is separate."
+  },
+  "testDevelopment": {
+    "first35Cases": {
+      "passed": 35,
+      "junit": "author-tests.xml"
+    },
+    "firstExpandedCombined": {
+      "passed": 42,
+      "failed": 1,
+      "skipped": 1,
+      "junit": "author-first-combined.xml",
+      "reason": "One overly specific test error-message expectation for deeply nested valid JSON lacking a supported schema; corrected test expectation, source unchanged."
+    },
+    "finalOriginalBase": {
+      "passed": 43,
+      "failed": 0,
+      "skipped": 1,
+      "junit": "author-qualified.xml"
+    }
+  },
+  "limitations": [
+    "synthetic MCAP and native offscreen Linux/Qt, not hardware or installed app",
+    "source components and non-evidence dependencies materialized by exact Git blob; published tree will preserve all current-main leaves",
+    "full supported-platform CI pending publication"
+  ]
+}

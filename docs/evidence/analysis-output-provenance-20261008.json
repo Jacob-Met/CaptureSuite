@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "recordedUtc": "2026-10-08T09:37:48.705101+00:00",
+  "repository": "Jacob-Met/CaptureSuite",
+  "reproductionBase": "d3edda561322a80bfc1491ae4f4c7b0bb94943ea",
+  "publicationParent": "c43b2819b149e1e87d7f957d8b3583881c29ffb4",
+  "scope": "Finalize analysis artifact receipts and keep serialized job inventories truthful, including diagnostics and overwrite completion failures.",
+  "contract": {
+    "schemaId": "capture.analysis_job/1",
+    "inventory": "Every finalized produced artifact except job_manifest.json itself has exactly one relativePath, bytes, sha256 and kind receipt.",
+    "manifest": "Read job_manifest.json by its fixed path; checksum the manifest in an external delivery receipt. No schema or consumer requires a self-manifest output row.",
+    "returnedResult": "The successful JobResult.manifest equals the stored JSON document.",
+    "rawInputs": "Source package bytes remain unchanged."
+  },
+  "sourceSha256": {
+    "baselineJobs": "1f58a18fbddf620f304d4521e693d1d26508a8871ad373bc47630da7dd38dcc2",
+    "candidateJobs": "197132c26b128838ecd03ac9a39d9f00ae8f6578d1a3a6dcaee9239a18e11fc9",
+    "newTest": "debcaac8e8f91071b479dbd022682d8e58f6dadb57cf57bbf36e0750bda45f62",
+    "analysisDesign": "b58522ffc006641a7eb0d98b7bd5b66cf54a4ef92403c47b1b0f56fff97da372"
+  },
+  "environment": {
+    "platform": "macOS 26.6.2 arm64",
+    "python": "3.12.8",
+    "dependencyPins": [
+      "pytest==8.4.2",
+      "numpy==2.5.3",
+      "scipy==1.18.1",
+      "pandas==3.0.6",
+      "pyarrow==25.0.1",
+      "matplotlib==3.11.2",
+      "jsonschema==4.26.0",
+      "PyYAML==6.0.3",
+      "mcap==1.5.0",
+      "protobuf==4.25.9",
+      "ruff==0.16.10"
+    ],
+    "dependencyInstallReportSha256": "36873221d34aad06ecdd02d171dfb8682fc248bd5bf9dc5238e86cff96f643ae",
+    "testEnvironment": {
+      "MPLBACKEND": "Agg",
+      "PYTHONDONTWRITEBYTECODE": "1"
+    },
+    "imports": "Ordinary public capture_analysis imports and actual declared native science dependencies; shipped mini-session fixture."
+  },
+  "verification": {
+    "pairedFullAnalysis": {
+      "command": "python -m pytest -q tests/analysis --junitxml=<stage>.xml --basetemp=<stage>-cases",
+      "sameTestBytes": true,
+      "baseline": {
+        "exit_code": 1,
+        "source_sha256": "1f58a18fbddf620f304d4521e693d1d26508a8871ad373bc47630da7dd38dcc2",
+        "source_unchanged": true,
+        "test_sha256": "debcaac8e8f91071b479dbd022682d8e58f6dadb57cf57bbf36e0750bda45f62",
+        "counts": {
+          "tests": 36,
+          "failures": 8,
+          "errors": 0,
+          "skipped": 0,
+          "passed": 28
+        },
+        "junit_sha256": "8eb2c61e3f0b27317af378996317fce3c0c5ee6665a591c77e1acc8c3e360682"
+      },
+      "candidate": {
+        "exit_code": 1,
+        "source_sha256": "197132c26b128838ecd03ac9a39d9f00ae8f6578d1a3a6dcaee9239a18e11fc9",
+        "source_unchanged": true,
+        "test_sha256": "debcaac8e8f91071b479dbd022682d8e58f6dadb57cf57bbf36e0750bda45f62",
+        "counts": {
+          "tests": 36,
+          "failures": 1,
+          "errors": 0,
+          "skipped": 0,
+          "passed": 35
+        },
+        "junit_sha256": "881651d4a98252be876f9a80b122f8b79db2502596448cbedb0d96d0ed6cefb1"
+      },
+      "remainingFailure": "tests/analysis/test_export_sidecar.py::test_export_writes_manifest_and_sidecar: ModuleNotFoundError for PySide6 in both environments. The full Mac suite does not pass."
+    },
+    "focused": {
+      "command": "python -m pytest -q tests/analysis/test_job_output_provenance.py tests/analysis/test_phase_a_qc.py",
+      "result": {
+        "exit_code": 0,
+        "source_sha256": "197132c26b128838ecd03ac9a39d9f00ae8f6578d1a3a6dcaee9239a18e11fc9",
+        "source_unchanged": true,
+        "test_sha256": "debcaac8e8f91071b479dbd022682d8e58f6dadb57cf57bbf36e0750bda45f62",
+        "counts": {
+          "tests": 13,
+          "failures": 0,
+          "errors": 0,
+          "skipped": 0,
+          "passed": 13
+        },
+        "junit_sha256": "af797f701080d215709e631438107e721d3c0d1d78485a264573a3e458e06bd4"
+      },
+      "coverage": [
+        "Final output hashes and sizes",
+        "Stored manifest equals returned result",
+        "Complete unique artifact inventory and raw source preservation",
+        "Overwrite replacement revision",
+        "Failed analysis diagnostic log",
+        "Manifest-stage callback fault rewrites log receipt",
+        "Done-stage callback fault after overwrite rename preserves replacement outputs"
+      ]
+    },
+    "reviewDiscoveredRegression": {
+      "priorCandidate": {
+        "exit_code": 1,
+        "source_sha256": "f7982f4729476616faba64305dcca2a17d379feed36b83abd4c7733232d7e1d3",
+        "source_unchanged": true,
+        "test_sha256": "debcaac8e8f91071b479dbd022682d8e58f6dadb57cf57bbf36e0750bda45f62",
+        "counts": {
+          "tests": 1,
+          "failures": 1,
+          "errors": 0,
+          "skipped": 0
+        },
+        "junit_sha256": "6b2ab7f91c396b558ab03d0ecdc3402cc02cebe864587b05c87f6b653695983f"
+      },
+      "finding": "A done callback fault after overwrite promotion recreated the old work directory and replaced completed params/QC reports with only failed diagnostics. The regression control observed all three artifacts missing.",
+      "repair": "Rebind work to job_dir immediately after successful rename, before the fallible done callback. The same exact new test is in the accepted focused and full paired results."
+    },
+    "static": {
+      "ruff": {
+        "exitCode": 0,
+        "command": "python -m ruff check libs/python/capture_analysis/capture_analysis/jobs.py tests/analysis/test_job_output_provenance.py"
+      },
+      "pipCheck": {
+        "exitCode": 0,
+        "command": "python -m pip check"
+      },
+      "diffCheck": {
+        "exitCode": 0,
+        "command": "git diff --check"
+      },
+      "spdx": {
+        "exitCode": 0,
+        "command": "python tools/check_licenses.py --enforce-spdx",
+        "logSha256": "7bcb47df08917b40ea6dc57be21749a0311e7197c5d26ca0df66e0d9f516bcba",
+        "checkerSha256": "c6d90c9175d2db1de0f3426128c5fb511afc35942156c9bd2b7e692afc401463",
+        "placement": "Unchanged checker in an exact tracked-source archive, excluding the external dependency environment. The first worktree invocation incorrectly scanned .venv-analysis third-party files; that failed attempt is retained. Checker policy and project licenses are unchanged."
+      }
+    },
+    "independentSourceReview": {
+      "result": "Accepted after the reproduced overwrite completion-fault repair. A separate reader verified current source/test hashes and reviewed consumer/schema compatibility and finalization control flow.",
+      "sourceSha256": "197132c26b128838ecd03ac9a39d9f00ae8f6578d1a3a6dcaee9239a18e11fc9",
+      "testSha256": "debcaac8e8f91071b479dbd022682d8e58f6dadb57cf57bbf36e0750bda45f62"
+    }
+  },
+  "evidenceCustody": {
+    "retained": "Native paired JUnit/logs, exact generated output directories, initial red results, reviewer-fault red result, dependency report, source rebase and static-check receipts.",
+    "note": "Hashes above bind the original evidence. This public summary omits machine-private paths; raw native evidence remains preserved."
+  },
+  "acceptanceBoundary": {
+    "hostedWindowsPython312": "Pending exact published-candidate CI",
+    "hostedCppGate": "Pending existing repository gate",
+    "hardware": "No physical capture or hardware validation performed",
+    "priorScope": "Existing native storage, stream-gap, export, camera packaging and framing contributions remain separately owned."
+  }
+}

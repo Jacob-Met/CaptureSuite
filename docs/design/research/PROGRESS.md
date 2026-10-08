@@ -124,6 +124,44 @@ Composition update: main `ac52c3ca` adds the separately received POSIX sealed-re
 repair. The job-preservation production, tests, and initial receiving evidence remain
 byte-identical; hosted CI qualifies this new combined repository tree.
 
+## 2026-10-08 — Receive final output provenance on preserved analysis jobs
+
+Receive the landed PR48 replacement contract before completing PR46. The only
+production delta now finalizes the successful diagnostic log before serializing
+the manifest, and removes the impossible self-manifest checksum. The stored
+inventory agrees with the returned result and final artifact bytes. PR48's
+portable destination guards, unique attempts, failed-record handling, previous
+result restoration and CLI/UI recovery notes remain unchanged.
+
+The original seven provenance receivers on landed main gave two passes, four
+remaining successful-inventory failures and one obsolete completion-callback
+expectation. The updated receiver preserves the previous completed revision and
+checks both its inventory and the separately retained failed attempt. With the
+same updated tests, native Python 3.12.8 receiving improves from **19 passed,
+5 failed** to **24 passed, 0 skipped**. This includes the owner's nine replacement
+fault controls, two actual CLI failure controls and six existing QC controls.
+
+After receiving PR50's QC collector/HTML changes and PR42's fixture isolation,
+the unchanged finalization source passes all **49** focused controls, including
+the landed QC gap cases, with no skips. Both owners' source and documentation
+remain intact.
+
+Receiving the later PR49 numeric pipeline gave **48 passed and one diagnostic
+StopIteration** across seven provenance and 42 numeric controls. Its new CLI
+receiver assumed the old self-manifest row existed only to record that row's
+known checksum mismatch. Make this diagnostic optional, retain a null comparison
+when absent, and record the actual manifest file's external SHA. All existing
+assertions and all numeric runtime source remain unchanged. The affected actual
+CLI case then passed **1/1**, with retained output bytes and source hashes; the
+other 48 cases were not replayed. Independent review verified the diagnostic
+delta and all 87 unchanged assertion/call expressions.
+
+The previously qualified PR46 head and all negative evidence remain in custody;
+its Windows CI does not qualify this new composition. Exact-head supported
+Windows CI remains pending. The separately prepared job-ID candidate was
+superseded by the landed owner and is not included. See
+`docs/evidence/analysis-output-provenance-current-receiving-20261008.json`.
+
 ## 2026-10-08 — Scope recorded analysis gaps to their stream (estate-e82707f2bc62)
 
 A targeted gap from one stream previously invalidated every sibling stream from
@@ -683,6 +721,44 @@ remain pending. Raw results, source pins, CLI input/output hashes and receiving
 source equivalence are in
 `../../evidence/qc-gap-details-ultra-20b27c2e-20261008/`.
 
+
+### 2026-10-08 — Add actual GStreamer camera qualification
+
+The additive Native camera worker workflow enables the real Windows camera
+target with the pinned official GStreamer 1.24.13 MSVC SDK. A test-only absolute
+executable selector reuses the existing three camera cases for the original,
+plugin and legacy layouts. The receiving runner requires all three cases in
+each layout, exact worker/DLL identity, an actual missing plugin-local protobuf
+loader refusal, exact restoration, and unchanged source/SDK/binaries.
+
+The SDK is administratively extracted into a fresh hosted-runner directory;
+there is no product installation or machine/user environment change. Existing
+CI, CMake test registration, worker production source and runtime resolver
+ownership are preserved. Portable acceptance controls and independent source
+review precede hosted Windows execution; they do not establish a native camera
+pass. Physical devices and automatic manifest resolution remain outside this
+gate. Scope, reproduction and retained-evidence rules are in
+`../../qualification/camera-native-dd84679589d8/README.md`.
+
+
+### 2026-10-08 — Receive the first actual Windows camera build
+
+The first dedicated camera run (37782737763, actual checkout
+`ea99de704be6f9fe5b272be3ff0043680cd89d88`) verified the SDK, passed the 13
+portable controls and configured the real camera target. Compilation then
+rejected an integer `gboolean` comparison with C++ `TRUE` under MSVC /W4 /WX
+(C4805 promoted to C2220). The one-line repair interprets the existing
+`gst_element_link_many` result by its zero/nonzero value; the encoder probe
+flow and strict warning gate remain intact. Native camera cases did not run.
+
+The standard C++ gate passed 26 CTest and six native daemon/recovery cases.
+Standard Python exited zero with 383 passed and six skipped, but its JUnit
+declared 448 tests for 389 case entries: 59 successful subtests inflated the
+aggregate. The new camera controls now use the same variant loops and assertions
+as ordinary unittest cases. A focused pytest 9.1.1 replay reproduces the original
+72-versus-13 mismatch and receives the successor's 13-versus-13 report with the
+unchanged shared checker. The next hosted run must qualify both narrow repairs.
+
 ## 2026-10-08 — Desktop analysis time scope (estate-234cae4aee53)
 
 Issue #53 adds the missing operator path from the sealed-session header to the
@@ -723,39 +799,31 @@ remains required. Source pins, raw control/qualification logs and native custody
 are recorded in `docs/evidence/analysis-scope-234cae4aee53/`.
 
 
-### 2026-10-08 — Add actual GStreamer camera qualification
+## 2026-10-08 — Selected analysis figures with original provenance (#59)
 
-The additive Native camera worker workflow enables the real Windows camera
-target with the pinned official GStreamer 1.24.13 MSVC SDK. A test-only absolute
-executable selector reuses the existing three camera cases for the original,
-plugin and legacy layouts. The receiving runner requires all three cases in
-each layout, exact worker/DLL identity, an actual missing plugin-local protobuf
-loader refusal, exact restoration, and unchanged source/SDK/binaries.
+The native gallery now offers **Export figures…** for the loaded completed job.
+Researchers can preview/check an explicit PNG subset, choose a ZIP destination,
+and retain the exact original images, job manifest and parameters together.
+The versioned bundle index distinguishes actual exported-input digests from
+historical hashes recorded inside the original job metadata. Recorded source
+identity, gaps, units, warnings and tooling remain intact; export does not
+recompute results or make a new scientific/hardware claim.
 
-The SDK is administratively extracted into a fresh hosted-runner directory;
-there is no product installation or machine/user environment change. Existing
-CI, CMake test registration, worker production source and runtime resolver
-ownership are preserved. Portable acceptance controls and independent source
-review precede hosted Windows execution; they do not establish a native camera
-pass. Physical devices and automatic manifest resolution remain outside this
-gate. Scope, reproduction and retained-evidence rules are in
-`../../qualification/camera-native-dd84679589d8/README.md`.
+Source reads, validation, PNG decoding, selection and failed/cancelled export
+leave job/session bytes unchanged. The writer stages beside the destination and
+preserves an existing export until successful publication; replacement requires
+an explicit native confirmation. Clear/reload invalidates the old selection and
+cancels its worker. The gallery's public lifecycle composes with #55 saved-job
+history without editing its screen/package hooks, and all sync/inspector behavior
+remains in its existing implementation.
 
-
-### 2026-10-08 — Receive the first actual Windows camera build
-
-The first dedicated camera run (37782737763, actual checkout
-`ea99de704be6f9fe5b272be3ff0043680cd89d88`) verified the SDK, passed the 13
-portable controls and configured the real camera target. Compilation then
-rejected an integer `gboolean` comparison with C++ `TRUE` under MSVC /W4 /WX
-(C4805 promoted to C2220). The one-line repair interprets the existing
-`gst_element_link_many` result by its zero/nonzero value; the encoder probe
-flow and strict warning gate remain intact. Native camera cases did not run.
-
-The standard C++ gate passed 26 CTest and six native daemon/recovery cases.
-Standard Python exited zero with 383 passed and six skipped, but its JUnit
-declared 448 tests for 389 case entries: 59 successful subtests inflated the
-aggregate. The new camera controls now use the same variant loops and assertions
-as ordinary unittest cases. A focused pytest 9.1.1 replay reproduces the original
-72-versus-13 mismatch and receives the successor's 13-versus-13 report with the
-unchanged shared checker. The next hosted run must qualify both narrow repairs.
+Local receiving uses the project's Python 3.12 source, actual PySide6/Qt 6.11.2
+controls/event loop, and an actual synthetic MCAP analysis job. The original
+native gallery has no export action; the candidate produces exact selected PNG
+members plus the two original source JSON files and a versioned bundle index.
+Tests include selected/empty/invalid/stale jobs, output failure and retry,
+replacement refusal/acceptance, native keyboard operation, and clear during an
+active worker. Supported-platform CI and independent receiving are recorded
+separately in the accompanying feature evidence; local Linux Qt is not Windows,
+hardware or installed-app qualification. See [figure export](FIGURE_EXPORT.md)
+for the operator workflow, bundle fields and explicit resource/failure bounds.
