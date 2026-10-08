@@ -1,0 +1,37 @@
+F...                                                                     [100%]
+=================================== FAILURES ===================================
+_______________ test_operator_can_choose_a_sealed_session_scope ________________
+
+qapp = <PySide6.QtWidgets.QApplication(0x1883ca10) at 0x7f45c63860c0>
+tmp_path = PosixPath('/dev/shm/capturesuite-234cae4aee53/scope-baseline/test_operator_can_choose_a_sea0')
+
+    def test_operator_can_choose_a_sealed_session_scope(qapp, tmp_path: Path):
+        from capture_desktop.widgets_session_header import SessionHeader
+        from capture_session import load_review_summary
+        from PySide6.QtWidgets import QComboBox
+    
+        package = _package(tmp_path / "operator.mmsession")
+        header = SessionHeader()
+        header.refresh_sealed(load_review_summary(package))
+        modes = [
+            w for w in header.findChildren(QComboBox) if w.accessibleName() == "Analysis scope mode"
+        ]
+>       assert len(modes) == 1, "sealed session has no operator-accessible analysis scope picker"
+E       AssertionError: sealed session has no operator-accessible analysis scope picker
+E       assert 0 == 1
+E        +  where 0 = len([])
+
+tests/ui/test_analysis_scope.py:69: AssertionError
+----------------------------- Captured stderr call -----------------------------
+This plugin does not support propagateSizeHints()
+=============================== warnings summary ===============================
+tests/ui/test_analysis_scope.py::test_operator_can_choose_a_sealed_session_scope
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.MessageMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+
+tests/ui/test_analysis_scope.py::test_operator_can_choose_a_sealed_session_scope
+  <frozen importlib._bootstrap>:488: DeprecationWarning: Type google._upb._message.ScalarMapContainer uses PyType_Spec with a metaclass that has custom tp_new. This is deprecated and will no longer be allowed in Python 3.14.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED tests/ui/test_analysis_scope.py::test_operator_can_choose_a_sealed_session_scope
+1 failed, 3 passed, 1 deselected, 2 warnings in 1.70s

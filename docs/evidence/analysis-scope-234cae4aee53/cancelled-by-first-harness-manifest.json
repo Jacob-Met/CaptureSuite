@@ -1,0 +1,93 @@
+{
+  "captureAnalysisVersion": "0.1.0",
+  "createdUtc": "2026-10-08T11:57:30Z",
+  "errors": [
+    "analysis cancelled"
+  ],
+  "jobId": "20261008T115701Z_873a1824",
+  "outputs": [
+    {
+      "bytes": 1325,
+      "kind": "qc_json",
+      "relativePath": "reports/qc.json",
+      "sha256": "4af59e1721e1dd85653e2d9845288c4cd7a9331da39d837757680a6cc5d2946b"
+    },
+    {
+      "bytes": 1651,
+      "kind": "qc_html",
+      "relativePath": "reports/qc.html",
+      "sha256": "b7990492047c30eb470932b11003036becb2bf881c81915ab1b224b295e21bb2"
+    },
+    {
+      "bytes": 7362,
+      "kind": "feature_parquet",
+      "relativePath": "features/emg/sim.emg.main/windows.parquet",
+      "sha256": "22cf8e4ab6588a03dc57f57826d7c46047607def9a66971025488e877bb9f010"
+    },
+    {
+      "bytes": 234,
+      "kind": "feature_csv",
+      "relativePath": "features/emg/sim.emg.main/windows.csv",
+      "sha256": "e7d119e0a041adfb98f76258e542f4aabb903908476445c311f2c2b89f0488d1"
+    },
+    {
+      "bytes": 69559,
+      "kind": "figure",
+      "relativePath": "figures/emg_sim.emg.main_channels.png",
+      "sha256": "504db0422745ba9a80360b43cc3aced94ae2ba8e7090a9cdc53ca083bd473cc8"
+    },
+    {
+      "bytes": 7620,
+      "kind": "feature_parquet",
+      "relativePath": "features/imu/sim.imu.upper/windows.parquet",
+      "sha256": "4d54d90f0cd719b771a74701d9611e9569b0f1249de2d0cff9b76b116f7ed093"
+    },
+    {
+      "bytes": 263,
+      "kind": "feature_csv",
+      "relativePath": "features/imu/sim.imu.upper/windows.csv",
+      "sha256": "5d398da803c70a1bf021388222dbb65c4383beef98ecaf0d8269da16b730a8ca"
+    },
+    {
+      "bytes": 23847,
+      "kind": "figure",
+      "relativePath": "figures/imu_sim.imu.upper_accel.png",
+      "sha256": "43f25653f279defd6348710ae16edb93a3c9446126153fb4c2267abeba5d78fd"
+    },
+    {
+      "bytes": 2880,
+      "kind": "feature_schema",
+      "relativePath": "features/_schema.json",
+      "sha256": "a2a4c78c4e189e728bb177f9954220ab41b01f8781c9177783bcc07ccd3c87f9"
+    },
+    {
+      "bytes": 42823,
+      "kind": "figure",
+      "relativePath": "figures/sync_dashboard.png",
+      "sha256": "00335aa9359f852c53ff54ee6220b6c307d74f9ad025415c2bd06d5b715af2b4"
+    },
+    {
+      "bytes": 838,
+      "kind": "sync_series",
+      "relativePath": "figures/sync_dashboard_series.json",
+      "sha256": "9383604c40b7e28e81261d5a07827d06fa887d40ec11ecfff8e7eb4a163061db"
+    },
+    {
+      "bytes": 249,
+      "kind": "params",
+      "relativePath": "params.json",
+      "sha256": "19e63c071b035fbcd9ea3bf912e6258826b3e115a8fbfe207613331c30f3f4b1"
+    },
+    {
+      "bytes": 250,
+      "kind": "log",
+      "relativePath": "logs/job.log",
+      "sha256": "d96dee7a97d32ae69b4c0645619949d4f93b5cd8d295a544007dbc7655fb874c"
+    }
+  ],
+  "packagePath": "/dev/shm/capturesuite-234cae4aee53/scope-qualified/test_selected_scope_reaches_re0/range space \u03bc.mmsession",
+  "schemaId": "capture.analysis_job/1",
+  "sessionId": "mini-analysis-fixture",
+  "status": "failed",
+  "warnings": []
+}

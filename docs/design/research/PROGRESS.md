@@ -592,3 +592,42 @@ all 12 raw package hashes per CLI run are preserved. Exact-head hosted gates
 remain pending. Raw results, source pins, CLI input/output hashes and receiving
 source equivalence are in
 `../../evidence/qc-gap-details-ultra-20b27c2e-20261008/`.
+
+## 2026-10-08 — Desktop analysis time scope (estate-234cae4aee53)
+
+Issue #53 adds the missing operator path from the sealed-session header to the
+existing analysis time-window API: Full session, Checkpoint section, or an exact
+decimal-seconds Time range. Checkpoint IDs distinguish repeated names; requested
+and resolved bounds remain in the existing job provenance. Cursor mark controls
+and a scope outline preserve the visible gap bands. Each threaded job snapshots
+the selected scope, and package identity prevents a different session's selection
+from applying. Invalid ranges stay blocked across header refresh/navigation.
+
+The UI exposes time scopes only for existing consuming commands and identifies
+package-wide QC. Source composition includes current main `72c15d6b`, retaining
+the exporter, camera, registry and analysis replacement-preservation owners' code.
+Backend jobs, loaders, pipelines and storage are unchanged by this contribution.
+
+Initial real Qt/QThread/MCAP receiving passes 11 cases with one explicit Windows
+shell skip; both range and checkpoint jobs preserve exact bounds, derived sample
+times and raw bytes. Twelve focused UI admission/refresh cases also pass after
+tightening exact decimal parsing and invalid-selection persistence. An earlier
+shared-scratch ENOSPC attempt is retained as invalid qualification. Independent
+receiving, the frozen final suite and supported Windows CI remain pending.
+
+Independent receiving rejected the initial picker for a real ID/name collision:
+an earlier checkpoint name could shadow a later stable ID and select the wrong
+interval. The UI now identifies that ambiguous section as unavailable and explains
+the Time range fallback, preserving the existing backend resolver. Two focused
+controls retain the failure with both checkpoint record orders. The corrected
+Qt fixture lifetime also preserves a 30-second timeout/cancellation crash; the
+same production source passed 21 focused cases with one Windows skip after the
+harness waited for actual worker completion (one plotting job took 36.83 seconds).
+
+Final local qualification on the clean, unchanged `951e3c9` composition with
+current QC main `fae29ddc` passes **23 focused UI cases**, with one explicit
+Windows MainWindow skip. All 724 tracked source hashes remain unchanged. Lead
+independently accepts the repaired checkpoint picker at `3625449`; the original
+identity failure and corrected rerun are retained. The supported Windows job
+remains required. Source pins, raw control/qualification logs and native custody
+are recorded in `docs/evidence/analysis-scope-234cae4aee53/`.

@@ -3,7 +3,7 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 
 from PySide6.QtCore import QRectF, Qt, Signal
 from PySide6.QtGui import QPainter
@@ -37,6 +37,8 @@ class TimelineModel:
     checkpoints: list[TimelineCheckpoint] = field(default_factory=list)
     sync_anchors_s: list[float] = field(default_factory=list)
     empty_message: str = "No session timeline data"
+    selection_start_s: float | None = None
+    selection_end_s: float | None = None
 
 
 def timeline_from_capture_state(state: CaptureState) -> TimelineModel:
@@ -159,6 +161,14 @@ class SessionTimelineWidget(QWidget):
         self._model = model
         self.update()
 
+    def set_playhead(self, seconds: float) -> None:
+        self._model = replace(self._model, playhead_s=seconds)
+        self.update()
+
+    def set_selection(self, start_s: float | None, end_s: float | None) -> None:
+        self._model = replace(self._model, selection_start_s=start_s, selection_end_s=end_s)
+        self.update()
+
     def paintEvent(self, event) -> None:  # noqa: N802
         painter = QPainter(self)
         painter.setRenderHint(QPainter.RenderHint.Antialiasing)
@@ -228,6 +238,14 @@ class SessionTimelineWidget(QWidget):
                 px = plot_l + plot_w * min(1.0, model.playhead_s / window)
                 painter.setPen(theme.TEXT)
                 painter.drawLine(int(px), int(y), int(px), int(y + lane_h))
+            if model.selection_start_s is not None and model.selection_end_s is not None:
+                start_s = max(0.0, min(window, model.selection_start_s))
+                end_s = max(0.0, min(window, model.selection_end_s))
+                if end_s > start_s:
+                    painter.setPen(theme.ACCENT)
+                    painter.setBrush(Qt.BrushStyle.NoBrush)
+                    painter.drawRect(QRectF(plot_l + plot_w * start_s / window, y,
+                                            plot_w * (end_s - start_s) / window, lane_h))
             y += lane_h + lane_gap
 
     def mousePressEvent(self, event) -> None:  # noqa: N802

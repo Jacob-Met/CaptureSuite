@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="4" time="1.703" timestamp="2026-10-08T20:56:59.432147+09:00" hostname="05aaedaf3e50"><testcase classname="tests.ui.test_analysis_scope" name="test_operator_can_choose_a_sealed_session_scope" time="1.185"><failure message="AssertionError: sealed session has no operator-accessible analysis scope picker&#10;assert 0 == 1&#10; +  where 0 = len([])">qapp = &lt;PySide6.QtWidgets.QApplication(0x1883ca10) at 0x7f45c63860c0&gt;
+tmp_path = PosixPath('/dev/shm/capturesuite-234cae4aee53/scope-baseline/test_operator_can_choose_a_sea0')
+
+    def test_operator_can_choose_a_sealed_session_scope(qapp, tmp_path: Path):
+        from capture_desktop.widgets_session_header import SessionHeader
+        from capture_session import load_review_summary
+        from PySide6.QtWidgets import QComboBox
+    
+        package = _package(tmp_path / "operator.mmsession")
+        header = SessionHeader()
+        header.refresh_sealed(load_review_summary(package))
+        modes = [
+            w for w in header.findChildren(QComboBox) if w.accessibleName() == "Analysis scope mode"
+        ]
+&gt;       assert len(modes) == 1, "sealed session has no operator-accessible analysis scope picker"
+E       AssertionError: sealed session has no operator-accessible analysis scope picker
+E       assert 0 == 1
+E        +  where 0 = len([])
+
+tests/ui/test_analysis_scope.py:69: AssertionError</failure></testcase><testcase classname="tests.ui.test_analysis_workbench" name="test_analysis_screen_no_plot_startfile" time="0.287" /><testcase classname="tests.ui.test_analysis_workbench" name="test_analysis_job_extras_validate" time="0.005" /><testcase classname="tests.ui.test_analysis_workbench" name="test_sync_dashboard_view_loads_series_json" time="0.093" /></testsuite></testsuites>
