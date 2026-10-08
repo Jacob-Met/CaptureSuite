@@ -2,8 +2,10 @@
 from __future__ import annotations
 
 import json
+import sqlite3
 from pathlib import Path
 
+import pytest
 from capture_session.registry import REGISTRY_SCHEMA_VERSION, AppRegistry
 from capture_session.settings_store import SETTINGS_SCHEMA_VERSION, SettingsStore
 
@@ -100,3 +102,39 @@ def test_registry_newer_schema_opens_readonly(tmp_path: Path) -> None:
             state="idle",
         )
         assert reg.recent_sessions() == []
+
+
+def test_registry_newer_schema_connection_is_readonly_and_open_is_non_mutating(
+    tmp_path: Path,
+) -> None:
+    path = tmp_path / "registry.sqlite"
+    newer_version = REGISTRY_SCHEMA_VERSION + 1
+    with sqlite3.connect(path) as con:
+        con.execute(
+            """
+            CREATE TABLE schema_migrations (
+              version INTEGER PRIMARY KEY,
+              applied_utc TEXT NOT NULL
+            )
+            """
+        )
+        con.execute(
+            "INSERT INTO schema_migrations(version, applied_utc) VALUES (?, ?)",
+            (newer_version, "2026-01-01T00:00:00Z"),
+        )
+
+    original_bytes = path.read_bytes()
+    reg = AppRegistry(path)
+    result = reg.open()
+    try:
+        assert result.read_only
+        assert result.schema_version == newer_version
+        with pytest.raises(sqlite3.OperationalError, match="readonly"):
+            reg._require().execute(  # noqa: SLF001
+                "INSERT INTO schema_migrations(version, applied_utc) VALUES (?, ?)",
+                (newer_version + 1, "2026-01-02T00:00:00Z"),
+            )
+    finally:
+        reg.close()
+
+    assert path.read_bytes() == original_bytes
