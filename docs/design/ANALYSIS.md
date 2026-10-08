@@ -140,6 +140,61 @@ assume MediaPipe-only). Capture CI stays light.
 
 CLI: `tools/run_analysis.py qc|features|plots|all|pose|kinematics|ml_bundle|eval`.
 
+## Decision 2026-10-08: Captured checkpoints close analysis sections
+
+**Reason:** A recorded checkpoint closes and names its preceding section under
+[`SESSION_FORMAT.md`](SESSION_FORMAT.md#checkpoints-and-section-derivation).
+The public `checkpoint_section_window` API selects a checkpoint by its ID or
+name. Resolving that selection from its timestamp to the next checkpoint
+analyzed the following task and assigned the final checkpoint to the tail.
+The older tagged-section-start example in
+[`research/ANALYSIS_SCOPE_SEMANTICS.md`](research/ANALYSIS_SCOPE_SEMANTICS.md)
+describes a different selection model; it does not redefine captured checkpoints.
+
+`--checkpoint-section ID_OR_NAME` now resolves from the previous checkpoint's
+effective timestamp, or session time zero for the first checkpoint, to the
+selected checkpoint's effective timestamp. Existing timestamp aliases and
+original-time fallback remain supported. Effective timestamps determine order;
+equal timestamps retain their stored order. Resolution never edits the stored
+checkpoint records or their original timestamps.
+
+For checkpoints named `Warm-up` at 2 seconds, `Reach` at 5 seconds, and `Finish`
+at 7 seconds in an 8-second session:
+
+| Selection | Resolved interval |
+| --- | --- |
+| `Warm-up` | 0 to 2 seconds |
+| `Reach` | 2 to 5 seconds |
+| `Finish` | 5 to 7 seconds |
+| Explicit `--start-ns 7000000000 --end-ns 8000000000` | 7 to 8 seconds, the trailing interval |
+
+The trailing section remains separate; this change does not add a synthetic
+checkpoint ID for it. Full-session and explicit-range selection keep their
+existing behavior. A checkpoint at zero or two consecutive checkpoints at the
+same effective time retains a zero-duration interval. The existing inclusive
+`TimeWindow` policy still includes a sample exactly at that boundary; zero
+duration does not imply zero samples. Gaps, annotations and sync anchors do not
+change checkpoint boundaries.
+
+Signed timestamps are accepted by the stored checkpoint schema. If the first
+selected checkpoint closes before session time zero, the derived interval would
+have `end < start`; analysis reports an invalid checkpoint section instead of
+returning inverted bounds. It does not clamp or rewrite that record. Later
+adjacent signed endpoints retain their exact values when ordered, as do valid
+explicit time ranges.
+
+**Alternatives rejected:** Treating a selected captured checkpoint as a section
+start contradicts the session contract. Extending point sections by one
+nanosecond, attaching the trailing interval to the final checkpoint, or adding
+new section-tag semantics would change operator intent or the API contract.
+
+**Files:** `capture_analysis/windows.py`,
+`tests/analysis/test_checkpoint_sections.py`. Native receiving uses sealed,
+synthetic protobuf MCAP data through the public resolver and actual CLI, checks
+the selected Parquet/CSV values and plot-series timestamps, and verifies raw
+package hashes before and after execution. The desktop scope picker is tracked
+separately in issue #53; this backend repair is issue #54.
+
 ## Pose / mocap model registry (Phase D+)
 
 MediaPipe is **one backend**, not the product. CaptureSuite pose jobs use a

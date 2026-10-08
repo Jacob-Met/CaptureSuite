@@ -104,7 +104,7 @@ def test_selected_scope_reaches_real_thread_job_and_mcap_outputs(qapp, tmp_path:
         assert picker._sections.count() == 2
         assert "section-one" in picker._sections.itemText(0)
         assert "section-two" in picker._sections.itemText(1)
-        picker._sections.setCurrentIndex(0)
+        picker._sections.setCurrentIndex(1)
     assert screen._btn_run.isEnabled()
     assert screen.scope.start_ns == 50_000_001
     assert screen.scope.end_ns == 150_000_001
@@ -137,9 +137,9 @@ def test_selected_scope_reaches_real_thread_job_and_mcap_outputs(qapp, tmp_path:
         assert manifest["timeRange"]["startSessionNs"] == selected.start_ns
         assert manifest["timeRange"]["endSessionNs"] == selected.end_ns
         if mode == "section":
-            assert params["checkpointSection"] == "section-one"
+            assert params["checkpointSection"] == "section-two"
             assert params["startSessionNs"] is None
-            assert manifest["timeRange"]["checkpointIds"] == ["section-one"]
+            assert manifest["timeRange"]["checkpointIds"] == ["section-two"]
         else:
             assert params["startSessionNs"] == selected.start_ns
             assert params["endSessionNs"] == selected.end_ns

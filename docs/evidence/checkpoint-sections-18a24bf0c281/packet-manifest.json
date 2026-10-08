@@ -1,0 +1,119 @@
+{
+  "files": [
+    {
+      "path": "baseline-manifest.json",
+      "bytes": 43393,
+      "sha256": "032d46707578636e146d62922bc8f38464c64ff9523b6cff191c7c0afbe607e3"
+    },
+    {
+      "path": "baseline-native.tar.gz",
+      "bytes": 257526,
+      "sha256": "d6576f186239cc414fc074f9ab90124221e8e9d97263084e7a8970e51e7ba2eb"
+    },
+    {
+      "path": "candidate-freeze.json",
+      "bytes": 1041,
+      "sha256": "01a205e52a6df534bea95a2273769355a6dbb61345fb9b36aa692d19a13fb6f3"
+    },
+    {
+      "path": "candidate-manifest.json",
+      "bytes": 42749,
+      "sha256": "44cb1017a0ebc485b820bb228561d5f45f4524ca0debee4d3acc193e3adb70cc"
+    },
+    {
+      "path": "candidate-native.tar.gz",
+      "bytes": 262350,
+      "sha256": "c0cab748476d7c4a776a43a36b642aec5ce94fd7edd659dc3ea254f545074362"
+    },
+    {
+      "path": "cli-comparison.json",
+      "bytes": 72490,
+      "sha256": "38ce48652c05b95e5656b81b06a51fb477733131aac5a6d290398889bd2dd35e"
+    },
+    {
+      "path": "collection.json",
+      "bytes": 479,
+      "sha256": "efdc65905564c99936736b89c1358811ac8362bfd463700463be2ad98dba7f34"
+    },
+    {
+      "path": "environment-check.txt",
+      "bytes": 30,
+      "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+    },
+    {
+      "path": "environment-freeze.txt",
+      "bytes": 983,
+      "sha256": "5620c7bf53cd067e068122e2b72632eeed64dfdef2c7329f6cbe4aefaaf9e535"
+    },
+    {
+      "path": "environment-install.json",
+      "bytes": 597,
+      "sha256": "6e19ac2b59995a91f38fe7a82ad07344ddd6439a2fd615c47d7b1015c1a1894e"
+    },
+    {
+      "path": "figures/baseline-imu.png",
+      "bytes": 19980,
+      "sha256": "d661f95b263b4e641a88c90d43f9cdc1e86e1d5de81831e3b8ded16006591ceb"
+    },
+    {
+      "path": "figures/baseline-sync.png",
+      "bytes": 21691,
+      "sha256": "44ee662bf9b53c4b947edb046a4cf6cea9da5dcfd219fe9470c3d89748e95058"
+    },
+    {
+      "path": "figures/candidate-imu.png",
+      "bytes": 34094,
+      "sha256": "d0704a71f552cf90365a8a5453f8183d834c6039c951dd88f094e54693cbea53"
+    },
+    {
+      "path": "figures/candidate-sync.png",
+      "bytes": 25223,
+      "sha256": "29c498df6596a6e87b3b5abfc4e9a4e442ed9bf13a51acf29eb9d2861e1afc06"
+    },
+    {
+      "path": "prepare.cjs",
+      "bytes": 2159,
+      "sha256": "2adf61a2a35a97793d665e0f040218bd52380b31700b9fdd1bbe9602f175771c"
+    },
+    {
+      "path": "receive.cjs",
+      "bytes": 4189,
+      "sha256": "98494b3d74f1d76c5857abc9f5ce58188e205dc84a40f184f1bb549e48b50bd1"
+    },
+    {
+      "path": "regression-manifest.json",
+      "bytes": 23278,
+      "sha256": "dbcd6e7fe903f571cec9ebf83d4c6790f57cb3032eb7956d15e94c9f734f739f"
+    },
+    {
+      "path": "regression-native.tar.gz",
+      "bytes": 146635,
+      "sha256": "5820bc321f7d4716d252634d5a93190a15f0051526868d5077b8e3ab523210e0"
+    },
+    {
+      "path": "regression.cjs",
+      "bytes": 2405,
+      "sha256": "9561732d94a11e19e3a7d737fbf1e6594e51adc4931a54b7bb533bdaa467908f"
+    },
+    {
+      "path": "run-summary.json",
+      "bytes": 6089,
+      "sha256": "5c45f562e18c94bec8fd66325936298c2da0c5f43e710e7c0b93bf1276a355fa"
+    },
+    {
+      "path": "source-custody-summary.json",
+      "bytes": 620,
+      "sha256": "f2c6a88c001aee42a554e5e266b2775bbef8c8bd6fdf5ab3b0c46c0f844c1eec"
+    },
+    {
+      "path": "source-transfer.json",
+      "bytes": 314,
+      "sha256": "80067e1cd613b7c654bf9812a20b0794ea99c2f13823fad547fbb77d95e49133"
+    },
+    {
+      "path": "visual-receiving.json",
+      "bytes": 890,
+      "sha256": "439235b2331a9b7b0719515b256012ec1a59e331f0dccbb7f106d3d0d505eed0"
+    }
+  ]
+}

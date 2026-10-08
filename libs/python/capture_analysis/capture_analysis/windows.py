@@ -58,6 +58,7 @@ def _checkpoint_id(cp: dict[str, Any]) -> str:
 
 
 def checkpoint_section_window(summary: ReviewSummary, section_id: str) -> TimeWindow:
+    """Resolve the section closed and named by a captured checkpoint."""
     cps = sorted(summary.checkpoints, key=_checkpoint_time_ns)
     if not cps:
         raise ValueError("no checkpoints in package")
@@ -68,11 +69,10 @@ def checkpoint_section_window(summary: ReviewSummary, section_id: str) -> TimeWi
             break
     if idx is None:
         raise ValueError(f"checkpoint section not found: {section_id}")
-    start = _checkpoint_time_ns(cps[idx])
-    if idx + 1 < len(cps):
-        end = _checkpoint_time_ns(cps[idx + 1])
-    else:
-        end = max(int(summary.duration_ns), start + 1)
+    start = _checkpoint_time_ns(cps[idx - 1]) if idx > 0 else 0
+    end = _checkpoint_time_ns(cps[idx])
+    if end < start:
+        raise ValueError(f"invalid checkpoint section: start={start} end={end}")
     return TimeWindow(start, end, label=f"cp:{section_id}")
 
 
