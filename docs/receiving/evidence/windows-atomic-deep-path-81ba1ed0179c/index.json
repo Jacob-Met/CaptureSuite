@@ -1,0 +1,65 @@
+{
+  "schema": "capturesuite.atomic-path-custody-carrier.v1",
+  "archiveFilename": "CaptureSuite-atomic-path-qualified-source-evidence-r1.zip",
+  "archiveBytes": 1207041,
+  "archiveSha256": "7d039410fb33b053faa3f91f82825b64dd5b00809c256fb3e2fb03f53955e4eb",
+  "archiveMembers": 38,
+  "encoding": "Concatenate listed UTF-8 text parts in order, remove ASCII whitespace, decode base64. Verify archive SHA-256 and every MANIFEST.json member hash before use. Nested author and independent ZIPs retain their own manifests.",
+  "qualification": "Independent candidate9/9 byte-and-cleanup receiving; original baseline9 cases. Source review0blockers. Original setup failure and original-link/candidate clean-settlement gates remain false. New Catch cases and full native suite unrun.",
+  "parts": [
+    {
+      "path": "archive-part-00.base64.txt",
+      "bytes": 180001,
+      "sha256": "a92bd44a1d300579f11664eac8fb9d7397c38fe935e843b83afd876aaecbf2e1",
+      "gitBlobSha": "5daef3f048293244c96216596b8254491d972c29"
+    },
+    {
+      "path": "archive-part-01.base64.txt",
+      "bytes": 180001,
+      "sha256": "a349f4b5573d1c0b129d0dea1c2a20190aa84d51761bcbedf5dad4e423af13f4",
+      "gitBlobSha": "72bba4821a0eac12ccaece45d10f37a6395aefc3"
+    },
+    {
+      "path": "archive-part-02.base64.txt",
+      "bytes": 180001,
+      "sha256": "1ae7e40a41dff322384f7c7b555d9605482d65be4997b1089983c6e3aed77d13",
+      "gitBlobSha": "d45e6e9c7459ba054714269fba125f10cefe4957"
+    },
+    {
+      "path": "archive-part-03.base64.txt",
+      "bytes": 180001,
+      "sha256": "5a29b96f2290b16c917cdcbe02b3cb3d0b537881fbb78c7e2ba7160debeb022e",
+      "gitBlobSha": "28224612a0bb0b244e1a3d033d4359f9c46daeb2"
+    },
+    {
+      "path": "archive-part-04.base64.txt",
+      "bytes": 180001,
+      "sha256": "23a55ec50959b50ac8023de61300d40123d92c7627735004507542c40cf9644a",
+      "gitBlobSha": "f0ecebbaa4ce765adf7db539fb25488e93f6a831"
+    },
+    {
+      "path": "archive-part-05.base64.txt",
+      "bytes": 180001,
+      "sha256": "ba7d3d1d3ca88fb27ab0638ac5527a28104e96cbf6e38866c39726987d6ac652",
+      "gitBlobSha": "548e20407edc7e4289f00578895301c930c4e6f3"
+    },
+    {
+      "path": "archive-part-06.base64.txt",
+      "bytes": 180001,
+      "sha256": "61a51131d8e26f81ee1713e0c05feaa6255ded8bf9025514341dd02afcbdf976",
+      "gitBlobSha": "ca50ea37866b7bdb05442e2fb0741083d9a21870"
+    },
+    {
+      "path": "archive-part-07.base64.txt",
+      "bytes": 180001,
+      "sha256": "73838a1dfd72f1692daeba54ebb45a12fc91bc8c066aaecabcd2dbd35bd45ab6",
+      "gitBlobSha": "1755a350731f248febbe49bc1576d0e673fa8085"
+    },
+    {
+      "path": "archive-part-08.base64.txt",
+      "bytes": 169389,
+      "sha256": "7ae4617a66ad4c3d63827190a29752d78543c411044485d1b8a489e1909b26ee",
+      "gitBlobSha": "1d3189f6ede9324da260549ab6aa6a8a4861ca78"
+    }
+  ]
+}

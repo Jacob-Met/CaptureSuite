@@ -261,3 +261,54 @@ TEST_CASE("Windows atomic write preserves a raw-file symlink at the old temp nam
   const std::set<fs::path> expected{"raw.bin", "manifest.json", "manifest.json.tmp"};
   CHECK(directory_entries(directory.path()) == expected);
 }
+
+
+TEST_CASE("Windows atomic write publishes exact bytes beyond legacy MAX_PATH",
+          "[storage][atomic][windows][long-path]") {
+  const OwnedDirectory directory;
+  const auto deep = directory.path() / std::wstring(90, L'd') /
+                    std::wstring(90, L'e') / std::wstring(90, L'f');
+  const auto extended = fs::path(L"\\\\?\\" + deep.native());
+  REQUIRE(fs::create_directories(extended));
+  const auto target = deep / "manifest.json";
+  const auto retained = extended / "ordinary-neighbour.bin";
+  const std::string sentinel = "retained ordinary bytes\n";
+  const std::string replacement("a\0b\n", 4);
+  write_fixture(retained, sentinel);
+  REQUIRE(target.native().size() > MAX_PATH);
+
+  std::string error;
+  CHECK(capture::storage::atomic_write_bytes(target, replacement, error));
+  INFO("atomic write error=" << error);
+  CHECK(contents(extended / "manifest.json") == replacement);
+  CHECK(contents(retained) == sentinel);
+  CHECK(directory_entries(extended) ==
+        std::set<fs::path>{"manifest.json", "ordinary-neighbour.bin"});
+  CHECK(fs::remove_all(extended) == 3);
+}
+
+TEST_CASE("Windows atomic long-path refusal cleans only its created sibling",
+          "[storage][atomic][windows][long-path]") {
+  const OwnedDirectory directory;
+  const auto deep = directory.path() / std::wstring(90, L'g') /
+                    std::wstring(90, L'h') / std::wstring(90, L'i');
+  const auto extended = fs::path(L"\\\\?\\" + deep.native());
+  REQUIRE(fs::create_directories(extended));
+  const auto target = deep / "manifest.json";
+  const auto extended_target = extended / "manifest.json";
+  const std::string prior = "retained target bytes\n";
+  write_fixture(extended_target, prior);
+  const auto before = directory_entries(extended);
+  {
+    const FileHandle held(CreateFileW(
+        extended_target.c_str(), GENERIC_READ, FILE_SHARE_READ | FILE_SHARE_WRITE,
+        nullptr, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr));
+    REQUIRE(held.get() != INVALID_HANDLE_VALUE);
+    std::string error;
+    CHECK_FALSE(capture::storage::atomic_write_text(target, "replacement\n", error));
+    CHECK_FALSE(error.empty());
+    CHECK(contents(extended_target) == prior);
+    CHECK(directory_entries(extended) == before);
+  }
+  CHECK(fs::remove_all(extended) == 2);
+}

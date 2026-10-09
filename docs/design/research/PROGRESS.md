@@ -1213,3 +1213,10 @@ pause/reload, C and Ctrl+Space countercontrols, outside-viewer checkpoint routin
 and unchanged raw fixtures. The original 151-case and independent lifecycle receipts
 remain at their historical source pins. App shortcut source and PR84 ownership
 remain untouched; final hosted gates are required on this corrected successor.
+
+
+## 2026-10-09 — Ordinary deep Windows atomic metadata paths (#108)
+
+Resolved ordinary Windows destination spelling once before constructing both destination and same-directory temporary paths, adding extended syntax only where the actual I/O path requires it. The unchanged independent receiver observed original temporary-creation refusals at 242-unit and 357-unit destinations, then exact 538-byte candidate publication at both. All nine candidate byte/inventory cases passed; deep held-target and directory refusals reached replacement and removed their temporary siblings. The POSIX/shared tail, public header and full original Windows test prefix remain exact. Two appended Catch cases are source-reviewed only and unrun.
+
+See [focused receiving and gate limits](../../receiving/windows-atomic-deep-path-81ba1ed0179c.md). Frozen expectations d2a98631a896676d6e44b1dbb5f96bc0533648d9572dd1f0f2f1086ea0435c10; candidate source 2b4c6ccb454584ebf79206706c9aa0da40d183171ba193ed71bf299cd99672f0; independent final packet 4e171b14da4c9e97d23389dd4d208c27cfaf63b1fc069a0c019e74ddaa48c34e. Original manifest-tool setup failure and subsequent original-link/candidate clean-settlement failures remain false historical gates despite parent exit zero and separately accepted native file behavior. No full CTest/native-six/LA7 or GitHub Actions claim; existing owners and shared CMake remain unchanged.

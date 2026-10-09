@@ -28,13 +28,64 @@ bool atomic_write_bytes(const std::filesystem::path& path,
     return std::string(context) +
            std::error_code(static_cast<int>(code), std::system_category()).message();
   };
-  const auto dir = path.has_parent_path() ? path.parent_path()
-                                         : std::filesystem::path(L".");
-  const auto name = path.filename().wstring();
-  if (name.empty() || name == L"." || name == L"..") {
+  const auto original_name = path.filename().wstring();
+  if (original_name.empty() || original_name == L"." || original_name == L"..") {
     error = "atomic write requires a file name";
     return false;
   }
+
+  // Consume an ordinary relative path once, before constructing either name.
+  // The extended namespace does not normalize slashes or dot components.
+  auto absolute = path;
+  const auto original = path.native();
+  const auto has_prefix = [](const std::wstring& value, const wchar_t* prefix) {
+    return value.rfind(prefix, 0) == 0;
+  };
+  if (!has_prefix(original, L"\\\\?\\") &&
+      !has_prefix(original, L"\\\\.\\")) {
+    std::vector<wchar_t> buffer(32768);
+    const DWORD length = ::GetFullPathNameW(
+        path.c_str(), static_cast<DWORD>(buffer.size()), buffer.data(), nullptr);
+    if (length == 0 || length >= buffer.size()) {
+      error = io_error("failed to resolve atomic write path: ",
+                       length == 0 ? ::GetLastError() : ERROR_FILENAME_EXCED_RANGE);
+      return false;
+    }
+    const std::wstring full(buffer.data(), length);
+    // Preserve the prior handling of DOS device names; do not turn them into
+    // literal filenames by applying the extended filesystem prefix.
+    if (!has_prefix(full, L"\\\\.\\")) absolute = full;
+  }
+
+  const auto io_path = [&](const std::filesystem::path& value,
+                           std::filesystem::path& result) {
+    const auto native = value.native();
+    if (native.size() < MAX_PATH || has_prefix(native, L"\\\\?\\") ||
+        has_prefix(native, L"\\\\.\\")) {
+      result = value;
+      return true;
+    }
+    // Keep ambiguous ordinary spellings from acquiring literal extended-path
+    // meaning. Explicit extended paths retain their caller-chosen spelling.
+    for (const auto& component : value.relative_path()) {
+      const auto part = component.native();
+      if (!part.empty() && (part.back() == L'.' || part.back() == L' ')) {
+        error = "long atomic write path requires components without trailing dots or spaces";
+        return false;
+      }
+    }
+    if (has_prefix(native, L"\\\\")) {
+      result = L"\\\\?\\UNC\\" + native.substr(2);
+    } else {
+      result = L"\\\\?\\" + native;
+    }
+    return true;
+  };
+  std::filesystem::path destination;
+  if (!io_path(absolute, destination)) return false;
+  const auto dir = absolute.has_parent_path() ? absolute.parent_path()
+                                              : std::filesystem::path(L".");
+  const auto name = absolute.filename().wstring();
 
   // A pre-existing path.tmp may alias retained data. CREATE_NEW gives this
   // operation its own file; never open, truncate, or clean up a prior name.
@@ -50,7 +101,7 @@ bool atomic_write_bytes(const std::filesystem::path& path,
         CSTR_EQUAL) {
       continue;
     }
-    tmp = dir / temp_name;
+    if (!io_path(dir / temp_name, tmp)) return false;
     file = ::CreateFileW(tmp.c_str(), GENERIC_WRITE, 0, nullptr, CREATE_NEW,
                          FILE_ATTRIBUTE_NORMAL, nullptr);
     if (file != INVALID_HANDLE_VALUE) break;
@@ -101,7 +152,7 @@ bool atomic_write_bytes(const std::filesystem::path& path,
   }
 
   // Keep the existing same-directory, write-through replacement boundary.
-  if (!::MoveFileExW(tmp.c_str(), path.c_str(),
+  if (!::MoveFileExW(tmp.c_str(), destination.c_str(),
                      MOVEFILE_REPLACE_EXISTING | MOVEFILE_WRITE_THROUGH)) {
     error = io_error("MoveFileEx failed during atomic write: ", ::GetLastError());
     discard_temp();
