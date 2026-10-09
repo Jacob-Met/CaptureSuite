@@ -1,0 +1,82 @@
+--- a/libs/python/capture_analysis/capture_analysis/eval/template.py
++++ b/libs/python/capture_analysis/capture_analysis/eval/template.py
+@@ -7,8 +7,8 @@
+ import io
+ import json
+ import os
++import tempfile
+ from pathlib import Path
+-import tempfile
+ from typing import Any
+ 
+ import pandas as pd
+--- a/tools/prepare_predictions.py
++++ b/tools/prepare_predictions.py
+@@ -5,8 +5,8 @@
+ from __future__ import annotations
+ 
+ import argparse
++import sys
+ from pathlib import Path
+-import sys
+ 
+ ROOT = Path(__file__).resolve().parents[1]
+ sys.path[:0] = [
+@@ -42,7 +42,9 @@
+         f"{result['windowCount']} windows, {result['targetCount']} targets: "
+         "all values are unavailable null placeholders. No model was run."
+     )
+-    print("Fill the null values with predictions, then use the existing eval --predictions command.")
++    print(
++        "Fill the null values with predictions, then use the existing eval --predictions command."
++    )
+     return 0
+ 
+ 
+--- a/tests/analysis/test_prediction_template.py
++++ b/tests/analysis/test_prediction_template.py
+@@ -5,14 +5,13 @@
+ import hashlib
+ import json
+ import os
+-from pathlib import Path
+ import shutil
+ import subprocess
+ import sys
++from pathlib import Path
+ 
+ import pandas as pd
+ import pytest
+-
+ from capture_analysis.eval import predictions
+ from capture_analysis.eval.template import prepare_prediction_template
+ 
+@@ -74,7 +73,7 @@
+ 
+ def refuse(package, output, *, bundle_id="bundle", model_id="model"):
+     before = files(package)
+-    with pytest.raises(Exception):
++    with pytest.raises((ValueError, TypeError, FileNotFoundError)):
+         prepare_prediction_template(package, bundle_id, model_id, output)
+     assert not os.path.lexists(output)
+     assert files(package) == before
+@@ -202,7 +201,7 @@
+     external = tmp_path / "outside"
+     shutil.copytree(bundle.parent, external)
+     before = files(package)
+-    with pytest.raises(Exception):
++    with pytest.raises(ValueError):
+         prepare_prediction_template(package, str(external), "model", output)
+     assert not output.exists()
+     assert files(package) == before
+@@ -346,7 +345,9 @@
+         assert metric["excluded"] == {
+             "invalidWindow": 1, "nonfiniteTeacher": 0, "missingPrediction": 2}
+     assert (folder / "prediction_input.json").read_bytes() == template_bytes
+-    assert (folder / "source_bundle_manifest.json").read_bytes() == (bundle / "manifest.json").read_bytes()
++    assert (folder / "source_bundle_manifest.json").read_bytes() == (
++        bundle / "manifest.json"
++    ).read_bytes()
+     assert {name: sha(package / name) for name in before} == before
+ 
+ 

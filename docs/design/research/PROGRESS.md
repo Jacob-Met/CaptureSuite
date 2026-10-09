@@ -1213,3 +1213,33 @@ pause/reload, C and Ctrl+Space countercontrols, outside-viewer checkpoint routin
 and unchanged raw fixtures. The original 151-case and independent lifecycle receipts
 remain at their historical source pins. App shortcut source and PR84 ownership
 remain untouched; final hosted gates are required on this corrected successor.
+
+
+## 2026-10-09 — External prediction template (chatgpt-713adaab production)
+
+The additive `tools/prepare_predictions.py` command creates an editable,
+source-bound `capture.eval_predictions/1` file for one selected ML bundle.
+Every window retains its original order and exact integer timestamp; every
+target starts as unavailable `null`. Final source-file hashes and independently
+selected package identity are admitted by the unchanged external evaluator
+before exclusive publication to a new destination. No model, scoring, producer,
+registry, schema, job API or raw-data behavior changes. See
+[the operator guide](../PREDICTION_TEMPLATES.md).
+
+Native macOS Python 3.12.8 receiving passed 78 cases on the first runtime source
+(46 new plus 32 inherited external-evaluation cases). A separate receiver frozen
+before candidate exposure passed four original controls and ten candidate groups,
+including actual template CLI output through the unchanged evaluation CLI. The
+first collection failure from a missing original test helper and the exact-source
+context supplement remain retained. Read-only Ruff then found seven issues;
+the reviewed final delta only orders imports, wraps equivalent lines, and narrows
+two exception assertions after exposure. Final Ruff and all 46 owned cases pass,
+with all 166 source-carrier files unchanged during that gate. The earlier 78-case
+and independent ten-group results remain bound to their original source hashes.
+
+This is native source qualification and branch-only storage, not main integration,
+Windows hard-link qualification, full repository CI, installed adoption or model
+accuracy. PR/main publication remains held because the current workflows trigger
+Actions. The separate target-name admission candidate is not included. Exact
+sources, raw failure/success capsules, blind expectations, peer custody and limits
+are in [the evidence packet](../../evidence/prediction-template-713adaab/README.md).

@@ -1,0 +1,63 @@
+{
+  "schema": "prediction_template_independent_acceptance/1",
+  "actor": "chatgpt:/root/mac_execution",
+  "decision": "Accept pinned candidate for the received native consumer scope; no source blocker found.",
+  "receiver_sha256": "c03601928e05f357f73fd9bf7366ea4f45ce923031133f09b2893aff3bd98061",
+  "root_expectations_sha256": "b955878b51286b0b53a6c0ccc32ed1c2210e5d79de47154224dd332fb500e1db",
+  "blind_boundary": "Receiver frozen before candidate source or author tests; unchanged between original and candidate. Author stdout read only during later recovery, after the receiver and original controls were frozen.",
+  "source": {
+    "canonical_commit": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+    "partial_original_leaves": 161,
+    "candidate_owned": {
+      "libs/python/capture_analysis/capture_analysis/eval/template.py": "537035171ff5951cd8c98dacdd4199b34a34bc6477e22e8d6c4771cd368291fb",
+      "tools/prepare_predictions.py": "8fd7ebd8b28728771848564e85ad3449aca7ddc5598594101329ee3912537786",
+      "docs/design/PREDICTION_TEMPLATES.md": "2a872f6269c3022343e4c1e96d4ef2306c959888ac91c98f7a8fb1e31f53f21e",
+      "tests/analysis/test_prediction_template.py": "52ef83a34127dc113bf47e913807108cccf2e1085740ee2b70bd38b67fd1a3e7"
+    }
+  },
+  "peer_receiving": {
+    "original-r1": {
+      "receipt_sha256": "659dc43d9442520a11376baecd95c5913b306360b90b70e6214a72280a4ae64f",
+      "passed_groups": 4,
+      "failed_groups": 0,
+      "raw_calls_verified": 3
+    },
+    "candidate-r1": {
+      "receipt_sha256": "1bd6eb8ca35d9006faab815ad1aa88feab0d08dc58345cc6616d20729894b94e",
+      "passed_groups": 10,
+      "failed_groups": 0,
+      "raw_calls_verified": 16
+    }
+  },
+  "author_receiving_separate": {
+    "receipt_sha256": "46340ecd4e805f966ede649887d9ace026781b54cf08390157394fa3e22dab21",
+    "counts": {
+      "tests": 78,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": 78
+    },
+    "seconds": 18.794643083005212,
+    "source_files_verified": 166,
+    "r1_disposition": "Collection error due to omitted unchanged test_pose_job.py fixture helper; zero product tests. Original failure and exact context supplement retained. No owner driver replay by peer."
+  },
+  "claims": [
+    "Actual prepare CLI preserves three-row order, exact signed-int64 2^53+1/-1/maximum, target identity and all-null values.",
+    "Both actual generated extreme and original-native-producer templates reach the unchanged original user-facing evaluator CLI; output identity, final provenance and every job inventory digest are verified.",
+    "Extreme fixture metrics are n=0, null MAE/RMSE/Pearson, insufficient_pairs, exclusions invalidWindow=1/nonfiniteTeacher=0/missingPrediction=2 for each target.",
+    "Six existing regular/directory/link/source destinations survive refusal exactly. Late Boolean teacher and wrong-session admission leave no final or staging file.",
+    "Manifest whitespace changes the bound final digest; unchanged evaluator rejects stale input. Identical source and exact label produce deterministic bytes.",
+    "All original fixture inputs and source trees unchanged; no source/test edits, dependency installation, model inference, browser run or hosted write."
+  ],
+  "limits": [
+    "Partial canonical source snapshot; no whole-repository or Windows execution qualification.",
+    "Peer does not inject publication race or 64MiB resource stress. Author tests remain separately attributed.",
+    "Extreme data is independently authored Arrow; native producer control retains exact prior producer bytes in a valid copied package envelope.",
+    "Structural all-null acceptance implies no model execution, accuracy or held-out validation.",
+    "No hostile-filesystem, concurrent parent replacement, package transaction or power-loss guarantee.",
+    "Root authorized owner recovery readback during a model-capacity interruption; owner identity and source ownership remain unchanged.",
+    "Actions and hosted integration remain held."
+  ],
+  "sealer_preparation": "Local scratch ENOSPC left only a zero-byte draft; native sealer was then written directly. No native product run or owner mutation during sealing."
+}

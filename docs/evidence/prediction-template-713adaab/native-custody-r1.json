@@ -1,0 +1,9 @@
+{
+  "repo": "/Users/me/Developer/capturesuite-prediction-template-20261008-713adaab/native-custody",
+  "commit": "948dac654ecd97322da6ca066cedd721c77ef5d7",
+  "tree": "4ef96fdbe4ec8be6d88e03cd95aed27494ca9f43",
+  "status": "",
+  "review_inventory_sha256": "dd66089a97cd095b65645fcd1db4831ff5f1677738d329f411f8f1220a8b0b79",
+  "tracked_files": 22,
+  "scope": "Local native source/evidence custody only; no remote configured, push, PR, merge, tag or Actions trigger."
+}

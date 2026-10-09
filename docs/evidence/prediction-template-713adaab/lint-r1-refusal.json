@@ -1,0 +1,28 @@
+{
+  "recorded_utc": "2026-10-09T00:07:11.758430+00:00",
+  "command": [
+    "/Users/me/Developer/capturesuite-analysis-provenance-20261008/.venv-analysis/bin/python",
+    "-B",
+    "-m",
+    "ruff",
+    "check",
+    "--no-cache",
+    "libs/python/capture_analysis/capture_analysis/eval/template.py",
+    "tools/prepare_predictions.py",
+    "tests/analysis/test_prediction_template.py"
+  ],
+  "exit_code": 1,
+  "source_before": {
+    "libs/python/capture_analysis/capture_analysis/eval/template.py": "537035171ff5951cd8c98dacdd4199b34a34bc6477e22e8d6c4771cd368291fb",
+    "tools/prepare_predictions.py": "8fd7ebd8b28728771848564e85ad3449aca7ddc5598594101329ee3912537786",
+    "tests/analysis/test_prediction_template.py": "52ef83a34127dc113bf47e913807108cccf2e1085740ee2b70bd38b67fd1a3e7"
+  },
+  "source_after": {
+    "libs/python/capture_analysis/capture_analysis/eval/template.py": "537035171ff5951cd8c98dacdd4199b34a34bc6477e22e8d6c4771cd368291fb",
+    "tools/prepare_predictions.py": "8fd7ebd8b28728771848564e85ad3449aca7ddc5598594101329ee3912537786",
+    "tests/analysis/test_prediction_template.py": "52ef83a34127dc113bf47e913807108cccf2e1085740ee2b70bd38b67fd1a3e7"
+  },
+  "stdout_sha256": "e001142cd1916b17ec0c2655f8fdef38b5279531f21a88d54dcd8a94552aa03b",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "scope": "Read-only lint; no fixes or product replay"
+}

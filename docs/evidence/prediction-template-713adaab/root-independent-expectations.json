@@ -1,0 +1,140 @@
+{
+  "schema": "capture_prediction_template_independent_expectations/1",
+  "actor": "chatgpt:/root/713adaab",
+  "candidate_exposure": "None. Root read only pinned current original schema, evaluator and documented workflow before this freeze.",
+  "purpose": "Make the maintained external-evaluation workflow usable by preparing exact source-bound, explicitly unavailable prediction rows; no inference or new evaluation grammar.",
+  "source": {
+    "repository": "Jacob-Met/CaptureSuite",
+    "commit": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+    "contracts": [
+      {
+        "path": "schemas/eval/predictions.schema.json",
+        "blob": "d8656895faec8b2ff6bad9b3b45448652eed4286"
+      },
+      {
+        "path": "libs/python/capture_analysis/capture_analysis/eval/predictions.py",
+        "blob": "f2e0e0c240d5d7018ef32d7a8075d06b1c53d7ce"
+      },
+      {
+        "path": "docs/design/ANALYSIS.md",
+        "blob": "d24f789bbf3e2797dac019526ce042dae0a827f9",
+        "relevant_section": "External predictions; exact-file digests, every window/target, exact signed-int64 timestamps and null for unavailable values."
+      }
+    ]
+  },
+  "independent_fixture": {
+    "selected_session_id": "template-root-reference-session",
+    "model_id": "  external-model Δ  ",
+    "target_columns": [
+      "theta_elbow_flex_L",
+      "omega_elbow_flex_L"
+    ],
+    "ordered_windows": [
+      {
+        "window_id": "w2",
+        "session_time_ns": "9007199254740993",
+        "valid_mask": true,
+        "teacher_values": [
+          1.25,
+          7.5
+        ]
+      },
+      {
+        "window_id": "w0",
+        "session_time_ns": "-1",
+        "valid_mask": false,
+        "teacher_values": [
+          9.5,
+          -2.75
+        ]
+      },
+      {
+        "window_id": "w9",
+        "session_time_ns": "9223372036854775807",
+        "valid_mask": true,
+        "teacher_values": [
+          -17,
+          0.125
+        ]
+      }
+    ],
+    "timestamp_encoding": "Strings here preserve exact fixture intent across tool JSON transports. Construct signed-int64 source Parquet and emit JSON integer tokens, never strings/floats."
+  },
+  "expected_template": {
+    "exact_top_level_keys": [
+      "schemaId",
+      "modelId",
+      "windowsSha256",
+      "manifestSha256",
+      "predictions"
+    ],
+    "schemaId": "capture.eval_predictions/1",
+    "modelId": "preserve caller label exactly after existing admission",
+    "windowsSha256": "Independent SHA256 of the complete selected windows.parquet bytes",
+    "manifestSha256": "Independent SHA256 of the complete final selected manifest.json bytes, not its embedded preimage/self entry",
+    "predictions": "Exactly three rows in Parquet order w2,w0,w9, preserving each exact signed-int64 timestamp; each values object has exactly both targets, both JSON null."
+  },
+  "cases": [
+    {
+      "id": "real_native_cli_and_consumer",
+      "expect": "Invoke the new actual CLI on the exact native producer bundle, inspect its real file, and feed that unchanged file through the maintained external evaluator. Preserve producer/evaluator/schema and all input bytes. Document if only a private admission helper, rather than the user-facing evaluation workflow, is received."
+    },
+    {
+      "id": "every_window_and_no_teacher_leak",
+      "expect": "Include valid and invalid windows in original row order. No filtered/sorted/reindexed windows; no teacher value, zero estimate, score, model output or success claim appears in the template."
+    },
+    {
+      "id": "exact_timestamp_identity",
+      "expect": "Use the independent fixture to prove 2^53+1, -1 and signed-int64 maximum remain exact JSON integer values and are admitted unchanged by the maintained evaluator."
+    },
+    {
+      "id": "all_null_scoring_semantics",
+      "expect": "For the three finite-teacher fixture rows, each target has n=0, MAE/RMSE/Pearson null, insufficient_pairs, excluded invalidWindow=1/nonfiniteTeacher=0/missingPrediction=2. Evaluation may succeed structurally but must not imply a model was run or accurate."
+    },
+    {
+      "id": "source_digest_binding",
+      "expect": "Exact bytes, including manifest whitespace/newline changes, determine digests. Old embedded preimage digest is never copied as final manifestSha256. Swapped or changed windows/manifest must be refused through the unchanged evaluator admission before final publication."
+    },
+    {
+      "id": "selected_session_and_job_boundary",
+      "expect": "Bind the actual selected package session via its maintained reader/summary route, not by trusting the bundle's own sessionIds as the independent expected session. Refuse missing/out-of-package bundle job and wrong-session manifest using maintained admission."
+    },
+    {
+      "id": "malformed_bundle_json",
+      "expect": "Malformed UTF8/JSON, duplicate JSON keys, nonfinite JSON tokens, wrong manifest schema, mismatched windows digest, or missing final files refuse without final output."
+    },
+    {
+      "id": "window_identity_and_time_refusals",
+      "expect": "Duplicate/empty/foreign-type window IDs, empty windows, missing columns, floating/Boolean/missing/out-of-int64 timestamps refuse under the maintained evaluator's rules."
+    },
+    {
+      "id": "target_and_validity_admission",
+      "expect": "Preserve the existing required nonempty/distinct target list, numeric registered target membership and numeric column dtype; refuse missing/duplicate/unknown targets, Boolean/string teacher columns or invalid/missing Boolean validity. Do not invent stricter target normalization."
+    },
+    {
+      "id": "model_label_compatibility",
+      "expect": "Preserve accepted Unicode and surrounding spaces exactly; reject blank/nonstring/over120/control-character labels using the existing evaluator contract. No inferred or authenticated model identity."
+    },
+    {
+      "id": "existing_destination_preflight",
+      "expect": "An existing regular file, directory, live/dangling symlink or source alias is refused before any replacement. Exact existing bytes, link identity and other source files remain unchanged."
+    },
+    {
+      "id": "publication_race_and_failure",
+      "expect": "A destination created after the early check must remain untouched. Failed serialization/admission/close/publication leaves no new final partial JSON. Clean only temporary state owned by this attempt; do not modify shared job metadata."
+    },
+    {
+      "id": "source_size_and_output_compatibility",
+      "expect": "Respect the maintained 64MiB per-input file admission, including the authored prediction file, before final publication. Do not describe that file-size bound as a bound on decompressed Parquet memory or total process resources."
+    },
+    {
+      "id": "determinism_and_single_output",
+      "expect": "Same admitted source bytes and exact label produce identical JSON bytes, without wall-clock fields. Publish one ordinary editable JSON file. No schema changes, generated teacher predictions, sidecar, model download or network request."
+    },
+    {
+      "id": "user_flow",
+      "expect": "CLI help/doc shows select bundle/model label, create new template, fill nulls, run the existing evaluator. The completion message plainly states values are unavailable placeholders. Preserve existing run_analysis, job APIs, evaluator and producer bytes."
+    }
+  ],
+  "review_limits": "This frozen packet specifies independently derived consumer expectations, not executed tests or a source approval. Author must retain native source/receipts and any departures or failed controls. Additional implementation discoveries must be recorded explicitly."
+}

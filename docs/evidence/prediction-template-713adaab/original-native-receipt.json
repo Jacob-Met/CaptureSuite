@@ -1,0 +1,266 @@
+{
+  "schema": "capture.prediction-template.original-native/1",
+  "recorded_utc": "2026-10-08T23:21:35.292973+00:00",
+  "producer_ref": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+  "scope": "Exact current producer and evaluator module bytes with pinned existing native dependency context. Direct producer and maintained evaluator input-boundary receiving; not a whole-current-tree CLI run or completed inference. Current source tree lacks a template command; this is a capability baseline, not an alleged documented-consumer regression.",
+  "python": "3.12.8 (main, Dec  3 2024, 18:42:41) [Clang 16.0.0 (clang-1600.0.26.4)]",
+  "executable": "/Users/me/Developer/capturesuite-analysis-provenance-20261008/.venv-analysis/bin/python",
+  "pandas": "3.0.6",
+  "pyarrow": "25.0.1",
+  "source_before": {
+    "docs/design/ANALYSIS.md": "734029bfb035b78a6022d9a100166d4c5ac181c3365164aedeedb2869264bd1a",
+    "schemas/kinematics/kinematics_columns.registry.json": "86e35c623b9769a019695923047cda2437c4ace6e8cc05b4b6a0009a91650693",
+    "schemas/ml_bundle/ml_bundle.manifest.schema.json": "fb099856b1644cd71a243749dbad0b6b79e10cf678af505b39ced3517f2d6ecb",
+    "libs/python/capture_analysis/capture_analysis/eval/predictions.py": "decff22c1e2e661a3ce21679db68b667ea44fa5b18df8501204d7d23161cc906",
+    "libs/python/capture_analysis/capture_analysis/ml_bundle/job.py": "ed67d94ded834d63599797bbd8efb7b26f125bd216f52bcb7f01febb928922ce",
+    "runner": "debc66641d1a454902bd4df784268c3aca653b4d5627e454dc5446ff06866388"
+  },
+  "source_after": {
+    "docs/design/ANALYSIS.md": "734029bfb035b78a6022d9a100166d4c5ac181c3365164aedeedb2869264bd1a",
+    "schemas/kinematics/kinematics_columns.registry.json": "86e35c623b9769a019695923047cda2437c4ace6e8cc05b4b6a0009a91650693",
+    "schemas/ml_bundle/ml_bundle.manifest.schema.json": "fb099856b1644cd71a243749dbad0b6b79e10cf678af505b39ced3517f2d6ecb",
+    "libs/python/capture_analysis/capture_analysis/eval/predictions.py": "decff22c1e2e661a3ce21679db68b667ea44fa5b18df8501204d7d23161cc906",
+    "libs/python/capture_analysis/capture_analysis/ml_bundle/job.py": "ed67d94ded834d63599797bbd8efb7b26f125bd216f52bcb7f01febb928922ce",
+    "runner": "debc66641d1a454902bd4df784268c3aca653b4d5627e454dc5446ff06866388"
+  },
+  "imported_context": {
+    "capture_session.app_paths": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_session/capture_session/app_paths.py",
+      "sha256": "363e4522240e2356cac7492589cb207a798bc1af6031139bd1fa94890f1c4bfd"
+    },
+    "capture_session.package_reader": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_session/capture_session/package_reader.py",
+      "sha256": "9a1d9e6e7d24341a083cee602af9538413e948f3369b22660e484356e3d34eb1"
+    },
+    "capture_session.registry": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_session/capture_session/registry.py",
+      "sha256": "809b26ce8d8efc0559a3854cf85ea74b4e486fcd77d253ebfa76bade64b0a8d1"
+    },
+    "capture_session.settings_store": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_session/capture_session/settings_store.py",
+      "sha256": "7719524a1f106cc54befcd21088810f9ec28f0160c8e88f60c374e1545fdb98d"
+    },
+    "capture_session": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_session/capture_session/__init__.py",
+      "sha256": "da530f86c0d1d584862868ddba9f7087ccf5dfbddd64dd1e577337ecfd776419"
+    },
+    "capture_analysis.types": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/types.py",
+      "sha256": "e7996d02483f69265a2ef2ec0b28078c86f4f479daa53e38faf8b4a62645d02c"
+    },
+    "capture_analysis.discover": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/discover.py",
+      "sha256": "344ee5d7cb0f5e95ac7524a0c1141b0a293bb9445e2bd4789c6736f39cfcb90d"
+    },
+    "capture_analysis.plots.style": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/plots/style.py",
+      "sha256": "231e7b1c998f4349d5859295007235ffd41848f12fbb7819193bec9630cd3942"
+    },
+    "capture_analysis.plots.sync_dashboard": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/plots/sync_dashboard.py",
+      "sha256": "6f9e0c64193688eb841565729b9d1e9a64136779e892419acabdc81591afd3d5"
+    },
+    "capture_analysis.plugins.registry": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/plugins/registry.py",
+      "sha256": "33a4d07600db8b116fbd46b67492f62129df513df5b66a2c455dced0b2a9dc69"
+    },
+    "capture_analysis.plugins": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/plugins/__init__.py",
+      "sha256": "c511d4b9cd1cda042b781b06fbb02d2d99004de214735d6daeb459d6e41381fe"
+    },
+    "capture_analysis.features": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/features/__init__.py",
+      "sha256": "3cdd6c626b6da12b8df56d8ddf35fca27c0a744865965ec01dd89d47da476fa1"
+    },
+    "capture_analysis.windows": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/windows.py",
+      "sha256": "af40235d55341d2a6b11d7f67a0195779676301fa822b2bd05240d138ee28c50"
+    },
+    "capture_analysis.features.emg": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/features/emg.py",
+      "sha256": "11f8f8350464b7c7c079353ca649b4c4aad2580ef8d355fe741c025c262b168e"
+    },
+    "capture_analysis.features.imu": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/features/imu.py",
+      "sha256": "246bfd1cc3ce72afa0680537062b6795e22b8a06ba6301503d7489a4440c6849"
+    },
+    "capture_analysis.features.io": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/features/io.py",
+      "sha256": "c677d209292cca790ccdf1a64ba834f71a078ccce31ea57452e67ece358822ca"
+    },
+    "capture_analysis.loaders.base": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/loaders/base.py",
+      "sha256": "696093b31f22d2bef32fc2962c7a11249a590a0b4d776c40cef4edcbc1e48a97"
+    },
+    "capture_analysis.loaders": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/loaders/__init__.py",
+      "sha256": "2d51c509baf3c0b5c33360637d12e5ce3c7507a859e4f37030f2c3d711ef0b3d"
+    },
+    "capture_analysis.loaders.mcap_iter": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/loaders/mcap_iter.py",
+      "sha256": "03a418e7689840e378665aac92c42769dd14ba2c88a821a5cbf0cee80766540c"
+    },
+    "capture_analysis.loaders.radar_doppler": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/loaders/radar_doppler.py",
+      "sha256": "4942d08eb47229839e339ce7f2f8a64aee7e5fab44bac77029fcd7a3e3e490c1"
+    },
+    "capture_analysis.features.radar_doppler": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/features/radar_doppler.py",
+      "sha256": "cffc0ecbb8053fbc2244850c1927469366f4ae93b5439e4d194de2065877fa5c"
+    },
+    "capture_analysis.loaders.radar_frame": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/loaders/radar_frame.py",
+      "sha256": "d071f9d95b371798974698fd0caa1fc4c865a85fb772232fd43e7227b15fad2b"
+    },
+    "capture_analysis.features.radar_frame": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/features/radar_frame.py",
+      "sha256": "f85c5fe5e2db68606f68e36a42a0c8f323086f0b1e7f233c0ddefa24cdccb443"
+    },
+    "capture_analysis.loaders.video": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/loaders/video.py",
+      "sha256": "3c3e873ab641904a39ca649dac39072f11948031d068cc21ee459e996d1fc185"
+    },
+    "capture_analysis.features.video_qc": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/features/video_qc.py",
+      "sha256": "0e25c50e01fc2da47bc7b510d68ba3e72aba33d3e1c79c57b727f5c55c723e27"
+    },
+    "capture_analysis.loaders.emg": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/loaders/emg.py",
+      "sha256": "86eb7114be689cdbd2edd76affa2994e7278714916692a35381abd02ba9d599a"
+    },
+    "capture_analysis.loaders.imu": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/loaders/imu.py",
+      "sha256": "5ea4747145bf5588974dfd72c834766436c5a2bc0d58d34ace0f8ef403b310d6"
+    },
+    "capture_analysis.plots.modality": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/plots/modality.py",
+      "sha256": "bc3aa15ee79d50280a6c9d6aa144fe0519f85dd2c74a0cfa99323f7d57ecd28d"
+    },
+    "capture_analysis.plugins.handlers": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/plugins/handlers.py",
+      "sha256": "9be2e1820529b94e54d06790d53aa94cf658f982efb4063c6b64f9d07acc4b2e"
+    },
+    "capture_analysis.pipeline": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/pipeline.py",
+      "sha256": "e8c0152040ba5b5f3f37ac53fb5188bac9dd9aaf0d5816d6a718be505c20898c"
+    },
+    "capture_analysis.qc": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/qc.py",
+      "sha256": "f24e0593a3723311d41054aef40b56c4bb46d4f3ba5ef4b01afcae3a6cc4440a"
+    },
+    "capture_analysis.report_html": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/report_html.py",
+      "sha256": "f2c89c7faf6e4edc265540140272396b4195eb5aed9edf05c4912aac74286f03"
+    },
+    "capture_analysis.version": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/version.py",
+      "sha256": "9e25143344b110699f68b6acdbef49576fc91c2cbda34956d7e2cb85bbbc4ae3"
+    },
+    "capture_analysis.jobs": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/jobs.py",
+      "sha256": "0742573679f5d3717fae9f17b7ed2f540c0b9c85859d74db2764c65dd517e37c"
+    },
+    "capture_analysis": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/__init__.py",
+      "sha256": "14cfe6dccd33a0bda74fac3c9339e1a37a3538b2110a8ae6e307801b776eb43a"
+    },
+    "capture_analysis.kinematics.registry": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/kinematics/registry.py",
+      "sha256": "1e53fb9da4c6a2743bc1a3f0e687d94599cf995d33f2a2555e0ce5ebc3966d48"
+    },
+    "capture_analysis.kinematics.compute": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/kinematics/compute.py",
+      "sha256": "59bdcde630edd97833349d59703dd2c3bb5ce06981bc8b311668560cbfb6b2be"
+    },
+    "capture_analysis.kinematics.job": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/kinematics/job.py",
+      "sha256": "d676e84f54aa1ae2b0f998c2cb37c4e02541c1fd0e3464e38e9865c0049a7239"
+    },
+    "capture_analysis.kinematics": {
+      "path": "/Users/me/Developer/capturesuite-ml-bundle-metadata-20261008-713adaab/libs/python/capture_analysis/capture_analysis/kinematics/__init__.py",
+      "sha256": "50a0f7fd39648abf269fc549d2c17eb48b1dc9add10ebdb76edc1935d6f80160"
+    }
+  },
+  "inputs": {
+    "package/processing/jobs/kin/kinematics/kinematics.parquet": "378b13a909bd2f0d4100a2d105616342027954e9f8a324f3b43deb686177b511",
+    "package/processing/jobs/feat/features/radar/stream/energy.parquet": "de5d9b52580d3550ba348114913f59317ca0befc38211532333d9b7b1320a22d"
+  },
+  "outputs": [
+    {
+      "relativePath": "ml_bundle/windows.parquet",
+      "bytes": 6131,
+      "sha256": "e7a5157cc6a524411ab56b737c8a6ed36cbb3d36b123836ac8530b1e54bb520f",
+      "kind": "ml_bundle_windows"
+    },
+    {
+      "relativePath": "ml_bundle/manifest.json",
+      "bytes": 1546,
+      "sha256": "11f82d4fd269a688d0316c0415ec57492265f9e1b55e221b2169a282b7d2c6ab",
+      "kind": "ml_bundle_manifest"
+    }
+  ],
+  "result": {
+    "mlBundleWindowCount": 3,
+    "kinematicsJobId": "kin",
+    "featuresJobId": "feat",
+    "targetColumns": [
+      "theta_elbow_flex_L",
+      "theta_elbow_flex_R",
+      "omega_elbow_flex_L",
+      "omega_elbow_flex_R"
+    ],
+    "schemaWarnings": []
+  },
+  "warnings": [],
+  "actual_final_manifest_sha256": "11f82d4fd269a688d0316c0415ec57492265f9e1b55e221b2169a282b7d2c6ab",
+  "internal_preimage_value": "ea487b598bc8e4b0aa0919068a2bbb547b9b8edb80a54953fef7001620d6745a",
+  "consumer_cases": [
+    {
+      "case": "actual-final-file",
+      "accepted": true,
+      "window_count": 3,
+      "provenance": {
+        "windowsSha256": "e7a5157cc6a524411ab56b737c8a6ed36cbb3d36b123836ac8530b1e54bb520f",
+        "manifestSha256": "11f82d4fd269a688d0316c0415ec57492265f9e1b55e221b2169a282b7d2c6ab",
+        "predictionsSha256": "cefa40a63daab8dd9c05494c0eabfd06b1281ee2e109f6a8914001087270ab3b",
+        "kinematicsRegistrySha256": "86e35c623b9769a019695923047cda2437c4ace6e8cc05b4b6a0009a91650693",
+        "predictionSchemaId": "capture.eval_predictions/1"
+      },
+      "all_predictions_missing": true,
+      "input_sha256": "cefa40a63daab8dd9c05494c0eabfd06b1281ee2e109f6a8914001087270ab3b"
+    },
+    {
+      "case": "internal-preimage-value",
+      "accepted": false,
+      "exception_type": "ValueError",
+      "message": "prediction input manifestSha256 does not match the selected bundle bytes",
+      "input_sha256": "5abb5190d1f07e74f90b2a5a9fb3233a3cebacb2c6aa95987aec85dbd6c5c703"
+    }
+  ],
+  "artifact_map": {
+    "actual-final-file.json": {
+      "bytes": 1034,
+      "sha256": "cefa40a63daab8dd9c05494c0eabfd06b1281ee2e109f6a8914001087270ab3b"
+    },
+    "internal-preimage-value.json": {
+      "bytes": 1034,
+      "sha256": "5abb5190d1f07e74f90b2a5a9fb3233a3cebacb2c6aa95987aec85dbd6c5c703"
+    },
+    "package/processing/jobs/feat/features/radar/stream/energy.parquet": {
+      "bytes": 1881,
+      "sha256": "de5d9b52580d3550ba348114913f59317ca0befc38211532333d9b7b1320a22d"
+    },
+    "package/processing/jobs/bundle/ml_bundle/manifest.json": {
+      "bytes": 1546,
+      "sha256": "11f82d4fd269a688d0316c0415ec57492265f9e1b55e221b2169a282b7d2c6ab"
+    },
+    "package/processing/jobs/bundle/ml_bundle/windows.parquet": {
+      "bytes": 6131,
+      "sha256": "e7a5157cc6a524411ab56b737c8a6ed36cbb3d36b123836ac8530b1e54bb520f"
+    },
+    "package/processing/jobs/kin/kinematics/kinematics.parquet": {
+      "bytes": 4969,
+      "sha256": "378b13a909bd2f0d4100a2d105616342027954e9f8a324f3b43deb686177b511"
+    }
+  }
+}

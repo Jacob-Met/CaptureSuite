@@ -1,0 +1,7 @@
+{
+  "reason": "R1 collection refused because the isolated source carrier omitted an unchanged inherited fixture helper. No product test executed. Add exact current helper; original baseline/source seal remains immutable.",
+  "path": "tests/analysis/test_pose_job.py",
+  "git_blob": "a62eebfa37acf625c6a480a5f55275ac91164194",
+  "sha256": "85a5cb024c9f734c3b057a2d47c42bf22eb5c6ad9b1147c63e115e323b3e4951",
+  "failed_receipt_sha256": "4620467b77bf3869e0e114f35f0c96bec7fd27c26a987b171af4a5b4b3e5c340"
+}

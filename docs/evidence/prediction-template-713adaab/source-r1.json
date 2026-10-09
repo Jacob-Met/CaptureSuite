@@ -1,0 +1,10 @@
+{
+  "reference": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+  "inherited_files_unchanged": 161,
+  "owned": {
+    "libs/python/capture_analysis/capture_analysis/eval/template.py": "537035171ff5951cd8c98dacdd4199b34a34bc6477e22e8d6c4771cd368291fb",
+    "tools/prepare_predictions.py": "8fd7ebd8b28728771848564e85ad3449aca7ddc5598594101329ee3912537786",
+    "docs/design/PREDICTION_TEMPLATES.md": "2a872f6269c3022343e4c1e96d4ef2306c959888ac91c98f7a8fb1e31f53f21e",
+    "tests/analysis/test_prediction_template.py": "52ef83a34127dc113bf47e913807108cccf2e1085740ee2b70bd38b67fd1a3e7"
+  }
+}
