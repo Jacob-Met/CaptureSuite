@@ -3,8 +3,8 @@
 
 Produces:
   <out>/export_manifest.json
-  <out>/radar/<source_id>/frames.npy   (FMCW uint16 or LTR11 complex64)
-  <out>/radar/<source_id>/stream.json  (copy of config snapshot)
+  <out>/radar/<stream-identity>/frames.npy   (FMCW uint16 or LTR11 complex64)
+  <out>/radar/<stream-identity>/stream.json  (copy of config snapshot)
   <out>/video/<stem>--<path-sha256>.mp4 (ffmpeg rewrap of MKV segments when available)
   <out>/imu/<source_id>/frames.jsonl   (decoded ImuFrame summaries when mcap available)
   <out>/emg/<source_id>/batches.jsonl  (decoded EmgBatch summaries when mcap available)
@@ -93,6 +93,13 @@ def _deinterleave_hint(stream_json: dict) -> tuple[int, int, int]:
     return num_rx, num_chirps, num_samples
 
 
+def _radar_export_dirname(relative_path: Path) -> str:
+    """Keep each package-relative stream descriptor's artifact identity."""
+    display = re.sub(r"[^A-Za-z0-9_-]", "_", relative_path.parent.name)[:32] or "stream"
+    identity = hashlib.sha256(relative_path.as_posix().encode("utf-8")).hexdigest()
+    return f"{display}--{identity}"
+
+
 def export_radar_mcaps(root: Path, out: Path, manifest: dict) -> None:
     """Best-effort: copy stream.json and note MCAP paths.
 
@@ -101,7 +108,8 @@ def export_radar_mcaps(root: Path, out: Path, manifest: dict) -> None:
     and leave the MCAP path in the manifest for offline tooling.
     """
     radar_out = out / "radar"
-    radar_out.mkdir(parents=True, exist_ok=True)
+    planned = []
+    destinations: dict[str, Path] = {}
     for stream_json in root.rglob("stream.json"):
         if "exports" in stream_json.parts:
             continue
@@ -118,7 +126,23 @@ def export_radar_mcaps(root: Path, out: Path, manifest: dict) -> None:
         # Infer source id from parent directory name when possible.
         parent = stream_json.parent.name
         sid = parent if parent.startswith("radar.") else stream_json.parent.parent.name
-        dest_dir = radar_out / sid
+        relative = stream_json.relative_to(root)
+        identity = _radar_export_dirname(relative)
+        key = identity.casefold()
+        if key in destinations:
+            previous = destinations[key]
+            raise ExportOutputError(
+                "Radar export destination collision between "
+                f"{previous.as_posix()!r} and {relative.as_posix()!r}. "
+                "No radar files were exported."
+            )
+        destinations[key] = relative
+        planned.append((stream_json, doc, sid, identity))
+
+    # Allocate every admitted stream before copying or decoding any of them.
+    radar_out.mkdir(parents=True, exist_ok=True)
+    for stream_json, doc, sid, identity in planned:
+        dest_dir = radar_out / identity
         dest_dir.mkdir(parents=True, exist_ok=True)
         shutil.copy2(stream_json, dest_dir / "stream.json")
         mcaps = list(stream_json.parent.glob("*.mcap")) + list(stream_json.parent.glob("**/*.mcap"))
