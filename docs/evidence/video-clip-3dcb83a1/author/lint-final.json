@@ -1,0 +1,1 @@
+{"command": ["C:\\Users\\jacob\\AppData\\Local\\Programs\\Python\\Python312\\python.exe", "-B", "-m", "ruff", "check", "tools/video_clip.py", "tools/export_session.py", "tests/analysis/test_video_clip_export.py"], "exit_code": 0}

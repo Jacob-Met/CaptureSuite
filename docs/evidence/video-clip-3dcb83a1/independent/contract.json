@@ -1,0 +1,205 @@
+{
+  "schema": "capturesuite.root-independent-clip-contract.v1",
+  "frozen_at": "2026-10-09T03:01:17.890Z",
+  "root_worker": "estate-3dcb83a1 /root",
+  "author_public_contract": {
+    "upload_id": "3f4aedcd-f4a5-819a-87c1-00b29825891a",
+    "bytes": 7137,
+    "sha256": "5782d6ba028dfa786d9a027506c59a5db8ecd9c1b0440d215a75c834a82571d5"
+  },
+  "phase": "Frozen after public contract and original exporter only; before candidate source or any candidate results are received by root.",
+  "receiving_root": "C:\\Users\\jacob\\capturesuite-video-clip-independent-3dcb83a1",
+  "base": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+  "interface": "Existing tools/export_session.py PACKAGE NEW_EXTERNAL_DIRECTORY --video-segment EXACT_POSIX_PATH --video-start-ms INTEGER --video-end-ms INTEGER",
+  "fixtures": {
+    "dimensions": [
+      64,
+      48
+    ],
+    "primary": {
+      "source_id": "camera.root-ordinal",
+      "stream_id": "video.root-front",
+      "segment": "sources/camera.root-ordinal/streams/video.root-front/segments/0001.mkv",
+      "codec": "FFV1 lossless MKV authored independently from ordinal RGB bytes",
+      "frame_rgb_values": [
+        16,
+        40,
+        64,
+        88,
+        112,
+        136,
+        160,
+        184,
+        208,
+        232
+      ],
+      "expected_local_ms": [
+        0,
+        37,
+        100,
+        199,
+        200,
+        201,
+        400,
+        550,
+        701,
+        800
+      ],
+      "intended_first_pts_ms": 7000,
+      "intended_final_frame_duration_ms": 100,
+      "frame_count": 10
+    },
+    "decoy": {
+      "source_id": "camera.root-decoy",
+      "stream_id": "video.root-front",
+      "segment": "sources/camera.root-decoy/streams/video.root-front/segments/0001.mkv",
+      "rgb": [
+        240,
+        24,
+        24
+      ],
+      "purpose": "Same basename with distinct source/stream identity; never fallback or merge."
+    },
+    "regular_control": "Separate one-stream H.264 MKV at fixed cadence, for original/candidate whole-video export and normal decoder control.",
+    "package": "Finalized synthetic native sources/streams/stream.json layout; exact source tree hashes before and after. No participant media.",
+    "admission": "Before receiving candidate outcomes, FFprobe must corroborate exactly the declared primary PTS sequence, frame count, dimensions and positive final-frame duration. Any fixture generator correction is retained and frozen before candidate execution."
+  },
+  "groups": [
+    {
+      "id": "baseline",
+      "expectations": [
+        "Original exporter refuses all new video-range options without creating output.",
+        "Original whole-video synthetic export is usable; candidate preserves every old top-level function AST and old branch apart from declared additive main dispatch/options."
+      ]
+    },
+    {
+      "id": "exact-vfr-boundaries",
+      "cases": [
+        {
+          "start_ms": 199,
+          "end_ms": 201,
+          "expected_indices": [
+            3,
+            4
+          ]
+        },
+        {
+          "start_ms": 200,
+          "end_ms": 400,
+          "expected_indices": [
+            4,
+            5
+          ]
+        },
+        {
+          "start_ms": 201,
+          "end_ms": 551,
+          "expected_indices": [
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "start_ms": 37,
+          "end_ms": 38,
+          "expected_indices": [
+            1
+          ]
+        },
+        {
+          "start_ms": 0,
+          "end_ms": 37,
+          "expected_indices": [
+            0
+          ]
+        }
+      ],
+      "expectations": [
+        "Decode each produced MP4 independently to RGB; exact frame count and ordinal sequence must match literal expected indices.",
+        "Per-channel frame means differ from expected grayscale by at most8/255; no decoy-red frames or interpolated/duplicated source frame.",
+        "One H.264 video stream,64x48, no audio/subtitle, first output presentation time0; source timing and actual output timing kept distinct in sidecar.",
+        "Original source/stream/exact literal segment path and selected source frame indices/ticks must be recoverable from manifest; no session-time interpretation."
+      ]
+    },
+    {
+      "id": "identity-and-relocation",
+      "expectations": [
+        "Invoke from unrelated cwd using package/output paths containing spaces and Unicode.",
+        "Explicit decoy selection yields decoy content with its own exact source identity; missing selection never falls back to equal basename.",
+        "No source manifest/descriptor/media or unrelated destination sentinel changes."
+      ]
+    },
+    {
+      "id": "input-refusal",
+      "cases": [
+        "missing one/two required options",
+        "missing explicit output",
+        "--modalities in selected mode",
+        "--verify in selected mode",
+        "negative start",
+        "equal/reversed endpoints",
+        "fractional/noninteger endpoint",
+        "empty interval202..399",
+        "end901 beyond intended900ms final end",
+        "over600000ms interval",
+        "nonfinal package",
+        "missing/unlisted segment",
+        "escaping/absolute/noncanonical segment path",
+        "invalid/nonvideo media",
+        "multiple-video-stream media if natively admitted"
+      ],
+      "expectations": [
+        "Nonzero actionable CLI result.",
+        "Admission refusals create no destination and preserve all inputs/sentinels."
+      ]
+    },
+    {
+      "id": "destination-and-links",
+      "cases": [
+        "existing empty destination directory",
+        "existing nonempty directory and sentinel",
+        "existing file destination",
+        "destination below source package",
+        "own Windows junction alias into package",
+        "own linked source/stream/segment component"
+      ],
+      "expectations": [
+        "Refuse before output writes; no link following into unrelated data.",
+        "Create only exclusively owned test junctions if the supplied identity permits them; a native refusal is retained as unexercised, never bypassed."
+      ]
+    },
+    {
+      "id": "failed-child-and-retry",
+      "expectations": [
+        "A private PATH fault adapter forwards real FFmpeg version probing and deliberately invokes real FFmpeg with an invalid encoder command after destination creation. This is a disclosed process-failure injection, not a successful media result.",
+        "CLI returns nonzero, retains any partial destination, and has no success export_manifest.json.",
+        "Retry to a different absent destination under real tools succeeds; existing failed destination is not overwritten."
+      ]
+    },
+    {
+      "id": "preservation-and-decoder",
+      "expectations": [
+        "Hash all original and candidate source closure, fixture package bytes and sentinels before/after; only exclusively designated output/receiving files can change.",
+        "Actual RGB decode receives completed output; author GUI receiving is separately attributed.",
+        "Archive exact commands, native versions/PIDs/exits/logs, literal oracles, source pins, all failures and all output provenance."
+      ]
+    }
+  ],
+  "process_limits": {
+    "child_timeout_seconds": 180,
+    "one_encoder_thread": true,
+    "source_duration_seconds": 1,
+    "source_dimensions": [
+      64,
+      48
+    ],
+    "memory_floor_bytes": 2147483648,
+    "disk_floor_bytes": 38654705664
+  },
+  "limits": [
+    "Synthetic selected retained-segment review copies only; no archival fidelity, participant/clinical correctness, cross-camera/session-time mapping, physical capture or whole-application certification.",
+    "No claims of race-free filesystem snapshots or protection against arbitrary concurrent mutation.",
+    "Receiver implementation/layout adapters may be frozen after this contract without changing these expected cases; amendments and pre-execution failures stay retained."
+  ]
+}

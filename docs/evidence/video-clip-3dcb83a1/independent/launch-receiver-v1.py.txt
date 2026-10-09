@@ -1,0 +1,33 @@
+"""Launch the frozen root receiver once; preserve actual process and byte admission."""
+import hashlib,json,os,subprocess,sys,time
+from pathlib import Path
+ROOT=Path(r"C:\Users\jacob\capturesuite-video-clip-independent-3dcb83a1")
+def pin(p):
+ b=Path(p).read_bytes()
+ return {"bytes":len(b),"sha256":hashlib.sha256(b).hexdigest(),"git_blob":hashlib.sha1(b"blob "+str(len(b)).encode()+b"\0"+b).hexdigest()}
+assert Path(sys.executable).resolve()==Path(r"C:\Users\jacob\AppData\Local\Programs\Python\Python312\python.exe").resolve()
+assert sys.version_info[:3]==(3,12,2)
+freeze=json.loads((ROOT/"receiver-freeze-v1.json").read_bytes())
+for f in freeze["files"]:
+ assert (ROOT/f["path"]).read_bytes()==f["content"].encode(f["encoding"]),f["path"]
+for name in ("receiving-v1","candidate-v1","receiver-v1.stdout","receiver-v1.stderr","receiver-v1.launch.json"):
+ assert not (ROOT/name).exists(),name
+receipt={"schema":"capturesuite.root-receiver-launch.v1","started_utc":time.strftime("%Y-%m-%dT%H:%M:%SZ",time.gmtime()),"launcher_pid":os.getpid(),"python":pin(sys.executable),"python_version":sys.version,"freeze":pin(ROOT/"receiver-freeze-v1.json"),"receiver_inputs":{f["path"]:pin(ROOT/f["path"]) for f in freeze["files"]},"launcher":pin(__file__)}
+t=time.perf_counter()
+with (ROOT/"receiver-v1.stdout").open("xb") as out,(ROOT/"receiver-v1.stderr").open("xb") as err:
+ p=subprocess.Popen([sys.executable,"-B",str(ROOT/"receive-clip-v1.py")],cwd=ROOT,stdin=subprocess.DEVNULL,stdout=out,stderr=err,env={**os.environ,"PYTHONIOENCODING":"utf-8","PYTHONDONTWRITEBYTECODE":"1"})
+ receipt["receiver_pid"]=p.pid
+ try:
+  receipt["receiver_exit_code"]=p.wait(timeout=300)
+ except subprocess.TimeoutExpired:
+  receipt["wrapper_timeout"]=True
+  k=subprocess.run(["taskkill","/PID",str(p.pid),"/T","/F"],capture_output=True,timeout=15)
+  receipt["owned_tree_fallback"]={"exit":k.returncode,"stdout":k.stdout.decode(errors="replace"),"stderr":k.stderr.decode(errors="replace")}
+  receipt["receiver_exit_code"]=p.wait(timeout=15)
+receipt["seconds"]=time.perf_counter()-t
+receipt["stdout"]=pin(ROOT/"receiver-v1.stdout");receipt["stderr"]=pin(ROOT/"receiver-v1.stderr")
+if (ROOT/"receiving-v1/result.json").is_file():receipt["result"]=pin(ROOT/"receiving-v1/result.json")
+receipt["finished_utc"]=time.strftime("%Y-%m-%dT%H:%M:%SZ",time.gmtime())
+(ROOT/"receiver-v1.launch.json").write_bytes((json.dumps(receipt,indent=2)+"\n").encode())
+print(json.dumps(receipt))
+raise SystemExit(receipt["receiver_exit_code"])

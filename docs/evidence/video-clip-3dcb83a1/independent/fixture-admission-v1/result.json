@@ -1,0 +1,1337 @@
+{
+  "schema": "capturesuite.root-fixture-admission.v1",
+  "started_utc": "2026-10-09T03:09:39Z",
+  "pid": 34464,
+  "commands": [
+    {
+      "label": "ffmpeg-version",
+      "argv": [
+        "C:\\ProgramData\\chocolatey\\lib\\ffmpeg\\tools\\ffmpeg\\bin\\ffmpeg.exe",
+        "-version"
+      ],
+      "cwd": null,
+      "pid": 77844,
+      "exit": 0,
+      "elapsed": 0.03557599999476224,
+      "stdout_bytes": 1500,
+      "stderr_bytes": 0
+    },
+    {
+      "label": "ffprobe-version",
+      "argv": [
+        "C:\\ProgramData\\chocolatey\\lib\\ffmpeg\\tools\\ffmpeg\\bin\\ffprobe.exe",
+        "-version"
+      ],
+      "cwd": null,
+      "pid": 16784,
+      "exit": 0,
+      "elapsed": 0.03547130001243204,
+      "stdout_bytes": 1473,
+      "stderr_bytes": 0
+    },
+    {
+      "label": "encode-primary",
+      "argv": [
+        "C:\\ProgramData\\chocolatey\\lib\\ffmpeg\\tools\\ffmpeg\\bin\\ffmpeg.exe",
+        "-n",
+        "-hide_banner",
+        "-loglevel",
+        "error",
+        "-f",
+        "rawvideo",
+        "-pixel_format",
+        "rgb24",
+        "-video_size",
+        "64x48",
+        "-framerate",
+        "10",
+        "-i",
+        "C:\\Users\\jacob\\capturesuite-video-clip-independent-3dcb83a1\\fixture-admission-v1\\ordinal.rgb",
+        "-an",
+        "-vf",
+        "settb=1/1000,setpts=7000+if(eq(N,0),0,if(eq(N,1),37,if(eq(N,2),100,if(eq(N,3),199,if(eq(N,4),200,if(eq(N,5),201,if(eq(N,6),400,if(eq(N,7),550,if(eq(N,8),701,800)))))))))",
+        "-c:v",
+        "ffv1",
+        "-level",
+        "3",
+        "-pix_fmt",
+        "bgr0",
+        "-threads",
+        "1",
+        "-fps_mode",
+        "passthrough",
+        "-enc_time_base",
+        "1/1000",
+        "C:\\Users\\jacob\\capturesuite-video-clip-independent-3dcb83a1\\fixtures\\Ordinal Ω and Space.mmsession\\sources\\camera.root-ordinal\\streams\\video.root-front\\segments\\0001.mkv"
+      ],
+      "cwd": null,
+      "pid": 47092,
+      "exit": 3015096584,
+      "elapsed": 0.06011439999565482,
+      "stdout_bytes": 0,
+      "stderr_bytes": 302
+    }
+  ],
+  "checks": [
+    {
+      "name": "native memory read",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "fresh resource floor",
+      "passed": true,
+      "details": {
+        "memory": 8123805696,
+        "disk": 234288402432
+      }
+    },
+    {
+      "name": "declared Python minor",
+      "passed": true,
+      "details": "3.12.2 (tags/v3.12.2:6abddd9, Feb  6 2024, 21:26:36) [MSC v.1937 64 bit (AMD64)]"
+    },
+    {
+      "name": "exact Python path",
+      "passed": true,
+      "details": "C:\\Users\\jacob\\AppData\\Local\\Programs\\Python\\Python312\\python.exe"
+    },
+    {
+      "name": "ffmpeg-version exit",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "name": "ffprobe-version exit",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "name": "original source AGENTS.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source AGENTS.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source LICENSE",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source LICENSE",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source LICENSING.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source LICENSING.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source NOTICE",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source NOTICE",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/discover.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/discover.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/eval/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/eval/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/eval/job.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/eval/job.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/eval/predictions.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/eval/predictions.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/features/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/features/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/features/emg.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/features/emg.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/features/imu.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/features/imu.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/features/io.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/features/io.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/features/numeric_batch.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/features/numeric_batch.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/features/radar_doppler.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/features/radar_doppler.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/features/radar_frame.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/features/radar_frame.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/features/video_qc.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/features/video_qc.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/grids.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/grids.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/jobs.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/jobs.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/kinematics/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/kinematics/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/kinematics/compute.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/kinematics/compute.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/kinematics/job.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/kinematics/job.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/kinematics/registry.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/kinematics/registry.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/loaders/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/loaders/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/loaders/base.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/loaders/base.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/loaders/emg.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/loaders/emg.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/loaders/imu.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/loaders/imu.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/loaders/mcap_iter.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/loaders/mcap_iter.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/loaders/radar_doppler.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/loaders/radar_doppler.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/loaders/radar_frame.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/loaders/radar_frame.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/loaders/video.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/loaders/video.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/ml_bundle/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/ml_bundle/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/ml_bundle/job.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/ml_bundle/job.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/pipeline.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/pipeline.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/plots/modality.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/plots/modality.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/plots/style.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/plots/style.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/plots/sync_dashboard.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/plots/sync_dashboard.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/plugins/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/plugins/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/plugins/dummy.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/plugins/dummy.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/plugins/handlers.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/plugins/handlers.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/plugins/manifest.yaml",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/plugins/manifest.yaml",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/plugins/numeric.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/plugins/numeric.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/plugins/registry.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/plugins/registry.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/pose/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/pose/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/pose/job.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/pose/job.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/qc.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/qc.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/report_html.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/report_html.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/types.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/types.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/version.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/version.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/capture_analysis/windows.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/capture_analysis/windows.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_analysis/pyproject.toml",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_analysis/pyproject.toml",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/LICENSE",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/LICENSE",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/NOTICE",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/NOTICE",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/codec.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/codec.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/config_schema.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/config_schema.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/constants.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/constants.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/control_client.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/control_client.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/framing.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/framing.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/generated/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/generated/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/generated/capture/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/generated/capture/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/generated/capture/v1/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/generated/capture/v1/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/generated/capture/v1/arrays_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/generated/capture/v1/arrays_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/generated/capture/v1/common_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/generated/capture/v1/common_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/generated/capture/v1/control_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/generated/capture/v1/control_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/emg_batch_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/emg_batch_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/imu_frame_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/imu_frame_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/numeric_batch_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/numeric_batch_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/radar_doppler_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/radar_doppler_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/radar_frame_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/radar_frame_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/video_timing_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/video_timing_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/generated/capture/v1/events_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/generated/capture/v1/events_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/generated/capture/v1/health_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/generated/capture/v1/health_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/generated/capture/v1/presets_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/generated/capture/v1/presets_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/generated/capture/v1/preview_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/generated/capture/v1/preview_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/generated/capture/v1/project_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/generated/capture/v1/project_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/generated/capture/v1/source_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/generated/capture/v1/source_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/generated/capture/v1/storage_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/generated/capture/v1/storage_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/generated/capture/v1/worker_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/generated/capture/v1/worker_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/handshake.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/handshake.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/capture_protocol/structured_log.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/capture_protocol/structured_log.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_protocol/pyproject.toml",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_protocol/pyproject.toml",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_session/capture_session/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_session/capture_session/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_session/capture_session/app_paths.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_session/capture_session/app_paths.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_session/capture_session/package_reader.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_session/capture_session/package_reader.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_session/capture_session/registry.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_session/capture_session/registry.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_session/capture_session/settings_store.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_session/capture_session/settings_store.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source libs/python/capture_session/pyproject.toml",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source libs/python/capture_session/pyproject.toml",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source pyproject.toml",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source pyproject.toml",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source schemas/session/jsonschema/analysis_feature_schema.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source schemas/session/jsonschema/analysis_feature_schema.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source schemas/session/jsonschema/analysis_job.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source schemas/session/jsonschema/analysis_job.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source schemas/session/jsonschema/annotation.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source schemas/session/jsonschema/annotation.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source schemas/session/jsonschema/checkpoint.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source schemas/session/jsonschema/checkpoint.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source schemas/session/jsonschema/clock_mapping.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source schemas/session/jsonschema/clock_mapping.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source schemas/session/jsonschema/device_array.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source schemas/session/jsonschema/device_array.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source schemas/session/jsonschema/gap_event.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source schemas/session/jsonschema/gap_event.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source schemas/session/jsonschema/health_snapshot.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source schemas/session/jsonschema/health_snapshot.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source schemas/session/jsonschema/index.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source schemas/session/jsonschema/index.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source schemas/session/jsonschema/integrity_file_entry.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source schemas/session/jsonschema/integrity_file_entry.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source schemas/session/jsonschema/integrity_manifest.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source schemas/session/jsonschema/integrity_manifest.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source schemas/session/jsonschema/logical_slot.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source schemas/session/jsonschema/logical_slot.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source schemas/session/jsonschema/physical_device.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source schemas/session/jsonschema/physical_device.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source schemas/session/jsonschema/preset_snapshot.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source schemas/session/jsonschema/preset_snapshot.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source schemas/session/jsonschema/radar_array.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source schemas/session/jsonschema/radar_array.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source schemas/session/jsonschema/sensor_instance.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source schemas/session/jsonschema/sensor_instance.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source schemas/session/jsonschema/session_identity.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source schemas/session/jsonschema/session_identity.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source schemas/session/jsonschema/session_manifest.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source schemas/session/jsonschema/session_manifest.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source schemas/session/jsonschema/source_instance.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source schemas/session/jsonschema/source_instance.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source schemas/session/jsonschema/stream_descriptor.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source schemas/session/jsonschema/stream_descriptor.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source schemas/session/jsonschema/sync_anchor.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source schemas/session/jsonschema/sync_anchor.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source schemas/session/jsonschema/timing_header.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source schemas/session/jsonschema/timing_header.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source tests/analysis/test_export_selection_mcap.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source tests/analysis/test_export_selection_mcap.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source tests/analysis/test_export_sidecar.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source tests/analysis/test_export_sidecar.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source tests/conftest.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source tests/conftest.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source tools/check_licenses.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source tools/check_licenses.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source tools/export_session.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source tools/export_session.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original source tools/run_ci_tests.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "copied source tools/run_ci_tests.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "literal primary path",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "encode-primary exit",
+      "passed": false,
+      "details": 3015096584
+    }
+  ],
+  "candidate_executed": false,
+  "runtime": {
+    "python": "3.12.2 (tags/v3.12.2:6abddd9, Feb  6 2024, 21:26:36) [MSC v.1937 64 bit (AMD64)]",
+    "executable": "C:\\Users\\jacob\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "python_pin": {
+      "bytes": 103192,
+      "sha256": "624bbc0586d8855633b875e911883bbef8a0e8b8711e11126df480dd86f54181",
+      "git_blob": "10e250f3f7b994625bd66968beebd05f49efa19d"
+    },
+    "ffmpeg": "C:\\ProgramData\\chocolatey\\lib\\ffmpeg\\tools\\ffmpeg\\bin\\ffmpeg.exe",
+    "ffmpeg_pin": {
+      "bytes": 102856192,
+      "sha256": "72a489eccd008c2ec2c0a5856c5c75bc3d8bbfa90166c4566865c246445e6aa3",
+      "git_blob": "e0621d18c50804c2e9f6e47394b296c55c82e0f7"
+    },
+    "ffprobe": "C:\\ProgramData\\chocolatey\\lib\\ffmpeg\\tools\\ffmpeg\\bin\\ffprobe.exe",
+    "ffprobe_pin": {
+      "bytes": 102652416,
+      "sha256": "19202b23c0043f15ad1b7bce2344f406fd52bd6efd8f995ce02e7392a1cec52f",
+      "git_blob": "e3b77b331d6069edde4c8bfc1443654d4611d27f"
+    }
+  },
+  "original_source_files": 119,
+  "original_source_bytes": 481110,
+  "accepted": false,
+  "fatal": "Traceback (most recent call last):\n  File \"C:\\Users\\jacob\\capturesuite-video-clip-independent-3dcb83a1\\prepare-fixtures-v1.py\", line 114, in <module>\n    run(\"encode-primary\",[FFMPEG,\"-n\",*common,\"-i\",raw_primary,*settings,primary_path])\n  File \"C:\\Users\\jacob\\capturesuite-video-clip-independent-3dcb83a1\\prepare-fixtures-v1.py\", line 52, in run\n    check(label+\" exit\", proc.returncode == expect, proc.returncode)\n  File \"C:\\Users\\jacob\\capturesuite-video-clip-independent-3dcb83a1\\prepare-fixtures-v1.py\", line 37, in check\n    raise AssertionError(name)\nAssertionError: encode-primary exit\n",
+  "finished_utc": "2026-10-09T03:09:41Z"
+}

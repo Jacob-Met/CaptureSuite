@@ -1,0 +1,425 @@
+{
+  "schema": "capture-clip-source-offer-manifest/1",
+  "base": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+  "base_tree": "d1af33caaf7154e83def1dab035920907d417e8d",
+  "scope": "Seven frozen product paths plus exact qualified receiving, no workflow or source-owner modifications",
+  "files": [
+    {
+      "path": "docs/design/research/PROGRESS.md",
+      "mode": "100644",
+      "bytes": 78228,
+      "sha256": "37ecf34fedb74d3ab14e88b8b9eec9c71da5b3731ac43c18f932aff36e98eed9",
+      "git_blob": "6bf11b6909cec36155266d0d7cf87bfdd721719e",
+      "origin": "exact frozen product"
+    },
+    {
+      "path": "docs/design/research/REVIEW_AND_EXPORT_UX.md",
+      "mode": "100644",
+      "bytes": 10040,
+      "sha256": "569bea8993fb2fe0a0508bc66a230e6236a1fb727e1e0bb5ef3f9a77ca0520fe",
+      "git_blob": "5a3b442d0a4dd3e4a2a628845c6a003c3c7c9a94",
+      "origin": "exact frozen product"
+    },
+    {
+      "path": "docs/operator/README.md",
+      "mode": "100644",
+      "bytes": 1768,
+      "sha256": "790a93abf8435515e7161f0a8aaf6d31191dddae23916abceab22b9224386a13",
+      "git_blob": "28ec18879bf0e5e746a1e368f35fe9fcc42c13b3",
+      "origin": "exact frozen product"
+    },
+    {
+      "path": "docs/operator/VIDEO_CLIP_EXPORT.md",
+      "mode": "100644",
+      "bytes": 4068,
+      "sha256": "36268e7b9d0fb62ce25f84364aef0035f1b1c9db5f5b7f9019e35d2581b58125",
+      "git_blob": "5515e3269b0feace1524e6c41a1482d0d6c9eda1",
+      "origin": "exact frozen product"
+    },
+    {
+      "path": "tests/analysis/test_video_clip_export.py",
+      "mode": "100644",
+      "bytes": 12087,
+      "sha256": "cafe96c16c5ee5b800d332938367f38e6840b5d5cb3cbf22ad1e6bd9125e13c4",
+      "git_blob": "c9d206834e8b888e379f784274ef066ca2d93222",
+      "origin": "exact frozen product"
+    },
+    {
+      "path": "tools/export_session.py",
+      "mode": "100644",
+      "bytes": 20989,
+      "sha256": "dc8f3f726d75f01035387c06fa21089dfdb8aae93618c1705417fd2548dab651",
+      "git_blob": "9fce1da8745f86eef2c3ce677f7be6d1e791c4d4",
+      "origin": "exact frozen product"
+    },
+    {
+      "path": "tools/video_clip.py",
+      "mode": "100644",
+      "bytes": 15638,
+      "sha256": "4fe38eae599e32434895608224e64197e66f0f111f33764a616c7436d4d1db1a",
+      "git_blob": "de52e79de96eea79c3312cc1fd775e77a0a12a90",
+      "origin": "exact frozen product"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/author/contract.json",
+      "mode": "100644",
+      "bytes": 7137,
+      "sha256": "5782d6ba028dfa786d9a027506c59a5db8ecd9c1b0440d215a75c834a82571d5",
+      "git_blob": "f87bb8a4e98e14ddd3a60c877c685f70e8e94dd1",
+      "origin": "author/contract.json"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/author/root-admission.json",
+      "mode": "100644",
+      "bytes": 312,
+      "sha256": "eb0762d0e3522d8a1640da2170f296ad9904f30f51e8d6b091f8e5b3b9bf65fc",
+      "git_blob": "9b469c3eeeade722223dad54c5bf035734194aa3",
+      "origin": "author/root-admission.json"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/author/admission.json",
+      "mode": "100644",
+      "bytes": 367,
+      "sha256": "9d8ffe968b7d769f2620032187fd92c4e8f496ad1c9262b0cfe6e9034e744825",
+      "git_blob": "0340216d13318696769445ce2a519615c2ff13e0",
+      "origin": "author/admission.json"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/author/source-intake.json",
+      "mode": "100644",
+      "bytes": 578,
+      "sha256": "96284e638f95c11ea089f3728c196f9b507b10af4c7187338dd4890aeecf9ab8",
+      "git_blob": "e43c5154c47faabcb1633457e7e11aa7bd40b004",
+      "origin": "author/source-intake.json"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/author/docs-source-intake.json",
+      "mode": "100644",
+      "bytes": 809,
+      "sha256": "631632ad3d6140c4a525766e0550fe714fb4f88bfa30bea3314ed7409ee514f3",
+      "git_blob": "9f321b0f837a6a60781e881e8cefaa4e30a0bc50",
+      "origin": "author/docs-source-intake.json"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/author/source-freeze.json",
+      "mode": "100644",
+      "bytes": 43473,
+      "sha256": "28bd72326172475a03da6a67a9023fb1f2688df4b5de5c6b403c9bceb84632d9",
+      "git_blob": "b088cbd7727f1e2eed8d64d24514a02bb3497ad5",
+      "origin": "author/source-freeze.json"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/author/product.diff",
+      "mode": "100644",
+      "bytes": 38323,
+      "sha256": "ae7b656a443ed4b5079d60bd46e0f66d6f468a393765f96f9b4a308a1330c8c5",
+      "git_blob": "538cd6700794a6ca92aaf8c40677d28236e4b940",
+      "origin": "author/product.diff"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/author/receive-original.py.txt",
+      "mode": "100644",
+      "bytes": 4556,
+      "sha256": "d378cc0f5ba0b723064dd5cc6fa3290c0c804ddaab0ff6c45b679294033285f4",
+      "git_blob": "ed4facf22600f5f03c34fa6aea4cf2148227fa81",
+      "origin": "author/receive-original.py"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/author/run-candidate.py.txt",
+      "mode": "100644",
+      "bytes": 2118,
+      "sha256": "708a10a47ab0e3c605b4338aed55a0509e98314f7bfe8b4013c7c5ced7ea77ce",
+      "git_blob": "ae137f1e44fea149f5be24acd2f200d2c5a2f446",
+      "origin": "author/run-candidate.py"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/author/baseline-receiving/result.json",
+      "mode": "100644",
+      "bytes": 36369,
+      "sha256": "4c6299be3e05695d6ba8141c520eb4694fcb944431be0e07966fc7597e0904cb",
+      "git_blob": "ee9dc9414c13cc7d7000644d057f9f6b589a15f4",
+      "origin": "author/baseline-receiving/result.json"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/author/baseline-receiving/missing-capability.stderr",
+      "mode": "100644",
+      "bytes": 236,
+      "sha256": "3cc4bb05e837f9352d05af8f4d1854a80e0226854c21fbb06f84431668933200",
+      "git_blob": "edf608facd76c1e7cbe03ca0c84547bd04777eff",
+      "origin": "author/baseline-receiving/missing-capability.stderr"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/author/candidate-receiving-v1/result.json",
+      "mode": "100644",
+      "bytes": 33019,
+      "sha256": "55dd33b99bfde14adb3702541dfadc39d40d7ca4a88c8b4016974d7406ad828b",
+      "git_blob": "bf231c77f22a873ec8add80378aa5d1b383b5825",
+      "origin": "author/candidate-receiving-v1/result.json"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/author/candidate-receiving-v1/stdout.log",
+      "mode": "100644",
+      "bytes": 208,
+      "sha256": "00b3fbb263edc9679d2e650b17f2f85ee88a4dc00446772524fd75b8859a4f32",
+      "git_blob": "0e6133503884ef5602b257eafddd82d1ca9b7ef8",
+      "origin": "author/candidate-receiving-v1/stdout.log"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/author/candidate-receiving-v1/stderr.log",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "origin": "author/candidate-receiving-v1/stderr.log"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/author/candidate-receiving-v2/result.json",
+      "mode": "100644",
+      "bytes": 33019,
+      "sha256": "2b829d830aeab16722aaed18ca6c16828f5b05d21f87c0912b922f69344208fe",
+      "git_blob": "580238b5b9629af85f041749f72996e3555931f8",
+      "origin": "author/candidate-receiving-v2/result.json"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/author/candidate-receiving-v2/stdout.log",
+      "mode": "100644",
+      "bytes": 208,
+      "sha256": "773abb06b2bfbf68dae11ab53bda82aef2bed4e496b304ebeb8405921bf55986",
+      "git_blob": "a83469d518295869292e222b87f92c0590301a9a",
+      "origin": "author/candidate-receiving-v2/stdout.log"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/author/candidate-receiving-v2/stderr.log",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "origin": "author/candidate-receiving-v2/stderr.log"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/author/lint-final.json",
+      "mode": "100644",
+      "bytes": 230,
+      "sha256": "90f323c9d32f73f2b3c02303ede6ab086e912cca45af0994235c35f48e3e1835",
+      "git_blob": "96fd884aca9478ead414475f12e52daa20579ebb",
+      "origin": "author/lint-final.json"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/author/lint-final.stdout",
+      "mode": "100644",
+      "bytes": 19,
+      "sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "git_blob": "1f5f344d054fae10f39140fb7199c99321d9190a",
+      "origin": "author/lint-final.stdout"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/author/lint-final.stderr",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "origin": "author/lint-final.stderr"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/independent/REVIEW.md",
+      "mode": "100644",
+      "bytes": 7325,
+      "sha256": "6ac38185a6d3cfe21dde8fbf31ae054ad6ce39e9a878a13506859f69f168c52b",
+      "git_blob": "dbf0e92e68d8a0eb53860895e31fcbd5b14ae5ae",
+      "origin": "independent/REVIEW.md"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/independent/contract.json",
+      "mode": "100644",
+      "bytes": 7922,
+      "sha256": "87880004a73478b02aa9bc9ae5e7f38cdc96bdafa88d8f0e21216f6a130e7c25",
+      "git_blob": "f15940f0b61586b65575a8084a0cc7be8deeec3b",
+      "origin": "independent/contract.json"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/independent/candidate-product-pins.json",
+      "mode": "100644",
+      "bytes": 1434,
+      "sha256": "5eec4e5348eb0c19a03ae93c8eb19dbc931dc2567c2afca752f5f0ec33e902a6",
+      "git_blob": "3f6d3f3d06cca07ab4b14fd249cfeab9d32c6e59",
+      "origin": "independent/candidate-product-pins.json"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/independent/original-source-pins.json",
+      "mode": "100644",
+      "bytes": 28982,
+      "sha256": "5880eeb64810c79faf22d71f043e78d6dfacb046782f2dcefefe7095f94e3380",
+      "git_blob": "4012feadfdc39b6276c1b7dcf3a37824d25666d3",
+      "origin": "independent/original-source-pins.json"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/independent/root-primary-source-check.json",
+      "mode": "100644",
+      "bytes": 143,
+      "sha256": "a03b4a47a8d23e99b7783f335b18605d34a7bb48edae58f04f09f64f8dae8212",
+      "git_blob": "6e73716a37876931f26523609ae6b41e1752046e",
+      "origin": "independent/root-primary-source-check.json"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/independent/prepare-fixtures-v1.py.txt",
+      "mode": "100644",
+      "bytes": 11383,
+      "sha256": "f5335741344dd9b8c5d6f16e7183d430a545ff55cf60d6520e51e4831de5dd7a",
+      "git_blob": "c22f8ac326e7a9e8f82a9aecb7a7aad52ce9b2af",
+      "origin": "independent/prepare-fixtures-v1.py"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/independent/prepare-fixtures-v2.py.txt",
+      "mode": "100644",
+      "bytes": 11434,
+      "sha256": "f460dbc266dfbcf4d20efe3caa2a385f84944adb7c8fd8136075b0020d2fa741",
+      "git_blob": "cd365ab38e8cfc504055ae2445544d29a8c858cf",
+      "origin": "independent/prepare-fixtures-v2.py"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/independent/fixture-amendment-v2.json",
+      "mode": "100644",
+      "bytes": 988,
+      "sha256": "483671b6fa564d6146443bdab692b7cabb3a1dc1cea9e4e6b8c7cdfb9f42bc44",
+      "git_blob": "01feb22dab2bc2b73901c17b083f98835b746f9f",
+      "origin": "independent/fixture-amendment-v2.json"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/independent/fixture-admission-v1/result.json",
+      "mode": "100644",
+      "bytes": 41580,
+      "sha256": "9e86dec73cdad4b120db699bfd288fdc351f14f6130841488f7f8a6d8535961e",
+      "git_blob": "37ac74d2b0e587a6afdb60944f3a648042c959be",
+      "origin": "independent/fixture-admission-v1/result.json"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/independent/fixture-admission-v1/encode-primary.stderr",
+      "mode": "100644",
+      "bytes": 302,
+      "sha256": "341fff19f50c0b78aa82cc06e375c7d1ec122e3b11f85f3f02495ca0e26d794f",
+      "git_blob": "e508e61d74e3a7c172c54de92f3141b7d3a819f4",
+      "origin": "independent/fixture-admission-v1/encode-primary.stderr"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/independent/fixture-admission-v2/result.json",
+      "mode": "100644",
+      "bytes": 67740,
+      "sha256": "fec2fcd17a828ac397cdb5894df50e2c3c7133cf243fd8d0578087ef6c020986",
+      "git_blob": "e3e44fdbedda0e3bcb5bce8f59c0af2c66a46b3b",
+      "origin": "independent/fixture-admission-v2/result.json"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/independent/receive-clip-v1.py.txt",
+      "mode": "100644",
+      "bytes": 19770,
+      "sha256": "ab26540b808ec0d45edc2931c3d01cc7e4138c84ebda6b46d946f15c5610ff49",
+      "git_blob": "a957129e9538d227f4c66173c626b4731a0e6141",
+      "origin": "independent/receive-clip-v1.py"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/independent/receiver-freeze-v1.json",
+      "mode": "100644",
+      "bytes": 44247,
+      "sha256": "e4f3ad7df51a69d6d238580fbaa22cbb3cfabe2993fb318c9a4aadbcd7875b8b",
+      "git_blob": "d545419f43ebe7416c1f27d50b36fd4c20ebd890",
+      "origin": "independent/receiver-freeze-v1.json"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/independent/launch-receiver-v1.py.txt",
+      "mode": "100644",
+      "bytes": 2494,
+      "sha256": "219e090da1e1cb9086c46b68270c449949e038734e268944059bad72f08d297c",
+      "git_blob": "57a6612507a64a0ab98f7b9b59bc7394b7016241",
+      "origin": "independent/launch-receiver-v1.py"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/independent/receiver-v1.launch.json",
+      "mode": "100644",
+      "bytes": 2063,
+      "sha256": "f7c2b40e1bded72c4fe9876ee76962ad3e7f244f7c06f420da4322164a1c9010",
+      "git_blob": "8f4565646792d73bbb943c40d24329e897a3ec19",
+      "origin": "independent/receiver-v1.launch.json"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/independent/receiver-v1.stdout",
+      "mode": "100644",
+      "bytes": 286,
+      "sha256": "77d9594ad90d935b25eaa4f79506459b240c8504b7c540bff80c742adb91ad5a",
+      "git_blob": "4e0f89406981f26eca016bdf540f3c4df1823659",
+      "origin": "independent/receiver-v1.stdout"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/independent/receiver-v1.stderr",
+      "mode": "100644",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "origin": "independent/receiver-v1.stderr"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/independent/receiving-v1/result.json",
+      "mode": "100644",
+      "bytes": 188349,
+      "sha256": "416094f7e7848bfd263224b8330c8edd4c24d6fcc264ca1c79a636a4b5887a48",
+      "git_blob": "c74186d3604881312489676f63720d3fa3395b20",
+      "origin": "independent/receiving-v1/result.json"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/archive-files-manifest.json",
+      "mode": "100644",
+      "bytes": 165910,
+      "sha256": "5b635c48f29df7f6bb7f59a3c8cf48843b105bdceefbf00fe225345bbebe5b4e",
+      "git_blob": "6e2e0d5a13508ca7e87b2c43788c49ccc2cee03c",
+      "origin": "custody/files-manifest.json"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/source-admission.json",
+      "mode": "100644",
+      "bytes": 14398,
+      "sha256": "173964cb9bd64750e4c251f1c57d401b65d6f405e19407cf647e3146c30d3a0b",
+      "git_blob": "7d5d46228a56e7064294b55a0953d3debd8d8c19",
+      "origin": "custody/source-offer-admission.json"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/historical-source-supplement.json",
+      "mode": "100644",
+      "bytes": 123855,
+      "sha256": "2d71787bc710b3f3bab4ea122661f7fde020f9e1dc0c96aa634046f1adc4612b",
+      "git_blob": "23328ef52f085726608d11af6e32bdebb308a45c",
+      "origin": "custody/historical-source-supplement.json"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/archive-assembly-receipt.json",
+      "mode": "100644",
+      "bytes": 1452,
+      "sha256": "597f4ace746495d20ddc30614f53904f13fdfe7a0bfeed832e33560011a420a8",
+      "git_blob": "0e2eaf11316d5d760cbcd15ee117bc0340ec6641",
+      "origin": "assembly-receipt-v1.json"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/archive-download-receipt.json",
+      "mode": "100644",
+      "bytes": 412,
+      "sha256": "658f1158d09aaaf1bccbf65b6c07adde6d97047e755b811712bed84292146617",
+      "git_blob": "0c8ce935d6ce2d5288f2cc5c45fa9ff44ab55a4c",
+      "origin": "download-receipt.json"
+    },
+    {
+      "path": "docs/evidence/video-clip-3dcb83a1/README.md",
+      "mode": "100644",
+      "bytes": 8413,
+      "sha256": "b6a9e40ec672556ce909e2813a49dec402e1468fc6efb766f664fc61136d7180",
+      "git_blob": "4866193ce9e8330a7b9a8941b8eeccd89a52f882",
+      "origin": "qualified source offer README"
+    }
+  ],
+  "self_scope": "All other Git payloads; this manifest is separately pinned by proposal-summary.json",
+  "complete_archive": {
+    "reference": "notion-file-block://0dc8004b-c4cd-4b38-adea-e597df432fd5/bf0349f9-9b24-420b-92ab-df8708ea6e5e?space_id=847aedcd-f4a5-8159-99ed-0003ba2ee75a&name=CaptureSuite-selected-video-custody-3dcb83a1.zip",
+    "bytes": 843813,
+    "sha256": "bb3bb0709a489473d50aa824c61029aaf56a6bd55c97dacb59a8d4e94bf1bfa0",
+    "members": 537,
+    "decoded_bytes": 2830319
+  },
+  "publication": "No Git mutations performed; PR/main merge prohibited by current workflow events"
+}

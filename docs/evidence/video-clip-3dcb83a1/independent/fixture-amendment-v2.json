@@ -1,0 +1,16 @@
+{
+  "schema": "capturesuite.root-fixture-generator-amendment.v2",
+  "at": "2026-10-09T03:11:12.461Z",
+  "reason": "Actual v1 FFmpeg failure: No such filter '0)' because nested commas were not quoted within the filtergraph. Original119 source copies were successfully byte/SHA/Git admitted first.",
+  "retained_v1_result": {
+    "bytes": 41580,
+    "sha256": "9e86dec73cdad4b120db699bfd288fdc351f14f6130841488f7f8a6d8535961e",
+    "git_blob": "37ac74d2b0e587a6afdb60944f3a648042c959be"
+  },
+  "changes": [
+    "Quote the setpts expression for the FFmpeg filtergraph parser; argv remains a list without a shell.",
+    "Use distinct fixture-admission-v2, fixtures-v2, outputs-v2 destinations; preserve v1 failure and partial fixture tree.",
+    "Reuse/reverify admitted119 baseline files; do not overwrite original staging."
+  ],
+  "unchanged": "All timestamps, colors, interval expectations, source IDs, source bytes, process limits and root independent contract; no candidate executed."
+}

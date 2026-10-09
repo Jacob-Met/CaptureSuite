@@ -1,0 +1,72 @@
+{
+  "schema": "capturesuite.video-clip.receiving-contract/1",
+  "owner": "estate-3dcb83a1/estate_continuity",
+  "phase": "frozen before candidate implementation and results",
+  "source": {
+    "repository": "Jacob-Met/CaptureSuite",
+    "commit": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+    "tree": "d1af33caaf7154e83def1dab035920907d417e8d",
+    "exporter": "66a8f344cbdf5cf1c4f5c9e6fa8e62481fb18066",
+    "discovery": "capture_analysis.discover.discover_streams unchanged",
+    "review_identity": "49c710c21724a4734017afa04b6324cab7304333"
+  },
+  "beneficiary": "A researcher sharing a short retained camera interval can export only that selected segment's frames through the existing offline exporter and reopen a playable video, with exact source identity and an honest local-media timing sidecar.",
+  "entrypoint": "python tools/export_session.py PACKAGE NEW_EXTERNAL_DIRECTORY --video-segment sources/.../segments/0001.mkv --video-start-ms INTEGER --video-end-ms INTEGER",
+  "source_fence": [
+    "tools/export_session.py: additive arguments and early selected-video dispatch in main only; every existing function and whole-export branch preserved",
+    "new tools/video_clip.py",
+    "new tests/analysis/test_video_clip_export.py",
+    "new docs/operator/VIDEO_CLIP_EXPORT.md; additive link in docs/operator/README.md",
+    "append-only decision in docs/design/research/REVIEW_AND_EXPORT_UX.md and session entry in docs/design/research/PROGRESS.md",
+    "unique docs/evidence/video-clip-3dcb83a1/**"
+  ],
+  "preserve": [
+    "Recorded-video widget and #103 A–B/speed ownership",
+    "daemon/capture/worker/raw/session-time-map/numeric/analysis/schema consumers",
+    "existing whole-session export/wizard behavior, dependencies, workflows and required gates"
+  ],
+  "selection": [
+    "Require all three video options together and explicit output. Refuse --modalities or --verify in this mode rather than silently mix semantics.",
+    "Require finalized or finalized_recovered manifest; exact package-relative POSIX segment path matching one existing discover_streams MKV entry. Preserve descriptor source and stream IDs and literal path, including equal basenames under different streams.",
+    "Reject linked source/stream/segment path components, missing/unlisted/nonregular files and package escaping paths; do not traverse other package data to find a fallback.",
+    "Exactly one video stream; ignore audio/subtitle/other streams intentionally. No join across files."
+  ],
+  "interval": [
+    "Nonnegative integer milliseconds with start < end; maximum selected interval 600000 ms.",
+    "Local media origin is first decoded video frame's best-effort presentation timestamp. It is not session time, wall time, checkpoint time or a cross-camera mapping.",
+    "Probe decoded frame presentation timestamps using FFprobe, preserving exact integer ticks and rational time base. Require strictly increasing known timestamps and known positive final-frame duration.",
+    "Select frames whose (presentation timestamp - first-frame timestamp) is >= start_ms and < end_ms, using exact rational arithmetic. Start is inclusive; end exclusive. Refuse empty selection or requested end past the last decoded frame's end.",
+    "Derive contiguous selected frame indices from that probe; FFmpeg trim by those frame indices and reset timestamps to the first selected frame. Preserve all selected source frame indices/ticks in the sidecar. No timestamp interpolation or synthetic frames."
+  ],
+  "encoding": [
+    "Produce video-only clip.mp4 using explicit H.264/yuv420p settings, single encoder thread and passthrough frame timing. This is a lossy review copy, not archival replacement or pixel-identical original.",
+    "Admit even positive source dimensions up to3840x2160. Do not resize, crop, rotate, join or infer spatial calibration; auto-rotation disabled.",
+    "Probe the completed clip before success: exactly one H.264 video stream, unchanged dimensions, positive output frames, exact selected frame count and zero-based first presentation time. Sidecar records actual output frame ticks/time base and duration separately from requested source interval.",
+    "Keep source input bytes unchanged; hash selected source and relevant manifest/stream metadata before and after processing. Refuse success on observed source changes. No claim of atomic protection against arbitrary concurrent external rewriting."
+  ],
+  "outputs": [
+    "Explicit destination must be absent and resolve outside the selected package; existing files/directories and path aliases into package are refused before output writes.",
+    "Admit input/interval/tools before creating destination. Create new output directory exclusively. Retain partial failed output for diagnosis, with no success export_manifest.json and an actionable nonzero CLI result.",
+    "Write the video under an incomplete name first; rename to clip.mp4 only after output checks and source recheck. Write versioned capture.video_clip_export/1 export_manifest.json last; this file is the completion record.",
+    "Completion includes original package state, source/stream/path, input and output byte/hash pins, requested half-open local interval, exact source timestamp origin and selected frame ticks, encoder/probe command/version, output facts and explicit limitations. No integrity/clinical/hardware/truth assurance."
+  ],
+  "bounds": {
+    "maximum_source_bytes": 2147483648,
+    "maximum_source_media_duration_ms": 3600000,
+    "maximum_decoded_frames": 250000,
+    "maximum_probe_json_bytes": 33554432,
+    "per_process_timeout_seconds": 180,
+    "threads": 1
+  },
+  "receiving_before_results": [
+    "Original command rejects unknown interval options without creating a destination; current whole-export synthetic video control remains usable.",
+    "Actual FFmpeg-authored synthetic retained packages: distinguish source/stream/equal basename, regular and nonzero-origin/variable presentation intervals; boundary-selected frames decoded and identified in produced MP4.",
+    "CLI all-option/type/range/empty/end-beyond/missing/unlisted/invalid-media/nonfinal/linked/path-alias/occupied-output/tool-failure controls; keep every package/input byte and unrelated destination sentinel exact.",
+    "Actual late encoder/output failure leaves no success manifest; ordinary new-destination retry succeeds.",
+    "Whole-export original/candidate source correspondence plus focused existing export tests; actual separate video decoder or Qt viewing of completed clip."
+  ],
+  "ownership_admission": {
+    "native": "2026-10-09 bounded /srv/hamon-estate/coord read as supplied uid1000:757 readable,35 permission refusals,2 oversized uninspected.28 CaptureSuite-containing records inspected; no relevant clip/export_session path reservation found in readable scoped text. Unknown records remain unknown, not a lease.",
+    "github": "Current open project issues and video/export/clip searches, complete current tree and exact three workflow definitions read. #103 excludes export. No issue/issue_comment event in current workflows. No PR/ref/main write or Actions included."
+  }
+}

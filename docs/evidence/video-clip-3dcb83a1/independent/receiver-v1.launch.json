@@ -1,0 +1,57 @@
+{
+  "schema": "capturesuite.root-receiver-launch.v1",
+  "started_utc": "2026-10-09T03:33:41Z",
+  "launcher_pid": 85612,
+  "python": {
+    "bytes": 103192,
+    "sha256": "624bbc0586d8855633b875e911883bbef8a0e8b8711e11126df480dd86f54181",
+    "git_blob": "10e250f3f7b994625bd66968beebd05f49efa19d"
+  },
+  "python_version": "3.12.2 (tags/v3.12.2:6abddd9, Feb  6 2024, 21:26:36) [MSC v.1937 64 bit (AMD64)]",
+  "freeze": {
+    "bytes": 44247,
+    "sha256": "e4f3ad7df51a69d6d238580fbaa22cbb3cfabe2993fb318c9a4aadbcd7875b8b",
+    "git_blob": "d545419f43ebe7416c1f27d50b36fd4c20ebd890"
+  },
+  "receiver_inputs": {
+    "receive-clip-v1.py": {
+      "bytes": 19770,
+      "sha256": "ab26540b808ec0d45edc2931c3d01cc7e4138c84ebda6b46d946f15c5610ff49",
+      "git_blob": "a957129e9538d227f4c66173c626b4731a0e6141"
+    },
+    "candidate-product-pins.json": {
+      "bytes": 1434,
+      "sha256": "5eec4e5348eb0c19a03ae93c8eb19dbc931dc2567c2afca752f5f0ec33e902a6",
+      "git_blob": "3f6d3f3d06cca07ab4b14fd249cfeab9d32c6e59"
+    },
+    "contract.json": {
+      "bytes": 7922,
+      "sha256": "87880004a73478b02aa9bc9ae5e7f38cdc96bdafa88d8f0e21216f6a130e7c25",
+      "git_blob": "f15940f0b61586b65575a8084a0cc7be8deeec3b"
+    }
+  },
+  "launcher": {
+    "bytes": 2494,
+    "sha256": "219e090da1e1cb9086c46b68270c449949e038734e268944059bad72f08d297c",
+    "git_blob": "57a6612507a64a0ab98f7b9b59bc7394b7016241"
+  },
+  "receiver_pid": 83404,
+  "receiver_exit_code": 0,
+  "seconds": 40.56979490001686,
+  "stdout": {
+    "bytes": 286,
+    "sha256": "77d9594ad90d935b25eaa4f79506459b240c8504b7c540bff80c742adb91ad5a",
+    "git_blob": "4e0f89406981f26eca016bdf540f3c4df1823659"
+  },
+  "stderr": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+  },
+  "result": {
+    "bytes": 188349,
+    "sha256": "416094f7e7848bfd263224b8330c8edd4c24d6fcc264ca1c79a636a4b5887a48",
+    "git_blob": "c74186d3604881312489676f63720d3fa3395b20"
+  },
+  "finished_utc": "2026-10-09T03:34:22Z"
+}

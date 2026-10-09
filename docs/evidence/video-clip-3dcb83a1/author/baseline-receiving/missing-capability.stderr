@@ -1,0 +1,2 @@
+usage: export_session.py [-h] [--verify] [--modalities LIST] package [out_dir]
+export_session.py: error: unrecognized arguments: --video-segment sources/sim.left/streams/front/segments/0001.mkv --video-start-ms 300 --video-end-ms 800

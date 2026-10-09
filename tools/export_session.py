@@ -367,7 +367,31 @@ def main(argv: list[str] | None = None) -> int:
         help="comma-separated subset of radar,video,emg,imu to export "
         "(default: all four; an explicitly empty selection is rejected)",
     )
+    ap.add_argument("--video-segment", help="exact listed package-relative MKV path")
+    ap.add_argument("--video-start-ms", type=int, help="inclusive local-media frame-start bound")
+    ap.add_argument("--video-end-ms", type=int, help="exclusive local-media frame-start bound")
     args = ap.parse_args(argv)
+    clip_options = (args.video_segment, args.video_start_ms, args.video_end_ms)
+    if any(value is not None for value in clip_options):
+        if any(value is None for value in clip_options) or not args.out_dir:
+            ap.error("selected video requires --video-segment, --video-start-ms, "
+                     "--video-end-ms and an explicit new external destination")
+        if args.modalities is not None or args.verify:
+            ap.error("selected video does not combine with --modalities or --verify")
+        from video_clip import export_video_clip
+
+        try:
+            report = export_video_clip(
+                args.package, args.out_dir, args.video_segment,
+                args.video_start_ms, args.video_end_ms,
+            )
+        except (OSError, ValueError, ImportError) as exc:
+            print(f"FAIL video clip: {exc}. Choose a new destination after correcting the cause.",
+                  file=sys.stderr)
+            return 1
+        print("wrote", Path(args.out_dir).resolve() / "export_manifest.json")
+        print("selected video frames", report["output"]["frame_count"])
+        return 0
 
     root = Path(args.package).resolve()
     if not root.exists():

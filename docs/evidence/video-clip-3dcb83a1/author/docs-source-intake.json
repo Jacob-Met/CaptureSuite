@@ -1,0 +1,20 @@
+{
+  "original_pins": {
+    "docs/operator/README.md": {
+      "bytes": 1580,
+      "sha256": "6cc18d2afb0314fb318ec3cc4fa6e038c8e350475a65efcf5d46cc2d509de5ea",
+      "git_blob": "053f53494d3fab987d1f976cac8012a269d56479"
+    },
+    "docs/design/research/REVIEW_AND_EXPORT_UX.md": {
+      "bytes": 8708,
+      "sha256": "c1dfa854e6a814c269b35cf201d0fde2b0246cc37013e3a75f1571253bc60b93",
+      "git_blob": "44f854f9e4065dd68356e788a42ab51de2ecb1a6"
+    },
+    "docs/design/research/PROGRESS.md": {
+      "bytes": 76964,
+      "sha256": "bede218702e9383b1779fe17716ba48851d9e2aed87286b5bb6a9f19e905792a",
+      "git_blob": "3f8ab7ce67774810ce9f314741eecbb1a8e3eb7d"
+    }
+  },
+  "scope": "Three exact primary-read documentation inputs added after 119-file native runtime qualification; no executable change"
+}

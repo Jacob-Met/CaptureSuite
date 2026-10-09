@@ -1,0 +1,18 @@
+import os,sys,subprocess,json,time,hashlib,shutil,ctypes
+from pathlib import Path
+root=Path(r'C:\Users\jacob\capturesuite-video-clip-3dcb83a1');source=root/'source'
+class MS(ctypes.Structure):
+ _fields_=[('dwLength',ctypes.c_ulong),('dwMemoryLoad',ctypes.c_ulong),('ullTotalPhys',ctypes.c_ulonglong),('ullAvailPhys',ctypes.c_ulonglong),('ullTotalPageFile',ctypes.c_ulonglong),('ullAvailPageFile',ctypes.c_ulonglong),('ullTotalVirtual',ctypes.c_ulonglong),('ullAvailVirtual',ctypes.c_ulonglong),('ullAvailExtendedVirtual',ctypes.c_ulonglong)]
+m=MS();m.dwLength=ctypes.sizeof(m);ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(m));assert m.ullAvailPhys>=2*1024**3 and shutil.disk_usage(root).free>=36*1024**3
+out=root/sys.argv[1];out.mkdir()
+env=os.environ.copy();env.update(PYTHONDONTWRITEBYTECODE='1',PYTHONIOENCODING='utf-8',OPENBLAS_NUM_THREADS='1',OMP_NUM_THREADS='1')
+env['PATH']=r'C:\ProgramData\chocolatey\lib\ffmpeg\tools\ffmpeg\bin'+os.pathsep+env['PATH']
+env['PYTHONPATH']=os.pathsep.join(str(source/'libs/python'/n) for n in ('capture_analysis','capture_session','capture_protocol'))+os.pathsep+str(source/'tools')
+def pins():
+ return {str(p.relative_to(source)):hashlib.sha256(p.read_bytes()).hexdigest() for p in source.rglob('*') if p.is_file() and p.suffix in ['.py','.yaml','.toml','.json']}
+before=pins();start=time.time()
+command=[sys.executable,'-B','-m','pytest','-q','tests/analysis/test_video_clip_export.py','--basetemp',str(out/'temp'),'--junitxml',str(out/'junit.xml'),'-p','no:cacheprovider']
+with (out/'stdout.log').open('wb') as stdout,(out/'stderr.log').open('wb') as stderr:
+ p=subprocess.run(command,cwd=source,env=env,stdout=stdout,stderr=stderr,timeout=180)
+after=pins();result={'command':command,'exit_code':p.returncode,'seconds':time.time()-start,'memory':m.ullAvailPhys,'disk':shutil.disk_usage(root).free,'source_before':before,'source_after':after,'unchanged':before==after}
+(out/'result.json').write_bytes((json.dumps(result,indent=2)+'\n').encode());print(json.dumps({k:v for k,v in result.items() if k not in ['source_before','source_after']}));sys.exit(p.returncode)

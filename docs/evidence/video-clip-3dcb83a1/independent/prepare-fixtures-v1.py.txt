@@ -1,0 +1,164 @@
+# SPDX-License-Identifier: GPL-3.0-only
+"""Root independent retained-video fixture admission; no candidate execution."""
+from __future__ import annotations
+import ctypes
+import hashlib
+import json
+import os
+from pathlib import Path
+import shutil
+import subprocess
+import sys
+import time
+import traceback
+from fractions import Fraction
+
+ROOT = Path(r"C:\Users\jacob\capturesuite-video-clip-independent-3dcb83a1")
+AUTHOR_BASE = Path(r"C:\Users\jacob\capturesuite-video-clip-3dcb83a1\baseline")
+FFMPEG = Path(r"C:\ProgramData\chocolatey\lib\ffmpeg\tools\ffmpeg\bin\ffmpeg.exe")
+FFPROBE = FFMPEG.with_name("ffprobe.exe")
+PYTHON = Path(r"C:\Users\jacob\AppData\Local\Programs\Python\Python312\python.exe")
+sys.dont_write_bytecode = True
+REPORT = {"schema": "capturesuite.root-fixture-admission.v1", "started_utc": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()), "pid": os.getpid(), "commands": [], "checks": [], "candidate_executed": False}
+OUT = ROOT / "fixture-admission-v1"
+OUT.mkdir(exist_ok=False)
+
+def pin(path):
+    data = Path(path).read_bytes()
+    return {"bytes": len(data), "sha256": hashlib.sha256(data).hexdigest(),
+            "git_blob": hashlib.sha1(b"blob "+str(len(data)).encode()+b"\0"+data).hexdigest()}
+
+def save(name, value):
+    (OUT/name).write_text(json.dumps(value, indent=2, ensure_ascii=False)+"\n", encoding="utf-8")
+
+def check(name, condition, details=None):
+    REPORT["checks"].append({"name": name, "passed": bool(condition), "details": details})
+    if not condition:
+        raise AssertionError(name)
+
+def run(label, argv, *, env=None, cwd=None, expect=0, binary=False):
+    started = time.perf_counter()
+    proc = subprocess.Popen([str(x) for x in argv], stdout=subprocess.PIPE, stderr=subprocess.PIPE, env=env, cwd=cwd)
+    try:
+        out, err = proc.communicate(timeout=180)
+    except subprocess.TimeoutExpired:
+        proc.kill()
+        out, err = proc.communicate()
+        raise RuntimeError(f"{label}: timed out")
+    (OUT/(label+".stdout")).write_bytes(out)
+    (OUT/(label+".stderr")).write_bytes(err)
+    REPORT["commands"].append({"label":label, "argv":[str(x) for x in argv], "cwd":str(cwd) if cwd else None, "pid":proc.pid, "exit":proc.returncode, "elapsed":time.perf_counter()-started, "stdout_bytes":len(out), "stderr_bytes":len(err)})
+    if expect is not None:
+        check(label+" exit", proc.returncode == expect, proc.returncode)
+    return proc.returncode, out if binary else out.decode("utf-8", errors="replace")
+
+def tree_pins(root):
+    return {p.relative_to(root).as_posix():pin(p) for p in sorted(root.rglob("*")) if p.is_file()}
+
+def descriptor(package, source_id, stream_id):
+    stream=package/"sources"/source_id/"streams"/stream_id
+    (stream/"segments").mkdir(parents=True,exist_ok=False)
+    (stream/"stream.json").write_text(json.dumps({"sourceId":source_id,"streamId":stream_id,"modality":"video","streamClass":"STREAM_CLASS_FRAME","dataSchemaId":"video.synthetic.root","dataSchemaVersion":"1","nominalRateHz":10.0,"dimensions":[64,48],"timestampSource":"TIMESTAMP_SOURCE_DEVICE"},indent=2)+"\n",encoding="utf-8")
+    source=stream.parents[1]
+    (source/"source.json").write_text(json.dumps({"sourceId":source_id,"metadata":{"fixture":"independent synthetic ordinal frames; no hardware"}})+"\n",encoding="utf-8")
+    return stream/"segments"/"0001.mkv"
+
+def manifest(package, source_ids):
+    package.mkdir(parents=True,exist_ok=False)
+    value={"sessionSchemaVersion":"1","sessionId":"root-ordinal-video-3dcb83a1","state":"finalized","sourceIds":source_ids,"appVersion":"synthetic-receiver","daemonVersion":"not-run"}
+    (package/"manifest.json").write_text(json.dumps(value,indent=2)+"\n",encoding="utf-8")
+    (package/"sentinel.txt").write_text("unrelated retained package sentinel\n",encoding="utf-8")
+
+def probe(label, path):
+    _, raw=run(label,[FFPROBE,"-v","error","-select_streams","v","-show_frames","-show_streams","-show_format","-of","json",path])
+    return json.loads(raw)
+
+try:
+    class MemoryStatus(ctypes.Structure):
+        _fields_=[("length",ctypes.c_ulong),("load",ctypes.c_ulong),("total",ctypes.c_ulonglong),("available",ctypes.c_ulonglong),("total_page",ctypes.c_ulonglong),("available_page",ctypes.c_ulonglong),("total_virtual",ctypes.c_ulonglong),("available_virtual",ctypes.c_ulonglong),("available_extended",ctypes.c_ulonglong)]
+    memory=MemoryStatus(); memory.length=ctypes.sizeof(memory)
+    check("native memory read",bool(ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(memory))))
+    disk=shutil.disk_usage(ROOT).free
+    check("fresh resource floor",memory.available>=2*1024**3 and disk>=36*1024**3,{"memory":memory.available,"disk":disk})
+    check("declared Python minor",sys.version_info[:2]==(3,12),sys.version)
+    check("exact Python path",Path(sys.executable).resolve()==PYTHON.resolve(),sys.executable)
+    REPORT["runtime"]={"python":sys.version,"executable":sys.executable,"python_pin":pin(PYTHON),"ffmpeg":str(FFMPEG),"ffmpeg_pin":pin(FFMPEG),"ffprobe":str(FFPROBE),"ffprobe_pin":pin(FFPROBE)}
+    run("ffmpeg-version",[FFMPEG,"-version"]); run("ffprobe-version",[FFPROBE,"-version"])
+    contract=json.loads((ROOT/"contract.json").read_text(encoding="utf-8"))
+    expected=json.loads((ROOT/"original-source-pins.json").read_text(encoding="utf-8"))
+    baseline=ROOT/"baseline"; baseline.mkdir(exist_ok=False)
+    for item in expected:
+        source=AUTHOR_BASE/item["path"]
+        actual=pin(source)
+        check("original source "+item["path"], all(actual[k]==item[k] for k in ("bytes","sha256","git_blob")))
+        dest=baseline/item["path"]; dest.parent.mkdir(parents=True,exist_ok=True); shutil.copy2(source,dest)
+        check("copied source "+item["path"],pin(dest)==actual)
+    REPORT["original_source_files"]=len(expected)
+    REPORT["original_source_bytes"]=sum(x["bytes"] for x in expected)
+    initial_source_pins=tree_pins(baseline)
+    fixture=ROOT/"fixtures"; fixture.mkdir(exist_ok=False)
+    package=fixture/"Ordinal Ω and Space.mmsession"
+    primary=contract["fixtures"]["primary"]; decoy=contract["fixtures"]["decoy"]
+    manifest(package,[primary["source_id"],decoy["source_id"]])
+    primary_path=descriptor(package,primary["source_id"],primary["stream_id"])
+    decoy_path=descriptor(package,decoy["source_id"],decoy["stream_id"])
+    check("literal primary path",primary_path.relative_to(package).as_posix()==primary["segment"])
+    values=primary["frame_rgb_values"]; times=primary["expected_local_ms"]
+    raw_primary=OUT/"ordinal.rgb"; raw_primary.write_bytes(b"".join(bytes([value])*(64*48*3) for value in values))
+    expression=str(times[-1])
+    for index in range(len(times)-2,-1,-1):
+        expression=f"if(eq(N,{index}),{times[index]},{expression})"
+    video_filter=f"settb=1/1000,setpts={primary['intended_first_pts_ms']}+{expression}"
+    common=["-hide_banner","-loglevel","error","-f","rawvideo","-pixel_format","rgb24","-video_size","64x48","-framerate","10"]
+    settings=["-an","-vf",video_filter,"-c:v","ffv1","-level","3","-pix_fmt","bgr0","-threads","1","-fps_mode","passthrough","-enc_time_base","1/1000"]
+    run("encode-primary",[FFMPEG,"-n",*common,"-i",raw_primary,*settings,primary_path])
+    raw_decoy=OUT/"decoy.rgb"; raw_decoy.write_bytes(bytes(decoy["rgb"])*(64*48*len(values)))
+    run("encode-decoy",[FFMPEG,"-n",*common,"-i",raw_decoy,*settings,decoy_path])
+    facts=probe("probe-primary",primary_path)
+    streams=facts["streams"]; frames=facts["frames"]
+    check("one primary video stream",len(streams)==1 and streams[0]["codec_type"]=="video")
+    tb=Fraction(streams[0]["time_base"])
+    ticks=[int(f["best_effort_timestamp"]) for f in frames]
+    actual_ms=[Fraction(tick)*tb*1000 for tick in ticks]
+    expected_ms=[primary["intended_first_pts_ms"]+t for t in times]
+    check("exact source PTS",actual_ms==expected_ms,{"actual_ms":[str(x) for x in actual_ms],"expected_ms":expected_ms,"time_base":str(tb)})
+    duration=int(frames[-1].get("duration",frames[-1].get("pkt_duration",0)))
+    check("exact final duration",duration*tb*1000==primary["intended_final_frame_duration_ms"],{"ticks":duration,"milliseconds":str(duration*tb*1000)})
+    check("source frame count",len(frames)==10)
+    _,rgb=run("decode-primary",[FFMPEG,"-v","error","-i",primary_path,"-map","0:v:0","-f","rawvideo","-pix_fmt","rgb24","-fps_mode","passthrough","pipe:1"],binary=True)
+    frame_size=64*48*3
+    check("lossless primary decode size",len(rgb)==frame_size*10)
+    for index,value in enumerate(values):
+        frame=rgb[index*frame_size:(index+1)*frame_size]
+        check(f"lossless source ordinal {index}",set(frame)=={value})
+    REPORT["primary"]={"package":str(package),"segment":primary["segment"],"time_base":str(tb),"frame_ticks":ticks,"final_duration_ticks":duration,"byte_pin":pin(primary_path),"selected_oracles":contract["groups"][1]["cases"]}
+    ordinary=fixture/"Whole Control.mmsession"; manifest(ordinary,["camera.root-whole"])
+    ordinary_video=descriptor(ordinary,"camera.root-whole","video.root-whole")
+    run("encode-whole-control",[FFMPEG,"-n",*common,"-i",raw_primary,"-an","-c:v","libx264","-pix_fmt","yuv420p","-threads","1","-crf","18",ordinary_video])
+    outputs=ROOT/"outputs"; outputs.mkdir(exist_ok=False)
+    env=os.environ.copy(); env["PATH"]=str(FFMPEG.parent)+os.pathsep+env.get("PATH",""); env["PYTHONDONTWRITEBYTECODE"]="1"
+    env["PYTHONPATH"]=str(baseline/"libs"/"python"/"capture_analysis")+os.pathsep+str(baseline/"libs"/"python"/"capture_session")
+    old_args=[PYTHON,"-B",baseline/"tools"/"export_session.py",package,outputs/"original-refusal","--video-segment",primary["segment"],"--video-start-ms","199","--video-end-ms","201"]
+    status,_=run("original-interval-refusal",old_args,env=env,cwd=ROOT,expect=None)
+    check("original new flags refused",status!=0)
+    check("original refusal no output",not(outputs/"original-refusal").exists())
+    run("original-whole-export",[PYTHON,"-B",baseline/"tools"/"export_session.py",ordinary,outputs/"original-whole","--modalities","video"],env=env,cwd=ROOT)
+    old_manifest=json.loads((outputs/"original-whole"/"export_manifest.json").read_text(encoding="utf-8"))
+    check("original whole video success",len(old_manifest["video"])==1 and old_manifest["video"][0].get("ok") is True)
+    whole_files=list((outputs/"original-whole").rglob("*.mp4"))
+    check("original whole MP4 exists",len(whole_files)==1)
+    whole_facts=probe("probe-original-whole",whole_files[0])
+    check("original whole decoded frames",len(whole_facts["frames"])==10)
+    check("all baseline source unchanged",tree_pins(baseline)==initial_source_pins)
+    REPORT["fixture_files"]=tree_pins(fixture)
+    REPORT["baseline_source_files"]=initial_source_pins
+    REPORT["input_files"]={p.name:pin(p) for p in (ROOT/"contract.json",ROOT/"original-source-pins.json",Path(__file__))}
+    REPORT["accepted"]=True
+except Exception:
+    REPORT["accepted"]=False
+    REPORT["fatal"]=traceback.format_exc()
+finally:
+    REPORT["finished_utc"]=time.strftime("%Y-%m-%dT%H:%M:%SZ",time.gmtime())
+    save("result.json",REPORT)
+    print(json.dumps({"accepted":REPORT.get("accepted"),"checks":len(REPORT["checks"]),"failed":[c for c in REPORT["checks"] if not c["passed"]],"fatal":REPORT.get("fatal"),"result":str(OUT/"result.json"),"result_pin":pin(OUT/"result.json")},ensure_ascii=True))
+sys.exit(0 if REPORT.get("accepted") else 1)

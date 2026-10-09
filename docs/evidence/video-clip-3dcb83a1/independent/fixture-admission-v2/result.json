@@ -1,0 +1,1846 @@
+{
+  "schema": "capturesuite.root-fixture-admission.v1",
+  "started_utc": "2026-10-09T03:11:19Z",
+  "pid": 70204,
+  "commands": [
+    {
+      "label": "ffmpeg-version",
+      "argv": [
+        "C:\\ProgramData\\chocolatey\\lib\\ffmpeg\\tools\\ffmpeg\\bin\\ffmpeg.exe",
+        "-version"
+      ],
+      "cwd": null,
+      "pid": 88768,
+      "exit": 0,
+      "elapsed": 0.05760639999061823,
+      "stdout_bytes": 1500,
+      "stderr_bytes": 0
+    },
+    {
+      "label": "ffprobe-version",
+      "argv": [
+        "C:\\ProgramData\\chocolatey\\lib\\ffmpeg\\tools\\ffmpeg\\bin\\ffprobe.exe",
+        "-version"
+      ],
+      "cwd": null,
+      "pid": 53632,
+      "exit": 0,
+      "elapsed": 0.04202549997717142,
+      "stdout_bytes": 1473,
+      "stderr_bytes": 0
+    },
+    {
+      "label": "encode-primary",
+      "argv": [
+        "C:\\ProgramData\\chocolatey\\lib\\ffmpeg\\tools\\ffmpeg\\bin\\ffmpeg.exe",
+        "-n",
+        "-hide_banner",
+        "-loglevel",
+        "error",
+        "-f",
+        "rawvideo",
+        "-pixel_format",
+        "rgb24",
+        "-video_size",
+        "64x48",
+        "-framerate",
+        "10",
+        "-i",
+        "C:\\Users\\jacob\\capturesuite-video-clip-independent-3dcb83a1\\fixture-admission-v2\\ordinal.rgb",
+        "-an",
+        "-vf",
+        "settb=1/1000,setpts='7000+if(eq(N,0),0,if(eq(N,1),37,if(eq(N,2),100,if(eq(N,3),199,if(eq(N,4),200,if(eq(N,5),201,if(eq(N,6),400,if(eq(N,7),550,if(eq(N,8),701,800)))))))))'",
+        "-c:v",
+        "ffv1",
+        "-level",
+        "3",
+        "-pix_fmt",
+        "bgr0",
+        "-threads",
+        "1",
+        "-fps_mode",
+        "passthrough",
+        "-enc_time_base",
+        "1/1000",
+        "C:\\Users\\jacob\\capturesuite-video-clip-independent-3dcb83a1\\fixtures-v2\\Ordinal Ω and Space.mmsession\\sources\\camera.root-ordinal\\streams\\video.root-front\\segments\\0001.mkv"
+      ],
+      "cwd": null,
+      "pid": 40188,
+      "exit": 0,
+      "elapsed": 0.08812989993020892,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0
+    },
+    {
+      "label": "encode-decoy",
+      "argv": [
+        "C:\\ProgramData\\chocolatey\\lib\\ffmpeg\\tools\\ffmpeg\\bin\\ffmpeg.exe",
+        "-n",
+        "-hide_banner",
+        "-loglevel",
+        "error",
+        "-f",
+        "rawvideo",
+        "-pixel_format",
+        "rgb24",
+        "-video_size",
+        "64x48",
+        "-framerate",
+        "10",
+        "-i",
+        "C:\\Users\\jacob\\capturesuite-video-clip-independent-3dcb83a1\\fixture-admission-v2\\decoy.rgb",
+        "-an",
+        "-vf",
+        "settb=1/1000,setpts='7000+if(eq(N,0),0,if(eq(N,1),37,if(eq(N,2),100,if(eq(N,3),199,if(eq(N,4),200,if(eq(N,5),201,if(eq(N,6),400,if(eq(N,7),550,if(eq(N,8),701,800)))))))))'",
+        "-c:v",
+        "ffv1",
+        "-level",
+        "3",
+        "-pix_fmt",
+        "bgr0",
+        "-threads",
+        "1",
+        "-fps_mode",
+        "passthrough",
+        "-enc_time_base",
+        "1/1000",
+        "C:\\Users\\jacob\\capturesuite-video-clip-independent-3dcb83a1\\fixtures-v2\\Ordinal Ω and Space.mmsession\\sources\\camera.root-decoy\\streams\\video.root-front\\segments\\0001.mkv"
+      ],
+      "cwd": null,
+      "pid": 86720,
+      "exit": 0,
+      "elapsed": 0.04998609994072467,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0
+    },
+    {
+      "label": "probe-primary",
+      "argv": [
+        "C:\\ProgramData\\chocolatey\\lib\\ffmpeg\\tools\\ffmpeg\\bin\\ffprobe.exe",
+        "-v",
+        "error",
+        "-select_streams",
+        "v",
+        "-show_frames",
+        "-show_streams",
+        "-show_format",
+        "-of",
+        "json",
+        "C:\\Users\\jacob\\capturesuite-video-clip-independent-3dcb83a1\\fixtures-v2\\Ordinal Ω and Space.mmsession\\sources\\camera.root-ordinal\\streams\\video.root-front\\segments\\0001.mkv"
+      ],
+      "cwd": null,
+      "pid": 78020,
+      "exit": 0,
+      "elapsed": 0.03946869994979352,
+      "stdout_bytes": 11614,
+      "stderr_bytes": 0
+    },
+    {
+      "label": "decode-primary",
+      "argv": [
+        "C:\\ProgramData\\chocolatey\\lib\\ffmpeg\\tools\\ffmpeg\\bin\\ffmpeg.exe",
+        "-v",
+        "error",
+        "-i",
+        "C:\\Users\\jacob\\capturesuite-video-clip-independent-3dcb83a1\\fixtures-v2\\Ordinal Ω and Space.mmsession\\sources\\camera.root-ordinal\\streams\\video.root-front\\segments\\0001.mkv",
+        "-map",
+        "0:v:0",
+        "-f",
+        "rawvideo",
+        "-pix_fmt",
+        "rgb24",
+        "-fps_mode",
+        "passthrough",
+        "pipe:1"
+      ],
+      "cwd": null,
+      "pid": 69160,
+      "exit": 0,
+      "elapsed": 0.050485100015066564,
+      "stdout_bytes": 92160,
+      "stderr_bytes": 158
+    },
+    {
+      "label": "encode-whole-control",
+      "argv": [
+        "C:\\ProgramData\\chocolatey\\lib\\ffmpeg\\tools\\ffmpeg\\bin\\ffmpeg.exe",
+        "-n",
+        "-hide_banner",
+        "-loglevel",
+        "error",
+        "-f",
+        "rawvideo",
+        "-pixel_format",
+        "rgb24",
+        "-video_size",
+        "64x48",
+        "-framerate",
+        "10",
+        "-i",
+        "C:\\Users\\jacob\\capturesuite-video-clip-independent-3dcb83a1\\fixture-admission-v2\\ordinal.rgb",
+        "-an",
+        "-c:v",
+        "libx264",
+        "-pix_fmt",
+        "yuv420p",
+        "-threads",
+        "1",
+        "-crf",
+        "18",
+        "C:\\Users\\jacob\\capturesuite-video-clip-independent-3dcb83a1\\fixtures-v2\\Whole Control.mmsession\\sources\\camera.root-whole\\streams\\video.root-whole\\segments\\0001.mkv"
+      ],
+      "cwd": null,
+      "pid": 23888,
+      "exit": 0,
+      "elapsed": 0.046993999974802136,
+      "stdout_bytes": 0,
+      "stderr_bytes": 0
+    },
+    {
+      "label": "original-interval-refusal",
+      "argv": [
+        "C:\\Users\\jacob\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "C:\\Users\\jacob\\capturesuite-video-clip-independent-3dcb83a1\\baseline\\tools\\export_session.py",
+        "C:\\Users\\jacob\\capturesuite-video-clip-independent-3dcb83a1\\fixtures-v2\\Ordinal Ω and Space.mmsession",
+        "C:\\Users\\jacob\\capturesuite-video-clip-independent-3dcb83a1\\outputs-v2\\original-refusal",
+        "--video-segment",
+        "sources/camera.root-ordinal/streams/video.root-front/segments/0001.mkv",
+        "--video-start-ms",
+        "199",
+        "--video-end-ms",
+        "201"
+      ],
+      "cwd": "C:\\Users\\jacob\\capturesuite-video-clip-independent-3dcb83a1",
+      "pid": 27008,
+      "exit": 2,
+      "elapsed": 0.2788724999409169,
+      "stdout_bytes": 0,
+      "stderr_bytes": 258
+    },
+    {
+      "label": "original-whole-export",
+      "argv": [
+        "C:\\Users\\jacob\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "C:\\Users\\jacob\\capturesuite-video-clip-independent-3dcb83a1\\baseline\\tools\\export_session.py",
+        "C:\\Users\\jacob\\capturesuite-video-clip-independent-3dcb83a1\\fixtures-v2\\Whole Control.mmsession",
+        "C:\\Users\\jacob\\capturesuite-video-clip-independent-3dcb83a1\\outputs-v2\\original-whole",
+        "--modalities",
+        "video"
+      ],
+      "cwd": "C:\\Users\\jacob\\capturesuite-video-clip-independent-3dcb83a1",
+      "pid": 83716,
+      "exit": 0,
+      "elapsed": 0.3190474999137223,
+      "stdout_bytes": 143,
+      "stderr_bytes": 0
+    },
+    {
+      "label": "probe-original-whole",
+      "argv": [
+        "C:\\ProgramData\\chocolatey\\lib\\ffmpeg\\tools\\ffmpeg\\bin\\ffprobe.exe",
+        "-v",
+        "error",
+        "-select_streams",
+        "v",
+        "-show_frames",
+        "-show_streams",
+        "-show_format",
+        "-of",
+        "json",
+        "C:\\Users\\jacob\\capturesuite-video-clip-independent-3dcb83a1\\outputs-v2\\original-whole\\video\\camera.root-whole\\0001.mp4"
+      ],
+      "cwd": null,
+      "pid": 86192,
+      "exit": 0,
+      "elapsed": 0.03741810005158186,
+      "stdout_bytes": 11792,
+      "stderr_bytes": 0
+    }
+  ],
+  "checks": [
+    {
+      "name": "native memory read",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "fresh resource floor",
+      "passed": true,
+      "details": {
+        "memory": 6632316928,
+        "disk": 234264276992
+      }
+    },
+    {
+      "name": "declared Python minor",
+      "passed": true,
+      "details": "3.12.2 (tags/v3.12.2:6abddd9, Feb  6 2024, 21:26:36) [MSC v.1937 64 bit (AMD64)]"
+    },
+    {
+      "name": "exact Python path",
+      "passed": true,
+      "details": "C:\\Users\\jacob\\AppData\\Local\\Programs\\Python\\Python312\\python.exe"
+    },
+    {
+      "name": "ffmpeg-version exit",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "name": "ffprobe-version exit",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "name": "existing admitted baseline",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original AGENTS.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original LICENSE",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original LICENSING.md",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original NOTICE",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/discover.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/eval/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/eval/job.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/eval/predictions.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/features/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/features/emg.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/features/imu.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/features/io.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/features/numeric_batch.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/features/radar_doppler.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/features/radar_frame.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/features/video_qc.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/grids.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/jobs.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/kinematics/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/kinematics/compute.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/kinematics/job.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/kinematics/registry.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/loaders/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/loaders/base.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/loaders/emg.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/loaders/imu.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/loaders/mcap_iter.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/loaders/radar_doppler.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/loaders/radar_frame.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/loaders/video.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/ml_bundle/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/ml_bundle/job.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/pipeline.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/plots/modality.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/plots/style.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/plots/sync_dashboard.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/plugins/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/plugins/dummy.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/plugins/handlers.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/plugins/manifest.yaml",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/plugins/numeric.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/plugins/registry.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/pose/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/pose/job.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/qc.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/report_html.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/types.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/version.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/capture_analysis/windows.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_analysis/pyproject.toml",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/LICENSE",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/NOTICE",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/codec.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/config_schema.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/constants.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/control_client.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/framing.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/generated/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/generated/capture/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/generated/capture/v1/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/generated/capture/v1/arrays_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/generated/capture/v1/common_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/generated/capture/v1/control_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/emg_batch_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/imu_frame_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/numeric_batch_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/radar_doppler_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/radar_frame_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/video_timing_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/generated/capture/v1/events_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/generated/capture/v1/health_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/generated/capture/v1/presets_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/generated/capture/v1/preview_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/generated/capture/v1/project_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/generated/capture/v1/source_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/generated/capture/v1/storage_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/generated/capture/v1/worker_pb2.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/handshake.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/capture_protocol/structured_log.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_protocol/pyproject.toml",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_session/capture_session/__init__.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_session/capture_session/app_paths.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_session/capture_session/package_reader.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_session/capture_session/registry.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_session/capture_session/settings_store.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original libs/python/capture_session/pyproject.toml",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original pyproject.toml",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original schemas/session/jsonschema/analysis_feature_schema.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original schemas/session/jsonschema/analysis_job.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original schemas/session/jsonschema/annotation.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original schemas/session/jsonschema/checkpoint.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original schemas/session/jsonschema/clock_mapping.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original schemas/session/jsonschema/device_array.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original schemas/session/jsonschema/gap_event.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original schemas/session/jsonschema/health_snapshot.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original schemas/session/jsonschema/index.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original schemas/session/jsonschema/integrity_file_entry.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original schemas/session/jsonschema/integrity_manifest.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original schemas/session/jsonschema/logical_slot.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original schemas/session/jsonschema/physical_device.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original schemas/session/jsonschema/preset_snapshot.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original schemas/session/jsonschema/radar_array.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original schemas/session/jsonschema/sensor_instance.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original schemas/session/jsonschema/session_identity.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original schemas/session/jsonschema/session_manifest.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original schemas/session/jsonschema/source_instance.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original schemas/session/jsonschema/stream_descriptor.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original schemas/session/jsonschema/sync_anchor.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original schemas/session/jsonschema/timing_header.schema.json",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original tests/analysis/test_export_selection_mcap.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original tests/analysis/test_export_sidecar.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original tests/conftest.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original tools/check_licenses.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original tools/export_session.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "readmitted original tools/run_ci_tests.py",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "literal primary path",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "encode-primary exit",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "name": "encode-decoy exit",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "name": "probe-primary exit",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "name": "one primary video stream",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "exact source PTS",
+      "passed": true,
+      "details": {
+        "actual_ms": [
+          "7000",
+          "7037",
+          "7100",
+          "7199",
+          "7200",
+          "7201",
+          "7400",
+          "7550",
+          "7701",
+          "7800"
+        ],
+        "expected_ms": [
+          7000,
+          7037,
+          7100,
+          7199,
+          7200,
+          7201,
+          7400,
+          7550,
+          7701,
+          7800
+        ],
+        "time_base": "1/1000"
+      }
+    },
+    {
+      "name": "exact final duration",
+      "passed": true,
+      "details": {
+        "ticks": 100,
+        "milliseconds": "100"
+      }
+    },
+    {
+      "name": "source frame count",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "decode-primary exit",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "name": "lossless primary decode size",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "lossless source ordinal 0",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "lossless source ordinal 1",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "lossless source ordinal 2",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "lossless source ordinal 3",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "lossless source ordinal 4",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "lossless source ordinal 5",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "lossless source ordinal 6",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "lossless source ordinal 7",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "lossless source ordinal 8",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "lossless source ordinal 9",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "encode-whole-control exit",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "name": "original new flags refused",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original refusal no output",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original-whole-export exit",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "name": "original whole video success",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "original whole MP4 exists",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "probe-original-whole exit",
+      "passed": true,
+      "details": 0
+    },
+    {
+      "name": "original whole decoded frames",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "all baseline source unchanged",
+      "passed": true,
+      "details": null
+    }
+  ],
+  "candidate_executed": false,
+  "runtime": {
+    "python": "3.12.2 (tags/v3.12.2:6abddd9, Feb  6 2024, 21:26:36) [MSC v.1937 64 bit (AMD64)]",
+    "executable": "C:\\Users\\jacob\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+    "python_pin": {
+      "bytes": 103192,
+      "sha256": "624bbc0586d8855633b875e911883bbef8a0e8b8711e11126df480dd86f54181",
+      "git_blob": "10e250f3f7b994625bd66968beebd05f49efa19d"
+    },
+    "ffmpeg": "C:\\ProgramData\\chocolatey\\lib\\ffmpeg\\tools\\ffmpeg\\bin\\ffmpeg.exe",
+    "ffmpeg_pin": {
+      "bytes": 102856192,
+      "sha256": "72a489eccd008c2ec2c0a5856c5c75bc3d8bbfa90166c4566865c246445e6aa3",
+      "git_blob": "e0621d18c50804c2e9f6e47394b296c55c82e0f7"
+    },
+    "ffprobe": "C:\\ProgramData\\chocolatey\\lib\\ffmpeg\\tools\\ffmpeg\\bin\\ffprobe.exe",
+    "ffprobe_pin": {
+      "bytes": 102652416,
+      "sha256": "19202b23c0043f15ad1b7bce2344f406fd52bd6efd8f995ce02e7392a1cec52f",
+      "git_blob": "e3b77b331d6069edde4c8bfc1443654d4611d27f"
+    }
+  },
+  "reused_intake": {
+    "prior_result_sha256": "9e86dec73cdad4b120db699bfd288fdc351f14f6130841488f7f8a6d8535961e",
+    "note": "Original119 files were copied and verified in retained v1; no candidate execution."
+  },
+  "original_source_files": 119,
+  "original_source_bytes": 481110,
+  "primary": {
+    "package": "C:\\Users\\jacob\\capturesuite-video-clip-independent-3dcb83a1\\fixtures-v2\\Ordinal Ω and Space.mmsession",
+    "segment": "sources/camera.root-ordinal/streams/video.root-front/segments/0001.mkv",
+    "time_base": "1/1000",
+    "frame_ticks": [
+      7000,
+      7037,
+      7100,
+      7199,
+      7200,
+      7201,
+      7400,
+      7550,
+      7701,
+      7800
+    ],
+    "final_duration_ticks": 100,
+    "byte_pin": {
+      "bytes": 1904,
+      "sha256": "dd257799fadfac64615b0a7a9ef80adf460a5fe50ac9201897a39accf7b276dd",
+      "git_blob": "65d8088ac312d70515689ea5b9916446dc4106d5"
+    },
+    "selected_oracles": [
+      {
+        "start_ms": 199,
+        "end_ms": 201,
+        "expected_indices": [
+          3,
+          4
+        ]
+      },
+      {
+        "start_ms": 200,
+        "end_ms": 400,
+        "expected_indices": [
+          4,
+          5
+        ]
+      },
+      {
+        "start_ms": 201,
+        "end_ms": 551,
+        "expected_indices": [
+          5,
+          6,
+          7
+        ]
+      },
+      {
+        "start_ms": 37,
+        "end_ms": 38,
+        "expected_indices": [
+          1
+        ]
+      },
+      {
+        "start_ms": 0,
+        "end_ms": 37,
+        "expected_indices": [
+          0
+        ]
+      }
+    ]
+  },
+  "fixture_files": {
+    "Ordinal Ω and Space.mmsession/manifest.json": {
+      "bytes": 256,
+      "sha256": "ba4f8210e7b88aee74fefdd1fbbaaa9bb6e65a1cc20234efe4e0e1ee0dfe8278",
+      "git_blob": "368674153e88d19e126ab1e93054a25e033b929a"
+    },
+    "Ordinal Ω and Space.mmsession/sentinel.txt": {
+      "bytes": 37,
+      "sha256": "886533278757d13cfec3983d08886fc7c2808ec55202fead0f56ee256cec5fcb",
+      "git_blob": "baa7a2c3a3b934acc10006466d726b86cce529ea"
+    },
+    "Ordinal Ω and Space.mmsession/sources/camera.root-decoy/source.json": {
+      "bytes": 113,
+      "sha256": "93070cf24dc8447ac0a6e75fa2d089af42e262e6a4167fc8e0ef61bfb6615fad",
+      "git_blob": "21005a77aff03b2b2bfb091ca49a883081ad75f0"
+    },
+    "Ordinal Ω and Space.mmsession/sources/camera.root-decoy/streams/video.root-front/segments/0001.mkv": {
+      "bytes": 2076,
+      "sha256": "71cd49c75c4312a0c8dc9b17267da7269524b682ed75b4fb6a528e9518de569f",
+      "git_blob": "3536b8ee3c723ea95133897cd7b06127cc2f64e8"
+    },
+    "Ordinal Ω and Space.mmsession/sources/camera.root-decoy/streams/video.root-front/stream.json": {
+      "bytes": 329,
+      "sha256": "61ccfc5490eac62fa10a8e8cd9f963e8be207524ddb156c09581dc03070a4343",
+      "git_blob": "e40e4e0aa921dc58ce427e2329b7e432a4835542"
+    },
+    "Ordinal Ω and Space.mmsession/sources/camera.root-ordinal/source.json": {
+      "bytes": 115,
+      "sha256": "b6462f852906058bcf8935527fbf4f9c8febf44a81d8ad850b97ccda4d0b4ebd",
+      "git_blob": "512570b317ecf4f04ba32701b70ec97d81d5d697"
+    },
+    "Ordinal Ω and Space.mmsession/sources/camera.root-ordinal/streams/video.root-front/segments/0001.mkv": {
+      "bytes": 1904,
+      "sha256": "dd257799fadfac64615b0a7a9ef80adf460a5fe50ac9201897a39accf7b276dd",
+      "git_blob": "65d8088ac312d70515689ea5b9916446dc4106d5"
+    },
+    "Ordinal Ω and Space.mmsession/sources/camera.root-ordinal/streams/video.root-front/stream.json": {
+      "bytes": 331,
+      "sha256": "fcb4d2e25d8b4c44fe16bb41990c73e7b42838371265ced254987bcad619a639",
+      "git_blob": "fd54f8ac5b0e7389935d790bdb3d91163d1ee961"
+    },
+    "Whole Control.mmsession/manifest.json": {
+      "bytes": 228,
+      "sha256": "9fc749cedfb97fee64082fd49917aad46f2eb25bb8b94693d2b5d97c1c534b78",
+      "git_blob": "8fe90e06129f103032879bef89d4a79bdb6def95"
+    },
+    "Whole Control.mmsession/sentinel.txt": {
+      "bytes": 37,
+      "sha256": "886533278757d13cfec3983d08886fc7c2808ec55202fead0f56ee256cec5fcb",
+      "git_blob": "baa7a2c3a3b934acc10006466d726b86cce529ea"
+    },
+    "Whole Control.mmsession/sources/camera.root-whole/source.json": {
+      "bytes": 113,
+      "sha256": "53278914960096541596c200e284db927c08cfcc6c38886042fc6a2e4ac6450e",
+      "git_blob": "b762d649899989033bb59552182912441ebda702"
+    },
+    "Whole Control.mmsession/sources/camera.root-whole/streams/video.root-whole/segments/0001.mkv": {
+      "bytes": 1608,
+      "sha256": "a792cfb31076bfd14bfa44688b583c2618585eb77dc07f9dbf95223f93b810ce",
+      "git_blob": "a54f7d3d0ab05afc7025893534ea76ba2ef96a06"
+    },
+    "Whole Control.mmsession/sources/camera.root-whole/streams/video.root-whole/stream.json": {
+      "bytes": 329,
+      "sha256": "af74f1cac2adf01eeab84b1626a3550e26777ad2ca1d4dba4f8a476cfed2a0f6",
+      "git_blob": "9628712c5b0e21b6158511a228a893442b1490a6"
+    }
+  },
+  "baseline_source_files": {
+    "AGENTS.md": {
+      "bytes": 3932,
+      "sha256": "525164ca1f3b9e68561434ab110ba17ed65843a20c23f4c1385fde33f1863a74",
+      "git_blob": "9ac6683ba4805e210143e5a33e7782da55af0d15"
+    },
+    "libs/python/capture_analysis/capture_analysis/__init__.py": {
+      "bytes": 497,
+      "sha256": "14cfe6dccd33a0bda74fac3c9339e1a37a3538b2110a8ae6e307801b776eb43a",
+      "git_blob": "67a4fb257b771af771edb4010e573ceeab86a51f"
+    },
+    "libs/python/capture_analysis/capture_analysis/discover.py": {
+      "bytes": 4023,
+      "sha256": "344ee5d7cb0f5e95ac7524a0c1141b0a293bb9445e2bd4789c6736f39cfcb90d",
+      "git_blob": "d5c4fa7e06ac6e9139ebfc78fade90a3df5e451a"
+    },
+    "libs/python/capture_analysis/capture_analysis/eval/__init__.py": {
+      "bytes": 154,
+      "sha256": "54661df9ed7d7e0d4b1c2ab5941f107ceb608e4fdfaff810014ef5fad1431fe1",
+      "git_blob": "140fcb2784c4b73ddf69d21ddccfdcc8191cc0aa"
+    },
+    "libs/python/capture_analysis/capture_analysis/eval/job.py": {
+      "bytes": 4342,
+      "sha256": "0af5556304cfae0be9f40929fbe4eeba6cf8b1453f94e9ba475d66acda8bc913",
+      "git_blob": "814cad848e7b2fcce329d407ca10cc1d87f185cf"
+    },
+    "libs/python/capture_analysis/capture_analysis/eval/predictions.py": {
+      "bytes": 18051,
+      "sha256": "decff22c1e2e661a3ce21679db68b667ea44fa5b18df8501204d7d23161cc906",
+      "git_blob": "f2e0e0c240d5d7018ef32d7a8075d06b1c53d7ce"
+    },
+    "libs/python/capture_analysis/capture_analysis/features/__init__.py": {
+      "bytes": 66,
+      "sha256": "3cdd6c626b6da12b8df56d8ddf35fca27c0a744865965ec01dd89d47da476fa1",
+      "git_blob": "e52dc3839105744e19193f8fc8067b818389a20b"
+    },
+    "libs/python/capture_analysis/capture_analysis/features/emg.py": {
+      "bytes": 3072,
+      "sha256": "11f8f8350464b7c7c079353ca649b4c4aad2580ef8d355fe741c025c262b168e",
+      "git_blob": "7f7536500a63ddc8b06774b8da65df8d56cd4f2b"
+    },
+    "libs/python/capture_analysis/capture_analysis/features/imu.py": {
+      "bytes": 2605,
+      "sha256": "246bfd1cc3ce72afa0680537062b6795e22b8a06ba6301503d7489a4440c6849",
+      "git_blob": "0ee47b3d579e4c3732634958dda21ae724beca9e"
+    },
+    "libs/python/capture_analysis/capture_analysis/features/io.py": {
+      "bytes": 1409,
+      "sha256": "c677d209292cca790ccdf1a64ba834f71a078ccce31ea57452e67ece358822ca",
+      "git_blob": "b998063a5036b73a67b773f70c193b1f9827c248"
+    },
+    "libs/python/capture_analysis/capture_analysis/features/numeric_batch.py": {
+      "bytes": 4030,
+      "sha256": "ecdeb88ca4dd093b973294a53954e9fa0e5d6b4b908225a52d097ef70c7d2154",
+      "git_blob": "77f19ccb048c93c0f4fca460eef0502180b37717"
+    },
+    "libs/python/capture_analysis/capture_analysis/features/radar_doppler.py": {
+      "bytes": 2289,
+      "sha256": "cffc0ecbb8053fbc2244850c1927469366f4ae93b5439e4d194de2065877fa5c",
+      "git_blob": "ee20f7314cb1af4512901d6009f73e3dddf9025c"
+    },
+    "libs/python/capture_analysis/capture_analysis/features/radar_frame.py": {
+      "bytes": 3323,
+      "sha256": "f85c5fe5e2db68606f68e36a42a0c8f323086f0b1e7f233c0ddefa24cdccb443",
+      "git_blob": "e798dee0fb72dd261b504a99ac76f815515dda9e"
+    },
+    "libs/python/capture_analysis/capture_analysis/features/video_qc.py": {
+      "bytes": 1766,
+      "sha256": "0e25c50e01fc2da47bc7b510d68ba3e72aba33d3e1c79c57b727f5c55c723e27",
+      "git_blob": "fa73c80d39a0d699f80d7e877b37167cf8b48b6a"
+    },
+    "libs/python/capture_analysis/capture_analysis/grids.py": {
+      "bytes": 1007,
+      "sha256": "936c5404783145f7a2bc4c13df22d3b85612bcb227115bba74f0b78a11c0c483",
+      "git_blob": "2e03f79d9317d2d97b721321130a9a5e6212b111"
+    },
+    "libs/python/capture_analysis/capture_analysis/jobs.py": {
+      "bytes": 19577,
+      "sha256": "fa7686685f1a680eb2982191fbd03b3986487e638e95088b56de32d4c183d568",
+      "git_blob": "dd25dd3d6cc4b583f0fe6cfb352fba10be22352b"
+    },
+    "libs/python/capture_analysis/capture_analysis/kinematics/__init__.py": {
+      "bytes": 178,
+      "sha256": "50a0f7fd39648abf269fc549d2c17eb48b1dc9add10ebdb76edc1935d6f80160",
+      "git_blob": "aaf360b8a0085f89b95cd976857f0933596098a7"
+    },
+    "libs/python/capture_analysis/capture_analysis/kinematics/compute.py": {
+      "bytes": 6993,
+      "sha256": "59bdcde630edd97833349d59703dd2c3bb5ce06981bc8b311668560cbfb6b2be",
+      "git_blob": "fb8be59b00e15d9c264aad0983cf75a757c9e210"
+    },
+    "libs/python/capture_analysis/capture_analysis/kinematics/job.py": {
+      "bytes": 4523,
+      "sha256": "d676e84f54aa1ae2b0f998c2cb37c4e02541c1fd0e3464e38e9865c0049a7239",
+      "git_blob": "fb8be113d8699427072f6dbcdae222a37738ac18"
+    },
+    "libs/python/capture_analysis/capture_analysis/kinematics/registry.py": {
+      "bytes": 1155,
+      "sha256": "1e53fb9da4c6a2743bc1a3f0e687d94599cf995d33f2a2555e0ce5ebc3966d48",
+      "git_blob": "a28cfd708c90552401fb0b3157c60f713a06e14f"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/__init__.py": {
+      "bytes": 361,
+      "sha256": "2d51c509baf3c0b5c33360637d12e5ce3c7507a859e4f37030f2c3d711ef0b3d",
+      "git_blob": "eb6fae21d4bb79055f8d1af1528e846020f21459"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/base.py": {
+      "bytes": 2461,
+      "sha256": "696093b31f22d2bef32fc2962c7a11249a590a0b4d776c40cef4edcbc1e48a97",
+      "git_blob": "941a6aa3cea6777f90534ea634cccf8fdd319a3f"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/emg.py": {
+      "bytes": 3089,
+      "sha256": "86eb7114be689cdbd2edd76affa2994e7278714916692a35381abd02ba9d599a",
+      "git_blob": "c35d22af7bdeea570e6ae45a713428627e90894c"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/imu.py": {
+      "bytes": 2773,
+      "sha256": "5ea4747145bf5588974dfd72c834766436c5a2bc0d58d34ace0f8ef403b310d6",
+      "git_blob": "8823f04bd089789ca4cbff6602154bf066d4161d"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/mcap_iter.py": {
+      "bytes": 1196,
+      "sha256": "03a418e7689840e378665aac92c42769dd14ba2c88a821a5cbf0cee80766540c",
+      "git_blob": "b61ca0a914e4d3909790839774327aa5824c1b71"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py": {
+      "bytes": 7139,
+      "sha256": "7c84c0425c1b9b821df711f4c40ea89ac13f267dbe6472922eb41a9263e4835c",
+      "git_blob": "668e5397d6a603d8665fe639b3218128bbda72c2"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/radar_doppler.py": {
+      "bytes": 1539,
+      "sha256": "4942d08eb47229839e339ce7f2f8a64aee7e5fab44bac77029fcd7a3e3e490c1",
+      "git_blob": "fc87bfb7fbbeb98ad8d5d11b3438b2d04882de6c"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/radar_frame.py": {
+      "bytes": 1828,
+      "sha256": "d071f9d95b371798974698fd0caa1fc4c865a85fb772232fd43e7227b15fad2b",
+      "git_blob": "a44af5392ba2b5b8b64de685f42772b141f1b8b1"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/video.py": {
+      "bytes": 2200,
+      "sha256": "3c3e873ab641904a39ca649dac39072f11948031d068cc21ee459e996d1fc185",
+      "git_blob": "6a192cd5999b45df08c666b9dad21dc29cf91824"
+    },
+    "libs/python/capture_analysis/capture_analysis/ml_bundle/__init__.py": {
+      "bytes": 179,
+      "sha256": "e785a2e3bf65852018d811b38ecbaf6ff9c479648025789145218809dd50d8a1",
+      "git_blob": "619d634ebf6fcc82a7871ad9c463660a24fd65ae"
+    },
+    "libs/python/capture_analysis/capture_analysis/ml_bundle/job.py": {
+      "bytes": 10233,
+      "sha256": "ed67d94ded834d63599797bbd8efb7b26f125bd216f52bcb7f01febb928922ce",
+      "git_blob": "ba98576696ead3974d38dac1183fe57c86fd84d5"
+    },
+    "libs/python/capture_analysis/capture_analysis/pipeline.py": {
+      "bytes": 5262,
+      "sha256": "e8c0152040ba5b5f3f37ac53fb5188bac9dd9aaf0d5816d6a718be505c20898c",
+      "git_blob": "8113ab4cb51678a122bbb702a23f2200c9333233"
+    },
+    "libs/python/capture_analysis/capture_analysis/plots/modality.py": {
+      "bytes": 2419,
+      "sha256": "bc3aa15ee79d50280a6c9d6aa144fe0519f85dd2c74a0cfa99323f7d57ecd28d",
+      "git_blob": "1de343cc2e11e663501ba190441325d5637d1492"
+    },
+    "libs/python/capture_analysis/capture_analysis/plots/style.py": {
+      "bytes": 1249,
+      "sha256": "231e7b1c998f4349d5859295007235ffd41848f12fbb7819193bec9630cd3942",
+      "git_blob": "3725e840e5eb046accea79d4b6376f902392dac8"
+    },
+    "libs/python/capture_analysis/capture_analysis/plots/sync_dashboard.py": {
+      "bytes": 1149,
+      "sha256": "6f9e0c64193688eb841565729b9d1e9a64136779e892419acabdc81591afd3d5",
+      "git_blob": "828204e998a46b9571b3a2b3ba08acd9fc6caa31"
+    },
+    "libs/python/capture_analysis/capture_analysis/plugins/__init__.py": {
+      "bytes": 225,
+      "sha256": "c511d4b9cd1cda042b781b06fbb02d2d99004de214735d6daeb459d6e41381fe",
+      "git_blob": "39c9c93eab1f5abf65ea73299c34b05ec184dd63"
+    },
+    "libs/python/capture_analysis/capture_analysis/plugins/dummy.py": {
+      "bytes": 1618,
+      "sha256": "facf059d247bca44f2697383e12cc1296b1d1d12bede1196f4a52a1352d60495",
+      "git_blob": "0152651c271234bf38252bed51efda3a3fc19c0f"
+    },
+    "libs/python/capture_analysis/capture_analysis/plugins/handlers.py": {
+      "bytes": 10646,
+      "sha256": "9be2e1820529b94e54d06790d53aa94cf658f982efb4063c6b64f9d07acc4b2e",
+      "git_blob": "03c8589064dfc4c6cfec6e4d00b7f46b10014414"
+    },
+    "libs/python/capture_analysis/capture_analysis/plugins/manifest.yaml": {
+      "bytes": 3876,
+      "sha256": "1efe3ee2d9eeeeac03c2c03c582edf0119c9abd6d214dfdca3d827fa10a5c048",
+      "git_blob": "0628968ee3965170b486306f974c81dd4eb84a53"
+    },
+    "libs/python/capture_analysis/capture_analysis/plugins/numeric.py": {
+      "bytes": 3390,
+      "sha256": "75b55cb453095ad5470ce2532b65d3dce771e6a2f8ad1e46a538b4291fa4cf93",
+      "git_blob": "d8adbc1d90dbfdeac0cd9179c95f027532c1a5d4"
+    },
+    "libs/python/capture_analysis/capture_analysis/plugins/registry.py": {
+      "bytes": 5389,
+      "sha256": "33a4d07600db8b116fbd46b67492f62129df513df5b66a2c455dced0b2a9dc69",
+      "git_blob": "3c582e1ab0de2b22956ac47fb628227eacdd1faf"
+    },
+    "libs/python/capture_analysis/capture_analysis/pose/__init__.py": {
+      "bytes": 156,
+      "sha256": "d58a03cae86259b2cb0ecd0a5ce2347c6824f14cfea6871c94d76acc3541a380",
+      "git_blob": "108be2956adfed6328f397d88a3b61ebada0ac48"
+    },
+    "libs/python/capture_analysis/capture_analysis/pose/job.py": {
+      "bytes": 6262,
+      "sha256": "1f4c44f443c07e22e8c9ca877232c6780c4b1da7834d5565b82cf547b2f4c439",
+      "git_blob": "1a1a3f2436b0ac8decc551f84e76fa6c4c6e602d"
+    },
+    "libs/python/capture_analysis/capture_analysis/qc.py": {
+      "bytes": 9187,
+      "sha256": "f24e0593a3723311d41054aef40b56c4bb46d4f3ba5ef4b01afcae3a6cc4440a",
+      "git_blob": "530b86af1247599c127e2d0c3fa5e4d7d12169f6"
+    },
+    "libs/python/capture_analysis/capture_analysis/report_html.py": {
+      "bytes": 4716,
+      "sha256": "f2c89c7faf6e4edc265540140272396b4195eb5aed9edf05c4912aac74286f03",
+      "git_blob": "bb8032024cfce30c6fe9a2bd2c13b0d2cbc2d102"
+    },
+    "libs/python/capture_analysis/capture_analysis/types.py": {
+      "bytes": 3428,
+      "sha256": "e7996d02483f69265a2ef2ec0b28078c86f4f479daa53e38faf8b4a62645d02c",
+      "git_blob": "2adf26816e0ef9e84e6763cf8bbff69d64697949"
+    },
+    "libs/python/capture_analysis/capture_analysis/version.py": {
+      "bytes": 62,
+      "sha256": "9e25143344b110699f68b6acdbef49576fc91c2cbda34956d7e2cb85bbbc4ae3",
+      "git_blob": "d04b8cc1dd9271ca3ccf836d97436d9a961417c6"
+    },
+    "libs/python/capture_analysis/capture_analysis/windows.py": {
+      "bytes": 5714,
+      "sha256": "5cf401b7b7d201225c966b804cfff39c3f6d59669da7e488dd68c4253a829c32",
+      "git_blob": "aaafd8db78f82a5a56178135dbed5bfd4f45c634"
+    },
+    "libs/python/capture_analysis/pyproject.toml": {
+      "bytes": 677,
+      "sha256": "84cd96465e48439bdd81f5fa126fea5da11ee7587b488bfaaa67a4cd8f760c75",
+      "git_blob": "6db8b1158b14da660128d7ac0ceacb45b8eb9924"
+    },
+    "libs/python/capture_protocol/capture_protocol/__init__.py": {
+      "bytes": 698,
+      "sha256": "556f474a3d740adc03c40426acde432ab7a394b947f8268bd90eecc7832dff8a",
+      "git_blob": "0e7ab2cf8689d3adbc689c283e8a23d12607b2d0"
+    },
+    "libs/python/capture_protocol/capture_protocol/codec.py": {
+      "bytes": 7011,
+      "sha256": "f6c09246a7b165358835e51b99b1508e68d840f4bdbd54b5fb72db33d4912712",
+      "git_blob": "3034065efca2c52e34c3e67e147bdda526d2c8db"
+    },
+    "libs/python/capture_protocol/capture_protocol/config_schema.py": {
+      "bytes": 8444,
+      "sha256": "00d855895faec7d674cdb8e4da1ddc687888c9e9863f91d4950d24d9fb815e6e",
+      "git_blob": "c9b4a694e620e5597d338230fcb0f25ea3a757f6"
+    },
+    "libs/python/capture_protocol/capture_protocol/constants.py": {
+      "bytes": 486,
+      "sha256": "7f187edf873cd13f55bc09ff7972785797eb488d74dd5befcb395fc928a71d72",
+      "git_blob": "2542cda6bdb6a83d4334336f34d92f80040bc4a0"
+    },
+    "libs/python/capture_protocol/capture_protocol/control_client.py": {
+      "bytes": 20823,
+      "sha256": "68de412465b2eaa04886a2bb4566aa0595c898df7d7e782b3031b8ba919db7fa",
+      "git_blob": "45e1c4b535ece8d7178cd6b32ab1affcc9e73e92"
+    },
+    "libs/python/capture_protocol/capture_protocol/framing.py": {
+      "bytes": 2884,
+      "sha256": "3ff7c7284d9907a2ad516c83fab383a4151996da3f2d5a1d27e24d7c7575d92e",
+      "git_blob": "9dd5021b815b31ab02eaaa814210525ebb543862"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/__init__.py": {
+      "bytes": 90,
+      "sha256": "1fac8216894ce1a1b5362de3b59398fbd78f005a59636aea9f074951bed5c1d7",
+      "git_blob": "16ae7d90a122b4973139c563ac0f72efa061b1de"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/__init__.py": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/__init__.py": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/arrays_pb2.py": {
+      "bytes": 2876,
+      "sha256": "6355750076724275e49f9a5faec383b2be92c0336ed58805a88954964bd13b86",
+      "git_blob": "a29ed506c4dd33f697ba74d13b6e8a9c945c6b6d"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/common_pb2.py": {
+      "bytes": 9746,
+      "sha256": "6736e3b86b3c8749d34065794da1c880772ce69e2f248fdd2febd003f083bbd3",
+      "git_blob": "66031212a0da44800dcc671b0d4bf0cd39e71f06"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/control_pb2.py": {
+      "bytes": 20028,
+      "sha256": "f2eea386aebf830ec47fa7379e6fb0493e0a199efecc7b90974bc8bb8c8b96b6",
+      "git_blob": "0597489cf8609a76e2094270965039da9b739ca3"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/__init__.py": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/emg_batch_pb2.py": {
+      "bytes": 1624,
+      "sha256": "1db5ef51143a546072e34cc7be7b263db996fa5f4d0d71606b230cb75b531a14",
+      "git_blob": "d8495ebeb8ab140824eaa5412be0779cf929ec6a"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/imu_frame_pb2.py": {
+      "bytes": 2222,
+      "sha256": "4a2048d2a737362bf26b99166e95c457d1492fcfba8848c894fe4d2748ff9f51",
+      "git_blob": "54bbf93dc638cdab95f49744ea7e0b43fefad374"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/numeric_batch_pb2.py": {
+      "bytes": 1454,
+      "sha256": "a087cc019b9849f4ef47bcdf4c789a7da90d443240b7bef97c832bb23c1d4e24",
+      "git_blob": "beedaaae054bfb083af3642c96ca7c64af14cc8d"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/radar_doppler_pb2.py": {
+      "bytes": 1773,
+      "sha256": "d1b85358aba0c2f4fc1745218463e9951224322604b18b068a2195359dcf790e",
+      "git_blob": "ad8fe84317d2f4049682f70bead19f90c6932457"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/radar_frame_pb2.py": {
+      "bytes": 1729,
+      "sha256": "995ddbbb0aa614afb15088cf039c741421c33ea3e3e963ef1a7361b24754b862",
+      "git_blob": "cef636d7b030b037b23331eec9a86f3b152bc358"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/video_timing_pb2.py": {
+      "bytes": 1722,
+      "sha256": "002a79858ccd2d7763769a1fe1be6a16a7f6b8727d15f952d191bcd2240ba5ef",
+      "git_blob": "17937a141a9a2d81858cf52d74bc4705afc940b7"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/events_pb2.py": {
+      "bytes": 5480,
+      "sha256": "72951a468b0480e7fefc4fd3f9b4caac5fda0abdadf4ffcca92d4f19286429ce",
+      "git_blob": "030bd4a90be609403e7709605607d8d5b993776e"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/health_pb2.py": {
+      "bytes": 5898,
+      "sha256": "e1e0baa7073a9886e4d982d4f00020b490bfd46c32b1b4df129fd0477c1f5e61",
+      "git_blob": "b27bd32ec488168871ca2342062eb576d56a9e8e"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/presets_pb2.py": {
+      "bytes": 2066,
+      "sha256": "d27336594b548f2e6e7ae212fe6de198e6e699c62a5f27752f691d7928ccb27b",
+      "git_blob": "d20925410185e5cf52bbc56e438534c1c5ff1102"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/preview_pb2.py": {
+      "bytes": 5333,
+      "sha256": "c992e91b9aef0aa0ec8d595eba2f7079889264d9e4de120b623afd1d8702c695",
+      "git_blob": "cb04387df1614a8b9d9755a702129bbbb8d6374e"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/project_pb2.py": {
+      "bytes": 3355,
+      "sha256": "983bc5715147297cdcecca343b9a450f2095fcc1e895859cc3c52a3213d933f5",
+      "git_blob": "a8e71f0a426858cc679cb87ce31d1379e70a2817"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/source_pb2.py": {
+      "bytes": 8053,
+      "sha256": "d15b443f27c910c0e809af19fed81d9c1a75f7112501df85877bf4bf9bc4f7a8",
+      "git_blob": "b72752efedc743d236713e51283dce923a526f55"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/storage_pb2.py": {
+      "bytes": 5487,
+      "sha256": "f7a7b8903af9bfc2d2a419622c86cc057aed2a898949e4261475a7ac61222474",
+      "git_blob": "4dd1b48ab16900c5c3e88d9788cebf83ee93cc5a"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/worker_pb2.py": {
+      "bytes": 11165,
+      "sha256": "112e832172913024c6fad128a9a9559bbcd14b18de06b1f2a3161ac380258dc0",
+      "git_blob": "7f3a4fc372384523638853f4bd458f49b664ba70"
+    },
+    "libs/python/capture_protocol/capture_protocol/handshake.py": {
+      "bytes": 4763,
+      "sha256": "63f740c992edf8812f666b79f9cd866d9ea33e65e5b310a5ebda2f5ef98ac115",
+      "git_blob": "9386e73b3c1eecb683d9d0ca98ad415268e307af"
+    },
+    "libs/python/capture_protocol/capture_protocol/structured_log.py": {
+      "bytes": 4657,
+      "sha256": "3d7883833286ecc004248294badcc0c66e44a57ecb7844ef281828d797b3c4fc",
+      "git_blob": "fc9c97b288280f4473c6b3c5b5e6ff07332fad49"
+    },
+    "libs/python/capture_protocol/LICENSE": {
+      "bytes": 11358,
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "git_blob": "d645695673349e3947e8e5ae42332d0ac3164cd7"
+    },
+    "libs/python/capture_protocol/NOTICE": {
+      "bytes": 124,
+      "sha256": "3efb470f58c900a58deaef889527e074206274b0fd5fb0e2e62613c093064307",
+      "git_blob": "7f9ac0678aa56452f06e6e5f3badc9a873e2008a"
+    },
+    "libs/python/capture_protocol/pyproject.toml": {
+      "bytes": 355,
+      "sha256": "61b2e33b2de2a153fb994144f532402c1b6b8ed02afb627ba0a15239e726ca71",
+      "git_blob": "fa71ca45874d34076208507180c69c7a0e38fa76"
+    },
+    "libs/python/capture_session/capture_session/__init__.py": {
+      "bytes": 2412,
+      "sha256": "da530f86c0d1d584862868ddba9f7087ccf5dfbddd64dd1e577337ecfd776419",
+      "git_blob": "894e3c152a98b6e804de90122572afbcd929b3da"
+    },
+    "libs/python/capture_session/capture_session/app_paths.py": {
+      "bytes": 561,
+      "sha256": "363e4522240e2356cac7492589cb207a798bc1af6031139bd1fa94890f1c4bfd",
+      "git_blob": "46332cea7c62dd44247b219937ae6c8fbc747017"
+    },
+    "libs/python/capture_session/capture_session/package_reader.py": {
+      "bytes": 6331,
+      "sha256": "9a1d9e6e7d24341a083cee602af9538413e948f3369b22660e484356e3d34eb1",
+      "git_blob": "91fbf913c5af8489968425d7ceac51c04233d3e0"
+    },
+    "libs/python/capture_session/capture_session/registry.py": {
+      "bytes": 13989,
+      "sha256": "809b26ce8d8efc0559a3854cf85ea74b4e486fcd77d253ebfa76bade64b0a8d1",
+      "git_blob": "c1d7799e1d2099424221b2f4af216a43a972c67a"
+    },
+    "libs/python/capture_session/capture_session/settings_store.py": {
+      "bytes": 4622,
+      "sha256": "7719524a1f106cc54befcd21088810f9ec28f0160c8e88f60c374e1545fdb98d",
+      "git_blob": "41b99cdaa78011d3d9b753c3131f32c72af9699f"
+    },
+    "libs/python/capture_session/pyproject.toml": {
+      "bytes": 389,
+      "sha256": "3484887da96d4a2f32de8471b537d849f077b195c729ff0cc29307681e8d4895",
+      "git_blob": "c83450d780e97e5bd90feb48cef140917b6e47ff"
+    },
+    "LICENSE": {
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+      "git_blob": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7"
+    },
+    "LICENSING.md": {
+      "bytes": 1728,
+      "sha256": "a407df01c4c285fdb2a36e14254e769a614c1a1bd6f53caaacf184b2b13f05e3",
+      "git_blob": "44df160df06a04305cc457c4bf296552e5c38c80"
+    },
+    "NOTICE": {
+      "bytes": 178,
+      "sha256": "6a915a367aa42d3d4da1056494568e81cbe40b9c4334e216048aa819fd5c08d4",
+      "git_blob": "8cf2966222285708edcab8bee8a309878d3fb5d0"
+    },
+    "pyproject.toml": {
+      "bytes": 1233,
+      "sha256": "0cb8de1ab3dfbfed84ff16b35f3c89c6440180183ee5851d5d80da83622e53d0",
+      "git_blob": "52491c6beebc4b17983fc66bb8765154c33cf6d8"
+    },
+    "schemas/session/jsonschema/analysis_feature_schema.schema.json": {
+      "bytes": 1199,
+      "sha256": "3ae59b76a6aa8fdd4a9f4f99872f3c410077741d76b929591338331a9fb89188",
+      "git_blob": "56e8627596a956b647cb2de52756ca7329d9226e"
+    },
+    "schemas/session/jsonschema/analysis_job.schema.json": {
+      "bytes": 2417,
+      "sha256": "0f16c96cb79596f25e05f2a80545b42d080570adbcb84faaf5db5904f35b0ab1",
+      "git_blob": "0837e193dd28a3ef1fc8ecd7e0727ca96b75db43"
+    },
+    "schemas/session/jsonschema/annotation.schema.json": {
+      "bytes": 660,
+      "sha256": "335772a3d0bc42fddf886f90579e287a33cc5b759447aef70188945af71230a3",
+      "git_blob": "686fbf750e5467379cfd206a7746fdbb2082a7d6"
+    },
+    "schemas/session/jsonschema/checkpoint.schema.json": {
+      "bytes": 1125,
+      "sha256": "4f32b55ba009e6d33395e82c645111a6c54e8b797ba78411d677cae08a1a8680",
+      "git_blob": "290c505abab0c84203e471d599f7f21c1d146e9b"
+    },
+    "schemas/session/jsonschema/clock_mapping.schema.json": {
+      "bytes": 933,
+      "sha256": "d14b31281ab634a15d2c009148668e7f80dc1bbabd52135e01f18306326d180d",
+      "git_blob": "883dbb9e309e0045613a85aa98c905aee9c90fa6"
+    },
+    "schemas/session/jsonschema/device_array.schema.json": {
+      "bytes": 939,
+      "sha256": "1b8130ab3fe0653923b3ce61c48184eb77407f3c4b8767dd46f14537d2fa9373",
+      "git_blob": "261041151417e65a448ce6990581ec5c89bc0c9a"
+    },
+    "schemas/session/jsonschema/gap_event.schema.json": {
+      "bytes": 914,
+      "sha256": "8b6fc4cb71aace5a97c76cf2ea2afb72af325adfa653967c97b2873bf63fe479",
+      "git_blob": "3220405e13c712578bb6902560307e2b7f0e56aa"
+    },
+    "schemas/session/jsonschema/health_snapshot.schema.json": {
+      "bytes": 1995,
+      "sha256": "de12b04b46a407ce7f6b64bbefeb22a7cf289c01c7157aa0b99b629f0f74a00f",
+      "git_blob": "cdd950437a61addf2d6ff02129edf2440c4ab812"
+    },
+    "schemas/session/jsonschema/index.json": {
+      "bytes": 1521,
+      "sha256": "f5a64154dc939e9ba56eace3cd8730df7a6a1a2a862c2f74b59ac8ca36919d17",
+      "git_blob": "c6b4ac925ecc0b2185ddda7c4cfce3d2514daab1"
+    },
+    "schemas/session/jsonschema/integrity_file_entry.schema.json": {
+      "bytes": 1140,
+      "sha256": "669b01375dd2796aa1b1bfab33f26c98a8fb63074fd4cacfc90713a463014380",
+      "git_blob": "d990d95d712475e275e94e26e4df7aa8dff06120"
+    },
+    "schemas/session/jsonschema/integrity_manifest.schema.json": {
+      "bytes": 487,
+      "sha256": "f843a9c88121db424afc9d2f4e25302cbc3b055c256fc118160a49b8e5195515",
+      "git_blob": "fc74612f8fdba102c5b4051f7fbfcddc66a13bd3"
+    },
+    "schemas/session/jsonschema/logical_slot.schema.json": {
+      "bytes": 434,
+      "sha256": "85a907ff10b5c3b1c78d4b83ace963e874ed6a6757efae4c3d41cd34dc57d0b9",
+      "git_blob": "c72b8feeb729532a3796846405e202addfcc8420"
+    },
+    "schemas/session/jsonschema/physical_device.schema.json": {
+      "bytes": 723,
+      "sha256": "d2e1dd32ac542ad0971ad6e971a6f2bdc9b78c757f46734c5ff0094338793fcb",
+      "git_blob": "bbf80cc0a8ca24570f8d87fbd3fd209cc96021d1"
+    },
+    "schemas/session/jsonschema/preset_snapshot.schema.json": {
+      "bytes": 902,
+      "sha256": "d6bb16cd2efefb107d1a797c8a190b0da503e00bcf6bad71bce9c1bec70db48e",
+      "git_blob": "93d1f6cfeceb23f495c1ad372874ad1df21b5ac2"
+    },
+    "schemas/session/jsonschema/radar_array.schema.json": {
+      "bytes": 306,
+      "sha256": "b72653f8508ef5536c392a0bbb16c9b7670c96223e015078ede13a32a6975434",
+      "git_blob": "d30c1c1509bdaa3208fbbd886c26c1a8c8781cc4"
+    },
+    "schemas/session/jsonschema/sensor_instance.schema.json": {
+      "bytes": 634,
+      "sha256": "7eab69c1f5fb936310c1e0e3d55f2a8bbc4defcdb5be4474711701b91728a224",
+      "git_blob": "62a431d85b50d4ddd1586b025eb3da6dd2715981"
+    },
+    "schemas/session/jsonschema/session_identity.schema.json": {
+      "bytes": 537,
+      "sha256": "b60df9fe7759ae5df090838a4bd1cc7aafbb858d7a3afb2112cce02f2d315ca5",
+      "git_blob": "11582b43940dddbf8b7b8b971047c430951e3928"
+    },
+    "schemas/session/jsonschema/session_manifest.schema.json": {
+      "bytes": 1439,
+      "sha256": "3ef72af1cc561fc2d4f3231e0cbd690c2c5fa223dd9027358bb79de0d9f954f4",
+      "git_blob": "bcef59d89aa923371f3be8cbe67d57d22f45c203"
+    },
+    "schemas/session/jsonschema/source_instance.schema.json": {
+      "bytes": 1895,
+      "sha256": "783bcf6ab4c6430048a4b90174ec80796fed11f0545b22ca5425b0ff14370a90",
+      "git_blob": "9c35b558389ce8f371a2ad49bef71db357f956cb"
+    },
+    "schemas/session/jsonschema/stream_descriptor.schema.json": {
+      "bytes": 1480,
+      "sha256": "4a207f98752dc4d693861d3cb1e5a54ccf1eb18c496d47cf8f490962aedea738",
+      "git_blob": "9590ba6ae1cddb682824799e2b513a026972da52"
+    },
+    "schemas/session/jsonschema/sync_anchor.schema.json": {
+      "bytes": 698,
+      "sha256": "e6bf9f3d790faff1b1f07ab2bdf98ab9b19fb86e760af2b118a4d2f34c510a1f",
+      "git_blob": "a97b824946aa935b7d9b155dba4a2c731d615a95"
+    },
+    "schemas/session/jsonschema/timing_header.schema.json": {
+      "bytes": 947,
+      "sha256": "a2cebf48ae8c79aecb4a42545f36cbe2f3ce1d83be6c82536e99287d7ae098dd",
+      "git_blob": "59de95b9798425613dbc17bce7e46f3c02c58144"
+    },
+    "tests/analysis/test_export_selection_mcap.py": {
+      "bytes": 13131,
+      "sha256": "c40a2dc8b4b67a615a1e3e75a24db366336fecb8be94168dd4948c34ea568525",
+      "git_blob": "92d6ad922a88a0f147d79faf9b9b69a2f3537d00"
+    },
+    "tests/analysis/test_export_sidecar.py": {
+      "bytes": 10273,
+      "sha256": "b1332b08d505978876f39793ad4cd2fc3c2cc0ea56f3a70c66eab24cac914790",
+      "git_blob": "8c265bb2498c7286298bec712361ca44f224c088"
+    },
+    "tests/conftest.py": {
+      "bytes": 1773,
+      "sha256": "f669618fad17e906c91df7a1e9393fc7a54f458c6d62a4385436ba2622beca0e",
+      "git_blob": "ad9b61fd8e9c1c3d74f91710d4e82dd7d899e6b4"
+    },
+    "tools/check_licenses.py": {
+      "bytes": 5880,
+      "sha256": "c6d90c9175d2db1de0f3426128c5fb511afc35942156c9bd2b7e692afc401463",
+      "git_blob": "e7ee0980488060dbae3f58034c30d4232fb9f52f"
+    },
+    "tools/export_session.py": {
+      "bytes": 19574,
+      "sha256": "0b83d42da26fa62426741f1dcca6814f4d5631a8d700d3c31cf6eb64a1da8b0e",
+      "git_blob": "66a8f344cbdf5cf1c4f5c9e6fa8e62481fb18066"
+    },
+    "tools/run_ci_tests.py": {
+      "bytes": 7443,
+      "sha256": "a35a6bb9b5293db46201857a5590b45ad77243f646a5cf729112f8130710d776",
+      "git_blob": "b5717e9f605ee7de6474cf4d3ecba45e5eaa44ba"
+    }
+  },
+  "input_files": {
+    "contract.json": {
+      "bytes": 7922,
+      "sha256": "87880004a73478b02aa9bc9ae5e7f38cdc96bdafa88d8f0e21216f6a130e7c25",
+      "git_blob": "f15940f0b61586b65575a8084a0cc7be8deeec3b"
+    },
+    "original-source-pins.json": {
+      "bytes": 28982,
+      "sha256": "5880eeb64810c79faf22d71f043e78d6dfacb046782f2dcefefe7095f94e3380",
+      "git_blob": "4012feadfdc39b6276c1b7dcf3a37824d25666d3"
+    },
+    "prepare-fixtures-v2.py": {
+      "bytes": 11434,
+      "sha256": "f460dbc266dfbcf4d20efe3caa2a385f84944adb7c8fd8136075b0020d2fa741",
+      "git_blob": "cd365ab38e8cfc504055ae2445544d29a8c858cf"
+    }
+  },
+  "accepted": true,
+  "finished_utc": "2026-10-09T03:11:20Z"
+}

@@ -1,0 +1,41 @@
+import os,sys,json,subprocess,hashlib,ctypes,shutil,time,importlib.metadata
+from pathlib import Path
+ROOT=Path(r'C:\Users\jacob\capturesuite-video-clip-3dcb83a1')
+BASE=ROOT/'baseline'
+FF=Path(r'C:\ProgramData\chocolatey\lib\ffmpeg\tools\ffmpeg\bin\ffmpeg.exe')
+FP=FF.with_name('ffprobe.exe')
+class MS(ctypes.Structure):
+ _fields_=[('dwLength',ctypes.c_ulong),('dwMemoryLoad',ctypes.c_ulong),('ullTotalPhys',ctypes.c_ulonglong),('ullAvailPhys',ctypes.c_ulonglong),('ullTotalPageFile',ctypes.c_ulonglong),('ullAvailPageFile',ctypes.c_ulonglong),('ullTotalVirtual',ctypes.c_ulonglong),('ullAvailVirtual',ctypes.c_ulonglong),('ullAvailExtendedVirtual',ctypes.c_ulonglong)]
+m=MS();m.dwLength=ctypes.sizeof(m);ctypes.windll.kernel32.GlobalMemoryStatusEx(ctypes.byref(m));assert m.ullAvailPhys>=2*1024**3 and shutil.disk_usage(ROOT).free>=36*1024**3
+out=ROOT/'baseline-receiving';out.mkdir()
+env=os.environ.copy();env.update(PYTHONDONTWRITEBYTECODE='1',PYTHONIOENCODING='utf-8',OPENBLAS_NUM_THREADS='1',OMP_NUM_THREADS='1')
+env['PATH']=str(FF.parent)+os.pathsep+env['PATH']
+env['PYTHONPATH']=os.pathsep.join(str(BASE/'libs/python'/n) for n in ('capture_analysis','capture_session','capture_protocol'))
+def pin(p):
+ b=p.read_bytes();return {'bytes':len(b),'sha256':hashlib.sha256(b).hexdigest(),'git_blob':hashlib.sha1(b'blob '+str(len(b)).encode()+b'\0'+b).hexdigest()}
+commands=[]
+def run(name,args,inp=None):
+ t=time.time();p=subprocess.run([str(x) for x in args],input=inp,capture_output=True,env=env,cwd=BASE,timeout=90)
+ (out/(name+'.stdout')).write_bytes(p.stdout);(out/(name+'.stderr')).write_bytes(p.stderr)
+ commands.append({'name':name,'argv':[str(x) for x in args],'exit_code':p.returncode,'seconds':time.time()-t,'stdout':pin(out/(name+'.stdout')),'stderr':pin(out/(name+'.stderr'))})
+ return p
+p=run('imports',[sys.executable,'-B','-c','from capture_analysis.discover import discover_streams;print(discover_streams)'])
+assert p.returncode==0,p.stderr.decode('utf-8','replace')
+pkg=out/'synthetic.mmsession';pkg.mkdir();(pkg/'manifest.json').write_bytes(b'{"state":"finalized","sessionId":"synthetic-only"}\n')
+colors=[(20+18*i,30+7*i,230-15*i) for i in range(12)]
+media=pkg/'sources/sim.left/streams/front/segments/0001.mkv';media.parent.mkdir(parents=True)
+(media.parent.parent/'stream.json').write_bytes(b'{"sourceId":"sim.left","streamId":"front","modality":"video","nominalRateHz":10}\n')
+raw=b''.join(bytes(c)*(64*48) for c in colors)
+p=run('fixture',[FF,'-hide_banner','-v','error','-f','rawvideo','-pixel_format','rgb24','-video_size','64x48','-framerate','10','-i','pipe:0','-frames:v','12','-an','-c:v','libx264','-preset','veryfast','-crf','0','-pix_fmt','yuv420p','-threads','1','-y',media],raw);assert p.returncode==0
+before={str(p.relative_to(pkg)):pin(p) for p in pkg.rglob('*') if p.is_file()}
+unknown=out/'interval-should-not-exist'
+p=run('missing-capability',[sys.executable,'-B',BASE/'tools/export_session.py',pkg,unknown,'--video-segment','sources/sim.left/streams/front/segments/0001.mkv','--video-start-ms','300','--video-end-ms','800'])
+assert p.returncode==2 and not unknown.exists()
+p=run('whole-export-control',[sys.executable,'-B',BASE/'tools/export_session.py',pkg,out/'whole','--modalities','video']);assert p.returncode==0,p.stderr
+whole=json.loads((out/'whole/export_manifest.json').read_text())
+assert whole['video'][0]['ok'] is True
+after={str(p.relative_to(pkg)):pin(p) for p in pkg.rglob('*') if p.is_file()}
+assert before==after
+result={'schema':'capture.clip.original-receiving/1','source_commit':'3960c0c756cd4e9facbde0d76eaaa3c31ab7c167','python':sys.version,'executable':sys.executable,'runtime_pins':{str(p):pin(p) for p in [Path(sys.executable),FF,FP]},'versions':{n:importlib.metadata.version(n) for n in ['numpy','pytest','jsonschema','PyYAML','protobuf','PySide6']},'memory':m.ullAvailPhys,'disk':shutil.disk_usage(ROOT).free,'commands':commands,'fixture':{'colors':colors,'width':64,'height':48,'fps':10,'frames':12,'before':before,'after':after},'unknown_options_refused':True,'whole_export_succeeded':True,'source_pins_before_after':{x['path']:pin(BASE/x['path']) for x in json.loads((ROOT/'source-pins.json').read_text())}}
+for x in json.loads((ROOT/'source-pins.json').read_text()): assert result['source_pins_before_after'][x['path']]['git_blob']==x['git_blob']
+(out/'result.json').write_bytes((json.dumps(result,indent=2)+'\n').encode());print(json.dumps({'status':'passed','commands':len(commands),'source_files_unchanged':len(result['source_pins_before_after']),'result':pin(out/'result.json')}))

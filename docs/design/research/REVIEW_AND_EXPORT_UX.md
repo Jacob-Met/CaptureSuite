@@ -195,3 +195,24 @@ accepts unmodified Space ShortcutOverride only on its own Play, Reload and
 disclosure buttons. Native button activation proceeds normally; other keys,
 modifiers, controls and the application shortcut implementation remain unchanged.
 The exact before/after witness is in the receiving record's keyboard correction.
+
+## 2026-10-09: one retained-video interval through the export CLI
+
+Issue #104 adds a selected-file, half-open local-media interval to the existing
+`tools/export_session.py` entrypoint. An operator supplies an exact discovered
+MKV path, integer start/end milliseconds and a new external destination. This
+separate early dispatch preserves whole-session export and the recorded-video
+widget owner's playback controls. The interval uses decoded frame starts relative
+to this file's first decoded timestamp; no segment-to-session mapping is inferred.
+
+The implementation decodes the admitted source, selects frame indices, writes a
+lossy video-only H.264 review copy, checks its decoded count/dimensions/timing and
+publishes a completion manifest last. Source and relevant metadata hashes are
+compared before/after. Existing output is refused; failed partial output remains
+in its newly reserved directory with no success manifest. Explicit bounds and
+limitations are in [Selected video export](../../operator/VIDEO_CLIP_EXPORT.md).
+
+Raw recordings, schemas, capture/daemon behavior, timing/analysis and Review UI
+source remain under their existing owners. Native synthetic-media receiving is
+recorded in [the clip evidence](../../evidence/video-clip-3dcb83a1/README.md);
+it does not replace the project's remaining integration gates.

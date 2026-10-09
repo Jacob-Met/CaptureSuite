@@ -1,0 +1,37 @@
+{
+  "tools/video_clip.py": {
+    "bytes": 15638,
+    "sha256": "4fe38eae599e32434895608224e64197e66f0f111f33764a616c7436d4d1db1a",
+    "git_blob": "de52e79de96eea79c3312cc1fd775e77a0a12a90"
+  },
+  "tools/export_session.py": {
+    "bytes": 20989,
+    "sha256": "dc8f3f726d75f01035387c06fa21089dfdb8aae93618c1705417fd2548dab651",
+    "git_blob": "9fce1da8745f86eef2c3ce677f7be6d1e791c4d4"
+  },
+  "tests/analysis/test_video_clip_export.py": {
+    "bytes": 12087,
+    "sha256": "cafe96c16c5ee5b800d332938367f38e6840b5d5cb3cbf22ad1e6bd9125e13c4",
+    "git_blob": "c9d206834e8b888e379f784274ef066ca2d93222"
+  },
+  "docs/operator/VIDEO_CLIP_EXPORT.md": {
+    "bytes": 4068,
+    "sha256": "36268e7b9d0fb62ce25f84364aef0035f1b1c9db5f5b7f9019e35d2581b58125",
+    "git_blob": "5515e3269b0feace1524e6c41a1482d0d6c9eda1"
+  },
+  "docs/operator/README.md": {
+    "bytes": 1768,
+    "sha256": "790a93abf8435515e7161f0a8aaf6d31191dddae23916abceab22b9224386a13",
+    "git_blob": "28ec18879bf0e5e746a1e368f35fe9fcc42c13b3"
+  },
+  "docs/design/research/REVIEW_AND_EXPORT_UX.md": {
+    "bytes": 10040,
+    "sha256": "569bea8993fb2fe0a0508bc66a230e6236a1fb727e1e0bb5ef3f9a77ca0520fe",
+    "git_blob": "5a3b442d0a4dd3e4a2a628845c6a003c3c7c9a94"
+  },
+  "docs/design/research/PROGRESS.md": {
+    "bytes": 78228,
+    "sha256": "37ecf34fedb74d3ab14e88b8b9eec9c71da5b3731ac43c18f932aff36e98eed9",
+    "git_blob": "6bf11b6909cec36155266d0d7cf87bfdd721719e"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "time_utc": "2026-10-09T02:54:51Z",
+  "memory": 9021595648,
+  "disk": 200821669888,
+  "python": "3.12.2 (tags/v3.12.2:6abddd9, Feb  6 2024, 21:26:36) [MSC v.1937 64 bit (AMD64)]",
+  "executable": "C:\\Users\\jacob\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "profile": "C:\\Users\\jacob",
+  "commit": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+  "archive": {
+    "bytes": 14995995,
+    "sha256": "fb2efdca398c4e35c8eb17578276301cb876dbfcb0882b2ea5a873ff68579526"
+  },
+  "source_files": 119,
+  "source_bytes": 481110,
+  "status": "source_intake_accepted"
+}

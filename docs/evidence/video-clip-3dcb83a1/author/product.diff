@@ -1,0 +1,817 @@
+--- /dev/null
++++ b/tools/video_clip.py
+@@ -0,0 +1,345 @@
++# SPDX-License-Identifier: GPL-3.0-only
++"""Export one explicitly selected local-media interval without changing its package."""
++
++from __future__ import annotations
++
++import hashlib
++import json
++import os
++import re
++import shutil
++import subprocess
++import sys
++import tempfile
++from fractions import Fraction
++from pathlib import Path, PurePosixPath
++
++MAX_SOURCE_BYTES = 2 * 1024**3
++MAX_FRAMES = 250_000
++MAX_PROBE_BYTES = 32 * 1024**2
++MAX_SOURCE_SECONDS = 3600
++MAX_CLIP_MS = 600_000
++PROCESS_TIMEOUT = 180
++
++
++class VideoClipError(ValueError):
++    """An interval could not be admitted or completely exported."""
++
++
++def _pin(path: Path) -> dict:
++    digest = hashlib.sha256()
++    size = 0
++    with path.open("rb") as stream:
++        while block := stream.read(1024 * 1024):
++            digest.update(block)
++            size += len(block)
++    return {"bytes": size, "sha256": digest.hexdigest()}
++
++
++def _unlinked(path: Path) -> None:
++    if path.is_symlink() or (hasattr(path, "is_junction") and path.is_junction()):
++        raise VideoClipError(f"Linked input is not admitted: {path}")
++
++
++def _json(path: Path) -> dict:
++    _unlinked(path)
++    if not path.is_file() or path.stat().st_size > 1024 * 1024:
++        raise VideoClipError(f"Expected a regular metadata file of at most 1 MiB: {path}")
++    value = json.loads(path.read_text(encoding="utf-8"))
++    if not isinstance(value, dict):
++        raise VideoClipError(f"Expected a JSON object: {path}")
++    return value
++
++
++def _selected_source(package: Path, relative: str) -> tuple[Path, dict, list[Path]]:
++    _unlinked(package)
++    root = package.resolve(strict=True)
++    manifest_path = root / "manifest.json"
++    manifest = _json(manifest_path)
++    state = manifest.get("state")
++    if state not in {"finalized", "finalized_recovered"}:
++        raise VideoClipError("Choose a finalized or finalized_recovered package.")
++    rel = PurePosixPath(relative)
++    if (
++        not relative
++        or "\\" in relative
++        or rel.is_absolute()
++        or rel.as_posix() != relative
++        or any(part in {"", ".", ".."} or ":" in part for part in rel.parts)
++    ):
++        raise VideoClipError("Use the exact package-relative POSIX path shown in Review.")
++    selected = root
++    for part in rel.parts:
++        selected = selected / part
++        _unlinked(selected)
++    selected = selected.resolve(strict=True)
++    if not selected.is_relative_to(root) or not selected.is_file():
++        raise VideoClipError("Selected video must be a regular file within the package.")
++    if selected.stat().st_size > MAX_SOURCE_BYTES:
++        raise VideoClipError("Selected video exceeds the 2 GiB source limit.")
++    # Use the maintained package and discovery imports, not another descriptor parser.
++    repo = Path(__file__).resolve().parents[1]
++    for name in ("capture_protocol", "capture_session", "capture_analysis"):
++        path = str(repo / "libs" / "python" / name)
++        if path not in sys.path:
++            sys.path.insert(0, path)
++    from capture_analysis.discover import discover_streams
++
++    _json(selected.parent.parent / "stream.json")
++    try:
++        refs = discover_streams(root)
++    except (TypeError, KeyError, ValueError) as exc:
++        raise VideoClipError(
++            "Package stream metadata is unusable; repair or choose another package."
++        ) from exc
++    matches = [
++        ref
++        for ref in refs
++        for path in ref.mkv_paths
++        if path.relative_to(root).as_posix() == relative
++    ]
++    if len(matches) != 1:
++        raise VideoClipError("Choose one exact MKV path listed by the package's stream discovery.")
++    ref = matches[0]
++    if ref.stream_json_path is None:
++        raise VideoClipError("Selected stream has no descriptor.")
++    _json(ref.stream_json_path)
++    inputs = [manifest_path, ref.stream_json_path, selected]
++    source_json = selected.parents[3] / "source.json"
++    if source_json.exists():
++        _json(source_json)
++        inputs.append(source_json)
++    return selected, {
++        "package_state": state,
++        "source_id": ref.source_id,
++        "stream_id": ref.stream_id,
++        "relative_path": relative,
++    }, inputs
++
++
++def _run(argv: list[str], *, limit: int = MAX_PROBE_BYTES) -> bytes:
++    """Bound in-memory output; retain a bounded actionable diagnostic on refusal."""
++    with tempfile.TemporaryFile() as stdout, tempfile.TemporaryFile() as stderr:
++        try:
++            process = subprocess.run(
++                argv, stdin=subprocess.DEVNULL, stdout=stdout, stderr=stderr,
++                timeout=PROCESS_TIMEOUT, check=False,
++            )
++        except subprocess.TimeoutExpired as exc:
++            raise VideoClipError(
++                f"{Path(argv[0]).name} exceeded {PROCESS_TIMEOUT}s; choose a shorter segment."
++            ) from exc
++        stderr.seek(0, os.SEEK_END)
++        size = stderr.tell()
++        stderr.seek(max(0, size - 8192))
++        detail = stderr.read().decode("utf-8", errors="replace").strip()
++        if process.returncode:
++            raise VideoClipError(
++                f"{Path(argv[0]).name} exited {process.returncode}: {detail or 'no diagnostic'}"
++            )
++        stdout.seek(0, os.SEEK_END)
++        if stdout.tell() > limit:
++            raise VideoClipError("Media inspection exceeded the bounded output limit.")
++        stdout.seek(0)
++        return stdout.read()
++
++
++def _integer(value, label: str) -> int:
++    if isinstance(value, bool) or not re.fullmatch(r"-?[0-9]+", str(value)):
++        raise VideoClipError(f"Media has no exact integer {label}.")
++    return int(value)
++
++
++def _probe(path: Path, executable: str) -> dict:
++    argv = [
++        executable, "-v", "error", "-threads", "1", "-protocol_whitelist", "file",
++        "-show_streams", "-show_frames", "-select_streams", "v",
++        "-show_entries",
++        "stream=index,codec_name,codec_type,width,height,time_base:"
++        "frame=stream_index,best_effort_timestamp,duration,pkt_duration",
++        "-of", "json", str(path),
++    ]
++    doc = json.loads(_run(argv))
++    streams = doc.get("streams", [])
++    if len(streams) != 1 or streams[0].get("codec_type") != "video":
++        raise VideoClipError("Exactly one video stream is required.")
++    stream = streams[0]
++    width = _integer(stream.get("width"), "width")
++    height = _integer(stream.get("height"), "height")
++    if width <= 0 or height <= 0 or width > 3840 or height > 2160 or width % 2 or height % 2:
++        raise VideoClipError("Video must have even positive dimensions no larger than 3840x2160.")
++    try:
++        time_base = Fraction(stream["time_base"])
++    except (KeyError, TypeError, ValueError, ZeroDivisionError) as exc:
++        raise VideoClipError("Video has no usable rational time base.") from exc
++    if time_base <= 0:
++        raise VideoClipError("Video time base must be positive.")
++    frames = doc.get("frames", [])
++    if not isinstance(frames, list) or not 1 <= len(frames) <= MAX_FRAMES:
++        raise VideoClipError(f"Video must contain 1..{MAX_FRAMES} decoded frames.")
++    ticks = [
++        _integer(frame.get("best_effort_timestamp"), "presentation timestamp") for frame in frames
++    ]
++    if any(right <= left for left, right in zip(ticks, ticks[1:], strict=False)):
++        raise VideoClipError("Decoded video timestamps must be strictly increasing.")
++    duration = _integer(
++        frames[-1].get("duration", frames[-1].get("pkt_duration")), "final-frame duration"
++    )
++    if duration <= 0:
++        raise VideoClipError("The final decoded frame must have a known positive duration.")
++    span = (ticks[-1] + duration - ticks[0]) * time_base
++    if span > MAX_SOURCE_SECONDS:
++        raise VideoClipError("Video exceeds the one-hour decoded-media bound.")
++    return {
++        "width": width, "height": height, "codec": stream.get("codec_name"),
++        "stream_index": _integer(stream.get("index"), "stream index"),
++        "time_base": str(time_base), "ticks": ticks, "final_duration_ticks": duration,
++        "duration_seconds": str(span), "command": argv,
++    }
++
++
++def _selection(media: dict, start_ms: int, end_ms: int) -> tuple[int, int]:
++    if (
++        type(start_ms) is not int or type(end_ms) is not int
++        or start_ms < 0 or end_ms <= start_ms or end_ms - start_ms > MAX_CLIP_MS
++    ):
++        raise VideoClipError("Use 0 <= start-ms < end-ms with an interval of at most 600000 ms.")
++    time_base = Fraction(media["time_base"])
++    ticks = media["ticks"]
++    end = Fraction(end_ms, 1000)
++    if end > Fraction(media["duration_seconds"]):
++        raise VideoClipError("Requested interval extends beyond the last decoded frame's end.")
++    start = Fraction(start_ms, 1000)
++    selected = [
++        i for i, tick in enumerate(ticks)
++        if start <= (tick - ticks[0]) * time_base < end
++    ]
++    if not selected:
++        raise VideoClipError("No decoded frame begins within this half-open media interval.")
++    return selected[0], selected[-1] + 1
++
++
++def _toolchain() -> dict:
++    paths = {name: shutil.which(name) for name in ("ffmpeg", "ffprobe")}
++    if any(path is None for path in paths.values()):
++        raise VideoClipError("Install/use an existing FFmpeg and FFprobe on PATH, then retry.")
++    versions = {}
++    for name, path in paths.items():
++        versions[name] = _run([path, "-version"], limit=1024 * 1024).decode(
++            "utf-8", errors="replace"
++        ).splitlines()[0]
++    encoders = _run([paths["ffmpeg"], "-hide_banner", "-encoders"], limit=1024 * 1024)
++    if not re.search(rb"\blibx264\b", encoders):
++        raise VideoClipError("This FFmpeg has no libx264 encoder; use a build that provides it.")
++    return {"paths": paths, "versions": versions}
++
++
++def export_video_clip(
++    package: str | Path, destination: str | Path, relative: str, start_ms: int, end_ms: int,
++) -> dict:
++    """Publish a new external review directory; completion manifest is written last."""
++    # Cheap request admission precedes discovery, subprocesses and destination writes.
++    if (
++        type(start_ms) is not int or type(end_ms) is not int
++        or start_ms < 0 or end_ms <= start_ms or end_ms - start_ms > MAX_CLIP_MS
++    ):
++        raise VideoClipError("Use 0 <= start-ms < end-ms with an interval of at most 600000 ms.")
++    package = Path(package)
++    source, identity, input_paths = _selected_source(package, relative)
++    root = package.resolve(strict=True)
++    out_arg = Path(destination)
++    if os.path.lexists(out_arg):
++        raise VideoClipError("Destination already exists; choose a new external directory.")
++    parent = out_arg.parent.resolve(strict=True)
++    out = parent / out_arg.name
++    if not parent.is_dir() or out.is_relative_to(root):
++        raise VideoClipError("Choose a new destination outside the source package.")
++    before = {str(path.relative_to(root)): _pin(path) for path in input_paths}
++    tools = _toolchain()
++    media = _probe(source, tools["paths"]["ffprobe"])
++    first, stop = _selection(media, start_ms, end_ms)
++    out.mkdir(exist_ok=False)
++    incomplete = out / "clip.incomplete.mp4"
++    command = [
++        tools["paths"]["ffmpeg"], "-hide_banner", "-v", "error", "-nostdin", "-n",
++        "-threads", "1", "-noautorotate", "-protocol_whitelist", "file", "-i", str(source),
++        "-map", f"0:{media['stream_index']}", "-an", "-sn", "-dn", "-map_metadata", "-1",
++        "-vf", f"trim=start_frame={first}:end_frame={stop},setpts=PTS-STARTPTS",
++        "-fps_mode", "passthrough", "-enc_time_base", media["time_base"],
++        "-c:v", "libx264", "-preset", "medium", "-crf", "18", "-pix_fmt", "yuv420p",
++        "-threads", "1", "-movflags", "+faststart", str(incomplete),
++    ]
++    try:
++        _run(command, limit=1024 * 1024)
++        actual = _probe(incomplete, tools["paths"]["ffprobe"])
++        if (
++            actual["codec"] != "h264" or len(actual["ticks"]) != stop - first
++            or actual["ticks"][0] != 0
++            or (actual["width"], actual["height"]) != (media["width"], media["height"])
++        ):
++            raise VideoClipError(
++                "Encoded output does not match the selected frame/dimension contract."
++            )
++        # Check relative presentation spacing without claiming identical container ticks.
++        source_tb, output_tb = Fraction(media["time_base"]), Fraction(actual["time_base"])
++        tolerance = max(source_tb, output_tb)
++        for index, tick in enumerate(actual["ticks"]):
++            expected = (media["ticks"][first + index] - media["ticks"][first]) * source_tb
++            if abs(tick * output_tb - expected) > tolerance:
++                raise VideoClipError(
++                    "Encoded output changed the selected frame presentation spacing."
++                )
++        after = {str(path.relative_to(root)): _pin(path) for path in input_paths}
++        if before != after:
++            raise VideoClipError("Source changed during export; no completed export is published.")
++        output_pin = _pin(incomplete)
++        report = {
++            "export_schema": "capture.video_clip_export/1",
++            "state": "complete", "package": str(root), **identity,
++            "inputs": before, "requested_interval_ms": {"start": start_ms, "end": end_ms},
++            "selection_rule": "start <= (frame_pts-first_decoded_pts)*time_base < end",
++            "source_video": {
++                "width": media["width"], "height": media["height"], "codec": media["codec"],
++                "time_base": media["time_base"], "first_decoded_pts": media["ticks"][0],
++                "decoded_frame_count": len(media["ticks"]),
++                "decoded_duration_seconds": media["duration_seconds"],
++                "first_selected_frame": first, "stop_selected_frame_exclusive": stop,
++                "selected_pts": media["ticks"][first:stop],
++            },
++            "output": {
++                "path": "clip.mp4", **output_pin,
++                **{key: actual[key] for key in (
++                    "width", "height", "codec", "time_base", "ticks",
++                    "final_duration_ticks", "duration_seconds",
++                )},
++                "frame_count": stop - first,
++            },
++            "tools": tools, "encode_command": command, "probe_command": media["command"],
++            "limitations": [
++                "Lossy H.264/yuv420p review copy; retain the original recording.",
++                "Local decoded media time only; no session, camera or checkpoint alignment.",
++                "Video only. Audio, subtitles, metadata and unselected streams are omitted.",
++                "Frame starts determine inclusion; "
++                "output duration need not equal requested duration.",
++                "Source hashes describe observed bytes; "
++                "no integrity, hardware or clinical assurance.",
++            ],
++        }
++        # A final name without the completion manifest is still an incomplete export.
++        incomplete.rename(out / "clip.mp4")
++        temporary = out / "export_manifest.incomplete.json"
++        with temporary.open("x", encoding="utf-8", newline="\n") as handle:
++            json.dump(report, handle, ensure_ascii=False, indent=2, allow_nan=False)
++            handle.write("\n")
++        temporary.rename(out / "export_manifest.json")
++        return report
++    except Exception as exc:
++        # Retain only this newly created directory. Never erase a previous destination.
++        try:
++            with (out / "failure.json").open("x", encoding="utf-8", newline="\n") as handle:
++                json.dump({"state": "failed", "error": str(exc), "completion_manifest": False},
++                          handle, ensure_ascii=False, indent=2)
++                handle.write("\n")
++        except OSError:
++            pass
++        raise
+--- a/tools/export_session.py
++++ b/tools/export_session.py
+@@ -367,7 +367,31 @@
+         help="comma-separated subset of radar,video,emg,imu to export "
+         "(default: all four; an explicitly empty selection is rejected)",
+     )
++    ap.add_argument("--video-segment", help="exact listed package-relative MKV path")
++    ap.add_argument("--video-start-ms", type=int, help="inclusive local-media frame-start bound")
++    ap.add_argument("--video-end-ms", type=int, help="exclusive local-media frame-start bound")
+     args = ap.parse_args(argv)
++    clip_options = (args.video_segment, args.video_start_ms, args.video_end_ms)
++    if any(value is not None for value in clip_options):
++        if any(value is None for value in clip_options) or not args.out_dir:
++            ap.error("selected video requires --video-segment, --video-start-ms, "
++                     "--video-end-ms and an explicit new external destination")
++        if args.modalities is not None or args.verify:
++            ap.error("selected video does not combine with --modalities or --verify")
++        from video_clip import export_video_clip
++
++        try:
++            report = export_video_clip(
++                args.package, args.out_dir, args.video_segment,
++                args.video_start_ms, args.video_end_ms,
++            )
++        except (OSError, ValueError, ImportError) as exc:
++            print(f"FAIL video clip: {exc}. Choose a new destination after correcting the cause.",
++                  file=sys.stderr)
++            return 1
++        print("wrote", Path(args.out_dir).resolve() / "export_manifest.json")
++        print("selected video frames", report["output"]["frame_count"])
++        return 0
+ 
+     root = Path(args.package).resolve()
+     if not root.exists():
+--- /dev/null
++++ b/tests/analysis/test_video_clip_export.py
+@@ -0,0 +1,291 @@
++# SPDX-License-Identifier: GPL-3.0-only
++"""Selected-video export through real FFmpeg and the maintained CLI."""
++
++from __future__ import annotations
++
++import hashlib
++import json
++import shutil
++import subprocess
++import sys
++from fractions import Fraction
++from pathlib import Path
++
++import pytest
++import video_clip
++
++ROOT = Path(__file__).resolve().parents[2]
++FF = shutil.which("ffmpeg")
++FP = shutil.which("ffprobe")
++
++
++def run(argv, *, input_bytes=None):
++    return subprocess.run(
++        [str(x) for x in argv], input=input_bytes, capture_output=True, timeout=30,
++    )
++
++
++def manifest(path):
++    return json.loads((path / "export_manifest.json").read_text(encoding="utf-8"))
++
++
++def files(root):
++    return {
++        str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest()
++        for p in root.rglob("*") if p.is_file()
++    }
++
++
++@pytest.fixture
++def package(tmp_path):
++    if not FF or not FP:
++        pytest.skip("This real-media test needs existing FFmpeg and FFprobe.")
++    p = tmp_path / "synthetic.mmsession"
++    p.mkdir()
++    (p / "manifest.json").write_text('{"state":"finalized_recovered"}', encoding="utf-8")
++    for folder, sid, offset in [("left", "camera.A", 0), ("right", "camera.B", 100)]:
++        directory = p / "sources" / folder / "streams" / "front" / "segments"
++        directory.mkdir(parents=True)
++        (directory.parent / "stream.json").write_text(json.dumps({
++            "sourceId": sid, "streamId": "front.recorded", "modality": "video",
++            "nominalRateHz": 10,
++        }), encoding="utf-8")
++        raw = b"".join(bytes((offset + i * 10, 40, 180 - i * 8)) * (64 * 48)
++                       for i in range(12))
++        args = [
++            FF, "-v", "error", "-f", "rawvideo", "-pixel_format", "rgb24",
++            "-video_size", "64x48", "-framerate", "10", "-i", "pipe:0",
++            "-frames:v", "12", "-an", "-c:v", "libx264", "-preset", "veryfast",
++            "-crf", "0", "-pix_fmt", "yuv420p", "-threads", "1", "-y",
++            directory / "0001.mkv",
++        ]
++        done = run(args, input_bytes=raw)
++        assert done.returncode == 0, done.stderr
++    return p
++
++
++def cli(package, output, *options):
++    return run([
++        sys.executable, "-B", ROOT / "tools" / "export_session.py", package, output, *options,
++    ])
++
++
++def options(path="sources/right/streams/front/segments/0001.mkv", start=300, end=800):
++    return ["--video-segment", path, "--video-start-ms", str(start), "--video-end-ms", str(end)]
++
++
++def decode(path):
++    done = run([
++        FF, "-v", "error", "-i", path, "-map", "0:v:0", "-f", "rawvideo",
++        "-pix_fmt", "rgb24", "-threads", "1", "pipe:1",
++    ])
++    assert done.returncode == 0, done.stderr
++    size = 64 * 48 * 3
++    assert len(done.stdout) % size == 0
++    return [done.stdout[i:i + size] for i in range(0, len(done.stdout), size)]
++
++
++def test_actual_cli_decoded_selection_and_provenance(package, tmp_path):
++    before = files(package)
++    out = tmp_path / "clip"
++    done = cli(package, out, *options())
++    assert done.returncode == 0, done.stderr
++    doc = manifest(out)
++    assert doc["export_schema"] == "capture.video_clip_export/1"
++    assert doc["source_id"] == "camera.B" and doc["stream_id"] == "front.recorded"
++    assert doc["relative_path"] == "sources/right/streams/front/segments/0001.mkv"
++    assert doc["package_state"] == "finalized_recovered"
++    assert doc["source_video"]["first_selected_frame"] == 3
++    assert doc["source_video"]["stop_selected_frame_exclusive"] == 8
++    assert doc["output"]["frame_count"] == 5 and doc["output"]["ticks"][0] == 0
++    original = decode(package / doc["relative_path"])
++    actual = decode(out / "clip.mp4")
++    assert len(actual) == 5
++    for image, expected in zip(actual, original[3:8], strict=True):
++        assert max(abs(a - b) for a, b in zip(image, expected, strict=True)) <= 8
++    inspected = run([FP, "-v", "error", "-show_streams", "-of", "json", out / "clip.mp4"])
++    streams = json.loads(inspected.stdout)["streams"]
++    assert len(streams) == 1 and streams[0]["codec_name"] == "h264"
++    assert before == files(package)
++
++
++def test_nonzero_origin_vfr_half_open(package, tmp_path):
++    selected = package / "sources/right/streams/front/segments/vfr.mkv"
++    raw = b"".join(bytes((i * 30, 80, 180)) * (64 * 48) for i in range(6))
++    done = run([
++        FF, "-v", "error", "-f", "rawvideo", "-pixel_format", "rgb24",
++        "-video_size", "64x48", "-framerate", "10", "-i", "pipe:0",
++        "-frames:v", "6", "-vf", "settb=1/1000,setpts=N*N*25+5000",
++        "-fps_mode", "passthrough", "-enc_time_base", "1/1000",
++        "-c:v", "ffv1", "-threads", "1", "-y", selected,
++    ], input_bytes=raw)
++    assert done.returncode == 0, done.stderr
++    media = video_clip._probe(selected, FP)
++    tb = Fraction(media["time_base"])
++    assert [tick * tb for tick in media["ticks"]] == [
++        Fraction(x, 1000) for x in (5000, 5025, 5100, 5225, 5400, 5625)
++    ]
++    out = tmp_path / "vfr"
++    before = files(package)
++    relative = str(selected.relative_to(package)).replace("\\", "/")
++    done = cli(package, out, *options(relative, 25, 225))
++    assert done.returncode == 0, done.stderr
++    doc = manifest(out)
++    assert doc["source_video"]["first_selected_frame"] == 1
++    assert doc["source_video"]["stop_selected_frame_exclusive"] == 3
++    assert doc["source_video"]["first_decoded_pts"] == media["ticks"][0]
++    assert doc["source_video"]["selected_pts"] == media["ticks"][1:3]
++    assert len(decode(out / "clip.mp4")) == 2
++    second_pts = Fraction(doc["output"]["ticks"][1]) * Fraction(doc["output"]["time_base"])
++    assert second_pts == Fraction(75, 1000)
++    assert files(package) == before
++
++
++@pytest.mark.parametrize("extra", [
++    ["--video-start-ms", "0"],
++    ["--video-segment", "missing", "--video-start-ms", "0", "--video-end-ms", "2.5"],
++    [*options(), "--modalities", "video"],
++    [*options(), "--verify"],
++])
++def test_cli_syntax_refuses_before_output(package, tmp_path, extra):
++    before = files(package)
++    out = tmp_path / "refused"
++    done = cli(package, out, *extra)
++    assert done.returncode == 2 and not out.exists()
++    assert files(package) == before
++
++
++@pytest.mark.parametrize("start,end", [(-1, 5), (3, 3), (8, 4), (0, 600001), (25, 30), (0, 1500)])
++def test_interval_refusal_before_output(package, tmp_path, start, end):
++    before = files(package)
++    out = tmp_path / "refused"
++    done = cli(package, out, *options(start=start, end=end))
++    assert done.returncode == 1 and b"FAIL video clip:" in done.stderr and not out.exists()
++    assert files(package) == before
++
++
++@pytest.mark.parametrize("relative", [
++    "../outside.mkv", "sources/right/streams/front/segments/no.mkv",
++    "sources/right/streams/front/segments/../segments/0001.mkv",
++])
++def test_exact_path_refusal(package, tmp_path, relative):
++    before = files(package)
++    out = tmp_path / "refused"
++    done = cli(package, out, *options(path=relative))
++    assert done.returncode == 1 and not out.exists()
++    assert files(package) == before
++
++
++def test_occupied_and_internal_destinations_preserved(package, tmp_path):
++    out = tmp_path / "occupied"
++    out.mkdir()
++    (out / "sentinel").write_bytes(b"preserve me")
++    before = files(package)
++    done = cli(package, out, *options())
++    assert done.returncode == 1 and (out / "sentinel").read_bytes() == b"preserve me"
++    assert sorted(p.name for p in out.iterdir()) == ["sentinel"]
++    done = cli(package, package / "new-output", *options())
++    assert done.returncode == 1 and files(package) == before
++
++
++def test_unfinalized_and_invalid_media_refuse(package, tmp_path):
++    (package / "manifest.json").write_text('{"state":"recording"}', encoding="utf-8")
++    before = files(package)
++    out = tmp_path / "refused"
++    done = cli(package, out, *options())
++    assert done.returncode == 1 and not out.exists() and files(package) == before
++    (package / "manifest.json").write_text('{"state":"finalized"}', encoding="utf-8")
++    video = package / "sources/right/streams/front/segments/bad.mkv"
++    video.write_bytes(b"not encoded video")
++    before = files(package)
++    done = cli(package, out, *options(path=str(video.relative_to(package)).replace("\\", "/")))
++    assert done.returncode == 1 and not out.exists() and files(package) == before
++
++
++def test_real_encoder_failure_retains_partial_no_success_then_retry(package, tmp_path, monkeypatch):
++    original = video_clip._run
++    def refuse_encoder(argv, **kwargs):
++        if "libx264" in argv:
++            argv = argv.copy()
++            argv[argv.index("libx264")] = "deliberately_unavailable_encoder"
++        return original(argv, **kwargs)
++    monkeypatch.setattr(video_clip, "_run", refuse_encoder)
++    before = files(package)
++    out = tmp_path / "failed"
++    with pytest.raises(video_clip.VideoClipError, match="exited"):
++        video_clip.export_video_clip(
++            package, out, "sources/right/streams/front/segments/0001.mkv", 300, 800,
++        )
++    assert out.is_dir() and not (out / "export_manifest.json").exists()
++    assert json.loads((out / "failure.json").read_text())["state"] == "failed"
++    assert files(package) == before
++    monkeypatch.setattr(video_clip, "_run", original)
++    done = cli(package, tmp_path / "retry", *options())
++    assert done.returncode == 0, done.stderr
++
++
++def test_observed_source_change_refuses_completion(package, tmp_path, monkeypatch):
++    original = video_clip._probe
++    meta = package / "sources/right/streams/front/stream.json"
++    old = meta.read_bytes()
++    def changed_after_encoding(path, executable):
++        result = original(path, executable)
++        if path.name == "clip.incomplete.mp4":
++            meta.write_bytes(old + b" ")
++        return result
++    monkeypatch.setattr(video_clip, "_probe", changed_after_encoding)
++    out = tmp_path / "changed"
++    try:
++        with pytest.raises(video_clip.VideoClipError, match="Source changed"):
++            video_clip.export_video_clip(
++                package, out, "sources/right/streams/front/segments/0001.mkv", 300, 800,
++            )
++        assert not (out / "export_manifest.json").exists()
++        assert json.loads((out / "failure.json").read_text())["state"] == "failed"
++    finally:
++        meta.write_bytes(old)
++
++
++def test_whole_video_export_still_available(package, tmp_path):
++    before = files(package)
++    out = tmp_path / "whole"
++    done = cli(package, out, "--modalities", "video")
++    assert done.returncode == 0, done.stderr
++    doc = manifest(out)
++    assert doc["export_schema"] == "capture.export_manifest/1"
++    assert len(doc["video"]) == 2 and all(item["ok"] for item in doc["video"])
++    assert files(package) == before
++
++
++def test_invalid_descriptor_is_actionable_before_output(package, tmp_path):
++    meta = package / "sources/right/streams/front/stream.json"
++    meta.write_text('"sourceId"', encoding="utf-8")
++    before = files(package)
++    out = tmp_path / "refused"
++    done = cli(package, out, *options())
++    assert done.returncode == 1 and b"FAIL video clip:" in done.stderr
++    assert b"Traceback" not in done.stderr and not out.exists()
++    assert files(package) == before
++
++
++@pytest.mark.skipif(sys.platform != "win32", reason="Windows junction receiver")
++def test_input_junction_and_output_alias_refusal(package, tmp_path):
++    junction = package / "sources/linked"
++    done = run(["cmd", "/c", "mklink", "/J", junction, package / "sources/right"])
++    assert done.returncode == 0, done.stderr
++    before = files(package)
++    try:
++        out = tmp_path / "refused"
++        done = cli(package, out, *options(path="sources/linked/streams/front/segments/0001.mkv"))
++        assert done.returncode == 1 and not out.exists()
++        alias = tmp_path / "alias-to-package"
++        made = run(["cmd", "/c", "mklink", "/J", alias, package])
++        assert made.returncode == 0, made.stderr
++        try:
++            done = cli(package, alias / "new-export", *options())
++            assert done.returncode == 1 and not (package / "new-export").exists()
++            assert files(package) == before
++        finally:
++            alias.rmdir()
++    finally:
++        junction.rmdir()
+--- /dev/null
++++ b/docs/operator/VIDEO_CLIP_EXPORT.md
+@@ -0,0 +1,76 @@
++# Export a selected recorded-video interval
++
++Use the existing export CLI to create a review clip from one retained MKV in a
++finalized or finalized_recovered package. This mode writes a new, explicitly
++chosen directory outside the package. Keep the original recording.
++
++## Choose the file and interval
++
++In Review, expand **Recorded video** and note the exact package-relative path of
++the selected segment. The command uses that complete path, including its source,
++stream and segment directories; a filename alone is not sufficient.
++
++With the project's Python 3.12 environment and FFmpeg/FFprobe on PATH, run from
++the repository root:
++
++```powershell
++python tools/export_session.py "D:\Recordings\session.capture" "D:\Review\clip-01" `
++  --video-segment "sources/camera.1/streams/video/segments/000001.mkv" `
++  --video-start-ms 2500 --video-end-ms 7000
++```
++
++Replace the example path with an actual listed segment and choose a destination
++that does not yet exist. Supply all three video options and the output directory.
++These options do not combine with `--modalities` or `--verify`. Omitting the
++video options retains the existing whole-session exporter behavior.
++
++The numbers are integer milliseconds relative to the first decoded presentation
++timestamp of this file. A frame is included when its local start is at least
++`--video-start-ms` and strictly before `--video-end-ms`. This is a half-open
++interval; it can begin between frames. It is not a session, camera, checkpoint or
++wall-clock interval. Review playback and decoded timestamps can differ; the
++manifest records the exact decoded selection.
++
++The request must contain at least one frame start and end no later than the last
++decoded frame's known end. The exported clip begins at its first selected frame,
++retimed to zero, so its actual duration need not equal the requested interval.
++
++## Read the result
++
++A successful exit writes:
++
++- `clip.mp4`: lossy H.264/yuv420p video, without audio, subtitles or other streams.
++- `export_manifest.json`: schema `capture.video_clip_export/1`, state `complete`,
++  exact source/stream identity and selected frame indices/timestamps, source file
++  and metadata hashes, tool versions/command, output hash and actual timing.
++
++No crop, resize, rotation or continuous segment join is performed. The original
++dimensions and selected frame count are checked after encoding. Relative
++presentation spacing is checked within the larger source/output time-base tick.
++A clip is a convenient review copy, not a replacement for raw scientific data.
++
++The completion manifest is published last. If a command fails after reserving its
++new output directory, the directory and partial files remain for inspection;
++`failure.json` is written when possible. An MP4 without the completion manifest
++is not a completed export. Correct the reported cause and retry with another new
++destination. Existing destinations and their contents are never overwritten by
++this mode.
++
++## Refusals and limits
++
++The exporter refuses unfinalized packages, unlisted or linked selected files,
++ambiguous/multiple video streams, unusable metadata/timestamps, empty selections,
++out-of-range requests and destinations inside the package. Windows junctions and
++symbolic links in the selected path are refused. Metadata or source bytes observed
++to change during export prevent publication of a completion manifest.
++
++Bounds are 2 GiB per source file, one hour of decoded media, 250,000 frames,
++600,000 ms per requested interval, and even positive dimensions up to 3840×2160.
++FFmpeg and FFprobe each have a 180-second timeout and one-thread request.
++Probe JSON is limited to 32 MiB before being read into memory; temporary tool
++output is not a hard disk quota. FFmpeg must provide the libx264 encoder.
++
++An unsupported source needs a separately agreed workflow; this command does not
++silently fall back to copying the whole recording. Input hashes identify the bytes
++observed before and after export. They do not make a concurrent filesystem
++transaction, validate physical timing, or establish hardware or clinical accuracy.
+--- a/docs/operator/README.md
++++ b/docs/operator/README.md
+@@ -52,3 +52,7 @@
+ In Review, expand Recorded video to explicitly choose and play a retained segment.
+ See [Recorded video review](RECORDED_VIDEO_REVIEW.md) for controls, segment-local
+ clock meaning and unavailable-media recovery.
++
++For a review copy of one retained segment interval, see
++[Selected video export](VIDEO_CLIP_EXPORT.md). The command uses decoded local-media
++time and an explicit new external destination.
+--- a/docs/design/research/REVIEW_AND_EXPORT_UX.md
++++ b/docs/design/research/REVIEW_AND_EXPORT_UX.md
+@@ -195,3 +195,24 @@
+ disclosure buttons. Native button activation proceeds normally; other keys,
+ modifiers, controls and the application shortcut implementation remain unchanged.
+ The exact before/after witness is in the receiving record's keyboard correction.
++
++## 2026-10-09: one retained-video interval through the export CLI
++
++Issue #104 adds a selected-file, half-open local-media interval to the existing
++`tools/export_session.py` entrypoint. An operator supplies an exact discovered
++MKV path, integer start/end milliseconds and a new external destination. This
++separate early dispatch preserves whole-session export and the recorded-video
++widget owner's playback controls. The interval uses decoded frame starts relative
++to this file's first decoded timestamp; no segment-to-session mapping is inferred.
++
++The implementation decodes the admitted source, selects frame indices, writes a
++lossy video-only H.264 review copy, checks its decoded count/dimensions/timing and
++publishes a completion manifest last. Source and relevant metadata hashes are
++compared before/after. Existing output is refused; failed partial output remains
++in its newly reserved directory with no success manifest. Explicit bounds and
++limitations are in [Selected video export](../../operator/VIDEO_CLIP_EXPORT.md).
++
++Raw recordings, schemas, capture/daemon behavior, timing/analysis and Review UI
++source remain under their existing owners. Native synthetic-media receiving is
++recorded in [the clip evidence](../../evidence/video-clip-3dcb83a1/README.md);
++it does not replace the project's remaining integration gates.
+--- a/docs/design/research/PROGRESS.md
++++ b/docs/design/research/PROGRESS.md
+@@ -1213,3 +1213,22 @@
+ and unchanged raw fixtures. The original 151-case and independent lifecycle receipts
+ remain at their historical source pins. App shortcut source and PR84 ownership
+ remain untouched; final hosted gates are required on this corrected successor.
++
++## 2026-10-09 — selected retained-video interval export (issue #104)
++
++Added an opt-in interval mode to the existing export CLI with one exact discovered
++MKV path, half-open integer local-media bounds and an explicit new external output.
++The new helper uses actual package discovery, checks decoded media and publishes a
++lossy video-only H.264 copy plus completion manifest. Whole-session functions,
++Review widget, raw package bytes and timing/schema owners are preserved.
++
++Native Windows Python 3.12.2 and FFmpeg/FFprobe 9.0.1 receiving first established
++original unknown-option refusal and a working whole-video control. The final
++candidate passes 22 focused actual-media/CLI cases and targeted Ruff checks. The
++initial 20-case candidate remains separately pinned; a later metadata-refusal
++control and Windows junction controls are qualified at the final source. Tool
++staging and initial lint refusals remain distinct from successful product checks.
++Independent selected-file/decoded-frame receiving is pending, and no hosted gate
++or source integration is claimed. The no-GitHub-Actions directive is preserved.
++See [operator instructions](../../operator/VIDEO_CLIP_EXPORT.md) and
++[commands, pins and limitations](../../evidence/video-clip-3dcb83a1/README.md).

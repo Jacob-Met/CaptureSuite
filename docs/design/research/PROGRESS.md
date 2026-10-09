@@ -1213,3 +1213,22 @@ pause/reload, C and Ctrl+Space countercontrols, outside-viewer checkpoint routin
 and unchanged raw fixtures. The original 151-case and independent lifecycle receipts
 remain at their historical source pins. App shortcut source and PR84 ownership
 remain untouched; final hosted gates are required on this corrected successor.
+
+## 2026-10-09 — selected retained-video interval export (issue #104)
+
+Added an opt-in interval mode to the existing export CLI with one exact discovered
+MKV path, half-open integer local-media bounds and an explicit new external output.
+The new helper uses actual package discovery, checks decoded media and publishes a
+lossy video-only H.264 copy plus completion manifest. Whole-session functions,
+Review widget, raw package bytes and timing/schema owners are preserved.
+
+Native Windows Python 3.12.2 and FFmpeg/FFprobe 9.0.1 receiving first established
+original unknown-option refusal and a working whole-video control. The final
+candidate passes 22 focused actual-media/CLI cases and targeted Ruff checks. The
+initial 20-case candidate remains separately pinned; a later metadata-refusal
+control and Windows junction controls are qualified at the final source. Tool
+staging and initial lint refusals remain distinct from successful product checks.
+Independent selected-file/decoded-frame receiving is pending, and no hosted gate
+or source integration is claimed. The no-GitHub-Actions directive is preserved.
+See [operator instructions](../../operator/VIDEO_CLIP_EXPORT.md) and
+[commands, pins and limitations](../../evidence/video-clip-3dcb83a1/README.md).

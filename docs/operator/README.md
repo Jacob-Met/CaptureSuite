@@ -52,3 +52,7 @@ path to capture stderr.
 In Review, expand Recorded video to explicitly choose and play a retained segment.
 See [Recorded video review](RECORDED_VIDEO_REVIEW.md) for controls, segment-local
 clock meaning and unavailable-media recovery.
+
+For a review copy of one retained segment interval, see
+[Selected video export](VIDEO_CLIP_EXPORT.md). The command uses decoded local-media
+time and an explicit new external destination.
