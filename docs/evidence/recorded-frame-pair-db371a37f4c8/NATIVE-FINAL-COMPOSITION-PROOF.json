@@ -1,0 +1,56 @@
+{
+  "status": "passed",
+  "at": "2026-10-09T10:03:05.266365+00:00",
+  "pid": 18080,
+  "repository": "Jacob-Met/CaptureSuite",
+  "issue": 112,
+  "parent": "fdf26955e06fac6efd2e592a8602fd4f3bf941d7",
+  "commit": "6142a787a36787a46999cec6a40d30df5730a940",
+  "parent_tree": {
+    "root": "7695ccb095c0a5a636b904f59b77936f2ea52146",
+    "tree_objects": 248,
+    "leaves": 1308
+  },
+  "composed_tree": {
+    "root": "e26772bc205ade579b94185581444b0b02884f5e",
+    "tree_objects": 249,
+    "leaves": 1313
+  },
+  "untouched_parent_leaves": 1308,
+  "added_leaves": 5,
+  "native_objects": [
+    {
+      "path": "docs/evidence/recorded-frame-pair-db371a37f4c8/independent/independent-receiving.tar.gz",
+      "bytes": 2788705,
+      "sha256": "cc0804cc6d6fbaabbef31ea0b06b786b75e21b507ba58ea5c01435545f3624ff",
+      "git": "7993dd04f01873847f4e67bd3a7e9dbba2cc9979"
+    },
+    {
+      "path": "docs/evidence/recorded-frame-pair-db371a37f4c8/independent/INDEPENDENT.md",
+      "bytes": 13024,
+      "sha256": "ca503bc7b355377c9770e8aa952867d25bc19f575622da1446a41a36bdd38e8e",
+      "git": "0ea56c6ef78d3ff85bc2247feaefba925e7835eb"
+    },
+    {
+      "path": "docs/evidence/recorded-frame-pair-db371a37f4c8/independent/MANIFEST.json",
+      "bytes": 133351,
+      "sha256": "405c4b5163e410633b5aa2b56b463c141227293127ad890ea08884d23b8e31bf",
+      "git": "e9012bc3e7cf0a6186052e904336307a2eaa6f7c"
+    },
+    {
+      "path": "docs/evidence/recorded-frame-pair-db371a37f4c8/independent/FINAL-AUDIT.json",
+      "bytes": 552,
+      "sha256": "a3e740c90c5ff8e7c9c9e92f1033d85bde1126a46d2486f6f6d336b10c9b675d",
+      "git": "139659cbd7daa6c75d6cef2fdebfd27959b17fce"
+    },
+    {
+      "path": "docs/evidence/recorded-frame-pair-db371a37f4c8/independent/SEAL.json",
+      "bytes": 1043,
+      "sha256": "23a8dc6b84745d481e12de6e944978bd485008177dfac8c52b4fe945a99d1b24",
+      "git": "d18417b8b49068393c27e19751da231b38ab5391"
+    }
+  ],
+  "workflow_bodies_exact": 3,
+  "scope": "All1308 author-parent leaves and modes preserved; only five sealed independent evidence additions. Accepted103/source/author ancestry retained.",
+  "integration": "Unreferenced immutable commit only; no ref, PR, main, tag, workflow dispatch, installation or hosted-check claim."
+}

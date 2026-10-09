@@ -1,0 +1,88 @@
+{
+  "status": "passed exact5 independent objects and469safe regular archive members",
+  "at": "2026-10-09T10:01:59.074860+00:00",
+  "pid": 24988,
+  "objects": [
+    {
+      "path": "docs/evidence/recorded-frame-pair-db371a37f4c8/independent/independent-receiving.tar.gz",
+      "bytes": 2788705,
+      "sha256": "cc0804cc6d6fbaabbef31ea0b06b786b75e21b507ba58ea5c01435545f3624ff",
+      "git": "7993dd04f01873847f4e67bd3a7e9dbba2cc9979",
+      "native_path": "D:\\Hamon\\receiving\\capture-frame-pair-root-db371a37f4c8\\seal-r1\\independent-receiving.tar.gz",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "docs/evidence/recorded-frame-pair-db371a37f4c8/independent/INDEPENDENT.md",
+      "bytes": 13024,
+      "sha256": "ca503bc7b355377c9770e8aa952867d25bc19f575622da1446a41a36bdd38e8e",
+      "git": "0ea56c6ef78d3ff85bc2247feaefba925e7835eb",
+      "native_path": "D:\\Hamon\\receiving\\capture-frame-pair-root-db371a37f4c8\\seal-r1\\INDEPENDENT.md",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "docs/evidence/recorded-frame-pair-db371a37f4c8/independent/MANIFEST.json",
+      "bytes": 133351,
+      "sha256": "405c4b5163e410633b5aa2b56b463c141227293127ad890ea08884d23b8e31bf",
+      "git": "e9012bc3e7cf0a6186052e904336307a2eaa6f7c",
+      "native_path": "D:\\Hamon\\receiving\\capture-frame-pair-root-db371a37f4c8\\seal-r1\\MANIFEST.json",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "docs/evidence/recorded-frame-pair-db371a37f4c8/independent/FINAL-AUDIT.json",
+      "bytes": 552,
+      "sha256": "a3e740c90c5ff8e7c9c9e92f1033d85bde1126a46d2486f6f6d336b10c9b675d",
+      "git": "139659cbd7daa6c75d6cef2fdebfd27959b17fce",
+      "native_path": "D:\\Hamon\\receiving\\capture-frame-pair-root-db371a37f4c8\\seal-r1\\FINAL-AUDIT.json",
+      "mode": "100644",
+      "type": "blob"
+    },
+    {
+      "path": "docs/evidence/recorded-frame-pair-db371a37f4c8/independent/SEAL.json",
+      "bytes": 1043,
+      "sha256": "23a8dc6b84745d481e12de6e944978bd485008177dfac8c52b4fe945a99d1b24",
+      "git": "d18417b8b49068393c27e19751da231b38ab5391",
+      "native_path": "D:\\Hamon\\receiving\\capture-frame-pair-root-db371a37f4c8\\seal-r1\\SEAL.json",
+      "mode": "100644",
+      "type": "blob"
+    }
+  ],
+  "archive_members": 469,
+  "archive_uncompressed_bytes": 9738326,
+  "members_manifest": {
+    "bytes": 116998,
+    "sha256": "6bd6a3e48e30893b4443b63924eba09b6af1c0c1a31c3665aba6baa5be32373e",
+    "git": "d5952173394d0efeef94116cefe929527c59449d"
+  },
+  "publication_timestamp_metadata_only": [
+    {
+      "path": "docs/evidence/recorded-frame-pair-db371a37f4c8/independent/independent-receiving.tar.gz",
+      "original_decimal": "1791539864012241300",
+      "publication_decimal": "1791539864012241400",
+      "delta_decimal": "100"
+    },
+    {
+      "path": "docs/evidence/recorded-frame-pair-db371a37f4c8/independent/INDEPENDENT.md",
+      "original_decimal": "1791539863203093100",
+      "publication_decimal": "1791539863203093000",
+      "delta_decimal": "-100"
+    },
+    {
+      "path": "docs/evidence/recorded-frame-pair-db371a37f4c8/independent/MANIFEST.json",
+      "original_decimal": "1791539863203093100",
+      "publication_decimal": "1791539863203093000",
+      "delta_decimal": "-100"
+    },
+    {
+      "path": "docs/evidence/recorded-frame-pair-db371a37f4c8/independent/FINAL-AUDIT.json",
+      "original_decimal": "1791539865059900100",
+      "publication_decimal": "1791539865059900200",
+      "delta_decimal": "100"
+    }
+  ],
+  "timestamp_not_used_for_acceptance": true,
+  "original_map_and_publication_preserved_unchanged": true,
+  "no_runtime_ref_or_actions": true
+}
