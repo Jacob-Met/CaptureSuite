@@ -5,7 +5,7 @@ Produces:
   <out>/export_manifest.json
   <out>/radar/<source_id>/frames.npy   (FMCW uint16 or LTR11 complex64)
   <out>/radar/<source_id>/stream.json  (copy of config snapshot)
-  <out>/video/<source_id>/*.mp4        (ffmpeg rewrap of MKV segments when available)
+  <out>/video/<stem>--<path-sha256>.mp4 (ffmpeg rewrap of MKV segments when available)
   <out>/imu/<source_id>/frames.jsonl   (decoded ImuFrame summaries when mcap available)
   <out>/emg/<source_id>/batches.jsonl  (decoded EmgBatch summaries when mcap available)
 
@@ -19,7 +19,9 @@ the selected modalities cannot mix stale files into the new export.
 
 from __future__ import annotations
 
+import hashlib
 import json
+import re
 import shutil
 import struct
 import subprocess
@@ -303,25 +305,47 @@ def export_imu_emg(
             )
 
 
+def _video_export_basename(relative_path: Path) -> str:
+    """A portable display stem plus the complete package-relative identity."""
+    display = re.sub(r"[^A-Za-z0-9_-]", "_", relative_path.stem)[:32] or "segment"
+    identity = hashlib.sha256(relative_path.as_posix().encode("utf-8")).hexdigest()
+    return f"{display}--{identity}"
+
+
 def export_video(root: Path, out: Path, manifest: dict) -> None:
     video_out = out / "video"
-    video_out.mkdir(parents=True, exist_ok=True)
     ffmpeg = shutil.which("ffmpeg")
+    planned = []
+    destinations: dict[str, Path] = {}
     for mkv in _find_mkv_files(root):
-        if "exports" in mkv.parts:
+        relative = mkv.relative_to(root)
+        if "exports" in relative.parts:
             continue
-        # sources/<id>/.../segment.mkv → group by nearest source-like folder
+        basename = _video_export_basename(relative)
+        key = basename.casefold()
+        if key in destinations:
+            previous = destinations[key]
+            raise ExportOutputError(
+                "Video export destination collision between "
+                f"{previous.as_posix()!r} and {relative.as_posix()!r}. "
+                "No video files were exported."
+            )
+        destinations[key] = relative
+        planned.append((mkv, relative, basename))
+
+    # Allocate every identity before the first conversion or fallback copy.
+    video_out.mkdir(parents=True, exist_ok=True)
+    for mkv, relative, basename in planned:
+        # Preserve the legacy camera hint, scoped to the package itself.
         sid = "camera"
-        for part in mkv.parts:
+        for part in relative.parts:
             if part.startswith("camera.") or part.startswith("Camera"):
                 sid = part
                 break
-        dest_dir = video_out / sid
-        dest_dir.mkdir(parents=True, exist_ok=True)
-        mp4 = dest_dir / (mkv.stem + ".mp4")
+        mp4 = video_out / (basename + ".mp4")
         entry = {
             "source_id": sid,
-            "mkv": str(mkv.relative_to(root)),
+            "mkv": str(relative),
             "mp4": str(mp4) if ffmpeg else None,
         }
         if ffmpeg:
@@ -342,8 +366,9 @@ def export_video(root: Path, out: Path, manifest: dict) -> None:
                 entry["error"] = exc.stderr.decode("utf-8", errors="replace")[-500:]
         else:
             # Still copy the MKV next to the export so analysis can proceed.
-            shutil.copy2(mkv, dest_dir / mkv.name)
-            entry["mkv_copy"] = str(dest_dir / mkv.name)
+            copied = video_out / (basename + ".mkv")
+            shutil.copy2(mkv, copied)
+            entry["mkv_copy"] = str(copied)
             entry["note"] = "ffmpeg not on PATH; copied MKV instead of MP4"
         manifest.setdefault("video", []).append(entry)
 
