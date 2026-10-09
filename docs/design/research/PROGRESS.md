@@ -1213,3 +1213,28 @@ pause/reload, C and Ctrl+Space countercontrols, outside-viewer checkpoint routin
 and unchanged raw fixtures. The original 151-case and independent lifecycle receipts
 remain at their historical source pins. App shortcut source and PR84 ownership
 remain untouched; final hosted gates are required on this corrected successor.
+
+
+## 2026-10-09 — Make malformed recorded gap rows visible (2479534e1930, issue #111)
+
+The read-only package reader now raises its own `SessionPackageError` with the
+offending `gaps.jsonl` path and physical line number for invalid JSON or a
+nonobject row. It no longer returns a partial gap summary after silently skipping
+malformed JSON. Missing/empty optional files, blank lines, supported camelCase
+and snake_case rows, defaults, integer precision and existing field coercions
+remain unchanged. The existing Review exception handler can display this error;
+its stale-card/export state is outside this reader-only change.
+
+Exactly one original and one candidate component run used CPython 3.12.14 on
+Linux with an explicit 20-second outer timeout. The frozen eleven tests produced
+four passes, two malformed-JSON assertion failures and five nonobject attribute
+errors on the original; the candidate passed all eleven with no failures, errors
+or skips. Tests execute the actual reader/JSON/error code, replacing only its
+Path binding with a disclosed read-only in-memory package adapter. They do not
+qualify physical filesystem behavior, the package initializer, Windows or Qt.
+No package, producer/recovery, hardware, workflow or installed source was changed.
+
+The frozen expectations and independent review preceded candidate exposure.
+The author had privately prepared the patch before baseline execution; root's
+earlier stronger not-authored wording and its additive correction are retained.
+See [source, original failures and exact component receipts](../../evidence/gap-reader-2479534e1930/README.md).

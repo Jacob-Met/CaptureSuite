@@ -1,0 +1,49 @@
+{
+  "schema": "capture.gap-reader.memory-result.v1",
+  "variant": "candidate",
+  "runtime": {
+    "implementation": "CPython",
+    "version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "platform": "linux",
+    "dont_write_bytecode": true
+  },
+  "input_sha256": "c30fb8eecaf2a41506dae337066c890b5559080324563234013da40a1c293c08",
+  "sources": {
+    "reader": {
+      "git_blob": "cdfba8a26736856683ea865b9df67b36ad120e40",
+      "bytes": 6679,
+      "sha256": "4fd156a015115974d062bbc9bffc97cdb23e92b135e2729ecf312400a0201ab1"
+    },
+    "tests": {
+      "git_blob": "70726a99b9f073c82ab314c4271edea0960d8401",
+      "bytes": 6543,
+      "sha256": "0f3070478bafc6da0ea139e29cdd81266a18e6f40e7058f2587059c919634b07"
+    }
+  },
+  "tests_run": 11,
+  "successes": [
+    "capture_gap_reader_tests.PackageReaderGapTests.test_blank_lines",
+    "capture_gap_reader_tests.PackageReaderGapTests.test_empty_optional",
+    "capture_gap_reader_tests.PackageReaderGapTests.test_malformed_middle",
+    "capture_gap_reader_tests.PackageReaderGapTests.test_missing_optional",
+    "capture_gap_reader_tests.PackageReaderGapTests.test_nonobject_array",
+    "capture_gap_reader_tests.PackageReaderGapTests.test_nonobject_boolean",
+    "capture_gap_reader_tests.PackageReaderGapTests.test_nonobject_null",
+    "capture_gap_reader_tests.PackageReaderGapTests.test_nonobject_number",
+    "capture_gap_reader_tests.PackageReaderGapTests.test_nonobject_string",
+    "capture_gap_reader_tests.PackageReaderGapTests.test_truncated_tail",
+    "capture_gap_reader_tests.PackageReaderGapTests.test_valid_supported_rows"
+  ],
+  "failures": [],
+  "errors": [],
+  "skipped": [],
+  "unexpected_successes": 0,
+  "expected_failures": 0,
+  "all_passed": true,
+  "unittest_output": "test_blank_lines (capture_gap_reader_tests.PackageReaderGapTests.test_blank_lines) ... ok\ntest_empty_optional (capture_gap_reader_tests.PackageReaderGapTests.test_empty_optional) ... ok\ntest_malformed_middle (capture_gap_reader_tests.PackageReaderGapTests.test_malformed_middle) ... ok\ntest_missing_optional (capture_gap_reader_tests.PackageReaderGapTests.test_missing_optional) ... ok\ntest_nonobject_array (capture_gap_reader_tests.PackageReaderGapTests.test_nonobject_array) ... ok\ntest_nonobject_boolean (capture_gap_reader_tests.PackageReaderGapTests.test_nonobject_boolean) ... ok\ntest_nonobject_null (capture_gap_reader_tests.PackageReaderGapTests.test_nonobject_null) ... ok\ntest_nonobject_number (capture_gap_reader_tests.PackageReaderGapTests.test_nonobject_number) ... ok\ntest_nonobject_string (capture_gap_reader_tests.PackageReaderGapTests.test_nonobject_string) ... ok\ntest_truncated_tail (capture_gap_reader_tests.PackageReaderGapTests.test_truncated_tail) ... ok\ntest_valid_supported_rows (capture_gap_reader_tests.PackageReaderGapTests.test_valid_supported_rows) ... ok\n\n----------------------------------------------------------------------\nRan 11 tests in 0.002s\n\nOK\n",
+  "limits": [
+    "Only reader.Path file I/O is adapted by the retained tests.",
+    "No package initializer, real filesystem, Qt or Windows runtime qualification.",
+    "This runner invokes no product child, daemon, hardware or provider."
+  ]
+}

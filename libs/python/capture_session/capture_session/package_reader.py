@@ -71,14 +71,20 @@ def _load_gaps_jsonl(path: Path, source_id: str) -> list[GapSummary]:
     if not path.is_file():
         return []
     out: list[GapSummary] = []
-    for line in path.read_text(encoding="utf-8").splitlines():
+    for line_number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
         line = line.strip()
         if not line:
             continue
         try:
             row = json.loads(line)
-        except json.JSONDecodeError:
-            continue
+        except json.JSONDecodeError as exc:
+            raise SessionPackageError(
+                f"invalid gap record in {path} at line {line_number}: invalid JSON"
+            ) from exc
+        if not isinstance(row, dict):
+            raise SessionPackageError(
+                f"invalid gap record in {path} at line {line_number}: expected JSON object"
+            )
         start = int(row.get("startSessionTimeNs") or row.get("start_session_time_ns") or 0)
         end_raw = row.get("endSessionTimeNs", row.get("end_session_time_ns"))
         end = int(end_raw) if end_raw is not None else None

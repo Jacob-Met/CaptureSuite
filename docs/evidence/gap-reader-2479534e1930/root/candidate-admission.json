@@ -1,0 +1,58 @@
+{
+  "schema": "capture.root.original-and-candidate-admission.v1",
+  "repository": "Jacob-Met/CaptureSuite",
+  "issue": 111,
+  "base_commit": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+  "reviewer": "2479534e1930/root",
+  "disposition": "Original failure evidence received. Candidate source is admitted for one unchanged 11-case execution using the frozen runner and tests.",
+  "authorship_correction": {
+    "supersedes_only_authorship_wording_in": [
+      "9c5eece539abafd0d03dc1734fedf4b7c20cba06",
+      "09cc11ce875356ca85e474d9104240e7620c280a"
+    ],
+    "earlier_overstatement": "Root's earlier records said candidate source had not been authored.",
+    "corrected_record": "C disclosed that an unpublished in-memory candidate patch had already been prepared after the immutable fixture/test expectations, while root's independent pre-candidate review was in progress. It had not been exposed to root, published, compiled or executed before the original baseline. Root's review was blind to candidate content, but the stronger not-authored wording was incorrect.",
+    "preserved_history": "The two earlier records and C's disclosure in transport1078 remain unchanged. No fixture expectation was revised in response to baseline results; no original execution was replayed. Root first received candidate cdfba8 after original result f0cf."
+  },
+  "original_evidence": {
+    "input": "66f60cc50582a3ca699a1eff12cfefeded428059",
+    "result": "f0cf2b8615b2c82d250a7da911558f09bc624009",
+    "transport": "1078fce709760f0dafb27ab588a7d44c03cb1a90",
+    "outcome": "Actual process exit 1, 11 tests: 4 passes, 2 failures for skipped invalid JSON, 5 AttributeErrors from nonobject rows, zero skips or expected failures.",
+    "interpretation": "This is the retained failing original, not product success."
+  },
+  "source_review": {
+    "candidate": "cdfba8a26736856683ea865b9df67b36ad120e40",
+    "finding": "Exact diff changes only the existing gap loader's line enumeration and malformed/nonobject error handling. One-based physical line position retains blank lines. JSON parse errors chain their original cause; both paths use this module's SessionPackageError and include the full gap path and reason.",
+    "preservation": "All field aliases, integer conversions, zero/negative/large values, row order, optional-file handling, duration and count calculations, and all other source text are unchanged.",
+    "ui_source_limit": "Existing desktop load catches Exception and displays its text in the banner. The current UI exception branch does not clear stale cards or disable export. No Qt, package initializer, UI reset, physical filesystem or Windows claim is made."
+  },
+  "admitted_execution": {
+    "count": 1,
+    "variant": "candidate",
+    "reader": "cdfba8a26736856683ea865b9df67b36ad120e40",
+    "tests": "70726a99b9f073c82ab314c4271edea0960d8401",
+    "runner": "0f1c8d23fc1922930e3a31733c7ee0a44440bedb",
+    "command_prefix": "timeout --signal=TERM --kill-after=2s 20s python3 -B -c",
+    "fixture_reference": "9fb4396fd4cda184866164f64621af6e0164a2cb",
+    "expectations": "Identical 11 tests and literal fixture files; only input.variant and the exact reader source/pin change from original.",
+    "limits": "Read-only memory Path adapter only, no local fixture writes, package initializer, native filesystem or desktop receiving. No product children, refs, PRs, pushes, workflow changes or Actions."
+  },
+  "root_static_review": {
+    "first_attempt": {
+      "chunk_id": "52ba88",
+      "wall_time_seconds": 0.00003268,
+      "exit_code": 1,
+      "original_token_count": 42,
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 7, in <module>\nAssertionError: ['timeout', '--signal=TERM', '--kill-after=2s', '20s', 'python3', '-B', '-c']\n"
+    },
+    "first_attempt_correction": "The root data-only checker initially asserted the command executable token was python. Actual retained command is python3, so it stopped before any source/content joins. The checker assertion alone was corrected to the observed token. No product source or test was executed or changed by either review.",
+    "corrected_execution": {
+      "chunk_id": "1564c9",
+      "wall_time_seconds": 0.000024757,
+      "exit_code": 0,
+      "original_token_count": 747,
+      "output": "{\n  \"schema\": \"capture.root.candidate-source-receiving.v1\",\n  \"sources\": {\n    \"original\": {\n      \"git_blob\": \"91fbf913c5af8489968425d7ceac51c04233d3e0\",\n      \"bytes\": 6331,\n      \"sha256\": \"9a1d9e6e7d24341a083cee602af9538413e948f3369b22660e484356e3d34eb1\"\n    },\n    \"candidate\": {\n      \"git_blob\": \"cdfba8a26736856683ea865b9df67b36ad120e40\",\n      \"bytes\": 6679,\n      \"sha256\": \"4fd156a015115974d062bbc9bffc97cdb23e92b135e2729ecf312400a0201ab1\"\n    },\n    \"tests\": {\n      \"git_blob\": \"70726a99b9f073c82ab314c4271edea0960d8401\",\n      \"bytes\": 6543,\n      \"sha256\": \"0f3070478bafc6da0ea139e29cdd81266a18e6f40e7058f2587059c919634b07\"\n    },\n    \"runner\": {\n      \"git_blob\": \"0f1c8d23fc1922930e3a31733c7ee0a44440bedb\",\n      \"bytes\": 3308,\n      \"sha256\": \"b4a79f8bfde66f5b31813dad0568803d5c77776687a77121cf2cf531966bccbe\"\n    },\n    \"raw_input\": {\n      \"git_blob\": \"66f60cc50582a3ca699a1eff12cfefeded428059\",\n      \"bytes\": 13823,\n      \"sha256\": \"b23e910b74b6ee5190703cbae77eb67e6d584c3e4103fc9ae673b8102b6fb37b\"\n    },\n    \"raw_result\": {\n      \"git_blob\": \"f0cf2b8615b2c82d250a7da911558f09bc624009\",\n      \"bytes\": 16904,\n      \"sha256\": \"d157e0378aafb09d1d80e7af8ed8be7b6c225c3c630c79e134428cee39920577\"\n    }\n  },\n  \"original_actual\": {\n    \"exit_code\": 1,\n    \"tool_chunk\": \"4aec69\",\n    \"runtime\": {\n      \"implementation\": \"CPython\",\n      \"version\": \"3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]\",\n      \"platform\": \"linux\",\n      \"dont_write_bytecode\": true\n    },\n    \"tests_run\": 11,\n    \"passes\": 4,\n    \"failures\": 2,\n    \"errors\": 5,\n    \"all_passed\": false\n  },\n  \"exact_command_join\": true,\n  \"transport_stdout_exact\": true,\n  \"runner_and_input_exact\": true,\n  \"changed_top_level_nodes\": [\n    \"_load_gaps_jsonl\"\n  ],\n  \"diff\": \"--- original91fb/package_reader.py\\n+++ candidatecdfba8/package_reader.py\\n@@ -71,14 +71,20 @@\\n     if not path.is_file():\\n         return []\\n     out: list[GapSummary] = []\\n-    for line in path.read_text(encoding=\\\"utf-8\\\").splitlines():\\n+    for line_number, line in enumerate(path.read_text(encoding=\\\"utf-8\\\").splitlines(), start=1):\\n         line = line.strip()\\n         if not line:\\n             continue\\n         try:\\n             row = json.loads(line)\\n-        except json.JSONDecodeError:\\n-            continue\\n+        except json.JSONDecodeError as exc:\\n+            raise SessionPackageError(\\n+                f\\\"invalid gap record in {path} at line {line_number}: invalid JSON\\\"\\n+            ) from exc\\n+        if not isinstance(row, dict):\\n+            raise SessionPackageError(\\n+                f\\\"invalid gap record in {path} at line {line_number}: expected JSON object\\\"\\n+            )\\n         start = int(row.get(\\\"startSessionTimeNs\\\") or row.get(\\\"start_session_time_ns\\\") or 0)\\n         end_raw = row.get(\\\"endSessionTimeNs\\\", row.get(\\\"end_session_time_ns\\\"))\\n         end = int(end_raw) if end_raw is not None else None\\n\",\n  \"product_or_test_executions_in_this_review\": 0\n}\n"
+    }
+  }
+}

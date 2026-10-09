@@ -1,0 +1,62 @@
+{
+  "schema": "capture.gap-reader.component-qualification.v1",
+  "issue": "https://github.com/Jacob-Met/CaptureSuite/issues/111",
+  "base_commit": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+  "base_tree": "d1af33caaf7154e83def1dab035920907d417e8d",
+  "verdict": "Qualified for the frozen eleven-case Python reader component scope; no full desktop or filesystem claim.",
+  "sources": {
+    "original": "91fbf913c5af8489968425d7ceac51c04233d3e0",
+    "candidate": "cdfba8a26736856683ea865b9df67b36ad120e40",
+    "tests": "70726a99b9f073c82ab314c4271edea0960d8401",
+    "runner": "0f1c8d23fc1922930e3a31733c7ee0a44440bedb",
+    "frozen_expectations": "9fb4396fd4cda184866164f64621af6e0164a2cb"
+  },
+  "source_scope": "Only _load_gaps_jsonl line numbering and invalid JSON/nonobject error handling. All accepted object-field parsing and other production module bytes unchanged.",
+  "actual_runs": {
+    "original": {
+      "count": 1,
+      "input": "66f60cc50582a3ca699a1eff12cfefeded428059",
+      "result": "f0cf2b8615b2c82d250a7da911558f09bc624009",
+      "transport": "1078fce709760f0dafb27ab588a7d44c03cb1a90",
+      "exit": 1,
+      "tests": 11,
+      "passes": 4,
+      "failures": 2,
+      "errors": 5,
+      "skips": 0
+    },
+    "candidate": {
+      "count": 1,
+      "input": "6b683a6c7f9000361e1629f33e7bbabe098db1e9",
+      "result": "ba642fdcb2881f295ae4aad5e41513e1f3240522",
+      "transport": "f3133fdd1a02afb0c9b22def11861ae62444ac03",
+      "exit": 0,
+      "tests": 11,
+      "passes": 11,
+      "failures": 0,
+      "errors": 0,
+      "skips": 0
+    }
+  },
+  "runtime": {
+    "implementation": "CPython",
+    "version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "platform": "linux",
+    "dont_write_bytecode": true
+  },
+  "bounded_invocation": "timeout --signal=TERM --kill-after=2s 20s python3 -B -c <exact runner> <exact JSON input>; no replay",
+  "independent_source_admissions": [
+    "9c5eece539abafd0d03dc1734fedf4b7c20cba06",
+    "09cc11ce875356ca85e474d9104240e7620c280a",
+    "f0b731a830f398f2d4db4f22eb6ad8cf05cab1d7"
+  ],
+  "preserved_history": "Prior test source b7ae7c2370cd2a7312beee39357b94c061404adc was never run. Final70726 changes fixture serialization only and matches all frozen literal input maps. Candidate was privately prepared after immutable fixtures/tests but before baseline; it was not exposed to root before root's expectation review. Earlier stronger not-authored wording and root's correction remain retained.",
+  "limits": [
+    "Only module.Path I/O is adapted; actual production JSON decoding, gap/error/summary code and eleven maintained tests execute.",
+    "No package initializer, physical filesystem, Windows, Qt, installed application or full-suite qualification.",
+    "Existing Review's generic exception branch displays the message but does not clear stale cards or disable export.",
+    "No claim of new numeric validation, duplicate-key detection, producer/recovery changes or repaired package data.",
+    "No branch/ref movement, pull request, workflow invocation, hardware/provider call or deployment."
+  ],
+  "integration": "Apply the narrow reader change and new tests to the exact base or independently receive any newer composition; append the scoped PROGRESS entry without replacing another owner's content."
+}

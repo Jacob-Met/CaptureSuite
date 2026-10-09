@@ -1,0 +1,59 @@
+{
+  "schema": "capture.gap-reader.root-pre-candidate-review.v1",
+  "reviewer": "2479534e1930/root",
+  "issue": "https://github.com/Jacob-Met/CaptureSuite/issues/111",
+  "source_state": "Independent review completed before candidate source or original/candidate execution results were exposed.",
+  "base_commit": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+  "base_tree": "d1af33caaf7154e83def1dab035920907d417e8d",
+  "pins": {
+    "original_reader": "91fbf913c5af8489968425d7ceac51c04233d3e0",
+    "consumer": "4369f9bd0cd0dd95843477dca9954064490866cc",
+    "package_init": "894e3c152a98b6e804de90122572afbcd929b3da",
+    "agents": "9ac6683ba4805e210143e5a33e7782da55af0d15",
+    "semantic_fixture_reference": "9fb4396fd4cda184866164f64621af6e0164a2cb",
+    "actual_maintained_tests": "b7ae7c2370cd2a7312beee39357b94c061404adc",
+    "runner": "0f1c8d23fc1922930e3a31733c7ee0a44440bedb"
+  },
+  "decision": "Accept the narrow intended behavior and eleven pre-candidate tests. Admit one bounded original run with exact original reader, retained tests and runner. No remote native route or broader product execution is admitted by this record.",
+  "basis": [
+    "AGENTS explicitly prohibits silently hiding source gaps or dropped data.",
+    "The exact original reader silently continues after a JSONDecodeError in a nonblank gaps.jsonl record.",
+    "Original nonobject rows instead trigger incidental attribute errors; the corrected reader should identify their file and physical line through its local SessionPackageError.",
+    "A malformed record must stop load_review_summary from returning a partial gap summary.",
+    "The four valid/optional cases must preserve gap row order, defaults, source fallback, negative/zero values, exact integer precision, open/closed counts and duration."
+  ],
+  "tests": {
+    "total": 11,
+    "valid_or_optional": 4,
+    "malformed_json": 2,
+    "nonobject_rows": 5,
+    "physical_lines": {
+      "malformed_middle": 4,
+      "truncated_tail": 2,
+      "nonobjects": 2
+    },
+    "required_error_class": "capture_session.package_reader.SessionPackageError",
+    "message_requires": [
+      "Full offending file path",
+      "The literal physical line context, including preceding blank lines",
+      "invalid JSON or expected JSON object as applicable"
+    ]
+  },
+  "fixture_custody_clarification": "9fb4396 is the frozen semantic fixture/expectation reference. The maintained b7ae tests are the exact actual fixture generator: json.dumps uses its own whitespace and Unicode escaping, so some generated JSON text is not byte-identical to the compact literal JSON strings in 9fb4396. Those spellings have the same parsed row values and physical line positions. Do not present 9fb4396 as literal executed package bytes or claim byte equality between those two representations. Preserve both immutable sources and report the actual test-generated input representation.",
+  "source_review": {
+    "io_adapter": "Only module.Path is patched. MappingProxyType exposes read-only str/join/name/stem/is_file/is_dir/read_text/iterdir operations. No JSON decoder, gap construction, summary construction, count property or production error handler is replaced.",
+    "test_inputs_preserved": "Each summary/error call compares fixture mappings in finally.",
+    "integer_precision": "The maintained Python tests contain exact >2^53 integer literals. The semantic reference uses decimal strings only for explicitly named expected integer fields; no JavaScript Number conversion is needed.",
+    "runner": "Verifies source Git identities, registers only two exact modules under an isolated package namespace, preserves unittest output and tracebacks, records eleven outcomes, and exits according to actual unittest success."
+  },
+  "prediction_not_execution": {
+    "original_ordinary_successes": 4,
+    "original_silent_omission_test_failures": 2,
+    "original_nonobject_incidental_test_errors": 5,
+    "candidate_required": "all eleven actual tests pass with no failures, errors, skips, expected failures or unexpected successes"
+  },
+  "consumer_boundary": "screen_review catches Exception and changes its banner. Its error branch does not clear previous cards or disable export. No complete UI reset, Qt invocation or package initializer execution is claimed.",
+  "implementation_fence": "Only gaps JSONL malformed/nonobject handling and physical-line context; preserve all currently accepted object-field parsing and optional-file behavior. No producer, recovery, schema, IPC, numeric-validation, Qt, hardware or installed mutation.",
+  "execution_limits": "One local memory-only CPython invocation for the original, explicit 20-second outer deadline, bounded retained output, no package-file writes, remote calls, subprocesses, cleanup or replay. Candidate execution remains a later separate source/result gate.",
+  "progress_requirement": "Append one scoped result/limits entry to existing docs/design/research/PROGRESS.md in the final detached contribution; preserve its existing prefix."
+}

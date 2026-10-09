@@ -1,0 +1,210 @@
+{
+  "schema": "capture.gap-reader.expectations.v1",
+  "issue": "https://github.com/Jacob-Met/CaptureSuite/issues/111",
+  "base_commit": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+  "original_reader": "91fbf913c5af8489968425d7ceac51c04233d3e0",
+  "root": "/fixtures/review-读.mmsession",
+  "fixture_count": 11,
+  "fixtures": [
+    {
+      "id": "missing_optional",
+      "files": {
+        "manifest.json": "{\"sessionId\":\"review-读\",\"state\":\"finalized_recovered\"}"
+      },
+      "expected": {
+        "kind": "summary",
+        "session_id": "review-读",
+        "state": "finalized_recovered",
+        "gaps": [],
+        "open_gap_count": 0,
+        "closed_gap_count": 0,
+        "duration_ns": 0
+      }
+    },
+    {
+      "id": "empty_optional",
+      "files": {
+        "manifest.json": "{\"sessionId\":\"review-读\",\"state\":\"finalized_recovered\"}",
+        "sources/sensor-α/health/gaps.jsonl": ""
+      },
+      "expected": {
+        "kind": "summary",
+        "session_id": "review-读",
+        "state": "finalized_recovered",
+        "gaps": [],
+        "open_gap_count": 0,
+        "closed_gap_count": 0,
+        "duration_ns": 0
+      }
+    },
+    {
+      "id": "blank_lines",
+      "files": {
+        "manifest.json": "{\"sessionId\":\"review-读\",\"state\":\"finalized_recovered\"}",
+        "sources/sensor-α/health/gaps.jsonl": " \r\n\t\n\n"
+      },
+      "expected": {
+        "kind": "summary",
+        "session_id": "review-读",
+        "state": "finalized_recovered",
+        "gaps": [],
+        "open_gap_count": 0,
+        "closed_gap_count": 0,
+        "duration_ns": 0
+      }
+    },
+    {
+      "id": "valid_supported_rows",
+      "files": {
+        "manifest.json": "{\"sessionId\":\"review-读\",\"state\":\"finalized_recovered\"}",
+        "sources/sensor-α/health/gaps.jsonl": "{\"sourceId\":\"named-β\",\"streamId\":\"stream-A\",\"cause\":\"GAP_CAUSE_DISCONNECT\",\"startSessionTimeNs\":\"0\",\"endSessionTimeNs\":\"9007199254740997\",\"estimatedLostCount\":\"9007199254740999\",\"closed\":true,\"futureField\":{\"kept\":\"uninterpreted\"}}\n{\"stream_id\":\"stream-B\",\"cause\":\"UNKNOWN\",\"start_session_time_ns\":-23,\"end_session_time_ns\":null,\"estimated_lost_count\":3}\n{}\n"
+      },
+      "expected": {
+        "kind": "summary",
+        "session_id": "review-读",
+        "state": "finalized_recovered",
+        "gaps": [
+          {
+            "source_id": "named-β",
+            "stream_id": "stream-A",
+            "cause": "GAP_CAUSE_DISCONNECT",
+            "start_session_time_ns": 0,
+            "end_session_time_ns": "9007199254740997",
+            "closed": true,
+            "estimated_lost_count": "9007199254740999"
+          },
+          {
+            "source_id": "sensor-α",
+            "stream_id": "stream-B",
+            "cause": "UNKNOWN",
+            "start_session_time_ns": -23,
+            "end_session_time_ns": null,
+            "closed": false,
+            "estimated_lost_count": 3
+          },
+          {
+            "source_id": "sensor-α",
+            "stream_id": "",
+            "cause": "unknown",
+            "start_session_time_ns": 0,
+            "end_session_time_ns": null,
+            "closed": false,
+            "estimated_lost_count": 0
+          }
+        ],
+        "open_gap_count": 2,
+        "closed_gap_count": 1,
+        "duration_ns": "9007199254740997",
+        "decimal_string_expected_fields": [
+          "gaps[0].end_session_time_ns",
+          "gaps[0].estimated_lost_count",
+          "duration_ns"
+        ]
+      }
+    },
+    {
+      "id": "malformed_middle",
+      "files": {
+        "manifest.json": "{\"sessionId\":\"review-读\",\"state\":\"finalized_recovered\"}",
+        "sources/sensor-α/health/gaps.jsonl": "\n{\"sourceId\":\"named-β\",\"streamId\":\"stream-A\",\"cause\":\"GAP_CAUSE_DISCONNECT\",\"startSessionTimeNs\":\"0\",\"endSessionTimeNs\":\"9007199254740997\",\"estimatedLostCount\":\"9007199254740999\",\"closed\":true,\"futureField\":{\"kept\":\"uninterpreted\"}}\n \nnot-json\n{\"stream_id\":\"stream-B\",\"cause\":\"UNKNOWN\",\"start_session_time_ns\":-23,\"end_session_time_ns\":null,\"estimated_lost_count\":3}\n"
+      },
+      "expected": {
+        "kind": "reader_error",
+        "physical_line": 4,
+        "relative_path": "sources/sensor-α/health/gaps.jsonl",
+        "error_reason": "invalid JSON"
+      }
+    },
+    {
+      "id": "truncated_tail",
+      "files": {
+        "manifest.json": "{\"sessionId\":\"review-读\",\"state\":\"finalized_recovered\"}",
+        "sources/sensor-α/health/gaps.jsonl": "{\"sourceId\":\"named-β\",\"streamId\":\"stream-A\",\"cause\":\"GAP_CAUSE_DISCONNECT\",\"startSessionTimeNs\":\"0\",\"endSessionTimeNs\":\"9007199254740997\",\"estimatedLostCount\":\"9007199254740999\",\"closed\":true,\"futureField\":{\"kept\":\"uninterpreted\"}}\n{\"cause\":\"UNKNOWN\""
+      },
+      "expected": {
+        "kind": "reader_error",
+        "physical_line": 2,
+        "relative_path": "sources/sensor-α/health/gaps.jsonl",
+        "error_reason": "invalid JSON"
+      }
+    },
+    {
+      "id": "nonobject_null",
+      "files": {
+        "manifest.json": "{\"sessionId\":\"review-读\",\"state\":\"finalized_recovered\"}",
+        "sources/sensor-α/health/gaps.jsonl": "\nnull\n"
+      },
+      "expected": {
+        "kind": "reader_error",
+        "physical_line": 2,
+        "relative_path": "sources/sensor-α/health/gaps.jsonl",
+        "error_reason": "expected JSON object"
+      }
+    },
+    {
+      "id": "nonobject_array",
+      "files": {
+        "manifest.json": "{\"sessionId\":\"review-读\",\"state\":\"finalized_recovered\"}",
+        "sources/sensor-α/health/gaps.jsonl": "\n[]\n"
+      },
+      "expected": {
+        "kind": "reader_error",
+        "physical_line": 2,
+        "relative_path": "sources/sensor-α/health/gaps.jsonl",
+        "error_reason": "expected JSON object"
+      }
+    },
+    {
+      "id": "nonobject_number",
+      "files": {
+        "manifest.json": "{\"sessionId\":\"review-读\",\"state\":\"finalized_recovered\"}",
+        "sources/sensor-α/health/gaps.jsonl": "\n7\n"
+      },
+      "expected": {
+        "kind": "reader_error",
+        "physical_line": 2,
+        "relative_path": "sources/sensor-α/health/gaps.jsonl",
+        "error_reason": "expected JSON object"
+      }
+    },
+    {
+      "id": "nonobject_boolean",
+      "files": {
+        "manifest.json": "{\"sessionId\":\"review-读\",\"state\":\"finalized_recovered\"}",
+        "sources/sensor-α/health/gaps.jsonl": "\ntrue\n"
+      },
+      "expected": {
+        "kind": "reader_error",
+        "physical_line": 2,
+        "relative_path": "sources/sensor-α/health/gaps.jsonl",
+        "error_reason": "expected JSON object"
+      }
+    },
+    {
+      "id": "nonobject_string",
+      "files": {
+        "manifest.json": "{\"sessionId\":\"review-读\",\"state\":\"finalized_recovered\"}",
+        "sources/sensor-α/health/gaps.jsonl": "\n\"text\"\n"
+      },
+      "expected": {
+        "kind": "reader_error",
+        "physical_line": 2,
+        "relative_path": "sources/sensor-α/health/gaps.jsonl",
+        "error_reason": "expected JSON object"
+      }
+    }
+  ],
+  "invocation_scope": "Exact reader module and stdlib parsing executed in CPython; only module.Path is replaced by a read-only mapping adapter. Expected large integers are represented as explicit decimal strings in this carrier and converted only at named expected fields. Fixture source text is retained literally.",
+  "invariants": [
+    "All fixture text remains byte-identical before/after.",
+    "No invalid row is silently omitted; use the reader-local SessionPackageError with path and physical line.",
+    "Only the I/O adapter is substituted; json.loads, summary construction and error handling are exact original/candidate source.",
+    "Do not import Qt, probe hardware, call daemon, write package files, or infer Windows filesystem/GUI reset."
+  ],
+  "source_only_original_prediction": {
+    "summary_passes": 4,
+    "silently_skipped_json_cases": 2,
+    "nonobject_incidental_errors": 5
+  },
+  "status": "frozen before candidate authoring and before any execution"
+}

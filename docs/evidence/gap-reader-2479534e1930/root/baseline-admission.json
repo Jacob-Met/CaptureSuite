@@ -1,0 +1,29 @@
+{
+  "schema": "capture.gap-reader.root-final-pre-candidate-admission.v1",
+  "reviewer": "2479534e1930/root",
+  "prior_review": "9c5eece539abafd0d03dc1734fedf4b7c20cba06",
+  "unchanged_reader": "91fbf913c5af8489968425d7ceac51c04233d3e0",
+  "unchanged_runner": "0f1c8d23fc1922930e3a31733c7ee0a44440bedb",
+  "frozen_reference": "9fb4396fd4cda184866164f64621af6e0164a2cb",
+  "prior_unrun_tests": "b7ae7c2370cd2a7312beee39357b94c061404adc",
+  "final_tests": "70726a99b9f073c82ab314c4271edea0960d8401",
+  "change": "Only explicit ensure_ascii=False and compact separators in fixture serialization; all eleven cases, assertions and I/O adapter behavior unchanged.",
+  "source_diff": {
+    "chunk_id": "f62e1e",
+    "wall_time_seconds": 0.000035433,
+    "exit_code": 0,
+    "original_token_count": 429,
+    "output": "--- b7ae-unrun.py\n+++ 70726-final.py\n@@ -38,6 +38,10 @@\n }\n \n \n+def _json(row):\n+    return json.dumps(row, ensure_ascii=False, separators=(\",\", \":\"))\n+\n+\n class _MemoryPath:\n     \"\"\"Only the read-only Path operations reached by these package fixtures.\"\"\"\n \n@@ -88,7 +92,9 @@\n     def _summary(self, text):\n         files = {\n             ROOT + \"/manifest.json\": json.dumps(\n-                {\"sessionId\": \"review-读\", \"state\": \"finalized_recovered\"}\n+                {\"sessionId\": \"review-读\", \"state\": \"finalized_recovered\"},\n+                ensure_ascii=False,\n+                separators=(\",\", \":\"),\n             )\n         }\n         if text is not None:\n@@ -129,7 +135,7 @@\n         self._assert_empty(\" \\r\\n\\t\\n\\n\")\n \n     def test_valid_supported_rows(self):\n-        text = \"\\n\".join(json.dumps(row) for row in (CAMEL_ROW, SNAKE_ROW, {})) + \"\\n\"\n+        text = \"\\n\".join(_json(row) for row in (CAMEL_ROW, SNAKE_ROW, {})) + \"\\n\"\n         summary = self._summary(text)\n         self.assertEqual(\n             [asdict(row) for row in summary.gaps],\n@@ -168,11 +174,11 @@\n         self.assertEqual(summary.duration_ns, 9007199254740997)\n \n     def test_malformed_middle(self):\n-        text = \"\\n\" + json.dumps(CAMEL_ROW) + \"\\n \\nnot-json\\n\" + json.dumps(SNAKE_ROW) + \"\\n\"\n+        text = \"\\n\" + _json(CAMEL_ROW) + \"\\n \\nnot-json\\n\" + _json(SNAKE_ROW) + \"\\n\"\n         self._assert_error(text, 4, \"invalid JSON\")\n \n     def test_truncated_tail(self):\n-        text = json.dumps(CAMEL_ROW) + '\\n{\"cause\":\"UNKNOWN\"'\n+        text = _json(CAMEL_ROW) + '\\n{\"cause\":\"UNKNOWN\"'\n         self._assert_error(text, 2, \"invalid JSON\")\n \n     def test_nonobject_null(self):\n\nAST syntax accepted; module not executed.\n"
+  },
+  "literal_fixture_join": {
+    "chunk_id": "6e9e38",
+    "wall_time_seconds": 0.018778553,
+    "exit_code": 0,
+    "original_token_count": 179,
+    "output": "{\"all_11_literal_file_maps_exact\": true, \"reader_or_test_functions_executed\": false, \"rows\": [{\"all_file_text_exact\": true, \"id\": \"missing_optional\"}, {\"all_file_text_exact\": true, \"id\": \"empty_optional\"}, {\"all_file_text_exact\": true, \"id\": \"blank_lines\"}, {\"all_file_text_exact\": true, \"id\": \"valid_supported_rows\"}, {\"all_file_text_exact\": true, \"id\": \"malformed_middle\"}, {\"all_file_text_exact\": true, \"id\": \"truncated_tail\"}, {\"all_file_text_exact\": true, \"id\": \"nonobject_null\"}, {\"all_file_text_exact\": true, \"id\": \"nonobject_array\"}, {\"all_file_text_exact\": true, \"id\": \"nonobject_number\"}, {\"all_file_text_exact\": true, \"id\": \"nonobject_boolean\"}, {\"all_file_text_exact\": true, \"id\": \"nonobject_string\"}]}\n"
+  },
+  "correction": "The prior review's distinct-serialization clarification applies to the preserved unrun b7ae tests. Final 70726 now generates all eleven literal file maps exactly as frozen in 9fb4396.",
+  "admission": "Exactly one original baseline using reader91fb + final tests70726 + runner0f1c in memory, with an enforced 20-second outer deadline and bounded full output. No candidate product source has been authored/exposed and no product/receiver test has run by root.",
+  "expected_original": "Four passes, two assertion failures for silently skipped malformed rows, five incidental nonobject errors; report actual outcomes, not predictions as results.",
+  "after_original": "Retain the actual original result and then author only the narrow reader fix; send its exact source diff for candidate receiving."
+}
