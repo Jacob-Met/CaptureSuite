@@ -1,0 +1,17 @@
+{
+  "command": [
+    "/srv/hamon-estate/chatgpt-capturesuite-nearest-features-713adaab/environment/venv/bin/python",
+    "-B",
+    "-m",
+    "ruff",
+    "check",
+    "--no-cache",
+    "--config",
+    "pyproject.toml",
+    "libs/python/capture_analysis/capture_analysis/ml_bundle/job.py",
+    "tests/analysis/test_ml_bundle_target_admission.py"
+  ],
+  "exit_code": 0,
+  "stdout": "All checks passed!\n",
+  "stderr": ""
+}

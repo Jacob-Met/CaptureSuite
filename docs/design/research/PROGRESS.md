@@ -1213,3 +1213,48 @@ pause/reload, C and Ctrl+Space countercontrols, outside-viewer checkpoint routin
 and unchanged raw fixtures. The original 151-case and independent lifecycle receipts
 remain at their historical source pins. App shortcut source and PR84 ownership
 remain untouched; final hosted gates are required on this corrected successor.
+
+
+## 2026-10-08 — Refuse target names that replace ML-window identity
+
+Contributor `chatgpt:/root/production_execution`, native claim 5023, prepared a
+bounded ML target-admission repair. The actual original producer accepted
+`target_columns=["session_time_ns"]`, replaced exact integer output timestamps
+with float64, and emitted duplicate target names that the existing external
+evaluator refuses. The ordinary default control and original input files were
+preserved.
+
+Twelve added producer lines reject empty/nonstring, duplicate and five reserved
+output-field names before ML publication. None/empty-list defaults and exact
+custom case, whitespace and Unicode labels remain supported. All other producer
+bytes, the caller, evaluator, schema, kinematics, UI and scientific algorithms
+remain unchanged. [The target contract](../ML_BUNDLE_TARGETS.md) records the
+boundary.
+
+On the existing native ThinkPad Python 3.12.10 environment, the identical final
+16 controls retain 4 original passes/12 failures and pass 16/16 on the candidate;
+62 relevant inherited ML/evaluation cases pass, with no skips or errors.
+Paired retained files confirm all 58 original input pairs and three byte-identical
+valid Parquet controls. The first receiver's three string-versus-large_string
+assumptions are preserved separately and corrected before candidate exposure.
+Scoped project-configured Ruff passes. Raw logs, JUnit and exact source/input
+pins are retained in the [receiving packet](../../evidence/ml-bundle-target-admission-713adaab/README.md).
+
+The native source parent is e48825b1; current main 9e9204f7 has identical affected
+Python-library bytes and advances only separately owned UI/workflow/evidence.
+Independent source review and supported full integration gates remain separate.
+Actions-triggering publication is held under the operator's directive; no new
+hosted execution, main integration, installed adoption or hardware result is
+claimed.
+
+
+
+Current-source storage review (2026-10-09): the exact qualified producer, receiver
+and guide now compose with canonical 3960c0c7. The complete affected Python,
+schema, analysis-test, fixture and configuration closure remains unchanged from
+the qualified parent. Original native16+62 receiving is retained without replay.
+Independent source review, raw-custody audit and root approval are complete and
+adopted unchanged. This is branch-only source storage readiness; Actions, PR/main
+integration, supported Windows and installed adoption remain pending. The
+separate prediction-template contribution is not included or required. See
+[the current composition record](../../evidence/ml-bundle-target-admission-713adaab/CURRENT_STATUS.md).

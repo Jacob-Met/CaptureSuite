@@ -1,0 +1,1068 @@
+{
+  "schema": "capture.target95.current-source-composition/1",
+  "base_commit": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+  "base_tree": "d1af33caaf7154e83def1dab035920907d417e8d",
+  "qualified_commit": "809f93be15d9771ca8673457b6e359f74a727358",
+  "qualified_tree": "be603098a73ffc1e1bb82e6c5caf4587481f13bb",
+  "qualified_parent": "e48825b1b37544f4c31912e3c29a3918704f5456",
+  "source": {
+    "libs/python/capture_analysis/capture_analysis/ml_bundle/job.py": "6089902c464864a5af3aeda8caba581aa254979f6cc90d3d3913d8bc34dd25d0",
+    "tests/analysis/test_ml_bundle_target_admission.py": "157a190a278636c6d0a990eebfa93e435946448392e2cc028ea7585f6ffff9b2",
+    "docs/design/ML_BUNDLE_TARGETS.md": "ac9bfa1e7297a2e8d705c4bc895dfe39b9f297b64777dd6c4a4914b19bb9f8ac"
+  },
+  "producer_original_sha256": "ed67d94ded834d63599797bbd8efb7b26f125bd216f52bcb7f01febb928922ce",
+  "runtime_patch_sha256": "43984a797db82734daf6ebe00b50268eca8644cee3e25c956d7b87bda3907f2a",
+  "remove_only_twelve_line_proof": true,
+  "affected_closure": {
+    "AGENTS.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9ac6683ba4805e210143e5a33e7782da55af0d15"
+    },
+    "libs/python/capture_analysis/capture_analysis/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "67a4fb257b771af771edb4010e573ceeab86a51f"
+    },
+    "libs/python/capture_analysis/capture_analysis/discover.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d5c4fa7e06ac6e9139ebfc78fade90a3df5e451a"
+    },
+    "libs/python/capture_analysis/capture_analysis/eval/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "140fcb2784c4b73ddf69d21ddccfdcc8191cc0aa"
+    },
+    "libs/python/capture_analysis/capture_analysis/eval/job.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "814cad848e7b2fcce329d407ca10cc1d87f185cf"
+    },
+    "libs/python/capture_analysis/capture_analysis/eval/predictions.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f2e0e0c240d5d7018ef32d7a8075d06b1c53d7ce"
+    },
+    "libs/python/capture_analysis/capture_analysis/features/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e52dc3839105744e19193f8fc8067b818389a20b"
+    },
+    "libs/python/capture_analysis/capture_analysis/features/emg.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7f7536500a63ddc8b06774b8da65df8d56cd4f2b"
+    },
+    "libs/python/capture_analysis/capture_analysis/features/imu.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0ee47b3d579e4c3732634958dda21ae724beca9e"
+    },
+    "libs/python/capture_analysis/capture_analysis/features/io.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b998063a5036b73a67b773f70c193b1f9827c248"
+    },
+    "libs/python/capture_analysis/capture_analysis/features/numeric_batch.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "77f19ccb048c93c0f4fca460eef0502180b37717"
+    },
+    "libs/python/capture_analysis/capture_analysis/features/radar_doppler.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ee20f7314cb1af4512901d6009f73e3dddf9025c"
+    },
+    "libs/python/capture_analysis/capture_analysis/features/radar_frame.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e798dee0fb72dd261b504a99ac76f815515dda9e"
+    },
+    "libs/python/capture_analysis/capture_analysis/features/video_qc.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fa73c80d39a0d699f80d7e877b37167cf8b48b6a"
+    },
+    "libs/python/capture_analysis/capture_analysis/grids.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2e03f79d9317d2d97b721321130a9a5e6212b111"
+    },
+    "libs/python/capture_analysis/capture_analysis/jobs.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dd25dd3d6cc4b583f0fe6cfb352fba10be22352b"
+    },
+    "libs/python/capture_analysis/capture_analysis/kinematics/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "aaf360b8a0085f89b95cd976857f0933596098a7"
+    },
+    "libs/python/capture_analysis/capture_analysis/kinematics/compute.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fb8be59b00e15d9c264aad0983cf75a757c9e210"
+    },
+    "libs/python/capture_analysis/capture_analysis/kinematics/job.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fb8be113d8699427072f6dbcdae222a37738ac18"
+    },
+    "libs/python/capture_analysis/capture_analysis/kinematics/registry.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a28cfd708c90552401fb0b3157c60f713a06e14f"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eb6fae21d4bb79055f8d1af1528e846020f21459"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/base.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "941a6aa3cea6777f90534ea634cccf8fdd319a3f"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/emg.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c35d22af7bdeea570e6ae45a713428627e90894c"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/imu.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8823f04bd089789ca4cbff6602154bf066d4161d"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/mcap_iter.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b61ca0a914e4d3909790839774327aa5824c1b71"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/numeric_batch.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "668e5397d6a603d8665fe639b3218128bbda72c2"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/radar_doppler.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fc87bfb7fbbeb98ad8d5d11b3438b2d04882de6c"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/radar_frame.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a44af5392ba2b5b8b64de685f42772b141f1b8b1"
+    },
+    "libs/python/capture_analysis/capture_analysis/loaders/video.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6a192cd5999b45df08c666b9dad21dc29cf91824"
+    },
+    "libs/python/capture_analysis/capture_analysis/ml_bundle/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "619d634ebf6fcc82a7871ad9c463660a24fd65ae"
+    },
+    "libs/python/capture_analysis/capture_analysis/ml_bundle/job.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ba98576696ead3974d38dac1183fe57c86fd84d5"
+    },
+    "libs/python/capture_analysis/capture_analysis/pipeline.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8113ab4cb51678a122bbb702a23f2200c9333233"
+    },
+    "libs/python/capture_analysis/capture_analysis/plots/modality.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1de343cc2e11e663501ba190441325d5637d1492"
+    },
+    "libs/python/capture_analysis/capture_analysis/plots/style.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3725e840e5eb046accea79d4b6376f902392dac8"
+    },
+    "libs/python/capture_analysis/capture_analysis/plots/sync_dashboard.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "828204e998a46b9571b3a2b3ba08acd9fc6caa31"
+    },
+    "libs/python/capture_analysis/capture_analysis/plugins/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "39c9c93eab1f5abf65ea73299c34b05ec184dd63"
+    },
+    "libs/python/capture_analysis/capture_analysis/plugins/dummy.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0152651c271234bf38252bed51efda3a3fc19c0f"
+    },
+    "libs/python/capture_analysis/capture_analysis/plugins/handlers.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "03c8589064dfc4c6cfec6e4d00b7f46b10014414"
+    },
+    "libs/python/capture_analysis/capture_analysis/plugins/manifest.yaml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0628968ee3965170b486306f974c81dd4eb84a53"
+    },
+    "libs/python/capture_analysis/capture_analysis/plugins/numeric.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d8adbc1d90dbfdeac0cd9179c95f027532c1a5d4"
+    },
+    "libs/python/capture_analysis/capture_analysis/plugins/registry.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3c582e1ab0de2b22956ac47fb628227eacdd1faf"
+    },
+    "libs/python/capture_analysis/capture_analysis/pose/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "108be2956adfed6328f397d88a3b61ebada0ac48"
+    },
+    "libs/python/capture_analysis/capture_analysis/pose/job.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a1a3f2436b0ac8decc551f84e76fa6c4c6e602d"
+    },
+    "libs/python/capture_analysis/capture_analysis/qc.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "530b86af1247599c127e2d0c3fa5e4d7d12169f6"
+    },
+    "libs/python/capture_analysis/capture_analysis/report_html.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bb8032024cfce30c6fe9a2bd2c13b0d2cbc2d102"
+    },
+    "libs/python/capture_analysis/capture_analysis/types.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2adf26816e0ef9e84e6763cf8bbff69d64697949"
+    },
+    "libs/python/capture_analysis/capture_analysis/version.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d04b8cc1dd9271ca3ccf836d97436d9a961417c6"
+    },
+    "libs/python/capture_analysis/capture_analysis/windows.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "aaafd8db78f82a5a56178135dbed5bfd4f45c634"
+    },
+    "libs/python/capture_analysis/pyproject.toml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6db8b1158b14da660128d7ac0ceacb45b8eb9924"
+    },
+    "libs/python/capture_protocol/LICENSE": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d645695673349e3947e8e5ae42332d0ac3164cd7"
+    },
+    "libs/python/capture_protocol/NOTICE": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7f9ac0678aa56452f06e6e5f3badc9a873e2008a"
+    },
+    "libs/python/capture_protocol/capture_protocol/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0e7ab2cf8689d3adbc689c283e8a23d12607b2d0"
+    },
+    "libs/python/capture_protocol/capture_protocol/codec.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3034065efca2c52e34c3e67e147bdda526d2c8db"
+    },
+    "libs/python/capture_protocol/capture_protocol/config_schema.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c9b4a694e620e5597d338230fcb0f25ea3a757f6"
+    },
+    "libs/python/capture_protocol/capture_protocol/constants.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2542cda6bdb6a83d4334336f34d92f80040bc4a0"
+    },
+    "libs/python/capture_protocol/capture_protocol/control_client.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "45e1c4b535ece8d7178cd6b32ab1affcc9e73e92"
+    },
+    "libs/python/capture_protocol/capture_protocol/framing.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9dd5021b815b31ab02eaaa814210525ebb543862"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "16ae7d90a122b4973139c563ac0f72efa061b1de"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/arrays_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a29ed506c4dd33f697ba74d13b6e8a9c945c6b6d"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/common_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "66031212a0da44800dcc671b0d4bf0cd39e71f06"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/control_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0597489cf8609a76e2094270965039da9b739ca3"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/emg_batch_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d8495ebeb8ab140824eaa5412be0779cf929ec6a"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/imu_frame_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "54bbf93dc638cdab95f49744ea7e0b43fefad374"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/numeric_batch_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "beedaaae054bfb083af3642c96ca7c64af14cc8d"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/radar_doppler_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ad8fe84317d2f4049682f70bead19f90c6932457"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/radar_frame_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cef636d7b030b037b23331eec9a86f3b152bc358"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/data/video_timing_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "17937a141a9a2d81858cf52d74bc4705afc940b7"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/events_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "030bd4a90be609403e7709605607d8d5b993776e"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/health_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b27bd32ec488168871ca2342062eb576d56a9e8e"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/presets_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d20925410185e5cf52bbc56e438534c1c5ff1102"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/preview_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cb04387df1614a8b9d9755a702129bbbb8d6374e"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/project_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a8e71f0a426858cc679cb87ce31d1379e70a2817"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/source_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b72752efedc743d236713e51283dce923a526f55"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/storage_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4dd1b48ab16900c5c3e88d9788cebf83ee93cc5a"
+    },
+    "libs/python/capture_protocol/capture_protocol/generated/capture/v1/worker_pb2.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7f3a4fc372384523638853f4bd458f49b664ba70"
+    },
+    "libs/python/capture_protocol/capture_protocol/handshake.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9386e73b3c1eecb683d9d0ca98ad415268e307af"
+    },
+    "libs/python/capture_protocol/capture_protocol/structured_log.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fc9c97b288280f4473c6b3c5b5e6ff07332fad49"
+    },
+    "libs/python/capture_protocol/pyproject.toml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fa71ca45874d34076208507180c69c7a0e38fa76"
+    },
+    "libs/python/capture_session/capture_session/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "894e3c152a98b6e804de90122572afbcd929b3da"
+    },
+    "libs/python/capture_session/capture_session/app_paths.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "46332cea7c62dd44247b219937ae6c8fbc747017"
+    },
+    "libs/python/capture_session/capture_session/package_reader.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "91fbf913c5af8489968425d7ceac51c04233d3e0"
+    },
+    "libs/python/capture_session/capture_session/registry.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c1d7799e1d2099424221b2f4af216a43a972c67a"
+    },
+    "libs/python/capture_session/capture_session/settings_store.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "41b99cdaa78011d3d9b753c3131f32c72af9699f"
+    },
+    "libs/python/capture_session/pyproject.toml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c83450d780e97e5bd90feb48cef140917b6e47ff"
+    },
+    "libs/python/capture_worker/LICENSE": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d645695673349e3947e8e5ae42332d0ac3164cd7"
+    },
+    "libs/python/capture_worker/NOTICE": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d74f1cbf89d4c89f70b3e75ab71cfadea8b7128f"
+    },
+    "libs/python/capture_worker/capture_worker/__init__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4bf1fc6b13bc4f5daab79d937ea89cf6c120cce3"
+    },
+    "libs/python/capture_worker/capture_worker/__main__.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a1047121f4173802074eeb66e5dcaf6c542c29c1"
+    },
+    "libs/python/capture_worker/capture_worker/cli.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eb2d869f951f0205085b074d067282990657b5a0"
+    },
+    "libs/python/capture_worker/capture_worker/preview.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c47abe8a118ea022931843bde802132548194eef"
+    },
+    "libs/python/capture_worker/capture_worker/transport.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2e5e159bee3a0b5aa69bf90f62906feeffe23c8c"
+    },
+    "libs/python/capture_worker/capture_worker/worker.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d5ed2999fbb958116d73a8fa6319356d8b7d751a"
+    },
+    "libs/python/capture_worker/capture_worker/writer.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b3d194cc71dfa0d21884936a6ed5f7bdc95b3eb4"
+    },
+    "libs/python/capture_worker/pyproject.toml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5d79642edc9c1809fda636d5dcd78ad33e67abcc"
+    },
+    "pyproject.toml": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "52491c6beebc4b17983fc66bb8765154c33cf6d8"
+    },
+    "requirements-ci.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "044cfa00061e8a368be427c60d72765318d9080a"
+    },
+    "requirements-native-ci.txt": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "20dfdde094e96e5e5242eaa336a3dc5d653d6cd8"
+    },
+    "schemas/LICENSE": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d645695673349e3947e8e5ae42332d0ac3164cd7"
+    },
+    "schemas/NOTICE": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "12b0bd20065311a681549056f9b8f87712779f0d"
+    },
+    "schemas/activity_catalog/1.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3f8b58d880bb333632994163207d7871e3fb0699"
+    },
+    "schemas/activity_catalog/activity_catalog.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f3750e0673c1dc8255094c2d6f0721508208e462"
+    },
+    "schemas/eval/predictions.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d8656895faec8b2ff6bad9b3b45448652eed4286"
+    },
+    "schemas/kinematics/kinematics_columns.registry.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "19fe5783ceb5d37898ccf209a85ad56a14be5c42"
+    },
+    "schemas/kinematics/kinematics_columns.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9295e8c721a7295c9b79f271345d12f431304982"
+    },
+    "schemas/ml_bundle/ml_bundle.manifest.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4f3d8cb50f69bc2a8fa1c2dbdfa5a6d67cb6e22b"
+    },
+    "schemas/plugin/examples/camera.gstreamer.plugin.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "de990e8827dd7581c0ae8d06156977586d2d629e"
+    },
+    "schemas/plugin/examples/radar.ifx.plugin.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fddfa24fa7ce74c9726e83dd3d434c5f052d4e81"
+    },
+    "schemas/plugin/examples/sim.builtin.plugin.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a93c247c18521402fa632d5e93ed3e8dd502e9bd"
+    },
+    "schemas/plugin/plugin_manifest.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7612cc6b2b87fbb61fbd7fa93f2e57fe32e88552"
+    },
+    "schemas/proto/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f802d5b6cf9952a34f353d303ed210fb1a4090ef"
+    },
+    "schemas/proto/capture/v1/arrays.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c5b55de37045dc8e799dc4cf8bef556db0e964f1"
+    },
+    "schemas/proto/capture/v1/common.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c38e56ac40c188633c9a865451580f329738be29"
+    },
+    "schemas/proto/capture/v1/control.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c92be1245457aeab42651c480a4acf87e375e2d7"
+    },
+    "schemas/proto/capture/v1/data/emg_batch.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cfe8b3e6d242a5157d1a48904ff0ddb1a87a4784"
+    },
+    "schemas/proto/capture/v1/data/imu_frame.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dedf652d7296e75c25b4ffc6008157a0eb72a005"
+    },
+    "schemas/proto/capture/v1/data/numeric_batch.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ec43fd3406130ed2d6743de09e0076dd55f16639"
+    },
+    "schemas/proto/capture/v1/data/radar_doppler.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a9d7c291dd4e1e9d4e306294c9ccaca7a972c3b6"
+    },
+    "schemas/proto/capture/v1/data/radar_frame.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b9bcba12f1f23cc87dc9403409a937d2965e0e1f"
+    },
+    "schemas/proto/capture/v1/data/video_timing.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "25d1618ec84d2b69b3856999bb0cd8714a16b720"
+    },
+    "schemas/proto/capture/v1/events.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c7f5943e568552803d53dd322d51cce1e361f4ab"
+    },
+    "schemas/proto/capture/v1/health.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "431d818649fbecc2ba4a814cb19e0a81b3cb1cb5"
+    },
+    "schemas/proto/capture/v1/presets.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "36ad3689aa9af4a90661d84a295bc3f8495483cb"
+    },
+    "schemas/proto/capture/v1/preview.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fba83363cf291255f13c96335e38826a003a5a1b"
+    },
+    "schemas/proto/capture/v1/project.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fe6e0b493683ec4f26f8c29f854eef34b7b362e9"
+    },
+    "schemas/proto/capture/v1/source.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "263f77bdad4210a2def3eaee28354aaebd7664ae"
+    },
+    "schemas/proto/capture/v1/storage.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f141fcc0b185b5328a1aa5c89cc6c77e202b7030"
+    },
+    "schemas/proto/capture/v1/worker.proto": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6614ea6b3588abfaf9ef26db04de7c22b3d3b9f7"
+    },
+    "schemas/session/examples/minimal_session/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0ffbfe7d25bf1f9176674be646e3c63ddd469f31"
+    },
+    "schemas/session/golden/README.md": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "35b0bcd21e84d4705eee15329eaa89fe5caa5a14"
+    },
+    "schemas/session/jsonschema/analysis_feature_schema.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "56e8627596a956b647cb2de52756ca7329d9226e"
+    },
+    "schemas/session/jsonschema/analysis_job.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0837e193dd28a3ef1fc8ecd7e0727ca96b75db43"
+    },
+    "schemas/session/jsonschema/annotation.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "686fbf750e5467379cfd206a7746fdbb2082a7d6"
+    },
+    "schemas/session/jsonschema/checkpoint.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "290c505abab0c84203e471d599f7f21c1d146e9b"
+    },
+    "schemas/session/jsonschema/clock_mapping.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "883dbb9e309e0045613a85aa98c905aee9c90fa6"
+    },
+    "schemas/session/jsonschema/device_array.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "261041151417e65a448ce6990581ec5c89bc0c9a"
+    },
+    "schemas/session/jsonschema/gap_event.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3220405e13c712578bb6902560307e2b7f0e56aa"
+    },
+    "schemas/session/jsonschema/health_snapshot.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cdd950437a61addf2d6ff02129edf2440c4ab812"
+    },
+    "schemas/session/jsonschema/index.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c6b4ac925ecc0b2185ddda7c4cfce3d2514daab1"
+    },
+    "schemas/session/jsonschema/integrity_file_entry.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d990d95d712475e275e94e26e4df7aa8dff06120"
+    },
+    "schemas/session/jsonschema/integrity_manifest.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fc74612f8fdba102c5b4051f7fbfcddc66a13bd3"
+    },
+    "schemas/session/jsonschema/logical_slot.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c72b8feeb729532a3796846405e202addfcc8420"
+    },
+    "schemas/session/jsonschema/physical_device.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bbf80cc0a8ca24570f8d87fbd3fd209cc96021d1"
+    },
+    "schemas/session/jsonschema/preset_snapshot.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "93d1f6cfeceb23f495c1ad372874ad1df21b5ac2"
+    },
+    "schemas/session/jsonschema/radar_array.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d30c1c1509bdaa3208fbbd886c26c1a8c8781cc4"
+    },
+    "schemas/session/jsonschema/sensor_instance.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "62a431d85b50d4ddd1586b025eb3da6dd2715981"
+    },
+    "schemas/session/jsonschema/session_identity.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "11582b43940dddbf8b7b8b971047c430951e3928"
+    },
+    "schemas/session/jsonschema/session_manifest.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bcef59d89aa923371f3be8cbe67d57d22f45c203"
+    },
+    "schemas/session/jsonschema/source_instance.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9c35b558389ce8f371a2ad49bef71db357f956cb"
+    },
+    "schemas/session/jsonschema/stream_descriptor.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9590ba6ae1cddb682824799e2b513a026972da52"
+    },
+    "schemas/session/jsonschema/sync_anchor.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a97b824946aa935b7d9b155dba4a2c731d615a95"
+    },
+    "schemas/session/jsonschema/timing_header.schema.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "59de95b9798425613dbc17bce7e46f3c02c58144"
+    },
+    "schemas/session/migrations/registry.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "83107e723970d95da8253c082dc638b7c750c95b"
+    },
+    "tests/analysis/test_checkpoint_sections.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7dfc0ad216f9b4ed512ee3b33c3b65ba44895727"
+    },
+    "tests/analysis/test_export_selection_mcap.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "92d6ad922a88a0f147d79faf9b9b69a2f3537d00"
+    },
+    "tests/analysis/test_export_sidecar.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8c265bb2498c7286298bec712361ca44f224c088"
+    },
+    "tests/analysis/test_external_predictions.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "20dc6f0e88cd43daaa192c863846174f48c28be8"
+    },
+    "tests/analysis/test_job_destinations.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6f226b0b047f570d1022f5de3dbf26563deda8b5"
+    },
+    "tests/analysis/test_job_failure_cli.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "70ebbbc0db3d7b26a00c9936634f28f6244e8232"
+    },
+    "tests/analysis/test_job_output_provenance.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "68341362754f05021763ea83aede1d63142e2eef"
+    },
+    "tests/analysis/test_job_replacement.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4306dcce94f781c0c979236d8575b2b68d3cc6cf"
+    },
+    "tests/analysis/test_kinematics_ml_bundle.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ee62938fce9cfcb318f647b070d03b23463e1c90"
+    },
+    "tests/analysis/test_kinematics_validity.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7cf66857bcbeb9b72851ad53ce7c08f97d528fc8"
+    },
+    "tests/analysis/test_ml_bundle_feature_order.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bf21e27acb79128869bb577ac10e801e16cae896"
+    },
+    "tests/analysis/test_ml_bundle_metadata.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e5b932680e90ac97d8f0a608ec0303442c4cad65"
+    },
+    "tests/analysis/test_numeric_batch_pipeline.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9485adb27d02ab88e65d87576a06b86869a0360b"
+    },
+    "tests/analysis/test_numeric_cli_receiving.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0dabc2786a771903322e240039522c0bbdea8f9a"
+    },
+    "tests/analysis/test_numeric_receiving.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d2d80dca85375acd58c4970e0c9490ee662c75f9"
+    },
+    "tests/analysis/test_offline_demo.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7395a37b420f91bc3d425ccd718786299bfff9d3"
+    },
+    "tests/analysis/test_phase_a_qc.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "26ba50397f91d3ab4ba1ea04fcd56130afba83f5"
+    },
+    "tests/analysis/test_phase_b_features.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "653956c584ba077b2c93afc0585a1bfa9690a2d7"
+    },
+    "tests/analysis/test_plugin_registry.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cbe5cedff9c83d42606fb357c8f66c024bc7f9b5"
+    },
+    "tests/analysis/test_pose_job.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a62eebfa37acf625c6a480a5f55275ac91164194"
+    },
+    "tests/analysis/test_qc_gap_details.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "593ca17abe543b579e4930d36e4b900c54ce0bb8"
+    },
+    "tests/analysis/test_stream_gap_scope.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7b239c2ac7c002164732eeded969c628464e61df"
+    },
+    "tests/analysis/test_sync_anchor_request.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ead08b6cd74455115fa1e9f2e83e9ea4a72dcd18"
+    },
+    "tests/conftest.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ad9b61fd8e9c1c3d74f91710d4e82dd7d899e6b4"
+    },
+    "tests/fixtures/mini_session/events/annotations.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fe51488c7066f6687ef680d6bfaa4f7768ef205c"
+    },
+    "tests/fixtures/mini_session/events/checkpoints.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fe51488c7066f6687ef680d6bfaa4f7768ef205c"
+    },
+    "tests/fixtures/mini_session/events/sync_anchors.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fe51488c7066f6687ef680d6bfaa4f7768ef205c"
+    },
+    "tests/fixtures/mini_session/integrity.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d10093b866427fcaed78a85e60e600d8657a86a7"
+    },
+    "tests/fixtures/mini_session/manifest.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "800dab5b41774bc043ebdee4714195770e75229b"
+    },
+    "tests/fixtures/mini_session/processing/.gitkeep": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "tests/fixtures/mini_session/sources/sim.emg.main/health/gaps.jsonl": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    "tests/fixtures/mini_session/sources/sim.emg.main/source.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9528c95289b4b1b49d11d412b5ab2e3d019b4066"
+    },
+    "tests/fixtures/mini_session/sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "320ce3607fadf57d05cf506987d045cf5b62ad9f"
+    },
+    "tests/fixtures/mini_session/sources/sim.emg.main/streams/sim.emg.main.batch/stream.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "12c4db8831572fc4ab3db9ba5f784fa236078e5f"
+    },
+    "tests/fixtures/mini_session/sources/sim.imu.upper/source.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fcc248c52b8319f5e7fd0067763b74640f0040dd"
+    },
+    "tests/fixtures/mini_session/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "320ce3607fadf57d05cf506987d045cf5b62ad9f"
+    },
+    "tests/fixtures/mini_session/sources/sim.imu.upper/streams/sim.imu.upper.frames/stream.json": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9c634d4af594372063fcc612331ba338ae95f8c9"
+    },
+    "tools/run_analysis.py": {
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a846e6e0550ec4ba1db12a1b989d5e03cfdd69b6"
+    }
+  },
+  "affected_closure_leaves": 193,
+  "closure_drift": [],
+  "closure_removed": [],
+  "receipts": {
+    "baseline": {
+      "sha256": "a91c6f73cdb4426bac5185c222fc480e4a63f311fb48867f489440336b4a4a2d",
+      "junit": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "15",
+          "skipped": "0",
+          "tests": "16",
+          "time": "26.155",
+          "timestamp": "2026-10-08T21:09:43.881086+00:00",
+          "hostname": "hamon-thinkpad"
+        }
+      ],
+      "exit_code": 1,
+      "seconds": 32.930121231940575,
+      "test_sha256": "87eaec0b140b3087459a909433064137ec7894ab30a652edd63c4490b00412b3",
+      "producer_sha256": "ed67d94ded834d63599797bbd8efb7b26f125bd216f52bcb7f01febb928922ce"
+    },
+    "baseline-final": {
+      "sha256": "f3bc8b0fbf18f04284403139bf1204644c423410b10e2e115c9598b048673a7e",
+      "junit": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "12",
+          "skipped": "0",
+          "tests": "16",
+          "time": "21.829",
+          "timestamp": "2026-10-08T21:11:16.076947+00:00",
+          "hostname": "hamon-thinkpad"
+        }
+      ],
+      "exit_code": 1,
+      "seconds": 26.63377950503491,
+      "test_sha256": "157a190a278636c6d0a990eebfa93e435946448392e2cc028ea7585f6ffff9b2",
+      "producer_sha256": "ed67d94ded834d63599797bbd8efb7b26f125bd216f52bcb7f01febb928922ce"
+    },
+    "candidate": {
+      "sha256": "83b9da807a8d1462aa08601e6d74439543069c0e217d89bba217d4813ba172d4",
+      "junit": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "16",
+          "time": "6.911",
+          "timestamp": "2026-10-08T21:12:05.827698+00:00",
+          "hostname": "hamon-thinkpad"
+        }
+      ],
+      "exit_code": 0,
+      "seconds": 10.378113407059573,
+      "test_sha256": "157a190a278636c6d0a990eebfa93e435946448392e2cc028ea7585f6ffff9b2",
+      "producer_sha256": "6089902c464864a5af3aeda8caba581aa254979f6cc90d3d3913d8bc34dd25d0"
+    },
+    "related": {
+      "sha256": "589238c9b06fbbb798ad49d47624ac35e6b16a9b5ed4e92d73db25d22adb398a",
+      "junit": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "62",
+          "time": "21.780",
+          "timestamp": "2026-10-08T21:13:10.430073+00:00",
+          "hostname": "hamon-thinkpad"
+        }
+      ],
+      "exit_code": 0,
+      "seconds": 23.125384187907912,
+      "test_sha256": "157a190a278636c6d0a990eebfa93e435946448392e2cc028ea7585f6ffff9b2",
+      "producer_sha256": "6089902c464864a5af3aeda8caba581aa254979f6cc90d3d3913d8bc34dd25d0"
+    }
+  },
+  "original_progress_addendum_sha256": "f76526c38a8cca0f25cc67c6cc96711b2ed55c67368d845630575493294946cd",
+  "no_product_replay": true,
+  "native_history_limit": "git log -4 displayed both owned commits then exited128 because historical object050f41170a656b6a6177770b3d21749ef5263b36 is absent. Exact qualified HEAD/tree/status and both parent/current trees remain readable; no fetch, alternate identity or persistent config change.",
+  "receiving_limits": "Original native Linux Python3.12 component qualification only; no Windows/full-current-tree/installed claim. Prior independent live-fixture/Git permission limits remain in adopted audit unchanged."
+}

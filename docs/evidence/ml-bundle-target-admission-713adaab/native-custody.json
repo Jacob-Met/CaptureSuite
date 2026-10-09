@@ -1,0 +1,28 @@
+{
+  "command": "native git commit only; no push/ref/PR/GitHub Actions mutation",
+  "exit_code": 0,
+  "stdout": "[support/ml-target-admission-713adaab b5d8a12] Reject ML targets that replace required window fields\n 7 files changed, 7297 insertions(+)\n create mode 100644 docs/design/ML_BUNDLE_TARGETS.md\n create mode 100644 docs/evidence/ml-bundle-target-admission-713adaab/README.md\n create mode 100644 docs/evidence/ml-bundle-target-admission-713adaab/manifest.json\n create mode 100644 docs/evidence/ml-bundle-target-admission-713adaab/native-receiving.tar.gz\n create mode 100644 tests/analysis/test_ml_bundle_target_admission.py\n",
+  "stderr": "",
+  "commit": "b5d8a12c919074a96ab6e88ce787eb9219839cb7",
+  "tree": "3e769fd3e8dedc9561b8717b6cdedeedfab57c8d",
+  "parent": "e48825b1b37544f4c31912e3c29a3918704f5456",
+  "status": "",
+  "changed_paths": [
+    "docs/design/ML_BUNDLE_TARGETS.md",
+    "docs/design/research/PROGRESS.md",
+    "docs/evidence/ml-bundle-target-admission-713adaab/README.md",
+    "docs/evidence/ml-bundle-target-admission-713adaab/manifest.json",
+    "docs/evidence/ml-bundle-target-admission-713adaab/native-receiving.tar.gz",
+    "libs/python/capture_analysis/capture_analysis/ml_bundle/job.py",
+    "tests/analysis/test_ml_bundle_target_admission.py"
+  ],
+  "source_sha256": {
+    "libs/python/capture_analysis/capture_analysis/ml_bundle/job.py": "6089902c464864a5af3aeda8caba581aa254979f6cc90d3d3913d8bc34dd25d0",
+    "tests/analysis/test_ml_bundle_target_admission.py": "157a190a278636c6d0a990eebfa93e435946448392e2cc028ea7585f6ffff9b2",
+    "docs/design/ML_BUNDLE_TARGETS.md": "ac9bfa1e7297a2e8d705c4bc895dfe39b9f297b64777dd6c4a4914b19bb9f8ac",
+    "docs/design/research/PROGRESS.md": "2c227a6af08bb1fd67c01a8f9e91a6922c30b5c9ac7112fe7d3770913008743a",
+    "docs/evidence/ml-bundle-target-admission-713adaab/README.md": "33e72274c8ba5875ff57881ac27459145bb3e4f411f7f464d180bda28f5d62c4",
+    "docs/evidence/ml-bundle-target-admission-713adaab/manifest.json": "094daebae06644d65319a5dfa3e6fecd9d1c428de8607f28e07e9d6d4cb865b5",
+    "docs/evidence/ml-bundle-target-admission-713adaab/native-receiving.tar.gz": "8a1113851d53fc4a36ef1e27fb9c302ef2927ac71531485ebdb99715f2f3ff41"
+  }
+}

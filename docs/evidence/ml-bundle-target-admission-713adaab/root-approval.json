@@ -1,0 +1,33 @@
+{
+  "actor": "chatgpt:/root/713adaab",
+  "created_utc": "2026-10-08T22:57:30.457156+00:00",
+  "decision": "approve native source and declared receiving; integration gates remain pending",
+  "finding": "Root read complete runtime patch, all190 test lines and contract. Exact-name admission occurs before bundle publication and preserves None/empty defaults, distinct custom labels, integer timestamp/value fidelity and failed-job evidence. Peer independently audited16 focused plus62 related cases,1388 capsule members,58 input pairs and3 valid Parquet pairs. Initial Arrow receiver correction is preserved.",
+  "limits": [
+    "Native component scope only; no Windows, hardware, installed or live-session acceptance.",
+    "Peer Git-ref read and live fixture reads were blocked by ownership/permissions; source and complete portable capsule bytes were verified without bypass.",
+    "Current-main composition, required hosted gates and Actions-triggering integration remain pending."
+  ],
+  "peer_audit": {
+    "path": "/home/jacob/chatgpt-migration-peer-reviews-713adaab/target95-audit/independent-target95-raw-custody-audit.json",
+    "sha256": "89c651311ffdb0bf3bbdae2366dcb580eede5e291fe9844518805335af0e0278"
+  },
+  "product_replay": false,
+  "remote_write": false,
+  "schema": "hamon.root.component-source-approval/1",
+  "source_files": {
+    "source/docs/design/ML_BUNDLE_TARGETS.md": {
+      "bytes": 2110,
+      "sha256": "ac9bfa1e7297a2e8d705c4bc895dfe39b9f297b64777dd6c4a4914b19bb9f8ac"
+    },
+    "source/libs/python/capture_analysis/capture_analysis/ml_bundle/job.py": {
+      "bytes": 10825,
+      "sha256": "6089902c464864a5af3aeda8caba581aa254979f6cc90d3d3913d8bc34dd25d0"
+    },
+    "source/tests/analysis/test_ml_bundle_target_admission.py": {
+      "bytes": 7836,
+      "sha256": "157a190a278636c6d0a990eebfa93e435946448392e2cc028ea7585f6ffff9b2"
+    }
+  },
+  "source_mutation": false
+}

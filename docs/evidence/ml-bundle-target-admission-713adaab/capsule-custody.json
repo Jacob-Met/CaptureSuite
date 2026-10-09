@@ -1,0 +1,11 @@
+{
+  "capsule": {
+    "path": "native-receiving.tar.gz",
+    "bytes": 2021310,
+    "sha256": "8a1113851d53fc4a36ef1e27fb9c302ef2927ac71531485ebdb99715f2f3ff41",
+    "members": 1388,
+    "reopened_all_bytes_equal": true
+  },
+  "manifest_sha256": "094daebae06644d65319a5dfa3e6fecd9d1c428de8607f28e07e9d6d4cb865b5",
+  "readme_sha256": "33e72274c8ba5875ff57881ac27459145bb3e4f411f7f464d180bda28f5d62c4"
+}

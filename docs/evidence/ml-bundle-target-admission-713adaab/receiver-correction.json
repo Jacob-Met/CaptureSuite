@@ -1,0 +1,7 @@
+{
+  "reason": "Original receiver required Arrow string offset width32, but actual unchanged pandas output uses large_string. Preserve string semantic types for both supported Arrow layouts; exact Parquet/schema preservation is also compared between valid baseline and candidate files. Numeric required types remain exact. No runtime candidate exists yet.",
+  "original_receipt": "baseline/receipt.json",
+  "original_receiver_sha256": "87eaec0b140b3087459a909433064137ec7894ab30a652edd63c4490b00412b3",
+  "final_receiver_sha256": "157a190a278636c6d0a990eebfa93e435946448392e2cc028ea7585f6ffff9b2",
+  "original_counts": "1pass/15fail:12 intended admission failures plus3 receiver Arrow offset-width assumptions"
+}

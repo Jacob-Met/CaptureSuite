@@ -1,0 +1,251 @@
+{
+  "schema": "hamon.independent-raw-custody-review/1",
+  "reviewer": "chatgpt:/root/migration_execution",
+  "created_at": "2026-10-08T22:07:05.163900+00:00",
+  "repository": "Jacob-Met/CaptureSuite",
+  "scope": "target95 ML-bundle target admission retained native source/receiver/capsule audit",
+  "disposition": "approved_for_declared_native_component_custody_no_blocker",
+  "owner_inventory": {
+    "path": "/home/jacob/chatgpt-production-reviews-713adaab/completed-slice-inventories.json",
+    "sha256": "f89e67d57b706497263e3b6bff734ce3ead7dfe7593f2b9f458155f32363094f",
+    "reported_head": "809f93be15d9771ca8673457b6e359f74a727358",
+    "reported_tree": "be603098a73ffc1e1bb82e6c5caf4587481f13bb",
+    "independent_git_ref_readback": false,
+    "independently_hashed_records": 34,
+    "unique_paths": 30
+  },
+  "pins": {
+    "runtime": "6089902c464864a5af3aeda8caba581aa254979f6cc90d3d3913d8bc34dd25d0",
+    "original_runtime": "ed67d94ded834d63599797bbd8efb7b26f125bd216f52bcb7f01febb928922ce",
+    "runtime_patch": "43984a797db82734daf6ebe00b50268eca8644cee3e25c956d7b87bda3907f2a",
+    "initial_receiver": "87eaec0b140b3087459a909433064137ec7894ab30a652edd63c4490b00412b3",
+    "final_receiver": "157a190a278636c6d0a990eebfa93e435946448392e2cc028ea7585f6ffff9b2",
+    "capsule": "8a1113851d53fc4a36ef1e27fb9c302ef2927ac71531485ebdb99715f2f3ff41",
+    "manifest": "094daebae06644d65319a5dfa3e6fecd9d1c428de8607f28e07e9d6d4cb865b5"
+  },
+  "raw_executions_audited": [
+    {
+      "label": "baseline",
+      "command": [
+        "/srv/hamon-estate/chatgpt-capturesuite-nearest-features-713adaab/environment/venv/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/analysis/test_ml_bundle_target_admission.py",
+        "-vv",
+        "-ra",
+        "-p",
+        "no:cacheprovider",
+        "--basetemp=/srv/hamon-estate/chatgpt-capturesuite-target-admission-713adaab/evidence/baseline/fixtures",
+        "--junitxml=/srv/hamon-estate/chatgpt-capturesuite-target-admission-713adaab/evidence/baseline/junit.xml"
+      ],
+      "exit_code": 1,
+      "tests": 16,
+      "passed": 1,
+      "failures": 15,
+      "errors": 0,
+      "skipped": 0,
+      "raw_log_matches_all_junit_cases": true,
+      "before_after_source_records": 167,
+      "source_maps_unchanged": true,
+      "producer_sha256": "ed67d94ded834d63599797bbd8efb7b26f125bd216f52bcb7f01febb928922ce",
+      "receiver_sha256": "87eaec0b140b3087459a909433064137ec7894ab30a652edd63c4490b00412b3",
+      "receipt_sha256": "a91c6f73cdb4426bac5185c222fc480e4a63f311fb48867f489440336b4a4a2d"
+    },
+    {
+      "label": "baseline-final",
+      "command": [
+        "/srv/hamon-estate/chatgpt-capturesuite-nearest-features-713adaab/environment/venv/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/analysis/test_ml_bundle_target_admission.py",
+        "-vv",
+        "-ra",
+        "-p",
+        "no:cacheprovider",
+        "--basetemp=/srv/hamon-estate/chatgpt-capturesuite-target-admission-713adaab/evidence/baseline-final/fixtures",
+        "--junitxml=/srv/hamon-estate/chatgpt-capturesuite-target-admission-713adaab/evidence/baseline-final/junit.xml"
+      ],
+      "exit_code": 1,
+      "tests": 16,
+      "passed": 4,
+      "failures": 12,
+      "errors": 0,
+      "skipped": 0,
+      "raw_log_matches_all_junit_cases": true,
+      "before_after_source_records": 167,
+      "source_maps_unchanged": true,
+      "producer_sha256": "ed67d94ded834d63599797bbd8efb7b26f125bd216f52bcb7f01febb928922ce",
+      "receiver_sha256": "157a190a278636c6d0a990eebfa93e435946448392e2cc028ea7585f6ffff9b2",
+      "receipt_sha256": "f3bc8b0fbf18f04284403139bf1204644c423410b10e2e115c9598b048673a7e"
+    },
+    {
+      "label": "candidate",
+      "command": [
+        "/srv/hamon-estate/chatgpt-capturesuite-nearest-features-713adaab/environment/venv/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/analysis/test_ml_bundle_target_admission.py",
+        "-vv",
+        "-ra",
+        "-p",
+        "no:cacheprovider",
+        "--basetemp=/srv/hamon-estate/chatgpt-capturesuite-target-admission-713adaab/evidence/candidate/fixtures",
+        "--junitxml=/srv/hamon-estate/chatgpt-capturesuite-target-admission-713adaab/evidence/candidate/junit.xml"
+      ],
+      "exit_code": 0,
+      "tests": 16,
+      "passed": 16,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "raw_log_matches_all_junit_cases": true,
+      "before_after_source_records": 167,
+      "source_maps_unchanged": true,
+      "producer_sha256": "6089902c464864a5af3aeda8caba581aa254979f6cc90d3d3913d8bc34dd25d0",
+      "receiver_sha256": "157a190a278636c6d0a990eebfa93e435946448392e2cc028ea7585f6ffff9b2",
+      "receipt_sha256": "83b9da807a8d1462aa08601e6d74439543069c0e217d89bba217d4813ba172d4"
+    },
+    {
+      "label": "related",
+      "command": [
+        "/srv/hamon-estate/chatgpt-capturesuite-nearest-features-713adaab/environment/venv/bin/python",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/analysis/test_ml_bundle_feature_order.py",
+        "tests/analysis/test_ml_bundle_metadata.py",
+        "tests/analysis/test_kinematics_ml_bundle.py",
+        "tests/analysis/test_external_predictions.py",
+        "-vv",
+        "-ra",
+        "-p",
+        "no:cacheprovider",
+        "--basetemp=/srv/hamon-estate/chatgpt-capturesuite-target-admission-713adaab/evidence/related/fixtures",
+        "--junitxml=/srv/hamon-estate/chatgpt-capturesuite-target-admission-713adaab/evidence/related/junit.xml"
+      ],
+      "exit_code": 0,
+      "tests": 62,
+      "passed": 62,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "raw_log_matches_all_junit_cases": true,
+      "before_after_source_records": 190,
+      "source_maps_unchanged": true,
+      "producer_sha256": "6089902c464864a5af3aeda8caba581aa254979f6cc90d3d3913d8bc34dd25d0",
+      "receiver_sha256": "157a190a278636c6d0a990eebfa93e435946448392e2cc028ea7585f6ffff9b2",
+      "receipt_sha256": "589238c9b06fbbb798ad49d47624ac35e6b16a9b5ed4e92d73db25d22adb398a"
+    }
+  ],
+  "source_conservation": {
+    "before_after_records": [
+      167,
+      167,
+      167,
+      190
+    ],
+    "all_maps_equal": true,
+    "independently_reconciled_digests": 691,
+    "basis": "Current pinned source bytes, exact twelve-line inverse for historical producer, and retained executed receiver bytes. No replay."
+  },
+  "receiver_history": {
+    "initial_result": "1 pass /15 failures:12 intended admission failures and3 Arrow string-offset-width receiver defects",
+    "corrected_original_result": "4 pass /12 failures",
+    "candidate_result": "16 pass",
+    "same_final_receiver_in_original_candidate_related_and_maintained_source": true,
+    "sole_receiver_delta": "Replace exact Arrow string-width expectation with string-or-large_string for two textual fields; all numeric types, exact integer time, values, ordering, conservation and failure checks are unchanged.",
+    "exact_inverse_receiver_comparison": true,
+    "exact_changed_initial_test_identities": [
+      "test_omitted_or_empty_targets_preserve_defaults[none]",
+      "test_omitted_or_empty_targets_preserve_defaults[empty-list]",
+      "test_custom_labels_keep_exact_identity_order_and_values"
+    ],
+    "original_failed_evidence_retained": true
+  },
+  "capsule_checks": {
+    "bytes": 2021310,
+    "unique_regular_members": 1388,
+    "manifest_members": 1388,
+    "each_member_size_and_sha256_match": true,
+    "no_archive_extraction": true,
+    "paired_original_inputs": 58,
+    "paired_valid_window_parquets": 3,
+    "pair_comparison": "Independent actual archive byte equality and declared hash/size equality",
+    "valid_window_receipts": [
+      {
+        "path": "test_custom_labels_keep_exact_0/result/ml_bundle/windows.parquet",
+        "bytes": 6467,
+        "sha256": "51f78d941d22076a03e68f435051cdfe9b02f6ea2f7e2611436aace46c4d5113",
+        "paired_equal": true
+      },
+      {
+        "path": "test_omitted_or_empty_targets_0/result/ml_bundle/windows.parquet",
+        "bytes": 6205,
+        "sha256": "35fa234fc551db5c8942f4e17bb8064395a193a7a6ea052cf2dc953abae5078e",
+        "paired_equal": true
+      },
+      {
+        "path": "test_omitted_or_empty_targets_1/result/ml_bundle/windows.parquet",
+        "bytes": 6205,
+        "sha256": "35fa234fc551db5c8942f4e17bb8064395a193a7a6ea052cf2dc953abae5078e",
+        "paired_equal": true
+      }
+    ]
+  },
+  "runtime_review": {
+    "added_lines": 12,
+    "inverse_restores_exact_original_sha256": true,
+    "reviewed": "Complete patch, maintained receiver, target contract, producer admission/write boundary and execution drivers read. Exact-name admission precedes output creation. Defaults/custom exact labels and inherited missing-column behavior stay covered."
+  },
+  "ruff": {
+    "raw_receipt_sha256": "c421595de4ed2587580b60dfc1e48d5fadb4ed13b42b17041ab8103bd5e773d6",
+    "command": [
+      "/srv/hamon-estate/chatgpt-capturesuite-nearest-features-713adaab/environment/venv/bin/python",
+      "-B",
+      "-m",
+      "ruff",
+      "check",
+      "--no-cache",
+      "--config",
+      "pyproject.toml",
+      "libs/python/capture_analysis/capture_analysis/ml_bundle/job.py",
+      "tests/analysis/test_ml_bundle_target_admission.py"
+    ],
+    "exit_code": 0,
+    "stdout": "All checks passed!\n",
+    "stderr": ""
+  },
+  "route_boundaries": {
+    "first_metadata_check": {
+      "path": "evidence/baseline/fixtures/test_custom_labels_keep_exact_0/package/processing/jobs/feat/features/radar/fixture/energy.parquet",
+      "result": "unprivileged Path.is_file returned false, so read_bytes was not evaluated",
+      "initial_inference": "Initially described as a guessed path mapping; owner confirmed the mapping is literal.",
+      "owner_metadata_confirmation": "File1779bytes, uid/gid0, mode0644; baseline/fixtures and test directory root0700. No metadata changed.",
+      "audit_resolution": "Used complete portable archive bytes for every member and paired artifacts. No protected-path retry, sudo, permission change or product replay."
+    },
+    "git_readback": {
+      "command": [
+        "git",
+        "-C",
+        "/srv/hamon-estate/chatgpt-capturesuite-target-admission-713adaab/source",
+        "rev-parse",
+        "HEAD",
+        "HEAD^{tree}"
+      ],
+      "observed": "fatal: detected dubious ownership",
+      "resolution": "No safe.directory setting, trust override, sudo, owner-checkout edit or second Git attempt. Source/evidence hashes are independently verified; head/tree remain owner-inventory attribution."
+    }
+  },
+  "limitations": [
+    "This is an independent read-only custody/source audit, not a replay or new product qualification.",
+    "Recorded executions are native ThinkPad Python3.12.10/pytest9.1.1; all accepted controls have zero skips, related62case run has two retained protobuf deprecation warnings.",
+    "The retained native source parent is e48825b1; component alignment to9e9204f7 is an owner receipt, not full-tree or supported Windows acceptance by this audit.",
+    "Root-owned live pytest fixture leaves were not independently read; their complete archived bytes were independently verified.",
+    "Current Git head/tree could not be independently read under the unprivileged Git trust boundary; exact supplied inventory bytes and all listed file hashes were checked before and after.",
+    "No owner source, fixture, installed state, permissions, environment, services or Git configuration changed. No GitHub access or Actions trigger.",
+    "Required hosted gates and Actions-triggering integration remain pending under the existing user hold."
+  ]
+}

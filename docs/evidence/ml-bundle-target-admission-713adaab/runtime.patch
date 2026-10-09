@@ -1,0 +1,23 @@
+diff --git a/libs/python/capture_analysis/capture_analysis/ml_bundle/job.py b/libs/python/capture_analysis/capture_analysis/ml_bundle/job.py
+index ba98576..b22f150 100644
+--- a/libs/python/capture_analysis/capture_analysis/ml_bundle/job.py
++++ b/libs/python/capture_analysis/capture_analysis/ml_bundle/job.py
+@@ -159,6 +159,18 @@ def run_ml_bundle_job(
+         raise RuntimeError("kinematics.parquet is empty")
+ 
+     y_cols = list(target_columns or DEFAULT_TARGET_COLUMNS)
++    if any(not isinstance(col, str) or not col for col in y_cols):
++        raise ValueError("target_columns must contain nonempty string names")
++    if len(set(y_cols)) != len(y_cols):
++        raise ValueError("target_columns must contain distinct names")
++    reserved_columns = {
++        "window_id", "session_time_ns", "valid_mask", "motion_energy", "feature_stream_id",
++    }
++    conflicts = [col for col in y_cols if col in reserved_columns]
++    if conflicts:
++        raise ValueError(
++            "target_columns conflict with required bundle columns: " + ", ".join(conflicts)
++        )
+     for col in y_cols:
+         if col not in kin_df.columns:
+             raise RuntimeError(f"kinematics missing target column {col!r}")

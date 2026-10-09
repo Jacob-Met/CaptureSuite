@@ -1,0 +1,99 @@
+{
+  "root": "/srv/hamon-estate/chatgpt-capturesuite-target-admission-713adaab",
+  "reviewer": "chatgpt:/root/mac_execution",
+  "decision": "approve; no blocker",
+  "kind": "source-only independent review",
+  "source_commit": "b5d8a12c919074a96ab6e88ce787eb9219839cb7",
+  "expected": {
+    "evidence/runtime.patch": "43984a797db82734daf6ebe00b50268eca8644cee3e25c956d7b87bda3907f2a",
+    "source/libs/python/capture_analysis/capture_analysis/ml_bundle/job.py": "6089902c464864a5af3aeda8caba581aa254979f6cc90d3d3913d8bc34dd25d0",
+    "source/tests/analysis/test_ml_bundle_target_admission.py": "157a190a278636c6d0a990eebfa93e435946448392e2cc028ea7585f6ffff9b2",
+    "source/docs/design/ML_BUNDLE_TARGETS.md": "ac9bfa1e7297a2e8d705c4bc895dfe39b9f297b64777dd6c4a4914b19bb9f8ac",
+    "evidence/paired-artifacts.json": "6c9ef1d8b4379639cb4a9d03f8ea8326db772f6d9a66c46b229906047c90f33d"
+  },
+  "context": [
+    "source/libs/python/capture_analysis/capture_analysis/jobs.py",
+    "source/libs/python/capture_analysis/capture_analysis/eval/predictions.py",
+    "source/libs/python/capture_analysis/capture_analysis/eval/job.py",
+    "source/schemas/ml_bundle/ml_bundle.manifest.schema.json",
+    "evidence/receiver-correction.json"
+  ],
+  "findings": [
+    "Read the full producer, patch, maintained test and dedicated document, the Job API dispatch/work placement and complete finalization/failure tail, external evaluator manifest/registry/window admission, identity-teacher consumer and full ML schema.",
+    "The guard rejects nonstring/empty names before set construction, preserves exact Unicode/case/whitespace identity and selection order, and preserves None/[] defaults. All five reserved names are exactly the keys otherwise replaceable by row.update(y_row).",
+    "Admission follows existing input Parquet read, but precedes feature loading, row construction, ML directory creation and both bundle writes. Public Job API diagnostics/job records remain possible and correctly retained by unchanged failure handling.",
+    "The external evaluator retains its stricter numeric kinematics registry contract; arbitrary recorded producer labels do not imply evaluator support. No schema, unit, median, time, validity, normalization, algorithm or scientific meaning changes.",
+    "The 16 maintained cases cover both defaults, exact custom values/order, five real input collisions, duplicate defaults/customs, empty/None/integer names, prior missing-column error and two actual Job API failures. Valid controls assert exact structural types/integer times above2**53 and output hashes; refusal asserts original inputs preserved and no ML output.",
+    "Original Arrow string-only receiver assumption was corrected before runtime repair to admit string/large_string, retaining exact int64/bool/float64 assertions. Original failed receiver evidence is retained.",
+    "Read paired-artifacts receipt reporting58 unchanged input pairs and3 byte-identical valid Parquets. Owner reports16/16 new and62/62 inherited native passes; no reviewer runtime replay."
+  ],
+  "limits": [
+    "No product tests/imports/source edits/installations/live sessions/hosted mutations/Actions by reviewer.",
+    "Approval is bounded selected-name admission; no broader arbitrary-container, data-quality, self-manifest-hash or scientific-validity claims.",
+    "Required hosted gates remain pending under operator Actions hold."
+  ],
+  "driver_note": "First metadata-only custody driver reached read-only git rev-parse after successful source hash/removal checks, then stopped on ownership safety before any output directory/write. Retry uses explicit per-invocation safe.directory for this authorized known source only; no persistent configuration change.",
+  "recorded_at": "2026-10-08T21:39:45.106021+00:00",
+  "verified_pins": [
+    {
+      "path": "evidence/runtime.patch",
+      "bytes": 1219,
+      "sha256": "43984a797db82734daf6ebe00b50268eca8644cee3e25c956d7b87bda3907f2a"
+    },
+    {
+      "path": "source/libs/python/capture_analysis/capture_analysis/ml_bundle/job.py",
+      "bytes": 10825,
+      "sha256": "6089902c464864a5af3aeda8caba581aa254979f6cc90d3d3913d8bc34dd25d0"
+    },
+    {
+      "path": "source/tests/analysis/test_ml_bundle_target_admission.py",
+      "bytes": 7836,
+      "sha256": "157a190a278636c6d0a990eebfa93e435946448392e2cc028ea7585f6ffff9b2"
+    },
+    {
+      "path": "source/docs/design/ML_BUNDLE_TARGETS.md",
+      "bytes": 2110,
+      "sha256": "ac9bfa1e7297a2e8d705c4bc895dfe39b9f297b64777dd6c4a4914b19bb9f8ac"
+    },
+    {
+      "path": "evidence/paired-artifacts.json",
+      "bytes": 16172,
+      "sha256": "6c9ef1d8b4379639cb4a9d03f8ea8326db772f6d9a66c46b229906047c90f33d"
+    },
+    {
+      "path": "source/libs/python/capture_analysis/capture_analysis/jobs.py",
+      "bytes": 19577,
+      "sha256": "fa7686685f1a680eb2982191fbd03b3986487e638e95088b56de32d4c183d568"
+    },
+    {
+      "path": "source/libs/python/capture_analysis/capture_analysis/eval/predictions.py",
+      "bytes": 18051,
+      "sha256": "decff22c1e2e661a3ce21679db68b667ea44fa5b18df8501204d7d23161cc906"
+    },
+    {
+      "path": "source/libs/python/capture_analysis/capture_analysis/eval/job.py",
+      "bytes": 4342,
+      "sha256": "0af5556304cfae0be9f40929fbe4eeba6cf8b1453f94e9ba475d66acda8bc913"
+    },
+    {
+      "path": "source/schemas/ml_bundle/ml_bundle.manifest.schema.json",
+      "bytes": 3846,
+      "sha256": "fb099856b1644cd71a243749dbad0b6b79e10cf678af505b39ced3517f2d6ecb"
+    },
+    {
+      "path": "evidence/receiver-correction.json",
+      "bytes": 712,
+      "sha256": "10511df9f7e7585c22aff639f3c41fe534c1b40d70c476ebac61745c0c511b7b"
+    }
+  ],
+  "independent_preservation": {
+    "removed_lines": 12,
+    "restored_original_sha256": "ed67d94ded834d63599797bbd8efb7b26f125bd216f52bcb7f01febb928922ce",
+    "all_other_producer_bytes_exact": true
+  },
+  "owner_candidate_receipt": {
+    "sha256": "83b9da807a8d1462aa08601e6d74439543069c0e217d89bba217d4813ba172d4",
+    "exit_code": 0,
+    "before_after_inputs_equal": true
+  }
+}
