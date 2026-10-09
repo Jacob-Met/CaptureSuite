@@ -1213,3 +1213,27 @@ pause/reload, C and Ctrl+Space countercontrols, outside-viewer checkpoint routin
 and unchanged raw fixtures. The original 151-case and independent lifecycle receipts
 remain at their historical source pins. App shortcut source and PR84 ownership
 remain untouched; final hosted gates are required on this corrected successor.
+
+## 2026-10-09 — Offline recorded-package Review windows (estate-e46e74cdc4f4)
+
+Issue #107 adds File → Review recorded package… and an independent modeless window
+around the existing ReviewScreen. The maintained package reader admits only
+finalized/finalized_recovered packages before a new viewer; each window has its
+own CaptureState, package identity, video lifetime and export path. Opening and
+export invocation refuse during recording/rehearsal/arming/stopping, with a
+second open guard after the chooser's nested event loop. The live capture context
+and existing main Stop behavior are preserved.
+
+The source fence is an additive File-menu entry and three new MainWindow helpers,
+one new recorded-review container, focused regressions and the operator guide
+[OFFLINE_RECORDED_REVIEW.md](../../operator/OFFLINE_RECORDED_REVIEW.md).
+Existing transport, startup, RPC handling, Review, analysis, video, export and
+package-reader bodies remain exact. No atomic package snapshot is claimed.
+
+The independent pre-candidate native Windows baseline rendered the actual
+MainWindow and ReviewScreen with the canonical 1,280-file3960c0c source:18 checks
+passed, the missing File action failed as expected, and eight dependent behavior
+groups were explicitly unrun. The NumPy ABI warning and earlier receiver menu
+wrapper failure remain recorded. Current candidate receiving, exact hashes,
+source storage and adoption disposition are recorded in #107 and the linked
+estate record; this progress entry does not substitute for their actual outcomes.

@@ -183,6 +183,11 @@ class MainWindow(QMainWindow):
     def _build_menu(self) -> None:
         menu = self.menuBar()
         file_menu = menu.addMenu("&File")
+        self._recorded_review_windows: dict[int, QDialog] = {}
+        recorded = file_menu.addAction("Review recorded package…")
+        recorded.setToolTip("Review a finalized package without connecting to the capture daemon")
+        recorded.triggered.connect(self._open_recorded_package)
+        file_menu.addSeparator()
         prefs = file_menu.addAction("Preferences…")
         prefs.setShortcut(QKeySequence("Ctrl+,"))
         prefs.triggered.connect(self._open_preferences)
@@ -192,6 +197,50 @@ class MainWindow(QMainWindow):
         quit_act = file_menu.addAction("Quit")
         quit_act.setShortcut(QKeySequence.StandardKey.Quit)
         quit_act.triggered.connect(self.close)
+
+    def _recorded_review_busy(self) -> bool:
+        """Keep offline disk work outside capture's active transition phases."""
+        return self.state.rehearsal_active or self.state.session_state in (
+            control_pb2.SESSION_STATE_ARMING,
+            control_pb2.SESSION_STATE_RECORDING,
+            control_pb2.SESSION_STATE_STOPPING,
+        )
+
+    def _open_recorded_package(self) -> None:
+        from PySide6.QtWidgets import QFileDialog
+
+        from .recorded_review import RecordedPackageWindow
+
+        if self._recorded_review_busy():
+            self._on_error("Finish recording or rehearsal before opening a recorded package.")
+            return
+        package_path = QFileDialog.getExistingDirectory(
+            self, "Review recorded package", ""
+        )
+        if not package_path:
+            return
+        # The chooser runs a nested event loop; capture may have changed meanwhile.
+        if self._recorded_review_busy():
+            self._on_error("Finish recording or rehearsal before opening a recorded package.")
+            return
+        try:
+            window = RecordedPackageWindow(package_path, parent=self)
+        except Exception as exc:  # noqa: BLE001
+            self._on_error(f"Could not open recorded package: {exc}")
+            return
+        key = id(window)
+        self._recorded_review_windows[key] = window
+        window.destroyed.connect(
+            lambda _object=None, key=key: self._recorded_review_windows.pop(key, None)
+        )
+        window.export_requested.connect(self._export_recorded_package)
+        window.show()
+
+    def _export_recorded_package(self, package_path: str) -> None:
+        if self._recorded_review_busy():
+            self._on_error("Finish recording or rehearsal before exporting a recorded package.")
+            return
+        self._on_review_export(package_path)
 
     def _open_preferences(self) -> None:
         dlg = PreferencesDialog(
