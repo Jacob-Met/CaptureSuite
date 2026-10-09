@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "at": 1791536353.1357386,
+  "pid": 23724,
+  "payload_files": 659,
+  "payload_bytes": 9432238,
+  "members": 660,
+  "archive": {
+    "bytes": 2386236,
+    "sha256": "11ca3c8c67651b6e58a29b7393ee5d278fbac0ec0f2a2a45ab1a6da24ed82931",
+    "git": "7f1f037e92e17871d15d2c44d25c64ff6110dd6e"
+  },
+  "manifest": {
+    "bytes": 169412,
+    "sha256": "ffd105d904840c62b371e97226ff540e9b2209280aae93104a51594be07ba8bc",
+    "git": "a28d561262d1fbec9594d7129897334ce49737a1"
+  },
+  "all_tar_bytes_verified": true,
+  "all_payload_sources_unchanged_after_archive": true,
+  "independent_receiving": "pending"
+}

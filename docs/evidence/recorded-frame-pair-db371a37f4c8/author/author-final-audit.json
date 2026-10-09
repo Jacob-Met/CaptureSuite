@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "at": 1791536350.6651814,
+  "pid": 23724,
+  "source_commit": "f2c0b955f659d8a3bd8ab4b169ace0d60183a911",
+  "source_tree": "502613f5b7cac1d696950cb1060cef2733ed456c",
+  "source_files_exact": 140,
+  "runtime_files_exact": 138,
+  "author_tests": 19,
+  "author_gate": {
+    "bytes": 1094,
+    "sha256": "499ffe00be204d45b3b4b48cc6b744b899b25061a74261b92b408a4ee6edf1e1",
+    "git": "ac3eb0181521bd3f8e96fe740b37fc4ec0e69895"
+  },
+  "runtime_scope": "18,539 regular files; managed Python alias independently audited by root, no historical link-completeness claim",
+  "independent_acceptance": "pending",
+  "git_ref_mutations": 0,
+  "hosted_actions": "unexecuted"
+}
