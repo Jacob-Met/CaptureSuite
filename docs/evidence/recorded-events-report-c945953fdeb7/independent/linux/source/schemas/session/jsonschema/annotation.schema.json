@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "annotation.schema.json",
+  "title": "capture.v1.Annotation",
+  "type": "object",
+  "properties": {
+    "annotationId": {
+      "type": "string"
+    },
+    "timestampNs": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "category": {
+      "type": "string"
+    },
+    "text": {
+      "type": "string"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sourceId": {
+      "type": "string"
+    },
+    "createdVia": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true,
+  "unevaluatedProperties": true
+}

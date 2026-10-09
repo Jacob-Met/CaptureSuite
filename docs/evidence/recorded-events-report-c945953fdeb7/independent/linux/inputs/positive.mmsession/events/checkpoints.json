@@ -1,0 +1,4 @@
+[
+  {"checkpointId":"receiver-late","originalTimestampNs":"9007199254740997","effectiveTimestampNs":"9007199254740993","name":"Later <literal> & supplied first","notes":"Receiver synthetic checkpoint; list order is intentional.","futureField":{"literal":"<kept> & \"quoted\""}},
+  {"checkpointId":"cp-1","name":"Synthetic start","effectiveTimestampNs":1000000000}
+]

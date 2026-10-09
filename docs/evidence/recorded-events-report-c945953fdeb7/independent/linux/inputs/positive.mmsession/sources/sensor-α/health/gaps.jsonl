@@ -1,0 +1,3 @@
+
+{"sourceId":"named-β","streamId":"stream-A","cause":"GAP_CAUSE_DISCONNECT","startSessionTimeNs":"0","endSessionTimeNs":"9007199254740997","estimatedLostCount":"9007199254740999","closed":true,"futureField":{"kept":"uninterpreted"}}
+{"stream_id":"stream-B","cause":"UNKNOWN","start_session_time_ns":-23,"end_session_time_ns":null,"estimated_lost_count":3}

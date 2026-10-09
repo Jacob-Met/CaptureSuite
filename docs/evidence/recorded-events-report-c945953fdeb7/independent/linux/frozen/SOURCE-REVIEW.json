@@ -1,0 +1,117 @@
+{
+  "schema": "capturesuite-independent-source-review-v1",
+  "reviewed_at": "2026-10-09T10:36:45Z",
+  "contract": {
+    "git_blob": "7fd938b783feb56b3f7bbb29ae52d60146359600",
+    "bytes": 15189,
+    "sha256": "d40f04be3cc899fda74355c1f1d685479df5d83272fc4f9542de01b3cecfdd1a"
+  },
+  "chronology": "Contract and literal fixture/expected bodies retained before candidate source intake; private author drafting predates the freeze. This source/observer binding follows candidate intake and completed author execution, before independent invocation.",
+  "original_parent": "c0437668fbc9d7ce6292c7b733f91dc8b2fd94f5",
+  "original_five_imports": [
+    {
+      "path": "libs/python/capture_session/capture_session/__init__.py",
+      "git_blob": "894e3c152a98b6e804de90122572afbcd929b3da",
+      "bytes": 2412,
+      "sha256": "da530f86c0d1d584862868ddba9f7087ccf5dfbddd64dd1e577337ecfd776419",
+      "mode": "100644"
+    },
+    {
+      "path": "libs/python/capture_session/capture_session/package_reader.py",
+      "git_blob": "cdfba8a26736856683ea865b9df67b36ad120e40",
+      "bytes": 6679,
+      "sha256": "4fd156a015115974d062bbc9bffc97cdb23e92b135e2729ecf312400a0201ab1",
+      "mode": "100644"
+    },
+    {
+      "path": "libs/python/capture_session/capture_session/app_paths.py",
+      "git_blob": "46332cea7c62dd44247b219937ae6c8fbc747017",
+      "bytes": 561,
+      "sha256": "363e4522240e2356cac7492589cb207a798bc1af6031139bd1fa94890f1c4bfd",
+      "mode": "100644"
+    },
+    {
+      "path": "libs/python/capture_session/capture_session/registry.py",
+      "git_blob": "c1d7799e1d2099424221b2f4af216a43a972c67a",
+      "bytes": 13989,
+      "sha256": "809b26ce8d8efc0559a3854cf85ea74b4e486fcd77d253ebfa76bade64b0a8d1",
+      "mode": "100644"
+    },
+    {
+      "path": "libs/python/capture_session/capture_session/settings_store.py",
+      "git_blob": "41b99cdaa78011d3d9b753c3131f32c72af9699f",
+      "bytes": 4622,
+      "sha256": "7719524a1f106cc54befcd21088810f9ec28f0160c8e88f60c374e1545fdb98d",
+      "mode": "100644"
+    }
+  ],
+  "candidate": [
+    {
+      "path": "libs/python/capture_session/capture_session/recorded_events_html.py",
+      "git_blob": "f65892baea166d39e8fa38f6ead5ae9509ec73a1",
+      "bytes": 10602,
+      "sha256": "026ffd469301c0ac70d70e3041473abe48f08562033f42836c38c0bccd8f8abe"
+    },
+    {
+      "path": "tools/report_recorded_events.py",
+      "git_blob": "965e28fb602d35c8a113eed204efbae595ca5d1a",
+      "bytes": 3378,
+      "sha256": "cff0f891366ce9e729609a88b9f204acc909d580c7136164ab9c094dc66eedd8"
+    },
+    {
+      "path": "tests/test_recorded_events_html.py",
+      "git_blob": "a95881c873ee10bc43ec01b3c2fb4338d742cf9d",
+      "bytes": 10910,
+      "sha256": "df6ad0bba8d5777648e4e7cb82a5cbeae0c78c6911c679cd3a6e72463f3fcd90"
+    },
+    {
+      "path": "docs/design/research/RECORDED_EVENTS_REPORT.md",
+      "git_blob": "ce4ab99467713831683ddb39b1ac92d830ea0190",
+      "bytes": 7595,
+      "sha256": "6d8b0845441ad9d65172cce66ed86de1af8f1f8ed06be490479d22091980ad4f"
+    }
+  ],
+  "ordinary_import_review": "CLI resolves its own source root, seats exact checkout package and imports real package_reader and renderer. Exact original __init__, app_paths, registry, settings_store and reader remain unchanged. Constructors that write appdata are not called; no fake Path or import shim.",
+  "source_boundary": {
+    "states": [
+      "finalized",
+      "finalized_recovered"
+    ],
+    "output": "Existing parent; outside source package; os.path.lexists refusal followed by exclusive xb/write/length/flush/fsync/context-close. No atomic snapshot, durability or race matrix inference.",
+    "escaping": "Full ensure_ascii=False JSON dictionaries escaped as text. Gaps are exactly dataclasses.asdict of the unchanged seven-field GapSummary. No inference of chronology, alignment, duration, repair, integrity, raw-gap or complete capture.",
+    "standalone": "Inline style, restrictive CSP, no script/resource nodes. Full recorded values in open details/pre blocks; native local navigation.",
+    "omissions": "Missing/unsupported/filtering unknowns and normalized gap projection limits are explicit. Recovered state is reader-reported metadata.",
+    "presentation": "Light/dark/print CSS reviewed in source; one later ordinary display is planned. No duration or separate open/closed aggregate displayed, so conditional oracle fields are not presented as executed display requirements."
+  },
+  "post_intake_observer_selectors": {
+    "records": "pre[data-kind] in checkpoints, annotations, sync-anchors, gaps; data-index binds supplied list order",
+    "counts": "count-checkpoints, count-annotations, count-sync-anchors, count-gaps",
+    "metadata": "dt/dd label values parsed with Python json",
+    "expectations_unchanged": true
+  },
+  "author_evidence": {
+    "receipt": "288d0198028e5a8f850273fb45d81700d5471f32",
+    "source_preparation": "6d66854dfcc02293460e52d0e1b46385215ab2d1",
+    "stderr": "3028ba122d8d3b03591ce6182e20532b24f80a0a",
+    "outer_closure": "290b2ebb0005a73701e9e0c5c50151063097b150",
+    "actual_cases": 8,
+    "actual_exit": 0,
+    "actual_elapsed_seconds": 0.15000573299766984,
+    "source_unchanged": true,
+    "limitations": [
+      "Ruff (absent)",
+      "pytest (absent)",
+      "Windows/full suite"
+    ],
+    "first_cross_exec_staging_refusal": "Retained by author; stopped before candidate source materialization, import or execution. Not a product failure."
+  },
+  "independent_execution": {
+    "status": "UNEXECUTED at this freeze",
+    "planned_calls": 3,
+    "python": "Pinned supported 3.12.14",
+    "transport": "One live custody process retains private /dev through exact export; no cross-exec persistence assumption.",
+    "old_suites": 0,
+    "mac": "Research metadata interval released; Mac report receiving remains pending a fresh guard. No CaptureSuite application import on Mac."
+  },
+  "source_blocker": null
+}

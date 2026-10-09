@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<title>CaptureSuite — recorded-event report</title>
+<style>
+:root {
+  color-scheme: light dark;
+  --bg: #f4f6f8;
+  --panel: #ffffff;
+  --panel-alt: #eef1f5;
+  --border: #c8d0da;
+  --text: #1a2332;
+  --dim: #5a6573;
+  --accent: #2563eb;
+  --warning: #d97706;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #12161c;
+    --panel: #1a2029;
+    --panel-alt: #212934;
+    --border: #2c3542;
+    --text: #dfe6ef;
+    --dim: #8d9aab;
+    --accent: #3d8bfd;
+    --warning: #f0a13a;
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: auto; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 11pt/1.35 "Segoe UI", system-ui, sans-serif;
+}
+main { max-width: 80rem; margin: auto; padding: var(--space-xl); }
+header, section, footer { margin-bottom: var(--space-xl); }
+h1 { font-size: 16pt; font-weight: 600; margin: 0 0 var(--space-sm); }
+h2 { font-size: 13pt; font-weight: 600; margin: 0 0 var(--space-md); }
+p, ul { margin: var(--space-sm) 0; }
+li + li { margin-top: var(--space-xs); }
+a { color: var(--accent); text-underline-offset: 3px; }
+a:focus-visible, summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: var(--space-xs);
+}
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  margin: var(--space-lg) 0;
+}
+.panel, details, .notice {
+  padding: var(--space-lg);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+}
+.notice { border-left: 4px solid var(--warning); }
+.subtitle, .dim { color: var(--dim); }
+table { width: 100%; border-collapse: collapse; margin-top: var(--space-md); }
+caption { text-align: left; font-weight: 600; margin-bottom: var(--space-sm); }
+th, td { padding: var(--space-sm); border: 1px solid var(--border); text-align: left; }
+th { background: var(--panel-alt); font-weight: 600; }
+td { font-family: Consolas, ui-monospace, monospace; }
+dl { display: grid; grid-template-columns: minmax(10rem, 1fr) 3fr; gap: var(--space-sm); }
+dt { font-weight: 600; }
+dd { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+pre {
+  margin: var(--space-md) 0 0;
+  padding: var(--space-md);
+  border: 1px solid var(--border);
+  background: var(--panel-alt);
+  font: 10pt/1.2 Consolas, ui-monospace, monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+details { margin-top: var(--space-md); }
+summary { cursor: pointer; font-weight: 600; }
+footer { border-top: 1px solid var(--border); padding-top: var(--space-lg); }
+@media (max-width: 42rem) {
+  main { padding: var(--space-md); }
+  dl { grid-template-columns: 1fr; }
+  dd { margin-bottom: var(--space-sm); }
+}
+@media print {
+  :root {
+    color-scheme: light;
+    --bg: #ffffff;
+    --panel: #ffffff;
+    --panel-alt: #f4f6f8;
+    --border: #c8d0da;
+    --text: #1a2332;
+    --dim: #5a6573;
+    --accent: #2563eb;
+    --warning: #d97706;
+  }
+  main { max-width: none; padding: 0; }
+  nav { display: none; }
+  h1, h2, summary { break-after: avoid; }
+  pre { overflow: visible; }
+}
+</style>
+</head>
+<body><main>
+<header>
+<h1>Recorded-event report</h1>
+<p class="subtitle">CaptureSuite · reader-returned records</p>
+<nav aria-label="Report sections">
+<a href="#overview">Package</a>
+<a href="#coverage">Coverage and limits</a>
+<a href="#checkpoints">Checkpoints</a>
+<a href="#annotations">Annotations</a>
+<a href="#sync-anchors">Sync records</a>
+<a href="#gaps">Gaps</a>
+</nav>
+</header>
+<section id="coverage" class="notice" aria-labelledby="coverage-title">
+<h2 id="coverage-title">Coverage and limits</h2>
+<p>This report shows only records returned by the package reader. Returned counts do not establish a complete or repaired capture.</p>
+<ul>
+<li>Missing optional event files, unsupported container shapes and filtered nonobject entries may be omitted. The reader does not enumerate these omissions; a zero returned count is not proof that no records existed.</li>
+<li>Checkpoint, annotation and sync dictionaries are shown in full as returned. Gap records are the reader's normalized projection: aliases and coercions are already applied and unknown raw gap fields are not retained.</li>
+<li>Record order and exact returned values are preserved. No time precedence, alignment, section boundaries, interpolation or gap duration is inferred. Gap closure and end time remain separate reported fields.</li>
+<li>The reported state is metadata, not verified integrity. This read is not an atomic filesystem snapshot and does not detect concurrent package changes. Raw streams and recovery report contents are not inspected.</li>
+</ul>
+</section>
+<section class="notice" aria-labelledby="recovered-title">
+<h2 id="recovered-title">Recovered session — recorded gaps preserved</h2>
+<p>The reader reports finalized_recovered. This does not establish pristine or complete data.</p>
+</section>
+<section id="overview" class="panel" aria-labelledby="overview-title">
+<h2 id="overview-title">Reader-reported package</h2>
+<dl>
+<dt>Package path read</dt><dd>&quot;/dev/estate-c945953fdeb7-capture-receiver-767d6179afd0419cbede77dbf330f1f2/inputs/positive.mmsession&quot;</dd>
+<dt>Session ID reported</dt><dd>&quot;synthetic-report-receiving-读-c945953fdeb7&quot;</dd>
+<dt>State reported</dt><dd>&quot;finalized_recovered&quot;</dd>
+<dt>Start wall time reported</dt><dd>&quot;2026-08-09T00:00:00Z&quot;</dd>
+<dt>Finalized time reported</dt><dd>&quot;2026-08-09T00:00:10Z&quot;</dd>
+<dt>Source identifiers returned</dt><dd>[
+  &quot;sensor-α&quot;
+]</dd>
+<dt>Recovery report paths returned; contents not opened</dt><dd>[]</dd>
+</dl>
+<table>
+<caption>Returned record counts</caption>
+<tbody>
+<tr><th scope="row">Checkpoint records returned</th><td id="count-checkpoints">2</td></tr>
+<tr><th scope="row">Annotation records returned</th><td id="count-annotations">2</td></tr>
+<tr><th scope="row">Sync records returned</th><td id="count-sync-anchors">2</td></tr>
+<tr><th scope="row">Normalized gap records returned</th><td id="count-gaps">2</td></tr>
+</tbody></table>
+</section>
+<section id="checkpoints" aria-labelledby="checkpoints-title">
+<h2 id="checkpoints-title">Checkpoint records</h2>
+<p class="dim">2 returned; reader order is preserved.</p>
+<details open>
+<summary>Checkpoint 1</summary>
+<pre data-kind="checkpoints" data-index="0">{
+  &quot;checkpointId&quot;: &quot;receiver-late&quot;,
+  &quot;originalTimestampNs&quot;: &quot;9007199254740997&quot;,
+  &quot;effectiveTimestampNs&quot;: &quot;9007199254740993&quot;,
+  &quot;name&quot;: &quot;Later &lt;literal&gt; &amp; supplied first&quot;,
+  &quot;notes&quot;: &quot;Receiver synthetic checkpoint; list order is intentional.&quot;,
+  &quot;futureField&quot;: {
+    &quot;literal&quot;: &quot;&lt;kept&gt; &amp; \&quot;quoted\&quot;&quot;
+  }
+}</pre>
+</details>
+<details open>
+<summary>Checkpoint 2</summary>
+<pre data-kind="checkpoints" data-index="1">{
+  &quot;checkpointId&quot;: &quot;cp-1&quot;,
+  &quot;name&quot;: &quot;Synthetic start&quot;,
+  &quot;effectiveTimestampNs&quot;: 1000000000
+}</pre>
+</details>
+</section>
+<section id="annotations" aria-labelledby="annotations-title">
+<h2 id="annotations-title">Annotation records</h2>
+<p class="dim">2 returned; reader order is preserved.</p>
+<details open>
+<summary>Annotation 1</summary>
+<pre data-kind="annotations" data-index="0">{
+  &quot;annotationId&quot;: &quot;receiver-literal-1&quot;,
+  &quot;timestampNs&quot;: &quot;9007199254740999&quot;,
+  &quot;category&quot;: &quot;synthetic_receiving&quot;,
+  &quot;text&quot;: &quot;Operator&#x27;s synthetic note: &lt;script&gt;globalThis.__captureReceiverSentinel=&#x27;unexpected&#x27;&lt;/script&gt; &amp; \&quot;quote\&quot;\r\nSecond line — café 读&quot;,
+  &quot;tags&quot;: [
+    &quot;synthetic&quot;,
+    &quot;literal &lt;tag&gt;&quot;
+  ],
+  &quot;sourceId&quot;: &quot;sensor-α&quot;,
+  &quot;createdVia&quot;: &quot;independent-report-receiver&quot;,
+  &quot;futurePayload&quot;: {
+    &quot;exactInteger&quot;: 9007199254740993,
+    &quot;exactString&quot;: &quot;009007199254740993&quot;,
+    &quot;nested&quot;: [
+      &quot;&lt;b&gt;kept text&lt;/b&gt;&quot;,
+      false,
+      null
+    ]
+  }
+}</pre>
+</details>
+<details open>
+<summary>Annotation 2</summary>
+<pre data-kind="annotations" data-index="1">{
+  &quot;annotationId&quot;: &quot;receiver-earlier-2&quot;,
+  &quot;timestampNs&quot;: &quot;-23&quot;,
+  &quot;category&quot;: &quot;synthetic_receiving&quot;,
+  &quot;text&quot;: &quot;Second recorded annotation; list order remains supplied.&quot;,
+  &quot;tags&quot;: [
+    &quot;synthetic&quot;
+  ],
+  &quot;createdVia&quot;: &quot;independent-report-receiver&quot;
+}</pre>
+</details>
+</section>
+<section id="sync-anchors" aria-labelledby="sync-anchors-title">
+<h2 id="sync-anchors-title">Sync records</h2>
+<p class="dim">2 returned; reader order is preserved.</p>
+<details open>
+<summary>Sync record 1</summary>
+<pre data-kind="sync-anchors" data-index="0">{
+  &quot;syncAnchorId&quot;: &quot;receiver-later-anchor&quot;,
+  &quot;timestampNs&quot;: &quot;9007199254740999&quot;,
+  &quot;modalitiesTargeted&quot;: [
+    &quot;imu&quot;,
+    &quot;emg&quot;
+  ],
+  &quot;mechanism&quot;: &quot;manual&quot;,
+  &quot;metadata&quot;: {
+    &quot;classification&quot;: &quot;synthetic_fixture&quot;,
+    &quot;literal&quot;: &quot;No alignment &lt;performed&gt; &amp; no inferred chronology&quot;
+  },
+  &quot;createdVia&quot;: &quot;independent-report-receiver&quot;
+}</pre>
+</details>
+<details open>
+<summary>Sync record 2</summary>
+<pre data-kind="sync-anchors" data-index="1">{
+  &quot;syncAnchorId&quot;: &quot;synthetic-tap-250ms&quot;,
+  &quot;timestampNs&quot;: &quot;250000000&quot;,
+  &quot;modalitiesTargeted&quot;: [
+    &quot;emg&quot;,
+    &quot;imu&quot;
+  ],
+  &quot;mechanism&quot;: &quot;manual&quot;,
+  &quot;metadata&quot;: {
+    &quot;classification&quot;: &quot;synthetic_fixture&quot;
+  },
+  &quot;createdVia&quot;: &quot;sync-request-test&quot;
+}</pre>
+</details>
+</section>
+<section class="panel" aria-labelledby="gap-projection-title"><h2 id="gap-projection-title">Gap projection</h2><p>The following seven-field objects are normalized GapSummary values, not copies of the original gap JSON. Integer time fields are nanoseconds; null means the reader returned no end value. A closed flag does not fill a missing end, and an end value does not override an open flag.</p></section>
+<section id="gaps" aria-labelledby="gaps-title">
+<h2 id="gaps-title">Normalized gap records</h2>
+<p class="dim">2 returned; reader order is preserved.</p>
+<details open>
+<summary>Normalized gap 1</summary>
+<pre data-kind="gaps" data-index="0">{
+  &quot;source_id&quot;: &quot;named-β&quot;,
+  &quot;stream_id&quot;: &quot;stream-A&quot;,
+  &quot;cause&quot;: &quot;GAP_CAUSE_DISCONNECT&quot;,
+  &quot;start_session_time_ns&quot;: 0,
+  &quot;end_session_time_ns&quot;: 9007199254740997,
+  &quot;closed&quot;: true,
+  &quot;estimated_lost_count&quot;: 9007199254740999
+}</pre>
+</details>
+<details open>
+<summary>Normalized gap 2</summary>
+<pre data-kind="gaps" data-index="1">{
+  &quot;source_id&quot;: &quot;sensor-α&quot;,
+  &quot;stream_id&quot;: &quot;stream-B&quot;,
+  &quot;cause&quot;: &quot;UNKNOWN&quot;,
+  &quot;start_session_time_ns&quot;: -23,
+  &quot;end_session_time_ns&quot;: null,
+  &quot;closed&quot;: false,
+  &quot;estimated_lost_count&quot;: 3
+}</pre>
+</details>
+</section>
+<footer>
+<p>This file is self-contained and needs no server or network. Use the source package for original evidence. Expand record sections before printing if you have collapsed them.</p>
+</footer>
+</main></body></html>

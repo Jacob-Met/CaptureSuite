@@ -1,0 +1,242 @@
+{
+  "schema": "capturesuite-independent-offline-browser-v1",
+  "contract": "7fd938b783feb56b3f7bbb29ae52d60146359600",
+  "scope": [
+    "same physical Python3.12 HTML bytes on Mac",
+    "private headless Chrome through inherited CDP pipe",
+    "no application/debugging TCP listener, CaptureSuite import, default profile, Finder or regenerated report",
+    "pointer and keyboard use of native links/details; programmatic scrolling only for targeting and screenshot framing",
+    "large integer authority is the frozen Python comparison; browser text is compared as exact strings"
+  ],
+  "groups": {
+    "C4_semantics": "pending",
+    "C5_mac": "pending",
+    "visual_review": "pending: inspect original screenshots after execution"
+  },
+  "accepted": false,
+  "actions": [
+    {
+      "action": "trusted_pointer_via_Input.dispatchMouseEvent",
+      "selector": "nav a[href=\"#checkpoints\"]",
+      "text": "Checkpoints",
+      "at": "2026-10-09T10:49:45.652Z",
+      "framing": "DOM scrollIntoView used only to expose the native target before pointer input"
+    },
+    {
+      "action": "trusted_pointer_via_Input.dispatchMouseEvent",
+      "selector": "nav a[href=\"#annotations\"]",
+      "text": "Annotations",
+      "at": "2026-10-09T10:49:45.669Z",
+      "framing": "DOM scrollIntoView used only to expose the native target before pointer input"
+    },
+    {
+      "action": "trusted_pointer_via_Input.dispatchMouseEvent",
+      "selector": "#annotations details:first-of-type summary",
+      "text": "Annotation 1",
+      "at": "2026-10-09T10:49:45.684Z",
+      "framing": "DOM scrollIntoView used only to expose the native target before pointer input"
+    },
+    {
+      "action": "trusted_keyboard_via_Input.dispatchKeyEvent",
+      "key": "Enter",
+      "at": "2026-10-09T10:49:45.688Z"
+    }
+  ],
+  "observations": {
+    "exceptions": [],
+    "console": [],
+    "log": [],
+    "requests": [
+      {
+        "requestId": "385CF12C7A5779D65C7EBF532BABD203",
+        "url": "file:///Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7/recorded-events.html",
+        "method": "GET",
+        "type": "Document"
+      }
+    ],
+    "responses": [
+      {
+        "requestId": "385CF12C7A5779D65C7EBF532BABD203",
+        "url": "file:///Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7/recorded-events.html",
+        "status": 200,
+        "type": "Document"
+      }
+    ],
+    "loading_failed": []
+  },
+  "browser": {
+    "command": {
+      "executable": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+      "args": [
+        "--headless=new",
+        "--remote-debugging-pipe",
+        "--user-data-dir=/Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7/browser/profile",
+        "--no-first-run",
+        "--no-default-browser-check",
+        "--disable-background-networking",
+        "--disable-component-update",
+        "--disable-sync",
+        "--disable-extensions",
+        "--disable-default-apps",
+        "--metrics-recording-only",
+        "--password-store=basic",
+        "--use-mock-keychain",
+        "--disable-breakpad",
+        "--disable-crash-reporter",
+        "--disk-cache-size=1048576",
+        "--media-cache-size=1048576",
+        "about:blank"
+      ],
+      "cwd": "/tmp",
+      "pid": 64939,
+      "control": "private inherited CDP pipe, no TCP listener"
+    },
+    "version": {
+      "protocolVersion": "1.3",
+      "product": "Chrome/154.0.8037.99",
+      "revision": "@45889d77830582727fe00dbfd614bcb7aac35caa",
+      "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+      "jsVersion": "15.4.80.20"
+    },
+    "tracked_owned_processes": [
+      {
+        "pid": 64939,
+        "ppid": 64931,
+        "command": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome --headless=new --remote-debugging-pipe --user-data-dir=/Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7/browser/profile --no-first-run --no-default-browser-check --disable-background-networking --disable-component-update --disable-sync --disable-extensions --disable-default-apps --metrics-recording-only --password-store=basic --use-mock-keychain --disable-breakpad --disable-crash-reporter --disk-cache-size=1048576 --media-cache-size=1048576 about:blank"
+      },
+      {
+        "pid": 64945,
+        "ppid": 64939,
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/154.0.8037.99/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=gpu-process --gpu-recent-crash-count=0 --disable-breakpad --headless=new --metrics-client-id=09e87971-7f46-458b-81a5-24139623e0a3 --noerrdialogs --user-data-dir=/Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7/browser/profile --gpu-preferences=WAAAAAAAAAAgAQAEAAAAAAAAAAAAAGAAQAAAAAAAAAADAAAAAAAAADgAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAKAAAAAAAAAAoAAAAAAAAAAgAAAAAAAAADAAAAAEAAAAAAAAAAAAAAAgAAAAAAAAACAAAAAAAAAA= --shared-files --field-trial-handle=1718379636,r,6317054008779242553,3712020975934592676,262144 --disable-features=PaintHolding --variations-seed-version --pseudonymization-salt-handle=1935764596,r,16282286467625526244,16773923498676399730,4 --trace-process-track-uuid=3190708988185955192 --seatbelt-client=30"
+      },
+      {
+        "pid": 64946,
+        "ppid": 64939,
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/154.0.8037.99/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=utility --utility-sub-type=network.mojom.NetworkService --lang=en-US --service-sandbox-type=network --metrics-client-id=09e87971-7f46-458b-81a5-24139623e0a3 --noerrdialogs --user-data-dir=/Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7/browser/profile --shared-files --field-trial-handle=1718379636,r,6317054008779242553,3712020975934592676,262144 --disable-features=PaintHolding --variations-seed-version --pseudonymization-salt-handle=1935764596,r,16282286467625526244,16773923498676399730,4 --trace-process-track-uuid=3190708989122997041 --seatbelt-client=30"
+      },
+      {
+        "pid": 64947,
+        "ppid": 64939,
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/154.0.8037.99/Helpers/Google Chrome Helper.app/Contents/MacOS/Google Chrome Helper --type=utility --utility-sub-type=storage.mojom.StorageService --lang=en-US --service-sandbox-type=service --metrics-client-id=09e87971-7f46-458b-81a5-24139623e0a3 --noerrdialogs --user-data-dir=/Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7/browser/profile --shared-files --field-trial-handle=1718379636,r,6317054008779242553,3712020975934592676,262144 --disable-features=PaintHolding --variations-seed-version --pseudonymization-salt-handle=1935764596,r,16282286467625526244,16773923498676399730,4 --trace-process-track-uuid=3190708990060038890 --seatbelt-client=55"
+      },
+      {
+        "pid": 64949,
+        "ppid": 64939,
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/154.0.8037.99/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --top-chrome-webui --metrics-client-id=09e87971-7f46-458b-81a5-24139623e0a3 --noerrdialogs --user-data-dir=/Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7/browser/profile --disable-breakpad --remote-debugging-pipe --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=6 --launch-time-ticks=1079483596146 --shared-files --field-trial-handle=1718379636,r,6317054008779242553,3712020975934592676,262144 --disable-features=PaintHolding --variations-seed-version --pseudonymization-salt-handle=1935764596,r,16282286467625526244,16773923498676399730,4 --trace-process-track-uuid=3190708991934122588 --seatbelt-client=36"
+      },
+      {
+        "pid": 64951,
+        "ppid": 64939,
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/154.0.8037.99/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --metrics-client-id=09e87971-7f46-458b-81a5-24139623e0a3 --noerrdialogs --user-data-dir=/Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7/browser/profile --disable-breakpad --remote-debugging-pipe --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=7 --launch-time-ticks=1079483629790 --shared-files --field-trial-handle=1718379636,r,6317054008779242553,3712020975934592676,262144 --disable-features=PaintHolding --variations-seed-version --pseudonymization-salt-handle=1935764596,r,16282286467625526244,16773923498676399730,4 --trace-process-track-uuid=3190708992871164437 --seatbelt-client=22"
+      },
+      {
+        "pid": 64952,
+        "ppid": 64939,
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/154.0.8037.99/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --metrics-client-id=09e87971-7f46-458b-81a5-24139623e0a3 --noerrdialogs --user-data-dir=/Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7/browser/profile --disable-breakpad --remote-debugging-pipe --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=9 --launch-time-ticks=1079483683221 --shared-files --field-trial-handle=1718379636,r,6317054008779242553,3712020975934592676,262144 --disable-features=PaintHolding --variations-seed-version --pseudonymization-salt-handle=1935764596,r,16282286467625526244,16773923498676399730,4 --trace-process-track-uuid=3190708994745248135 --seatbelt-client=82"
+      },
+      {
+        "pid": 64953,
+        "ppid": 64939,
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/154.0.8037.99/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --metrics-client-id=09e87971-7f46-458b-81a5-24139623e0a3 --noerrdialogs --user-data-dir=/Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7/browser/profile --extension-process --disable-breakpad --remote-debugging-pipe --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=10 --launch-time-ticks=1079483684649 --shared-files --field-trial-handle=1718379636,r,6317054008779242553,3712020975934592676,262144 --disable-features=PaintHolding --variations-seed-version --pseudonymization-salt-handle=1935764596,r,16282286467625526244,16773923498676399730,4 --trace-process-track-uuid=3190708995682289984 --seatbelt-client=82"
+      },
+      {
+        "pid": 64954,
+        "ppid": 64939,
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/154.0.8037.99/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --metrics-client-id=09e87971-7f46-458b-81a5-24139623e0a3 --noerrdialogs --user-data-dir=/Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7/browser/profile --disable-breakpad --remote-debugging-pipe --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=11 --launch-time-ticks=1079483703289 --shared-files --field-trial-handle=1718379636,r,6317054008779242553,3712020975934592676,262144 --disable-features=PaintHolding --variations-seed-version --pseudonymization-salt-handle=1935764596,r,16282286467625526244,16773923498676399730,4 --trace-process-track-uuid=3190708996619331833 --seatbelt-client=94"
+      },
+      {
+        "pid": 64955,
+        "ppid": 64939,
+        "command": "/Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/154.0.8037.99/Helpers/Google Chrome Helper (Renderer).app/Contents/MacOS/Google Chrome Helper (Renderer) --type=renderer --metrics-client-id=09e87971-7f46-458b-81a5-24139623e0a3 --noerrdialogs --user-data-dir=/Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7/browser/profile --extension-process --disable-breakpad --remote-debugging-pipe --lang=en-US --num-raster-threads=4 --enable-zero-copy --enable-gpu-memory-buffer-compositor-resources --enable-main-frame-before-activation --renderer-client-id=12 --launch-time-ticks=1079483766987 --shared-files --field-trial-handle=1718379636,r,6317054008779242553,3712020975934592676,262144 --disable-features=PaintHolding --variations-seed-version --pseudonymization-salt-handle=1935764596,r,16282286467625526244,16773923498676399730,4 --trace-process-track-uuid=3190708997556373682 --seatbelt-client=103"
+      }
+    ],
+    "close_requested": true,
+    "actual_exit": {
+      "pid": 64939,
+      "code": 0,
+      "signal": null,
+      "at": "2026-10-09T10:49:55.870Z"
+    },
+    "remaining_owned_processes": [],
+    "active_seconds": 10.882400667
+  },
+  "guards": [
+    {
+      "label": "before-single-offline-browser",
+      "at": "2026-10-09T10:49:45.025Z",
+      "free_disk": 2934591488,
+      "conservative_memory": 10961321984,
+      "receiver": {
+        "logical": 58864,
+        "allocated": 69632
+      },
+      "browser": {
+        "logical": 0,
+        "allocated": 0
+      }
+    }
+  ],
+  "failure": {
+    "message": "DOM condition timeout: document.querySelector('#annotations details').open===true",
+    "stack": "Error: DOM condition timeout: document.querySelector('#annotations details').open===true\n    at waitFor (file:///Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7/receiver.mjs:97:39)\n    at async main (file:///Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7/receiver.mjs:184:19)\n    at async file:///Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7/receiver.mjs:213:5"
+  },
+  "overview_screenshot": {
+    "bytes": 155902,
+    "sha256": "0d37fc928a8e89b55ca274a6463c41aa562ce18f34591935d14ba1464726bbf8",
+    "git_blob": "811cba88860664adda9bc5578a69a5b3052ffcef",
+    "path": "results/01-overview.png"
+  },
+  "sections": {
+    "checkpoints": [
+      {
+        "kind": "checkpoints",
+        "index": "0",
+        "json_text": "{\n  \"checkpointId\": \"receiver-late\",\n  \"originalTimestampNs\": \"9007199254740997\",\n  \"effectiveTimestampNs\": \"9007199254740993\",\n  \"name\": \"Later <literal> & supplied first\",\n  \"notes\": \"Receiver synthetic checkpoint; list order is intentional.\",\n  \"futureField\": {\n    \"literal\": \"<kept> & \\\"quoted\\\"\"\n  }\n}"
+      },
+      {
+        "kind": "checkpoints",
+        "index": "1",
+        "json_text": "{\n  \"checkpointId\": \"cp-1\",\n  \"name\": \"Synthetic start\",\n  \"effectiveTimestampNs\": 1000000000\n}"
+      }
+    ],
+    "annotations": [
+      {
+        "kind": "annotations",
+        "index": "0",
+        "json_text": "{\n  \"annotationId\": \"receiver-literal-1\",\n  \"timestampNs\": \"9007199254740999\",\n  \"category\": \"synthetic_receiving\",\n  \"text\": \"Operator's synthetic note: <script>globalThis.__captureReceiverSentinel='unexpected'</script> & \\\"quote\\\"\\r\\nSecond line — café 读\",\n  \"tags\": [\n    \"synthetic\",\n    \"literal <tag>\"\n  ],\n  \"sourceId\": \"sensor-α\",\n  \"createdVia\": \"independent-report-receiver\",\n  \"futurePayload\": {\n    \"exactInteger\": 9007199254740993,\n    \"exactString\": \"009007199254740993\",\n    \"nested\": [\n      \"<b>kept text</b>\",\n      false,\n      null\n    ]\n  }\n}"
+      },
+      {
+        "kind": "annotations",
+        "index": "1",
+        "json_text": "{\n  \"annotationId\": \"receiver-earlier-2\",\n  \"timestampNs\": \"-23\",\n  \"category\": \"synthetic_receiving\",\n  \"text\": \"Second recorded annotation; list order remains supplied.\",\n  \"tags\": [\n    \"synthetic\"\n  ],\n  \"createdVia\": \"independent-report-receiver\"\n}"
+      }
+    ]
+  },
+  "chrome_stdout": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+    "path": "results/chrome.stdout.txt"
+  },
+  "chrome_stderr": {
+    "bytes": 2792,
+    "sha256": "dfde1fa2836acac42ceadda755fde8abfbcad0912aa9ca78fd0958a69a770fa4",
+    "git_blob": "3e3965db0fc602ee41fd5a4822c4a434b93d1a02",
+    "path": "results/chrome.stderr.txt"
+  },
+  "failure_protected_unchanged": true,
+  "completed_utc": "2026-10-09T10:49:55.911Z",
+  "controller_pid": 64931,
+  "total_seconds": 10.913689875,
+  "controller_exit_pending_until_parent_wait": true,
+  "final_owned": {
+    "receiver": {
+      "logical": 225846,
+      "allocated": 245760
+    },
+    "browser": {
+      "logical": 8838363,
+      "allocated": 3342336
+    }
+  }
+}

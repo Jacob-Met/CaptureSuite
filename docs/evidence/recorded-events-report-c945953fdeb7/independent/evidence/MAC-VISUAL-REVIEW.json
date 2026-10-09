@@ -1,0 +1,66 @@
+{
+  "schema": "capturesuite-original-overview-visual-review-v1",
+  "reviewer": "estate-c945953fdeb7/control_execution",
+  "reviewed_original": true,
+  "source_png": {
+    "path": "results/01-overview.png",
+    "bytes": 155902,
+    "sha256": "0d37fc928a8e89b55ca274a6463c41aa562ce18f34591935d14ba1464726bbf8",
+    "git_blob": "811cba88860664adda9bc5578a69a5b3052ffcef"
+  },
+  "display": {
+    "width": 1280,
+    "height": 1000,
+    "route": "Original RDC image content, binary SHA256 verified against the native receipt; displayed without transformation."
+  },
+  "observations": [
+    "Dark report view has readable title, local section links, separated coverage/recovered/package panels and visible data labels.",
+    "The coverage panel explicitly limits output to reader-returned records and explains omitted optional/unsupported/nonobject rows, normalized gaps, lack of inferred time alignment, and metadata-only state.",
+    "Recovered notice explicitly avoids pristine/complete-data claims; raw original package path and Unicode session/source labels are visible.",
+    "First returned-count rows are visible at the bottom; the viewport continues below rather than proving the entire report fits in one screen."
+  ],
+  "original_initial_dom_text_review": [
+    {
+      "kind": "checkpoints",
+      "index": "0",
+      "exact_json_text_present": true
+    },
+    {
+      "kind": "checkpoints",
+      "index": "1",
+      "exact_json_text_present": true
+    },
+    {
+      "kind": "annotations",
+      "index": "0",
+      "exact_json_text_present": true
+    },
+    {
+      "kind": "annotations",
+      "index": "1",
+      "exact_json_text_present": true
+    },
+    {
+      "kind": "sync-anchors",
+      "index": "0",
+      "exact_json_text_present": true
+    },
+    {
+      "kind": "sync-anchors",
+      "index": "1",
+      "exact_json_text_present": true
+    },
+    {
+      "kind": "gaps",
+      "index": "0",
+      "exact_json_text_present": true
+    },
+    {
+      "kind": "gaps",
+      "index": "1",
+      "exact_json_text_present": true
+    }
+  ],
+  "visible_review_limit": "Only the actually produced overview screenshot was visually reviewed. No annotation/gap screenshot exists; full record strings observed in the initial DOM do not satisfy the unexecuted later navigation or failed keyboard reopen.",
+  "overall_C4": "INCOMPLETE under the original one-browser contract."
+}

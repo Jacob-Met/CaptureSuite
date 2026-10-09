@@ -1238,3 +1238,44 @@ The frozen expectations and independent review preceded candidate exposure.
 The author had privately prepared the patch before baseline execution; root's
 earlier stronger not-authored wording and its additive correction are retained.
 See [source, original failures and exact component receipts](../../evidence/gap-reader-2479534e1930/README.md).
+
+## 2026-10-09 — Portable recorded-event HTML report (c945953fdeb7, issue #111)
+
+Added an optional standalone report consumer of the unchanged qualified package
+reader: `tools/report_recorded_events.py PACKAGE OUTPUT.html` writes a new
+self-contained HTML file outside the package. It presents complete returned
+checkpoint, annotation and sync-anchor dictionaries in their supplied order,
+with exact integers and literal text. Gap rows are the reader's seven-field
+normalized summaries. Returned counts, missing/unsupported record omissions,
+reader-reported state and unverified capture/alignment limits are explicit.
+
+The four new maintained files are the renderer, CLI, eight focused consumer
+unittests and an operator guide. The original package initializer, reader and
+its dependencies remain byte-identical to qualified parent
+`c0437668fbc9d7ce6292c7b733f91dc8b2fd94f5`. Existing-output and contextual
+malformed-gap refusals create no replacement report. A successful output uses
+exclusive creation and completes write, flush, fsync and close.
+
+The author ran the eight new stdlib cases once under CPython 3.12.14 on Linux:
+8/8 passed, child exit 0. Independent physical receiving ran exactly three CLI
+children: new report exit 0, existing-output refusal exit 1, malformed-gap
+refusal exit 1 with physical line 4. All 87 type-sensitive comparison nodes
+matched, including integers above 2^53. Source/input/output preservation and
+actual child reaping were recorded.
+
+The same 11,901-byte physical HTML was transferred unchanged to the Mac and
+opened once. File load, initial full structured text, section links, checkpoint/
+annotation comparisons and pointer collapse passed. The original observer
+timed out when its Enter dispatch did not reopen a native summary. Later
+sync/gap navigation and selected screenshots remain unexecuted in that
+attempt. Node and outer controller exited 1; Chrome exited 0, with measured
+protected-file preservation and owned-process closure. This is incomplete
+original C4 acceptance, not an all-C1–C5 pass or an established product defect.
+Original page diagnostics were clear; Chrome's separate 2,792-byte OS stderr
+is retained.
+
+The first author transport prefix/refusal, all original failed browser evidence
+and the exact independent contract remain unchanged. No author/product rerun,
+reader repair, Qt/hardware/Windows/full-suite qualification, dependency install,
+Actions, ref or PR mutation is included. See the [source and complete original
+receiving record](../../evidence/recorded-events-report-c945953fdeb7/README.md).

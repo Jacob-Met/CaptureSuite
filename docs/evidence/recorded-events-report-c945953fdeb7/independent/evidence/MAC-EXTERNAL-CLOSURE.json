@@ -1,0 +1,73 @@
+{
+  "schema": "capturesuite-mac-actual-external-closure-v1",
+  "disposition": "Original one-browser attempt incomplete; literal Node/outer exit 1 preserved. No product-defect inference or rerun.",
+  "actual_external_start": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Process started with PID 64894 (shell: /bin/zsh)\nInitial output:\n{\"stage_prepared\": true, \"root\": \"/Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7\", \"controller_pid\": 64894, \"node_pid\": 64931, \"guards\": [{\"label\": \"before-exclusive-mac-materialization\", \"time_utc\": \"2026-10-09T10:49:44.924134+00:00\", \"disk_free_bytes\": 2934788096, \"conservative_memory_bytes\": 10980491264, \"owned\": {\"bytes\": 0, \"allocated_bytes\": 0}, \"disk_floor_bytes\": 268435456, \"memory_floor_bytes\": 2147483648, \"static_cap_bytes\": 2097152, \"admitted\": true}, {\"label\": \"before-owned-node-browser-controller\", \"time_utc\": \"2026-10-09T10:49:44.928023+00:00\", \"disk_free_bytes\": 2934697984, \"conservative_memory_bytes\": 10981900288, \"owned\": {\"bytes\": 57022, \"allocated_bytes\": 65536}, \"disk_floor_bytes\": 268435456, \"memory_floor_bytes\": 2147483648, \"static_cap_bytes\": 2097152, \"admitted\": true}]}\n\n⏳ Process is running. Use read_process_output to get more output.\n\n📊 Timing Information:\n  Exit Reason: timeout\n  Total Duration: 3000ms\n  Time to First Output: 84ms\n  Output Window: 0ms\n\n  Output Events (1 total):\n    [1] +84ms | stdout | 830b\n       \"{\"stage_prepared\": true, \"root\": \"/Users/me/Develo\"\n"
+      },
+      {
+        "type": "text",
+        "text": "\n[executed on device: Mac.lan (0b4ac27b-8500-47d0-8f11-5a35402e9abc)]"
+      }
+    ],
+    "isError": false
+  },
+  "actual_external_poll": {
+    "content": [
+      {
+        "type": "text",
+        "text": "[Reading 2 new lines (total: 2 lines)]\n\n{\"stage_prepared\": true, \"root\": \"/Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7\", \"controller_pid\": 64894, \"node_pid\": 64931, \"guards\": [{\"label\": \"before-exclusive-mac-materialization\", \"time_utc\": \"2026-10-09T10:49:44.924134+00:00\", \"disk_free_bytes\": 2934788096, \"conservative_memory_bytes\": 10980491264, \"owned\": {\"bytes\": 0, \"allocated_bytes\": 0}, \"disk_floor_bytes\": 268435456, \"memory_floor_bytes\": 2147483648, \"static_cap_bytes\": 2097152, \"admitted\": true}, {\"label\": \"before-owned-node-browser-controller\", \"time_utc\": \"2026-10-09T10:49:44.928023+00:00\", \"disk_free_bytes\": 2934697984, \"conservative_memory_bytes\": 10981900288, \"owned\": {\"bytes\": 57022, \"allocated_bytes\": 65536}, \"disk_floor_bytes\": 268435456, \"memory_floor_bytes\": 2147483648, \"static_cap_bytes\": 2097152, \"admitted\": true}]}\n\n\n📊 Timing: 0ms"
+      },
+      {
+        "type": "text",
+        "text": "\n[executed on device: Mac.lan (0b4ac27b-8500-47d0-8f11-5a35402e9abc)]"
+      }
+    ],
+    "isError": false
+  },
+  "actual_external_close": {
+    "content": [
+      {
+        "type": "text",
+        "text": "[Reading 3 new lines (total: 3 lines)]\n\n{\"stage_prepared\": true, \"root\": \"/Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7\", \"controller_pid\": 64894, \"node_pid\": 64931, \"guards\": [{\"label\": \"before-exclusive-mac-materialization\", \"time_utc\": \"2026-10-09T10:49:44.924134+00:00\", \"disk_free_bytes\": 2934788096, \"conservative_memory_bytes\": 10980491264, \"owned\": {\"bytes\": 0, \"allocated_bytes\": 0}, \"disk_floor_bytes\": 268435456, \"memory_floor_bytes\": 2147483648, \"static_cap_bytes\": 2097152, \"admitted\": true}, {\"label\": \"before-owned-node-browser-controller\", \"time_utc\": \"2026-10-09T10:49:44.928023+00:00\", \"disk_free_bytes\": 2934697984, \"conservative_memory_bytes\": 10981900288, \"owned\": {\"bytes\": 57022, \"allocated_bytes\": 65536}, \"disk_floor_bytes\": 268435456, \"memory_floor_bytes\": 2147483648, \"static_cap_bytes\": 2097152, \"admitted\": true}]}\n{\"outer_complete\": true, \"accepted\": false, \"root\": \"/Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7\", \"controller_pid\": 64894, \"node_pid\": 64931, \"node_wait_exit\": 1, \"node_reaped_by_wait\": true, \"error\": null, \"outer_receipt\": {\"bytes\": 5905, \"sha256\": \"a084e737ed0dc4274ee48250f672726cf7c6cafd836d49ee84e5896e5d778943\", \"git_blob\": \"11c3d921b987edab722419dd262213674a92959d\", \"mode\": \"0444\", \"mtime_ns\": \"1791542995969633257\"}, \"full_record_if_unwritten\": null}\n\n✅ Process completed with exit code 1 (runtime: 11.11s)\n\n📊 Timing: 0ms"
+      },
+      {
+        "type": "text",
+        "text": "\n[executed on device: Mac.lan (0b4ac27b-8500-47d0-8f11-5a35402e9abc)]"
+      }
+    ],
+    "isError": false
+  },
+  "native_outer_receipt": "11c3d921b987edab722419dd262213674a92959d",
+  "native_browser_receipt": "908f5694002113bf99c13cd526a89f458ac49a3c",
+  "observer_source": "356784a70e46e532bb3a3f938475fd6331aa0924",
+  "actual_outer_source": "6266ffadc9c5b6ae50c3040814e001b3732b9020",
+  "actual_browser_exit": {
+    "pid": 64939,
+    "code": 0,
+    "signal": null,
+    "at": "2026-10-09T10:49:55.870Z"
+  },
+  "remaining_owned_processes": [],
+  "actual_node_wait_exit": 1,
+  "actual_outer_exit": 1,
+  "protected_files_and_runtime_equal": true,
+  "page_observation_counts": {
+    "exceptions": 0,
+    "console": 0,
+    "log": 0,
+    "requests": 1,
+    "responses": 1,
+    "loading_failed": 0
+  },
+  "chrome_os_stderr": {
+    "bytes": 2792,
+    "sha256": "dfde1fa2836acac42ceadda755fde8abfbcad0912aa9ca78fd0958a69a770fa4",
+    "git_blob": "3e3965db0fc602ee41fd5a4822c4a434b93d1a02",
+    "path": "results/chrome.stderr.txt"
+  },
+  "initial_diagnostics": "No page exception/console/log/resource failure observed in this limited attempt; Chrome OS stderr is nonempty and preserved.",
+  "limits": "All tracked browser child absence is scoped to the observed owned PIDs. Node is reaped by parent wait. Original C4/C5 labels remain pending in the failed driver receipt; independent final report may state measured closure separately."
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "gap_event.schema.json",
+  "title": "capture.v1.GapEvent",
+  "type": "object",
+  "properties": {
+    "sourceId": {
+      "type": "string"
+    },
+    "streamId": {
+      "type": "string"
+    },
+    "cause": {
+      "type": "string",
+      "enum": [
+        "GAP_CAUSE_UNSPECIFIED",
+        "GAP_CAUSE_DISCONNECT",
+        "GAP_CAUSE_SEQUENCE_LOSS",
+        "GAP_CAUSE_OVERLOAD_DROP",
+        "GAP_CAUSE_WRITER_ERROR",
+        "GAP_CAUSE_UNKNOWN"
+      ]
+    },
+    "startSessionTimeNs": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "endSessionTimeNs": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "estimatedLostCount": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "closed": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": true,
+  "unevaluatedProperties": true
+}

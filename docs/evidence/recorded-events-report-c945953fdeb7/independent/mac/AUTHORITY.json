@@ -1,0 +1,101 @@
+{
+  "schema": "capturesuite-same-physical-report-mac-authority-v1",
+  "contract": {
+    "git_blob": "7fd938b783feb56b3f7bbb29ae52d60146359600",
+    "bytes": 15189,
+    "sha256": "d40f04be3cc899fda74355c1f1d685479df5d83272fc4f9542de01b3cecfdd1a"
+  },
+  "physical_html": {
+    "bytes": 11901,
+    "sha256": "f6768d7d8d30782f6ca400ac9b9253254f9f5d483825587c31dafbe2c925e16f",
+    "git_blob": "fac1f8c93b74160f1ee2b2675de8232bd120e0ce"
+  },
+  "linux_receipt": {
+    "git_blob": "9b05901d220f38994a10d32e643107f31eca93ed",
+    "scope": "The raw Python JSON establishes arbitrary-precision value/type equality. Mac compares only exact JSON-bearing DOM strings and physical bytes, not JS Number-parsed values."
+  },
+  "structured_record_text": [
+    {
+      "kind": "checkpoints",
+      "index": "0",
+      "json_text": "{\n  \"checkpointId\": \"receiver-late\",\n  \"originalTimestampNs\": \"9007199254740997\",\n  \"effectiveTimestampNs\": \"9007199254740993\",\n  \"name\": \"Later <literal> & supplied first\",\n  \"notes\": \"Receiver synthetic checkpoint; list order is intentional.\",\n  \"futureField\": {\n    \"literal\": \"<kept> & \\\"quoted\\\"\"\n  }\n}"
+    },
+    {
+      "kind": "checkpoints",
+      "index": "1",
+      "json_text": "{\n  \"checkpointId\": \"cp-1\",\n  \"name\": \"Synthetic start\",\n  \"effectiveTimestampNs\": 1000000000\n}"
+    },
+    {
+      "kind": "annotations",
+      "index": "0",
+      "json_text": "{\n  \"annotationId\": \"receiver-literal-1\",\n  \"timestampNs\": \"9007199254740999\",\n  \"category\": \"synthetic_receiving\",\n  \"text\": \"Operator's synthetic note: <script>globalThis.__captureReceiverSentinel='unexpected'</script> & \\\"quote\\\"\\r\\nSecond line — café 读\",\n  \"tags\": [\n    \"synthetic\",\n    \"literal <tag>\"\n  ],\n  \"sourceId\": \"sensor-α\",\n  \"createdVia\": \"independent-report-receiver\",\n  \"futurePayload\": {\n    \"exactInteger\": 9007199254740993,\n    \"exactString\": \"009007199254740993\",\n    \"nested\": [\n      \"<b>kept text</b>\",\n      false,\n      null\n    ]\n  }\n}"
+    },
+    {
+      "kind": "annotations",
+      "index": "1",
+      "json_text": "{\n  \"annotationId\": \"receiver-earlier-2\",\n  \"timestampNs\": \"-23\",\n  \"category\": \"synthetic_receiving\",\n  \"text\": \"Second recorded annotation; list order remains supplied.\",\n  \"tags\": [\n    \"synthetic\"\n  ],\n  \"createdVia\": \"independent-report-receiver\"\n}"
+    },
+    {
+      "kind": "sync-anchors",
+      "index": "0",
+      "json_text": "{\n  \"syncAnchorId\": \"receiver-later-anchor\",\n  \"timestampNs\": \"9007199254740999\",\n  \"modalitiesTargeted\": [\n    \"imu\",\n    \"emg\"\n  ],\n  \"mechanism\": \"manual\",\n  \"metadata\": {\n    \"classification\": \"synthetic_fixture\",\n    \"literal\": \"No alignment <performed> & no inferred chronology\"\n  },\n  \"createdVia\": \"independent-report-receiver\"\n}"
+    },
+    {
+      "kind": "sync-anchors",
+      "index": "1",
+      "json_text": "{\n  \"syncAnchorId\": \"synthetic-tap-250ms\",\n  \"timestampNs\": \"250000000\",\n  \"modalitiesTargeted\": [\n    \"emg\",\n    \"imu\"\n  ],\n  \"mechanism\": \"manual\",\n  \"metadata\": {\n    \"classification\": \"synthetic_fixture\"\n  },\n  \"createdVia\": \"sync-request-test\"\n}"
+    },
+    {
+      "kind": "gaps",
+      "index": "0",
+      "json_text": "{\n  \"source_id\": \"named-β\",\n  \"stream_id\": \"stream-A\",\n  \"cause\": \"GAP_CAUSE_DISCONNECT\",\n  \"start_session_time_ns\": 0,\n  \"end_session_time_ns\": 9007199254740997,\n  \"closed\": true,\n  \"estimated_lost_count\": 9007199254740999\n}"
+    },
+    {
+      "kind": "gaps",
+      "index": "1",
+      "json_text": "{\n  \"source_id\": \"sensor-α\",\n  \"stream_id\": \"stream-B\",\n  \"cause\": \"UNKNOWN\",\n  \"start_session_time_ns\": -23,\n  \"end_session_time_ns\": null,\n  \"closed\": false,\n  \"estimated_lost_count\": 3\n}"
+    }
+  ],
+  "receiver_source": {
+    "bytes": 21486,
+    "sha256": "11be50381986db820bde0f55f3475451b4d526cecbcb3b5db0f9f73ac5184f38",
+    "git_blob": "356784a70e46e532bb3a3f938475fd6331aa0924"
+  },
+  "runtime_preflight": {
+    "python": {
+      "path": "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3.13",
+      "bytes": 119600,
+      "sha256": "406d73d07e33e164d986326fde00b85c2b8f4ed2c33278142c8431588fe2df14",
+      "mode": "0o775",
+      "mtime_ns": "1755192800000000000"
+    },
+    "node": {
+      "path": "/opt/homebrew/Cellar/node/26.3.0/bin/node",
+      "bytes": 68384,
+      "sha256": "56694c81b093cc8da273fa017cf91765b3653e5f64f16727976ffaa87b2b6b31",
+      "mode": "0o555",
+      "mtime_ns": "1781043664290977610"
+    },
+    "chrome": {
+      "path": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+      "bytes": 367696,
+      "sha256": "764f5f6ee523e6d52caf6e56ce7501e932c4f6e52d06d267887cb7ea70350102",
+      "mode": "0o775",
+      "mtime_ns": "1791502133198545615"
+    }
+  },
+  "chrome_version": "154.0.8037.99",
+  "native_preflight": {
+    "observed_at": "2026-10-09T10:44:40.757377+00:00",
+    "admitted": true,
+    "root": "/Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7",
+    "disk_free_bytes": 2999853056,
+    "conservative_memory_bytes": 11257249792
+  },
+  "chronology": "Mac observer and authority follow the actual Linux three-command receiving. Frozen C4 expectations are unchanged; no Mac browser run has occurred at this authority freeze.",
+  "limits": [
+    "Synthetic metadata report only; no hardware/capture completeness/recovery operation or application-installation claim.",
+    "One native file:// display with trusted pointer and keyboard actions; exact structured text comparison without parsing large integers as JavaScript Number.",
+    "No regeneration or source edit; original Linux file retained through carrier and individual Git blob."
+  ]
+}

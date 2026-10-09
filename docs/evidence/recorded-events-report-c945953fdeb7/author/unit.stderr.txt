@@ -1,0 +1,13 @@
+test_actual_cli_creates_physical_file_and_preserves_package (test_recorded_events_html.RecordedEventsReportTests.test_actual_cli_creates_physical_file_and_preserves_package) ... ok
+test_empty_and_recovered_report_keeps_omission_limits_visible (test_recorded_events_html.RecordedEventsReportTests.test_empty_and_recovered_report_keeps_omission_limits_visible) ... ok
+test_escaped_surrogate_is_kept_without_invalid_utf8 (test_recorded_events_html.RecordedEventsReportTests.test_escaped_surrogate_is_kept_without_invalid_utf8) ... ok
+test_existing_destination_and_inside_package_are_preserved (test_recorded_events_html.RecordedEventsReportTests.test_existing_destination_and_inside_package_are_preserved) ... ok
+test_full_literal_records_and_reader_order_survive_html (test_recorded_events_html.RecordedEventsReportTests.test_full_literal_records_and_reader_order_survive_html) ... ok
+test_gap_projection_keeps_integer_null_and_closure_independent (test_recorded_events_html.RecordedEventsReportTests.test_gap_projection_keeps_integer_null_and_closure_independent) ... ok
+test_nonfinalized_state_is_a_visible_refusal (test_recorded_events_html.RecordedEventsReportTests.test_nonfinalized_state_is_a_visible_refusal) ... ok
+test_qualified_reader_error_prevents_any_report_file (test_recorded_events_html.RecordedEventsReportTests.test_qualified_reader_error_prevents_any_report_file) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.073s
+
+OK

@@ -1,0 +1,1002 @@
+{
+  "schema": "capturesuite-independent-original-portable-custody-v1",
+  "repository": "Jacob-Met/CaptureSuite",
+  "receiver": "estate-c945953fdeb7/control_execution",
+  "created_after": "2026-10-09 10:59:16 UTC",
+  "scope": "Original frozen receiving only. Linux C1–C3 PASS; original Mac C4 incomplete with literal exit-1 observer evidence, measured closure and readable original overview. No correction or rerun included.",
+  "path_convention": "All 99 paths below are relative to one independent-receiving directory chosen by the source composer. Add this exact PORTABLE-CUSTODY.json as the 100th leaf; preserve all filenames and content.",
+  "original_contract": "7fd938b783feb56b3f7bbb29ae52d60146359600",
+  "report": "7787c78616d0c6ebbf289cdc0d82bf297a5dc840",
+  "decision": "3cb74b94407b97e9d8b13dd1d972b44d0a8e3cb0",
+  "totals": {
+    "files_excluding_self": 99,
+    "linux_native_files": 65,
+    "mac_native_nonprofile_files": 15,
+    "additional_report_source_transport_files": 19,
+    "bytes_excluding_self": 2751020,
+    "unique_git_bodies": 86
+  },
+  "files": [
+    {
+      "path": "evidence/FROZEN-INPUT-SYNTAX.json",
+      "git_blob": "c1516379e8ef3da1bc075945aeb15800b0055b73",
+      "bytes": 480,
+      "sha256": "3dac07cc045ddf6fcf607e5bb49a10d411688d685d24df2cde215dc2d2d056ca",
+      "git_mode": "100644",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "evidence/LINUX-ACTUAL-CLOSURE.json",
+      "git_blob": "2cd00abbd76eab9e2526f5937e0d38c7fe49fd5a",
+      "bytes": 4740,
+      "sha256": "6ef58500597cb5617fdd4ad5c4b2a65fa8e7b66057c771c057f4f8418449a519",
+      "git_mode": "100644",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "evidence/LINUX-CUSTODY-TOOLS.json",
+      "git_blob": "e5f558d93ddbf25c0132ed65b28d6c87943b8511",
+      "bytes": 373944,
+      "sha256": "b7c9967a7b9246f2415cef5257ebbba81af95cb879261f45251df4d25a92fe10",
+      "git_mode": "100644",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "evidence/LINUX-START-EXECUTION-TOOLS.json",
+      "git_blob": "461a4fcd1fb85d9ac2f19113b0d4857e396ae2d6",
+      "bytes": 347703,
+      "sha256": "e4e8a2501d5055ec0c4b94b9feadf3f73ad84778dbb8f2c61ee9bf8efa69f89b",
+      "git_mode": "100644",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "evidence/MAC-CUSTODY-TOOLS.json",
+      "git_blob": "42d0c2cc9990cb91e5344a5c1fb35c97ad81540a",
+      "bytes": 231832,
+      "sha256": "e66589881eb57083b64d538bd3c76a33f47d320bb57c398d8fc2b08cf9101343",
+      "git_mode": "100644",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "evidence/MAC-EXTERNAL-CLOSURE.json",
+      "git_blob": "a53a24c626adf917218878036c7e9c4d0b052313",
+      "bytes": 6113,
+      "sha256": "d00899e157b24c0a82ee42fbfa6e79dcd67e7249fd09367989049f87772e93fa",
+      "git_mode": "100644",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "evidence/MAC-INVOCATION-TOOLS.json",
+      "git_blob": "cdcb769923af9c50d43aac0c954d2a1299e1cd33",
+      "bytes": 89495,
+      "sha256": "08f880d7f5f5bf8b796daba5cdae5b64ef77a7a619764998cb59673a5994a37d",
+      "git_mode": "100644",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "evidence/MAC-PREFLIGHT-TOOLS.json",
+      "git_blob": "005fb688007980d67f1ba961f4bd6d4d17b69676",
+      "bytes": 7592,
+      "sha256": "e6b3acfac78ce01730bb6f45eaae82411cc0e39d673f4f5252f0c65e39f54472",
+      "git_mode": "100644",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "evidence/MAC-READ-FILE-TOOLS.json",
+      "git_blob": "c342270878fb11706c998b9db1a1c29ceb986dc9",
+      "bytes": 250085,
+      "sha256": "854f90d8db25987a490094285d1e101384215149d2628e67b895f6706f4652b9",
+      "git_mode": "100644",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "evidence/MAC-READONLY-NATIVE-CUSTODY.json",
+      "git_blob": "8afd09952d5bfc8dc92999e5257e68c0b3082e88",
+      "bytes": 104607,
+      "sha256": "40083023bb35b44ac413c45036d953c0ee541096cfb9beb14c3d9a0068bcdae4",
+      "git_mode": "100644",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "evidence/MAC-VISUAL-REVIEW.json",
+      "git_blob": "f656a76dafe7688efa2bfb7350a71f64ce536817",
+      "bytes": 2384,
+      "sha256": "734509cfd7ae31ba3f95be794b6a4d557b5739444a3bbda227e076a765b96872",
+      "git_mode": "100644",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "FINAL-DECISION.json",
+      "git_blob": "3cb74b94407b97e9d8b13dd1d972b44d0a8e3cb0",
+      "bytes": 3797,
+      "sha256": "b2064db3802c081e6df432a71c138650ca35eff8bc5223684a235bad391c4d82",
+      "git_mode": "100644",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "linux/author-offer/AUTHOR-RECEIPT.json",
+      "git_blob": "288d0198028e5a8f850273fb45d81700d5471f32",
+      "bytes": 13482,
+      "sha256": "f5e7e52f02045988c9a5f2aceee62db465531f3a399110aee1f92bac55c8ab3d",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317590133976",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/author-offer/OUTER-CLOSURE.json",
+      "git_blob": "290b2ebb0005a73701e9e0c5c50151063097b150",
+      "bytes": 2974,
+      "sha256": "f158336ef3e62ac5a6cbbea7de37173cb5009fb5fc445f5ca3af7cc48553be4f",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317590250141",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/author-offer/SOURCE-PREPARATION.json",
+      "git_blob": "6d66854dfcc02293460e52d0e1b46385215ab2d1",
+      "bytes": 6740,
+      "sha256": "0e1733462b51bb2527e44fa969da63dd4f21edad965159615416f30d8ee55af9",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317590184071",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/author-offer/unit.stderr",
+      "git_blob": "3028ba122d8d3b03591ce6182e20532b24f80a0a",
+      "bytes": 1486,
+      "sha256": "4ed722eca38c3e1ba698227e5fb409b84bf9c29d015a080f7c5ba6df155437e9",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317590221157",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/evidence/children/C2-positive.stderr.txt",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542325337171095",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/evidence/children/C2-positive.stdout.txt",
+      "git_blob": "023efb6137538d84fdc1693192dc180f7d71ed6f",
+      "bytes": 524,
+      "sha256": "5697bc626440c730e6fb52ae89ad4c6011450b4338c24d689e29d3deb6cfdee1",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542325400486966",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/evidence/children/C3-existing.stderr.txt",
+      "git_blob": "aa457b29cb0cb96789be011a8931523beb029a4a",
+      "bytes": 147,
+      "sha256": "63e0a6d21ee57b26f5ae880085c1306bc51c3a4efc678284e79aed1e2cdb616f",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542325481173253",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/evidence/children/C3-existing.stdout.txt",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542325425172414",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/evidence/children/C3-malformed.stderr.txt",
+      "git_blob": "22fd2007940a614a849664e83e566fd8577014cc",
+      "bytes": 204,
+      "sha256": "9ad3c112efec2d103a52ab23b46ec6bfbf79b02b1454593bcc87d915230b2a2c",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542325561174453",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/evidence/children/C3-malformed.stdout.txt",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542325505173613",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/evidence/LINUX-RECEIPT.json",
+      "git_blob": "9b05901d220f38994a10d32e643107f31eca93ed",
+      "bytes": 68381,
+      "sha256": "9eae2f637e724f7bb43673a840684cf4ef82d42bb8a0727771538e4906318e1b",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542325581508690",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/evidence/PHYSICAL-HTML-OBSERVATION.json",
+      "git_blob": "18ac1ecdb068c49c81739bb178c42a0b9554e8fc",
+      "bytes": 16114,
+      "sha256": "9562cf4db034f3cb668466dc269f950550af2ab2399b0821f3628754de49b3b9",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542325424771286",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/evidence/SOURCE-PREPARATION.json",
+      "git_blob": "a6dd6795efd40569045d840d3e8c0c8751a13b45",
+      "bytes": 20117,
+      "sha256": "1cc45ae9e32213f7d2abaced12e22d299bcdc6c2bef8ae5a2662d9ccda78f8d6",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317595785437",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/exports/recorded-events.html",
+      "git_blob": "fac1f8c93b74160f1ee2b2675de8232bd120e0ce",
+      "bytes": 11901,
+      "sha256": "f6768d7d8d30782f6ca400ac9b9253254f9f5d483825587c31dafbe2c925e16f",
+      "git_mode": "100644",
+      "native_mode": "0600",
+      "native_mtime_ns": "1791542325400486966",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/frozen/CONTRACT.md",
+      "git_blob": "7fd938b783feb56b3f7bbb29ae52d60146359600",
+      "bytes": 15189,
+      "sha256": "d40f04be3cc899fda74355c1f1d685479df5d83272fc4f9542de01b3cecfdd1a",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317589837640",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/frozen/FROZEN-EXPECTED.json",
+      "git_blob": "660542c6d98f6043c88e9f6da23378ec8e844a9f",
+      "bytes": 3027,
+      "sha256": "585644414bb77e1b8872f0558c4189603347dd0a0fb6feb5ef2227fc86bf3dd0",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317589750489",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/frozen/FROZEN-FIXTURES.json",
+      "git_blob": "3623a92dd5ddb210b5fa9a26139add03cc4e0a29",
+      "bytes": 5624,
+      "sha256": "3fc2f890cba43753305ec1d7633d87b3182b4275d83a91929668abd931dfbef3",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317589688726",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/frozen/ORIGINAL-ONLY-INTAKE.json",
+      "git_blob": "bccb7c1e98f81a95792aa4d1e3bb9c7d924a1fef",
+      "bytes": 11874,
+      "sha256": "793b6510b75eb93047f2d6ca1c1f6667890993d16082dce4b531b0057610161c",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317589788026",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/frozen/SOURCE-REVIEW.json",
+      "git_blob": "309dee9d6b09f9a68842fb11ed8b237774528c4f",
+      "bytes": 5908,
+      "sha256": "72b13120f7bdd3960932272621882cb31b973a35ae36b3a290a9035160feca54",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317590083150",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/inputs/malformed.mmsession/events/annotations.json",
+      "git_blob": "c94f25314d54b72f19f3384300d76aa762a7da8e",
+      "bytes": 715,
+      "sha256": "4d608132ef6139add413afdfc38196aee6f57dfaa96d245745be19d33c722ed6",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317589494795",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/inputs/malformed.mmsession/events/checkpoints.json",
+      "git_blob": "c1dd652935d0b5bbd7add0b2ff818330a6a7c193",
+      "bytes": 366,
+      "sha256": "262a544ba3479e083882e00712cfaa1a569fc50b0a48b7f1a7aba99f0e475f3c",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317589422846",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/inputs/malformed.mmsession/events/sync_anchors.json",
+      "git_blob": "566661cf77cb80d79b34a3a641421be5d0c150dc",
+      "bytes": 498,
+      "sha256": "b82e0f52c40fa697ad57bb42bab73652d930ba728fb3731533ceab0ea6ab9e16",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317589549447",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/inputs/malformed.mmsession/manifest.json",
+      "git_blob": "6acd50ab71bbff9a7d8a70f8e3b41a259408a491",
+      "bytes": 255,
+      "sha256": "b4a5afe923b05f010807b672f7acfd296d50bf2c99a19c270c9f7a1aa16498f3",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317589312911",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/inputs/malformed.mmsession/sources/sensor-α/health/gaps.jsonl",
+      "git_blob": "d98ed007ee373a33e5a5d507cce591c09424c715",
+      "bytes": 368,
+      "sha256": "3b64eebd7733e1928525cd5322b7bbfa0fdc6388846fe431474d2bd8782ae2b0",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317589655046",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/inputs/positive.mmsession/events/annotations.json",
+      "git_blob": "c94f25314d54b72f19f3384300d76aa762a7da8e",
+      "bytes": 715,
+      "sha256": "4d608132ef6139add413afdfc38196aee6f57dfaa96d245745be19d33c722ed6",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317589465040",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/inputs/positive.mmsession/events/checkpoints.json",
+      "git_blob": "c1dd652935d0b5bbd7add0b2ff818330a6a7c193",
+      "bytes": 366,
+      "sha256": "262a544ba3479e083882e00712cfaa1a569fc50b0a48b7f1a7aba99f0e475f3c",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317589341134",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/inputs/positive.mmsession/events/sync_anchors.json",
+      "git_blob": "566661cf77cb80d79b34a3a641421be5d0c150dc",
+      "bytes": 498,
+      "sha256": "b82e0f52c40fa697ad57bb42bab73652d930ba728fb3731533ceab0ea6ab9e16",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317589521525",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/inputs/positive.mmsession/manifest.json",
+      "git_blob": "6acd50ab71bbff9a7d8a70f8e3b41a259408a491",
+      "bytes": 255,
+      "sha256": "b4a5afe923b05f010807b672f7acfd296d50bf2c99a19c270c9f7a1aa16498f3",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317589283988",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/inputs/positive.mmsession/sources/sensor-α/health/gaps.jsonl",
+      "git_blob": "120179238adea8f1f1d9db320e7ccb7a0734dbcd",
+      "bytes": 357,
+      "sha256": "b90bdeb062d48fb181da7bf640cb7f6d429c58dcdef270a2fc3d18431577db65",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317589603829",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/observer/custodian.py",
+      "git_blob": "15b89d8aac7235ba415b95bf5c690de2f8fbd971",
+      "bytes": 12787,
+      "sha256": "95698e0d0cc41299c3a424d4eb67e02ef3ffbc6a2d4748dfaae75cfd1383411b",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317589977391",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/observer/linux_receiver.py",
+      "git_blob": "f7a207f4f0ec81cd05a2521042876174ab2250c9",
+      "bytes": 23705,
+      "sha256": "86e972f86e0a82d5146457ca9e8d4c2a54f9f5bce13aaf7d66e326f832ce61e4",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317589887726",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/.cursor/rules/local-toolchain.mdc",
+      "git_blob": "41884e93ad8d3a1a63411111794d82a148ca692b",
+      "bytes": 2742,
+      "sha256": "7d22f2c6f1b55f9e6db0541045d511d4d6a44a806c63670c4f54932e1d230bb4",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317588350634",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/AGENTS.md",
+      "git_blob": "9ac6683ba4805e210143e5a33e7782da55af0d15",
+      "bytes": 3932,
+      "sha256": "525164ca1f3b9e68561434ab110ba17ed65843a20c23f4c1385fde33f1863a74",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317587998675",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/docs/design/DESIGN_SYSTEM.md",
+      "git_blob": "7c9a1f8306e2f866a1e9c41d4455a0f000ef59c8",
+      "bytes": 4525,
+      "sha256": "49950ff54e4777c94d0107f8507d85a40c909c02558e5e9c9ca33854202e65e5",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317588439768",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/docs/design/research/AUTONOMOUS_EXECUTION_PLAN.md",
+      "git_blob": "77d4576009f677f62b301bd6d352d9b40328c471",
+      "bytes": 16211,
+      "sha256": "656719f9c19a97a5683ad2e67bf29e43641fbc65bbc90430fe7f650498b9ddb0",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317588090943",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/docs/design/research/RECORDED_EVENTS_REPORT.md",
+      "git_blob": "ce4ab99467713831683ddb39b1ac92d830ea0190",
+      "bytes": 7595,
+      "sha256": "6d8b0845441ad9d65172cce66ed86de1af8f1f8ed06be490479d22091980ad4f",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317589243877",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/docs/design/research/REVIEW_AND_EXPORT_UX.md",
+      "git_blob": "44f854f9e4065dd68356e788a42ab51de2ecb1a6",
+      "bytes": 8708,
+      "sha256": "c1dfa854e6a814c269b35cf201d0fde2b0246cc37013e3a75f1571253bc60b93",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317588236943",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/docs/design/SESSION_FORMAT.md",
+      "git_blob": "ce6e651af320735a7831cc85c92abdab558cff0a",
+      "bytes": 8686,
+      "sha256": "da4647c1c22c66f19602d3a11919bb325b9c3be6949cfe2c953093692ff13972",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317588294580",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/libs/python/capture_analysis/capture_analysis/report_html.py",
+      "git_blob": "bb8032024cfce30c6fe9a2bd2c13b0d2cbc2d102",
+      "bytes": 4716,
+      "sha256": "f2c89c7faf6e4edc265540140272396b4195eb5aed9edf05c4912aac74286f03",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317588400679",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/libs/python/capture_session/capture_session/__init__.py",
+      "git_blob": "894e3c152a98b6e804de90122572afbcd929b3da",
+      "bytes": 2412,
+      "sha256": "da530f86c0d1d584862868ddba9f7087ccf5dfbddd64dd1e577337ecfd776419",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317587648117",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/libs/python/capture_session/capture_session/app_paths.py",
+      "git_blob": "46332cea7c62dd44247b219937ae6c8fbc747017",
+      "bytes": 561,
+      "sha256": "363e4522240e2356cac7492589cb207a798bc1af6031139bd1fa94890f1c4bfd",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317587799795",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/libs/python/capture_session/capture_session/package_reader.py",
+      "git_blob": "cdfba8a26736856683ea865b9df67b36ad120e40",
+      "bytes": 6679,
+      "sha256": "4fd156a015115974d062bbc9bffc97cdb23e92b135e2729ecf312400a0201ab1",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317587748198",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/libs/python/capture_session/capture_session/recorded_events_html.py",
+      "git_blob": "f65892baea166d39e8fa38f6ead5ae9509ec73a1",
+      "bytes": 10602,
+      "sha256": "026ffd469301c0ac70d70e3041473abe48f08562033f42836c38c0bccd8f8abe",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317589107502",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/libs/python/capture_session/capture_session/registry.py",
+      "git_blob": "c1d7799e1d2099424221b2f4af216a43a972c67a",
+      "bytes": 13989,
+      "sha256": "809b26ce8d8efc0559a3854cf85ea74b4e486fcd77d253ebfa76bade64b0a8d1",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317587837312",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/libs/python/capture_session/capture_session/settings_store.py",
+      "git_blob": "41b99cdaa78011d3d9b753c3131f32c72af9699f",
+      "bytes": 4622,
+      "sha256": "7719524a1f106cc54befcd21088810f9ec28f0160c8e88f60c374e1545fdb98d",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317587894648",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/libs/python/capture_session/pyproject.toml",
+      "git_blob": "c83450d780e97e5bd90feb48cef140917b6e47ff",
+      "bytes": 389,
+      "sha256": "3484887da96d4a2f32de8471b537d849f077b195c729ff0cc29307681e8d4895",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317587966927",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/LICENSE",
+      "git_blob": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317588629443",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/pyproject.toml",
+      "git_blob": "52491c6beebc4b17983fc66bb8765154c33cf6d8",
+      "bytes": 1233,
+      "sha256": "0cb8de1ab3dfbfed84ff16b35f3c89c6440180183ee5851d5d80da83622e53d0",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317587934568",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/schemas/session/jsonschema/annotation.schema.json",
+      "git_blob": "686fbf750e5467379cfd206a7746fdbb2082a7d6",
+      "bytes": 660,
+      "sha256": "335772a3d0bc42fddf886f90579e287a33cc5b759447aef70188945af71230a3",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317588729193",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/schemas/session/jsonschema/checkpoint.schema.json",
+      "git_blob": "290c505abab0c84203e471d599f7f21c1d146e9b",
+      "bytes": 1125,
+      "sha256": "4f32b55ba009e6d33395e82c645111a6c54e8b797ba78411d677cae08a1a8680",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317588760070",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/schemas/session/jsonschema/gap_event.schema.json",
+      "git_blob": "3220405e13c712578bb6902560307e2b7f0e56aa",
+      "bytes": 914,
+      "sha256": "8b6fc4cb71aace5a97c76cf2ea2afb72af325adfa653967c97b2873bf63fe479",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317588789905",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/schemas/session/jsonschema/session_manifest.schema.json",
+      "git_blob": "bcef59d89aa923371f3be8cbe67d57d22f45c203",
+      "bytes": 1439,
+      "sha256": "3ef72af1cc561fc2d4f3231e0cbd690c2c5fa223dd9027358bb79de0d9f954f4",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317588817796",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/schemas/session/jsonschema/sync_anchor.schema.json",
+      "git_blob": "a97b824946aa935b7d9b155dba4a2c731d615a95",
+      "bytes": 698,
+      "sha256": "e6bf9f3d790faff1b1f07ab2bdf98ab9b19fb86e760af2b118a4d2f34c510a1f",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317588844657",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/tests/analysis/test_sync_anchor_request.py",
+      "git_blob": "ead08b6cd74455115fa1e9f2e83e9ea4a72dcd18",
+      "bytes": 5010,
+      "sha256": "80dd9c2b3210f8198a49ba893b49b330edf345e29cc30d4f9613299db271ca30",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317588591997",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/tests/fixtures/mini_session/events/annotations.json",
+      "git_blob": "fe51488c7066f6687ef680d6bfaa4f7768ef205c",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317588910225",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/tests/fixtures/mini_session/events/checkpoints.json",
+      "git_blob": "fe51488c7066f6687ef680d6bfaa4f7768ef205c",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317588939740",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/tests/fixtures/mini_session/events/sync_anchors.json",
+      "git_blob": "fe51488c7066f6687ef680d6bfaa4f7768ef205c",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317588966981",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/tests/fixtures/mini_session/manifest.json",
+      "git_blob": "800dab5b41774bc043ebdee4714195770e75229b",
+      "bytes": 235,
+      "sha256": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317588880951",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/tests/fixtures/review_video/events/checkpoints.json",
+      "git_blob": "3d78af21df440e99302288d3e16a844c89941eba",
+      "bytes": 89,
+      "sha256": "e13318719c15f5526af94a4cd5dd15e8c612696eb1e980095761942ee6e17d1e",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317589021763",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/tests/fixtures/review_video/manifest.json",
+      "git_blob": "78b7730aa88a40765b5449377d1f90ce22f58508",
+      "bytes": 92,
+      "sha256": "3d542d0251159008183bd2506ccc11a31b6b311c8d2ac388dca9a3b5003fc31e",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317588994232",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/tests/test_package_reader_gaps.py",
+      "git_blob": "70726a99b9f073c82ab314c4271edea0960d8401",
+      "bytes": 6543,
+      "sha256": "0f3070478bafc6da0ea139e29cdd81266a18e6f40e7058f2587059c919634b07",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317588549593",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/tests/test_recorded_events_html.py",
+      "git_blob": "a95881c873ee10bc43ec01b3c2fb4338d742cf9d",
+      "bytes": 10910,
+      "sha256": "df6ad0bba8d5777648e4e7cb82a5cbeae0c78c6911c679cd3a6e72463f3fcd90",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317589198629",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/tools/demo_qc.py",
+      "git_blob": "1a165ba9742318913418a41d7822a2eb089e7da3",
+      "bytes": 3459,
+      "sha256": "224c7fc504af01c1388b48818f9e1736ec0e5e30816b1baeccb6ebe76349bffc",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317588514661",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/tools/report_recorded_events.py",
+      "git_blob": "965e28fb602d35c8a113eed204efbae595ca5d1a",
+      "bytes": 3378,
+      "sha256": "cff0f891366ce9e729609a88b9f204acc909d580c7136164ab9c094dc66eedd8",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317589156746",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "linux/source/tools/run_analysis.py",
+      "git_blob": "a846e6e0550ec4ba1db12a1b989d5e03cfdd69b6",
+      "bytes": 4865,
+      "sha256": "f450b1e17185bb2b19e45747698dd1f75f487c7898304484357abec5bee9f555",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542317588477775",
+      "availability": "Actual Git object present and exact UTF-8 readback; native bytes also preserved in the complete Linux carrier."
+    },
+    {
+      "path": "mac/AUTHORITY.json",
+      "git_blob": "03a3eadfd0e0c0e1cdd5fee918a09d0405f5cdd3",
+      "bytes": 5857,
+      "sha256": "ed40a64216c4f99129064440ba5a29b7ce82b25f95c868c4a4d39a18968f6d1c",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542984925747666",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "mac/CONTRACT.md",
+      "git_blob": "7fd938b783feb56b3f7bbb29ae52d60146359600",
+      "bytes": 15189,
+      "sha256": "d40f04be3cc899fda74355c1f1d685479df5d83272fc4f9542de01b3cecfdd1a",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542984925396870",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "mac/node.stderr.txt",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542984928283153",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "mac/node.stdout.txt",
+      "git_blob": "d7a9b8009d9a774aca33696752a6a9eda89a2ebf",
+      "bytes": 1075,
+      "sha256": "f93845d3344f93dfe9a5775875a16d009520d01884c00cd9d7621eb1607548d9",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542995914117713",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "mac/OUTER-EXECUTION.json",
+      "git_blob": "11c3d921b987edab722419dd262213674a92959d",
+      "bytes": 5905,
+      "sha256": "a084e737ed0dc4274ee48250f672726cf7c6cafd836d49ee84e5896e5d778943",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542995969633257",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "mac/receiver.mjs",
+      "git_blob": "356784a70e46e532bb3a3f938475fd6331aa0924",
+      "bytes": 21486,
+      "sha256": "11be50381986db820bde0f55f3475451b4d526cecbcb3b5db0f9f73ac5184f38",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542984925575497",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "mac/recorded-events.html",
+      "git_blob": "fac1f8c93b74160f1ee2b2675de8232bd120e0ce",
+      "bytes": 11901,
+      "sha256": "f6768d7d8d30782f6ca400ac9b9253254f9f5d483825587c31dafbe2c925e16f",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542984925182576",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "mac/results/01-overview.png",
+      "git_blob": "811cba88860664adda9bc5578a69a5b3052ffcef",
+      "bytes": 155902,
+      "sha256": "0d37fc928a8e89b55ca274a6463c41aa562ce18f34591935d14ba1464726bbf8",
+      "git_mode": "100644",
+      "native_mode": "0600",
+      "native_mtime_ns": "1791542985643459029",
+      "availability": "Actual raw Git create matched; exact binary native/RDC hash and complete base64 carrier readback. No unsupported UTF-8 binary fetch."
+    },
+    {
+      "path": "mac/results/chrome.stderr.txt",
+      "git_blob": "3e3965db0fc602ee41fd5a4822c4a434b93d1a02",
+      "bytes": 2792,
+      "sha256": "dfde1fa2836acac42ceadda755fde8abfbcad0912aa9ca78fd0958a69a770fa4",
+      "git_mode": "100644",
+      "native_mode": "0600",
+      "native_mtime_ns": "1791542995909917374",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "mac/results/chrome.stdout.txt",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_mode": "100644",
+      "native_mode": "0600",
+      "native_mtime_ns": "1791542995909756372",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "mac/results/ENTRY-DOM.json",
+      "git_blob": "c94ee17dcc854ccd2a51629f104deb320e8bc031",
+      "bytes": 6446,
+      "sha256": "88638bc3caa27ec7d015a88284cc9e25bfc1128e30ae4bdf85f180abb6a81296",
+      "git_mode": "100644",
+      "native_mode": "0600",
+      "native_mtime_ns": "1791542985552831880",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "mac/results/FAILURE-IDENTITY-AFTER.json",
+      "git_blob": "54f245ce1bdbec08642dad77fb18cce4d7f3ba28",
+      "bytes": 1842,
+      "sha256": "4750f1782f22842da17ce755ee52551fc531f55d9406b3c53eccd5ddd29f9c05",
+      "git_mode": "100644",
+      "native_mode": "0600",
+      "native_mtime_ns": "1791542995910981511",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "mac/results/IDENTITY-BEFORE.json",
+      "git_blob": "54f245ce1bdbec08642dad77fb18cce4d7f3ba28",
+      "bytes": 1842,
+      "sha256": "4750f1782f22842da17ce755ee52551fc531f55d9406b3c53eccd5ddd29f9c05",
+      "git_mode": "100644",
+      "native_mode": "0600",
+      "native_mtime_ns": "1791542984999719086",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "mac/results/MAC-RECEIPT.json",
+      "git_blob": "908f5694002113bf99c13cd526a89f458ac49a3c",
+      "bytes": 17364,
+      "sha256": "66e6f184f95e44b17a2339a48556956fb3e1f73b4fada0435dcc2f78bd018ef5",
+      "git_mode": "100644",
+      "native_mode": "0600",
+      "native_mtime_ns": "1791542995913817418",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "mac/SOURCE-PREPARATION.json",
+      "git_blob": "1b622714113a081981ee9a2eb3e42519f73c35ea",
+      "bytes": 2589,
+      "sha256": "1459e12320f64d2c670a2536b102c08528e168f664e8f6db9a818d18eafb3abe",
+      "git_mode": "100644",
+      "native_mode": "0444",
+      "native_mtime_ns": "1791542984925921668",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "observer/mac_custody_reader.py",
+      "git_blob": "54d7053f741ca80cf6c6bf36f06c302657e3b700",
+      "bytes": 2578,
+      "sha256": "bbf64e051374398e229f1da6958f61124050471cef3fe398013dc1b9e5fdd3b3",
+      "git_mode": "100644",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "observer/mac_outer.py",
+      "git_blob": "6266ffadc9c5b6ae50c3040814e001b3732b9020",
+      "bytes": 83023,
+      "sha256": "6fa3e8d1c7a1f262190891ec9e3d6b723feafac21a58d299b182527439cb5eec",
+      "git_mode": "100644",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "observer/mac_preflight.py",
+      "git_blob": "25c551d7b0edd00953a6ad1bd4443b111996e99c",
+      "bytes": 1691,
+      "sha256": "bc883e3f488205df7f67dde18a2d8a95e9a641f522f101eab633283855850b60",
+      "git_mode": "100644",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "original-only/CAPSULE.json",
+      "git_blob": "df7d233f42be885358b922e955066fbd10f2cba6",
+      "bytes": 184417,
+      "sha256": "02c0692dd6b45435f051995526132d026e492873008d9b14435f4d90e7a4f4e9",
+      "git_mode": "100644",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "README.md",
+      "git_blob": "7787c78616d0c6ebbf289cdc0d82bf297a5dc840",
+      "bytes": 13021,
+      "sha256": "85bd46d93c27e43d5df7899f081ad50341416b147443b4e59f5def53c9cb9e40",
+      "git_mode": "100644",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "transport/LINUX-PACKET.zip.b64",
+      "git_blob": "6a1cf2fd6a904623fa733698d210f59f2b31063d",
+      "bytes": 188701,
+      "sha256": "ff4f0a446f046403915d2538126a005b74f83cd4abf9daccefe397812b45ac88",
+      "git_mode": "100644",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    },
+    {
+      "path": "transport/MAC-OVERVIEW.png.b64",
+      "git_blob": "3f767c5e254700b3c9099d954c0418ce33d65b28",
+      "bytes": 207873,
+      "sha256": "a0ad2c6445960abe46df0599178aa0032b10507d235181033f81608d6ebdc2a0",
+      "git_mode": "100644",
+      "availability": "Actual Git object present and exact UTF-8 readback."
+    }
+  ],
+  "binary_routes": {
+    "overview": {
+      "raw": "811cba88860664adda9bc5578a69a5b3052ffcef",
+      "carrier": "3f767c5e254700b3c9099d954c0418ce33d65b28",
+      "route": "Decode ASCII base64+LF carrier to the original 155902-byte PNG; verify SHA256 0d37fc928a8e89b55ca274a6463c41aa562ce18f34591935d14ba1464726bbf8. Original was displayed by the receiver."
+    },
+    "linux_archive": {
+      "carrier": "6a1cf2fd6a904623fa733698d210f59f2b31063d",
+      "decoded_zip_bytes": 141524,
+      "decoded_zip_sha256": "cfa621c7d23a190a11efcdd5974c2c2c84501637e8ab6610df8cdbf8e5646118",
+      "decoded_zip_computed_git": "3e49373a8e62c712fbd665be471a4220fa5ea909",
+      "decoded_zip_separately_uploaded": false,
+      "members": 65
+    }
+  },
+  "native_process_closure": {
+    "linux_outer_external_exit": 0,
+    "linux_cli_wait_exits": [
+      0,
+      1,
+      1
+    ],
+    "mac_browser_exit": 0,
+    "mac_node_wait_exit": 1,
+    "mac_outer_external_exit": 1,
+    "mac_readonly_custody_external_exit": 0,
+    "additional_browser_or_candidate_calls": 0
+  },
+  "retention": "All listed source/evidence Git objects are actually present with the exact readback routes stated. No branch/tag/ref is created by this map. Raw unreferenced objects do not anchor retention."
+}

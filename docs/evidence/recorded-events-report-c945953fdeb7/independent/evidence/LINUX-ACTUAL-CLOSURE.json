@@ -1,0 +1,64 @@
+{
+  "schema": "capturesuite-independent-linux-actual-closure-v1",
+  "native": {
+    "schema": "capturesuite-independent-linux-native-closure-v1",
+    "time_utc": "2026-10-09T10:41:01.002636+00:00",
+    "controller_pid": 2,
+    "files_unchanged_since_export": true,
+    "all_staged_inputs_unchanged": true,
+    "all_cli_children_reaped": true,
+    "actual_cli_wait_exits": [
+      0,
+      1,
+      1
+    ],
+    "linux_accepted": true,
+    "guard": {
+      "label": "final-readonly-closure",
+      "time_utc": "2026-10-09T10:41:01.005444+00:00",
+      "free_bytes": 5225172992,
+      "mem_available_bytes": 2418069504,
+      "owned_bytes": 396754,
+      "owned_allocated_bytes": 557056,
+      "owned_files": 65,
+      "disk_floor_bytes": 134217728,
+      "memory_floor_bytes": 2147483648,
+      "owned_cap_bytes": 2097152,
+      "per_file_cap_bytes": 1048576,
+      "admitted": true
+    },
+    "final_files": 65,
+    "final_file_bytes": 396754,
+    "extra_candidate_calls": 0,
+    "native_root_removed": false,
+    "scope": "Custodian ends after exact export; /dev lifetime is ephemeral, no retention/reboot guarantee."
+  },
+  "actual_exec_start": {
+    "chunk_id": "7231ff",
+    "wall_time_seconds": 1.001231643,
+    "session_id": 64234,
+    "original_token_count": 69,
+    "output": "{\"ready\": true, \"controller_pid\": 2, \"python\": \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3\", \"time_utc\": \"2026-10-09T10:38:32.912016+00:00\", \"native_root\": null, \"scope\": \"No source staging or product call until exact prepare/run commands.\"}\r\n"
+  },
+  "actual_run": {
+    "chunk_id": "8c0c3a",
+    "wall_time_seconds": 1.001443071,
+    "session_id": 64234,
+    "original_token_count": 351,
+    "output": "{\"run_complete\": true, \"linux_accepted\": true, \"groups\": {\"C1\": \"PASS: exact staged pins plus reviewed ordinary import/source boundary\", \"C2\": \"PASS\", \"C3\": \"PASS\", \"C4\": \"pending: later same-byte Mac artifact receiving\", \"C5_linux\": \"PASS: measured preservation and actual owned-child reaping\"}, \"receipt\": {\"path\": \"evidence/LINUX-RECEIPT.json\", \"bytes\": 68381, \"sha256\": \"9eae2f637e724f7bb43673a840684cf4ef82d42bb8a0727771538e4906318e1b\", \"git_blob\": \"9b05901d220f38994a10d32e643107f31eca93ed\", \"mode\": \"0444\", \"mtime_ns\": \"1791542325581508690\", \"allocated_bytes\": 69632}, \"positive_output\": {\"path\": \"exports/recorded-events.html\", \"bytes\": 11901, \"sha256\": \"f6768d7d8d30782f6ca400ac9b9253254f9f5d483825587c31dafbe2c925e16f\", \"git_blob\": \"fac1f8c93b74160f1ee2b2675de8232bd120e0ce\", \"mode\": \"0600\", \"mtime_ns\": \"1791542325400486966\", \"allocated_bytes\": 12288}, \"children\": [{\"name\": \"C2-positive\", \"pid\": 3, \"wait_returncode\": 0, \"poll_returncode\": 0, \"elapsed_seconds\": 0.0727695380046498, \"timed_out\": false, \"child_reaped_by_wait\": true}, {\"name\": \"C3-existing\", \"pid\": 4, \"wait_returncode\": 1, \"poll_returncode\": 1, \"elapsed_seconds\": 0.07268880600167904, \"timed_out\": false, \"child_reaped_by_wait\": true}, {\"name\": \"C3-malformed\", \"pid\": 5, \"wait_returncode\": 1, \"poll_returncode\": 1, \"elapsed_seconds\": 0.06204067499493249, \"timed_out\": false, \"child_reaped_by_wait\": true}], \"failures\": []}\r\n"
+  },
+  "actual_close_request": {
+    "session_id": 64234,
+    "chars": "{\"op\":\"close\"}\n",
+    "yield_time_ms": 1000,
+    "max_output_tokens": 3000
+  },
+  "actual_close": {
+    "chunk_id": "8d5b60",
+    "wall_time_seconds": 0.000050555,
+    "exit_code": 0,
+    "original_token_count": 221,
+    "output": "{\"schema\": \"capturesuite-independent-linux-native-closure-v1\", \"time_utc\": \"2026-10-09T10:41:01.002636+00:00\", \"controller_pid\": 2, \"files_unchanged_since_export\": true, \"all_staged_inputs_unchanged\": true, \"all_cli_children_reaped\": true, \"actual_cli_wait_exits\": [0, 1, 1], \"linux_accepted\": true, \"guard\": {\"label\": \"final-readonly-closure\", \"time_utc\": \"2026-10-09T10:41:01.005444+00:00\", \"free_bytes\": 5225172992, \"mem_available_bytes\": 2418069504, \"owned_bytes\": 396754, \"owned_allocated_bytes\": 557056, \"owned_files\": 65, \"disk_floor_bytes\": 134217728, \"memory_floor_bytes\": 2147483648, \"owned_cap_bytes\": 2097152, \"per_file_cap_bytes\": 1048576, \"admitted\": true}, \"final_files\": 65, \"final_file_bytes\": 396754, \"extra_candidate_calls\": 0, \"native_root_removed\": false, \"scope\": \"Custodian ends after exact export; /dev lifetime is ephemeral, no retention/reboot guarantee.\"}\r\n"
+  },
+  "limits": "One live process session; exactly three physical candidate CLI calls with wait exits [0,1,1]. No PID-path probe, old suite, repeated positive render or persistent /dev storage claim."
+}

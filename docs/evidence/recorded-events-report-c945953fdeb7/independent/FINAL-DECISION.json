@@ -1,0 +1,92 @@
+{
+  "schema": "capturesuite-independent-original-receiving-disposition-v1",
+  "reported_at": "2026-10-09 10:59:16 UTC",
+  "contract": {
+    "git_blob": "7fd938b783feb56b3f7bbb29ae52d60146359600",
+    "bytes": 15189,
+    "sha256": "d40f04be3cc899fda74355c1f1d685479df5d83272fc4f9542de01b3cecfdd1a"
+  },
+  "original_contract_unchanged": true,
+  "overall_original_contract_complete": false,
+  "groups": {
+    "C1": "PASS: exact ordinary package/source/runtime/input admission",
+    "C2": "PASS: one complete physical Python3.12 report, 87 arbitrary-precision type-sensitive nodes matched",
+    "C3": "PASS: existing-output and malformed-gap physical CLI refusals",
+    "C4": "INCOMPLETE: original one-browser attempt timed out at observer Enter reopen; later native navigation and screenshots unexecuted",
+    "C5": "Measured Linux and Mac preservation and owned-process closure verified separately; original failed Mac driver's C5 label remains pending"
+  },
+  "actual_calls": {
+    "independent_linux_cli": 3,
+    "linux_wait_exits": [
+      0,
+      1,
+      1
+    ],
+    "linux_outer_exit": 0,
+    "mac_browser_attempts": 1,
+    "mac_browser_exit": 0,
+    "mac_node_exit": 1,
+    "mac_outer_exit": 1,
+    "extra_product_calls_after_failure": 0
+  },
+  "physical_html": {
+    "git_blob": "fac1f8c93b74160f1ee2b2675de8232bd120e0ce",
+    "bytes": 11901,
+    "sha256": "f6768d7d8d30782f6ca400ac9b9253254f9f5d483825587c31dafbe2c925e16f",
+    "same_bytes_on_linux_and_mac": true,
+    "regenerated": false
+  },
+  "mac_failed_observation": {
+    "receipt": "908f5694002113bf99c13cd526a89f458ac49a3c",
+    "outer": "11c3d921b987edab722419dd262213674a92959d",
+    "actual_failure": "DOM condition timeout: document.querySelector('#annotations details').open===true",
+    "completed": [
+      "File load",
+      "Exact full initial DOM text retained",
+      "Pointer section links to checkpoints and annotations",
+      "Full checkpoint/annotation structured text comparison",
+      "Native pointer collapse",
+      "Initial literal-script sentinel undefined and zero script nodes",
+      "Original overview screenshot"
+    ],
+    "remaining": [
+      "Successful keyboard reopen",
+      "Specific sync/gap navigation",
+      "Selected annotation and gap screenshots",
+      "Original C4 end-to-end acceptance"
+    ],
+    "diagnosis": "No candidate defect is established. Original observer sent keyDown/keyUp Enter without a text/char event; primary-source investigation and any separately frozen correction remain distinct future work."
+  },
+  "page_diagnostics": {
+    "exceptions": 0,
+    "console": 0,
+    "log": 0,
+    "document_requests": 1,
+    "document_responses": 1,
+    "loading_failed": 0,
+    "chrome_os_stderr_bytes": 2792,
+    "chrome_os_stderr": "3e3965db0fc602ee41fd5a4822c4a434b93d1a02",
+    "zero_all_errors_claim": false
+  },
+  "custody": {
+    "linux_native_files": 65,
+    "linux_native_file_bytes": 396754,
+    "linux_native_allocated_bytes": 557056,
+    "mac_nonprofile_files": 15,
+    "mac_nonprofile_file_bytes": 250190,
+    "mac_nonprofile_allocated_bytes": 278528,
+    "original_screenshot": {
+      "git_blob": "811cba88860664adda9bc5578a69a5b3052ffcef",
+      "carrier": "3f767c5e254700b3c9099d954c0418ce33d65b28"
+    },
+    "source_or_originals_changed": false,
+    "raw_exit1_evidence_preserved": true
+  },
+  "limits": [
+    "Synthetic package metadata, no actual capture/hardware/recovery operation.",
+    "No Python3.13 CaptureSuite import, default-browser/Finder or installation claim.",
+    "No old tests, Qt, Windows, pytest/Ruff, scientific analysis or report rerender.",
+    "Temporary /dev file completion and exact custody do not prove power-loss or reboot durability.",
+    "Unreferenced Git objects do not anchor retention; root owns source/ref publication."
+  ]
+}

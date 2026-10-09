@@ -1,0 +1,4 @@
+[
+  {"syncAnchorId":"receiver-later-anchor","timestampNs":"9007199254740999","modalitiesTargeted":["imu","emg"],"mechanism":"manual","metadata":{"classification":"synthetic_fixture","literal":"No alignment <performed> & no inferred chronology"},"createdVia":"independent-report-receiver"},
+  {"syncAnchorId":"synthetic-tap-250ms","timestampNs":"250000000","modalitiesTargeted":["emg","imu"],"mechanism":"manual","metadata":{"classification":"synthetic_fixture"},"createdVia":"sync-request-test"}
+]

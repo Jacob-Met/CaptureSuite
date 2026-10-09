@@ -1,0 +1,75 @@
+{
+  "schema": "capturesuite-mac-physical-file-preparation-v1",
+  "time_utc": "2026-10-09T10:49:44.925824+00:00",
+  "root": "/Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7",
+  "files": {
+    "recorded-events.html": {
+      "bytes": 11901,
+      "sha256": "f6768d7d8d30782f6ca400ac9b9253254f9f5d483825587c31dafbe2c925e16f",
+      "git_blob": "fac1f8c93b74160f1ee2b2675de8232bd120e0ce",
+      "mode": "0444",
+      "mtime_ns": "1791542984925182576"
+    },
+    "CONTRACT.md": {
+      "bytes": 15189,
+      "sha256": "d40f04be3cc899fda74355c1f1d685479df5d83272fc4f9542de01b3cecfdd1a",
+      "git_blob": "7fd938b783feb56b3f7bbb29ae52d60146359600",
+      "mode": "0444",
+      "mtime_ns": "1791542984925396870"
+    },
+    "receiver.mjs": {
+      "bytes": 21486,
+      "sha256": "11be50381986db820bde0f55f3475451b4d526cecbcb3b5db0f9f73ac5184f38",
+      "git_blob": "356784a70e46e532bb3a3f938475fd6331aa0924",
+      "mode": "0444",
+      "mtime_ns": "1791542984925575497"
+    },
+    "AUTHORITY.json": {
+      "bytes": 5857,
+      "sha256": "ed40a64216c4f99129064440ba5a29b7ce82b25f95c868c4a4d39a18968f6d1c",
+      "git_blob": "03a3eadfd0e0c0e1cdd5fee918a09d0405f5cdd3",
+      "mode": "0444",
+      "mtime_ns": "1791542984925747666"
+    }
+  },
+  "admission": {
+    "label": "before-exclusive-mac-materialization",
+    "time_utc": "2026-10-09T10:49:44.924134+00:00",
+    "disk_free_bytes": 2934788096,
+    "conservative_memory_bytes": 10980491264,
+    "owned": {
+      "bytes": 0,
+      "allocated_bytes": 0
+    },
+    "disk_floor_bytes": 268435456,
+    "memory_floor_bytes": 2147483648,
+    "static_cap_bytes": 2097152,
+    "admitted": true
+  },
+  "runtime_preflight": {
+    "python": {
+      "path": "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3.13",
+      "bytes": 119600,
+      "sha256": "406d73d07e33e164d986326fde00b85c2b8f4ed2c33278142c8431588fe2df14",
+      "mode": "0o775",
+      "mtime_ns": "1755192800000000000"
+    },
+    "node": {
+      "path": "/opt/homebrew/Cellar/node/26.3.0/bin/node",
+      "bytes": 68384,
+      "sha256": "56694c81b093cc8da273fa017cf91765b3653e5f64f16727976ffaa87b2b6b31",
+      "mode": "0o555",
+      "mtime_ns": "1781043664290977610"
+    },
+    "chrome": {
+      "path": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+      "bytes": 367696,
+      "sha256": "764f5f6ee523e6d52caf6e56ce7501e932c4f6e52d06d267887cb7ea70350102",
+      "mode": "0o775",
+      "mtime_ns": "1791502133198545615"
+    }
+  },
+  "report_regenerated": false,
+  "browser_execution_before_record": false,
+  "controller_pid": 64894
+}

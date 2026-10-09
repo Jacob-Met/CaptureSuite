@@ -1,0 +1,146 @@
+{
+  "schema": "capturesuite-mac-actual-outer-execution-v1",
+  "started_at": "2026-10-09T10:49:44.921694+00:00",
+  "controller_pid": 64894,
+  "contract": "7fd938b783feb56b3f7bbb29ae52d60146359600",
+  "node_child_started": true,
+  "guards": [
+    {
+      "label": "before-exclusive-mac-materialization",
+      "time_utc": "2026-10-09T10:49:44.924134+00:00",
+      "disk_free_bytes": 2934788096,
+      "conservative_memory_bytes": 10980491264,
+      "owned": {
+        "bytes": 0,
+        "allocated_bytes": 0
+      },
+      "disk_floor_bytes": 268435456,
+      "memory_floor_bytes": 2147483648,
+      "static_cap_bytes": 2097152,
+      "admitted": true
+    },
+    {
+      "label": "before-owned-node-browser-controller",
+      "time_utc": "2026-10-09T10:49:44.928023+00:00",
+      "disk_free_bytes": 2934697984,
+      "conservative_memory_bytes": 10981900288,
+      "owned": {
+        "bytes": 57022,
+        "allocated_bytes": 65536
+      },
+      "disk_floor_bytes": 268435456,
+      "memory_floor_bytes": 2147483648,
+      "static_cap_bytes": 2097152,
+      "admitted": true
+    },
+    {
+      "label": "after-owned-node-wait",
+      "time_utc": "2026-10-09T10:49:55.969167+00:00",
+      "disk_free_bytes": 2929369088,
+      "conservative_memory_bytes": 11253186560,
+      "owned": {
+        "bytes": 244285,
+        "allocated_bytes": 270336
+      },
+      "disk_floor_bytes": 268435456,
+      "memory_floor_bytes": 2147483648,
+      "static_cap_bytes": 2097152,
+      "admitted": true
+    }
+  ],
+  "error": null,
+  "initial_files": {
+    "recorded-events.html": {
+      "bytes": 11901,
+      "sha256": "f6768d7d8d30782f6ca400ac9b9253254f9f5d483825587c31dafbe2c925e16f",
+      "git_blob": "fac1f8c93b74160f1ee2b2675de8232bd120e0ce",
+      "mode": "0444",
+      "mtime_ns": "1791542984925182576"
+    },
+    "CONTRACT.md": {
+      "bytes": 15189,
+      "sha256": "d40f04be3cc899fda74355c1f1d685479df5d83272fc4f9542de01b3cecfdd1a",
+      "git_blob": "7fd938b783feb56b3f7bbb29ae52d60146359600",
+      "mode": "0444",
+      "mtime_ns": "1791542984925396870"
+    },
+    "receiver.mjs": {
+      "bytes": 21486,
+      "sha256": "11be50381986db820bde0f55f3475451b4d526cecbcb3b5db0f9f73ac5184f38",
+      "git_blob": "356784a70e46e532bb3a3f938475fd6331aa0924",
+      "mode": "0444",
+      "mtime_ns": "1791542984925575497"
+    },
+    "AUTHORITY.json": {
+      "bytes": 5857,
+      "sha256": "ed40a64216c4f99129064440ba5a29b7ce82b25f95c868c4a4d39a18968f6d1c",
+      "git_blob": "03a3eadfd0e0c0e1cdd5fee918a09d0405f5cdd3",
+      "mode": "0444",
+      "mtime_ns": "1791542984925747666"
+    }
+  },
+  "argv": [
+    "/opt/homebrew/bin/node",
+    "/Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7/receiver.mjs"
+  ],
+  "cwd": "/tmp",
+  "node_pid": 64931,
+  "node_elapsed_seconds": 11.03680954198353,
+  "node_wait_exit": 1,
+  "node_poll_exit": 1,
+  "node_reaped_by_wait": true,
+  "stdout": {
+    "pin": {
+      "bytes": 1075,
+      "sha256": "f93845d3344f93dfe9a5775875a16d009520d01884c00cd9d7621eb1607548d9",
+      "git_blob": "d7a9b8009d9a774aca33696752a6a9eda89a2ebf",
+      "mode": "0444",
+      "mtime_ns": "1791542995914117713"
+    },
+    "text": "{\"accepted\":false,\"groups\":{\"C4_semantics\":\"pending\",\"C5_mac\":\"pending\",\"visual_review\":\"pending: inspect original screenshots after execution\"},\"failure\":{\"message\":\"DOM condition timeout: document.querySelector('#annotations details').open===true\",\"stack\":\"Error: DOM condition timeout: document.querySelector('#annotations details').open===true\\n    at waitFor (file:///Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7/receiver.mjs:97:39)\\n    at async main (file:///Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7/receiver.mjs:184:19)\\n    at async file:///Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7/receiver.mjs:213:5\"},\"receipt\":{\"bytes\":17364,\"sha256\":\"66e6f184f95e44b17a2339a48556956fb3e1f73b4fada0435dcc2f78bd018ef5\",\"git_blob\":\"908f5694002113bf99c13cd526a89f458ac49a3c\",\"path\":\"results/MAC-RECEIPT.json\"},\"chrome_exit\":{\"pid\":64939,\"code\":0,\"signal\":null,\"at\":\"2026-10-09T10:49:55.870Z\"},\"controller_pid\":64931,\"visual_review\":\"Pending original screenshot display; no all-error-free claim.\"}\n"
+  },
+  "stderr": {
+    "pin": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mode": "0444",
+      "mtime_ns": "1791542984928283153"
+    },
+    "text": ""
+  },
+  "final_input_files": {
+    "recorded-events.html": {
+      "bytes": 11901,
+      "sha256": "f6768d7d8d30782f6ca400ac9b9253254f9f5d483825587c31dafbe2c925e16f",
+      "git_blob": "fac1f8c93b74160f1ee2b2675de8232bd120e0ce",
+      "mode": "0444",
+      "mtime_ns": "1791542984925182576"
+    },
+    "CONTRACT.md": {
+      "bytes": 15189,
+      "sha256": "d40f04be3cc899fda74355c1f1d685479df5d83272fc4f9542de01b3cecfdd1a",
+      "git_blob": "7fd938b783feb56b3f7bbb29ae52d60146359600",
+      "mode": "0444",
+      "mtime_ns": "1791542984925396870"
+    },
+    "receiver.mjs": {
+      "bytes": 21486,
+      "sha256": "11be50381986db820bde0f55f3475451b4d526cecbcb3b5db0f9f73ac5184f38",
+      "git_blob": "356784a70e46e532bb3a3f938475fd6331aa0924",
+      "mode": "0444",
+      "mtime_ns": "1791542984925575497"
+    },
+    "AUTHORITY.json": {
+      "bytes": 5857,
+      "sha256": "ed40a64216c4f99129064440ba5a29b7ce82b25f95c868c4a4d39a18968f6d1c",
+      "git_blob": "03a3eadfd0e0c0e1cdd5fee918a09d0405f5cdd3",
+      "mode": "0444",
+      "mtime_ns": "1791542984925747666"
+    }
+  },
+  "all_initial_files_unchanged": true,
+  "accepted": false,
+  "finished_at": "2026-10-09T10:49:55.969443+00:00",
+  "scope": "Exact physical HTML transfer and one private browser controller; no CaptureSuite Python import or output regeneration."
+}

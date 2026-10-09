@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "sync_anchor.schema.json",
+  "title": "capture.v1.SyncAnchor",
+  "type": "object",
+  "properties": {
+    "syncAnchorId": {
+      "type": "string"
+    },
+    "timestampNs": {
+      "type": "string",
+      "pattern": "^-?[0-9]+$"
+    },
+    "modalitiesTargeted": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "mechanism": {
+      "type": "string"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "createdVia": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true,
+  "unevaluatedProperties": true
+}

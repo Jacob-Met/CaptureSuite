@@ -1,0 +1,14 @@
+{
+  "status": "written",
+  "package": "/dev/estate-c945953fdeb7-capture-receiver-767d6179afd0419cbede77dbf330f1f2/inputs/positive.mmsession",
+  "output": "/dev/estate-c945953fdeb7-capture-receiver-767d6179afd0419cbede77dbf330f1f2/exports/recorded-events.html",
+  "bytes": 11901,
+  "sha256": "f6768d7d8d30782f6ca400ac9b9253254f9f5d483825587c31dafbe2c925e16f",
+  "reported_state": "finalized_recovered",
+  "records_returned": {
+    "checkpoints": 2,
+    "annotations": 2,
+    "sync_anchors": 2,
+    "normalized_gaps": 2
+  }
+}

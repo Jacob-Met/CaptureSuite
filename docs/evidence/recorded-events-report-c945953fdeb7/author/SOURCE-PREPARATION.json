@@ -1,0 +1,172 @@
+{
+  "format": "capturesuite.recorded-events.source-preparation.v1",
+  "time_utc": "2026-10-09T10:31:59.052189+00:00",
+  "root": "/dev/capturesuite-recorded-events-c945953fdeb7-bdd5fc94-17aa-4764-ac48-b7fb6ba9dd79",
+  "admission": {
+    "time_utc": "2026-10-09T10:31:59.050227+00:00",
+    "uid": 0,
+    "gid": 0,
+    "python": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+    "python_version": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "python_bytes": 30894944,
+    "python_sha256": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7",
+    "free_bytes": 5225730048,
+    "mem_available_bytes": 2521722880,
+    "disk_floor_bytes": 134217728,
+    "memory_floor_bytes": 2147483648,
+    "owned_cap_bytes": 2097152,
+    "mount_namespace": "mnt:[4026532836]"
+  },
+  "contract_sha256": "d40f04be3cc899fda74355c1f1d685479df5d83272fc4f9542de01b3cecfdd1a",
+  "original_capsule": {
+    "git_blob": "df7d233f42be885358b922e955066fbd10f2cba6",
+    "bytes": 184417,
+    "sha256": "02c0692dd6b45435f051995526132d026e492873008d9b14435f4d90e7a4f4e9",
+    "native_materialization": "Only the eight selected original source/instruction files are written; the complete original-only capsule, intake and GPL license remain exact in Git/orchestration."
+  },
+  "orchestration_source": {
+    "git_blob": "695afe1099e7f5044c6413fac63f68335c64d500",
+    "bytes": 12498,
+    "sha256": "e06edec4e2a0e41f0b09803401ff490a8680845ba85bb0152e1384c1071c5555",
+    "execution": "Exact -c source; ordinary-driver TTY lifetime and bounded artifact reads; no separately materialized controller file"
+  },
+  "transport": "one outer execution; no cross-call /dev retention claim",
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 3932,
+      "sha256": "525164ca1f3b9e68561434ab110ba17ed65843a20c23f4c1385fde33f1863a74",
+      "git_blob": "9ac6683ba4805e210143e5a33e7782da55af0d15",
+      "mode": "0444",
+      "mtime_ns": "1791541919050912707",
+      "allocated_bytes": 4096
+    },
+    {
+      "path": "FROZEN-EXPECTED.json",
+      "bytes": 3027,
+      "sha256": "585644414bb77e1b8872f0558c4189603347dd0a0fb6feb5ef2227fc86bf3dd0",
+      "git_blob": "660542c6d98f6043c88e9f6da23378ec8e844a9f",
+      "mode": "0444",
+      "mtime_ns": "1791541919051124666",
+      "allocated_bytes": 4096
+    },
+    {
+      "path": "FROZEN-FIXTURES.json",
+      "bytes": 5624,
+      "sha256": "3fc2f890cba43753305ec1d7633d87b3182b4275d83a91929668abd931dfbef3",
+      "git_blob": "3623a92dd5ddb210b5fa9a26139add03cc4e0a29",
+      "mode": "0444",
+      "mtime_ns": "1791541919051106529",
+      "allocated_bytes": 8192
+    },
+    {
+      "path": "RECEIVING-CONTRACT.md",
+      "bytes": 15189,
+      "sha256": "d40f04be3cc899fda74355c1f1d685479df5d83272fc4f9542de01b3cecfdd1a",
+      "git_blob": "7fd938b783feb56b3f7bbb29ae52d60146359600",
+      "mode": "0444",
+      "mtime_ns": "1791541919051081842",
+      "allocated_bytes": 16384
+    },
+    {
+      "path": "docs/design/research/RECORDED_EVENTS_REPORT.md",
+      "bytes": 7595,
+      "sha256": "6d8b0845441ad9d65172cce66ed86de1af8f1f8ed06be490479d22091980ad4f",
+      "git_blob": "ce4ab99467713831683ddb39b1ac92d830ea0190",
+      "mode": "0444",
+      "mtime_ns": "1791541919051019829",
+      "allocated_bytes": 8192
+    },
+    {
+      "path": "libs/python/capture_session/capture_session/__init__.py",
+      "bytes": 2412,
+      "sha256": "da530f86c0d1d584862868ddba9f7087ccf5dfbddd64dd1e577337ecfd776419",
+      "git_blob": "894e3c152a98b6e804de90122572afbcd929b3da",
+      "mode": "0444",
+      "mtime_ns": "1791541919050727348",
+      "allocated_bytes": 4096
+    },
+    {
+      "path": "libs/python/capture_session/capture_session/app_paths.py",
+      "bytes": 561,
+      "sha256": "363e4522240e2356cac7492589cb207a798bc1af6031139bd1fa94890f1c4bfd",
+      "git_blob": "46332cea7c62dd44247b219937ae6c8fbc747017",
+      "mode": "0444",
+      "mtime_ns": "1791541919050816522",
+      "allocated_bytes": 4096
+    },
+    {
+      "path": "libs/python/capture_session/capture_session/package_reader.py",
+      "bytes": 6679,
+      "sha256": "4fd156a015115974d062bbc9bffc97cdb23e92b135e2729ecf312400a0201ab1",
+      "git_blob": "cdfba8a26736856683ea865b9df67b36ad120e40",
+      "mode": "0444",
+      "mtime_ns": "1791541919050788941",
+      "allocated_bytes": 8192
+    },
+    {
+      "path": "libs/python/capture_session/capture_session/recorded_events_html.py",
+      "bytes": 10602,
+      "sha256": "026ffd469301c0ac70d70e3041473abe48f08562033f42836c38c0bccd8f8abe",
+      "git_blob": "f65892baea166d39e8fa38f6ead5ae9509ec73a1",
+      "mode": "0444",
+      "mtime_ns": "1791541919050937975",
+      "allocated_bytes": 12288
+    },
+    {
+      "path": "libs/python/capture_session/capture_session/registry.py",
+      "bytes": 13989,
+      "sha256": "809b26ce8d8efc0559a3854cf85ea74b4e486fcd77d253ebfa76bade64b0a8d1",
+      "git_blob": "c1d7799e1d2099424221b2f4af216a43a972c67a",
+      "mode": "0444",
+      "mtime_ns": "1791541919050836703",
+      "allocated_bytes": 16384
+    },
+    {
+      "path": "libs/python/capture_session/capture_session/settings_store.py",
+      "bytes": 4622,
+      "sha256": "7719524a1f106cc54befcd21088810f9ec28f0160c8e88f60c374e1545fdb98d",
+      "git_blob": "41b99cdaa78011d3d9b753c3131f32c72af9699f",
+      "mode": "0444",
+      "mtime_ns": "1791541919050860439",
+      "allocated_bytes": 8192
+    },
+    {
+      "path": "libs/python/capture_session/pyproject.toml",
+      "bytes": 389,
+      "sha256": "3484887da96d4a2f32de8471b537d849f077b195c729ff0cc29307681e8d4895",
+      "git_blob": "c83450d780e97e5bd90feb48cef140917b6e47ff",
+      "mode": "0444",
+      "mtime_ns": "1791541919050895301",
+      "allocated_bytes": 4096
+    },
+    {
+      "path": "pyproject.toml",
+      "bytes": 1233,
+      "sha256": "0cb8de1ab3dfbfed84ff16b35f3c89c6440180183ee5851d5d80da83622e53d0",
+      "git_blob": "52491c6beebc4b17983fc66bb8765154c33cf6d8",
+      "mode": "0444",
+      "mtime_ns": "1791541919050878916",
+      "allocated_bytes": 4096
+    },
+    {
+      "path": "tests/test_recorded_events_html.py",
+      "bytes": 10910,
+      "sha256": "df6ad0bba8d5777648e4e7cb82a5cbeae0c78c6911c679cd3a6e72463f3fcd90",
+      "git_blob": "a95881c873ee10bc43ec01b3c2fb4338d742cf9d",
+      "mode": "0444",
+      "mtime_ns": "1791541919050985236",
+      "allocated_bytes": 12288
+    },
+    {
+      "path": "tools/report_recorded_events.py",
+      "bytes": 3378,
+      "sha256": "cff0f891366ce9e729609a88b9f204acc909d580c7136164ab9c094dc66eedd8",
+      "git_blob": "965e28fb602d35c8a113eed204efbae595ca5d1a",
+      "mode": "0444",
+      "mtime_ns": "1791541919050958196",
+      "allocated_bytes": 4096
+    }
+  ],
+  "candidate_execution_before_this_record": false
+}

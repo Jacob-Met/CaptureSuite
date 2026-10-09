@@ -1,0 +1,66 @@
+---
+description: How to configure, build, and run CaptureSuite on a Windows dev box
+alwaysApply: true
+---
+
+# Building and running locally
+
+Load the compiler once per shell: `. .\scripts\dev-env.ps1`. Sourcing it twice
+is a no-op by design; re-running `VsDevCmd` yields a reduced environment whose
+`PATH` has lost System32, so the script refuses unless given `-Force`.
+
+## The camera worker is enabled by the local preset
+
+`capture_worker_camera` only exists as a build target when the camera worker is
+enabled during **configure**, and building without it fails with
+`ninja: error: unknown target 'capture_worker_camera'`.
+
+Copy `CMakeUserPresets.example.json` → `CMakeUserPresets.json` (gitignored).
+That file carries both `CAPTURE_ENABLE_CAMERA_WORKER=ON` and
+`GSTREAMER_1_0_ROOT_MSVC_X86_64`, so neither has to be passed by hand:
+
+```powershell
+cmake --preset windows-release-local
+cmake --build build/windows-release
+```
+
+They live in the user presets rather than `CMakePresets.json` because configure
+fails hard when the flag is on without GStreamer, which is the normal state for
+CI and for anyone who does not touch the camera worker.
+
+Never let the CMake Tools extension configure on its own: it does not pass the
+flag and will quietly drop the target. `.vscode/settings.json` disables that.
+
+## Stop the daemon before building
+
+A running `capture_daemon` holds `capture_worker_camera.exe` open and the link
+fails with `LNK1168`. `.cursor/hooks/` stops these automatically before a build;
+stop them by hand if building outside the agent.
+
+## Running the daemon
+
+Use `tools/run-daemon-gstreamer.ps1`, or set `GSTREAMER_1_0_ROOT_MSVC_X86_64`,
+prepend its `bin` to `PATH`, and set `CAPTURE_USE_CAMERA_WORKER=1` plus
+`CAPTURE_CAMERA_WORKER_EXE`. Set `CAPTURE_WORKER_STDERR_LOG` to capture worker
+stderr, which is otherwise invisible because workers are spawned with
+`CREATE_NO_WINDOW`.
+
+## Python interpreters differ on this workstation
+
+`C:\Python314\python.exe` is first on `PATH`, has no pytest, and is outside the
+`>=3.12,<3.13` range `pyproject.toml` requires. Use the 3.12 install:
+
+```powershell
+& "$env:LOCALAPPDATA\Programs\Python\Python312\python.exe" -m pytest tests/protocol -q
+```
+
+Do not set `PYTHONPATH` for this. `tool.pytest.ini_options.pythonpath` in
+`pyproject.toml` already adds the two libraries plus `workers/python_host`,
+`desktop`, and `tools`. The editor is the only thing that needs the paths
+restated, via `python.analysis.extraPaths`.
+
+`ruff` is not on the `PATH` that `dev-env.ps1` installs; it lives at
+`$env:LOCALAPPDATA\Programs\Python\Python312\Scripts\ruff.exe`. CI runs
+`ruff check` but not `ruff format`, so treat formatting as advisory.
+
+Either interpreter works for the `tools/probe_*.py` scripts.

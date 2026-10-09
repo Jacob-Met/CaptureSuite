@@ -1,0 +1,141 @@
+{
+  "schema": "capturesuite-recorded-events-author-admission-v1",
+  "repository": "Jacob-Met/CaptureSuite",
+  "owner": "estate-c945953fdeb7/product_execution_next",
+  "reservation": "https://github.com/Jacob-Met/CaptureSuite/issues/111#issuecomment-6078399030",
+  "source_parent": "c0437668fbc9d7ce6292c7b733f91dc8b2fd94f5",
+  "parent_tree": "4bced1cedbcfa6cccc59fafa9ca7771da5781c8c",
+  "main_at_source_intake": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+  "retained_owners": [
+    "2479534e1930 reader",
+    "native event / Review #76/#83",
+    "offline Qt #107",
+    "export #109/#110",
+    "QC #79",
+    "video/frame owners"
+  ],
+  "exclusive_new_source_paths": [
+    "libs/python/capture_session/capture_session/recorded_events_html.py",
+    "tools/report_recorded_events.py",
+    "tests/test_recorded_events_html.py",
+    "docs/design/research/RECORDED_EVENTS_REPORT.md"
+  ],
+  "append_only_path": "docs/design/research/PROGRESS.md",
+  "evidence_prefix": "docs/evidence/recorded-events-report-c945953fdeb7/",
+  "original_capsule": {
+    "git_blob": "df7d233f42be885358b922e955066fbd10f2cba6",
+    "bytes": 184417,
+    "sha256": "02c0692dd6b45435f051995526132d026e492873008d9b14435f4d90e7a4f4e9",
+    "all_30_original_members_preserved": true
+  },
+  "source_pins": [
+    {
+      "path": "libs/python/capture_session/capture_session/recorded_events_html.py",
+      "bytes": 10602,
+      "sha256": "026ffd469301c0ac70d70e3041473abe48f08562033f42836c38c0bccd8f8abe",
+      "git_blob": "f65892baea166d39e8fa38f6ead5ae9509ec73a1",
+      "uploaded_and_exact_read_back": true
+    },
+    {
+      "path": "tools/report_recorded_events.py",
+      "bytes": 3378,
+      "sha256": "cff0f891366ce9e729609a88b9f204acc909d580c7136164ab9c094dc66eedd8",
+      "git_blob": "965e28fb602d35c8a113eed204efbae595ca5d1a",
+      "uploaded_and_exact_read_back": true
+    },
+    {
+      "path": "tests/test_recorded_events_html.py",
+      "bytes": 10910,
+      "sha256": "df6ad0bba8d5777648e4e7cb82a5cbeae0c78c6911c679cd3a6e72463f3fcd90",
+      "git_blob": "a95881c873ee10bc43ec01b3c2fb4338d742cf9d",
+      "uploaded_and_exact_read_back": true
+    },
+    {
+      "path": "docs/design/research/RECORDED_EVENTS_REPORT.md",
+      "bytes": 7595,
+      "sha256": "6d8b0845441ad9d65172cce66ed86de1af8f1f8ed06be490479d22091980ad4f",
+      "git_blob": "ce4ab99467713831683ddb39b1ac92d830ea0190",
+      "uploaded_and_exact_read_back": true
+    }
+  ],
+  "chronology": {
+    "private_draft_started": {
+      "current_time": "2026-10-09 09:47:27 UTC"
+    },
+    "contract_retained": {
+      "current_time": "2026-10-09 10:21:53 UTC"
+    },
+    "first_candidate_exposure": {
+      "current_time": "2026-10-09 10:24:52 UTC"
+    },
+    "private_drafting_preceded_freeze": true,
+    "maintained_candidate_not_changed_for_receiving_fixture": true
+  },
+  "native_observations": {
+    "primary_runtime": {
+      "chunk_id": "206fee",
+      "wall_time_seconds": 0.000377253,
+      "exit_code": 0,
+      "original_token_count": 200,
+      "output": "{\n  \"configured_runtime\": \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3\",\n  \"executable\": \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python\",\n  \"resolved\": \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12\",\n  \"version\": \"3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]\",\n  \"platform\": \"Linux-6.18.44-x86_64-with-glibc2.39\",\n  \"bytes\": 30894944,\n  \"mode\": \"0o755\",\n  \"sha256\": \"fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7\",\n  \"mem_available_kib\": 2492172,\n  \"filesystems\": [\n    {\n      \"path\": \"/workspace/scratch/c945953fdeb7\",\n      \"free_bytes\": 0,\n      \"total_bytes\": 33770192896\n    },\n    {\n      \"path\": \"/tmp\",\n      \"free_bytes\": 0,\n      \"total_bytes\": 33770192896\n    }\n  ]\n}\n"
+    },
+    "tools_and_shm": {
+      "chunk_id": "2cc6ec",
+      "wall_time_seconds": 0.000025608,
+      "exit_code": 0,
+      "original_token_count": 78,
+      "output": "{\n  \"existing_mount\": \"/dev/shm\",\n  \"free_bytes\": 380928,\n  \"total_bytes\": 5225730048,\n  \"proposed_target_exists\": false,\n  \"tools\": {\n    \"pytest\": {\n      \"origin\": null,\n      \"version\": null,\n      \"path\": null\n    },\n    \"ruff\": {\n      \"origin\": null,\n      \"version\": null,\n      \"path\": null\n    }\n  }\n}\n"
+    },
+    "ordinary_dev_initial": {
+      "chunk_id": "53288e",
+      "wall_time_seconds": 0.000041652,
+      "exit_code": 0,
+      "original_token_count": 108,
+      "output": "{\n  \"time_utc\": \"2026-10-09T09:40:14.347853+00:00\",\n  \"existing_mount\": \"/dev\",\n  \"free_bytes\": 5225730048,\n  \"total_bytes\": 5225730048,\n  \"mem_available_bytes\": 2666700800,\n  \"proposed_target\": \"/dev/capturesuite-recorded-events-c945953fdeb7-a799b257-9ed0-4ce8-a2fa-1dcff3b8dea8\",\n  \"proposed_target_exists\": false,\n  \"required_free_bytes\": 134217728,\n  \"required_mem_available_bytes\": 2147483648,\n  \"owned_cap_bytes\": 2097152\n}\n"
+    },
+    "sqlite_observer_v1": {
+      "chunk_id": "f5b477",
+      "wall_time_seconds": 0.000026068,
+      "exit_code": 1,
+      "original_token_count": 41,
+      "output": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\nAttributeError: module '_sqlite3' has no attribute '__file__'. Did you mean: '__name__'?\n"
+    },
+    "sqlite_observer_v1_disposition": "Original _sqlite3 import succeeded; the metadata observer then exited1 because this runtime embeds the module as built-in and provides no __file__. V2 records the builtin origin and binds it to the already pinned executable. No database, project code, candidate, or native stage was opened or written.",
+    "sqlite_observer_v2": {
+      "chunk_id": "840f69",
+      "wall_time_seconds": 0.033722139,
+      "exit_code": 0,
+      "original_token_count": 127,
+      "output": "{\n  \"purpose\": \"original registry import dependency; no database or candidate imported\",\n  \"observer_correction\": \"previous metadata read assumed a separate __file__; builtin module has none\",\n  \"uid\": 0,\n  \"gid\": 0,\n  \"sqlite_version\": \"3.53.1\",\n  \"module_origin\": \"built-in\",\n  \"module_file\": null,\n  \"identity_carrier\": \"/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12\",\n  \"bytes\": 30894944,\n  \"sha256\": \"fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7\"\n}\n"
+    },
+    "sqlite_observer_v2_source": "import _sqlite3,hashlib,json,pathlib,os,sys; raw=getattr(_sqlite3,\"__file__\",None); p=pathlib.Path(raw).resolve() if raw else pathlib.Path(sys.executable).resolve(); print(json.dumps({\"purpose\":\"original registry import dependency; no database or candidate imported\",\"observer_correction\":\"previous metadata read assumed a separate __file__; builtin module has none\",\"uid\":os.getuid(),\"gid\":os.getgid(),\"sqlite_version\":_sqlite3.sqlite_version,\"module_origin\":_sqlite3.__spec__.origin,\"module_file\":raw,\"identity_carrier\":str(p),\"bytes\":p.stat().st_size,\"sha256\":hashlib.sha256(p.read_bytes()).hexdigest()},indent=2))"
+  },
+  "known_environment_boundaries": {
+    "scratch_and_tmp_overlay_free_bytes": 0,
+    "dev_shm_not_admitted": true,
+    "ordinary_dev_lifetime": "Only one live exec session. Root confirmed isolated ordinary /dev per fresh invocation after the first cross-call transport guard refused.",
+    "native_advisory": "Earlier broad unrelated owner-file EACCES was not retried; no estate-wide native code-claims census is asserted.",
+    "python": "Existing exact CPython3.12.14 executable; version range unchanged; no dependency installation.",
+    "unexecuted_gates": [
+      "Ruff absent",
+      "pytest absent",
+      "Windows/full project suite",
+      "Qt/application/hardware",
+      "old reader/video/QC matrix"
+    ]
+  },
+  "actual_author_result": {
+    "tests": 8,
+    "unit_child_exit": 0,
+    "unit_child_pid": 5,
+    "unit_runner_reported_seconds": 0.073,
+    "child_elapsed_seconds": 0.15000573299766984,
+    "outer_final_exit": 0,
+    "source_inputs": 15,
+    "all_before_after_exact": true,
+    "final_files": 19,
+    "final_bytes": 111850,
+    "scope": "The maintained physical CLI test executes once inside this new report-consumer suite. It uses a TemporaryDirectory and cleans only its own test fixture; it is not the persistent independent report."
+  },
+  "no_ref_pr_workflow_actions_mutation": true
+}

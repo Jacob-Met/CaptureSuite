@@ -1,0 +1,25 @@
+{
+  "schema":"capturesuite-independent-frozen-literal-authority-v1",
+  "comparison":"Full decoded JSON values and types; list order exact; object-key display order and HTML whitespace are unspecified. Integers require arbitrary precision.",
+  "session_id":"synthetic-report-receiving-读-c945953fdeb7",
+  "state":"finalized_recovered",
+  "source_ids":["sensor-α"],
+  "returned_counts":{"checkpoints":2,"annotations":2,"sync_anchors":2,"gaps":2,"open_gaps":1,"closed_gaps":1},
+  "duration_ns":9007199254740997,
+  "checkpoints":[
+  {"checkpointId":"receiver-late","originalTimestampNs":"9007199254740997","effectiveTimestampNs":"9007199254740993","name":"Later <literal> & supplied first","notes":"Receiver synthetic checkpoint; list order is intentional.","futureField":{"literal":"<kept> & \"quoted\""}},
+  {"checkpointId":"cp-1","name":"Synthetic start","effectiveTimestampNs":1000000000}
+],
+  "annotations":[{"annotationId":"receiver-literal-1","timestampNs":"9007199254740999","category":"synthetic_receiving","text":"Operator's synthetic note: <script>globalThis.__captureReceiverSentinel='unexpected'</script> & \"quote\"\r\nSecond line — café 读","tags":["synthetic","literal <tag>"],"sourceId":"sensor-α","createdVia":"independent-report-receiver","futurePayload":{"exactInteger":9007199254740993,"exactString":"009007199254740993","nested":["<b>kept text</b>",false,null]}},{"annotationId":"receiver-earlier-2","timestampNs":"-23","category":"synthetic_receiving","text":"Second recorded annotation; list order remains supplied.","tags":["synthetic"],"createdVia":"independent-report-receiver"}],
+  "sync_anchors":[
+  {"syncAnchorId":"receiver-later-anchor","timestampNs":"9007199254740999","modalitiesTargeted":["imu","emg"],"mechanism":"manual","metadata":{"classification":"synthetic_fixture","literal":"No alignment <performed> & no inferred chronology"},"createdVia":"independent-report-receiver"},
+  {"syncAnchorId":"synthetic-tap-250ms","timestampNs":"250000000","modalitiesTargeted":["emg","imu"],"mechanism":"manual","metadata":{"classification":"synthetic_fixture"},"createdVia":"sync-request-test"}
+],
+  "gaps":[
+    {"source_id":"named-β","stream_id":"stream-A","cause":"GAP_CAUSE_DISCONNECT","start_session_time_ns":0,"end_session_time_ns":9007199254740997,"closed":true,"estimated_lost_count":9007199254740999},
+    {"source_id":"sensor-α","stream_id":"stream-B","cause":"UNKNOWN","start_session_time_ns":-23,"end_session_time_ns":null,"closed":false,"estimated_lost_count":3}
+  ],
+  "omission_authority":"Null annotation is not returned. Unknown raw gap futureField is absent from the normalized seven-field projection. Neither absence licenses a complete-record-count or raw-provenance claim.",
+  "malformed_error":{"physical_line":4,"reason":"invalid JSON","path_suffix":"malformed.mmsession/sources/sensor-α/health/gaps.jsonl","no_output_created":true},
+  "sentinel":"__captureReceiverSentinel must remain undefined in the opened report; script-looking annotation is literal escaped text."
+}

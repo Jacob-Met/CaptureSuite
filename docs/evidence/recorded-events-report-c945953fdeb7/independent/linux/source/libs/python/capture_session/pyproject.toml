@@ -1,0 +1,17 @@
+[project]
+name = "capture-session"
+version = "0.1.0"
+description = "CaptureSuite .mmsession open/validate/recover (Milestone 3)"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "capture-protocol",
+  "jsonschema>=4.21",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["capture_session*"]

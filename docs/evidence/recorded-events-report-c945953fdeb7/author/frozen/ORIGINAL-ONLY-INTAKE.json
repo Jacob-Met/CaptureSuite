@@ -1,0 +1,255 @@
+{
+  "schema": "capturesuite-independent-original-only-intake-v1",
+  "capsule": {
+    "git_blob": "df7d233f42be885358b922e955066fbd10f2cba6",
+    "bytes": 184417,
+    "sha256": "02c0692dd6b45435f051995526132d026e492873008d9b14435f4d90e7a4f4e9"
+  },
+  "qualified_parent": "c0437668fbc9d7ce6292c7b733f91dc8b2fd94f5",
+  "qualified_tree": "4bced1cedbcfa6cccc59fafa9ca7771da5781c8c",
+  "all_original_member_pins": [
+    {
+      "path": "libs/python/capture_session/capture_session/__init__.py",
+      "git_blob": "894e3c152a98b6e804de90122572afbcd929b3da",
+      "bytes": 2412,
+      "sha256": "da530f86c0d1d584862868ddba9f7087ccf5dfbddd64dd1e577337ecfd776419",
+      "pass": true
+    },
+    {
+      "path": "libs/python/capture_session/capture_session/package_reader.py",
+      "git_blob": "cdfba8a26736856683ea865b9df67b36ad120e40",
+      "bytes": 6679,
+      "sha256": "4fd156a015115974d062bbc9bffc97cdb23e92b135e2729ecf312400a0201ab1",
+      "pass": true
+    },
+    {
+      "path": "libs/python/capture_session/capture_session/app_paths.py",
+      "git_blob": "46332cea7c62dd44247b219937ae6c8fbc747017",
+      "bytes": 561,
+      "sha256": "363e4522240e2356cac7492589cb207a798bc1af6031139bd1fa94890f1c4bfd",
+      "pass": true
+    },
+    {
+      "path": "libs/python/capture_session/capture_session/registry.py",
+      "git_blob": "c1d7799e1d2099424221b2f4af216a43a972c67a",
+      "bytes": 13989,
+      "sha256": "809b26ce8d8efc0559a3854cf85ea74b4e486fcd77d253ebfa76bade64b0a8d1",
+      "pass": true
+    },
+    {
+      "path": "libs/python/capture_session/capture_session/settings_store.py",
+      "git_blob": "41b99cdaa78011d3d9b753c3131f32c72af9699f",
+      "bytes": 4622,
+      "sha256": "7719524a1f106cc54befcd21088810f9ec28f0160c8e88f60c374e1545fdb98d",
+      "pass": true
+    },
+    {
+      "path": "pyproject.toml",
+      "git_blob": "52491c6beebc4b17983fc66bb8765154c33cf6d8",
+      "bytes": 1233,
+      "sha256": "0cb8de1ab3dfbfed84ff16b35f3c89c6440180183ee5851d5d80da83622e53d0",
+      "pass": true
+    },
+    {
+      "path": "libs/python/capture_session/pyproject.toml",
+      "git_blob": "c83450d780e97e5bd90feb48cef140917b6e47ff",
+      "bytes": 389,
+      "sha256": "3484887da96d4a2f32de8471b537d849f077b195c729ff0cc29307681e8d4895",
+      "pass": true
+    },
+    {
+      "path": "AGENTS.md",
+      "git_blob": "9ac6683ba4805e210143e5a33e7782da55af0d15",
+      "bytes": 3932,
+      "sha256": "525164ca1f3b9e68561434ab110ba17ed65843a20c23f4c1385fde33f1863a74",
+      "pass": true
+    },
+    {
+      "path": "docs/design/research/AUTONOMOUS_EXECUTION_PLAN.md",
+      "git_blob": "77d4576009f677f62b301bd6d352d9b40328c471",
+      "bytes": 16211,
+      "sha256": "656719f9c19a97a5683ad2e67bf29e43641fbc65bbc90430fe7f650498b9ddb0",
+      "pass": true
+    },
+    {
+      "path": "docs/design/research/REVIEW_AND_EXPORT_UX.md",
+      "git_blob": "44f854f9e4065dd68356e788a42ab51de2ecb1a6",
+      "bytes": 8708,
+      "sha256": "c1dfa854e6a814c269b35cf201d0fde2b0246cc37013e3a75f1571253bc60b93",
+      "pass": true
+    },
+    {
+      "path": "docs/design/SESSION_FORMAT.md",
+      "git_blob": "ce6e651af320735a7831cc85c92abdab558cff0a",
+      "bytes": 8686,
+      "sha256": "da4647c1c22c66f19602d3a11919bb325b9c3be6949cfe2c953093692ff13972",
+      "pass": true
+    },
+    {
+      "path": ".cursor/rules/local-toolchain.mdc",
+      "git_blob": "41884e93ad8d3a1a63411111794d82a148ca692b",
+      "bytes": 2742,
+      "sha256": "7d22f2c6f1b55f9e6db0541045d511d4d6a44a806c63670c4f54932e1d230bb4",
+      "pass": true
+    },
+    {
+      "path": "libs/python/capture_analysis/capture_analysis/report_html.py",
+      "git_blob": "bb8032024cfce30c6fe9a2bd2c13b0d2cbc2d102",
+      "bytes": 4716,
+      "sha256": "f2c89c7faf6e4edc265540140272396b4195eb5aed9edf05c4912aac74286f03",
+      "pass": true
+    },
+    {
+      "path": "docs/design/DESIGN_SYSTEM.md",
+      "git_blob": "7c9a1f8306e2f866a1e9c41d4455a0f000ef59c8",
+      "bytes": 4525,
+      "sha256": "49950ff54e4777c94d0107f8507d85a40c909c02558e5e9c9ca33854202e65e5",
+      "pass": true
+    },
+    {
+      "path": "tools/run_analysis.py",
+      "git_blob": "a846e6e0550ec4ba1db12a1b989d5e03cfdd69b6",
+      "bytes": 4865,
+      "sha256": "f450b1e17185bb2b19e45747698dd1f75f487c7898304484357abec5bee9f555",
+      "pass": true
+    },
+    {
+      "path": "tools/demo_qc.py",
+      "git_blob": "1a165ba9742318913418a41d7822a2eb089e7da3",
+      "bytes": 3459,
+      "sha256": "224c7fc504af01c1388b48818f9e1736ec0e5e30816b1baeccb6ebe76349bffc",
+      "pass": true
+    },
+    {
+      "path": "tests/test_package_reader_gaps.py",
+      "git_blob": "70726a99b9f073c82ab314c4271edea0960d8401",
+      "bytes": 6543,
+      "sha256": "0f3070478bafc6da0ea139e29cdd81266a18e6f40e7058f2587059c919634b07",
+      "pass": true
+    },
+    {
+      "path": "tests/analysis/test_sync_anchor_request.py",
+      "git_blob": "ead08b6cd74455115fa1e9f2e83e9ea4a72dcd18",
+      "bytes": 5010,
+      "sha256": "80dd9c2b3210f8198a49ba893b49b330edf345e29cc30d4f9613299db271ca30",
+      "pass": true
+    },
+    {
+      "path": "LICENSE",
+      "git_blob": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
+      "bytes": 35149,
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+      "pass": true
+    },
+    {
+      "path": "schemas/session/jsonschema/annotation.schema.json",
+      "git_blob": "686fbf750e5467379cfd206a7746fdbb2082a7d6",
+      "bytes": 660,
+      "sha256": "335772a3d0bc42fddf886f90579e287a33cc5b759447aef70188945af71230a3",
+      "pass": true
+    },
+    {
+      "path": "schemas/session/jsonschema/checkpoint.schema.json",
+      "git_blob": "290c505abab0c84203e471d599f7f21c1d146e9b",
+      "bytes": 1125,
+      "sha256": "4f32b55ba009e6d33395e82c645111a6c54e8b797ba78411d677cae08a1a8680",
+      "pass": true
+    },
+    {
+      "path": "schemas/session/jsonschema/gap_event.schema.json",
+      "git_blob": "3220405e13c712578bb6902560307e2b7f0e56aa",
+      "bytes": 914,
+      "sha256": "8b6fc4cb71aace5a97c76cf2ea2afb72af325adfa653967c97b2873bf63fe479",
+      "pass": true
+    },
+    {
+      "path": "schemas/session/jsonschema/session_manifest.schema.json",
+      "git_blob": "bcef59d89aa923371f3be8cbe67d57d22f45c203",
+      "bytes": 1439,
+      "sha256": "3ef72af1cc561fc2d4f3231e0cbd690c2c5fa223dd9027358bb79de0d9f954f4",
+      "pass": true
+    },
+    {
+      "path": "schemas/session/jsonschema/sync_anchor.schema.json",
+      "git_blob": "a97b824946aa935b7d9b155dba4a2c731d615a95",
+      "bytes": 698,
+      "sha256": "e6bf9f3d790faff1b1f07ab2bdf98ab9b19fb86e760af2b118a4d2f34c510a1f",
+      "pass": true
+    },
+    {
+      "path": "tests/fixtures/mini_session/manifest.json",
+      "git_blob": "800dab5b41774bc043ebdee4714195770e75229b",
+      "bytes": 235,
+      "sha256": "c5254d3e4c0bc6a0ecaef124dc12d88117d647928a8e1725b71429097438d380",
+      "pass": true
+    },
+    {
+      "path": "tests/fixtures/mini_session/events/annotations.json",
+      "git_blob": "fe51488c7066f6687ef680d6bfaa4f7768ef205c",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "pass": true
+    },
+    {
+      "path": "tests/fixtures/mini_session/events/checkpoints.json",
+      "git_blob": "fe51488c7066f6687ef680d6bfaa4f7768ef205c",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "pass": true
+    },
+    {
+      "path": "tests/fixtures/mini_session/events/sync_anchors.json",
+      "git_blob": "fe51488c7066f6687ef680d6bfaa4f7768ef205c",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "pass": true
+    },
+    {
+      "path": "tests/fixtures/review_video/manifest.json",
+      "git_blob": "78b7730aa88a40765b5449377d1f90ce22f58508",
+      "bytes": 92,
+      "sha256": "3d542d0251159008183bd2506ccc11a31b6b311c8d2ac388dca9a3b5003fc31e",
+      "pass": true
+    },
+    {
+      "path": "tests/fixtures/review_video/events/checkpoints.json",
+      "git_blob": "3d78af21df440e99302288d3e16a844c89941eba",
+      "bytes": 89,
+      "sha256": "e13318719c15f5526af94a4cd5dd15e8c612696eb1e980095761942ee6e17d1e",
+      "pass": true
+    }
+  ],
+  "original_issue": {
+    "url": "https://github.com/Jacob-Met/CaptureSuite/issues/111",
+    "title": "Report malformed recorded gap rows instead of silently hiding them",
+    "issue_number": 111,
+    "body": "## Visible refusal for malformed recorded gap rows\n\nOwner: `2479534e1930 / receiving_review`, under the current HAMON execution mandate. Exact current main is `3960c0c756cd4e9facbde0d76eaaa3c31ab7c167`; the reader is blob `91fbf913c5af8489968425d7ceac51c04233d3e0`.\n\nThe recorded-package reader silently skips malformed nonblank JSON in `sources/<source>/health/gaps.jsonl`. Review then presents a smaller gap count under its existing “Gaps are never hidden” notice. Nonobject JSON instead fails with an incidental attribute error. These are source-established behaviors; no native reproduction is claimed yet.\n\nThe bounded change is to raise the reader's existing `SessionPackageError` with the file path and physical line number for malformed JSON or a nonobject row. Existing Review error handling already surfaces this exception. Missing/empty optional gap files, blank lines, valid camelCase and snake_case records, exact integer values, unknown fields and all existing value coercions remain supported. No package bytes are repaired or rewritten.\n\nExclusive source fence: `libs/python/capture_session/capture_session/package_reader.py`, new `tests/test_package_reader_gaps.py`, an additive required PROGRESS entry and uniquely scoped evidence. This does not claim or edit #76's event browser/Review hooks, #107's offline-window container, video/export/presets, daemon/storage/recovery, schemas, dependencies or workflows.\n\nRead current AGENTS, reader, Review consumer, producer/recovery, design and the bounded current owner records. All three workflow definitions were read completely at this main: issue creation/commenting has no workflow subscriber. No branch/ref/PR or Actions run is requested.\n\nFirst validation will execute the exact Python reader source against private synthetic package content in memory, with only its Path I/O supplied by an explicit read-only adapter because local filesystem writes are not admitted. The parser and error handling remain real. This does not qualify Windows filesystem behavior, native Qt presentation or the entire package. Source/expectations and the bounded invocation will be reviewed before candidate exposure; no remote host or hardware route is assumed.",
+    "state": "open",
+    "user": {
+      "login": "Jacob-Met",
+      "name": "Jacob-Met",
+      "email": null,
+      "avatar_url": "https://avatars.githubusercontent.com/u/150724801?v=4",
+      "id": 150724801
+    },
+    "assignees": null,
+    "labels": null,
+    "milestone": null,
+    "state_reason": null,
+    "comments": 2,
+    "created_at": "2026-10-09T07:27:46Z",
+    "updated_at": "2026-10-09T09:41:19Z",
+    "closed_at": null,
+    "display_url": "https://github.com/Jacob-Met/CaptureSuite/issues/111",
+    "display_title": "Report malformed recorded gap rows instead of silently hiding them"
+  },
+  "original_progress": {
+    "sha": "14665f9d645f9575243da1cba94ffbc3dbcdda5f",
+    "ref": "c0437668fbc9d7ce6292c7b733f91dc8b2fd94f5",
+    "review": "Current phase/blocker/qualification tail read; source owner will append this consumer's result without overwriting retained progress."
+  },
+  "candidate_body_read": false,
+  "candidate_execution_observed": false,
+  "chronology": "The original capsule was delivered before private drafting. Author privately drafted from 09:47:27 UTC; no candidate body or source object was exposed and no candidate invocation occurred before this independent original-only fixture/contract freeze.",
+  "forbidden_calls_performed": 0
+}

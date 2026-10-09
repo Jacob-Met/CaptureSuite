@@ -1,0 +1,8 @@
+{
+  "session_schema_version": "1.0.0",
+  "sessionId": "mini-analysis-fixture",
+  "state": "finalized",
+  "t0WallUtc": "2026-08-09T00:00:00Z",
+  "finalizedUtc": "2026-08-09T00:00:10Z",
+  "sourceIds": ["sim.emg.main", "sim.imu.upper"]
+}

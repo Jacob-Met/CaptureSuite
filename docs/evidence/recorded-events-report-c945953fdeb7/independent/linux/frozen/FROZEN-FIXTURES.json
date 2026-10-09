@@ -1,0 +1,67 @@
+{
+  "schema": "capturesuite-independent-frozen-physical-fixtures-v1",
+  "classification": "Receiver-owned synthetic metadata package; not a recording, recovery operation, hardware sample or durability proof.",
+  "authority": {
+    "original_capsule": "df7d233f42be885358b922e955066fbd10f2cba6",
+    "unchanged_checkpoint_object": "tests/fixtures/review_video/events/checkpoints.json (second checkpoint here)",
+    "unchanged_sync_constant": "tests/analysis/test_sync_anchor_request.py::ANCHOR (second sync record here)",
+    "unchanged_gap_constants": "tests/test_package_reader_gaps.py::CAMEL_ROW and SNAKE_ROW",
+    "new_literals": "All other manifest/checkpoint/annotation/sync literals are receiver-authored synthetic values. One null annotation deliberately demonstrates returned-count scope."
+  },
+  "serialization": "UTF-8 exact content strings below; embedded JSON integers above 2^53 must be decoded with an arbitrary-precision JSON integer implementation. JavaScript Number parsing must not establish integer authority.",
+  "positive": {
+    "package_directory": "positive.mmsession",
+    "files": [
+      {
+        "path": "manifest.json",
+        "bytes": 255,
+        "sha256": "b4a5afe923b05f010807b672f7acfd296d50bf2c99a19c270c9f7a1aa16498f3",
+        "content": "{\n  \"session_schema_version\": \"1.0.0\",\n  \"sessionId\": \"synthetic-report-receiving-读-c945953fdeb7\",\n  \"state\": \"finalized_recovered\",\n  \"t0WallUtc\": \"2026-08-09T00:00:00Z\",\n  \"finalizedUtc\": \"2026-08-09T00:00:10Z\",\n  \"sourceIds\": [\n    \"sensor-α\"\n  ]\n}\n"
+      },
+      {
+        "path": "events/checkpoints.json",
+        "bytes": 366,
+        "sha256": "262a544ba3479e083882e00712cfaa1a569fc50b0a48b7f1a7aba99f0e475f3c",
+        "content": "[\n  {\"checkpointId\":\"receiver-late\",\"originalTimestampNs\":\"9007199254740997\",\"effectiveTimestampNs\":\"9007199254740993\",\"name\":\"Later <literal> & supplied first\",\"notes\":\"Receiver synthetic checkpoint; list order is intentional.\",\"futureField\":{\"literal\":\"<kept> & \\\"quoted\\\"\"}},\n  {\"checkpointId\":\"cp-1\",\"name\":\"Synthetic start\",\"effectiveTimestampNs\":1000000000}\n]\n"
+      },
+      {
+        "path": "events/annotations.json",
+        "bytes": 715,
+        "sha256": "4d608132ef6139add413afdfc38196aee6f57dfaa96d245745be19d33c722ed6",
+        "content": "[\n  {\"annotationId\":\"receiver-literal-1\",\"timestampNs\":\"9007199254740999\",\"category\":\"synthetic_receiving\",\"text\":\"Operator's synthetic note: <script>globalThis.__captureReceiverSentinel='unexpected'</script> & \\\"quote\\\"\\r\\nSecond line — café 读\",\"tags\":[\"synthetic\",\"literal <tag>\"],\"sourceId\":\"sensor-α\",\"createdVia\":\"independent-report-receiver\",\"futurePayload\":{\"exactInteger\":9007199254740993,\"exactString\":\"009007199254740993\",\"nested\":[\"<b>kept text</b>\",false,null]}},\n  null,\n  {\"annotationId\":\"receiver-earlier-2\",\"timestampNs\":\"-23\",\"category\":\"synthetic_receiving\",\"text\":\"Second recorded annotation; list order remains supplied.\",\"tags\":[\"synthetic\"],\"createdVia\":\"independent-report-receiver\"}\n]\n"
+      },
+      {
+        "path": "events/sync_anchors.json",
+        "bytes": 498,
+        "sha256": "b82e0f52c40fa697ad57bb42bab73652d930ba728fb3731533ceab0ea6ab9e16",
+        "content": "[\n  {\"syncAnchorId\":\"receiver-later-anchor\",\"timestampNs\":\"9007199254740999\",\"modalitiesTargeted\":[\"imu\",\"emg\"],\"mechanism\":\"manual\",\"metadata\":{\"classification\":\"synthetic_fixture\",\"literal\":\"No alignment <performed> & no inferred chronology\"},\"createdVia\":\"independent-report-receiver\"},\n  {\"syncAnchorId\":\"synthetic-tap-250ms\",\"timestampNs\":\"250000000\",\"modalitiesTargeted\":[\"emg\",\"imu\"],\"mechanism\":\"manual\",\"metadata\":{\"classification\":\"synthetic_fixture\"},\"createdVia\":\"sync-request-test\"}\n]\n"
+      },
+      {
+        "path": "sources/sensor-α/health/gaps.jsonl",
+        "bytes": 357,
+        "sha256": "b90bdeb062d48fb181da7bf640cb7f6d429c58dcdef270a2fc3d18431577db65",
+        "content": "\n{\"sourceId\":\"named-β\",\"streamId\":\"stream-A\",\"cause\":\"GAP_CAUSE_DISCONNECT\",\"startSessionTimeNs\":\"0\",\"endSessionTimeNs\":\"9007199254740997\",\"estimatedLostCount\":\"9007199254740999\",\"closed\":true,\"futureField\":{\"kept\":\"uninterpreted\"}}\n{\"stream_id\":\"stream-B\",\"cause\":\"UNKNOWN\",\"start_session_time_ns\":-23,\"end_session_time_ns\":null,\"estimated_lost_count\":3}\n"
+      }
+    ]
+  },
+  "malformed": {
+    "package_directory": "malformed.mmsession",
+    "same_files_as_positive_except": "sources/sensor-α/health/gaps.jsonl",
+    "replacement": {
+      "path": "sources/sensor-α/health/gaps.jsonl",
+      "bytes": 368,
+      "sha256": "3b64eebd7733e1928525cd5322b7bbfa0fdc6388846fe431474d2bd8782ae2b0",
+      "content": "\n{\"sourceId\":\"named-β\",\"streamId\":\"stream-A\",\"cause\":\"GAP_CAUSE_DISCONNECT\",\"startSessionTimeNs\":\"0\",\"endSessionTimeNs\":\"9007199254740997\",\"estimatedLostCount\":\"9007199254740999\",\"closed\":true,\"futureField\":{\"kept\":\"uninterpreted\"}}\n \nnot-json\n{\"stream_id\":\"stream-B\",\"cause\":\"UNKNOWN\",\"start_session_time_ns\":-23,\"end_session_time_ns\":null,\"estimated_lost_count\":3}\n"
+    },
+    "expected_error": {
+      "physical_line": 4,
+      "reason": "invalid JSON",
+      "path_suffix": "malformed.mmsession/sources/sensor-α/health/gaps.jsonl"
+    }
+  },
+  "expected_output_paths": {
+    "positive": "exports/recorded-events.html",
+    "malformed": "exports/refused.html"
+  },
+  "foreign_cwd": "foreign-cwd"
+}

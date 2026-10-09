@@ -1,0 +1,41 @@
+{
+  "source": "import os,json,pathlib,subprocess,re,hashlib,plistlib,datetime\nROOT=pathlib.Path('/Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7')\ndef pin(p):\n p=pathlib.Path(p).resolve();s=p.stat();h=hashlib.sha256()\n with p.open('rb') as f:\n  for b in iter(lambda:f.read(1024*1024),b''):h.update(b)\n return {'path':str(p),'bytes':s.st_size,'sha256':h.hexdigest(),'mode':oct(s.st_mode&0o7777),'mtime_ns':str(s.st_mtime_ns)}\nv=subprocess.run(['/usr/bin/vm_stat'],capture_output=True,text=True,check=True,timeout=5).stdout\npage=int(re.search(r'page size of (\\d+) bytes',v).group(1))\nmem=sum(int(re.search(r'^'+re.escape(k)+r':\\s+(\\d+)',v,re.M).group(1)) for k in ('Pages free','Pages inactive','Pages speculative'))*page\ns=os.statvfs('/Users/me');free=s.f_bavail*s.f_frsize\nout={'schema':'capturesuite-mac-preparation-readonly-admission-v1','time_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'pid':os.getpid(),'root':str(ROOT),'root_absent':not os.path.lexists(ROOT),'disk_free_bytes':free,'conservative_memory_bytes':mem,'disk_floor_bytes':256*1024**2,'memory_floor_bytes':2*1024**3,'owned_files_written':0,'browser_calls':0}\nout['admitted']=out['root_absent'] and free>=256*1024**2 and mem>=2*1024**3\nif out['admitted']:\n out['runtime']={'python':pin('/Library/Frameworks/Python.framework/Versions/3.13/bin/python3'),'node':pin('/opt/homebrew/bin/node'),'chrome':pin('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome')}\n with open('/Applications/Google Chrome.app/Contents/Info.plist','rb') as f:out['chrome_version']=plistlib.load(f)['CFBundleShortVersionString']\nprint(json.dumps(out,ensure_ascii=True))\nraise SystemExit(0 if out['admitted'] else 2)\n",
+  "request": {
+    "deviceId": "0b4ac27b-8500-47d0-8f11-5a35402e9abc",
+    "command": "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3 -I -B -c 'import os,json,pathlib,subprocess,re,hashlib,plistlib,datetime\nROOT=pathlib.Path('\\''/Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7'\\'')\ndef pin(p):\n p=pathlib.Path(p).resolve();s=p.stat();h=hashlib.sha256()\n with p.open('\\''rb'\\'') as f:\n  for b in iter(lambda:f.read(1024*1024),b'\\'''\\''):h.update(b)\n return {'\\''path'\\'':str(p),'\\''bytes'\\'':s.st_size,'\\''sha256'\\'':h.hexdigest(),'\\''mode'\\'':oct(s.st_mode&0o7777),'\\''mtime_ns'\\'':str(s.st_mtime_ns)}\nv=subprocess.run(['\\''/usr/bin/vm_stat'\\''],capture_output=True,text=True,check=True,timeout=5).stdout\npage=int(re.search(r'\\''page size of (\\d+) bytes'\\'',v).group(1))\nmem=sum(int(re.search(r'\\''^'\\''+re.escape(k)+r'\\'':\\s+(\\d+)'\\'',v,re.M).group(1)) for k in ('\\''Pages free'\\'','\\''Pages inactive'\\'','\\''Pages speculative'\\''))*page\ns=os.statvfs('\\''/Users/me'\\'');free=s.f_bavail*s.f_frsize\nout={'\\''schema'\\'':'\\''capturesuite-mac-preparation-readonly-admission-v1'\\'','\\''time_utc'\\'':datetime.datetime.now(datetime.timezone.utc).isoformat(),'\\''pid'\\'':os.getpid(),'\\''root'\\'':str(ROOT),'\\''root_absent'\\'':not os.path.lexists(ROOT),'\\''disk_free_bytes'\\'':free,'\\''conservative_memory_bytes'\\'':mem,'\\''disk_floor_bytes'\\'':256*1024**2,'\\''memory_floor_bytes'\\'':2*1024**3,'\\''owned_files_written'\\'':0,'\\''browser_calls'\\'':0}\nout['\\''admitted'\\'']=out['\\''root_absent'\\''] and free>=256*1024**2 and mem>=2*1024**3\nif out['\\''admitted'\\'']:\n out['\\''runtime'\\'']={'\\''python'\\'':pin('\\''/Library/Frameworks/Python.framework/Versions/3.13/bin/python3'\\''),'\\''node'\\'':pin('\\''/opt/homebrew/bin/node'\\''),'\\''chrome'\\'':pin('\\''/Applications/Google Chrome.app/Contents/MacOS/Google Chrome'\\'')}\n with open('\\''/Applications/Google Chrome.app/Contents/Info.plist'\\'','\\''rb'\\'') as f:out['\\''chrome_version'\\'']=plistlib.load(f)['\\''CFBundleShortVersionString'\\'']\nprint(json.dumps(out,ensure_ascii=True))\nraise SystemExit(0 if out['\\''admitted'\\''] else 2)\n'",
+    "timeout_ms": 3000,
+    "verbose_timing": true
+  },
+  "start": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Process started with PID 61382 (shell: /bin/zsh)\nInitial output:\n{\"schema\": \"capturesuite-mac-preparation-readonly-admission-v1\", \"time_utc\": \"2026-10-09T10:44:40.757377+00:00\", \"pid\": 61382, \"root\": \"/Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7\", \"root_absent\": true, \"disk_free_bytes\": 2999853056, \"conservative_memory_bytes\": 11257249792, \"disk_floor_bytes\": 268435456, \"memory_floor_bytes\": 2147483648, \"owned_files_written\": 0, \"browser_calls\": 0, \"admitted\": true, \"runtime\": {\"python\": {\"path\": \"/Library/Frameworks/Python.framework/Versions/3.13/bin/python3.13\", \"bytes\": 119600, \"sha256\": \"406d73d07e33e164d986326fde00b85c2b8f4ed2c33278142c8431588fe2df14\", \"mode\": \"0o775\", \"mtime_ns\": \"1755192800000000000\"}, \"node\": {\"path\": \"/opt/homebrew/Cellar/node/26.3.0/bin/node\", \"bytes\": 68384, \"sha256\": \"56694c81b093cc8da273fa017cf91765b3653e5f64f16727976ffaa87b2b6b31\", \"mode\": \"0o555\", \"mtime_ns\": \"1781043664290977610\"}, \"chrome\": {\"path\": \"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\", \"bytes\": 367696, \"sha256\": \"764f5f6ee523e6d52caf6e56ce7501e932c4f6e52d06d267887cb7ea70350102\", \"mode\": \"0o775\", \"mtime_ns\": \"1791502133198545615\"}}, \"chrome_version\": \"154.0.8037.99\"}\n\n\n📊 Timing Information:\n  Exit Reason: process_exit\n  Total Duration: 101ms\n  Time to First Output: 101ms\n  Output Window: 0ms\n\n  Output Events (1 total):\n    [1] +101ms | stdout | 1157b\n       \"{\"schema\": \"capturesuite-mac-preparation-readonly-\"\n"
+      },
+      {
+        "type": "text",
+        "text": "\n[executed on device: Mac.lan (0b4ac27b-8500-47d0-8f11-5a35402e9abc)]"
+      }
+    ],
+    "isError": false
+  },
+  "close_request": {
+    "deviceId": "0b4ac27b-8500-47d0-8f11-5a35402e9abc",
+    "pid": 61382,
+    "timeout_ms": 1000,
+    "length": 50
+  },
+  "close": {
+    "content": [
+      {
+        "type": "text",
+        "text": "[Reading 2 new lines (total: 2 lines)]\n\n{\"schema\": \"capturesuite-mac-preparation-readonly-admission-v1\", \"time_utc\": \"2026-10-09T10:44:40.757377+00:00\", \"pid\": 61382, \"root\": \"/Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7\", \"root_absent\": true, \"disk_free_bytes\": 2999853056, \"conservative_memory_bytes\": 11257249792, \"disk_floor_bytes\": 268435456, \"memory_floor_bytes\": 2147483648, \"owned_files_written\": 0, \"browser_calls\": 0, \"admitted\": true, \"runtime\": {\"python\": {\"path\": \"/Library/Frameworks/Python.framework/Versions/3.13/bin/python3.13\", \"bytes\": 119600, \"sha256\": \"406d73d07e33e164d986326fde00b85c2b8f4ed2c33278142c8431588fe2df14\", \"mode\": \"0o775\", \"mtime_ns\": \"1755192800000000000\"}, \"node\": {\"path\": \"/opt/homebrew/Cellar/node/26.3.0/bin/node\", \"bytes\": 68384, \"sha256\": \"56694c81b093cc8da273fa017cf91765b3653e5f64f16727976ffaa87b2b6b31\", \"mode\": \"0o555\", \"mtime_ns\": \"1781043664290977610\"}, \"chrome\": {\"path\": \"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome\", \"bytes\": 367696, \"sha256\": \"764f5f6ee523e6d52caf6e56ce7501e932c4f6e52d06d267887cb7ea70350102\", \"mode\": \"0o775\", \"mtime_ns\": \"1791502133198545615\"}}, \"chrome_version\": \"154.0.8037.99\"}\n\n✅ Process completed with exit code 0 (runtime: 0.10s)"
+      },
+      {
+        "type": "text",
+        "text": "\n[executed on device: Mac.lan (0b4ac27b-8500-47d0-8f11-5a35402e9abc)]"
+      }
+    ],
+    "isError": false
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "schema": "capturesuite-frozen-input-syntax-only-observation-v1",
+  "valid_positive_json_documents_or_rows": 6,
+  "expected_json_syntax_valid": true,
+  "large_integer_authority": "Original raw UTF-8 JSON decimal lexemes remain authoritative; temporary JavaScript syntax parsing was not used for numerical/value comparison.",
+  "exact_expected_integer_lexemes_preserved": true,
+  "new_candidate_intake": false,
+  "physical_product_calls": 0,
+  "source_or_fixture_changes": 0
+}

@@ -1,0 +1,10 @@
+{
+  "session_schema_version": "1.0.0",
+  "sessionId": "synthetic-report-receiving-读-c945953fdeb7",
+  "state": "finalized_recovered",
+  "t0WallUtc": "2026-08-09T00:00:00Z",
+  "finalizedUtc": "2026-08-09T00:00:10Z",
+  "sourceIds": [
+    "sensor-α"
+  ]
+}

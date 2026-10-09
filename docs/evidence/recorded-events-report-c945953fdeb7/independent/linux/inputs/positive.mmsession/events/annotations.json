@@ -1,0 +1,5 @@
+[
+  {"annotationId":"receiver-literal-1","timestampNs":"9007199254740999","category":"synthetic_receiving","text":"Operator's synthetic note: <script>globalThis.__captureReceiverSentinel='unexpected'</script> & \"quote\"\r\nSecond line — café 读","tags":["synthetic","literal <tag>"],"sourceId":"sensor-α","createdVia":"independent-report-receiver","futurePayload":{"exactInteger":9007199254740993,"exactString":"009007199254740993","nested":["<b>kept text</b>",false,null]}},
+  null,
+  {"annotationId":"receiver-earlier-2","timestampNs":"-23","category":"synthetic_receiving","text":"Second recorded annotation; list order remains supplied.","tags":["synthetic"],"createdVia":"independent-report-receiver"}
+]
