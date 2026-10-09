@@ -1,0 +1,170 @@
+{
+  "schema": "capturesuite.windows-prepared-continuation/1",
+  "worker": "7879c2abc07f/root",
+  "candidate": {
+    "commit": "bbcbb12feaafb2982031268de7f7f1703938d848",
+    "tree": "46aa297342c64d332cb4c51884714033ff861295",
+    "canonical_leaves": 1290
+  },
+  "status": "prepared-only-native-host-offline",
+  "actual_results": {
+    "cpp_werror_build": "passed",
+    "ctest": {
+      "tests": 30,
+      "passed": 30,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "focused_camera": {
+      "tests": 1,
+      "passed": 1,
+      "skipped": 0,
+      "nested_checks": 17
+    },
+    "first_ordinary": {
+      "tests": 720,
+      "passed": 712,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 7
+    },
+    "first_native_six": {
+      "tests": 6,
+      "passed": 5,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "pending": [
+    "native-six retry",
+    "ordinary 720-case run and prediction verifier",
+    "qualification creation",
+    "actual non-elevated user-session workbench receiving",
+    "create-only shortcut publication",
+    "normal shortcut launch receiving"
+  ],
+  "selected_helpers": [
+    "run-native-six-r6-prepared.py.txt",
+    "run-windows-full-gate-r2-prepared.py.txt"
+  ],
+  "helpers": [
+    {
+      "file": "run-native-six-r6-original.py.txt",
+      "git_blob": "1cd391a00824fa44fa30e2fd56de1e94f3cb461d",
+      "bytes": 11776,
+      "sha256": "509f45177149d0186ccb4200b974e6b003f1fd67483df2c8d59fb400c70f7565",
+      "role": "Preserved original prepared native-six successor; never executed."
+    },
+    {
+      "file": "run-native-six-r6-pre-casing.py.txt",
+      "git_blob": "43dbee0c114c4098ef9647408fc784d8a3a9c25b",
+      "bytes": 11833,
+      "sha256": "46d01cbe5b0052dc0c07dd59ec062821c8e421bbf090c57d6ef0ee19ce466e2a",
+      "role": "Preserved independently reviewed native predecessor; final successor resolves handoff ComSpec casing without changing child environment. Never executed."
+    },
+    {
+      "file": "run-native-six-r6-prepared.py.txt",
+      "git_blob": "b902993a49e891102ae2efffe0b618f831a626de",
+      "bytes": 12046,
+      "sha256": "77b55cf0392d0dad74b5c85c8a77f5f176f2247d0c5cc52d454a9a1ffa6f13a5",
+      "role": "Selected native successor; early fixed effective ComSpec assertion and canonical handoff serialization, with unchanged child ENV. Never materialized or executed on LA7."
+    },
+    {
+      "file": "run-windows-full-gate-r2-base.py.txt",
+      "git_blob": "9511af6c976cd394c6edf798d58232a01cf4fd07",
+      "bytes": 10835,
+      "sha256": "3132814818ffc856681803f39782bbde990d13f713399885e4184c33718fb13d",
+      "role": "Exact last native-read unexecuted ordinary driver, retained as predecessor."
+    },
+    {
+      "file": "run-windows-full-gate-r2-original.py.txt",
+      "git_blob": "343a71b7fc940741018d0eddd64ce69da9f66178",
+      "bytes": 18057,
+      "sha256": "0dee2b9ce9e541726d19bc08f046bf3988a20f60e2b8c4cad29b1cc62f309c30",
+      "role": "Exact agent-prepared admission successor; never materialized or executed."
+    },
+    {
+      "file": "run-windows-full-gate-r2-cache-bound.py.txt",
+      "git_blob": "bec0d8878e9aa87e3464c335576bee3039c3d3d0",
+      "bytes": 18100,
+      "sha256": "6eb5e6ed2b0ded525364f409ab93c819f740d8d3611648c3cea89446ccbf6159",
+      "role": "Adds exact accepted-handoff CMake cache binding; preserved intermediate."
+    },
+    {
+      "file": "run-windows-full-gate-r2-prepared.py.txt",
+      "git_blob": "233f8208badf730c97b3ce01f3eb66ae4fec2338",
+      "bytes": 18174,
+      "sha256": "5c7ba877843c22a58cc47c4de42dddd33b81441777b2106704de2de3d2ba51f0",
+      "role": "Selected prepared full-suite successor; explicit fixed ComSpec equality and allowlist, existing cmd hash guard retained. Never materialized or executed."
+    }
+  ],
+  "admission_limits": {
+    "ordinary_cases": 720,
+    "maximum_skips": 1,
+    "allowed_skip": {
+      "classname": "tests.protocol.test_daemon_e2e",
+      "name": "test_camera_apply_config_proxied_when_worker_present",
+      "message": "camera.gstreamer worker not enabled in this daemon",
+      "cache_line": "CAPTURE_ENABLE_CAMERA_WORKER:BOOL=OFF"
+    },
+    "required_native_six": {
+      "tests": 6,
+      "passed": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "selected_runtime_files": 14,
+    "remaining_preexecution_readback": "Actual compiler/camera environment keys and independent native launcher reread after access recovery"
+  },
+  "paths": {
+    "root": "C:\\Users\\minec\\cs92-7879c2abc07f-20261008",
+    "first_ordinary_source": "source",
+    "fresh_ordinary_source": "source-r2",
+    "native_source": "native-cpp/source-canonical",
+    "build": "native-cpp/source-canonical/build/windows-release-r4",
+    "fresh_native_pytest_base": "n6",
+    "native_handoff": "native-cpp/evidence/native-build-handoff.json"
+  },
+  "no_actions": {
+    "policy_url": "https://github.com/Jacob-Met/hamon/issues/143#issuecomment-6067592767",
+    "workflows_reviewed": [
+      {
+        "path": ".github/workflows/ci.yml",
+        "blob": "1067e9944ce4836d8cd1673442687333ef7ad564",
+        "events": "push main/master; pull_request"
+      },
+      {
+        "path": ".github/workflows/camera-native.yml",
+        "blob": "931eedfb75258d616a64c18fe26bcf02d9942d9d",
+        "events": "scoped pull_request; scoped push main/master; workflow_dispatch"
+      },
+      {
+        "path": ".github/workflows/release.yml",
+        "blob": "079f99fe630d135933f3c2c725f49874c2d66d1c",
+        "events": "push tags v*"
+      }
+    ],
+    "source_branch": "receiving/feature-table-preview-7879c2abc07f-20261008",
+    "all_state_pr_head_matches": 0,
+    "publication_requires_fresh_ref_lease": true
+  },
+  "source_statement": "The evidence-only descendant preserves every existing candidate leaf. Native checkouts stay on the actual executed candidate; this custody revision is not a newly qualified product source.",
+  "limitations": [
+    "No new native execution in this capsule.",
+    "No installed adoption, hardware operation, full dependency-tree attestation or long-path repair is claimed.",
+    "Native-only files and raw evidence were not reread through the offline connector.",
+    "Transient local /dev is not durable or shared custody."
+  ],
+  "checkpoint_url": "https://github.com/Jacob-Met/CaptureSuite/issues/92#issuecomment-6071881924",
+  "reviews": {
+    "reviewer": "7879c2abc07f/review_recovery",
+    "full": "independent-source-review.json",
+    "amendment": "independent-source-review-amendment.json",
+    "verdict": "ACCEPTED_PREPARED_SOURCE_ONLY",
+    "execution_admission_complete": false
+  },
+  "atomic_writer_handoff": "https://github.com/Jacob-Met/CaptureSuite/issues/51#issuecomment-6072106666"
+}

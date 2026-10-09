@@ -1,0 +1,142 @@
+from pathlib import Path
+from datetime import datetime,timezone
+import hashlib,json,os,subprocess,time,urllib.request,zipfile,traceback
+ROOT=Path(r"C:\Users\minec\cs92-7879c2abc07f-20261008\native-cpp")
+PEER=ROOT.parent/"source-r2"
+SOURCE=ROOT/"source-canonical"
+VCPKG=ROOT/"tools/vcpkg"
+GIT=Path(r"C:\Program Files\Git\cmd\git.exe")
+COMMIT="bbcbb12feaafb2982031268de7f7f1703938d848"
+TREE="46aa297342c64d332cb4c51884714033ff861295"
+BASELINE="4334d8b4c8916018600212ab4dd4bbdc343065d1"
+VS=Path(r"C:\Program Files\Microsoft Visual Studio\2022\Community")
+CMAKE=ROOT/"tools/cmake-3.31.6-windows-x86_64"
+NINJA=VS/"Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja"
+ENV=dict(os.environ)
+ENV.update(ComSpec=r"C:\Windows\System32\cmd.exe",TEMP=str(ROOT/"tmp"),TMP=str(ROOT/"tmp"),
+ LOCALAPPDATA=str(ROOT/"state/local"),APPDATA=str(ROOT/"state/roaming"),
+ VCPKG_ROOT=str(VCPKG),VCPKG_DOWNLOADS=str(ROOT/"downloads"),
+ VCPKG_DEFAULT_BINARY_CACHE=str(ROOT/"cache"),VCPKG_BINARY_SOURCES="clear;files,"+str(ROOT/"cache")+",readwrite",
+ VCPKG_DISABLE_METRICS="1",VCPKG_MAX_CONCURRENCY="4",VCPKG_VISUAL_STUDIO_PATH=str(VS),
+ VCPKG_DEFAULT_TRIPLET="x64-windows",VCPKG_DEFAULT_HOST_TRIPLET="x64-windows",
+ GIT_TERMINAL_PROMPT="0",PYTHONDONTWRITEBYTECODE="1")
+ENV["PATH"]=str(CMAKE/"bin")+";"+str(NINJA)+";"+ENV.get("PATH","")
+import xml.etree.ElementTree as ET
+import sys
+sys.stdout=(ROOT/"evidence/native-build-attempt-6.console").open("x",encoding="utf-8",buffering=1)
+sys.stderr=sys.stdout
+RECORD={"schema":"capture.native-cpp-qualification/1","started_utc":datetime.now(timezone.utc).isoformat(),"source_commit":COMMIT,"source_tree":TREE,"source_root":str(SOURCE),"steps":[]}
+BUILD=SOURCE/"build/windows-release-r4"
+PYTHON=Path(r"C:\Users\minec\hamon-0378a7b6-capture-runtime\venv\Scripts\python.exe")
+def sha(data):return hashlib.sha256(data).hexdigest()
+def identify(path):
+ b=path.read_bytes();return {"path":str(path),"bytes":len(b),"sha256":sha(b)}
+def write_json(path,data):
+ with path.open("x",encoding="utf-8",newline="\n") as f:json.dump(data,f,indent=2);f.write("\n")
+def run(name,args,cwd,timeout=300):
+ name="r6-"+name
+ started=time.monotonic();outpath=ROOT/"evidence"/(name+".stdout");errpath=ROOT/"evidence"/(name+".stderr")
+ print(json.dumps({"started":name,"timeout":timeout}),flush=True)
+ with outpath.open("xb") as out,errpath.open("xb") as err:
+  try:
+   p=subprocess.run([str(x) for x in args],cwd=cwd,env=ENV,stdout=out,stderr=err,timeout=timeout);code=p.returncode
+  except subprocess.TimeoutExpired:code=None
+ record={"name":name,"args":[str(x) for x in args],"cwd":str(cwd),"returncode":code,"seconds":time.monotonic()-started,"stdout":identify(outpath),"stderr":identify(errpath)}
+ RECORD["steps"].append(record);write_json(ROOT/"evidence"/(name+".json"),record)
+ print(json.dumps({"completed":name,"returncode":code,"seconds":record["seconds"]}),flush=True)
+ if code!=0:raise RuntimeError(name+" failed; inspect preserved stdout/stderr")
+ return outpath.read_bytes()
+def source_check():
+ manifest=json.loads((ROOT/"evidence/source-canonical-admission.json").read_text())
+ assert manifest["commit"]==COMMIT and manifest["tree"]==TREE and len(manifest["entries"])==1290
+ for entry in manifest["entries"]:
+  p=SOURCE/entry["path"];assert p.is_file() and not p.is_symlink()
+  b=p.read_bytes();assert len(b)==entry["bytes"] and sha(b)==entry["sha256"],entry["path"]
+ assert subprocess.check_output([str(GIT),"-C",str(SOURCE),"rev-parse","HEAD^{tree}"],env=ENV).decode().strip()==TREE
+ assert not subprocess.check_output([str(GIT),"-C",str(SOURCE),"status","--porcelain"],env=ENV).strip()
+ return {"files":1290,"gitClean":True,"manifest":identify(ROOT/"evidence/source-canonical-admission.json")}
+try:
+ RECORD["before"]=source_check()
+ RECORD["compilerActivation"]=json.loads((ROOT/"evidence/compiler-activation.json").read_text())
+ RECORD["receivingOverlay"]=identify(ROOT/"tools/receiving-triplets-r2/x64-windows.cmake")
+ activated=json.loads((ROOT/"evidence/compiler-environment.json").read_text())
+ for k,v in activated.items():
+  for old in list(ENV):
+   if old.casefold()==k.casefold():del ENV[old]
+  ENV[k]=v
+ pathkey=next(k for k in ENV if k.casefold()=="path")
+ ENV[pathkey]=str(CMAKE/"bin")+";"+str(NINJA)+";"+str(GIT.parent)+";"+ENV[pathkey]
+ paths=[".","libs/python/capture_protocol","libs/python/capture_session","libs/python/capture_analysis","libs/python/capture_worker","desktop","workers/python_host","plugins/example_sine_py","plugins/lsl_bridge","tools","libs/python/capture_protocol/capture_protocol/generated"]
+ ENV["PYTHONPATH"]=";".join(str(SOURCE/p) for p in paths)
+ ENV["PYTHONNOUSERSITE"]="1";ENV["QT_QPA_PLATFORM"]="offscreen"
+ ENV["CAPTURE_TEST_BUILD_DIR"]=str(BUILD)
+ ENV.pop("PYTEST_ADDOPTS",None)
+ fresh_base=ROOT.parent/"n6"
+ assert not fresh_base.exists(),"Refuse to reuse a pytest --basetemp target"
+ ENV["PYTEST_ADDOPTS"]="--basetemp="+str(fresh_base)
+ ENV["PYTHONIOENCODING"]="utf-8"
+ old_kill=next((ROOT/"tmp").glob("pytest-of-*/pytest-0/test_kill_preserves_sealed_seg0/owned-native-state"))
+ instance=json.loads((old_kill/"local/CaptureSuite/instance.json").read_text())
+ pid_fields={k:v for k,v in instance.items() if "pid" in k or "process" in k}
+ stream=old_kill/"sessions/kill-test-session.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frame"
+ new_stream=fresh_base/"test_kill_preserves_sealed_seg0/owned-native-state/sessions/kill-test-session.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frame"
+ RECORD["nativeStatePlacement"]={"fresh_base":str(fresh_base),"fresh_base_absent_before_run":True,"old_stream_directory":str(stream),"old_stream_length":len(str(stream)),"new_stream_directory":str(new_stream),"new_stream_length":len(str(new_stream)),"retained_instance_pid_fields":pid_fields,"old_six_digit_pid_two_digit_counter_atomic_name_length":len(str(stream/".capturesuite-atomic-999999-99")),"new_six_digit_pid_two_digit_counter_atomic_name_length":len(str(new_stream/".capturesuite-atomic-999999-99")),"scope":"Shorter ordinary pytest owned temporary placement; prior native failure retained. This does not repair or qualify long-path product behavior. Exact tests, assertions, selection and300-second inner bound remain unchanged."}
+ assert stream.is_dir() and len(str(new_stream))<len(str(stream))
+ previous_native=set((SOURCE/"build/evidence").glob("native-*/receipt.json"))
+ assert len(previous_native)==1
+ previous=next(iter(previous_native))
+ RECORD["preservedFailedNativeAttempt"]={"receipt":identify(previous),"log":identify(previous.parent/"pytest.log"),"junit":identify(previous.parent/"pytest.xml"),"report":json.loads(previous.read_text())}
+ assert RECORD["preservedFailedNativeAttempt"]["report"]["counts"]=={"tests":6,"passed":5,"failures":1,"errors":0,"skipped":0}
+ write_json(ROOT/"evidence/native-child-environment-r6.json",{k:ENV[k] for k in ENV if k in activated or k in ("PYTHONPATH","PYTHONNOUSERSITE","QT_QPA_PLATFORM","CAPTURE_TEST_BUILD_DIR","ComSpec","TEMP","TMP","LOCALAPPDATA","APPDATA","VCPKG_ROOT","VCPKG_DOWNLOADS","VCPKG_DEFAULT_BINARY_CACHE","VCPKG_BINARY_SOURCES","VCPKG_DISABLE_METRICS","VCPKG_MAX_CONCURRENCY","VCPKG_DEFAULT_TRIPLET","VCPKG_DEFAULT_HOST_TRIPLET","PYTHONDONTWRITEBYTECODE","PYTEST_ADDOPTS","PYTHONIOENCODING")})
+ RECORD["warningBoundary"]=json.loads((ROOT/"evidence/r3-warning-boundary.json").read_text())
+ assert RECORD["warningBoundary"]["returncode"]==0
+ RECORD["ciContract"]=json.loads((ROOT/"evidence/r3-ci-contract.json").read_text())
+ assert RECORD["ciContract"]["returncode"]==0
+ RECORD["configure"]=json.loads((ROOT/"evidence/r4-cmake-configure.json").read_text())
+ assert RECORD["configure"]["returncode"]==0
+ for key in ("stdout","stderr"):
+  item=RECORD["configure"][key];assert identify(Path(item["path"]))==item
+ cache=(BUILD/"CMakeCache.txt").read_text()
+ assert "CAPTURE_WERROR:BOOL=ON" in cache and "CAPTURE_BUILD_TESTS:BOOL=ON" in cache and "CMAKE_BUILD_TYPE:STRING=Release" in cache
+ RECORD["configuredCache"]=identify(BUILD/"CMakeCache.txt")
+ RECORD["resumeBoundary"]="Actual configure passed0; prior receiver OSError22 on disconnected console after writing its successful step receipt. Only remaining build/CTest/native stages are executed here."
+ RECORD["build"]=json.loads((ROOT/"evidence/r5-cmake-build.json").read_text())
+ assert RECORD["build"]["returncode"]==0
+ for key in ("stdout","stderr"):assert identify(Path(RECORD["build"][key]["path"]))==RECORD["build"][key]
+ RECORD["ctestProcess"]=json.loads((ROOT/"evidence/r5-ctest.json").read_text())
+ assert RECORD["ctestProcess"]["returncode"]==0
+ for key in ("stdout","stderr"):assert identify(Path(RECORD["ctestProcess"][key]["path"]))==RECORD["ctestProcess"][key]
+ junit=BUILD/"ctest-results.xml";doc=ET.parse(junit).getroot();cases=list(doc.iter("testcase"))
+ assert cases and not list(doc.iter("failure")) and not list(doc.iter("error")) and not list(doc.iter("skipped"))
+ RECORD["ctest"]={"cases":len(cases),"junit":identify(junit),"zero_failures":True,"zero_skips":True}
+ RECORD["nativeBinaryBefore"]=[identify(BUILD/p) for p in ("daemon/capture_daemon.exe","tools/session_doctor/session_doctor.exe")]
+ for old,current in zip(RECORD["preservedFailedNativeAttempt"]["report"]["binaries"],RECORD["nativeBinaryBefore"],strict=True):
+  assert old["bytes"]==current["bytes"] and old["sha256"]==current["sha256"]
+ run("native-six",[PYTHON,"tools/run_native_ci_tests.py"],SOURCE,330)
+ RECORD["nativeBinaryAfter"]=[identify(BUILD/p) for p in ("daemon/capture_daemon.exe","tools/session_doctor/session_doctor.exe")]
+ assert RECORD["nativeBinaryBefore"]==RECORD["nativeBinaryAfter"]
+ native=list(set((SOURCE/"build/evidence").glob("native-*/receipt.json"))-previous_native)
+ assert len(native)==1,native
+ receipt=json.loads(native[0].read_text())
+ assert receipt["accepted"] and receipt["source_unchanged_during_test"] and receipt["source_commit"]==COMMIT
+ assert receipt["counts"]["tests"]==6 and receipt["counts"]["skipped"]==0
+ RECORD["nativeIntegration"]={"receipt":identify(native[0]),"counts":receipt["counts"],"accepted":True}
+ RECORD["after"]=source_check()
+ assert RECORD["before"]==RECORD["after"]
+ artifact_paths=[CMAKE/"bin/cmake.exe",NINJA/"ninja.exe",VS/"VC/Tools/MSVC/14.38.33130/bin/Hostx64/x64/cl.exe"]
+ for p in BUILD.rglob("*"):
+  if p.is_file() and p.suffix.lower() in (".exe",".dll"):artifact_paths.append(p)
+ artifacts=[identify(p) for p in sorted(set(artifact_paths),key=lambda p:str(p).casefold())]
+ environment={k:ENV[k] for k in activated}
+ environment["ComSpec"]=ENV["ComSpec"]
+ handoff={"schema":"capture.native-build-handoff/1","source_commit":COMMIT,"source_tree":TREE,"source_root":str(SOURCE),"build_dir":str(BUILD),"environment":environment,"artifacts":artifacts,"cmake":{"path":str(CMAKE/"bin/cmake.exe"),"version":"3.31.6"},"ctest":RECORD["ctest"],"native_integration":RECORD["nativeIntegration"],"native_receipt":identify(native[0]),"cmake_cache":identify(BUILD/"CMakeCache.txt"),"source_conserved":True,"scope":"Exact source; native CMake/CTest and unchanged six-case zero-skip integration. Process-local environment only; source/runtime dependencies stay read-only."}
+ write_json(ROOT/"evidence/native-build-handoff.json",handoff)
+ RECORD["accepted"]=True;RECORD["handoff"]=identify(ROOT/"evidence/native-build-handoff.json")
+except BaseException:
+ RECORD["accepted"]=False;RECORD["traceback"]=traceback.format_exc()
+ print(RECORD["traceback"],flush=True)
+finally:
+ RECORD["finished_utc"]=datetime.now(timezone.utc).isoformat()
+ write_json(ROOT/"evidence/native-build-attempt-6.json",RECORD)
+ print(json.dumps({"accepted":RECORD.get("accepted",False),"receipt":str(ROOT/"evidence/native-build-attempt-6.json"),"lastStage":RECORD["steps"][-1]["name"] if RECORD["steps"] else None}),flush=True)
+if not RECORD.get("accepted"):raise SystemExit(1)

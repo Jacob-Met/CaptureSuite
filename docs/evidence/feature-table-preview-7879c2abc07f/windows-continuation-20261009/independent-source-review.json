@@ -1,0 +1,93 @@
+{
+  "schema": "capturesuite.prepared_driver_source_review/1",
+  "repository": "Jacob-Met/CaptureSuite",
+  "verdict": "ACCEPTED_PREPARED_SOURCE_ONLY",
+  "blocking_source_findings": [],
+  "execution_admission_complete": false,
+  "native_execution_performed": false,
+  "product_tests_performed": false,
+  "filesystem_writes_performed": false,
+  "github_mutations_or_actions_performed": false,
+  "reviewed_drivers": [
+    {
+      "role": "ordinary_windows_gate",
+      "git_blob": "233f8208badf730c97b3ce01f3eb66ae4fec2338",
+      "bytes": 18174,
+      "sha256": "5c7ba877843c22a58cc47c4de42dddd33b81441777b2106704de2de3d2ba51f0",
+      "git_blob_sha1_verified": true,
+      "ast_parse": "PASS"
+    },
+    {
+      "role": "native_six_retry",
+      "git_blob": "43dbee0c114c4098ef9647408fc784d8a3a9c25b",
+      "bytes": 11833,
+      "sha256": "46d01cbe5b0052dc0c07dd59ec062821c8e421bbf090c57d6ef0ee19ce466e2a",
+      "git_blob_sha1_verified": true,
+      "ast_parse": "PASS"
+    }
+  ],
+  "immutable_candidate": {
+    "commit": "bbcbb12feaafb2982031268de7f7f1703938d848",
+    "tree": "46aa297342c64d332cb4c51884714033ff861295"
+  },
+  "supporting_source_review": [
+    {
+      "path": "tools/run_native_ci_tests.py",
+      "blob": "2723a034a9a53c84d123f4fc58ecedf61646c5fd"
+    },
+    {
+      "path": "tools/run_ci_tests.py",
+      "blob": "b5717e9f605ee7de6474cf4d3ecba45e5eaa44ba"
+    },
+    {
+      "path": "tools/verify_prediction_workbench_ci.py",
+      "blob": "742d3e1fe90a6dbe6cd768badb843bd836b1367a"
+    },
+    {
+      "path": "tests/protocol/test_daemon_e2e.py",
+      "blob": "ea3dec7f45f56c0400d2fc3514513dc10d1e3cee"
+    },
+    {
+      "path": "tests/kill_tests/test_kill_preserves_sealed.py",
+      "blob": "f3c33b9389b2be1e0e2dcd03b57cace7f21f2f5a"
+    },
+    {
+      "path": "tests/cmake/test_camera_packaging.py",
+      "blob": "69d92e06f70fab9d54bd4a666aa92d4df57993e1"
+    }
+  ],
+  "accepted_source_properties": [
+    "Native handoff fields and receipt/source-manifest schemas align with the immutable native and ordinary wrappers. Receipt parent reconstruction and binary-build resolution match the generated directory layout.",
+    "Native retry invokes only the unchanged native-six wrapper; configure, build and CTest evidence are reused. The retry requires an absent shorter owned pytest basetemp and child UTF-8 output, preserves the prior failed receipt location, and explicitly makes no product long-path qualification claim.",
+    "Ordinary admission requires an accepted native receipt with exactly six passes, zero failures, zero errors and zero skips. It additionally validates the exact six JUnit identities and test scope, receipt source snapshot, JUnit/log hashes, and both required binary identities.",
+    "Ordinary admission compares the current CMake cache pin with the native handoff cache pin and requires the exact camera-worker OFF cache entry.",
+    "Ordinary acceptance requires exactly 720 cases and permits only either 720 passes or 719 passes plus the single precisely named camera.gstreamer-worker-disabled skip. The permitted message matches the unchanged test source.",
+    "The ordinary driver requires all 41 preview cases to pass without skips, failures or errors, and requires the camera loader case and each of the five ordinary daemon cases to pass exactly once. The unchanged prediction verifier adds its own required consumer-case and JUnit-hash checks.",
+    "Acceptance checks exact source snapshot agreement and conservation of listed shared runtime identities, native artifacts, native receipt evidence, admitted camera tool/metadata pins, the independent camera review, default VS compiler/linker pins, and the CMake cache.",
+    "The ordinary native-environment allowlist and fixed ComSpec equality checks precede creation of attempt-2 evidence and execution of the ordinary runner."
+  ],
+  "execution_bounds": {
+    "native_pytest_inner_seconds": 300,
+    "native_wrapper_outer_seconds": 330,
+    "ordinary_pytest_inner_seconds": 300,
+    "ordinary_wrapper_outer_seconds": 360,
+    "prediction_verifier_seconds": 30,
+    "qualification": "These are subprocess bounds, not a demonstrated end-to-end wall-clock bound. Native source_check Git subprocesses do not specify timeouts."
+  },
+  "resolved_layout_precondition": {
+    "basis": "Authoritative root-agent custody statement; not independently inspected on the offline host.",
+    "finding": "The first ordinary run remains under ROOT/source. ROOT/source-r2 is a separate canonical clone with no prior ordinary python-* receipt. Therefore the unchanged verifier's exactly-one ordinary receipt requirement is consistent with the planned retry, without deleting or moving prior evidence."
+  },
+  "remaining_preexecution_admission": [
+    "Read back the actual compiler-environment.json and camera admission key sets. Their contents were unavailable to this review; schema-level compatibility does not establish actual environment compatibility.",
+    "Check ComSpec casing in native activation. Activation removes existing keys case-insensitively, but handoff construction reads ENV['ComSpec'] case-sensitively. An activated COMSPEC/comspec key without exact ComSpec can cause KeyError. This is an input-dependent robustness condition, not a demonstrated blocker with the unavailable current inputs.",
+    "Verify the actual host inputs and retained artifact identities before any execution. This review does not establish current host availability or freshness."
+  ],
+  "failure_reporting_limitation": "An ordinary verifier timeout or post-run parsing exception can prevent the final receiving JSON from being written. These paths do not create false acceptance.",
+  "independent_cross_check": "A second source-only reviewer fetched both exact driver blobs and found no demonstrated control-flow blocker; it independently identified the ComSpec casing condition and failure-reporting limitation.",
+  "claims_excluded": [
+    "No new native-six or ordinary test result.",
+    "No independent rerun or requalification of retained build/CTest results.",
+    "No installation, logged-in-user adoption, physical hardware validation, or product long-path fix."
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "capturesuite.prepared_driver_source_review_amendment/1",
+  "verdict": "ACCEPTED_PREPARED_SOURCE_ONLY",
+  "predecessor_blob": "43dbee0c114c4098ef9647408fc784d8a3a9c25b",
+  "successor_blob": "b902993a49e891102ae2efffe0b618f831a626de",
+  "successor_bytes": 12046,
+  "successor_sha256": "77b55cf0392d0dad74b5c85c8a77f5f176f2247d0c5cc52d454a9a1ffa6f13a5",
+  "verification": {
+    "exact_blob_fetched": true,
+    "git_blob_sha1_verified": true,
+    "sha256_verified": true,
+    "ast_parse": "PASS",
+    "full_diff_reviewed": true,
+    "delta_matches_requested_scope": true
+  },
+  "findings": [
+    "The only changes are the early case-insensitive ComSpec value collection/assertion and canonical ComSpec serialization in the handoff.",
+    "The assertion executes immediately after compiler activation and before native-six. It requires exactly one effective ComSpec entry whose value is C:\\Windows\\System32\\cmd.exe.",
+    "The refinement does not mutate the child ENV. Handoff construction excludes activated ComSpec key variants and writes one canonical ComSpec key from the previously validated value.",
+    "This resolves the predecessor's ComSpec casing lookup condition without changing test selection, assertions, temporary placement, UTF-8 setting, execution bounds, retained evidence handling, or product source."
+  ],
+  "blocking_source_findings": [],
+  "remaining_admission": "Actual host/compiler/camera environment readback and other outstanding preexecution admission from the original review remain required.",
+  "prior_review": "Preserve the original full review verbatim; this amendment supersedes only its ComSpec casing condition for the successor blob.",
+  "native_execution_performed": false,
+  "product_tests_performed": false,
+  "filesystem_writes_performed": false,
+  "execution_admission_complete": false
+}

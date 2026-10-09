@@ -1,0 +1,158 @@
+from __future__ import annotations
+import hashlib,json,os,subprocess,sys,time,xml.etree.ElementTree as ET
+from pathlib import Path
+ROOT=Path(r'C:\Users\minec\cs92-7879c2abc07f-20261008')
+SOURCE=ROOT/'source-r2'
+EVIDENCE=ROOT/'evidence/attempt-2'
+manifest=json.loads((ROOT/'incoming/source-manifest-r2.json').read_text(encoding='utf-8'))
+preflight=json.loads((ROOT/'evidence/preflight.json').read_text(encoding='utf-8'))
+def pinned(path):
+ data=Path(path).read_bytes()
+ return {'path':str(path),'bytes':len(data),'sha256':hashlib.sha256(data).hexdigest()}
+def runtime():
+ return [pinned(entry['path']) for entry in preflight['runtimeReadOnlyIdentities']]
+pre_gate_path=ROOT/'evidence/pre-gate-r2/receipt.json'
+pre_gate=json.loads(pre_gate_path.read_text(encoding='utf-8'))
+assert pre_gate['sourceCommit']==manifest['commit'] and pre_gate['sourceTree']==manifest['tree'] and pre_gate['sourceUnchanged']
+assert all(item['exit']==0 for item in pre_gate['commands'] if item['name']!='pip-check')
+pip_path=ROOT/'evidence/pre-gate-r2/pip-check-bundled.json'
+pip_gate=json.loads(pip_path.read_text(encoding='utf-8'))
+assert pip_gate['accepted'] and pip_gate['exit']==0 and pip_gate['sourceWheelUnchanged']
+assert pip_gate['interpreter']==sys.executable
+assert pinned(pip_gate['sourceWheel']['path'])==pip_gate['sourceWheel']
+for entry in pip_gate['moduleMembers']:
+ actual=pinned(Path(pip_gate['moduleRoot'])/entry['path'])
+ assert actual['bytes']==entry['bytes'] and actual['sha256']==entry['sha256']
+runtime_before=runtime()
+assert runtime_before==preflight['runtimeReadOnlyIdentities']
+assert not list(SOURCE.rglob('__pycache__'))
+paths=[SOURCE,SOURCE/'libs/python/capture_protocol',SOURCE/'libs/python/capture_session',SOURCE/'libs/python/capture_analysis',SOURCE/'libs/python/capture_worker',SOURCE/'workers/python_host',SOURCE/'plugins/example_sine_py',SOURCE/'plugins/lsl_bridge',SOURCE/'desktop',SOURCE/'tools',SOURCE/'libs/python/capture_protocol/capture_protocol/generated',ROOT/'tools']
+env=dict(os.environ)
+for key in ('PYTEST_ADDOPTS','PYTEST_PLUGINS','PYTHONSTARTUP','GITHUB_ACTIONS','GITHUB_SHA','GITHUB_REF','GITHUB_EVENT_NAME','GITHUB_RUN_ID','GITHUB_WORKFLOW_REF','GITHUB_HEAD_REF','GITHUB_BASE_REF'):
+ env.pop(key,None)
+updates={'PYTHONPATH':os.pathsep.join(map(str,paths)),'PYTHONNOUSERSITE':'1','PYTHONDONTWRITEBYTECODE':'1','PYTHONIOENCODING':'utf-8','PYTEST_PLUGINS':'cs92_origin_audit_r2','CS92_SOURCE_ROOT':str(SOURCE),'CS92_SOURCE_MANIFEST':str(ROOT/'incoming/source-manifest-r2.json'),'CS92_ORIGIN_RECEIPT':str(EVIDENCE/'full-python-actual-origins.json'),'GIT_OPTIONAL_LOCKS':'0','GIT_TERMINAL_PROMPT':'0','GCM_INTERACTIVE':'Never','QT_QPA_PLATFORM':'offscreen','ComSpec':r'C:\Windows\System32\cmd.exe'}
+for key,folder in [('LOCALAPPDATA','local'),('APPDATA','roaming'),('XDG_CACHE_HOME','cache'),('XDG_CONFIG_HOME','config'),('XDG_DATA_HOME','data'),('MPLCONFIGDIR','matplotlib'),('TMP','temp'),('TEMP','temp')]:
+ p=ROOT/'state-r2'/folder;p.mkdir(exist_ok=True)
+ updates[key]=str(p)
+env.update(updates)
+camera_path=ROOT/'evidence/camera-loader-admission/receipt.json'
+camera=json.loads(camera_path.read_text(encoding='utf-8'))
+assert camera['accepted'] and camera['processExit']==0 and camera['commit']==manifest['commit'] and camera['tree']==manifest['tree']
+camera_admission_path=ROOT/'evidence/camera-loader-admission/admission.json'
+assert pinned(camera_admission_path)==camera['admission']
+camera_admission=json.loads(camera_admission_path.read_text(encoding='utf-8'))
+binding=r'C:\Program Files\Microsoft Visual Studio\2022\Community,version=17.8.34408.163'
+assert camera_admission['binding']==binding
+camera_pins=camera_admission['metadataAndDocumentation']+camera_admission['toolPins']
+assert all(pinned(item['path'])==item for item in camera_pins)
+camera_review_path=ROOT/'evidence/independent-camera-loader-review.json'
+camera_review_pin=pinned(camera_review_path)
+assert camera_review_pin['bytes']==11856 and camera_review_pin['sha256']=='fc43ae2472a8f70f6ca5f0bd78adb16cd48ba814f2c08c846b19815c80ba7802'
+vs_default_dir=Path(r'C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.34.31933\bin\Hostx64\x64')
+vs_default_before=[pinned(vs_default_dir/name) for name in ('cl.exe','link.exe')]
+native_path=ROOT/'native-cpp/evidence/native-build-handoff.json'
+native=json.loads(native_path.read_text(encoding='utf-8'))
+assert native['source_commit']==manifest['commit'] and native['source_tree']==manifest['tree']
+native_before=[pinned(item['path']) for item in native['artifacts']]
+for actual,expected in zip(native_before,native['artifacts']):
+ assert actual['bytes']==expected['bytes'] and actual['sha256']==expected['sha256'],actual['path']
+build=Path(native['build_dir']).resolve()
+assert build.is_absolute() and (build/'daemon/capture_daemon.exe').is_file()
+assert str(build/'daemon/capture_daemon.exe').casefold() in {str(Path(item['path']).resolve()).casefold() for item in native['artifacts']}
+native_receipt_path=Path(native['native_receipt']['path'])
+assert pinned(native_receipt_path)==native['native_receipt']
+native_receipt=json.loads(native_receipt_path.read_text(encoding='utf-8'))
+assert native_receipt['accepted'] and native_receipt['process_exit']==0 and native_receipt['source_commit']==manifest['commit']
+assert native_receipt['source_unchanged_during_test'] and not native_receipt['source_worktree_dirty'] and not native_receipt['problems']
+assert native_receipt['counts']=={'tests':6,'passed':6,'failures':0,'errors':0,'skipped':0}
+native_source=native_receipt_path.resolve().parents[3]
+assert (native_source/native_receipt['run_directory']/'receipt.json').resolve()==native_receipt_path.resolve()
+assert (native_source/native_receipt['binary_build']).resolve()==build
+expected_files={item['path']:item['sha256'] for item in manifest['entries']}
+native_snapshot_path=native_receipt_path.with_name('source-manifest.json')
+native_snapshot=json.loads(native_snapshot_path.read_text(encoding='utf-8'))
+assert native_snapshot['commit']==manifest['commit'] and not native_snapshot['worktree_dirty'] and native_snapshot['files']==expected_files
+assert native_snapshot['tree_sha256']==native_receipt['source_tree_sha256']
+native_junit=native_receipt_path.with_name('pytest.xml');native_log=native_receipt_path.with_name('pytest.log')
+assert pinned(native_junit)['sha256']==native_receipt['junit_sha256'] and pinned(native_log)['sha256']==native_receipt['log_sha256']
+daemon_cases=('test_multi_modality_record_with_disconnect','test_bad_stop_token_rejected','test_config_schema_and_apply','test_start_all_ready_and_acknowledge_alert','test_concurrent_clients_served')
+native_expected={('tests.protocol.test_daemon_e2e',name) for name in daemon_cases}|{('tests.kill_tests.test_kill_preserves_sealed','test_kill_preserves_sealed_segment')}
+native_cases=list(ET.fromstring(native_junit.read_bytes()).iter('testcase'))
+assert len(native_cases)==6 and {(case.get('classname'),case.get('name')) for case in native_cases}==native_expected
+assert all(case.find(tag) is None for case in native_cases for tag in ('failure','error','skipped'))
+assert set(native_receipt['test_scope'])=={'tests/protocol/test_daemon_e2e.py::'+name for name in daemon_cases}|{'tests/kill_tests/test_kill_preserves_sealed.py::test_kill_preserves_sealed_segment'}
+assert {item['path'] for item in native_receipt['binaries']}=={'daemon/capture_daemon.exe','tools/session_doctor/session_doctor.exe'}
+native_artifact_map={str(Path(item['path']).resolve()).casefold():item for item in native['artifacts']}
+for item in native_receipt['binaries']:
+ actual=pinned(build/item['path'])
+ assert actual['bytes']==item['bytes'] and actual['sha256']==item['sha256']
+ bound=native_artifact_map[str((build/item['path']).resolve()).casefold()]
+ assert actual['bytes']==bound['bytes'] and actual['sha256']==bound['sha256']
+native_receipt_pins=[pinned(path) for path in (native_receipt_path,native_snapshot_path,native_junit,native_log)]
+cache_path=build/'CMakeCache.txt';cache_before=pinned(cache_path)
+assert [line for line in cache_path.read_text(encoding='utf-8').splitlines() if line.startswith('CAPTURE_ENABLE_CAMERA_WORKER:')]==['CAPTURE_ENABLE_CAMERA_WORKER:BOOL=OFF']
+optional_skip={'classname':'tests.protocol.test_daemon_e2e','name':'test_camera_apply_config_proxied_when_worker_present','message':'camera.gstreamer worker not enabled in this daemon'}
+scope_admission={'total_cases':720,'allowed_skip':optional_skip,'maximum_skips':1,'required_native_six':{'tests':6,'passed':6,'failures':0,'errors':0,'skipped':0},'camera_worker_cache':cache_before,'prior_unexecuted_assumption':'Blanket zero ordinary skips corrected before execution from unchanged tests/protocol/test_daemon_e2e.py and the preset-default camera worker OFF; required native-six remains zero-skip.','compiler_scope':'Native Ninja build uses admitted MSVC14.38; camera fixture VS generator previously selected default MSVC14.34. The focused attempt lacks14.34 before-pins; this full attempt records them before and after.'}
+allowed_native={key.casefold() for key in ('PATH','INCLUDE','LIB','LIBPATH','VCPKG_ROOT','CMAKE_PREFIX_PATH','CMAKE_MAKE_PROGRAM','CMAKE_GENERATOR','WindowsSdkDir','WindowsSDKVersion','VCToolsInstallDir','VCINSTALLDIR','VSINSTALLDIR','VisualStudioVersion','VSCMD_ARG_TGT_ARCH','VSCMD_ARG_HOST_ARCH','VSCMD_VER','UCRTVersion','UniversalCRTSdkDir','WindowsLibPath','FrameworkDir','FrameworkVersion','FrameworkVersion64','Framework40Version','NETFXSDKDir','ExtensionSdkDir')}
+allowed_native.update(key.casefold() for key in camera_admission['selectedCompilerEnvironment'])
+assert all(key.casefold() in allowed_native for key in native['environment']),list(native['environment'])
+for key,value in native['environment'].items():
+ assert isinstance(value,str)
+ for old_key in list(env):
+  if old_key.casefold()==key.casefold():env.pop(old_key)
+ env[key]=value;updates[key]=value
+env['CAPTURE_TEST_BUILD_DIR']=str(build);updates['CAPTURE_TEST_BUILD_DIR']=str(build)
+env['CMAKE_GENERATOR_INSTANCE']=binding;updates['CMAKE_GENERATOR_INSTANCE']=binding
+assert pinned(Path(updates['ComSpec']))['sha256']=='badf4752413cb0cbdc03fb95820ca167f0cdc63b597ccdb5ef43111180e088b0'
+runner=[sys.executable,'-B',str(SOURCE/'tools/run_ci_tests.py')]
+verify=[sys.executable,'-B',str(SOURCE/'tools/verify_prediction_workbench_ci.py')]
+admission={'camera_fixture_receipt':pinned(camera_path),'camera_fixture_admission':pinned(camera_admission_path),'pre_gate_receipt':pinned(pre_gate_path),'bundled_pip_receipt':pinned(pip_path),'native_handoff':pinned(native_path),'native_artifacts_before':native_before,'existing_cmd':pinned(Path(updates['ComSpec'])),'schema':'capturesuite.windows_gate_admission/1','commit':manifest['commit'],'tree':manifest['tree'],'source_manifest':pinned(ROOT/'incoming/source-manifest-r2.json'),'cwd':str(SOURCE),'command':runner,'post_gate_command':verify,'environment_overrides':updates,'ordinary_runner':pinned(SOURCE/'tools/run_ci_tests.py'),'verifier':pinned(SOURCE/'tools/verify_prediction_workbench_ci.py'),'observer':pinned(ROOT/'tools/cs92_origin_audit_r2.py'),'driver':pinned(__file__),'runtime_before':runtime_before,'full_suite_selection':'Unchanged runner: tests -vv --durations=20 -ra --ignore=tests/kill_tests; ordinary timeout300s. No added skip, deselection, or platform patch.','connector_context':'SYSTEM, Session0; not Explorer Session1 adoption'}
+admission.update({'native_six_receipt':native_receipt_pins,'camera_fixture_independent_review':camera_review_pin,'camera_vs_default_tools_before':vs_default_before,'scope_admission':scope_admission,'unexecuted_predecessor':{'git_blob':'9511af6c976cd394c6edf798d58232a01cf4fd07','bytes':10835,'sha256':'3132814818ffc856681803f39782bbde990d13f713399885e4184c33718fb13d'}})
+EVIDENCE.mkdir(exist_ok=False)
+with (EVIDENCE/'full-python-admission.json').open('x',encoding='utf-8',newline='\n') as stream:stream.write(json.dumps(admission,indent=2,sort_keys=True)+'\n')
+started=time.monotonic();timeout=False
+with (EVIDENCE/'full-python-driver.stdout').open('xb') as out,(EVIDENCE/'full-python-driver.stderr').open('xb') as err:
+ try:r=subprocess.run(runner,cwd=SOURCE,env=env,stdout=out,stderr=err,timeout=360);code=r.returncode
+ except subprocess.TimeoutExpired:code=None;timeout=True
+seconds=time.monotonic()-started
+verify_code=None
+if code==0:
+ with (EVIDENCE/'prediction-verifier.stdout').open('xb') as out,(EVIDENCE/'prediction-verifier.stderr').open('xb') as err:
+  r=subprocess.run(verify,cwd=SOURCE,env=env,stdout=out,stderr=err,timeout=30);verify_code=r.returncode
+receipts=list((SOURCE/'build/evidence').glob('python-*/receipt.json'))
+ordinary=json.loads(receipts[0].read_text()) if len(receipts)==1 else None
+origin_path=EVIDENCE/'full-python-actual-origins.json'
+origins=json.loads(origin_path.read_text()) if origin_path.exists() else None
+families={};skips=[];passed_cases=[];case_count=0
+if len(receipts)==1:
+ xml=receipts[0].with_name('pytest.xml')
+ if xml.exists():
+  for case in ET.fromstring(xml.read_bytes()).iter('testcase'):
+   case_count+=1
+   family=case.get('classname','');counts=families.setdefault(family,{'passed':0,'skipped':0,'failures':0,'errors':0})
+   tags=[tag for tag in ('failure','error','skipped') if case.find(tag) is not None]
+   if not tags:counts['passed']+=1;passed_cases.append((family,case.get('name')))
+   for tag in tags:counts[{'failure':'failures','error':'errors','skipped':'skipped'}[tag]]+=1
+   if 'skipped' in tags:skips.append({'classname':family,'name':case.get('name'),'message':case.find('skipped').get('message'),'xml':ET.tostring(case,encoding='unicode')})
+runtime_after=runtime()
+native_after=[pinned(item['path']) for item in native['artifacts']]
+feature_families={key:value for key,value in families.items() if key in ('tests.ui.test_analysis_feature_preview','tests.ui.test_analysis_feature_preview_widget')}
+feature_pass=sum(value['passed'] for value in feature_families.values())
+feature_bad=sum(value[k] for value in feature_families.values() for k in ('skipped','failures','errors'))
+vs_default_after=[pinned(item['path']) for item in vs_default_before]
+cache_after=pinned(cache_path)
+native_receipts_conserved=all(pinned(item['path'])==item for item in native_receipt_pins)
+skip_scope_ok=not skips or len(skips)==1 and all(skips[0].get(key)==value for key,value in optional_skip.items())
+required_passed={('tests.cmake.test_camera_packaging','test_camera_runtime_native_loader')}|{('tests.protocol.test_daemon_e2e',name) for name in daemon_cases}
+required_cases_ok=all(passed_cases.count(key)==1 for key in required_passed)
+expected_counts={'tests':720,'passed':720-len(skips),'failures':0,'errors':0,'skipped':len(skips)}
+counts_ok=case_count==720 and ordinary is not None and ordinary.get('counts')==expected_counts
+ordinary_snapshot_path=receipts[0].with_name('source-manifest.json') if len(receipts)==1 else None
+ordinary_snapshot=json.loads(ordinary_snapshot_path.read_text(encoding='utf-8')) if ordinary_snapshot_path and ordinary_snapshot_path.exists() else None
+source_exact=ordinary_snapshot is not None and ordinary_snapshot.get('commit')==manifest['commit'] and not ordinary_snapshot.get('worktree_dirty') and ordinary_snapshot.get('files')==expected_files and ordinary is not None and ordinary.get('source_unchanged_during_test') and ordinary.get('source_tree_sha256')==ordinary_snapshot.get('tree_sha256')
+accepted=code==0 and verify_code==0 and ordinary is not None and ordinary.get('accepted') and origins is not None and origins.get('accepted') and feature_pass==41 and feature_bad==0 and runtime_before==runtime_after and native_before==native_after and all(pinned(item['path'])==item for item in camera_pins) and skip_scope_ok and counts_ok and required_cases_ok and source_exact and vs_default_before==vs_default_after and cache_before==cache_after and native_receipts_conserved and pinned(camera_review_path)==camera_review_pin
+result={'schema':'capturesuite.windows_full_python_receiving/1','accepted':bool(accepted),'commit':manifest['commit'],'tree':manifest['tree'],'process_exit':code,'outer_timeout':timeout,'seconds':seconds,'prediction_verifier_exit':verify_code,'ordinary_receipt':str(receipts[0]) if len(receipts)==1 else None,'ordinary_result':ordinary,'origin_receipt':pinned(origin_path) if origin_path.exists() else None,'feature_families':feature_families,'all_test_families':families,'all_skips':skips,'shared_runtime_before_after_identical':runtime_before==runtime_after,'runtime_after':runtime_after,'native_handoff':pinned(native_path),'native_artifacts_after':native_after,'native_artifacts_conserved':native_before==native_after,'limitations':['Ordinary Windows/offscreen component and MainWindow test gate; no logged-in user adoption.','Uses separately admitted exact-source native C++ binaries; no physical hardware validation.']}
+result.update({'scope_admission':scope_admission,'scope_result':{'counts_match':counts_ok,'permitted_skip_only':skip_scope_ok,'camera_and_five_daemon_cases_passed':required_cases_ok,'exact_source_manifest':bool(source_exact)},'native_six_receipt':native_receipt_pins,'native_six_receipt_conserved':native_receipts_conserved,'camera_fixture_independent_review':camera_review_pin,'camera_vs_default_tools_before':vs_default_before,'camera_vs_default_tools_after':vs_default_after,'camera_vs_default_tools_conserved':vs_default_before==vs_default_after,'camera_worker_cache_after':cache_after,'camera_worker_cache_conserved':cache_before==cache_after})
+with (EVIDENCE/'full-python-receiving.json').open('x',encoding='utf-8',newline='\n') as stream:stream.write(json.dumps(result,indent=2,sort_keys=True)+'\n')
+print(json.dumps({'accepted':bool(accepted),'process_exit':code,'seconds':seconds,'prediction_verifier_exit':verify_code,'counts':None if ordinary is None else ordinary.get('counts'),'feature_families':feature_families,'origins_accepted':None if origins is None else origins.get('accepted'),'runtime_conserved':runtime_before==runtime_after,'result':str(EVIDENCE/'full-python-receiving.json')}))
+raise SystemExit(0 if accepted else 1)
