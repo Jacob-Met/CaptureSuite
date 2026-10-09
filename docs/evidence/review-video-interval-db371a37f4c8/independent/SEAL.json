@@ -1,0 +1,28 @@
+{
+  "at": "2026-10-09T03:38:23.802388+00:00",
+  "status": "PASS",
+  "archive": {
+    "bytes": 1692808,
+    "sha256": "f2edf7ac81c81de0c6746f514c0497e02dbed1264679aa5458a1b2bfa0cc0e32",
+    "git": "c9c6f2547e78281919ab2a348dd83fee904339ac"
+  },
+  "manifest": {
+    "bytes": 102691,
+    "sha256": "63adcf1d30e53a5f172707a88d1c97cb2685f81253938de41485e08e7ffd59f5",
+    "git": "13da3ca6455d8edb11d2edae56f6d189c3f8a267"
+  },
+  "report": {
+    "bytes": 11912,
+    "sha256": "aceab546604e375fbcee1a3332f933d6c1b4931f3dec95289c6fde4500378f08",
+    "git": "320deb19f12e91b09aeaf77b2e060c4a48d6b2a3"
+  },
+  "final_audit": {
+    "bytes": 2889,
+    "sha256": "18749b31a0ba36482357cb78f3bde261821d2fbf79cddc9b0a1d3800ea11cc30",
+    "git": "433f98d9809489b79f885a052e3f194d7e0e43e5"
+  },
+  "payload_files": 357,
+  "archive_members": 358,
+  "all_archive_members_reverified": true,
+  "no_ref_or_actions_operation": true
+}

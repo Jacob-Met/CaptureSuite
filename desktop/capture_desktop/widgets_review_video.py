@@ -7,6 +7,7 @@ from PySide6.QtCore import QEvent, Qt, QUrl
 from PySide6.QtMultimedia import QMediaPlayer
 from PySide6.QtMultimediaWidgets import QVideoWidget
 from PySide6.QtWidgets import (
+    QCheckBox,
     QComboBox,
     QHBoxLayout,
     QLabel,
@@ -19,6 +20,7 @@ from PySide6.QtWidgets import (
 
 from . import theme
 from .review_video import local_video_path, media_time, recorded_video_segments
+from .review_video_interval import ReviewInterval
 
 
 class RecordedVideoReview(QWidget):
@@ -32,6 +34,9 @@ class RecordedVideoReview(QWidget):
         self._player: QMediaPlayer | None = None
         self._video: QVideoWidget | None = None
         self._ready = False
+        self._interval = ReviewInterval()
+        self._play_requested = False
+        self._loop_adjusting = False
         root = QVBoxLayout(self)
         root.setContentsMargins(0, 0, 0, 0)
         root.setSpacing(6)
@@ -89,6 +94,38 @@ class RecordedVideoReview(QWidget):
         controls.addWidget(self._seek, 1)
         controls.addWidget(self._clock)
         body.addLayout(controls)
+        inspection = QHBoxLayout()
+        speed_caption = QLabel("&Speed")
+        self._rate = QComboBox()
+        self._rate.setAccessibleName("Requested video playback speed")
+        for rate in (0.25, 0.5, 1.0, 2.0):
+            self._rate.addItem(f"{rate:g}×", rate)
+        self._rate.setCurrentIndex(2)
+        speed_caption.setBuddy(self._rate)
+        self._mark_a = QPushButton("Set A here")
+        self._mark_b = QPushButton("Set B here")
+        self._repeat = QCheckBox("Repeat A–B")
+        self._clear_interval = QPushButton("Clear interval")
+        for widget in (
+            speed_caption,
+            self._rate,
+            self._mark_a,
+            self._mark_b,
+            self._repeat,
+            self._clear_interval,
+        ):
+            inspection.addWidget(widget)
+        inspection.addStretch(1)
+        body.addLayout(inspection)
+        self._interval_label = self._label("")
+        self._rate_label = self._label("")
+        body.addWidget(self._interval_label)
+        body.addWidget(self._rate_label)
+        self._interval_help = self._label(
+            "Set A, then B, enable Repeat and press Play. Endpoints use this segment's "
+            "media clock; decoder-scheduled repetition is not frame-exact extraction."
+        )
+        body.addWidget(self._interval_help)
         self._status = self._label("")
         self._status.setObjectName("HonestyBanner")
         body.addWidget(self._status)
@@ -96,7 +133,20 @@ class RecordedVideoReview(QWidget):
         self._reload.clicked.connect(self._open_selected)
         self._play.clicked.connect(self._play_pause)
         self._seek.valueChanged.connect(self._seek_to)
-        for button in (self._play, self._reload, self._toggle):
+        self._mark_a.clicked.connect(self._set_a)
+        self._mark_b.clicked.connect(self._set_b)
+        self._repeat.toggled.connect(self._set_repeat)
+        self._clear_interval.clicked.connect(self._clear_repeat)
+        self._rate.currentIndexChanged.connect(self._set_rate)
+        for button in (
+            self._play,
+            self._reload,
+            self._toggle,
+            self._mark_a,
+            self._mark_b,
+            self._repeat,
+            self._clear_interval,
+        ):
             button.installEventFilter(self)
         self.reset()
 
@@ -104,7 +154,16 @@ class RecordedVideoReview(QWidget):
         # The application's checkpoint Space shortcut must not consume a focused
         # native video button's activation. Other controls/keys keep their routing.
         if (
-            watched in (self._play, self._reload, self._toggle)
+            watched
+            in (
+                self._play,
+                self._reload,
+                self._toggle,
+                self._mark_a,
+                self._mark_b,
+                self._repeat,
+                self._clear_interval,
+            )
             and event.type() == QEvent.Type.ShortcutOverride
             and event.key() == Qt.Key.Key_Space
             and event.modifiers() == Qt.KeyboardModifier.NoModifier
@@ -123,11 +182,18 @@ class RecordedVideoReview(QWidget):
 
     def _expand(self, expanded: bool) -> None:
         self._toggle.setArrowType(Qt.ArrowType.DownArrow if expanded else Qt.ArrowType.RightArrow)
-        if not expanded and self._player is not None:
-            self._player.pause()
+        if not expanded:
+            self._pause()
         self._body.setVisible(expanded)
 
     def _retire_media(self) -> None:
+        self._play_requested = False
+        self._interval.clear()
+        self._rate.blockSignals(True)
+        self._rate.setCurrentIndex(2)
+        self._rate.blockSignals(False)
+        self._rate.setEnabled(False)
+        self._rate_label.setText("Backend-reported speed —")
         self._generation += 1
         player, video = self._player, self._video
         self._player = None
@@ -151,6 +217,7 @@ class RecordedVideoReview(QWidget):
         self._seek.setValue(0)
         self._seek.blockSignals(False)
         self._clock.setText("Media position —")
+        self._refresh_interval()
 
     def reset(self, message: str = "Open a finalized package to inspect recorded video.") -> None:
         self._retire_media()
@@ -229,6 +296,7 @@ class RecordedVideoReview(QWidget):
             player.positionChanged,
             player.seekableChanged,
             player.hasVideoChanged,
+            player.playbackRateChanged,
         ):
             signal.connect(lambda *_args, p=player, g=generation: self._sync(p, g))
         player.errorOccurred.connect(
@@ -265,6 +333,8 @@ class RecordedVideoReview(QWidget):
         }
         self._ready = loaded and player.hasVideo()
         self._play.setEnabled(self._ready)
+        self._rate.setEnabled(self._ready)
+        self._rate_label.setText(f"Backend-reported speed {player.playbackRate():g}×")
         duration, position = player.duration(), player.position()
         self._seek.setEnabled(self._ready and player.isSeekable() and duration > 0)
         self._clock.setText(
@@ -276,6 +346,29 @@ class RecordedVideoReview(QWidget):
             self._seek.blockSignals(True)
             self._seek.setValue(min(10_000, position * 10_000 // duration) if duration > 0 else 0)
             self._seek.blockSignals(False)
+        self._refresh_interval()
+        if (
+            self._play_requested
+            and self._ready
+            and player.isSeekable()
+            and self._interval.enabled
+            and self._interval.valid(duration)
+            and not self._loop_adjusting
+            and (
+                self._interval.target(position, duration) != position
+                or status == QMediaPlayer.MediaStatus.EndOfMedia
+            )
+        ):
+            self._loop_adjusting = True
+            try:
+                player.setPosition(self._interval.start_ms)
+                if self._current(player, generation) and self._play_requested:
+                    player.play()
+            finally:
+                self._loop_adjusting = False
+            return
+        if status == QMediaPlayer.MediaStatus.EndOfMedia and not self._loop_adjusting:
+            self._play_requested = False
         playing = player.playbackState() == QMediaPlayer.PlaybackState.PlayingState
         self._play.setText("Pause" if playing else "Play")
         if loaded:
@@ -296,8 +389,12 @@ class RecordedVideoReview(QWidget):
         if player is None or not self._ready:
             return
         if player.playbackState() == QMediaPlayer.PlaybackState.PlayingState:
-            player.pause()
+            self._pause()
         else:
+            self._play_requested = True
+            target = self._interval.target(player.position(), player.duration())
+            if target != player.position():
+                player.setPosition(target)
             if player.duration() > 0 and player.position() >= player.duration():
                 player.setPosition(0)
             player.play()
@@ -305,9 +402,73 @@ class RecordedVideoReview(QWidget):
     def _seek_to(self, value: int) -> None:
         player = self._player
         if player is not None and self._ready and player.isSeekable() and player.duration() > 0:
-            player.setPosition(player.duration() * value // 10_000)
+            target = player.duration() * value // 10_000
+            if self._play_requested:
+                target = self._interval.target(target, player.duration())
+            player.setPosition(target)
 
-    def hideEvent(self, event) -> None:  # noqa: N802
+    def _pause(self) -> None:
+        self._play_requested = False
         if self._player is not None:
             self._player.pause()
+
+    def _refresh_interval(self, notice: str = "") -> None:
+        player = self._player
+        duration = player.duration() if player is not None else 0
+        seekable = self._ready and player is not None and player.isSeekable() and duration > 0
+        if not seekable or not self._interval.valid(duration):
+            self._interval.enabled = False
+        self._mark_a.setEnabled(bool(seekable))
+        self._mark_b.setEnabled(bool(seekable and self._interval.start_ms is not None))
+        self._repeat.setEnabled(bool(seekable and self._interval.valid(duration)))
+        self._repeat.blockSignals(True)
+        self._repeat.setChecked(self._interval.enabled)
+        self._repeat.blockSignals(False)
+        self._clear_interval.setEnabled(self._interval.start_ms is not None)
+        a = media_time(self._interval.start_ms) if self._interval.start_ms is not None else "—"
+        b = media_time(self._interval.end_ms) if self._interval.end_ms is not None else "—"
+        mode = "Repeat on" if self._interval.enabled else "Repeat off"
+        self._interval_label.setText(f"A {a} · B {b} · {mode}" + (f" · {notice}" if notice else ""))
+
+    def _set_a(self) -> None:
+        if self._player is None or not self._mark_a.isEnabled():
+            return
+        try:
+            self._interval.set_start(self._player.position(), self._player.duration())
+        except ValueError as exc:
+            self._refresh_interval(str(exc))
+            return
+        self._refresh_interval("Set B after A.")
+
+    def _set_b(self) -> None:
+        if self._player is None or not self._mark_b.isEnabled():
+            return
+        try:
+            self._interval.set_end(self._player.position(), self._player.duration())
+        except ValueError as exc:
+            self._refresh_interval(str(exc))
+            return
+        self._refresh_interval("Enable Repeat to use this interval.")
+
+    def _set_repeat(self, enabled: bool) -> None:
+        if self._player is None:
+            return
+        try:
+            self._interval.set_enabled(enabled, self._player.duration())
+        except ValueError as exc:
+            self._refresh_interval(str(exc))
+            return
+        self._refresh_interval()
+        self._sync(self._player, self._generation)
+
+    def _clear_repeat(self) -> None:
+        self._interval.clear()
+        self._refresh_interval()
+
+    def _set_rate(self, _index: int) -> None:
+        if self._player is not None and self._ready:
+            self._player.setPlaybackRate(float(self._rate.currentData()))
+
+    def hideEvent(self, event) -> None:  # noqa: N802
+        self._pause()
         super().hideEvent(event)

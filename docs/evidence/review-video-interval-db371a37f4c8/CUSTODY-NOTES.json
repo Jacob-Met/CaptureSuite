@@ -1,0 +1,18 @@
+{
+  "schema": "capture-final-custody-observation-r1",
+  "first_freeze": {
+    "shellPid": 27752,
+    "exit": "unobserved; RDC session expired",
+    "state": "SOURCE-FREEZE absent and no native namespace processes at03:35:29.9094869Z; original report/source docs and copied root review existed. No original runtime test or install was repeated.",
+    "followup": "R2 omits the already completed report/source/copy mutations, logs the read-only full-runtime/source audit plus final manifest write. Shell3132 observedexit0 in8.25s; all18539 runtime files and130original source/fixture entries exact. Cause of the first incomplete publication wrapper is not inferred."
+  },
+  "presentation": {
+    "wrapperPid": 25292,
+    "childPid": 29148,
+    "childExit": 0,
+    "outerShell": 15608,
+    "outerExit": "not observed before session expiry; durable child receipt plus namespace-zero03:27:45 and later census used",
+    "sourceExact": true
+  },
+  "exclusions": "Runtime installations, caches, bootstrap executables and uv wheel binaries are omitted from Git archive but retained natively with full manifests/provenance; no owner/shared cleanup."
+}

@@ -1,0 +1,25 @@
+{
+  "schema": "capture-video-interval-author-seal-r1",
+  "at": 1791517188.6081233,
+  "sealer_pid": 27760,
+  "archive": {
+    "path": "publication-r1\\capture-video-interval-author.tar.gz",
+    "bytes": 2666468,
+    "sha256": "f56ab34bf892cfd1315f7d3ebc767f6fa4c4619eb184fc1c633238498821d975",
+    "git": "7303a006bcecf27db78a08ef1042c8c64d20293e"
+  },
+  "manifest": {
+    "path": "publication-r1\\MANIFEST.json",
+    "bytes": 128062,
+    "sha256": "24405ecee2667f318197da45133124fb3a8094200b0c263a11cfd1a70510fd38",
+    "git": "5e8a2638187d5d04281f2430db6220c87f89f5b6"
+  },
+  "payload_members": 492,
+  "total_members": 493,
+  "payload_bytes": 11801488,
+  "roundtrip_exact": true,
+  "source_after_exact": true,
+  "base64_chars": 3555292,
+  "base64_lines": 56,
+  "base64_line_width": 64000
+}

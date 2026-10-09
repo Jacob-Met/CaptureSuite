@@ -1,0 +1,22 @@
+{
+  "at": 1791517527.5052817,
+  "base": "d1af33caaf7154e83def1dab035920907d417e8d",
+  "base_leaves": 1280,
+  "base_nodes": 244,
+  "candidate": "cd101f2dc6a271b524be8aea36f79d6ce5616187",
+  "candidate_leaves": 1296,
+  "candidate_nodes": 246,
+  "contributions": 20,
+  "preserved_parent_leaves": 1276,
+  "native_source_bytes_exact": {
+    "desktop/capture_desktop/widgets_review_video.py": "b02627d5b158ff2c69aff0b91c378d9034673615",
+    "desktop/capture_desktop/review_video_interval.py": "44b4086d99653ea1582edf17c8df5c1fa504dba4",
+    "tests/test_review_video_interval.py": "8f5681f17ddcac53cf611a3138568804c7a055fd",
+    "tests/ui/test_review_video_interval.py": "78deeccc9301b520850113df76baca770006d50e",
+    "docs/operator/RECORDED_VIDEO_REVIEW.md": "3e151293e682161822535841e9155c63ff36095a",
+    "docs/design/research/REVIEW_AND_EXPORT_UX.md": "718cf595fde2e1bb26de70ca4d54e2b45feb8905",
+    "docs/design/research/PROGRESS.md": "f4d56e1f36dd2ef22122e53313635ecf1a979ec8"
+  },
+  "status": "pass",
+  "boundary": "Original complete tree reconstructed from all1280leaves and every supplied tree identity; proposed20path overlay reconstructed. Seven actual native source/test/doc blobs exact. Other immutable evidence objects are referenced by native/API-matching IDs."
+}

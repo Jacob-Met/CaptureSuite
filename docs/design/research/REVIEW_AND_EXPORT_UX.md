@@ -195,3 +195,25 @@ accepts unmodified Space ShortcutOverride only on its own Play, Reload and
 disclosure buttons. Native button activation proceeds normally; other keys,
 modifiers, controls and the application shortcut implementation remain unchanged.
 The exact before/after witness is in the receiving record's keyboard correction.
+
+## Decision 2026-10-09: Explicit segment-local repetition and speed
+
+Issue #103 adds an in-memory interval and native decoder rate controls inside the
+existing Recorded video component. A and B are integer milliseconds on the
+selected media clock, with strict 0 <= A < B <= duration. Repeat must be explicitly
+enabled; a valid endpoint edit disables it. Paused configuration never starts
+playback. Explicit Play outside [A, B), or an outside seek during playback,
+normalizes to A. Clear/disable preserve playback state and position.
+
+The viewer keeps explicit play intent separate from decoder stop-at-end signals,
+so an enabled interval ending at the media duration can repeat while an operator
+pause, collapse or hide cannot restart itself. Player identity and generation
+guards remain the existing authority for callbacks. Reload/selection/failure
+clears interval and rate before admitting a new player.
+
+Requested 0.25/0.5/1/2 rates and the backend-reported rate remain visible and
+distinct. Native progression is qualified on the retained synthetic MKV fixtures;
+no universal backend performance, frame-exact extraction, camera/checkpoint
+alignment, persisted annotation or analysis/export scope is inferred. No shared
+Review-screen, event-browser, timeline, capture, schema or scientific writer
+source changes are part of this contribution.

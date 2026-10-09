@@ -1,0 +1,72 @@
+{
+  "at": "2026-10-09T03:36:00.180247+00:00",
+  "status": "PASS",
+  "original_files": 121,
+  "candidate_files": 123,
+  "fixture_files": 9,
+  "runtime_files": 18539,
+  "runtime_bytes": 1171247985,
+  "full_runtime_file_set_and_bytes_exact": true,
+  "pins": {
+    "CONTRACT.md": {
+      "bytes": 8041,
+      "sha256": "9a927a89ec61da5556c241ab06190f75af66c0accbe45f5a1cc1e68e1187f11f",
+      "git": "ccf4ccdd4557fa025209ea3ecf92ce668465dfbe"
+    },
+    "candidate-semantic-fixtures.json": {
+      "bytes": 8152,
+      "sha256": "fba168086e20110dfef781d8763cb2fb56f3b9aa1a400ad4d8122d0f67352c65",
+      "git": "a824c352cec2f79739362821c0c46ba235dbfc29"
+    },
+    "ENDPOINT-EDIT-ADDENDUM.md": {
+      "bytes": 1039,
+      "sha256": "c9857f77539550fee9918483be3fbf72f12721e429f664ebcadd68bf8617304a",
+      "git": "70d231fffe616434e7cfd9d65dbc412e64b41c67"
+    },
+    "SET-A-CLEAR-B-ADDENDUM.md": {
+      "bytes": 1332,
+      "sha256": "6672a4331cb9d50590bb1841966b05f85a68dfebc2935a6fc735e89194c9364f",
+      "git": "0119e396e7f55207a89304542daf015f48a529ac"
+    },
+    "original-run-r1/native/receipt.json": {
+      "bytes": 82946,
+      "sha256": "41f2e731b07bf88ababe675ba11490dfe6b2e4a0b6f3ea5578724880d29133d5",
+      "git": "b9de2cef8f4b2e2b9fbce356321985a4a8b0c310"
+    },
+    "original-rates-run-r1/native/receipt.json": {
+      "bytes": 20803,
+      "sha256": "aa54eb2981a7f0842b1f2f7ce57b5920454e24bbadb62e70a9a1ec590183b21b",
+      "git": "ed438b4dd7722792336bd3ad9836031b7870a419"
+    },
+    "candidate-run-r1/native/receipt.json": {
+      "bytes": 202747,
+      "sha256": "6578f3abf013824687858c0526eac102628653cedf2688796493c83424face9c",
+      "git": "55d66695602df8314552cd63b599cbd6665416a3"
+    }
+  },
+  "captures": {
+    "candidate-run-r1/native/candidate-controls-dark.png": {
+      "bytes": 46012,
+      "sha256": "ae33dc496bd57447eba09e55512c10f3f55e07ea28c91e4e9c30122b2b9e2ddf",
+      "git": "b57b9f913aab7544283f717fe881be9f1743006d"
+    },
+    "candidate-run-r1/native/candidate-controls-light.png": {
+      "bytes": 46684,
+      "sha256": "672deba4afc0e912a00fdfb2939799491c2fbf8938bfb20d7f135195da99d522",
+      "git": "9145b925c980c999f5c5e8a53e2ccf87514ea502"
+    },
+    "candidate-run-r1/native/candidate-decoded-frame.png": {
+      "bytes": 407,
+      "sha256": "eaad997a422b07c0f7729ae7758a66f2e5ec212904a9a4300cb754e1f5debfcd",
+      "git": "192559e54d70f0700f5c9feb1b1543ba13ecaa36"
+    }
+  },
+  "root_static_review": {
+    "bytes": 3222,
+    "sha256": "c2f5255c2e199deba90e7dad80e66a7dade0d743612b95719ff9aff2c9ff9659",
+    "git": "9e811e0201aac044e6203ed529e8b38ad85937d9"
+  },
+  "root_static_review_authorship": "Root /root, independently staged after source review; not receiver-authored.",
+  "finished": "2026-10-09T03:36:20.357985+00:00",
+  "elapsed_seconds": 20.17200000002049
+}

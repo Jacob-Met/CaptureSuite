@@ -26,3 +26,32 @@ The inventory reflects files discovered when the package was opened. It is not a
 A failed selection or package load clears the previous media controls and picture. Reload does not repair a recording or alter its raw bytes. Only finalized and finalized-recovered packages are admitted to this viewer.
 
 With a video button focused, Space activates Play/Pause, Reload selected or the Recorded video disclosure. Other application shortcuts retain their usual behavior.
+
+## Repeat a short interval at a review speed
+
+For a loaded, seekable segment, pause and move the seek bar to the start of the
+motion, then choose **Set A here**. Move to its end and choose **Set B here**.
+Both endpoints are shown as integer-millisecond media positions; B must be after A.
+Enable **Repeat A–B**, then press **Play**. Repetition uses the half-open interval
+[A, B): Play from outside that interval starts at A, and playback reaching B
+returns to A. A seek outside the interval while playing also returns to A.
+A paused seek may remain outside the interval until you explicitly press Play.
+
+Setting a valid endpoint turns Repeat off until you enable it again. Setting A
+clears B. An invalid B retains the previous valid endpoints and Repeat state.
+**Clear interval** removes A/B and turns Repeat off. Disabling Repeat or clearing
+the interval does not pause, resume or reposition the video. Endpoint and speed
+changes while paused do not start playback.
+
+**Speed** requests 0.25×, 0.5×, 1× or 2× from the native decoder. The adjacent
+**Backend-reported speed** shows its reported property, not a measured promise
+that every backend can sustain that rate. Choose 1× if a backend does not honor
+the requested rate. Repeat is decoder-scheduled inspection, not frame-exact
+extraction, an analysis window, a persisted annotation or a session time mapping.
+
+Reload, a different segment, a new/failed package, and decoder failure clear
+A/B, turn Repeat off and restore the requested speed to 1×. Collapsing or hiding
+the viewer pauses playback without clearing the interval; reopening remains
+paused. The original retained media is never changed. Space activates the
+focused Set A, Set B, Repeat and Clear controls as it does the existing video
+buttons; other application shortcuts retain their routing.

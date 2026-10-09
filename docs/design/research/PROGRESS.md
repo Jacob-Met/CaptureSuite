@@ -1,3 +1,30 @@
+## 2026-10-09 — Repeat a selected recorded-video interval
+
+Issue #103 adds segment-local A/B repetition and explicit 0.25×, 0.5×, 1× and 2×
+review speeds inside the existing Recorded video component. Configuration remains
+passive while paused; explicit Play enters the half-open interval, and operator
+pause/hide/collapse stops repeat intent. Selection, reload and failure retire
+the interval and restore the requested rate. Raw media, shared Review/event-browser
+source, timelines, analysis, schemas and dependencies are unchanged.
+
+Windows CPython 3.12.10 / Qt 6.12.0 author receiving passes 21 model cases and all
+12 native video cases across an eleven-case full-order pass and the one corrected
+receiver-literal case. The first cross-test native abort, unchanged-source isolated
+pass, explicit deferred-widget cleanup and test-only Unicode correction remain
+separate evidence. No product repair was needed after its first source freeze.
+The independently frozen native consumer passes seven original groups, four
+original-rate calibrations and seven candidate groups, including measured rates,
+real decoded frames, interior/end-of-media wraps and the player retirement fences.
+
+Dark/light/compact QWidget captures use only read-only registration of existing
+Windows fonts in the receiver application. Their GPU video surface is not captured;
+actual decoded 160×120 pixels are qualified separately. The initial missing-font
+captures and pre-Play frame expectation failure are retained. These results do
+not claim physical foreground input, frame-exact extraction or universal decoder
+rate support. Full installed/hardware and whole-application/C++ acceptance are
+separate; GitHub Actions remains held. See [operator steps](../../operator/RECORDED_VIDEO_REVIEW.md)
+and [source/receiving custody](../../evidence/review-video-interval-db371a37f4c8/AUTHOR.md).
+
 ## 2026-10-08 — Preserve nearest feature pairs across retained row orders
 
 Contributor `chatgpt:/root/production_execution`, issue #86, repaired the

@@ -1,0 +1,92 @@
+{
+  "schema": "capture-video-interval-source-freeze-r1",
+  "at": 1791517009.268637,
+  "status": "Author behavior and presentation accepted; independent native7groups passed, separate packet pending custody.",
+  "canonical_commit": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+  "canonical_tree": "d1af33caaf7154e83def1dab035920907d417e8d",
+  "files": [
+    {
+      "path": "D:\\Hamon\\worktrees\\capture-video-repeat-db371a37f4c8-production\\candidate-r1\\desktop\\capture_desktop\\widgets_review_video.py",
+      "bytes": 19463,
+      "sha256": "e2e02b417b75d590f118608cd63bf0e9b9af94f12170c43776f3643c06ecd4eb",
+      "git": "b02627d5b158ff2c69aff0b91c378d9034673615",
+      "repository_path": "desktop/capture_desktop/widgets_review_video.py"
+    },
+    {
+      "path": "D:\\Hamon\\worktrees\\capture-video-repeat-db371a37f4c8-production\\candidate-r1\\desktop\\capture_desktop\\review_video_interval.py",
+      "bytes": 1835,
+      "sha256": "798a836270de8a586eb3341ebccfc142ed59541822982187b3d14d79f2eecc97",
+      "git": "44b4086d99653ea1582edf17c8df5c1fa504dba4",
+      "repository_path": "desktop/capture_desktop/review_video_interval.py"
+    },
+    {
+      "path": "D:\\Hamon\\worktrees\\capture-video-repeat-db371a37f4c8-production\\candidate-r1\\tests\\test_review_video_interval.py",
+      "bytes": 2295,
+      "sha256": "667002f51397880d3fb68ef1100024d91e13f5cc95e4267eb470c926eb8f81da",
+      "git": "8f5681f17ddcac53cf611a3138568804c7a055fd",
+      "repository_path": "tests/test_review_video_interval.py"
+    },
+    {
+      "path": "D:\\Hamon\\worktrees\\capture-video-repeat-db371a37f4c8-production\\candidate-r1\\tests\\ui\\test_review_video_interval.py",
+      "bytes": 9807,
+      "sha256": "5c137e408f5925f6154eb1735e40a8e057e1771121f9a6f1c55eb70175112cf9",
+      "git": "78deeccc9301b520850113df76baca770006d50e",
+      "repository_path": "tests/ui/test_review_video_interval.py"
+    },
+    {
+      "path": "D:\\Hamon\\worktrees\\capture-video-repeat-db371a37f4c8-production\\candidate-r1\\docs\\operator\\RECORDED_VIDEO_REVIEW.md",
+      "bytes": 4758,
+      "sha256": "e2987cd5d0f449f454e1f351f9ff06b76dee334789cce24e3fbc545f671361b3",
+      "git": "3e151293e682161822535841e9155c63ff36095a",
+      "repository_path": "docs/operator/RECORDED_VIDEO_REVIEW.md"
+    },
+    {
+      "path": "D:\\Hamon\\worktrees\\capture-video-repeat-db371a37f4c8-production\\candidate-r1\\docs\\design\\research\\REVIEW_AND_EXPORT_UX.md",
+      "bytes": 10056,
+      "sha256": "dbbbb9ff850bcb1e6683b0149cc8de02d2d3d3381b6a872affd7c83394c69d6a",
+      "git": "718cf595fde2e1bb26de70ca4d54e2b45feb8905",
+      "repository_path": "docs/design/research/REVIEW_AND_EXPORT_UX.md"
+    },
+    {
+      "path": "D:\\Hamon\\worktrees\\capture-video-repeat-db371a37f4c8-production\\candidate-r1\\docs\\design\\research\\PROGRESS.md",
+      "bytes": 78832,
+      "sha256": "e4c5512c6bbcf350045ca29aab82399aac5cbba93b0593dc4b696e764aa737ee",
+      "git": "f4d56e1f36dd2ef22122e53313635ecf1a979ec8",
+      "repository_path": "docs/design/research/PROGRESS.md"
+    }
+  ],
+  "native_closure": {
+    "files": 137,
+    "original_source": 121,
+    "fixtures": 9,
+    "original_exact": true
+  },
+  "runtime": {
+    "manifest": {
+      "path": "D:\\Hamon\\worktrees\\capture-video-repeat-db371a37f4c8-production\\environment-final-r1\\runtime-files.json",
+      "bytes": 3897165,
+      "sha256": "d57d68032c6949a7d28813e62392d211c111828c0e7207682161d231df9217bb",
+      "git": "4950d067892cfd12a80988881c5acba1f254e7f5"
+    },
+    "file_count": 18539,
+    "exact": true
+  },
+  "root_review": {
+    "path": "D:\\Hamon\\worktrees\\capture-video-repeat-db371a37f4c8-production\\root-review\\ROOT-SOURCE-REVIEW-r1.json",
+    "bytes": 3222,
+    "sha256": "c2f5255c2e199deba90e7dad80e66a7dade0d743612b95719ff9aff2c9ff9659",
+    "git": "9e811e0201aac044e6203ed529e8b38ad85937d9"
+  },
+  "presentation": {
+    "path": "D:\\Hamon\\worktrees\\capture-video-repeat-db371a37f4c8-production\\presentation-r2\\receipt.json",
+    "bytes": 8021,
+    "sha256": "f0398d07dcca029cc81b13e95b3ebf637fa15d0d03da93310b02095816855131",
+    "git": "57599f340845d9e9f96d6f4a09cba84231f159ff"
+  },
+  "author_report": {
+    "path": "D:\\Hamon\\worktrees\\capture-video-repeat-db371a37f4c8-production\\AUTHOR.md",
+    "bytes": 7180,
+    "sha256": "f1083d2b6a45fd9dba2ca22eb26c1fec598dd0f56dac7d43692e8151b3b72b4f",
+    "git": "d29b6aa34abafd8b71bedcee3a101676d743fddc"
+  }
+}
