@@ -1,0 +1,28 @@
+{
+  "schema": "capture112-independent-seal-final-audit-v1",
+  "at": 1791539864.9393804,
+  "pid": 13776,
+  "parent": 23048,
+  "payloads_exact": 468,
+  "safe_unique_regular_members": 469,
+  "original_and_candidate_source_exact": true,
+  "prior_close_pids": [
+    {
+      "pid": 16992,
+      "present": false,
+      "process": null
+    },
+    {
+      "pid": 18404,
+      "present": false,
+      "process": null
+    },
+    {
+      "pid": 26244,
+      "present": false,
+      "process": null
+    }
+  ],
+  "owned_processes": [],
+  "source_executed": false
+}

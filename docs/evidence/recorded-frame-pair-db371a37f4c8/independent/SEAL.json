@@ -1,0 +1,33 @@
+{
+  "schema": "capture112-independent-archive-seal-v1",
+  "at": 1791539865.0599,
+  "pid": 13776,
+  "parent": 23048,
+  "payload_count": 468,
+  "member_count": 469,
+  "archive": {
+    "bytes": 2788705,
+    "sha256": "cc0804cc6d6fbaabbef31ea0b06b786b75e21b507ba58ea5c01435545f3624ff",
+    "git": "7993dd04f01873847f4e67bd3a7e9dbba2cc9979",
+    "mtime_ns": 1791539864012241300
+  },
+  "manifest": {
+    "bytes": 133351,
+    "sha256": "405c4b5163e410633b5aa2b56b463c141227293127ad890ea08884d23b8e31bf",
+    "git": "e9012bc3e7cf0a6186052e904336307a2eaa6f7c",
+    "mtime_ns": 1791539863203093100
+  },
+  "report": {
+    "bytes": 13024,
+    "sha256": "ca503bc7b355377c9770e8aa952867d25bc19f575622da1446a41a36bdd38e8e",
+    "git": "0ea56c6ef78d3ff85bc2247feaefba925e7835eb",
+    "mtime_ns": 1791539863203093100
+  },
+  "audit": {
+    "bytes": 552,
+    "sha256": "a3e740c90c5ff8e7c9c9e92f1033d85bde1126a46d2486f6f6d336b10c9b675d",
+    "git": "139659cbd7daa6c75d6cef2fdebfd27959b17fce",
+    "mtime_ns": 1791539865059900100
+  },
+  "no_product_rerun": true
+}
