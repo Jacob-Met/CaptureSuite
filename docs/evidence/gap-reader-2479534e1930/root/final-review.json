@@ -1,0 +1,228 @@
+{
+  "schema": "capture.gap-reader.independent-final-review.v1",
+  "reviewer": "2479534e1930/root",
+  "disposition": "Accepted for the frozen Python reader component scope and source-owner composition. No installed desktop, physical filesystem, full-suite or deployment qualification.",
+  "received_commit": "7d967eb376ccb0bda034a961b3c6e324438cc206",
+  "received_tree": "e8d783e9260ae41d58334543ec9b4200fc0b7b9e",
+  "sole_parent": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+  "source_review": "f0b731a830f398f2d4db4f22eb6ad8cf05cab1d7",
+  "source": "cdfba8a26736856683ea865b9df67b36ad120e40",
+  "maintained_tests": "70726a99b9f073c82ab314c4271edea0960d8401",
+  "original_result": "f0cf2b8615b2c82d250a7da911558f09bc624009",
+  "candidate_result": "ba642fdcb2881f295ae4aad5e41513e1f3240522",
+  "root_actual_result_join": {
+    "chunk_id": "0538e1",
+    "wall_time_seconds": 0.000029965,
+    "exit_code": 0,
+    "original_token_count": 216,
+    "output": "{\n  \"schema\": \"capture.root.candidate-result-receiving.v1\",\n  \"actual_exit\": 0,\n  \"tests\": 11,\n  \"successes\": 11,\n  \"failures\": 0,\n  \"errors\": 0,\n  \"skipped\": 0,\n  \"same_original_test_inventory\": true,\n  \"same_runtime\": true,\n  \"literal_test_source_preserved\": true,\n  \"command_input_runner_and_raw_output_exact\": true,\n  \"input\": {\n    \"git_blob\": \"6b683a6c7f9000361e1629f33e7bbabe098db1e9\",\n    \"bytes\": 14182,\n    \"sha256\": \"c30fb8eecaf2a41506dae337066c890b5559080324563234013da40a1c293c08\"\n  },\n  \"result\": {\n    \"git_blob\": \"ba642fdcb2881f295ae4aad5e41513e1f3240522\",\n    \"bytes\": 3212,\n    \"sha256\": \"28609d68afdd108ef6e85a43cec9c6fc29d461f401f3ec1075a3b5529c75e606\"\n  },\n  \"execution\": {\n    \"chunk_id\": \"633809\",\n    \"wall_time_seconds\": 0.035380869,\n    \"exit_code\": 0,\n    \"original_token_count\": 803\n  },\n  \"product_executions_in_this_root_review\": 0\n}\n"
+  },
+  "tree_receiving": {
+    "base_leaves": 1280,
+    "final_leaves": 1295,
+    "unchanged": 1278,
+    "changed": [
+      {
+        "path": "docs/design/research/PROGRESS.md",
+        "before": "3f8ab7ce67774810ce9f314741eecbb1a8e3eb7d",
+        "after": "14665f9d645f9575243da1cba94ffbc3dbcdda5f",
+        "before_mode": "100644",
+        "after_mode": "100644",
+        "before_type": "blob",
+        "after_type": "blob"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/package_reader.py",
+        "before": "91fbf913c5af8489968425d7ceac51c04233d3e0",
+        "after": "cdfba8a26736856683ea865b9df67b36ad120e40",
+        "before_mode": "100644",
+        "after_mode": "100644",
+        "before_type": "blob",
+        "after_type": "blob"
+      }
+    ],
+    "removed": [],
+    "added": [
+      {
+        "path": "docs/evidence/gap-reader-2479534e1930/README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "04b48d3d6fb66e6c4ab7298e024a3d06dcd1ef9d",
+        "size": 3984,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/04b48d3d6fb66e6c4ab7298e024a3d06dcd1ef9d"
+      },
+      {
+        "path": "docs/evidence/gap-reader-2479534e1930/candidate/execution.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f3133fdd1a02afb0c9b22def11861ae62444ac03",
+        "size": 22794,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/f3133fdd1a02afb0c9b22def11861ae62444ac03"
+      },
+      {
+        "path": "docs/evidence/gap-reader-2479534e1930/candidate/input.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "6b683a6c7f9000361e1629f33e7bbabe098db1e9",
+        "size": 14182,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/6b683a6c7f9000361e1629f33e7bbabe098db1e9"
+      },
+      {
+        "path": "docs/evidence/gap-reader-2479534e1930/candidate/result.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ba642fdcb2881f295ae4aad5e41513e1f3240522",
+        "size": 3212,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/ba642fdcb2881f295ae4aad5e41513e1f3240522"
+      },
+      {
+        "path": "docs/evidence/gap-reader-2479534e1930/frozen/expectations.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "9fb4396fd4cda184866164f64621af6e0164a2cb",
+        "size": 8157,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/9fb4396fd4cda184866164f64621af6e0164a2cb"
+      },
+      {
+        "path": "docs/evidence/gap-reader-2479534e1930/frozen/tests-before-serialization.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "b7ae7c2370cd2a7312beee39357b94c061404adc",
+        "size": 6399,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/b7ae7c2370cd2a7312beee39357b94c061404adc"
+      },
+      {
+        "path": "docs/evidence/gap-reader-2479534e1930/original/execution.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "1078fce709760f0dafb27ab588a7d44c03cb1a90",
+        "size": 37003,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/1078fce709760f0dafb27ab588a7d44c03cb1a90"
+      },
+      {
+        "path": "docs/evidence/gap-reader-2479534e1930/original/input.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "66f60cc50582a3ca699a1eff12cfefeded428059",
+        "size": 13823,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/66f60cc50582a3ca699a1eff12cfefeded428059"
+      },
+      {
+        "path": "docs/evidence/gap-reader-2479534e1930/original/result.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f0cf2b8615b2c82d250a7da911558f09bc624009",
+        "size": 16904,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/f0cf2b8615b2c82d250a7da911558f09bc624009"
+      },
+      {
+        "path": "docs/evidence/gap-reader-2479534e1930/qualification.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f8b333d84043ce4368f1b0ebc1e484b1d5e518dc",
+        "size": 3303,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/f8b333d84043ce4368f1b0ebc1e484b1d5e518dc"
+      },
+      {
+        "path": "docs/evidence/gap-reader-2479534e1930/root/baseline-admission.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "09cc11ce875356ca85e474d9104240e7620c280a",
+        "size": 4440,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/09cc11ce875356ca85e474d9104240e7620c280a"
+      },
+      {
+        "path": "docs/evidence/gap-reader-2479534e1930/root/candidate-admission.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "f0b731a830f398f2d4db4f22eb6ad8cf05cab1d7",
+        "size": 7552,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/f0b731a830f398f2d4db4f22eb6ad8cf05cab1d7"
+      },
+      {
+        "path": "docs/evidence/gap-reader-2479534e1930/root/initial-review.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "9c5eece539abafd0d03dc1734fedf4b7c20cba06",
+        "size": 5022,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/9c5eece539abafd0d03dc1734fedf4b7c20cba06"
+      },
+      {
+        "path": "docs/evidence/gap-reader-2479534e1930/run_component.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "0f1c8d23fc1922930e3a31733c7ee0a44440bedb",
+        "size": 3308,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/0f1c8d23fc1922930e3a31733c7ee0a44440bedb"
+      },
+      {
+        "path": "tests/test_package_reader_gaps.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "70726a99b9f073c82ab314c4271edea0960d8401",
+        "size": 6543,
+        "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/70726a99b9f073c82ab314c4271edea0960d8401"
+      }
+    ],
+    "truncated_base": false,
+    "truncated_final": false
+  },
+  "progress_original_prefix_exact": true,
+  "receiving_links": [
+    {
+      "link": "original/result.json",
+      "path": "docs/evidence/gap-reader-2479534e1930/original/result.json",
+      "present": true
+    },
+    {
+      "link": "candidate/result.json",
+      "path": "docs/evidence/gap-reader-2479534e1930/candidate/result.json",
+      "present": true
+    },
+    {
+      "link": "frozen/expectations.json",
+      "path": "docs/evidence/gap-reader-2479534e1930/frozen/expectations.json",
+      "present": true
+    },
+    {
+      "link": "frozen/tests-before-serialization.py",
+      "path": "docs/evidence/gap-reader-2479534e1930/frozen/tests-before-serialization.py",
+      "present": true
+    },
+    {
+      "link": "root/candidate-admission.json",
+      "path": "docs/evidence/gap-reader-2479534e1930/root/candidate-admission.json",
+      "present": true
+    },
+    {
+      "link": "qualification.json",
+      "path": "docs/evidence/gap-reader-2479534e1930/qualification.json",
+      "present": true
+    },
+    {
+      "link": "run_component.py",
+      "path": "docs/evidence/gap-reader-2479534e1930/run_component.py",
+      "present": true
+    }
+  ],
+  "read_docs": {
+    "readme": "04b48d3d6fb66e6c4ab7298e024a3d06dcd1ef9d",
+    "qualification": "f8b333d84043ce4368f1b0ebc1e484b1d5e518dc",
+    "progress": "14665f9d645f9575243da1cba94ffbc3dbcdda5f",
+    "findings": "The source, raw original failures, actual candidate success, logical I/O limits, unchanged UI state limitation and additive authorship correction are accurately retained."
+  },
+  "workflows": {
+    "root_read_all_three": true,
+    "source_blobs": [
+      "931eedfb75258d616a64c18fe26bcf02d9942d9d",
+      "1067e9944ce4836d8cd1673442687333ef7ad564",
+      "079f99fe630d135933f3c2c725f49874c2d66d1c"
+    ],
+    "unchanged": true,
+    "issue_and_issue_comment_subscribers": false,
+    "all_event_exact_received_head_runs": 0,
+    "main_at_receiving": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+    "actions_or_refs_invoked": false
+  },
+  "execution_limit": "Root parsed/diffed and joined retained source and tool outputs only. It did not replay either product variant. C performed exactly one original and one candidate run with the same eleven tests."
+}
