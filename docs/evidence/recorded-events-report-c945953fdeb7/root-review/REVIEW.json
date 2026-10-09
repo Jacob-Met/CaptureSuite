@@ -1,0 +1,1496 @@
+{
+  "format": "capturesuite-root-complete-source-handoff-review-v1",
+  "reviewer": "estate-c945953fdeb7/root",
+  "recorded_at": "2026-10-09 12:09:45 UTC",
+  "disposition": {
+    "source_handoff": "Ready for additive nontriggering source publication after exact final-tree and fresh ref gates.",
+    "author_eight_new_cases": "PASS once, CPython 3.12.14.",
+    "independent_C1_C3": "PASS; three actual native CLI calls, exits 0/1/1; 87 type-sensitive arbitrary-precision comparison nodes exact.",
+    "original_C4": "INCOMPLETE, unchanged.",
+    "separately_admitted_continuation": "INCOMPLETE overall. Specific saved trusted Enter interaction, exact record text and two original PNGs are useful direct observations; absent normal receipt and logs remain absent.",
+    "no_product_source_finding": "Root found no blocking renderer/CLI/source issue. The second failure arose in an observer live-profile census; it does not establish a product defect."
+  },
+  "ownership": {
+    "estate": "estate-c945953fdeb7",
+    "reservation": "https://github.com/Jacob-Met/CaptureSuite/issues/111#issuecomment-6078399030",
+    "producer_handoff": "https://github.com/Jacob-Met/CaptureSuite/issues/111#issuecomment-6079740807",
+    "preserved": "reader owner2479534; #76/#83 native Review, #107 Qt, #109/#110 export and #79 QC owners; all other estate owners unchanged.",
+    "actions_hold": "https://github.com/Jacob-Met/hamon/issues/143#issuecomment-6067592767",
+    "publication_scope": "One absent non-main receiving branch; no PR, main update, tag, dispatch, rerun or new Actions execution."
+  },
+  "qualified_source": {
+    "parent": "c0437668fbc9d7ce6292c7b733f91dc8b2fd94f5",
+    "tree": "4bced1cedbcfa6cccc59fafa9ca7771da5781c8c",
+    "reader_git": "cdfba8a26736856683ea865b9df67b36ad120e40",
+    "reader_bytes": 6679,
+    "reader_sha256": "4fd156a015115974d062bbc9bffc97cdb23e92b135e2729ecf312400a0201ab1",
+    "source_capsule_git": "df7d233f42be885358b922e955066fbd10f2cba6",
+    "maintained_sources": [
+      {
+        "path": "libs/python/capture_session/capture_session/recorded_events_html.py",
+        "git_blob": "f65892baea166d39e8fa38f6ead5ae9509ec73a1",
+        "bytes": 10602,
+        "sha256": "026ffd469301c0ac70d70e3041473abe48f08562033f42836c38c0bccd8f8abe"
+      },
+      {
+        "path": "tools/report_recorded_events.py",
+        "git_blob": "965e28fb602d35c8a113eed204efbae595ca5d1a",
+        "bytes": 3378,
+        "sha256": "cff0f891366ce9e729609a88b9f204acc909d580c7136164ab9c094dc66eedd8"
+      },
+      {
+        "path": "tests/test_recorded_events_html.py",
+        "git_blob": "a95881c873ee10bc43ec01b3c2fb4338d742cf9d",
+        "bytes": 10910,
+        "sha256": "df6ad0bba8d5777648e4e7cb82a5cbeae0c78c6911c679cd3a6e72463f3fcd90"
+      },
+      {
+        "path": "docs/design/research/RECORDED_EVENTS_REPORT.md",
+        "git_blob": "ce4ab99467713831683ddb39b1ac92d830ea0190",
+        "bytes": 7595,
+        "sha256": "6d8b0845441ad9d65172cce66ed86de1af8f1f8ed06be490479d22091980ad4f"
+      }
+    ]
+  },
+  "root_source_review": {
+    "recorded_at": "2026-10-09 10:37:57 UTC",
+    "source_parent": "c0437668fbc9d7ce6292c7b733f91dc8b2fd94f5",
+    "source_blobs": [
+      "f65892baea166d39e8fa38f6ead5ae9509ec73a1",
+      "965e28fb602d35c8a113eed204efbae595ca5d1a",
+      "a95881c873ee10bc43ec01b3c2fb4338d742cf9d",
+      "ce4ab99467713831683ddb39b1ac92d830ea0190"
+    ],
+    "full_source_read": true,
+    "original_import_closure_read": true,
+    "original_only_contract_read": true,
+    "blocking_findings": [],
+    "checks": [
+      "Full reader-returned dictionaries and order retained as escaped UTF-8 JSON; arbitrary precision integers and timestamp strings are not passed through floating point.",
+      "Lone surrogate escape handling remains valid UTF-8 while round-tripping JSON semantics.",
+      "Normalized gaps explicitly identify information already lost/coerced by unchanged reader; no completeness or integrity overclaim.",
+      "Real physical package import, exact final state admission, existing parent/outside-package output, lexists then exclusive xb creation.",
+      "Write/flush/fsync/close errors retain newly created partial output; success receipt is printed only after close.",
+      "Eight focused tests cover physical CLI output, source preservation, output refusal, malformed reader input, unsupported state, full data/escaping and no scripts.",
+      "Offline HTML design uses fixed anchors and native disclosures; CSP blocks resource loads and inline scripts."
+    ],
+    "actual_execution_by_root": 0,
+    "independent_execution": "pending at record time",
+    "limitations": [
+      "No root native CLI or browser replay.",
+      "No full suite, Ruff, pytest or native Windows qualification claim.",
+      "Renderer consumes the qualified reader and does not supply an atomic source snapshot or raw stream/integrity validation."
+    ]
+  },
+  "author_custody_review": {
+    "source_parent": "c0437668fbc9d7ce6292c7b733f91dc8b2fd94f5",
+    "parent_tree": "4bced1cedbcfa6cccc59fafa9ca7771da5781c8c",
+    "records": 20,
+    "with_map": 21,
+    "unique_paths": 20,
+    "total_declared_bytes": 656467,
+    "total_reported_bytes": 656467,
+    "issues": [],
+    "source_pins_match": true
+  },
+  "author_execution": {
+    "receipt": "288d0198028e5a8f850273fb45d81700d5471f32",
+    "outer_receipt": "290b2ebb0005a73701e9e0c5c50151063097b150",
+    "custody_map": "13407f9b5c7840426aa3dbcb3d8893fef2879636",
+    "test_pid": 5,
+    "test_exit": 0,
+    "new_cases": 8,
+    "stdout_bytes": 0,
+    "stderr_bytes": 1486,
+    "test_native_seconds": 0.15000573299766984,
+    "successful_outer_TTY": 72336,
+    "outer_exit": 0,
+    "source_and_prep_identities_exact": 16,
+    "retained_failures": "Initial 60036-byte prefix transport and cross-exec isolated-/dev visibility refusal remain in the author packet; no relabeling as successful."
+  },
+  "independent_contract": {
+    "git_blob": "7fd938b783feb56b3f7bbb29ae52d60146359600",
+    "bytes": 15189,
+    "sha256": "d40f04be3cc899fda74355c1f1d685479df5d83272fc4f9542de01b3cecfdd1a",
+    "chronology": "Original-only contract frozen before candidate exposure/native execution. Earlier private author draft exposure is disclosed in the retained contract."
+  },
+  "historical_linux_root_review": {
+    "recorded_at": "2026-10-09 10:45:51 UTC",
+    "author_source_before_after_exact": true,
+    "author_source_records": 16,
+    "author_cases": 8,
+    "author_exit": 0,
+    "author_stderr_bytes": 1486,
+    "author_stdout_bytes": 0,
+    "author_outer_actual_exit": 0,
+    "independent_cli_exits": [
+      0,
+      1,
+      1
+    ],
+    "independent_cli_calls": 3,
+    "independent_native_exact_comparison_nodes": 87,
+    "independent_protected_records_equal": true,
+    "independent_source_bytes_modes_mtimes_unchanged": true,
+    "physical_html": {
+      "path": "exports/recorded-events.html",
+      "bytes": 11901,
+      "sha256": "f6768d7d8d30782f6ca400ac9b9253254f9f5d483825587c31dafbe2c925e16f",
+      "git_blob": "fac1f8c93b74160f1ee2b2675de8232bd120e0ce",
+      "mode": "0600",
+      "mtime_ns": "1791542325400486966",
+      "allocated_bytes": 12288
+    },
+    "raw_html_fully_read_by_root": true,
+    "raw_receipt_large_integer_literals_preserved": true,
+    "independent_outer_actual_exit": 0,
+    "root_numeric_projection_note": {
+      "recorded_at": "2026-10-09 10:45:51 UTC",
+      "scope": "Root read-only display projection",
+      "observation": "A root diagnostic projected already-parsed native Python JSON through JavaScript and displayed rounded values in object fields beyond 2^53. The stored raw UTF-8 receipt, its embedded json_text strings, and exact physical HTML remain unchanged and contain the original integers. This is a root reporting limitation, not a candidate or native comparison failure.",
+      "authoritative_exact_integers": [
+        "9007199254740993",
+        "9007199254740997",
+        "9007199254740999"
+      ],
+      "root_native_reruns": 0,
+      "raw_receipt_blob": "9b05901d220f38994a10d32e643107f31eca93ed",
+      "physical_html_blob": "fac1f8c93b74160f1ee2b2675de8232bd120e0ce"
+    },
+    "mac_C4": "pending",
+    "status": "PASS C1–C3 and Linux preservation/actual child closure; C4 pending"
+  },
+  "historical_review_note": "The historical Linux review still says Mac pending because it was recorded before that attempt. The current disposition above preserves the subsequent original C4 and continuation as INCOMPLETE.",
+  "exact_number_reporting_note": {
+    "recorded_at": "2026-10-09 10:45:51 UTC",
+    "scope": "Root read-only display projection",
+    "observation": "A root diagnostic projected already-parsed native Python JSON through JavaScript and displayed rounded values in object fields beyond 2^53. The stored raw UTF-8 receipt, its embedded json_text strings, and exact physical HTML remain unchanged and contain the original integers. This is a root reporting limitation, not a candidate or native comparison failure.",
+    "authoritative_exact_integers": [
+      "9007199254740993",
+      "9007199254740997",
+      "9007199254740999"
+    ],
+    "root_native_reruns": 0,
+    "raw_receipt_blob": "9b05901d220f38994a10d32e643107f31eca93ed",
+    "physical_html_blob": "fac1f8c93b74160f1ee2b2675de8232bd120e0ce"
+  },
+  "original_mac": {
+    "receipt": "908f5694002113bf99c13cd526a89f458ac49a3c",
+    "source": "356784a70e46e532bb3a3f938475fd6331aa0924",
+    "authority": "03a3eadfd0e0c0e1cdd5fee918a09d0405f5cdd3",
+    "status": "INCOMPLETE",
+    "outer_pid": 64894,
+    "outer_exit": 1,
+    "node_pid": 64931,
+    "node_exit": 1,
+    "chrome_pid": 64939,
+    "chrome_exit": 0,
+    "selected_owned_processes_absent": 10,
+    "observation": "The original Enter dispatch omitted character text. Its wait timed out; no reconstruction of unrecorded keypress absence is made.",
+    "later_sync_gaps_and_two_screenshots": "Not executed in this original attempt.",
+    "root_overview_image_displayed": false,
+    "worker_overview_image_displayed": true,
+    "original_log_scope": "Original retained exception/console/log/load-failure zeros apply only to this run, not to the continuation."
+  },
+  "continuation": {
+    "root_admission": "8348a9868bbbbb24e129265d0ab579f9864d489f",
+    "proposal": "85b255f4907e50d1c420a8476c78a953ecc616a6",
+    "receiver": "567f3e3ea10402f4e88a431cc0fa0b49952bf2aa",
+    "outer": "24bed9f37bd9ec1daf6db579055667691274ff68",
+    "contract": "a5174cddc11001e2d214ce74382eca3009d9281d",
+    "revision": "6ee58ee3029f7f133bc47f2b9fe31008b1bb80d0",
+    "delta": "ff5103a9b8253f3f299005399170a7f783f6cad1",
+    "primary_source_review": "bafc52cacacbfa20648850b1db80dba0de3cb7ab",
+    "root_review_scope": "Full receiver, authority revision, exact 20-delta source reconstruction, every executable outer statement and exact decoded payload reviewed before admission. Relevant Chromium/Puppeteer primary source functions were read at actual pinned versions. Same physical HTML and original authority; no renderer/CLI replay.",
+    "original_revision_match": "All 15 original protected entries matched by exact mac/ custody paths.",
+    "root_comparison_note": "An initial suffix-only original-file comparison found ambiguous identical empty Linux/Mac streams and was refused before action. Exact mac/ namespace resolution then matched all 15; the limitation is retained in admission.",
+    "actual_saved_artifact_review": {
+      "schema": "capturesuite-continuation-independent-saved-artifact-review-v1",
+      "original_status": "Original C4 INCOMPLETE, unchanged. Its full 100-leaf custody remains b4a4f33f218135a43d8b40b957416423ba5eb0a9.",
+      "continuation_status": "INCOMPLETE: actual outer exit 1, Node terminated/reaped -15; final receiver acceptance and logs were not produced.",
+      "review_method": "Read the actual saved files and two original PNGs after execution ended. No additional actuation, renderer run or browser launch.",
+      "corrected_enter": {
+        "source": "567f3e3ea10402f4e88a431cc0fa0b49952bf2aa",
+        "saved_events": "daf71f524eee83a1e7e5c84fa984c46f1010fbad",
+        "full_records": [
+          {
+            "type": "click",
+            "isTrusted": true,
+            "key": null,
+            "code": null,
+            "keyCode": null,
+            "charCode": null,
+            "which": 1,
+            "repeat": null,
+            "defaultPreventedAtCapture": false,
+            "detail": 1,
+            "target": "SUMMARY",
+            "summaryFocused": true,
+            "openAtCapture": true
+          },
+          {
+            "type": "keydown",
+            "isTrusted": true,
+            "key": "Enter",
+            "code": "Enter",
+            "keyCode": 13,
+            "charCode": 0,
+            "which": 13,
+            "repeat": false,
+            "defaultPreventedAtCapture": false,
+            "detail": 0,
+            "target": "SUMMARY",
+            "summaryFocused": true,
+            "openAtCapture": false
+          },
+          {
+            "type": "keypress",
+            "isTrusted": true,
+            "key": "Enter",
+            "code": "Enter",
+            "keyCode": 13,
+            "charCode": 13,
+            "which": 13,
+            "repeat": false,
+            "defaultPreventedAtCapture": false,
+            "detail": 0,
+            "target": "SUMMARY",
+            "summaryFocused": true,
+            "openAtCapture": false
+          },
+          {
+            "type": "click",
+            "isTrusted": true,
+            "key": null,
+            "code": null,
+            "keyCode": null,
+            "charCode": null,
+            "which": 1,
+            "repeat": null,
+            "defaultPreventedAtCapture": false,
+            "detail": 0,
+            "target": "SUMMARY",
+            "summaryFocused": true,
+            "openAtCapture": false
+          },
+          {
+            "type": "keyup",
+            "isTrusted": true,
+            "key": "Enter",
+            "code": "Enter",
+            "keyCode": 13,
+            "charCode": 0,
+            "which": 13,
+            "repeat": false,
+            "defaultPreventedAtCapture": false,
+            "detail": 0,
+            "target": "SUMMARY",
+            "summaryFocused": true,
+            "openAtCapture": true
+          }
+        ],
+        "overflow": false,
+        "final_open": true,
+        "final_focused": true,
+        "verified": true,
+        "measured_state_transition": "Trusted keydown and keypress recorded openAtCapture=false; trusted keyup recorded openAtCapture=true. Pointer click was trusted, summary focused. No toggle event was present in the saved five-event list; none is invented.",
+        "interpretation": "The corrected event sequence actually reopened the native disclosure. This does not retroactively establish the exact unrecorded event sequence in the original failed attempt."
+      },
+      "final_saved_dom": {
+        "git_blob": "a4fbc718f121fb45b712d2cef790eca463bc66b1",
+        "url": "file:///Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7/recorded-events.html#gaps",
+        "all_eight_json_strings_exact": true,
+        "per_record": [
+          {
+            "kind": "checkpoints",
+            "index": "0",
+            "exact_json_text": true
+          },
+          {
+            "kind": "checkpoints",
+            "index": "1",
+            "exact_json_text": true
+          },
+          {
+            "kind": "annotations",
+            "index": "0",
+            "exact_json_text": true
+          },
+          {
+            "kind": "annotations",
+            "index": "1",
+            "exact_json_text": true
+          },
+          {
+            "kind": "sync-anchors",
+            "index": "0",
+            "exact_json_text": true
+          },
+          {
+            "kind": "sync-anchors",
+            "index": "1",
+            "exact_json_text": true
+          },
+          {
+            "kind": "gaps",
+            "index": "0",
+            "exact_json_text": true
+          },
+          {
+            "kind": "gaps",
+            "index": "1",
+            "exact_json_text": true
+          }
+        ],
+        "sentinel_type": "undefined",
+        "script_nodes": 0,
+        "arithmetic_scope": "Only exact raw JSON text strings compared in JavaScript. No large integer parsed as a JavaScript Number; original Python 3.12 raw numerical/type authority unchanged.",
+        "sync_and_gaps_scope": "The frozen sequential receiver reaches and waits for #sync-anchors, compares both Sync record strings, then reaches #gaps and compares both gaps before saving the gap screenshot and FINAL-DOM. Those later artifacts establish that this executed path was reached. The final URL directly records #gaps; the per-action receipt that would separately record each pointer action was not written."
+      },
+      "visual_inspection": {
+        "exact_original_pngs_displayed": true,
+        "rendering_method": "RDC read_file returned the existing native PNG image blocks; no image regeneration or modification.",
+        "annotation": {
+          "git_blob": "a4582d1882c8ff13475d9d1d770466e204a5308b",
+          "bytes": 99387,
+          "sha256": "9238ff05652953f0e3253e383d7e959d4ae7c7723468343e6222708717c6f89b",
+          "findings": "Complete first annotation visible in an expanded native details panel, with focus outline on its summary. Literal script-looking text, escaped CR/LF, café/Chinese character, nested arrays and the 9007199254740993 integer spelling are readable. The second annotation is also fully visible. Reader-order and two-returned labeling are clear. Dark palette, spacing and monospaced JSON are legible; neighboring sections are naturally clipped at viewport boundaries."
+        },
+        "gaps": {
+          "git_blob": "6173502bdb071ce46ea2e7d43949ff2b1611f856",
+          "bytes": 103451,
+          "sha256": "62d5d69f72457bf4f868a0367fb94f5bc16f5068b5255ea94424fec059042a99",
+          "findings": "Gap-projection explanation explicitly describes normalized seven-field GapSummary values and distinguishes null end, closed flag and end value. Both full gap objects are visible, including literal Unicode source IDs, the large integer end/count values and the second open gap's null end. Returned count/order and standalone-file footer are legible."
+        },
+        "limits": "These are two actual 1280x1000 dark-mode viewports. No new overview, light/print/mobile matrix or default-browser/Finder display is claimed."
+      },
+      "incomplete_evidence": {
+        "missing_files": [
+          "results/MAC-RECEIPT.json",
+          "results/IDENTITY-AFTER.json",
+          "results/chrome.stdout.txt",
+          "results/chrome.stderr.txt"
+        ],
+        "node_stdout_bytes": 0,
+        "node_stderr_bytes": 0,
+        "final_node_receipt_absent": true,
+        "chrome_streams_absent": true,
+        "per_action_receipt_absent": true,
+        "exception_console_network_counts": "Not retained for this continuation; the in-memory final receipt was lost on SIGTERM. No zero-exception, zero-console, zero-resource-failure or zero-background-network claim.",
+        "chrome_direct_exit_status": "Not retained. Later owned PID/group absence is measured separately; it does not supply a direct Chrome exit code.",
+        "native_initial_dom_identity": "ENTRY-DOM.json is byte-identical to original c94ee17dcc854ccd2a51629f104deb320e8bc031, but this is an initial snapshot, not a final event log."
+      },
+      "preservation_and_external_closure": {
+        "actual_outer_pid": 81736,
+        "external_exit_code": 1,
+        "external_tool_runtime_seconds": 1.29,
+        "node_pid": 81778,
+        "actual_wait_exit": -15,
+        "actual_poll_exit": -15,
+        "reaped_by_wait": true,
+        "readonly_collector_pid": 84011,
+        "collector_external_exit": 0,
+        "collector_tool_runtime_seconds": 0.12,
+        "collector_observed_at": "2026-10-09T11:30:37.294580+00:00",
+        "observed_owned_pid_group_absent": true,
+        "original_15_exact": true,
+        "new_four_inputs_exact": true,
+        "runtime_exact": true,
+        "new_files_stable": true,
+        "original_files_stable": true,
+        "combined_static": {
+          "logical": 541163,
+          "allocated": 593920
+        },
+        "capacity_at_readonly_collection": {
+          "disk_free_bytes": 2328690688,
+          "conservative_memory_bytes": 11193909248
+        },
+        "scope": "Only original owned PIDs 81736/81778, group 81778 and the exact private Chrome-profile command path were selected from ps. No universal PID absence or unrelated process control claimed."
+      },
+      "disposition": "Publishable evidence of the successful specific functional observations with both actual failed overall attempts and precise missing acceptance/log evidence retained. No third browser run or product-source change is proposed."
+    },
+    "root_visual_review": {
+      "reviewer": "estate-c945953fdeb7/root",
+      "actual_images_displayed": 2,
+      "annotation_png": "a4582d1882c8ff13475d9d1d770466e204a5308b",
+      "gap_png": "6173502bdb071ce46ea2e7d43949ff2b1611f856",
+      "findings": [
+        "1280x1000 actual annotation image displays both full annotation objects clearly, including literal script-looking text, escaped quoted/CRLF text, café/漢, exact integer9007199254740993 and leading-zero string. Focus outline visible on original summary.",
+        "Actual gap image displays the normalized projection explanation and both full seven-field gap objects, including exact integers9007199254740997/999, null end, independent closed flags and negative start. No overlap or truncation of those gap records.",
+        "Screenshots are framed midpage and do not show the original overview. Images do not establish the missing final runtime/log/normal-completion criteria."
+      ],
+      "overall_continuation": "INCOMPLETE retained"
+    },
+    "root_final_text_comparison": true,
+    "postkill_native_closure": "c600e316ce021d868aca623a137f4135d3fdf5fa",
+    "postkill_external_closure": "d1498a27122facdcd88a0138b9a9266d16efd9e4",
+    "outer_failure": "11f4e01ec4f1d3c33af757cd6e6f9231c742a76b",
+    "source_only_profile_diagnosis": "0c479425c1296b2d6cb6d1f180fc89fdedfe874e",
+    "review_limit": "Root read the complete saved-artifact review, diagnosis, actual external closure text and key native closure/preservation fields. Root did not independently audit every statement in the postkill fileless collector program.",
+    "no_further_execution": "No third browser launch, new CLI invocation or source correction/replay is authorized here."
+  },
+  "original_packet": {
+    "custody_git": "b4a4f33f218135a43d8b40b957416423ba5eb0a9",
+    "leaves_including_map": 100,
+    "bytes_excluding_map": 2751020,
+    "unchanged": true
+  },
+  "producer_tree_proof": {
+    "source_commit": "c80e51aca1ee4490f3c30f3c57ec970d9e847edd",
+    "source_tree": "5d8da2d62b1975357fd2d93c5fc849550d92db18",
+    "parent_commit": [
+      "c0437668fbc9d7ce6292c7b733f91dc8b2fd94f5"
+    ],
+    "expected_parent": "c0437668fbc9d7ce6292c7b733f91dc8b2fd94f5",
+    "parent_leaves": 1296,
+    "producer_leaves": 1420,
+    "unchanged_inherited": 1295,
+    "changed": [
+      {
+        "path": "docs/design/research/PROGRESS.md",
+        "before": {
+          "path": "docs/design/research/PROGRESS.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "14665f9d645f9575243da1cba94ffbc3dbcdda5f",
+          "size": 78575,
+          "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/14665f9d645f9575243da1cba94ffbc3dbcdda5f"
+        },
+        "after": {
+          "path": "docs/design/research/PROGRESS.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "7efc7ccd9f7b5cb6daffdf7c8ddf8a8a20316b0b",
+          "size": 81147,
+          "url": "https://api.github.com/repos/Jacob-Met/CaptureSuite/git/blobs/7efc7ccd9f7b5cb6daffdf7c8ddf8a8a20316b0b"
+        }
+      }
+    ],
+    "deleted": [],
+    "new_leaves": 124,
+    "declared_delta_count": 125,
+    "full_delta_exact": true,
+    "declared_leaf_mismatches": [],
+    "full_original_independent_files_mismatches": [],
+    "original_independent_map_exact": true,
+    "untruncated": true,
+    "source_commit_tree_exact": true,
+    "producer_custody_bytes": 71222
+  },
+  "producer_progress_prefix_proof": {
+    "exact": true,
+    "old_bytes": 78575,
+    "new_bytes": 81147,
+    "append_bytes": 2572,
+    "old_blob": "14665f9d645f9575243da1cba94ffbc3dbcdda5f",
+    "new_blob": "7efc7ccd9f7b5cb6daffdf7c8ddf8a8a20316b0b"
+  },
+  "producer_custody": {
+    "git_blob": "0776205527fba3601bafc5ecc03275dcfdaa5b1f",
+    "bytes": 71222,
+    "paths_including_self": 125,
+    "source_preservation": "ae1ca1cd44b935b65a3d9e0d00b04e6ca03f6456",
+    "post_tree_commit_proof": "30588d6cf79702b0e6ceca9ecc4b7def2e64fdb6"
+  },
+  "continuation_custody": {
+    "git_blob": "d4f487808d2cef0a4a8d4c3c38107e958d436a7a",
+    "bytes": 16392,
+    "sha256": "0286024ee293567356b3e9c72fdee57c121eea35aea545eeb159b4a957de6b43",
+    "mapped_leaves_excluding_self": 36,
+    "including_self": 37,
+    "bytes_excluding_self": 1538039,
+    "binary_availability": "Both raw native PNG objects were uploaded with observed returned Git identities and retained matching lossless base64 carriers. Root displayed both exact carriers; no binary UTF-8 retrieval success is claimed."
+  },
+  "root_composition": {
+    "status_at_this_receipt": "Prospective exact additions; actual new tree/commit/ref proofs will be recorded in the issue handoff after object creation.",
+    "parent_commit": "c80e51aca1ee4490f3c30f3c57ec970d9e847edd",
+    "base_tree": "5d8da2d62b1975357fd2d93c5fc849550d92db18",
+    "inherited_leaves": 1420,
+    "expected_inherited_changes": 0,
+    "expected_deletions": 0,
+    "added_leaves_including_self": 40,
+    "expected_final_leaves": 1460,
+    "self_path": "docs/evidence/recorded-events-report-c945953fdeb7/root-review/REVIEW.json",
+    "files_excluding_this_self": [
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/proposal/PRIMARY-SOURCE-REVIEW.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "bafc52cacacbfa20648850b1db80dba0de3cb7ab",
+        "bytes": 8975,
+        "sha256": "72ad45be756f3217927386e1890919488c85c8e07a30d8a426a14a4e5f8b4133"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/proposal/receiver.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "567f3e3ea10402f4e88a431cc0fa0b49952bf2aa",
+        "bytes": 26043,
+        "sha256": "11f49884b83190d1eb39aadf5f2e09e26a33156450d80c3473e601dd16e9b716"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/proposal/CORRECTION-CONTRACT.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "a5174cddc11001e2d214ce74382eca3009d9281d",
+        "bytes": 10919,
+        "sha256": "101f0eeb2fa25cee1a9ec352202211babee3ab31bb38313d128b46cc7cea9716"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/proposal/REVISION.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "6ee58ee3029f7f133bc47f2b9fe31008b1bb80d0",
+        "bytes": 5880,
+        "sha256": "3fd7b7c1d1275e6d67a6ad46372ae9904848c2b519f445fccf39abe7e57aaef7"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/proposal/EXACT-OBSERVER-DELTAS.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ff5103a9b8253f3f299005399170a7f783f6cad1",
+        "bytes": 13624,
+        "sha256": "66836a1a686896879a671bafdf2cc94230e001e44cd0786a4e7dbe3df5f38ca4"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/proposal/mac-outer-continuation.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "24bed9f37bd9ec1daf6db579055667691274ff68",
+        "bytes": 75189,
+        "sha256": "7ff33e6255ee5e7cd11f17bc31eea6452df02c3e3765471e1bedb9ede1a601e5"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/proposal/README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "d8c105255034c8e69b4954a4952f6c9d1be18fcf",
+        "bytes": 6921,
+        "sha256": "f5bca0a0e8480c7e4d425ea1dcbf862bd27e8b3c3484fcf3829938d3584215d0"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/proposal/drafts/receiver-unexecuted-accounting-draft.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "0e1b2065cae0ed3f2bb45af94fb21ed8eeaab795",
+        "bytes": 26043,
+        "sha256": "e31c2ff65de2ffc293e5a2cb2ef5f2c70c37cc9a95f9ae477815d3b327d68f6c"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/proposal/drafts/EXACT-OBSERVER-DELTAS-unexecuted-draft.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "3336d0d5f005254dd95e75ba8326ad263541c004",
+        "bytes": 12661,
+        "sha256": "6e84366e7f155213072a0b48cfa57d2a7a08a4e48d628dd74505e0b8eba61c50"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/proposal/PROPOSAL-CUSTODY.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "85b255f4907e50d1c420a8476c78a953ecc616a6",
+        "bytes": 3646,
+        "sha256": "808b7284342891d6eec5d8d92e398a94ac700eb360d66272f6968cd7866804a0"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/proposal/ROOT-ADMISSION.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "8348a9868bbbbb24e129265d0ab579f9864d489f",
+        "bytes": 9230,
+        "sha256": "1964d0602c38f47fbe91b87d6727d04d2356566f83ee144fc0f608b0d256968f"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/source/readonly-closure-custody.py",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "2db2cbaf2a930763b5b76c76497f63b630cb946a",
+        "bytes": 11877,
+        "sha256": "e2463a89899471e07086a6f6ee55a9dc70b511518a2408f43d993996fce08862"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/mac/CORRECTION-CONTRACT.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "a5174cddc11001e2d214ce74382eca3009d9281d",
+        "bytes": 10919,
+        "sha256": "101f0eeb2fa25cee1a9ec352202211babee3ab31bb38313d128b46cc7cea9716"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/mac/OUTER-EXECUTION.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "11f4e01ec4f1d3c33af757cd6e6f9231c742a76b",
+        "bytes": 14538,
+        "sha256": "33c2350410be34dd1f0c37cd6eaca56e6cde26d880f670de8f41777ce7be1d82"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/mac/REVISION.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "6ee58ee3029f7f133bc47f2b9fe31008b1bb80d0",
+        "bytes": 5880,
+        "sha256": "3fd7b7c1d1275e6d67a6ad46372ae9904848c2b519f445fccf39abe7e57aaef7"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/mac/SOURCE-PREPARATION.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e4c5d9c80a49d0a509d74d61566d4a567dbb93dc",
+        "bytes": 6910,
+        "sha256": "5bf4e4e85df6bb48567b8aeb2c6f9657b7a7f0d61bdafa19411744556da67792"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/mac/node.stderr.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/mac/node.stdout.txt",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/mac/receiver.mjs",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "567f3e3ea10402f4e88a431cc0fa0b49952bf2aa",
+        "bytes": 26043,
+        "sha256": "11f49884b83190d1eb39aadf5f2e09e26a33156450d80c3473e601dd16e9b716"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/mac/results/02-literal-annotation.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "a4582d1882c8ff13475d9d1d770466e204a5308b",
+        "bytes": 99387,
+        "sha256": "9238ff05652953f0e3253e383d7e959d4ae7c7723468343e6222708717c6f89b"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/mac/results/03-normalized-gaps.png",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "6173502bdb071ce46ea2e7d43949ff2b1611f856",
+        "bytes": 103451,
+        "sha256": "62d5d69f72457bf4f868a0367fb94f5bc16f5068b5255ea94424fec059042a99"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/mac/results/ENTRY-DOM.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "c94ee17dcc854ccd2a51629f104deb320e8bc031",
+        "bytes": 6446,
+        "sha256": "88638bc3caa27ec7d015a88284cc9e25bfc1128e30ae4bdf85f180abb6a81296"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/mac/results/FINAL-DOM.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "a4fbc718f121fb45b712d2cef790eca463bc66b1",
+        "bytes": 10029,
+        "sha256": "0ca7fedc0284c1d05dfd7a32a3e100b6954427797c146fa78946675df31ef7cc"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/mac/results/IDENTITY-BEFORE.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "8bf13e41fb379fc3a0d47e5d43694ddda185b888",
+        "bytes": 5609,
+        "sha256": "cc5872fe7f9b819b994ac7927c576b9ac657f1af1df9ea62dd565a20971431db"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/mac/results/KEYBOARD-EVENTS.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "daf71f524eee83a1e7e5c84fa984c46f1010fbad",
+        "bytes": 1761,
+        "sha256": "9ad84e742521f915751244b9a71e2ddb3426f7ed9521f7fd23b0691bfff1fc63"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/carriers/02-literal-annotation.png.base64",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "00d8927bfd6c8cf57db1dc81778907e1be4346b6",
+        "bytes": 132517,
+        "sha256": "a407cedb4b0e4cf04606164805c410ac34ee70aa4a4a3deb0623c51f392b7150"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/carriers/03-normalized-gaps.png.base64",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "915841854c3f3969c7ff955059449452828de583",
+        "bytes": 137937,
+        "sha256": "37e055c881812070c1f145c86a60963231c24428e83d0795a3d384c4d62d719b"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/closure/NATIVE-CUSTODY.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "c600e316ce021d868aca623a137f4135d3fdf5fa",
+        "bytes": 103187,
+        "sha256": "15bce87421d46a954e6c398c172da74a6963515f05eb757f41a1f50c1a6f0abb"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/closure/EXTERNAL-CLOSURE.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "d1498a27122facdcd88a0138b9a9266d16efd9e4",
+        "bytes": 5313,
+        "sha256": "7aeb71b0bdc65dfffe19bf6c9f6fea94abd2b0d71cbfbb9d56518b5de881efdf"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/transport/ACTUAL-OUTER-INVOCATION.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "741e05d2fbcb65dd1f93fcd09db2b402d8ae8467",
+        "bytes": 83822,
+        "sha256": "d9410174a57a6e9d3c4097d9427810641698a0963350c994d0aae35c27442a01"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/transport/READONLY-CUSTODY-INVOCATION.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "a084238715f760506fe8126e0c83c312df04c38f",
+        "bytes": 243495,
+        "sha256": "1c580c6863375da1004d67cf130523dee3e5b503f4342294d0cb579229ad9fde"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/transport/NATIVE-READ-TOOL-RECORDS.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "10ae446a0ed11020edea590a0e8347fb526b01f7",
+        "bytes": 305710,
+        "sha256": "cec429084c0e4683b098ea693f78e90a4707a267d955715d297c3d5a3713442a"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/reviews/ACTUAL-SAVED-OBSERVATIONS.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "d0312d7ceb9bd50a8a789c707ba5d35ab8a53821",
+        "bytes": 8637,
+        "sha256": "577c6f0f056765a58b125d6ec38c1b6321d1f5462910b6012d024f21c342a02f"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/reviews/PROFILE-CENSUS-DIAGNOSIS.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "0c479425c1296b2d6cb6d1f180fc89fdedfe874e",
+        "bytes": 4969,
+        "sha256": "e308f923a7189a296403880a2d98d8517f2e2b33f368fb114f6a305a49579cc5"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/FINAL-DECISION.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "7d556ba3a97c28c7c790a05eb1feb72358610f6e",
+        "bytes": 2553,
+        "sha256": "77a81a73e92dbe704938c4300acd59361f99e241e67132678f7138ec715a8229"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "ba0462af16a3cb3f2b49a18692e897c702c57200",
+        "bytes": 7918,
+        "sha256": "2f688406e0b02fb71af9d8e58bc173fc64dc2a8e61e23308c5acbb4628699c53"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/continuation/PORTABLE-CUSTODY.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "d4f487808d2cef0a4a8d4c3c38107e958d436a7a",
+        "bytes": 16392,
+        "sha256": "0286024ee293567356b3e9c72fdee57c121eea35aea545eeb159b4a957de6b43"
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/root-review/README.md",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "e57af4b8c25f5ae56d04efbdb749d63fa2618cae",
+        "bytes": 9532
+      },
+      {
+        "path": "docs/evidence/recorded-events-report-c945953fdeb7/root-review/PRODUCER-POST-TREE.json",
+        "mode": "100644",
+        "type": "blob",
+        "sha": "30588d6cf79702b0e6ceca9ecc4b7def2e64fdb6",
+        "bytes": 2603
+      }
+    ]
+  },
+  "prepublication_workflow_gate": {
+    "main": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+    "refs": 127,
+    "prospective_ref_absent": true,
+    "main_and_producer_workflow_paths_pins_equal": true,
+    "workflows": [
+      {
+        "path": ".github/workflows/camera-native.yml",
+        "sha": "931eedfb75258d616a64c18fe26bcf02d9942d9d",
+        "size": 4233
+      },
+      {
+        "path": ".github/workflows/ci.yml",
+        "sha": "1067e9944ce4836d8cd1673442687333ef7ad564",
+        "size": 3876
+      },
+      {
+        "path": ".github/workflows/release.yml",
+        "sha": "079f99fe630d135933f3c2c725f49874c2d66d1c",
+        "size": 1933
+      }
+    ],
+    "full_bodies_reread": true,
+    "trigger_assessment": "camera-native: PR matching paths, push main/master matching paths, dispatch; CI: push main/master and unfiltered PR; release: push v* tags. No create/issues/issue_comment/workflow_run hooks. One new non-main non-master source branch is nontriggering; no PR/main/tag/dispatch permitted."
+  },
+  "complete_prepublication_refs": [
+    {
+      "ref": "refs/heads/candidate/tgw-759e43-radar-runtime-fix-fcb731f",
+      "type": "commit",
+      "sha": "e0f749bcc283bbb84e560c19adccdcd4a4c1640e"
+    },
+    {
+      "ref": "refs/heads/ci/pip-cache-concurrency",
+      "type": "commit",
+      "sha": "0590ac7781b6ec79f0502f0d3b78475428073594"
+    },
+    {
+      "ref": "refs/heads/ci/sha-pin-26",
+      "type": "commit",
+      "sha": "656214093523c8bf16bc8b52cb8976beed33c6ab"
+    },
+    {
+      "ref": "refs/heads/dependabot/pip/grpcio-tools-gte-1.62-and-lt-1.85",
+      "type": "commit",
+      "sha": "376f1e01b643af454789aded17c1d581c334a6d2"
+    },
+    {
+      "ref": "refs/heads/dependabot/pip/mcap-gte-1.5.0-and-lt-2",
+      "type": "commit",
+      "sha": "364db2f0ca89ddf48a67b7cc0ff156b4f0564596"
+    },
+    {
+      "ref": "refs/heads/dependabot/pip/protobuf-gte-4.25-and-lt-8",
+      "type": "commit",
+      "sha": "1811ca199f8ad134a47ca723a374b40b5f30c976"
+    },
+    {
+      "ref": "refs/heads/diagnostic/capture84-windows-6e5752b49b6f",
+      "type": "commit",
+      "sha": "c393a331895dfe49bbe3472578712a250c4315a7"
+    },
+    {
+      "ref": "refs/heads/estate/234cae4aee53-analysis-sources-diagnostic",
+      "type": "commit",
+      "sha": "d9383231a4ddb58c968105761c607fb2c3206660"
+    },
+    {
+      "ref": "refs/heads/estate/234cae4aee53-analysis-sources-normal-evidence",
+      "type": "commit",
+      "sha": "2cfead9581d80a8afc31782773fea4f829b58448"
+    },
+    {
+      "ref": "refs/heads/estate/3dcb83a1-selected-video-20261009",
+      "type": "commit",
+      "sha": "6c6e4ef747ba34b3220db9b9a0099b4efc7f7193"
+    },
+    {
+      "ref": "refs/heads/estate/capturesuite-docs-fixes",
+      "type": "commit",
+      "sha": "c1474723babf666d7f32128c9402272ab0f1e11b"
+    },
+    {
+      "ref": "refs/heads/estate/e46e74cdc4f4-capture-offline-review-native-20261009",
+      "type": "commit",
+      "sha": "7a01817cd5c93c8afa8a5e8894eb5dece9362a29"
+    },
+    {
+      "ref": "refs/heads/estate/e46e74cdc4f4-capture-radar-artifact-identity-native-20261009",
+      "type": "commit",
+      "sha": "f43938d1f7e01e24efcf3a5b27223a76e19d848d"
+    },
+    {
+      "ref": "refs/heads/estate/e46e74cdc4f4-capture-recorded-review-video-native-20261009",
+      "type": "commit",
+      "sha": "1569184a23d99a26b79186984b3fd3b4e4592ea1"
+    },
+    {
+      "ref": "refs/heads/estate/e46e74cdc4f4-capture-video-export-identity-native-20261009",
+      "type": "commit",
+      "sha": "e29fecc46a55e1c5eb4c2a6919199d81a09512a0"
+    },
+    {
+      "ref": "refs/heads/evidence/analysis-workbench-final-6e5752b49b6f",
+      "type": "commit",
+      "sha": "21ccfd418d3c35f4a516ff5af77edffd47109eca"
+    },
+    {
+      "ref": "refs/heads/fix/diagnostic-output-preservation-7c2609b6545f",
+      "type": "commit",
+      "sha": "e0132c1930e7f3397f2e01413ed47d59fdfc458b"
+    },
+    {
+      "ref": "refs/heads/fix/nested-figure-gallery-401c5d17da79",
+      "type": "commit",
+      "sha": "837fa1fbf2c5ad471cbb3924c212fc08d0e0f0ed"
+    },
+    {
+      "ref": "refs/heads/fix/windows-atomic-deep-path-81ba1ed0179c",
+      "type": "commit",
+      "sha": "dc6c8139a31ec573ae32a4b43e0f55f51d2dcbb3"
+    },
+    {
+      "ref": "refs/heads/main",
+      "type": "commit",
+      "sha": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167"
+    },
+    {
+      "ref": "refs/heads/native/ml-target-admission-713adaab",
+      "type": "commit",
+      "sha": "6a0e91f047f93b626892d27d12a72115ca60564d"
+    },
+    {
+      "ref": "refs/heads/native/prediction-template-713adaab",
+      "type": "commit",
+      "sha": "23f245fce77c5ecba2039a65c79b8bf7c9689435"
+    },
+    {
+      "ref": "refs/heads/otama/capture-operator-ui-20261002",
+      "type": "commit",
+      "sha": "ddbd7a5b1354d49cfaf129ffc522af7070232d30"
+    },
+    {
+      "ref": "refs/heads/presence/offline-qc-demo-20260909",
+      "type": "commit",
+      "sha": "99b002a425dcafc551cae88565e4755c8fe762f8"
+    },
+    {
+      "ref": "refs/heads/presence/vcpkg-cache-candidate-20260909",
+      "type": "commit",
+      "sha": "04948d08672b81a74db140eba4315cafb7158187"
+    },
+    {
+      "ref": "refs/heads/receiving/checkpoint-final-ci-18a24bf0c281",
+      "type": "commit",
+      "sha": "889aac7ef8b283c62948525cf529f4c4bf5ee964"
+    },
+    {
+      "ref": "refs/heads/receiving/feature-table-preview-7879c2abc07f-20261008",
+      "type": "commit",
+      "sha": "1cb8b1598ac60f0185bdeeda28b6afe51af48bee"
+    },
+    {
+      "ref": "refs/heads/receiving/frame-pair-db371a37f4c8",
+      "type": "commit",
+      "sha": "59e114cfe9ab784edc9179f78756d21d8ec0150e"
+    },
+    {
+      "ref": "refs/heads/receiving/gallery-page-lifetime-f5c5ccd6",
+      "type": "commit",
+      "sha": "00590c7e849439021ef6ed644adea5b36ec51e25"
+    },
+    {
+      "ref": "refs/heads/receiving/qc-package-review-7879c2abc07f-20261008",
+      "type": "commit",
+      "sha": "e30735bd78464d63105f61fbd0c556bffd0067c7"
+    },
+    {
+      "ref": "refs/heads/receiving/qc-package-review-7879c2abc07f-current-main-20261008",
+      "type": "commit",
+      "sha": "ff8d753c1a71e94a7a1d944b2d087edfbe8d51fb"
+    },
+    {
+      "ref": "refs/heads/receiving/qc-package-review-timing-7879c2abc07f-20261008",
+      "type": "commit",
+      "sha": "97ec0c7d9a2bd11c040aad83815a8210f61dd1a3"
+    },
+    {
+      "ref": "refs/heads/receiving/video-interval-db371a37f4c8",
+      "type": "commit",
+      "sha": "9befdad4b8a6a5c420001ec9d77378115973ee53"
+    },
+    {
+      "ref": "refs/heads/review/camera-native-loader-afe225d6c6be",
+      "type": "commit",
+      "sha": "b14a0d437365bc148b1809141e366e3d39eb1569"
+    },
+    {
+      "ref": "refs/heads/review/feature-export-integration-03ac6e86ba72",
+      "type": "commit",
+      "sha": "adbf6b4ac48ed985d77f1bee1e9dc0b9cad36c65"
+    },
+    {
+      "ref": "refs/heads/review/ml-bundle-metadata-independent-03ac6e86ba72",
+      "type": "commit",
+      "sha": "95daca8abac0ecaf2458ea4489f12f4abdb7802c"
+    },
+    {
+      "ref": "refs/heads/staging/capture84-windows-6e5752b49b6f",
+      "type": "commit",
+      "sha": "e3cab7a612cecf5c049c0e60ddc8679726978fb1"
+    },
+    {
+      "ref": "refs/heads/togishi/capturesuite-mac-avfoundation-probe-7f3a",
+      "type": "commit",
+      "sha": "ccb234f654ca67383e72c1e7ddb32fd0cd4673b6"
+    },
+    {
+      "ref": "refs/heads/togishi/capturesuite-sensor-state-5d72",
+      "type": "commit",
+      "sha": "ddbd7a5b1354d49cfaf129ffc522af7070232d30"
+    },
+    {
+      "ref": "refs/heads/togishi/capturesuite-showcase-4b19",
+      "type": "commit",
+      "sha": "9372456769eb8b1a786e806a90fcfd1396d16815"
+    },
+    {
+      "ref": "refs/heads/togishi/radar-motion-seed-260911",
+      "type": "commit",
+      "sha": "0d5b6303b07e92642e19ecb7ae72ae048f741df3"
+    },
+    {
+      "ref": "refs/heads/work/analysis-history-401c5d17da79",
+      "type": "commit",
+      "sha": "c2e1d9c176ec058218e59e0cc8db07f62db1fd98"
+    },
+    {
+      "ref": "refs/heads/work/analysis-workspace-401c5d17da79",
+      "type": "commit",
+      "sha": "cc47da7c8b3bea269bd454f1f63072a46397bdf7"
+    },
+    {
+      "ref": "refs/heads/work/feature-table-export-03ac6e86ba72",
+      "type": "commit",
+      "sha": "ccc7bf599a87419b171f817f268715a94cd6b19e"
+    },
+    {
+      "ref": "refs/heads/work/qc-package-review-7879c2abc07f-20261008",
+      "type": "commit",
+      "sha": "7f5548fb12e040f45d7e1f5867d511dc33a618ac"
+    },
+    {
+      "ref": "refs/heads/work/review-events-31a349052b90",
+      "type": "commit",
+      "sha": "49dc5d68890c3220ed60747eac03eed5d51109c0"
+    },
+    {
+      "ref": "refs/heads/worker/GPT56SOL-260911-CAPTURESUITE-SHOWCASE-5A6D",
+      "type": "commit",
+      "sha": "d38b80eda3269cca58a3ee2f8d8e72a84d3925e7"
+    },
+    {
+      "ref": "refs/heads/worker/gpt56sol-cs-mac-a-20260911",
+      "type": "commit",
+      "sha": "bff43be64c17b873ea65b91b004db609d685f549"
+    },
+    {
+      "ref": "refs/heads/worker/gpt56sol-cs-mac-b-20260911",
+      "type": "commit",
+      "sha": "86f50def325f13de74d60679085ed5f643ff9b26"
+    },
+    {
+      "ref": "refs/heads/worker/gpt56sol-cs-mac-c-20260911",
+      "type": "commit",
+      "sha": "46c84672ff5967144ea20b5a4d407da28cfdca3f"
+    },
+    {
+      "ref": "refs/heads/worker/gpt56sol-cs-mac-d-20260911",
+      "type": "commit",
+      "sha": "5cbe1d16faa405195cfa9a01c27635c2684c7c45"
+    },
+    {
+      "ref": "refs/heads/worker/gpt56sol-cs-mac-e-20260911",
+      "type": "commit",
+      "sha": "7bcdb2a4cb8875532b5adb9fd0e21c751b84ec95"
+    },
+    {
+      "ref": "refs/heads/worker/ie-cursor-cs-mac-d-wire-transport-20260911",
+      "type": "commit",
+      "sha": "465c460535673f146d3886d8db645c0092b7fd1b"
+    },
+    {
+      "ref": "refs/heads/worker/ie-cursor-cs-mac-e-stub-decoder-20260911",
+      "type": "commit",
+      "sha": "72a571dfd044242a8f81efea74575e5ad0a3299d"
+    },
+    {
+      "ref": "refs/pull/1/head",
+      "type": "commit",
+      "sha": "f007a7c60c4dbccecef455c4e07de2208d4fec9b"
+    },
+    {
+      "ref": "refs/pull/12/head",
+      "type": "commit",
+      "sha": "e0f749bcc283bbb84e560c19adccdcd4a4c1640e"
+    },
+    {
+      "ref": "refs/pull/13/head",
+      "type": "commit",
+      "sha": "6aa3ca10efd256ce461c1be9fe1a795e7a0569a2"
+    },
+    {
+      "ref": "refs/pull/14/head",
+      "type": "commit",
+      "sha": "9372456769eb8b1a786e806a90fcfd1396d16815"
+    },
+    {
+      "ref": "refs/pull/16/head",
+      "type": "commit",
+      "sha": "ccb234f654ca67383e72c1e7ddb32fd0cd4673b6"
+    },
+    {
+      "ref": "refs/pull/17/head",
+      "type": "commit",
+      "sha": "bff43be64c17b873ea65b91b004db609d685f549"
+    },
+    {
+      "ref": "refs/pull/18/head",
+      "type": "commit",
+      "sha": "86f50def325f13de74d60679085ed5f643ff9b26"
+    },
+    {
+      "ref": "refs/pull/19/head",
+      "type": "commit",
+      "sha": "46c84672ff5967144ea20b5a4d407da28cfdca3f"
+    },
+    {
+      "ref": "refs/pull/2/head",
+      "type": "commit",
+      "sha": "7e6544b44b5a991a476e5ae5d5a644c620e58380"
+    },
+    {
+      "ref": "refs/pull/20/head",
+      "type": "commit",
+      "sha": "7bcdb2a4cb8875532b5adb9fd0e21c751b84ec95"
+    },
+    {
+      "ref": "refs/pull/21/head",
+      "type": "commit",
+      "sha": "72a571dfd044242a8f81efea74575e5ad0a3299d"
+    },
+    {
+      "ref": "refs/pull/22/head",
+      "type": "commit",
+      "sha": "465c460535673f146d3886d8db645c0092b7fd1b"
+    },
+    {
+      "ref": "refs/pull/23/head",
+      "type": "commit",
+      "sha": "c5854a8c5b8a33da8d9f20dd5970f6c14ad597f6"
+    },
+    {
+      "ref": "refs/pull/27/head",
+      "type": "commit",
+      "sha": "364db2f0ca89ddf48a67b7cc0ff156b4f0564596"
+    },
+    {
+      "ref": "refs/pull/27/merge",
+      "type": "commit",
+      "sha": "fb9ff5ada25fdacd8d062933c17b9e866b0cd1a8"
+    },
+    {
+      "ref": "refs/pull/28/head",
+      "type": "commit",
+      "sha": "376f1e01b643af454789aded17c1d581c334a6d2"
+    },
+    {
+      "ref": "refs/pull/28/merge",
+      "type": "commit",
+      "sha": "58553463f0bef0f09c2fc9c2ebaefc6171e31418"
+    },
+    {
+      "ref": "refs/pull/29/head",
+      "type": "commit",
+      "sha": "1811ca199f8ad134a47ca723a374b40b5f30c976"
+    },
+    {
+      "ref": "refs/pull/29/merge",
+      "type": "commit",
+      "sha": "02d61e35c014121a41ca798d0d87113c191af808"
+    },
+    {
+      "ref": "refs/pull/3/head",
+      "type": "commit",
+      "sha": "93951ae5b2afd061bbf82212e86d5a4d6f85f8f2"
+    },
+    {
+      "ref": "refs/pull/30/head",
+      "type": "commit",
+      "sha": "69e6cb7120916d48732c80db870161a04e396ee9"
+    },
+    {
+      "ref": "refs/pull/32/head",
+      "type": "commit",
+      "sha": "656214093523c8bf16bc8b52cb8976beed33c6ab"
+    },
+    {
+      "ref": "refs/pull/32/merge",
+      "type": "commit",
+      "sha": "58920b8e6d9d74e4cbc9ee960bedb2363c36de2d"
+    },
+    {
+      "ref": "refs/pull/33/head",
+      "type": "commit",
+      "sha": "0590ac7781b6ec79f0502f0d3b78475428073594"
+    },
+    {
+      "ref": "refs/pull/33/merge",
+      "type": "commit",
+      "sha": "e2a8bd9c1ab285540ddefc3d180e3c7f8e2c93d3"
+    },
+    {
+      "ref": "refs/pull/35/head",
+      "type": "commit",
+      "sha": "65b76c9909f0c28d34c9f44f07d306b924955da8"
+    },
+    {
+      "ref": "refs/pull/36/head",
+      "type": "commit",
+      "sha": "d0c8ef5d3cbe3799c8bf36c577494b2589b7679d"
+    },
+    {
+      "ref": "refs/pull/37/head",
+      "type": "commit",
+      "sha": "334bcae729f72662eb0552ed7e1f0fda022177e5"
+    },
+    {
+      "ref": "refs/pull/38/head",
+      "type": "commit",
+      "sha": "6d021b581362b64490903583d4c3d8374eff96e9"
+    },
+    {
+      "ref": "refs/pull/4/head",
+      "type": "commit",
+      "sha": "52bf80bd78d4233d8917c1a10436b3e03a7810ad"
+    },
+    {
+      "ref": "refs/pull/41/head",
+      "type": "commit",
+      "sha": "2fef3083db59463189c96057664b916f0175d454"
+    },
+    {
+      "ref": "refs/pull/42/head",
+      "type": "commit",
+      "sha": "0965ec0a12528951fba4c6703683521259e47771"
+    },
+    {
+      "ref": "refs/pull/44/head",
+      "type": "commit",
+      "sha": "db2f1c4c5442625e690dbd0702460a1ff26610dc"
+    },
+    {
+      "ref": "refs/pull/45/head",
+      "type": "commit",
+      "sha": "50b907dac557283afd51bad71f29146500b0171b"
+    },
+    {
+      "ref": "refs/pull/46/head",
+      "type": "commit",
+      "sha": "c455d1818dbb808de70326f64d6f567f5a9265d4"
+    },
+    {
+      "ref": "refs/pull/47/head",
+      "type": "commit",
+      "sha": "d0a8c455f0ca98f899e124102f29a5e7ee9e7a00"
+    },
+    {
+      "ref": "refs/pull/48/head",
+      "type": "commit",
+      "sha": "ccfa6ed488c446818eee5df9ded8311a76b888d4"
+    },
+    {
+      "ref": "refs/pull/49/head",
+      "type": "commit",
+      "sha": "798503b005d37a0aa5e9e3f3e74efce0978e645a"
+    },
+    {
+      "ref": "refs/pull/5/head",
+      "type": "commit",
+      "sha": "2703bee20d64cbe690ec6a2229b87a6c4ed5bc02"
+    },
+    {
+      "ref": "refs/pull/50/head",
+      "type": "commit",
+      "sha": "7d29dd46b10d660713ddeddbdd70ccd11dbdb182"
+    },
+    {
+      "ref": "refs/pull/52/head",
+      "type": "commit",
+      "sha": "a0a8f4b91e88af5d4be9aab5c5d69687b6f6fad6"
+    },
+    {
+      "ref": "refs/pull/58/head",
+      "type": "commit",
+      "sha": "adc370116c54b0ee12bb79912aa59d49b4ed0234"
+    },
+    {
+      "ref": "refs/pull/60/head",
+      "type": "commit",
+      "sha": "711e8ec22d462b7588e52727cf3d6524d7524c7a"
+    },
+    {
+      "ref": "refs/pull/61/head",
+      "type": "commit",
+      "sha": "79d3a4cfeaef59c98b1c8d1b441845eea93c973f"
+    },
+    {
+      "ref": "refs/pull/65/head",
+      "type": "commit",
+      "sha": "d7459fa62dd7a57d5565214e10638e055ad5877c"
+    },
+    {
+      "ref": "refs/pull/66/head",
+      "type": "commit",
+      "sha": "7c4818f66fafcf97a96aafed678ece730b457722"
+    },
+    {
+      "ref": "refs/pull/67/head",
+      "type": "commit",
+      "sha": "a484e2d2aae140f5fb7a8401580ab8d84873212e"
+    },
+    {
+      "ref": "refs/pull/68/head",
+      "type": "commit",
+      "sha": "cd1a2c4ba00f722e69c9e1bc992850bed8a5385d"
+    },
+    {
+      "ref": "refs/pull/7/head",
+      "type": "commit",
+      "sha": "5aff494d1ef627689b63cf6d49e74078571e57cf"
+    },
+    {
+      "ref": "refs/pull/71/head",
+      "type": "commit",
+      "sha": "c2e1d9c176ec058218e59e0cc8db07f62db1fd98"
+    },
+    {
+      "ref": "refs/pull/71/merge",
+      "type": "commit",
+      "sha": "f17f811366bc9915e0f001b42d9df86afc353213"
+    },
+    {
+      "ref": "refs/pull/73/head",
+      "type": "commit",
+      "sha": "8b3fed6805b199543453420a28b5283b75cf1655"
+    },
+    {
+      "ref": "refs/pull/75/head",
+      "type": "commit",
+      "sha": "86ef1035136e89d25327671544a8635fc5f3900d"
+    },
+    {
+      "ref": "refs/pull/77/head",
+      "type": "commit",
+      "sha": "f6c58963513fe2eccb97770350d83b661d4fbad1"
+    },
+    {
+      "ref": "refs/pull/79/head",
+      "type": "commit",
+      "sha": "7f5548fb12e040f45d7e1f5867d511dc33a618ac"
+    },
+    {
+      "ref": "refs/pull/79/merge",
+      "type": "commit",
+      "sha": "c062c338df1a2e11e927ab9efb189c062f0ea189"
+    },
+    {
+      "ref": "refs/pull/80/head",
+      "type": "commit",
+      "sha": "837fa1fbf2c5ad471cbb3924c212fc08d0e0f0ed"
+    },
+    {
+      "ref": "refs/pull/80/merge",
+      "type": "commit",
+      "sha": "b96db3578471a67727bd3b00370d37bb7b9bf0c8"
+    },
+    {
+      "ref": "refs/pull/81/head",
+      "type": "commit",
+      "sha": "ccc7bf599a87419b171f817f268715a94cd6b19e"
+    },
+    {
+      "ref": "refs/pull/81/merge",
+      "type": "commit",
+      "sha": "bc3835451e79588ab5b78b0fce35cf383666ba10"
+    },
+    {
+      "ref": "refs/pull/82/head",
+      "type": "commit",
+      "sha": "566cc0c23992a4e32a287e72d084a6a7dfe16694"
+    },
+    {
+      "ref": "refs/pull/83/head",
+      "type": "commit",
+      "sha": "49dc5d68890c3220ed60747eac03eed5d51109c0"
+    },
+    {
+      "ref": "refs/pull/83/merge",
+      "type": "commit",
+      "sha": "fb8e1c0b3ee92edd0f6e2103ccea98590f774edd"
+    },
+    {
+      "ref": "refs/pull/84/head",
+      "type": "commit",
+      "sha": "8c88dde13093aec070b73683606e936dc0a4d232"
+    },
+    {
+      "ref": "refs/pull/85/head",
+      "type": "commit",
+      "sha": "837fa1fbf2c5ad471cbb3924c212fc08d0e0f0ed"
+    },
+    {
+      "ref": "refs/pull/87/head",
+      "type": "commit",
+      "sha": "050f41170a656b6a6177770b3d21749ef5263b36"
+    },
+    {
+      "ref": "refs/pull/9/head",
+      "type": "commit",
+      "sha": "04948d08672b81a74db140eba4315cafb7158187"
+    },
+    {
+      "ref": "refs/pull/90/head",
+      "type": "commit",
+      "sha": "2a30559ec98aef5ce934211a321497c15be367f5"
+    },
+    {
+      "ref": "refs/pull/91/head",
+      "type": "commit",
+      "sha": "00590c7e849439021ef6ed644adea5b36ec51e25"
+    },
+    {
+      "ref": "refs/pull/91/merge",
+      "type": "commit",
+      "sha": "2aa40cf4b601beb1b0cd24295b0c08ab22568a7b"
+    },
+    {
+      "ref": "refs/pull/94/head",
+      "type": "commit",
+      "sha": "cc47da7c8b3bea269bd454f1f63072a46397bdf7"
+    },
+    {
+      "ref": "refs/pull/94/merge",
+      "type": "commit",
+      "sha": "e5c500f4cf4df83c5371b7c46f1b95d2395501fb"
+    },
+    {
+      "ref": "refs/tags/v0.1.0",
+      "type": "tag",
+      "sha": "d529e7025555d8a65da07655a3a03e46b4ea6b02"
+    }
+  ],
+  "retained_boundaries": [
+    "All original source, proposal, test, transport, native observer failure and closure records remain separate and unchanged.",
+    "No CI pass is inferred from a zero workflow-run count; no workflow is requested.",
+    "No old matrix, native Qt/Windows path, default-browser profile, Finder-open flow, mobile/print/light visual matrix or end-to-end completed Mac C4 acceptance is claimed.",
+    "Native candidate scientific or browser replay by root: zero for CaptureSuite; root receiving consists of source/artifact/tree review and two actual retained-image displays."
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "schema": "capturesuite-observer-correction-proposal-custody-v2",
+  "frozen_at": "2026-10-09 11:21:30 UTC",
+  "repository": "Jacob-Met/CaptureSuite",
+  "status": "UNEXECUTED; exact root review and native interval release required",
+  "original_map": "b4a4f33f218135a43d8b40b957416423ba5eb0a9",
+  "original_outcome": "C1-C3 PASS; C4 INCOMPLETE, unchanged; measured original closure separately retained",
+  "files": [
+    {
+      "path": "PRIMARY-SOURCE-REVIEW.json",
+      "bytes": 8975,
+      "sha256": "72ad45be756f3217927386e1890919488c85c8e07a30d8a426a14a4e5f8b4133",
+      "git_blob": "bafc52cacacbfa20648850b1db80dba0de3cb7ab",
+      "mode": "100644",
+      "availability": "actual create acknowledgement and exact readback"
+    },
+    {
+      "path": "receiver.mjs",
+      "bytes": 26043,
+      "sha256": "11f49884b83190d1eb39aadf5f2e09e26a33156450d80c3473e601dd16e9b716",
+      "git_blob": "567f3e3ea10402f4e88a431cc0fa0b49952bf2aa",
+      "mode": "100644",
+      "availability": "actual create acknowledgement and exact readback"
+    },
+    {
+      "path": "CORRECTION-CONTRACT.md",
+      "bytes": 10919,
+      "sha256": "101f0eeb2fa25cee1a9ec352202211babee3ab31bb38313d128b46cc7cea9716",
+      "git_blob": "a5174cddc11001e2d214ce74382eca3009d9281d",
+      "mode": "100644",
+      "availability": "actual create acknowledgement and exact readback"
+    },
+    {
+      "path": "REVISION.json",
+      "bytes": 5880,
+      "sha256": "3fd7b7c1d1275e6d67a6ad46372ae9904848c2b519f445fccf39abe7e57aaef7",
+      "git_blob": "6ee58ee3029f7f133bc47f2b9fe31008b1bb80d0",
+      "mode": "100644",
+      "availability": "actual create acknowledgement and exact readback"
+    },
+    {
+      "path": "EXACT-OBSERVER-DELTAS.json",
+      "bytes": 13624,
+      "sha256": "66836a1a686896879a671bafdf2cc94230e001e44cd0786a4e7dbe3df5f38ca4",
+      "git_blob": "ff5103a9b8253f3f299005399170a7f783f6cad1",
+      "mode": "100644",
+      "availability": "actual create acknowledgement and exact readback"
+    },
+    {
+      "path": "mac-outer-continuation.py",
+      "bytes": 75189,
+      "sha256": "7ff33e6255ee5e7cd11f17bc31eea6452df02c3e3765471e1bedb9ede1a601e5",
+      "git_blob": "24bed9f37bd9ec1daf6db579055667691274ff68",
+      "mode": "100644",
+      "availability": "actual create acknowledgement and exact readback"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6921,
+      "sha256": "f5bca0a0e8480c7e4d425ea1dcbf862bd27e8b3c3484fcf3829938d3584215d0",
+      "git_blob": "d8c105255034c8e69b4954a4952f6c9d1be18fcf",
+      "mode": "100644",
+      "availability": "actual create acknowledgement and exact readback"
+    },
+    {
+      "path": "drafts/receiver-unexecuted-accounting-draft.mjs",
+      "bytes": 26043,
+      "sha256": "e31c2ff65de2ffc293e5a2cb2ef5f2c70c37cc9a95f9ae477815d3b327d68f6c",
+      "git_blob": "0e1b2065cae0ed3f2bb45af94fb21ed8eeaab795",
+      "mode": "100644",
+      "availability": "actual create acknowledgement and exact readback"
+    },
+    {
+      "path": "drafts/EXACT-OBSERVER-DELTAS-unexecuted-draft.json",
+      "bytes": 12661,
+      "sha256": "6e84366e7f155213072a0b48cfa57d2a7a08a4e48d628dd74505e0b8eba61c50",
+      "git_blob": "3336d0d5f005254dd95e75ba8326ad263541c004",
+      "mode": "100644",
+      "availability": "actual create acknowledgement and exact readback"
+    }
+  ],
+  "file_count": 9,
+  "root_composition_instruction": "Keep the complete original 100-leaf packet unchanged. Add this proposal and its self map separately; do not label an unexecuted continuation as received.",
+  "no_native_execution_claim": true,
+  "retention_limit": "Unreferenced Git object custody does not anchor retention."
+}

@@ -1,0 +1,377 @@
+{
+  "schema": "capturesuite-mac-continuation-actual-outer-v2",
+  "started_at": "2026-10-09T11:27:00.704796+00:00",
+  "controller_pid": 81736,
+  "original_contract": "7fd938b783feb56b3f7bbb29ae52d60146359600",
+  "correction_contract": "a5174cddc11001e2d214ce74382eca3009d9281d",
+  "original_map": "b4a4f33f218135a43d8b40b957416423ba5eb0a9",
+  "original_C4": "INCOMPLETE, unchanged",
+  "node_child_started": true,
+  "guards": [
+    {
+      "label": "before-exclusive-continuation-materialization",
+      "time_utc": "2026-10-09T11:27:00.708036+00:00",
+      "disk_free_bytes": 2343940096,
+      "conservative_memory_bytes": 11033903104,
+      "combined_owned": {
+        "static": {
+          "bytes": 250190,
+          "allocated_bytes": 278528
+        },
+        "browser": {
+          "bytes": 8838363,
+          "allocated_bytes": 3342336
+        }
+      },
+      "disk_floor_bytes": 268435456,
+      "memory_floor_bytes": 2147483648,
+      "combined_static_cap_bytes": 2097152,
+      "combined_browser_cap_bytes": 100663296,
+      "admitted": true
+    },
+    {
+      "label": "before-one-owned-node-browser-controller",
+      "time_utc": "2026-10-09T11:27:00.740279+00:00",
+      "disk_free_bytes": 2343772160,
+      "conservative_memory_bytes": 11037949952,
+      "combined_owned": {
+        "static": {
+          "bytes": 299942,
+          "allocated_bytes": 335872
+        },
+        "browser": {
+          "bytes": 8838363,
+          "allocated_bytes": 3342336
+        }
+      },
+      "disk_floor_bytes": 268435456,
+      "memory_floor_bytes": 2147483648,
+      "combined_static_cap_bytes": 2097152,
+      "combined_browser_cap_bytes": 100663296,
+      "admitted": true
+    }
+  ],
+  "error": {
+    "type": "FileNotFoundError",
+    "message": "[Errno 2] No such file or directory: '/Users/me/Developer/capturesuite-recorded-report-continuation-c945953fdeb7/browser/profile/Default/.com.google.Chrome.TransportSecurity.naJaws'",
+    "traceback": "Traceback (most recent call last):\n  File \"<string>\", line 118, in <module>\n    a=sizes()\n  File \"<string>\", line 28, in sizes\n    'browser':add(tree_size(ROOT/'browser'),tree_size(ORIGINAL/'browser'))}\n                  ~~~~~~~~~^^^^^^^^^^^^^^^^\n  File \"<string>\", line 22, in tree_size\n    s=p.stat()\n  File \"/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/_local.py\", line 515, in stat\n    return os.stat(self, follow_symlinks=follow_symlinks)\n           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nFileNotFoundError: [Errno 2] No such file or directory: '/Users/me/Developer/capturesuite-recorded-report-continuation-c945953fdeb7/browser/profile/Default/.com.google.Chrome.TransportSecurity.naJaws'\n"
+  },
+  "accepted": false,
+  "original_before": {
+    "AUTHORITY.json": {
+      "bytes": 5857,
+      "sha256": "ed40a64216c4f99129064440ba5a29b7ce82b25f95c868c4a4d39a18968f6d1c",
+      "git_blob": "03a3eadfd0e0c0e1cdd5fee918a09d0405f5cdd3",
+      "mode": "0444",
+      "mtime_ns": "1791542984925747666"
+    },
+    "CONTRACT.md": {
+      "bytes": 15189,
+      "sha256": "d40f04be3cc899fda74355c1f1d685479df5d83272fc4f9542de01b3cecfdd1a",
+      "git_blob": "7fd938b783feb56b3f7bbb29ae52d60146359600",
+      "mode": "0444",
+      "mtime_ns": "1791542984925396870"
+    },
+    "OUTER-EXECUTION.json": {
+      "bytes": 5905,
+      "sha256": "a084e737ed0dc4274ee48250f672726cf7c6cafd836d49ee84e5896e5d778943",
+      "git_blob": "11c3d921b987edab722419dd262213674a92959d",
+      "mode": "0444",
+      "mtime_ns": "1791542995969633257"
+    },
+    "SOURCE-PREPARATION.json": {
+      "bytes": 2589,
+      "sha256": "1459e12320f64d2c670a2536b102c08528e168f664e8f6db9a818d18eafb3abe",
+      "git_blob": "1b622714113a081981ee9a2eb3e42519f73c35ea",
+      "mode": "0444",
+      "mtime_ns": "1791542984925921668"
+    },
+    "node.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mode": "0444",
+      "mtime_ns": "1791542984928283153"
+    },
+    "node.stdout.txt": {
+      "bytes": 1075,
+      "sha256": "f93845d3344f93dfe9a5775875a16d009520d01884c00cd9d7621eb1607548d9",
+      "git_blob": "d7a9b8009d9a774aca33696752a6a9eda89a2ebf",
+      "mode": "0444",
+      "mtime_ns": "1791542995914117713"
+    },
+    "receiver.mjs": {
+      "bytes": 21486,
+      "sha256": "11be50381986db820bde0f55f3475451b4d526cecbcb3b5db0f9f73ac5184f38",
+      "git_blob": "356784a70e46e532bb3a3f938475fd6331aa0924",
+      "mode": "0444",
+      "mtime_ns": "1791542984925575497"
+    },
+    "recorded-events.html": {
+      "bytes": 11901,
+      "sha256": "f6768d7d8d30782f6ca400ac9b9253254f9f5d483825587c31dafbe2c925e16f",
+      "git_blob": "fac1f8c93b74160f1ee2b2675de8232bd120e0ce",
+      "mode": "0444",
+      "mtime_ns": "1791542984925182576"
+    },
+    "results/01-overview.png": {
+      "bytes": 155902,
+      "sha256": "0d37fc928a8e89b55ca274a6463c41aa562ce18f34591935d14ba1464726bbf8",
+      "git_blob": "811cba88860664adda9bc5578a69a5b3052ffcef",
+      "mode": "0600",
+      "mtime_ns": "1791542985643459029"
+    },
+    "results/ENTRY-DOM.json": {
+      "bytes": 6446,
+      "sha256": "88638bc3caa27ec7d015a88284cc9e25bfc1128e30ae4bdf85f180abb6a81296",
+      "git_blob": "c94ee17dcc854ccd2a51629f104deb320e8bc031",
+      "mode": "0600",
+      "mtime_ns": "1791542985552831880"
+    },
+    "results/FAILURE-IDENTITY-AFTER.json": {
+      "bytes": 1842,
+      "sha256": "4750f1782f22842da17ce755ee52551fc531f55d9406b3c53eccd5ddd29f9c05",
+      "git_blob": "54f245ce1bdbec08642dad77fb18cce4d7f3ba28",
+      "mode": "0600",
+      "mtime_ns": "1791542995910981511"
+    },
+    "results/IDENTITY-BEFORE.json": {
+      "bytes": 1842,
+      "sha256": "4750f1782f22842da17ce755ee52551fc531f55d9406b3c53eccd5ddd29f9c05",
+      "git_blob": "54f245ce1bdbec08642dad77fb18cce4d7f3ba28",
+      "mode": "0600",
+      "mtime_ns": "1791542984999719086"
+    },
+    "results/MAC-RECEIPT.json": {
+      "bytes": 17364,
+      "sha256": "66e6f184f95e44b17a2339a48556956fb3e1f73b4fada0435dcc2f78bd018ef5",
+      "git_blob": "908f5694002113bf99c13cd526a89f458ac49a3c",
+      "mode": "0600",
+      "mtime_ns": "1791542995913817418"
+    },
+    "results/chrome.stderr.txt": {
+      "bytes": 2792,
+      "sha256": "dfde1fa2836acac42ceadda755fde8abfbcad0912aa9ca78fd0958a69a770fa4",
+      "git_blob": "3e3965db0fc602ee41fd5a4822c4a434b93d1a02",
+      "mode": "0600",
+      "mtime_ns": "1791542995909917374"
+    },
+    "results/chrome.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mode": "0600",
+      "mtime_ns": "1791542995909756372"
+    }
+  },
+  "runtime_before": {
+    "python": {
+      "path": "/Library/Frameworks/Python.framework/Versions/3.13/bin/python3.13",
+      "bytes": 119600,
+      "sha256": "406d73d07e33e164d986326fde00b85c2b8f4ed2c33278142c8431588fe2df14",
+      "git_blob": "6690f22e3a54a2af9c3b6c71f44c9099d6ccfa6b",
+      "mode": "0775",
+      "mtime_ns": "1755192800000000000"
+    },
+    "node": {
+      "path": "/opt/homebrew/Cellar/node/26.3.0/bin/node",
+      "bytes": 68384,
+      "sha256": "56694c81b093cc8da273fa017cf91765b3653e5f64f16727976ffaa87b2b6b31",
+      "git_blob": "1067f8376e17ad63e75cbe013e4458b8408d9207",
+      "mode": "0555",
+      "mtime_ns": "1781043664290977610"
+    },
+    "chrome": {
+      "path": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+      "bytes": 367696,
+      "sha256": "764f5f6ee523e6d52caf6e56ce7501e932c4f6e52d06d267887cb7ea70350102",
+      "git_blob": "f6270c807b9816448def01a331bdb08d9f7349f6",
+      "mode": "0775",
+      "mtime_ns": "1791502133198545615"
+    }
+  },
+  "initial_inputs": {
+    "receiver.mjs": {
+      "bytes": 26043,
+      "sha256": "11f49884b83190d1eb39aadf5f2e09e26a33156450d80c3473e601dd16e9b716",
+      "git_blob": "567f3e3ea10402f4e88a431cc0fa0b49952bf2aa",
+      "mode": "0444",
+      "mtime_ns": "1791545220726740421"
+    },
+    "CORRECTION-CONTRACT.md": {
+      "bytes": 10919,
+      "sha256": "101f0eeb2fa25cee1a9ec352202211babee3ab31bb38313d128b46cc7cea9716",
+      "git_blob": "a5174cddc11001e2d214ce74382eca3009d9281d",
+      "mode": "0444",
+      "mtime_ns": "1791545220730344578"
+    },
+    "REVISION.json": {
+      "bytes": 5880,
+      "sha256": "3fd7b7c1d1275e6d67a6ad46372ae9904848c2b519f445fccf39abe7e57aaef7",
+      "git_blob": "6ee58ee3029f7f133bc47f2b9fe31008b1bb80d0",
+      "mode": "0444",
+      "mtime_ns": "1791545220734047070"
+    }
+  },
+  "protected_inputs_before": {
+    "receiver.mjs": {
+      "bytes": 26043,
+      "sha256": "11f49884b83190d1eb39aadf5f2e09e26a33156450d80c3473e601dd16e9b716",
+      "git_blob": "567f3e3ea10402f4e88a431cc0fa0b49952bf2aa",
+      "mode": "0444",
+      "mtime_ns": "1791545220726740421"
+    },
+    "CORRECTION-CONTRACT.md": {
+      "bytes": 10919,
+      "sha256": "101f0eeb2fa25cee1a9ec352202211babee3ab31bb38313d128b46cc7cea9716",
+      "git_blob": "a5174cddc11001e2d214ce74382eca3009d9281d",
+      "mode": "0444",
+      "mtime_ns": "1791545220730344578"
+    },
+    "REVISION.json": {
+      "bytes": 5880,
+      "sha256": "3fd7b7c1d1275e6d67a6ad46372ae9904848c2b519f445fccf39abe7e57aaef7",
+      "git_blob": "6ee58ee3029f7f133bc47f2b9fe31008b1bb80d0",
+      "mode": "0444",
+      "mtime_ns": "1791545220734047070"
+    },
+    "SOURCE-PREPARATION.json": {
+      "bytes": 6910,
+      "sha256": "5bf4e4e85df6bb48567b8aeb2c6f9657b7a7f0d61bdafa19411744556da67792",
+      "git_blob": "e4c5d9c80a49d0a509d74d61566d4a567dbb93dc",
+      "mode": "0444",
+      "mtime_ns": "1791545220737499559"
+    }
+  },
+  "argv": [
+    "/opt/homebrew/bin/node",
+    "/Users/me/Developer/capturesuite-recorded-report-continuation-c945953fdeb7/receiver.mjs"
+  ],
+  "cwd": "/tmp",
+  "node_pid": 81778,
+  "owned_termination_reason": "exception closure",
+  "node_wait_exit": -15,
+  "node_poll_exit": -15,
+  "node_reaped_by_wait": true,
+  "original_after_failure": {
+    "AUTHORITY.json": {
+      "bytes": 5857,
+      "sha256": "ed40a64216c4f99129064440ba5a29b7ce82b25f95c868c4a4d39a18968f6d1c",
+      "git_blob": "03a3eadfd0e0c0e1cdd5fee918a09d0405f5cdd3",
+      "mode": "0444",
+      "mtime_ns": "1791542984925747666"
+    },
+    "CONTRACT.md": {
+      "bytes": 15189,
+      "sha256": "d40f04be3cc899fda74355c1f1d685479df5d83272fc4f9542de01b3cecfdd1a",
+      "git_blob": "7fd938b783feb56b3f7bbb29ae52d60146359600",
+      "mode": "0444",
+      "mtime_ns": "1791542984925396870"
+    },
+    "OUTER-EXECUTION.json": {
+      "bytes": 5905,
+      "sha256": "a084e737ed0dc4274ee48250f672726cf7c6cafd836d49ee84e5896e5d778943",
+      "git_blob": "11c3d921b987edab722419dd262213674a92959d",
+      "mode": "0444",
+      "mtime_ns": "1791542995969633257"
+    },
+    "SOURCE-PREPARATION.json": {
+      "bytes": 2589,
+      "sha256": "1459e12320f64d2c670a2536b102c08528e168f664e8f6db9a818d18eafb3abe",
+      "git_blob": "1b622714113a081981ee9a2eb3e42519f73c35ea",
+      "mode": "0444",
+      "mtime_ns": "1791542984925921668"
+    },
+    "node.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mode": "0444",
+      "mtime_ns": "1791542984928283153"
+    },
+    "node.stdout.txt": {
+      "bytes": 1075,
+      "sha256": "f93845d3344f93dfe9a5775875a16d009520d01884c00cd9d7621eb1607548d9",
+      "git_blob": "d7a9b8009d9a774aca33696752a6a9eda89a2ebf",
+      "mode": "0444",
+      "mtime_ns": "1791542995914117713"
+    },
+    "receiver.mjs": {
+      "bytes": 21486,
+      "sha256": "11be50381986db820bde0f55f3475451b4d526cecbcb3b5db0f9f73ac5184f38",
+      "git_blob": "356784a70e46e532bb3a3f938475fd6331aa0924",
+      "mode": "0444",
+      "mtime_ns": "1791542984925575497"
+    },
+    "recorded-events.html": {
+      "bytes": 11901,
+      "sha256": "f6768d7d8d30782f6ca400ac9b9253254f9f5d483825587c31dafbe2c925e16f",
+      "git_blob": "fac1f8c93b74160f1ee2b2675de8232bd120e0ce",
+      "mode": "0444",
+      "mtime_ns": "1791542984925182576"
+    },
+    "results/01-overview.png": {
+      "bytes": 155902,
+      "sha256": "0d37fc928a8e89b55ca274a6463c41aa562ce18f34591935d14ba1464726bbf8",
+      "git_blob": "811cba88860664adda9bc5578a69a5b3052ffcef",
+      "mode": "0600",
+      "mtime_ns": "1791542985643459029"
+    },
+    "results/ENTRY-DOM.json": {
+      "bytes": 6446,
+      "sha256": "88638bc3caa27ec7d015a88284cc9e25bfc1128e30ae4bdf85f180abb6a81296",
+      "git_blob": "c94ee17dcc854ccd2a51629f104deb320e8bc031",
+      "mode": "0600",
+      "mtime_ns": "1791542985552831880"
+    },
+    "results/FAILURE-IDENTITY-AFTER.json": {
+      "bytes": 1842,
+      "sha256": "4750f1782f22842da17ce755ee52551fc531f55d9406b3c53eccd5ddd29f9c05",
+      "git_blob": "54f245ce1bdbec08642dad77fb18cce4d7f3ba28",
+      "mode": "0600",
+      "mtime_ns": "1791542995910981511"
+    },
+    "results/IDENTITY-BEFORE.json": {
+      "bytes": 1842,
+      "sha256": "4750f1782f22842da17ce755ee52551fc531f55d9406b3c53eccd5ddd29f9c05",
+      "git_blob": "54f245ce1bdbec08642dad77fb18cce4d7f3ba28",
+      "mode": "0600",
+      "mtime_ns": "1791542984999719086"
+    },
+    "results/MAC-RECEIPT.json": {
+      "bytes": 17364,
+      "sha256": "66e6f184f95e44b17a2339a48556956fb3e1f73b4fada0435dcc2f78bd018ef5",
+      "git_blob": "908f5694002113bf99c13cd526a89f458ac49a3c",
+      "mode": "0600",
+      "mtime_ns": "1791542995913817418"
+    },
+    "results/chrome.stderr.txt": {
+      "bytes": 2792,
+      "sha256": "dfde1fa2836acac42ceadda755fde8abfbcad0912aa9ca78fd0958a69a770fa4",
+      "git_blob": "3e3965db0fc602ee41fd5a4822c4a434b93d1a02",
+      "mode": "0600",
+      "mtime_ns": "1791542995909917374"
+    },
+    "results/chrome.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mode": "0600",
+      "mtime_ns": "1791542995909756372"
+    }
+  },
+  "all_original_files_unchanged": true,
+  "finished_at": "2026-10-09T11:27:01.913124+00:00",
+  "scope": "Separately reviewed observer continuation of the same original physical report; no copy, regeneration, candidate import or original-result relabeling.",
+  "outer_process_exit_pending_until_external_tool_closure": true,
+  "combined_owned_at_close": {
+    "static": {
+      "bytes": 526625,
+      "allocated_bytes": 577536
+    },
+    "browser": {
+      "bytes": 17404904,
+      "allocated_bytes": 6352896
+    }
+  }
+}

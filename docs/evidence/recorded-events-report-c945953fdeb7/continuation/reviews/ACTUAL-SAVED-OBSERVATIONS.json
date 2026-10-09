@@ -1,0 +1,206 @@
+{
+  "schema": "capturesuite-continuation-independent-saved-artifact-review-v1",
+  "original_status": "Original C4 INCOMPLETE, unchanged. Its full 100-leaf custody remains b4a4f33f218135a43d8b40b957416423ba5eb0a9.",
+  "continuation_status": "INCOMPLETE: actual outer exit 1, Node terminated/reaped -15; final receiver acceptance and logs were not produced.",
+  "review_method": "Read the actual saved files and two original PNGs after execution ended. No additional actuation, renderer run or browser launch.",
+  "corrected_enter": {
+    "source": "567f3e3ea10402f4e88a431cc0fa0b49952bf2aa",
+    "saved_events": "daf71f524eee83a1e7e5c84fa984c46f1010fbad",
+    "full_records": [
+      {
+        "type": "click",
+        "isTrusted": true,
+        "key": null,
+        "code": null,
+        "keyCode": null,
+        "charCode": null,
+        "which": 1,
+        "repeat": null,
+        "defaultPreventedAtCapture": false,
+        "detail": 1,
+        "target": "SUMMARY",
+        "summaryFocused": true,
+        "openAtCapture": true
+      },
+      {
+        "type": "keydown",
+        "isTrusted": true,
+        "key": "Enter",
+        "code": "Enter",
+        "keyCode": 13,
+        "charCode": 0,
+        "which": 13,
+        "repeat": false,
+        "defaultPreventedAtCapture": false,
+        "detail": 0,
+        "target": "SUMMARY",
+        "summaryFocused": true,
+        "openAtCapture": false
+      },
+      {
+        "type": "keypress",
+        "isTrusted": true,
+        "key": "Enter",
+        "code": "Enter",
+        "keyCode": 13,
+        "charCode": 13,
+        "which": 13,
+        "repeat": false,
+        "defaultPreventedAtCapture": false,
+        "detail": 0,
+        "target": "SUMMARY",
+        "summaryFocused": true,
+        "openAtCapture": false
+      },
+      {
+        "type": "click",
+        "isTrusted": true,
+        "key": null,
+        "code": null,
+        "keyCode": null,
+        "charCode": null,
+        "which": 1,
+        "repeat": null,
+        "defaultPreventedAtCapture": false,
+        "detail": 0,
+        "target": "SUMMARY",
+        "summaryFocused": true,
+        "openAtCapture": false
+      },
+      {
+        "type": "keyup",
+        "isTrusted": true,
+        "key": "Enter",
+        "code": "Enter",
+        "keyCode": 13,
+        "charCode": 0,
+        "which": 13,
+        "repeat": false,
+        "defaultPreventedAtCapture": false,
+        "detail": 0,
+        "target": "SUMMARY",
+        "summaryFocused": true,
+        "openAtCapture": true
+      }
+    ],
+    "overflow": false,
+    "final_open": true,
+    "final_focused": true,
+    "verified": true,
+    "measured_state_transition": "Trusted keydown and keypress recorded openAtCapture=false; trusted keyup recorded openAtCapture=true. Pointer click was trusted, summary focused. No toggle event was present in the saved five-event list; none is invented.",
+    "interpretation": "The corrected event sequence actually reopened the native disclosure. This does not retroactively establish the exact unrecorded event sequence in the original failed attempt."
+  },
+  "final_saved_dom": {
+    "git_blob": "a4fbc718f121fb45b712d2cef790eca463bc66b1",
+    "url": "file:///Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7/recorded-events.html#gaps",
+    "all_eight_json_strings_exact": true,
+    "per_record": [
+      {
+        "kind": "checkpoints",
+        "index": "0",
+        "exact_json_text": true
+      },
+      {
+        "kind": "checkpoints",
+        "index": "1",
+        "exact_json_text": true
+      },
+      {
+        "kind": "annotations",
+        "index": "0",
+        "exact_json_text": true
+      },
+      {
+        "kind": "annotations",
+        "index": "1",
+        "exact_json_text": true
+      },
+      {
+        "kind": "sync-anchors",
+        "index": "0",
+        "exact_json_text": true
+      },
+      {
+        "kind": "sync-anchors",
+        "index": "1",
+        "exact_json_text": true
+      },
+      {
+        "kind": "gaps",
+        "index": "0",
+        "exact_json_text": true
+      },
+      {
+        "kind": "gaps",
+        "index": "1",
+        "exact_json_text": true
+      }
+    ],
+    "sentinel_type": "undefined",
+    "script_nodes": 0,
+    "arithmetic_scope": "Only exact raw JSON text strings compared in JavaScript. No large integer parsed as a JavaScript Number; original Python 3.12 raw numerical/type authority unchanged.",
+    "sync_and_gaps_scope": "The frozen sequential receiver reaches and waits for #sync-anchors, compares both Sync record strings, then reaches #gaps and compares both gaps before saving the gap screenshot and FINAL-DOM. Those later artifacts establish that this executed path was reached. The final URL directly records #gaps; the per-action receipt that would separately record each pointer action was not written."
+  },
+  "visual_inspection": {
+    "exact_original_pngs_displayed": true,
+    "rendering_method": "RDC read_file returned the existing native PNG image blocks; no image regeneration or modification.",
+    "annotation": {
+      "git_blob": "a4582d1882c8ff13475d9d1d770466e204a5308b",
+      "bytes": 99387,
+      "sha256": "9238ff05652953f0e3253e383d7e959d4ae7c7723468343e6222708717c6f89b",
+      "findings": "Complete first annotation visible in an expanded native details panel, with focus outline on its summary. Literal script-looking text, escaped CR/LF, café/Chinese character, nested arrays and the 9007199254740993 integer spelling are readable. The second annotation is also fully visible. Reader-order and two-returned labeling are clear. Dark palette, spacing and monospaced JSON are legible; neighboring sections are naturally clipped at viewport boundaries."
+    },
+    "gaps": {
+      "git_blob": "6173502bdb071ce46ea2e7d43949ff2b1611f856",
+      "bytes": 103451,
+      "sha256": "62d5d69f72457bf4f868a0367fb94f5bc16f5068b5255ea94424fec059042a99",
+      "findings": "Gap-projection explanation explicitly describes normalized seven-field GapSummary values and distinguishes null end, closed flag and end value. Both full gap objects are visible, including literal Unicode source IDs, the large integer end/count values and the second open gap's null end. Returned count/order and standalone-file footer are legible."
+    },
+    "limits": "These are two actual 1280x1000 dark-mode viewports. No new overview, light/print/mobile matrix or default-browser/Finder display is claimed."
+  },
+  "incomplete_evidence": {
+    "missing_files": [
+      "results/MAC-RECEIPT.json",
+      "results/IDENTITY-AFTER.json",
+      "results/chrome.stdout.txt",
+      "results/chrome.stderr.txt"
+    ],
+    "node_stdout_bytes": 0,
+    "node_stderr_bytes": 0,
+    "final_node_receipt_absent": true,
+    "chrome_streams_absent": true,
+    "per_action_receipt_absent": true,
+    "exception_console_network_counts": "Not retained for this continuation; the in-memory final receipt was lost on SIGTERM. No zero-exception, zero-console, zero-resource-failure or zero-background-network claim.",
+    "chrome_direct_exit_status": "Not retained. Later owned PID/group absence is measured separately; it does not supply a direct Chrome exit code.",
+    "native_initial_dom_identity": "ENTRY-DOM.json is byte-identical to original c94ee17dcc854ccd2a51629f104deb320e8bc031, but this is an initial snapshot, not a final event log."
+  },
+  "preservation_and_external_closure": {
+    "actual_outer_pid": 81736,
+    "external_exit_code": 1,
+    "external_tool_runtime_seconds": 1.29,
+    "node_pid": 81778,
+    "actual_wait_exit": -15,
+    "actual_poll_exit": -15,
+    "reaped_by_wait": true,
+    "readonly_collector_pid": 84011,
+    "collector_external_exit": 0,
+    "collector_tool_runtime_seconds": 0.12,
+    "collector_observed_at": "2026-10-09T11:30:37.294580+00:00",
+    "observed_owned_pid_group_absent": true,
+    "original_15_exact": true,
+    "new_four_inputs_exact": true,
+    "runtime_exact": true,
+    "new_files_stable": true,
+    "original_files_stable": true,
+    "combined_static": {
+      "logical": 541163,
+      "allocated": 593920
+    },
+    "capacity_at_readonly_collection": {
+      "disk_free_bytes": 2328690688,
+      "conservative_memory_bytes": 11193909248
+    },
+    "scope": "Only original owned PIDs 81736/81778, group 81778 and the exact private Chrome-profile command path were selected from ps. No universal PID absence or unrelated process control claimed."
+  },
+  "disposition": "Publishable evidence of the successful specific functional observations with both actual failed overall attempts and precise missing acceptance/log evidence retained. No third browser run or product-source change is proposed."
+}

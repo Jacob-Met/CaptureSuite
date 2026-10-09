@@ -1,0 +1,57 @@
+{
+  "schema": "capturesuite-recorded-events-actual-final-tree-verification-v1",
+  "verified_at": "2026-10-09 11:11:38 UTC",
+  "parent_commit": "c0437668fbc9d7ce6292c7b733f91dc8b2fd94f5",
+  "parent_tree": "4bced1cedbcfa6cccc59fafa9ca7771da5781c8c",
+  "final_tree": "5d8da2d62b1975357fd2d93c5fc849550d92db18",
+  "parent_leaves": 1296,
+  "final_leaves": 1420,
+  "untruncated": true,
+  "inherited_exact": 1295,
+  "inherited_deleted": 0,
+  "only_inherited_change": [
+    {
+      "path": "docs/design/research/PROGRESS.md",
+      "before": "14665f9d645f9575243da1cba94ffbc3dbcdda5f",
+      "after": "7efc7ccd9f7b5cb6daffdf7c8ddf8a8a20316b0b",
+      "mode": "100644"
+    }
+  ],
+  "new_leaves": 124,
+  "all_125_declared_deltas_exact": true,
+  "full_expected_leaf_manifest_sha256": "5267e5c86ea817e7ef8ce90c02a928a8cb9a94ce9fdf2d44ae42b6284810b520",
+  "full_actual_leaf_manifest_sha256": "5267e5c86ea817e7ef8ce90c02a928a8cb9a94ce9fdf2d44ae42b6284810b520",
+  "parent_leaf_manifest_sha256": "ec04ade2b119ea09f28e503093adcb1053d9a7c895d516bfdccd954949eda158",
+  "independent_original_100_files_exact": true,
+  "final_custody": {
+    "path": "docs/evidence/recorded-events-report-c945953fdeb7/FINAL-CUSTODY.json",
+    "mode": "100644",
+    "type": "blob",
+    "git_blob": "0776205527fba3601bafc5ecc03275dcfdaa5b1f",
+    "bytes": 71222,
+    "sha256": "7650639c3fdf978e293738a5aa6a38753b02727cc8797a197f9e95238f9d5664",
+    "uploaded_and_exact_read_back": true
+  },
+  "source_preservation": {
+    "path": "docs/evidence/recorded-events-report-c945953fdeb7/SOURCE-PRESERVATION.json",
+    "mode": "100644",
+    "type": "blob",
+    "git_blob": "ae1ca1cd44b935b65a3d9e0d00b04e6ca03f6456",
+    "bytes": 48031,
+    "sha256": "3d236e52689df7b606d38f4a8c8b08aa2c7328638c416d360789c714d3cf67fa",
+    "origin": "complete content-map preservation proof with explicit two-metadata exclusion",
+    "uploaded_and_exact_read_back": true
+  },
+  "failures": [],
+  "scope": "Read-only complete-tree/byte identity comparison after inert tree creation. No product/test/browser or ref mutation.",
+  "actual_commit": {
+    "sha": "c80e51aca1ee4490f3c30f3c57ec970d9e847edd",
+    "tree": "5d8da2d62b1975357fd2d93c5fc849550d92db18",
+    "parents": [
+      "c0437668fbc9d7ce6292c7b733f91dc8b2fd94f5"
+    ],
+    "message_exact": true
+  },
+  "commit_readback_complete": true,
+  "retention": "This post-creation verification is a supplemental actual raw blob supplied to root for review/anchoring. The candidate already contains the complete SOURCE-PRESERVATION/FINAL-CUSTODY records and all 100 original independent files. No ref was mutated."
+}

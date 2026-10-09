@@ -1,0 +1,54 @@
+{
+  "schema": "capturesuite-continuation-final-disposition-v1",
+  "completed_at": "2026-10-09 11:37:34 UTC",
+  "original_contract": "7fd938b783feb56b3f7bbb29ae52d60146359600",
+  "original_100_leaf_map": "b4a4f33f218135a43d8b40b957416423ba5eb0a9",
+  "original_status": "C1-C3 PASS; original Mac C4 INCOMPLETE, unchanged",
+  "continuation_contract": "a5174cddc11001e2d214ce74382eca3009d9281d",
+  "root_admission": "8348a9868bbbbb24e129265d0ab579f9864d489f",
+  "continuation_status": "INCOMPLETE",
+  "overall_attempt_accepted": false,
+  "successful_saved_observations": [
+    "Trusted complete Enter keydown/keypress(charCode13)/keyup and actual native disclosure reopening",
+    "Eight complete exact raw JSON text strings in saved FINAL-DOM, final URL #gaps",
+    "Actual annotation and normalized-gap screenshots, both original PNGs visually inspected",
+    "Executed frozen control-flow path reached Sync/Gaps comparison and later saved artifacts; no separate action receipt survived"
+  ],
+  "missing_normal_completion_files": [
+    "results/MAC-RECEIPT.json",
+    "results/IDENTITY-AFTER.json",
+    "results/chrome.stdout.txt",
+    "results/chrome.stderr.txt"
+  ],
+  "not_claimed": [
+    "A final Node/browser acceptance receipt",
+    "Zero runtime, console, resource or Chrome OS errors for this continuation",
+    "A direct Chrome exit code",
+    "Original C4 pass or an all-groups continuation pass",
+    "A replay of observed Enter/Sync/Gaps/images"
+  ],
+  "failure": {
+    "outer_git": "11f4e01ec4f1d3c33af757cd6e6f9231c742a76b",
+    "type": "FileNotFoundError",
+    "site": "Python live-profile census stat of disappearing owned Chrome TransportSecurity temporary file",
+    "outer_pid": 81736,
+    "outer_exit": 1,
+    "node_pid": 81778,
+    "node_wait_exit": -15,
+    "node_reaped": true
+  },
+  "measured_separate_closure": {
+    "native_custody": "c600e316ce021d868aca623a137f4135d3fdf5fa",
+    "external_record": "d1498a27122facdcd88a0138b9a9266d16efd9e4",
+    "collector_pid": 84011,
+    "collector_exit": 0,
+    "owned_pid_group_snapshot": [],
+    "original_15_exact": true,
+    "new_four_protected_inputs_exact": true,
+    "runtime_exact": true
+  },
+  "functional_review": "d0312d7ceb9bd50a8a789c707ba5d35ab8a53821",
+  "source_only_diagnosis": "0c479425c1296b2d6cb6d1f180fc89fdedfe874e",
+  "mac_interval": "Released after measured closure; zero native calls after read-only custody collection.",
+  "source_ref_status": "No product source or shared refs changed by this receiving. Unreferenced object custody is not a retention anchor."
+}

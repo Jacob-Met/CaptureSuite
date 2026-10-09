@@ -1,0 +1,431 @@
+{
+  "schema": "capturesuite-independent-attempted-continuation-portable-custody-v1",
+  "repository": "Jacob-Met/CaptureSuite",
+  "completed_at": "2026-10-09 11:38:08 UTC",
+  "disposition": "INCOMPLETE. Actual saved Enter/text/image observations succeeded; final Node acceptance and Chrome logs were not produced. No future browser replay proposed.",
+  "original_100_leaf_packet": {
+    "map": "b4a4f33f218135a43d8b40b957416423ba5eb0a9",
+    "leaves": 100,
+    "preserve_every_path_and_object": true,
+    "original_C4": "INCOMPLETE, unchanged"
+  },
+  "proposal": "85b255f4907e50d1c420a8476c78a953ecc616a6",
+  "root_admission": "8348a9868bbbbb24e129265d0ab579f9864d489f",
+  "file_count_excluding_self": 36,
+  "file_count_including_self": 37,
+  "logical_bytes_excluding_self": 1538039,
+  "unique_blob_count_excluding_self": 32,
+  "files": [
+    {
+      "path": "proposal/PRIMARY-SOURCE-REVIEW.json",
+      "bytes": 8975,
+      "sha256": "72ad45be756f3217927386e1890919488c85c8e07a30d8a426a14a4e5f8b4133",
+      "git_blob": "bafc52cacacbfa20648850b1db80dba0de3cb7ab",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback"
+    },
+    {
+      "path": "proposal/receiver.mjs",
+      "bytes": 26043,
+      "sha256": "11f49884b83190d1eb39aadf5f2e09e26a33156450d80c3473e601dd16e9b716",
+      "git_blob": "567f3e3ea10402f4e88a431cc0fa0b49952bf2aa",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback"
+    },
+    {
+      "path": "proposal/CORRECTION-CONTRACT.md",
+      "bytes": 10919,
+      "sha256": "101f0eeb2fa25cee1a9ec352202211babee3ab31bb38313d128b46cc7cea9716",
+      "git_blob": "a5174cddc11001e2d214ce74382eca3009d9281d",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback"
+    },
+    {
+      "path": "proposal/REVISION.json",
+      "bytes": 5880,
+      "sha256": "3fd7b7c1d1275e6d67a6ad46372ae9904848c2b519f445fccf39abe7e57aaef7",
+      "git_blob": "6ee58ee3029f7f133bc47f2b9fe31008b1bb80d0",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback"
+    },
+    {
+      "path": "proposal/EXACT-OBSERVER-DELTAS.json",
+      "bytes": 13624,
+      "sha256": "66836a1a686896879a671bafdf2cc94230e001e44cd0786a4e7dbe3df5f38ca4",
+      "git_blob": "ff5103a9b8253f3f299005399170a7f783f6cad1",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback"
+    },
+    {
+      "path": "proposal/mac-outer-continuation.py",
+      "bytes": 75189,
+      "sha256": "7ff33e6255ee5e7cd11f17bc31eea6452df02c3e3765471e1bedb9ede1a601e5",
+      "git_blob": "24bed9f37bd9ec1daf6db579055667691274ff68",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback"
+    },
+    {
+      "path": "proposal/README.md",
+      "bytes": 6921,
+      "sha256": "f5bca0a0e8480c7e4d425ea1dcbf862bd27e8b3c3484fcf3829938d3584215d0",
+      "git_blob": "d8c105255034c8e69b4954a4952f6c9d1be18fcf",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback"
+    },
+    {
+      "path": "proposal/drafts/receiver-unexecuted-accounting-draft.mjs",
+      "bytes": 26043,
+      "sha256": "e31c2ff65de2ffc293e5a2cb2ef5f2c70c37cc9a95f9ae477815d3b327d68f6c",
+      "git_blob": "0e1b2065cae0ed3f2bb45af94fb21ed8eeaab795",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback"
+    },
+    {
+      "path": "proposal/drafts/EXACT-OBSERVER-DELTAS-unexecuted-draft.json",
+      "bytes": 12661,
+      "sha256": "6e84366e7f155213072a0b48cfa57d2a7a08a4e48d628dd74505e0b8eba61c50",
+      "git_blob": "3336d0d5f005254dd95e75ba8326ad263541c004",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback"
+    },
+    {
+      "path": "proposal/PROPOSAL-CUSTODY.json",
+      "bytes": 3646,
+      "sha256": "808b7284342891d6eec5d8d92e398a94ac700eb360d66272f6968cd7866804a0",
+      "git_blob": "85b255f4907e50d1c420a8476c78a953ecc616a6",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback"
+    },
+    {
+      "path": "proposal/ROOT-ADMISSION.json",
+      "bytes": 9230,
+      "sha256": "1964d0602c38f47fbe91b87d6727d04d2356566f83ee144fc0f608b0d256968f",
+      "git_blob": "8348a9868bbbbb24e129265d0ab579f9864d489f",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback"
+    },
+    {
+      "path": "source/readonly-closure-custody.py",
+      "bytes": 11877,
+      "sha256": "e2463a89899471e07086a6f6ee55a9dc70b511518a2408f43d993996fce08862",
+      "git_blob": "2db2cbaf2a930763b5b76c76497f63b630cb946a",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback"
+    },
+    {
+      "path": "mac/CORRECTION-CONTRACT.md",
+      "bytes": 10919,
+      "sha256": "101f0eeb2fa25cee1a9ec352202211babee3ab31bb38313d128b46cc7cea9716",
+      "git_blob": "a5174cddc11001e2d214ce74382eca3009d9281d",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback",
+      "native": {
+        "path": "CORRECTION-CONTRACT.md",
+        "mode": "0444",
+        "mtime_ns": "1791545220730344578",
+        "allocated_bytes": 12288
+      }
+    },
+    {
+      "path": "mac/OUTER-EXECUTION.json",
+      "bytes": 14538,
+      "sha256": "33c2350410be34dd1f0c37cd6eaca56e6cde26d880f670de8f41777ce7be1d82",
+      "git_blob": "11f4e01ec4f1d3c33af757cd6e6f9231c742a76b",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback",
+      "native": {
+        "path": "OUTER-EXECUTION.json",
+        "mode": "0444",
+        "mtime_ns": "1791545221927532258",
+        "allocated_bytes": 16384
+      }
+    },
+    {
+      "path": "mac/REVISION.json",
+      "bytes": 5880,
+      "sha256": "3fd7b7c1d1275e6d67a6ad46372ae9904848c2b519f445fccf39abe7e57aaef7",
+      "git_blob": "6ee58ee3029f7f133bc47f2b9fe31008b1bb80d0",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback",
+      "native": {
+        "path": "REVISION.json",
+        "mode": "0444",
+        "mtime_ns": "1791545220734047070",
+        "allocated_bytes": 8192
+      }
+    },
+    {
+      "path": "mac/SOURCE-PREPARATION.json",
+      "bytes": 6910,
+      "sha256": "5bf4e4e85df6bb48567b8aeb2c6f9657b7a7f0d61bdafa19411744556da67792",
+      "git_blob": "e4c5d9c80a49d0a509d74d61566d4a567dbb93dc",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback",
+      "native": {
+        "path": "SOURCE-PREPARATION.json",
+        "mode": "0444",
+        "mtime_ns": "1791545220737499559",
+        "allocated_bytes": 8192
+      }
+    },
+    {
+      "path": "mac/node.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback",
+      "native": {
+        "path": "node.stderr.txt",
+        "mode": "0600",
+        "mtime_ns": "1791545220743993409",
+        "allocated_bytes": 0
+      }
+    },
+    {
+      "path": "mac/node.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback",
+      "native": {
+        "path": "node.stdout.txt",
+        "mode": "0600",
+        "mtime_ns": "1791545220743942825",
+        "allocated_bytes": 0
+      }
+    },
+    {
+      "path": "mac/receiver.mjs",
+      "bytes": 26043,
+      "sha256": "11f49884b83190d1eb39aadf5f2e09e26a33156450d80c3473e601dd16e9b716",
+      "git_blob": "567f3e3ea10402f4e88a431cc0fa0b49952bf2aa",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback",
+      "native": {
+        "path": "receiver.mjs",
+        "mode": "0444",
+        "mtime_ns": "1791545220726740421",
+        "allocated_bytes": 28672
+      }
+    },
+    {
+      "path": "mac/results/02-literal-annotation.png",
+      "bytes": 99387,
+      "sha256": "9238ff05652953f0e3253e383d7e959d4ae7c7723468343e6222708717c6f89b",
+      "git_blob": "a4582d1882c8ff13475d9d1d770466e204a5308b",
+      "mode": "100644",
+      "availability": "Actual raw PNG create acknowledgement exact; bytes match native SHA256 and exact-read-back lossless base64 carrier",
+      "native": {
+        "path": "results/02-literal-annotation.png",
+        "mode": "0600",
+        "mtime_ns": "1791545221490141799",
+        "allocated_bytes": 102400
+      }
+    },
+    {
+      "path": "mac/results/03-normalized-gaps.png",
+      "bytes": 103451,
+      "sha256": "62d5d69f72457bf4f868a0367fb94f5bc16f5068b5255ea94424fec059042a99",
+      "git_blob": "6173502bdb071ce46ea2e7d43949ff2b1611f856",
+      "mode": "100644",
+      "availability": "Actual raw PNG create acknowledgement exact; bytes match native SHA256 and exact-read-back lossless base64 carrier",
+      "native": {
+        "path": "results/03-normalized-gaps.png",
+        "mode": "0600",
+        "mtime_ns": "1791545221594660777",
+        "allocated_bytes": 106496
+      }
+    },
+    {
+      "path": "mac/results/ENTRY-DOM.json",
+      "bytes": 6446,
+      "sha256": "88638bc3caa27ec7d015a88284cc9e25bfc1128e30ae4bdf85f180abb6a81296",
+      "git_blob": "c94ee17dcc854ccd2a51629f104deb320e8bc031",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback",
+      "native": {
+        "path": "results/ENTRY-DOM.json",
+        "mode": "0600",
+        "mtime_ns": "1791545221387646090",
+        "allocated_bytes": 8192
+      }
+    },
+    {
+      "path": "mac/results/FINAL-DOM.json",
+      "bytes": 10029,
+      "sha256": "0ca7fedc0284c1d05dfd7a32a3e100b6954427797c146fa78946675df31ef7cc",
+      "git_blob": "a4fbc718f121fb45b712d2cef790eca463bc66b1",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback",
+      "native": {
+        "path": "results/FINAL-DOM.json",
+        "mode": "0600",
+        "mtime_ns": "1791545221595806787",
+        "allocated_bytes": 12288
+      }
+    },
+    {
+      "path": "mac/results/IDENTITY-BEFORE.json",
+      "bytes": 5609,
+      "sha256": "cc5872fe7f9b819b994ac7927c576b9ac657f1af1df9ea62dd565a20971431db",
+      "git_blob": "8bf13e41fb379fc3a0d47e5d43694ddda185b888",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback",
+      "native": {
+        "path": "results/IDENTITY-BEFORE.json",
+        "mode": "0600",
+        "mtime_ns": "1791545220815161921",
+        "allocated_bytes": 8192
+      }
+    },
+    {
+      "path": "mac/results/KEYBOARD-EVENTS.json",
+      "bytes": 1761,
+      "sha256": "9ad84e742521f915751244b9a71e2ddb3426f7ed9521f7fd23b0691bfff1fc63",
+      "git_blob": "daf71f524eee83a1e7e5c84fa984c46f1010fbad",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback",
+      "native": {
+        "path": "results/KEYBOARD-EVENTS.json",
+        "mode": "0600",
+        "mtime_ns": "1791545221428354079",
+        "allocated_bytes": 4096
+      }
+    },
+    {
+      "path": "carriers/02-literal-annotation.png.base64",
+      "bytes": 132517,
+      "sha256": "a407cedb4b0e4cf04606164805c410ac34ee70aa4a4a3deb0623c51f392b7150",
+      "git_blob": "00d8927bfd6c8cf57db1dc81778907e1be4346b6",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback",
+      "decoded": {
+        "path": "results/02-literal-annotation.png",
+        "bytes": 99387,
+        "sha256": "9238ff05652953f0e3253e383d7e959d4ae7c7723468343e6222708717c6f89b",
+        "git_blob": "a4582d1882c8ff13475d9d1d770466e204a5308b"
+      }
+    },
+    {
+      "path": "carriers/03-normalized-gaps.png.base64",
+      "bytes": 137937,
+      "sha256": "37e055c881812070c1f145c86a60963231c24428e83d0795a3d384c4d62d719b",
+      "git_blob": "915841854c3f3969c7ff955059449452828de583",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback",
+      "decoded": {
+        "path": "results/03-normalized-gaps.png",
+        "bytes": 103451,
+        "sha256": "62d5d69f72457bf4f868a0367fb94f5bc16f5068b5255ea94424fec059042a99",
+        "git_blob": "6173502bdb071ce46ea2e7d43949ff2b1611f856"
+      }
+    },
+    {
+      "path": "closure/NATIVE-CUSTODY.json",
+      "bytes": 103187,
+      "sha256": "15bce87421d46a954e6c398c172da74a6963515f05eb757f41a1f50c1a6f0abb",
+      "git_blob": "c600e316ce021d868aca623a137f4135d3fdf5fa",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback"
+    },
+    {
+      "path": "closure/EXTERNAL-CLOSURE.json",
+      "bytes": 5313,
+      "sha256": "7aeb71b0bdc65dfffe19bf6c9f6fea94abd2b0d71cbfbb9d56518b5de881efdf",
+      "git_blob": "d1498a27122facdcd88a0138b9a9266d16efd9e4",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback"
+    },
+    {
+      "path": "transport/ACTUAL-OUTER-INVOCATION.json",
+      "bytes": 83822,
+      "sha256": "d9410174a57a6e9d3c4097d9427810641698a0963350c994d0aae35c27442a01",
+      "git_blob": "741e05d2fbcb65dd1f93fcd09db2b402d8ae8467",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback"
+    },
+    {
+      "path": "transport/READONLY-CUSTODY-INVOCATION.json",
+      "bytes": 243495,
+      "sha256": "1c580c6863375da1004d67cf130523dee3e5b503f4342294d0cb579229ad9fde",
+      "git_blob": "a084238715f760506fe8126e0c83c312df04c38f",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback"
+    },
+    {
+      "path": "transport/NATIVE-READ-TOOL-RECORDS.json",
+      "bytes": 305710,
+      "sha256": "cec429084c0e4683b098ea693f78e90a4707a267d955715d297c3d5a3713442a",
+      "git_blob": "10ae446a0ed11020edea590a0e8347fb526b01f7",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback"
+    },
+    {
+      "path": "reviews/ACTUAL-SAVED-OBSERVATIONS.json",
+      "bytes": 8637,
+      "sha256": "577c6f0f056765a58b125d6ec38c1b6321d1f5462910b6012d024f21c342a02f",
+      "git_blob": "d0312d7ceb9bd50a8a789c707ba5d35ab8a53821",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback"
+    },
+    {
+      "path": "reviews/PROFILE-CENSUS-DIAGNOSIS.md",
+      "bytes": 4969,
+      "sha256": "e308f923a7189a296403880a2d98d8517f2e2b33f368fb114f6a305a49579cc5",
+      "git_blob": "0c479425c1296b2d6cb6d1f180fc89fdedfe874e",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback"
+    },
+    {
+      "path": "FINAL-DECISION.json",
+      "bytes": 2553,
+      "sha256": "77a81a73e92dbe704938c4300acd59361f99e241e67132678f7138ec715a8229",
+      "git_blob": "7d556ba3a97c28c7c790a05eb1feb72358610f6e",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7918,
+      "sha256": "2f688406e0b02fb71af9d8e58bc173fc64dc2a8e61e23308c5acbb4628699c53",
+      "git_blob": "ba0462af16a3cb3f2b49a18692e897c702c57200",
+      "mode": "100644",
+      "availability": "Actual uploaded object and exact readback"
+    }
+  ],
+  "screenshots": [
+    {
+      "png": "mac/results/02-literal-annotation.png",
+      "git_blob": "a4582d1882c8ff13475d9d1d770466e204a5308b",
+      "lossless_base64": "00d8927bfd6c8cf57db1dc81778907e1be4346b6",
+      "visually_inspected": true
+    },
+    {
+      "png": "mac/results/03-normalized-gaps.png",
+      "git_blob": "6173502bdb071ce46ea2e7d43949ff2b1611f856",
+      "lossless_base64": "915841854c3f3969c7ff955059449452828de583",
+      "visually_inspected": true
+    }
+  ],
+  "explicitly_absent_native_files": [
+    "results/MAC-RECEIPT.json",
+    "results/IDENTITY-AFTER.json",
+    "results/chrome.stdout.txt",
+    "results/chrome.stderr.txt"
+  ],
+  "native_disposition": {
+    "outer_pid": 81736,
+    "outer_exit": 1,
+    "node_pid": 81778,
+    "node_wait_exit": -15,
+    "node_reaped": true,
+    "collector_pid": 84011,
+    "collector_exit": 0,
+    "owned_pid_group_snapshot": [],
+    "mac_interval_released": true
+  },
+  "composition": "Add these 36 files plus this map under a separate continuation directory. Preserve original 100 leaves unchanged; no source or acceptance replacement.",
+  "retention": "Unreferenced Git objects and maps are custody, not retention anchors. Root handles final integration/publication."
+}

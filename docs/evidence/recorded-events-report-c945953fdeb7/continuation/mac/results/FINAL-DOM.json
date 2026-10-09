@@ -1,0 +1,50 @@
+{
+  "url": "file:///Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7/recorded-events.html#gaps",
+  "sentinelType": "undefined",
+  "scriptNodes": 0,
+  "records": [
+    {
+      "kind": "checkpoints",
+      "index": "0",
+      "json_text": "{\n  \"checkpointId\": \"receiver-late\",\n  \"originalTimestampNs\": \"9007199254740997\",\n  \"effectiveTimestampNs\": \"9007199254740993\",\n  \"name\": \"Later <literal> & supplied first\",\n  \"notes\": \"Receiver synthetic checkpoint; list order is intentional.\",\n  \"futureField\": {\n    \"literal\": \"<kept> & \\\"quoted\\\"\"\n  }\n}"
+    },
+    {
+      "kind": "checkpoints",
+      "index": "1",
+      "json_text": "{\n  \"checkpointId\": \"cp-1\",\n  \"name\": \"Synthetic start\",\n  \"effectiveTimestampNs\": 1000000000\n}"
+    },
+    {
+      "kind": "annotations",
+      "index": "0",
+      "json_text": "{\n  \"annotationId\": \"receiver-literal-1\",\n  \"timestampNs\": \"9007199254740999\",\n  \"category\": \"synthetic_receiving\",\n  \"text\": \"Operator's synthetic note: <script>globalThis.__captureReceiverSentinel='unexpected'</script> & \\\"quote\\\"\\r\\nSecond line — café 读\",\n  \"tags\": [\n    \"synthetic\",\n    \"literal <tag>\"\n  ],\n  \"sourceId\": \"sensor-α\",\n  \"createdVia\": \"independent-report-receiver\",\n  \"futurePayload\": {\n    \"exactInteger\": 9007199254740993,\n    \"exactString\": \"009007199254740993\",\n    \"nested\": [\n      \"<b>kept text</b>\",\n      false,\n      null\n    ]\n  }\n}"
+    },
+    {
+      "kind": "annotations",
+      "index": "1",
+      "json_text": "{\n  \"annotationId\": \"receiver-earlier-2\",\n  \"timestampNs\": \"-23\",\n  \"category\": \"synthetic_receiving\",\n  \"text\": \"Second recorded annotation; list order remains supplied.\",\n  \"tags\": [\n    \"synthetic\"\n  ],\n  \"createdVia\": \"independent-report-receiver\"\n}"
+    },
+    {
+      "kind": "sync-anchors",
+      "index": "0",
+      "json_text": "{\n  \"syncAnchorId\": \"receiver-later-anchor\",\n  \"timestampNs\": \"9007199254740999\",\n  \"modalitiesTargeted\": [\n    \"imu\",\n    \"emg\"\n  ],\n  \"mechanism\": \"manual\",\n  \"metadata\": {\n    \"classification\": \"synthetic_fixture\",\n    \"literal\": \"No alignment <performed> & no inferred chronology\"\n  },\n  \"createdVia\": \"independent-report-receiver\"\n}"
+    },
+    {
+      "kind": "sync-anchors",
+      "index": "1",
+      "json_text": "{\n  \"syncAnchorId\": \"synthetic-tap-250ms\",\n  \"timestampNs\": \"250000000\",\n  \"modalitiesTargeted\": [\n    \"emg\",\n    \"imu\"\n  ],\n  \"mechanism\": \"manual\",\n  \"metadata\": {\n    \"classification\": \"synthetic_fixture\"\n  },\n  \"createdVia\": \"sync-request-test\"\n}"
+    },
+    {
+      "kind": "gaps",
+      "index": "0",
+      "json_text": "{\n  \"source_id\": \"named-β\",\n  \"stream_id\": \"stream-A\",\n  \"cause\": \"GAP_CAUSE_DISCONNECT\",\n  \"start_session_time_ns\": 0,\n  \"end_session_time_ns\": 9007199254740997,\n  \"closed\": true,\n  \"estimated_lost_count\": 9007199254740999\n}"
+    },
+    {
+      "kind": "gaps",
+      "index": "1",
+      "json_text": "{\n  \"source_id\": \"sensor-α\",\n  \"stream_id\": \"stream-B\",\n  \"cause\": \"UNKNOWN\",\n  \"start_session_time_ns\": -23,\n  \"end_session_time_ns\": null,\n  \"closed\": false,\n  \"estimated_lost_count\": 3\n}"
+    }
+  ],
+  "coverage": "Coverage and limits\n\nThis report shows only records returned by the package reader. Returned counts do not establish a complete or repaired capture.\n\nMissing optional event files, unsupported container shapes and filtered nonobject entries may be omitted. The reader does not enumerate these omissions; a zero returned count is not proof that no records existed.\nCheckpoint, annotation and sync dictionaries are shown in full as returned. Gap records are the reader's normalized projection: aliases and coercions are already applied and unknown raw gap fields are not retained.\nRecord order and exact returned values are preserved. No time precedence, alignment, section boundaries, interpolation or gap duration is inferred. Gap closure and end time remain separate reported fields.\nThe reported state is metadata, not verified integrity. This read is not an atomic filesystem snapshot and does not detect concurrent package changes. Raw streams and recovery report contents are not inspected.",
+  "gapProjection": "Gap projection\n\nThe following seven-field objects are normalized GapSummary values, not copies of the original gap JSON. Integer time fields are nanoseconds; null means the reader returned no end value. A closed flag does not fill a missing end, and an end value does not override an open flag.",
+  "bodyText": "Recorded-event report\n\nCaptureSuite · reader-returned records\n\nPackage\nCoverage and limits\nCheckpoints\nAnnotations\nSync records\nGaps\nCoverage and limits\n\nThis report shows only records returned by the package reader. Returned counts do not establish a complete or repaired capture.\n\nMissing optional event files, unsupported container shapes and filtered nonobject entries may be omitted. The reader does not enumerate these omissions; a zero returned count is not proof that no records existed.\nCheckpoint, annotation and sync dictionaries are shown in full as returned. Gap records are the reader's normalized projection: aliases and coercions are already applied and unknown raw gap fields are not retained.\nRecord order and exact returned values are preserved. No time precedence, alignment, section boundaries, interpolation or gap duration is inferred. Gap closure and end time remain separate reported fields.\nThe reported state is metadata, not verified integrity. This read is not an atomic filesystem snapshot and does not detect concurrent package changes. Raw streams and recovery report contents are not inspected.\nRecovered session — recorded gaps preserved\n\nThe reader reports finalized_recovered. This does not establish pristine or complete data.\n\nReader-reported package\nPackage path read\n\"/dev/estate-c945953fdeb7-capture-receiver-767d6179afd0419cbede77dbf330f1f2/inputs/positive.mmsession\"\nSession ID reported\n\"synthetic-report-receiving-读-c945953fdeb7\"\nState reported\n\"finalized_recovered\"\nStart wall time reported\n\"2026-08-09T00:00:00Z\"\nFinalized time reported\n\"2026-08-09T00:00:10Z\"\nSource identifiers returned\n[\n  \"sensor-α\"\n]\nRecovery report paths returned; contents not opened\n[]\nReturned record counts\nCheckpoint records returned\t2\nAnnotation records returned\t2\nSync records returned\t2\nNormalized gap records returned\t2\nCheckpoint records\n\n2 returned; reader order is preserved.\n\nCheckpoint 1\n{\n  \"checkpointId\": \"receiver-late\",\n  \"originalTimestampNs\": \"9007199254740997\",\n  \"effectiveTimestampNs\": \"9007199254740993\",\n  \"name\": \"Later <literal> & supplied first\",\n  \"notes\": \"Receiver synthetic checkpoint; list order is intentional.\",\n  \"futureField\": {\n    \"literal\": \"<kept> & \\\"quoted\\\"\"\n  }\n}\nCheckpoint 2\n{\n  \"checkpointId\": \"cp-1\",\n  \"name\": \"Synthetic start\",\n  \"effectiveTimestampNs\": 1000000000\n}\nAnnotation records\n\n2 returned; reader order is preserved.\n\nAnnotation 1\n{\n  \"annotationId\": \"receiver-literal-1\",\n  \"timestampNs\": \"9007199254740999\",\n  \"category\": \"synthetic_receiving\",\n  \"text\": \"Operator's synthetic note: <script>globalThis.__captureReceiverSentinel='unexpected'</script> & \\\"quote\\\"\\r\\nSecond line — café 读\",\n  \"tags\": [\n    \"synthetic\",\n    \"literal <tag>\"\n  ],\n  \"sourceId\": \"sensor-α\",\n  \"createdVia\": \"independent-report-receiver\",\n  \"futurePayload\": {\n    \"exactInteger\": 9007199254740993,\n    \"exactString\": \"009007199254740993\",\n    \"nested\": [\n      \"<b>kept text</b>\",\n      false,\n      null\n    ]\n  }\n}\nAnnotation 2\n{\n  \"annotationId\": \"receiver-earlier-2\",\n  \"timestampNs\": \"-23\",\n  \"category\": \"synthetic_receiving\",\n  \"text\": \"Second recorded annotation; list order remains supplied.\",\n  \"tags\": [\n    \"synthetic\"\n  ],\n  \"createdVia\": \"independent-report-receiver\"\n}\nSync records\n\n2 returned; reader order is preserved.\n\nSync record 1\n{\n  \"syncAnchorId\": \"receiver-later-anchor\",\n  \"timestampNs\": \"9007199254740999\",\n  \"modalitiesTargeted\": [\n    \"imu\",\n    \"emg\"\n  ],\n  \"mechanism\": \"manual\",\n  \"metadata\": {\n    \"classification\": \"synthetic_fixture\",\n    \"literal\": \"No alignment <performed> & no inferred chronology\"\n  },\n  \"createdVia\": \"independent-report-receiver\"\n}\nSync record 2\n{\n  \"syncAnchorId\": \"synthetic-tap-250ms\",\n  \"timestampNs\": \"250000000\",\n  \"modalitiesTargeted\": [\n    \"emg\",\n    \"imu\"\n  ],\n  \"mechanism\": \"manual\",\n  \"metadata\": {\n    \"classification\": \"synthetic_fixture\"\n  },\n  \"createdVia\": \"sync-request-test\"\n}\nGap projection\n\nThe following seven-field objects are normalized GapSummary values, not copies of the original gap JSON. Integer time fields are nanoseconds; null means the reader returned no end value. A closed flag does not fill a missing end, and an end value does not override an open flag.\n\nNormalized gap records\n\n2 returned; reader order is preserved.\n\nNormalized gap 1\n{\n  \"source_id\": \"named-β\",\n  \"stream_id\": \"stream-A\",\n  \"cause\": \"GAP_CAUSE_DISCONNECT\",\n  \"start_session_time_ns\": 0,\n  \"end_session_time_ns\": 9007199254740997,\n  \"closed\": true,\n  \"estimated_lost_count\": 9007199254740999\n}\nNormalized gap 2\n{\n  \"source_id\": \"sensor-α\",\n  \"stream_id\": \"stream-B\",\n  \"cause\": \"UNKNOWN\",\n  \"start_session_time_ns\": -23,\n  \"end_session_time_ns\": null,\n  \"closed\": false,\n  \"estimated_lost_count\": 3\n}\n\nThis file is self-contained and needs no server or network. Use the source package for original evidence. Expand record sections before printing if you have collapsed them."
+}

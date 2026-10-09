@@ -1,0 +1,147 @@
+{
+  "schema": "capturesuite-observer-enter-primary-source-review-v2",
+  "status": "READ-ONLY SOURCE ANALYSIS; proposed observer correction UNEXECUTED",
+  "original_receiving_map": "b4a4f33f218135a43d8b40b957416423ba5eb0a9",
+  "original_failure_receipt": "908f5694002113bf99c13cd526a89f458ac49a3c",
+  "actual_browser_version": {
+    "protocolVersion": "1.3",
+    "product": "Chrome/154.0.8037.99",
+    "revision": "@45889d77830582727fe00dbfd614bcb7aac35caa",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/154.0.0.0 Safari/537.36",
+    "jsVersion": "15.4.80.20"
+  },
+  "reported_revision_binding": "Both specific Chromium files were fetched at Browser.getVersion revision 45889d77830582727fe00dbfd614bcb7aac35caa. This binds the primary source investigation to the browser-reported revision; it is not a reproduced-binary build attestation.",
+  "sources": [
+    {
+      "repository": "chromium/chromium",
+      "path": "third_party/blink/renderer/core/html/html_summary_element.cc",
+      "requested_ref": "45889d77830582727fe00dbfd614bcb7aac35caa",
+      "git_blob": "21cbaac433dbc66e3ec8631945ca3c39eb5a5f32",
+      "bytes": 8375,
+      "sha256": "555acd395b3878ab859fb42511cf82f5b61d60087935d8f867e77d46923cca24",
+      "url": "https://github.com/chromium/chromium/blob/45889d77830582727fe00dbfd614bcb7aac35caa/third_party/blink/renderer/core/html/html_summary_element.cc",
+      "relevant_symbol": "void HTMLSummaryElement::DefaultEventHandler",
+      "first_line": 188,
+      "finding": "At the installed browser's reported revision, the main summary delegates keyboard handling to HandleKeyboardActivation; activation toggles its parent details.",
+      "access": "Actual GitHub fetch_file response; whole source read in orchestration. Full upstream code is not copied into this observer proposal."
+    },
+    {
+      "repository": "chromium/chromium",
+      "path": "third_party/blink/renderer/core/html/html_element.cc",
+      "requested_ref": "45889d77830582727fe00dbfd614bcb7aac35caa",
+      "git_blob": "7c715baded59196c67f30f1520ef6291bd2b2e94",
+      "bytes": 199333,
+      "sha256": "49b59714e9c3076a78434a7547cda3577ea17b9278fb604b2c1c78e9f2449665",
+      "url": "https://github.com/chromium/chromium/blob/45889d77830582727fe00dbfd614bcb7aac35caa/third_party/blink/renderer/core/html/html_element.cc",
+      "relevant_symbol": "bool HTMLElement::HandleKeyboardActivation",
+      "first_line": 4210,
+      "finding": "At that same reported revision, Enter activates via a keypress whose charCode is carriage return (13). Space follows a different keydown/keyup path.",
+      "access": "Actual GitHub fetch_file response; whole source read in orchestration. Full upstream code is not copied into this observer proposal."
+    },
+    {
+      "repository": "chromium/chromium",
+      "path": "third_party/blink/renderer/core/html/html_element.cc",
+      "requested_ref": "repository default branch",
+      "git_blob": "8b94d89e491ccf54155bdf396b83c44d77693462",
+      "bytes": 203360,
+      "sha256": "6738795b61ec67c97e013f21ffb086a03b92436e5033d71b3360adef5e12a64c",
+      "url": "https://github.com/chromium/chromium/blob/main/third_party/blink/renderer/core/html/html_element.cc",
+      "relevant_symbol": "bool HTMLElement::HandleKeyboardActivation",
+      "first_line": 4301,
+      "finding": "The current default-branch shared handler has the same Enter keypress/carriage-return rule.",
+      "access": "Actual GitHub fetch_file response; whole source read in orchestration. Full upstream code is not copied into this observer proposal."
+    },
+    {
+      "repository": "puppeteer/puppeteer",
+      "path": "packages/puppeteer-core/src/cdp/Input.ts",
+      "requested_ref": "repository default branch",
+      "git_blob": "48d64f1574a587d91735a8b1713d6b19be9390c3",
+      "bytes": 16674,
+      "sha256": "1fc0faee567109dabfebfbec5c4e5e9f7f7db170c294aebfeca99ac9f2034f6e",
+      "url": "https://github.com/puppeteer/puppeteer/blob/main/packages/puppeteer-core/src/cdp/Input.ts",
+      "relevant_symbol": "override async down",
+      "first_line": 55,
+      "finding": "Canonical CdpKeyboard.down derives the text from the key description and sends keyDown with both text and unmodifiedText. CdpKeyboard.up sends keyUp without these text fields.",
+      "access": "Actual GitHub fetch_file response; whole source read in orchestration. Full upstream code is not copied into this observer proposal."
+    },
+    {
+      "repository": "puppeteer/puppeteer",
+      "path": "packages/puppeteer-core/src/common/USKeyboardLayout.ts",
+      "requested_ref": "repository default branch",
+      "git_blob": "0a6d2f2e18ab84d801fc89d07849477346189d8e",
+      "bytes": 18746,
+      "sha256": "2c81c37e310bd8b0c09a0bbfbf1db1ca8fcf89ce79051d6f6f6e4a37937ab9a9",
+      "url": "https://github.com/puppeteer/puppeteer/blob/main/packages/puppeteer-core/src/common/USKeyboardLayout.ts",
+      "relevant_symbol": "Enter: {keyCode",
+      "first_line": 319,
+      "finding": "The ordinary Enter key definition supplies carriage-return text, code/key Enter and Windows key code 13.",
+      "access": "Actual GitHub fetch_file response; whole source read in orchestration. Full upstream code is not copied into this observer proposal."
+    },
+    {
+      "repository": "ChromeDevTools/devtools-protocol",
+      "path": "pdl/domains/Input.pdl",
+      "requested_ref": "repository default branch",
+      "git_blob": "815bf7c4147c4dd89ea6e9c7a0440517cb5a4937",
+      "bytes": 14431,
+      "sha256": "5bbc6e23eb17a009da540792bd5f647567e9c81f919081059dff5274a1c66e3d",
+      "url": "https://github.com/ChromeDevTools/devtools-protocol/blob/master/pdl/domains/Input.pdl",
+      "relevant_symbol": "command dispatchKeyEvent",
+      "first_line": 97,
+      "finding": "Protocol explicitly distinguishes keyDown/keyUp/rawKeyDown/char and defines generated text separately from key identity, with text unnecessary for keyUp/rawKeyDown.",
+      "access": "Actual GitHub fetch_file response; whole source read in orchestration. Full upstream code is not copied into this observer proposal."
+    }
+  ],
+  "original_dispatch": {
+    "source": "356784a70e46e532bb3a3f938475fd6331aa0924",
+    "events": [
+      {
+        "type": "keyDown",
+        "key": "Enter",
+        "code": "Enter",
+        "windowsVirtualKeyCode": 13,
+        "nativeVirtualKeyCode": 13
+      },
+      {
+        "type": "keyUp",
+        "key": "Enter",
+        "code": "Enter",
+        "windowsVirtualKeyCode": 13,
+        "nativeVirtualKeyCode": 13
+      }
+    ],
+    "generated_text_fields_present": false,
+    "dom_event_receipt_present": false,
+    "observed_outcome": "Pointer collapse and focused summary observed; reopen wait timed out. No original keypress event observation exists, so its absence cannot be retroactively claimed as measured."
+  },
+  "inference": "The missing generated CR text is a concrete observer-actuation defect relative to the canonical dispatch and shared-handler requirement. It is a well-supported explanation for the observed timeout, but the original run did not record DOM keypress events and does not itself prove the exact failure mechanism.",
+  "proposed_dispatch": [
+    {
+      "type": "keyDown",
+      "modifiers": 0,
+      "windowsVirtualKeyCode": 13,
+      "code": "Enter",
+      "key": "Enter",
+      "text": "\r",
+      "unmodifiedText": "\r",
+      "autoRepeat": false,
+      "location": 0,
+      "isKeypad": false,
+      "commands": []
+    },
+    {
+      "type": "keyUp",
+      "modifiers": 0,
+      "key": "Enter",
+      "windowsVirtualKeyCode": 13,
+      "code": "Enter",
+      "location": 0
+    }
+  ],
+  "proposed_observation": "Passive capture listeners on the selected original summary record actual keydown/keypress/keyup/click fields and isTrusted; a passive toggle observer records the original details state. No preventDefault, handler replacement, element.click(), direct open assignment or synthetic DOM dispatchEvent.",
+  "proposed_criterion": "After a trusted pointer closes the focused original summary, one complete canonical Enter down/up must yield trusted keydown, keypress charCode 13 and keyup plus actual false-to-true disclosure state. Preserve the full event receipt and all original runtime/resource/identity/closure criteria.",
+  "preserved_original": "Original 100-leaf result, one-browser failure, physical HTML, authority and all criteria remain unchanged. Any authorized continuation gets separate source, profile, files and receipt and is not counted as an original pass.",
+  "retrieval_limits": [
+    "Web fetch of GitHub/raw URLs was disabled and several large GoogleGit/CDP viewer routes failed or redirected; those failures were not runtime/product evidence.",
+    "The GitHub connector independently returned exact full primary source bodies and their blob identities, including the observed Chromium revision. No browser was used for this source investigation."
+  ]
+}

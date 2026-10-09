@@ -1,0 +1,82 @@
+{
+  "records": [
+    {
+      "type": "click",
+      "isTrusted": true,
+      "key": null,
+      "code": null,
+      "keyCode": null,
+      "charCode": null,
+      "which": 1,
+      "repeat": null,
+      "defaultPreventedAtCapture": false,
+      "detail": 1,
+      "target": "SUMMARY",
+      "summaryFocused": true,
+      "openAtCapture": true
+    },
+    {
+      "type": "keydown",
+      "isTrusted": true,
+      "key": "Enter",
+      "code": "Enter",
+      "keyCode": 13,
+      "charCode": 0,
+      "which": 13,
+      "repeat": false,
+      "defaultPreventedAtCapture": false,
+      "detail": 0,
+      "target": "SUMMARY",
+      "summaryFocused": true,
+      "openAtCapture": false
+    },
+    {
+      "type": "keypress",
+      "isTrusted": true,
+      "key": "Enter",
+      "code": "Enter",
+      "keyCode": 13,
+      "charCode": 13,
+      "which": 13,
+      "repeat": false,
+      "defaultPreventedAtCapture": false,
+      "detail": 0,
+      "target": "SUMMARY",
+      "summaryFocused": true,
+      "openAtCapture": false
+    },
+    {
+      "type": "click",
+      "isTrusted": true,
+      "key": null,
+      "code": null,
+      "keyCode": null,
+      "charCode": null,
+      "which": 1,
+      "repeat": null,
+      "defaultPreventedAtCapture": false,
+      "detail": 0,
+      "target": "SUMMARY",
+      "summaryFocused": true,
+      "openAtCapture": false
+    },
+    {
+      "type": "keyup",
+      "isTrusted": true,
+      "key": "Enter",
+      "code": "Enter",
+      "keyCode": 13,
+      "charCode": 0,
+      "which": 13,
+      "repeat": false,
+      "defaultPreventedAtCapture": false,
+      "detail": 0,
+      "target": "SUMMARY",
+      "summaryFocused": true,
+      "openAtCapture": true
+    }
+  ],
+  "overflow": false,
+  "open": true,
+  "focused": true
+}

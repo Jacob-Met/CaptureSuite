@@ -1,0 +1,103 @@
+{
+  "schema": "capturesuite-v2-exact-observer-deltas-v1",
+  "original_source": "356784a70e46e532bb3a3f938475fd6331aa0924",
+  "original_map": "b4a4f33f218135a43d8b40b957416423ba5eb0a9",
+  "status": "UNEXECUTED proposed correction; exact textual replacements only",
+  "replacements": [
+    {
+      "reason": "Separate proposal identity",
+      "old": "// One offline display of the exact Python 3.12 physical report; no CaptureSuite import.",
+      "new": "// Separately proposed continuation of the failed keyboard observation; no CaptureSuite import.\n// Original attempt b4a4f33f218135a43d8b40b957416423ba5eb0a9 remains unchanged and incomplete."
+    },
+    {
+      "reason": "Keep exact original authority and physical HTML; new observer seating only",
+      "old": "const CFG=JSON.parse(fs.readFileSync(path.join(ROOT,'AUTHORITY.json'),'utf8'));\nconst REPORT=path.join(ROOT,'recorded-events.html');",
+      "new": "const ORIGINAL='/Users/me/Developer/capturesuite-recorded-report-receiving-c945953fdeb7';\nconst CFG=JSON.parse(fs.readFileSync(path.join(ORIGINAL,'AUTHORITY.json'),'utf8'));\nconst REVISION=JSON.parse(fs.readFileSync(path.join(ROOT,'REVISION.json'),'utf8'));\nconst REPORT=path.join(ORIGINAL,'recorded-events.html');"
+    },
+    {
+      "reason": "Separate receipt classification",
+      "old": "const receipt={schema:'capturesuite-independent-offline-browser-v1',contract:CONTRACT,",
+      "new": "const receipt={schema:'capturesuite-independent-offline-browser-continuation-v2',contract:CONTRACT,\n original_attempt:{map:'b4a4f33f218135a43d8b40b957416423ba5eb0a9',status:'INCOMPLETE, unchanged'},\n continuation_scope:'One separately reviewed additional browser interval for complete Enter actuation and remaining observations. No Linux/report regeneration or old-suite replay.',"
+    },
+    {
+      "reason": "Do not relabel original failed group",
+      "old": " groups:{C4_semantics:'pending',C5_mac:'pending',visual_review:'pending: inspect original screenshots after execution'},",
+      "new": " groups:{C4_continuation:'pending',C5_continuation:'pending',visual_review:'pending: inspect only new annotation/gap screenshots; original overview is retained'},"
+    },
+    {
+      "reason": "Preserve all 15 original files and combine original/new allocation under unchanged caps",
+      "old": "function protectedInventory(){const names=['AUTHORITY.json','CONTRACT.md','receiver.mjs','recorded-events.html'];\n return {files:Object.fromEntries(names.map(n=>[n,fileIdentity(path.join(ROOT,n))])),\n runtime:{node:fileIdentity(fs.realpathSync(process.execPath)),python:fileIdentity(fs.realpathSync(PYTHON)),\n chrome:fileIdentity(fs.realpathSync(CHROME))}};}",
+      "new": "function sumSize(a,b){return {logical:a.logical+b.logical,allocated:a.allocated+b.allocated};}\nfunction combinedStatic(){return sumSize(ownSize(ROOT,true),ownSize(ORIGINAL,true));}\nfunction combinedBrowser(){return sumSize(ownSize(path.join(ROOT,'browser')),ownSize(path.join(ORIGINAL,'browser')));}\nfunction originalInventory(){const out={};function walk(p,relative){\n for(const name of fs.readdirSync(p).sort()){if(p===ORIGINAL&&name==='browser')continue;\n  const q=path.join(p,name),r=relative?relative+'/'+name:name,info=fs.lstatSync(q);\n  require(!info.isSymbolicLink(),'original owned symlink');\n  if(info.isDirectory())walk(q,r);else{require(info.isFile(),'original owned special file');out[r]=fileIdentity(q);}}}\n walk(ORIGINAL,'');return out;}\nfunction protectedInventory(){const names=['REVISION.json','CORRECTION-CONTRACT.md','receiver.mjs'];\n return {original:originalInventory(),current:Object.fromEntries(names.map(n=>[n,fileIdentity(path.join(ROOT,n))])),\n runtime:{node:fileIdentity(fs.realpathSync(process.execPath)),python:fileIdentity(fs.realpathSync(PYTHON)),\n chrome:fileIdentity(fs.realpathSync(CHROME))}};}"
+    },
+    {
+      "reason": "Same floors and caps include retained original files/profile",
+      "old": "const g={label,at:new Date().toISOString(),...JSON.parse(r.stdout),receiver:ownSize(ROOT,true),browser:ownSize(path.join(ROOT,'browser'))};",
+      "new": "const g={label,at:new Date().toISOString(),...JSON.parse(r.stdout),receiver:combinedStatic(),browser:combinedBrowser()};"
+    },
+    {
+      "reason": "Complete canonical CR text actuation and passive actual-event receipt; no direct details mutation",
+      "old": "async function keyEnter(){for(const type of ['keyDown','keyUp'])await connection.send('Input.dispatchKeyEvent',\n {type,key:'Enter',code:'Enter',windowsVirtualKeyCode:13,nativeVirtualKeyCode:13},session);\n receipt.actions.push({action:'trusted_keyboard_via_Input.dispatchKeyEvent',key:'Enter',at:new Date().toISOString()});}",
+      "new": "async function keyEnter(){\n const events=[\n  {type:'keyDown',modifiers:0,windowsVirtualKeyCode:13,code:'Enter',key:'Enter',text:'\\r',unmodifiedText:'\\r',\n   autoRepeat:false,location:0,isKeypad:false,commands:[]},\n  {type:'keyUp',modifiers:0,key:'Enter',windowsVirtualKeyCode:13,code:'Enter',location:0}];\n for(const event of events)await connection.send('Input.dispatchKeyEvent',event,session);\n receipt.actions.push({action:'canonical_complete_Enter_via_Input.dispatchKeyEvent',events,at:new Date().toISOString()});\n}\nasync function observeKeyboard(){\n const setup=await evaluate(\"(()=>{const summary=document.querySelector('#annotations details summary'),details=summary?.closest('details');if(!summary||!details)throw Error('missing selected native summary');const records=[];const state={records,overflow:false};Object.defineProperty(globalThis,'__captureKeyboardObservationV2',{value:state,writable:false,configurable:false});const add=row=>{if(records.length>=128){state.overflow=true;return;}records.push(row);};for(const type of ['keydown','keypress','keyup','click'])summary.addEventListener(type,e=>add({type:e.type,isTrusted:e.isTrusted,key:e.key??null,code:e.code??null,keyCode:e.keyCode??null,charCode:e.charCode??null,which:e.which??null,repeat:e.repeat??null,defaultPreventedAtCapture:e.defaultPrevented,detail:e.detail??null,target:e.target.tagName,summaryFocused:document.activeElement===summary,openAtCapture:details.open}),{capture:true,passive:true});details.addEventListener('toggle',e=>add({type:e.type,isTrusted:e.isTrusted,open:details.open}),{passive:true});return {installed:true,listenerMode:'passive capture; never cancels, activates or writes details state',initialOpen:details.open};})()\");\n receipt.keyboard_observer_setup=setup;\n}\nasync function keyboardReceipt(){\n return await evaluate(\"globalThis.__captureKeyboardObservationV2?{records:globalThis.__captureKeyboardObservationV2.records,overflow:globalThis.__captureKeyboardObservationV2.overflow,open:document.querySelector('#annotations details').open,focused:document.activeElement===document.querySelector('#annotations details summary')}:null\");\n}"
+    },
+    {
+      "reason": "Retain original criteria and separately pin continuation scope",
+      "old": "require(pin(fs.readFileSync(path.join(ROOT,'CONTRACT.md'))).git_blob===CONTRACT,'frozen contract identity');",
+      "new": "require(pin(fs.readFileSync(path.join(ORIGINAL,'CONTRACT.md'))).git_blob===CONTRACT,'unchanged original contract identity');\n require(pin(fs.readFileSync(path.join(ROOT,'CORRECTION-CONTRACT.md'))).git_blob===REVISION.correction_contract.git_blob,'separately frozen correction contract');"
+    },
+    {
+      "reason": "New observer source pin; original authority untouched",
+      "old": "require(pin(fs.readFileSync(fileURLToPath(import.meta.url))).git_blob===CFG.receiver_source.git_blob,'frozen observer identity');",
+      "new": "require(pin(fs.readFileSync(fileURLToPath(import.meta.url))).git_blob===REVISION.receiver_source.git_blob,'frozen v2 observer identity');"
+    },
+    {
+      "reason": "Original failed evidence preservation at entry",
+      "old": "before=protectedInventory();jsonfile('IDENTITY-BEFORE.json',before);",
+      "new": "before=protectedInventory();jsonfile('IDENTITY-BEFORE.json',before);\n require(JSON.stringify(Object.keys(before.original).sort())===JSON.stringify(REVISION.original_files.map(x=>x.path).sort()),'complete original 15-file census');\n for(const expected of REVISION.original_files){const actual=before.original[expected.path];\n  require(['bytes','sha256','git_blob','mode','mtime_ns'].every(k=>actual[k]===expected[k]),'original evidence changed before continuation: '+expected.path);}"
+    },
+    {
+      "reason": "Monitor combined old/new owned allocation",
+      "old": "profileTimer=setInterval(()=>{try{const a=ownSize(ROOT,true),b=ownSize(path.join(ROOT,'browser'));",
+      "new": "profileTimer=setInterval(()=>{try{const a=combinedStatic(),b=combinedBrowser();"
+    },
+    {
+      "reason": "Do not repeat settled overview screenshot or checkpoint navigation",
+      "old": "receipt.overview_screenshot=await screenshot('01-overview.png');\n receipt.sections={};\n await click('nav a[href=\"#checkpoints\"]');await waitFor(\"location.hash==='#checkpoints'\");\n receipt.sections.checkpoints=await recordSection('checkpoints');",
+      "new": "receipt.original_overview_retained='811cba88860664adda9bc5578a69a5b3052ffcef';\n receipt.original_checkpoint_navigation_retained='908f5694002113bf99c13cd526a89f458ac49a3c';\n receipt.sections={};"
+    },
+    {
+      "reason": "Record actual pointer/keyboard sequence on the selected original summary",
+      "old": "const summary='#annotations details:first-of-type summary';\n await click(summary);",
+      "new": "const summary='#annotations details:first-of-type summary';\n await observeKeyboard();\n await click(summary);"
+    },
+    {
+      "reason": "Require observed trusted native keypress CR and reopening; preserve full event record",
+      "old": "await keyEnter();await waitFor(\"document.querySelector('#annotations details').open===true\");\n receipt.native_disclosure={pointer_collapsed:true,keyboard_enter_reopened:true};",
+      "new": "await keyEnter();await waitFor(\"document.querySelector('#annotations details').open===true\");\n const keyReceipt=await keyboardReceipt();\n jsonfile('KEYBOARD-EVENTS.json',keyReceipt);receipt.keyboard_event_receipt=keyReceipt;\n require(keyReceipt&&!keyReceipt.overflow&&keyReceipt.open===true,'bounded actual keyboard event receipt');\n for(const type of ['keydown','keypress','keyup'])require(keyReceipt.records.some(e=>e.type===type&&e.isTrusted===true&&e.key==='Enter'&&(type!=='keypress'||e.charCode===13)),'missing trusted complete Enter event: '+type);\n receipt.native_disclosure={pointer_collapsed:true,keyboard_enter_reopened:true,verified_keypress_charCode:13};"
+    },
+    {
+      "reason": "Supplemental result only",
+      "old": "receipt.groups.C4_semantics='PASS: one physical file, all record text, native navigation/disclosure and literal-data behavior';",
+      "new": "receipt.groups.C4_continuation='PASS: complete canonical Enter event receipt and remaining native record navigation/display; original attempt remains unchanged';"
+    },
+    {
+      "reason": "Separate continuation closure",
+      "old": "receipt.groups.C5_mac='PASS: actual owned browser exit and measured immutable input/runtime preservation';",
+      "new": "receipt.groups.C5_continuation='PASS: actual owned browser exit and complete original/current input/runtime preservation';"
+    },
+    {
+      "reason": "Preserve actual key events even if the continuation fails",
+      "old": "catch(error){receipt.failure={message:error.message,stack:error.stack};receipt.accepted=false;\n try{await closeOwnedBrowser();}",
+      "new": "catch(error){receipt.failure={message:error.message,stack:error.stack};receipt.accepted=false;\n try{if(connection&&session&&chromeExit===null){receipt.keyboard_events_at_failure=await keyboardReceipt();jsonfile('KEYBOARD-FAILURE-EVENTS.json',receipt.keyboard_events_at_failure);}}catch(e){receipt.keyboard_event_snapshot_error=String(e);}\n try{await closeOwnedBrowser();}"
+    },
+    {
+      "reason": "Unchanged cumulative resource cap at closure",
+      "old": "receipt.controller_exit_pending_until_parent_wait=true;receipt.final_owned={receiver:ownSize(ROOT,true),browser:ownSize(path.join(ROOT,'browser'))};",
+      "new": "receipt.controller_exit_pending_until_parent_wait=true;receipt.final_owned={receiver:combinedStatic(),browser:combinedBrowser()};"
+    },
+    {
+      "reason": "Honest pending visual review",
+      "old": "visual_review:'Pending original screenshot display; no all-error-free claim.'",
+      "new": "visual_review:'Pending new annotation/gap screenshot display; original failure/overview retained; no all-error-free claim.'"
+    }
+  ]
+}

@@ -1,0 +1,301 @@
+{
+  "schema": "capturesuite-root-observer-correction-admission/v1",
+  "reviewed_at": "2026-10-09 11:25:58 UTC",
+  "reviewer": "estate-c945953fdeb7/root",
+  "status": "Exact proposal reviewed; one separate bounded continuation admitted after the closed SQL interval",
+  "proposal_map": "85b255f4907e50d1c420a8476c78a953ecc616a6",
+  "original_unchanged_map": "b4a4f33f218135a43d8b40b957416423ba5eb0a9",
+  "original_disposition": "C4 incomplete; Node and outer exited 1. Original actual browser closed exit 0. No original event receipt proved the absent keypress.",
+  "source": "567f3e3ea10402f4e88a431cc0fa0b49952bf2aa",
+  "outer": "24bed9f37bd9ec1daf6db579055667691274ff68",
+  "contract": "a5174cddc11001e2d214ce74382eca3009d9281d",
+  "revision": "6ee58ee3029f7f133bc47f2b9fe31008b1bb80d0",
+  "primary_review": "bafc52cacacbfa20648850b1db80dba0de3cb7ab",
+  "delta": "ff5103a9b8253f3f299005399170a7f783f6cad1",
+  "root_read_scope": [
+    "Complete correction contract, receiver, revision, primary review, exact replacements, proposal map and README",
+    "Every executable line of the outer source; sole base64 data literal decoded as data and all three embedded strings compared exactly with the separately read pinned source/contract/revision",
+    "Actual original receipt failure, actions, browser version and closure; all fifteen revision files matched by exact original custody path/blob/byte count",
+    "Exact reported Chromium revision summary default handler and HTMLElement HandleKeyboardActivation source regions; retrieved Puppeteer down/up and ordinary Enter definition"
+  ],
+  "delta_proof": {
+    "counts": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "exact": true,
+    "base": {
+      "git_blob": "356784a70e46e532bb3a3f938475fd6331aa0924",
+      "bytes": 21486
+    },
+    "final": {
+      "git_blob": "567f3e3ea10402f4e88a431cc0fa0b49952bf2aa",
+      "bytes": 26043,
+      "sha256": "11f49884b83190d1eb39aadf5f2e09e26a33156450d80c3473e601dd16e9b716"
+    }
+  },
+  "outer_content_proof": {
+    "contentChecks": [
+      {
+        "path": "receiver.mjs",
+        "exact": true,
+        "pin": {
+          "bytes": 26043,
+          "sha256": "11f49884b83190d1eb39aadf5f2e09e26a33156450d80c3473e601dd16e9b716",
+          "git_blob": "567f3e3ea10402f4e88a431cc0fa0b49952bf2aa"
+        }
+      },
+      {
+        "path": "CORRECTION-CONTRACT.md",
+        "exact": true,
+        "pin": {
+          "bytes": 10919,
+          "sha256": "101f0eeb2fa25cee1a9ec352202211babee3ab31bb38313d128b46cc7cea9716",
+          "git_blob": "a5174cddc11001e2d214ce74382eca3009d9281d"
+        }
+      },
+      {
+        "path": "REVISION.json",
+        "exact": true,
+        "pin": {
+          "bytes": 5880,
+          "sha256": "3fd7b7c1d1275e6d67a6ad46372ae9904848c2b519f445fccf39abe7e57aaef7",
+          "git_blob": "6ee58ee3029f7f133bc47f2b9fe31008b1bb80d0"
+        }
+      }
+    ],
+    "originalsExact": true
+  },
+  "original_file_links": [
+    {
+      "path": "AUTHORITY.json",
+      "matchingOriginalPaths": [
+        "mac/AUTHORITY.json"
+      ]
+    },
+    {
+      "path": "CONTRACT.md",
+      "matchingOriginalPaths": [
+        "mac/CONTRACT.md"
+      ]
+    },
+    {
+      "path": "OUTER-EXECUTION.json",
+      "matchingOriginalPaths": [
+        "mac/OUTER-EXECUTION.json"
+      ]
+    },
+    {
+      "path": "SOURCE-PREPARATION.json",
+      "matchingOriginalPaths": [
+        "mac/SOURCE-PREPARATION.json"
+      ]
+    },
+    {
+      "path": "node.stderr.txt",
+      "matchingOriginalPaths": [
+        "mac/node.stderr.txt"
+      ]
+    },
+    {
+      "path": "node.stdout.txt",
+      "matchingOriginalPaths": [
+        "mac/node.stdout.txt"
+      ]
+    },
+    {
+      "path": "receiver.mjs",
+      "matchingOriginalPaths": [
+        "mac/receiver.mjs"
+      ]
+    },
+    {
+      "path": "recorded-events.html",
+      "matchingOriginalPaths": [
+        "mac/recorded-events.html"
+      ]
+    },
+    {
+      "path": "results/01-overview.png",
+      "matchingOriginalPaths": [
+        "mac/results/01-overview.png"
+      ]
+    },
+    {
+      "path": "results/ENTRY-DOM.json",
+      "matchingOriginalPaths": [
+        "mac/results/ENTRY-DOM.json"
+      ]
+    },
+    {
+      "path": "results/FAILURE-IDENTITY-AFTER.json",
+      "matchingOriginalPaths": [
+        "mac/results/FAILURE-IDENTITY-AFTER.json"
+      ]
+    },
+    {
+      "path": "results/IDENTITY-BEFORE.json",
+      "matchingOriginalPaths": [
+        "mac/results/IDENTITY-BEFORE.json"
+      ]
+    },
+    {
+      "path": "results/MAC-RECEIPT.json",
+      "matchingOriginalPaths": [
+        "mac/results/MAC-RECEIPT.json"
+      ]
+    },
+    {
+      "path": "results/chrome.stderr.txt",
+      "matchingOriginalPaths": [
+        "mac/results/chrome.stderr.txt"
+      ]
+    },
+    {
+      "path": "results/chrome.stdout.txt",
+      "matchingOriginalPaths": [
+        "mac/results/chrome.stdout.txt"
+      ]
+    }
+  ],
+  "original_runtime_payload_exact": true,
+  "observations": [
+    "Proposed keyDown includes carriage-return text/unmodifiedText and keyUp matches canonical shape; no extra char event, key retry, click method, synthetic DOM activation or direct details-state mutation.",
+    "Passive listeners only append actual event observations and require trusted keydown/keypress(charCode 13)/keyup plus native false-to-true disclosure state.",
+    "Same exact original physical HTML and original authority; final all-record text uses string comparison to preserve large integer spellings.",
+    "Original overview and settled checkpoint navigation are retained; remaining annotation, Sync and Gaps observations use the one distinct continuation.",
+    "Fresh 256 MiB disk / 2 GiB conservative RAM floors retained; both original and new directories count toward cumulative 2 MiB static and 96 MiB profile caps.",
+    "Exclusive new stage, pinned inputs/runtimes before/after, 180-second active Chrome and 195-second outer Node deadline, owned-only closure, failures retained.",
+    "Exact source delta reconstructs through twenty unique ordered replacements. Earlier unexecuted accounting draft remains separate."
+  ],
+  "runtime_scope": "Mac display of physical output produced by qualified Python 3.12; no CaptureSuite Python 3.13 app qualification",
+  "source_findings": [],
+  "native_execution_by_root": 0,
+  "original_run_reclassification": false,
+  "root_review_orchestration_refusal": {
+    "status": "Root orchestration comparison refused ambiguous suffix matches before any native action",
+    "preliminary": [
+      {
+        "path": "AUTHORITY.json",
+        "matches": [
+          "mac/AUTHORITY.json"
+        ]
+      },
+      {
+        "path": "CONTRACT.md",
+        "matches": [
+          "linux/frozen/CONTRACT.md",
+          "mac/CONTRACT.md"
+        ]
+      },
+      {
+        "path": "OUTER-EXECUTION.json",
+        "matches": [
+          "mac/OUTER-EXECUTION.json"
+        ]
+      },
+      {
+        "path": "SOURCE-PREPARATION.json",
+        "matches": [
+          "mac/SOURCE-PREPARATION.json"
+        ]
+      },
+      {
+        "path": "node.stderr.txt",
+        "matches": [
+          "mac/node.stderr.txt"
+        ]
+      },
+      {
+        "path": "node.stdout.txt",
+        "matches": [
+          "mac/node.stdout.txt"
+        ]
+      },
+      {
+        "path": "receiver.mjs",
+        "matches": [
+          "mac/receiver.mjs"
+        ]
+      },
+      {
+        "path": "recorded-events.html",
+        "matches": [
+          "linux/exports/recorded-events.html",
+          "mac/recorded-events.html"
+        ]
+      },
+      {
+        "path": "results/01-overview.png",
+        "matches": [
+          "mac/results/01-overview.png"
+        ]
+      },
+      {
+        "path": "results/ENTRY-DOM.json",
+        "matches": [
+          "mac/results/ENTRY-DOM.json"
+        ]
+      },
+      {
+        "path": "results/FAILURE-IDENTITY-AFTER.json",
+        "matches": [
+          "mac/results/FAILURE-IDENTITY-AFTER.json"
+        ]
+      },
+      {
+        "path": "results/IDENTITY-BEFORE.json",
+        "matches": [
+          "mac/results/IDENTITY-BEFORE.json"
+        ]
+      },
+      {
+        "path": "results/MAC-RECEIPT.json",
+        "matches": [
+          "mac/results/MAC-RECEIPT.json"
+        ]
+      },
+      {
+        "path": "results/chrome.stderr.txt",
+        "matches": [
+          "mac/results/chrome.stderr.txt"
+        ]
+      },
+      {
+        "path": "results/chrome.stdout.txt",
+        "matches": [
+          "mac/results/chrome.stdout.txt"
+        ]
+      }
+    ],
+    "correction": "Use exact original-map mac/ path namespace, not suffix matching across both Linux and Mac evidence."
+  },
+  "sql_interval_release": {
+    "pid": 77792,
+    "actual_exit": 0,
+    "external_closure": "fe3f1f7095ef4911ff6f344e764d11e30de28fde"
+  },
+  "conditions": [
+    "Execute exact frozen outer/receiver once only. Any refusal or failure ends this admission and remains retained.",
+    "Inspect both actual new screenshots before reporting visual acceptance.",
+    "Keep complete original 100-leaf packet unchanged and new continuation separate. No workflow/PR/main action is included."
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "schema": "capturesuite-continuation-external-process-closure-v1",
+  "original_map": "b4a4f33f218135a43d8b40b957416423ba5eb0a9",
+  "admitted_proposal": "85b255f4907e50d1c420a8476c78a953ecc616a6",
+  "root_admission": "8348a9868bbbbb24e129265d0ab579f9864d489f",
+  "original_receiving_unchanged": true,
+  "actual_outer": {
+    "pid": 81736,
+    "exit": 1,
+    "tool_runtime_seconds": 1.29,
+    "source": "24bed9f37bd9ec1daf6db579055667691274ff68",
+    "native_receipt": "11f4e01ec4f1d3c33af757cd6e6f9231c742a76b",
+    "external_request": {
+      "deviceId": "0b4ac27b-8500-47d0-8f11-5a35402e9abc",
+      "pid": 81736,
+      "timeout_ms": 1000,
+      "length": 12000
+    },
+    "external_response": {
+      "content": [
+        {
+          "type": "text",
+          "text": "[Reading 3 new lines (total: 3 lines)]\n\n{\"stage_prepared\": true, \"root\": \"/Users/me/Developer/capturesuite-recorded-report-continuation-c945953fdeb7\", \"controller_pid\": 81736, \"node_pid\": 81778, \"guards\": [{\"label\": \"before-exclusive-continuation-materialization\", \"time_utc\": \"2026-10-09T11:27:00.708036+00:00\", \"disk_free_bytes\": 2343940096, \"conservative_memory_bytes\": 11033903104, \"combined_owned\": {\"static\": {\"bytes\": 250190, \"allocated_bytes\": 278528}, \"browser\": {\"bytes\": 8838363, \"allocated_bytes\": 3342336}}, \"disk_floor_bytes\": 268435456, \"memory_floor_bytes\": 2147483648, \"combined_static_cap_bytes\": 2097152, \"combined_browser_cap_bytes\": 100663296, \"admitted\": true}, {\"label\": \"before-one-owned-node-browser-controller\", \"time_utc\": \"2026-10-09T11:27:00.740279+00:00\", \"disk_free_bytes\": 2343772160, \"conservative_memory_bytes\": 11037949952, \"combined_owned\": {\"static\": {\"bytes\": 299942, \"allocated_bytes\": 335872}, \"browser\": {\"bytes\": 8838363, \"allocated_bytes\": 3342336}}, \"disk_floor_bytes\": 268435456, \"memory_floor_bytes\": 2147483648, \"combined_static_cap_bytes\": 2097152, \"combined_browser_cap_bytes\": 100663296, \"admitted\": true}]}\n{\"outer_complete\": true, \"accepted\": false, \"root\": \"/Users/me/Developer/capturesuite-recorded-report-continuation-c945953fdeb7\", \"controller_pid\": 81736, \"node_pid\": 81778, \"node_wait_exit\": -15, \"node_reaped_by_wait\": true, \"error\": {\"type\": \"FileNotFoundError\", \"message\": \"[Errno 2] No such file or directory: '/Users/me/Developer/capturesuite-recorded-report-continuation-c945953fdeb7/browser/profile/Default/.com.google.Chrome.TransportSecurity.naJaws'\", \"traceback\": \"Traceback (most recent call last):\\n  File \\\"<string>\\\", line 118, in <module>\\n    a=sizes()\\n  File \\\"<string>\\\", line 28, in sizes\\n    'browser':add(tree_size(ROOT/'browser'),tree_size(ORIGINAL/'browser'))}\\n                  ~~~~~~~~~^^^^^^^^^^^^^^^^\\n  File \\\"<string>\\\", line 22, in tree_size\\n    s=p.stat()\\n  File \\\"/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/pathlib/_local.py\\\", line 515, in stat\\n    return os.stat(self, follow_symlinks=follow_symlinks)\\n           ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\nFileNotFoundError: [Errno 2] No such file or directory: '/Users/me/Developer/capturesuite-recorded-report-continuation-c945953fdeb7/browser/profile/Default/.com.google.Chrome.TransportSecurity.naJaws'\\n\"}, \"outer_receipt\": {\"bytes\": 14538, \"sha256\": \"33c2350410be34dd1f0c37cd6eaca56e6cde26d880f670de8f41777ce7be1d82\", \"git_blob\": \"11f4e01ec4f1d3c33af757cd6e6f9231c742a76b\", \"mode\": \"0444\", \"mtime_ns\": \"1791545221927532258\"}, \"full_record_if_unwritten\": null}\n\n✅ Process completed with exit code 1 (runtime: 1.29s)"
+        },
+        {
+          "type": "text",
+          "text": "\n[executed on device: Mac.lan (0b4ac27b-8500-47d0-8f11-5a35402e9abc)]"
+        }
+      ],
+      "isError": false
+    }
+  },
+  "actual_owned_node": {
+    "pid": 81778,
+    "wait_exit": -15,
+    "poll_exit": -15,
+    "reaped_by_wait": true,
+    "reason": "Outer exception handler terminated its owned group after FileNotFoundError."
+  },
+  "readonly_collector": {
+    "pid": 84011,
+    "exit": 0,
+    "tool_runtime_seconds": 0.12,
+    "source": {
+      "git_blob": "2db2cbaf2a930763b5b76c76497f63b630cb946a",
+      "bytes": 11877,
+      "sha256": "e2463a89899471e07086a6f6ee55a9dc70b511518a2408f43d993996fce08862"
+    },
+    "external_request": {
+      "deviceId": "0b4ac27b-8500-47d0-8f11-5a35402e9abc",
+      "pid": 84011,
+      "timeout_ms": 1000,
+      "length": 100
+    },
+    "external_exit_text": "✅ Process completed with exit code 0 (runtime: 0.12s)\n[executed on device: Mac.lan (0b4ac27b-8500-47d0-8f11-5a35402e9abc)]"
+  },
+  "measured_closure": {
+    "at": "2026-10-09T11:30:37.294580+00:00",
+    "owned_pid_group_snapshot": [],
+    "all_original_15_exact": true,
+    "new_four_protected_inputs_exact": true,
+    "runtime_exact": true,
+    "complete_record": "closure/NATIVE-CUSTODY.json",
+    "physical_files_written": 0,
+    "product_or_browser_calls": 0
+  },
+  "direct_chrome_exit": "Not recorded; do not invent an exit code. Later selected owned PID/group absence is a separate observation.",
+  "release": "After collector external exit0 and measured empty owned PID/group snapshot, Mac interval explicitly released to root/research/product. No further native process is requested."
+}
