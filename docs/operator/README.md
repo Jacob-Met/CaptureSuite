@@ -52,3 +52,10 @@ path to capture stderr.
 In Review, expand Recorded video to explicitly choose and play a retained segment.
 See [Recorded video review](RECORDED_VIDEO_REVIEW.md) for controls, segment-local
 clock meaning and unavailable-media recovery.
+
+
+## Compare two recorded frames
+
+Keep two explicitly chosen decoded images while inspecting different positions or
+segments. See [Recorded frame comparison](RECORDED_FRAME_COMPARISON.md) for the
+native panel, independent slots, clock meaning and memory limits.

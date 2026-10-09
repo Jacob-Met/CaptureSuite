@@ -20,7 +20,9 @@ from PySide6.QtWidgets import (
 
 from . import theme
 from .review_video import local_video_path, media_time, recorded_video_segments
+from .review_video_frames import retain_video_frame
 from .review_video_interval import ReviewInterval
+from .widgets_review_video_frames import FrameComparisonDialog
 
 
 class RecordedVideoReview(QWidget):
@@ -129,6 +131,11 @@ class RecordedVideoReview(QWidget):
         self._status = self._label("")
         self._status.setObjectName("HonestyBanner")
         body.addWidget(self._status)
+        self._compare_frames = QPushButton("Compare two frames…")
+        self._comparison = FrameComparisonDialog(self)
+        self._comparison.keep_requested.connect(self._keep_comparison_frame)
+        self._compare_frames.clicked.connect(self._show_frame_comparison)
+        body.addWidget(self._compare_frames)
         self._choice.currentIndexChanged.connect(self._open_selected)
         self._reload.clicked.connect(self._open_selected)
         self._play.clicked.connect(self._play_pause)
@@ -146,6 +153,7 @@ class RecordedVideoReview(QWidget):
             self._mark_b,
             self._repeat,
             self._clear_interval,
+            self._compare_frames,
         ):
             button.installEventFilter(self)
         self.reset()
@@ -163,6 +171,7 @@ class RecordedVideoReview(QWidget):
                 self._mark_b,
                 self._repeat,
                 self._clear_interval,
+                self._compare_frames,
             )
             and event.type() == QEvent.Type.ShortcutOverride
             and event.key() == Qt.Key.Key_Space
@@ -221,6 +230,7 @@ class RecordedVideoReview(QWidget):
 
     def reset(self, message: str = "Open a finalized package to inspect recorded video.") -> None:
         self._retire_media()
+        self._comparison.clear_all()
         self._package = ""
         self._segments = ()
         self._choice.blockSignals(True)
@@ -468,6 +478,38 @@ class RecordedVideoReview(QWidget):
     def _set_rate(self, _index: int) -> None:
         if self._player is not None and self._ready:
             self._player.setPlaybackRate(float(self._rate.currentData()))
+
+
+    def _show_frame_comparison(self) -> None:
+        self._comparison.show()
+        self._comparison.raise_()
+        self._comparison.activateWindow()
+
+    def _keep_comparison_frame(self, slot: str) -> None:
+        player, video, generation = self._player, self._video, self._generation
+        index = self._choice.currentIndex() - 1
+        try:
+            if player is None or video is None or not self._ready:
+                raise ValueError(
+                    "Choose a readable segment, press Play, then Pause before keeping a frame."
+                )
+            if player.playbackState() != QMediaPlayer.PlaybackState.PausedState:
+                raise ValueError("Pause Recorded video before keeping its decoded frame.")
+            if not 0 <= index < len(self._segments):
+                raise ValueError("Choose a recorded video segment before keeping a frame.")
+            frame = retain_video_frame(
+                video.videoSink().videoFrame(), self._segments[index], player.position()
+            )
+            if (
+                not self._current(player, generation)
+                or video is not self._video
+                or player.playbackState() != QMediaPlayer.PlaybackState.PausedState
+            ):
+                raise ValueError("The selected video changed. Pause it and keep the frame again.")
+        except (ValueError, RuntimeError, MemoryError) as exc:
+            self._comparison.set_notice(f"Frame not kept: {exc}")
+            return
+        self._comparison.set_frame(slot, frame)
 
     def hideEvent(self, event) -> None:  # noqa: N802
         self._pause()

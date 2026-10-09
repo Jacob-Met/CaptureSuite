@@ -217,3 +217,34 @@ no universal backend performance, frame-exact extraction, camera/checkpoint
 alignment, persisted annotation or analysis/export scope is inferred. No shared
 Review-screen, event-browser, timeline, capture, schema or scientific writer
 source changes are part of this contribution.
+
+
+## Decision 2026-10-09: Two retained decoded frames within recorded-video review
+
+**Reason:** An operator needs to keep one observed image while inspecting another
+position or segment. The existing Review layout has no scrolling container;
+placing two image cards inline would force its established controls taller.
+
+A viewer-owned, nonmodal comparison panel therefore has independent A/B Keep and
+Clear controls. It does not open a new package viewer, change app navigation or
+take #107's private-window ownership. Closing hides the pair; the existing package
+reset clears it, and viewer destruction releases its image references. Selection,
+reload and a failed selected file keep the pair within that package.
+
+Keep admits the current paused player and its current sink/generation, then takes
+a detached bounded image copy. No per-frame image history or shared decoder
+buffer is retained. Frame presentation time and observed player time are labeled
+separately. Qt frame rotation/mirroring apply to the displayed copy; aspect ratio
+and decoded dimensions remain explicit. The two 64 MiB ARGB32 limits are retained
+image admission, not an application-RSS promise.
+
+**Alternatives rejected:** automatic snapshots, export/history, analysis overlays,
+camera alignment and raw-video changes would cross existing ownership or imply
+stronger timing/scientific semantics. Mutating the accepted #103 repeat/rate
+methods is unnecessary; six additive viewer spans provide the new controls,
+reset and private helper methods.
+
+**Files:** new review_video_frames.py / widgets_review_video_frames.py, additive
+widgets_review_video.py hooks, focused model/native UI cases and
+[operator instructions](../../operator/RECORDED_FRAME_COMPARISON.md).
+Current source reservation and prospective contract: #112.

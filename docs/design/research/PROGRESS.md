@@ -1240,3 +1240,35 @@ pause/reload, C and Ctrl+Space countercontrols, outside-viewer checkpoint routin
 and unchanged raw fixtures. The original 151-case and independent lifecycle receipts
 remain at their historical source pins. App shortcut source and PR84 ownership
 remain untouched; final hosted gates are required on this corrected successor.
+
+
+## 2026-10-09 — Two retained recorded frames (#112; estate-db371a37f4c8)
+
+Scoped native extension on accepted #103 source custody 9befdad4, preserving all
+repeat/rate behavior and current main3960c0c7 ownership. The public pre-code contract
+and panel-placement clarification are in #112. The existing read-only Windows
+Python3.12.10/Qt6.12 runtime was re-admitted across18,539 exact files;132 original
+source/fixture files match their canonical Git tree.
+
+Original native receiving establishes real decoded frame copies and presentation
+transforms before candidate code. An initial environment-variable identity guard,
+wrapper syntax error, literal source-ID assumption and wrong fixture-color
+assumption are retained with the corrected original observations. No product
+repair is inferred from those author-observer failures.
+
+Candidate implementation is private and independent receiving is pending.
+Author model/actual-Qt gates and exact source proofs are recorded separately as
+they complete. No source ref, PR, main/tag/dispatch, shared runtime installation or
+GitHub Actions is part of this work. Original package bytes remain read-only.
+
+
+### 2026-10-09 08:50 UTC — Author native qualification
+
+The private Windows / Qt 6.12 candidate passed 19 maintained checks: native image
+orientation/copy/budget cases and actual decoder, pair-retention, playback, lifecycle
+and shortcut journeys. All 140 selected source files were byte-identical before
+and after the gate; all four recorded native PIDs were absent at delayed closure.
+Dark and light 720×620 comparison captures were read directly and show both images,
+literal identities and separate frame/player clocks without clipping. These are
+author results; independent original-first receiving remains pending. Earlier
+observer/transport negatives and the unchanged #103 bodies remain in custody.
