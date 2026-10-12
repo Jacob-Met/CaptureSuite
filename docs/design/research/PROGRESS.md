@@ -1,3 +1,38 @@
+## 2026-10-12 — Preserve recorded gaps in EMG transition features
+
+Contributor `chatgpt:7cb7e049e2c0/root`, issue #119, corrected artificial EMG
+transitions caused by compacting valid samples before taking differences.
+Waveform length and zero crossings now require originally adjacent valid
+samples with no recorded gap between their timestamps; slope-sign changes
+require two uninterrupted adjacent pairs. Explicit gaps also break adjacency
+when no retained sample falls inside them. RMS, mean absolute value, window
+placement, timestamps, valid-sample fractions and schema metadata retain their
+definitions. Raw sources are preserved.
+
+The final 14 regression methods produce 10 failure records on the original
+`3960c0c756cd4e9facbde0d76eaaa3c31ab7c167` source (including two integer-time
+subcases). The candidate passes those methods and 39 inherited feature, stream
+scope and numeric pipeline tests: 53 passes and six passing subtests on local
+Python 3.12.14. A real protobuf-MCAP fixture with a recorded disconnect reaches
+the public job API and both Parquet/CSV outputs with corrected transition
+values, unchanged amplitude values and identical raw-source hashes. Touched
+Python passes Ruff. The two emitted warnings are existing protobuf metaclass
+deprecations concerning Python 3.14.
+
+A deterministic no-gap control (eight channels, 120,000 samples at 2 kHz,
+1,199 windows) retains exactly equal table values and metadata. Ten alternating
+local timings measured median wall time of 0.243 s before and 0.272 s after
+(CPU: 0.243/0.272 s). The roughly 29 ms cost for this 60 s synthetic recording
+is a documented correctness tradeoff, not a claim of unchanged throughput or
+a hardware performance qualification. The continuous-input fast path and
+per-window reuse of triple masks limit avoidable overhead.
+
+The change stays within the EMG extractor, its new regression file, this
+additive progress entry and [consumer semantics](../../EMG_GAP_FEATURES.md).
+Independent scientific review, supported Windows CI and an authorized native
+receiving result are tracked separately on issue #119; local passing tests
+do not imply installed-desktop or physical-acquisition validation.
+
 ## 2026-10-08 — Preserve nearest feature pairs across retained row orders
 
 Contributor `chatgpt:/root/production_execution`, issue #86, repaired the
