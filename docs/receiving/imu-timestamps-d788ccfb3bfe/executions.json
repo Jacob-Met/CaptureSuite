@@ -1,0 +1,41 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "runs": [
+    {
+      "version": "base",
+      "exit_code": 1,
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "/workspace/scratch/d788ccfb3bfe/product_workflow/candidate/tests/analysis",
+        "-p",
+        "test_imu_feature_timestamps.py",
+        "-v"
+      ],
+      "cwd": "/workspace/scratch/d788ccfb3bfe/product_workflow/base",
+      "source_sha256": "246bfd1cc3ce72afa0680537062b6795e22b8a06ba6301503d7489a4440c6849",
+      "test_sha256": "b559a03a44756d0fa30c1d5354be8de8089f0984340208e85fc60c1830fb131d"
+    },
+    {
+      "version": "candidate",
+      "exit_code": 0,
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "/workspace/scratch/d788ccfb3bfe/product_workflow/candidate/tests/analysis",
+        "-p",
+        "test_imu_feature_timestamps.py",
+        "-v"
+      ],
+      "cwd": "/workspace/scratch/d788ccfb3bfe/product_workflow/candidate",
+      "source_sha256": "e325a2bb5312ae4816a34b25b4ae62256a50e7eb71f1fd1deee20b7922a15c8e",
+      "test_sha256": "b559a03a44756d0fa30c1d5354be8de8089f0984340208e85fc60c1830fb131d"
+    }
+  ]
+}

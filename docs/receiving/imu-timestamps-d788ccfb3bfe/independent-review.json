@@ -1,0 +1,16 @@
+{
+  "reviewer": "source_reliability",
+  "disposition": "accepted",
+  "source_sha256": "e325a2bb5312ae4816a34b25b4ae62256a50e7eb71f1fd1deee20b7922a15c8e",
+  "original_oracle_sha256": "51d9ede6f28dbaf4bded5258482c83af81c93f163b1e8733a4a35a7d166c9403",
+  "published_oracle_sha256": "11bd59a000c13b0e7155ec74551f082803da64843478a69dabdf405da3357f2d",
+  "script_change": "Only GPL-3.0-only SPDX header inserted after shebang",
+  "cases_per_course": 512,
+  "baseline_failures": 148,
+  "candidate_failures": 0,
+  "modes": [
+    "normal",
+    "optimized"
+  ],
+  "review_summary": "Loader supplies 1D int64, extractor skips all-invalid windows, partition copies, Python-int central addition and signed truncation are correct. No unrelated feature mathematics changed."
+}

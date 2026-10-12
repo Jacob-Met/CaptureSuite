@@ -1,0 +1,74 @@
+{
+  "source": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+  "cases": [
+    {
+      "case": "single_odd_positive",
+      "times": [
+        9007199254740993
+      ],
+      "expected": 9007199254740993,
+      "actual": 9007199254740992,
+      "matches": false,
+      "dtype": "int64"
+    },
+    {
+      "case": "odd_three",
+      "times": [
+        9007199254740993,
+        9007199254740995,
+        9007199254740997
+      ],
+      "expected": 9007199254740995,
+      "actual": 9007199254740996,
+      "matches": false,
+      "dtype": "int64"
+    },
+    {
+      "case": "upper_int64_pair",
+      "times": [
+        9223372036854775806,
+        9223372036854775807
+      ],
+      "expected": 9223372036854775806,
+      "actual": 9223372036854775808,
+      "matches": false,
+      "dtype": "uint64"
+    },
+    {
+      "case": "single_negative",
+      "times": [
+        -9007199254740993
+      ],
+      "expected": -9007199254740993,
+      "actual": -9007199254740992,
+      "matches": false,
+      "dtype": "int64"
+    },
+    {
+      "case": "negative_fraction",
+      "times": [
+        -3,
+        -2
+      ],
+      "expected": -2,
+      "actual": -2,
+      "matches": true,
+      "dtype": "int64"
+    },
+    {
+      "case": "ordinary",
+      "times": [
+        10,
+        20,
+        30,
+        40
+      ],
+      "expected": 25,
+      "actual": 25,
+      "matches": true,
+      "dtype": "int64"
+    }
+  ],
+  "passed": 2,
+  "failed": 4
+}

@@ -1213,3 +1213,22 @@ pause/reload, C and Ctrl+Space countercontrols, outside-viewer checkpoint routin
 and unchanged raw fixtures. The original 151-case and independent lifecycle receipts
 remain at their historical source pins. App shortcut source and PR84 ownership
 remain untouched; final hosted gates are required on this corrected successor.
+
+
+## 2026-10-12 — Exact IMU feature timestamp medians (d788ccfb3bfe/product_workflow)
+
+Issue #121 repairs float64 rounding in the public IMU feature extractor's
+`t_mid_ns` window marker. Odd medians retain the central signed integer; even
+medians add their central pair as Python integers and truncate half nanoseconds
+toward zero. Recorded arrays, gap policy, window/hop selection and non-time
+feature values remain unchanged. The narrow source change excludes the separate
+EMG gap-processing and IMU loader-memory lanes.
+
+Seven maintained public-extractor methods pass; the identical tests retain
+13 original-source failing subcases. Independent receiving accepted the exact
+production hash and used a sorted-Python-int/Fraction oracle: 148/512 original
+failures become 0/512 candidate failures in normal and optimized Python, with
+strided inputs preserved. Python 3.12.14 / NumPy 2.3.5 / Pandas 2.2.3 receiving
+uses the genuine pinned package source. Full desktop/native/hardware acceptance
+is outside this correction. Details and original failures are retained in
+[the receiving record](../../receiving/imu-timestamps-d788ccfb3bfe/README.md).

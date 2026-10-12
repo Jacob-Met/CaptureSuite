@@ -10,6 +10,18 @@ from capture_analysis.types import GapMask, LoadedImu
 from capture_analysis.windows import enforce_gap_policy, valid_fraction, validity_mask
 
 
+def _median_timestamp_ns(timestamps: np.ndarray) -> int:
+    """Return a nonempty integer median, truncating half nanoseconds toward zero."""
+    middle = timestamps.size // 2
+    if timestamps.size % 2:
+        return int(np.partition(timestamps, middle)[middle])
+    central = np.partition(timestamps, (middle - 1, middle))
+    # Convert before addition so int64 extremes neither overflow nor pass through
+    # float64. Keep int(median)'s existing truncation for negative half values.
+    total = int(central[middle - 1]) + int(central[middle])
+    return total // 2 if total >= 0 else -((-total) // 2)
+
+
 def extract_imu_features(
     loaded: LoadedImu,
     gap_mask: GapMask,
@@ -37,7 +49,7 @@ def extract_imu_features(
         v = valid[i0:i1]
         if not np.any(v):
             continue
-        t_mid = int(np.median(loaded.t_frame_ns[i0:i1][v]))
+        t_mid = _median_timestamp_ns(loaded.t_frame_ns[i0:i1][v])
         row: dict = {"t_mid_ns": t_mid, "valid_fraction": float(np.mean(v))}
         for s, sid in enumerate(loaded.sensor_ids):
             a = loaded.accel[i0:i1, s][v]
