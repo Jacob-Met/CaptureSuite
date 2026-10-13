@@ -40,8 +40,8 @@ flowchart LR
 
 ## Inspect a synthetic QC result first
 
-After setting up the documented Python 3.12 analysis dependencies, run from the
-repository root (the parent directory must exist; choose a NEW output path):
+After setting up the [Python 3.12 analysis dependencies](libs/python/capture_analysis/pyproject.toml),
+run from the repository root (the parent directory must exist; choose a NEW output path):
 
 ```powershell
 py -3.12 tools/demo_qc.py ../capturesuite-qc-demo

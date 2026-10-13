@@ -1268,3 +1268,24 @@ This is a bounded receipt-reader repair, not complete CaptureSuite, desktop,
 C++/daemon or hardware qualification. GitHub Actions remain unrun. Independent
 source review and isolated branch publication are recorded separately; the
 accepted main source is not changed by this session.
+
+
+## 2026-10-13 — Link the synthetic QC example to its dependencies
+
+Contributor `/root/source_delivery` linked the README's Python 3.12 analysis
+dependency phrase to the existing `capture_analysis` package declaration.
+Readers can inspect the supported Python range, required packages and optional
+extras before using the existing synthetic QC command. The link describes a
+dependency declaration; it does not introduce an installation procedure.
+
+The README command, output locations, new-destination requirement and synthetic,
+hardware and scientific limits remain unchanged. Source review checked the
+existing demo and CLI contract together with the package declaration at
+`3f42f7431e3fcfcb60cb2580afaa41d7dc9deb85`. The complete prior progress record
+and all application, test, fixture, dependency and workflow bytes are preserved.
+
+This documentation increment has no new installation, CLI/demo execution,
+test, native, desktop, hardware or scientific qualification. Source custody
+and independent review are separate from the held PR/main integration and
+GitHub Actions gates. Existing analysis, operator-guide and runtime owners
+retain their contributions.
