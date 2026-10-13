@@ -1,0 +1,221 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: GPL-3.0-only -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%232563eb' d='M4 5h10v22H4zm14 0h10v22H18z'/%3E%3C/svg%3E">
+<title>Saved QC comparison — CaptureSuite</title>
+<style>
+:root{color-scheme:light dark;--bg:#f4f6f8;--panel:#fff;--alt:#eef1f5;--border:#c8d0da;--text:#1a2332;--dim:#5a6573;--accent:#2563eb}
+@media(prefers-color-scheme:dark){:root{--bg:#12161c;--panel:#1a2029;--alt:#212934;--border:#2c3542;--text:#dfe6ef;--dim:#8d9aab;--accent:#3d8bfd}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 "Segoe UI",system-ui,sans-serif}
+main{max-width:1280px;margin:auto;padding:32px 24px}header{margin-bottom:24px;border-bottom:1px solid var(--border);padding-bottom:16px}
+.eyebrow{margin:0 0 8px;color:var(--dim);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+h1{font-size:28px;line-height:1.25;margin:0 0 12px}h2{font-size:18px;margin:0 0 12px}h3{font-size:15px;margin:0 0 8px}
+p{margin:8px 0 12px}.dim,.scope{color:var(--dim)}.scope{max-width:100ch}.captures,.values{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:6px;padding:16px;min-width:0}.captures{margin-bottom:24px}
+.capture-label{color:var(--dim);font-size:12px;font-weight:600;letter-spacing:.05em}
+code,pre,.mono{font-family:Consolas,ui-monospace,monospace}code{overflow-wrap:anywhere;white-space:pre-wrap}
+dl{display:grid;grid-template-columns:88px minmax(0,1fr);gap:8px;margin:12px 0 16px}dt{color:var(--dim);font-size:13px}dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.hash{font-size:12px;line-height:1.5}.name{font-size:16px;line-height:1.4;margin:8px 0 16px}
+button,input,select{font:inherit;color:var(--text);background:var(--panel);border:1px solid var(--border);border-radius:4px;min-height:40px;padding:8px 12px}
+button{cursor:pointer}button:hover:not(:disabled){background:var(--alt)}button:disabled{opacity:.5;cursor:default}
+button:focus-visible,input:focus-visible,select:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.primary{background:var(--accent);border-color:var(--accent);color:#fff}.primary:hover:not(:disabled){filter:brightness(.9);background:var(--accent)}
+.toolbar{display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap;margin:16px 0}.field{display:flex;flex-direction:column;gap:4px}.field label{font-size:13px;color:var(--dim)}.search{flex:1;min-width:220px}.search input{width:100%}
+.summary{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}.total{font-size:28px;line-height:1.2}.summary h2{margin:0}
+.table-scroll{overflow-x:auto;max-width:100%;border:1px solid var(--border);border-radius:4px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;min-width:820px;table-layout:fixed}th,td{padding:12px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+th{background:var(--alt);font-size:12px;color:var(--dim);font-weight:600}tr:last-child td{border-bottom:0}th:nth-child(1){width:27%}th:nth-child(2){width:12%}th:nth-child(3),th:nth-child(4){width:23%}th:nth-child(5){width:15%}
+td{font-size:13px;overflow-wrap:anywhere}td code{font-size:12px}.type-tag{font:11px Consolas,ui-monospace,monospace;display:block;color:var(--dim);margin-bottom:4px}
+tr.selected{background:var(--alt)}button[aria-pressed=true]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.pager{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:12px 0 24px}.pager-buttons{display:flex;align-items:center;gap:12px}
+#visible-count,#page-status{color:var(--dim);font-size:13px}.details{margin-top:16px}.detail-pointer{margin-bottom:16px}.values>section{min-width:0}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;margin:8px 0 0;padding:12px;min-height:48px;max-height:420px;overflow:auto;background:var(--alt);border:1px solid var(--border);border-radius:4px;font-size:13px}
+#detail-title{scroll-margin-top:16px}footer{margin-top:24px;color:var(--dim);font-size:13px;border-top:1px solid var(--border);padding-top:16px}
+[hidden]{display:none!important}.download-bar{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:16px}#download-status{font-size:13px;color:var(--dim)}
+@media(max-width:680px){main{padding:24px 12px}.captures,.values{grid-template-columns:1fr}h1{font-size:24px}.search{min-width:100%}.toolbar .field:not(.search){flex:1}select{width:100%}.pager{align-items:flex-start}.pager-buttons{gap:8px}.panel{padding:12px}.hash{font-size:11px}dl{grid-template-columns:76px minmax(0,1fr)}}
+@media print{body{color:#000;background:#fff}main{max-width:none;padding:0}button,.toolbar,.pager-buttons,.download-bar{display:none}.panel{break-inside:avoid}pre{max-height:none;overflow:visible}.table-scroll{overflow:visible}table{min-width:0}.scope{color:#333}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<p class="eyebrow">CaptureSuite · offline saved-result review</p>
+<h1>Saved QC comparison</h1>
+<p class="scope">Review recorded differences between two captured reports. These values are saved observations, not independently verified session quality. Array positions remain distinct; gaps, durations and traffic lights are not recomputed.</p>
+<p id="load-status" role="status">Loading the captured comparison…</p>
+<noscript><p>JavaScript is required for this detached comparison view. Use the standalone comparison command to read the same reports as text or JSON.</p></noscript>
+</header>
+<div id="review" hidden>
+<section class="captures" aria-label="Captured report identities">
+<article class="panel">
+<div class="capture-label">FIRST CAPTURE · BEFORE</div><h2 id="first-name" class="name mono"></h2>
+<dl><dt>Session</dt><dd><code id="first-session"></code></dd><dt>Package</dt><dd><code id="first-package"></code></dd><dt>Input bytes</dt><dd id="first-bytes" class="mono"></dd><dt>SHA-256</dt><dd><code id="first-sha" class="hash"></code></dd></dl>
+<button id="download-first" type="button">Download first original JSON</button>
+</article>
+<article class="panel">
+<div class="capture-label">SECOND CAPTURE · AFTER</div><h2 id="second-name" class="name mono"></h2>
+<dl><dt>Session</dt><dd><code id="second-session"></code></dd><dt>Package</dt><dd><code id="second-package"></code></dd><dt>Input bytes</dt><dd id="second-bytes" class="mono"></dd><dt>SHA-256</dt><dd><code id="second-sha" class="hash"></code></dd></dl>
+<button id="download-second" type="button">Download second original JSON</button>
+</article>
+</section>
+<section aria-labelledby="differences-title">
+<div class="summary"><span id="difference-count" class="total mono"></span><h2 id="differences-title">differences</h2><span id="comparison-status" class="dim"></span></div>
+<p class="dim">Pointers identify saved positions. JSON text preserves integer, float, boolean, null and absent values separately. Select a row for its complete values.</p>
+<div class="toolbar">
+<div class="field"><label for="kind-filter">Difference kind</label><select id="kind-filter"><option value="all">All kinds</option><option value="changed">Changed</option><option value="added">Added</option><option value="removed">Removed</option></select></div>
+<div class="field search"><label for="pointer-filter">Pointer contains · case-sensitive literal text</label><input id="pointer-filter" type="search" autocomplete="off" spellcheck="false" placeholder="For example: /gaps/0/"></div>
+<button id="reset" type="button">Reset view</button>
+</div>
+<div class="table-scroll" role="region" aria-label="Saved differences table" tabindex="0">
+<table><thead><tr><th scope="col">JSON pointer</th><th scope="col">Kind</th><th scope="col">Before</th><th scope="col">After</th><th scope="col">Review</th></tr></thead><tbody id="rows"></tbody></table>
+</div>
+<div class="pager"><span id="visible-count" role="status"></span><div class="pager-buttons"><button id="prev-page" type="button">Previous</button><span id="page-status"></span><button id="next-page" type="button">Next</button></div></div>
+</section>
+<section class="panel details" aria-labelledby="detail-title">
+<h2 id="detail-title" tabindex="-1">Select a difference</h2><p class="detail-pointer"><code id="detail-pointer"></code></p>
+<div class="values"><section><h3>Before <span id="before-type" class="dim"></span></h3><pre id="before-value"></pre></section><section><h3>After <span id="after-type" class="dim"></span></h3><pre id="after-value"></pre></section></div>
+</section>
+<div class="download-bar"><button id="download-comparison" class="primary" type="button">Download complete comparison JSON</button><span id="download-status" role="status"></span></div>
+<footer>Captured hashes identify the input bytes actually read. Recorded package paths and manifest hashes are provenance claims; this page follows no package path. Filters and pagination change only this view. The complete comparison download includes both parsed documents and every literal difference. A printed page contains the current view.</footer>
+</div>
+</main>
+<script id="qc-data" type="application/octet-stream">@@DATA_BASE64@@</script>
+<script>
+"use strict";
+(() => {
+  const $ = (id) => document.getElementById(id);
+  try {
+    const data = JSON.parse(atob($("qc-data").textContent.trim()));
+    const rows = data.rows;
+    const pageSize = 50;
+    let page = 0;
+    let filtered = rows;
+    let selected = null;
+    function clearDetails() {
+      selected = null;
+      $("detail-title").textContent = "Select a difference";
+      for (const id of ["detail-pointer", "before-type", "before-value", "after-type", "after-value"]) $(id).textContent = "";
+    }
+    function selectRow(row) {
+      selected = row.index;
+      $("detail-title").textContent = "Difference " + (row.index + 1);
+      $("detail-pointer").textContent = row.pointer;
+      for (const side of ["before", "after"]) {
+        $(side + "-type").textContent = row[side].type;
+        $(side + "-value").textContent = row[side].text;
+      }
+      for (const button of $("rows").querySelectorAll("button[data-index]")) {
+        const active = button.dataset.index === String(selected);
+        button.setAttribute("aria-pressed", String(active));
+        button.closest("tr").classList.toggle("selected", active);
+      }
+      $("detail-title").focus();
+    }
+    function sideCell(value) {
+      const td = document.createElement("td");
+      const type = document.createElement("span");
+      type.className = "type-tag";
+      type.textContent = value.type;
+      const text = document.createElement("code");
+      text.textContent = value.text.length > 140 ? value.text.slice(0, 137) + "…" : value.text;
+      td.append(type, text);
+      return td;
+    }
+    function renderRows() {
+      $("rows").replaceChildren();
+      const pages = Math.max(1, Math.ceil(filtered.length / pageSize));
+      page = Math.min(page, pages - 1);
+      const fragment = document.createDocumentFragment();
+      for (const row of filtered.slice(page * pageSize, (page + 1) * pageSize)) {
+        const tr = document.createElement("tr");
+        const pointer = document.createElement("td");
+        const code = document.createElement("code");
+        code.textContent = row.pointer;
+        pointer.append(code);
+        const kind = document.createElement("td");
+        kind.textContent = row.kind;
+        const action = document.createElement("td");
+        const button = document.createElement("button");
+        button.type = "button";
+        button.dataset.index = String(row.index);
+        button.textContent = "Inspect " + (row.index + 1);
+        button.setAttribute("aria-pressed", "false");
+        button.addEventListener("click", () => selectRow(row));
+        action.append(button);
+        tr.append(pointer, kind, sideCell(row.before), sideCell(row.after), action);
+        fragment.append(tr);
+      }
+      if (!filtered.length) {
+        const tr = document.createElement("tr");
+        const td = document.createElement("td");
+        td.colSpan = 5;
+        td.textContent = rows.length ? "No differences match these filters." : "No differences in parsed report values.";
+        tr.append(td);
+        fragment.append(tr);
+      }
+      $("rows").append(fragment);
+      $("visible-count").textContent = filtered.length + " of " + rows.length + " differences";
+      $("page-status").textContent = "Page " + (page + 1) + " of " + pages;
+      $("prev-page").disabled = page === 0;
+      $("next-page").disabled = page + 1 >= pages;
+    }
+    function refilter() {
+      const kind = $("kind-filter").value;
+      const pointer = $("pointer-filter").value;
+      filtered = rows.filter((row) => (kind === "all" || row.kind === kind) && row.pointer.includes(pointer));
+      page = 0;
+      clearDetails();
+      renderRows();
+    }
+    function download(encoded, name) {
+      let url = null;
+      let anchor = null;
+      try {
+        const bytes = Uint8Array.from(atob(encoded), (character) => character.charCodeAt(0));
+        url = URL.createObjectURL(new Blob([bytes], {type: "application/json"}));
+        anchor = document.createElement("a");
+        anchor.href = url;
+        anchor.download = name;
+        document.body.append(anchor);
+        anchor.click();
+        $("download-status").textContent = "Download requested with the complete prepared bytes.";
+      } catch (_) {
+        $("download-status").textContent = "The browser could not prepare this download. Keep the page and try again.";
+      } finally {
+        if (anchor) anchor.remove();
+        if (url) setTimeout(() => URL.revokeObjectURL(url), 1000);
+      }
+    }
+    for (const role of ["first", "second"]) {
+      const capture = data.captures[role];
+      for (const field of ["name", "session", "package", "bytes"]) $(role + "-" + field).textContent = capture[field];
+      $(role + "-sha").textContent = capture.sha256;
+      $("download-" + role).addEventListener("click", () => download(capture.base64, capture.downloadName));
+    }
+    $("download-comparison").addEventListener("click", () => download(data.comparisonBase64, "qc-comparison.json"));
+    $("difference-count").textContent = String(rows.length);
+    $("comparison-status").textContent = data.equal ? "Equal saved values" : "Different saved values";
+    $("kind-filter").addEventListener("change", refilter);
+    $("pointer-filter").addEventListener("input", refilter);
+    $("reset").addEventListener("click", () => {
+      $("kind-filter").value = "all";
+      $("pointer-filter").value = "";
+      refilter();
+    });
+    $("prev-page").addEventListener("click", () => {page -= 1; clearDetails(); renderRows();});
+    $("next-page").addEventListener("click", () => {page += 1; clearDetails(); renderRows();});
+    renderRows();
+    $("review").hidden = false;
+    $("load-status").textContent = "Complete saved reports admitted. No session data is opened.";
+    document.body.dataset.ready = "true";
+  } catch (_) {
+    $("load-status").textContent = "This report page could not be read. Regenerate it from the original saved QC files.";
+  }
+})();
+</script>
+</body>
+</html>
