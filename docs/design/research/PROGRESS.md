@@ -1240,3 +1240,38 @@ pause/reload, C and Ctrl+Space countercontrols, outside-viewer checkpoint routin
 and unchanged raw fixtures. The original 151-case and independent lifecycle receipts
 remain at their historical source pins. App shortcut source and PR84 ownership
 remain untouched; final hosted gates are required on this corrected successor.
+
+
+## 2026-10-13 — Video cadence preserves recorded gaps and integer intervals (team 7cb7e049e2c0)
+
+Issue #123 corrects video timing QC and only its `handle_video` consumer. Known
+disconnects between retained frames now invalidate cadence; both endpoints must
+be valid and duration positive. Every observed interval and exact endpoint remains
+in the table, invalid FPS is NaN, and usable-only statistics include explicit
+interval counts. Integer subtraction precedes floating-point seconds conversion,
+including signed-int64 extrema. The FPS figure and retained sync series consume
+the same masked values. Frame validFraction, raw data, loaders, shared gap helpers,
+feature columns/schema1, and other handlers remain unchanged.
+
+The 29 focused regression cases and 39 neighboring cases pass on Python 3.12.14,
+including actual synthetic MCAP to Parquet/CSV and plot/sync receiving. The new
+module also passes under Python -O and scoped Ruff passes. Independent receiving
+accepted 550 integer/Fraction/interval cases and rejected the original precision
+and inter-frame-gap controls. Full extraction of 216,000 frames measured 4.89 ms
+versus 4.27 ms original (seven alternating samples after warmup); 1,000,000 frames
+measured 23.39 ms versus 20.31 ms. Details and operator semantics are in
+[`docs/VIDEO_TIMING_QC.md`](../../VIDEO_TIMING_QC.md).
+
+Composition on current main ab17b8c5 retains the separate CSV suffix correction
+and its complete PROGRESS entry. The focused selection plus its six writer-path
+cases passes 74 tests; the two independently reviewed video source hashes remain
+unchanged.
+
+The wider local analysis attempt preserved its setup failures: 313 passed, 2 skipped,
+10 failed because the initial narrow snapshot lacked desktop/schema files. The
+seven numerical CLI cases pass after receiving the required unchanged schema.
+Linux cannot collect four existing Windows transport modules (`msvcrt`); Qt and
+supported native qualification remain separate. The isolated MSI receiver is
+being prepared under the explicit CaptureSuite analysis pause exception; no native
+pass or installed adoption is claimed here. No PR, main/tag update, workflow edit,
+dispatch or rerun accompanies this increment.

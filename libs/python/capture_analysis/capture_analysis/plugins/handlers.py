@@ -246,33 +246,32 @@ def handle_radar_doppler(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext)
 
 def handle_video(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext) -> None:
     loaded = load_video_timing(ref, ctx.window)
-    if ctx.do_features:
-        df, meta, vf, warns = extract_video_qc(
-            loaded, gap_mask, nominal_rate_hz=ref.nominal_rate_hz or 30.0
+    df, meta, vf, warns = extract_video_qc(
+        loaded, gap_mask, nominal_rate_hz=ref.nominal_rate_hz or 30.0
+    )
+    ctx.warnings.extend(warns)
+    ctx.valid_fractions[ref.source_id] = vf
+    if ctx.do_features and not df.empty:
+        rel = f"features/video/{ref.source_id}/timing_qc.parquet"
+        write_feature_table(
+            ctx.work,
+            rel,
+            df,
+            feature_schema_version=1,
+            columns_meta=meta,
+            schema_doc=ctx.schema_doc,
+            outputs=ctx.outputs,
         )
-        ctx.warnings.extend(warns)
-        ctx.valid_fractions[ref.source_id] = vf
-        if not df.empty:
-            rel = f"features/video/{ref.source_id}/timing_qc.parquet"
-            write_feature_table(
-                ctx.work,
-                rel,
-                df,
-                feature_schema_version=1,
-                columns_meta=meta,
-                schema_doc=ctx.schema_doc,
-                outputs=ctx.outputs,
-            )
-            ctx.feature_tables.append(
-                {"relativePath": rel, "featureSchemaVersion": 1, "rows": int(len(df))}
-            )
-    if ctx.do_plots and loaded.t_frame_ns.size >= 2:
-        dt = np.diff(loaded.t_frame_ns.astype(np.float64)) / 1e9
-        fps = np.where(dt > 0, 1.0 / dt, np.nan)
+        ctx.feature_tables.append(
+            {"relativePath": rel, "featureSchemaVersion": 1, "rows": int(len(df))}
+        )
+    if ctx.do_plots and not df.empty:
+        t_ns = df["t_ns"].to_numpy()
+        fps = df["fps_inst"].to_numpy()
         path = ctx.work / "figures" / f"video_{ref.source_id}_fps.png"
         plot_series(
             path,
-            loaded.t_frame_ns[1:],
+            t_ns,
             fps,
             window=ctx.window,
             gaps=ctx.all_gaps,
@@ -291,7 +290,7 @@ def handle_video(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext) -> None
         ctx.sync_series.append(
             {
                 "label": f"Video {ref.source_id[:16]}",
-                "t_ns": loaded.t_frame_ns[1:],
+                "t_ns": t_ns,
                 "y": fps,
                 "color": "#888888",
             }
