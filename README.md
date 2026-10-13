@@ -53,6 +53,11 @@ or patient data. The output contains `DEMO-RECEIPT.json` and an inspectable HTML
 and JSON report under
 `synthetic-demo.mmsession/processing/jobs/demo-qc/reports/`.
 
+The two bundled MCAP segments are 28-byte text placeholders, not recorded
+samples. This demo's duration, sampling rates, listed segment counts, and green
+QC labels come from the supplied package and stream descriptors; the demo does
+not decode samples or establish signal quality.
+
 The example checks original-fixture and copied raw-source hashes, rejects an
 existing output directory, and preserves failure output for diagnosis. It does
 not establish hardware performance, clinical validity, or full product readiness.

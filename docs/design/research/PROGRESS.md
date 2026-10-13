@@ -1392,3 +1392,12 @@ Fresh Drive readback matched the native packet exactly, with all 38 ZIP CRCs,
 check is separate from the native run on the received source projection.
 No production code, dependency, real session, daemon, GUI, release or workflow
 changed; GitHub Actions were not run. Only this dated progress entry is added.
+
+## 2026-10-13 — Clarify the synthetic QC demo at its entrypoint
+
+The README now states that the bundled MCAP segments are text placeholders and
+that the demo's duration, rates, segment counts, and green QC labels describe
+supplied metadata rather than decoded signal quality. This follows the actual
+receiving observations in issue #142 and the source record in PR #143 above.
+The existing command, output directions, and limitations remain unchanged.
+Only README and this progress note change; no runtime replay is needed.
