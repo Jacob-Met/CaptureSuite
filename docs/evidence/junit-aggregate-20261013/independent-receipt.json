@@ -1,0 +1,587 @@
+{
+  "schema": "capturesuite.independent-aggregate-review.v1",
+  "reviewer": "/root/engine_research",
+  "runtime": "3.12.2 (tags/v3.12.2:6abddd9, Feb  6 2024, 21:26:36) [MSC v.1937 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "source_sha256": {
+    "original": "a35a6bb9b5293db46201857a5590b45ad77243f646a5cf729112f8130710d776",
+    "candidate": "54ae0026ad0f90969c63815ffbbadcf84e47a70cf921fb7115d1b95abe9fe445"
+  },
+  "exact_production_diff": true,
+  "cases": {
+    "original": [
+      {
+        "case": "full_sum",
+        "process_exit": 0,
+        "expected_accepted": true,
+        "matched": true,
+        "receipt": {
+          "schema": "capturesuite.test-receipt.v1",
+          "accepted": true,
+          "process_exit": 0,
+          "counts": {
+            "tests": 3,
+            "passed": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 1
+          },
+          "junit_sha256": "5807b8963370146558ae337bd5c26ef3f194fe5b10266219089ac587e82cf9c5",
+          "problems": [],
+          "scope": "Process and test-evidence consistency, not clinical validation"
+        },
+        "input_unchanged": true,
+        "hash_correct": true
+      },
+      {
+        "case": "optional_counts",
+        "process_exit": 0,
+        "expected_accepted": true,
+        "matched": true,
+        "receipt": {
+          "schema": "capturesuite.test-receipt.v1",
+          "accepted": true,
+          "process_exit": 0,
+          "counts": {
+            "tests": 3,
+            "passed": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 1
+          },
+          "junit_sha256": "77f827430289f25ae0c7e3b165f8b88af11ad015814c2eb7bda098b458d773ac",
+          "problems": [],
+          "scope": "Process and test-evidence consistency, not clinical validation"
+        },
+        "input_unchanged": true,
+        "hash_correct": true
+      },
+      {
+        "case": "single_suite",
+        "process_exit": 0,
+        "expected_accepted": true,
+        "matched": true,
+        "receipt": {
+          "schema": "capturesuite.test-receipt.v1",
+          "accepted": true,
+          "process_exit": 0,
+          "counts": {
+            "tests": 1,
+            "passed": 1,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "1541fdbfd544ef3c48a55d740593d9755e90bcf23b788399b44deb140b4c6341",
+          "problems": [],
+          "scope": "Process and test-evidence consistency, not clinical validation"
+        },
+        "input_unchanged": true,
+        "hash_correct": true
+      },
+      {
+        "case": "failed_process",
+        "process_exit": 2,
+        "expected_accepted": false,
+        "matched": true,
+        "receipt": {
+          "schema": "capturesuite.test-receipt.v1",
+          "accepted": false,
+          "process_exit": 2,
+          "counts": {
+            "tests": 3,
+            "passed": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 1
+          },
+          "junit_sha256": "4ca205a70450605683447a5839cfe46c426164814c23ce58de83535fc5ab780f",
+          "problems": [
+            "Test process did not exit successfully"
+          ],
+          "scope": "Process and test-evidence consistency, not clinical validation"
+        },
+        "input_unchanged": true,
+        "hash_correct": true
+      },
+      {
+        "case": "real_child_failure",
+        "process_exit": 0,
+        "expected_accepted": false,
+        "matched": true,
+        "receipt": {
+          "schema": "capturesuite.test-receipt.v1",
+          "accepted": false,
+          "process_exit": 0,
+          "counts": {
+            "tests": 1,
+            "passed": 0,
+            "failures": 1,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "56310abcc6157c5bf46247a3745736d02d4d11261506f1e55b84ee8261c397ff",
+          "problems": [
+            "No executed passing test cases",
+            "JUnit contains failing or errored cases"
+          ],
+          "scope": "Process and test-evidence consistency, not clinical validation"
+        },
+        "input_unchanged": true,
+        "hash_correct": true
+      },
+      {
+        "case": "child_mismatch",
+        "process_exit": 0,
+        "expected_accepted": false,
+        "matched": true,
+        "receipt": {
+          "schema": "capturesuite.test-receipt.v1",
+          "accepted": false,
+          "process_exit": 0,
+          "counts": null,
+          "junit_sha256": "61dc8709d83ae26d63cc08d813d0edbf62e6f77aa1c08c5a7e073f64a1632cac",
+          "problems": [
+            "JUnit unavailable or invalid: ValueError"
+          ],
+          "scope": "Process and test-evidence consistency, not clinical validation"
+        },
+        "input_unchanged": true,
+        "hash_correct": true
+      },
+      {
+        "case": "aggregate_tests",
+        "process_exit": 0,
+        "expected_accepted": false,
+        "matched": false,
+        "receipt": {
+          "schema": "capturesuite.test-receipt.v1",
+          "accepted": true,
+          "process_exit": 0,
+          "counts": {
+            "tests": 3,
+            "passed": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 1
+          },
+          "junit_sha256": "a3581397016bd8af54008d31b3414bbf51986e98f0138cb47045fc4556544259",
+          "problems": [],
+          "scope": "Process and test-evidence consistency, not clinical validation"
+        },
+        "input_unchanged": true,
+        "hash_correct": true
+      },
+      {
+        "case": "aggregate_failures",
+        "process_exit": 0,
+        "expected_accepted": false,
+        "matched": false,
+        "receipt": {
+          "schema": "capturesuite.test-receipt.v1",
+          "accepted": true,
+          "process_exit": 0,
+          "counts": {
+            "tests": 3,
+            "passed": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 1
+          },
+          "junit_sha256": "0046c87d3ecdd69e6cd645254d671404f56843ff981067dbe611bc839885e2f9",
+          "problems": [],
+          "scope": "Process and test-evidence consistency, not clinical validation"
+        },
+        "input_unchanged": true,
+        "hash_correct": true
+      },
+      {
+        "case": "aggregate_errors",
+        "process_exit": 0,
+        "expected_accepted": false,
+        "matched": false,
+        "receipt": {
+          "schema": "capturesuite.test-receipt.v1",
+          "accepted": true,
+          "process_exit": 0,
+          "counts": {
+            "tests": 3,
+            "passed": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 1
+          },
+          "junit_sha256": "668c7eb55b3889de39f89ba3d432fcd739f307a38393094e6c45942a554a96ed",
+          "problems": [],
+          "scope": "Process and test-evidence consistency, not clinical validation"
+        },
+        "input_unchanged": true,
+        "hash_correct": true
+      },
+      {
+        "case": "aggregate_skipped",
+        "process_exit": 0,
+        "expected_accepted": false,
+        "matched": false,
+        "receipt": {
+          "schema": "capturesuite.test-receipt.v1",
+          "accepted": true,
+          "process_exit": 0,
+          "counts": {
+            "tests": 3,
+            "passed": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 1
+          },
+          "junit_sha256": "212f3cb11bafc3f6634b74652792df7afdd85a4a4f8bd0f0eabd3c827ad33b0b",
+          "problems": [],
+          "scope": "Process and test-evidence consistency, not clinical validation"
+        },
+        "input_unchanged": true,
+        "hash_correct": true
+      },
+      {
+        "case": "invalid_'1.5'",
+        "process_exit": 0,
+        "expected_accepted": false,
+        "matched": false,
+        "receipt": {
+          "schema": "capturesuite.test-receipt.v1",
+          "accepted": true,
+          "process_exit": 0,
+          "counts": {
+            "tests": 3,
+            "passed": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 1
+          },
+          "junit_sha256": "1252c000689a2bf003d8f51e5e60d8e28639974649de83b3980fcf682131181f",
+          "problems": [],
+          "scope": "Process and test-evidence consistency, not clinical validation"
+        },
+        "input_unchanged": true,
+        "hash_correct": true
+      },
+      {
+        "case": "invalid_'-3'",
+        "process_exit": 0,
+        "expected_accepted": false,
+        "matched": false,
+        "receipt": {
+          "schema": "capturesuite.test-receipt.v1",
+          "accepted": true,
+          "process_exit": 0,
+          "counts": {
+            "tests": 3,
+            "passed": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 1
+          },
+          "junit_sha256": "138b7ec983cb95703c7402663cab28da1cf77dd4ed94dd907776dcac47fc6f81",
+          "problems": [],
+          "scope": "Process and test-evidence consistency, not clinical validation"
+        },
+        "input_unchanged": true,
+        "hash_correct": true
+      },
+      {
+        "case": "invalid_''",
+        "process_exit": 0,
+        "expected_accepted": false,
+        "matched": false,
+        "receipt": {
+          "schema": "capturesuite.test-receipt.v1",
+          "accepted": true,
+          "process_exit": 0,
+          "counts": {
+            "tests": 3,
+            "passed": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 1
+          },
+          "junit_sha256": "212bd07679f8eaf7a4d3443a48a9615f4cccd705b180a4576b45543321602f5a",
+          "problems": [],
+          "scope": "Process and test-evidence consistency, not clinical validation"
+        },
+        "input_unchanged": true,
+        "hash_correct": true
+      }
+    ],
+    "candidate": [
+      {
+        "case": "full_sum",
+        "process_exit": 0,
+        "expected_accepted": true,
+        "matched": true,
+        "receipt": {
+          "schema": "capturesuite.test-receipt.v1",
+          "accepted": true,
+          "process_exit": 0,
+          "counts": {
+            "tests": 3,
+            "passed": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 1
+          },
+          "junit_sha256": "5807b8963370146558ae337bd5c26ef3f194fe5b10266219089ac587e82cf9c5",
+          "problems": [],
+          "scope": "Process and test-evidence consistency, not clinical validation"
+        },
+        "input_unchanged": true,
+        "hash_correct": true
+      },
+      {
+        "case": "optional_counts",
+        "process_exit": 0,
+        "expected_accepted": true,
+        "matched": true,
+        "receipt": {
+          "schema": "capturesuite.test-receipt.v1",
+          "accepted": true,
+          "process_exit": 0,
+          "counts": {
+            "tests": 3,
+            "passed": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 1
+          },
+          "junit_sha256": "77f827430289f25ae0c7e3b165f8b88af11ad015814c2eb7bda098b458d773ac",
+          "problems": [],
+          "scope": "Process and test-evidence consistency, not clinical validation"
+        },
+        "input_unchanged": true,
+        "hash_correct": true
+      },
+      {
+        "case": "single_suite",
+        "process_exit": 0,
+        "expected_accepted": true,
+        "matched": true,
+        "receipt": {
+          "schema": "capturesuite.test-receipt.v1",
+          "accepted": true,
+          "process_exit": 0,
+          "counts": {
+            "tests": 1,
+            "passed": 1,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 0
+          },
+          "junit_sha256": "1541fdbfd544ef3c48a55d740593d9755e90bcf23b788399b44deb140b4c6341",
+          "problems": [],
+          "scope": "Process and test-evidence consistency, not clinical validation"
+        },
+        "input_unchanged": true,
+        "hash_correct": true
+      },
+      {
+        "case": "failed_process",
+        "process_exit": 2,
+        "expected_accepted": false,
+        "matched": true,
+        "receipt": {
+          "schema": "capturesuite.test-receipt.v1",
+          "accepted": false,
+          "process_exit": 2,
+          "counts": {
+            "tests": 3,
+            "passed": 2,
+            "failures": 0,
+            "errors": 0,
+            "skipped": 1
+          },
+          "junit_sha256": "4ca205a70450605683447a5839cfe46c426164814c23ce58de83535fc5ab780f",
+          "problems": [
+            "Test process did not exit successfully"
+          ],
+          "scope": "Process and test-evidence consistency, not clinical validation"
+        },
+        "input_unchanged": true,
+        "hash_correct": true
+      },
+      {
+        "case": "real_child_failure",
+        "process_exit": 0,
+        "expected_accepted": false,
+        "matched": true,
+        "receipt": {
+          "schema": "capturesuite.test-receipt.v1",
+          "accepted": false,
+          "process_exit": 0,
+          "counts": null,
+          "junit_sha256": "56310abcc6157c5bf46247a3745736d02d4d11261506f1e55b84ee8261c397ff",
+          "problems": [
+            "JUnit unavailable or invalid: ValueError"
+          ],
+          "scope": "Process and test-evidence consistency, not clinical validation"
+        },
+        "input_unchanged": true,
+        "hash_correct": true
+      },
+      {
+        "case": "child_mismatch",
+        "process_exit": 0,
+        "expected_accepted": false,
+        "matched": true,
+        "receipt": {
+          "schema": "capturesuite.test-receipt.v1",
+          "accepted": false,
+          "process_exit": 0,
+          "counts": null,
+          "junit_sha256": "61dc8709d83ae26d63cc08d813d0edbf62e6f77aa1c08c5a7e073f64a1632cac",
+          "problems": [
+            "JUnit unavailable or invalid: ValueError"
+          ],
+          "scope": "Process and test-evidence consistency, not clinical validation"
+        },
+        "input_unchanged": true,
+        "hash_correct": true
+      },
+      {
+        "case": "aggregate_tests",
+        "process_exit": 0,
+        "expected_accepted": false,
+        "matched": true,
+        "receipt": {
+          "schema": "capturesuite.test-receipt.v1",
+          "accepted": false,
+          "process_exit": 0,
+          "counts": null,
+          "junit_sha256": "a3581397016bd8af54008d31b3414bbf51986e98f0138cb47045fc4556544259",
+          "problems": [
+            "JUnit unavailable or invalid: ValueError"
+          ],
+          "scope": "Process and test-evidence consistency, not clinical validation"
+        },
+        "input_unchanged": true,
+        "hash_correct": true
+      },
+      {
+        "case": "aggregate_failures",
+        "process_exit": 0,
+        "expected_accepted": false,
+        "matched": true,
+        "receipt": {
+          "schema": "capturesuite.test-receipt.v1",
+          "accepted": false,
+          "process_exit": 0,
+          "counts": null,
+          "junit_sha256": "0046c87d3ecdd69e6cd645254d671404f56843ff981067dbe611bc839885e2f9",
+          "problems": [
+            "JUnit unavailable or invalid: ValueError"
+          ],
+          "scope": "Process and test-evidence consistency, not clinical validation"
+        },
+        "input_unchanged": true,
+        "hash_correct": true
+      },
+      {
+        "case": "aggregate_errors",
+        "process_exit": 0,
+        "expected_accepted": false,
+        "matched": true,
+        "receipt": {
+          "schema": "capturesuite.test-receipt.v1",
+          "accepted": false,
+          "process_exit": 0,
+          "counts": null,
+          "junit_sha256": "668c7eb55b3889de39f89ba3d432fcd739f307a38393094e6c45942a554a96ed",
+          "problems": [
+            "JUnit unavailable or invalid: ValueError"
+          ],
+          "scope": "Process and test-evidence consistency, not clinical validation"
+        },
+        "input_unchanged": true,
+        "hash_correct": true
+      },
+      {
+        "case": "aggregate_skipped",
+        "process_exit": 0,
+        "expected_accepted": false,
+        "matched": true,
+        "receipt": {
+          "schema": "capturesuite.test-receipt.v1",
+          "accepted": false,
+          "process_exit": 0,
+          "counts": null,
+          "junit_sha256": "212f3cb11bafc3f6634b74652792df7afdd85a4a4f8bd0f0eabd3c827ad33b0b",
+          "problems": [
+            "JUnit unavailable or invalid: ValueError"
+          ],
+          "scope": "Process and test-evidence consistency, not clinical validation"
+        },
+        "input_unchanged": true,
+        "hash_correct": true
+      },
+      {
+        "case": "invalid_'1.5'",
+        "process_exit": 0,
+        "expected_accepted": false,
+        "matched": true,
+        "receipt": {
+          "schema": "capturesuite.test-receipt.v1",
+          "accepted": false,
+          "process_exit": 0,
+          "counts": null,
+          "junit_sha256": "1252c000689a2bf003d8f51e5e60d8e28639974649de83b3980fcf682131181f",
+          "problems": [
+            "JUnit unavailable or invalid: ValueError"
+          ],
+          "scope": "Process and test-evidence consistency, not clinical validation"
+        },
+        "input_unchanged": true,
+        "hash_correct": true
+      },
+      {
+        "case": "invalid_'-3'",
+        "process_exit": 0,
+        "expected_accepted": false,
+        "matched": true,
+        "receipt": {
+          "schema": "capturesuite.test-receipt.v1",
+          "accepted": false,
+          "process_exit": 0,
+          "counts": null,
+          "junit_sha256": "138b7ec983cb95703c7402663cab28da1cf77dd4ed94dd907776dcac47fc6f81",
+          "problems": [
+            "JUnit unavailable or invalid: ValueError"
+          ],
+          "scope": "Process and test-evidence consistency, not clinical validation"
+        },
+        "input_unchanged": true,
+        "hash_correct": true
+      },
+      {
+        "case": "invalid_''",
+        "process_exit": 0,
+        "expected_accepted": false,
+        "matched": true,
+        "receipt": {
+          "schema": "capturesuite.test-receipt.v1",
+          "accepted": false,
+          "process_exit": 0,
+          "counts": null,
+          "junit_sha256": "212bd07679f8eaf7a4d3443a48a9615f4cccd705b180a4576b45543321602f5a",
+          "problems": [
+            "JUnit unavailable or invalid: ValueError"
+          ],
+          "scope": "Process and test-evidence consistency, not clinical validation"
+        },
+        "input_unchanged": true,
+        "hash_correct": true
+      }
+    ]
+  },
+  "sources_unchanged": {
+    "original": true,
+    "candidate": true
+  },
+  "scope": "Independent summarize consumer controls only; no full suite rerun or installed application change"
+}

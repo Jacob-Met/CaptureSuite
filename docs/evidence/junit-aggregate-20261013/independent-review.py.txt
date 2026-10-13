@@ -1,0 +1,72 @@
+"""Independent aggregate JUnit receiving by /root/engine_research."""
+from pathlib import Path
+import hashlib, importlib.util, json, platform, sys
+
+BASE=Path(r"C:\Users\jacob\AppData\Local\Temp\hamon-products-junit-20261013-nywn1n2_")
+OUT=Path(r"C:\Users\jacob\AppData\Local\Temp\hamon-engine-capture-review-20261013")
+OUT.mkdir(exist_ok=False)
+paths={name:BASE/name/"tools/run_ci_tests.py" for name in ("original","candidate")}
+raw={name:path.read_bytes() for name,path in paths.items()}
+expected={"original":"a35a6bb9b5293db46201857a5590b45ad77243f646a5cf729112f8130710d776",
+          "candidate":"54ae0026ad0f90969c63815ffbbadcf84e47a70cf921fb7115d1b95abe9fe445"}
+for name,data in raw.items():
+    if hashlib.sha256(data).hexdigest()!=expected[name]:
+        raise RuntimeError("source hash mismatch "+name)
+addition='''        if root.tag == "testsuites":
+            for key in ("tests", "failures", "errors", "skipped"):
+                declared = root.get(key)
+                if declared is not None and int(declared) != totals[key]:
+                    raise ValueError(f"JUnit aggregate {key} count disagrees with case evidence")
+'''
+original=raw["original"].decode()
+candidate=raw["candidate"].decode()
+anchor='        report["counts"] = totals\n'
+if original.count(anchor)!=1 or original.replace(anchor,addition+anchor)!=candidate:
+    raise RuntimeError("unexpected production diff")
+mods={}
+for name,path in paths.items():
+    spec=importlib.util.spec_from_file_location("independent_capture_"+name,path)
+    module=importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    mods[name]=module
+body=('<testsuite tests="1"><testcase name="first"/></testsuite>'
+      '<testsuite tests="2" skipped="1"><testcase name="second"/>'
+      '<testcase name="third"><skipped/></testcase></testsuite>')
+cases=[
+    ("full_sum",f'<testsuites tests="3" failures="0" errors="0" skipped="1">{body}</testsuites>',0,True),
+    ("optional_counts",f'<testsuites>{body}</testsuites>',0,True),
+    ("single_suite",'<testsuite tests="1"><testcase name="one"/></testsuite>',0,True),
+    ("failed_process",f'<testsuites tests="3" skipped="1">{body}</testsuites>',2,False),
+    ("real_child_failure",'<testsuites tests="1" failures="0"><testsuite tests="1" failures="1"><testcase name="bad"><failure/></testcase></testsuite></testsuites>',0,False),
+    ("child_mismatch",'<testsuites><testsuite tests="9"><testcase name="one"/></testsuite></testsuites>',0,False),
+]
+for key,bad in (("tests","2"),("failures","1"),("errors","1"),("skipped","0")):
+    cases.append(("aggregate_"+key,f'<testsuites {key}="{bad}">{body}</testsuites>',0,False))
+for value in ("1.5","-3",""):
+    cases.append(("invalid_"+repr(value),f'<testsuites tests="{value}">{body}</testsuites>',0,False))
+records={name:[] for name in mods}
+for i,(label,xml,exit_code,wanted) in enumerate(cases):
+    path=OUT/(str(i)+".xml")
+    data=xml.encode()
+    path.write_bytes(data)
+    digest=hashlib.sha256(data).hexdigest()
+    results={name:mod.summarize(path,exit_code) for name,mod in mods.items()}
+    for name,result in results.items():
+        records[name].append({"case":label,"process_exit":exit_code,"expected_accepted":wanted,
+                              "matched":result["accepted"]==wanted,"receipt":result,
+                              "input_unchanged":path.read_bytes()==data,
+                              "hash_correct":result["junit_sha256"]==digest})
+    if wanted and results["original"]!=results["candidate"]:
+        raise RuntimeError("valid receipt changed")
+receipt={"schema":"capturesuite.independent-aggregate-review.v1","reviewer":"/root/engine_research",
+         "runtime":sys.version,"platform":platform.platform(),"source_sha256":expected,
+         "exact_production_diff":True,"cases":records,
+         "sources_unchanged":{name:path.read_bytes()==raw[name] for name,path in paths.items()},
+         "scope":"Independent summarize consumer controls only; no full suite rerun or installed application change"}
+target=OUT/"receipt.json"
+target.write_text(json.dumps(receipt,indent=2)+"\n",encoding="utf-8",newline="\n")
+print(json.dumps({"receipt":str(target),"sha256":hashlib.sha256(target.read_bytes()).hexdigest(),
+                  "cases":len(cases),"results":{name:{"matched":sum(r["matched"] for r in rows),"total":len(rows)} for name,rows in records.items()},
+                  "sources_unchanged":receipt["sources_unchanged"],"exact_production_diff":True}))
+if not all(r["matched"] and r["input_unchanged"] and r["hash_correct"] for r in records["candidate"]):
+    raise SystemExit(1)

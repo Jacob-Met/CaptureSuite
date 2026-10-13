@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="16" skipped="0" tests="40" time="3.982" timestamp="2026-10-12T19:10:33.545097-07:00" hostname="MSI"><testcase classname="tests.protocol.test_ci_evidence" name="test_success_needs_process_and_test_evidence" time="0.023" /><testcase classname="tests.protocol.test_ci_evidence" name="test_native_crash_never_becomes_a_pass[1]" time="0.021" /><testcase classname="tests.protocol.test_ci_evidence" name="test_native_crash_never_becomes_a_pass[3221226356]" time="0.009" /><testcase classname="tests.protocol.test_ci_evidence" name="test_native_crash_never_becomes_a_pass[None]" time="0.008" /><testcase classname="tests.protocol.test_ci_evidence" name="test_native_crash_never_becomes_a_pass[False]" time="0.008" /><testcase classname="tests.protocol.test_ci_evidence" name="test_native_crash_never_becomes_a_pass[0]" time="0.008" /><testcase classname="tests.protocol.test_ci_evidence" name="test_missing_junit_is_not_zero_failures" time="0.003" /><testcase classname="tests.protocol.test_ci_evidence" name="test_empty_suite_is_not_success" time="0.017" /><testcase classname="tests.protocol.test_ci_evidence" name="test_skips_are_separate_and_reject_everything_does_not_pass" time="0.031" /><testcase classname="tests.protocol.test_ci_evidence" name="test_failing_case_overrides_success_exit[failure-failures]" time="0.015" /><testcase classname="tests.protocol.test_ci_evidence" name="test_failing_case_overrides_success_exit[error-errors]" time="0.016" /><testcase classname="tests.protocol.test_ci_evidence" name="test_summary_cannot_claim_more_cases_than_exist" time="0.016" /><testcase classname="tests.protocol.test_ci_evidence" name="test_unsupported_xml_is_rejected[not xml]" time="0.014" /><testcase classname="tests.protocol.test_ci_evidence" name="test_unsupported_xml_is_rejected[&lt;report/&gt;]" time="0.017" /><testcase classname="tests.protocol.test_ci_evidence" name="test_unsupported_xml_is_rejected[&lt;!DOCTYPE testsuite [&lt;!ENTITY x &quot;x&quot;&gt;]&gt;&lt;testsuite/&gt;]" time="0.019" /><testcase classname="tests.protocol.test_ci_evidence" name="test_oversized_input_is_bounded" time="0.005" /><testcase classname="tests.protocol.test_ci_evidence" name="test_single_ctest_style_suite_and_input_immutability" time="0.015" /><testcase classname="tests.protocol.test_ci_evidence" name="test_unsupported_encoding_cannot_hide_entity_declarations" time="0.020" /><testcase classname="tests.protocol.test_ci_evidence" name="test_dirty_source_is_not_mislabeled_as_the_head_commit" time="1.397" /><testcase classname="tests.protocol.test_ci_evidence" name="test_snapshot_includes_new_and_deleted_source" time="1.514" /><testcase classname="tests.protocol.test_ci_evidence" name="test_github_context_is_allowlisted_and_absence_is_explicitly_empty" time="0.001" /><testcase classname="tests.protocol.test_ci_evidence" name="test_aggregate_counts_cannot_contradict_passing_case[tests-2]" time="0.019"><failure message="assert not True">tmp_path = WindowsPath('C:/Users/jacob/AppData/Local/Temp/hamon-products-junit-20261013-nywn1n2_/original-tmp/test_aggregate_counts_cannot_c0')
+key = 'tests', value = '2'
+
+    @pytest.mark.parametrize(
+        "key,value",
+        [("tests", "2"), ("failures", "1"), ("errors", "1"), ("skipped", "1")],
+    )
+    def test_aggregate_counts_cannot_contradict_passing_case(tmp_path, key, value):
+        p = tmp_path / "aggregate.xml"
+        raw = (
+            f'&lt;testsuites {key}="{value}"&gt;'
+            '&lt;testsuite tests="1" failures="0" errors="0" skipped="0"&gt;'
+            '&lt;testcase name="passed"/&gt;&lt;/testsuite&gt;&lt;/testsuites&gt;'
+        ).encode()
+        p.write_bytes(raw)
+        result = summarize(p, 0)
+&gt;       assert not result["accepted"]
+E       assert not True
+
+tests\protocol\test_ci_evidence.py:167: AssertionError</failure></testcase><testcase classname="tests.protocol.test_ci_evidence" name="test_aggregate_counts_cannot_contradict_passing_case[failures-1]" time="0.024"><failure message="assert not True">tmp_path = WindowsPath('C:/Users/jacob/AppData/Local/Temp/hamon-products-junit-20261013-nywn1n2_/original-tmp/test_aggregate_counts_cannot_c1')
+key = 'failures', value = '1'
+
+    @pytest.mark.parametrize(
+        "key,value",
+        [("tests", "2"), ("failures", "1"), ("errors", "1"), ("skipped", "1")],
+    )
+    def test_aggregate_counts_cannot_contradict_passing_case(tmp_path, key, value):
+        p = tmp_path / "aggregate.xml"
+        raw = (
+            f'&lt;testsuites {key}="{value}"&gt;'
+            '&lt;testsuite tests="1" failures="0" errors="0" skipped="0"&gt;'
+            '&lt;testcase name="passed"/&gt;&lt;/testsuite&gt;&lt;/testsuites&gt;'
+        ).encode()
+        p.write_bytes(raw)
+        result = summarize(p, 0)
+&gt;       assert not result["accepted"]
+E       assert not True
+
+tests\protocol\test_ci_evidence.py:167: AssertionError</failure></testcase><testcase classname="tests.protocol.test_ci_evidence" name="test_aggregate_counts_cannot_contradict_passing_case[errors-1]" time="0.017"><failure message="assert not True">tmp_path = WindowsPath('C:/Users/jacob/AppData/Local/Temp/hamon-products-junit-20261013-nywn1n2_/original-tmp/test_aggregate_counts_cannot_c2')
+key = 'errors', value = '1'
+
+    @pytest.mark.parametrize(
+        "key,value",
+        [("tests", "2"), ("failures", "1"), ("errors", "1"), ("skipped", "1")],
+    )
+    def test_aggregate_counts_cannot_contradict_passing_case(tmp_path, key, value):
+        p = tmp_path / "aggregate.xml"
+        raw = (
+            f'&lt;testsuites {key}="{value}"&gt;'
+            '&lt;testsuite tests="1" failures="0" errors="0" skipped="0"&gt;'
+            '&lt;testcase name="passed"/&gt;&lt;/testsuite&gt;&lt;/testsuites&gt;'
+        ).encode()
+        p.write_bytes(raw)
+        result = summarize(p, 0)
+&gt;       assert not result["accepted"]
+E       assert not True
+
+tests\protocol\test_ci_evidence.py:167: AssertionError</failure></testcase><testcase classname="tests.protocol.test_ci_evidence" name="test_aggregate_counts_cannot_contradict_passing_case[skipped-1]" time="0.020"><failure message="assert not True">tmp_path = WindowsPath('C:/Users/jacob/AppData/Local/Temp/hamon-products-junit-20261013-nywn1n2_/original-tmp/test_aggregate_counts_cannot_c3')
+key = 'skipped', value = '1'
+
+    @pytest.mark.parametrize(
+        "key,value",
+        [("tests", "2"), ("failures", "1"), ("errors", "1"), ("skipped", "1")],
+    )
+    def test_aggregate_counts_cannot_contradict_passing_case(tmp_path, key, value):
+        p = tmp_path / "aggregate.xml"
+        raw = (
+            f'&lt;testsuites {key}="{value}"&gt;'
+            '&lt;testsuite tests="1" failures="0" errors="0" skipped="0"&gt;'
+            '&lt;testcase name="passed"/&gt;&lt;/testsuite&gt;&lt;/testsuites&gt;'
+        ).encode()
+        p.write_bytes(raw)
+        result = summarize(p, 0)
+&gt;       assert not result["accepted"]
+E       assert not True
+
+tests\protocol\test_ci_evidence.py:167: AssertionError</failure></testcase><testcase classname="tests.protocol.test_ci_evidence" name="test_invalid_aggregate_count_is_not_ignored[-1-tests]" time="0.022"><failure message="assert not True">tmp_path = WindowsPath('C:/Users/jacob/AppData/Local/Temp/hamon-products-junit-20261013-nywn1n2_/original-tmp/test_invalid_aggregate_count_i0')
+key = 'tests', value = '-1'
+
+    @pytest.mark.parametrize("key", ["tests", "failures", "errors", "skipped"])
+    @pytest.mark.parametrize("value", ["-1", "unknown", ""])
+    def test_invalid_aggregate_count_is_not_ignored(tmp_path, key, value):
+        p = tmp_path / "aggregate.xml"
+        p.write_text(
+            f'&lt;testsuites {key}="{value}"&gt;&lt;testsuite tests="1"&gt;'
+            '&lt;testcase name="passed"/&gt;&lt;/testsuite&gt;&lt;/testsuites&gt;'
+        )
+&gt;       assert not summarize(p, 0)["accepted"]
+E       assert not True
+
+tests\protocol\test_ci_evidence.py:181: AssertionError</failure></testcase><testcase classname="tests.protocol.test_ci_evidence" name="test_invalid_aggregate_count_is_not_ignored[-1-failures]" time="0.019"><failure message="assert not True">tmp_path = WindowsPath('C:/Users/jacob/AppData/Local/Temp/hamon-products-junit-20261013-nywn1n2_/original-tmp/test_invalid_aggregate_count_i1')
+key = 'failures', value = '-1'
+
+    @pytest.mark.parametrize("key", ["tests", "failures", "errors", "skipped"])
+    @pytest.mark.parametrize("value", ["-1", "unknown", ""])
+    def test_invalid_aggregate_count_is_not_ignored(tmp_path, key, value):
+        p = tmp_path / "aggregate.xml"
+        p.write_text(
+            f'&lt;testsuites {key}="{value}"&gt;&lt;testsuite tests="1"&gt;'
+            '&lt;testcase name="passed"/&gt;&lt;/testsuite&gt;&lt;/testsuites&gt;'
+        )
+&gt;       assert not summarize(p, 0)["accepted"]
+E       assert not True
+
+tests\protocol\test_ci_evidence.py:181: AssertionError</failure></testcase><testcase classname="tests.protocol.test_ci_evidence" name="test_invalid_aggregate_count_is_not_ignored[-1-errors]" time="0.020"><failure message="assert not True">tmp_path = WindowsPath('C:/Users/jacob/AppData/Local/Temp/hamon-products-junit-20261013-nywn1n2_/original-tmp/test_invalid_aggregate_count_i2')
+key = 'errors', value = '-1'
+
+    @pytest.mark.parametrize("key", ["tests", "failures", "errors", "skipped"])
+    @pytest.mark.parametrize("value", ["-1", "unknown", ""])
+    def test_invalid_aggregate_count_is_not_ignored(tmp_path, key, value):
+        p = tmp_path / "aggregate.xml"
+        p.write_text(
+            f'&lt;testsuites {key}="{value}"&gt;&lt;testsuite tests="1"&gt;'
+            '&lt;testcase name="passed"/&gt;&lt;/testsuite&gt;&lt;/testsuites&gt;'
+        )
+&gt;       assert not summarize(p, 0)["accepted"]
+E       assert not True
+
+tests\protocol\test_ci_evidence.py:181: AssertionError</failure></testcase><testcase classname="tests.protocol.test_ci_evidence" name="test_invalid_aggregate_count_is_not_ignored[-1-skipped]" time="0.022"><failure message="assert not True">tmp_path = WindowsPath('C:/Users/jacob/AppData/Local/Temp/hamon-products-junit-20261013-nywn1n2_/original-tmp/test_invalid_aggregate_count_i3')
+key = 'skipped', value = '-1'
+
+    @pytest.mark.parametrize("key", ["tests", "failures", "errors", "skipped"])
+    @pytest.mark.parametrize("value", ["-1", "unknown", ""])
+    def test_invalid_aggregate_count_is_not_ignored(tmp_path, key, value):
+        p = tmp_path / "aggregate.xml"
+        p.write_text(
+            f'&lt;testsuites {key}="{value}"&gt;&lt;testsuite tests="1"&gt;'
+            '&lt;testcase name="passed"/&gt;&lt;/testsuite&gt;&lt;/testsuites&gt;'
+        )
+&gt;       assert not summarize(p, 0)["accepted"]
+E       assert not True
+
+tests\protocol\test_ci_evidence.py:181: AssertionError</failure></testcase><testcase classname="tests.protocol.test_ci_evidence" name="test_invalid_aggregate_count_is_not_ignored[unknown-tests]" time="0.020"><failure message="assert not True">tmp_path = WindowsPath('C:/Users/jacob/AppData/Local/Temp/hamon-products-junit-20261013-nywn1n2_/original-tmp/test_invalid_aggregate_count_i4')
+key = 'tests', value = 'unknown'
+
+    @pytest.mark.parametrize("key", ["tests", "failures", "errors", "skipped"])
+    @pytest.mark.parametrize("value", ["-1", "unknown", ""])
+    def test_invalid_aggregate_count_is_not_ignored(tmp_path, key, value):
+        p = tmp_path / "aggregate.xml"
+        p.write_text(
+            f'&lt;testsuites {key}="{value}"&gt;&lt;testsuite tests="1"&gt;'
+            '&lt;testcase name="passed"/&gt;&lt;/testsuite&gt;&lt;/testsuites&gt;'
+        )
+&gt;       assert not summarize(p, 0)["accepted"]
+E       assert not True
+
+tests\protocol\test_ci_evidence.py:181: AssertionError</failure></testcase><testcase classname="tests.protocol.test_ci_evidence" name="test_invalid_aggregate_count_is_not_ignored[unknown-failures]" time="0.018"><failure message="assert not True">tmp_path = WindowsPath('C:/Users/jacob/AppData/Local/Temp/hamon-products-junit-20261013-nywn1n2_/original-tmp/test_invalid_aggregate_count_i5')
+key = 'failures', value = 'unknown'
+
+    @pytest.mark.parametrize("key", ["tests", "failures", "errors", "skipped"])
+    @pytest.mark.parametrize("value", ["-1", "unknown", ""])
+    def test_invalid_aggregate_count_is_not_ignored(tmp_path, key, value):
+        p = tmp_path / "aggregate.xml"
+        p.write_text(
+            f'&lt;testsuites {key}="{value}"&gt;&lt;testsuite tests="1"&gt;'
+            '&lt;testcase name="passed"/&gt;&lt;/testsuite&gt;&lt;/testsuites&gt;'
+        )
+&gt;       assert not summarize(p, 0)["accepted"]
+E       assert not True
+
+tests\protocol\test_ci_evidence.py:181: AssertionError</failure></testcase><testcase classname="tests.protocol.test_ci_evidence" name="test_invalid_aggregate_count_is_not_ignored[unknown-errors]" time="0.022"><failure message="assert not True">tmp_path = WindowsPath('C:/Users/jacob/AppData/Local/Temp/hamon-products-junit-20261013-nywn1n2_/original-tmp/test_invalid_aggregate_count_i6')
+key = 'errors', value = 'unknown'
+
+    @pytest.mark.parametrize("key", ["tests", "failures", "errors", "skipped"])
+    @pytest.mark.parametrize("value", ["-1", "unknown", ""])
+    def test_invalid_aggregate_count_is_not_ignored(tmp_path, key, value):
+        p = tmp_path / "aggregate.xml"
+        p.write_text(
+            f'&lt;testsuites {key}="{value}"&gt;&lt;testsuite tests="1"&gt;'
+            '&lt;testcase name="passed"/&gt;&lt;/testsuite&gt;&lt;/testsuites&gt;'
+        )
+&gt;       assert not summarize(p, 0)["accepted"]
+E       assert not True
+
+tests\protocol\test_ci_evidence.py:181: AssertionError</failure></testcase><testcase classname="tests.protocol.test_ci_evidence" name="test_invalid_aggregate_count_is_not_ignored[unknown-skipped]" time="0.021"><failure message="assert not True">tmp_path = WindowsPath('C:/Users/jacob/AppData/Local/Temp/hamon-products-junit-20261013-nywn1n2_/original-tmp/test_invalid_aggregate_count_i7')
+key = 'skipped', value = 'unknown'
+
+    @pytest.mark.parametrize("key", ["tests", "failures", "errors", "skipped"])
+    @pytest.mark.parametrize("value", ["-1", "unknown", ""])
+    def test_invalid_aggregate_count_is_not_ignored(tmp_path, key, value):
+        p = tmp_path / "aggregate.xml"
+        p.write_text(
+            f'&lt;testsuites {key}="{value}"&gt;&lt;testsuite tests="1"&gt;'
+            '&lt;testcase name="passed"/&gt;&lt;/testsuite&gt;&lt;/testsuites&gt;'
+        )
+&gt;       assert not summarize(p, 0)["accepted"]
+E       assert not True
+
+tests\protocol\test_ci_evidence.py:181: AssertionError</failure></testcase><testcase classname="tests.protocol.test_ci_evidence" name="test_invalid_aggregate_count_is_not_ignored[-tests]" time="0.024"><failure message="assert not True">tmp_path = WindowsPath('C:/Users/jacob/AppData/Local/Temp/hamon-products-junit-20261013-nywn1n2_/original-tmp/test_invalid_aggregate_count_i8')
+key = 'tests', value = ''
+
+    @pytest.mark.parametrize("key", ["tests", "failures", "errors", "skipped"])
+    @pytest.mark.parametrize("value", ["-1", "unknown", ""])
+    def test_invalid_aggregate_count_is_not_ignored(tmp_path, key, value):
+        p = tmp_path / "aggregate.xml"
+        p.write_text(
+            f'&lt;testsuites {key}="{value}"&gt;&lt;testsuite tests="1"&gt;'
+            '&lt;testcase name="passed"/&gt;&lt;/testsuite&gt;&lt;/testsuites&gt;'
+        )
+&gt;       assert not summarize(p, 0)["accepted"]
+E       assert not True
+
+tests\protocol\test_ci_evidence.py:181: AssertionError</failure></testcase><testcase classname="tests.protocol.test_ci_evidence" name="test_invalid_aggregate_count_is_not_ignored[-failures]" time="0.020"><failure message="assert not True">tmp_path = WindowsPath('C:/Users/jacob/AppData/Local/Temp/hamon-products-junit-20261013-nywn1n2_/original-tmp/test_invalid_aggregate_count_i9')
+key = 'failures', value = ''
+
+    @pytest.mark.parametrize("key", ["tests", "failures", "errors", "skipped"])
+    @pytest.mark.parametrize("value", ["-1", "unknown", ""])
+    def test_invalid_aggregate_count_is_not_ignored(tmp_path, key, value):
+        p = tmp_path / "aggregate.xml"
+        p.write_text(
+            f'&lt;testsuites {key}="{value}"&gt;&lt;testsuite tests="1"&gt;'
+            '&lt;testcase name="passed"/&gt;&lt;/testsuite&gt;&lt;/testsuites&gt;'
+        )
+&gt;       assert not summarize(p, 0)["accepted"]
+E       assert not True
+
+tests\protocol\test_ci_evidence.py:181: AssertionError</failure></testcase><testcase classname="tests.protocol.test_ci_evidence" name="test_invalid_aggregate_count_is_not_ignored[-errors]" time="0.024"><failure message="assert not True">tmp_path = WindowsPath('C:/Users/jacob/AppData/Local/Temp/hamon-products-junit-20261013-nywn1n2_/original-tmp/test_invalid_aggregate_count_i10')
+key = 'errors', value = ''
+
+    @pytest.mark.parametrize("key", ["tests", "failures", "errors", "skipped"])
+    @pytest.mark.parametrize("value", ["-1", "unknown", ""])
+    def test_invalid_aggregate_count_is_not_ignored(tmp_path, key, value):
+        p = tmp_path / "aggregate.xml"
+        p.write_text(
+            f'&lt;testsuites {key}="{value}"&gt;&lt;testsuite tests="1"&gt;'
+            '&lt;testcase name="passed"/&gt;&lt;/testsuite&gt;&lt;/testsuites&gt;'
+        )
+&gt;       assert not summarize(p, 0)["accepted"]
+E       assert not True
+
+tests\protocol\test_ci_evidence.py:181: AssertionError</failure></testcase><testcase classname="tests.protocol.test_ci_evidence" name="test_invalid_aggregate_count_is_not_ignored[-skipped]" time="0.023"><failure message="assert not True">tmp_path = WindowsPath('C:/Users/jacob/AppData/Local/Temp/hamon-products-junit-20261013-nywn1n2_/original-tmp/test_invalid_aggregate_count_i11')
+key = 'skipped', value = ''
+
+    @pytest.mark.parametrize("key", ["tests", "failures", "errors", "skipped"])
+    @pytest.mark.parametrize("value", ["-1", "unknown", ""])
+    def test_invalid_aggregate_count_is_not_ignored(tmp_path, key, value):
+        p = tmp_path / "aggregate.xml"
+        p.write_text(
+            f'&lt;testsuites {key}="{value}"&gt;&lt;testsuite tests="1"&gt;'
+            '&lt;testcase name="passed"/&gt;&lt;/testsuite&gt;&lt;/testsuites&gt;'
+        )
+&gt;       assert not summarize(p, 0)["accepted"]
+E       assert not True
+
+tests\protocol\test_ci_evidence.py:181: AssertionError</failure></testcase><testcase classname="tests.protocol.test_ci_evidence" name="test_aggregate_counts_sum_all_suites_and_remain_optional[tests=&quot;3&quot; failures=&quot;0&quot; errors=&quot;0&quot; skipped=&quot;1&quot;]" time="0.019" /><testcase classname="tests.protocol.test_ci_evidence" name="test_aggregate_counts_sum_all_suites_and_remain_optional[tests=&quot;3&quot;]" time="0.026" /><testcase classname="tests.protocol.test_ci_evidence" name="test_aggregate_counts_sum_all_suites_and_remain_optional[]" time="0.015" /></testsuite></testsuites>

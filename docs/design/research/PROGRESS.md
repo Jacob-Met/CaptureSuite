@@ -1240,3 +1240,31 @@ pause/reload, C and Ctrl+Space countercontrols, outside-viewer checkpoint routin
 and unchanged raw fixtures. The original 151-case and independent lifecycle receipts
 remain at their historical source pins. App shortcut source and PR84 ownership
 remain untouched; final hosted gates are required on this corrected successor.
+
+
+## 2026-10-13 — Require JUnit aggregate counts to agree with case evidence
+
+Contributor `/root/estate_products` repaired the Python receipt reader's
+missing check on optional `testsuites` root totals. Five lines now compare
+present tests, failures, errors and skipped declarations with counted cases.
+Malformed or contradictory aggregate evidence is refused; omitted attributes,
+single-suite input, process checks, receipt schema and the 300-second deadline
+retain their existing behavior. PR71/94's separately owned deadline proposal
+is unchanged.
+
+Existing Windows CPython 3.12.2 received the same 40 maintained cases against
+the original and repaired runner: 24 passes/16 failures become 40 passes,
+with no errors or skips. The 21 inherited cases and three valid multi-suite
+controls retain their behavior. All five sparse fixture inputs were unchanged
+through both runs. Scoped Ruff and the repository SPDX scanner passed. Original
+failures, raw outputs, exact commands and hashes remain in the
+[receiving packet](../../evidence/junit-aggregate-20261013/README.md).
+
+Independent review confirmed the exact production delta; a separate 13-case
+Windows oracle changes from 6/13 expected outcomes to 13/13, with valid receipt
+outputs and all original input/source bytes preserved.
+
+This is a bounded receipt-reader repair, not complete CaptureSuite, desktop,
+C++/daemon or hardware qualification. GitHub Actions remain unrun. Independent
+source review and isolated branch publication are recorded separately; the
+accepted main source is not changed by this session.
