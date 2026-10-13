@@ -1,0 +1,92 @@
+{
+  "actor": "HAMON deec14e7c405/runtime_worker",
+  "completed_utc": "2026-10-13T00:49:21.308461+00:00",
+  "repository": "Jacob-Met/CaptureSuite",
+  "parent": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+  "reviewed_pr": 124,
+  "reviewed_head": "e557d1e0a243ade939d0de92dea9b005e752a8de",
+  "original_blob": "b998063a5036b73a67b773f70c193b1f9827c248",
+  "candidate_blob": "dfa2e34fc881a76fb461c51dbf3e94aa4c594e0c",
+  "host": "MSI",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "native_windows_execution": true,
+  "installed_application_changed": false,
+  "receiver_author": "chatgpt-f0f66340f637/runtime_integration",
+  "receiver_source": "https://github.com/Jacob-Met/CaptureSuite/issues/122#issuecomment-6134723948",
+  "receiver_unchanged": true,
+  "scope": "Exact existing five-case real Pandas/PyArrow writer receiver executed on native Windows CPython3.12.10. This is a new platform run of the prior receiver, not a newly blinded test design.",
+  "qualification_note": "The reused child receipts retain their original actor and native_windows_acceptance:false field verbatim. This wrapper attributes actual Windows execution separately and does not waive full analysis, Ruff, GUI, CI, installed or hardware gates.",
+  "pins_before": {
+    "receive_sidecar.py": "730373a5f07011b71d9e8bbadb517e8e62d1bed5d0b2f41b988c02584531783f",
+    "frozen-contract.json": "7d2d86c52515d5d8fe940eddd7bd7d46406ea4d50fe9ede1ab70e182ed76d711",
+    "original_feature_io.py": "c677d209292cca790ccdf1a64ba834f71a078ccce31ea57452e67ece358822ca",
+    "candidate_feature_io.py": "e7c26202f02ba870e0a2db9cb840ab64c706929efe98da111b405ce4ffb47321"
+  },
+  "pins_after": {
+    "receive_sidecar.py": "730373a5f07011b71d9e8bbadb517e8e62d1bed5d0b2f41b988c02584531783f",
+    "frozen-contract.json": "7d2d86c52515d5d8fe940eddd7bd7d46406ea4d50fe9ede1ab70e182ed76d711",
+    "original_feature_io.py": "c677d209292cca790ccdf1a64ba834f71a078ccce31ea57452e67ece358822ca",
+    "candidate_feature_io.py": "e7c26202f02ba870e0a2db9cb840ab64c706929efe98da111b405ce4ffb47321"
+  },
+  "all_source_and_receiver_bytes_unchanged": true,
+  "runs": {
+    "original": {
+      "argv": [
+        "D:\\hamon-capture-windows-deec14e7c405\\python312\\python.exe",
+        "-B",
+        "D:\\hamon-capture-windows-deec14e7c405\\receive_sidecar.py",
+        "D:\\hamon-capture-windows-deec14e7c405\\original_feature_io.py",
+        "--expected-sha256",
+        "c677d209292cca790ccdf1a64ba834f71a078ccce31ea57452e67ece358822ca",
+        "--output",
+        "D:\\hamon-capture-windows-deec14e7c405\\original-windows-receipt.json"
+      ],
+      "returncode": 1,
+      "stdout": "{\"receipt\": \"D:\\\\hamon-capture-windows-deec14e7c405\\\\original-windows-receipt.json\", \"passed\": 2, \"total\": 5, \"source_unchanged\": true, \"real_parquet\": true, \"accepted\": false, \"failed_checks\": {\"earlier-stem-with-sibling\": [\"parquet-and-colocated-csv-exist\", \"actual-csv-values-schema-and-no-index-column\", \"manifest-exact-selected-path-kind-size-digest\", \"global-replacement-sibling-csv-unchanged\"], \"parent-without-replacement-directory\": [\"returns-none-without-error\", \"parquet-and-colocated-csv-exist\", \"actual-csv-values-schema-and-no-index-column\", \"manifest-exact-selected-path-kind-size-digest\", \"schema-document-exact-and-existing-fields-retained\"], \"parent-stem-backslash-with-sibling\": [\"parquet-and-colocated-csv-exist\", \"actual-csv-values-schema-and-no-index-column\", \"manifest-exact-selected-path-kind-size-digest\", \"global-replacement-sibling-csv-unchanged\"]}}\n",
+      "stderr": "",
+      "receipt": "D:\\hamon-capture-windows-deec14e7c405\\original-windows-receipt.json",
+      "receipt_sha256": "4d3876666e40ca763f9a239908866de3f67f600daa867f1f5dc4fdce1859cfa0",
+      "accepted": false,
+      "passed": 2,
+      "total": 5,
+      "checks_passed": 35,
+      "checks_total": 48,
+      "platform": "Windows-11-10.0.26200-SP0",
+      "python": "3.12.10",
+      "pandas": "2.2.3",
+      "pyarrow": "26.0.0",
+      "source_unchanged": true,
+      "fixtures_removed": true
+    },
+    "candidate": {
+      "argv": [
+        "D:\\hamon-capture-windows-deec14e7c405\\python312\\python.exe",
+        "-B",
+        "D:\\hamon-capture-windows-deec14e7c405\\receive_sidecar.py",
+        "D:\\hamon-capture-windows-deec14e7c405\\candidate_feature_io.py",
+        "--expected-sha256",
+        "e7c26202f02ba870e0a2db9cb840ab64c706929efe98da111b405ce4ffb47321",
+        "--output",
+        "D:\\hamon-capture-windows-deec14e7c405\\candidate-windows-receipt.json"
+      ],
+      "returncode": 0,
+      "stdout": "{\"receipt\": \"D:\\\\hamon-capture-windows-deec14e7c405\\\\candidate-windows-receipt.json\", \"passed\": 5, \"total\": 5, \"source_unchanged\": true, \"real_parquet\": true, \"accepted\": true, \"failed_checks\": {}}\n",
+      "stderr": "",
+      "receipt": "D:\\hamon-capture-windows-deec14e7c405\\candidate-windows-receipt.json",
+      "receipt_sha256": "c19638545be380f8b68dbb9231a59d95b273eb143e3cf01ab0488a39977c7e8b",
+      "accepted": true,
+      "passed": 5,
+      "total": 5,
+      "checks_passed": 48,
+      "checks_total": 48,
+      "platform": "Windows-11-10.0.26200-SP0",
+      "python": "3.12.10",
+      "pandas": "2.2.3",
+      "pyarrow": "26.0.0",
+      "source_unchanged": true,
+      "fixtures_removed": true
+    }
+  },
+  "bounded_windows_pass": true
+}

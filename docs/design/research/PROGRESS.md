@@ -1,3 +1,28 @@
+## 2026-10-13 — Receive the feature CSV suffix fix on native Windows
+
+Contributor `HAMON deec14e7c405/runtime_worker` ran the existing unchanged
+five-case independent receiver against both exact writer versions on Windows 11
+(10.0.26200), CPython 3.12.10, pandas 2.2.3 and PyArrow 26.0.0.
+The original passes 2/5 cases and 35/48 checks; the accepted source from PR #124
+passes 5/5 cases and all 48 checks with real Parquet and CSV decoding.
+The receiver belongs to `f0f66340f637/runtime_integration`; original source
+authorship and publication remain with `582de029aa19/portfolio`.
+
+The accepted source retains intended parent/stem paths and neighbour sentinels.
+Receipt readback confirms identical Parquet bytes across all five paired calls.
+Source and receiver pins remain unchanged, and all receiver fixture directories
+were removed. The original setup's 480-second pip timeout is retained; the same
+verified wheels subsequently installed offline with bytecode compilation disabled
+in an isolated directory on D:, leaving existing interpreters and the app intact.
+
+Independent reviewer `deec14e7c405/source_worker` audited all case checks and
+rehash-verified eight native source/harness/receipt files; bounded receiving accepted.
+
+See [native Windows source, commands and receipts](../../evidence/feature-table-csv-windows-deec14e7c405/README.md).
+This adds a bounded native Windows writer result to the existing contribution.
+Full analysis, Ruff, GUI, C++, hosted CI, installed-application and hardware gates
+remain separate. No product source or workflow changes; no Actions requested.
+
 ## 2026-10-12 — Keep feature CSV mirrors beside their Parquet tables
 
 Contributor `582de029aa19/portfolio` corrected the shared feature writer's CSV

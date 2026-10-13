@@ -1,0 +1,54 @@
+{
+  "schema": "hamon.received-parquet-comparison.v1",
+  "method": "Readback of actual_files in the two native Windows receipts; no extra execution",
+  "original_receipt_sha256": "4d3876666e40ca763f9a239908866de3f67f600daa867f1f5dc4fdce1859cfa0",
+  "candidate_receipt_sha256": "c19638545be380f8b68dbb9231a59d95b273eb143e3cf01ab0488a39977c7e8b",
+  "cases": [
+    {
+      "name": "ordinary-forward",
+      "original_passed": true,
+      "candidate_passed": true,
+      "parquet_bytes_identical": true,
+      "original_error": null,
+      "candidate_real_parquet": true,
+      "candidate_real_csv": true
+    },
+    {
+      "name": "ordinary-backslash",
+      "original_passed": true,
+      "candidate_passed": true,
+      "parquet_bytes_identical": true,
+      "original_error": null,
+      "candidate_real_parquet": true,
+      "candidate_real_csv": true
+    },
+    {
+      "name": "earlier-stem-with-sibling",
+      "original_passed": false,
+      "candidate_passed": true,
+      "parquet_bytes_identical": true,
+      "original_error": null,
+      "candidate_real_parquet": true,
+      "candidate_real_csv": true
+    },
+    {
+      "name": "parent-without-replacement-directory",
+      "original_passed": false,
+      "candidate_passed": true,
+      "parquet_bytes_identical": true,
+      "original_error": "OSError",
+      "candidate_real_parquet": true,
+      "candidate_real_csv": true
+    },
+    {
+      "name": "parent-stem-backslash-with-sibling",
+      "original_passed": false,
+      "candidate_passed": true,
+      "parquet_bytes_identical": true,
+      "original_error": null,
+      "candidate_real_parquet": true,
+      "candidate_real_csv": true
+    }
+  ],
+  "all_five_parquet_pairs_byte_identical": true
+}
