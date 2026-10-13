@@ -1,0 +1,134 @@
+test_empty_and_all_invalid_inputs_keep_existing_empty_results (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_empty_and_all_invalid_inputs_keep_existing_empty_results) ... ok
+test_even_medians_average_without_float_or_int64_overflow (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_even_medians_average_without_float_or_int64_overflow) ... 
+  test_even_medians_average_without_float_or_int64_overflow (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_even_medians_average_without_float_or_int64_overflow) (timestamps=[9007199254740993, 9007199254740994]) ... FAIL
+  test_even_medians_average_without_float_or_int64_overflow (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_even_medians_average_without_float_or_int64_overflow) (timestamps=[9007199254740997, 9007199254740995, 9007199254740994, 9007199254740993]) ... FAIL
+  test_even_medians_average_without_float_or_int64_overflow (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_even_medians_average_without_float_or_int64_overflow) (timestamps=[-9007199254740994, -9007199254740993]) ... FAIL
+  test_even_medians_average_without_float_or_int64_overflow (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_even_medians_average_without_float_or_int64_overflow) (timestamps=[9223372036854775806, 9223372036854775807]) ... FAIL
+  test_even_medians_average_without_float_or_int64_overflow (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_even_medians_average_without_float_or_int64_overflow) (timestamps=[-9223372036854775808, -9223372036854775807]) ... FAIL
+test_gap_fail_policy_still_refuses (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_gap_fail_policy_still_refuses) ... ok
+test_gap_mask_uses_only_valid_frames_and_keeps_statistics (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_gap_mask_uses_only_valid_frames_and_keeps_statistics) ... FAIL
+test_odd_medians_keep_exact_recorded_integers (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_odd_medians_keep_exact_recorded_integers) ... 
+  test_odd_medians_keep_exact_recorded_integers (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_odd_medians_keep_exact_recorded_integers) (timestamps=[9007199254740993]) ... FAIL
+  test_odd_medians_keep_exact_recorded_integers (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_odd_medians_keep_exact_recorded_integers) (timestamps=[-9007199254740993]) ... FAIL
+  test_odd_medians_keep_exact_recorded_integers (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_odd_medians_keep_exact_recorded_integers) (timestamps=[9007199254740993, 9007199254740995, 9007199254740997]) ... FAIL
+  test_odd_medians_keep_exact_recorded_integers (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_odd_medians_keep_exact_recorded_integers) (timestamps=[9007199254740997, 9007199254740993, 9007199254740995]) ... FAIL
+  test_odd_medians_keep_exact_recorded_integers (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_odd_medians_keep_exact_recorded_integers) (timestamps=[9007199254740995, 9007199254740995, 9007199254740993]) ... FAIL
+  test_odd_medians_keep_exact_recorded_integers (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_odd_medians_keep_exact_recorded_integers) (timestamps=[9223372036854775807]) ... FAIL
+test_short_input_keeps_existing_partial_window (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_short_input_keeps_existing_partial_window) ... ok
+test_window_and_hop_selection_keep_feature_values (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_window_and_hop_selection_keep_feature_values) ... FAIL
+
+======================================================================
+FAIL: test_even_medians_average_without_float_or_int64_overflow (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_even_medians_average_without_float_or_int64_overflow) (timestamps=[9007199254740993, 9007199254740994])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d788ccfb3bfe/product_workflow/candidate/tests/analysis/test_imu_feature_timestamps.py", line 79, in test_even_medians_average_without_float_or_int64_overflow
+    self.assertEqual(int(frame.at[0, "t_mid_ns"]), expected)
+AssertionError: 9007199254740992 != 9007199254740993
+
+======================================================================
+FAIL: test_even_medians_average_without_float_or_int64_overflow (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_even_medians_average_without_float_or_int64_overflow) (timestamps=[9007199254740997, 9007199254740995, 9007199254740994, 9007199254740993])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d788ccfb3bfe/product_workflow/candidate/tests/analysis/test_imu_feature_timestamps.py", line 79, in test_even_medians_average_without_float_or_int64_overflow
+    self.assertEqual(int(frame.at[0, "t_mid_ns"]), expected)
+AssertionError: 9007199254740996 != 9007199254740994
+
+======================================================================
+FAIL: test_even_medians_average_without_float_or_int64_overflow (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_even_medians_average_without_float_or_int64_overflow) (timestamps=[-9007199254740994, -9007199254740993])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d788ccfb3bfe/product_workflow/candidate/tests/analysis/test_imu_feature_timestamps.py", line 79, in test_even_medians_average_without_float_or_int64_overflow
+    self.assertEqual(int(frame.at[0, "t_mid_ns"]), expected)
+AssertionError: -9007199254740992 != -9007199254740993
+
+======================================================================
+FAIL: test_even_medians_average_without_float_or_int64_overflow (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_even_medians_average_without_float_or_int64_overflow) (timestamps=[9223372036854775806, 9223372036854775807])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d788ccfb3bfe/product_workflow/candidate/tests/analysis/test_imu_feature_timestamps.py", line 79, in test_even_medians_average_without_float_or_int64_overflow
+    self.assertEqual(int(frame.at[0, "t_mid_ns"]), expected)
+AssertionError: 9223372036854775808 != 9223372036854775806
+
+======================================================================
+FAIL: test_even_medians_average_without_float_or_int64_overflow (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_even_medians_average_without_float_or_int64_overflow) (timestamps=[-9223372036854775808, -9223372036854775807])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d788ccfb3bfe/product_workflow/candidate/tests/analysis/test_imu_feature_timestamps.py", line 79, in test_even_medians_average_without_float_or_int64_overflow
+    self.assertEqual(int(frame.at[0, "t_mid_ns"]), expected)
+AssertionError: -9223372036854775808 != -9223372036854775807
+
+======================================================================
+FAIL: test_gap_mask_uses_only_valid_frames_and_keeps_statistics (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_gap_mask_uses_only_valid_frames_and_keeps_statistics)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d788ccfb3bfe/product_workflow/candidate/tests/analysis/test_imu_feature_timestamps.py", line 107, in test_gap_mask_uses_only_valid_frames_and_keeps_statistics
+    self.assertEqual(int(actual.at[0, "t_mid_ns"]), offset + 3)
+AssertionError: 9007199254740996 != 9007199254740995
+
+======================================================================
+FAIL: test_odd_medians_keep_exact_recorded_integers (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_odd_medians_keep_exact_recorded_integers) (timestamps=[9007199254740993])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d788ccfb3bfe/product_workflow/candidate/tests/analysis/test_imu_feature_timestamps.py", line 57, in test_odd_medians_keep_exact_recorded_integers
+    self.assertEqual(int(frame.at[0, "t_mid_ns"]), expected)
+AssertionError: 9007199254740992 != 9007199254740993
+
+======================================================================
+FAIL: test_odd_medians_keep_exact_recorded_integers (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_odd_medians_keep_exact_recorded_integers) (timestamps=[-9007199254740993])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d788ccfb3bfe/product_workflow/candidate/tests/analysis/test_imu_feature_timestamps.py", line 57, in test_odd_medians_keep_exact_recorded_integers
+    self.assertEqual(int(frame.at[0, "t_mid_ns"]), expected)
+AssertionError: -9007199254740992 != -9007199254740993
+
+======================================================================
+FAIL: test_odd_medians_keep_exact_recorded_integers (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_odd_medians_keep_exact_recorded_integers) (timestamps=[9007199254740993, 9007199254740995, 9007199254740997])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d788ccfb3bfe/product_workflow/candidate/tests/analysis/test_imu_feature_timestamps.py", line 57, in test_odd_medians_keep_exact_recorded_integers
+    self.assertEqual(int(frame.at[0, "t_mid_ns"]), expected)
+AssertionError: 9007199254740996 != 9007199254740995
+
+======================================================================
+FAIL: test_odd_medians_keep_exact_recorded_integers (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_odd_medians_keep_exact_recorded_integers) (timestamps=[9007199254740997, 9007199254740993, 9007199254740995])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d788ccfb3bfe/product_workflow/candidate/tests/analysis/test_imu_feature_timestamps.py", line 57, in test_odd_medians_keep_exact_recorded_integers
+    self.assertEqual(int(frame.at[0, "t_mid_ns"]), expected)
+AssertionError: 9007199254740996 != 9007199254740995
+
+======================================================================
+FAIL: test_odd_medians_keep_exact_recorded_integers (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_odd_medians_keep_exact_recorded_integers) (timestamps=[9007199254740995, 9007199254740995, 9007199254740993])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d788ccfb3bfe/product_workflow/candidate/tests/analysis/test_imu_feature_timestamps.py", line 57, in test_odd_medians_keep_exact_recorded_integers
+    self.assertEqual(int(frame.at[0, "t_mid_ns"]), expected)
+AssertionError: 9007199254740996 != 9007199254740995
+
+======================================================================
+FAIL: test_odd_medians_keep_exact_recorded_integers (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_odd_medians_keep_exact_recorded_integers) (timestamps=[9223372036854775807])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d788ccfb3bfe/product_workflow/candidate/tests/analysis/test_imu_feature_timestamps.py", line 57, in test_odd_medians_keep_exact_recorded_integers
+    self.assertEqual(int(frame.at[0, "t_mid_ns"]), expected)
+AssertionError: 9223372036854775808 != 9223372036854775807
+
+======================================================================
+FAIL: test_window_and_hop_selection_keep_feature_values (test_imu_feature_timestamps.ImuFeatureTimestampTests.test_window_and_hop_selection_keep_feature_values)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/d788ccfb3bfe/product_workflow/candidate/tests/analysis/test_imu_feature_timestamps.py", line 89, in test_window_and_hop_selection_keep_feature_values
+    self.assertEqual([int(value) for value in actual["t_mid_ns"]],
+AssertionError: Lists differ: [9007199254740996, 9007199254741000, 9007199254741004] != [9007199254740995, 9007199254740999, 9007199254741003]
+
+First differing element 0:
+9007199254740996
+9007199254740995
+
+- [9007199254740996, 9007199254741000, 9007199254741004]
++ [9007199254740995, 9007199254740999, 9007199254741003]
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.035s
+
+FAILED (failures=13)

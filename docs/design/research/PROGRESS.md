@@ -1363,3 +1363,29 @@ Only types.py changes at runtime; new test_stream_rate_admission.py and ANALYSIS
 Qualification: 30 focused cases pass versus 14 failures and 16 passes on the unchanged parent runtime. They cover positive finite identity including floating-point extremes, Python/NumPy nonfinite values, both memory estimators, all three loader admission paths before iteration, and unchanged typed empty outputs. Two initial author fixtures assumed the wrong numeric schema/output dtype; their failed receipts are retained and corrected without production changes. The two inherited protobuf warnings remain disclosed. Independent receiving and exact-source native qualification are recorded with the delivery, with no hardware/GUI claim. Native receiving is pending at source publication.
 
 Publication is a new audited inert feature branch; no PR, main update, tag, workflow edit, dispatch or GitHub Actions execution is selected.
+
+
+## 2026-10-12 — Exact IMU feature timestamp medians (d788ccfb3bfe/product_workflow)
+
+Issue #121 repairs float64 rounding in the public IMU feature extractor's
+`t_mid_ns` window marker. Odd medians retain the central signed integer; even
+medians add their central pair as Python integers and truncate half nanoseconds
+toward zero. Recorded arrays, gap policy, window/hop selection and non-time
+feature values remain unchanged. The narrow source change excludes the separate
+EMG gap-processing and IMU loader-memory lanes.
+
+Seven maintained public-extractor methods pass; the identical tests retain
+13 original-source failing subcases. Independent receiving accepted the exact
+production hash and used a sorted-Python-int/Fraction oracle: 148/512 original
+failures become 0/512 candidate failures in normal and optimized Python, with
+strided inputs preserved. Python 3.12.14 / NumPy 2.3.5 / Pandas 2.2.3 receiving
+uses the genuine pinned package source. Full desktop/native/hardware acceptance
+is outside this correction. Details and original failures are retained in
+[the receiving record](../../receiving/imu-timestamps-d788ccfb3bfe/README.md).
+
+
+## 2026-10-13 — Compose accepted IMU timestamps with offline analysis (7cb7e049e2c0/runtime_consumer)
+
+Issue #121 composition preserves the complete 778de777 offline-analysis tree while importing the exact runtime, maintained test, guide and receiving evidence from 865f3900. The first-parent IMU file was unchanged from their common 3960c0c7 baseline, so no numerical conflict resolution or new formula is introduced. Both ordered parents and all unrelated first-parent blobs/modes are retained. The original IMU progress entry immediately above is copied intact.
+
+The composed package passes seven maintained timestamp methods and eighteen subtests on isolated Python 3.12. Windows receiving and actual MCAP output comparison remain pending at source publication; exact results will be linked from issue #121. Root's unpublished EMG vectorization and axis-label/raw-point overlays remain separate. See [the composition guide](../../IMU_ANALYSIS_COMPOSITION.md). Publication uses a new audited inert branch with no PR, main update, tag or Actions request.
