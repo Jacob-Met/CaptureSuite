@@ -1,0 +1,37 @@
+{
+  "schema": "hamon.independent-review-evidence/1",
+  "files": [
+    {
+      "path": "frozen-contract.json",
+      "bytes": 2432,
+      "sha256": "0ed66a459e2a7f078f61f43c068c6b293eacb253eb2c2fd687f25bb0a74a3216"
+    },
+    {
+      "path": "receive-feature-writer.py",
+      "bytes": 8536,
+      "sha256": "ef33043c15975763954dedb831354f54f6d685236a25d64800c098a98bbdeefe"
+    },
+    {
+      "path": "baseline-review.json",
+      "bytes": 1615,
+      "sha256": "d9243fd9c5fdf232b44c2f6593e261f2f87fa0340174f82dc4e49b5ce60fa4a2"
+    },
+    {
+      "path": "review.json",
+      "bytes": 3118,
+      "sha256": "c746d7a7a40120e36d7a4214d8de120cda858d4949fffd48cfbc2c17ee4db34e"
+    },
+    {
+      "path": "baseline-course/receiving.json",
+      "bytes": 35737,
+      "sha256": "fa3724b804a73c3807fe7beec7d6911e6992f90792c18b5e64c35741027c036b"
+    },
+    {
+      "path": "candidate-course/receiving.json",
+      "bytes": 31892,
+      "sha256": "0e899d7344b6f73735d0f6086cd43cbe5aaa15add322b405248a444a61d36128"
+    }
+  ],
+  "total_bytes": 83330,
+  "limit": "Evidence inventory only. Fixture trees are separately retained and are not counted as these files."
+}

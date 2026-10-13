@@ -1,0 +1,4 @@
+job_id=feature-path-receiving
+status=completed
+dir=/workspace/scratch/582de029aa19/portfolio/cli-after/source_token.mmsession/processing/jobs/feature-path-receiving
+streams=2 gaps_open=0 gaps_closed=0 warnings=0

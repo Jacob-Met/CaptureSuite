@@ -1,0 +1,50 @@
+{
+  "manifest.json": {
+    "bytes": 237,
+    "sha256": "eff25fbb7e66c8cdbb3557c96c75d8c6121f6cfcc937e66b41ac88529ac74c63"
+  },
+  "integrity.json": {
+    "bytes": 224,
+    "sha256": "cf47ef0995d246842c45481e7c756c8376eb0664446f80c77514538e73efef2a"
+  },
+  "events/checkpoints.json": {
+    "bytes": 3,
+    "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+  },
+  "events/annotations.json": {
+    "bytes": 3,
+    "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+  },
+  "events/sync_anchors.json": {
+    "bytes": 3,
+    "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+  },
+  "sources/sim.imu.parquet/source.json": {
+    "bytes": 120,
+    "sha256": "1f433f999d0a29cbdd86410af3aa8e529aaf7a9c6323473b306ef9a6c6258317"
+  },
+  "sources/sim.emg.main/source.json": {
+    "bytes": 112,
+    "sha256": "4e7626e51bfb804c27f83bf98ee186a47ec9f36fec0cbd7863ea8ecb1ecfbd10"
+  },
+  "sources/sim.imu.parquet/streams/sim.imu.parquet.frames/stream.json": {
+    "bytes": 223,
+    "sha256": "6a211ef85fcafef7acd3c2bd13f4bc67fef67b229f990f033c80755117c8f927"
+  },
+  "sources/sim.imu.parquet/streams/sim.imu.parquet.frames/segments/000000.mcap": {
+    "bytes": 1641,
+    "sha256": "19f618a46af7662ee52e5e10a873ed880011312e5e64213400fc8ba0fadc2bd4"
+  },
+  "sources/sim.emg.main/health/gaps.jsonl": {
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "sources/sim.emg.main/streams/sim.emg.main.batch/stream.json": {
+    "bytes": 223,
+    "sha256": "ac8e1e05a5047dca047319750a2ee6a95400e3ffde1089d174cf1edc53b99d70"
+  },
+  "sources/sim.emg.main/streams/sim.emg.main.batch/segments/000000.mcap": {
+    "bytes": 1057,
+    "sha256": "6f214fd5190bf05c1f660e4b5f23ee3739388f4ca3002560b78ad43600027334"
+  }
+}

@@ -23,7 +23,7 @@ def write_feature_table(
     path = job_dir / rel
     path.parent.mkdir(parents=True, exist_ok=True)
     df.to_parquet(path, index=False)
-    csv_rel = rel.replace(".parquet", ".csv")
+    csv_rel = Path(rel).with_suffix(".csv").as_posix()
     df.to_csv(job_dir / csv_rel, index=False)
 
     import hashlib

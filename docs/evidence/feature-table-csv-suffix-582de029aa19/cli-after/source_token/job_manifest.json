@@ -1,0 +1,115 @@
+{
+  "analysisGrids": [],
+  "captureAnalysisVersion": "0.1.0",
+  "createdUtc": "2026-10-12T21:56:11Z",
+  "errors": [],
+  "evalWindowCount": null,
+  "featureTables": [
+    {
+      "featureSchemaVersion": 1,
+      "relativePath": "features/imu/sim.imu.parquet/windows.parquet",
+      "rows": 4
+    }
+  ],
+  "gapPolicy": "mask",
+  "gapSummary": {
+    "closed": 0,
+    "maskedNs": 0,
+    "open": 0,
+    "validFraction": null
+  },
+  "jobId": "feature-path-receiving",
+  "kinematicsRows": null,
+  "manifestSha256": "eff25fbb7e66c8cdbb3557c96c75d8c6121f6cfcc937e66b41ac88529ac74c63",
+  "mlBundleWindowCount": null,
+  "modalities": [
+    "emg",
+    "imu"
+  ],
+  "outputs": [
+    {
+      "bytes": 292,
+      "kind": "params",
+      "relativePath": "params.json",
+      "sha256": "d8e1c1b8a0a24720693028a3a6cecef4ed31ab418451b7d7cac10c370ac4a422"
+    },
+    {
+      "bytes": 1308,
+      "kind": "qc_json",
+      "relativePath": "reports/qc.json",
+      "sha256": "aafa9c5bcd8b96a9f73b87211371adb8c74c0518d929cb14d31b773e0991ecf0"
+    },
+    {
+      "bytes": 2226,
+      "kind": "qc_html",
+      "relativePath": "reports/qc.html",
+      "sha256": "0b6a72a3a234debdccf0d85292baba2c00f7db2848825918e09fa200cae2e588"
+    },
+    {
+      "bytes": 7645,
+      "kind": "feature_parquet",
+      "relativePath": "features/imu/sim.imu.parquet/windows.parquet",
+      "sha256": "65594844829d6d2035767a3684231995c254c9c7c3cdb16231ff8559146775e9"
+    },
+    {
+      "bytes": 628,
+      "kind": "feature_csv",
+      "relativePath": "features/imu/sim.imu.parquet/windows.csv",
+      "sha256": "62212faf4179e9050c4d7a2e3530a461c70d0e56b227138e31b0c273bb21a277"
+    },
+    {
+      "bytes": 1479,
+      "kind": "feature_schema",
+      "relativePath": "features/_schema.json",
+      "sha256": "ab4855a240abaccd9c1007dd5e060bc836d5a473d93d9bebaa6c5f48bd364665"
+    },
+    {
+      "bytes": 187,
+      "kind": "log",
+      "relativePath": "logs/job.log",
+      "sha256": "22e621f163676e5f1ea3bb40a3f7a56c9515fa84c8394ef291a43214fbd490ba"
+    }
+  ],
+  "packagePath": "/workspace/scratch/582de029aa19/portfolio/cli-after/source_token.mmsession",
+  "packageState": "finalized",
+  "paramsDigest": "a1ea2d2966f1d05b9fc3140582d29e786c194734472b4e45b91d4d87fd6540ab",
+  "pluginIds": [
+    "emg.envelope.v1",
+    "imu.kinematics.v1",
+    "radar.rd_energy.v1",
+    "radar_doppler.mag.v1",
+    "video.timing_qc.v1",
+    "numeric.basic.v1",
+    "test.dummy.feature.v1"
+  ],
+  "pluginManifestVersion": "1.0.0",
+  "poseJobId": null,
+  "poseModelId": null,
+  "poseTables": [],
+  "schemaId": "capture.analysis_job/1",
+  "sessionId": "mini-analysis-fixture",
+  "sourcesSelected": [
+    "sim.imu.parquet"
+  ],
+  "status": "completed",
+  "syncAnchorsApplied": {
+    "anchors": [],
+    "applied": false
+  },
+  "timeRange": {
+    "checkpointIds": [],
+    "endSessionNs": 500000000,
+    "mode": "custom",
+    "startSessionNs": 0
+  },
+  "tooling": {
+    "captureAnalysis": "0.1.0",
+    "matplotlib": "3.10.8",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+    "python": "3.12.14",
+    "scipy": "1.17.0"
+  },
+  "warnings": []
+}

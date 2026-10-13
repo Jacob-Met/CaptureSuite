@@ -1,0 +1,44 @@
+.FFFFF                                                                   [100%]
+=================================== FAILURES ===================================
+_ test_feature_csv_keeps_parent_and_stem[features/imu/sim.imu.parquet/windows.parquet-features/imu/sim.imu.parquet/windows.parquet-features/imu/sim.imu.parquet/windows.csv-features/imu/sim.imu.csv/windows.csv] _
+tests/analysis/test_feature_table_paths.py:92: in test_feature_csv_keeps_parent_and_stem
+    assert unrelated.read_bytes() == b"previous unrelated output\n"
+E   AssertionError: assert b't_ns,source...,-2.5,False\n' == b'previous unrelated output\n'
+E     
+E     At index 0 diff: b't' != b'p'
+E     Use -v to get more diff
+_ test_feature_csv_keeps_parent_and_stem[features/radar/source/frame.parquet.summary.parquet-features/radar/source/frame.parquet.summary.parquet-features/radar/source/frame.parquet.summary.csv-features/radar/source/frame.csv.summary.csv] _
+tests/analysis/test_feature_table_paths.py:92: in test_feature_csv_keeps_parent_and_stem
+    assert unrelated.read_bytes() == b"previous unrelated output\n"
+E   AssertionError: assert b't_ns,source...,-2.5,False\n' == b'previous unrelated output\n'
+E     
+E     At index 0 diff: b't' != b'p'
+E     Use -v to get more diff
+_ test_feature_csv_keeps_parent_and_stem[features.parquet/radar.parquet/source.parquet/window.parquet.part.parquet-features.parquet/radar.parquet/source.parquet/window.parquet.part.parquet-features.parquet/radar.parquet/source.parquet/window.parquet.part.csv-features.csv/radar.csv/source.csv/window.csv.part.csv] _
+tests/analysis/test_feature_table_paths.py:92: in test_feature_csv_keeps_parent_and_stem
+    assert unrelated.read_bytes() == b"previous unrelated output\n"
+E   AssertionError: assert b't_ns,source...,-2.5,False\n' == b'previous unrelated output\n'
+E     
+E     At index 0 diff: b't' != b'p'
+E     Use -v to get more diff
+_ test_feature_csv_keeps_parent_and_stem[features/\u6e2c\u5b9a.parquet \u03b1/windows.parquet-features/\u6e2c\u5b9a.parquet \u03b1/windows.parquet-features/\u6e2c\u5b9a.parquet \u03b1/windows.csv-features/\u6e2c\u5b9a.csv \u03b1/windows.csv] _
+tests/analysis/test_feature_table_paths.py:92: in test_feature_csv_keeps_parent_and_stem
+    assert unrelated.read_bytes() == b"previous unrelated output\n"
+E   AssertionError: assert b't_ns,source...,-2.5,False\n' == b'previous unrelated output\n'
+E     
+E     At index 0 diff: b't' != b'p'
+E     Use -v to get more diff
+_ test_feature_csv_keeps_parent_and_stem[features\\imu\\sim.imu.parquet\\windows.parquet-features/imu/sim.imu.parquet/windows.parquet-features/imu/sim.imu.parquet/windows.csv-features/imu/sim.imu.csv/windows.csv] _
+tests/analysis/test_feature_table_paths.py:92: in test_feature_csv_keeps_parent_and_stem
+    assert unrelated.read_bytes() == b"previous unrelated output\n"
+E   AssertionError: assert b't_ns,source...,-2.5,False\n' == b'previous unrelated output\n'
+E     
+E     At index 0 diff: b't' != b'p'
+E     Use -v to get more diff
+=========================== short test summary info ============================
+FAILED tests/analysis/test_feature_table_paths.py::test_feature_csv_keeps_parent_and_stem[features/imu/sim.imu.parquet/windows.parquet-features/imu/sim.imu.parquet/windows.parquet-features/imu/sim.imu.parquet/windows.csv-features/imu/sim.imu.csv/windows.csv]
+FAILED tests/analysis/test_feature_table_paths.py::test_feature_csv_keeps_parent_and_stem[features/radar/source/frame.parquet.summary.parquet-features/radar/source/frame.parquet.summary.parquet-features/radar/source/frame.parquet.summary.csv-features/radar/source/frame.csv.summary.csv]
+FAILED tests/analysis/test_feature_table_paths.py::test_feature_csv_keeps_parent_and_stem[features.parquet/radar.parquet/source.parquet/window.parquet.part.parquet-features.parquet/radar.parquet/source.parquet/window.parquet.part.parquet-features.parquet/radar.parquet/source.parquet/window.parquet.part.csv-features.csv/radar.csv/source.csv/window.csv.part.csv]
+FAILED tests/analysis/test_feature_table_paths.py::test_feature_csv_keeps_parent_and_stem[features/\u6e2c\u5b9a.parquet \u03b1/windows.parquet-features/\u6e2c\u5b9a.parquet \u03b1/windows.parquet-features/\u6e2c\u5b9a.parquet \u03b1/windows.csv-features/\u6e2c\u5b9a.csv \u03b1/windows.csv]
+FAILED tests/analysis/test_feature_table_paths.py::test_feature_csv_keeps_parent_and_stem[features\\imu\\sim.imu.parquet\\windows.parquet-features/imu/sim.imu.parquet/windows.parquet-features/imu/sim.imu.parquet/windows.csv-features/imu/sim.imu.csv/windows.csv]
+5 failed, 1 passed in 0.90s

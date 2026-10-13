@@ -1,0 +1,217 @@
+{
+  "status": "ACCEPTED as cross-check of existing author CLI evidence",
+  "checks": [
+    {
+      "check": "cli-before_writer_identity",
+      "pass": true
+    },
+    {
+      "check": "cli-before_ordinary_literal_source_and_time_range",
+      "pass": true
+    },
+    {
+      "check": "cli-before_ordinary_actual_parquet",
+      "pass": true
+    },
+    {
+      "check": "cli-before_ordinary_registered_pair_completed",
+      "pass": true
+    },
+    {
+      "check": "cli-before_ordinary_feature_manifest_matches_actual_bytes",
+      "pass": true
+    },
+    {
+      "check": "cli-before_ordinary_csv_and_parquet_values_types",
+      "pass": true
+    },
+    {
+      "check": "cli-before_ordinary_schema_table_identity",
+      "pass": true
+    },
+    {
+      "check": "cli-before_ordinary_thirteen_original_fixture_paths_retained",
+      "pass": true
+    },
+    {
+      "check": "cli-before_source_token_literal_source_and_time_range",
+      "pass": true
+    },
+    {
+      "check": "cli-before_source_token_actual_parquet",
+      "pass": true
+    },
+    {
+      "check": "cli-before_source_token_unregistered_parquet_no_csv_despite_zero_exit",
+      "pass": true
+    },
+    {
+      "check": "cli-before_source_token_warning_names_mutated_parent",
+      "pass": true
+    },
+    {
+      "check": "cli-before_source_token_thirteen_original_fixture_paths_retained",
+      "pass": true
+    },
+    {
+      "check": "cli-after_writer_identity",
+      "pass": true
+    },
+    {
+      "check": "cli-after_ordinary_literal_source_and_time_range",
+      "pass": true
+    },
+    {
+      "check": "cli-after_ordinary_actual_parquet",
+      "pass": true
+    },
+    {
+      "check": "cli-after_ordinary_registered_pair_completed",
+      "pass": true
+    },
+    {
+      "check": "cli-after_ordinary_feature_manifest_matches_actual_bytes",
+      "pass": true
+    },
+    {
+      "check": "cli-after_ordinary_csv_and_parquet_values_types",
+      "pass": true
+    },
+    {
+      "check": "cli-after_ordinary_schema_table_identity",
+      "pass": true
+    },
+    {
+      "check": "cli-after_ordinary_thirteen_original_fixture_paths_retained",
+      "pass": true
+    },
+    {
+      "check": "cli-after_source_token_literal_source_and_time_range",
+      "pass": true
+    },
+    {
+      "check": "cli-after_source_token_actual_parquet",
+      "pass": true
+    },
+    {
+      "check": "cli-after_source_token_registered_pair_completed",
+      "pass": true
+    },
+    {
+      "check": "cli-after_source_token_feature_manifest_matches_actual_bytes",
+      "pass": true
+    },
+    {
+      "check": "cli-after_source_token_csv_and_parquet_values_types",
+      "pass": true
+    },
+    {
+      "check": "cli-after_source_token_schema_table_identity",
+      "pass": true
+    },
+    {
+      "check": "cli-after_source_token_thirteen_original_fixture_paths_retained",
+      "pass": true
+    },
+    {
+      "check": "ordinary_same_thirteen_current_input_bytes_between_courses",
+      "pass": true
+    },
+    {
+      "check": "source_token_same_thirteen_current_input_bytes_between_courses",
+      "pass": true
+    },
+    {
+      "check": "all_four_saved_parquet_outputs_byte_identical",
+      "pass": true
+    }
+  ],
+  "files": [
+    {
+      "path": "portfolio/cli-before/result.json",
+      "bytes": 1358,
+      "sha256": "86468dc4956c16270d50f501ccf2a3c7f8484538fbfddf9b6b3f2c62f3d1b43d"
+    },
+    {
+      "path": "portfolio/cli-before/ordinary.mmsession/processing/jobs/feature-path-receiving/job_manifest.json",
+      "bytes": 3114,
+      "sha256": "b3128f745efc058e0675bcc4dca703422eb792d9dce344e279a56ed778e703f0"
+    },
+    {
+      "path": "portfolio/cli-before/ordinary.stdout.txt",
+      "bytes": 209,
+      "sha256": "27ef5a6e088470479d93bd6c292f2959e61c674ad5800ca1cce003fe0840191d"
+    },
+    {
+      "path": "portfolio/cli-before/ordinary.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "portfolio/cli-before/source_token.mmsession/processing/jobs/feature-path-receiving/job_manifest.json",
+      "bytes": 2618,
+      "sha256": "c9c466917bd6d73f00b12a7620db0e07b190e73e648fcea873dc8ee6c92a9fe0"
+    },
+    {
+      "path": "portfolio/cli-before/source_token.stdout.txt",
+      "bytes": 227,
+      "sha256": "ab11742c63df02a8067baccf6178148162ef4599c0bb54f24ce2b159b3b300a8"
+    },
+    {
+      "path": "portfolio/cli-before/source_token.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "portfolio/cli-after/result.json",
+      "bytes": 1092,
+      "sha256": "bce27dadba2429337d3a6aa9ffa316be852ce592469b37b6433d66fb48dfb6e1"
+    },
+    {
+      "path": "portfolio/cli-after/ordinary.mmsession/processing/jobs/feature-path-receiving/job_manifest.json",
+      "bytes": 3113,
+      "sha256": "6e24a1c0cc69afc9773d460f886a60c5c0fb4ee124f16dbd996ad84a7bec117c"
+    },
+    {
+      "path": "portfolio/cli-after/ordinary.stdout.txt",
+      "bytes": 208,
+      "sha256": "e0cbb66657523d564ce95dc33ec3d6474e54c2777fa96cd838c080adcee38330"
+    },
+    {
+      "path": "portfolio/cli-after/ordinary.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "portfolio/cli-after/source_token.mmsession/processing/jobs/feature-path-receiving/job_manifest.json",
+      "bytes": 3125,
+      "sha256": "040b41d5812e32e79de5946e4c7d17376284595863592184910f4aeb8581728e"
+    },
+    {
+      "path": "portfolio/cli-after/source_token.stdout.txt",
+      "bytes": 212,
+      "sha256": "b96f570bd8cf1c7124f49acf62bbbc65016dd5dbbabc7c325ab4d59556bcd1ad"
+    },
+    {
+      "path": "portfolio/cli-after/source_token.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "portfolio/receive_feature_cli.py",
+      "bytes": 4586,
+      "sha256": "78acc57970ab955e6d8e9b12b0d50a11b0ee57dd0f1a0dd8f54148855155e0a7"
+    }
+  ],
+  "observations": [
+    "Four actual saved Parquet files are byte-identical and readable with four feature rows each.",
+    "Ordinary control completes both courses. Original source-token case records completed_with_warnings and zero CLI exit while emitting unregistered Parquet and no CSV. Candidate registers both at the literal source-ID path and completes without warnings.",
+    "Registered feature byte lengths and hashes match actual files. CSV and Parquet values/dtypes match using 1e-12 relative and 1e-13 absolute floating tolerance.",
+    "The thirteen original fixture paths retain identical current bytes between the before and after courses for each case."
+  ],
+  "limits": [
+    "No new CLI process was run by this reviewer. Exit codes and within-course input-preservation booleans are recorded by the author receiver.",
+    "The author receiver compares before/after digests in memory but does not persist its before digest map; this cross-check independently compares currently retained inputs across the two courses.",
+    "Fixture metadata and generated protobuf MCAP are synthetic. No hardware, GUI, throughput, or native-machine validation is represented."
+  ]
+}
