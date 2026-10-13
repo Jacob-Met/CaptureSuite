@@ -190,7 +190,9 @@ class AppRegistry:
         for version in range(from_version + 1, REGISTRY_SCHEMA_VERSION + 1):
             sql = _MIGRATIONS[version]
             with con:
-                con.executescript(sql)
+                # executescript does not begin a transaction for its statements.
+                # Keep the migration and its version marker in one transaction.
+                con.executescript("BEGIN;\n" + sql)
                 con.execute(
                     "INSERT INTO schema_migrations(version, applied_utc) VALUES (?, ?)",
                     (version, _utc_now()),

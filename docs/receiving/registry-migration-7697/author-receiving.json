@@ -1,0 +1,698 @@
+{
+  "schema": "capturesuite.registry-migration-author-receiving/1",
+  "created_utc": "2026-10-13 02:17:22 UTC",
+  "repository": "Jacob-Met/CaptureSuite",
+  "issue": 126,
+  "base_commit": "ab17b8c50af9892483b49ce4c125ef28f38eb72c",
+  "base_tree": "fe779be8316c3cf677dcf8b12993476db8a87a62",
+  "source": {
+    "path": "libs/python/capture_session/capture_session/registry.py",
+    "original_blob": "c1d7799e1d2099424221b2f4af216a43a972c67a",
+    "candidate_blob": "fcf858d562b4cb361a53abfc39eccaff245b1a81",
+    "candidate_sha256": "aafc6a17d5622ab8f095455a6d3733e0a012ac471c1f34c1c0fec9a25161e367",
+    "original_v1_sql_sha256": "6d4fa2227b8f21523741bd0c526b4f0e21e9d045fd60fa63d59271cb9031e97f",
+    "change": "Only prepend BEGIN to each existing migration script and add two explanatory comments. The existing connection context commits or rolls back the script and version insert together."
+  },
+  "maintained_test": {
+    "path": "tests/protocol/test_registry_migration_atomicity.py",
+    "blob": "3ca045ebbf90c66bff3549efa40888e71fd92a95",
+    "sha256": "36b624f976d549f394286f1a802e220f4763737719176f9481c1290510fcbff4",
+    "cases": 4
+  },
+  "original_probe": {
+    "schema": "capturesuite.registry-migration-original-probe/1",
+    "started_utc": "2026-10-13T01:15:22.317078+00:00",
+    "finished_utc": "2026-10-13T01:15:22.335076+00:00",
+    "repository": "Jacob-Met/CaptureSuite",
+    "base": "ab17b8c50af9892483b49ce4c125ef28f38eb72c",
+    "environment": {
+      "host": "hamon-thinkpad",
+      "uid": 1000,
+      "python": "3.14.4",
+      "sqlite": "3.46.1",
+      "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.43",
+      "course": "Python 3.14 diagnostic; supported 3.12 receiving still required"
+    },
+    "failure": {
+      "type": "OperationalError",
+      "message": "no such function: unavailable_migration_hook"
+    },
+    "objects_after_failure": [
+      [
+        "index",
+        "devices_by_plugin"
+      ],
+      [
+        "index",
+        "presets_type_name"
+      ],
+      [
+        "table",
+        "devices"
+      ],
+      [
+        "table",
+        "plugin_states"
+      ],
+      [
+        "table",
+        "presets"
+      ],
+      [
+        "table",
+        "recent_sessions"
+      ],
+      [
+        "table",
+        "schema_migrations"
+      ]
+    ],
+    "versions_after_failure": [],
+    "retry_original": {
+      "opened": false,
+      "type": "OperationalError",
+      "message": "table schema_migrations already exists"
+    },
+    "source_guards": [
+      {
+        "path": "libs/python/capture_session/capture_session/__init__.py",
+        "blob": "894e3c152a98b6e804de90122572afbcd929b3da",
+        "sha256": "da530f86c0d1d584862868ddba9f7087ccf5dfbddd64dd1e577337ecfd776419"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/app_paths.py",
+        "blob": "46332cea7c62dd44247b219937ae6c8fbc747017",
+        "sha256": "363e4522240e2356cac7492589cb207a798bc1af6031139bd1fa94890f1c4bfd"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/package_reader.py",
+        "blob": "91fbf913c5af8489968425d7ceac51c04233d3e0",
+        "sha256": "9a1d9e6e7d24341a083cee602af9538413e948f3369b22660e484356e3d34eb1"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/registry.py",
+        "blob": "c1d7799e1d2099424221b2f4af216a43a972c67a",
+        "sha256": "809b26ce8d8efc0559a3854cf85ea74b4e486fcd77d253ebfa76bade64b0a8d1"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/settings_store.py",
+        "blob": "41b99cdaa78011d3d9b753c3131f32c72af9699f",
+        "sha256": "7719524a1f106cc54befcd21088810f9ec28f0160c8e88f60c374e1545fdb98d"
+      }
+    ],
+    "source_guards_unchanged": true,
+    "migration_1_sha256": "6d4fa2227b8f21523741bd0c526b4f0e21e9d045fd60fa63d59271cb9031e97f",
+    "injected_suffix": "\nSELECT unavailable_migration_hook();\n",
+    "limit": "Public open against a disposable SQLite database; injected SQL failure demonstrates transaction semantics, not actual disk exhaustion."
+  },
+  "original_maintained": {
+    "schema": "capturesuite.registry-migration-maintained/1",
+    "repository": "Jacob-Met/CaptureSuite",
+    "base": "ab17b8c50af9892483b49ce4c125ef28f38eb72c",
+    "course": "original",
+    "started_utc": "2026-10-13T01:28:23.410032+00:00",
+    "finished_utc": "2026-10-13T01:28:23.794262+00:00",
+    "environment": {
+      "hostname": "hamon-thinkpad",
+      "uid": 1000,
+      "python": "3.14.4",
+      "python_executable": "/usr/bin/python3",
+      "sqlite": "3.46.1",
+      "pytest": "9.0.2",
+      "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.43",
+      "qualification": "Python 3.14 diagnostic; supported Python 3.12 independent receiving remains distinct"
+    },
+    "command": [
+      "/usr/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "--tb=short",
+      "-c",
+      "/home/jacob/hamon-capturesuite-7697-registry-migration/original/pyproject.toml",
+      "--junitxml",
+      "/home/jacob/hamon-capturesuite-7697-registry-migration/original/receiving.xml",
+      "/home/jacob/hamon-capturesuite-7697-registry-migration/original/tests/protocol/test_registry_migration_atomicity.py",
+      "/home/jacob/hamon-capturesuite-7697-registry-migration/original/tests/protocol/test_settings_registry.py",
+      "/home/jacob/hamon-capturesuite-7697-registry-migration/original/tests/protocol/test_registry_readonly_receiving.py"
+    ],
+    "cwd": "/home/jacob/hamon-capturesuite-7697-registry-migration/original",
+    "environment_overrides": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+      "TMPDIR": "/home/jacob/hamon-capturesuite-7697-registry-migration/original/tmp"
+    },
+    "returncode": 1,
+    "elapsed_s": 0.3840334848500788,
+    "stdout": "FFFF.........                                                            [100%]\n=================================== FAILURES ===================================\n__________ test_failed_first_migration_rolls_back_and_retries[False] ___________\ntests/protocol/test_registry_migration_atomicity.py:49: in test_failed_first_migration_rolls_back_and_retries\n    assert _schema_names(path) == set()\nE   AssertionError: assert {'devices', '...essions', ...} == set()\nE     \nE     Extra items in the left set:\nE     'plugin_states'\nE     'schema_migrations'\nE     'devices'\nE     'recent_sessions'\nE     'presets'...\nE     \nE     ...Full output truncated (3 lines hidden), use '-vv' to show\n___________ test_failed_first_migration_rolls_back_and_retries[True] ___________\ntests/protocol/test_registry_migration_atomicity.py:49: in test_failed_first_migration_rolls_back_and_retries\n    assert _schema_names(path) == set()\nE   AssertionError: assert {'devices', '...essions', ...} == set()\nE     \nE     Extra items in the left set:\nE     'plugin_states'\nE     'schema_migrations'\nE     'devices'\nE     'recent_sessions'\nE     'presets'...\nE     \nE     ...Full output truncated (3 lines hidden), use '-vv' to show\n__________ test_failed_version_receipt_rolls_back_schema_and_retries ___________\ntests/protocol/test_registry_migration_atomicity.py:76: in test_failed_version_receipt_rolls_back_schema_and_retries\n    assert _schema_names(path) == set()\nE   AssertionError: assert {'devices', '...essions', ...} == set()\nE     \nE     Extra items in the left set:\nE     'reject_version_receipt'\nE     'presets'\nE     'devices_by_plugin'\nE     'plugin_states'\nE     'schema_migrations'...\nE     \nE     ...Full output truncated (4 lines hidden), use '-vv' to show\n__________ test_failed_later_migration_keeps_prior_versions_and_data ___________\ntests/protocol/test_registry_migration_atomicity.py:117: in test_failed_later_migration_keeps_prior_versions_and_data\n    assert con.execute(\"SELECT note FROM migration_v2\").fetchall() == [\nE   AssertionError: assert [('version three committed',)] == [('version two committed',)]\nE     \nE     At index 0 diff: ('version three committed',) != ('version two committed',)\nE     Use -v to get more diff\n=========================== short test summary info ============================\nFAILED tests/protocol/test_registry_migration_atomicity.py::test_failed_first_migration_rolls_back_and_retries[False]\nFAILED tests/protocol/test_registry_migration_atomicity.py::test_failed_first_migration_rolls_back_and_retries[True]\nFAILED tests/protocol/test_registry_migration_atomicity.py::test_failed_version_receipt_rolls_back_schema_and_retries\nFAILED tests/protocol/test_registry_migration_atomicity.py::test_failed_later_migration_keeps_prior_versions_and_data\n4 failed, 9 passed in 0.20s\n",
+    "stderr": "",
+    "junit": "<?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites name=\"pytest tests\"><testsuite name=\"pytest\" errors=\"0\" failures=\"4\" skipped=\"0\" tests=\"13\" time=\"0.196\" timestamp=\"2026-10-13T01:28:23.531829+00:00\" hostname=\"hamon-thinkpad\"><testcase classname=\"tests.protocol.test_registry_migration_atomicity\" name=\"test_failed_first_migration_rolls_back_and_retries[False]\" time=\"0.013\"><failure message=\"AssertionError: assert {'devices', '...essions', ...} == set()&#10;  &#10;  Extra items in the left set:&#10;  'plugin_states'&#10;  'schema_migrations'&#10;  'devices'&#10;  'recent_sessions'&#10;  'presets'...&#10;  &#10;  ...Full output truncated (3 lines hidden), use '-vv' to show\">tests/protocol/test_registry_migration_atomicity.py:49: in test_failed_first_migration_rolls_back_and_retries\n    assert _schema_names(path) == set()\nE   AssertionError: assert {'devices', '...essions', ...} == set()\nE     \nE     Extra items in the left set:\nE     'plugin_states'\nE     'schema_migrations'\nE     'devices'\nE     'recent_sessions'\nE     'presets'...\nE     \nE     ...Full output truncated (3 lines hidden), use '-vv' to show</failure></testcase><testcase classname=\"tests.protocol.test_registry_migration_atomicity\" name=\"test_failed_first_migration_rolls_back_and_retries[True]\" time=\"0.019\"><failure message=\"AssertionError: assert {'devices', '...essions', ...} == set()&#10;  &#10;  Extra items in the left set:&#10;  'plugin_states'&#10;  'schema_migrations'&#10;  'devices'&#10;  'recent_sessions'&#10;  'presets'...&#10;  &#10;  ...Full output truncated (3 lines hidden), use '-vv' to show\">tests/protocol/test_registry_migration_atomicity.py:49: in test_failed_first_migration_rolls_back_and_retries\n    assert _schema_names(path) == set()\nE   AssertionError: assert {'devices', '...essions', ...} == set()\nE     \nE     Extra items in the left set:\nE     'plugin_states'\nE     'schema_migrations'\nE     'devices'\nE     'recent_sessions'\nE     'presets'...\nE     \nE     ...Full output truncated (3 lines hidden), use '-vv' to show</failure></testcase><testcase classname=\"tests.protocol.test_registry_migration_atomicity\" name=\"test_failed_version_receipt_rolls_back_schema_and_retries\" time=\"0.010\"><failure message=\"AssertionError: assert {'devices', '...essions', ...} == set()&#10;  &#10;  Extra items in the left set:&#10;  'reject_version_receipt'&#10;  'presets'&#10;  'devices_by_plugin'&#10;  'plugin_states'&#10;  'schema_migrations'...&#10;  &#10;  ...Full output truncated (4 lines hidden), use '-vv' to show\">tests/protocol/test_registry_migration_atomicity.py:76: in test_failed_version_receipt_rolls_back_schema_and_retries\n    assert _schema_names(path) == set()\nE   AssertionError: assert {'devices', '...essions', ...} == set()\nE     \nE     Extra items in the left set:\nE     'reject_version_receipt'\nE     'presets'\nE     'devices_by_plugin'\nE     'plugin_states'\nE     'schema_migrations'...\nE     \nE     ...Full output truncated (4 lines hidden), use '-vv' to show</failure></testcase><testcase classname=\"tests.protocol.test_registry_migration_atomicity\" name=\"test_failed_later_migration_keeps_prior_versions_and_data\" time=\"0.015\"><failure message=\"AssertionError: assert [('version three committed',)] == [('version two committed',)]&#10;  &#10;  At index 0 diff: ('version three committed',) != ('version two committed',)&#10;  Use -v to get more diff\">tests/protocol/test_registry_migration_atomicity.py:117: in test_failed_later_migration_keeps_prior_versions_and_data\n    assert con.execute(\"SELECT note FROM migration_v2\").fetchall() == [\nE   AssertionError: assert [('version three committed',)] == [('version two committed',)]\nE     \nE     At index 0 diff: ('version three committed',) != ('version two committed',)\nE     Use -v to get more diff</failure></testcase><testcase classname=\"tests.protocol.test_settings_registry\" name=\"test_settings_atomic_roundtrip_preserves_unknown_keys\" time=\"0.004\" /><testcase classname=\"tests.protocol.test_settings_registry\" name=\"test_settings_geometry_per_fingerprint\" time=\"0.004\" /><testcase classname=\"tests.protocol.test_settings_registry\" name=\"test_registry_migrates_and_tracks_sessions\" time=\"0.016\" /><testcase classname=\"tests.protocol.test_settings_registry\" name=\"test_registry_newer_schema_opens_readonly\" time=\"0.009\" /><testcase classname=\"tests.protocol.test_settings_registry\" name=\"test_registry_newer_schema_connection_is_readonly_and_open_is_non_mutating\" time=\"0.007\" /><testcase classname=\"tests.protocol.test_registry_readonly_receiving\" name=\"test_future_registry_preserves_files_and_public_data[registry.sqlite]\" time=\"0.017\" /><testcase classname=\"tests.protocol.test_registry_readonly_receiving\" name=\"test_future_registry_preserves_files_and_public_data[registry #future% \\u96ea.sqlite]\" time=\"0.017\" /><testcase classname=\"tests.protocol.test_registry_readonly_receiving\" name=\"test_future_wal_registry_reads_committed_tail_without_writing\" time=\"0.012\" /><testcase classname=\"tests.protocol.test_registry_readonly_receiving\" name=\"test_existing_empty_database_still_migrates_and_accepts_writes\" time=\"0.010\" /></testsuite></testsuites>",
+    "source_guards": [
+      {
+        "path": "libs/python/capture_session/capture_session/__init__.py",
+        "blob": "894e3c152a98b6e804de90122572afbcd929b3da",
+        "sha256": "da530f86c0d1d584862868ddba9f7087ccf5dfbddd64dd1e577337ecfd776419"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/app_paths.py",
+        "blob": "46332cea7c62dd44247b219937ae6c8fbc747017",
+        "sha256": "363e4522240e2356cac7492589cb207a798bc1af6031139bd1fa94890f1c4bfd"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/package_reader.py",
+        "blob": "91fbf913c5af8489968425d7ceac51c04233d3e0",
+        "sha256": "9a1d9e6e7d24341a083cee602af9538413e948f3369b22660e484356e3d34eb1"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/registry.py",
+        "blob": "c1d7799e1d2099424221b2f4af216a43a972c67a",
+        "sha256": "809b26ce8d8efc0559a3854cf85ea74b4e486fcd77d253ebfa76bade64b0a8d1"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/settings_store.py",
+        "blob": "41b99cdaa78011d3d9b753c3131f32c72af9699f",
+        "sha256": "7719524a1f106cc54befcd21088810f9ec28f0160c8e88f60c374e1545fdb98d"
+      },
+      {
+        "path": "tests/protocol/test_registry_migration_atomicity.py",
+        "blob": "3ca045ebbf90c66bff3549efa40888e71fd92a95",
+        "sha256": "36b624f976d549f394286f1a802e220f4763737719176f9481c1290510fcbff4"
+      },
+      {
+        "path": "tests/protocol/test_settings_registry.py",
+        "blob": "3972c736dbbf03574195594a26cf94c8238bcf74",
+        "sha256": "840f4110417a40400faba05ff6c3f75cae8300892d201e70d2d034d0f3ae6951"
+      },
+      {
+        "path": "tests/protocol/test_registry_readonly_receiving.py",
+        "blob": "99ec41e27c799a85fbb0d6586a5198fb54a293de",
+        "sha256": "185c956548ff7097d65705b2de94edb0e0047f9d522fea02b043aa817639a65e"
+      },
+      {
+        "path": "pyproject.toml",
+        "blob": "52491c6beebc4b17983fc66bb8765154c33cf6d8",
+        "sha256": "0cb8de1ab3dfbfed84ff16b35f3c89c6440180183ee5851d5d80da83622e53d0"
+      }
+    ],
+    "source_guards_after": [
+      {
+        "path": "libs/python/capture_session/capture_session/__init__.py",
+        "blob": "894e3c152a98b6e804de90122572afbcd929b3da"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/app_paths.py",
+        "blob": "46332cea7c62dd44247b219937ae6c8fbc747017"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/package_reader.py",
+        "blob": "91fbf913c5af8489968425d7ceac51c04233d3e0"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/registry.py",
+        "blob": "c1d7799e1d2099424221b2f4af216a43a972c67a"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/settings_store.py",
+        "blob": "41b99cdaa78011d3d9b753c3131f32c72af9699f"
+      },
+      {
+        "path": "tests/protocol/test_registry_migration_atomicity.py",
+        "blob": "3ca045ebbf90c66bff3549efa40888e71fd92a95"
+      },
+      {
+        "path": "tests/protocol/test_settings_registry.py",
+        "blob": "3972c736dbbf03574195594a26cf94c8238bcf74"
+      },
+      {
+        "path": "tests/protocol/test_registry_readonly_receiving.py",
+        "blob": "99ec41e27c799a85fbb0d6586a5198fb54a293de"
+      },
+      {
+        "path": "pyproject.toml",
+        "blob": "52491c6beebc4b17983fc66bb8765154c33cf6d8"
+      }
+    ],
+    "source_guards_unchanged": true,
+    "scope": "Four new regression cases plus nine unchanged settings/registry/read-only tests; exact project config and five-file package subset, without repository-wide conftest or desktop dependencies."
+  },
+  "candidate_maintained": {
+    "schema": "capturesuite.registry-migration-maintained/1",
+    "repository": "Jacob-Met/CaptureSuite",
+    "base": "ab17b8c50af9892483b49ce4c125ef28f38eb72c",
+    "course": "candidate",
+    "started_utc": "2026-10-13T01:30:25.542363+00:00",
+    "finished_utc": "2026-10-13T01:30:25.872768+00:00",
+    "environment": {
+      "hostname": "hamon-thinkpad",
+      "uid": 1000,
+      "python": "3.14.4",
+      "python_executable": "/usr/bin/python3",
+      "sqlite": "3.46.1",
+      "pytest": "9.0.2",
+      "platform": "Linux-7.0.0-34-generic-x86_64-with-glibc2.43",
+      "qualification": "Python 3.14 diagnostic; supported Python 3.12 independent receiving remains distinct"
+    },
+    "command": [
+      "/usr/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "--tb=short",
+      "-c",
+      "/home/jacob/hamon-capturesuite-7697-registry-migration/candidate/pyproject.toml",
+      "--junitxml",
+      "/home/jacob/hamon-capturesuite-7697-registry-migration/candidate/receiving.xml",
+      "/home/jacob/hamon-capturesuite-7697-registry-migration/candidate/tests/protocol/test_registry_migration_atomicity.py",
+      "/home/jacob/hamon-capturesuite-7697-registry-migration/candidate/tests/protocol/test_settings_registry.py",
+      "/home/jacob/hamon-capturesuite-7697-registry-migration/candidate/tests/protocol/test_registry_readonly_receiving.py"
+    ],
+    "cwd": "/home/jacob/hamon-capturesuite-7697-registry-migration/candidate",
+    "environment_overrides": {
+      "PYTHONDONTWRITEBYTECODE": "1",
+      "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+      "TMPDIR": "/home/jacob/hamon-capturesuite-7697-registry-migration/candidate/tmp"
+    },
+    "returncode": 0,
+    "elapsed_s": 0.3301729219965637,
+    "stdout": ".............                                                            [100%]\n13 passed in 0.15s\n",
+    "stderr": "",
+    "junit": "<?xml version=\"1.0\" encoding=\"utf-8\"?><testsuites name=\"pytest tests\"><testsuite name=\"pytest\" errors=\"0\" failures=\"0\" skipped=\"0\" tests=\"13\" time=\"0.151\" timestamp=\"2026-10-13T01:30:25.644001+00:00\" hostname=\"hamon-thinkpad\"><testcase classname=\"tests.protocol.test_registry_migration_atomicity\" name=\"test_failed_first_migration_rolls_back_and_retries[False]\" time=\"0.017\" /><testcase classname=\"tests.protocol.test_registry_migration_atomicity\" name=\"test_failed_first_migration_rolls_back_and_retries[True]\" time=\"0.009\" /><testcase classname=\"tests.protocol.test_registry_migration_atomicity\" name=\"test_failed_version_receipt_rolls_back_schema_and_retries\" time=\"0.006\" /><testcase classname=\"tests.protocol.test_registry_migration_atomicity\" name=\"test_failed_later_migration_keeps_prior_versions_and_data\" time=\"0.014\" /><testcase classname=\"tests.protocol.test_settings_registry\" name=\"test_settings_atomic_roundtrip_preserves_unknown_keys\" time=\"0.003\" /><testcase classname=\"tests.protocol.test_settings_registry\" name=\"test_settings_geometry_per_fingerprint\" time=\"0.003\" /><testcase classname=\"tests.protocol.test_settings_registry\" name=\"test_registry_migrates_and_tracks_sessions\" time=\"0.010\" /><testcase classname=\"tests.protocol.test_settings_registry\" name=\"test_registry_newer_schema_opens_readonly\" time=\"0.008\" /><testcase classname=\"tests.protocol.test_settings_registry\" name=\"test_registry_newer_schema_connection_is_readonly_and_open_is_non_mutating\" time=\"0.006\" /><testcase classname=\"tests.protocol.test_registry_readonly_receiving\" name=\"test_future_registry_preserves_files_and_public_data[registry.sqlite]\" time=\"0.012\" /><testcase classname=\"tests.protocol.test_registry_readonly_receiving\" name=\"test_future_registry_preserves_files_and_public_data[registry #future% \\u96ea.sqlite]\" time=\"0.012\" /><testcase classname=\"tests.protocol.test_registry_readonly_receiving\" name=\"test_future_wal_registry_reads_committed_tail_without_writing\" time=\"0.010\" /><testcase classname=\"tests.protocol.test_registry_readonly_receiving\" name=\"test_existing_empty_database_still_migrates_and_accepts_writes\" time=\"0.008\" /></testsuite></testsuites>",
+    "source_guards": [
+      {
+        "path": "libs/python/capture_session/capture_session/__init__.py",
+        "blob": "894e3c152a98b6e804de90122572afbcd929b3da",
+        "sha256": "da530f86c0d1d584862868ddba9f7087ccf5dfbddd64dd1e577337ecfd776419"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/app_paths.py",
+        "blob": "46332cea7c62dd44247b219937ae6c8fbc747017",
+        "sha256": "363e4522240e2356cac7492589cb207a798bc1af6031139bd1fa94890f1c4bfd"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/package_reader.py",
+        "blob": "91fbf913c5af8489968425d7ceac51c04233d3e0",
+        "sha256": "9a1d9e6e7d24341a083cee602af9538413e948f3369b22660e484356e3d34eb1"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/registry.py",
+        "blob": "fcf858d562b4cb361a53abfc39eccaff245b1a81",
+        "sha256": "aafc6a17d5622ab8f095455a6d3733e0a012ac471c1f34c1c0fec9a25161e367"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/settings_store.py",
+        "blob": "41b99cdaa78011d3d9b753c3131f32c72af9699f",
+        "sha256": "7719524a1f106cc54befcd21088810f9ec28f0160c8e88f60c374e1545fdb98d"
+      },
+      {
+        "path": "tests/protocol/test_registry_migration_atomicity.py",
+        "blob": "3ca045ebbf90c66bff3549efa40888e71fd92a95",
+        "sha256": "36b624f976d549f394286f1a802e220f4763737719176f9481c1290510fcbff4"
+      },
+      {
+        "path": "tests/protocol/test_settings_registry.py",
+        "blob": "3972c736dbbf03574195594a26cf94c8238bcf74",
+        "sha256": "840f4110417a40400faba05ff6c3f75cae8300892d201e70d2d034d0f3ae6951"
+      },
+      {
+        "path": "tests/protocol/test_registry_readonly_receiving.py",
+        "blob": "99ec41e27c799a85fbb0d6586a5198fb54a293de",
+        "sha256": "185c956548ff7097d65705b2de94edb0e0047f9d522fea02b043aa817639a65e"
+      },
+      {
+        "path": "pyproject.toml",
+        "blob": "52491c6beebc4b17983fc66bb8765154c33cf6d8",
+        "sha256": "0cb8de1ab3dfbfed84ff16b35f3c89c6440180183ee5851d5d80da83622e53d0"
+      }
+    ],
+    "source_guards_after": [
+      {
+        "path": "libs/python/capture_session/capture_session/__init__.py",
+        "blob": "894e3c152a98b6e804de90122572afbcd929b3da"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/app_paths.py",
+        "blob": "46332cea7c62dd44247b219937ae6c8fbc747017"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/package_reader.py",
+        "blob": "91fbf913c5af8489968425d7ceac51c04233d3e0"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/registry.py",
+        "blob": "fcf858d562b4cb361a53abfc39eccaff245b1a81"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/settings_store.py",
+        "blob": "41b99cdaa78011d3d9b753c3131f32c72af9699f"
+      },
+      {
+        "path": "tests/protocol/test_registry_migration_atomicity.py",
+        "blob": "3ca045ebbf90c66bff3549efa40888e71fd92a95"
+      },
+      {
+        "path": "tests/protocol/test_settings_registry.py",
+        "blob": "3972c736dbbf03574195594a26cf94c8238bcf74"
+      },
+      {
+        "path": "tests/protocol/test_registry_readonly_receiving.py",
+        "blob": "99ec41e27c799a85fbb0d6586a5198fb54a293de"
+      },
+      {
+        "path": "pyproject.toml",
+        "blob": "52491c6beebc4b17983fc66bb8765154c33cf6d8"
+      }
+    ],
+    "source_guards_unchanged": true,
+    "scope": "Four new regression cases plus nine unchanged settings/registry/read-only tests; exact project config and five-file package subset, without repository-wide conftest or desktop dependencies."
+  },
+  "scoped_license": {
+    "scope": "Exact changed package and three maintained test files with original required root licensing files and Apache license structures; this is not a full-repository scan.",
+    "command": [
+      "/usr/bin/python3",
+      "tools/check_licenses.py",
+      "--enforce-spdx"
+    ],
+    "cwd": "/home/jacob/hamon-capturesuite-7697-registry-migration/candidate",
+    "python": "3.14.4",
+    "returncode": 0,
+    "stdout": "license check OK\n",
+    "stderr": "",
+    "checker_blob": "e7ee0980488060dbae3f58034c30d4232fb9f52f",
+    "materialized": {
+      "CODE_OF_CONDUCT.md": "cf62128365869b1573b28b1027772e4885dec1fe",
+      "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
+      "CHANGELOG.md": "31cf0c64a43f8b98d8993e90a7cf339338ace0dd",
+      "CITATION.cff": "149a09fdc96cfbecbd31f6793987b878d6554f86",
+      "receiving.xml": "85ab47bb11e14f509e169eb755fd0a7e265108df",
+      "LICENSING.md": "44df160df06a04305cc457c4bf296552e5c38c80",
+      "CONTRIBUTING.md": "07ce652a85c16bfed220192076f22ce6d602d211",
+      "NOTICE": "8cf2966222285708edcab8bee8a309878d3fb5d0",
+      "SECURITY.md": "02b8a8e00d9afef505992c56a77db988f42a7d71",
+      "pyproject.toml": "52491c6beebc4b17983fc66bb8765154c33cf6d8",
+      "schemas/LICENSE": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "schemas/NOTICE": "12b0bd20065311a681549056f9b8f87712779f0d",
+      "tools/check_licenses.py": "e7ee0980488060dbae3f58034c30d4232fb9f52f",
+      "libs/python/capture_protocol/LICENSE": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "libs/python/capture_protocol/NOTICE": "7f9ac0678aa56452f06e6e5f3badc9a873e2008a",
+      "libs/python/capture_worker/LICENSE": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "libs/python/capture_worker/NOTICE": "d74f1cbf89d4c89f70b3e75ab71cfadea8b7128f",
+      "libs/python/capture_session/capture_session/registry.py": "fcf858d562b4cb361a53abfc39eccaff245b1a81",
+      "libs/python/capture_session/capture_session/__init__.py": "894e3c152a98b6e804de90122572afbcd929b3da",
+      "libs/python/capture_session/capture_session/app_paths.py": "46332cea7c62dd44247b219937ae6c8fbc747017",
+      "libs/python/capture_session/capture_session/package_reader.py": "91fbf913c5af8489968425d7ceac51c04233d3e0",
+      "libs/python/capture_session/capture_session/settings_store.py": "41b99cdaa78011d3d9b753c3131f32c72af9699f",
+      "workers/stub/LICENSE": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "workers/stub/NOTICE": "ced21015a46d371720c6804cbc253c1477f8be0d",
+      "tests/protocol/test_registry_migration_atomicity.py": "3ca045ebbf90c66bff3549efa40888e71fd92a95",
+      "tests/protocol/test_registry_readonly_receiving.py": "99ec41e27c799a85fbb0d6586a5198fb54a293de",
+      "tests/protocol/test_settings_registry.py": "3972c736dbbf03574195594a26cf94c8238bcf74"
+    },
+    "source_guards_unchanged": true
+  },
+  "native_runners": {
+    "original_probe": "# SPDX-License-Identifier: GPL-3.0-only\nfrom __future__ import annotations\nimport hashlib\nimport json\nimport os\nimport platform\nimport socket\nimport sqlite3\nimport sys\nfrom datetime import UTC, datetime\nfrom pathlib import Path\nfrom unittest.mock import patch\n\nroot = Path(__file__).resolve().parent\nassert root == Path(\"/home/jacob/hamon-capturesuite-7697-registry-migration\")\nassert os.getuid() == 1000 and root.stat().st_uid == 1000\npacket = json.loads((root / \"source-packet.json\").read_text())\nsource_root = root / \"source\"\ndef git_blob(raw):\n    return hashlib.sha1(b\"blob \" + str(len(raw)).encode() + b\"\\0\" + raw).hexdigest()\nguards = []\nfor item in packet[\"files\"]:\n    target = source_root / item[\"path\"]\n    assert not target.exists()\n    raw = item[\"content\"].encode()\n    assert git_blob(raw) == item[\"sha\"]\n    target.parent.mkdir(parents=True, exist_ok=True)\n    target.write_bytes(raw)\n    guards.append({\"path\": item[\"path\"], \"blob\": git_blob(raw), \"sha256\": hashlib.sha256(raw).hexdigest()})\nsys.path.insert(0, str(source_root / \"libs/python/capture_session\"))\nfrom capture_session import registry as module\n\ndatabase = root / \"failed-first-migration.sqlite\"\nassert not database.exists()\noriginal_sql = module._MIGRATIONS[1]\nstart = datetime.now(UTC).isoformat()\nfailed_registry = module.AppRegistry(database)\ntry:\n    with patch.dict(module._MIGRATIONS, {1: original_sql + \"\\nSELECT unavailable_migration_hook();\\n\"}):\n        failed_registry.open()\nexcept sqlite3.OperationalError as error:\n    failure = {\"type\": type(error).__name__, \"message\": str(error)}\nelse:\n    raise AssertionError(\"Injected migration failure was not reached\")\nfinally:\n    failed_registry.close()\nwith sqlite3.connect(database) as con:\n    objects = [list(row) for row in con.execute(\"SELECT type, name FROM sqlite_master WHERE name NOT LIKE 'sqlite_%' ORDER BY type, name\")]\n    versions = con.execute(\"SELECT version FROM schema_migrations\").fetchall() if any(row[1] == \"schema_migrations\" for row in objects) else []\nretry = module.AppRegistry(database)\ntry:\n    result = retry.open()\n    retry_result = {\"opened\": True, \"version\": result.schema_version}\nexcept sqlite3.OperationalError as error:\n    retry_result = {\"opened\": False, \"type\": type(error).__name__, \"message\": str(error)}\nfinally:\n    retry.close()\nfor item in packet[\"files\"]:\n    assert git_blob((source_root / item[\"path\"]).read_bytes()) == item[\"sha\"]\nreport = {\n    \"schema\": \"capturesuite.registry-migration-original-probe/1\",\n    \"started_utc\": start, \"finished_utc\": datetime.now(UTC).isoformat(),\n    \"repository\": packet[\"repository\"], \"base\": packet[\"base\"],\n    \"environment\": {\"host\": socket.gethostname(), \"uid\": os.getuid(), \"python\": platform.python_version(), \"sqlite\": sqlite3.sqlite_version, \"platform\": platform.platform(), \"course\": \"Python 3.14 diagnostic; supported 3.12 receiving still required\"},\n    \"failure\": failure, \"objects_after_failure\": objects, \"versions_after_failure\": versions,\n    \"retry_original\": retry_result,\n    \"source_guards\": guards, \"source_guards_unchanged\": True,\n    \"migration_1_sha256\": hashlib.sha256(original_sql.encode()).hexdigest(),\n    \"injected_suffix\": \"\\nSELECT unavailable_migration_hook();\\n\",\n    \"limit\": \"Public open against a disposable SQLite database; injected SQL failure demonstrates transaction semantics, not actual disk exhaustion.\"\n}\n(root / \"original-probe.json\").write_text(json.dumps(report, indent=2) + \"\\n\")\nprint(json.dumps(report, indent=2))\n",
+    "maintained": "# SPDX-License-Identifier: GPL-3.0-only\nfrom __future__ import annotations\nimport hashlib\nimport importlib.metadata\nimport json\nimport os\nimport platform\nimport socket\nimport sqlite3\nimport subprocess\nimport sys\nimport time\nfrom datetime import UTC, datetime\nfrom pathlib import Path\n\nroot = Path(__file__).resolve().parent\nassert root == Path(\"/home/jacob/hamon-capturesuite-7697-registry-migration\")\nassert os.getuid() == 1000 and root.stat().st_uid == 1000\ncourse = sys.argv[1]\nassert course in {\"original\", \"candidate\"}\nwork = root / course\nassert not work.exists()\nwork.mkdir()\nsource_packet = json.loads((root / \"source-packet.json\").read_text())\ntest_packet = json.loads((root / \"test-packet.json\").read_text())\ndef git_blob(raw):\n    return hashlib.sha1(b\"blob \" + str(len(raw)).encode() + b\"\\0\" + raw).hexdigest()\nguards = []\nfor item in source_packet[\"files\"] + test_packet[\"files\"]:\n    raw = item[\"content\"].encode()\n    if item.get(\"sha\"):\n        assert git_blob(raw) == item[\"sha\"], item[\"path\"]\n    if course == \"candidate\" and item[\"path\"].endswith(\"/registry.py\"):\n        raw = (root / \"candidate-registry.py\").read_bytes()\n    target = work / item[\"path\"]\n    target.parent.mkdir(parents=True, exist_ok=True)\n    target.write_bytes(raw)\n    guards.append({\"path\": item[\"path\"], \"blob\": git_blob(raw), \"sha256\": hashlib.sha256(raw).hexdigest()})\ntemporary = work / \"tmp\"\ntemporary.mkdir()\nenv = dict(os.environ)\nenv.update({\"PYTHONDONTWRITEBYTECODE\": \"1\", \"PYTEST_DISABLE_PLUGIN_AUTOLOAD\": \"1\", \"TMPDIR\": str(temporary)})\ncommand = [sys.executable, \"-m\", \"pytest\", \"-q\", \"-p\", \"no:cacheprovider\", \"--tb=short\", \"-c\", str(work / \"pyproject.toml\"), \"--junitxml\", str(work / \"receiving.xml\"),\n           str(work / \"tests/protocol/test_registry_migration_atomicity.py\"), str(work / \"tests/protocol/test_settings_registry.py\"), str(work / \"tests/protocol/test_registry_readonly_receiving.py\")]\nstart = datetime.now(UTC).isoformat()\nclock = time.monotonic()\nresult = subprocess.run(command, cwd=work, env=env, capture_output=True, text=True, timeout=60)\nelapsed = time.monotonic() - clock\nafter = [{\"path\": item[\"path\"], \"blob\": git_blob((work / item[\"path\"]).read_bytes())} for item in guards]\nunchanged = all(before[\"blob\"] == received[\"blob\"] for before, received in zip(guards, after, strict=True))\nreport = {\"schema\": \"capturesuite.registry-migration-maintained/1\", \"repository\": source_packet[\"repository\"], \"base\": source_packet[\"base\"], \"course\": course, \"started_utc\": start, \"finished_utc\": datetime.now(UTC).isoformat(),\n          \"environment\": {\"hostname\": socket.gethostname(), \"uid\": os.getuid(), \"python\": platform.python_version(), \"python_executable\": sys.executable, \"sqlite\": sqlite3.sqlite_version, \"pytest\": importlib.metadata.version(\"pytest\"), \"platform\": platform.platform(), \"qualification\": \"Python 3.14 diagnostic; supported Python 3.12 independent receiving remains distinct\"},\n          \"command\": command, \"cwd\": str(work), \"environment_overrides\": {key: env[key] for key in [\"PYTHONDONTWRITEBYTECODE\", \"PYTEST_DISABLE_PLUGIN_AUTOLOAD\", \"TMPDIR\"]},\n          \"returncode\": result.returncode, \"elapsed_s\": elapsed, \"stdout\": result.stdout, \"stderr\": result.stderr, \"junit\": (work / \"receiving.xml\").read_text(),\n          \"source_guards\": guards, \"source_guards_after\": after, \"source_guards_unchanged\": unchanged,\n          \"scope\": \"Four new regression cases plus nine unchanged settings/registry/read-only tests; exact project config and five-file package subset, without repository-wide conftest or desktop dependencies.\"}\n(root / (course + \"-maintained.json\")).write_text(json.dumps(report, indent=2) + \"\\n\")\nprint(json.dumps({key: report[key] for key in [\"course\", \"started_utc\", \"finished_utc\", \"returncode\", \"stdout\", \"stderr\", \"source_guards_unchanged\"]}, indent=2))\nassert unchanged\nsys.exit(result.returncode)\n",
+    "license": "# SPDX-License-Identifier: GPL-3.0-only\nfrom __future__ import annotations\nimport hashlib\nimport json\nimport os\nimport platform\nimport subprocess\nimport sys\nfrom pathlib import Path\n\nroot = Path(__file__).resolve().parent\nassert root == Path(\"/home/jacob/hamon-capturesuite-7697-registry-migration\")\nassert os.getuid() == 1000 and root.stat().st_uid == 1000\nprevious = Path(\"/home/jacob/hamon-capturesuite-7697-settings/source\")\nwork = root / \"candidate\"\nidentities = {\n  \"LICENSE\": \"f288702d2fa16d3cdf0035b15a9fcbc552cd88e7\",\n  \"NOTICE\": \"8cf2966222285708edcab8bee8a309878d3fb5d0\",\n  \"CODE_OF_CONDUCT.md\": \"cf62128365869b1573b28b1027772e4885dec1fe\",\n  \"SECURITY.md\": \"02b8a8e00d9afef505992c56a77db988f42a7d71\",\n  \"CHANGELOG.md\": \"31cf0c64a43f8b98d8993e90a7cf339338ace0dd\",\n  \"CITATION.cff\": \"149a09fdc96cfbecbd31f6793987b878d6554f86\",\n  \"schemas/LICENSE\": \"d645695673349e3947e8e5ae42332d0ac3164cd7\",\n  \"schemas/NOTICE\": \"12b0bd20065311a681549056f9b8f87712779f0d\",\n  \"libs/python/capture_protocol/LICENSE\": \"d645695673349e3947e8e5ae42332d0ac3164cd7\",\n  \"libs/python/capture_protocol/NOTICE\": \"7f9ac0678aa56452f06e6e5f3badc9a873e2008a\",\n  \"libs/python/capture_worker/LICENSE\": \"d645695673349e3947e8e5ae42332d0ac3164cd7\",\n  \"libs/python/capture_worker/NOTICE\": \"d74f1cbf89d4c89f70b3e75ab71cfadea8b7128f\",\n  \"workers/stub/LICENSE\": \"d645695673349e3947e8e5ae42332d0ac3164cd7\",\n  \"workers/stub/NOTICE\": \"ced21015a46d371720c6804cbc253c1477f8be0d\",\n  \"LICENSING.md\": \"44df160df06a04305cc457c4bf296552e5c38c80\",\n  \"CONTRIBUTING.md\": \"07ce652a85c16bfed220192076f22ce6d602d211\",\n  \"tools/check_licenses.py\": \"e7ee0980488060dbae3f58034c30d4232fb9f52f\"\n}\ndef git_blob(raw):\n    return hashlib.sha1(b\"blob \" + str(len(raw)).encode() + b\"\\0\" + raw).hexdigest()\nfor relative, expected in identities.items():\n    raw = (previous / relative).read_bytes()\n    assert git_blob(raw) == expected, relative\n    target = work / relative\n    assert not target.exists(), relative\n    target.parent.mkdir(parents=True, exist_ok=True)\n    target.write_bytes(raw)\nbefore = {str(p.relative_to(work)): git_blob(p.read_bytes()) for p in work.rglob(\"*\") if p.is_file() and \"tmp\" not in p.relative_to(work).parts}\ncommand = [sys.executable, \"tools/check_licenses.py\", \"--enforce-spdx\"]\nresult = subprocess.run(command, cwd=work, capture_output=True, text=True, timeout=30)\nafter = {relative: git_blob((work / relative).read_bytes()) for relative in before}\nassert before == after\nreport = {\"scope\": \"Exact changed package and three maintained test files with original required root licensing files and Apache license structures; this is not a full-repository scan.\",\n          \"command\": command, \"cwd\": str(work), \"python\": platform.python_version(), \"returncode\": result.returncode, \"stdout\": result.stdout, \"stderr\": result.stderr,\n          \"checker_blob\": identities[\"tools/check_licenses.py\"], \"materialized\": before, \"source_guards_unchanged\": before == after}\n(root / \"license-receiving.json\").write_text(json.dumps(report, indent=2) + \"\\n\")\nprint(json.dumps({\"returncode\": result.returncode, \"stdout\": result.stdout, \"stderr\": result.stderr, \"source_guards_unchanged\": before == after}))\nsys.exit(result.returncode)\n"
+  },
+  "input_packet_identities": {
+    "source_files": [
+      {
+        "path": "libs/python/capture_session/capture_session/__init__.py",
+        "sha": "894e3c152a98b6e804de90122572afbcd929b3da"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/app_paths.py",
+        "sha": "46332cea7c62dd44247b219937ae6c8fbc747017"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/package_reader.py",
+        "sha": "91fbf913c5af8489968425d7ceac51c04233d3e0"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/registry.py",
+        "sha": "c1d7799e1d2099424221b2f4af216a43a972c67a"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/settings_store.py",
+        "sha": "41b99cdaa78011d3d9b753c3131f32c72af9699f"
+      }
+    ],
+    "test_and_config_files": [
+      {
+        "path": "tests/protocol/test_registry_migration_atomicity.py",
+        "sha": "3ca045ebbf90c66bff3549efa40888e71fd92a95"
+      },
+      {
+        "path": "tests/protocol/test_settings_registry.py",
+        "sha": "3972c736dbbf03574195594a26cf94c8238bcf74"
+      },
+      {
+        "path": "tests/protocol/test_registry_readonly_receiving.py",
+        "sha": "99ec41e27c799a85fbb0d6586a5198fb54a293de"
+      },
+      {
+        "path": "pyproject.toml",
+        "sha": "52491c6beebc4b17983fc66bb8765154c33cf6d8"
+      }
+    ],
+    "license_input_packet_blob": "59909c95087a049dcf1bd4bc844e95058192d9c0"
+  },
+  "current_parent_input_guards": [
+    {
+      "path": "libs/python/capture_session/capture_session/__init__.py",
+      "sha": "894e3c152a98b6e804de90122572afbcd929b3da",
+      "verified_in_parent": true
+    },
+    {
+      "path": "libs/python/capture_session/capture_session/app_paths.py",
+      "sha": "46332cea7c62dd44247b219937ae6c8fbc747017",
+      "verified_in_parent": true
+    },
+    {
+      "path": "libs/python/capture_session/capture_session/package_reader.py",
+      "sha": "91fbf913c5af8489968425d7ceac51c04233d3e0",
+      "verified_in_parent": true
+    },
+    {
+      "path": "libs/python/capture_session/capture_session/registry.py",
+      "sha": "c1d7799e1d2099424221b2f4af216a43a972c67a",
+      "verified_in_parent": true
+    },
+    {
+      "path": "libs/python/capture_session/capture_session/settings_store.py",
+      "sha": "41b99cdaa78011d3d9b753c3131f32c72af9699f",
+      "verified_in_parent": true
+    },
+    {
+      "path": "tests/protocol/test_settings_registry.py",
+      "sha": "3972c736dbbf03574195594a26cf94c8238bcf74",
+      "verified_in_parent": true
+    },
+    {
+      "path": "tests/protocol/test_registry_readonly_receiving.py",
+      "sha": "99ec41e27c799a85fbb0d6586a5198fb54a293de",
+      "verified_in_parent": true
+    },
+    {
+      "path": "pyproject.toml",
+      "sha": "52491c6beebc4b17983fc66bb8765154c33cf6d8",
+      "verified_in_parent": true
+    },
+    {
+      "path": "LICENSE",
+      "sha": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
+      "verified_in_parent": true
+    },
+    {
+      "path": "NOTICE",
+      "sha": "8cf2966222285708edcab8bee8a309878d3fb5d0",
+      "verified_in_parent": true
+    },
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "sha": "cf62128365869b1573b28b1027772e4885dec1fe",
+      "verified_in_parent": true
+    },
+    {
+      "path": "SECURITY.md",
+      "sha": "02b8a8e00d9afef505992c56a77db988f42a7d71",
+      "verified_in_parent": true
+    },
+    {
+      "path": "CHANGELOG.md",
+      "sha": "31cf0c64a43f8b98d8993e90a7cf339338ace0dd",
+      "verified_in_parent": true
+    },
+    {
+      "path": "CITATION.cff",
+      "sha": "149a09fdc96cfbecbd31f6793987b878d6554f86",
+      "verified_in_parent": true
+    },
+    {
+      "path": "schemas/LICENSE",
+      "sha": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "verified_in_parent": true
+    },
+    {
+      "path": "schemas/NOTICE",
+      "sha": "12b0bd20065311a681549056f9b8f87712779f0d",
+      "verified_in_parent": true
+    },
+    {
+      "path": "libs/python/capture_protocol/LICENSE",
+      "sha": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "verified_in_parent": true
+    },
+    {
+      "path": "libs/python/capture_protocol/NOTICE",
+      "sha": "7f9ac0678aa56452f06e6e5f3badc9a873e2008a",
+      "verified_in_parent": true
+    },
+    {
+      "path": "libs/python/capture_worker/LICENSE",
+      "sha": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "verified_in_parent": true
+    },
+    {
+      "path": "libs/python/capture_worker/NOTICE",
+      "sha": "d74f1cbf89d4c89f70b3e75ab71cfadea8b7128f",
+      "verified_in_parent": true
+    },
+    {
+      "path": "workers/stub/LICENSE",
+      "sha": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "verified_in_parent": true
+    },
+    {
+      "path": "workers/stub/NOTICE",
+      "sha": "ced21015a46d371720c6804cbc253c1477f8be0d",
+      "verified_in_parent": true
+    },
+    {
+      "path": "LICENSING.md",
+      "sha": "44df160df06a04305cc457c4bf296552e5c38c80",
+      "verified_in_parent": true
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "sha": "07ce652a85c16bfed220192076f22ce6d602d211",
+      "verified_in_parent": true
+    },
+    {
+      "path": "tools/check_licenses.py",
+      "sha": "e7ee0980488060dbae3f58034c30d4232fb9f52f",
+      "verified_in_parent": true
+    },
+    {
+      "path": "AGENTS.md",
+      "sha": "9ac6683ba4805e210143e5a33e7782da55af0d15",
+      "verified_in_parent": true
+    },
+    {
+      "path": "docs/design/SETTINGS_REGISTRY.md",
+      "sha": "dd3dac0d1b180993eaf3280eb181783e27f76efc",
+      "verified_in_parent": true
+    },
+    {
+      "path": "docs/design/research/AUTONOMOUS_EXECUTION_PLAN.md",
+      "sha": "77d4576009f677f62b301bd6d352d9b40328c471",
+      "verified_in_parent": true
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha": "1067e9944ce4836d8cd1673442687333ef7ad564",
+      "verified_in_parent": true
+    },
+    {
+      "path": ".github/workflows/release.yml",
+      "sha": "079f99fe630d135933f3c2c725f49874c2d66d1c",
+      "verified_in_parent": true
+    },
+    {
+      "path": ".github/workflows/camera-native.yml",
+      "sha": "931eedfb75258d616a64c18fe26bcf02d9942d9d",
+      "verified_in_parent": true
+    }
+  ],
+  "ownership": {
+    "open_pr_count": 13,
+    "initial_prs_fully_paginated": [
+      94,
+      91,
+      83,
+      81,
+      80,
+      79,
+      71,
+      33,
+      32,
+      29,
+      28,
+      27
+    ],
+    "new_pr_127_checked": true,
+    "source_test_overlap": false,
+    "shared_progress_preserved": true
+  },
+  "independent_packet": {
+    "path": "independent-receiving.json",
+    "blob": "af802a2fa60a50cbf3d28cd8d8dc04bb93337670",
+    "utf8_bytes": 266062,
+    "sha256": "df4e6a4b73df5737fa382da628965da56720ca48091f00d2d72a5c4c7f3ea4e5",
+    "summary": {
+      "independent_original": {
+        "methods": 4,
+        "failures": 3,
+        "errors": 0,
+        "skips": 0
+      },
+      "independent_candidate": {
+        "methods": 4,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0
+      },
+      "maintained_original": {
+        "cases": 13,
+        "failures": 4,
+        "errors": 0,
+        "skips": 0
+      },
+      "maintained_candidate": {
+        "cases": 13,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0
+      },
+      "ruff": {
+        "version": "0.14.10",
+        "diagnostics": 0,
+        "changed_files": 2
+      },
+      "runtime": "Python3.12.8 / SQLite3.53.4 on macOS26.6.2 arm64, uid501"
+    },
+    "embedding": "Unchanged packet is stored exactly once beside this author record; it includes supported correctness, scoped Ruff, exact sources/runners/logs/JUnit, tool provenance and freeze chronology."
+  },
+  "native_capacity_event": {
+    "operation": "Write the final license runner in the owned ThinkPad namespace",
+    "first_result": "ENOSPC, verified zero-byte runner; never executed and no license receipt existed",
+    "free_bytes_at_failure": 0,
+    "subsequent_free_bytes": 1186639872,
+    "cleanup_performed": false,
+    "recovery": "A later read-only capacity check found space available. The exact prepared runner was then written once and completed with exit 0. No correctness/Ruff reruns were performed.",
+    "mac_fallback": "Delivery received and statically verified the 17-file input packet; its Mac read route timed out before any license write/execution. Local ThinkPad recovery completed the gate."
+  },
+  "limits": [
+    "ThinkPad Python3.14.4 results are diagnostic; supported receiving is the independent Python3.12.8 macOS course.",
+    "Only the specified source package, tests and config were materialized; full repository tests, Windows UI/daemon/hardware, and installation were not run.",
+    "License checker passed on the explicitly listed package/test/license subset, not on a complete repository checkout.",
+    "Synthetic migration fixtures exercise real SQLite DDL/DML/receipt failure and retry; no real disk-exhaustion, process-crash or power-loss experiment was performed.",
+    "The correction prevents new partial migrations; it does not automatically repair databases already partially migrated by an older build.",
+    "Publication is an isolated branch plus issue handoff under the Actions hold; no PR or merge is requested."
+  ],
+  "publication_verification": "Final tree/ref/commit/source and exact-head Actions count are independently read back after publication and recorded in issue126."
+}

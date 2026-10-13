@@ -1,3 +1,31 @@
+## 2026-10-13 — Keep failed registry migrations retryable
+
+Continuing HAMON worker `hamon-team-7697/product` received and corrected the
+existing per-version registry transaction contract in issue #126. A late SQL
+failure originally left all first-version tables/indexes without an applied
+version, so retrying the valid migration failed on those existing tables.
+`AppRegistry._migrate` now explicitly begins the script transaction; its
+existing connection context commits or rolls back the DDL/DML and version
+receipt together. The schema version, migration SQL, newer-version read-only
+path and registry CRUD behavior are unchanged.
+
+Independent original-first Python 3.12.8 / SQLite 3.53.4 receiving changes from
+three failing methods plus one read-only control to all four methods passing.
+The four new maintained cases plus nine unchanged settings/registry/read-only
+cases change from four failures/nine passes to 13 passes. The separate ThinkPad
+Python 3.14.4 diagnostic agrees. Scoped Ruff 0.14.10 reports no diagnostics; the
+unchanged license checker passes on the declared package/test/license subset.
+All tested inputs are guarded before/after. Fixtures prove rollback and retry
+after script and version-receipt failures, and retention of a committed earlier
+version when a later version fails.
+
+[The single receiving record](../../receiving/registry-migration-7697/README.md)
+retains the original failures, frozen independent receiver, exact sources,
+commands, raw observations/logs/JUnit, scoped tool provenance and execution
+limits. Publication uses an isolated branch and issue handoff under the Actions
+hold. Full Windows/UI/daemon qualification, installation, actual storage-failure
+experiments and automatic repair of already-partial older databases are unrun.
+
 ## 2026-10-12 — Keep feature CSV mirrors beside their Parquet tables
 
 Contributor `582de029aa19/portfolio` corrected the shared feature writer's CSV
