@@ -1352,3 +1352,14 @@ New dashboard documents use capture.sync_dashboard_series/2. Only saved y values
 Qualification: original new 12-case regression control has 10 failures / 2 passes; candidate 12 plus 29 video cases pass 41/41. Independent receiving of 10 actual saved JSON pairs found original 2/10 versus candidate 10/10 accepted by strict Python and real Node JSON.parse. Exact Python checks retain large integers and finite-value bits/signed zero; Node is grammar-only beyond 2**53. All 10 PNG pairs and 4 MCAP-derived CSV/Parquet feature files are byte-identical. Source hashes unchanged. Native successor receiving is pending until its exact publication; prior 0549 joint native result is not attributed to this successor. Source, test, guide and independent receipts remain separate from hardware/desktop claims.
 
 The JSON serializer is the only production scope. Plotted arrays, feature algorithms, raw recordings, gaps, job paths and other owners' desktop/jobs/readers remain unchanged. Axis-origin annotations are separately owned. No PR/main/tag/workflow/Actions operation is selected; source publication uses an audited inert feature branch.
+
+
+## 2026-10-13 — Stream rate admission before loader allocation (7cb7e049e2c0, issue #137)
+
+The accepted offline-analysis source 919197cf is the parent. The shared StreamRef.require_rate boundary previously admitted NaN and positive infinity, obscuring the affected stream in later integer-allocation failures. This narrow increment refuses those values with source/stream identity before memory estimation or MCAP iteration. Finite positive values retain their original identity, with no new float coercion or finite ceiling. The existing nonpositive-rate message remains unchanged.
+
+Only types.py changes at runtime; new test_stream_rate_admission.py and ANALYSIS_RATE_ADMISSION.md describe the boundary. No loader, QC serializer, plugin handler, gap policy, plot, existing job or raw data is changed. The axis-label and raw-point successors remain separately owned and are not implicitly adopted here.
+
+Qualification: 30 focused cases pass versus 14 failures and 16 passes on the unchanged parent runtime. They cover positive finite identity including floating-point extremes, Python/NumPy nonfinite values, both memory estimators, all three loader admission paths before iteration, and unchanged typed empty outputs. Two initial author fixtures assumed the wrong numeric schema/output dtype; their failed receipts are retained and corrected without production changes. The two inherited protobuf warnings remain disclosed. Independent receiving and exact-source native qualification are recorded with the delivery, with no hardware/GUI claim. Native receiving is pending at source publication.
+
+Publication is a new audited inert feature branch; no PR, main update, tag, workflow edit, dispatch or GitHub Actions execution is selected.

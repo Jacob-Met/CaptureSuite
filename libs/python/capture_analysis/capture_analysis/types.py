@@ -30,6 +30,11 @@ class StreamRef:
                 f"stream {self.source_id}/{self.stream_id} missing nominal_rate_hz "
                 "(refusing to invent a timebase)"
             )
+        if not (self.nominal_rate_hz < float("inf")):
+            raise ValueError(
+                f"stream {self.source_id}/{self.stream_id} has non-finite "
+                f"nominal_rate_hz ({self.nominal_rate_hz!r}); refusing to invent a timebase"
+            )
         return self.nominal_rate_hz
 
 
