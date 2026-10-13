@@ -1306,3 +1306,51 @@ analysis, desktop, runtime and hardware owners retain their source. These result
 qualify this standalone saved-data consumer, not full CaptureSuite or Windows/
 C++/hardware integration. GitHub Actions remain unrun under the active execution
 restriction; source publication carries explicit skip markers.
+
+
+## 2026-10-13 — Review two saved QC reports in a standalone offline page
+
+Contributor `5b5165014bda/publication_tools`, issue #139, added a directly openable
+HTML consumer of the unchanged saved-report comparator from #135/#138. Reviewers
+can inspect both captured hashes and byte counts, filter typed positional changes,
+select complete before/after values, move through 50-row pages and download both
+exact originals plus the complete comparison. Every report value is formatted as
+literal JSON text in Python before presentation, preserving integers above 2^53,
+boolean/integer/float distinctions, signed float zero and absence versus null
+without a JavaScript numeric round trip. Recorded paths remain displayed claims;
+no session package is reopened and no QC, gaps or durations are recomputed.
+
+The new [operator guide](../../operator/VIEW_SAVED_QC_COMPARISON.md) specifies the
+bounded regular-file capture and full-admission boundary, temporary import-cache
+suppression with caller-policy restoration, 64 MiB rendered-output bound and
+exclusive create-only publication. Inputs may change after capture; the hashes
+identify the bytes actually read. A cleanup failure after complete publication is
+reported explicitly. The page requests downloads without promising a disk save.
+
+Native Python 3.14.4 passes all 13 maintained methods with zero skips, including
+actual CLI refusals, a real FIFO, occupied/aliased destinations, injected fsync/link
+failures, post-publication cleanup failure and import/diagnostic behavior. Scoped
+Ruff 0.6.9 passes. The unchanged license checker passes with all 1,337 inherited
+source blobs verified and the four additions present. Tests and receiving preserve
+all selected source and input bytes and modes.
+
+An independent oracle frozen before implementation exposure covers the retained
+producer pair, a handwritten typed-value matrix, 61-row pagination and format-only
+equality. Seven ordinary CLI controls and 61 actual sandboxed Chromium 153 checks
+pass, including keyboard focus/selection state, filter composition, stale-detail
+clearing, literal labels, narrow layout and exact downloads. Python verifies all
+four complete comparison downloads against the frozen comparator results, avoiding
+numeric coercion in the receiver. Both captured layouts were visually reviewed.
+The receiver's initial anchor-only observation assumption was corrected before its
+first valid browser course, with both driver versions retained. A subsequent
+single download-status wording change was received separately: exactly one literal
+diff, ordinary retained-page generation and one actual click/status/download check.
+No complete browser course was repeated or attributed to the later source pin.
+
+The retained authored producer pair shows nine positional saved-value differences,
+including the recorded open gap becoming closed with a 17 ns duration string.
+This is a review of saved observations, without hardware, patient, clinical or
+installed desktop qualification. Only four new files and this append-only entry
+are added. The comparator, collectors, scientific modules, desktop, schemas,
+dependencies and workflows remain unchanged. GitHub Actions are not requested;
+source and merge publication carry explicit skip markers.
