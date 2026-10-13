@@ -1268,3 +1268,41 @@ This is a bounded receipt-reader repair, not complete CaptureSuite, desktop,
 C++/daemon or hardware qualification. GitHub Actions remain unrun. Independent
 source review and isolated branch publication are recorded separately; the
 accepted main source is not changed by this session.
+
+
+## 2026-10-13 — Compare complete saved QC reports without reopening sessions
+
+Contributor `5b5165014bda/consumer_verification` added the standalone saved-result
+consumer for issue 135. `tools/compare_qc_reports.py` admits two explicit QC 1/QC 2
+JSON captures and reports complete typed, literal differences with JSON Pointers,
+raw byte hashes and both full parsed documents. Array order, duplicate elements,
+unknown extensions, absence versus null, bool/int/float and signed float zero
+remain visible. It reads no session, registry, settings, sensor or provider data.
+The [operator guide](../../operator/COMPARE_SAVED_QC.md) defines admission,
+resource limits, binary64 parsing and the limits of recorded observations.
+
+Before implementation, the exact original four-module QC producer projection
+ran on two authored synthetic package copies under Python 3.14.4. The retained
+reports have nine hand-listed changes, including a gap closure of 17 ns at an exact
+start string above 2^53, package paths and positional warnings. All source and
+fixture bytes/modes were preserved; the dummy segment was a filename-inventory
+fixture, without MCAP decoding or patient data.
+
+The initial implementation passed 14 maintained actual-CLI methods on Python 3.12
+and 3.14, plus independent parent receiving of 12 frozen cases: nine valid complete
+comparisons and three refusals. Peer review found an actual full-output-device
+failure returning 120 after a second shutdown flush. The narrow corrected stdout
+finalization now returns 2; its two focused output methods pass on both Python
+versions. Independent ordinary equal/different output remains byte-exact to the
+accepted predecessor, and the unchanged failing-device probe now returns 2. All
+comparison/admission functions remain AST-identical across the formatted fix.
+Ruff 0.6.9 passes the repository's configured E/F/I/UP/B gate. The repository license
+command passed on the full 1,334-leaf original source and with the three additions;
+all inherited source bytes were preserved during that gate.
+
+Only the comparator, maintained test module, operator guide and this additive
+session note are changed. Existing package-reader, QC producer, collection,
+analysis, desktop, runtime and hardware owners retain their source. These results
+qualify this standalone saved-data consumer, not full CaptureSuite or Windows/
+C++/hardware integration. GitHub Actions remain unrun under the active execution
+restriction; source publication carries explicit skip markers.
