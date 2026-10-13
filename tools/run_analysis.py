@@ -7,6 +7,7 @@ from __future__ import annotations
 import argparse
 import sys
 from pathlib import Path
+from typing import TextIO
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [
@@ -16,6 +17,15 @@ sys.path[:0] = [
 ]
 
 from capture_analysis.jobs import JobParams, run  # noqa: E402
+
+
+def _print_line(message: str, *, file: TextIO | None = None) -> None:
+    """Keep human-readable diagnostics writable in the stream's own encoding."""
+    stream = sys.stdout if file is None else file
+    encoding = getattr(stream, "encoding", None)
+    if encoding:
+        message = message.encode(encoding, errors="backslashreplace").decode(encoding)
+    print(message, file=stream)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -100,16 +110,16 @@ def main(argv: list[str] | None = None) -> int:
     try:
         result = run(args.package, params)
     except Exception as exc:  # noqa: BLE001
-        print(f"FAIL: {exc}", file=sys.stderr)
+        _print_line(f"FAIL: {exc}", file=sys.stderr)
         for note in getattr(exc, "__notes__", ()):
-            print(note, file=sys.stderr)
+            _print_line(note, file=sys.stderr)
         return 1
 
-    print(f"job_id={result.job_id}")
-    print(f"status={result.status}")
-    print(f"dir={result.job_dir}")
+    _print_line(f"job_id={result.job_id}")
+    _print_line(f"status={result.status}")
+    _print_line(f"dir={result.job_dir}")
     if result.qc:
-        print(
+        _print_line(
             f"streams={result.qc.get('streamCount')} "
             f"gaps_open={result.qc.get('openGapCount')} "
             f"gaps_closed={result.qc.get('closedGapCount')} "
