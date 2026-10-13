@@ -1401,3 +1401,42 @@ supplied metadata rather than decoded signal quality. This follows the actual
 receiving observations in issue #142 and the source record in PR #143 above.
 The existing command, output directions, and limitations remain unchanged.
 Only README and this progress note change; no runtime replay is needed.
+
+
+## 2026-10-13 — Navigate matching saved-QC changes from the selected detail
+
+Contributor `5b5165014bda/publication_tools`, issue #151, extends the existing
+saved-QC comparison page with Previous/Next matching change buttons. The reader
+can follow the complete current filtered sequence across 50-row pages, with the
+matching ordinal and original difference identity both retained. Endpoint buttons
+stop without wrapping. Kind/pointer filters, Reset and manual paging clear the
+selection and disable navigation. The existing typed before/after strings, both
+captured-original downloads and complete comparison download remain unchanged.
+No session package is reopened; recorded gaps, durations and QC are not recomputed.
+
+At original main `2f552351fdb5d268ba64e197de4daf793855393e`, the existing selection
+and exact-download control passed while seven focused feature methods exposed
+missing navigation (eight failure entries including equal/nonempty subcases).
+The new test is an original-control overlay, not inherited repository source.
+After the template addition, all 21 methods pass on cloud Python 3.12.14 and
+Node 24.19: 13 unchanged renderer controls and eight actual-inline-JS controls.
+The bounded DOM adapter is not a native browser or keyboard/layout qualification.
+
+Four ordinary CLI generations before and after the change succeed silently.
+Every complete embedded model is byte-identical: captured labels, raw originals,
+full comparison and literal typed values are preserved for the retained nine-row
+producer pair, typed edge cases, 61-row pagination and format-only equality.
+All source/input bytes and modes remain unchanged. Root independently reviewed
+the complete runtime, guide and tests and accepted the 21 additive template lines;
+no existing template line or Python runtime function changed. Initial metadata
+counted 22 lines; the corrected count and original metadata remain attributable.
+
+Scoped Ruff 0.6.9 passes with the exact repository configuration. The unchanged
+license checker passes `--enforce-spdx` on an explicit 21-file source/license
+subset containing the new test and its selected unchanged dependencies; this is
+not a whole-repository scan. The private official lint tool changes no global
+installation or PATH. Independent original-first native browser receiving is
+pending at this draft source checkpoint; its eventual receipt will name exact
+source/platform boundaries. No installed desktop, hardware or clinical result
+is inferred. The Python renderer/comparator, inherited tests, workflows and all
+other owners remain untouched. This entry only appends to prior session history.
