@@ -1354,3 +1354,41 @@ installed desktop qualification. Only four new files and this append-only entry
 are added. The comparator, collectors, scientific modules, desktop, schemas,
 dependencies and workflows remain unchanged. GitHub Actions are not requested;
 source and merge publication carry explicit skip markers.
+
+## 2026-10-13 — Receive the existing synthetic QC demo on Windows
+
+Contributor `f7ebf859d7a1/consumer_runtime`, [issue #142](https://github.com/Jacob-Met/CaptureSuite/issues/142),
+received the README's existing `py -3.12 tools/demo_qc.py ../capturesuite-qc-demo`
+workflow at source `412b77e0eec7a1878e6c7b269c9c09dab251f5e8`.
+An independently reviewed witness passed all 31 receiving checks on MSI\\jacob
+with existing Python 3.12.2. The real command added only `-B` to suppress
+bytecode writes. It completed with empty stderr; repeating it returned 1 with
+an explicit occupied-output refusal and preserved all 19 saved files.
+
+All 106 received source files, 13 original fixture files, all 13 copied fixture
+files and seven copied raw-source fingerprints remained unchanged. The wrapper
+receipt and job-manifest registrations matched the actual saved HTML/JSON and
+payload bytes. Independent project_delivery review checked the complete packet,
+all 106 source Git blobs against the official frozen tree, the child streams,
+unchanged output hashes and the actual screenshot; no runtime replay was needed.
+
+Existing Chrome 154.0.8037.97 opened the generated report and received the expected
+session, two stream rows and explicit absent-gap row, with no page errors or
+remote requests. The declared 10-second duration and 2000/60 Hz rates are
+descriptor observations. Both MCAP segments are 28-byte text placeholders; the
+fixture's size 128 / SHA-256 `00` integrity entry is not content proof. This
+establishes metadata-report generation, saved-file opening and custody only,
+not sample decoding, scientific/clinical/hardware or whole-application
+qualification. Existing saved-report comparison PR138 and viewer issue139
+remain separate work.
+
+The complete source-pinned receipt, exact streams, screenshot, saved report and
+offline-opening instructions are retained in the
+[received evidence packet](https://drive.google.com/file/d/18iNdPcAbQHk4HG_4WKhrAoRh0T53h5nu/view)
+(209,716 bytes; SHA-256
+`f57d9170a72fbaf9b2f3812c68a393b21e130af82c7941a15adc40b12ad8a739`).
+Fresh Drive readback matched the native packet exactly, with all 38 ZIP CRCs,
+37 payload hashes and the nested 106-source inventory preserved. That custody
+check is separate from the native run on the received source projection.
+No production code, dependency, real session, daemon, GUI, release or workflow
+changed; GitHub Actions were not run. Only this dated progress entry is added.
