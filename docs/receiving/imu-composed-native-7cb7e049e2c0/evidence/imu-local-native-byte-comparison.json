@@ -1,0 +1,211 @@
+{
+  "scope": "Read-only comparison of retained local and native raw MCAP, CSV, Parquet and schema bytes; no numerical rerun.",
+  "checks": [
+    {
+      "case": "ordinary",
+      "path": "fixture.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+      "byte_equal": true,
+      "local_sha256": "36d35361d385ce9b408ec0824cb2b0520f639438b5e757563d60706113b43384",
+      "native_sha256": "36d35361d385ce9b408ec0824cb2b0520f639438b5e757563d60706113b43384"
+    },
+    {
+      "case": "ordinary",
+      "path": "baseline/job/features/imu/sim.imu.upper/windows.csv",
+      "byte_equal": false,
+      "local_sha256": "c28c7cd52802f80b075fef0b81374828d3dec2ab98dc036f9464d1236181d080",
+      "native_sha256": "00e90959c1bc45fea6f3ab76431cbe3f0511b9a468b099aee2a9b79efc87cb60",
+      "difference": "Native CSV uses CRLF; local CSV uses LF. Exact bytes agree after only CRLF-to-LF normalization."
+    },
+    {
+      "case": "ordinary",
+      "path": "baseline/job/features/imu/sim.imu.upper/windows.parquet",
+      "byte_equal": true,
+      "local_sha256": "de79471bf195b16ae306560b0bd059cb754fb3bbca8e30d8201a7cfd7d0bb797",
+      "native_sha256": "de79471bf195b16ae306560b0bd059cb754fb3bbca8e30d8201a7cfd7d0bb797"
+    },
+    {
+      "case": "ordinary",
+      "path": "baseline/job/features/_schema.json",
+      "byte_equal": true,
+      "local_sha256": "5fbae37fcbd9ace70880485fc9fd7887ee9cc2f7dab23a9418acf2c846288baa",
+      "native_sha256": "5fbae37fcbd9ace70880485fc9fd7887ee9cc2f7dab23a9418acf2c846288baa"
+    },
+    {
+      "case": "ordinary",
+      "path": "candidate/job/features/imu/sim.imu.upper/windows.csv",
+      "byte_equal": false,
+      "local_sha256": "c28c7cd52802f80b075fef0b81374828d3dec2ab98dc036f9464d1236181d080",
+      "native_sha256": "00e90959c1bc45fea6f3ab76431cbe3f0511b9a468b099aee2a9b79efc87cb60",
+      "difference": "Native CSV uses CRLF; local CSV uses LF. Exact bytes agree after only CRLF-to-LF normalization."
+    },
+    {
+      "case": "ordinary",
+      "path": "candidate/job/features/imu/sim.imu.upper/windows.parquet",
+      "byte_equal": true,
+      "local_sha256": "de79471bf195b16ae306560b0bd059cb754fb3bbca8e30d8201a7cfd7d0bb797",
+      "native_sha256": "de79471bf195b16ae306560b0bd059cb754fb3bbca8e30d8201a7cfd7d0bb797"
+    },
+    {
+      "case": "ordinary",
+      "path": "candidate/job/features/_schema.json",
+      "byte_equal": true,
+      "local_sha256": "5fbae37fcbd9ace70880485fc9fd7887ee9cc2f7dab23a9418acf2c846288baa",
+      "native_sha256": "5fbae37fcbd9ace70880485fc9fd7887ee9cc2f7dab23a9418acf2c846288baa"
+    },
+    {
+      "case": "large_odd",
+      "path": "fixture.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+      "byte_equal": true,
+      "local_sha256": "738722cd87fa76d59bfe02eaa1da244ddff8d5732a00ce284c9e75a771a6bf25",
+      "native_sha256": "738722cd87fa76d59bfe02eaa1da244ddff8d5732a00ce284c9e75a771a6bf25"
+    },
+    {
+      "case": "large_odd",
+      "path": "baseline/job/features/imu/sim.imu.upper/windows.csv",
+      "byte_equal": false,
+      "local_sha256": "9e76db6c4a5be6f1860ae1c1d621b42cba826d5c00931f39d6aa70af74c926ab",
+      "native_sha256": "a68b6c11e31829a85524b2435a57849698465e108f9355ce96a8510364fac919",
+      "difference": "Native CSV uses CRLF; local CSV uses LF. Exact bytes agree after only CRLF-to-LF normalization."
+    },
+    {
+      "case": "large_odd",
+      "path": "baseline/job/features/imu/sim.imu.upper/windows.parquet",
+      "byte_equal": true,
+      "local_sha256": "4255be0bd178acfdaa7f425ff49f1bb7fbd4cdaead10c183e52c457086279c62",
+      "native_sha256": "4255be0bd178acfdaa7f425ff49f1bb7fbd4cdaead10c183e52c457086279c62"
+    },
+    {
+      "case": "large_odd",
+      "path": "baseline/job/features/_schema.json",
+      "byte_equal": true,
+      "local_sha256": "5fbae37fcbd9ace70880485fc9fd7887ee9cc2f7dab23a9418acf2c846288baa",
+      "native_sha256": "5fbae37fcbd9ace70880485fc9fd7887ee9cc2f7dab23a9418acf2c846288baa"
+    },
+    {
+      "case": "large_odd",
+      "path": "candidate/job/features/imu/sim.imu.upper/windows.csv",
+      "byte_equal": false,
+      "local_sha256": "56b8648d933b6da3643fa3c06642408fbe7143089d847aa57c651536d663281a",
+      "native_sha256": "29e0b0f3e4032852fc7b7b9415e371b65bb2b4278680fa3c5e4c56f131462f35",
+      "difference": "Native CSV uses CRLF; local CSV uses LF. Exact bytes agree after only CRLF-to-LF normalization."
+    },
+    {
+      "case": "large_odd",
+      "path": "candidate/job/features/imu/sim.imu.upper/windows.parquet",
+      "byte_equal": true,
+      "local_sha256": "5b333a6e873dcd47d628850ea09bfe47a5f0fd485fec41019cae8de54e6d1242",
+      "native_sha256": "5b333a6e873dcd47d628850ea09bfe47a5f0fd485fec41019cae8de54e6d1242"
+    },
+    {
+      "case": "large_odd",
+      "path": "candidate/job/features/_schema.json",
+      "byte_equal": true,
+      "local_sha256": "5fbae37fcbd9ace70880485fc9fd7887ee9cc2f7dab23a9418acf2c846288baa",
+      "native_sha256": "5fbae37fcbd9ace70880485fc9fd7887ee9cc2f7dab23a9418acf2c846288baa"
+    },
+    {
+      "case": "upper_even",
+      "path": "fixture.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+      "byte_equal": true,
+      "local_sha256": "ca99655eeecb46824356d814ccc5e35be2d691e8bf1b8e89f6e149836aa881ca",
+      "native_sha256": "ca99655eeecb46824356d814ccc5e35be2d691e8bf1b8e89f6e149836aa881ca"
+    },
+    {
+      "case": "upper_even",
+      "path": "baseline/job/features/imu/sim.imu.upper/windows.csv",
+      "byte_equal": false,
+      "local_sha256": "226edabf918dbc69ea8ca2927716c8b4bcda09c8424bf8a4e6299f639aa38e63",
+      "native_sha256": "90154289601952149a66e511df5ee9974ff6e82c5e0a0a68329955a6f8d8280a",
+      "difference": "Native CSV uses CRLF; local CSV uses LF. Exact bytes agree after only CRLF-to-LF normalization."
+    },
+    {
+      "case": "upper_even",
+      "path": "baseline/job/features/imu/sim.imu.upper/windows.parquet",
+      "byte_equal": true,
+      "local_sha256": "43f91ef1a875907734a7e48579f4b06be8c4e4c2bbd289900b4c98418b26dbdf",
+      "native_sha256": "43f91ef1a875907734a7e48579f4b06be8c4e4c2bbd289900b4c98418b26dbdf"
+    },
+    {
+      "case": "upper_even",
+      "path": "baseline/job/features/_schema.json",
+      "byte_equal": true,
+      "local_sha256": "5fbae37fcbd9ace70880485fc9fd7887ee9cc2f7dab23a9418acf2c846288baa",
+      "native_sha256": "5fbae37fcbd9ace70880485fc9fd7887ee9cc2f7dab23a9418acf2c846288baa"
+    },
+    {
+      "case": "upper_even",
+      "path": "candidate/job/features/imu/sim.imu.upper/windows.csv",
+      "byte_equal": false,
+      "local_sha256": "3d81da395305614f84d62cf4d9a791c7041f82fb5d95e880830326771cc78097",
+      "native_sha256": "301ba889091efe783b183ce01304175e3afd6ffbf7bc05034f7970e10fc08818",
+      "difference": "Native CSV uses CRLF; local CSV uses LF. Exact bytes agree after only CRLF-to-LF normalization."
+    },
+    {
+      "case": "upper_even",
+      "path": "candidate/job/features/imu/sim.imu.upper/windows.parquet",
+      "byte_equal": true,
+      "local_sha256": "9d3a87db8b5429bf5f252a2232513fe536fea3510d89bca32cdad0169dcd3900",
+      "native_sha256": "9d3a87db8b5429bf5f252a2232513fe536fea3510d89bca32cdad0169dcd3900"
+    },
+    {
+      "case": "upper_even",
+      "path": "candidate/job/features/_schema.json",
+      "byte_equal": true,
+      "local_sha256": "5fbae37fcbd9ace70880485fc9fd7887ee9cc2f7dab23a9418acf2c846288baa",
+      "native_sha256": "5fbae37fcbd9ace70880485fc9fd7887ee9cc2f7dab23a9418acf2c846288baa"
+    },
+    {
+      "case": "negative_even",
+      "path": "fixture.mmsession/sources/sim.imu.upper/streams/sim.imu.upper.frames/segments/000000.mcap",
+      "byte_equal": true,
+      "local_sha256": "b55c3ef7f41de42a097025d173dfac43f469bff75d7427889ff2498744ff6de1",
+      "native_sha256": "b55c3ef7f41de42a097025d173dfac43f469bff75d7427889ff2498744ff6de1"
+    },
+    {
+      "case": "negative_even",
+      "path": "baseline/job/features/imu/sim.imu.upper/windows.csv",
+      "byte_equal": false,
+      "local_sha256": "f04fabaf87826e037e24b38911def8306b33ffbee2f37ddd98b767ac2e0eaa37",
+      "native_sha256": "84193bf0490c04596172a16ce100c22c931b04611fdb454219eb30b4c0c490cd",
+      "difference": "Native CSV uses CRLF; local CSV uses LF. Exact bytes agree after only CRLF-to-LF normalization."
+    },
+    {
+      "case": "negative_even",
+      "path": "baseline/job/features/imu/sim.imu.upper/windows.parquet",
+      "byte_equal": true,
+      "local_sha256": "99906f405df48a5b4822400a46ffb2460762fc3df28a3e12497a9e9669b1f2cf",
+      "native_sha256": "99906f405df48a5b4822400a46ffb2460762fc3df28a3e12497a9e9669b1f2cf"
+    },
+    {
+      "case": "negative_even",
+      "path": "baseline/job/features/_schema.json",
+      "byte_equal": true,
+      "local_sha256": "5fbae37fcbd9ace70880485fc9fd7887ee9cc2f7dab23a9418acf2c846288baa",
+      "native_sha256": "5fbae37fcbd9ace70880485fc9fd7887ee9cc2f7dab23a9418acf2c846288baa"
+    },
+    {
+      "case": "negative_even",
+      "path": "candidate/job/features/imu/sim.imu.upper/windows.csv",
+      "byte_equal": false,
+      "local_sha256": "62f79b7a53a3ba128d8981195e23d8021f9e8e40f71680f495c10532e7d66bd1",
+      "native_sha256": "7949a1575c9c53381be2f498d38d599b450f1cbec7c109341474725feb6c31ce",
+      "difference": "Native CSV uses CRLF; local CSV uses LF. Exact bytes agree after only CRLF-to-LF normalization."
+    },
+    {
+      "case": "negative_even",
+      "path": "candidate/job/features/imu/sim.imu.upper/windows.parquet",
+      "byte_equal": true,
+      "local_sha256": "c865fa17971f68093b27ff64ce5d28e28423ba04e789716cb16bee09ddf76668",
+      "native_sha256": "c865fa17971f68093b27ff64ce5d28e28423ba04e789716cb16bee09ddf76668"
+    },
+    {
+      "case": "negative_even",
+      "path": "candidate/job/features/_schema.json",
+      "byte_equal": true,
+      "local_sha256": "5fbae37fcbd9ace70880485fc9fd7887ee9cc2f7dab23a9418acf2c846288baa",
+      "native_sha256": "5fbae37fcbd9ace70880485fc9fd7887ee9cc2f7dab23a9418acf2c846288baa"
+    }
+  ],
+  "all_byte_equal": false,
+  "summary": "All4 raw MCAP files,8 Parquet files and8 schemas are byte-identical across local/Windows. The8 CSVs differ only in platform line endings."
+}

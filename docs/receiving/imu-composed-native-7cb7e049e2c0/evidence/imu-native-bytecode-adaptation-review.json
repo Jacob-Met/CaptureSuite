@@ -1,0 +1,15 @@
+{
+  "status": "ACCEPT",
+  "scope": "Static bounded native receiver adaptation; no numerical or native execution repeated",
+  "baseline_sha256": "fd937e837706d2377d236023b6ac71ea34d9da331437a90cae7501e5661491f9",
+  "candidate_sha256": "4859917eb4611ce89debf74724aad4e3e6f66fcd696dce13e88460cc298cb555",
+  "checks": [
+    "Exact diff changes only source fingerprint partition and preservation receipt.",
+    "Every library file belongs to exactly one of non-bytecode or bytecode partitions, using complementary predicates.",
+    "Baseline and candidate non-bytecode key sets and exact hashes still permit exactly the accepted features/imu.py delta.",
+    "All pre-existing bytecode files are separately hashed and compared after receiving; none are deleted or ignored for preservation.",
+    "CHILD text, all scientific fixture/public job operations, numerical assertions, raw preservation and warnings semantics remain unchanged.",
+    "Native invocation must retain existing -B/PYTHONDONTWRITEBYTECODE so parent imports also preserve historical bytecode."
+  ],
+  "time_utc": "2026-10-13T13:58:49.910753+00:00"
+}

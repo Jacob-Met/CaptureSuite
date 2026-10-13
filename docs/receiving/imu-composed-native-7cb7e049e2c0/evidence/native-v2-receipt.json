@@ -1,0 +1,101 @@
+{
+  "owner": "team-7cb7e049e2c0/runtime-consumer",
+  "commit": "223e6926438b63dd848225da070f71575703c4cb",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "interpreter": "D:\\CaptureSuite-receiving-7cb7e049e2c0\\python312\\python.exe",
+  "started_utc": "2026-10-13T14:00:33.004202+00:00",
+  "status": "qualified_composed_native_analysis",
+  "history": "v1 passed 183 cases plus24 subtests, then receiver stopped before fixtures on derived-bytecode key-set mismatch. No production change, bytecode deletion or gate rerun.",
+  "pytest_reused": {
+    "receipt_path": "D:\\CaptureSuite-receiving-7cb7e049e2c0\\imu-composition-native-v1\\receipt.json",
+    "receipt_sha256": "26b62fe5d55b357b4339c7651c7b4ce87d967826afb0de3a70d1e695fba51592",
+    "junit_sha256": "210016fa8930f9980a262f4e14c0724879d1d9fafefebdb29cdfa81d6efe8166",
+    "counts": {
+      "concrete_cases": 183,
+      "aggregate_tests": 207,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "diagnostics": {
+      "windows_wmi_0x8007000e": 0
+    }
+  },
+  "receiver_sha256": "4859917eb4611ce89debf74724aad4e3e6f66fcd696dce13e88460cc298cb555",
+  "public_jobs": {
+    "command": [
+      "D:\\CaptureSuite-receiving-7cb7e049e2c0\\python312\\python.exe",
+      "-B",
+      "D:\\CaptureSuite-receiving-7cb7e049e2c0\\receive_imu_composition_mcap_native_v2.py",
+      "--baseline",
+      "D:\\CaptureSuite-receiving-7cb7e049e2c0\\source-778de777",
+      "--candidate",
+      "D:\\CaptureSuite-receiving-7cb7e049e2c0\\source-223e6926",
+      "--python",
+      "D:\\CaptureSuite-receiving-7cb7e049e2c0\\python312\\python.exe",
+      "--out",
+      "D:\\CaptureSuite-receiving-7cb7e049e2c0\\imu-composition-native-v2\\public-jobs"
+    ],
+    "exit_code": 0,
+    "cases": [
+      {
+        "case": "ordinary",
+        "baseline_mid_ns": 3,
+        "candidate_mid_ns": 3,
+        "candidate_dtype": "int64",
+        "statuses": [
+          "completed",
+          "completed"
+        ],
+        "manifest_warnings": [],
+        "non_time_equal": true
+      },
+      {
+        "case": "large_odd",
+        "baseline_mid_ns": 9007199254740996,
+        "candidate_mid_ns": 9007199254740995,
+        "candidate_dtype": "int64",
+        "statuses": [
+          "completed",
+          "completed"
+        ],
+        "manifest_warnings": [],
+        "non_time_equal": true
+      },
+      {
+        "case": "upper_even",
+        "baseline_mid_ns": 9223372036854775808,
+        "candidate_mid_ns": 9223372036854775806,
+        "candidate_dtype": "int64",
+        "statuses": [
+          "completed",
+          "completed"
+        ],
+        "manifest_warnings": [],
+        "non_time_equal": true
+      },
+      {
+        "case": "negative_even",
+        "baseline_mid_ns": -9007199254740992,
+        "candidate_mid_ns": -9007199254740993,
+        "candidate_dtype": "int64",
+        "statuses": [
+          "completed_with_warnings",
+          "completed_with_warnings"
+        ],
+        "manifest_warnings": [
+          "package duration_ns is unknown/zero \u2014 analysis uses an open time window (integrity entries lack endSessionTimeNs)"
+        ],
+        "non_time_equal": true
+      }
+    ],
+    "actual_jobs": 8
+  },
+  "source_files_preserved": 1348,
+  "limits": [
+    "Synthetic analysis only; no hardware, live capture, GUI, performance or default installation claim.",
+    "Existing derived bytecode preserved separately; production source unchanged.",
+    "Portable kit remains immutable with its different environment warnings."
+  ],
+  "completed_utc": "2026-10-13T14:01:23.759354+00:00"
+}

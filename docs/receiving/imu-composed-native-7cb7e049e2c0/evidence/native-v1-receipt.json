@@ -1,0 +1,64 @@
+{
+  "owner": "team-7cb7e049e2c0/runtime-consumer",
+  "commit": "223e6926438b63dd848225da070f71575703c4cb",
+  "interpreter": "D:\\CaptureSuite-receiving-7cb7e049e2c0\\python312\\python.exe",
+  "python": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]",
+  "started_utc": "2026-10-13T13:47:34.991490+00:00",
+  "status": "failed",
+  "pytest": {
+    "command": [
+      "D:\\CaptureSuite-receiving-7cb7e049e2c0\\python312\\python.exe",
+      "-B",
+      "-m",
+      "pytest",
+      "tests/analysis/test_imu_feature_timestamps.py",
+      "tests/analysis/test_stream_rate_admission.py",
+      "tests/analysis/test_emg_gap_adjacency.py",
+      "tests/analysis/test_sync_series_json.py",
+      "tests/analysis/test_video_qc_intervals.py",
+      "tests/analysis/test_plot_observations.py",
+      "tests/analysis/test_cli_console_encoding.py",
+      "tests/analysis/test_job_failure_cli.py",
+      "tests/analysis/test_phase_b_features.py",
+      "tests/analysis/test_numeric_batch_pipeline.py",
+      "tests/analysis/test_stream_gap_scope.py",
+      "tests/analysis/test_feature_table_paths.py",
+      "-vv",
+      "-rA",
+      "-p",
+      "no:cacheprovider",
+      "--basetemp=D:\\CaptureSuite-receiving-7cb7e049e2c0\\imu-composition-native-v1\\pytest-tmp",
+      "--junitxml=D:\\CaptureSuite-receiving-7cb7e049e2c0\\imu-composition-native-v1\\junit.xml"
+    ],
+    "exit_code": 0,
+    "junit": {
+      "concrete_cases": 183,
+      "aggregate_tests": 207,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "diagnostics": {
+    "windows_wmi_0x8007000e": 0
+  },
+  "receiver_sha256": "fd937e837706d2377d236023b6ac71ea34d9da331437a90cae7501e5661491f9",
+  "public_jobs": {
+    "command": [
+      "D:\\CaptureSuite-receiving-7cb7e049e2c0\\python312\\python.exe",
+      "-B",
+      "D:\\CaptureSuite-receiving-7cb7e049e2c0\\receive_imu_composition_mcap.py",
+      "--baseline",
+      "D:\\CaptureSuite-receiving-7cb7e049e2c0\\source-778de777",
+      "--candidate",
+      "D:\\CaptureSuite-receiving-7cb7e049e2c0\\source-223e6926",
+      "--python",
+      "D:\\CaptureSuite-receiving-7cb7e049e2c0\\python312\\python.exe",
+      "--out",
+      "D:\\CaptureSuite-receiving-7cb7e049e2c0\\imu-composition-native-v1\\public-jobs"
+    ],
+    "exit_code": 1
+  },
+  "error": "AssertionError: Inspect public-jobs.log",
+  "completed_utc": "2026-10-13T13:48:45.266129+00:00"
+}

@@ -1,0 +1,64 @@
+{
+  "status": "ACCEPT",
+  "scope": "Independent retained native evidence and source/receiver review; no numerical/native run repeated",
+  "archive_sha256": "e4e684e1718df128d2866fe88b14b3f5159c09c823cb6a22d11e3a2655e03748",
+  "archive_payloads": 208,
+  "published_commit": "223e6926438b63dd848225da070f71575703c4cb",
+  "receiver_sha256": "4859917eb4611ce89debf74724aad4e3e6f66fcd696dce13e88460cc298cb555",
+  "native_receipt_sha256": "eb8ce8aa1a252b2690e099344a2b47431f5992d56c83091115453bdc72ea8edc",
+  "junit": {
+    "concrete_tests": 183,
+    "subtests": 24,
+    "failures": 0,
+    "errors": 0,
+    "skips": 0
+  },
+  "source": {
+    "library_keys": 96,
+    "sole_delta": "features/imu.py",
+    "existing_baseline_bytecodes_preserved": 39,
+    "candidate_bytecodes": 0,
+    "observed_source_files_preserved": 1348,
+    "auxiliary_ps1_cmd_checkout_byte_differences": 9
+  },
+  "cases": [
+    {
+      "case": "ordinary",
+      "baseline_mid_ns": 3,
+      "candidate_mid_ns": 3,
+      "non_time_columns": 19,
+      "status": "completed"
+    },
+    {
+      "case": "large_odd",
+      "baseline_mid_ns": 9007199254740996,
+      "candidate_mid_ns": 9007199254740995,
+      "non_time_columns": 19,
+      "status": "completed"
+    },
+    {
+      "case": "upper_even",
+      "baseline_mid_ns": 9223372036854775808,
+      "candidate_mid_ns": 9223372036854775806,
+      "non_time_columns": 19,
+      "status": "completed"
+    },
+    {
+      "case": "negative_even",
+      "baseline_mid_ns": -9007199254740992,
+      "candidate_mid_ns": -9007199254740993,
+      "non_time_columns": 19,
+      "status": "completed_with_warnings"
+    }
+  ],
+  "saved_manifest_outputs_verified": 56,
+  "cross_platform": "Four raw MCAP, eight Parquet and eight schema files byte-identical to independently accepted portable course; eight CSVs exact after CRLF\u2192LF normalization only. All decoded array hashes match.",
+  "warnings": "Six native jobs completed with no warnings; both negative jobs retain identical inherited unknown-duration QC warning. No missing-jsonschema warning; all errors lists empty. 34 inherited gate warnings and zero WMI diagnostics remain as recorded.",
+  "guide_review": "Read final native guide; identity, explicit fresh replay, baseline-bytecode adaptation, prior successful gate reuse, auxiliary checkout transforms and prior portable warning qualification are coherent.",
+  "limits": [
+    "Synthetic authored MCAP; no live hardware, GUI, performance or default-installation claim.",
+    "Original512-case oracle and183-case native gate not repeated.",
+    "History of prefixture bytecode mismatch preserved."
+  ],
+  "reviewed_utc": "2026-10-13T14:20:05.822493+00:00"
+}

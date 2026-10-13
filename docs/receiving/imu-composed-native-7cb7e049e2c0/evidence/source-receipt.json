@@ -1,0 +1,26 @@
+{
+  "owner": "team-7cb7e049e2c0/runtime-consumer",
+  "device_id": "9ea77fe9-bb87-46e0-a5a8-8b3e25f6ff7e",
+  "commit": "223e6926438b63dd848225da070f71575703c4cb",
+  "tree": "b330b1e2ad4728b42105252328d193880c53420c",
+  "started_utc": "2026-10-13T13:45:41.080491+00:00",
+  "parents": [
+    "778de777a26899895d014948a1b12d759a0f8d0f",
+    "865f3900590da523ab66434b581e2ebb3688be1c"
+  ],
+  "status": "ready",
+  "leaves": 1348,
+  "working_byte_differences": [
+    ".cursor/hooks/stop-capture-processes.ps1",
+    "plugins/example_sine_py/run_worker.cmd",
+    "plugins/lsl_bridge/run_worker.cmd",
+    "scripts/dev-env.ps1",
+    "tools/gstreamer-installers/install-gstreamer.ps1",
+    "tools/new_plugin.ps1",
+    "tools/prepare_camera_ci.ps1",
+    "tools/run-daemon-gstreamer.ps1",
+    "tools/run-demo.ps1"
+  ],
+  "source_path": "D:\\CaptureSuite-receiving-7cb7e049e2c0\\source-223e6926",
+  "completed_utc": "2026-10-13T13:46:04.587227+00:00"
+}
