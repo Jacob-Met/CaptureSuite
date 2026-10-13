@@ -6,7 +6,13 @@ from __future__ import annotations
 from pathlib import Path
 
 import numpy as np
-from capture_analysis.plots.style import new_fig, save_fig, shade_gaps, to_seconds
+from capture_analysis.plots.style import (
+    new_fig,
+    plot_observations,
+    save_fig,
+    shade_gaps,
+    to_seconds,
+)
 from capture_analysis.types import GapInterval, LoadedEmg, LoadedImu, TimeWindow
 
 
@@ -76,7 +82,7 @@ def plot_series(
     fig, axes = new_fig(1, height=2.8)
     ax = axes[0]
     t0 = int(np.min(t_ns))
-    ax.plot(to_seconds(t_ns, t0), y, color=color, linewidth=1.0)
+    plot_observations(ax, to_seconds(t_ns, t0), y, color=color, linewidth=1.0)
     shade_gaps(ax, gaps, window, t0_ns=t0)
     ax.set_ylabel(ylabel)
     ax.set_xlabel(xlabel)

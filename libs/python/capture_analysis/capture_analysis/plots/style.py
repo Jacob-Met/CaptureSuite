@@ -36,4 +36,34 @@ def save_fig(fig, path) -> None:
 
 
 def to_seconds(t_ns: np.ndarray, t0_ns: int) -> np.ndarray:
-    return (np.asarray(t_ns, dtype=np.float64) - t0_ns) / 1e9
+    timestamps = np.asarray(t_ns)
+    if timestamps.dtype.kind in "iu" and isinstance(t0_ns, (int, np.integer)):
+        if timestamps.size == 0:
+            return timestamps.astype(np.float64)
+        origin = int(t0_ns)
+        lower, upper = int(timestamps.min()), int(timestamps.max())
+        limits = np.iinfo(np.int64)
+        if (limits.min <= min(lower, origin) and max(upper, origin) <= limits.max
+                and limits.min <= lower - origin and upper - origin <= limits.max):
+            offsets = timestamps.astype(np.int64, copy=False) - np.int64(origin)
+        else:
+            # Python integers preserve offsets spanning the signed-int64 boundary.
+            offsets = timestamps.astype(object) - origin
+        return np.asarray(offsets, dtype=np.float64) / 1e9
+    return (np.asarray(timestamps, dtype=np.float64) - t0_ns) / 1e9
+
+
+def plot_observations(ax, x, y, *, color: str, linewidth: float = 1.0):
+    """Keep line segments, adding a point only when a finite observation is isolated."""
+    lines = ax.plot(x, y, color=color, linewidth=linewidth)
+    for line in lines:
+        valid = np.isfinite(line.get_xdata(orig=False)) & np.isfinite(line.get_ydata(orig=False))
+        neighbor = np.zeros(valid.shape, dtype=bool)
+        neighbor[1:] |= valid[:-1]
+        neighbor[:-1] |= valid[1:]
+        isolated = np.flatnonzero(valid & ~neighbor)
+        if isolated.size:
+            line.set_marker("o")
+            line.set_markersize(3)
+            line.set_markevery(isolated.tolist())
+    return lines

@@ -1275,3 +1275,12 @@ supported native qualification remain separate. The isolated MSI receiver is
 being prepared under the explicit CaptureSuite analysis pause exception; no native
 pass or installed adoption is claimed here. No PR, main/tag update, workflow edit,
 dispatch or rerun accompanies this increment.
+
+
+## 2026-10-13 — Keep isolated plot observations and precise relative time (team 7cb7e049e2c0)
+
+- Received video timing source `5b775845e480420b80a30a620c292624a2106a34` on the owned MSI Python 3.12.10 receiver: 74 cases passed, zero failures/errors/skips, all five source fingerprints unchanged. The complete source/review/native/MCAP kit is delivered at https://drive.google.com/file/d/1kOnV_Wgr50lqqb1qrPafg2ul00fCw2j1/view. That exact increment remains preserved.
+- Its actual sparse FPS figure exposed a separate presentation defect: two valid observations separated by NaN were invisible with line-only rendering. Original relative-time conversion also turned offsets [0, 100, 200] ns near 2**60 into [0, 0, 256] ns. Reserved issue #128 after fresh issue and complete open-PR file ownership checks.
+- Restricted new runtime changes to shared plots/style.py, modality.py and sync_dashboard.py. Integer timestamps are translated before float conversion with a checked int64 fast path and exact Python-integer fallback. Generic series and dashboard lines add point markers only at isolated finite observations; existing continuous lines and unavailable values remain unchanged. Raw data, feature tables, saved sync series, GUI and gallery owners are untouched.
+- Corrected original-source control: 13 failed and 10 passed. The 24 new checks and 74 neighboring video/feature/numeric/gap/CSV cases pass together (98 tests) on Python 3.12.14, with two existing protobuf warnings. Scoped Ruff passes. Actual PNG inspection shows both retained cadence points, with no connection through the gap; localized gray-point pixels changed from 0/0 to 53/53 in the four-frame example.
+- Independent review and supported Windows receiving of this plotting successor are tracked in https://github.com/Jacob-Met/CaptureSuite/issues/128. See docs/ANALYSIS_PLOT_OBSERVATIONS.md. No PR, main update, tag, merge, workflow edit or GitHub Actions operation is part of this lane.
