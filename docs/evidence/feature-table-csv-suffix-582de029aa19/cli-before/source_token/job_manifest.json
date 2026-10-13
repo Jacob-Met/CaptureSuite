@@ -1,0 +1,93 @@
+{
+  "analysisGrids": [],
+  "captureAnalysisVersion": "0.1.0",
+  "createdUtc": "2026-10-12T21:43:38Z",
+  "errors": [],
+  "evalWindowCount": null,
+  "featureTables": [],
+  "gapPolicy": "mask",
+  "gapSummary": {
+    "closed": 0,
+    "maskedNs": 0,
+    "open": 0,
+    "validFraction": null
+  },
+  "jobId": "feature-path-receiving",
+  "kinematicsRows": null,
+  "manifestSha256": "eff25fbb7e66c8cdbb3557c96c75d8c6121f6cfcc937e66b41ac88529ac74c63",
+  "mlBundleWindowCount": null,
+  "modalities": [
+    "emg",
+    "imu"
+  ],
+  "outputs": [
+    {
+      "bytes": 292,
+      "kind": "params",
+      "relativePath": "params.json",
+      "sha256": "d8e1c1b8a0a24720693028a3a6cecef4ed31ab418451b7d7cac10c370ac4a422"
+    },
+    {
+      "bytes": 1309,
+      "kind": "qc_json",
+      "relativePath": "reports/qc.json",
+      "sha256": "99aab9133b6bafcf80d73b58415482684df9af32b1ef4a543144a1cc17f9b514"
+    },
+    {
+      "bytes": 2227,
+      "kind": "qc_html",
+      "relativePath": "reports/qc.html",
+      "sha256": "b26b66591ba7f94f2cdeaf6b70cb5bc8ef8af09e798e1269e2640266e1d6d824"
+    },
+    {
+      "bytes": 202,
+      "kind": "log",
+      "relativePath": "logs/job.log",
+      "sha256": "0ea18104dce0dd1ede12f7178bc629562b981d23436238a7807c13b03b165a7d"
+    }
+  ],
+  "packagePath": "/workspace/scratch/582de029aa19/portfolio/cli-before/source_token.mmsession",
+  "packageState": "finalized",
+  "paramsDigest": "a1ea2d2966f1d05b9fc3140582d29e786c194734472b4e45b91d4d87fd6540ab",
+  "pluginIds": [
+    "emg.envelope.v1",
+    "imu.kinematics.v1",
+    "radar.rd_energy.v1",
+    "radar_doppler.mag.v1",
+    "video.timing_qc.v1",
+    "numeric.basic.v1",
+    "test.dummy.feature.v1"
+  ],
+  "pluginManifestVersion": "1.0.0",
+  "poseJobId": null,
+  "poseModelId": null,
+  "poseTables": [],
+  "schemaId": "capture.analysis_job/1",
+  "sessionId": "mini-analysis-fixture",
+  "sourcesSelected": [
+    "sim.imu.parquet"
+  ],
+  "status": "completed_with_warnings",
+  "syncAnchorsApplied": {
+    "anchors": [],
+    "applied": false
+  },
+  "timeRange": {
+    "checkpointIds": [],
+    "endSessionNs": 500000000,
+    "mode": "custom",
+    "startSessionNs": 0
+  },
+  "tooling": {
+    "captureAnalysis": "0.1.0",
+    "matplotlib": "3.10.8",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+    "python": "3.12.14",
+    "scipy": "1.17.0"
+  },
+  "warnings": [
+    "sim.imu.parquet/sim.imu.parquet.frames: Cannot save file into a non-existent directory: '/workspace/scratch/582de029aa19/portfolio/cli-before/source_token.mmsession/processing/jobs/feature-path-receiving/features/imu/sim.imu.csv'"
+  ]
+}

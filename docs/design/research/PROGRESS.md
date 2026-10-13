@@ -1,3 +1,30 @@
+## 2026-10-12 — Keep feature CSV mirrors beside their Parquet tables
+
+Contributor `582de029aa19/portfolio` corrected the shared feature writer's CSV
+filename calculation. It now replaces the final extension only, retaining
+`.parquet` text in source directories and filename stems. This preserves the
+actual source identity and prevents an unrelated `.csv`-named neighbour from
+being overwritten. The Parquet write, table values, schemas and output hash
+registration retain their existing behavior.
+
+On the pinned `3960c0c756cd4e9facbde0d76eaaa3c31ab7c167` source, the real offline
+features CLI completed an ordinary IMU fixture but lost the CSV and output
+registrations for source `sim.imu.parquet`. The corrected command completes
+both cases with both formats registered and identical Parquet bytes. All 13
+input files per authored package remain unchanged in the author's per-run
+checks. An independent readback confirms equality of the retained input pairs
+and all four original/corrected Parquet files.
+
+Six maintained cases change from one pass/five failures to six passes; the
+candidate passes 41 focused and inherited analysis cases, Ruff and the SPDX
+check. Independent expectations were frozen before candidate exposure: the
+same five actual writer calls change from 49/69 checks to 69/69. Original
+failures and a separate pre-execution disk-space interruption are retained.
+See [the source and receiving note](../../evidence/feature-table-csv-suffix-582de029aa19/README.md).
+This is Python 3.12.14/Linux fixture qualification. Native Windows, installed
+desktop and hardware behavior are separate gates. GitHub Actions remain held
+under the user's no-Actions directive.
+
 ## 2026-10-08 — Preserve nearest feature pairs across retained row orders
 
 Contributor `chatgpt:/root/production_execution`, issue #86, repaired the

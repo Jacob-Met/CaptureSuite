@@ -1,0 +1,39 @@
+{
+  "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+  "writer_sha256": "c677d209292cca790ccdf1a64ba834f71a078ccce31ea57452e67ece358822ca",
+  "cases": [
+    {
+      "case": "ordinary",
+      "source_id": "sim.imu.upper",
+      "returncode": 0,
+      "status": "completed",
+      "warnings": [],
+      "input_file_count": 13,
+      "inputs_unchanged": true,
+      "parquet_exists": true,
+      "csv_exists": true,
+      "both_registered": true,
+      "hashes_match": true,
+      "tables_equal": true,
+      "parquet_sha256": "65594844829d6d2035767a3684231995c254c9c7c3cdb16231ff8559146775e9"
+    },
+    {
+      "case": "source_token",
+      "source_id": "sim.imu.parquet",
+      "returncode": 0,
+      "status": "completed_with_warnings",
+      "warnings": [
+        "sim.imu.parquet/sim.imu.parquet.frames: Cannot save file into a non-existent directory: '/workspace/scratch/582de029aa19/portfolio/cli-before/source_token.mmsession/processing/jobs/feature-path-receiving/features/imu/sim.imu.csv'"
+      ],
+      "input_file_count": 13,
+      "inputs_unchanged": true,
+      "parquet_exists": true,
+      "csv_exists": false,
+      "both_registered": false,
+      "hashes_match": false,
+      "tables_equal": false,
+      "parquet_sha256": "65594844829d6d2035767a3684231995c254c9c7c3cdb16231ff8559146775e9"
+    }
+  ],
+  "accepted": false
+}

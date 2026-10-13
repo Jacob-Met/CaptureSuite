@@ -1,0 +1,67 @@
+{
+  "status": "ACCEPTED",
+  "repository": "Jacob-Met/CaptureSuite",
+  "base_commit": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+  "path": "libs/python/capture_analysis/capture_analysis/features/io.py",
+  "candidate_git_blob": "dfa2e34fc881a76fb461c51dbf3e94aa4c594e0c",
+  "candidate_sha256": "e7c26202f02ba870e0a2db9cb840ab64c706929efe98da111b405ce4ffb47321",
+  "independence": "Expected literal destinations frozen before candidate/source exposure. Baseline run completed before author candidate edit. Same receiver and five cases used without modification on both sources; exact source diff read after candidate execution.",
+  "results": {
+    "baseline": {
+      "calls": 5,
+      "checks": 69,
+      "passed": 49,
+      "expected_failed": 20
+    },
+    "candidate": {
+      "calls": 5,
+      "checks": 69,
+      "passed": 69,
+      "failed": 0
+    },
+    "ordinary_control": "passes both"
+  },
+  "source_review": "Only csv_rel changes from whole-string replacement to Path(rel).with_suffix(\".csv\").as_posix(). Existing separator normalization precedes it; data/schema/manifest construction remains untouched. Path was already imported.",
+  "observations": [
+    "All four adversarial parent/stem paths now emit at the independently named literal destination.",
+    "Actual Parquet and CSV retain exact rows, columns, types, source IDs and native int64 tick values.",
+    "Both emitted manifest entries bind actual file paths, byte lengths and SHA-256 digests.",
+    "Prior schema table, prior output, schema source identity, source input and unrelated wrong-neighbor sentinels retain their expected values and metadata."
+  ],
+  "files": {
+    "frozen-contract.json": {
+      "bytes": 2432,
+      "sha256": "0ed66a459e2a7f078f61f43c068c6b293eacb253eb2c2fd687f25bb0a74a3216"
+    },
+    "receive-feature-writer.py": {
+      "bytes": 8536,
+      "sha256": "ef33043c15975763954dedb831354f54f6d685236a25d64800c098a98bbdeefe"
+    },
+    "baseline-io.py": {
+      "bytes": 1409,
+      "sha256": "c677d209292cca790ccdf1a64ba834f71a078ccce31ea57452e67ece358822ca"
+    },
+    "candidate-io.py": {
+      "bytes": 1418,
+      "sha256": "e7c26202f02ba870e0a2db9cb840ab64c706929efe98da111b405ce4ffb47321"
+    },
+    "baseline-review.json": {
+      "bytes": 1615,
+      "sha256": "d9243fd9c5fdf232b44c2f6593e261f2f87fa0340174f82dc4e49b5ce60fa4a2"
+    },
+    "baseline-course/receiving.json": {
+      "bytes": 35737,
+      "sha256": "fa3724b804a73c3807fe7beec7d6911e6992f90792c18b5e64c35741027c036b"
+    },
+    "candidate-course/receiving.json": {
+      "bytes": 31892,
+      "sha256": "0e899d7344b6f73735d0f6086cd43cbe5aaa15add322b405248a444a61d36128"
+    }
+  },
+  "limits": [
+    "Actual public writer receiving in Python on Linux, not a full CLI, GUI, or hardware run.",
+    "Five authored two-row tables establish this path correction; no broad Parquet-format or data-domain validation claim.",
+    "No reviewer edits to the author repository; parent retains final source review and integration authority.",
+    "Initial ENOSPC attempt ended before any writer call and is separately recorded in baseline-review.json."
+  ]
+}

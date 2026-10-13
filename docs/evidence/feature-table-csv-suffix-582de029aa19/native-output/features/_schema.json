@@ -1,0 +1,66 @@
+{
+  "schemaId": "capture.analysis_feature_schema/1",
+  "tables": {
+    "features/imu/sim.imu.parquet/windows.parquet": {
+      "columns": [
+        {
+          "calibrated": true,
+          "name": "t_mid_ns",
+          "units": "ns"
+        },
+        {
+          "calibrated": true,
+          "name": "valid_fraction",
+          "units": "1"
+        },
+        {
+          "calibrated": false,
+          "name": "pelvis_acc_mag_mean",
+          "units": "a.u."
+        },
+        {
+          "calibrated": false,
+          "name": "pelvis_acc_mag_std",
+          "units": "a.u."
+        },
+        {
+          "calibrated": false,
+          "name": "pelvis_gyro_mag_mean",
+          "units": "a.u."
+        },
+        {
+          "calibrated": false,
+          "name": "pelvis_acc_x_mean",
+          "units": "a.u."
+        },
+        {
+          "calibrated": false,
+          "name": "pelvis_acc_x_std",
+          "units": "a.u."
+        },
+        {
+          "calibrated": false,
+          "name": "pelvis_acc_y_mean",
+          "units": "a.u."
+        },
+        {
+          "calibrated": false,
+          "name": "pelvis_acc_y_std",
+          "units": "a.u."
+        },
+        {
+          "calibrated": false,
+          "name": "pelvis_acc_z_mean",
+          "units": "a.u."
+        },
+        {
+          "calibrated": false,
+          "name": "pelvis_acc_z_std",
+          "units": "a.u."
+        }
+      ],
+      "featureSchemaVersion": 1,
+      "rows": 4
+    }
+  }
+}

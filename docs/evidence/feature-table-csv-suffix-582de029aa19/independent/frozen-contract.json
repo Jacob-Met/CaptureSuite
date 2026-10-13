@@ -1,0 +1,47 @@
+{
+  "stage": "Frozen before candidate-source exposure; public API binding awaits owner",
+  "repository": "Jacob-Met/CaptureSuite",
+  "baseline": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+  "reviewer": "582de029aa19/engine",
+  "cases": [
+    {
+      "name": "ordinary",
+      "parquet": "features/source-one.parquet",
+      "csv": "features/source-one.csv"
+    },
+    {
+      "name": "parent_suffix_word",
+      "parquet": "results.parquet/source-one.parquet",
+      "csv": "results.parquet/source-one.csv"
+    },
+    {
+      "name": "source_stem_suffix_word",
+      "parquet": "features/source.parquet.part.parquet",
+      "csv": "features/source.parquet.part.csv"
+    },
+    {
+      "name": "repeated_parent_and_stem",
+      "parquet": "archive.parquet/session.parquet/source.parquet.parquet",
+      "csv": "archive.parquet/session.parquet/source.parquet.csv"
+    },
+    {
+      "name": "literal_unicode_space_and_punctuation",
+      "parquet": "study.parquet Ω #?%/sample.parquet final.parquet",
+      "csv": "study.parquet Ω #?%/sample.parquet final.csv"
+    }
+  ],
+  "expectations": [
+    "The CSV companion changes only the terminal Parquet filename suffix. Parent components and earlier stem text stay byte-for-byte literal.",
+    "Both emitted Parquet and CSV are actual readable tables and retain the authored rows, column order, field values and expected types subject to the declared CSV representation.",
+    "Every applicable manifest record names the actual emitted file, and declared byte counts and content digests equal independently read filesystem bytes.",
+    "The source identity appears unchanged in both formats and their manifest metadata wherever the public contract retains it.",
+    "Source inputs and existing unrelated sentinel files retain contents and modification times.",
+    "The repaired literal parent path is used; no sibling directory with an earlier .parquet token replaced by .csv receives the output.",
+    "The ordinary control remains passing; names containing the suffix word must demonstrate a baseline failure on the same public API course."
+  ],
+  "limits": [
+    "No browser/native UI, pipeline throughput, domain-data accuracy or broad Parquet-format compatibility claim.",
+    "The course will bind these private expected values to the documented API before executing either version.",
+    "Candidate source is not yet read; no edit in the author repository is permitted."
+  ]
+}

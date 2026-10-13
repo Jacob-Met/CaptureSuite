@@ -1,0 +1,1101 @@
+{
+  "checks": [
+    {
+      "case": "ordinary",
+      "check": "actual_writer_completes",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "ordinary",
+      "check": "source_dataframe_preserved",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "ordinary",
+      "check": "source_file_preserved",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "ordinary",
+      "check": "earlier_export_preserved",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "ordinary",
+      "check": "column_metadata_preserved",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "ordinary",
+      "check": "feature_parquet_literal_destination_exists",
+      "observed": "features/source-one.parquet",
+      "pass": true
+    },
+    {
+      "case": "ordinary",
+      "check": "feature_parquet_exact_rows_columns_types",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "ordinary",
+      "check": "feature_parquet_manifest_names_and_hashes_actual_file",
+      "observed": {
+        "actual": [
+          {
+            "bytes": 2879,
+            "kind": "feature_parquet",
+            "relativePath": "features/source-one.parquet",
+            "sha256": "e110c42985223faa774ef52ceaa750656fc88b4d671707a666cf29f568e9a4c0"
+          }
+        ],
+        "expected": {
+          "bytes": 2879,
+          "kind": "feature_parquet",
+          "relativePath": "features/source-one.parquet",
+          "sha256": "e110c42985223faa774ef52ceaa750656fc88b4d671707a666cf29f568e9a4c0"
+        }
+      },
+      "pass": true
+    },
+    {
+      "case": "ordinary",
+      "check": "feature_csv_literal_destination_exists",
+      "observed": "features/source-one.csv",
+      "pass": true
+    },
+    {
+      "case": "ordinary",
+      "check": "feature_csv_exact_rows_columns_types",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "ordinary",
+      "check": "feature_csv_manifest_names_and_hashes_actual_file",
+      "observed": {
+        "actual": [
+          {
+            "bytes": 137,
+            "kind": "feature_csv",
+            "relativePath": "features/source-one.csv",
+            "sha256": "bd5d82736fa1ab99058e9a8d70285006c0370240ea2433bf5a3f7d0db71f47d3"
+          }
+        ],
+        "expected": {
+          "bytes": 137,
+          "kind": "feature_csv",
+          "relativePath": "features/source-one.csv",
+          "sha256": "bd5d82736fa1ab99058e9a8d70285006c0370240ea2433bf5a3f7d0db71f47d3"
+        }
+      },
+      "pass": true
+    },
+    {
+      "case": "ordinary",
+      "check": "manifest_retains_prior_entry_and_exact_pair",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "ordinary",
+      "check": "schema_and_source_identity_preserved",
+      "observed": {
+        "schemaId": "capture.analysis_feature_schema/1",
+        "sourceIdentity": {
+          "ids": [
+            "camera.parquet.alpha",
+            "radar.parquet.beta"
+          ],
+          "timestampPolicy": "retain native ticks"
+        },
+        "tables": {
+          "features/source-one.parquet": {
+            "columns": [
+              {
+                "dtype": "object",
+                "name": "source_id"
+              },
+              {
+                "dtype": "int64",
+                "name": "native_tick"
+              },
+              {
+                "dtype": "float64",
+                "name": "feature"
+              },
+              {
+                "dtype": "bool",
+                "name": "valid"
+              }
+            ],
+            "featureSchemaVersion": 1,
+            "rows": 2
+          },
+          "retained/previous.parquet": {
+            "columns": [],
+            "featureSchemaVersion": 1,
+            "rows": 0
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "case": "parent_suffix_word",
+      "check": "actual_writer_completes",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "parent_suffix_word",
+      "check": "source_dataframe_preserved",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "parent_suffix_word",
+      "check": "source_file_preserved",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "parent_suffix_word",
+      "check": "earlier_export_preserved",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "parent_suffix_word",
+      "check": "column_metadata_preserved",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "parent_suffix_word",
+      "check": "unrelated_suffix_neighbour_preserved",
+      "observed": "results.csv/source-one.csv",
+      "pass": true
+    },
+    {
+      "case": "parent_suffix_word",
+      "check": "feature_parquet_literal_destination_exists",
+      "observed": "results.parquet/source-one.parquet",
+      "pass": true
+    },
+    {
+      "case": "parent_suffix_word",
+      "check": "feature_parquet_exact_rows_columns_types",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "parent_suffix_word",
+      "check": "feature_parquet_manifest_names_and_hashes_actual_file",
+      "observed": {
+        "actual": [
+          {
+            "bytes": 2879,
+            "kind": "feature_parquet",
+            "relativePath": "results.parquet/source-one.parquet",
+            "sha256": "e110c42985223faa774ef52ceaa750656fc88b4d671707a666cf29f568e9a4c0"
+          }
+        ],
+        "expected": {
+          "bytes": 2879,
+          "kind": "feature_parquet",
+          "relativePath": "results.parquet/source-one.parquet",
+          "sha256": "e110c42985223faa774ef52ceaa750656fc88b4d671707a666cf29f568e9a4c0"
+        }
+      },
+      "pass": true
+    },
+    {
+      "case": "parent_suffix_word",
+      "check": "feature_csv_literal_destination_exists",
+      "observed": "results.parquet/source-one.csv",
+      "pass": true
+    },
+    {
+      "case": "parent_suffix_word",
+      "check": "feature_csv_exact_rows_columns_types",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "parent_suffix_word",
+      "check": "feature_csv_manifest_names_and_hashes_actual_file",
+      "observed": {
+        "actual": [
+          {
+            "bytes": 137,
+            "kind": "feature_csv",
+            "relativePath": "results.parquet/source-one.csv",
+            "sha256": "bd5d82736fa1ab99058e9a8d70285006c0370240ea2433bf5a3f7d0db71f47d3"
+          }
+        ],
+        "expected": {
+          "bytes": 137,
+          "kind": "feature_csv",
+          "relativePath": "results.parquet/source-one.csv",
+          "sha256": "bd5d82736fa1ab99058e9a8d70285006c0370240ea2433bf5a3f7d0db71f47d3"
+        }
+      },
+      "pass": true
+    },
+    {
+      "case": "parent_suffix_word",
+      "check": "manifest_retains_prior_entry_and_exact_pair",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "parent_suffix_word",
+      "check": "schema_and_source_identity_preserved",
+      "observed": {
+        "schemaId": "capture.analysis_feature_schema/1",
+        "sourceIdentity": {
+          "ids": [
+            "camera.parquet.alpha",
+            "radar.parquet.beta"
+          ],
+          "timestampPolicy": "retain native ticks"
+        },
+        "tables": {
+          "results.parquet/source-one.parquet": {
+            "columns": [
+              {
+                "dtype": "object",
+                "name": "source_id"
+              },
+              {
+                "dtype": "int64",
+                "name": "native_tick"
+              },
+              {
+                "dtype": "float64",
+                "name": "feature"
+              },
+              {
+                "dtype": "bool",
+                "name": "valid"
+              }
+            ],
+            "featureSchemaVersion": 1,
+            "rows": 2
+          },
+          "retained/previous.parquet": {
+            "columns": [],
+            "featureSchemaVersion": 1,
+            "rows": 0
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "case": "source_stem_suffix_word",
+      "check": "actual_writer_completes",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "source_stem_suffix_word",
+      "check": "source_dataframe_preserved",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "source_stem_suffix_word",
+      "check": "source_file_preserved",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "source_stem_suffix_word",
+      "check": "earlier_export_preserved",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "source_stem_suffix_word",
+      "check": "column_metadata_preserved",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "source_stem_suffix_word",
+      "check": "unrelated_suffix_neighbour_preserved",
+      "observed": "features/source.csv.part.csv",
+      "pass": true
+    },
+    {
+      "case": "source_stem_suffix_word",
+      "check": "feature_parquet_literal_destination_exists",
+      "observed": "features/source.parquet.part.parquet",
+      "pass": true
+    },
+    {
+      "case": "source_stem_suffix_word",
+      "check": "feature_parquet_exact_rows_columns_types",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "source_stem_suffix_word",
+      "check": "feature_parquet_manifest_names_and_hashes_actual_file",
+      "observed": {
+        "actual": [
+          {
+            "bytes": 2879,
+            "kind": "feature_parquet",
+            "relativePath": "features/source.parquet.part.parquet",
+            "sha256": "e110c42985223faa774ef52ceaa750656fc88b4d671707a666cf29f568e9a4c0"
+          }
+        ],
+        "expected": {
+          "bytes": 2879,
+          "kind": "feature_parquet",
+          "relativePath": "features/source.parquet.part.parquet",
+          "sha256": "e110c42985223faa774ef52ceaa750656fc88b4d671707a666cf29f568e9a4c0"
+        }
+      },
+      "pass": true
+    },
+    {
+      "case": "source_stem_suffix_word",
+      "check": "feature_csv_literal_destination_exists",
+      "observed": "features/source.parquet.part.csv",
+      "pass": true
+    },
+    {
+      "case": "source_stem_suffix_word",
+      "check": "feature_csv_exact_rows_columns_types",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "source_stem_suffix_word",
+      "check": "feature_csv_manifest_names_and_hashes_actual_file",
+      "observed": {
+        "actual": [
+          {
+            "bytes": 137,
+            "kind": "feature_csv",
+            "relativePath": "features/source.parquet.part.csv",
+            "sha256": "bd5d82736fa1ab99058e9a8d70285006c0370240ea2433bf5a3f7d0db71f47d3"
+          }
+        ],
+        "expected": {
+          "bytes": 137,
+          "kind": "feature_csv",
+          "relativePath": "features/source.parquet.part.csv",
+          "sha256": "bd5d82736fa1ab99058e9a8d70285006c0370240ea2433bf5a3f7d0db71f47d3"
+        }
+      },
+      "pass": true
+    },
+    {
+      "case": "source_stem_suffix_word",
+      "check": "manifest_retains_prior_entry_and_exact_pair",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "source_stem_suffix_word",
+      "check": "schema_and_source_identity_preserved",
+      "observed": {
+        "schemaId": "capture.analysis_feature_schema/1",
+        "sourceIdentity": {
+          "ids": [
+            "camera.parquet.alpha",
+            "radar.parquet.beta"
+          ],
+          "timestampPolicy": "retain native ticks"
+        },
+        "tables": {
+          "features/source.parquet.part.parquet": {
+            "columns": [
+              {
+                "dtype": "object",
+                "name": "source_id"
+              },
+              {
+                "dtype": "int64",
+                "name": "native_tick"
+              },
+              {
+                "dtype": "float64",
+                "name": "feature"
+              },
+              {
+                "dtype": "bool",
+                "name": "valid"
+              }
+            ],
+            "featureSchemaVersion": 1,
+            "rows": 2
+          },
+          "retained/previous.parquet": {
+            "columns": [],
+            "featureSchemaVersion": 1,
+            "rows": 0
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "case": "repeated_parent_and_stem",
+      "check": "actual_writer_completes",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "repeated_parent_and_stem",
+      "check": "source_dataframe_preserved",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "repeated_parent_and_stem",
+      "check": "source_file_preserved",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "repeated_parent_and_stem",
+      "check": "earlier_export_preserved",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "repeated_parent_and_stem",
+      "check": "column_metadata_preserved",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "repeated_parent_and_stem",
+      "check": "unrelated_suffix_neighbour_preserved",
+      "observed": "archive.csv/session.csv/source.csv.csv",
+      "pass": true
+    },
+    {
+      "case": "repeated_parent_and_stem",
+      "check": "feature_parquet_literal_destination_exists",
+      "observed": "archive.parquet/session.parquet/source.parquet.parquet",
+      "pass": true
+    },
+    {
+      "case": "repeated_parent_and_stem",
+      "check": "feature_parquet_exact_rows_columns_types",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "repeated_parent_and_stem",
+      "check": "feature_parquet_manifest_names_and_hashes_actual_file",
+      "observed": {
+        "actual": [
+          {
+            "bytes": 2879,
+            "kind": "feature_parquet",
+            "relativePath": "archive.parquet/session.parquet/source.parquet.parquet",
+            "sha256": "e110c42985223faa774ef52ceaa750656fc88b4d671707a666cf29f568e9a4c0"
+          }
+        ],
+        "expected": {
+          "bytes": 2879,
+          "kind": "feature_parquet",
+          "relativePath": "archive.parquet/session.parquet/source.parquet.parquet",
+          "sha256": "e110c42985223faa774ef52ceaa750656fc88b4d671707a666cf29f568e9a4c0"
+        }
+      },
+      "pass": true
+    },
+    {
+      "case": "repeated_parent_and_stem",
+      "check": "feature_csv_literal_destination_exists",
+      "observed": "archive.parquet/session.parquet/source.parquet.csv",
+      "pass": true
+    },
+    {
+      "case": "repeated_parent_and_stem",
+      "check": "feature_csv_exact_rows_columns_types",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "repeated_parent_and_stem",
+      "check": "feature_csv_manifest_names_and_hashes_actual_file",
+      "observed": {
+        "actual": [
+          {
+            "bytes": 137,
+            "kind": "feature_csv",
+            "relativePath": "archive.parquet/session.parquet/source.parquet.csv",
+            "sha256": "bd5d82736fa1ab99058e9a8d70285006c0370240ea2433bf5a3f7d0db71f47d3"
+          }
+        ],
+        "expected": {
+          "bytes": 137,
+          "kind": "feature_csv",
+          "relativePath": "archive.parquet/session.parquet/source.parquet.csv",
+          "sha256": "bd5d82736fa1ab99058e9a8d70285006c0370240ea2433bf5a3f7d0db71f47d3"
+        }
+      },
+      "pass": true
+    },
+    {
+      "case": "repeated_parent_and_stem",
+      "check": "manifest_retains_prior_entry_and_exact_pair",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "repeated_parent_and_stem",
+      "check": "schema_and_source_identity_preserved",
+      "observed": {
+        "schemaId": "capture.analysis_feature_schema/1",
+        "sourceIdentity": {
+          "ids": [
+            "camera.parquet.alpha",
+            "radar.parquet.beta"
+          ],
+          "timestampPolicy": "retain native ticks"
+        },
+        "tables": {
+          "archive.parquet/session.parquet/source.parquet.parquet": {
+            "columns": [
+              {
+                "dtype": "object",
+                "name": "source_id"
+              },
+              {
+                "dtype": "int64",
+                "name": "native_tick"
+              },
+              {
+                "dtype": "float64",
+                "name": "feature"
+              },
+              {
+                "dtype": "bool",
+                "name": "valid"
+              }
+            ],
+            "featureSchemaVersion": 1,
+            "rows": 2
+          },
+          "retained/previous.parquet": {
+            "columns": [],
+            "featureSchemaVersion": 1,
+            "rows": 0
+          }
+        }
+      },
+      "pass": true
+    },
+    {
+      "case": "literal_unicode_space_and_punctuation",
+      "check": "actual_writer_completes",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "literal_unicode_space_and_punctuation",
+      "check": "source_dataframe_preserved",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "literal_unicode_space_and_punctuation",
+      "check": "source_file_preserved",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "literal_unicode_space_and_punctuation",
+      "check": "earlier_export_preserved",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "literal_unicode_space_and_punctuation",
+      "check": "column_metadata_preserved",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "literal_unicode_space_and_punctuation",
+      "check": "unrelated_suffix_neighbour_preserved",
+      "observed": "study.csv Ω #?%/sample.csv final.csv",
+      "pass": true
+    },
+    {
+      "case": "literal_unicode_space_and_punctuation",
+      "check": "feature_parquet_literal_destination_exists",
+      "observed": "study.parquet Ω #?%/sample.parquet final.parquet",
+      "pass": true
+    },
+    {
+      "case": "literal_unicode_space_and_punctuation",
+      "check": "feature_parquet_exact_rows_columns_types",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "literal_unicode_space_and_punctuation",
+      "check": "feature_parquet_manifest_names_and_hashes_actual_file",
+      "observed": {
+        "actual": [
+          {
+            "bytes": 2879,
+            "kind": "feature_parquet",
+            "relativePath": "study.parquet Ω #?%/sample.parquet final.parquet",
+            "sha256": "e110c42985223faa774ef52ceaa750656fc88b4d671707a666cf29f568e9a4c0"
+          }
+        ],
+        "expected": {
+          "bytes": 2879,
+          "kind": "feature_parquet",
+          "relativePath": "study.parquet Ω #?%/sample.parquet final.parquet",
+          "sha256": "e110c42985223faa774ef52ceaa750656fc88b4d671707a666cf29f568e9a4c0"
+        }
+      },
+      "pass": true
+    },
+    {
+      "case": "literal_unicode_space_and_punctuation",
+      "check": "feature_csv_literal_destination_exists",
+      "observed": "study.parquet Ω #?%/sample.parquet final.csv",
+      "pass": true
+    },
+    {
+      "case": "literal_unicode_space_and_punctuation",
+      "check": "feature_csv_exact_rows_columns_types",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "literal_unicode_space_and_punctuation",
+      "check": "feature_csv_manifest_names_and_hashes_actual_file",
+      "observed": {
+        "actual": [
+          {
+            "bytes": 137,
+            "kind": "feature_csv",
+            "relativePath": "study.parquet Ω #?%/sample.parquet final.csv",
+            "sha256": "bd5d82736fa1ab99058e9a8d70285006c0370240ea2433bf5a3f7d0db71f47d3"
+          }
+        ],
+        "expected": {
+          "bytes": 137,
+          "kind": "feature_csv",
+          "relativePath": "study.parquet Ω #?%/sample.parquet final.csv",
+          "sha256": "bd5d82736fa1ab99058e9a8d70285006c0370240ea2433bf5a3f7d0db71f47d3"
+        }
+      },
+      "pass": true
+    },
+    {
+      "case": "literal_unicode_space_and_punctuation",
+      "check": "manifest_retains_prior_entry_and_exact_pair",
+      "observed": null,
+      "pass": true
+    },
+    {
+      "case": "literal_unicode_space_and_punctuation",
+      "check": "schema_and_source_identity_preserved",
+      "observed": {
+        "schemaId": "capture.analysis_feature_schema/1",
+        "sourceIdentity": {
+          "ids": [
+            "camera.parquet.alpha",
+            "radar.parquet.beta"
+          ],
+          "timestampPolicy": "retain native ticks"
+        },
+        "tables": {
+          "retained/previous.parquet": {
+            "columns": [],
+            "featureSchemaVersion": 1,
+            "rows": 0
+          },
+          "study.parquet Ω #?%/sample.parquet final.parquet": {
+            "columns": [
+              {
+                "dtype": "object",
+                "name": "source_id"
+              },
+              {
+                "dtype": "int64",
+                "name": "native_tick"
+              },
+              {
+                "dtype": "float64",
+                "name": "feature"
+              },
+              {
+                "dtype": "bool",
+                "name": "valid"
+              }
+            ],
+            "featureSchemaVersion": 1,
+            "rows": 2
+          }
+        }
+      },
+      "pass": true
+    }
+  ],
+  "contract_sha256": "0ed66a459e2a7f078f61f43c068c6b293eacb253eb2c2fd687f25bb0a74a3216",
+  "environment": {
+    "executable": "/workspace/scratch/582de029aa19/portfolio/.venv/bin/python",
+    "pandas": "2.2.3",
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.39",
+    "pyarrow": "26.0.0",
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+  },
+  "failed_checks": [],
+  "receiver_sha256": "ef33043c15975763954dedb831354f54f6d685236a25d64800c098a98bbdeefe",
+  "scope": "Actual isolated feature-writer API calls, Parquet and CSV reads, manifest bytes and digests, and input/source-identity preservation. No GUI, capture hardware, whole-pipeline or throughput claim.",
+  "status": "PASS",
+  "writer": "/workspace/scratch/582de029aa19/engine/capturesuite-review/candidate-io.py",
+  "writer_bytes": 1418,
+  "writer_calls": [
+    {
+      "case": "ordinary",
+      "exception": null,
+      "expected_csv": "features/source-one.csv",
+      "outputs": [
+        {
+          "bytes": 41,
+          "kind": "retained_fixture",
+          "relativePath": "retained/previous.csv",
+          "sha256": "5d2b72ddf8b2b0e969f14a98d0291cef43ccb748461db99796a1f0a957d19541"
+        },
+        {
+          "bytes": 2879,
+          "kind": "feature_parquet",
+          "relativePath": "features/source-one.parquet",
+          "sha256": "e110c42985223faa774ef52ceaa750656fc88b4d671707a666cf29f568e9a4c0"
+        },
+        {
+          "bytes": 137,
+          "kind": "feature_csv",
+          "relativePath": "features/source-one.csv",
+          "sha256": "bd5d82736fa1ab99058e9a8d70285006c0370240ea2433bf5a3f7d0db71f47d3"
+        }
+      ],
+      "parquet": "features/source-one.parquet",
+      "schema": {
+        "schemaId": "capture.analysis_feature_schema/1",
+        "sourceIdentity": {
+          "ids": [
+            "camera.parquet.alpha",
+            "radar.parquet.beta"
+          ],
+          "timestampPolicy": "retain native ticks"
+        },
+        "tables": {
+          "features/source-one.parquet": {
+            "columns": [
+              {
+                "dtype": "object",
+                "name": "source_id"
+              },
+              {
+                "dtype": "int64",
+                "name": "native_tick"
+              },
+              {
+                "dtype": "float64",
+                "name": "feature"
+              },
+              {
+                "dtype": "bool",
+                "name": "valid"
+              }
+            ],
+            "featureSchemaVersion": 1,
+            "rows": 2
+          },
+          "retained/previous.parquet": {
+            "columns": [],
+            "featureSchemaVersion": 1,
+            "rows": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "parent_suffix_word",
+      "exception": null,
+      "expected_csv": "results.parquet/source-one.csv",
+      "outputs": [
+        {
+          "bytes": 41,
+          "kind": "retained_fixture",
+          "relativePath": "retained/previous.csv",
+          "sha256": "5d2b72ddf8b2b0e969f14a98d0291cef43ccb748461db99796a1f0a957d19541"
+        },
+        {
+          "bytes": 2879,
+          "kind": "feature_parquet",
+          "relativePath": "results.parquet/source-one.parquet",
+          "sha256": "e110c42985223faa774ef52ceaa750656fc88b4d671707a666cf29f568e9a4c0"
+        },
+        {
+          "bytes": 137,
+          "kind": "feature_csv",
+          "relativePath": "results.parquet/source-one.csv",
+          "sha256": "bd5d82736fa1ab99058e9a8d70285006c0370240ea2433bf5a3f7d0db71f47d3"
+        }
+      ],
+      "parquet": "results.parquet/source-one.parquet",
+      "schema": {
+        "schemaId": "capture.analysis_feature_schema/1",
+        "sourceIdentity": {
+          "ids": [
+            "camera.parquet.alpha",
+            "radar.parquet.beta"
+          ],
+          "timestampPolicy": "retain native ticks"
+        },
+        "tables": {
+          "results.parquet/source-one.parquet": {
+            "columns": [
+              {
+                "dtype": "object",
+                "name": "source_id"
+              },
+              {
+                "dtype": "int64",
+                "name": "native_tick"
+              },
+              {
+                "dtype": "float64",
+                "name": "feature"
+              },
+              {
+                "dtype": "bool",
+                "name": "valid"
+              }
+            ],
+            "featureSchemaVersion": 1,
+            "rows": 2
+          },
+          "retained/previous.parquet": {
+            "columns": [],
+            "featureSchemaVersion": 1,
+            "rows": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "source_stem_suffix_word",
+      "exception": null,
+      "expected_csv": "features/source.parquet.part.csv",
+      "outputs": [
+        {
+          "bytes": 41,
+          "kind": "retained_fixture",
+          "relativePath": "retained/previous.csv",
+          "sha256": "5d2b72ddf8b2b0e969f14a98d0291cef43ccb748461db99796a1f0a957d19541"
+        },
+        {
+          "bytes": 2879,
+          "kind": "feature_parquet",
+          "relativePath": "features/source.parquet.part.parquet",
+          "sha256": "e110c42985223faa774ef52ceaa750656fc88b4d671707a666cf29f568e9a4c0"
+        },
+        {
+          "bytes": 137,
+          "kind": "feature_csv",
+          "relativePath": "features/source.parquet.part.csv",
+          "sha256": "bd5d82736fa1ab99058e9a8d70285006c0370240ea2433bf5a3f7d0db71f47d3"
+        }
+      ],
+      "parquet": "features/source.parquet.part.parquet",
+      "schema": {
+        "schemaId": "capture.analysis_feature_schema/1",
+        "sourceIdentity": {
+          "ids": [
+            "camera.parquet.alpha",
+            "radar.parquet.beta"
+          ],
+          "timestampPolicy": "retain native ticks"
+        },
+        "tables": {
+          "features/source.parquet.part.parquet": {
+            "columns": [
+              {
+                "dtype": "object",
+                "name": "source_id"
+              },
+              {
+                "dtype": "int64",
+                "name": "native_tick"
+              },
+              {
+                "dtype": "float64",
+                "name": "feature"
+              },
+              {
+                "dtype": "bool",
+                "name": "valid"
+              }
+            ],
+            "featureSchemaVersion": 1,
+            "rows": 2
+          },
+          "retained/previous.parquet": {
+            "columns": [],
+            "featureSchemaVersion": 1,
+            "rows": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "repeated_parent_and_stem",
+      "exception": null,
+      "expected_csv": "archive.parquet/session.parquet/source.parquet.csv",
+      "outputs": [
+        {
+          "bytes": 41,
+          "kind": "retained_fixture",
+          "relativePath": "retained/previous.csv",
+          "sha256": "5d2b72ddf8b2b0e969f14a98d0291cef43ccb748461db99796a1f0a957d19541"
+        },
+        {
+          "bytes": 2879,
+          "kind": "feature_parquet",
+          "relativePath": "archive.parquet/session.parquet/source.parquet.parquet",
+          "sha256": "e110c42985223faa774ef52ceaa750656fc88b4d671707a666cf29f568e9a4c0"
+        },
+        {
+          "bytes": 137,
+          "kind": "feature_csv",
+          "relativePath": "archive.parquet/session.parquet/source.parquet.csv",
+          "sha256": "bd5d82736fa1ab99058e9a8d70285006c0370240ea2433bf5a3f7d0db71f47d3"
+        }
+      ],
+      "parquet": "archive.parquet/session.parquet/source.parquet.parquet",
+      "schema": {
+        "schemaId": "capture.analysis_feature_schema/1",
+        "sourceIdentity": {
+          "ids": [
+            "camera.parquet.alpha",
+            "radar.parquet.beta"
+          ],
+          "timestampPolicy": "retain native ticks"
+        },
+        "tables": {
+          "archive.parquet/session.parquet/source.parquet.parquet": {
+            "columns": [
+              {
+                "dtype": "object",
+                "name": "source_id"
+              },
+              {
+                "dtype": "int64",
+                "name": "native_tick"
+              },
+              {
+                "dtype": "float64",
+                "name": "feature"
+              },
+              {
+                "dtype": "bool",
+                "name": "valid"
+              }
+            ],
+            "featureSchemaVersion": 1,
+            "rows": 2
+          },
+          "retained/previous.parquet": {
+            "columns": [],
+            "featureSchemaVersion": 1,
+            "rows": 0
+          }
+        }
+      }
+    },
+    {
+      "case": "literal_unicode_space_and_punctuation",
+      "exception": null,
+      "expected_csv": "study.parquet Ω #?%/sample.parquet final.csv",
+      "outputs": [
+        {
+          "bytes": 41,
+          "kind": "retained_fixture",
+          "relativePath": "retained/previous.csv",
+          "sha256": "5d2b72ddf8b2b0e969f14a98d0291cef43ccb748461db99796a1f0a957d19541"
+        },
+        {
+          "bytes": 2879,
+          "kind": "feature_parquet",
+          "relativePath": "study.parquet Ω #?%/sample.parquet final.parquet",
+          "sha256": "e110c42985223faa774ef52ceaa750656fc88b4d671707a666cf29f568e9a4c0"
+        },
+        {
+          "bytes": 137,
+          "kind": "feature_csv",
+          "relativePath": "study.parquet Ω #?%/sample.parquet final.csv",
+          "sha256": "bd5d82736fa1ab99058e9a8d70285006c0370240ea2433bf5a3f7d0db71f47d3"
+        }
+      ],
+      "parquet": "study.parquet Ω #?%/sample.parquet final.parquet",
+      "schema": {
+        "schemaId": "capture.analysis_feature_schema/1",
+        "sourceIdentity": {
+          "ids": [
+            "camera.parquet.alpha",
+            "radar.parquet.beta"
+          ],
+          "timestampPolicy": "retain native ticks"
+        },
+        "tables": {
+          "retained/previous.parquet": {
+            "columns": [],
+            "featureSchemaVersion": 1,
+            "rows": 0
+          },
+          "study.parquet Ω #?%/sample.parquet final.parquet": {
+            "columns": [
+              {
+                "dtype": "object",
+                "name": "source_id"
+              },
+              {
+                "dtype": "int64",
+                "name": "native_tick"
+              },
+              {
+                "dtype": "float64",
+                "name": "feature"
+              },
+              {
+                "dtype": "bool",
+                "name": "valid"
+              }
+            ],
+            "featureSchemaVersion": 1,
+            "rows": 2
+          }
+        }
+      }
+    }
+  ],
+  "writer_git_blob": "dfa2e34fc881a76fb461c51dbf3e94aa4c594e0c",
+  "writer_sha256": "e7c26202f02ba870e0a2db9cb840ab64c706929efe98da111b405ce4ffb47321"
+}

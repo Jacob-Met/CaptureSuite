@@ -1,0 +1,7 @@
+{
+  "change": "Inserted one SPDX comment immediately after the shebang for repository publication.",
+  "executed_receiver_sha256": "ef33043c15975763954dedb831354f54f6d685236a25d64800c098a98bbdeefe",
+  "published_receiver_sha256": "a4193b11344963e2b058c832e7132083b3b65dca44acf8107db3daf1c8338ff8",
+  "reconstruction": "Delete only line 2 (# SPDX-License-Identifier: GPL-3.0-only); the remaining bytes equal the executed receiver.",
+  "executed_code_unchanged": true
+}

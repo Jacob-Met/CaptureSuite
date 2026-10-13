@@ -1,0 +1,40 @@
+{
+  "stage": "baseline receiving frozen before author candidate modification",
+  "repository": "Jacob-Met/CaptureSuite",
+  "baseline_commit": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+  "files": {
+    "frozen-contract.json": {
+      "bytes": 2432,
+      "sha256": "0ed66a459e2a7f078f61f43c068c6b293eacb253eb2c2fd687f25bb0a74a3216"
+    },
+    "receive-feature-writer.py": {
+      "bytes": 8536,
+      "sha256": "ef33043c15975763954dedb831354f54f6d685236a25d64800c098a98bbdeefe"
+    },
+    "baseline-io.py": {
+      "bytes": 1409,
+      "sha256": "c677d209292cca790ccdf1a64ba834f71a078ccce31ea57452e67ece358822ca"
+    },
+    "baseline-course/receiving.json": {
+      "bytes": 35737,
+      "sha256": "fa3724b804a73c3807fe7beec7d6911e6992f90792c18b5e64c35741027c036b"
+    }
+  },
+  "execution": {
+    "runtime": "/workspace/scratch/582de029aa19/portfolio/.venv/bin/python",
+    "actual_writer_calls": 5,
+    "checks": 69,
+    "passes": 49,
+    "expected_failures": 20,
+    "ordinary_control": "PASS",
+    "adversarial_cases": 4,
+    "effect": "Wrong CSV neighbor overwritten, intended CSV missing, manifest points to mutated destination."
+  },
+  "prior_attempt": {
+    "result": "environment failure",
+    "error": "OSError: [Errno 28] No space left on device at output-directory mkdir",
+    "writer_invoked": false,
+    "recovery": "A later read observed 1.2 GB available and sufficient inodes. Reviewer deleted nothing before successful course."
+  },
+  "scope": "Actual saved Parquet/CSV through unchanged public writer. Independent expected paths frozen before candidate. No full application or native/UI claim."
+}
