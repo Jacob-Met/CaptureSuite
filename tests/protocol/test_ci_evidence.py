@@ -149,3 +149,58 @@ def test_github_context_is_allowlisted_and_absence_is_explicitly_empty():
         "GITHUB_HEAD_REF": "candidate",
         "GITHUB_BASE_REF": "main",
     }
+
+
+@pytest.mark.parametrize(
+    "key,value",
+    [("tests", "2"), ("failures", "1"), ("errors", "1"), ("skipped", "1")],
+)
+def test_aggregate_counts_cannot_contradict_passing_case(tmp_path, key, value):
+    p = tmp_path / "aggregate.xml"
+    raw = (
+        f'<testsuites {key}="{value}">'
+        '<testsuite tests="1" failures="0" errors="0" skipped="0">'
+        '<testcase name="passed"/></testsuite></testsuites>'
+    ).encode()
+    p.write_bytes(raw)
+    result = summarize(p, 0)
+    assert not result["accepted"]
+    assert result["problems"]
+    assert result["junit_sha256"] == hashlib.sha256(raw).hexdigest()
+    assert p.read_bytes() == raw
+
+
+@pytest.mark.parametrize("key", ["tests", "failures", "errors", "skipped"])
+@pytest.mark.parametrize("value", ["-1", "unknown", ""])
+def test_invalid_aggregate_count_is_not_ignored(tmp_path, key, value):
+    p = tmp_path / "aggregate.xml"
+    p.write_text(
+        f'<testsuites {key}="{value}"><testsuite tests="1">'
+        '<testcase name="passed"/></testsuite></testsuites>'
+    )
+    assert not summarize(p, 0)["accepted"]
+
+
+@pytest.mark.parametrize(
+    "attributes",
+    [
+        'tests="3" failures="0" errors="0" skipped="1"',
+        'tests="3"',
+        "",
+    ],
+)
+def test_aggregate_counts_sum_all_suites_and_remain_optional(tmp_path, attributes):
+    p = tmp_path / "aggregate.xml"
+    raw = (
+        f"<testsuites {attributes}>"
+        '<testsuite tests="1"><testcase name="first"/></testsuite>'
+        '<testsuite tests="2" skipped="1"><testcase name="second"/>'
+        '<testcase name="not_run"><skipped/></testcase></testsuite>'
+        "</testsuites>"
+    ).encode()
+    p.write_bytes(raw)
+    result = summarize(p, 0)
+    assert result["accepted"]
+    assert result["counts"] == dict(tests=3, passed=2, failures=0, errors=0, skipped=1)
+    assert result["junit_sha256"] == hashlib.sha256(raw).hexdigest()
+    assert p.read_bytes() == raw

@@ -89,6 +89,11 @@ def summarize(junit: Path, process_exit: int | None) -> dict:
                     raise ValueError(f"JUnit {key} count disagrees with case evidence")
             for key in totals:
                 totals[key] += local[key]
+        if root.tag == "testsuites":
+            for key in ("tests", "failures", "errors", "skipped"):
+                declared = root.get(key)
+                if declared is not None and int(declared) != totals[key]:
+                    raise ValueError(f"JUnit aggregate {key} count disagrees with case evidence")
         report["counts"] = totals
         if totals["tests"] == 0 or totals["passed"] == 0:
             problems.append("No executed passing test cases")

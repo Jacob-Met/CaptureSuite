@@ -1,0 +1,112 @@
+{
+  "runtime": "3.12.2 (tags/v3.12.2:6abddd9, Feb  6 2024, 21:26:36) [MSC v.1937 64 bit (AMD64)]",
+  "executable": "C:\\Users\\jacob\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "git": "C:\\Program Files\\Git\\cmd\\git.EXE",
+  "base_commit": "ab17b8c50af9892483b49ce4c125ef28f38eb72c",
+  "production_original_git_blob": "b5717e9f605ee7de6474cf4d3ecba45e5eaa44ba",
+  "scope": "Selected receipt tests in sparse source fixtures, not full CaptureSuite CI",
+  "runs": {
+    "original": {
+      "command": [
+        "C:\\Users\\jacob\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/protocol/test_ci_evidence.py",
+        "--basetemp=C:\\Users\\jacob\\AppData\\Local\\Temp\\hamon-products-junit-20261013-nywn1n2_\\original-tmp",
+        "--junitxml=C:\\Users\\jacob\\AppData\\Local\\Temp\\hamon-products-junit-20261013-nywn1n2_\\evidence\\original.xml"
+      ],
+      "cwd": "C:\\Users\\jacob\\AppData\\Local\\Temp\\hamon-products-junit-20261013-nywn1n2_\\original",
+      "exit_code": 1,
+      "seconds": 4.5024122999748215,
+      "stdout_sha256": "f9ec44d7a42b8c4d2bbc994723e2d453f83a9fb1b7a8fcd8af976238128f40ad",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "junit_counts": {
+        "tests": 40,
+        "failures": 16,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "738c44b2b3b1700d331f658bb8ebc373a01edb79d06e95fb334ab88910de92d1",
+      "source_before": {
+        "tools/run_ci_tests.py": "a35a6bb9b5293db46201857a5590b45ad77243f646a5cf729112f8130710d776",
+        "tools/check_licenses.py": "c6d90c9175d2db1de0f3426128c5fb511afc35942156c9bd2b7e692afc401463",
+        "tests/protocol/test_ci_evidence.py": "286847068b472032815f6378c6e2407264ee8ac79a80ddf37076d0de595c08cc",
+        "tests/conftest.py": "f669618fad17e906c91df7a1e9393fc7a54f458c6d62a4385436ba2622beca0e",
+        "pyproject.toml": "0cb8de1ab3dfbfed84ff16b35f3c89c6440180183ee5851d5d80da83622e53d0"
+      },
+      "source_after": {
+        "tools/run_ci_tests.py": "a35a6bb9b5293db46201857a5590b45ad77243f646a5cf729112f8130710d776",
+        "tools/check_licenses.py": "c6d90c9175d2db1de0f3426128c5fb511afc35942156c9bd2b7e692afc401463",
+        "tests/protocol/test_ci_evidence.py": "286847068b472032815f6378c6e2407264ee8ac79a80ddf37076d0de595c08cc",
+        "tests/conftest.py": "f669618fad17e906c91df7a1e9393fc7a54f458c6d62a4385436ba2622beca0e",
+        "pyproject.toml": "0cb8de1ab3dfbfed84ff16b35f3c89c6440180183ee5851d5d80da83622e53d0"
+      },
+      "source_unchanged": true
+    },
+    "candidate": {
+      "command": [
+        "C:\\Users\\jacob\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-m",
+        "pytest",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "tests/protocol/test_ci_evidence.py",
+        "--basetemp=C:\\Users\\jacob\\AppData\\Local\\Temp\\hamon-products-junit-20261013-nywn1n2_\\candidate-tmp",
+        "--junitxml=C:\\Users\\jacob\\AppData\\Local\\Temp\\hamon-products-junit-20261013-nywn1n2_\\evidence\\candidate.xml"
+      ],
+      "cwd": "C:\\Users\\jacob\\AppData\\Local\\Temp\\hamon-products-junit-20261013-nywn1n2_\\candidate",
+      "exit_code": 0,
+      "seconds": 3.637891100021079,
+      "stdout_sha256": "e1b33580821eb2e27187cea4e98e2e1ca99b6ddea5928d85dc69313f11fc996e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "junit_counts": {
+        "tests": 40,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "junit_sha256": "9868c88e6adabbc37474e14aea32b6d9ffd43f83adcecaef860aee126969c20a",
+      "source_before": {
+        "tools/run_ci_tests.py": "54ae0026ad0f90969c63815ffbbadcf84e47a70cf921fb7115d1b95abe9fe445",
+        "tools/check_licenses.py": "c6d90c9175d2db1de0f3426128c5fb511afc35942156c9bd2b7e692afc401463",
+        "tests/protocol/test_ci_evidence.py": "286847068b472032815f6378c6e2407264ee8ac79a80ddf37076d0de595c08cc",
+        "tests/conftest.py": "f669618fad17e906c91df7a1e9393fc7a54f458c6d62a4385436ba2622beca0e",
+        "pyproject.toml": "0cb8de1ab3dfbfed84ff16b35f3c89c6440180183ee5851d5d80da83622e53d0"
+      },
+      "source_after": {
+        "tools/run_ci_tests.py": "54ae0026ad0f90969c63815ffbbadcf84e47a70cf921fb7115d1b95abe9fe445",
+        "tools/check_licenses.py": "c6d90c9175d2db1de0f3426128c5fb511afc35942156c9bd2b7e692afc401463",
+        "tests/protocol/test_ci_evidence.py": "286847068b472032815f6378c6e2407264ee8ac79a80ddf37076d0de595c08cc",
+        "tests/conftest.py": "f669618fad17e906c91df7a1e9393fc7a54f458c6d62a4385436ba2622beca0e",
+        "pyproject.toml": "0cb8de1ab3dfbfed84ff16b35f3c89c6440180183ee5851d5d80da83622e53d0"
+      },
+      "source_unchanged": true
+    },
+    "ruff": {
+      "command": [
+        "C:\\Users\\jacob\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "-B",
+        "-m",
+        "ruff",
+        "check",
+        "--no-cache",
+        "tools/run_ci_tests.py",
+        "tests/protocol/test_ci_evidence.py"
+      ],
+      "cwd": "C:\\Users\\jacob\\AppData\\Local\\Temp\\hamon-products-junit-20261013-nywn1n2_\\candidate",
+      "exit_code": 0,
+      "seconds": 1.4730898999841884,
+      "stdout_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "scoped_spdx_errors": [],
+  "qualified": true
+}
