@@ -111,7 +111,7 @@ def run_features_and_plots(
             }
         )
         series_doc = {
-            "schemaId": "capture.sync_dashboard_series/1",
+            "schemaId": "capture.sync_dashboard_series/2",
             "title": f"{summary.session_id} · gap_policy={gap_policy}",
             "window": {
                 "startSessionNs": window.start_session_ns,
@@ -133,14 +133,19 @@ def run_features_and_plots(
                 {
                     "label": item["label"],
                     "t_ns": [int(x) for x in np.asarray(item["t_ns"]).tolist()],
-                    "y": [float(x) for x in np.asarray(item["y"]).tolist()],
+                    "y": [
+                        float(x) if np.isfinite(x) else None
+                        for x in np.asarray(item["y"], dtype=np.float64)
+                    ],
                     "color": item.get("color", "#3d8bfd"),
                 }
                 for item in sync_series[:4]
             ],
         }
         series_path = work / "figures" / "sync_dashboard_series.json"
-        series_bytes = json.dumps(series_doc, indent=2, sort_keys=True).encode("utf-8")
+        series_bytes = json.dumps(
+            series_doc, indent=2, sort_keys=True, allow_nan=False,
+        ).encode("utf-8")
         series_path.write_bytes(series_bytes)
         outputs.append(
             {

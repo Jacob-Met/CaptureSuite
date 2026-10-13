@@ -302,6 +302,9 @@ def test_real_mcap_job_preserves_gap_mask_in_saved_tables_and_plots(tmp_path, mo
         assert (result.job_dir / "figures" / "sync_dashboard.png").stat().st_size > 0
         series = json.loads((result.job_dir / "figures" / "sync_dashboard_series.json").read_text())
         assert series["series"][0]["t_ns"] == [100_000_000, 2_100_000_000, 2_200_000_000]
-        np.testing.assert_allclose(series["series"][0]["y"], [10.0, np.nan, 10.0], equal_nan=True)
+        np.testing.assert_allclose(
+            np.asarray(series["series"][0]["y"], dtype=np.float64),
+            [10.0, np.nan, 10.0], equal_nan=True,
+        )
     else:
         assert not plotted

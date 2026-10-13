@@ -1341,3 +1341,14 @@ do not imply installed-desktop or physical-acquisition validation.
 - Added one receiving guide under docs/receiving/offline-analysis-composition-7cb7e049e2c0/. Independent whole-tree preservation review and an exact native 134-case focused composition gate are the remaining receiving steps; no combined pass is claimed in this publication note.
 - Prior CLI packet is delivered at https://drive.google.com/file/d/1Gh9-DYep0lLF4ka8g19gR2PaHMrJgGg6/view, with exact authenticated readback, native22 cases, actual exit1-to-0 correction and five byte-identical native outputs. Prior plot, video and EMG artifacts remain unchanged. Track this composition in the shared-team issue119 comments.
 - Publication is an inert source branch with direct owned offline receiving; no PR/main/tag/workflow mutation or GitHub Actions operation.
+
+
+## 2026-10-13 — standards-compliant saved dashboard observations (team 7cb7e049e2c0, issue134)
+
+The exact accepted offline-analysis composition 0549a169 was received on MSI with 134 concrete cases plus 6 passing subtests (JUnit aggregate 140), unchanged 17 source fingerprints and no failing/error/skipped cases. Its preserved real video job demonstrated that saved dashboard JSON contained bare NaN for an unavailable interval. Strict JSON parsers reject that file even though permissive Python/NumPy readers accept it.
+
+New dashboard documents use capture.sync_dashboard_series/2. Only saved y values change: NaN and either infinity become explicit null in their original positions, finite numbers and integer timestamps remain exact, and allow_nan=False rejects remaining nonfinite tokens. Existing version 1 jobs are untouched. The established desktop conversion maps null back to NaN; no Qt/UI receiving is claimed.
+
+Qualification: original new 12-case regression control has 10 failures / 2 passes; candidate 12 plus 29 video cases pass 41/41. Independent receiving of 10 actual saved JSON pairs found original 2/10 versus candidate 10/10 accepted by strict Python and real Node JSON.parse. Exact Python checks retain large integers and finite-value bits/signed zero; Node is grammar-only beyond 2**53. All 10 PNG pairs and 4 MCAP-derived CSV/Parquet feature files are byte-identical. Source hashes unchanged. Native successor receiving is pending until its exact publication; prior 0549 joint native result is not attributed to this successor. Source, test, guide and independent receipts remain separate from hardware/desktop claims.
+
+The JSON serializer is the only production scope. Plotted arrays, feature algorithms, raw recordings, gaps, job paths and other owners' desktop/jobs/readers remain unchanged. Axis-origin annotations are separately owned. No PR/main/tag/workflow/Actions operation is selected; source publication uses an audited inert feature branch.
