@@ -19,7 +19,9 @@ Every typed difference retains its original sorted JSON Pointer. Arrays keep sav
 
 Select **Inspect** to read both complete values and their types. Selection moves keyboard focus to the detail heading. Values longer than 140 characters are abbreviated only in the table; details and the comparison download remain complete. Details can scroll independently.
 
-Each page contains at most 50 matching differences. Filters reset to page 1. Changing filters or page, or choosing **Reset view**, clears the prior selection. No hits and equal parsed reports have explicit empty states. Narrow screens keep the table in its own horizontal scroll region. System light/dark preference uses CaptureSuite design tokens.
+Use **Previous matching change** and **Next matching change** in the detail panel to inspect adjacent differences in the complete filtered order. The position label **Matching change N of M** counts that sequence; original difference numbers and JSON Pointers remain unchanged. Moving beyond the current 50-row page automatically shows the selected change's page and focuses its detail heading. Navigation stops at either endpoint, never wraps and is disabled until a change is selected. Both buttons are disabled when only one change matches. Standard button keyboard activation works; no global shortcut is added.
+
+Each page contains at most 50 matching differences. Filters reset to page 1. Changing filters or manually changing page, or choosing **Reset view**, clears the prior selection and position label and disables both matching-change buttons. No hits and equal parsed reports have explicit empty states. Narrow screens keep the table in its own horizontal scroll region. System light/dark preference uses CaptureSuite design tokens.
 
 The browser receives report values as Python-formatted JSON **text**; it does not convert report integers or floats through JavaScript Number. An integer above 2^53 therefore remains exact. `false`, `0`, `0.0`, `-0.0`, `null` and `(absent)` remain distinct. Types are `boolean`, `integer`, `float`, `null`, `string`, `array`, `object` or `absent`. Present values use canonical ASCII JSON with sorted object keys, compact separators and explicit escapes. An absent side has no value; its visible label is `(absent)`.
 
@@ -74,3 +76,18 @@ python -B -m unittest discover -s tests/analysis -p test_saved_qc_comparison_vie
 ```
 
 Source checks cover captured-byte/comparison parity, typed display, literal labels, complete refusal, bounds, real CLI preservation, occupied/aliased outputs, nonregular inputs, arriving destinations, write/link/cleanup failures and import policy. The FIFO control is POSIX-specific. Actual browser controls, downloads, narrow layout and screenshot review are qualified separately at exact source pins; syntax checking alone is not browser acceptance.
+
+
+### Focused matching-change navigation
+
+```console
+python -B -m unittest discover -s tests/analysis -p test_saved_qc_navigation.py -v
+```
+
+The focused controls require an existing Node executable. They execute the actual
+inline script through a bounded DOM adapter, checking full filtered order,
+endpoint refusal, page crossing, selection clearing, literal typed details and
+all three complete downloads. They do not qualify native keyboard behavior or
+layout; those remain separately received in a real browser. The command above
+uses `-B` only to keep developer test imports from writing source-adjacent caches;
+ordinary page generation needs no such override.

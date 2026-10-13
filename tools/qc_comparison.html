@@ -77,6 +77,7 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;margin:8px 0 0;padding:12px;min-
 </section>
 <section class="panel details" aria-labelledby="detail-title">
 <h2 id="detail-title" tabindex="-1">Select a difference</h2><p class="detail-pointer"><code id="detail-pointer"></code></p>
+<div class="toolbar" aria-label="Matching change navigation"><button id="previous-change" type="button" disabled>Previous matching change</button><button id="next-change" type="button" disabled>Next matching change</button><span id="change-position" role="status" aria-live="polite"></span></div>
 <div class="values"><section><h3>Before <span id="before-type" class="dim"></span></h3><pre id="before-value"></pre></section><section><h3>After <span id="after-type" class="dim"></span></h3><pre id="after-value"></pre></section></div>
 </section>
 <div class="download-bar"><button id="download-comparison" class="primary" type="button">Download complete comparison JSON</button><span id="download-status" role="status"></span></div>
@@ -95,10 +96,26 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;margin:8px 0 0;padding:12px;min-
     let page = 0;
     let filtered = rows;
     let selected = null;
+    function updateNavigation() {
+      const index = filtered.findIndex(row => row.index === selected);
+      $("previous-change").disabled = index <= 0;
+      $("next-change").disabled = index < 0 || index + 1 >= filtered.length;
+      $("change-position").textContent = index < 0 ? ""
+        : "Matching change " + (index + 1) + " of " + filtered.length;
+    }
+    function moveSelection(offset) {
+      const index = filtered.findIndex(row => row.index === selected);
+      const target = index + offset;
+      if (index < 0 || target < 0 || target >= filtered.length) return;
+      page = Math.floor(target / pageSize);
+      renderRows();
+      selectRow(filtered[target]);
+    }
     function clearDetails() {
       selected = null;
       $("detail-title").textContent = "Select a difference";
       for (const id of ["detail-pointer", "before-type", "before-value", "after-type", "after-value"]) $(id).textContent = "";
+      updateNavigation();
     }
     function selectRow(row) {
       selected = row.index;
@@ -113,6 +130,7 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;margin:8px 0 0;padding:12px;min-
         button.setAttribute("aria-pressed", String(active));
         button.closest("tr").classList.toggle("selected", active);
       }
+      updateNavigation();
       $("detail-title").focus();
     }
     function sideCell(value) {
@@ -199,6 +217,8 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;margin:8px 0 0;padding:12px;min-
     $("download-comparison").addEventListener("click", () => download(data.comparisonBase64, "qc-comparison.json"));
     $("difference-count").textContent = String(rows.length);
     $("comparison-status").textContent = data.equal ? "Equal saved values" : "Different saved values";
+    $("previous-change").addEventListener("click", () => moveSelection(-1));
+    $("next-change").addEventListener("click", () => moveSelection(1));
     $("kind-filter").addEventListener("change", refilter);
     $("pointer-filter").addEventListener("input", refilter);
     $("reset").addEventListener("click", () => {
@@ -208,6 +228,7 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;margin:8px 0 0;padding:12px;min-
     });
     $("prev-page").addEventListener("click", () => {page -= 1; clearDetails(); renderRows();});
     $("next-page").addEventListener("click", () => {page += 1; clearDetails(); renderRows();});
+    clearDetails();
     renderRows();
     $("review").hidden = false;
     $("load-status").textContent = "Complete saved reports admitted. No session data is opened.";
