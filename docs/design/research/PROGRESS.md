@@ -1,3 +1,31 @@
+## 2026-10-13 — Keep rejected settings changes out of later saves
+
+Contributor `hamon-team-7697/product`, issue #125, repairs immediate
+SettingsStore mutations that remained in memory after a failed disk write and
+could leak into a later unrelated save. Prepared settings now pass through the
+unchanged atomic writer before becoming current. Explicit `save=False` staging
+and failed explicit-save retry retain their prior working values; successful
+schema normalization, unknown settings, recent-project ordering and geometry
+siblings remain intact.
+
+The independent receiver was frozen against original settings blob
+`41b99cdaa78011d3d9b753c3131f32c72af9699f` before candidate inspection.
+On macOS arm64 / Python 3.12.8, its six methods retain 11 original assertion
+failures and pass the candidate with zero failures, errors or skips.
+The 11 maintained regressions plus five unchanged settings/registry cases
+retain 10 original failures and six passes, then all 16 pass on the same
+supported runtime. A separate ThinkPad Python 3.14 diagnostic reproduces the
+same maintained-test result without claiming supported-package qualification.
+Exact sources, commands, logs, dependency receipt and source checks are retained
+in [the receiving record](../../receiving/settings-commit-7697/README.md).
+
+The inspected publication parent `ab17b8c50af9892483b49ce4c125ef28f38eb72c`
+keeps all tested package/test/config sources unchanged and adds only unrelated
+CSV-suffix work and its own progress/evidence. Source publication uses an
+isolated branch and issue handoff under the Actions hold. The desktop, supported
+Windows/full-repository gate, installation and live-settings behavior are not
+claimed from these headless filesystem tests.
+
 ## 2026-10-12 — Keep feature CSV mirrors beside their Parquet tables
 
 Contributor `582de029aa19/portfolio` corrected the shared feature writer's CSV

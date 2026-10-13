@@ -1,0 +1,445 @@
+{
+  "schema": "capturesuite.settings-commit.author-receiving.v1",
+  "repository": "Jacob-Met/CaptureSuite",
+  "issue": "https://github.com/Jacob-Met/CaptureSuite/issues/125",
+  "original_commit": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+  "publication_parent": "ab17b8c50af9892483b49ce4c125ef28f38eb72c",
+  "publication_parent_tree": "fe779be8316c3cf677dcf8b12993476db8a87a62",
+  "proposed_branch": "fix/settings-commit-7697-20261012",
+  "original_settings_blob": "41b99cdaa78011d3d9b753c3131f32c72af9699f",
+  "candidate_settings_blob": "acfc63cabf30bc8c6388b38dc1801941f689021d",
+  "candidate_settings_sha256": "2aeb3521b73237dcc5ba1ce705b50850c3d4381fd944e11323cbd67e1d012a38",
+  "maintained_test_blob": "1bbf02e7cde12ea9ce1bc4977c81770af250ee01",
+  "maintained_test_sha256": "fb55d4bb1c0514790680741ff0b7e9715408253cd273a6ff1324ce46a8aefe73",
+  "supported_receiving": {
+    "path": "independent-receiving.json",
+    "git_blob": "bc87f51932092b3e831a100b4b82811fbfada038",
+    "sha256": "8c606d06f01f9dff3298037cbe8bb8d11b7c3a6d10ebd3479476f56ada98a7f0",
+    "summary": {
+      "independent_original": {
+        "methods": 6,
+        "failures": 11,
+        "errors": 0,
+        "skips": 0
+      },
+      "independent_candidate": {
+        "methods": 6,
+        "failures": 0,
+        "errors": 0,
+        "skips": 0
+      },
+      "maintained_original": {
+        "cases": 16,
+        "failed": 10,
+        "passed": 6,
+        "errors": 0,
+        "skips": 0
+      },
+      "maintained_candidate": {
+        "cases": 16,
+        "failed": 0,
+        "passed": 16,
+        "errors": 0,
+        "skips": 0
+      }
+    }
+  },
+  "scoped_ruff": {
+    "path": "ruff-receiving.json",
+    "git_blob": "a77c732fbde5d0e7e4cbaebe9cdfab269a750b31",
+    "sha256": "fc7868ef32ffefa383b9f41f4bc3524a5aa7cc615ae20532014853f99b334beb",
+    "tool": "Ruff 0.14.10",
+    "exit": 0,
+    "targets": [
+      "libs/python/capture_session/capture_session/settings_store.py",
+      "tests/protocol/test_settings_commit.py"
+    ],
+    "configuration_blob": "52491c6beebc4b17983fc66bb8765154c33cf6d8"
+  },
+  "diagnostic_original": {
+    "repository": "Jacob-Met/CaptureSuite",
+    "base_commit": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+    "runtime": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+    "qualification": "Python3.14 diagnostic; supported Python3.12 receiving is independent",
+    "command": [
+      "/usr/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "--tb=short",
+      "/home/jacob/hamon-capturesuite-7697-settings/checks"
+    ],
+    "exit": 1,
+    "elapsed_s": 0.31854430912062526,
+    "stdout": "FFFFFFFFFF......                                                         [100%]\n=================================== FAILURES ===================================\n__________ test_failed_change_cannot_leak_into_an_unrelated_save[set] __________\ntest_settings_commit.py:60: in test_failed_change_cannot_leak_into_an_unrelated_save\n    assert rejected_memory == before\nE   AssertionError: assert {'active_hotk...s': True, ...} == {'active_hotk...s': True, ...}\nE     \nE     Omitting 17 identical items, use -vv to show\nE     Differing items:\nE     {'theme': 'dark'} != {'theme': 'light'}\nE     Use -v to get more diff\n________ test_failed_change_cannot_leak_into_an_unrelated_save[update] _________\ntest_settings_commit.py:60: in test_failed_change_cannot_leak_into_an_unrelated_save\n    assert rejected_memory == before\nE   AssertionError: assert {'active_hotk...s': True, ...} == {'active_hotk...s': True, ...}\nE     \nE     Omitting 17 identical items, use -vv to show\nE     Differing items:\nE     {'theme': 'dark'} != {'theme': 'light'}\nE     Left contains 1 more item:\nE     {'new_setting': 'reviewed'}\nE     Use -v to get more diff\n________ test_failed_change_cannot_leak_into_an_unrelated_save[recent] _________\ntest_settings_commit.py:60: in test_failed_change_cannot_leak_into_an_unrelated_save\n    assert rejected_memory == before\nE   AssertionError: assert {'active_hotk...s': True, ...} == {'active_hotk...s': True, ...}\nE     \nE     Omitting 17 identical items, use -vv to show\nE     Differing items:\nE     {'recent_projects': ['new-project', 'older']} != {'recent_projects': ['older', 'oldest']}\nE     Use -v to get more diff\n_______ test_failed_change_cannot_leak_into_an_unrelated_save[geometry] ________\ntest_settings_commit.py:60: in test_failed_change_cannot_leak_into_an_unrelated_save\n    assert rejected_memory == before\nE   AssertionError: assert {'active_hotk...s': True, ...} == {'active_hotk...s': True, ...}\nE     \nE     Omitting 17 identical items, use -vv to show\nE     Differing items:\nE     {'window_geometry': {'monitor-a': {'geometry_b64': 'old'}, 'monitor-b': {'geometry_b64': 'new'}}} != {'window_geometry': {'monitor-a': {'geometry_b64': 'old'}}}\nE     Use -v to get more diff\n_________ test_unserializable_change_does_not_poison_a_later_save[set] _________\ntest_settings_commit.py:98: in test_unserializable_change_does_not_poison_a_later_save\n    assert rejected_memory == before\nE   AssertionError: assert {'active_hotk...s': True, ...} == {'active_hotk...s': True, ...}\nE     \nE     Omitting 18 identical items, use -vv to show\nE     Left contains 1 more item:\nE     {'invalid': <object object at 0x711f8d183230>}\nE     Use -v to get more diff\n_______ test_unserializable_change_does_not_poison_a_later_save[update] ________\ntest_settings_commit.py:98: in test_unserializable_change_does_not_poison_a_later_save\n    assert rejected_memory == before\nE   AssertionError: assert {'active_hotk...s': True, ...} == {'active_hotk...s': True, ...}\nE     \nE     Omitting 17 identical items, use -vv to show\nE     Differing items:\nE     {'theme': 'dark'} != {'theme': 'light'}\nE     Left contains 1 more item:\nE     {'invalid': <object object at 0x711f8d183240>}\nE     Use -v to get more diff\n______ test_unserializable_change_does_not_poison_a_later_save[geometry] _______\ntest_settings_commit.py:98: in test_unserializable_change_does_not_poison_a_later_save\n    assert rejected_memory == before\nE   AssertionError: assert {'active_hotk...s': True, ...} == {'active_hotk...s': True, ...}\nE     \nE     Omitting 17 identical items, use -vv to show\nE     Differing items:\nE     {'window_geometry': {'monitor-a': {'geometry_b64': 'old'}, 'monitor-b': {'invalid': <object object at 0x711f8d1832b0>}}} != {'window_geometry': {'monitor-a': {'geometry_b64': 'old'}}}\nE     Use -v to get more diff\n______ test_failed_immediate_change_preserves_previously_staged_settings _______\ntest_settings_commit.py:122: in test_failed_immediate_change_preserves_previously_staged_settings\n    assert rejected_memory == staged\nE   AssertionError: assert {'active_hotk...s': True, ...} == {'active_hotk...s': True, ...}\nE     \nE     Omitting 17 identical items, use -vv to show\nE     Differing items:\nE     {'theme': 'light'} != {'theme': 'dark'}\nE     Left contains 1 more item:\nE     {'rejected': True}\nE     Use -v to get more diff\n____ test_explicit_save_failure_keeps_staged_values_and_schema_until_retry _____\ntest_settings_commit.py:142: in test_explicit_save_failure_keeps_staged_values_and_schema_until_retry\n    assert rejected_memory == staged\nE   AssertionError: assert {'active_hotk...s': True, ...} == {'active_hotk...s': True, ...}\nE     \nE     Omitting 17 identical items, use -vv to show\nE     Differing items:\nE     {'settings_schema_version': '1.0.0'} != {'settings_schema_version': 'future-version'}\nE     Use -v to get more diff\n_______ test_first_write_failure_preserves_defaults_until_explicit_retry _______\ntest_settings_commit.py:163: in test_first_write_failure_preserves_defaults_until_explicit_retry\n    assert rejected_memory == before\nE   AssertionError: assert {'active_hotk...s': True, ...} == {'active_hotk...s': True, ...}\nE     \nE     Omitting 16 identical items, use -vv to show\nE     Differing items:\nE     {'theme': 'dark'} != {'theme': 'system'}\nE     Use -v to get more diff\n=========================== short test summary info ============================\nFAILED test_settings_commit.py::test_failed_change_cannot_leak_into_an_unrelated_save[set]\nFAILED test_settings_commit.py::test_failed_change_cannot_leak_into_an_unrelated_save[update]\nFAILED test_settings_commit.py::test_failed_change_cannot_leak_into_an_unrelated_save[recent]\nFAILED test_settings_commit.py::test_failed_change_cannot_leak_into_an_unrelated_save[geometry]\nFAILED test_settings_commit.py::test_unserializable_change_does_not_poison_a_later_save[set]\nFAILED test_settings_commit.py::test_unserializable_change_does_not_poison_a_later_save[update]\nFAILED test_settings_commit.py::test_unserializable_change_does_not_poison_a_later_save[geometry]\nFAILED test_settings_commit.py::test_failed_immediate_change_preserves_previously_staged_settings\nFAILED test_settings_commit.py::test_explicit_save_failure_keeps_staged_values_and_schema_until_retry\nFAILED test_settings_commit.py::test_first_write_failure_preserves_defaults_until_explicit_retry\n10 failed, 6 passed in 0.15s\n",
+    "stderr": "",
+    "source_blobs": {
+      "libs/python/capture_session/capture_session/__init__.py": "894e3c152a98b6e804de90122572afbcd929b3da",
+      "libs/python/capture_session/capture_session/app_paths.py": "46332cea7c62dd44247b219937ae6c8fbc747017",
+      "libs/python/capture_session/capture_session/package_reader.py": "91fbf913c5af8489968425d7ceac51c04233d3e0",
+      "libs/python/capture_session/capture_session/registry.py": "c1d7799e1d2099424221b2f4af216a43a972c67a",
+      "libs/python/capture_session/capture_session/settings_store.py": "41b99cdaa78011d3d9b753c3131f32c72af9699f",
+      "tests/protocol/test_settings_registry.py": "3972c736dbbf03574195594a26cf94c8238bcf74"
+    },
+    "test_sha256": "fb55d4bb1c0514790680741ff0b7e9715408253cd273a6ff1324ce46a8aefe73"
+  },
+  "diagnostic_candidate": {
+    "repository": "Jacob-Met/CaptureSuite",
+    "base_commit": "3960c0c756cd4e9facbde0d76eaaa3c31ab7c167",
+    "runtime": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+    "qualification": "Python3.14 diagnostic; supported Python3.12 receiving is independent",
+    "command": [
+      "/usr/bin/python3",
+      "-m",
+      "pytest",
+      "-q",
+      "-p",
+      "no:cacheprovider",
+      "--tb=short",
+      "/home/jacob/hamon-capturesuite-7697-settings/checks"
+    ],
+    "exit": 0,
+    "elapsed_s": 0.3237791461870074,
+    "stdout": "................                                                         [100%]\n16 passed in 0.14s\n",
+    "stderr": "",
+    "candidate_blob": "acfc63cabf30bc8c6388b38dc1801941f689021d",
+    "candidate_sha256": "2aeb3521b73237dcc5ba1ce705b50850c3d4381fd944e11323cbd67e1d012a38",
+    "test_sha256": "fb55d4bb1c0514790680741ff0b7e9715408253cd273a6ff1324ce46a8aefe73"
+  },
+  "scoped_license_check": {
+    "scope": "Exact changed-package/test subset with original required licensing files and Apache license structures; not a full-repository scan",
+    "command": [
+      "/usr/bin/python3",
+      "tools/check_licenses.py",
+      "--enforce-spdx"
+    ],
+    "runtime": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+    "exit": 0,
+    "stdout": "license check OK\n",
+    "stderr": "",
+    "checker_blob": "e7ee0980488060dbae3f58034c30d4232fb9f52f",
+    "materialized": {
+      "LICENSE": "f288702d2fa16d3cdf0035b15a9fcbc552cd88e7",
+      "NOTICE": "8cf2966222285708edcab8bee8a309878d3fb5d0",
+      "CODE_OF_CONDUCT.md": "cf62128365869b1573b28b1027772e4885dec1fe",
+      "SECURITY.md": "02b8a8e00d9afef505992c56a77db988f42a7d71",
+      "CHANGELOG.md": "31cf0c64a43f8b98d8993e90a7cf339338ace0dd",
+      "CITATION.cff": "149a09fdc96cfbecbd31f6793987b878d6554f86",
+      "schemas/LICENSE": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "schemas/NOTICE": "12b0bd20065311a681549056f9b8f87712779f0d",
+      "libs/python/capture_protocol/LICENSE": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "libs/python/capture_protocol/NOTICE": "7f9ac0678aa56452f06e6e5f3badc9a873e2008a",
+      "libs/python/capture_worker/LICENSE": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "libs/python/capture_worker/NOTICE": "d74f1cbf89d4c89f70b3e75ab71cfadea8b7128f",
+      "workers/stub/LICENSE": "d645695673349e3947e8e5ae42332d0ac3164cd7",
+      "workers/stub/NOTICE": "ced21015a46d371720c6804cbc253c1477f8be0d",
+      "LICENSING.md": "44df160df06a04305cc457c4bf296552e5c38c80",
+      "CONTRIBUTING.md": "07ce652a85c16bfed220192076f22ce6d602d211",
+      "tools/check_licenses.py": "e7ee0980488060dbae3f58034c30d4232fb9f52f",
+      "tests/protocol/test_settings_commit.py": "1bbf02e7cde12ea9ce1bc4977c81770af250ee01"
+    }
+  },
+  "current_inputs_unchanged": [
+    {
+      "path": "libs/python/capture_session/capture_session/__init__.py",
+      "sha": "894e3c152a98b6e804de90122572afbcd929b3da",
+      "current": "894e3c152a98b6e804de90122572afbcd929b3da",
+      "match": true
+    },
+    {
+      "path": "libs/python/capture_session/capture_session/app_paths.py",
+      "sha": "46332cea7c62dd44247b219937ae6c8fbc747017",
+      "current": "46332cea7c62dd44247b219937ae6c8fbc747017",
+      "match": true
+    },
+    {
+      "path": "libs/python/capture_session/capture_session/package_reader.py",
+      "sha": "91fbf913c5af8489968425d7ceac51c04233d3e0",
+      "current": "91fbf913c5af8489968425d7ceac51c04233d3e0",
+      "match": true
+    },
+    {
+      "path": "libs/python/capture_session/capture_session/registry.py",
+      "sha": "c1d7799e1d2099424221b2f4af216a43a972c67a",
+      "current": "c1d7799e1d2099424221b2f4af216a43a972c67a",
+      "match": true
+    },
+    {
+      "path": "libs/python/capture_session/capture_session/settings_store.py",
+      "sha": "41b99cdaa78011d3d9b753c3131f32c72af9699f",
+      "current": "41b99cdaa78011d3d9b753c3131f32c72af9699f",
+      "match": true
+    },
+    {
+      "path": "tests/protocol/test_settings_registry.py",
+      "sha": "3972c736dbbf03574195594a26cf94c8238bcf74",
+      "current": "3972c736dbbf03574195594a26cf94c8238bcf74",
+      "match": true
+    },
+    {
+      "path": "pyproject.toml",
+      "sha": "52491c6beebc4b17983fc66bb8765154c33cf6d8",
+      "current": "52491c6beebc4b17983fc66bb8765154c33cf6d8",
+      "match": true
+    },
+    {
+      "path": "docs/design/SETTINGS_REGISTRY.md",
+      "sha": "dd3dac0d1b180993eaf3280eb181783e27f76efc",
+      "current": "dd3dac0d1b180993eaf3280eb181783e27f76efc",
+      "match": true
+    },
+    {
+      "path": "AGENTS.md",
+      "sha": "9ac6683ba4805e210143e5a33e7782da55af0d15",
+      "current": "9ac6683ba4805e210143e5a33e7782da55af0d15",
+      "match": true
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "sha": "07ce652a85c16bfed220192076f22ce6d602d211",
+      "current": "07ce652a85c16bfed220192076f22ce6d602d211",
+      "match": true
+    },
+    {
+      "path": "LICENSING.md",
+      "sha": "44df160df06a04305cc457c4bf296552e5c38c80",
+      "current": "44df160df06a04305cc457c4bf296552e5c38c80",
+      "match": true
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha": "1067e9944ce4836d8cd1673442687333ef7ad564",
+      "current": "1067e9944ce4836d8cd1673442687333ef7ad564",
+      "match": true
+    },
+    {
+      "path": ".github/workflows/release.yml",
+      "sha": "079f99fe630d135933f3c2c725f49874c2d66d1c",
+      "current": "079f99fe630d135933f3c2c725f49874c2d66d1c",
+      "match": true
+    },
+    {
+      "path": ".github/workflows/camera-native.yml",
+      "sha": "931eedfb75258d616a64c18fe26bcf02d9942d9d",
+      "current": "931eedfb75258d616a64c18fe26bcf02d9942d9d",
+      "match": true
+    }
+  ],
+  "publication_parent_delta": [
+    {
+      "path": "docs/design/research/PROGRESS.md",
+      "was": "3f8ab7ce67774810ce9f314741eecbb1a8e3eb7d",
+      "now": "baa927e5425a386a40fc77ef63b78c6ec49f5ee6"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/README.md",
+      "now": "545a690f796555ff1196f2def8ac6f7c342e73b1"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/author/author-after.txt",
+      "now": "a268d244ee9095fc43b819e23af481f27b053662"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/author/author-after.xml",
+      "now": "a8ce8268b36f32d5c872962f4c8d15f6af691ebf"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/author/author-before.txt",
+      "now": "5e8f6b8e45baa7778a9f8ae461b14a0a9668cd98"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/author/author-before.xml",
+      "now": "083d1370077cc2e909b5f773cc748e2ad75dc144"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/cli-after/ordinary.stderr.txt",
+      "now": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/cli-after/ordinary.stdout.txt",
+      "now": "d67e37fe9157e1e56d953ce7d539c830bc297235"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/cli-after/ordinary/job_manifest.json",
+      "now": "985e3180645257021adfae4c6b5d2844e6828179"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/cli-after/ordinary/retained-inputs.json",
+      "now": "f258935c8b7e0283e87eed70b376b6e85db38047"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/cli-after/result.json",
+      "now": "20c12294be3060afcd2655038ecc410a510c848c"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/cli-after/source_token.stderr.txt",
+      "now": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/cli-after/source_token.stdout.txt",
+      "now": "10af383e1f88fa068e177b492314f66e43f26db9"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/cli-after/source_token/job_manifest.json",
+      "now": "0f3d51f1d227d4d0d3418e431589bf6581815b01"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/cli-after/source_token/retained-inputs.json",
+      "now": "55042c5099078cc565471f0103b890211617f4cd"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/cli-before/ordinary.stderr.txt",
+      "now": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/cli-before/ordinary.stdout.txt",
+      "now": "5dd6bc7171fb944739233f1316d2e3a6a05085e3"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/cli-before/ordinary/job_manifest.json",
+      "now": "e8bf20796fe31939d0c1c01ba26cc9d4d4c70945"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/cli-before/ordinary/retained-inputs.json",
+      "now": "f258935c8b7e0283e87eed70b376b6e85db38047"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/cli-before/result.json",
+      "now": "746170fa8b7efa5b8fb0268a375014dc919eb52f"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/cli-before/source_token.stderr.txt",
+      "now": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/cli-before/source_token.stdout.txt",
+      "now": "2203824596a2a7ce2838dbcabcf4d98c3abb5bc5"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/cli-before/source_token/job_manifest.json",
+      "now": "1b4a40761c252c1a0e633286214d4e35c4b4f0e3"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/cli-before/source_token/retained-inputs.json",
+      "now": "55042c5099078cc565471f0103b890211617f4cd"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/environment.json",
+      "now": "20b310eb96cf115578eb55ec7ac8d94e1726479d"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/independent/author-cli-evidence-review.json",
+      "now": "31bdc66901effb02bcae5534395d9621b0b078e7"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/independent/baseline-course/receiving.json",
+      "now": "875378259d1c648eb42c1c7d710a88576742e410"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/independent/baseline-io.py",
+      "now": "b998063a5036b73a67b773f70c193b1f9827c248"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/independent/baseline-review.json",
+      "now": "47e7e1d0c9e24ac360449d5853405e2435eceed0"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/independent/candidate-course/receiving.json",
+      "now": "6faf82e75d0c5a2609d77b0a3b1af5f180785739"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/independent/candidate-io.py",
+      "now": "dfa2e34fc881a76fb461c51dbf3e94aa4c594e0c"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/independent/evidence-manifest.json",
+      "now": "0602e754476b3aa0a1df34743b92f0a0453338ea"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/independent/frozen-contract.json",
+      "now": "e1060a803de57c542078243d17faee6e3ab29fd8"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/independent/license-header.json",
+      "now": "8030d117728730fbd694783993799d1a0ff2ae0d"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/independent/receive-feature-writer.py",
+      "now": "464c65bf533aa333b3d76d23d4bc4be3a5eb7a4b"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/independent/review.json",
+      "now": "6921c22065377b77c522abba21d3aaca26670ec1"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/native-output/features/_schema.json",
+      "now": "0809ad4ce9377b8ade2a4fe27778a4a2f809fc78"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/native-output/features/imu/sim.imu.parquet/windows.csv",
+      "now": "e7e0e371f2bf2943e8b2262432cf71e430fd5f08"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/native-output/features/imu/sim.imu.parquet/windows.parquet",
+      "now": "c1c7bff232ada94381b68d33804e0e8ea9871682"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/packet-manifest.json",
+      "now": "2f1a403528aeac5c1326b90a57b631d6b560cb31"
+    },
+    {
+      "path": "docs/evidence/feature-table-csv-suffix-582de029aa19/receive_feature_cli.py",
+      "now": "a8a7a092be94b118d69f5d3bc464057a0a024b5d"
+    },
+    {
+      "path": "libs/python/capture_analysis/capture_analysis/features/io.py",
+      "was": "b998063a5036b73a67b773f70c193b1f9827c248",
+      "now": "dfa2e34fc881a76fb461c51dbf3e94aa4c594e0c"
+    },
+    {
+      "path": "tests/analysis/test_feature_table_paths.py",
+      "now": "a8654d69d0d34609343c1f034280bebe8414a97a"
+    }
+  ],
+  "caller_review": {
+    "indexed_commit": "ab17b8c50af9892483b49ce4c125ef28f38eb72c",
+    "complete_code_search_count": 5,
+    "files": [
+      {
+        "path": "libs/python/capture_session/capture_session/settings_store.py",
+        "sha": "41b99cdaa78011d3d9b753c3131f32c72af9699f"
+      },
+      {
+        "path": "desktop/capture_desktop/persistence.py",
+        "sha": "2f2da2bfda654009baa0e723465c82c1690a0676"
+      },
+      {
+        "path": "libs/python/capture_session/capture_session/__init__.py",
+        "sha": "894e3c152a98b6e804de90122572afbcd929b3da"
+      },
+      {
+        "path": "desktop/capture_desktop/app.py",
+        "sha": "363b6acbdcf0ba382bd040903946e6916ab282c9"
+      },
+      {
+        "path": "tests/protocol/test_settings_registry.py",
+        "sha": "3972c736dbbf03574195594a26cf94c8238bcf74"
+      }
+    ],
+    "result": "Normal SettingsStore instances in DesktopPersistence and app; no SettingsStore subclass or save override/mock found in the complete named-use results. All current caller files were inspected; the private delegation change has no observed repository dependency."
+  },
+  "limits": [
+    "Headless temporary-file persistence tests; no desktop application, Windows runtime, capture daemon, hardware or live settings was exercised.",
+    "Author ThinkPad runs use Python 3.14.4 and are diagnostic. Independent macOS receiving uses supported Python 3.12.8 and pytest 8.4.2.",
+    "License checker passed on the exact materialized changed-package/test subset and original required license structure; a complete repository license scan was not run.",
+    "The atomic writer is unchanged. No cross-process merge, thread-safety or power-loss guarantee is added.",
+    "Publication uses an isolated non-main branch and issue handoff. All workflows are unchanged; no PR, Actions dispatch, merge or installed delivery accompanies this receipt."
+  ],
+  "environment_failure": {
+    "path": "/tmp/hamon-team-7697-product-settings",
+    "error": "OSError 122 Disk quota exceeded",
+    "result": "Initial full shallow clone attempt did not leave a clone; inspection found only a zero-byte clone.json. No candidate source was written there. Work proceeded with an exact small source subset in the separately authorized /home/jacob/hamon-capturesuite-7697-settings namespace."
+  }
+}

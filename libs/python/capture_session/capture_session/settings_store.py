@@ -91,33 +91,34 @@ class SettingsStore:
             self.load()
         return deepcopy(self._data.get(key, default))
 
-    def set(self, key: str, value: Any, *, save: bool = True) -> None:
-        if not self._loaded:
-            self.load()
-        self._data[key] = value
+    def _commit(self, data: dict[str, Any], *, save: bool = True) -> None:
+        """Adopt prepared data only after any requested write succeeds."""
         if save:
-            self.save()
+            data["settings_schema_version"] = SETTINGS_SCHEMA_VERSION
+            _atomic_write_json(self.path, data)
+        self._data = data
+
+    def set(self, key: str, value: Any, *, save: bool = True) -> None:
+        self.update({key: value}, save=save)
 
     def update(self, values: dict[str, Any], *, save: bool = True) -> None:
         if not self._loaded:
             self.load()
-        self._data.update(values)
-        if save:
-            self.save()
+        data = dict(self._data)
+        data.update(values)
+        self._commit(data, save=save)
 
     def save(self) -> None:
         if not self._loaded:
             self.load()
-        self._data["settings_schema_version"] = SETTINGS_SCHEMA_VERSION
-        _atomic_write_json(self.path, self._data)
+        self._commit(dict(self._data))
 
     def push_recent_project(self, path: str, *, max_items: int = 10) -> None:
         if not self._loaded:
             self.load()
         recent = [p for p in self._data.get("recent_projects", []) if p != path]
         recent.insert(0, path)
-        self._data["recent_projects"] = recent[:max_items]
-        self.save()
+        self.set("recent_projects", recent[:max_items])
 
     def geometry_for(self, fingerprint: str) -> dict[str, Any] | None:
         geo = self.get("window_geometry")
@@ -136,6 +137,4 @@ class SettingsStore:
             geo = {}
         geo = dict(geo)
         geo[fingerprint] = entry
-        self._data["window_geometry"] = geo
-        if save:
-            self.save()
+        self.set("window_geometry", geo, save=save)

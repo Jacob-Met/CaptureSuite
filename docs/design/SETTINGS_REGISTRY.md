@@ -16,6 +16,21 @@ This keeps the dependency arrow pointing one way. If the daemon read UI settings
 
 Versioned by `settings_schema_version` (semver, starts `1.0.0`) and written with the same atomic temp-file-and-rename rule as session metadata. Unknown keys are preserved and written back unchanged, so an older build cannot strip a newer build's settings.
 
+
+Immediate settings changes (`set`, `update`, `push_recent_project`, and
+`set_geometry_for`) become the in-memory state only after the atomic write
+succeeds. Serialization or publication errors propagate to the caller while the
+pre-call settings remain available; a later unrelated save cannot carry the
+rejected change into the file. The caller can retry the rejected operation
+explicitly.
+
+Using `save=False` intentionally stages changes in memory. A failed immediate
+operation preserves earlier staged changes, and a failed explicit `save()`
+keeps those staged values and their schema field for retry. The existing schema
+normalization occurs on a successful save. This rule does not add cross-process
+merging or change the atomic file writer.
+
+
 | Key | Type | Default | Notes |
 |---|---|---|---|
 | `settings_schema_version` | string | `1.0.0` | |
