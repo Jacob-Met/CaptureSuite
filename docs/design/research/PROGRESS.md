@@ -1294,3 +1294,50 @@ dispatch or rerun accompanies this increment.
 - The only runtime edit is per-line safe output in tools/run_analysis.py: retain representable characters and escape others using the stream's existing encoding, preserving its settings and underlying I/O failures. Stored paths, job execution/status, strict-warning exits, recovery notes and argument parsing stay intact. Issue115's separate operator reference and other job/registry owners remain untouched.
 - Focused original-source control: 11 fail and 11 pass; the successor passes all 22 cases, including two real Unicode-path subprocess jobs, plus scoped Ruff. Initial local FD-capture attempts exited 120 with incomplete logs and no qualified result; the explicit no-capture runs above are the retained qualification. Independent review and exact native receiving are tracked at https://github.com/Jacob-Met/CaptureSuite/issues/131.
 - See docs/ANALYSIS_CLI_TEXT_OUTPUT.md. Publication uses an inert feature branch; no PR, main/tag update, merge, workflow edit, dispatch or Actions run is part of this lane.
+
+
+<!-- Preserved EMG parent history from 95ae1955; its prior CI wording is historical. -->
+
+## 2026-10-12 — Preserve recorded gaps in EMG transition features
+
+Contributor `chatgpt:7cb7e049e2c0/root`, issue #119, corrected artificial EMG
+transitions caused by compacting valid samples before taking differences.
+Waveform length and zero crossings now require originally adjacent valid
+samples with no recorded gap between their timestamps; slope-sign changes
+require two uninterrupted adjacent pairs. Explicit gaps also break adjacency
+when no retained sample falls inside them. RMS, mean absolute value, window
+placement, timestamps, valid-sample fractions and schema metadata retain their
+definitions. Raw sources are preserved.
+
+The final 14 regression methods produce 10 failure records on the original
+`3960c0c756cd4e9facbde0d76eaaa3c31ab7c167` source (including two integer-time
+subcases). The candidate passes those methods and 39 inherited feature, stream
+scope and numeric pipeline tests: 53 passes and six passing subtests on local
+Python 3.12.14. A real protobuf-MCAP fixture with a recorded disconnect reaches
+the public job API and both Parquet/CSV outputs with corrected transition
+values, unchanged amplitude values and identical raw-source hashes. Touched
+Python passes Ruff. The two emitted warnings are existing protobuf metaclass
+deprecations concerning Python 3.14.
+
+A deterministic no-gap control (eight channels, 120,000 samples at 2 kHz,
+1,199 windows) retains exactly equal table values and metadata. Ten alternating
+local timings measured median wall time of 0.243 s before and 0.272 s after
+(CPU: 0.243/0.272 s). The roughly 29 ms cost for this 60 s synthetic recording
+is a documented correctness tradeoff, not a claim of unchanged throughput or
+a hardware performance qualification. The continuous-input fast path and
+per-window reuse of triple masks limit avoidable overhead.
+
+The change stays within the EMG extractor, its new regression file, this
+additive progress entry and [consumer semantics](../../EMG_GAP_FEATURES.md).
+Independent scientific review, supported Windows CI and an authorized native
+receiving result are tracked separately on issue #119; local passing tests
+do not imply installed-desktop or physical-acquisition validation.
+
+
+## 2026-10-13 — Receive the accepted analysis increments together (team 7cb7e049e2c0)
+
+- Combined the exact reviewed EMG source/test/guide from `95ae1955dcff15c7cc4df77ebe66817dbc9b8094` with the received video/plot/CLI first parent `ee0c9a2c0149c28de5089568680163f540610591`. Preserve both parents, the full first-parent progress prefix and the exact historical EMG entry above.
+- Original EMG bytes in the first parent match the EMG contribution's original base, so the accepted extractor is introduced without a runtime conflict or algorithm edit. Separately proposed vectorization is excluded.
+- Added one receiving guide under docs/receiving/offline-analysis-composition-7cb7e049e2c0/. Independent whole-tree preservation review and an exact native 134-case focused composition gate are the remaining receiving steps; no combined pass is claimed in this publication note.
+- Prior CLI packet is delivered at https://drive.google.com/file/d/1Gh9-DYep0lLF4ka8g19gR2PaHMrJgGg6/view, with exact authenticated readback, native22 cases, actual exit1-to-0 correction and five byte-identical native outputs. Prior plot, video and EMG artifacts remain unchanged. Track this composition in the shared-team issue119 comments.
+- Publication is an inert source branch with direct owned offline receiving; no PR/main/tag/workflow mutation or GitHub Actions operation.
