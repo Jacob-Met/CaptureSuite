@@ -1,0 +1,32 @@
+{
+  "project": "Metric Human Lab",
+  "version": "0.3.1",
+  "date": "2026-10-16",
+  "github_repository": "Jacob-Met/CaptureSuite",
+  "source_subdirectory": "research/metric-human-lab",
+  "github_branch": "research/metric-human-lab-development",
+  "verified_source_commit": "208f44cbd9504ce74b5531660c0e40237dd0b994",
+  "development_scope": "two-view perspective camera recovery from matched RGB features, independent of body priors and cosplay",
+  "new_features": [
+    "explicit foreground-mask SIFT matching and source SHA-256 provenance",
+    "two-view essential matrix RANSAC with epipolar nonlinear refinement",
+    "positive-depth triangulation and cross-view reprojection validation",
+    "degenerate planar or pure-rotation rejection",
+    "strict arbitrary-unit baseline and nonmetric coordinate evidence",
+    "match-features and calibrate-two-view CLI operations"
+  ],
+  "test_result": {"passed": 90, "failed": 0, "command": "PYTHONPATH=src python -m pytest -q", "runner": "Python 3.13.5, local CPU"},
+  "known_camera_synthetic_experiment": "docs/two_view_synthetic_benchmark.json",
+  "known_camera_results_are_not_real_person_accuracy": true,
+  "wheel_sha256": "e82b3f4fd7ec58a066bd39985eb427575ae634692f1bf9bdc2c17b4c04225cfa",
+  "unchanged_project_limitations": [
+    "No validation of metric human-body measurements from ordinary images",
+    "No learned anthropometric scale without manual dimensions",
+    "Camera intrinsics and matching features must still be supplied or estimated outside this module",
+    "Two-view relative reconstruction has an unobservable absolute similarity scale",
+    "Foreground SIFT matching may fail on smooth or deforming human surfaces",
+    "Automatic body-model fitting is not integrated with the new relative cameras"
+  ],
+  "next_scientific_objective": "Unseen paired real RGB/body-scan validation, including camera/scale estimation and uncertainty calibration",
+  "original_v0_3_release_manifest_is_historical": true
+}
