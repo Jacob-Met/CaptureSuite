@@ -131,3 +131,18 @@ def test_cli_two_view_output_keeps_scale_unknown(tmp_path,monkeypatch,capsys):
     assert record['camera_baseline_arbitrary_units']==1.0
     assert len(record['points_baseline_units'])>75
     assert 'metric_scale_verified' in capsys.readouterr().out
+
+
+def test_pure_camera_rotation_has_no_stereo_depth():
+    rng=np.random.default_rng(123)
+    xyz=rng.uniform(-.7,.7,(90,3))
+    xyz[:,2]=rng.uniform(.3,1.6,len(xyz))
+    eye=[.2,-3.1,1.0]
+    first=Camera.look_at(eye,[0,0,.95],width=960,height=720,focal=920,model='perspective')
+    second=Camera.look_at(eye,[.45,0,.95],width=960,height=720,focal=920,model='perspective')
+    u,_=first.project(xyz)
+    v,_=second.project(xyz)
+    a={f'p{i:03}':x.tolist() for i,x in enumerate(u)}
+    b={f'p{i:03}':x.tolist() for i,x in enumerate(v)}
+    with pytest.raises(ValueError, match='parallax|degener|Planar|triangul|Insufficient|Ambiguous'):
+        solve(a,b)
