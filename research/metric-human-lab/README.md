@@ -347,3 +347,45 @@ Those are the central research goals; passing the provided synthetic benchmark m
 This repo's original source is MIT. No real-person photographs, commercial datasets, restricted model checkpoints, or imported scan geometry are included in this release. By default processing is local and no images are uploaded. If you integrate an external model, check its weight license separately from source-code licensing. Do not commit private subject images or licensed 3D datasets to the repository.
 
 See [docs/DEPENDENCY_RIGHTS.md](docs/DEPENDENCY_RIGHTS.md) for evaluated options and third-party terms.
+
+## Research update: calibrated two-view geometry without entered camera angles
+
+The experimental two-view module adds a **relative-pose estimator**, not a
+person-specific metric reconstruction model. It estimates camera orientation,
+translation **direction**, and sparse 3D feature coordinates from at least 12
+independently matched static features and **known camera intrinsics**.
+Camera 1 is fixed at the origin and the inferred separation is 1 *arbitrary*
+unit, never 1 meter. This global scale ambiguity remains, even with excellent
+reprojection agreement.
+
+For image-derived features, foreground masks are **required**. Otherwise a
+stationary camera watching a turning person could inadvertently match the
+background and recover the wrong camera/subject motion. Smooth skin, deforming
+clothes, and changing body poses may not provide valid static correspondences.
+The adapter rejects insufficient matches rather than silently substituting a
+pose guess.
+
+```bash
+python -m metric_human match-features \
+  --image-first front.png --image-second diagonal.png \
+  --mask-first front-mask.png --mask-second diagonal-mask.png \
+  --out outputs/sift-pairs.json
+
+python -m metric_human calibrate-two-view \
+  --correspondences-json outputs/sift-pairs.json \
+  --width 960 --height 720 --fx 920 --fy 920 \
+  --out outputs/relative-cameras.json
+```
+
+These commands also accept externally measured matching points supplied as
+`{"pixels_first":{"feature1":[u,v],...},"pixels_second":{...}}`.
+The pose solver performs essential-matrix RANSAC, robust epipolar refinement,
+cheirality/triangulation checks, reprojection checks, parallax gating, and a
+near-planar homography ambiguity check. It deliberately refuses low-parallax,
+planar, repeated, outlier-dominated, or degenerate matches.
+
+**Not yet integrated into automatic photo reconstruction:** The recovered
+cameras/landmarks use an arbitrary similarity frame; `prepare-photos` still
+uses its separately documented assumptions. Any metric body-fit pipeline must
+first resolve units, static correspondence, and consistent body coordinates.
+There are no real-person accuracy claims associated with this addition.

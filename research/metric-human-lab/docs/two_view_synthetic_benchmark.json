@@ -1,0 +1,82 @@
+{
+  "experiment": "known-camera synthetic two-view recovery; NOT real-person accuracy",
+  "image_width": 960,
+  "image_height": 720,
+  "focal_px": 920,
+  "baseline_m_in_truth_only": 0.65,
+  "recovered_baseline_unit": "arbitrary_one",
+  "Gaussian_pixel_noise_std_px": 0.15,
+  "random_bad_matches": 14,
+  "subject_points": 110,
+  "rows": [
+    {
+      "seed": 7,
+      "n_correspondences": 110,
+      "ransac_inliers": 96,
+      "triangulated": 96,
+      "rotation_error_deg": 0.008415543375250837,
+      "translation_direction_error_deg": 0.019217564694036113,
+      "reprojection_rmse_px": 0.10960534642917259,
+      "median_parallax_deg": 11.088935691965371
+    },
+    {
+      "seed": 11,
+      "n_correspondences": 110,
+      "ransac_inliers": 97,
+      "triangulated": 97,
+      "rotation_error_deg": 0.02869760328008238,
+      "translation_direction_error_deg": 0.020887979362354512,
+      "reprojection_rmse_px": 0.18004125405916158,
+      "median_parallax_deg": 11.208197422326059
+    },
+    {
+      "seed": 19,
+      "n_correspondences": 110,
+      "ransac_inliers": 96,
+      "triangulated": 96,
+      "rotation_error_deg": 0.0937351008807495,
+      "translation_direction_error_deg": 0.09773769221163314,
+      "reprojection_rmse_px": 0.09959367867852106,
+      "median_parallax_deg": 11.627009238279863
+    },
+    {
+      "seed": 31,
+      "n_correspondences": 110,
+      "ransac_inliers": 96,
+      "triangulated": 96,
+      "rotation_error_deg": 0.07867409669670845,
+      "translation_direction_error_deg": 0.14762803860278417,
+      "reprojection_rmse_px": 0.12173435297926986,
+      "median_parallax_deg": 11.295762924283695
+    },
+    {
+      "seed": 37,
+      "n_correspondences": 110,
+      "ransac_inliers": 97,
+      "triangulated": 97,
+      "rotation_error_deg": 0.19668808320251752,
+      "translation_direction_error_deg": 0.2000916844753204,
+      "reprojection_rmse_px": 0.1598988840174839,
+      "median_parallax_deg": 11.423740516534481
+    },
+    {
+      "seed": 47,
+      "n_correspondences": 110,
+      "ransac_inliers": 96,
+      "triangulated": 96,
+      "rotation_error_deg": 0.03634657702426906,
+      "translation_direction_error_deg": 0.012956298103511702,
+      "reprojection_rmse_px": 0.1143180144176137,
+      "median_parallax_deg": 11.483812479044792
+    }
+  ],
+  "summary": {
+    "mean_rotation_error_deg": 0.07375950074326296,
+    "max_rotation_error_deg": 0.19668808320251752,
+    "mean_translation_direction_error_deg": 0.08308654290827334,
+    "max_translation_direction_error_deg": 0.2000916844753204,
+    "mean_reprojection_rmse_px": 0.13086525509687044,
+    "max_reprojection_rmse_px": 0.18004125405916158
+  },
+  "human_body_dimensions_verified": false
+}

@@ -28,6 +28,8 @@ from .motion import Gear,sample_rig,sample_shoulder_motion,evaluate_clip,optimiz
 from .prior import Prior,fit_prior_to_evidence
 from .vision import generate_sam2_masks, generate_relative_depth
 from .calibration import solve_perspective_pnp
+from .multiview_calibration import recover_relative_cameras
+from .feature_matches import match_masked_rgb_features
 from .view_planner import orbit_candidates, plan_views, save_view_plan
 from .mesh_measurements import measure_external_mesh, save_section_report
 from .view_benchmark import run_view_planning_benchmark
@@ -335,6 +337,25 @@ def main():
     a.add_argument('--cx',type=float)
     a.add_argument('--cy',type=float)
     a.add_argument('--out',required=True)
+    a=sub.add_parser('match-features',help='Match foreground features from two static RGB observations for calibration')
+    a.add_argument('--image-first',required=True)
+    a.add_argument('--image-second',required=True)
+    a.add_argument('--mask-first',required=True)
+    a.add_argument('--mask-second',required=True)
+    a.add_argument('--out',required=True)
+    a=sub.add_parser('calibrate-two-view',help='Estimate relative camera motion from matched static 2D features; baseline in arbitrary units')
+    a.add_argument('--correspondences-json',required=True,help='JSON: pixels_first and pixels_second maps with shared feature labels')
+    a.add_argument('--width',required=True,type=int)
+    a.add_argument('--height',required=True,type=int)
+    a.add_argument('--fx',required=True,type=float)
+    a.add_argument('--fy',required=True,type=float)
+    a.add_argument('--fx2',type=float,help='Second camera focal length, default same as first')
+    a.add_argument('--fy2',type=float)
+    a.add_argument('--cx',type=float)
+    a.add_argument('--cy',type=float)
+    a.add_argument('--cx2',type=float)
+    a.add_argument('--cy2',type=float)
+    a.add_argument('--out',required=True)
     a=sub.add_parser('make-viewer',help='Write self-contained interactive viewer for procedural benchmark outputs')
     a.add_argument('--benchmark-dir',required=True)
     args=p.parse_args()
@@ -360,6 +381,29 @@ def main():
         print(json.dumps({'inliers':solved.n_ransac_inliers,
                           'reprojection_rmse_px':solved.reprojection_rmse_px,
                           'metric_body_geometry_independently_verified':False},indent=2))
+    elif args.task=='match-features':
+        match=match_masked_rgb_features(args.image_first,args.image_second,
+                                        args.mask_first,args.mask_second)
+        dest=Path(args.out);dest.parent.mkdir(parents=True,exist_ok=True)
+        dest.write_text(json.dumps(match.to_dict(),indent=2),encoding='utf8')
+        print(json.dumps({'matched_features':len(match.pixels_first),
+                          'static_correspondence_verified':False,
+                          'metric_scale_verified':False},indent=2))
+    elif args.task=='calibrate-two-view':
+        observations=json.loads(Path(args.correspondences_json).read_text())
+        result=recover_relative_cameras(
+            observations['pixels_first'],observations['pixels_second'],
+            image_width=args.width,image_height=args.height,
+            first_fx_px=args.fx,first_fy_px=args.fy,
+            second_fx_px=args.fx2,second_fy_px=args.fy2,
+            first_cx_px=args.cx,first_cy_px=args.cy,
+            second_cx_px=args.cx2,second_cy_px=args.cy2)
+        dest=Path(args.out);dest.parent.mkdir(parents=True,exist_ok=True)
+        dest.write_text(json.dumps(result.to_dict(),indent=2),encoding='utf8')
+        print(json.dumps({'inliers':len(result.inlier_labels),
+            'rmse_px':result.reprojection_rmse_px,
+            'parallax_deg':result.median_parallax_deg,
+            'metric_scale_verified':False},indent=2))
     elif args.task=='infer-depth':
         result=generate_relative_depth(args.images,args.out,
                           model_id=args.model_id,revision=args.revision,device=args.device)
