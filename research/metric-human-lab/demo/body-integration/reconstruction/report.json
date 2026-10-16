@@ -1,0 +1,102 @@
+{
+  "geometry": {
+    "status": "geometric_volume_only",
+    "metric_scale_verified": true,
+    "metric_scale_anchored": true,
+    "human_measurement_accuracy_validated": false,
+    "scale_source": "synthetic_world_coordinates",
+    "bounds_units": "meters_in_given_coordinate_frame",
+    "occupied_volume_m3_if_scaled": 0.12389333333333334,
+    "axis_extents_m_if_scaled": {
+      "x_width": 1.076923,
+      "y_depth": 0.341714,
+      "z_height": 1.750667
+    },
+    "voxel_resolution_m": [
+      0.0269231,
+      0.0262857,
+      0.0269333
+    ],
+    "limitations": [
+      "Voxel surface discretization affects measurements.",
+      "Silhouette-only hull can overestimate unobserved concavities.",
+      "Body-part identity and material/fitting ease are not inferred.",
+      "Dimensions are not verified human dimensions without real ground truth."
+    ],
+    "horizontal_sections": []
+  },
+  "provenance": {
+    "method": "weighted_multiview_silhouette_carving",
+    "views": 8,
+    "min_view_support_fraction": 1.0,
+    "scale_source": "synthetic_world_coordinates",
+    "grid_spacing_m": [
+      0.02692307692307692,
+      0.026285714285714287,
+      0.026933333333333333
+    ],
+    "occupied_voxels": 6500,
+    "notes": [
+      "This is a visual hull, not an anatomically complete body estimate.",
+      "View agreement is not a calibrated probability of geometric correctness.",
+      "Depth constraints require metric camera-Z depth; relative AI depth is not silently interpreted as meters."
+    ]
+  },
+  "input_assumptions": {
+    "calibration_status": null,
+    "height_prior_m": null,
+    "method": null,
+    "notes": null
+  },
+  "reprojection_diagnostics": [
+    {
+      "view": "view_00",
+      "silhouette_iou": 1.0,
+      "false_positive_pixel_fraction": 0.0,
+      "false_negative_pixel_fraction": 0.0
+    },
+    {
+      "view": "view_01",
+      "silhouette_iou": 0.9986232918621253,
+      "false_positive_pixel_fraction": 0.0002644856770833333,
+      "false_negative_pixel_fraction": 1.0172526041666666e-05
+    },
+    {
+      "view": "view_02",
+      "silhouette_iou": 1.0,
+      "false_positive_pixel_fraction": 0.0,
+      "false_negative_pixel_fraction": 0.0
+    },
+    {
+      "view": "view_03",
+      "silhouette_iou": 0.9984702462903473,
+      "false_positive_pixel_fraction": 0.0002644856770833333,
+      "false_negative_pixel_fraction": 4.0690104166666664e-05
+    },
+    {
+      "view": "view_04",
+      "silhouette_iou": 1.0,
+      "false_positive_pixel_fraction": 0.0,
+      "false_negative_pixel_fraction": 0.0
+    },
+    {
+      "view": "view_05",
+      "silhouette_iou": 0.9986232918621253,
+      "false_positive_pixel_fraction": 0.0002644856770833333,
+      "false_negative_pixel_fraction": 1.0172526041666666e-05
+    },
+    {
+      "view": "view_06",
+      "silhouette_iou": 1.0,
+      "false_positive_pixel_fraction": 0.0,
+      "false_negative_pixel_fraction": 0.0
+    },
+    {
+      "view": "view_07",
+      "silhouette_iou": 0.9984702462903473,
+      "false_positive_pixel_fraction": 0.0002644856770833333,
+      "false_negative_pixel_fraction": 4.0690104166666664e-05
+    }
+  ],
+  "triangulated_landmarks": {}
+}

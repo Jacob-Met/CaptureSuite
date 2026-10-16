@@ -1,0 +1,22 @@
+__pycache__/
+.pytest_cache/
+*.py[cod]
+*.egg-info/
+.venv/
+.uv/
+outputs/
+*.log
+.DS_Store
+.env
+.private/
+# No subject images, third-party training scans, or unlicensed model weights.
+subjects/
+data/
+weights/
+checkpoints/
+dist/
+build/
+/demo/imported-mesh-test/
+/demo/photo-mode-synthetic/
+/demo/photo-mode-synthetic-torso/
+/demo/reconstructed-full/

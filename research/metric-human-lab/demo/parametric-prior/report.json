@@ -1,0 +1,46 @@
+{
+  "status": "fit_to_observation_proxies_not_validated_person_geometry",
+  "source_prior": "procedural_synthetic_only",
+  "optimization_success": true,
+  "objective": 0.015225623939808433,
+  "iterations": 3,
+  "coefficients": {
+    "lateral_width": 0.21654500085872092,
+    "front_back_depth": -2.183614617248808e-13,
+    "total_height": 0.16251355808746942
+  },
+  "per_view_reprojection": [
+    {
+      "view": "cam_00",
+      "silhouette_iou": 0.8673321234119782
+    },
+    {
+      "view": "cam_01",
+      "silhouette_iou": 0.886704713591207
+    },
+    {
+      "view": "cam_02",
+      "silhouette_iou": 0.8673321234119782
+    },
+    {
+      "view": "cam_03",
+      "silhouette_iou": 0.886704713591207
+    }
+  ],
+  "landmark_euclidean_error_world_units": {},
+  "regularization": 0.0001,
+  "landmark_weight": 1.0,
+  "limitations": [
+    "Model expressivity restricted to supplied blend-shape basis.",
+    "Fit quality and trusted physical dimensions depend on licenses, cameras, model bias and independent validation.",
+    "High silhouette IoU is not proof of accurate hidden body geometry."
+  ],
+  "reference_shape_parameters": {
+    "height": 1.82,
+    "width_scale": 1.11,
+    "depth_scale": 0.93,
+    "arm_scale": 1.0,
+    "leg_scale": 1.0
+  },
+  "note": "True prior and target share an analytic procedural generator; NOT a human scan generalization experiment."
+}

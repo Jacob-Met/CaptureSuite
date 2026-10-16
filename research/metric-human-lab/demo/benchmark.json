@@ -1,0 +1,103 @@
+{
+  "benchmark_type": "procedural_human_figure_synthetic_only",
+  "truth_description": "Mesh/voxel shape created from analytic ellipsoids and capsules, not a real person",
+  "figure_parameters": {
+    "height": 1.75,
+    "width_scale": 1.0,
+    "depth_scale": 1.0,
+    "arm_scale": 1.0,
+    "leg_scale": 1.0
+  },
+  "grid": {
+    "lower": [
+      -0.7,
+      -0.46,
+      -0.1
+    ],
+    "upper": [
+      0.7,
+      0.46,
+      1.92
+    ],
+    "shape": [
+      52,
+      35,
+      75
+    ]
+  },
+  "image_size": [
+    256,
+    384
+  ],
+  "rows": [
+    {
+      "views": 1,
+      "synthetic_voxel_iou": 0.15734009580163427,
+      "synthetic_surface_chamfer_mm": 119.54088058203928,
+      "largest_section_perimeter_error_110cm_mm": 1553.839,
+      "largest_section_perimeter_error_132cm_mm": 1511.023,
+      "false_positive_voxels": 29906,
+      "false_negative_voxels": 0,
+      "mesh_vertices": 14138,
+      "x_width_mm": 0.0,
+      "y_depth_mm": 578.2857142857143,
+      "z_height_mm": 0.0
+    },
+    {
+      "views": 2,
+      "synthetic_voxel_iou": 0.15734009580163427,
+      "synthetic_surface_chamfer_mm": 119.54088058203928,
+      "largest_section_perimeter_error_110cm_mm": 1553.839,
+      "largest_section_perimeter_error_132cm_mm": 1511.023,
+      "false_positive_voxels": 29906,
+      "false_negative_voxels": 0,
+      "mesh_vertices": 14138,
+      "x_width_mm": 0.0,
+      "y_depth_mm": 578.2857142857143,
+      "z_height_mm": 0.0
+    },
+    {
+      "views": 4,
+      "synthetic_voxel_iou": 0.7118816930137685,
+      "synthetic_surface_chamfer_mm": 15.029397310794712,
+      "largest_section_perimeter_error_110cm_mm": 186.98099999999997,
+      "largest_section_perimeter_error_132cm_mm": 144.16600000000003,
+      "false_positive_voxels": 2260,
+      "false_negative_voxels": 0,
+      "mesh_vertices": 4822,
+      "x_width_mm": 0.0,
+      "y_depth_mm": 0.0,
+      "z_height_mm": 0.0
+    },
+    {
+      "views": 8,
+      "synthetic_voxel_iou": 0.8590769230769231,
+      "synthetic_surface_chamfer_mm": 7.812516586604347,
+      "largest_section_perimeter_error_110cm_mm": 0.0,
+      "largest_section_perimeter_error_132cm_mm": 42.81599999999997,
+      "false_positive_voxels": 916,
+      "false_negative_voxels": 0,
+      "mesh_vertices": 4586,
+      "x_width_mm": 0.0,
+      "y_depth_mm": 0.0,
+      "z_height_mm": 0.0
+    }
+  ],
+  "scale_note": "Synthetic coordinate units were defined as meters; this does not demonstrate image-only metric scale recovery.",
+  "camera_note": "Camera geometry was provided from renderer; does not demonstrate automatic real-photo camera calibration.",
+  "real_human_accuracy_claim": false,
+  "follow_up": "Test external real scans/images under compatible licenses, then evaluate geometry, circumference and scale independently.",
+  "loo_view_sensitivity": {
+    "available": true,
+    "voxel_classification_change_fraction": {
+      "view_00": 0.0,
+      "view_01": 0.0,
+      "view_02": 0.0,
+      "view_03": 0.0,
+      "view_04": 0.0,
+      "view_05": 0.0,
+      "view_06": 0.0,
+      "view_07": 0.0
+    }
+  }
+}

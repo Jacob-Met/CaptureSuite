@@ -1,0 +1,120 @@
+{
+  "benchmark": {
+    "views": 1,
+    "synthetic_voxel_iou": 0.15734009580163427,
+    "synthetic_surface_chamfer_mm": 119.54088058203928,
+    "largest_section_perimeter_error_110cm_mm": 1553.839,
+    "largest_section_perimeter_error_132cm_mm": 1511.023,
+    "false_positive_voxels": 29906,
+    "false_negative_voxels": 0,
+    "mesh_vertices": 14138,
+    "x_width_mm": 0.0,
+    "y_depth_mm": 578.2857142857143,
+    "z_height_mm": 0.0
+  },
+  "measurement": {
+    "status": "geometric_volume_only",
+    "metric_scale_verified": true,
+    "scale_source": "synthetic_world_coordinates",
+    "bounds_units": "meters_in_given_coordinate_frame",
+    "occupied_volume_m3_if_scaled": 0.6764576,
+    "axis_extents_m_if_scaled": {
+      "x_width": 1.076923,
+      "y_depth": 0.92,
+      "z_height": 1.750667
+    },
+    "voxel_resolution_m": [
+      0.0269231,
+      0.0262857,
+      0.0269333
+    ],
+    "limitations": [
+      "Voxel surface discretization affects measurements.",
+      "Silhouette-only hull can overestimate unobserved concavities.",
+      "Body-part identity and material/fitting ease are not inferred.",
+      "Dimensions are not verified human dimensions without real ground truth."
+    ],
+    "horizontal_sections": [
+      {
+        "z_m": 0.75,
+        "components": [
+          {
+            "perimeter_m": 2.110505,
+            "area_m2": 0.1443692,
+            "centroid_xy_m": [
+              0.12115,
+              0.0
+            ]
+          },
+          {
+            "perimeter_m": 2.110505,
+            "area_m2": 0.1443692,
+            "centroid_xy_m": [
+              -0.12115,
+              0.0
+            ]
+          }
+        ]
+      },
+      {
+        "z_m": 1.1,
+        "components": [
+          {
+            "perimeter_m": 2.487429,
+            "area_m2": 0.3128,
+            "centroid_xy_m": [
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "perimeter_m": 2.002813,
+            "area_m2": 0.0962462,
+            "centroid_xy_m": [
+              0.44423,
+              0.0
+            ]
+          },
+          {
+            "perimeter_m": 2.002813,
+            "area_m2": 0.0962462,
+            "centroid_xy_m": [
+              -0.44423,
+              0.0
+            ]
+          }
+        ]
+      },
+      {
+        "z_m": 1.32,
+        "components": [
+          {
+            "perimeter_m": 3.348967,
+            "area_m2": 0.6977846,
+            "centroid_xy_m": [
+              0.0,
+              0.0
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "reconstruction": {
+    "method": "weighted_multiview_silhouette_carving",
+    "views": 1,
+    "min_view_support_fraction": 1.0,
+    "scale_source": "synthetic_world_coordinates",
+    "grid_spacing_m": [
+      0.02692307692307692,
+      0.026285714285714287,
+      0.026933333333333333
+    ],
+    "occupied_voxels": 35490,
+    "notes": [
+      "This is a visual hull, not an anatomically complete body estimate.",
+      "View agreement is not a calibrated probability of geometric correctness.",
+      "Depth constraints require metric camera-Z depth; relative AI depth is not silently interpreted as meters."
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "experiment": "synthetic_ambiguous_frontal_silhouette_vs_known_metric_depth",
+  "true_shape_parameter": 0.7,
+  "silhouette_only_parameter_estimate": 0.0,
+  "depth_informed_parameter_estimate": 0.6999294757843139,
+  "depth_informed_parameter_absolute_error": 7.052421568609635e-05,
+  "silhouette_only_projection_equal_to_ground_truth": true,
+  "does_not_demonstrate_neural_relative_depth_accuracy": true,
+  "does_not_demonstrate_unmeasured_real_human_body_accuracy": true,
+  "camera_is_known": true,
+  "physical_scale_is_known": true,
+  "observed_depth_is_oracle_mesh_render": true,
+  "summary": "Frontal silhouettes cannot identify front/back thickness; exact independently supplied depth breaks this ambiguity under known camera and scale."
+}

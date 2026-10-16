@@ -1,0 +1,98 @@
+{
+  "filename": "Metric-Human-Lab-Complete-2026-10-16.zip",
+  "bytes": 11138870,
+  "sha256": "1fb42aa34e15bb1c33e0598e4317ca0ea7d3df90bd6680fd8ca690a1cd521e8a",
+  "parts": [
+    {
+      "name": "Metric-Human-Lab-Complete-2026-10-16.zip.part000",
+      "bytes": 786432,
+      "sha256": "e0c6dd085870a21e27be245173e50dfe158f0999e61a6d44d989832777de8f38",
+      "git_blob_sha": "62e21404060bef988080efc696fa6a85fa98d13e"
+    },
+    {
+      "name": "Metric-Human-Lab-Complete-2026-10-16.zip.part001",
+      "bytes": 786432,
+      "sha256": "677a0586f4f2eaa0f603c6f5bf5f63647e86b0a5018321cad2f929b9588967c9",
+      "git_blob_sha": "6eda02885a9ffc0ca5fd18a3dd1bbfd4456ca0eb"
+    },
+    {
+      "name": "Metric-Human-Lab-Complete-2026-10-16.zip.part002",
+      "bytes": 786432,
+      "sha256": "a2a7e3d69c9ca0ec33ffcd784467a8f3a7758d1f45275ffe62af55fcf3150561",
+      "git_blob_sha": "f3228c99b2b5f76bd57803f7917b93be7ab8f368"
+    },
+    {
+      "name": "Metric-Human-Lab-Complete-2026-10-16.zip.part003",
+      "bytes": 786432,
+      "sha256": "1a894b5970ac0e4c28bd4137536416d15efb0f95ac4989566b36d4bcbc128051",
+      "git_blob_sha": "228284019b4ec2975279239b1cd9139028b846f4"
+    },
+    {
+      "name": "Metric-Human-Lab-Complete-2026-10-16.zip.part004",
+      "bytes": 786432,
+      "sha256": "bbc7507f047ac4831884870879367c5fdde8b001012d6574884d2188140a5291",
+      "git_blob_sha": "563e4fb6e287e6167acf24267e44181e2403784e"
+    },
+    {
+      "name": "Metric-Human-Lab-Complete-2026-10-16.zip.part005",
+      "bytes": 786432,
+      "sha256": "d91f877e4b4bd18c83af682200270a65c3fffe3d9ed2f082540c25d9fe1079dc",
+      "git_blob_sha": "b18a093cf2807d6ae382bfa344c016dcad8f3cb3"
+    },
+    {
+      "name": "Metric-Human-Lab-Complete-2026-10-16.zip.part006",
+      "bytes": 786432,
+      "sha256": "12d3c60bbdf3c1c170462db7d7d1df650d8ad87e4b5745efae22fb9d899626ab",
+      "git_blob_sha": "629f72c9c44edae098651401777d1d9c409ee6c2"
+    },
+    {
+      "name": "Metric-Human-Lab-Complete-2026-10-16.zip.part007",
+      "bytes": 786432,
+      "sha256": "db17cae02dcb146dcfc0bd62793b819e3d3d9c227ea4546bb1faf42d1199ec3b",
+      "git_blob_sha": "f6ab8ca2b74b150021a0a7fba718a1a22a546151"
+    },
+    {
+      "name": "Metric-Human-Lab-Complete-2026-10-16.zip.part008",
+      "bytes": 786432,
+      "sha256": "b711b0f37bddc025feaf5c09e6db6589673fee5ac6292ca0a8d02e38b4e657b7",
+      "git_blob_sha": "b10f6ce359392f06d00a41af77b7626eb8fccfd4"
+    },
+    {
+      "name": "Metric-Human-Lab-Complete-2026-10-16.zip.part009",
+      "bytes": 786432,
+      "sha256": "f0fc8dc885d1ae2fe16e379a2087dbfff184de8a404d1c6c78a0cede93ba6517",
+      "git_blob_sha": "d12553079cde9e9fb988b606514dc27e60df94a5"
+    },
+    {
+      "name": "Metric-Human-Lab-Complete-2026-10-16.zip.part010",
+      "bytes": 786432,
+      "sha256": "75f87d800cf50bff594df232638d8c9a566f63a5a8b375358c8d9a85bff514f1",
+      "git_blob_sha": "306a3358f70b1abccc9884aef938f5e2225bc235"
+    },
+    {
+      "name": "Metric-Human-Lab-Complete-2026-10-16.zip.part011",
+      "bytes": 786432,
+      "sha256": "f18e57dc39f49426d4ba37ca3956cf56fee2cac9af0fc7956252b9db119df6b4",
+      "git_blob_sha": "066cc0db357e32b194a630d1efad9aa5e7a378b2"
+    },
+    {
+      "name": "Metric-Human-Lab-Complete-2026-10-16.zip.part012",
+      "bytes": 786432,
+      "sha256": "a8fb6a927ce7125915f2918c4795d2bcd28962eeb11889e346d920244deca1d9",
+      "git_blob_sha": "0ef5fc86e08281fdcd7bebc62c4c80ef7daf25da"
+    },
+    {
+      "name": "Metric-Human-Lab-Complete-2026-10-16.zip.part013",
+      "bytes": 786432,
+      "sha256": "c9ac04ea0f21fdda6c4a411188b099de8ac969d6310aaa674ea20846f4dd1e90",
+      "git_blob_sha": "fea0441320f47f417103288174bd57d545f84f8d"
+    },
+    {
+      "name": "Metric-Human-Lab-Complete-2026-10-16.zip.part014",
+      "bytes": 128822,
+      "sha256": "bb79bb9213c8308072a6a1b1df87260b258ed773492c64032ea43fb25de61d1c",
+      "git_blob_sha": "1500f64f40a720e2324ff2b06f4fd9e4e988279d"
+    }
+  ],
+  "instructions": "Run python reassemble.py in this folder to reconstruct the original ZIP."
+}

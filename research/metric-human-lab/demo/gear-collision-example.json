@@ -1,0 +1,379 @@
+{
+  "clip": "both_arms_raised_sample_proxy",
+  "status": "sampled_capsule_proxy_not_fabrication_safe",
+  "summary": {
+    "imported_gear": {
+      "worst_sampled_penetration_mm": 73.58914364634622,
+      "frames_with_sampled_penetration": 25,
+      "frames_evaluated": 25
+    }
+  },
+  "timeline": [
+    {
+      "frame_s": 0.0,
+      "gear": "imported_gear",
+      "smallest_clearance_m": -0.07358914364634622,
+      "interference_segments": [
+        "right_shoulder",
+        "right_elbow"
+      ],
+      "near_clearance_segments": [],
+      "maximum_sampled_penetration_mm": 73.58914364634622
+    },
+    {
+      "frame_s": 0.041666666666666664,
+      "gear": "imported_gear",
+      "smallest_clearance_m": -0.07358914364634622,
+      "interference_segments": [
+        "right_shoulder",
+        "right_elbow"
+      ],
+      "near_clearance_segments": [],
+      "maximum_sampled_penetration_mm": 73.58914364634622
+    },
+    {
+      "frame_s": 0.08333333333333333,
+      "gear": "imported_gear",
+      "smallest_clearance_m": -0.07358914364634622,
+      "interference_segments": [
+        "right_shoulder",
+        "right_elbow"
+      ],
+      "near_clearance_segments": [],
+      "maximum_sampled_penetration_mm": 73.58914364634622
+    },
+    {
+      "frame_s": 0.125,
+      "gear": "imported_gear",
+      "smallest_clearance_m": -0.07358914364634622,
+      "interference_segments": [
+        "right_shoulder",
+        "right_elbow"
+      ],
+      "near_clearance_segments": [],
+      "maximum_sampled_penetration_mm": 73.58914364634622
+    },
+    {
+      "frame_s": 0.16666666666666666,
+      "gear": "imported_gear",
+      "smallest_clearance_m": -0.07358914364634622,
+      "interference_segments": [
+        "right_shoulder",
+        "right_elbow"
+      ],
+      "near_clearance_segments": [],
+      "maximum_sampled_penetration_mm": 73.58914364634622
+    },
+    {
+      "frame_s": 0.20833333333333331,
+      "gear": "imported_gear",
+      "smallest_clearance_m": -0.07358914364634622,
+      "interference_segments": [
+        "right_shoulder",
+        "right_elbow"
+      ],
+      "near_clearance_segments": [],
+      "maximum_sampled_penetration_mm": 73.58914364634622
+    },
+    {
+      "frame_s": 0.25,
+      "gear": "imported_gear",
+      "smallest_clearance_m": -0.07358914364634622,
+      "interference_segments": [
+        "right_shoulder",
+        "right_elbow"
+      ],
+      "near_clearance_segments": [],
+      "maximum_sampled_penetration_mm": 73.58914364634622
+    },
+    {
+      "frame_s": 0.29166666666666663,
+      "gear": "imported_gear",
+      "smallest_clearance_m": -0.07358914364634622,
+      "interference_segments": [
+        "right_shoulder",
+        "right_elbow"
+      ],
+      "near_clearance_segments": [],
+      "maximum_sampled_penetration_mm": 73.58914364634622
+    },
+    {
+      "frame_s": 0.3333333333333333,
+      "gear": "imported_gear",
+      "smallest_clearance_m": -0.07358914364634622,
+      "interference_segments": [
+        "right_shoulder",
+        "right_elbow"
+      ],
+      "near_clearance_segments": [],
+      "maximum_sampled_penetration_mm": 73.58914364634622
+    },
+    {
+      "frame_s": 0.375,
+      "gear": "imported_gear",
+      "smallest_clearance_m": -0.07358914364634622,
+      "interference_segments": [
+        "right_shoulder",
+        "right_elbow"
+      ],
+      "near_clearance_segments": [],
+      "maximum_sampled_penetration_mm": 73.58914364634622
+    },
+    {
+      "frame_s": 0.41666666666666663,
+      "gear": "imported_gear",
+      "smallest_clearance_m": -0.07358914364634622,
+      "interference_segments": [
+        "right_shoulder",
+        "right_elbow"
+      ],
+      "near_clearance_segments": [],
+      "maximum_sampled_penetration_mm": 73.58914364634622
+    },
+    {
+      "frame_s": 0.4583333333333333,
+      "gear": "imported_gear",
+      "smallest_clearance_m": -0.07358914364634622,
+      "interference_segments": [
+        "right_shoulder",
+        "right_elbow"
+      ],
+      "near_clearance_segments": [],
+      "maximum_sampled_penetration_mm": 73.58914364634622
+    },
+    {
+      "frame_s": 0.5,
+      "gear": "imported_gear",
+      "smallest_clearance_m": -0.07358914364634622,
+      "interference_segments": [
+        "right_shoulder",
+        "right_elbow"
+      ],
+      "near_clearance_segments": [],
+      "maximum_sampled_penetration_mm": 73.58914364634622
+    },
+    {
+      "frame_s": 0.5416666666666666,
+      "gear": "imported_gear",
+      "smallest_clearance_m": -0.07358914364634622,
+      "interference_segments": [
+        "right_shoulder",
+        "right_elbow"
+      ],
+      "near_clearance_segments": [],
+      "maximum_sampled_penetration_mm": 73.58914364634622
+    },
+    {
+      "frame_s": 0.5833333333333333,
+      "gear": "imported_gear",
+      "smallest_clearance_m": -0.07358914364634622,
+      "interference_segments": [
+        "right_shoulder",
+        "right_elbow"
+      ],
+      "near_clearance_segments": [],
+      "maximum_sampled_penetration_mm": 73.58914364634622
+    },
+    {
+      "frame_s": 0.625,
+      "gear": "imported_gear",
+      "smallest_clearance_m": -0.07358914364634622,
+      "interference_segments": [
+        "right_shoulder",
+        "right_elbow"
+      ],
+      "near_clearance_segments": [],
+      "maximum_sampled_penetration_mm": 73.58914364634622
+    },
+    {
+      "frame_s": 0.6666666666666666,
+      "gear": "imported_gear",
+      "smallest_clearance_m": -0.07358914364634622,
+      "interference_segments": [
+        "right_shoulder",
+        "right_elbow"
+      ],
+      "near_clearance_segments": [],
+      "maximum_sampled_penetration_mm": 73.58914364634622
+    },
+    {
+      "frame_s": 0.7083333333333333,
+      "gear": "imported_gear",
+      "smallest_clearance_m": -0.07358914364634622,
+      "interference_segments": [
+        "right_shoulder",
+        "right_elbow"
+      ],
+      "near_clearance_segments": [],
+      "maximum_sampled_penetration_mm": 73.58914364634622
+    },
+    {
+      "frame_s": 0.75,
+      "gear": "imported_gear",
+      "smallest_clearance_m": -0.07358914364634622,
+      "interference_segments": [
+        "right_shoulder",
+        "right_elbow"
+      ],
+      "near_clearance_segments": [],
+      "maximum_sampled_penetration_mm": 73.58914364634622
+    },
+    {
+      "frame_s": 0.7916666666666666,
+      "gear": "imported_gear",
+      "smallest_clearance_m": -0.07358914364634622,
+      "interference_segments": [
+        "right_shoulder",
+        "right_elbow"
+      ],
+      "near_clearance_segments": [],
+      "maximum_sampled_penetration_mm": 73.58914364634622
+    },
+    {
+      "frame_s": 0.8333333333333333,
+      "gear": "imported_gear",
+      "smallest_clearance_m": -0.07358914364634622,
+      "interference_segments": [
+        "right_shoulder",
+        "right_elbow"
+      ],
+      "near_clearance_segments": [],
+      "maximum_sampled_penetration_mm": 73.58914364634622
+    },
+    {
+      "frame_s": 0.875,
+      "gear": "imported_gear",
+      "smallest_clearance_m": -0.07358914364634622,
+      "interference_segments": [
+        "right_shoulder",
+        "right_elbow"
+      ],
+      "near_clearance_segments": [],
+      "maximum_sampled_penetration_mm": 73.58914364634622
+    },
+    {
+      "frame_s": 0.9166666666666666,
+      "gear": "imported_gear",
+      "smallest_clearance_m": -0.07358914364634622,
+      "interference_segments": [
+        "right_shoulder",
+        "right_elbow"
+      ],
+      "near_clearance_segments": [],
+      "maximum_sampled_penetration_mm": 73.58914364634622
+    },
+    {
+      "frame_s": 0.9583333333333333,
+      "gear": "imported_gear",
+      "smallest_clearance_m": -0.07358914364634622,
+      "interference_segments": [
+        "right_shoulder",
+        "right_elbow"
+      ],
+      "near_clearance_segments": [],
+      "maximum_sampled_penetration_mm": 73.58914364634622
+    },
+    {
+      "frame_s": 1.0,
+      "gear": "imported_gear",
+      "smallest_clearance_m": -0.07358914364634622,
+      "interference_segments": [
+        "right_shoulder",
+        "right_elbow"
+      ],
+      "near_clearance_segments": [],
+      "maximum_sampled_penetration_mm": 73.58914364634622
+    }
+  ],
+  "limitations": [
+    "Body represented by joint-to-joint capsules, not personalized deformable mesh.",
+    "Collision tested at sampled gear vertices/triangle centroids, not continuous time or full triangles.",
+    "No garment forces, straps, friction, contact pressure, padding or comfort."
+  ],
+  "geometry_input": {
+    "mesh_path": "/mnt/data/metric-human-lab/examples/sample-pauldron-proxy.obj",
+    "gear_units": "m",
+    "anchor_joint": "chest",
+    "offset_m": [
+      0.25,
+      0.0,
+      0.04
+    ]
+  },
+  "one_axis_offset_experiment": {
+    "selected_additional_offset_m": 0.1,
+    "worst_sampled_penetration_mm": 46.61572449265809,
+    "sampled_safe": false,
+    "candidates": [
+      {
+        "offset_m": 0.0,
+        "worst_penetration_mm": 73.58914364634622
+      },
+      {
+        "offset_m": 0.01,
+        "worst_penetration_mm": 72.70531187208763
+      },
+      {
+        "offset_m": 0.02,
+        "worst_penetration_mm": 71.73577054532238
+      },
+      {
+        "offset_m": 0.03,
+        "worst_penetration_mm": 70.68902367144122
+      },
+      {
+        "offset_m": 0.04,
+        "worst_penetration_mm": 69.57303827195364
+      },
+      {
+        "offset_m": 0.05,
+        "worst_penetration_mm": 68.39514805181545
+      },
+      {
+        "offset_m": 0.06,
+        "worst_penetration_mm": 66.62502600916534
+      },
+      {
+        "offset_m": 0.07,
+        "worst_penetration_mm": 62.39828609107172
+      },
+      {
+        "offset_m": 0.08,
+        "worst_penetration_mm": 56.25198417197769
+      },
+      {
+        "offset_m": 0.09,
+        "worst_penetration_mm": 48.8737944994068
+      },
+      {
+        "offset_m": 0.1,
+        "worst_penetration_mm": 46.61572449265809
+      },
+      {
+        "offset_m": 0.11,
+        "worst_penetration_mm": 46.65341549600853
+      },
+      {
+        "offset_m": 0.12,
+        "worst_penetration_mm": 46.665596146607314
+      },
+      {
+        "offset_m": 0.13,
+        "worst_penetration_mm": 46.66625882309769
+      },
+      {
+        "offset_m": 0.14,
+        "worst_penetration_mm": 46.656986626097186
+      },
+      {
+        "offset_m": 0.15,
+        "worst_penetration_mm": 46.660019913972114
+      },
+      {
+        "offset_m": 0.16,
+        "worst_penetration_mm": 46.664196127605265
+      }
+    ],
+    "status": "one_axis_offset_sweep_over_approximate_body_capsules"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "analysis_type": "segmentation_pixel_boundary_sensitivity_not_probability_or_accuracy",
+  "radius_px": 4,
+  "views": 8,
+  "min_support_fraction": 1.0,
+  "occupied_voxels_by_case": {
+    "eroded": 3740,
+    "nominal": 6500,
+    "dilated": 11126
+  },
+  "voxels_of_occupancy_disagreement": 7386,
+  "volume_disagreement_m3_if_grid_is_metric": 0.1407809476923077,
+  "fractions_of_grid_with_disagreement": 0.05410989010989011,
+  "sections": [
+    {
+      "z_m": 1.1,
+      "largest_section_perimeter_m": {
+        "eroded": 0.783082,
+        "nominal": 0.93359,
+        "dilated": 1.328097
+      },
+      "envelope_spread_mm": 545.0150000000001,
+      "semantics": "observed silhouette boundary perturbation only; not human body accuracy"
+    },
+    {
+      "z_m": 1.32,
+      "largest_section_perimeter_m": {
+        "eroded": 1.64462,
+        "nominal": 1.795128,
+        "dilated": 2.007964
+      },
+      "envelope_spread_mm": 363.3439999999999,
+      "semantics": "observed silhouette boundary perturbation only; not human body accuracy"
+    }
+  ],
+  "uncertainty_calibrated_on_people": false,
+  "actual_absolute_scale_verified": false,
+  "limitations": [
+    "Morphological erosion/dilation is a diagnostic for segmentation perturbations, not a probabilistic CI.",
+    "This does not bound true human body geometry or clothing offset.",
+    "Camera errors and depth-model errors are not included."
+  ]
+}

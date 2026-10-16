@@ -1,0 +1,874 @@
+{
+  "benchmark_type": "held_out_coefficients_same_synthetic_prior_with_optional_mask_jitter",
+  "source_prior": "procedural_synthetic_only",
+  "known_camera_positions_and_absolute_scale": true,
+  "no_real_RGB_or_new_people": true,
+  "out_of_shape_basis_generalization_tested": false,
+  "synthetic_test_subjects": 6,
+  "seed": 17,
+  "segmentation_mask_integer_translation_perturbation_max_px": 2,
+  "image_centering_nuisance_alignment_radius_px": 0,
+  "prealignment_radius_px": 3,
+  "parameters": [
+    "lateral_width",
+    "front_back_depth",
+    "total_height"
+  ],
+  "view_selection_method": "local_silhouette_fisher_greedy_view_selection",
+  "planned_labels": [
+    "azimuth_045.00deg",
+    "azimuth_225.00deg"
+  ],
+  "uniform_baseline_labels": [
+    "azimuth_000.00deg",
+    "azimuth_180.00deg"
+  ],
+  "subject_results": [
+    {
+      "synthetic_subject_index": 0,
+      "ground_truth_coefficients": {
+        "lateral_width": 0.41408975135748183,
+        "front_back_depth": -0.4068322905970716,
+        "total_height": 0.06929345683883059
+      },
+      "cases": {
+        "planned": {
+          "prealignment_diagnostic": {
+            "method": "prior_silhouette_bbox_center_shift_not_camera_calibration",
+            "max_shift_px": 3,
+            "estimated_offsets": [
+              {
+                "view": "azimuth_045.00deg",
+                "uncapped_pixel_shift_xy": [
+                  2,
+                  0
+                ],
+                "applied_pixel_shift_xy": [
+                  2,
+                  0
+                ],
+                "clamped": false,
+                "baseline_mask_iou_before": 0.8573386493894842,
+                "baseline_mask_iou_after": 0.8912712509515351
+              },
+              {
+                "view": "azimuth_225.00deg",
+                "uncapped_pixel_shift_xy": [
+                  -2,
+                  -2
+                ],
+                "applied_pixel_shift_xy": [
+                  -2,
+                  -2
+                ],
+                "clamped": false,
+                "baseline_mask_iou_before": 0.8297532834172088,
+                "baseline_mask_iou_after": 0.8912712509515351
+              }
+            ],
+            "camera_orientation_calibrated": false,
+            "absolute_metric_scale_calibrated": false,
+            "limitations": [
+              "Symmetry-dependent; apparent body-shape and pose differences can mimic camera shifts.",
+              "Corrects only in-plane principal-point/crop offsets, not focal length or rotation.",
+              "Foreground masks and depth evidence must already share the same pixel coordinates.",
+              "Baseline-model silhouette agreement is not validated real camera calibration."
+            ]
+          },
+          "camera_labels": [
+            "azimuth_045.00deg",
+            "azimuth_225.00deg"
+          ],
+          "fitted_coefficients": [
+            0.4050811456870784,
+            -0.3541330716011915,
+            0.022892248924460387
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.9867463617463618,
+          "mean_corresponding_vertex_error_mm": 8.695797979795387,
+          "p95_corresponding_vertex_error_mm": 14.789877213180517,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 1.9403150674714986,
+            "depth_y": 3.99274082745249,
+            "height_z": 16.212832862620985
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 2.3965300000001744,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 50.125409999999924
+        },
+        "uniform_baseline": {
+          "prealignment_diagnostic": {
+            "method": "prior_silhouette_bbox_center_shift_not_camera_calibration",
+            "max_shift_px": 3,
+            "estimated_offsets": [
+              {
+                "view": "azimuth_000.00deg",
+                "uncapped_pixel_shift_xy": [
+                  -2,
+                  -2
+                ],
+                "applied_pixel_shift_xy": [
+                  -2,
+                  -2
+                ],
+                "clamped": false,
+                "baseline_mask_iou_before": 0.7723490505653936,
+                "baseline_mask_iou_after": 0.8402747009304387
+              },
+              {
+                "view": "azimuth_180.00deg",
+                "uncapped_pixel_shift_xy": [
+                  1,
+                  -2
+                ],
+                "applied_pixel_shift_xy": [
+                  1,
+                  -2
+                ],
+                "clamped": false,
+                "baseline_mask_iou_before": 0.7893376413570274,
+                "baseline_mask_iou_after": 0.8402747009304387
+              }
+            ],
+            "camera_orientation_calibrated": false,
+            "absolute_metric_scale_calibrated": false,
+            "limitations": [
+              "Symmetry-dependent; apparent body-shape and pose differences can mimic camera shifts.",
+              "Corrects only in-plane principal-point/crop offsets, not focal length or rotation.",
+              "Foreground masks and depth evidence must already share the same pixel coordinates.",
+              "Baseline-model silhouette agreement is not validated real camera calibration."
+            ]
+          },
+          "camera_labels": [
+            "azimuth_000.00deg",
+            "azimuth_180.00deg"
+          ],
+          "fitted_coefficients": [
+            0.40206258338035555,
+            1.666624403464097e-16,
+            0.029242829314823256
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.987419945105215,
+          "mean_corresponding_vertex_error_mm": 9.666995981141369,
+          "p95_corresponding_vertex_error_mm": 14.740715279474575,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 2.590466948919623,
+            "depth_y": 30.82352884053108,
+            "height_z": 13.993905746766622
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 27.549830000000107,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 17.49537000000001
+        }
+      }
+    },
+    {
+      "synthetic_subject_index": 1,
+      "ground_truth_coefficients": {
+        "lateral_width": -0.15830407000287444,
+        "front_back_depth": -0.3420696437258779,
+        "total_height": -0.13701115489296184
+      },
+      "cases": {
+        "planned": {
+          "prealignment_diagnostic": {
+            "method": "prior_silhouette_bbox_center_shift_not_camera_calibration",
+            "max_shift_px": 3,
+            "estimated_offsets": [
+              {
+                "view": "azimuth_045.00deg",
+                "uncapped_pixel_shift_xy": [
+                  1,
+                  4
+                ],
+                "applied_pixel_shift_xy": [
+                  1,
+                  3
+                ],
+                "clamped": true,
+                "baseline_mask_iou_before": 0.8278441149455452,
+                "baseline_mask_iou_after": 0.8891148163209976
+              },
+              {
+                "view": "azimuth_225.00deg",
+                "uncapped_pixel_shift_xy": [
+                  1,
+                  2
+                ],
+                "applied_pixel_shift_xy": [
+                  1,
+                  2
+                ],
+                "clamped": false,
+                "baseline_mask_iou_before": 0.8865113759479957,
+                "baseline_mask_iou_after": 0.9061302681992337
+              }
+            ],
+            "camera_orientation_calibrated": false,
+            "absolute_metric_scale_calibrated": false,
+            "limitations": [
+              "Symmetry-dependent; apparent body-shape and pose differences can mimic camera shifts.",
+              "Corrects only in-plane principal-point/crop offsets, not focal length or rotation.",
+              "Foreground masks and depth evidence must already share the same pixel coordinates.",
+              "Baseline-model silhouette agreement is not validated real camera calibration."
+            ]
+          },
+          "camera_labels": [
+            "azimuth_045.00deg",
+            "azimuth_225.00deg"
+          ],
+          "fitted_coefficients": [
+            -0.186014828432543,
+            -0.3182888398267947,
+            -0.03379384739041753
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.9604419978134866,
+          "mean_corresponding_vertex_error_mm": 19.19385598146036,
+          "p95_corresponding_vertex_error_mm": 32.87737274945439,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 5.968471046390089,
+            "depth_y": 1.801745613060013,
+            "height_z": 36.064685172781054
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 2.1361500000001143,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 111.27525999999999
+        },
+        "uniform_baseline": {
+          "prealignment_diagnostic": {
+            "method": "prior_silhouette_bbox_center_shift_not_camera_calibration",
+            "max_shift_px": 3,
+            "estimated_offsets": [
+              {
+                "view": "azimuth_000.00deg",
+                "uncapped_pixel_shift_xy": [
+                  1,
+                  2
+                ],
+                "applied_pixel_shift_xy": [
+                  1,
+                  2
+                ],
+                "clamped": false,
+                "baseline_mask_iou_before": 0.8308171579199617,
+                "baseline_mask_iou_after": 0.8859540854110096
+              },
+              {
+                "view": "azimuth_180.00deg",
+                "uncapped_pixel_shift_xy": [
+                  0,
+                  2
+                ],
+                "applied_pixel_shift_xy": [
+                  0,
+                  2
+                ],
+                "clamped": false,
+                "baseline_mask_iou_before": 0.8476420798065296,
+                "baseline_mask_iou_after": 0.8859540854110096
+              }
+            ],
+            "camera_orientation_calibrated": false,
+            "absolute_metric_scale_calibrated": false,
+            "limitations": [
+              "Symmetry-dependent; apparent body-shape and pose differences can mimic camera shifts.",
+              "Corrects only in-plane principal-point/crop offsets, not focal length or rotation.",
+              "Foreground masks and depth evidence must already share the same pixel coordinates.",
+              "Baseline-model silhouette agreement is not validated real camera calibration."
+            ]
+          },
+          "camera_labels": [
+            "azimuth_000.00deg",
+            "azimuth_180.00deg"
+          ],
+          "fitted_coefficients": [
+            -0.1488250996031791,
+            -1.1102230246251565e-16,
+            -0.06068305961592934
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.9805385230605171,
+          "mean_corresponding_vertex_error_mm": 15.354366131356274,
+          "p95_corresponding_vertex_error_mm": 24.590270404758698,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 2.041624393780639,
+            "depth_y": 25.916805948172474,
+            "height_z": 26.66944907409419
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 27.528290000000013,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 122.80775999999993
+        }
+      }
+    },
+    {
+      "synthetic_subject_index": 2,
+      "ground_truth_coefficients": {
+        "lateral_width": -0.08620260108766986,
+        "front_back_depth": 0.1336117301987767,
+        "total_height": 0.2836630446159438
+      },
+      "cases": {
+        "planned": {
+          "prealignment_diagnostic": {
+            "method": "prior_silhouette_bbox_center_shift_not_camera_calibration",
+            "max_shift_px": 3,
+            "estimated_offsets": [
+              {
+                "view": "azimuth_045.00deg",
+                "uncapped_pixel_shift_xy": [
+                  1,
+                  -5
+                ],
+                "applied_pixel_shift_xy": [
+                  1,
+                  -3
+                ],
+                "clamped": true,
+                "baseline_mask_iou_before": 0.8481328837267391,
+                "baseline_mask_iou_after": 0.8923686565256296
+              },
+              {
+                "view": "azimuth_225.00deg",
+                "uncapped_pixel_shift_xy": [
+                  -2,
+                  -6
+                ],
+                "applied_pixel_shift_xy": [
+                  -2,
+                  -3
+                ],
+                "clamped": true,
+                "baseline_mask_iou_before": 0.8041940990002439,
+                "baseline_mask_iou_after": 0.8822631913541005
+              }
+            ],
+            "camera_orientation_calibrated": false,
+            "absolute_metric_scale_calibrated": false,
+            "limitations": [
+              "Symmetry-dependent; apparent body-shape and pose differences can mimic camera shifts.",
+              "Corrects only in-plane principal-point/crop offsets, not focal length or rotation.",
+              "Foreground masks and depth evidence must already share the same pixel coordinates.",
+              "Baseline-model silhouette agreement is not validated real camera calibration."
+            ]
+          },
+          "camera_labels": [
+            "azimuth_045.00deg",
+            "azimuth_225.00deg"
+          ],
+          "fitted_coefficients": [
+            -0.06802976830588185,
+            0.05782390594249394,
+            0.17764048533152038
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.9684867600235452,
+          "mean_corresponding_vertex_error_mm": 19.759125166489245,
+          "p95_corresponding_vertex_error_mm": 33.777990230094716,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 3.914148599154288,
+            "depth_y": 5.7420422142406835,
+            "height_z": 37.04485530889268
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 13.455540000000044,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 93.17743000000011
+        },
+        "uniform_baseline": {
+          "prealignment_diagnostic": {
+            "method": "prior_silhouette_bbox_center_shift_not_camera_calibration",
+            "max_shift_px": 3,
+            "estimated_offsets": [
+              {
+                "view": "azimuth_000.00deg",
+                "uncapped_pixel_shift_xy": [
+                  1,
+                  -7
+                ],
+                "applied_pixel_shift_xy": [
+                  1,
+                  -3
+                ],
+                "clamped": true,
+                "baseline_mask_iou_before": 0.7560551754100141,
+                "baseline_mask_iou_after": 0.8522675217590472
+              },
+              {
+                "view": "azimuth_180.00deg",
+                "uncapped_pixel_shift_xy": [
+                  2,
+                  -6
+                ],
+                "applied_pixel_shift_xy": [
+                  2,
+                  -3
+                ],
+                "clamped": true,
+                "baseline_mask_iou_before": 0.7394298009682625,
+                "baseline_mask_iou_after": 0.8672362041099053
+              }
+            ],
+            "camera_orientation_calibrated": false,
+            "absolute_metric_scale_calibrated": false,
+            "limitations": [
+              "Symmetry-dependent; apparent body-shape and pose differences can mimic camera shifts.",
+              "Corrects only in-plane principal-point/crop offsets, not focal length or rotation.",
+              "Foreground masks and depth evidence must already share the same pixel coordinates.",
+              "Baseline-model silhouette agreement is not validated real camera calibration."
+            ]
+          },
+          "camera_labels": [
+            "azimuth_000.00deg",
+            "azimuth_180.00deg"
+          ],
+          "fitted_coefficients": [
+            -0.0393825285632212,
+            -1.1102230246251565e-16,
+            0.21312444216479967
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.9703670831553878,
+          "mean_corresponding_vertex_error_mm": 13.557280625601022,
+          "p95_corresponding_vertex_error_mm": 22.524790478095994,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 10.084323312958166,
+            "depth_y": 10.123053440942552,
+            "height_z": 24.646568986172788
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 3.847420000000046,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 64.93006999999994
+        }
+      }
+    },
+    {
+      "synthetic_subject_index": 3,
+      "ground_truth_coefficients": {
+        "lateral_width": -0.5816524120839461,
+        "front_back_depth": -0.2951509034488329,
+        "total_height": 0.12497502547671613
+      },
+      "cases": {
+        "planned": {
+          "prealignment_diagnostic": {
+            "method": "prior_silhouette_bbox_center_shift_not_camera_calibration",
+            "max_shift_px": 3,
+            "estimated_offsets": [
+              {
+                "view": "azimuth_045.00deg",
+                "uncapped_pixel_shift_xy": [
+                  -2,
+                  -2
+                ],
+                "applied_pixel_shift_xy": [
+                  -2,
+                  -2
+                ],
+                "clamped": false,
+                "baseline_mask_iou_before": 0.8272333726879182,
+                "baseline_mask_iou_after": 0.8385691657866948
+              },
+              {
+                "view": "azimuth_225.00deg",
+                "uncapped_pixel_shift_xy": [
+                  1,
+                  -4
+                ],
+                "applied_pixel_shift_xy": [
+                  1,
+                  -3
+                ],
+                "clamped": true,
+                "baseline_mask_iou_before": 0.8279527559055118,
+                "baseline_mask_iou_after": 0.8496150783116538
+              }
+            ],
+            "camera_orientation_calibrated": false,
+            "absolute_metric_scale_calibrated": false,
+            "limitations": [
+              "Symmetry-dependent; apparent body-shape and pose differences can mimic camera shifts.",
+              "Corrects only in-plane principal-point/crop offsets, not focal length or rotation.",
+              "Foreground masks and depth evidence must already share the same pixel coordinates.",
+              "Baseline-model silhouette agreement is not validated real camera calibration."
+            ]
+          },
+          "camera_labels": [
+            "azimuth_045.00deg",
+            "azimuth_225.00deg"
+          ],
+          "fitted_coefficients": [
+            -0.5869117128347022,
+            -0.27291429139377316,
+            0.03487529533716338
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.9659650463422035,
+          "mean_corresponding_vertex_error_mm": 16.705473605238073,
+          "p95_corresponding_vertex_error_mm": 28.696681552996996,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 1.1327724693936947,
+            "depth_y": 1.6847503721716395,
+            "height_z": 31.481332736328138
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 4.14846999999996,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 73.54386000000002
+        },
+        "uniform_baseline": {
+          "prealignment_diagnostic": {
+            "method": "prior_silhouette_bbox_center_shift_not_camera_calibration",
+            "max_shift_px": 3,
+            "estimated_offsets": [
+              {
+                "view": "azimuth_000.00deg",
+                "uncapped_pixel_shift_xy": [
+                  1,
+                  0
+                ],
+                "applied_pixel_shift_xy": [
+                  1,
+                  0
+                ],
+                "clamped": false,
+                "baseline_mask_iou_before": 0.7926900928428723,
+                "baseline_mask_iou_after": 0.7933223606865741
+              },
+              {
+                "view": "azimuth_180.00deg",
+                "uncapped_pixel_shift_xy": [
+                  -2,
+                  0
+                ],
+                "applied_pixel_shift_xy": [
+                  -2,
+                  0
+                ],
+                "clamped": false,
+                "baseline_mask_iou_before": 0.7755790944011175,
+                "baseline_mask_iou_after": 0.7933223606865741
+              }
+            ],
+            "camera_orientation_calibrated": false,
+            "absolute_metric_scale_calibrated": false,
+            "limitations": [
+              "Symmetry-dependent; apparent body-shape and pose differences can mimic camera shifts.",
+              "Corrects only in-plane principal-point/crop offsets, not focal length or rotation.",
+              "Foreground masks and depth evidence must already share the same pixel coordinates.",
+              "Baseline-model silhouette agreement is not validated real camera calibration."
+            ]
+          },
+          "camera_labels": [
+            "azimuth_000.00deg",
+            "azimuth_180.00deg"
+          ],
+          "fitted_coefficients": [
+            -0.5646224753722991,
+            -1.3866010287615614e-16,
+            0.045254677414200445
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.9788846778559827,
+          "mean_corresponding_vertex_error_mm": 15.728834936254403,
+          "p95_corresponding_vertex_error_mm": 25.591515179339886,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 3.6679863686623904,
+            "depth_y": 22.36202139071164,
+            "height_z": 27.854720533843302
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 23.753929999999922,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 37.08885999999989
+        }
+      }
+    },
+    {
+      "synthetic_subject_index": 4,
+      "ground_truth_coefficients": {
+        "lateral_width": -0.49951596637542817,
+        "front_back_depth": 0.5973164171075719,
+        "total_height": 0.3988153494008446
+      },
+      "cases": {
+        "planned": {
+          "prealignment_diagnostic": {
+            "method": "prior_silhouette_bbox_center_shift_not_camera_calibration",
+            "max_shift_px": 3,
+            "estimated_offsets": [
+              {
+                "view": "azimuth_045.00deg",
+                "uncapped_pixel_shift_xy": [
+                  0,
+                  -9
+                ],
+                "applied_pixel_shift_xy": [
+                  0,
+                  -3
+                ],
+                "clamped": true,
+                "baseline_mask_iou_before": 0.8023100303951368,
+                "baseline_mask_iou_after": 0.8388096714197149
+              },
+              {
+                "view": "azimuth_225.00deg",
+                "uncapped_pixel_shift_xy": [
+                  0,
+                  -7
+                ],
+                "applied_pixel_shift_xy": [
+                  0,
+                  -3
+                ],
+                "clamped": true,
+                "baseline_mask_iou_before": 0.832159189222593,
+                "baseline_mask_iou_after": 0.8436101442068623
+              }
+            ],
+            "camera_orientation_calibrated": false,
+            "absolute_metric_scale_calibrated": false,
+            "limitations": [
+              "Symmetry-dependent; apparent body-shape and pose differences can mimic camera shifts.",
+              "Corrects only in-plane principal-point/crop offsets, not focal length or rotation.",
+              "Foreground masks and depth evidence must already share the same pixel coordinates.",
+              "Baseline-model silhouette agreement is not validated real camera calibration."
+            ]
+          },
+          "camera_labels": [
+            "azimuth_045.00deg",
+            "azimuth_225.00deg"
+          ],
+          "fitted_coefficients": [
+            -0.5688839602874162,
+            0.3617081103084058,
+            0.33543483020020576
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.9220188295304192,
+          "mean_corresponding_vertex_error_mm": 12.911417933506772,
+          "p95_corresponding_vertex_error_mm": 20.37711520318142,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 14.940798688735878,
+            "depth_y": 17.85079406807799,
+            "height_z": 22.14549600610427
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 28.994100000000024,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 98.56069999999994
+        },
+        "uniform_baseline": {
+          "prealignment_diagnostic": {
+            "method": "prior_silhouette_bbox_center_shift_not_camera_calibration",
+            "max_shift_px": 3,
+            "estimated_offsets": [
+              {
+                "view": "azimuth_000.00deg",
+                "uncapped_pixel_shift_xy": [
+                  0,
+                  -9
+                ],
+                "applied_pixel_shift_xy": [
+                  0,
+                  -3
+                ],
+                "clamped": true,
+                "baseline_mask_iou_before": 0.7272727272727273,
+                "baseline_mask_iou_after": 0.7632524707996406
+              },
+              {
+                "view": "azimuth_180.00deg",
+                "uncapped_pixel_shift_xy": [
+                  2,
+                  -5
+                ],
+                "applied_pixel_shift_xy": [
+                  2,
+                  -3
+                ],
+                "clamped": true,
+                "baseline_mask_iou_before": 0.7428095502498612,
+                "baseline_mask_iou_after": 0.7764200045259109
+              }
+            ],
+            "camera_orientation_calibrated": false,
+            "absolute_metric_scale_calibrated": false,
+            "limitations": [
+              "Symmetry-dependent; apparent body-shape and pose differences can mimic camera shifts.",
+              "Corrects only in-plane principal-point/crop offsets, not focal length or rotation.",
+              "Foreground masks and depth evidence must already share the same pixel coordinates.",
+              "Baseline-model silhouette agreement is not validated real camera calibration."
+            ]
+          },
+          "camera_labels": [
+            "azimuth_000.00deg",
+            "azimuth_180.00deg"
+          ],
+          "fitted_coefficients": [
+            -0.4957899764514411,
+            -1.1102230246251565e-16,
+            0.25687853718306053
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.9337504865446977,
+          "mean_corresponding_vertex_error_mm": 28.331211728333784,
+          "p95_corresponding_vertex_error_mm": 45.66496337241767,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 0.8025209067049621,
+            "depth_y": 45.25550266085598,
+            "height_z": 49.59348941490549
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 66.44584000000009,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 160.47553000000002
+        }
+      }
+    },
+    {
+      "synthetic_subject_index": 5,
+      "ground_truth_coefficients": {
+        "lateral_width": -0.5558671707992102,
+        "front_back_depth": 0.08104777577813349,
+        "total_height": 0.1312081644541242
+      },
+      "cases": {
+        "planned": {
+          "prealignment_diagnostic": {
+            "method": "prior_silhouette_bbox_center_shift_not_camera_calibration",
+            "max_shift_px": 3,
+            "estimated_offsets": [
+              {
+                "view": "azimuth_045.00deg",
+                "uncapped_pixel_shift_xy": [
+                  0,
+                  -2
+                ],
+                "applied_pixel_shift_xy": [
+                  0,
+                  -2
+                ],
+                "clamped": false,
+                "baseline_mask_iou_before": 0.8712792697446752,
+                "baseline_mask_iou_after": 0.8599605522682445
+              },
+              {
+                "view": "azimuth_225.00deg",
+                "uncapped_pixel_shift_xy": [
+                  1,
+                  0
+                ],
+                "applied_pixel_shift_xy": [
+                  1,
+                  0
+                ],
+                "clamped": false,
+                "baseline_mask_iou_before": 0.863145416227608,
+                "baseline_mask_iou_after": 0.8675732770002641
+              }
+            ],
+            "camera_orientation_calibrated": false,
+            "absolute_metric_scale_calibrated": false,
+            "limitations": [
+              "Symmetry-dependent; apparent body-shape and pose differences can mimic camera shifts.",
+              "Corrects only in-plane principal-point/crop offsets, not focal length or rotation.",
+              "Foreground masks and depth evidence must already share the same pixel coordinates.",
+              "Baseline-model silhouette agreement is not validated real camera calibration."
+            ]
+          },
+          "camera_labels": [
+            "azimuth_045.00deg",
+            "azimuth_225.00deg"
+          ],
+          "fitted_coefficients": [
+            -0.5424455586653635,
+            0.061951976047977066,
+            0.035140025663312806
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.9695320188576266,
+          "mean_corresponding_vertex_error_mm": 17.821016998288915,
+          "p95_corresponding_vertex_error_mm": 30.59787022063415,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 2.8908087672900873,
+            "depth_y": 1.446787650143666,
+            "height_z": 33.56672698074603
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 6.32704999999989,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 77.66425
+        },
+        "uniform_baseline": {
+          "prealignment_diagnostic": {
+            "method": "prior_silhouette_bbox_center_shift_not_camera_calibration",
+            "max_shift_px": 3,
+            "estimated_offsets": [
+              {
+                "view": "azimuth_000.00deg",
+                "uncapped_pixel_shift_xy": [
+                  -2,
+                  -4
+                ],
+                "applied_pixel_shift_xy": [
+                  -2,
+                  -3
+                ],
+                "clamped": true,
+                "baseline_mask_iou_before": 0.7641487641487642,
+                "baseline_mask_iou_after": 0.8057196880170172
+              },
+              {
+                "view": "azimuth_180.00deg",
+                "uncapped_pixel_shift_xy": [
+                  -1,
+                  0
+                ],
+                "applied_pixel_shift_xy": [
+                  -1,
+                  0
+                ],
+                "clamped": false,
+                "baseline_mask_iou_before": 0.7996936491104042,
+                "baseline_mask_iou_after": 0.8007545390238151
+              }
+            ],
+            "camera_orientation_calibrated": false,
+            "absolute_metric_scale_calibrated": false,
+            "limitations": [
+              "Symmetry-dependent; apparent body-shape and pose differences can mimic camera shifts.",
+              "Corrects only in-plane principal-point/crop offsets, not focal length or rotation.",
+              "Foreground masks and depth evidence must already share the same pixel coordinates.",
+              "Baseline-model silhouette agreement is not validated real camera calibration."
+            ]
+          },
+          "camera_labels": [
+            "azimuth_000.00deg",
+            "azimuth_180.00deg"
+          ],
+          "fitted_coefficients": [
+            -0.5429079903228426,
+            -1.215384515174699e-16,
+            0.06892881776274819
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.9765214231144301,
+          "mean_corresponding_vertex_error_mm": 11.701592735979014,
+          "p95_corresponding_vertex_error_mm": 19.85562232736269,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 2.7912081026022495,
+            "depth_y": 6.140560894249192,
+            "height_z": 21.76074037908404
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 4.831679999999894,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 61.21566000000001
+        }
+      }
+    }
+  ],
+  "summary": {
+    "planned": {
+      "mean_vertex_error_mm": 15.847781277463122,
+      "median_vertex_error_mm": 17.263245301763494,
+      "worst_vertex_error_mm": 19.759125166489245
+    },
+    "uniform_baseline": {
+      "mean_vertex_error_mm": 15.723380356444311,
+      "median_vertex_error_mm": 14.455823378478648,
+      "worst_vertex_error_mm": 28.331211728333784
+    }
+  },
+  "notes": [
+    "This is an intentionally favorable in-basis test: the truth and fit share a shape basis.",
+    "Camera, pose and scale are known exactly; imagery is rendered binary masks (optionally pixel-translated).",
+    "The frontal/rear uniform two-view baseline is intentionally weak for torso depth.",
+    "Measured vertex errors are corresponding-vertex distances to a generated source mesh, not real-person accuracy."
+  ]
+}

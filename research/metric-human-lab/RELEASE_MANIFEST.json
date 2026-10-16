@@ -1,0 +1,143 @@
+{
+  "build_python": "3.13.5",
+  "ci_execution": "local only, Actions config not packaged",
+  "evidence_limits": [
+    "known-camera oracle geometry is not inferred RGB metric depth",
+    "MakeHuman anatomical template is not actual subject scan",
+    "uncalibrated RGB has global absolute-scale ambiguity",
+    "no measured real-human body reconstruction accuracy",
+    "heldout views test predictive image agreement, not true unobserved 3D surface dimensions",
+    "no automatic anatomically accurate personalized rig",
+    "basic kinematic gear collision is not fabrication clearance validation"
+  ],
+  "file_count_sha256": 65,
+  "license": "MIT original code; external MakeHuman core assets CC0 but not bundled",
+  "new_capabilities": [
+    "local view selection",
+    "mesh section measurement",
+    "known-basis heldout study",
+    "data license and subject-split audit",
+    "separate unseen camera reprojection and verified-metric-depth checks"
+  ],
+  "project_status": "geometry-first research prototype; NOT validated from real-person photo/scan pairs",
+  "release_date": "2026-10-15",
+  "remote_source_repo": "not published; no commit SHA claimed",
+  "source_test_document_sha256": {
+    "LICENSE": "82a4ce8d58849c25e0b635a6c7d11bb96f363a3d8397cb9181faf0a3f60c50c3",
+    "README.md": "14a8028b1b945e66de65def50505673de9d138189084c188396408521d19b5cf",
+    "docs/ARCHITECTURE.md": "fc190471cd1bc43fcde8244ece8b84a3e738f9375dfcf0cdfbe866f4ead47fca",
+    "docs/CHANGELOG.md": "51a826c673f26bee82b7ffe6b1db5e7a6e72a39b0e569920e726cf26e4c06c5e",
+    "docs/DATASET_ADMISSION.md": "40ac3e29020b72a1cd195972a53650d8cfa2da8a4c7d8beeec9326c65919e5d1",
+    "docs/DEPENDENCY_RIGHTS.md": "83ae8d8fcd0434fcdbd028b2157d6f4442fda2e647ff1f9c4ad6987b9b2006c5",
+    "docs/PROGRESS.md": "d7adf4b4e7869e12fa10dde00cb2dfbc8ebb594bfa8b52d55b0b5fec5de8d91a",
+    "docs/RESEARCH_RESULTS_2026-10-15.md": "2f08b5a91ca00c003363dd02a20fa03bbe7ed4a2c3281026cbe3c67832f630a5",
+    "docs/VALIDATION.md": "6b828957a8940603db0be0ba429083acab8076186ae16ab6aaf065a990a3bb97",
+    "examples/recover_hidden_depth.py": "9a5067648233e9d958f91734f8d587f7bf3e5bba9211e448f0397bb195a59ed6",
+    "pyproject.toml": "1c63f96a9e247d473eeb57540017caa2e2c38470abeb505d1f1ba3d8e18e7059",
+    "src/metric_human/__init__.py": "efb9fbaf86d13779f4b82efa8f4b67b9ca2076145cee4873e6b6e0745daec423",
+    "src/metric_human/__main__.py": "cf7390a2508a0fcad4777a4a629fc5212ab655cb45845975995f835676a834e3",
+    "src/metric_human/bench.py": "77d6d146980cc57fbca6f4d9cc0c7c34c00d577a14e041cfdce95236fb14099f",
+    "src/metric_human/body_rig.py": "2c98a45be2ef4a150b036c7db38b428bbd3329609cffe40cd1e5340ee3d056af",
+    "src/metric_human/calibration.py": "a2c3e182e4296db1f404779d11f79e4ea38b37ac4863c550963f4499f3efc94c",
+    "src/metric_human/cameras.py": "5d7e10c722e5a8f9f3f0c803746d272da18e3a0c7a1b024655437c11a037690f",
+    "src/metric_human/cli.py": "9aec50f2030357763d42e72b38de361cf56d9279da811c9671ce112aa60fbe74",
+    "src/metric_human/datasets.py": "92303c439f0a48afa31cb76918cb18107c28b8859af37d400a295425d4b24bc3",
+    "src/metric_human/depth.py": "39e91373b6ba62fe7171f17441e89f305bbd0f927d839107250c81c77691fd55",
+    "src/metric_human/depth_ablation.py": "0b5a6bcccae0a9232b701c3b73e4a6021605336df5068129a03a78fb6ad30bf6",
+    "src/metric_human/evidence.py": "14d940c52b8a5fcfe1daaaafee5b2032e97fdc5d50935478ce1ea04edccab462",
+    "src/metric_human/external.py": "fd320ea676e98affb8f59a1ed78f9d2eeb80aef1c9d05ea463b6e6dbbae59e42",
+    "src/metric_human/landmarks.py": "b4943f62f77dd68817406dfe1eb422de51000a2798649fc51ee4d33c9f799626",
+    "src/metric_human/makehuman.py": "5ccac4a0c0b4cc0e4b024eaa2847e65aed56dca648280933abfac12efcb871bb",
+    "src/metric_human/makehuman_assets.py": "ede76df5b0833fd81bdacfc307ebe61cfaf8a32402019e2e5ed2b3d3d4ff136b",
+    "src/metric_human/measurements.py": "fab391ed5ff55aef10e05714e679af747db4b55ac9bcc58b02a46a7575e8de88",
+    "src/metric_human/mesh_measurements.py": "3a5fc92802bbb18533ae0ca2f36148302eba05e7d6030cda2c816fd11f164a43",
+    "src/metric_human/motion.py": "a469f695c2be4639619483d1d9beecaba438fffc91267148ee0b2a1f9e382e3e",
+    "src/metric_human/photos.py": "59d3394950189da13a25f219a4dc89a8790090d92236a978b4ae575dc45d0e16",
+    "src/metric_human/prior.py": "f82c88ea0780c9b66737a38de920055ff248d209dcc326e16203cebf812debfb",
+    "src/metric_human/quality.py": "687af61eeabaf272a514c8b4ec440cacb4eb88e94aa90a4b55363ec8dd1e5132",
+    "src/metric_human/reconstruct.py": "a9800f016165fd80086851751816c9e8a7b174d59fc8a5a4a55536782d692f3b",
+    "src/metric_human/render.py": "da92664a7826e3bebae8faecc76ec071c49ac6f437ed279ef2814d0990920a69",
+    "src/metric_human/robust_fit.py": "2912c78a889b123ff1a005305ca1725b45381f64786b6091965397e89b24ed42",
+    "src/metric_human/silhouette_profiles.py": "ac0235c6ae83a2b8dfead693028a12228ee5ab2baaef4d118c789bbd6f19503d",
+    "src/metric_human/stability.py": "50bbbcff1088074bf1a2aa74f9868a4a000e7aaada3de832ef5cd34b1992162c",
+    "src/metric_human/synthetic.py": "dc09d283abe89c0cc1055abc72b93d44551adb74eab39d775c1a24752091c647",
+    "src/metric_human/template.py": "4b05bc113ffca763d15eddd83b5d0802a4de733fc14b583a2c217e4688d9ac84",
+    "src/metric_human/view_benchmark.py": "73cef817d54486cd608d6e3e207cd3d01328f374430f6ff7d775b4efef4e8e48",
+    "src/metric_human/view_centering.py": "c7d7787467de396a9ef036ea2da25a8deeca5e52dd8a52d946f1ba10830ce442",
+    "src/metric_human/view_planner.py": "3612d9814d3b8b073b3255090710ccda745c48adc593fb2914069374b12f567a",
+    "src/metric_human/vision.py": "263b265f1a31b96587085260938eef2bd001d93daf86a8025833026ad53b3b1d",
+    "src/metric_human/visualize.py": "2432b6f91337f5c297bcfbc20ddc3edf75a3161e4f4283dc9203166a09b27c7a",
+    "src/metric_human/volume.py": "d49eb911dbe19d451d0d6ad0441d5c39103b9725a9da111cbc73bb09e8ece521",
+    "tests/test_body_rig.py": "cbb23f2815f1fcaa33ccb35d4b28d6f0150930c812b6639c6a5a4a35cd632d51",
+    "tests/test_calibration.py": "2e3941b6993df7ee7f6928e6ac178924390c57a2fbca937b711d4da8e73b5936",
+    "tests/test_datasets.py": "895d18484f65599204bd6a145b61b091d22c170be51e957d815f5bfc371abdc6",
+    "tests/test_depth.py": "a0535e80b284d2871559dc1e813631c7a1609569a34588a74d705a2890b050bf",
+    "tests/test_depth_render.py": "744b143e854c7501b8de4a9da532eeddf75ffef6af8cc7193d38969978455d93",
+    "tests/test_evidence.py": "614f5eee7cf33fb0696944b3bd2891181c27ff90c6e54bc6489f94ccf2048f82",
+    "tests/test_external.py": "db80cdd7e23c6c104332d0ea8e44e4fbbb04086f002f555821d10506dabf70b9",
+    "tests/test_geometry.py": "366dc5a8219bbfee28915c49774031dea485804a0ee5620ee3c019d98ab3b38d",
+    "tests/test_holdout_views.py": "9e01cbd72a5de2921540ef5e546ccb6de4cddf025449506e8e6fcf927695a3e8",
+    "tests/test_makehuman.py": "be078e577c577847edb7113e161c4ac721c6bb117ab98cc9a32b4a530da086dd",
+    "tests/test_makehuman_assets.py": "8919250990bbc2d7a1a1ed3d7add4d71e45ddf178a9b0e16eda682a911e5d5f2",
+    "tests/test_mesh_measurements.py": "96700f2f7356d109d4ce4e96ae07b9fa5e1a4f241657722162fc455cc3c7b938",
+    "tests/test_motion.py": "91fe1b8eaff90f9bad4348b83674f5e00e6fe2e4fd578f3870a94b040c5bdff6",
+    "tests/test_photos_cli.py": "116aceae1699895fd08344a9017afc165dc536ebff73e0c9e6426863891b11fc",
+    "tests/test_prior.py": "a3356ddf3d26ca339b217ab1a9559e9f13b97d45b5934a5f8262209eae30dcff",
+    "tests/test_prior_depth.py": "07ff485318282fcd16c23ad034165c4dbc9f67ba352c7fe93887f7a5e2fde674",
+    "tests/test_robust_fitting.py": "6a29bc80c8a66138c19bd790fe9059ca358b847d3d6c8c99dcae5d0cea07cb2e",
+    "tests/test_stability.py": "c28e355e368d32931c8f3d0ed3797db12c69398fa954d72b065c6bddd43ad562",
+    "tests/test_view_planner.py": "55d2076f12ab716dd076a683c01ad8b5c08178c4c3afb75aa3516e55e3abd08d",
+    "tests/test_vision.py": "5132de9d35d467da9069aff69e3eee7b849acb5a6b4d59ae3482ac874823278a"
+  },
+  "synthetic_benchmarks": {
+    "view_planning_shift2.json": {
+      "subjects": 6,
+      "summary": {
+        "planned": {
+          "mean_vertex_error_mm": 9.178535205858422,
+          "median_vertex_error_mm": 9.267056467373212,
+          "worst_vertex_error_mm": 15.564618694597879
+        },
+        "uniform_baseline": {
+          "mean_vertex_error_mm": 9.038017111684086,
+          "median_vertex_error_mm": 7.738027368958203,
+          "worst_vertex_error_mm": 21.865171091240654
+        }
+      }
+    },
+    "view_planning_shift2_two_stage_small.json": {
+      "subjects": 2,
+      "summary": {
+        "planned": {
+          "mean_vertex_error_mm": 1.5658257418269688,
+          "median_vertex_error_mm": 1.5658257418269688,
+          "worst_vertex_error_mm": 1.5820521553345013
+        },
+        "uniform_baseline": {
+          "mean_vertex_error_mm": 7.449129024385231,
+          "median_vertex_error_mm": 7.449129024385231,
+          "worst_vertex_error_mm": 9.53668361678838
+        }
+      }
+    },
+    "view_planning_validation.json": {
+      "subjects": 6,
+      "summary": {
+        "planned": {
+          "mean_vertex_error_mm": 0.7788835624651598,
+          "median_vertex_error_mm": 0.7268483526194891,
+          "worst_vertex_error_mm": 1.5068374263635547
+        },
+        "uniform_baseline": {
+          "mean_vertex_error_mm": 5.400671248169192,
+          "median_vertex_error_mm": 4.9334137678162,
+          "worst_vertex_error_mm": 9.04830453533826
+        }
+      }
+    }
+  },
+  "validated_tests": 76,
+  "version": "0.3.0",
+  "wheel_name": "metric_human_lab-0.3.0-py3-none-any.whl",
+  "wheel_sha256": "19b749aef4e369e9a59cf4b00861d713a30647c8c9ab10bca584f224b182cb92"
+}

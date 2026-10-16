@@ -1,0 +1,159 @@
+{
+  "benchmark_type": "held_out_coefficients_same_synthetic_prior_with_optional_mask_jitter",
+  "source_prior": "procedural_synthetic_only",
+  "known_camera_positions_and_absolute_scale": true,
+  "no_real_RGB_or_new_people": true,
+  "out_of_shape_basis_generalization_tested": false,
+  "synthetic_test_subjects": 2,
+  "seed": 17,
+  "segmentation_mask_integer_translation_perturbation_max_px": 2,
+  "image_centering_nuisance_alignment_radius_px": 0,
+  "prealignment_radius_px": 0,
+  "silhouette_loss_mode": "coarse_to_fine",
+  "parameters": [
+    "lateral_width",
+    "front_back_depth",
+    "total_height"
+  ],
+  "view_selection_method": "local_silhouette_fisher_greedy_view_selection",
+  "planned_labels": [
+    "azimuth_045.00deg",
+    "azimuth_225.00deg"
+  ],
+  "uniform_baseline_labels": [
+    "azimuth_000.00deg",
+    "azimuth_180.00deg"
+  ],
+  "subject_results": [
+    {
+      "synthetic_subject_index": 0,
+      "ground_truth_coefficients": {
+        "lateral_width": 0.41408975135748183,
+        "front_back_depth": -0.4068322905970716,
+        "total_height": 0.06929345683883059
+      },
+      "cases": {
+        "planned": {
+          "prealignment_diagnostic": null,
+          "camera_labels": [
+            "azimuth_045.00deg",
+            "azimuth_225.00deg"
+          ],
+          "fitted_coefficients": [
+            0.4021880200751615,
+            -0.29528606903472004,
+            0.06925373354793024
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.9968786578228638,
+          "mean_corresponding_vertex_error_mm": 1.5495993283194363,
+          "p95_corresponding_vertex_error_mm": 3.0244266120501364,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 2.5634498146536178,
+            "depth_y": 8.451266668959345,
+            "height_z": 0.013879532561267283
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 6.1539000000001565,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 5.701579999999984
+        },
+        "uniform_baseline": {
+          "prealignment_diagnostic": null,
+          "camera_labels": [
+            "azimuth_000.00deg",
+            "azimuth_180.00deg"
+          ],
+          "fitted_coefficients": [
+            0.40292500932542213,
+            1.1578915505033417e-17,
+            0.06353266964622925
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.9972508591065292,
+          "mean_corresponding_vertex_error_mm": 5.361574431982081,
+          "p95_corresponding_vertex_error_mm": 11.10052553372883,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 2.4047136684437476,
+            "depth_y": 30.82352884053108,
+            "height_z": 2.01285018448516
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 27.673560000000208,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 23.617230000000156
+        }
+      }
+    },
+    {
+      "synthetic_subject_index": 1,
+      "ground_truth_coefficients": {
+        "lateral_width": -0.15830407000287444,
+        "front_back_depth": -0.3420696437258779,
+        "total_height": -0.13701115489296184
+      },
+      "cases": {
+        "planned": {
+          "prealignment_diagnostic": null,
+          "camera_labels": [
+            "azimuth_045.00deg",
+            "azimuth_225.00deg"
+          ],
+          "fitted_coefficients": [
+            -0.16426585239930036,
+            -0.21975832128705008,
+            -0.13660101062948288
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.9977628635346756,
+          "mean_corresponding_vertex_error_mm": 1.5820521553345013,
+          "p95_corresponding_vertex_error_mm": 3.3117517601651203,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 1.284076208460938,
+            "depth_y": 9.266881370659451,
+            "height_z": 0.14330662265549243
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 8.42293999999999,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 9.388769999999935
+        },
+        "uniform_baseline": {
+          "prealignment_diagnostic": null,
+          "camera_labels": [
+            "azimuth_000.00deg",
+            "azimuth_180.00deg"
+          ],
+          "fitted_coefficients": [
+            -0.14922927066468222,
+            1.7654385107871678e-16,
+            -0.09455731201391987
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.989255976363148,
+          "mean_corresponding_vertex_error_mm": 9.53668361678838,
+          "p95_corresponding_vertex_error_mm": 14.712385552777944,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 1.954572165149271,
+            "depth_y": 25.916805948172474,
+            "height_z": 14.833602182169114
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 27.47195000000002,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 82.96849000000006
+        }
+      }
+    }
+  ],
+  "summary": {
+    "planned": {
+      "mean_vertex_error_mm": 1.5658257418269688,
+      "median_vertex_error_mm": 1.5658257418269688,
+      "worst_vertex_error_mm": 1.5820521553345013
+    },
+    "uniform_baseline": {
+      "mean_vertex_error_mm": 7.449129024385231,
+      "median_vertex_error_mm": 7.449129024385231,
+      "worst_vertex_error_mm": 9.53668361678838
+    }
+  },
+  "notes": [
+    "This is an intentionally favorable in-basis test: the truth and fit share a shape basis.",
+    "Camera, pose and scale are known exactly; imagery is rendered binary masks (optionally pixel-translated).",
+    "The frontal/rear uniform two-view baseline is intentionally weak for torso depth.",
+    "Measured vertex errors are corresponding-vertex distances to a generated source mesh, not real-person accuracy."
+  ]
+}

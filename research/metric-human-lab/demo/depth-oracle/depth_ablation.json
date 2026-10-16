@@ -1,0 +1,111 @@
+{
+  "benchmark_type": "procedural_known_camera_oracle_metric_depth_ablation",
+  "rows": [
+    {
+      "views": 1,
+      "depth_tolerance_m": 0.028543478260869566,
+      "silhouette": {
+        "voxel_iou": 0.15608263198163733,
+        "surface_chamfer_mm": 120.34200451148402,
+        "false_positive_voxels": 6588,
+        "false_negative_voxels": 30,
+        "section_1.10m_perimeter_abs_error_mm": 1504.487,
+        "section_1.32m_perimeter_abs_error_mm": 1555.778
+      },
+      "oracle_metric_depth": {
+        "voxel_iou": 0.24647603705195328,
+        "surface_chamfer_mm": 98.35014491503632,
+        "false_positive_voxels": 3712,
+        "false_negative_voxels": 30,
+        "section_1.10m_perimeter_abs_error_mm": 839.862,
+        "section_1.32m_perimeter_abs_error_mm": 891.1530000000001
+      }
+    },
+    {
+      "views": 2,
+      "depth_tolerance_m": 0.028543478260869566,
+      "silhouette": {
+        "voxel_iou": 0.15608263198163733,
+        "surface_chamfer_mm": 120.34200451148402,
+        "false_positive_voxels": 6588,
+        "false_negative_voxels": 30,
+        "section_1.10m_perimeter_abs_error_mm": 1504.487,
+        "section_1.32m_perimeter_abs_error_mm": 1555.778
+      },
+      "oracle_metric_depth": {
+        "voxel_iou": 0.6126126126126126,
+        "surface_chamfer_mm": 26.815876735463984,
+        "false_positive_voxels": 744,
+        "false_negative_voxels": 30,
+        "section_1.10m_perimeter_abs_error_mm": 175.2380000000001,
+        "section_1.32m_perimeter_abs_error_mm": 175.238
+      }
+    },
+    {
+      "views": 4,
+      "depth_tolerance_m": 0.028543478260869566,
+      "silhouette": {
+        "voxel_iou": 0.7373493975903614,
+        "surface_chamfer_mm": 13.042884062148982,
+        "false_positive_voxels": 406,
+        "false_negative_voxels": 30,
+        "section_1.10m_perimeter_abs_error_mm": 102.58200000000006,
+        "section_1.32m_perimeter_abs_error_mm": 153.87300000000016
+      },
+      "oracle_metric_depth": {
+        "voxel_iou": 0.8523676880222841,
+        "surface_chamfer_mm": 6.300664209743995,
+        "false_positive_voxels": 182,
+        "false_negative_voxels": 30,
+        "section_1.10m_perimeter_abs_error_mm": 102.58200000000006,
+        "section_1.32m_perimeter_abs_error_mm": 51.291000000000196
+      }
+    },
+    {
+      "views": 8,
+      "depth_tolerance_m": 0.028543478260869566,
+      "silhouette": {
+        "voxel_iou": 0.8656294200848657,
+        "surface_chamfer_mm": 7.7680645672711295,
+        "false_positive_voxels": 160,
+        "false_negative_voxels": 30,
+        "section_1.10m_perimeter_abs_error_mm": 0.0,
+        "section_1.32m_perimeter_abs_error_mm": 0.0
+      },
+      "oracle_metric_depth": {
+        "voxel_iou": 0.9592476489028213,
+        "surface_chamfer_mm": 1.5988220907763007,
+        "false_positive_voxels": 22,
+        "false_negative_voxels": 30,
+        "section_1.10m_perimeter_abs_error_mm": 0.0,
+        "section_1.32m_perimeter_abs_error_mm": 0.0
+      }
+    }
+  ],
+  "is_reconstruction_from_real_rgb": false,
+  "human_measurement_accuracy_validated": false,
+  "known_camera_and_metric_scale": true,
+  "depth_origin": "CPU triangle rasterization of the known source mesh (oracle)",
+  "warning": "Do not interpret oracle-depth improvements as learned monocular depth accuracy.",
+  "grid": {
+    "lower": [
+      -0.7,
+      -0.46,
+      -0.1
+    ],
+    "upper": [
+      0.7,
+      0.46,
+      1.92
+    ],
+    "shape": [
+      32,
+      21,
+      46
+    ]
+  },
+  "image_size": [
+    192,
+    288
+  ]
+}

@@ -1,0 +1,383 @@
+{
+  "benchmark_type": "held_out_coefficients_same_synthetic_prior_with_optional_mask_jitter",
+  "source_prior": "procedural_synthetic_only",
+  "known_camera_positions_and_absolute_scale": true,
+  "no_real_RGB_or_new_people": true,
+  "out_of_shape_basis_generalization_tested": false,
+  "synthetic_test_subjects": 6,
+  "seed": 17,
+  "segmentation_mask_integer_translation_perturbation_max_px": 2,
+  "image_centering_nuisance_alignment_radius_px": 0,
+  "prealignment_radius_px": 0,
+  "silhouette_loss_mode": "profile",
+  "parameters": [
+    "lateral_width",
+    "front_back_depth",
+    "total_height"
+  ],
+  "view_selection_method": "local_silhouette_fisher_greedy_view_selection",
+  "planned_labels": [
+    "azimuth_045.00deg",
+    "azimuth_225.00deg"
+  ],
+  "uniform_baseline_labels": [
+    "azimuth_000.00deg",
+    "azimuth_180.00deg"
+  ],
+  "subject_results": [
+    {
+      "synthetic_subject_index": 0,
+      "ground_truth_coefficients": {
+        "lateral_width": 0.41408975135748183,
+        "front_back_depth": -0.4068322905970716,
+        "total_height": 0.06929345683883059
+      },
+      "cases": {
+        "planned": {
+          "prealignment_diagnostic": null,
+          "camera_labels": [
+            "azimuth_045.00deg",
+            "azimuth_225.00deg"
+          ],
+          "fitted_coefficients": [
+            0.408123447368019,
+            -0.3653861803047816,
+            0.06291166503596245
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.8739031542808097,
+          "mean_corresponding_vertex_error_mm": 1.3905498449248626,
+          "p95_corresponding_vertex_error_mm": 2.1113836659329257,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 1.28505009003832,
+            "depth_y": 3.1401523562628597,
+            "height_z": 2.229832552094191
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 2.04566000000006,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 5.862329999999805
+        },
+        "uniform_baseline": {
+          "prealignment_diagnostic": null,
+          "camera_labels": [
+            "azimuth_000.00deg",
+            "azimuth_180.00deg"
+          ],
+          "fitted_coefficients": [
+            0.4122339025763631,
+            -4.393223572622441e-17,
+            0.06387849124626423
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.8835909532646411,
+          "mean_corresponding_vertex_error_mm": 5.292238762437705,
+          "p95_corresponding_vertex_error_mm": 11.089697146405161,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 0.39972127593324025,
+            "depth_y": 30.82352884053108,
+            "height_z": 1.8920182481270142
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 29.009410000000013,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 26.668840000000138
+        }
+      }
+    },
+    {
+      "synthetic_subject_index": 1,
+      "ground_truth_coefficients": {
+        "lateral_width": -0.15830407000287444,
+        "front_back_depth": -0.3420696437258779,
+        "total_height": -0.13701115489296184
+      },
+      "cases": {
+        "planned": {
+          "prealignment_diagnostic": null,
+          "camera_labels": [
+            "azimuth_045.00deg",
+            "azimuth_225.00deg"
+          ],
+          "fitted_coefficients": [
+            -0.17988332253639566,
+            -0.09432581291074761,
+            -0.1357220088122804
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.9131927418164401,
+          "mean_corresponding_vertex_error_mm": 3.3659002099239963,
+          "p95_corresponding_vertex_error_mm": 6.714391835502895,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 4.647839007219767,
+            "depth_y": 18.77023847587578,
+            "height_z": 0.45043460894733656
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 15.867990000000054,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 17.03614000000009
+        },
+        "uniform_baseline": {
+          "prealignment_diagnostic": null,
+          "camera_labels": [
+            "azimuth_000.00deg",
+            "azimuth_180.00deg"
+          ],
+          "fitted_coefficients": [
+            -0.1491040620862059,
+            -1.1102230246251565e-16,
+            -0.08281933800095485
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.9257448697160131,
+          "mean_corresponding_vertex_error_mm": 11.504770234415378,
+          "p95_corresponding_vertex_error_mm": 17.84952062208146,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 1.981540166667184,
+            "depth_y": 25.916805948172474,
+            "height_z": 18.934913750807247
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 27.489399999999886,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 96.83080999999993
+        }
+      }
+    },
+    {
+      "synthetic_subject_index": 2,
+      "ground_truth_coefficients": {
+        "lateral_width": -0.08620260108766986,
+        "front_back_depth": 0.1336117301987767,
+        "total_height": 0.2836630446159438
+      },
+      "cases": {
+        "planned": {
+          "prealignment_diagnostic": null,
+          "camera_labels": [
+            "azimuth_045.00deg",
+            "azimuth_225.00deg"
+          ],
+          "fitted_coefficients": [
+            -0.059980362294358984,
+            -1.3913835361645255e-12,
+            0.1972535224016712
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.8893076297206126,
+          "mean_corresponding_vertex_error_mm": 16.325275399558375,
+          "p95_corresponding_vertex_error_mm": 27.56149075272197,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 5.647866817020786,
+            "depth_y": 10.123053441048025,
+            "height_z": 30.1919541401654
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 10.745730000000009,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 81.86197000000006
+        },
+        "uniform_baseline": {
+          "prealignment_diagnostic": null,
+          "camera_labels": [
+            "azimuth_000.00deg",
+            "azimuth_180.00deg"
+          ],
+          "fitted_coefficients": [
+            -0.03350164891263806,
+            -1.1102230246251565e-16,
+            0.19223407080891675
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.8288132673351227,
+          "mean_corresponding_vertex_error_mm": 17.391374195022536,
+          "p95_corresponding_vertex_error_mm": 29.16720779004616,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 11.350974314622064,
+            "depth_y": 10.123053440942552,
+            "height_z": 31.94577765884454
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 8.659840000000196,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 78.40993000000007
+        }
+      }
+    },
+    {
+      "synthetic_subject_index": 3,
+      "ground_truth_coefficients": {
+        "lateral_width": -0.5816524120839461,
+        "front_back_depth": -0.2951509034488329,
+        "total_height": 0.12497502547671613
+      },
+      "cases": {
+        "planned": {
+          "prealignment_diagnostic": null,
+          "camera_labels": [
+            "azimuth_045.00deg",
+            "azimuth_225.00deg"
+          ],
+          "fitted_coefficients": [
+            -0.5839397386061846,
+            -0.2322292067814882,
+            0.12074709638437096
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.8799300120299798,
+          "mean_corresponding_vertex_error_mm": 1.2029175609854594,
+          "p95_corresponding_vertex_error_mm": 1.9985127147008583,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 0.4926549432513472,
+            "depth_y": 4.767243841620028,
+            "height_z": 1.4772612785360906
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 4.6767599999999465,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 0.5104100000001832
+        },
+        "uniform_baseline": {
+          "prealignment_diagnostic": null,
+          "camera_labels": [
+            "azimuth_000.00deg",
+            "azimuth_180.00deg"
+          ],
+          "fitted_coefficients": [
+            -0.5118436341104844,
+            -1.0063744274604756e-16,
+            0.23395275646062338
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.7907994465294756,
+          "mean_corresponding_vertex_error_mm": 21.250024566878594,
+          "p95_corresponding_vertex_error_mm": 34.872879094194786,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 15.035736794284048,
+            "depth_y": 22.36202139071164,
+            "height_z": 38.07740827459338
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 33.1686699999999,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 163.5293400000002
+        }
+      }
+    },
+    {
+      "synthetic_subject_index": 4,
+      "ground_truth_coefficients": {
+        "lateral_width": -0.49951596637542817,
+        "front_back_depth": 0.5973164171075719,
+        "total_height": 0.3988153494008446
+      },
+      "cases": {
+        "planned": {
+          "prealignment_diagnostic": null,
+          "camera_labels": [
+            "azimuth_045.00deg",
+            "azimuth_225.00deg"
+          ],
+          "fitted_coefficients": [
+            -0.4372257702737988,
+            0.42618462090164033,
+            0.29952771179668103
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.8999432199053716,
+          "mean_corresponding_vertex_error_mm": 19.000836967785204,
+          "p95_corresponding_vertex_error_mm": 31.691950291039923,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 13.416349929581738,
+            "depth_y": 12.96575020666113,
+            "height_z": 34.69163726882751
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 12.122460000000057,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 80.24038
+        },
+        "uniform_baseline": {
+          "prealignment_diagnostic": null,
+          "camera_labels": [
+            "azimuth_000.00deg",
+            "azimuth_180.00deg"
+          ],
+          "fitted_coefficients": [
+            -0.4959493527648626,
+            0.0,
+            0.39328406422676987
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.8774781355921377,
+          "mean_corresponding_vertex_error_mm": 7.62633205722445,
+          "p95_corresponding_vertex_error_mm": 16.2205710400422,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 0.7681937007372186,
+            "depth_y": 45.25550266085598,
+            "height_z": 1.9326609386605131
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 48.87324000000004,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 60.23093999999985
+        }
+      }
+    },
+    {
+      "synthetic_subject_index": 5,
+      "ground_truth_coefficients": {
+        "lateral_width": -0.5558671707992102,
+        "front_back_depth": 0.08104777577813349,
+        "total_height": 0.1312081644541242
+      },
+      "cases": {
+        "planned": {
+          "prealignment_diagnostic": null,
+          "camera_labels": [
+            "azimuth_045.00deg",
+            "azimuth_225.00deg"
+          ],
+          "fitted_coefficients": [
+            -0.5185822975606384,
+            -1.7452491492576647e-12,
+            0.0940552940292865
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.9505716935541155,
+          "mean_corresponding_vertex_error_mm": 7.296787207098847,
+          "p95_corresponding_vertex_error_mm": 11.880436182580226,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 8.030588082153955,
+            "depth_y": 6.140560894381419,
+            "height_z": 12.981413752764848
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 1.518909999999929,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 38.25318000000011
+        },
+        "uniform_baseline": {
+          "prealignment_diagnostic": null,
+          "camera_labels": [
+            "azimuth_000.00deg",
+            "azimuth_180.00deg"
+          ],
+          "fitted_coefficients": [
+            -0.5428864136955031,
+            -1.404887810022821e-16,
+            0.06327176696861991
+          ],
+          "optimizer_success": true,
+          "mean_observed_mask_iou": 0.8484076221521878,
+          "mean_corresponding_vertex_error_mm": 12.741240931062665,
+          "p95_corresponding_vertex_error_mm": 21.655615111750883,
+          "axis_extent_abs_errors_mm": {
+            "width_x": 2.7958553761830984,
+            "depth_y": 6.140560894249192,
+            "height_z": 23.73734450520537
+          },
+          "largest_horizontal_contour_at_0.57_height_abs_perimeter_error_mm": 4.828739999999998,
+          "largest_horizontal_contour_at_0.76_height_abs_perimeter_error_mm": 64.87794000000014
+        }
+      }
+    }
+  ],
+  "summary": {
+    "planned": {
+      "mean_vertex_error_mm": 8.09704453171279,
+      "median_vertex_error_mm": 5.3313437085114215,
+      "worst_vertex_error_mm": 19.000836967785204
+    },
+    "uniform_baseline": {
+      "mean_vertex_error_mm": 12.634330124506889,
+      "median_vertex_error_mm": 12.123005582739022,
+      "worst_vertex_error_mm": 21.250024566878594
+    }
+  },
+  "notes": [
+    "This is an intentionally favorable in-basis test: the truth and fit share a shape basis.",
+    "Camera, pose and scale are known exactly; imagery is rendered binary masks (optionally pixel-translated).",
+    "The frontal/rear uniform two-view baseline is intentionally weak for torso depth.",
+    "Measured vertex errors are corresponding-vertex distances to a generated source mesh, not real-person accuracy."
+  ]
+}

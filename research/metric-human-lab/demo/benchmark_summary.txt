@@ -1,0 +1,4 @@
+1 views: IoU=0.1573, width error=0.0 mm, depth error=578.3 mm
+2 views: IoU=0.1573, width error=0.0 mm, depth error=578.3 mm
+4 views: IoU=0.7119, width error=0.0 mm, depth error=0.0 mm
+8 views: IoU=0.8591, width error=0.0 mm, depth error=0.0 mm
