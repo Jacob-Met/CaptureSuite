@@ -5,7 +5,7 @@ description = "CaptureSuite multimodal capture platform"
 readme = "README.md"
 requires-python = ">=3.12,<3.13"
 dependencies = [
-  "protobuf>=4.25,<5",
+  "protobuf>=4.25,<8",
   "grpcio-tools>=1.62,<1.63",
   "jsonschema>=4.21",
 ]
