@@ -1,0 +1,52 @@
+{
+  "schema": "hamon.capture-windows-independent-review.v1",
+  "reviewer": "HAMON deec14e7c405/source_worker",
+  "reviewed_at": "2026-10-13T01:06:35.115Z",
+  "repository": "Jacob-Met/CaptureSuite",
+  "source_owner": "HAMON 582de029aa19 / portfolio",
+  "source_pr": "https://github.com/Jacob-Met/CaptureSuite/pull/124",
+  "source_candidate_blob": "dfa2e34fc881a76fb461c51dbf3e94aa4c594e0c",
+  "source_original_blob": "b998063a5036b73a67b773f70c193b1f9827c248",
+  "receiver_author": "chatgpt-f0f66340f637/runtime_integration",
+  "receiver_origin": "https://github.com/Jacob-Met/CaptureSuite/issues/122#issuecomment-6134723948",
+  "native_executor": "HAMON deec14e7c405/runtime_worker",
+  "disposition": "Accepted as bounded native Windows writer qualification",
+  "method": [
+    "Read the exact original and accepted one-line candidate from their GitHub blobs.",
+    "Read the complete native wrapper, five-case receiver, frozen contract, original receipt, candidate receipt and qualification envelope.",
+    "Compare native receiver and contract text exactly with the prior published code fences.",
+    "Parse all case checks independently: original 35/48 in 2/5 cases; candidate 48/48 in 5/5 cases.",
+    "Read-only native PowerShell SHA-256 rehash of all eight files on MSI; process 27004 completed with exit 0.",
+    "No second execution of the writer or broader suite was performed by this reviewer."
+  ],
+  "native_environment": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.10",
+    "pandas": "2.2.3",
+    "pyarrow": "26.0.0"
+  },
+  "checked_sha256": {
+    "run_qualification.py": "bf7582a671b3f37909ade25c591ceac2a3695eccba063dd1a19d6041df5155be",
+    "receive_sidecar.py": "730373a5f07011b71d9e8bbadb517e8e62d1bed5d0b2f41b988c02584531783f",
+    "frozen-contract.json": "7d2d86c52515d5d8fe940eddd7bd7d46406ea4d50fe9ede1ab70e182ed76d711",
+    "original_feature_io.py": "c677d209292cca790ccdf1a64ba834f71a078ccce31ea57452e67ece358822ca",
+    "candidate_feature_io.py": "e7c26202f02ba870e0a2db9cb840ab64c706929efe98da111b405ce4ffb47321",
+    "original-windows-receipt.json": "4d3876666e40ca763f9a239908866de3f67f600daa867f1f5dc4fdce1859cfa0",
+    "candidate-windows-receipt.json": "c19638545be380f8b68dbb9231a59d95b273eb143e3cf01ab0488a39977c7e8b",
+    "windows-qualification.json": "dd389c8fb7d49dc0b33734348b2e9dbb0f4614a353bb3655d49e2e5dc0750dfa"
+  },
+  "findings": [],
+  "observations": [
+    "All five candidate cases decode actual Parquet and CSV values exactly, validate native manifest paths/sizes/hashes/schema, and preserve caller data and retained files.",
+    "Both sentinel cases preserve the unrelated CSV reached by the former global replacement; the missing unrelated parent case now succeeds.",
+    "Original source/receiver bytes and candidate source/receiver bytes remain pinned; all owned fixture directories are removed.",
+    "The reused child receipts retain their original actor and native_windows_acceptance:false. The new envelope accurately attributes Windows execution to the current executor without rewriting prior authorship.",
+    "Native CSV artifacts are 71 bytes in these receipts, unlike the prior Linux 68-byte artifacts. Native manifest checks use actual native bytes; no cross-platform CSV byte identity is claimed."
+  ],
+  "limits": [
+    "Existing named lowercase .parquet caller contract only.",
+    "No full analysis, Ruff, hosted CI, GUI, installed desktop, hardware, scientific-result or arbitrary-extension qualification by this receiving.",
+    "Environment setup and its initial timeout are separate executor records; this review does not relabel that failure as a pass.",
+    "Evidence publication and PROGRESS composition must still preserve current source and existing ownership."
+  ]
+}
