@@ -76,7 +76,7 @@ def test_gap_policy_fail() -> None:
         enforce_gap_policy(mask, valid)
 
 
-def _write_emg_imu_package(dest: Path) -> Path:
+def _write_emg_imu_package(dest: Path, *, second_sensor_frames: int | None = None) -> Path:
     """Build a tiny package with real protobuf MCAP for emg+imu."""
     shutil.copytree(FIXTURE, dest)
     # Remove placeholder mcaps
@@ -156,6 +156,11 @@ def _write_emg_imu_package(dest: Path) -> Path:
             s.gyro_y = 0.0
             s.gyro_z = 0.0
             s.qw = 1.0
+            if second_sensor_frames is not None and i < second_sensor_frames:
+                sternum = msg.sensors.add()
+                sternum.sensor_id = "sternum"
+                sternum.accel_z = 9.81
+                sternum.qw = 1.0
             payload = msg.SerializeToString()
             t_ns = msg.timing.session_time_ns
             w.add_message(channel_id=cid, log_time=t_ns, data=payload, publish_time=t_ns)
@@ -330,6 +335,64 @@ def test_imu_payload_qc_rejects_real_protocol_failures(tmp_path: Path, case: str
     assert inspection["status"] == "failed"
     assert inspection["sampleFramesChecked"] is None
     assert report["trafficLights"]["sim.imu.upper"] == "fail"
+
+
+
+@pytest.mark.parametrize(
+    ("second_sensor_frames", "expected_light", "expected_exit"),
+    [(30, "ok", 0), (15, "warn", 2)],
+)
+def test_imu_partial_sensor_presence_is_visible_in_qc_and_strict_cli(
+    tmp_path: Path, second_sensor_frames: int, expected_light: str, expected_exit: int
+) -> None:
+    import subprocess
+    import sys
+
+    from capture_analysis import collect_qc, hash_sources_tree
+
+    package = _write_emg_imu_package(
+        tmp_path / "sensor-presence.mmsession", second_sensor_frames=second_sensor_frames
+    )
+    before = hash_sources_tree(package)
+    report = collect_qc(package, inspect_payloads=True).to_dict()
+    imu = next(s for s in report["streams"] if s["modality"] == "imu")
+    evidence = imu["payloadInspection"]
+    assert evidence["status"] == "imu_frames_checked"
+    assert evidence["sampleFramesChecked"] == 30
+    assert evidence["sensorIds"] == ["pelvis", "sternum"]
+    assert evidence["sensorFramePresence"] == {
+        "pelvis": {"framesPresent": 30, "totalFrames": 30},
+        "sternum": {"framesPresent": second_sensor_frames, "totalFrames": 30},
+    }
+    assert evidence["partiallyPresentSensorIds"] == (
+        [] if second_sensor_frames == 30 else ["sternum"]
+    )
+    assert report["trafficLights"]["sim.imu.upper"] == expected_light
+    warnings = [w for w in report["warnings"] if "IMU sensor presence incomplete" in w]
+    assert bool(warnings) is (second_sensor_frames == 15)
+    if warnings:
+        assert "sternum 15/30" in warnings[0]
+
+    command = [
+        sys.executable,
+        str(ROOT / "tools/run_analysis.py"),
+        "qc",
+        str(package),
+        "--inspect-payloads",
+        "--strict-warnings",
+        "--overwrite-job-id",
+        "sensor-presence-cli",
+    ]
+    completed = subprocess.run(command, cwd=ROOT, capture_output=True, text=True, check=False)
+    assert completed.returncode == expected_exit, completed.stdout + completed.stderr
+    report_dir = package / "processing/jobs/sensor-presence-cli/reports"
+    saved = json.loads((report_dir / "qc.json").read_text(encoding="utf-8"))
+    assert saved["trafficLights"]["sim.imu.upper"] == expected_light
+    assert saved["streams"][1]["payloadInspection"]["sensorFramePresence"] == evidence["sensorFramePresence"]
+    html = (report_dir / "qc.html").read_text(encoding="utf-8")
+    assert "sensor presence (decoded frames): pelvis 30/30, sternum" in html
+    assert f"sternum {second_sensor_frames}/30" in html
+    assert hash_sources_tree(package) == before
 
 
 def test_native_qc_cli_shows_real_emg_imu_payloads_without_changing_sources(
