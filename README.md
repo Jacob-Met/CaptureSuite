@@ -63,6 +63,10 @@ existing output directory, and preserves failure output for diagnosis. It does
 not establish hardware performance, clinical validity, or full product readiness.
 Tests: `tests/analysis/test_offline_demo.py`.
 
+For the pre-release **Linux x86-64 standalone offline analysis executable**
+(no Python installation required), see
+[Offline Analysis Linux](docs/OFFLINE_ANALYSIS_LINUX.md).
+
 ## Validate recorded MCAP bytes in a sealed session
 
 Normal `qc` is fast **package and gap metadata QC**: a source labelled `ok`
