@@ -48,6 +48,18 @@ use a genuine recording for payload analysis.
 
 ## Build from source
 
+The build machine needs Qt's native X11 dependencies so PyInstaller can include
+them. On a minimal Ubuntu 24.04 image, the actual first launch needed:
+
+```sh
+sudo apt-get install libxcb-cursor0 libxcb-icccm4 libxcb-image0 \
+  libxcb-keysyms1 libxcb-render-util0
+```
+
+The build script checks the X11 platform plug-in's resolved libraries before
+packaging. A normal graphical Linux system also provides its display server,
+OpenGL drivers and fonts; these remain operating-system prerequisites.
+
 Use CPython 3.12 in a separate environment and install the local packages
 together so their declared dependency constraints are respected:
 
