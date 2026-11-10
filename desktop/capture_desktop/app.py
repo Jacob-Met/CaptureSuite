@@ -1131,7 +1131,8 @@ class MainWindow(QMainWindow):
 
     def _refresh_ui(self) -> None:
         if self._analysis_only:
-            summary = self.analysis.summary
+            active_screen = self.review if self.tabs.currentWidget() is self.review else self.analysis
+            summary = active_screen.summary
             self._status.setText(self.state.status_line)
             self._session_label.setText(
                 f"{summary.session_id} · {summary.state}" if summary else "No recording open"
