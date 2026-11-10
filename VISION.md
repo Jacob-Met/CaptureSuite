@@ -60,3 +60,10 @@ CSV/Parquet handoff while preserving source warnings, row order and job metadata
 The taskboard record is `capturesuite-retained-feature-export-mizunagi`;
 a merge, runnable release and separate analyst judgment must be recorded before
 this is described as shipped.
+
+Recorded numeric sample export now complements derived-feature handoff:
+the existing Export dialog and offline `export-session` command preserve
+channel values, original native/MCAP clocks and copied gaps. Missing native
+clocks remain unknown; within-batch session estimates are explicitly
+uncalibrated. Producing task: `capturesuite-numeric-sample-export-lark61c2`;
+separate analyst judgment and actual distribution evidence remain required.
