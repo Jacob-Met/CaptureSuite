@@ -1492,6 +1492,17 @@ Linden reproduced fabricated waveform length and zero crossings when valid sampl
 
 Two encoded MCAP batches at 0/1ms and 4/5ms reproduced a remaining false WL2/ZC1 across a declared 2–3ms disconnect. Pair adjacency now excludes any declared gap intersecting the pair interval, including gaps with no stored sample. Added real MCAP loader regression and undeclared-gap control; no heuristic sampling-rate gap threshold is introduced.
 
+### 2026-11-10 — EMG recorded index continuity (astra-larch-91e)
+
+Reproduced decoded EMG QC reporting `ok` for valid protobuf MCAP with a forward
+index jump and for repeated/overlapping batches. QC now retains counts and
+exact examples of forward jumps and overlap/reset transitions across batches
+and segments, raises the existing operator warning, and leaves raw captures
+unchanged. This is protocol-generated recording evidence, not physical-device
+validation. Task `capturesuite-emg-continuity-larch91e` tracks current runnable
+package checks and separate judgment; merge, publication and observed use are
+reported independently there.
+
 
 ## 2026-11-10 — Recorded time and gap continuity in static signal figures
 
