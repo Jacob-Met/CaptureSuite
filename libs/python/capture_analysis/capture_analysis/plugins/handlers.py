@@ -101,18 +101,32 @@ def handle_imu(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext) -> None:
         )
         ctx.valid_fractions[ref.source_id] = vf
         if not df.empty:
+            incomplete = [
+                f"{sid} {measurement}"
+                for sid in loaded.sensor_ids
+                for measurement in ("acc", "gyro")
+                if (df[f"{sid}_{measurement}_valid_fraction"] < 1.0).any()
+            ]
+            if incomplete:
+                ctx.warnings.append(
+                    f"IMU feature support incomplete for {ref.source_id}/{ref.stream_id}: "
+                    + ", ".join(incomplete)
+                    + "; inspect per-sensor sample_count and valid_fraction columns. "
+                    "Missing or nonfinite vectors and declared gaps are excluded; "
+                    "zero-support measurements remain unknown."
+                )
             rel = f"features/imu/{ref.source_id}/windows.parquet"
             write_feature_table(
                 ctx.work,
                 rel,
                 df,
-                feature_schema_version=1,
+                feature_schema_version=2,
                 columns_meta=meta,
                 schema_doc=ctx.schema_doc,
                 outputs=ctx.outputs,
             )
             ctx.feature_tables.append(
-                {"relativePath": rel, "featureSchemaVersion": 1, "rows": int(len(df))}
+                {"relativePath": rel, "featureSchemaVersion": 2, "rows": int(len(df))}
             )
     if ctx.do_plots and loaded.t_frame_ns.size:
         path = ctx.work / "figures" / f"imu_{ref.source_id}_accel.png"
