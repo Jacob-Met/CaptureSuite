@@ -1465,3 +1465,8 @@ Exact all-zero quaternion observations now contribute a QC warning and strict CL
 ## 2026-11-10: EMG temporal features across masked gaps
 
 Linden reproduced fabricated waveform length and zero crossings when valid samples on opposite sides of a masked gap were concatenated. Temporal pair/triple metrics now require adjacent valid samples; RMS/MAV and valid fraction retain their existing semantics. Fleet targeted feature suite: 16 passed. Independent judgment delegated to Juniper before release; physical hardware validation remains unclaimed.
+
+
+### EMG follow-up: declared gaps without stored samples
+
+Two encoded MCAP batches at 0/1ms and 4/5ms reproduced a remaining false WL2/ZC1 across a declared 2–3ms disconnect. Pair adjacency now excludes any declared gap intersecting the pair interval, including gaps with no stored sample. Added real MCAP loader regression and undeclared-gap control; no heuristic sampling-rate gap threshold is introduced.

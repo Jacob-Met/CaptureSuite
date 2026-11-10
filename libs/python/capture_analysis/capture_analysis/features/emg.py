@@ -46,6 +46,15 @@ def extract_emg_features(
         v = valid[i0:i1]
         if not np.any(v):
             continue
+        pairs = v[:-1] & v[1:]
+        times = t[i0:i1]
+        for gap in gap_mask.overlaps_window():
+            end = gap.end_session_ns
+            if end is None:
+                end = gap_mask.window.end_session_ns
+            # A declared missing interval can contain no stored samples at all.
+            pairs &= ~((times[:-1] <= end) & (times[1:] >= gap.start_session_ns))
+        triples = pairs[:-1] & pairs[1:]
         seg = x[:, i0:i1][:, v]
         t_mid = int(np.median(t[i0:i1][v]))
         row: dict = {
@@ -60,8 +69,6 @@ def extract_emg_features(
             # would join opposite sides of a gap and invent transitions.
             full = x[c, i0:i1].astype(np.float64, copy=False)
             diff = np.diff(full)
-            pairs = v[:-1] & v[1:]
-            triples = pairs[:-1] & pairs[1:]
             zc = int(np.sum(((full[:-1] * full[1:]) < 0) & pairs))
             ssc = int(np.sum(((diff[:-1] * diff[1:]) < 0) & triples))
             row[f"{ch}_rms"] = float(np.sqrt(np.mean(s * s)))
