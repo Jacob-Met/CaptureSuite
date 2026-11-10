@@ -60,13 +60,13 @@ def handle_emg(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext) -> None:
                 ctx.work,
                 rel,
                 df,
-                feature_schema_version=1,
+                feature_schema_version=2,
                 columns_meta=meta,
                 schema_doc=ctx.schema_doc,
                 outputs=ctx.outputs,
             )
             ctx.feature_tables.append(
-                {"relativePath": rel, "featureSchemaVersion": 1, "rows": int(len(df))}
+                {"relativePath": rel, "featureSchemaVersion": 2, "rows": int(len(df))}
             )
     if ctx.do_plots and loaded.X.size:
         path = ctx.work / "figures" / f"emg_{ref.source_id}_channels.png"

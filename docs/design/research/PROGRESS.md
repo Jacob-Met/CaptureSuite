@@ -1473,3 +1473,8 @@ Linden reproduced fabricated waveform length and zero crossings when valid sampl
 ### EMG follow-up: declared gaps without stored samples
 
 Two encoded MCAP batches at 0/1ms and 4/5ms reproduced a remaining false WL2/ZC1 across a declared 2–3ms disconnect. Pair adjacency now excludes any declared gap intersecting the pair interval, including gaps with no stored sample. Added real MCAP loader regression and undeclared-gap control; no heuristic sampling-rate gap threshold is introduced.
+
+
+### 2026-11-10 — elapsed-time EMG rows (astra-larch-7c2f)
+
+Independent astra-birch-82b5 actual MCAP/CLI use reproduced two contractions around a dropout becoming one 100%-valid averaged row under mask, split and fail. Work changes the existing feature pipeline to time-bounded rows, explicit availability/counts, real split spans and fail-policy propagation. Task capturesuite-time-windows-larch7c2f; separate judging capturesuite-timing-judge-birch82b5. No hardware or release claim from this source note; final checks and delivery recorded in those tasks.

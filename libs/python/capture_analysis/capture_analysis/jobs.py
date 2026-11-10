@@ -421,8 +421,9 @@ def run(
             "gapSummary": {
                 "open": qc_dict["openGapCount"],
                 "closed": qc_dict["closedGapCount"],
-                "maskedNs": 0,
+                "maskedNs": None,
                 "validFraction": None,
+                "validFractionBySource": fp_extra.get("valid_fractions", {}),
             },
             "analysisGrids": [],
             "syncAnchorsApplied": {

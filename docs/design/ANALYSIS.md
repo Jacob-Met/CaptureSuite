@@ -25,6 +25,36 @@ Pinned companion to the product notes in
 8. Pose overlays (Milestone 12) land under `processing/…/pose/` only; source
    MKV is never rewritten.
 
+
+### EMG elapsed-time feature windows (table version 2)
+
+EMG feature rows use half-open elapsed session-time bounds `t_start_ns` and
+`t_end_ns`, anchored at the first retained sample. The default is 100 ms with
+50 ms hops. A disconnect cannot be removed by concatenating the samples on its
+opposite sides. No raw values or timestamps are resampled.
+The job manifest preserves per-source validity values instead of inventing a
+cross-modality average; uncomputed total masked duration is null, not zero.
+
+With `mask`, fixed time windows retain the observed, unmasked samples; windows
+with no valid samples produce no row. With `split`, the grid restarts after each
+declared gap, and a shorter contiguous span is retained with its actual bounds.
+With `fail`, any declared gap overlapping the selected stream/window fails the
+feature job, including intervals with no stored samples. The CLI returns 1 and
+retains failure details rather than exporting a completed table.
+
+Each row reports observed `sample_count`, `valid_sample_count`, and
+`expected_sample_count` (nominal sample positions on the window grid, using the
+same rounded nanosecond period as the EMG loader). `valid_fraction` is the valid count divided by the larger of
+the observed and expected counts. It describes sample availability within that
+row, not sensor accuracy. The returned stream coverage uses the same definition
+across its observed first-to-last sample span. `t_mid_ns` remains the median of
+valid retained timestamps. Temporal WL/ZC/SSC calculations continue to exclude
+pairs and triples that cross declared gaps.
+
+The retained table is version 2 with column ID `emg.windowed.v2`; earlier saved
+jobs are unchanged. Nominal rate and interpolated EMG timestamps remain
+provisional until measured on the actual device.
+
 ## Package layout
 
 ```text

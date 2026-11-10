@@ -16,7 +16,7 @@ from capture_analysis.plots.sync_dashboard import plot_sync_dashboard
 from capture_analysis.plugins.handlers import HandlerContext
 from capture_analysis.plugins.registry import get_registry
 from capture_analysis.types import TimeWindow
-from capture_analysis.windows import build_gap_mask, gaps_to_intervals
+from capture_analysis.windows import GapPolicyError, build_gap_mask, gaps_to_intervals
 
 
 def _hash_file(path: Path) -> str:
@@ -76,6 +76,8 @@ def run_features_and_plots(
         gap_mask = build_gap_mask(ref, window, all_gaps, policy=gap_policy)
         try:
             handler(ref, gap_mask, ctx)
+        except GapPolicyError:
+            raise
         except Exception as exc:  # noqa: BLE001
             warnings.append(f"{ref.source_id}/{ref.stream_id}: {exc}")
 
