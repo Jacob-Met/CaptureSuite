@@ -1,3 +1,21 @@
+## 2026-11-10 — Inspect exact numeric samples in the offline QC report
+
+Astra-Lumen recovered the unfinished numeric trace outcome in the existing
+CaptureSuite QC report. Opt-in payload inspection now retains the first 256
+sample frames/up to six channels of a supported numeric stream, with unchanged
+native timestamp strings and per-batch provenance. The ordinary self-contained
+HTML report renders separate signal lanes with independent amplitude scales,
+visible batch boundaries and an explicit sample-position axis. Default
+descriptor-only QC and later-frame inspection are preserved.
+
+On Renpo hamon-research-168, 50 targeted numeric-preview, payload, Phase A QC
+and gap-detail tests passed under Python 3.12.3 with declared protobuf 4.25.9.
+The actual CLI generated a completed report from simulated two-channel protobuf
+MCAP; browser review at 1440px and 390px prompted a readable responsive axis and
+long-metadata wrapping. This is software/simulation evidence. See
+[usage and limits](../../NUMERIC_QC_EXCERPTS.md); merge/release and independent
+actual-use judging remain recorded separately on the taskboard.
+
 ## 2026-11-10 — Export a retained feature selection from the offline executable
 
 Contributor astra-mizunagi recovered the useful feature-table export implementation
@@ -1474,6 +1492,47 @@ Linden reproduced fabricated waveform length and zero crossings when valid sampl
 
 Two encoded MCAP batches at 0/1ms and 4/5ms reproduced a remaining false WL2/ZC1 across a declared 2–3ms disconnect. Pair adjacency now excludes any declared gap intersecting the pair interval, including gaps with no stored sample. Added real MCAP loader regression and undeclared-gap control; no heuristic sampling-rate gap threshold is introduced.
 
+
+## 2026-11-10 — Recorded time and gap continuity in static signal figures
+
+Producer astra-mizu-7c4e reproduced four failures on main afa83a5: nonzero
+session timestamps relabeled from zero, traces joining across a declared gap
+with no samples, samples inside gaps drawn, and sibling gaps shaded on healthy
+static dashboard lanes. Static plots now use session seconds, split valid runs
+before display thinning, and receive each stream's own gap mask. Six focused
+recorded-MCAP/plot regressions and the existing numeric/feature/stream-gap suite
+pass on fleet host217 (61 total). Raw-source hash controls pass. The saved
+dashboard v1 JSON and native interactive viewer remain unchanged; see
+[static figure scope](../../SIGNAL_PLOT_REVIEW.md). No hardware or timing
+accuracy claim. Runnable bundle/independent judgment recorded in task
+capturesuite-signal-plots-mizu-7c4e.
+
+
+## 2026-11-10 — Actionable QC warnings in reading order
+
+Fresh consumer review of the two-source report found warnings below the fold behind empty gaps and stream explanations. Place full warning text directly after source status, before inventories; retain all metadata/accuracy caveats. FastQC example report keeps a fixed status/module summary with in-page links (https://www.bioinformatics.babraham.ac.uk/projects/fastqc/good_sequence_short_fastqc.html); CaptureSuite needs the exact source-specific reason in ordinary reading order rather than fixed desktop navigation. Responsive warning text wraps on narrow displays.
+
+## 2026-11-10 — Linux analysis distribution notices
+
+Packaging now derives third-party notice files and exact installed versions from
+the actual frozen module inventory, preserves project Apache contracts and
+Python/PyInstaller terms, and fails missing notice text. Source build instructions
+install the maintained local package dependencies (protobuf >=4.25,<5), with
+pip check before freezing. MCAP1.6.0 upstream license is pinned because its wheel
+and sdist omit the text. Fleet build and independent receiving follow.
+
+## 2026-11-10 — IMU measurement support in saved feature tables
+
+A genuine protobuf MCAP consumer case with a sensor present in 15/30 frames
+reproduced a completed job whose exported windows all reported stream validity
+1.0, even when that sensor had only 25% or no retained observations. IMU table
+version 2 adds independent accelerometer/gyro support counts and fractions,
+retains unknown values at zero support and records an incomplete-support warning.
+Each axis and magnitude uses the same complete finite-vector population. The
+fraction denominator is retained frame slots, not estimated elapsed-time coverage.
+77 targeted feature/export/plugin regressions pass on estate Python 3.12.
+Independent heldout-recording judgment and runnable packaging are tracked under
+capturesuite-imu-feature-coverage-marten9c2f; no hardware accuracy claim.
 
 ### 2026-11-10 — LSL live source lifecycle (Astra-Lark)
 
