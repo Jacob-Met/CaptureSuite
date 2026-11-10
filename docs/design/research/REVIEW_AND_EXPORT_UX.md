@@ -218,3 +218,10 @@ records on failed loads. The shared header follows the selected tab's actual
 package. The existing application entry accepts `--offline` and `--review`;
 non-Windows imports no longer load the Windows-only named-pipe runtime, and actual
 connection attempts fail explicitly. Windows pipe implementation is unchanged.
+
+
+Independent native judgment found that expanding video under Events at1280×900
+collapsed event details to one row and clipped the video frame. Recorded video now
+occupies a separate Review work tab using the same native player; this makes the
+available space explicit. Leaving the video tab pauses playback, and returning
+retains the paused position. Event selection remains separate from video seeking.

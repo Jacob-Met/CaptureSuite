@@ -373,6 +373,7 @@ class MainWindow(QMainWindow):
         self.capture.radar_array_edit_requested.connect(self._edit_radar_array)
         self.review.export_requested.connect(self._on_review_export)
         self.review.package_loaded.connect(self._on_review_package_loaded)
+        self.review.analysis_requested.connect(self._on_review_analysis)
         self._session_header.scope_changed.connect(self.analysis.set_scope)
         self.analysis.package_loaded.connect(self._on_analysis_package_loaded)
 
@@ -696,6 +697,10 @@ class MainWindow(QMainWindow):
             self._session_header.clear()
         else:
             self._session_header.refresh_sealed(summary, selection=self.analysis.scope)
+
+    def _on_review_analysis(self, package_path: str) -> None:
+        self.tabs.setCurrentWidget(self.analysis)
+        self.analysis.set_package(package_path)
 
     def _on_review_package_loaded(self, summary) -> None:
         if self.tabs.currentWidget() is self.review:
@@ -1131,7 +1136,9 @@ class MainWindow(QMainWindow):
 
     def _refresh_ui(self) -> None:
         if self._analysis_only:
-            active_screen = self.review if self.tabs.currentWidget() is self.review else self.analysis
+            active_screen = (
+                self.review if self.tabs.currentWidget() is self.review else self.analysis
+            )
             summary = active_screen.summary
             self._status.setText(self.state.status_line)
             self._session_label.setText(

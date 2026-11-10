@@ -26,6 +26,7 @@ from .widgets_review_video import RecordedVideoReview
 class ReviewScreen(QWidget):
     export_requested = Signal(str)  # package_path
     package_loaded = Signal(object)  # ReviewSummary or None
+    analysis_requested = Signal(str)
 
     def __init__(self, state: CaptureState, parent: QWidget | None = None) -> None:
         super().__init__(parent)
@@ -113,17 +114,21 @@ class ReviewScreen(QWidget):
         self._review_tabs.addTab(self._events, "Events")
         root.addWidget(self._review_tabs, 1)
 
-        self._recorded_video = RecordedVideoReview()
-        root.addWidget(self._recorded_video)
+        self._recorded_video = RecordedVideoReview(collapsible=False)
+        self._review_tabs.addTab(self._recorded_video, "Recorded video")
 
         actions = QHBoxLayout()
         self._btn_export = QPushButton("Export…")
         self._btn_export.setEnabled(False)
         self._btn_export.clicked.connect(self._emit_export)
+        self._btn_analyze = QPushButton("Analyze this session")
+        self._btn_analyze.setEnabled(False)
+        self._btn_analyze.clicked.connect(self._emit_analysis)
         self._path_label = QLabel("")
         self._path_label.setObjectName("Faint")
         self._path_label.setTextFormat(Qt.TextFormat.PlainText)
         self._path_label.setWordWrap(True)
+        actions.addWidget(self._btn_analyze)
         actions.addWidget(self._btn_export)
         actions.addWidget(self._path_label, 1)
         root.addLayout(actions)
@@ -146,6 +151,7 @@ class ReviewScreen(QWidget):
         self.package_loaded.emit(None)
         self._path_label.setText(package_path)
         self._btn_export.setEnabled(False)
+        self._btn_analyze.setEnabled(False)
         self._events.clear()
         self._streams.clear()
         self._gaps.clear()
@@ -169,6 +175,7 @@ class ReviewScreen(QWidget):
         self._package = summary.package_path
         self.summary = summary
         self._btn_export.setEnabled(True)
+        self._btn_analyze.setEnabled(True)
         self._recorded_video.load_package(package_path, state=summary.state)
 
         recover_note = ""
@@ -233,6 +240,10 @@ class ReviewScreen(QWidget):
             time_label = f"{ts} ns" if ts is not None else "Unavailable time"
             self._checkpoints.addItem(QListWidgetItem(f"{time_label}  {name}"))
         self.package_loaded.emit(summary)
+
+    def _emit_analysis(self) -> None:
+        if self._package:
+            self.analysis_requested.emit(self._package)
 
     def _emit_export(self) -> None:
         if self._package:

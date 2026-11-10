@@ -321,7 +321,10 @@ def test_actual_mainwindow_opens_review_without_capture_connection(
         assert window._session_header.is_sealed
         assert window._session_header.package_path == str(recorded_package.resolve())
         assert window.review._recovered_banner.isVisible()
-        window.tabs.setCurrentWidget(window.analysis)
+        QTest.mouseClick(window.review._btn_analyze, Qt.MouseButton.LeftButton)
+        assert window.tabs.currentWidget() is window.analysis
+        assert window.analysis.package_path == str(recorded_package.resolve())
+        assert window.state.package_path == ""
         window.tabs.setCurrentWidget(window.review)
         assert window._session_header.package_path == str(recorded_package.resolve())
         window.review.load_package(str(tmp_path / "missing"))
