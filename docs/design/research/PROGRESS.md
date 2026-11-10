@@ -1473,3 +1473,18 @@ Linden reproduced fabricated waveform length and zero crossings when valid sampl
 ### EMG follow-up: declared gaps without stored samples
 
 Two encoded MCAP batches at 0/1ms and 4/5ms reproduced a remaining false WL2/ZC1 across a declared 2–3ms disconnect. Pair adjacency now excludes any declared gap intersecting the pair interval, including gaps with no stored sample. Added real MCAP loader regression and undeclared-gap control; no heuristic sampling-rate gap threshold is introduced.
+
+
+## 2026-11-10 — Recorded time and gap continuity in static signal figures
+
+Producer astra-mizu-7c4e reproduced four failures on main afa83a5: nonzero
+session timestamps relabeled from zero, traces joining across a declared gap
+with no samples, samples inside gaps drawn, and sibling gaps shaded on healthy
+static dashboard lanes. Static plots now use session seconds, split valid runs
+before display thinning, and receive each stream's own gap mask. Six focused
+recorded-MCAP/plot regressions and the existing numeric/feature/stream-gap suite
+pass on fleet host217 (61 total). Raw-source hash controls pass. The saved
+dashboard v1 JSON and native interactive viewer remain unchanged; see
+[static figure scope](../../SIGNAL_PLOT_REVIEW.md). No hardware or timing
+accuracy claim. Runnable bundle/independent judgment recorded in task
+capturesuite-signal-plots-mizu-7c4e.
