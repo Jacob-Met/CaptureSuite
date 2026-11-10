@@ -114,7 +114,11 @@ class SessionHeader(QWidget):
         self._timeline.set_model(timeline_from_review_summary(summary))
         self._scope_picker.show()
         self._scope_picker.set_summary(summary, selection)
-        self._on_scrubbed(playhead)
+        if summary.duration_ns > 1:
+            self._on_scrubbed(playhead)
+        else:
+            self._cursor.clear()
+            self._scope_picker.set_cursor(None)
 
     def _on_scope_changed(self, selection: ScopeSelection | None) -> None:
         self._scope.setText("Scope: " + (selection.describe() if selection else "invalid bounds"))
@@ -126,7 +130,7 @@ class SessionHeader(QWidget):
             self.scope_changed.emit(self.package_path, selection)
 
     def _on_scrubbed(self, seconds: float) -> None:
-        if not self.is_sealed:
+        if not self.is_sealed or not self._timeline._model.duration_known:
             return
         nanoseconds = round(seconds * 1e9)
         self._timeline.set_playhead(seconds)

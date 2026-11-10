@@ -8,7 +8,8 @@ import threading
 from pathlib import Path
 from typing import Any
 
-from PySide6.QtCore import QEvent, QObject, Qt, QThread, Signal, Slot
+from PySide6.QtCore import QEvent, QObject, Qt, QThread, QUrl, Signal, Slot
+from PySide6.QtGui import QDesktopServices
 from PySide6.QtWidgets import (
     QComboBox,
     QFileDialog,
@@ -26,8 +27,10 @@ from PySide6.QtWidgets import (
 )
 
 from . import theme
+from .analysis_history import SavedJobDetails, job_belongs_to_package, load_saved_job
 from .persistence import DesktopPersistence
 from .state import CaptureState, fmt_time
+from .widgets_analysis_history import AnalysisHistory
 from .widgets_analysis_jobs import AnalysisJobExtras, peek_ml_bundle_summary
 from .widgets_analysis_plots import FigureGallery, JobInspector
 from .widgets_analysis_scope import WINDOW_COMMANDS, ScopeSelection
@@ -104,8 +107,11 @@ class AnalysisScreen(QWidget):
         state: CaptureState,
         persistence: DesktopPersistence | None = None,
         parent: QWidget | None = None,
+        *,
+        commands: tuple[str, ...] | None = None,
     ) -> None:
         super().__init__(parent)
+        self._commands = commands
         self._state = state
         self._persistence = persistence
         self._package = ""
@@ -134,6 +140,11 @@ class AnalysisScreen(QWidget):
         self._scope_note.setObjectName("Dim")
         root.addWidget(self._scope_note)
 
+        self._history = AnalysisHistory()
+        self._history.job_loaded.connect(self._show_saved_job)
+        self._history.view_cleared.connect(self._clear_result_view)
+        root.addWidget(self._history)
+
         splitter = QSplitter()
         splitter.setChildrenCollapsible(False)
         root.addWidget(splitter, 1)
@@ -146,6 +157,8 @@ class AnalysisScreen(QWidget):
         self._build_controls(left_layout)
         self._mappings = AnatomicalMappingPanel(persistence)
         left_layout.addWidget(self._mappings)
+        if self._commands is not None:
+            self._mappings.setVisible(any(c in self._commands for c in ("pose", "kinematics")))
         controls_scroll = QScrollArea()
         controls_scroll.setObjectName("AnalysisControlsScroll")
         controls_scroll.setWidgetResizable(True)
@@ -175,11 +188,7 @@ class AnalysisScreen(QWidget):
             and event.modifiers() == Qt.KeyboardModifier.NoModifier
         ):
             focus = self.focusWidget()
-            if (
-                isinstance(focus, QPushButton)
-                and focus.hasFocus()
-                and self.isAncestorOf(focus)
-            ):
+            if isinstance(focus, QPushButton) and focus.hasFocus() and self.isAncestorOf(focus):
                 # The application's checkpoint shortcut must not consume the
                 # native Space activation of a focused Analysis button.
                 event.accept()
@@ -239,7 +248,8 @@ class AnalysisScreen(QWidget):
             ("ML bundle", "ml_bundle"),
             ("Eval report", "eval"),
         ):
-            self._command.addItem(label, value)
+            if self._commands is None or value in self._commands:
+                self._command.addItem(label, value)
         self._command.currentIndexChanged.connect(self._on_command_changed)
         cmd_row.addWidget(self._command, 1)
         opts.addLayout(cmd_row)
@@ -326,8 +336,7 @@ class AnalysisScreen(QWidget):
             return str(exc)
         if self._scope.mode != "full" and self._command.currentData() not in WINDOW_COMMANDS:
             return (
-                "This command uses the full session or its input jobs. "
-                "Select Full session to run."
+                "This command uses the full session or its input jobs. Select Full session to run."
             )
         return None
 
@@ -339,6 +348,7 @@ class AnalysisScreen(QWidget):
             self._scope = ScopeSelection()
         self._package = resolved
         self._path.setText(resolved)
+        self._history.set_package(resolved)
         self._extras.set_package(resolved)
         self._refresh_summary()
         self._sync_enabled()
@@ -379,10 +389,9 @@ class AnalysisScreen(QWidget):
         self._btn_use_open.setEnabled(not busy and bool(self._state.package_path))
         self._command.setEnabled(not busy)
         self._gap_policy.setEnabled(not busy)
+        self._history.set_busy(busy)
         if locked:
-            self._banner.setText(
-                "Analysis is disabled while the session is arming or recording."
-            )
+            self._banner.setText("Analysis is disabled while the session is arming or recording.")
 
     def _refresh_summary(self) -> None:
         try:
@@ -392,26 +401,27 @@ class AnalysisScreen(QWidget):
         except Exception as exc:  # noqa: BLE001
             self._summary = None
             for card in (
-                self._card_session, self._card_sources, self._card_gaps, self._card_duration,
+                self._card_session,
+                self._card_sources,
+                self._card_gaps,
+                self._card_duration,
             ):
                 card.setText("—")
             self._banner.setText(f"Could not load package: {exc}")
             return
         self._summary = summary
-        self._banner.setText(
-            f"State {summary.state}. Jobs write only under processing/jobs/."
-        )
+        self._banner.setText(f"State {summary.state}. Jobs write only under processing/jobs/.")
         self._card_session.setText(summary.session_id or "—")
         self._card_sources.setText(str(len(summary.source_ids)))
-        self._card_gaps.setText(
-            f"{len(summary.gaps)} · {summary.open_gap_count} open"
-        )
+        self._card_gaps.setText(f"{len(summary.gaps)} · {summary.open_gap_count} open")
         dur = summary.duration_ns / 1e9 if summary.duration_ns > 1 else 0.0
         self._card_duration.setText(fmt_time(dur) if dur else "unknown")
 
     def _browse(self) -> None:
         start = self._package or str(
-            Path(os.environ.get("LOCALAPPDATA", "")) / "CaptureSuite" / "sessions"
+            Path(os.environ["LOCALAPPDATA"]) / "CaptureSuite" / "sessions"
+            if os.environ.get("LOCALAPPDATA")
+            else Path.home()
         )
         path = QFileDialog.getExistingDirectory(self, "Select .mmsession package", start)
         if path:
@@ -452,8 +462,7 @@ class AnalysisScreen(QWidget):
             return
         extra = self._extras.build_extra(command)
         self._log.clear()
-        self._gallery.clear()
-        self._inspector.clear()
+        self._clear_result_view()
         self._append_log(f"Starting {command} on {self._package}")
         self._append_log(f"scope={self._scope.describe()}")
         self._append_log(f"sources={sources or 'All recorded sources'}")
@@ -500,10 +509,37 @@ class AnalysisScreen(QWidget):
         job_dir = str(getattr(result, "job_dir", "") or "")
         status = str(getattr(result, "status", "") or "")
         job_id = str(getattr(result, "job_id", "") or "")
-        self._last_job_dir = job_dir
-        self._progress.setValue(100)
         self._append_log(f"Done status={status} job_id={job_id}")
         self._append_log(f"dir={job_dir}")
+        if not job_belongs_to_package(self._package, job_dir):
+            self._append_log(
+                "Result saved for the previous package; select that package to inspect it."
+            )
+            return
+        self._progress.setValue(100)
+        self._history.refresh(preferred_job_id=job_id)
+        try:
+            details = load_saved_job(self._package, Path(job_dir).name)
+        except (OSError, ValueError, UnicodeError) as exc:
+            self._append_log(f"Result saved, but the viewer could not load it: {exc}")
+            return
+        self._show_saved_job(details)
+
+    def _clear_result_view(self) -> None:
+        self._last_job_dir = ""
+        self._btn_open_job.setEnabled(False)
+        self._btn_open_report.setEnabled(False)
+        self._gallery.clear()
+        self._inspector.clear()
+        self._history.clear_loaded()
+
+    @Slot(object)
+    def _show_saved_job(self, details: SavedJobDetails) -> None:
+        if not job_belongs_to_package(self._package, details.job.directory):
+            return
+        job_dir = str(details.job.directory)
+        self._last_job_dir = job_dir
+        self._history.show_loaded(details)
         self._btn_open_job.setEnabled(bool(job_dir))
         report = Path(job_dir) / "reports" / "qc.html" if job_dir else Path()
         self._btn_open_report.setEnabled(report.is_file())
@@ -523,6 +559,7 @@ class AnalysisScreen(QWidget):
     @Slot(str)
     def _on_failed(self, message: str) -> None:
         self._append_log(f"FAIL: {message}")
+        self._history.refresh()
         if message.split("\n", 1)[0] != "cancelled":
             QMessageBox.warning(self, "Analysis failed", message)
 
@@ -533,9 +570,9 @@ class AnalysisScreen(QWidget):
 
     def _open_job_folder(self) -> None:
         if self._last_job_dir and Path(self._last_job_dir).is_dir():
-            os.startfile(self._last_job_dir)  # noqa: S606 — explorer only
+            QDesktopServices.openUrl(QUrl.fromLocalFile(self._last_job_dir))
 
     def _open_report(self) -> None:
         path = Path(self._last_job_dir) / "reports" / "qc.html"
         if path.is_file():
-            os.startfile(str(path))  # noqa: S606 — HTML QC external per workbench spec
+            QDesktopServices.openUrl(QUrl.fromLocalFile(str(path)))

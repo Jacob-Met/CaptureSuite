@@ -39,6 +39,7 @@ class TimelineModel:
     empty_message: str = "No session timeline data"
     selection_start_s: float | None = None
     selection_end_s: float | None = None
+    duration_known: bool = True
 
 
 def timeline_from_capture_state(state: CaptureState) -> TimelineModel:
@@ -130,6 +131,7 @@ def timeline_from_review_summary(summary) -> TimelineModel:
         checkpoints=checkpoints,
         sync_anchors_s=sync_anchors,
         empty_message="No sources in package",
+        duration_known=summary.duration_ns > 1,
     )
 
 
@@ -159,6 +161,7 @@ class SessionTimelineWidget(QWidget):
 
     def set_model(self, model: TimelineModel) -> None:
         self._model = model
+        self.setMinimumHeight(120 if model.duration_known else 40)
         self.update()
 
     def set_playhead(self, seconds: float) -> None:
@@ -175,6 +178,14 @@ class SessionTimelineWidget(QWidget):
         rect = self.rect()
         painter.fillRect(rect, theme.PANEL_DEEP)
         model = self._model
+        if not model.duration_known:
+            painter.setPen(theme.TEXT_FAINT)
+            painter.setFont(theme.ui(9))
+            painter.drawText(
+                rect, Qt.AlignmentFlag.AlignCenter,
+                "Duration unknown · timeline unavailable",
+            )
+            return
         if not model.lanes:
             painter.setPen(theme.TEXT_FAINT)
             painter.setFont(theme.ui(9))
@@ -249,7 +260,8 @@ class SessionTimelineWidget(QWidget):
             y += lane_h + lane_gap
 
     def mousePressEvent(self, event) -> None:  # noqa: N802
-        if not self._model.lanes or self._model.duration_s <= 0:
+        if (not self._model.duration_known or not self._model.lanes
+                or self._model.duration_s <= 0):
             return
         gutter = 96
         plot_l = self.rect().left() + gutter

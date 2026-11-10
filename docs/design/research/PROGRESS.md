@@ -1496,6 +1496,25 @@ Linden reproduced fabricated waveform length and zero crossings when valid sampl
 
 Two encoded MCAP batches at 0/1ms and 4/5ms reproduced a remaining false WL2/ZC1 across a declared 2–3ms disconnect. Pair adjacency now excludes any declared gap intersecting the pair interval, including gaps with no stored sample. Added real MCAP loader regression and undeclared-gap control; no heuristic sampling-rate gap threshold is introduced.
 
+
+## 2026-11-10 — Retained analysis desktop (astra-kestrel-b1821b84)
+
+- Reused the saved-history and nested-gallery implementation/tests from PR94
+  cc47da7c (original PR71/80), preserving current source/scope/evaluation hooks
+  and the merged queued worker startup/direct quit correction from PR165.
+- Applied the demonstrated gallery-page lifetime fix from PR91 and the observed
+  inspector output-label overlap fix. Added a native column chooser backed by
+  the already-merged feature-table exporter; no alternate numerical pipeline.
+- Added a real --offline desktop entry that shares AnalysisScreen/SessionHeader
+  without importing Windows capture transport. The first complete-window test
+  failed on msvcrt; the offline startup separation repairs that real failure.
+- Lead ran 95 existing native source/history/control checks (2 skips) before
+  the export work; then 26 saved-history/gallery/current-workbench/export/offline
+  checks passed on build384, Python3.12/PySide6. Two existing protobuf deprecation
+  warnings remain. Ordered CSV/Parquet data, source immutability, existing-output
+  refusal/retry and package switch were exercised.
+- Ibis is doing separate actual-use and visual judging. Runnable bundle/publication
+  are still in progress; no release or hardware-validation claim.
 ## 2026-11-10 — Combined analysis with decoded-sample QC
 
 The maintained CLI now accepts all --inspect-payloads, forwarding the opt-in to the existing QC decoder before generating features/plots. Defaults and signal mathematics stay unchanged. Real EMG/IMU consumer tests exercise qc and all; native package receiving remains separate.
@@ -1589,3 +1608,25 @@ Frozen CLI accepted a known disconnect containing no stored samples and wrote CS
 ### 2026-11-10: units in exported research figures
 
 Actual frozen EMG figures omitted supplied mV units; standalone figures lost measurement interpretation. EMG/IMU plots and sync dashboard now show loaded units, full channel/source identity, and persist dashboard axis labels for downstream export. Missing unit strings remain explicitly unspecified. This is display provenance, not calibration verification.
+
+
+### 2026-11-10 — independent desktop receiving and visual repairs
+
+Ibis ran the actual X11 --offline entry against two unfamiliar MCAP sessions:
+saved results, nested plots, parameter comparison, ordered CSV/Parquet export,
+different units/source identities, package switching and a fresh-process reopen.
+The data course passed; the first visual verdict rejected clipped natural-size
+figures and a fabricated one-second timeline for unknown duration. Kestrel then
+added fit/100% viewing, a compact provenance disclosure, explicit export session
+and job identity, and an unavailable timeline/cursor when duration is unknown.
+The original exact-pixel regression remains exercised in the explicit 100% mode;
+the new fit regression verifies the whole figure and unchanged source PNG.
+
+Kestrel's merged-main source checks on fleet384: 100 passed, 2 existing skips;
+scoped Ruff and builder syntax passed. License check passed with an existing
+missing-header warning in test_qc_source_selection.py. Two existing protobuf
+Python 3.14 deprecation warnings remain. First receiving exposed missing X11
+libraries; Ibis installed the seven reported Ubuntu runtime packages and then
+ran the real display path. The maintained desktop builder now collects actual
+frozen dependency notices. Revised visual judgment and actual frozen receiving
+remain open; these checks do not claim a released build or hardware accuracy.

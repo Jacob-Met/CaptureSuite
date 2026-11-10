@@ -145,8 +145,10 @@ class AnalysisScopePicker(QWidget):
     def selection(self) -> ScopeSelection | None:
         return self._selection
 
-    def set_cursor(self, nanoseconds: int) -> None:
+    def set_cursor(self, nanoseconds: int | None) -> None:
         self._cursor_ns = nanoseconds
+        self._mark_start.setEnabled(nanoseconds is not None)
+        self._mark_end.setEnabled(nanoseconds is not None)
 
     def set_summary(self, summary, selection: ScopeSelection | None) -> None:
         from capture_analysis.windows import (
@@ -208,9 +210,11 @@ class AnalysisScopePicker(QWidget):
             )
             self._sections.setCurrentIndex(index)
         start = selected.start_ns if selected.start_ns is not None else 0
-        end = selected.end_ns if selected.end_ns is not None else max(summary.duration_ns, 1)
+        end = selected.end_ns if selected.end_ns is not None else (
+            summary.duration_ns if summary.duration_ns > 1 else None
+        )
         self._start.setText(seconds_text(start))
-        self._end.setText(seconds_text(end))
+        self._end.setText(seconds_text(end) if end is not None else "")
         if selection is None:
             # A previously invalid selection must never become an executable full job
             # just because the session chrome was refreshed or another tab was visited.

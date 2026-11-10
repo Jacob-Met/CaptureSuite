@@ -17,7 +17,9 @@ import sysconfig
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-PROJECT_DISTRIBUTIONS = {"capture-analysis", "capture-session", "capture-protocol"}
+PROJECT_DISTRIBUTIONS = {
+    "capture-analysis", "capture-session", "capture-protocol", "capture-desktop",
+}
 LICENSE_WORDS = ("license", "licence", "copying", "notice", "copyright")
 
 
