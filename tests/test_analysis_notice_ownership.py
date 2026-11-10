@@ -54,6 +54,34 @@ class NoticeOwnershipTests(unittest.TestCase):
             self.assertEqual(set(got), {"PySide6_Essentials", "PySide6_Pdf", "pyinstaller"})
             self.assertEqual(len(got["PySide6_Pdf"]), 1)
 
+    def test_split_wheel_records_repeat_the_shared_initializer(self):
+        """The actual native freeze has Pdf code but only WebEngine's shared init."""
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            toc = root / "Analysis.toc"
+            init = "PySide6/__init__.py"
+            core = "PySide6/QtCore.abi3.so"
+            pdf = "PySide6/Qt/lib/libQt6Pdf.so.6"
+            toc.write_text(
+                repr(
+                    [
+                        ("PySide6", str(root / init), "PYMODULE"),
+                        (core, str(root / core), "EXTENSION"),
+                        (pdf, str(root / pdf), "BINARY"),
+                    ]
+                )
+            )
+            distributions = [
+                Dist("PySide6_Essentials", root, [init, core]),
+                Dist("PySide6_Pdf", root, [init, pdf]),
+                Dist("PySide6_WebEngine", root, [init, "PySide6/QtWebEngineCore.abi3.so"]),
+            ]
+            with patch.object(notices.metadata, "distributions", return_value=distributions):
+                got = notices.bundled_distribution_files(toc)
+            self.assertEqual(set(got), {"PySide6_Essentials", "PySide6_Pdf", "pyinstaller"})
+            self.assertIn(init, got["PySide6_Essentials"])
+            self.assertIn(pdf, got["PySide6_Pdf"])
+
     def test_pdf_uses_exact_upstream_chromium_version(self):
         self.assertEqual(notices.pyside_source_version("PySide6-Pdf", "6.12.0.140"), "6.12.0")
         with self.assertRaises(ValueError):

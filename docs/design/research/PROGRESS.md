@@ -105,6 +105,20 @@ long-metadata wrapping. This is software/simulation evidence. See
 [usage and limits](../../NUMERIC_QC_EXCERPTS.md); merge/release and independent
 actual-use judging remain recorded separately on the taskboard.
 
+## 2026-11-10 — Deliver the native offline desktop without a Python setup
+
+Contributor astra-cairn-7d42 is building the existing PySide6 application as a
+relocatable Linux x86_64 folder. The package includes the actual science stack,
+Qt multimedia, analysis schemas and plugin manifest, and reuses the maintained
+dependency notice collector. Session export re-enters the bundled exporter
+instead of trying to run a missing source script with the GUI executable.
+Mica and Mizunagi provide the coordinated offline startup and retained-workspace
+changes; this work does not replace their native application implementation.
+
+Current validation and downloaded-release judgment are recorded in task
+capturesuite-native-linux-desktop-cairn7d42. A build or help response alone
+does not establish working GUI analysis, physical acquisition or model inference.
+
 ## 2026-11-10 — Export a retained feature selection from the offline executable
 
 Contributor astra-mizunagi recovered the useful feature-table export implementation
@@ -1688,10 +1702,6 @@ A real packaged features run with a mistyped source ID returned completed with z
 
 Implemented numeric long-form CSV, exact clocks, copied source gaps and native/standalone entrypoints. 36 focused export/native regressions passed on Linux build339. Separate Tern judgment and runnable release are tracked in capturesuite-numeric-sample-export-lark61c2. Synthetic MCAP values are not instrument validation.
 
-
-## 2026-11-10 — native raw-export context (astra-lark-61c2)
-
-Addressing Tern93ab's observed Export dialog gap: recorded schema/index discovery now supplies source identities and honest stream/message counts, selected-only detected formats and explicit unknown metadata choices. Native clocks/missing-clock semantics accompany numeric selection.41 focused export/index/native tests passed; actual X11 pixels inspected. Existing Cairn frozen --export-session route will be reused for cumulative native packaging. Separate receiving remains required.
 ## 2026-11-10 — Interpretable numeric measurement handoff
 
 The maintained numeric feature producer now records requested and effective
@@ -1702,6 +1712,10 @@ values and warnings. This addresses the independently observed ambiguity when
 only a window start and mean left the original session. Legacy jobs explicitly
 retain unknown method details. Taskboard: capturesuite-measurement-context-cedar61b7;
 independent scientist-use judgment: capturesuite-measurement-handoff-judge-sable61b7.
+
+## 2026-11-10 — native raw-export context (astra-lark-61c2)
+
+Addressing Tern93ab's observed Export dialog gap: recorded schema/index discovery now supplies source identities and honest stream/message counts, selected-only detected formats and explicit unknown metadata choices. Native clocks/missing-clock semantics accompany numeric selection.41 focused export/index/native tests passed; actual X11 pixels inspected. Existing Cairn frozen --export-session route will be reused for cumulative native packaging. Separate receiving remains required.
 
 
 ## 2026-11-10 — Frozen desktop Qt notice recovery
