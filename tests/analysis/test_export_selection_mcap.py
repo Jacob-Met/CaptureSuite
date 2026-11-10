@@ -14,6 +14,7 @@ from types import SimpleNamespace
 
 import pytest
 from capture_protocol.generated.capture.v1.data import emg_batch_pb2, imu_frame_pb2
+from google.protobuf import descriptor_pb2
 from mcap.writer import Writer
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -44,16 +45,36 @@ def _message(kind: str, sequence: int):
     return message
 
 
-def _write_mcap(path: Path, kinds: tuple[str, ...]) -> None:
+def _descriptor_bytes(descriptor) -> bytes:
+    descriptors = descriptor_pb2.FileDescriptorSet()
+    added = set()
+
+    def add_descriptor(item):
+        if item.name in added:
+            return
+        for dependency in item.dependencies:
+            add_descriptor(dependency)
+        item.CopyToProto(descriptors.file.add())
+        added.add(item.name)
+
+    add_descriptor(descriptor)
+    return descriptors.SerializeToString()
+
+
+def _write_mcap(path: Path, kinds: tuple[str, ...], *, canonical: bool = False) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("wb") as stream:
         writer = Writer(stream)
         writer.start(profile="", library="capturesuite-export-receiving")
         for index, kind in enumerate(kinds):
-            schema_name = "imu.frame/1" if kind == "imu" else "emg.batch/1"
-            schema = writer.register_schema(schema_name, "protobuf", b"")
-            channel = writer.register_channel(f"source/{kind}", "protobuf", schema)
             message = _message(kind, 41 + index)
+            schema_name = "imu.frame/1" if kind == "imu" else "emg.batch/1"
+            schema_data = b""
+            if canonical:
+                schema_name = message.DESCRIPTOR.full_name
+                schema_data = _descriptor_bytes(message.DESCRIPTOR.file)
+            schema = writer.register_schema(schema_name, "protobuf", schema_data)
+            channel = writer.register_channel(f"source/{kind}", "protobuf", schema)
             writer.add_message(
                 channel_id=channel,
                 log_time=message.timing.session_time_ns,
@@ -320,4 +341,21 @@ def test_existing_input_read_failure_policy_is_preserved(package: Path, monkeypa
         )
     assert code == 0
     _assert_selected(out, ("imu",))
+    assert _hash_files(package) == before
+
+
+@pytest.mark.parametrize("selected", [("imu",), ("emg",), ("emg", "imu")])
+def test_standard_protobuf_schema_names_export_real_messages(package: Path, selected) -> None:
+    """MCAP's protobuf encoding uses the full message type and FileDescriptorSet."""
+    _write_mcap(
+        package / "sources/device-A/streams/one/segments/000.mcap", ("emg",), canonical=True
+    )
+    _write_mcap(
+        package / "sources/device-B/streams/two/segments/000.mcap", ("imu",), canonical=True
+    )
+    before = _hash_files(package)
+    out = package.parent / "canonical selected"
+    result = _export(package, out, selected)
+    assert result.returncode == 0, result.stdout + result.stderr
+    _assert_selected(out, selected)
     assert _hash_files(package) == before
