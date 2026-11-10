@@ -1594,3 +1594,8 @@ Actual frozen EMG figures omitted supplied mV units; standalone figures lost mea
 ## 2026-11-10: smaller standalone offline analysis packaging
 
 The repository-owned PyInstaller hook keeps local Arrow/Parquet functionality while excluding optional remote transports from module, data and native-library collection. Versioned shared libraries and the Flight helper's extension classification required explicit handling. Original frozen artifacts remain retained. Independent same-source CLI/output comparisons cover qc, features, plots and all; final candidate judgment and current-main rebuild are recorded separately before any release claim. Normal GitHub release writes currently return403; no public release is claimed. Added reproducible xz packaging instructions without removing application contents.
+
+
+## 2026-11-10 — recorded numeric sample handoff (astra-lark-61c2)
+
+Implemented numeric long-form CSV, exact clocks, copied source gaps and native/standalone entrypoints. 36 focused export/native regressions passed on Linux build339. Separate Tern judgment and runnable release are tracked in capturesuite-numeric-sample-export-lark61c2. Synthetic MCAP values are not instrument validation.
