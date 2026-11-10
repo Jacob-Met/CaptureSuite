@@ -13,7 +13,6 @@ from __future__ import annotations
 
 import ctypes
 import json
-import msvcrt
 import os
 import queue
 import threading
@@ -33,19 +32,26 @@ from capture_protocol.generated.capture.v1 import (
 from capture_protocol.generated.capture.v1.common_pb2 import MessageType
 from capture_protocol.handshake import build_ui_hello
 
-_kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
-_kernel32.PeekNamedPipe.argtypes = [
-    wintypes.HANDLE,
-    wintypes.LPVOID,
-    wintypes.DWORD,
-    ctypes.POINTER(wintypes.DWORD),
-    ctypes.POINTER(wintypes.DWORD),
-    ctypes.POINTER(wintypes.DWORD),
-]
-_kernel32.PeekNamedPipe.restype = wintypes.BOOL
+if os.name == "nt":
+    import msvcrt
+
+    _kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+    _kernel32.PeekNamedPipe.argtypes = [
+        wintypes.HANDLE,
+        wintypes.LPVOID,
+        wintypes.DWORD,
+        ctypes.POINTER(wintypes.DWORD),
+        ctypes.POINTER(wintypes.DWORD),
+        ctypes.POINTER(wintypes.DWORD),
+    ]
+    _kernel32.PeekNamedPipe.restype = wintypes.BOOL
+else:
+    _kernel32 = None
 
 
 def _peek_available(fd: int) -> int:
+    if _kernel32 is None:
+        raise OSError("Capture daemon connections require Windows")
     handle = msvcrt.get_osfhandle(fd)
     avail = wintypes.DWORD(0)
     ok = _kernel32.PeekNamedPipe(handle, None, 0, None, ctypes.byref(avail), None)
@@ -70,6 +76,11 @@ def read_instance_file() -> dict[str, Any]:
 
 class ControlClient:
     def __init__(self, pipe_name: str | None = None, *, timeout_s: float = 10.0) -> None:
+        if os.name != "nt":
+            raise ControlClientError(
+                "Capture daemon connections require Windows. "
+                "Use Review or Analysis to inspect recorded sessions offline."
+            )
         if pipe_name is None:
             pipe_name = str(read_instance_file()["control_pipe"])
         self.pipe_name = pipe_name
