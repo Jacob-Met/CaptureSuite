@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: GPL-3.0-only
 """Prepare, transfer and publish an exact-source experimental desktop release."""
+
 from __future__ import annotations
 
 import argparse
@@ -51,8 +52,9 @@ def verify_packet(folder):
         if path.is_symlink() or entry(path) != item:
             raise ValueError(f"Packet does not match file: {path.name}")
     sums = "".join(
-        f'{item["sha256"]}  {item["name"]}\n'
-        for item in packet["assets"] if item["name"] != CHECKSUMS
+        f"{item['sha256']}  {item['name']}\n"
+        for item in packet["assets"]
+        if item["name"] != CHECKSUMS
     )
     if (folder / CHECKSUMS).read_text() != sums:
         raise ValueError("SHA256SUMS does not match the packet")
@@ -61,8 +63,15 @@ def verify_packet(folder):
 
 def prepare(args):
     repo, bundle, out = args.repo.resolve(), args.bundle.resolve(), args.output.resolve()
-    source = run("git", "-C", str(repo), "rev-parse", args.source + "^{commit}",
-                 capture_output=True, text=True).stdout.strip()
+    source = run(
+        "git",
+        "-C",
+        str(repo),
+        "rev-parse",
+        args.source + "^{commit}",
+        capture_output=True,
+        text=True,
+    ).stdout.strip()
     if (bundle / "SOURCE_COMMIT").read_text().strip() != source:
         raise ValueError("Built SOURCE_COMMIT differs from requested source")
     for name in ("capturesuite-desktop", "NOTICE", "LICENSE", "THIRD_PARTY_NOTICES/manifest.json"):
@@ -75,8 +84,17 @@ def prepare(args):
     with tarfile.open(native, "w:gz") as archive:
         archive.add(bundle, arcname=bundle.name)
     source_archive = out / f"CaptureSuite-source-{source[:7]}.tar.gz"
-    run("git", "-C", str(repo), "archive", "--format=tar.gz",
-        "--prefix=CaptureSuite/", "-o", str(source_archive), source)
+    run(
+        "git",
+        "-C",
+        str(repo),
+        "archive",
+        "--format=tar.gz",
+        "--prefix=CaptureSuite/",
+        "-o",
+        str(source_archive),
+        source,
+    )
     assets = [entry(native), entry(source_archive)]
     reserved = {MANIFEST, CHECKSUMS, "release-notes.md", native.name, source_archive.name}
     for media in args.media:
@@ -87,13 +105,14 @@ def prepare(args):
         shutil.copyfile(media, out / name)
         assets.append(entry(out / name))
     shutil.copyfile(args.notes, out / "release-notes.md")
-    (out / CHECKSUMS).write_text("".join(
-        f'{item["sha256"]}  {item["name"]}\n' for item in assets
-    ))
+    (out / CHECKSUMS).write_text("".join(f"{item['sha256']}  {item['name']}\n" for item in assets))
     assets.append(entry(out / CHECKSUMS))
     packet = {
-        "schema": "capture.desktop.release/1", "source": source,
-        "tag": args.tag, "title": args.title, "assets": assets,
+        "schema": "capture.desktop.release/1",
+        "source": source,
+        "tag": args.tag,
+        "title": args.title,
+        "assets": assets,
         "notes": entry(out / "release-notes.md"),
     }
     (out / MANIFEST).write_text(json.dumps(packet, indent=2) + "\n")
@@ -105,11 +124,23 @@ def pull(args):
     """Run on an existing publisher; transfer only explicit packet files over SSH."""
     folder = args.output.resolve()
     folder.mkdir(parents=True, exist_ok=True)
+
     def receive(name, target):
         remote = str(args.remote_dir / safe_name(name))
         with target.open("wb") as stream:
-            run("tailscale", "ssh", args.host, "-o", "BatchMode=yes",
-                "-o", "ConnectTimeout=8", "cat", shlex.quote(remote), stdout=stream)
+            run(
+                "tailscale",
+                "ssh",
+                args.host,
+                "-o",
+                "BatchMode=yes",
+                "-o",
+                "ConnectTimeout=8",
+                "cat",
+                shlex.quote(remote),
+                stdout=stream,
+            )
+
     pending = folder / (MANIFEST + ".incoming")
     receive(MANIFEST, pending)
     packet = json.loads(pending.read_text())
@@ -141,7 +172,8 @@ class GitHub:
     def api(self, path, missing_ok=False):
         result = subprocess.run(
             [self.executable, "api", f"repos/{self.repo}/{path}"],
-            capture_output=True, text=True,
+            capture_output=True,
+            text=True,
         )
         if result.returncode:
             # Never interpret network/auth/rate-limit failures as an absent release.
@@ -163,8 +195,14 @@ class GitHub:
         # Older GitHub responses lack digest. Verify bytes without replacing assets.
         target = folder / (str(asset["id"]) + ".verify-download")
         with target.open("wb") as stream:
-            run(self.executable, "api", f'repos/{self.repo}/releases/assets/{asset["id"]}',
-                "-H", "Accept: application/octet-stream", stdout=stream)
+            run(
+                self.executable,
+                "api",
+                f"repos/{self.repo}/releases/assets/{asset['id']}",
+                "-H",
+                "Accept: application/octet-stream",
+                stdout=stream,
+            )
         result = digest(target)
         target.unlink()
         return result
@@ -176,7 +214,8 @@ def publish(args, github=None):
     gh = github or GitHub(args.gh, args.github_repo)
     source, tag = packet["source"], packet["tag"]
     # A tag is the source authority; do not rely on target_commitish after tag creation.
-    commit = gh.api("commits/" + tag, missing_ok=True)
+    tag_ref = gh.api("git/ref/tags/" + tag, missing_ok=True)
+    commit = gh.api("commits/" + tag) if tag_ref is not None else None
     if commit is not None and commit["sha"] != source:
         raise ValueError("Existing tag points to a different source")
     remote_source = gh.api("commits/" + source)
@@ -184,9 +223,18 @@ def publish(args, github=None):
         raise ValueError("Requested source is not published")
     release = gh.release(tag)
     if release is None:
-        gh.command("create", tag, "--draft", "--prerelease", "--target", source,
-                   "--title", packet["title"], "--notes-file",
-                   str(folder / packet["notes"]["name"]))
+        gh.command(
+            "create",
+            tag,
+            "--draft",
+            "--prerelease",
+            "--target",
+            source,
+            "--title",
+            packet["title"],
+            "--notes-file",
+            str(folder / packet["notes"]["name"]),
+        )
         release = gh.release(tag)
         if release is None:
             raise RuntimeError("Creation outcome unknown; inspect destination before retry")
@@ -204,8 +252,8 @@ def publish(args, github=None):
         asset = existing.get(item["name"])
         if asset:
             if asset["size"] != item["size"] or gh.asset_digest(asset, folder) != item["sha256"]:
-                raise ValueError(f'Existing asset differs: {item["name"]}')
-            print(f'Already verified on GitHub: {item["name"]}')
+                raise ValueError(f"Existing asset differs: {item['name']}")
+            print(f"Already verified on GitHub: {item['name']}")
         else:
             if not release["draft"]:
                 raise ValueError("Published release is incomplete; inspect before changing it")
@@ -218,7 +266,7 @@ def publish(args, github=None):
     for item in packet["assets"]:
         remote = assets[item["name"]]
         if remote["size"] != item["size"] or gh.asset_digest(remote, folder) != item["sha256"]:
-            raise ValueError(f'Remote verification failed: {item["name"]}')
+            raise ValueError(f"Remote verification failed: {item['name']}")
     if complete["draft"]:
         gh.command("edit", tag, "--draft=false", "--prerelease")
     final = gh.release(tag)

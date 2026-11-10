@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-only
 """Release recovery tests: never expose partial or mismatched packages."""
+
 import copy
 import importlib.util
 import json
@@ -23,15 +24,18 @@ def packet(tmp_path):
         path.write_bytes(data)
         files.append(release.entry(path))
     (tmp_path / release.CHECKSUMS).write_text(
-        "".join(f'{x["sha256"]}  {x["name"]}\n' for x in files)
+        "".join(f"{x['sha256']}  {x['name']}\n" for x in files)
     )
     files.append(release.entry(tmp_path / release.CHECKSUMS))
     notes = tmp_path / "release-notes.md"
     notes.write_text("Experimental build; independently reviewed.")
     value = {
-        "schema": "capture.desktop.release/1", "source": "a" * 40,
-        "tag": "native-test", "title": "Experimental test",
-        "assets": files, "notes": release.entry(notes),
+        "schema": "capture.desktop.release/1",
+        "source": "a" * 40,
+        "tag": "native-test",
+        "title": "Experimental test",
+        "assets": files,
+        "notes": release.entry(notes),
     }
     (tmp_path / release.MANIFEST).write_text(json.dumps(value))
     return SimpleNamespace(packet=tmp_path, gh="gh", github_repo="owner/repo"), value
@@ -45,6 +49,12 @@ class MemoryGitHub:
         self.interrupt = False
 
     def api(self, path, missing_ok=False):
+        if path.startswith("git/ref/tags/"):
+            return (
+                {"object": {"sha": self.packet["source"]}}
+                if self.current and not self.current["draft"]
+                else None
+            )
         if path == "commits/" + self.packet["source"] or self.current and not self.current["draft"]:
             return {"sha": self.packet["source"]}
         return None
@@ -56,7 +66,9 @@ class MemoryGitHub:
         self.commands.append(args)
         if args[0] == "create":
             self.current = {
-                "draft": True, "prerelease": True, "assets": [],
+                "draft": True,
+                "prerelease": True,
+                "assets": [],
                 "target_commitish": self.packet["source"],
                 "body": (self.folder / "release-notes.md").read_text(),
                 "html_url": "https://example.invalid/release",
@@ -132,10 +144,21 @@ def test_prepare_archives_exact_source_and_rejects_wrong_build_pin(tmp_path):
     release.run("git", "init", "-q", str(repo))
     (repo / "app.py").write_text("print('source at commit')\n")
     release.run("git", "-C", str(repo), "add", "app.py")
-    release.run("git", "-C", str(repo), "-c", "user.name=Release test",
-                "-c", "user.email=release@example.invalid", "commit", "-qm", "Source")
-    source = release.run("git", "-C", str(repo), "rev-parse", "HEAD",
-                         capture_output=True, text=True).stdout.strip()
+    release.run(
+        "git",
+        "-C",
+        str(repo),
+        "-c",
+        "user.name=Release test",
+        "-c",
+        "user.email=release@example.invalid",
+        "commit",
+        "-qm",
+        "Source",
+    )
+    source = release.run(
+        "git", "-C", str(repo), "rev-parse", "HEAD", capture_output=True, text=True
+    ).stdout.strip()
     bundle = tmp_path / "capturesuite-desktop"
     (bundle / "THIRD_PARTY_NOTICES").mkdir(parents=True)
     for name in ("capturesuite-desktop", "NOTICE", "LICENSE", "THIRD_PARTY_NOTICES/manifest.json"):
@@ -143,8 +166,16 @@ def test_prepare_archives_exact_source_and_rejects_wrong_build_pin(tmp_path):
     (bundle / "SOURCE_COMMIT").write_text(source)
     notes = tmp_path / "notes.md"
     notes.write_text("Test packet")
-    args = SimpleNamespace(repo=repo, bundle=bundle, output=tmp_path / "packet",
-                           source=source, tag="native-test", title="Test", notes=notes, media=[])
+    args = SimpleNamespace(
+        repo=repo,
+        bundle=bundle,
+        output=tmp_path / "packet",
+        source=source,
+        tag="native-test",
+        title="Test",
+        notes=notes,
+        media=[],
+    )
     # Uncommitted work must not leak into the corresponding source archive.
     (repo / "app.py").write_text("changed after build\n")
     release.prepare(args)
@@ -157,3 +188,27 @@ def test_prepare_archives_exact_source_and_rejects_wrong_build_pin(tmp_path):
     with pytest.raises(ValueError, match="SOURCE_COMMIT"):
         release.prepare(args)
     assert not args.output.exists()
+
+
+@pytest.mark.parametrize("status", [403, 422, 500])
+def test_api_does_not_mistake_quota_or_bad_commit_for_absence(monkeypatch, status):
+    monkeypatch.setattr(
+        release.subprocess,
+        "run",
+        lambda *a, **kw: SimpleNamespace(
+            returncode=1, stdout="", stderr=f"gh: request failed (HTTP {status})"
+        ),
+    )
+    with pytest.raises(RuntimeError):
+        release.GitHub("gh", "owner/repo").api("git/ref/tags/new", missing_ok=True)
+
+
+def test_api_accepts_only_actual_missing_ref(monkeypatch):
+    monkeypatch.setattr(
+        release.subprocess,
+        "run",
+        lambda *a, **kw: SimpleNamespace(
+            returncode=1, stdout="", stderr="gh: Not Found (HTTP 404)"
+        ),
+    )
+    assert release.GitHub("gh", "owner/repo").api("git/ref/tags/new", missing_ok=True) is None
