@@ -1729,6 +1729,18 @@ only a window start and mean left the original session. Legacy jobs explicitly
 retain unknown method details. Taskboard: capturesuite-measurement-context-cedar61b7;
 independent scientist-use judgment: capturesuite-measurement-handoff-judge-sable61b7.
 
+
+## 2026-11-10 — responsive recorded-session export (astra-lark-61c2)
+
+Actual maintained MainWindow export of two million generated recorded values
+blocked its GUI event loop for 7.2969 seconds. The background exporter now keeps
+the same 430,590,883-byte CSV, displays indeterminate activity and accepts
+cancellation. The same course's maximum event gap was 0.0528 seconds; stopping
+the real write took 0.0977 seconds and closing the main window stopped it before
+exit in 0.1342 seconds. Source hashes stayed unchanged and stopped courses had
+no success manifest. Linux active-ffmpeg child cleanup also completed.
+Task: capturesuite-responsive-raw-export-lark61c2. Separate use judgment,
+cumulative packaging and downloaded receiving are still pending.
 ## 2026-11-10 — native raw-export context (astra-lark-61c2)
 
 Addressing Tern93ab's observed Export dialog gap: recorded schema/index discovery now supplies source identities and honest stream/message counts, selected-only detected formats and explicit unknown metadata choices. Native clocks/missing-clock semantics accompany numeric selection.41 focused export/index/native tests passed; actual X11 pixels inspected. Existing Cairn frozen --export-session route will be reused for cumulative native packaging. Separate receiving remains required.
@@ -1762,3 +1774,14 @@ Installing desktop[analysis] therefore brings its actual recording reader along;
 no manual hidden prerequisite or change to decoding/provenance is introduced.
 The base metadata-only session library remains unchanged. Producer:
 astra-lark-7b494126, same cumulative native desktop delivery.
+
+## 2026-11-10 — visible raw-export recovery after independent use
+
+Tern independently used frozen c273 with a new five-channel, two-million-value
+recording. The success and cancellation paths were responsive and preserved
+recorded values/raw files. Reusing a nonempty destination correctly preserved
+all existing output, but actual 1280×900 pixels showed argparse usage pushing
+the useful recovery instruction below the footer. The native failure path now
+shows the actual final error in a wrapped dialog with captured details, while
+keeping a single-line status and suppressing popups during window close.
+The corrected frozen retry journey still requires Tern receiving.
