@@ -10,8 +10,8 @@ are unchanged upstream notice material retained for the desktop package.
   example/test subtrees. It deliberately retains a conservative module-level
   superset; this is not a claim that every listed component is linked.
 - Qt PDF's nine third-party attribution pages and module licensing page are
-  preserved from the official Qt 6.12 documentation, with exact URLs/hashes.
-  These are generated upstream notices, not a substitute invented license.
+  preserved from the official Qt PDF 6.140.0 documentation linked from Qt 6.12, with exact URLs/hashes.
+  The exact Pdf wheel is 6.12.0.140: upstream create_wheels.py and its Chromium140 configuration are retained as version evidence. These are generated upstream notices, not a substitute invented license.
 - ICU 73.2 uses its upstream version-tagged LICENSE. The collector calls the
   shipped ICU binary's version function and fails if it differs.
 
