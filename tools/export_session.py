@@ -259,7 +259,9 @@ def export_imu_emg(
                     for mcap_path in mcaps:
                         for schema, _ch, message in _read_messages(mcap_path):
                             sname = schema.name if schema else ""
-                            if schema_needle not in sname:
+                            # Standard protobuf MCAP uses the qualified message name;
+                            # older CaptureSuite recordings use a versioned schema tag.
+                            if sname != decoder.DESCRIPTOR.full_name and schema_needle not in sname:
                                 continue
                             msg = decoder()
                             msg.ParseFromString(message.data)
