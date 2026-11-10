@@ -63,6 +63,38 @@ existing output directory, and preserves failure output for diagnosis. It does
 not establish hardware performance, clinical validity, or full product readiness.
 Tests: `tests/analysis/test_offline_demo.py`.
 
+## Validate recorded MCAP bytes in a sealed session
+
+Normal `qc` is fast **package and gap metadata QC**: a source labelled `ok`
+does not mean its sensor values were decoded. For a session containing actual
+MCAP data, opt into payload inspection:
+
+```powershell
+py -3.12 tools/run_analysis.py qc .\my-session.mmsession --inspect-payloads --strict-warnings
+```
+
+The offline report's **Streams** table and `reports/qc.json` now distinguish
+these states:
+
+- `not_requested`: normal metadata-only run; no payload read.
+- `numeric_samples_checked`: all data MCAPs parsed, and all supported
+  `generic.numeric_batch/1` frames decoded and checked for finite sample
+  values, consistent channels and valid in-batch timestamp order.
+- `mcap_messages_checked`: MCAP structure/messages parsed for another schema;
+  sample values **not** decoded or validated.
+- `failed`: unreadable, empty or inconsistent MCAP content; source light
+  becomes `fail`, the job completes **with warnings**, and
+  `--strict-warnings` exits with code 2.
+- `not_applicable`: no data MCAP segments; missing segments are still detected
+  separately by existing QC.
+
+Payload inspection needs `mcap` and, for NumericBatch decoding, NumPy and
+protobuf. It streams messages rather than loading a whole capture and never
+rewrites raw sources. It does **not** measure signal accuracy, noise,
+calibration, true device sampling rate, video pixels or medical validity.
+The bundled synthetic demo contains text placeholders, so do not enable
+payload inspection on it expecting a clean sample-quality result.
+
 ## Simulation walkthrough (after build prerequisites)
 
 ```powershell

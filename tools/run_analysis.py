@@ -39,6 +39,11 @@ def main(argv: list[str] | None = None) -> int:
 
     p_qc = sub.add_parser("qc", help="inventory + gap/integrity QC report")
     add_common(p_qc)
+    p_qc.add_argument(
+        "--inspect-payloads",
+        action="store_true",
+        help="read MCAP messages and validate supported numeric samples (not sensor accuracy)",
+    )
 
     for name, help_ in (
         ("features", "extract features (Phase B)"),
@@ -72,6 +77,8 @@ def main(argv: list[str] | None = None) -> int:
 
     args = ap.parse_args(argv)
     extra: dict = {}
+    if args.command == "qc" and args.inspect_payloads:
+        extra["inspect_payloads"] = True
     if args.command == "kinematics":
         extra["pose_job_id"] = args.pose_job
         extra["imu_fusion"] = bool(getattr(args, "imu_fusion", False))

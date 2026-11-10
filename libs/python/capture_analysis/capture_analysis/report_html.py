@@ -48,6 +48,11 @@ def _gap_rows(qc: dict[str, Any]) -> str:
     return "".join(rows)
 
 
+def _payload_frames(stream: dict[str, Any]) -> str:
+    frames = (stream.get("payloadInspection") or {}).get("sampleFramesChecked")
+    return escape(str(frames if frames is not None else "—"))
+
+
 def render_qc_html(qc: dict[str, Any]) -> str:
     lights = qc.get("trafficLights") or {}
     light_rows = "".join(
@@ -63,6 +68,8 @@ def render_qc_html(qc: dict[str, Any]) -> str:
         f"<td>{escape(str(s.get('nominalRateHz', '')))}</td>"
         f"<td>{escape(str(s.get('units', '') or '—'))}</td>"
         f"<td>{int(s.get('mcapSegments') or 0)}/{int(s.get('mkvSegments') or 0)}</td>"
+        f"<td>{escape(str((s.get('payloadInspection') or {}).get('status', 'not_requested')))}</td>"
+        f"<td>{_payload_frames(s)}</td>"
         "</tr>"
         for s in (qc.get("streams") or [])
     )
@@ -120,10 +127,17 @@ Each row is one reported gap. Loss counts are reported estimates in source-defin
 </div>
 
 <h2>Streams</h2>
+<p class="meta">Source lights evaluate recorded metadata and gaps.
+A green light does not establish signal quality. Payload inspection is optional: run
+<code>run_analysis.py qc PACKAGE --inspect-payloads</code> to read segment bytes.
+"mcap_messages_checked" confirms structural reading only; only
+"numeric_samples_checked" confirms decoded NumericBatch values and frame counts.
+Neither status establishes calibrated sensor accuracy.</p>
 <table>
 <tr><th>source</th><th>stream</th><th>modality</th><th>schema</th>
-<th>rate Hz</th><th>units</th><th>mcap/mkv</th></tr>
-{stream_rows or "<tr><td colspan='7'>(none)</td></tr>"}
+<th>rate Hz</th><th>units</th><th>mcap/mkv</th>
+<th>payload inspection</th><th>numeric frames checked</th></tr>
+{stream_rows or "<tr><td colspan='9'>(none)</td></tr>"}
 </table>
 
 <h2>Warnings</h2>

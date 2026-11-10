@@ -28,6 +28,7 @@ class StreamQc:
     timing_segments: int
     rate_ok: bool
     warnings: list[str] = field(default_factory=list)
+    payload_inspection: dict[str, Any] | None = None
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -42,6 +43,7 @@ class StreamQc:
             "timingSegments": self.timing_segments,
             "rateOk": self.rate_ok,
             "warnings": list(self.warnings),
+            "payloadInspection": self.payload_inspection or {"status": "not_requested"},
         }
 
 
@@ -146,7 +148,7 @@ def _sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
-def _stream_qc(ref: StreamRef) -> StreamQc:
+def _stream_qc(ref: StreamRef, *, inspect_payloads: bool = False) -> StreamQc:
     warnings: list[str] = []
     rate_ok = ref.nominal_rate_hz > 0
     if not rate_ok:
@@ -180,6 +182,14 @@ def _stream_qc(ref: StreamRef) -> StreamQc:
     if not ref.mcap_paths and not ref.mkv_paths:
         light_bits.append("fail")
 
+    inspection = None
+    if inspect_payloads:
+        from capture_analysis.payload_qc import inspect_stream_payloads
+
+        inspection = inspect_stream_payloads(ref)
+        if inspection["status"] == "failed":
+            warnings.append(f"payload inspection failed: {inspection['detail']}")
+
     return StreamQc(
         source_id=ref.source_id,
         stream_id=ref.stream_id,
@@ -192,16 +202,17 @@ def _stream_qc(ref: StreamRef) -> StreamQc:
         timing_segments=len(ref.timing_mcap_paths),
         rate_ok=rate_ok,
         warnings=warnings,
+        payload_inspection=inspection,
     )
 
 
-def collect_qc(package_root: str | Path) -> QcReport:
+def collect_qc(package_root: str | Path, *, inspect_payloads: bool = False) -> QcReport:
     root = Path(package_root)
     summary: ReviewSummary = load_review_summary(root)
     manifest_path = root / "manifest.json"
     manifest_sha = _sha256_file(manifest_path) if manifest_path.is_file() else ""
 
-    streams = [_stream_qc(r) for r in discover_streams(root)]
+    streams = [_stream_qc(r, inspect_payloads=inspect_payloads) for r in discover_streams(root)]
     warnings: list[str] = []
     if summary.state not in ("finalized", "finalized_recovered", ""):
         warnings.append(f"package state is {summary.state!r} (prefer finalized)")
@@ -218,7 +229,7 @@ def collect_qc(package_root: str | Path) -> QcReport:
     traffic: dict[str, str] = {}
     for s in streams:
         level = "ok"
-        if any("no segment" in w for w in s.warnings):
+        if any("no segment" in w or "payload inspection failed" in w for w in s.warnings):
             level = "fail"
         elif s.warnings:
             level = "warn"

@@ -236,7 +236,9 @@ def run(
     qc_dict: dict[str, Any] = {}
     summary = load_review_summary(root)
     tick("qc", 0.15)
-    qc_report: QcReport = collect_qc(root)
+    qc_report: QcReport = collect_qc(
+        root, inspect_payloads=params.command == "qc" and bool(params.extra.get("inspect_payloads"))
+    )
     qc_dict = qc_report.to_dict()
 
     job_id = _job_id(params)
