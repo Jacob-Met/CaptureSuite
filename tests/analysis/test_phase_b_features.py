@@ -388,7 +388,8 @@ def test_imu_partial_sensor_presence_is_visible_in_qc_and_strict_cli(
     report_dir = package / "processing/jobs/sensor-presence-cli/reports"
     saved = json.loads((report_dir / "qc.json").read_text(encoding="utf-8"))
     assert saved["trafficLights"]["sim.imu.upper"] == expected_light
-    assert saved["streams"][1]["payloadInspection"]["sensorFramePresence"] == evidence["sensorFramePresence"]
+    saved_imu = next(s for s in saved["streams"] if s["modality"] == "imu")
+    assert saved_imu["payloadInspection"]["sensorFramePresence"] == evidence["sensorFramePresence"]
     html = (report_dir / "qc.html").read_text(encoding="utf-8")
     assert "sensor presence (decoded frames): pelvis 30/30, sternum" in html
     assert f"sternum {second_sensor_frames}/30" in html
