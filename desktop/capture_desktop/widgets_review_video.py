@@ -4,7 +4,7 @@
 from __future__ import annotations
 
 from PySide6.QtCore import QEvent, Qt, QUrl
-from PySide6.QtMultimedia import QMediaPlayer
+from PySide6.QtMultimedia import QMediaPlayer, QVideoFrame
 from PySide6.QtMultimediaWidgets import QVideoWidget
 from PySide6.QtWidgets import (
     QComboBox,
@@ -18,7 +18,7 @@ from PySide6.QtWidgets import (
 )
 
 from . import theme
-from .review_video import local_video_path, media_time, recorded_video_segments
+from .review_video import frame_time, local_video_path, media_time, recorded_video_segments
 
 
 class RecordedVideoReview(QWidget):
@@ -49,7 +49,8 @@ class RecordedVideoReview(QWidget):
         self._body.hide()
         self._toggle.toggled.connect(self._expand)
         note = self._label(
-            "Position is within this media segment, not session time. "
+            "Position and frame timestamps are within this media segment, not session time. "
+            "The playback position can differ from the displayed frame timestamp. "
             "This view does not align cameras or checkpoints. Video only; audio is not played."
         )
         note.setObjectName("Faint")
@@ -89,6 +90,11 @@ class RecordedVideoReview(QWidget):
         controls.addWidget(self._seek, 1)
         controls.addWidget(self._clock)
         body.addLayout(controls)
+        self._frame_clock = self._label("Displayed frame timestamp unavailable")
+        self._frame_clock.setFont(theme.mono(10))
+        self._frame_clock.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
+        self._frame_clock.setAccessibleName("Displayed frame presentation timestamp")
+        body.addWidget(self._frame_clock)
         self._status = self._label("")
         self._status.setObjectName("HonestyBanner")
         body.addWidget(self._status)
@@ -154,6 +160,7 @@ class RecordedVideoReview(QWidget):
         self._seek.setValue(0)
         self._seek.blockSignals(False)
         self._clock.setText("Media position —")
+        self._frame_clock.setText("Displayed frame timestamp unavailable")
 
     def reset(self, message: str = "Open a finalized package to inspect recorded video.") -> None:
         self._retire_media()
@@ -224,6 +231,9 @@ class RecordedVideoReview(QWidget):
         self._placeholder.hide()
         self._player, self._video = player, video
         player.setVideoOutput(video)
+        video.videoSink().videoFrameChanged.connect(
+            lambda frame, p=player, g=generation: self._frame_changed(p, g, frame)
+        )
         # A new player/output per selection and guarded callbacks retire queued old media events.
         for signal in (
             player.mediaStatusChanged,
@@ -242,6 +252,16 @@ class RecordedVideoReview(QWidget):
 
     def _current(self, player: QMediaPlayer, generation: int) -> bool:
         return player is self._player and generation == self._generation
+
+    def _frame_changed(self, player: QMediaPlayer, generation: int, frame: QVideoFrame) -> None:
+        if not self._current(player, generation):
+            return
+        timestamp = frame.startTime() if frame.isValid() else -1
+        self._frame_clock.setText(
+            f"Displayed frame {frame_time(timestamp)} (media timestamp)"
+            if timestamp >= 0
+            else "Displayed frame timestamp unavailable"
+        )
 
     def _failed(self, player: QMediaPlayer, generation: int, text: str) -> None:
         if not self._current(player, generation):

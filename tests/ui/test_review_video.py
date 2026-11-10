@@ -259,3 +259,60 @@ def test_actual_main_window_video_buttons_keep_space_activation(qapp, tmp_path, 
         window.close()
         window.deleteLater()
         qapp.processEvents()
+
+
+def test_frame_timestamp_follows_decoded_frame_not_seek_position(qapp, tmp_path):
+    from capture_desktop.review_video import frame_time
+
+    screen, video, package = _screen(qapp, tmp_path)
+    before = _hashes(package)
+    assert video._frame_clock.text() == "Displayed frame timestamp unavailable"
+    video._choice.setCurrentIndex(1)
+    _wait(qapp, lambda: video._ready, "first segment ready")
+    QTest.mouseClick(video._play, Qt.MouseButton.LeftButton)
+    _wait(qapp, lambda: _color(video, 0), "decoded frame")
+    QTest.mouseClick(video._play, Qt.MouseButton.LeftButton)
+    _wait(qapp, lambda: video._player.playbackState() ==
+          QMediaPlayer.PlaybackState.PausedState, "paused")
+    video._seek.setValue(3750)  # 750 ms is between the fixture's 10 fps frames.
+    _wait(qapp, lambda: video._video.videoSink().videoFrame().startTime() >= 600_000,
+          "new paused seek frame")
+    QTest.qWait(250)
+    frame = video._video.videoSink().videoFrame()
+    assert frame.isValid() and frame.startTime() >= 0
+    assert frame.startTime() != video._player.position() * 1000
+    assert video._frame_clock.text() == (
+        f"Displayed frame {frame_time(frame.startTime())} (media timestamp)"
+    )
+    assert "00:00:00.750" in video._clock.text()
+    assert _hashes(package) == before
+    screen.close()
+
+
+def test_missing_and_retired_frame_timestamps_never_use_transport_clock(qapp, tmp_path):
+    from PySide6.QtGui import QImage
+    from PySide6.QtMultimedia import QVideoFrame
+
+    screen, video, _package = _screen(qapp, tmp_path)
+    video._choice.setCurrentIndex(1)
+    _wait(qapp, lambda: video._ready, "first segment ready")
+    old_player, old_generation = video._player, video._generation
+    image = QImage(8, 8, QImage.Format.Format_RGB32)
+    image.fill(Qt.GlobalColor.red)
+    frame = QVideoFrame(image)
+    assert frame.isValid() and frame.startTime() == -1
+    video._frame_changed(old_player, old_generation, frame)
+    assert video._frame_clock.text() == "Displayed frame timestamp unavailable"
+    frame.setStartTime(123_456)
+    video._frame_changed(old_player, old_generation, frame)
+    assert "00:00:00.123456" in video._frame_clock.text()
+    video._frame_changed(old_player, old_generation, QVideoFrame())
+    assert video._frame_clock.text() == "Displayed frame timestamp unavailable"
+    video._choice.setCurrentIndex(2)
+    video._frame_changed(old_player, old_generation, frame)
+    assert "123456" not in video._frame_clock.text()
+    video.reset()
+    assert video._frame_clock.text() == "Displayed frame timestamp unavailable"
+    video._frame_changed(old_player, old_generation, frame)
+    assert video._frame_clock.text() == "Displayed frame timestamp unavailable"
+    screen.close()
