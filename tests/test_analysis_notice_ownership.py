@@ -56,6 +56,9 @@ class NoticeOwnershipTests(unittest.TestCase):
 
     def test_pdf_uses_exact_upstream_chromium_version(self):
         self.assertEqual(notices.pyside_source_version("PySide6-Pdf", "6.12.0.140"), "6.12.0")
+        self.assertEqual(notices.pyside_source_version("PySide6-WebEngine", "6.12.0.140"), "6.12.0")
+        with self.assertRaises(ValueError):
+            notices.pyside_source_version("PySide6-WebEngine", "6.12.0.141")
         with self.assertRaises(ValueError):
             notices.pyside_source_version("PySide6-Pdf", "6.12.0.141")
         with self.assertRaises(ValueError):

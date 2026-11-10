@@ -116,10 +116,10 @@ def qt_notice_groups(toc: Path) -> set[str]:
 
 def pyside_source_version(name: str, version: str) -> str:
     normalized = name.lower().replace("-", "_")
-    expected = "6.12.0.140" if normalized == "pyside6_pdf" else "6.12.0"
+    expected = "6.12.0.140" if normalized in {"pyside6_pdf", "pyside6_webengine"} else "6.12.0"
     if version != expected:
         raise ValueError(f"No pinned source notices for {name}=={version}")
-    # Official create_wheels.py appends Chromium140 to Pdf's wheel version;
+    # Official create_wheels.py appends Chromium140 to Pdf/WebEngine wheel versions;
     # the Python binding source remains the PySide6.12.0 source archive.
     return "6.12.0"
 
@@ -187,6 +187,7 @@ def collect(toc: Path, bundle: Path) -> dict:
             "pyside6_essentials",
             "pyside6_addons",
             "pyside6_pdf",
+            "pyside6_webengine",
             "shiboken6",
         }:
             notices = upstream_notices(
