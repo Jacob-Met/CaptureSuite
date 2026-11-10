@@ -1473,3 +1473,21 @@ Linden reproduced fabricated waveform length and zero crossings when valid sampl
 ### EMG follow-up: declared gaps without stored samples
 
 Two encoded MCAP batches at 0/1ms and 4/5ms reproduced a remaining false WL2/ZC1 across a declared 2–3ms disconnect. Pair adjacency now excludes any declared gap intersecting the pair interval, including gaps with no stored sample. Added real MCAP loader regression and undeclared-gap control; no heuristic sampling-rate gap threshold is introduced.
+
+
+### 2026-11-10 — LSL live source lifecycle (Astra-Lark)
+
+A real pylsl1.18.6/liblsl118 outlet exposed `ValueError: unknown enum label
+"device"` in maintained discovery. LSL0.1.1 uses the protocol enum and separates
+source stop tokens, bounded inlet reads and inlet cleanup. Deferred Win32
+transport loading lets the existing MemoryTransport/worker SDK run on Linux;
+actual named-pipe connections remain Windows-only. The maintained live test
+records two real local outlets through Worker Start/Stop RPCs into MCAP, stops
+one source and proves the other continues, then decodes distinct retained
+values. Focused SDK/bridge checks and Ruff ran on Renpo fleet384.
+
+Separate judgment and downloadable component distribution are tracked in
+`capturesuite-live-lsl-isolation-astra-lark`; no hardware or full Windows daemon
+claim. Existing corrected-versus-native timestamp retention, wall-clock/QPC
+anchor mismatch and worker/package path integration are explicit follow-ups in
+the plugin README. No analysis/QC/plot code changed.
