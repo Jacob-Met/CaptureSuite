@@ -109,6 +109,7 @@ def render_qc_html(qc: dict[str, Any]) -> str:
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>QC — {escape(str(qc.get("sessionId", "")))}</title>
 <style>
 body {{ font-family: Segoe UI, sans-serif; margin: 24px; color: #222; }}
@@ -119,8 +120,11 @@ th {{ background: #f4f4f4; }}
 .ok {{ color: #1a7f37; font-weight: 600; }}
 .warn {{ color: #9a6700; font-weight: 600; }}
 .fail {{ color: #cf222e; font-weight: 600; }}
-.meta {{ color: #555; font-size: 0.85rem; }}
+.meta {{ color: #555; font-size: 0.85rem; overflow-wrap: anywhere; }}
 .table-scroll {{ overflow-x: auto; }}
+.warnings {{ padding-left: 1.4rem; overflow-wrap: anywhere; }}
+.warnings li {{ margin-bottom: 0.6rem; }}
+@media (max-width: 600px) {{ body {{ margin: 12px; }} }}
 .gaps td:nth-child(n+5) {{ font-family: Consolas, ui-monospace, monospace; }}
 </style>
 </head>
@@ -142,6 +146,11 @@ checkpoints {int(qc.get("checkpointCount") or 0)}
 {light_rows or "<tr><td colspan='2'>(none)</td></tr>"}
 </table>
 
+<section aria-labelledby="warnings-title">
+<h2 id="warnings-title">Warnings</h2>
+<ul class="warnings">{warn_items}</ul>
+</section>
+
 <h2>Recorded gaps</h2>
 <p class="meta">Times are seconds relative to session T0, with nanosecond precision.
 Each row is one reported gap. Loss counts are reported estimates in source-defined units.</p>
@@ -162,15 +171,15 @@ A green light does not establish signal quality. Payload inspection is optional:
 "numeric_samples_checked", "emg_samples_checked", and "imu_frames_checked"
 confirm decoded measurements and checked frame counts.
 None of these statuses establishes calibrated sensor accuracy.</p>
+<div class="table-scroll">
 <table>
 <tr><th>source</th><th>stream</th><th>modality</th><th>schema</th>
 <th>rate Hz</th><th>units</th><th>mcap/mkv</th>
 <th>payload inspection</th><th>sample frames checked</th></tr>
 {stream_rows or "<tr><td colspan='9'>(none)</td></tr>"}
 </table>
+</div>
 
-<h2>Warnings</h2>
-<ul>{warn_items}</ul>
 </body>
 </html>
 """

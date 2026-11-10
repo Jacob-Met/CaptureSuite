@@ -70,7 +70,7 @@ def handle_emg(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext) -> None:
             )
     if ctx.do_plots and loaded.X.size:
         path = ctx.work / "figures" / f"emg_{ref.source_id}_channels.png"
-        plot_emg_channels(path, loaded, window=ctx.window, gaps=ctx.all_gaps)
+        plot_emg_channels(path, loaded, window=ctx.window, gaps=gap_mask.gaps)
         ctx.outputs.append(
             {
                 "relativePath": path.relative_to(ctx.work).as_posix(),
@@ -84,6 +84,7 @@ def handle_emg(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext) -> None:
         env = np.sqrt(np.convolve(ch0 * ch0, np.ones(step) / step, mode="same"))
         ctx.sync_series.append(
             {
+                "gaps": gap_mask.gaps,
                 "label": f"EMG {ref.source_id[:16]}",
                 "t_ns": loaded.t_sample_ns[::step],
                 "y": env[::step],
@@ -100,22 +101,36 @@ def handle_imu(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext) -> None:
         )
         ctx.valid_fractions[ref.source_id] = vf
         if not df.empty:
+            incomplete = [
+                f"{sid} {measurement}"
+                for sid in loaded.sensor_ids
+                for measurement in ("acc", "gyro")
+                if (df[f"{sid}_{measurement}_valid_fraction"] < 1.0).any()
+            ]
+            if incomplete:
+                ctx.warnings.append(
+                    f"IMU feature support incomplete for {ref.source_id}/{ref.stream_id}: "
+                    + ", ".join(incomplete)
+                    + "; inspect per-sensor sample_count and valid_fraction columns. "
+                    "Missing or nonfinite vectors and declared gaps are excluded; "
+                    "zero-support measurements remain unknown."
+                )
             rel = f"features/imu/{ref.source_id}/windows.parquet"
             write_feature_table(
                 ctx.work,
                 rel,
                 df,
-                feature_schema_version=1,
+                feature_schema_version=2,
                 columns_meta=meta,
                 schema_doc=ctx.schema_doc,
                 outputs=ctx.outputs,
             )
             ctx.feature_tables.append(
-                {"relativePath": rel, "featureSchemaVersion": 1, "rows": int(len(df))}
+                {"relativePath": rel, "featureSchemaVersion": 2, "rows": int(len(df))}
             )
     if ctx.do_plots and loaded.t_frame_ns.size:
         path = ctx.work / "figures" / f"imu_{ref.source_id}_accel.png"
-        plot_imu_accel(path, loaded, window=ctx.window, gaps=ctx.all_gaps)
+        plot_imu_accel(path, loaded, window=ctx.window, gaps=gap_mask.gaps)
         ctx.outputs.append(
             {
                 "relativePath": path.relative_to(ctx.work).as_posix(),
@@ -127,6 +142,7 @@ def handle_imu(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext) -> None:
         mag = np.linalg.norm(loaded.accel[:, 0], axis=1)
         ctx.sync_series.append(
             {
+                "gaps": gap_mask.gaps,
                 "label": f"IMU {ref.source_id[:16]}",
                 "t_ns": loaded.t_frame_ns,
                 "y": mag,
@@ -173,7 +189,7 @@ def handle_radar(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext) -> None
             df["t_ns"].to_numpy(),
             df["energy"].to_numpy(),
             window=ctx.window,
-            gaps=ctx.all_gaps,
+            gaps=gap_mask.gaps,
             ylabel="energy",
             title=f"Radar energy · {ref.source_id} (ADC counts)",
             color="#f0a13a",
@@ -188,6 +204,7 @@ def handle_radar(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext) -> None
         )
         ctx.sync_series.append(
             {
+                "gaps": gap_mask.gaps,
                 "label": f"Radar {ref.source_id[:16]}",
                 "t_ns": df["t_ns"].to_numpy(),
                 "y": df["energy"].to_numpy(),
@@ -221,7 +238,7 @@ def handle_radar_doppler(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext)
             df["t_ns"].to_numpy(),
             df["mag_mean"].to_numpy(),
             window=ctx.window,
-            gaps=ctx.all_gaps,
+            gaps=gap_mask.gaps,
             ylabel="|z| mean",
             title=f"Doppler magnitude · {ref.source_id}",
             color="#e5484d",
@@ -236,6 +253,7 @@ def handle_radar_doppler(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext)
         )
         ctx.sync_series.append(
             {
+                "gaps": gap_mask.gaps,
                 "label": f"Doppler {ref.source_id[:16]}",
                 "t_ns": df["t_ns"].to_numpy(),
                 "y": df["mag_mean"].to_numpy(),
@@ -275,7 +293,7 @@ def handle_video(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext) -> None
             loaded.t_frame_ns[1:],
             fps,
             window=ctx.window,
-            gaps=ctx.all_gaps,
+            gaps=gap_mask.gaps,
             ylabel="fps",
             title=f"Video FPS · {ref.source_id}",
             color="#888888",
@@ -290,6 +308,7 @@ def handle_video(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext) -> None
         )
         ctx.sync_series.append(
             {
+                "gaps": gap_mask.gaps,
                 "label": f"Video {ref.source_id[:16]}",
                 "t_ns": loaded.t_frame_ns[1:],
                 "y": fps,

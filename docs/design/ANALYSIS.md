@@ -572,3 +572,21 @@ the job executes; selecting a file does not freeze its contents.
 
 See [Evaluate a predictions file in Analysis](research/EXTERNAL_EVALUATION_WORKBENCH.md)
 for the operator flow, file-choice behavior and retained report/figure paths.
+
+## IMU feature sample support
+
+IMU feature table version 2 retains the existing measurements and adds
+`window_frame_count` and per-sensor `acc_sample_count`, `acc_valid_fraction`,
+`gyro_sample_count` and `gyro_valid_fraction` columns. A supported observation
+is a complete finite three-axis vector outside declared gaps. Accelerometer
+axes and magnitude use the same observations; gyro support is independent.
+No supported vectors yields unknown (NaN/Parquet null), not a zero reading.
+
+Each fraction divides that measurement's support count by the window's retained
+frame slots, including masked slots. These are observed-frame fractions, not
+estimated coverage of elapsed time or proof of device accuracy. The original
+`valid_fraction` remains the fraction of retained frames outside declared gaps
+and does not describe an individual sensor. A feature job with incomplete sensor
+support records a warning, so strict CLI mode exits 2 and selected exports retain
+that warning in their copied source manifest. Select support columns alongside
+measurements when exporting a table; the column metadata defines the denominator.
