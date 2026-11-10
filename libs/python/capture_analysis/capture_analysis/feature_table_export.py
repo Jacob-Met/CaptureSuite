@@ -18,6 +18,8 @@ import pyarrow.compute as pc
 import pyarrow.csv as arrow_csv
 import pyarrow.parquet as parquet
 
+from capture_analysis.feature_export_readme import CONTEXT_SCHEMA, render_feature_export_readme
+
 _METADATA_LIMIT = 16 * 1024**2
 _HASH = re.compile(r"[0-9a-fA-F]{64}\Z")
 _FORMATS = {"csv", "parquet", "both"}
@@ -311,8 +313,10 @@ def export_feature_table(
         _fail("batch_size must be a positive integer")
     scoped = any(value is not None for value in (time_column, start_ns, end_ns))
     if scoped and (
-        not isinstance(time_column, str) or not time_column
-        or type(start_ns) is not int or type(end_ns) is not int
+        not isinstance(time_column, str)
+        or not time_column
+        or type(start_ns) is not int
+        or type(end_ns) is not int
         or start_ns >= end_ns
     ):
         _fail("time selection requires a column and integer start_ns < end_ns")
@@ -402,15 +406,39 @@ def export_feature_table(
             time_index = names.index(time_column)
         rows = reader.metadata.num_rows
         declared_rows = table_metadata.get("rows")
-        if declared_rows is not None and (
-            type(declared_rows) is not int or declared_rows != rows
-        ):
+        if declared_rows is not None and (type(declared_rows) is not int or declared_rows != rows):
             _fail("feature schema row count does not match the retained Parquet table")
         # Pandas metadata describes the original frame/index, not this projection.
         # Its exact original bytes remain in sourceArrowSchemaBase64 below.
-        metadata = {key: value for key, value in (source_schema.metadata or {}).items()
-                    if key != b"pandas"}
+        metadata = {
+            key: value for key, value in (source_schema.metadata or {}).items() if key != b"pandas"
+        }
         schema = pa.schema([source_schema.field(name) for name in selected], metadata=metadata)
+        context_names: list[str] = []
+        context_indices: list[int] = []
+        context_schema = None
+        context_preview: list[dict[str, Any]] = []
+        measurement_context = table_metadata.get("measurementContext")
+        if (
+            isinstance(measurement_context, dict)
+            and measurement_context.get("schemaId") == CONTEXT_SCHEMA
+        ):
+            context_names = measurement_context.get("rowContextColumns")
+            if (
+                not isinstance(context_names, list)
+                or not context_names
+                or any(not isinstance(name, str) or name not in names for name in context_names)
+                or len(context_names) != len(set(context_names))
+                or "export_row" in context_names
+            ):
+                _fail("recorded measurement context names unavailable support columns")
+            context_indices = [names.index(name) for name in context_names]
+            context_schema = pa.schema(
+                [pa.field("export_row", pa.int64(), nullable=False)]
+                + [source_schema.field(name) for name in context_names]
+            )
+            if any(not _csv_supported(field.type) for field in context_schema):
+                _fail("recorded measurement context requires CSV-compatible support columns")
         if output_format in {"csv", "both"}:
             unsupported = [field.name for field in schema if not _csv_supported(field.type)]
             if unsupported:
@@ -441,7 +469,9 @@ def export_feature_table(
                 "quotedStringsCanBeNull": False,
                 "columnTypes": "arrowSchemaBase64",
                 "floatNaNPayloadBitsPreserved": False,
-            } if output_format in {"csv", "both"} else None,
+            }
+            if output_format in {"csv", "both"}
+            else None,
         }
         # Exclusive creation prevents overwriting another caller's result.
         _check_cancel(cancel)
@@ -459,7 +489,7 @@ def export_feature_table(
             read_rows = 0
             data_files: list[str] = []
             with ExitStack() as stack:
-                parquet_writer = csv_writer = None
+                parquet_writer = csv_writer = context_writer = None
                 if output_format in {"parquet", "both"}:
                     parquet_writer = stack.enter_context(
                         parquet.ParquetWriter(output / "table.parquet", schema)
@@ -470,19 +500,40 @@ def export_feature_table(
                         arrow_csv.CSVWriter(str(output / "table.csv"), schema)
                     )
                     data_files.append("table.csv")
+                if context_schema is not None:
+                    context_writer = stack.enter_context(
+                        arrow_csv.CSVWriter(str(output / "row_context.csv"), context_schema)
+                    )
+                    data_files.append("row_context.csv")
                 # Read complete batches then select by index: names containing
                 # dots remain literal, rather than Parquet nested-field prefixes.
                 for batch in reader.iter_batches(batch_size=batch_size):
                     read_rows += batch.num_rows
                     if time_index is not None:
                         times = batch.column(time_index)
-                        batch = batch.filter(pc.and_(
-                            pc.greater_equal(times, lower), pc.less(times, upper)
-                        ))
+                        batch = batch.filter(
+                            pc.and_(pc.greater_equal(times, lower), pc.less(times, upper))
+                        )
                     _check_cancel(cancel)
                     projected = pa.RecordBatch.from_arrays(
                         [batch.column(index) for index in indices], schema=schema
                     )
+                    if context_writer is not None:
+                        context_batch = pa.RecordBatch.from_arrays(
+                            [
+                                pa.array(
+                                    range(written_rows + 1, written_rows + batch.num_rows + 1),
+                                    type=pa.int64(),
+                                )
+                            ]
+                            + [batch.column(index) for index in context_indices],
+                            schema=context_schema,
+                        )
+                        context_writer.write_batch(context_batch)
+                        if len(context_preview) < 8:
+                            context_preview.extend(
+                                context_batch.slice(0, 8 - len(context_preview)).to_pylist()
+                            )
                     if parquet_writer is not None:
                         parquet_writer.write_batch(projected)
                     if csv_writer is not None:
@@ -499,9 +550,33 @@ def export_feature_table(
             schema_record["tableMetadata"]["rows"] = written_rows
             if scoped:
                 schema_record["timeSelection"] = {
-                    "column": time_column, "startNs": str(start_ns), "endNs": str(end_ns),
-                    "interval": "[start,end)", "nullTimePolicy": "exclude",
+                    "column": time_column,
+                    "startNs": str(start_ns),
+                    "endNs": str(end_ns),
+                    "interval": "[start,end)",
+                    "nullTimePolicy": "exclude",
                     "sourceRows": rows,
+                }
+            if context_schema is not None:
+                schema_record["rowContext"] = {
+                    "relativePath": "row_context.csv",
+                    "rowIndexColumn": "export_row",
+                    "rowIndexBase": 1,
+                    "rows": written_rows,
+                    "arrowSchemaBase64": base64.b64encode(context_schema.serialize()).decode(
+                        "ascii"
+                    ),
+                    "columns": [
+                        {
+                            "name": "export_row",
+                            "units": "1",
+                            "description": (
+                                "One-based row position in the exported measurement table."
+                            ),
+                        },
+                        *[metadata_by_name[name] for name in context_names],
+                    ],
+                    "alignment": "same filtered rows and order as table.csv or table.parquet",
                 }
             (output / "_schema.json").write_bytes(_json_bytes(schema_record))
             exported = data_files + ["_schema.json", *copies.values()]
@@ -521,9 +596,11 @@ def export_feature_table(
                     ],
                 },
                 "selection": {
-                    "columns": selected, "rows": written_rows,
-                    "rowPolicy": ("time-region-in-original-order" if scoped
-                                  else "all-in-original-order"),
+                    "columns": selected,
+                    "rows": written_rows,
+                    "rowPolicy": (
+                        "time-region-in-original-order" if scoped else "all-in-original-order"
+                    ),
                 },
                 "format": output_format,
                 "outputs": [
@@ -533,6 +610,18 @@ def export_feature_table(
             }
             if scoped:
                 result["selection"]["timeSelection"] = schema_record["timeSelection"]
+            readme = render_feature_export_readme(
+                manifest,
+                documents["params.json"][1],
+                schema_record,
+                result["selection"],
+                data_files,
+                context_preview,
+            )
+            (output / "README.html").write_text(readme, encoding="utf-8")
+            result["outputs"].append(
+                {"relativePath": "README.html", **_identity(output / "README.html")}
+            )
             pending = output / "manifest.pending.json"
             with pending.open("xb") as stream:
                 stream.write(_json_bytes(result))

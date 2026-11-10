@@ -6,7 +6,10 @@ from __future__ import annotations
 import hashlib
 
 from capture_analysis.features.io import write_feature_table
-from capture_analysis.features.numeric_batch import extract_numeric_batch_features
+from capture_analysis.features.numeric_batch import (
+    extract_numeric_batch_features,
+    numeric_measurement_context,
+)
 from capture_analysis.loaders.numeric_batch import load_numeric_batch
 from capture_analysis.plots.modality import plot_series
 from capture_analysis.plugins.handlers import HandlerContext
@@ -29,16 +32,21 @@ def handle_numeric(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext) -> No
                 ctx.work,
                 rel,
                 df,
-                feature_schema_version=1,
+                feature_schema_version=2,
                 columns_meta=meta,
                 schema_doc=ctx.schema_doc,
                 outputs=ctx.outputs,
             )
             ctx.schema_doc["tables"][rel].update(
-                {"sourceId": ref.source_id, "streamId": ref.stream_id, "validFraction": vf}
+                {
+                    "sourceId": ref.source_id,
+                    "streamId": ref.stream_id,
+                    "validFraction": vf,
+                    "measurementContext": numeric_measurement_context(loaded, gap_mask),
+                }
             )
             ctx.feature_tables.append(
-                {"relativePath": rel, "featureSchemaVersion": 1, "rows": int(len(df))}
+                {"relativePath": rel, "featureSchemaVersion": 2, "rows": int(len(df))}
             )
     if ctx.do_plots and loaded.X.size:
         step = max(1, loaded.t_sample_ns.size // 20000)
@@ -67,6 +75,7 @@ def handle_numeric(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext) -> No
         ctx.sync_series.append(
             {
                 "gaps": gap_mask.gaps,
+                "ylabel": loaded.units or "units unspecified",
                 "label": f"Numeric {ref.source_id}/{ref.stream_id} · {loaded.channel_ids[0]}",
                 "t_ns": loaded.t_sample_ns[::step],
                 "y": loaded.X[0, ::step],

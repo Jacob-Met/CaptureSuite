@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "analysis_numeric_measurement_context.schema.json",
+  "title": "capture.numeric_measurement_context/1",
+  "type": "object",
+  "required": [
+    "schemaId",
+    "methodId",
+    "sampleRateHz",
+    "requestedWindowSeconds",
+    "requestedHopSeconds",
+    "windowSampleSlots",
+    "hopSampleSlots",
+    "nominalWindowSeconds",
+    "nominalHopSeconds",
+    "rounding",
+    "windowPlacement",
+    "interval",
+    "gapPolicy",
+    "sampleWeighting",
+    "mean",
+    "rms",
+    "missingData",
+    "rowContextColumns"
+  ],
+  "properties": {
+    "schemaId": {
+      "const": "capture.numeric_measurement_context/1"
+    },
+    "methodId": {
+      "const": "numeric.basic.v1"
+    },
+    "sampleRateHz": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "requestedWindowSeconds": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "requestedHopSeconds": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "windowSampleSlots": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "hopSampleSlots": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "nominalWindowSeconds": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "nominalHopSeconds": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "rounding": {
+      "const": "nearest-integer-ties-to-even-minimum-one"
+    },
+    "windowPlacement": {
+      "const": "retained-sample-slots-within-each-split-run"
+    },
+    "interval": {
+      "type": "object",
+      "required": [
+        "startColumn",
+        "endColumn",
+        "timebase",
+        "start",
+        "end",
+        "coverage"
+      ],
+      "properties": {
+        "startColumn": {
+          "const": "t_start_ns"
+        },
+        "endColumn": {
+          "const": "t_end_ns"
+        },
+        "timebase": {
+          "const": "session nanoseconds"
+        },
+        "start": {
+          "type": "string"
+        },
+        "end": {
+          "type": "string"
+        },
+        "coverage": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "gapPolicy": {
+      "enum": [
+        "mask",
+        "split",
+        "fail"
+      ]
+    },
+    "sampleWeighting": {
+      "type": "string"
+    },
+    "mean": {
+      "type": "string"
+    },
+    "rms": {
+      "type": "string"
+    },
+    "missingData": {
+      "type": "string"
+    },
+    "rowContextColumns": {
+      "const": [
+        "t_start_ns",
+        "t_end_ns",
+        "rate_hz",
+        "sample_count",
+        "valid_sample_count",
+        "gap_fraction"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

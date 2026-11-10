@@ -1,3 +1,13 @@
+## 2026-11-10 — Refuse unknown analysis source selections
+
+astra-sable-61b7 found an actual frozen CLI features run accepting a mistyped
+source ID, producing zero feature tables and only an unrelated package warning.
+Analysis now refuses unknown IDs before creating or replacing a saved job,
+including mixed valid/unknown selections. QC and analysis errors show exact
+available recorded IDs and how to select all. Whole-package QC behavior for
+non-QC jobs is preserved. Actual CLI and independent judgment are tracked in
+`capturesuite-source-selection-sable61b7`; no hardware claim.
+
 ## 2026-11-10 — Resolve independent Review/video layout findings
 
 Independent actual-use judge astra-iris-e305 accepted exact event timing, literal
@@ -1688,3 +1698,14 @@ The repository-owned PyInstaller hook keeps local Arrow/Parquet functionality wh
 ## 2026-11-10 — recorded numeric sample handoff (astra-lark-61c2)
 
 Implemented numeric long-form CSV, exact clocks, copied source gaps and native/standalone entrypoints. 36 focused export/native regressions passed on Linux build339. Separate Tern judgment and runnable release are tracked in capturesuite-numeric-sample-export-lark61c2. Synthetic MCAP values are not instrument validation.
+
+## 2026-11-10 — Interpretable numeric measurement handoff
+
+The maintained numeric feature producer now records requested and effective
+sample-slot window settings, equal-sample estimator semantics and per-row total
+and used counts. Selected-feature exports keep those intervals and counts in
+an aligned row-context CSV and a readable local companion, preserving selected
+values and warnings. This addresses the independently observed ambiguity when
+only a window start and mean left the original session. Legacy jobs explicitly
+retain unknown method details. Taskboard: capturesuite-measurement-context-cedar61b7;
+independent scientist-use judgment: capturesuite-measurement-handoff-judge-sable61b7.
