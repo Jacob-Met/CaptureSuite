@@ -23,6 +23,7 @@ mkdir -p "$out"
     --paths "$repo/libs/python/capture_analysis" \
     --paths "$repo/libs/python/capture_session" \
     --paths "$repo/libs/python/capture_protocol" \
+    --additional-hooks-dir "$repo/scripts/pyinstaller-hooks" \
     --collect-submodules capture_analysis \
     --collect-submodules capture_protocol \
     --collect-submodules mcap \

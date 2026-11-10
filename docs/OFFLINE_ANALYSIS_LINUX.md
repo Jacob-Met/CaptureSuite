@@ -161,3 +161,26 @@ files for native libraries copied into the bundle; absent attribution fails the
 build. Their exact package versions and library basenames are in the same manifest.
 
 For QC, `--sources SOURCE_ID ...` limits decoded streams, source lights and gap details/counts to those recorded sources. Unknown IDs fail rather than producing an empty success. The report explicitly labels its selected-source scope; package provenance, duration and recovery metadata still describe the whole recording. Feature job QC inventories retain their existing whole-package scope.
+
+### Local-only Arrow packaging
+
+The standalone build uses `scripts/pyinstaller-hooks/hook-pyarrow.py` to keep
+local Arrow/Parquet reading and writing without optional Arrow Flight, S3,
+Google Cloud, Azure or HDFS transports. The CLI accepts local session packages;
+remote filesystem URLs are not a standalone feature. Native dependency
+resolution still runs normally. The hook filters both native-library and data
+collection because versioned shared libraries can enter either list.
+
+For a smaller archive of the same complete bundle, use xz compression:
+
+```bash
+tar -cf - -C build/analysis-linux-release/dist capturesuite-analysis \
+  | xz -T2 -6 > capturesuite-analysis-linux-x86_64.tar.xz
+sha256sum capturesuite-analysis-linux-x86_64.tar.xz
+# Receiving machine:
+tar -xf capturesuite-analysis-linux-x86_64.tar.xz
+```
+
+Compression does not remove application files or change the supported commands.
+Compare frozen `qc`, `features`, `plots`, `all`, `jobs` and `export-table` outputs against the original
+bundle before publishing a packaging change.
