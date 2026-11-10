@@ -30,10 +30,34 @@ The JSON report adds an optional, versioned
 strings and batch identity for reproducible downstream inspection. It does not
 change the existing QC schema or default descriptor-only workflow.
 
+## Inspect a later episode
+
+To inspect a grip pulse around 45 seconds in a longer recording:
+
+```sh
+./capturesuite-analysis qc /path/to/recording.mmsession --inspect-payloads \
+  --start-ns 45000000000 --end-ns 45500000000
+```
+
+The bounds are inclusive session nanoseconds. Either bound may be omitted.
+The report selects at most the first 256 matching frames and six channels,
+shows the total matching count, and retains each original source position.
+It uses the same mapping as the numeric loader: each MCAP message's session
+anchor plus the difference from its first native timestamp. All arithmetic
+uses integers; native and mapped timestamps are serialized as decimal strings.
+This mapping is not a new clock calibration. Frames without native timestamps
+cannot be precisely placed and are explicitly counted as excluded.
+
+**The interval selects the displayed numeric excerpt only.** QC still checks
+the whole selected source recording, including samples outside the interval;
+its warnings and traffic lights do not become interval-only assessments.
+An empty timed interval is shown explicitly. The sample-position axis still
+does not encode elapsed time or gap duration, and lines stop at batch boundaries.
+
 ## Limits
 
-- This is a leading excerpt, not a recording-wide waveform browser. Later events
-  and channels after the first six are not plotted.
+- This is a bounded excerpt, not a recording-wide waveform browser. Use explicit
+  bounds to reach later events; channels after the first six are not plotted.
 - No preview is presented after a supported stream fails payload inspection,
   even if some early samples were readable.
 - EMG and IMU retain their existing decoded checks; these numeric plots do not
