@@ -392,7 +392,7 @@ def render_qc_package_review_html(review: dict[str, Any]) -> str:
         '<title>Compare recordings · CaptureSuite</title>'
         f"<style>{_STYLE}</style></head><body>"
         '<header class="appbar"><span class="brand">CaptureSuite</span>'
-        '<a href="review.json" download>Download comparison JSON</a></header><main>'
+        '<a href="review.json" download>Open comparison JSON</a></header><main>'
         '<div class="heading"><h1>Compare recordings</h1>'
         f'<p class="counts">{count} selected · {attention} with warnings or unavailable'
         f' · {review["collectedCount"]} reports collected</p></div>'
