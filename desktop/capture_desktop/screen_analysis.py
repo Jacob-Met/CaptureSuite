@@ -576,7 +576,10 @@ class AnalysisScreen(QWidget):
             self._gallery.load_job_dir(path)
             self._tables.load_job_dir(path)
             self._inspector.load_job_dir(path)
-            self._append_log("Figures loaded in-app (sync dashboard + gallery tabs).")
+            self._append_log(
+                f"Opened saved result {details.job.job_id}: "
+                f"{details.job.table_count} tables, {details.job.figure_count} figures."
+            )
             ml_summary = peek_ml_bundle_summary(path)
             if ml_summary:
                 self._append_log(ml_summary)

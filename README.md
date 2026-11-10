@@ -3,9 +3,9 @@
 Windows-first multimodal research capture platform: a daemon, versioned worker
 plugins, sealed session packages, and a PySide6 operator UI.
 
-> **Platform:** Windows 10 21H2+ x64 only for v1.0. The plugin contract is
-> process + named-pipe based so other OSes can be added later without breaking
-> plugins.
+> **Live acquisition:** Windows 10 21H2+ x64 for v1.0. The plugin contract is
+> process + named-pipe based. Offline analysis also runs on Linux; it does not
+> connect to the capture daemon.
 
 Linux developers can build and test the portable core/storage libraries and
 `session_doctor`; see [Building on Linux](docs/BUILDING-LINUX.md) for the exact
@@ -124,6 +124,25 @@ Use `capturesuite-analysis export-table JOB_DIR --list` in the Linux offline
 release, or `python tools/export_feature_table.py JOB_DIR --list` from source, to
 find saved tables and columns. Export a selection to CSV/Parquet with its types,
 units, original warnings and job provenance. See [feature table export](docs/FEATURE_TABLE_EXPORT.md).
+
+## Reopen saved analysis in the native desktop
+
+The Analysis workspace opens an existing recording and its saved jobs. Choose a
+result by its purpose, time and output counts, inspect complete figures, preview
+the actual saved measurements, and export chosen columns in a deliberate order.
+CSV and Parquet retain the saved values, types, units and source warnings.
+
+From an installed Python 3.12 desktop analysis environment:
+
+~~~bash
+python -m capture_desktop --analysis /path/to/recording.mmsession
+~~~
+
+On Linux this offline workspace is the default. On Windows the explicit
+`--analysis` option opens it without a live capture connection. See
+[native saved analysis](docs/design/ANALYSIS.md#native-saved-analysis-workspace)
+for setup, workflow and current limits. The separately published Linux
+`capturesuite-analysis` executable is a command-line application.
 
 ## Simulation walkthrough (after build prerequisites)
 
