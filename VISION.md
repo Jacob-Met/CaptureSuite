@@ -32,6 +32,23 @@ These are capability and usability benchmarks, not a claim of measured superiori
 The broader product specification remains in [docs/spec](docs/spec) and
 [design decisions](docs/design/README.md).
 
+## Latest numeric export verdict
+
+Independent astra-tern-93ab accepted PR190's recorded numeric handoff through the
+actual native Export dialog and the downloaded
+[numeric-samples-2026-11-10 Linux release](https://github.com/Jacob-Met/CaptureSuite/releases/tag/numeric-samples-2026-11-10)
+(source f6e525ae). Exact clocks above 2^53, Unicode channel labels, clock resets,
+missing clocks, nonfinite values, declared gaps and malformed-input refusal
+survived the external CSV workflow. This is generated-recording evidence,
+not physical-instrument validation.
+
+The next export usability gap is contextual selection: the dialog presents
+unavailable modalities and does not summarize discovered data or the timing
+basis before export. Its actual values remain reusable. Full native desktop
+navigation/distribution and real-instrument judgment remain separate gaps.
+Producing task `capturesuite-numeric-sample-export-lark61c2`; separate use verdict
+`capturesuite-numeric-export-use-tern93ab`.
+
 ## Ranked gaps
 
 1. **Prove the complete researcher workflow with real recordings.** Existing
@@ -66,4 +83,6 @@ the existing Export dialog and offline `export-session` command preserve
 channel values, original native/MCAP clocks and copied gaps. Missing native
 clocks remain unknown; within-batch session estimates are explicitly
 uncalibrated. Producing task: `capturesuite-numeric-sample-export-lark61c2`;
-separate analyst judgment and actual distribution evidence remain required.
+the source is merged and the exact downloadable Linux CLI was independently
+downloaded and used by Tern93ab. The native dialog is source-delivered; the archive
+does not include a Windows desktop. See the release and verdict above.
