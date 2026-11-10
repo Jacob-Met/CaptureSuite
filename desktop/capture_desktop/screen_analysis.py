@@ -37,7 +37,7 @@ from .widgets_analysis_plots import FigureGallery, JobInspector
 from .widgets_analysis_scope import WINDOW_COMMANDS, ScopeSelection
 from .widgets_analysis_sources import SOURCE_COMMANDS, AnalysisSourcePicker
 from .widgets_feature_tables import FeatureTableView
-from .widgets_mappings import AnatomicalMappingPanel
+from .widgets_mappings import MappingPresetAccess
 
 
 class _AnalysisWorker(QObject):
@@ -152,7 +152,7 @@ class AnalysisScreen(QWidget):
         self._build_controls(left_layout)
         root.insertWidget(0, self._path_bar)
         left_layout.insertWidget(0, self._scope_note)
-        self._mappings = AnatomicalMappingPanel(persistence)
+        self._mappings = MappingPresetAccess(persistence)
         left_layout.addWidget(self._mappings)
         controls_scroll = QScrollArea()
         controls_scroll.setObjectName("AnalysisControlsScroll")

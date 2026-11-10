@@ -33,9 +33,9 @@ def _kind(schema: str) -> str | None:
     if schema in {"capture.v1.data.NumericBatch", "generic.numeric_batch/1"}:
         return "numeric"
     # Match the maintained session exporter's accepted schema families.
-    if "emg.batch" in schema:
+    if schema == "capture.v1.data.EmgBatch" or "emg.batch" in schema:
         return "emg"
-    if "imu.frame" in schema:
+    if schema == "capture.v1.data.ImuFrame" or "imu.frame" in schema:
         return "imu"
     if "radar" in schema.lower():
         return "radar"

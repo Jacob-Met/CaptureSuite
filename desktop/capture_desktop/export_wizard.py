@@ -332,16 +332,22 @@ def run_export(
 ) -> tuple[int, str]:
     """Run the maintained exporter; return (exit_code, combined_output_tail)."""
     root = repo_root or Path(__file__).resolve().parents[2]
-    py = (
-        Path(os.environ.get("LOCALAPPDATA", ""))
-        / "Programs"
-        / "Python"
-        / "Python312"
-        / "python.exe"
-    )
-    if not py.is_file():
-        py = Path(sys.executable)
-    cmd = [str(py), str(root / "tools" / "export_session.py"), package_path, options.out_dir]
+    if getattr(sys, "frozen", False):
+        # A bundled executable is not a Python interpreter. Re-enter its
+        # exporter command instead of looking for a source checkout/script.
+        cmd = [sys.executable, "--export-session", package_path, options.out_dir]
+        root = Path(package_path).resolve().parent
+    else:
+        py = (
+            Path(os.environ.get("LOCALAPPDATA", ""))
+            / "Programs"
+            / "Python"
+            / "Python312"
+            / "python.exe"
+        )
+        if not py.is_file():
+            py = Path(sys.executable)
+        cmd = [str(py), str(root / "tools" / "export_session.py"), package_path, options.out_dir]
     if options.verify:
         cmd.append("--verify")
     cmd += _build_modalities_args(options)

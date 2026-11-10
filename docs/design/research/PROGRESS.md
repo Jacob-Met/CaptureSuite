@@ -105,6 +105,20 @@ long-metadata wrapping. This is software/simulation evidence. See
 [usage and limits](../../NUMERIC_QC_EXCERPTS.md); merge/release and independent
 actual-use judging remain recorded separately on the taskboard.
 
+## 2026-11-10 — Deliver the native offline desktop without a Python setup
+
+Contributor astra-cairn-7d42 is building the existing PySide6 application as a
+relocatable Linux x86_64 folder. The package includes the actual science stack,
+Qt multimedia, analysis schemas and plugin manifest, and reuses the maintained
+dependency notice collector. Session export re-enters the bundled exporter
+instead of trying to run a missing source script with the GUI executable.
+Mica and Mizunagi provide the coordinated offline startup and retained-workspace
+changes; this work does not replace their native application implementation.
+
+Current validation and downloaded-release judgment are recorded in task
+capturesuite-native-linux-desktop-cairn7d42. A build or help response alone
+does not establish working GUI analysis, physical acquisition or model inference.
+
 ## 2026-11-10 — Export a retained feature selection from the offline executable
 
 Contributor astra-mizunagi recovered the useful feature-table export implementation
@@ -1688,10 +1702,6 @@ A real packaged features run with a mistyped source ID returned completed with z
 
 Implemented numeric long-form CSV, exact clocks, copied source gaps and native/standalone entrypoints. 36 focused export/native regressions passed on Linux build339. Separate Tern judgment and runnable release are tracked in capturesuite-numeric-sample-export-lark61c2. Synthetic MCAP values are not instrument validation.
 
-
-## 2026-11-10 — native raw-export context (astra-lark-61c2)
-
-Addressing Tern93ab's observed Export dialog gap: recorded schema/index discovery now supplies source identities and honest stream/message counts, selected-only detected formats and explicit unknown metadata choices. Native clocks/missing-clock semantics accompany numeric selection.41 focused export/index/native tests passed; actual X11 pixels inspected. Existing Cairn frozen --export-session route will be reused for cumulative native packaging. Separate receiving remains required.
 ## 2026-11-10 — Interpretable numeric measurement handoff
 
 The maintained numeric feature producer now records requested and effective
@@ -1715,3 +1725,36 @@ exit in 0.1342 seconds. Source hashes stayed unchanged and stopped courses had
 no success manifest. Linux active-ffmpeg child cleanup also completed.
 Task: capturesuite-responsive-raw-export-lark61c2. Separate use judgment,
 cumulative packaging and downloaded receiving are still pending.
+## 2026-11-10 — native raw-export context (astra-lark-61c2)
+
+Addressing Tern93ab's observed Export dialog gap: recorded schema/index discovery now supplies source identities and honest stream/message counts, selected-only detected formats and explicit unknown metadata choices. Native clocks/missing-clock semantics accompany numeric selection.41 focused export/index/native tests passed; actual X11 pixels inspected. Existing Cairn frozen --export-session route will be reused for cumulative native packaging. Separate receiving remains required.
+
+
+## 2026-11-10 — Frozen desktop Qt notice recovery
+
+Producer astra-lark-7b494126 recovered astra-sable-91c6's existing Qt notice work
+(5588a255, db01d8ba, 7db40aad) onto current main after the actual desktop freeze
+failed at missing PySide6 6.12.0 license texts. The retained collector resolves
+actual TOC paths through wheel RECORD ownership, preserves pinned upstream
+PySide/Qt/ICU terms and source references, and rejects unsupported versions or
+Qt modules. Quick3D/QuickTimeline are explicitly refused because their shared
+Quick prefix does not make qtdeclarative notices sufficient.
+
+On research180, the maintained ownership/version/module checks pass and every
+retained notice was independently verified against freshly downloaded pinned
+upstream archives/pages. This establishes notice byte provenance, not a blanket
+legal conclusion or native GUI acceptance. The original build384 filesystem is
+unreachable; final collection against the replacement full-desktop TOC and its
+actual native receiving remains part of the active cumulative delivery.
+
+
+## 2026-11-10 — Complete the analysis install for recorded MCAP
+
+The documented four-project editable installation and PyInstaller completed on
+research180 with pip check clean, but the maintained desktop builder's import
+preflight failed because mcap was missing. The analysis extra now declares
+`mcap>=1.5.0,<2`, matching requirements-ci.txt and the maintained offline launcher.
+Installing desktop[analysis] therefore brings its actual recording reader along;
+no manual hidden prerequisite or change to decoding/provenance is introduced.
+The base metadata-only session library remains unchanged. Producer:
+astra-lark-7b494126, same cumulative native desktop delivery.

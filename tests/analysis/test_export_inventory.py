@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: GPL-3.0-only
 """Recorded metadata context must not invent sample counts or hide unknown data."""
 
+import pytest
 from capture_session.export_inventory import inspect_export_inventory
 from mcap.writer import Writer
 from test_numeric_sample_export import make_package
@@ -69,4 +70,36 @@ def test_incomplete_dialog_keeps_explicit_choices_available(tmp_path, qapp):
     dialog = ExportWizard(str(package))
     assert all(box.isEnabled() for box in dialog._data_boxes)
     assert "Choices remain available" in dialog._inventory_note.text()
+    dialog.close()
+
+@pytest.mark.parametrize("canonical", [False, True])
+def test_recorded_emg_and_imu_inventory_drives_actual_export(tmp_path, qapp, canonical):
+    """Both recorded schema conventions must be selectable and export real rows."""
+    import json
+
+    from capture_desktop.export_wizard import ExportWizard, run_export
+    from test_export_selection_mcap import _write_mcap
+
+    package = tmp_path / "sensors.mmsession"
+    _write_mcap(
+        package / "sources/device-A/streams/mixed/segments/000.mcap",
+        ("emg", "imu"),
+        canonical=canonical,
+    )
+    output = tmp_path / "selected"
+    dialog = ExportWizard(str(package), default_out=str(output))
+    assert not dialog._inventory.incomplete
+    for kind in ("emg", "imu"):
+        assert dialog._inventory.kinds[kind].messages == 1
+        assert len(dialog._inventory.kinds[kind].streams) == 1
+        assert getattr(dialog, "_" + kind).isChecked()
+    for kind in ("numeric", "video", "radar"):
+        assert not getattr(dialog, "_" + kind).isChecked()
+    dialog._accept()
+    code, detail = run_export(str(package), dialog.options)
+    assert code == 0, detail
+    for kind, filename in (("emg", "batches.jsonl"), ("imu", "frames.jsonl")):
+        rows = (output / kind / "device-A" / filename).read_text().splitlines()
+        assert len(rows) == 1
+        assert json.loads(rows[0])["session_time_ns"] > 0
     dialog.close()
