@@ -457,6 +457,9 @@ def test_zero_orientation_warns_in_saved_report_and_cli(
     imu = next(s for s in report["streams"] if s["modality"] == "imu")
     assert imu["payloadInspection"]["status"] == "imu_frames_checked"
     assert imu["payloadInspection"]["zeroQuaternionSensorSamples"] == int(qw == 0)
+    assert imu["payloadInspection"]["zeroQuaternionSamplesBySensor"] == (
+        {"pelvis": 1} if qw == 0 else {}
+    )
     result = subprocess.run(
         [
             sys.executable,
@@ -476,4 +479,5 @@ def test_zero_orientation_warns_in_saved_report_and_cli(
     reports = package / "processing/jobs/orientation-cli/reports"
     html = (reports / "qc.html").read_text()
     assert ("IMU orientation unavailable" in html) == (qw == 0)
+    assert ("(pelvis: 1)" in html) == (qw == 0)
     assert hash_sources_tree(package) == before

@@ -206,10 +206,15 @@ def _stream_qc(ref: StreamRef, *, inspect_payloads: bool = False) -> StreamQc:
             )
 
         if inspection["status"] != "failed" and inspection.get("zeroQuaternionSensorSamples", 0):
+            affected = ", ".join(
+                f"{sensor_id}: {count}"
+                for sensor_id, count in inspection["zeroQuaternionSamplesBySensor"].items()
+            )
             warnings.append(
                 "IMU orientation unavailable: "
                 f"{inspection['zeroQuaternionSensorSamples']} sensor sample(s) have an "
-                "all-zero quaternion; decoded acceleration/gyro values remain available"
+                f"all-zero quaternion ({affected}); "
+                "decoded acceleration/gyro values remain available"
             )
 
     return StreamQc(

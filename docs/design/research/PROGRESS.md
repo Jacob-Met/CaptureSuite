@@ -1444,3 +1444,7 @@ other owners remain untouched. This entry only appends to prior session history.
 ## 2026-11-10 — IMU unavailable orientation warning
 
 Exact all-zero quaternion observations now contribute a QC warning and strict CLI exit 2. Identity and negative-identity controls remain OK. Synthetic sealed protobuf MCAP exercises the actual report path; raw-source hashes remain unchanged. No hardware or accuracy claim.
+
+### Sensor identification follow-up
+
+QC now retains per-sensor zero-quaternion sample counts alongside the aggregate and lists affected IDs in the operator warning. Exact zero observations only; no accuracy thresholds introduced.
