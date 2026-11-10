@@ -70,14 +70,20 @@ class ExportWizard(QDialog):
         self._package_path = package_path
         self.options = ExportOptions(out_dir=default_out or "")
         self.setWindowTitle("Export session")
-        self.setMinimumWidth(480)
+        self.setMinimumWidth(600)
         self.setFont(theme.ui(9))
 
         root = QVBoxLayout(self)
+        from capture_session.export_inventory import inspect_export_inventory
+
+        self._inventory = inspect_export_inventory(package_path)
+        title = QLabel(Path(package_path).name)
+        title.setFont(theme.ui(12))
+        title.setWordWrap(True)
+        root.addWidget(title)
         intro = QLabel(
-            "Export continuous streams offline. Raw package is never modified. "
-            "Choose a new or empty destination folder. "
-            "A provenance sidecar (export_manifest.json) is written to the destination."
+            "Choose recorded data to take into another tool. "
+            "The original recording stays unchanged. Use a new or empty destination folder."
         )
         intro.setWordWrap(True)
         intro.setObjectName("Dim")
@@ -108,20 +114,82 @@ class ExportWizard(QDialog):
             "Numeric samples (CSV values, channel labels and original clocks)"
         )
         self._numeric.setChecked(True)
-        self._verify = QCheckBox("Verify export (--verify)")
+        self._verify = QCheckBox("Check that the export contains recorded data")
         self._verify.setChecked(True)
-        self._sidecar = QCheckBox("Write provenance sidecar (export_manifest.json)")
+        self._sidecar = QCheckBox("Include a record of these export choices")
         self._sidecar.setChecked(True)
-        for box in (
-            self._radar,
-            self._video,
-            self._emg,
-            self._imu,
-            self._numeric,
-            self._verify,
-            self._sidecar,
+        labels = {
+            "radar": "Radar — frames and stream description",
+            "video": "Video — media files",
+            "emg": "EMG — recorded batch summaries",
+            "imu": "IMU — recorded frame summaries",
+            "numeric": "Numeric — recorded channel values and original clocks",
+        }
+        self._data_boxes = []
+        absent = []
+        for kind, _option in sorted(
+            _MODALITY_FLAGS, key=lambda row: not self._inventory.kinds[row[0]].streams
         ):
+            box = getattr(self, "_" + kind)
+            self._data_boxes.append(box)
+            entry = self._inventory.kinds[kind]
+            count = len(entry.streams)
+            box.setText(labels[kind])
+            box.setChecked(bool(count) or bool(self._inventory.incomplete))
+            box.setEnabled(bool(count) or bool(self._inventory.incomplete))
+            if not count and not self._inventory.incomplete:
+                box.setParent(self)
+                box.hide()
+                absent.append(kind.upper() if kind in {"emg", "imu"} else kind.title())
+                continue
             root.addWidget(box)
+            if count:
+                detail = f"{count} recorded stream{'s' if count != 1 else ''}"
+                if kind == "video":
+                    detail += f" · {len(entry.files)} media files"
+                else:
+                    detail += f" · {entry.messages:,} indexed messages"
+                detail += " · " + ", ".join(sorted(entry.sources))
+            else:
+                detail = (
+                    "Availability unknown — recording metadata is incomplete"
+                    if self._inventory.incomplete
+                    else "No recorded data found"
+                )
+            context = QLabel(detail)
+            context.setWordWrap(True)
+            context.setObjectName("Dim")
+            root.addWidget(context)
+        if absent:
+            not_recorded = QLabel("Not recorded: " + ", ".join(absent))
+            not_recorded.setObjectName("Dim")
+            not_recorded.setWordWrap(True)
+            root.addWidget(not_recorded)
+        self._timing_note = QLabel(
+            "Numeric CSV keeps exact device timestamps and separate MCAP clocks. "
+            "Session estimates use within-batch clock differences only; they are uncalibrated. "
+            "Missing native clocks stay blank. Declared gaps are copied, never filled."
+        )
+        self._timing_note.setWordWrap(True)
+        root.addWidget(self._timing_note)
+        self._numeric.toggled.connect(self._timing_note.setVisible)
+        self._timing_note.setVisible(self._numeric.isChecked())
+        if self._inventory.incomplete:
+            self._inventory_note = QLabel(
+                "Some recorded metadata could not be classified. Choices remain available; "
+                "the exporter will validate selected data. Details: "
+                + "; ".join(self._inventory.incomplete[:3])
+            )
+        else:
+            self._inventory_note = QLabel(
+                "Counts come from recorded file indexes; messages can contain many samples. "
+                "Values are decoded and validated during export."
+            )
+        self._inventory_note.setWordWrap(True)
+        self._inventory_note.setObjectName("Dim")
+        root.addWidget(self._inventory_note)
+        root.addWidget(self._verify)
+        root.addWidget(self._sidecar)
 
         pkg = QLabel(package_path)
         pkg.setObjectName("Faint")
@@ -131,9 +199,17 @@ class ExportWizard(QDialog):
         buttons = QDialogButtonBox(
             QDialogButtonBox.StandardButton.Ok | QDialogButtonBox.StandardButton.Cancel
         )
+        self._export_button = buttons.button(QDialogButtonBox.StandardButton.Ok)
+        self._export_button.setText("Export selected data")
+        for box in self._data_boxes:
+            box.toggled.connect(self._refresh_selection)
+        self._refresh_selection()
         buttons.accepted.connect(self._accept)
         buttons.rejected.connect(self.reject)
         root.addWidget(buttons)
+
+    def _refresh_selection(self) -> None:
+        self._export_button.setEnabled(any(box.isChecked() for box in self._data_boxes))
 
     def _pick_dir(self) -> None:
         start = self._path.text() or str(Path(self._package_path).parent)
@@ -142,6 +218,8 @@ class ExportWizard(QDialog):
             self._path.setText(out)
 
     def _accept(self) -> None:
+        if not any(box.isChecked() for box in self._data_boxes):
+            return
         out = self._path.text().strip()
         if not out:
             QMessageBox.warning(self, "Export", "Choose a destination folder.")

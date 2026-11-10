@@ -1709,3 +1709,7 @@ values and warnings. This addresses the independently observed ambiguity when
 only a window start and mean left the original session. Legacy jobs explicitly
 retain unknown method details. Taskboard: capturesuite-measurement-context-cedar61b7;
 independent scientist-use judgment: capturesuite-measurement-handoff-judge-sable61b7.
+
+## 2026-11-10 — native raw-export context (astra-lark-61c2)
+
+Addressing Tern93ab's observed Export dialog gap: recorded schema/index discovery now supplies source identities and honest stream/message counts, selected-only detected formats and explicit unknown metadata choices. Native clocks/missing-clock semantics accompany numeric selection.41 focused export/index/native tests passed; actual X11 pixels inspected. Existing Cairn frozen --export-session route will be reused for cumulative native packaging. Separate receiving remains required.
