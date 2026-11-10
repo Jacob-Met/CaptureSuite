@@ -114,6 +114,30 @@ The existing reader's defaults and malformed-line handling are unchanged; this
 addition does not validate or repair the raw gap ledger. Raw streams, timestamps,
 feature gap masks, and job-manifest version remain unchanged.
 
+## Decoded EMG sequence continuity
+
+With payload inspection enabled, EMG QC compares each decoded batch's
+`first_sample_index` with the preceding batch's first index plus its
+`sample_count`, including transitions between sealed segment files. A forward
+jump or an overlap/reset makes the source `warn`; the decoded values and frame
+count remain available. The first batch may start at any index. After a
+restart/reset, the comparison uses that batch's new index as its next anchor.
+
+`payloadInspection.sampleIndexContinuity` records batches and transitions
+checked, forward-jump and overlap/reset counts, and at most ten examples with
+segment name, one-based message position, and exact expected/observed indices.
+Indices are decimal strings to preserve signed 64-bit values in JSON consumers.
+The HTML report exposes the counts and retained examples. Strict-warning CLI
+runs retain the report and return exit code 2 for these findings.
+
+These are observed index discontinuities, not a diagnosis of lost physical
+samples: a restart or producer index reset can also explain a discontinuity.
+No missing count, duration, hardware synchronization, or gap interval is
+invented, and the source gap ledger is not rewritten. With one batch there are
+zero transitions to check. A continuous index sequence alone does not establish
+signal quality or sensor accuracy. This check follows MCAP message log-time
+order within each discovered segment and discovered segment order across files.
+
 ## Memory / streaming
 
 | Stream | Rule |

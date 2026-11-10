@@ -74,6 +74,23 @@ def _inspection_cell(stream: dict[str, Any]) -> str:
         )
     if inspection.get("constantChannels"):
         notes.append("constant: " + ", ".join(str(x) for x in inspection["constantChannels"]))
+    continuity = inspection.get("sampleIndexContinuity")
+    if isinstance(continuity, dict):
+        notes.append(
+            f"sample-index transitions checked: {continuity['transitionsChecked']}; "
+            f"forward jumps: {continuity['forwardJumpCount']}; "
+            f"overlaps/resets: {continuity['overlapOrResetCount']}"
+        )
+        examples = continuity.get("examples", [])
+        total = continuity["forwardJumpCount"] + continuity["overlapOrResetCount"]
+        if total > len(examples):
+            notes.append(f"showing first {len(examples)} of {total} discontinuities")
+        for example in examples:
+            notes.append(
+                f"{example['segment']} message {example['messageInSegment']}: "
+                f"expected {example['expectedFirstSampleIndex']}, "
+                f"observed {example['actualFirstSampleIndex']}"
+            )
     zero_quaternions = inspection.get("zeroQuaternionSensorSamples")
     if zero_quaternions:
         notes.append(f"zero quaternion sensor samples: {int(zero_quaternions)}")

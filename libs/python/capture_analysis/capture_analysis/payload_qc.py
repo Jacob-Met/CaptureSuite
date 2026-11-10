@@ -20,7 +20,7 @@ _SCHEMAS = {
 }
 
 
-def _decode_emg(payload: bytes) -> tuple[int, list[str], list[tuple[float, float]]]:
+def _decode_emg(payload: bytes) -> tuple[int, int, list[str], list[tuple[float, float]]]:
     import numpy as np
     from capture_protocol.generated.capture.v1.data import emg_batch_pb2
 
@@ -38,7 +38,7 @@ def _decode_emg(payload: bytes) -> tuple[int, list[str], list[tuple[float, float
     if not bool(np.isfinite(values).all()):
         raise ValueError("EMG samples contain NaN or infinity")
     limits = [(float(row.min()), float(row.max())) for row in values]
-    return n, ids, limits
+    return n, int(msg.first_sample_index), ids, limits
 
 
 def _decode_imu(payload: bytes) -> tuple[list[str], list[str]]:
@@ -98,6 +98,14 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
     sensor_frame_counts: dict[str, int] = {}
     zero_quaternions = 0
     zero_by_sensor: dict[str, int] = {}
+    next_emg_index: int | None = None
+    emg_continuity: dict[str, Any] = {
+        "batchesChecked": 0,
+        "transitionsChecked": 0,
+        "forwardJumpCount": 0,
+        "overlapOrResetCount": 0,
+        "examples": [],
+    }
     try:
         from mcap.reader import make_reader
 
@@ -152,7 +160,26 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
                             raise ValueError("numeric samples contain NaN or infinity")
                         frames += n
                     elif schema_id == "emg.batch/1":
-                        n, ids, limits = _decode_emg(message.data)
+                        n, first_index, ids, limits = _decode_emg(message.data)
+                        emg_continuity["batchesChecked"] += 1
+                        if next_emg_index is not None:
+                            emg_continuity["transitionsChecked"] += 1
+                            if first_index != next_emg_index:
+                                forward = first_index > next_emg_index
+                                key = "forwardJumpCount" if forward else "overlapOrResetCount"
+                                emg_continuity[key] += 1
+                                if len(emg_continuity["examples"]) < 10:
+                                    emg_continuity["examples"].append({
+                                        "segment": path.name,
+                                        "messageInSegment": per_segment,
+                                        "kind": "forward_jump" if forward else "overlap_or_reset",
+                                        # Strings retain int64 precision in JSON consumers.
+                                        "expectedFirstSampleIndex": str(next_emg_index),
+                                        "actualFirstSampleIndex": str(first_index),
+                                    })
+                        # Re-anchor after every batch, including an index reset.
+                        # No origin is assumed for the first recorded batch.
+                        next_emg_index = first_index + n
                         if layout is None:
                             layout = ids
                         elif layout != ids:
@@ -209,6 +236,7 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
             if layout:
                 result["channelIds"] = layout
             if schema_id == "emg.batch/1":
+                result["sampleIndexContinuity"] = emg_continuity
                 # Exact flatline observations, not an electrode-condition diagnosis.
                 result["constantChannels"] = sorted(
                     name for name, (low, high) in extrema.items() if low == high and frames >= 2
