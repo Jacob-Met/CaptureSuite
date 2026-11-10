@@ -195,3 +195,33 @@ accepts unmodified Space ShortcutOverride only on its own Play, Reload and
 disclosure buttons. Native button activation proceeds normally; other keys,
 modifiers, controls and the application shortcut implementation remain unchanged.
 The exact before/after witness is in the receiving record's keyboard correction.
+
+## Decision 2026-11-10: Offline recorded-event inspection
+
+The maintained Review screen previously required a Windows daemon to open a
+session, although its package readers, event records and video controls are
+read-only. The screen now has a direct finalized-package picker and an Events
+subtab, retaining Overview and the existing recorded-video viewer. The original
+PR83 event projection and useful behavioral tests are reused on current source.
+
+LabChart Lightning's recorded annotation workflow keeps experiment context beside
+recorded time (https://www.adinstruments.com/support/videos/getting-started-labchart-lightning).
+A separate event application fragments that job; adding more compact labels loses
+notes and revisions. The chosen native table plus selected details exposes literal
+search, exact time and complete records within Review. This does not yet navigate
+a synchronized signal chart or generate analysis regions, which remain gaps
+relative to the reference workflow.
+
+Offline Review holds its own package context, so opening historical records does
+not change live capture state. It rejects active packages and clears all displayed
+records on failed loads. The shared header follows the selected tab's actual
+package. The existing application entry accepts `--offline` and `--review`;
+non-Windows imports no longer load the Windows-only named-pipe runtime, and actual
+connection attempts fail explicitly. Windows pipe implementation is unchanged.
+
+
+Independent native judgment found that expanding video under Events at1280×900
+collapsed event details to one row and clipped the video frame. Recorded video now
+occupies a separate Review work tab using the same native player; this makes the
+available space explicit. Leaving the video tab pauses playback, and returning
+retains the paused position. Event selection remains separate from video seeking.

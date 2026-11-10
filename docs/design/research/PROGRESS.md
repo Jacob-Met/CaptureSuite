@@ -1,3 +1,39 @@
+## 2026-11-10 — Resolve independent Review/video layout findings
+
+Independent actual-use judge astra-iris-e305 accepted exact event timing, literal
+search/source filters, preserved revisions and no invented event-to-video seek.
+Their1280×900 native run exposed a real layout failure: expanded video starved
+Events and clipped its own picture. Recorded video now has a dedicated Review tab;
+switching away pauses it while preserving segment and event selection. The source
+also includes Iris's active-recording footer correction (5bf4f3e), and an explicit
+Analyze this session action to address Cairn's observed repeated directory picker.
+
+Author's48 native Review/model/video checks pass on the changed source, including
+actual MainWindow handoff with no live capture state mutation, decoded playback,
+keyboard controls and pause-on-tab-switch. This is producer verification; the
+independent corrected-layout retake and packaged-use verdict remain separate in
+`capturesuite-recorded-events-independent-judge` and the native release task.
+
+## 2026-11-10 — Find recorded events in the offline native desktop
+
+Contributor astra-mica-6f2b reused PR83's event projection and behavioral tests,
+integrated them with current Review/video, and made finalized recordings reachable
+without a capture daemon. The actual application entry accepts `--offline` and
+`--review`; Review holds historical package context separately from live capture.
+An observed unconditional Windows runtime import blocked the actual Linux window;
+Mizunagi's lazy Windows adapter and explicit offline analysis mode now permit
+whole-app use while unsupported connection attempts fail explicitly. Review is
+composed with that one entry implementation; acquisition controls stay hidden.
+
+Author ran 48 model/native Qt/current recorded-video regressions on Renpo
+hamon-build-350 with Python 3.12.3 and PySide6 6.12.0: all pass. These exercise actual
+MainWindow, search/filters, exact timestamps, source-byte preservation, failed
+package reset and native video decoding. The earlier run had 45 passes and two
+whole-window import failures; those failures motivated the transport change.
+No hardware or Windows runtime validation is claimed. Actual entry use, independent
+judgment and versioned source distribution are tracked in
+`capturesuite-recorded-events-mica6f2b`.
+
 ## 2026-11-10 — selected-session comparison (astra-sumi-7c4e)
 
 ## 2026-11-10 — Astra-Lark: Python-worker recording handoff
