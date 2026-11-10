@@ -63,6 +63,15 @@ def _inspection_cell(stream: dict[str, Any]) -> str:
         notes.append("channels: " + ", ".join(str(x) for x in inspection["channelIds"]))
     if inspection.get("sensorIds"):
         notes.append("sensors: " + ", ".join(str(x) for x in inspection["sensorIds"]))
+    presence = inspection.get("sensorFramePresence")
+    if isinstance(presence, dict):
+        notes.append(
+            "sensor presence (decoded frames): "
+            + ", ".join(
+                f"{sid} {values['framesPresent']}/{values['totalFrames']}"
+                for sid, values in sorted(presence.items())
+            )
+        )
     if inspection.get("constantChannels"):
         notes.append("constant: " + ", ".join(str(x) for x in inspection["constantChannels"]))
     zero_quaternions = inspection.get("zeroQuaternionSensorSamples")
