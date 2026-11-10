@@ -59,6 +59,118 @@ def test_analysis_job_extras_validate(qapp):
     assert extras.validate_for("ml_bundle") is None
 
 
+def test_qc_payload_inspection_is_opt_in_and_qc_only(qapp):
+    from capture_desktop.widgets_analysis_jobs import AnalysisJobExtras
+
+    extras = AnalysisJobExtras()
+    extras.show()
+    extras.set_command("qc")
+    qapp.processEvents()
+    assert extras._payload_box.isVisible()
+    assert not extras._box.isVisible()
+    assert extras._inspect_payloads.isEnabled()
+    assert extras.build_extra("qc") == {}
+
+    extras._inspect_payloads.setChecked(True)
+    assert extras.build_extra("qc") == {"inspect_payloads": True}
+    extras.set_eval_busy(True)
+    assert not extras._inspect_payloads.isEnabled()
+    extras.set_eval_busy(False)
+    assert extras._inspect_payloads.isEnabled()
+
+    extras.set_command("all")
+    qapp.processEvents()
+    assert not extras._payload_box.isVisible()
+    assert extras.build_extra("all") == {}
+    extras.set_command("qc")
+    qapp.processEvents()
+    assert extras._payload_box.isVisible()
+    assert extras.build_extra("qc") == {"inspect_payloads": True}
+
+
+def test_qc_payload_inspection_reaches_native_job_params(qapp, tmp_path: Path, monkeypatch):
+    import capture_analysis
+    from capture_desktop.screen_analysis import _AnalysisWorker
+
+    observed = []
+    result = object()
+
+    def run_job(package, params, *, progress, cancel):
+        observed.append((package, params.command, params.extra))
+        return result
+
+    monkeypatch.setattr(capture_analysis, "run", run_job)
+    for opt_in, expected in (
+        (False, {}),
+        (True, {"inspect_payloads": True}),
+    ):
+        worker = _AnalysisWorker(
+            str(tmp_path), "qc", "mask",
+            {"inspect_payloads": True} if opt_in else {},
+        )
+        finished = []
+        failed = []
+        worker.finished.connect(finished.append)
+        worker.failed.connect(failed.append)
+        worker.run()
+        assert not failed
+        assert finished == [result]
+        assert observed[-1] == (str(tmp_path), "qc", expected)
+
+
+def test_qc_payload_toggle_runs_real_analysis_screen(qapp, tmp_path: Path, monkeypatch):
+    pytest.importorskip("mcap")
+    from capture_desktop.screen_analysis import AnalysisScreen
+    from capture_desktop.state import CaptureState
+    from PySide6.QtTest import QTest
+    from PySide6.QtWidgets import QMessageBox
+
+    from tests.analysis.test_payload_inspection_qc import SEGMENT, _package, _write_mcap
+
+    def refuse_modal_warning(parent, title, message):
+        raise AssertionError(f"Unexpected modal dialog {title}: {message}")
+
+    monkeypatch.setattr(QMessageBox, "warning", refuse_modal_warning)
+    package = _package(tmp_path)
+    _write_mcap(package, values=[1.0, 2.0, 3.0, 4.0], times=[100, 101])
+    raw_before = (package / SEGMENT).read_bytes()
+
+    screen = AnalysisScreen(CaptureState())
+    screen.resize(1180, 740)
+    screen.show()
+    screen.set_package(str(package))
+    qapp.processEvents()
+    assert screen._summary is not None
+    assert screen._btn_run.isEnabled()
+    assert screen._extras.build_extra("qc") == {}
+
+    screen._extras._inspect_payloads.setChecked(True)
+    screen._btn_run.click()
+    assert screen._thread is not None
+
+    for _ in range(600):
+        qapp.processEvents()
+        if screen._thread is None:
+            break
+        QTest.qWait(25)
+
+    assert screen._thread is None, screen._log.toPlainText()
+    assert "Done status=completed" in screen._log.toPlainText()
+    assert "inspect_payloads" in screen._log.toPlainText()
+
+    report_path = Path(screen._last_job_dir) / "reports/qc.json"
+    assert report_path.is_file()
+    report = json.loads(report_path.read_text(encoding="utf-8"))
+    assert report["streams"][0]["payloadInspection"]["status"] == "numeric_samples_checked"
+    assert report["streams"][0]["payloadInspection"]["sampleFramesChecked"] == 2
+    assert (package / SEGMENT).read_bytes() == raw_before
+    assert screen._btn_open_report.isEnabled()
+    image_path = tmp_path / "analysis-qc-operator.png"
+    assert screen.grab().save(str(image_path))
+    assert image_path.stat().st_size > 4_096
+    screen.close()
+
+
 def test_sync_dashboard_view_loads_series_json(qapp, tmp_path: Path):
     pytest.importorskip("pyqtgraph")
     from capture_desktop.widgets_analysis_plots import SyncDashboardView

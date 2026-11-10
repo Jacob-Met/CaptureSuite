@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 
 from PySide6.QtWidgets import (
+    QCheckBox,
     QComboBox,
     QFormLayout,
     QGroupBox,
@@ -72,6 +73,26 @@ class AnalysisJobExtras(QWidget):
         self._non_eval_rows = (self._pose_job, self._kin_job, self._feat_job, win_row)
         root.addWidget(self._box)
 
+        self._payload_box = QGroupBox("QC payload inspection")
+        payload_layout = QVBoxLayout(self._payload_box)
+        payload_layout.setContentsMargins(10, 8, 10, 8)
+        payload_layout.setSpacing(4)
+        self._inspect_payloads = QCheckBox("Inspect recorded MCAP payloads")
+        self._inspect_payloads.setToolTip(
+            "Read recorded MCAP messages and supported numeric frames. "
+            "This can take longer than metadata-only QC."
+        )
+        payload_layout.addWidget(self._inspect_payloads)
+        payload_note = QLabel(
+            "Checks MCAP structure and supported numeric samples. Other schemas "
+            "are message-only; this does not establish signal quality or calibration."
+        )
+        payload_note.setObjectName("Dim")
+        payload_note.setWordWrap(True)
+        payload_note.setFont(theme.ui(8))
+        payload_layout.addWidget(payload_note)
+        root.addWidget(self._payload_box)
+
         hint = QLabel(
             "Pose → kinematics → ml_bundle → eval. "
             "Features job supplies radar motion energy when present."
@@ -80,6 +101,7 @@ class AnalysisJobExtras(QWidget):
         hint.setWordWrap(True)
         hint.setFont(theme.ui(8))
         root.addWidget(hint)
+        self._dependency_hint = hint
 
         self._evaluation = EvaluationInput()
         root.addWidget(self._evaluation)
@@ -136,17 +158,25 @@ class AnalysisJobExtras(QWidget):
         self._hop_sec.setEnabled(need_win)
         for row in self._non_eval_rows:
             self._dependency_form.setRowVisible(row, command != "eval")
-        self.setVisible(
+        self._box.setVisible(command in ("pose", "kinematics", "ml_bundle", "eval"))
+        self._dependency_hint.setVisible(
             command in ("pose", "kinematics", "ml_bundle", "eval")
+        )
+        self._payload_box.setVisible(command == "qc")
+        self.setVisible(
+            command in ("qc", "pose", "kinematics", "ml_bundle", "eval")
         )
         self._evaluation.set_command(command)
 
     def set_eval_busy(self, busy: bool) -> None:
         self._evaluation.set_busy(busy)
+        self._inspect_payloads.setEnabled(not busy)
 
     def build_extra(self, command: str) -> dict:
         extra: dict = {}
-        if command == "kinematics":
+        if command == "qc" and self._inspect_payloads.isChecked():
+            extra["inspect_payloads"] = True
+        elif command == "kinematics":
             pid = self._pose_job.currentText().strip()
             if pid:
                 extra["pose_job_id"] = pid
