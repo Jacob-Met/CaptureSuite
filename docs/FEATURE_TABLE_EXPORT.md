@@ -4,10 +4,11 @@ Analysis jobs already retain full Parquet tables, CSV mirrors and a column schem
 Use this exporter when another analysis tool needs one retained table with a
 specific set of columns, in a specific order, together with its original job records.
 
-The exporter reads an explicitly selected completed job. It keeps every row in its
-original order and does not run analysis again. Column names are literal, including
-spaces, Unicode and dots. Units, provisional/calibrated flags and other feature
-metadata come from the retained job.
+The exporter reads an explicitly selected completed job. By default it keeps
+every row; an optional recorded-time filter selects a subset. Retained rows stay
+in their original order, and analysis is not run again. Column names are literal,
+including spaces, Unicode and dots. Units, provisional/calibrated flags and other
+feature metadata come from the retained job.
 
 ## Use the standalone analysis executable
 
@@ -78,6 +79,8 @@ written to the completed export's `manifest.json`.
 
 | Export file | Meaning |
 |---|---|
+| `README.html` | Readable measurement identity, units, warnings and recorded method/support context. |
+| `row_context.csv` | Aligned original intervals and sample support for numeric jobs that recorded this context. |
 | `table.csv` | Selected values, when CSV is requested. |
 | `table.parquet` | Selected Arrow fields and values, when Parquet is requested. |
 | `_schema.json` | Versioned selected-column schema, metadata and CSV reader settings. |
@@ -173,8 +176,9 @@ job's four input files are hashed again after reading to reject a concurrent cha
 Reads and writes use Arrow batches. To keep names such as `a.b` literal even
 beside a nested `a` field, complete source batches are read before selection by
 column index. Batch size limits rows per batch, not total decoder memory or bytes;
-very wide/large row groups can still require substantial memory. No time filter,
-resampling, interpolation, normalization or feature recalculation occurs.
+very wide/large row groups can still require substantial memory. An optional
+recorded-time filter selects rows without resampling, interpolation,
+normalization or feature recalculation.
 
 Admission failures create no destination. A later read/write failure retains the
 new directory, attempts to record `failure.json` with `status: "failed"`, and
