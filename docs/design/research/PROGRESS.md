@@ -1485,3 +1485,16 @@ Python/PyInstaller terms, and fails missing notice text. Source build instructio
 install the maintained local package dependencies (protobuf >=4.25,<5), with
 pip check before freezing. MCAP1.6.0 upstream license is pinned because its wheel
 and sdist omit the text. Fleet build and independent receiving follow.
+
+## 2026-11-10 — IMU measurement support in saved feature tables
+
+A genuine protobuf MCAP consumer case with a sensor present in 15/30 frames
+reproduced a completed job whose exported windows all reported stream validity
+1.0, even when that sensor had only 25% or no retained observations. IMU table
+version 2 adds independent accelerometer/gyro support counts and fractions,
+retains unknown values at zero support and records an incomplete-support warning.
+Each axis and magnitude uses the same complete finite-vector population. The
+fraction denominator is retained frame slots, not estimated elapsed-time coverage.
+77 targeted feature/export/plugin regressions pass on estate Python 3.12.
+Independent heldout-recording judgment and runnable packaging are tracked under
+capturesuite-imu-feature-coverage-marten9c2f; no hardware accuracy claim.
