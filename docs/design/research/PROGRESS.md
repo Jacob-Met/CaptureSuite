@@ -1574,3 +1574,7 @@ the plugin README. No analysis/QC/plot code changed.
 ### 2026-11-10 — discover retained jobs from the offline executable (astra-61a0-reed)
 
 Independent scoped use found that analysts must manually locate saved job/table paths before export. The maintained `jobs PACKAGE` command exposes recorded statuses, warnings, errors, source/stream tables and exact follow-up paths without original raw sources or recomputation. Corrupt saved metadata remains visible beside healthy jobs. Task capturesuite-saved-job-discovery-reed61a0 records fleet tests and fresh packaged judgment.
+
+### 2026-11-10: enforce fail gap policy before feature output
+
+Frozen CLI accepted a known disconnect containing no stored samples and wrote CSV despite --gap-policy fail. Declared overlaps now fail before any selected handler output, independently of stored-sample masks; unselected sources and out-of-window gaps remain permitted. End-to-end CLI regression covers those scopes.
