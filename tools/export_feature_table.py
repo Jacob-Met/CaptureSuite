@@ -25,7 +25,9 @@ def main(argv: list[str] | None = None, *, prog: str | None = None) -> int:
     parser = argparse.ArgumentParser(
         prog=prog,
         description="Inspect and export selected feature columns from a completed analysis job",
-        epilog="Start with JOB_DIR --list to see the saved tables and exact column names.",
+        epilog=("Start with JOB_DIR --list to see saved tables and exact column names. "
+                "Time selection filters existing rows by the chosen column; "
+                "feature windows are not clipped or recomputed."),
     )
     parser.add_argument("job_dir", type=Path, help="PACKAGE/processing/jobs/JOB_ID")
     parser.add_argument("--list", action="store_true", help="list saved tables, columns and units")
@@ -35,12 +37,16 @@ def main(argv: list[str] | None = None, *, prog: str | None = None) -> int:
         "--column", action="append", dest="columns",
         help="exact column name; repeat in export order (default: all retained columns)",
     )
+    parser.add_argument("--time-column", help="integer nanosecond column used for row selection")
+    parser.add_argument("--start-ns", type=int, help="inclusive recorded time, integer nanoseconds")
+    parser.add_argument("--end-ns", type=int, help="exclusive recorded time in integer nanoseconds")
     parser.add_argument("--format", choices=("csv", "parquet", "both"), default="both")
     parser.add_argument("--output", type=Path, help="new directory outside the session package")
     args = parser.parse_args(argv)
     if args.list:
-        if args.table or args.output or args.columns:
-            parser.error("--list cannot be combined with --table, --column or --output")
+        if (args.table or args.output or args.columns or args.time_column
+                or args.start_ns is not None or args.end_ns is not None):
+            parser.error("--list cannot be combined with export or time-selection flags")
     elif not args.table or not args.output:
         parser.error("export requires --table and --output; use --list to inspect saved tables")
     elif args.json:
@@ -72,6 +78,7 @@ def main(argv: list[str] | None = None, *, prog: str | None = None) -> int:
         result = export_feature_table(
             args.job_dir, args.table, args.output,
             columns=args.columns, output_format=args.format,
+            time_column=args.time_column, start_ns=args.start_ns, end_ns=args.end_ns,
         )
     except Exception as exc:
         print(f"FAIL: {exc}", file=sys.stderr)
@@ -82,6 +89,10 @@ def main(argv: list[str] | None = None, *, prog: str | None = None) -> int:
     print(f"dir={args.output.resolve()}")
     print(f"rows={result['selection']['rows']}")
     print(f"columns={len(result['selection']['columns'])}")
+    if "timeSelection" in result["selection"]:
+        scope = result["selection"]["timeSelection"]
+        print(f"time_region={scope['column']} [{scope['startNs']}, {scope['endNs']}) ns")
+        print(f"source_rows={scope['sourceRows']}; existing rows selected, windows not recomputed")
     print(f"source_job_status={result['source']['jobStatus']}")
     if result["source"]["jobStatus"] == "completed_with_warnings":
         print("Source analysis has warnings; review source/job_manifest.json.", file=sys.stderr)

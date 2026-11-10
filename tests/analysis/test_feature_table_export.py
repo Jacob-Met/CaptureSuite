@@ -504,3 +504,67 @@ def test_qc_only_job_lists_no_tables_with_a_useful_next_step(tmp_path: Path) -> 
     assert "Saved feature tables: 0" in listed.stdout
     assert "Run a features or all job" in listed.stdout
     assert inventory(package) == before
+
+
+def test_time_region_preserves_exact_large_integers_and_column_order(tmp_path: Path) -> None:
+    job, original = make_job(tmp_path)
+    before = inventory(job.parent.parent.parent)
+    output = tmp_path / 'region'
+    result = export_feature_table(
+        job, TABLE, output, columns=['value', TEXT], batch_size=2,
+        time_column='t_ns', start_ns=9007199254740993, end_ns=9007199254740995,
+    )
+    expected = original.slice(0, 1).select(['value', TEXT])
+    actual = parquet.read_table(output / 'table.parquet')
+    assert actual.equals(expected)
+    assert read_csv(output).equals(expected)
+    assert result['selection']['rows'] == 1
+    assert result['selection']['timeSelection'] == {
+        'column': 't_ns', 'startNs': '9007199254740993', 'endNs': '9007199254740995',
+        'interval': '[start,end)', 'nullTimePolicy': 'exclude', 'sourceRows': 8,
+    }
+    schema = json.loads((output / '_schema.json').read_bytes())
+    assert schema['tableMetadata']['rows'] == 1
+    assert result['source']['jobStatus'] == 'completed_with_warnings'
+    assert inventory(job.parent.parent.parent) == before
+
+
+def test_time_region_excludes_nulls_and_keeps_unsorted_original_order(tmp_path: Path) -> None:
+    job, original = make_job(tmp_path, typed_table().take([0, 1, 2, 5, 3, 4, 6, 7]))
+    output = tmp_path / 'region'
+    result = export_feature_table(job, TABLE, output, time_column='t_ns', start_ns=-1, end_ns=2,
+                                  output_format='parquet', batch_size=2)
+    actual = parquet.read_table(output / 'table.parquet')
+    assert actual.select(['t_ns', TEXT, 'u64', 'flag']).equals(
+        original.slice(3, 3).select(['t_ns', TEXT, 'u64', 'flag']))
+    assert actual['value'][0].as_py() == -float('inf')
+    assert math.isnan(actual['value'][1].as_py())
+    assert actual['value'][2].as_py() == float('inf')
+    assert result['selection']['rows'] == 3
+    assert result['selection']['rowPolicy'] == 'time-region-in-original-order'
+
+
+def test_empty_time_region_is_explicit_typed_zero_rows(tmp_path: Path) -> None:
+    job, original = make_job(tmp_path)
+    output = tmp_path / 'empty'
+    result = export_feature_table(job, TABLE, output, time_column='t_ns', start_ns=20, end_ns=30)
+    assert result['selection']['rows'] == 0
+    assert parquet.read_table(output / 'table.parquet').equals(original.slice(0, 0))
+    assert read_csv(output).num_rows == 0
+    assert json.loads((output / '_schema.json').read_bytes())['tableMetadata']['rows'] == 0
+
+
+@pytest.mark.parametrize('selection', [
+    {'time_column': 't_ns'},
+    {'time_column': 't_ns', 'start_ns': 2, 'end_ns': 2},
+    {'time_column': 't_ns', 'start_ns': True, 'end_ns': 2},
+    {'time_column': 'value', 'start_ns': 0, 'end_ns': 2},
+    {'time_column': 'missing', 'start_ns': 0, 'end_ns': 2},
+    {'time_column': 't_ns', 'start_ns': 0, 'end_ns': 2**70},
+])
+def test_invalid_time_selection_creates_no_destination(tmp_path: Path, selection: dict) -> None:
+    job, _ = make_job(tmp_path)
+    output = tmp_path / 'invalid'
+    with pytest.raises(FeatureTableExportError):
+        export_feature_table(job, TABLE, output, **selection)
+    assert not output.exists()

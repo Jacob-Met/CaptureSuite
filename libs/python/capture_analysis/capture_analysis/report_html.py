@@ -76,14 +76,39 @@ def _inspection_cell(stream: dict[str, Any]) -> str:
         )
     if inspection.get("constantChannels"):
         notes.append("constant: " + ", ".join(str(x) for x in inspection["constantChannels"]))
+    continuity = inspection.get("sampleIndexContinuity")
+    if isinstance(continuity, dict):
+        notes.append(
+            f"sample-index transitions checked: {continuity['transitionsChecked']}; "
+            f"forward jumps: {continuity['forwardJumpCount']}; "
+            f"overlaps/resets: {continuity['overlapOrResetCount']}"
+        )
+        examples = continuity.get("examples", [])
+        total = continuity["forwardJumpCount"] + continuity["overlapOrResetCount"]
+        if total > len(examples):
+            notes.append(f"showing first {len(examples)} of {total} discontinuities")
+        for example in examples:
+            notes.append(
+                f"{example['segment']} message {example['messageInSegment']}: "
+                f"expected {example['expectedFirstSampleIndex']}, "
+                f"observed {example['actualFirstSampleIndex']}"
+            )
     zero_quaternions = inspection.get("zeroQuaternionSensorSamples")
     if zero_quaternions:
         notes.append(f"zero quaternion sensor samples: {int(zero_quaternions)}")
-    detail = "<div class='meta'>" + escape("; ".join(notes)) + "</div>" if notes else ""
+    detail = (
+        "<div class='meta'>" + "<br/>".join(escape(note) for note in notes) + "</div>"
+        if notes else ""
+    )
     return escape(status) + detail
 
 
 def render_qc_html(qc: dict[str, Any]) -> str:
+    selected = qc.get("selectedSources") or []
+    scope = (
+        "Selected sources: " + ", ".join(str(s) for s in selected)
+        if selected else "All sources"
+    )
     lights = qc.get("trafficLights") or {}
     light_rows = "".join(
         f"<tr><td>{escape(sid)}</td><td class='{escape(level)}'>{escape(level)}</td></tr>"
@@ -122,7 +147,7 @@ th {{ background: #f4f4f4; }}
 .ok {{ color: #1a7f37; font-weight: 600; }}
 .warn {{ color: #9a6700; font-weight: 600; }}
 .fail {{ color: #cf222e; font-weight: 600; }}
-.meta {{ color: #555; font-size: 0.85rem; overflow-wrap: anywhere; }}
+.meta {{ color: #555; font-size: 0.85rem; overflow-wrap: anywhere; line-height: 1.4; }}
 .table-scroll {{ overflow-x: auto; }}
 .warnings {{ padding-left: 1.4rem; overflow-wrap: anywhere; }}
 .warnings li {{ margin-bottom: 0.6rem; }}
@@ -161,6 +186,8 @@ checkpoints {int(qc.get("checkpointCount") or 0)}
 <p class="meta">package: {escape(str(qc.get("packagePath", "")))}</p>
 <p class="meta">manifest sha256: {escape(str(qc.get("manifestSha256", "")))}</p>
 
+<p class="meta">QC scope: {escape(scope)}.
+Package provenance and recovery metadata describe the whole recording.</p>
 <h2>Sources</h2>
 <table>
 <tr><th>source</th><th>light</th></tr>
