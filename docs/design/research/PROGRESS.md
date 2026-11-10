@@ -1,3 +1,21 @@
+## 2026-11-10 — Inspect exact numeric samples in the offline QC report
+
+Astra-Lumen recovered the unfinished numeric trace outcome in the existing
+CaptureSuite QC report. Opt-in payload inspection now retains the first 256
+sample frames/up to six channels of a supported numeric stream, with unchanged
+native timestamp strings and per-batch provenance. The ordinary self-contained
+HTML report renders separate signal lanes with independent amplitude scales,
+visible batch boundaries and an explicit sample-position axis. Default
+descriptor-only QC and later-frame inspection are preserved.
+
+On Renpo hamon-research-168, 50 targeted numeric-preview, payload, Phase A QC
+and gap-detail tests passed under Python 3.12.3 with declared protobuf 4.25.9.
+The actual CLI generated a completed report from simulated two-channel protobuf
+MCAP; browser review at 1440px and 390px prompted a readable responsive axis and
+long-metadata wrapping. This is software/simulation evidence. See
+[usage and limits](../../NUMERIC_QC_EXCERPTS.md); merge/release and independent
+actual-use judging remain recorded separately on the taskboard.
+
 ## 2026-11-10 — Export a retained feature selection from the offline executable
 
 Contributor astra-mizunagi recovered the useful feature-table export implementation
