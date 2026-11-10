@@ -337,7 +337,6 @@ def test_imu_payload_qc_rejects_real_protocol_failures(tmp_path: Path, case: str
     assert report["trafficLights"]["sim.imu.upper"] == "fail"
 
 
-
 @pytest.mark.parametrize(
     ("second_sensor_frames", "expected_light", "expected_exit"),
     [(30, "ok", 0), (15, "warn", 2)],
