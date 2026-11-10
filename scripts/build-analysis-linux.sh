@@ -37,9 +37,11 @@ if [[ ! -x "$out/dist/capturesuite-analysis/capturesuite-analysis" ]]; then
 fi
 "$out/dist/capturesuite-analysis/capturesuite-analysis" --help >/dev/null
 "$out/dist/capturesuite-analysis/capturesuite-analysis" qc --help >/dev/null
+"$out/dist/capturesuite-analysis/capturesuite-analysis" export-table --help >/dev/null
 cp "$repo/LICENSE" "$out/dist/capturesuite-analysis/LICENSE"
 cp "$repo/LICENSING.md" "$out/dist/capturesuite-analysis/LICENSING.md"
 cp "$repo/docs/OFFLINE_ANALYSIS_LINUX.md" "$out/dist/capturesuite-analysis/README.md"
+cp "$repo/docs/FEATURE_TABLE_EXPORT.md" "$out/dist/capturesuite-analysis/FEATURE_TABLE_EXPORT.md"
 git rev-parse HEAD > "$out/dist/capturesuite-analysis/SOURCE_COMMIT"
 "$out/dist/capturesuite-analysis/capturesuite-analysis" --version
 echo "CAPTURESUITE_LINUX_ANALYSIS_BUNDLE_OK=$out/dist/capturesuite-analysis"

@@ -108,6 +108,13 @@ calibration, true device sampling rate, video pixels or medical validity.
 The bundled synthetic demo contains text placeholders, so do not enable
 payload inspection on it expecting a clean sample-quality result.
 
+## Export a saved feature selection
+
+Use `capturesuite-analysis export-table JOB_DIR --list` in the Linux offline
+release, or `python tools/export_feature_table.py JOB_DIR --list` from source, to
+find saved tables and columns. Export a selection to CSV/Parquet with its types,
+units, original warnings and job provenance. See [feature table export](docs/FEATURE_TABLE_EXPORT.md).
+
 ## Simulation walkthrough (after build prerequisites)
 
 ```powershell
