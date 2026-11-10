@@ -12,6 +12,22 @@ py="${PYTHON:-python3}"
 export PYTHONPATH="$repo/desktop:$repo/libs/python/capture_analysis:$repo/libs/python/capture_session:$repo/libs/python/capture_protocol${PYTHONPATH:+:$PYTHONPATH}"
 "$py" -m pip check
 "$py" -c 'import PyInstaller, PySide6, pyqtgraph, capture_analysis, mcap, pyarrow, scipy'
+# The first real X11 launch failed before a window because these libraries
+# were absent. Resolve them before freezing so the package can collect them.
+"$py" - <<'PYQT'
+import subprocess
+from pathlib import Path
+from PySide6.QtCore import QLibraryInfo
+
+plugin = Path(QLibraryInfo.path(QLibraryInfo.LibraryPath.PluginsPath)) / "platforms/libqxcb.so"
+result = subprocess.run(["ldd", str(plugin)], capture_output=True, text=True, check=True)
+missing = [line.strip() for line in result.stdout.splitlines() if "=> not found" in line]
+if missing:
+    raise SystemExit(
+        "Missing native Qt X11 libraries:\n" + "\n".join(missing)
+        + "\nInstall the build prerequisites in docs/OFFLINE_DESKTOP_LINUX.md."
+    )
+PYQT
 out="${OUTPUT_ROOT:-$repo/build/desktop-linux-release}"
 mkdir -p "$out"
 "$py" -m PyInstaller --noconfirm --clean --onedir \
@@ -36,6 +52,8 @@ mkdir -p "$out"
     --add-data "$repo/schemas/ml_bundle:schemas/ml_bundle" \
     --add-data "$repo/docs/design/research/schemas/analysis_plugin_manifest.schema.json:docs/design/research/schemas" \
     --exclude-module tkinter \
+    --exclude-module pytest \
+    --exclude-module _pytest \
     "$repo/tools/desktop_bundle_entry.py"
 bundle="$out/dist/capturesuite-desktop"
 test -x "$bundle/capturesuite-desktop"
