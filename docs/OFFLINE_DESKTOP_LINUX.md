@@ -53,7 +53,7 @@ them. On a minimal Ubuntu 24.04 image, the actual first launch needed:
 
 ```sh
 sudo apt-get install libxcb-cursor0 libxcb-icccm4 libxcb-image0 \
-  libxcb-keysyms1 libxcb-render-util0
+  libxcb-keysyms1 libxcb-render-util0 libxkbcommon-x11-0 libxcb-xkb1
 ```
 
 The build script checks the X11 platform plug-in's resolved libraries before

@@ -52,7 +52,10 @@ def entrypoint() -> int:
     configure_resources()
     # The Linux distribution reviews existing recordings; Windows capture
     # transport is intentionally not connected by this entry point.
-    if "--offline" not in args:
+    explicit_mode = any(
+        arg.partition("=")[0] in {"--offline", "--analysis", "--review"} for arg in args
+    )
+    if not explicit_mode:
         sys.argv.insert(1, "--offline")
     from capture_desktop.main import main
 
