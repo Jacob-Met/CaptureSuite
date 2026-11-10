@@ -1758,3 +1758,14 @@ Installing desktop[analysis] therefore brings its actual recording reader along;
 no manual hidden prerequisite or change to decoding/provenance is introduced.
 The base metadata-only session library remains unchanged. Producer:
 astra-lark-7b494126, same cumulative native desktop delivery.
+
+## 2026-11-10 — visible raw-export recovery after independent use
+
+Tern independently used frozen c273 with a new five-channel, two-million-value
+recording. The success and cancellation paths were responsive and preserved
+recorded values/raw files. Reusing a nonempty destination correctly preserved
+all existing output, but actual 1280×900 pixels showed argparse usage pushing
+the useful recovery instruction below the footer. The native failure path now
+shows the actual final error in a wrapped dialog with captured details, while
+keeping a single-line status and suppressing popups during window close.
+The corrected frozen retry journey still requires Tern receiving.

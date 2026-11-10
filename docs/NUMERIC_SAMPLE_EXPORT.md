@@ -91,3 +91,7 @@ the child and retained source hashes. A separate Linux process-tree course
 stopped an active ffmpeg child. These are engineering checks, not hardware
 validation or independent audience acceptance. Windows process-tree cleanup
 has not yet been exercised on a Windows host.
+
+An unsuccessful native export shows its actionable error in a visible dialog;
+expand Details for the captured exporter output. A nonempty destination is
+refused before writing, so choose a new or empty folder for a fresh attempt.

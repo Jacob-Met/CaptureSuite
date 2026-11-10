@@ -783,7 +783,22 @@ class MainWindow(QMainWindow):
             self._status.setText(self.state.status_line)
             return
         if code != 0:
-            self._on_error(f"Export failed: {tail}")
+            lines = [line.strip() for line in tail.splitlines() if line.strip()]
+            summary = lines[-1] if lines else f"Exporter exited with code {code}."
+            # argparse prepends usage; the final error is the useful recovery
+            # instruction. Keep the captured output available under Details.
+            summary = summary.partition(": error: ")[2] or summary.removeprefix("error: ")
+            self._on_error(f"Export failed: {summary}")
+            if not self._close_after_export:
+                error = QMessageBox(self)
+                error.setWindowTitle("Export failed")
+                error.setIcon(QMessageBox.Icon.Warning)
+                error.setTextFormat(Qt.TextFormat.PlainText)
+                error.setText(summary)
+                if tail.strip() != summary:
+                    error.setDetailedText(tail)
+                error.setStandardButtons(QMessageBox.StandardButton.Ok)
+                error.exec()
             return
         self.state.status_line = f"Export complete → {opts.out_dir}"
         self._status.setText(self.state.status_line)
