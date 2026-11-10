@@ -41,7 +41,7 @@ def _decode_emg(payload: bytes) -> tuple[int, list[str], list[tuple[float, float
     return n, ids, limits
 
 
-def _decode_imu(payload: bytes) -> tuple[list[str], int]:
+def _decode_imu(payload: bytes) -> tuple[list[str], list[str]]:
     from capture_protocol.generated.capture.v1.data import imu_frame_pb2
 
     from capture_analysis.loaders.mcap_iter import decode_protobuf
@@ -50,7 +50,7 @@ def _decode_imu(payload: bytes) -> tuple[list[str], int]:
     ids = [sensor.sensor_id for sensor in msg.sensors]
     if not ids or not all(ids) or len(set(ids)) != len(ids):
         raise ValueError("IMU frame requires unique, nonempty sensor IDs")
-    zero_quaternions = 0
+    zero_sensor_ids: list[str] = []
     for sensor in msg.sensors:
         values = (
             sensor.accel_x,
@@ -67,8 +67,8 @@ def _decode_imu(payload: bytes) -> tuple[list[str], int]:
         if not all(math.isfinite(v) for v in values):
             raise ValueError(f"IMU sensor {sensor.sensor_id!r} contains NaN or infinity")
         if sensor.qw == sensor.qx == sensor.qy == sensor.qz == 0:
-            zero_quaternions += 1
-    return ids, zero_quaternions
+            zero_sensor_ids.append(sensor.sensor_id)
+    return ids, zero_sensor_ids
 
 
 def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
@@ -97,6 +97,7 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
     observed_sensors: set[str] = set()
     sensor_frame_counts: dict[str, int] = {}
     zero_quaternions = 0
+    zero_by_sensor: dict[str, int] = {}
     try:
         from mcap.reader import make_reader
 
@@ -170,7 +171,9 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
                             sensor_frame_counts[sensor_id] = (
                                 sensor_frame_counts.get(sensor_id, 0) + 1
                             )
-                        zero_quaternions += zero
+                        zero_quaternions += len(zero)
+                        for sensor_id in zero:
+                            zero_by_sensor[sensor_id] = zero_by_sensor.get(sensor_id, 0) + 1
                         frames += 1
             result["segmentsChecked"] += 1
             if not per_segment:
@@ -223,6 +226,7 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
                     sensor_id for sensor_id, count in sensor_frame_counts.items() if count < frames
                 )
                 result["zeroQuaternionSensorSamples"] = zero_quaternions
+                result["zeroQuaternionSamplesBySensor"] = dict(sorted(zero_by_sensor.items()))
     except Exception as exc:  # noqa: BLE001 - malformed MCAP/codec errors are report data
         result.update(
             status="failed",
