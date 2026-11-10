@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import struct
 import subprocess
@@ -29,7 +30,6 @@ def make_package(root: Path, segments: list[list[tuple[int, int]]]) -> Path:
         "schemaId": "capture.session_manifest/1", "sessionId": "emg-continuity",
         "state": "finalized", "sourceIds": [SOURCE],
     }))
-    (root / "integrity.json").write_text(json.dumps({"files": []}))
     stream = root / "sources" / SOURCE / "streams" / STREAM
     (stream / "segments").mkdir(parents=True)
     (stream / "stream.json").write_text(json.dumps({
@@ -41,6 +41,7 @@ def make_package(root: Path, segments: list[list[tuple[int, int]]]) -> Path:
     common_pb2.DESCRIPTOR.CopyToProto(descriptors.file.add())
     emg_batch_pb2.DESCRIPTOR.CopyToProto(descriptors.file.add())
     timestamp = 0
+    integrity_files = []
     for segment_index, batches in enumerate(segments):
         with (stream / "segments" / f"{segment_index:06}.mcap").open("wb") as fh:
             writer = Writer(fh)
@@ -64,6 +65,13 @@ def make_package(root: Path, segments: list[list[tuple[int, int]]]) -> Path:
                 )
                 timestamp += count * 1_000_000
             writer.finish()
+        path = stream / "segments" / f"{segment_index:06}.mcap"
+        integrity_files.append({
+            "path": path.relative_to(root).as_posix(), "sizeBytes": path.stat().st_size,
+            "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+            "endSessionTimeNs": timestamp,
+        })
+    (root / "integrity.json").write_text(json.dumps({"files": integrity_files}))
     return root
 
 
@@ -116,21 +124,27 @@ def test_large_indices_remain_exact_and_examples_are_bounded(tmp_path: Path) -> 
     assert "first 10 of 14" in html
 
 
-def test_strict_cli_warns_and_retains_an_actionable_report(tmp_path: Path) -> None:
-    package = make_package(tmp_path / "missing.mmsession", [[(0, 4)], [(8, 2)]])
+@pytest.mark.parametrize("next_index,expected_exit", [(4, 0), (8, 2)])
+def test_strict_cli_warns_and_retains_an_actionable_report(
+    tmp_path: Path, next_index: int, expected_exit: int,
+) -> None:
+    package = make_package(tmp_path / "missing.mmsession", [[(0, 4)], [(next_index, 2)]])
     before = hash_sources_tree(package)
     result = subprocess.run([
         sys.executable, str(ROOT / "tools/run_analysis.py"), "qc", str(package),
         "--inspect-payloads", "--strict-warnings", "--overwrite-job-id", "continuity-qc",
     ], cwd=ROOT, capture_output=True, text=True)
-    assert result.returncode == 2, result.stdout + result.stderr
+    assert result.returncode == expected_exit, result.stdout + result.stderr
     reports = package / "processing/jobs/continuity-qc/reports"
     report = json.loads((reports / "qc.json").read_text())
-    assert report["trafficLights"][SOURCE] == "warn"
+    assert report["trafficLights"][SOURCE] == ("warn" if expected_exit else "ok")
     html = (reports / "qc.html").read_text()
-    assert "EMG sample-index discontinuities" in html
-    assert "000001.mcap" in html
-    assert "expected 4, observed 8" in html
+    assert ("EMG sample-index discontinuities" in html) == bool(expected_exit)
+    if expected_exit:
+        assert "000001.mcap" in html
+        assert "expected 4, observed 8" in html
+    else:
+        assert not report["warnings"]
     assert hash_sources_tree(package) == before
 
 
