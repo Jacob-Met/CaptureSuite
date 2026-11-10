@@ -29,6 +29,7 @@ from PySide6.QtWidgets import (
 )
 
 from . import theme
+from .widgets_feature_time import FeatureTimeSelection
 
 
 def _label(text: str = "") -> QLabel:
@@ -137,6 +138,9 @@ class FeatureTableView(QWidget):
         split.setStretchFactor(1, 3)
         root.addWidget(split, 1)
 
+        self._time_selection = FeatureTimeSelection()
+        root.addWidget(self._time_selection)
+
         destination = QHBoxLayout()
         destination.addWidget(QLabel("Save in"))
         self._parent_path = QLineEdit(str(Path.home()))
@@ -165,11 +169,6 @@ class FeatureTableView(QWidget):
         self._export.setAccessibleName("Export selected feature columns")
         options.addWidget(self._export)
         root.addLayout(options)
-        note = _label(
-            "All saved rows, in their original order. Units and job warnings travel with the data."
-        )
-        note.setObjectName("Dim")
-        root.addWidget(note)
         feedback = QHBoxLayout()
         self._status = _label()
         self._status.setObjectName("analysisTableStatus")
@@ -186,6 +185,7 @@ class FeatureTableView(QWidget):
         self._progress.hide()
         root.addWidget(self._progress)
 
+        self._time_selection.selection_changed.connect(self._sync)
         self._tables.currentIndexChanged.connect(self._select_table)
         self._columns.itemChanged.connect(self._sync)
         self._parent_path.textChanged.connect(self._sync)
@@ -244,6 +244,7 @@ class FeatureTableView(QWidget):
         self._preview.setRowCount(0)
         self._preview.setColumnCount(0)
         self._row_count.clear()
+        self._time_selection.set_columns([])
         self._warning.clear()
         self._status.setText("Open a saved analysis result to browse its tables.")
         self._preview_note.setText("Values are read from the saved result.")
@@ -270,6 +271,11 @@ class FeatureTableView(QWidget):
         self._tables.blockSignals(True)
         for table in inventory["tables"]:
             label = f"{table.get('sourceId') or 'Session'} · {table.get('streamId') or 'Features'}"
+            siblings = [row for row in inventory["tables"]
+                        if (row.get("sourceId"), row.get("streamId")) ==
+                        (table.get("sourceId"), table.get("streamId"))]
+            if len(siblings) > 1:
+                label += f" · {table['relativePath']}"
             self._tables.addItem(label, table)
             self._tables.setItemData(
                 self._tables.count() - 1, table["relativePath"], Qt.ItemDataRole.ToolTipRole
@@ -299,6 +305,7 @@ class FeatureTableView(QWidget):
         self._preview.clear()
         self._preview.setRowCount(0)
         self._preview.setColumnCount(0)
+        self._time_selection.set_columns(table["columns"])
         for column in table["columns"]:
             item = QTreeWidgetItem([
                 column["name"], column["units"],
@@ -383,11 +390,13 @@ class FeatureTableView(QWidget):
         self._export.setEnabled(
             self._preview_ready and bool(self.selected_columns())
             and bool(self._parent_path.text().strip() and self._folder_name.text().strip())
+            and self._time_selection.selection is not None
             and not self.busy
         )
         for widget in (
             self._tables, self._columns, self._all, self._none, self._up, self._down,
             self._parent_path, self._folder_name, self._browse, self._format,
+            self._time_selection,
         ):
             widget.setEnabled(not self.busy)
 
@@ -403,13 +412,16 @@ class FeatureTableView(QWidget):
         relative = self._tables.currentData()["relativePath"]
         columns = self.selected_columns()
         output_format = str(self._format.currentData())
+        time_selection = self._time_selection.selection
+        if time_selection is None:
+            return
 
         def export(cancel, progress):
             from capture_analysis.feature_table_export import export_feature_table
 
             return export_feature_table(
                 job, relative, destination, columns=columns, output_format=output_format,
-                cancel=cancel, progress=progress,
+                cancel=cancel, progress=progress, **time_selection,
             )
 
         def succeeded(result):
