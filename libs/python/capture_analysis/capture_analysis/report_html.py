@@ -53,6 +53,25 @@ def _payload_frames(stream: dict[str, Any]) -> str:
     return escape(str(frames if frames is not None else "—"))
 
 
+def _inspection_cell(stream: dict[str, Any]) -> str:
+    inspection = stream.get("payloadInspection") or {}
+    status = str(inspection.get("status", "not_requested"))
+    notes: list[str] = []
+    if status == "failed":
+        notes.append(str(inspection.get("detail") or "payload unreadable"))
+    if inspection.get("channelIds"):
+        notes.append("channels: " + ", ".join(str(x) for x in inspection["channelIds"]))
+    if inspection.get("sensorIds"):
+        notes.append("sensors: " + ", ".join(str(x) for x in inspection["sensorIds"]))
+    if inspection.get("constantChannels"):
+        notes.append("constant: " + ", ".join(str(x) for x in inspection["constantChannels"]))
+    zero_quaternions = inspection.get("zeroQuaternionSensorSamples")
+    if zero_quaternions:
+        notes.append(f"zero quaternion sensor samples: {int(zero_quaternions)}")
+    detail = "<div class='meta'>" + escape("; ".join(notes)) + "</div>" if notes else ""
+    return escape(status) + detail
+
+
 def render_qc_html(qc: dict[str, Any]) -> str:
     lights = qc.get("trafficLights") or {}
     light_rows = "".join(
@@ -68,7 +87,7 @@ def render_qc_html(qc: dict[str, Any]) -> str:
         f"<td>{escape(str(s.get('nominalRateHz', '')))}</td>"
         f"<td>{escape(str(s.get('units', '') or '—'))}</td>"
         f"<td>{int(s.get('mcapSegments') or 0)}/{int(s.get('mkvSegments') or 0)}</td>"
-        f"<td>{escape(str((s.get('payloadInspection') or {}).get('status', 'not_requested')))}</td>"
+        f"<td>{_inspection_cell(s)}</td>"
         f"<td>{_payload_frames(s)}</td>"
         "</tr>"
         for s in (qc.get("streams") or [])
@@ -131,12 +150,13 @@ Each row is one reported gap. Loss counts are reported estimates in source-defin
 A green light does not establish signal quality. Payload inspection is optional: run
 <code>run_analysis.py qc PACKAGE --inspect-payloads</code> to read segment bytes.
 "mcap_messages_checked" confirms structural reading only; only
-"numeric_samples_checked" confirms decoded NumericBatch values and frame counts.
-Neither status establishes calibrated sensor accuracy.</p>
+"numeric_samples_checked", "emg_samples_checked", and "imu_frames_checked"
+confirm decoded measurements and checked frame counts.
+None of these statuses establishes calibrated sensor accuracy.</p>
 <table>
 <tr><th>source</th><th>stream</th><th>modality</th><th>schema</th>
 <th>rate Hz</th><th>units</th><th>mcap/mkv</th>
-<th>payload inspection</th><th>numeric frames checked</th></tr>
+<th>payload inspection</th><th>sample frames checked</th></tr>
 {stream_rows or "<tr><td colspan='9'>(none)</td></tr>"}
 </table>
 

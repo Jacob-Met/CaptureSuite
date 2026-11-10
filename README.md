@@ -80,6 +80,12 @@ these states:
 - `numeric_samples_checked`: all data MCAPs parsed, and all supported
   `generic.numeric_batch/1` frames decoded and checked for finite sample
   values, consistent channels and valid in-batch timestamp order.
+- `emg_samples_checked`: decoded `emg.batch/1` channel matrices verified for
+  byte length, stable channel IDs and finite float32 measurements. Exposes
+  observed constant channels without diagnosing electrode condition.
+- `imu_frames_checked`: decoded `imu.frame/1` frames verified for sensor
+  identity and finite acceleration, gyroscope and quaternion values. Exposes
+  sensor IDs and zero-quaternion observations without asserting calibration.
 - `mcap_messages_checked`: MCAP structure/messages parsed for another schema;
   sample values **not** decoded or validated.
 - `failed`: unreadable, empty or inconsistent MCAP content; source light
@@ -88,7 +94,7 @@ these states:
 - `not_applicable`: no data MCAP segments; missing segments are still detected
   separately by existing QC.
 
-Payload inspection needs `mcap` and, for NumericBatch decoding, NumPy and
+Payload inspection needs `mcap` and, for NumericBatch/EMG decoding, NumPy and
 protobuf. It streams messages rather than loading a whole capture and never
 rewrites raw sources. It does **not** measure signal accuracy, noise,
 calibration, true device sampling rate, video pixels or medical validity.
