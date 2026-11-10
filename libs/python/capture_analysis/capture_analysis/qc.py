@@ -189,6 +189,11 @@ def _stream_qc(ref: StreamRef, *, inspect_payloads: bool = False) -> StreamQc:
         inspection = inspect_stream_payloads(ref)
         if inspection["status"] == "failed":
             warnings.append(f"payload inspection failed: {inspection['detail']}")
+        elif inspection.get("framesWithoutNativeTimestamps", 0):
+            warnings.append(
+                f"{inspection['framesWithoutNativeTimestamps']} numeric frame(s) lack native "
+                "device timestamps; clock continuity is not fully verified"
+            )
 
     return StreamQc(
         source_id=ref.source_id,
