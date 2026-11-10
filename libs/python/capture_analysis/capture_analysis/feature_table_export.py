@@ -7,7 +7,7 @@ import base64
 import hashlib
 import json
 import re
-from collections.abc import Sequence
+from collections.abc import Callable, Sequence
 from contextlib import ExitStack
 from datetime import UTC, datetime
 from pathlib import Path, PureWindowsPath
@@ -64,11 +64,19 @@ def _job_file(job: Path, relative: str) -> Path:
     return path
 
 
-def _identity(path: Path) -> dict[str, Any]:
+def _check_cancel(cancel: Callable[[], bool] | None) -> None:
+    if cancel is not None and cancel():
+        raise InterruptedError("Operation cancelled.")
+
+
+def _identity(
+    path: Path, *, cancel: Callable[[], bool] | None = None,
+) -> dict[str, Any]:
     digest = hashlib.sha256()
     size = 0
     with path.open("rb") as stream:
         while chunk := stream.read(1024 * 1024):
+            _check_cancel(cancel)
             digest.update(chunk)
             size += len(chunk)
     return {"bytes": size, "sha256": digest.hexdigest()}
@@ -239,6 +247,39 @@ def list_feature_tables(job_dir: Path) -> dict[str, Any]:
         "tables": summaries,
     }
 
+def preview_feature_table(
+    job_dir: Path, table: str, *, limit: int = 25,
+    cancel: Callable[[], bool] | None = None,
+) -> dict[str, Any]:
+    """Read a bounded preview from the same retained, verified table used by export."""
+    if limit < 1:
+        raise ValueError("Preview limit must be positive.")
+    _check_cancel(cancel)
+    inventory = list_feature_tables(job_dir)
+    selected = next((row for row in inventory["tables"] if row["relativePath"] == table), None)
+    if selected is None:
+        _fail("selected table is absent from the saved job")
+    _, job = _job_root(job_dir)
+    path = _job_file(job, table)
+    _, manifest = _read_document(_job_file(job, "job_manifest.json"))
+    _declared_output(manifest, table, "feature_parquet", _identity(path, cancel=cancel))
+    with path.open("rb") as stream:
+        reader = parquet.ParquetFile(stream)
+        names = reader.schema_arrow.names
+        metadata = {column["name"]: column for column in selected["columns"]}
+        if set(metadata) != set(names):
+            _fail("feature column metadata does not match the saved table")
+        _check_cancel(cancel)
+        batch = next(reader.iter_batches(batch_size=limit), None)
+        rows = [] if batch is None else [
+            [row[name] for name in names] for row in batch.to_pylist()
+        ]
+        return {
+            "columns": names, "units": [metadata[name]["units"] for name in names],
+            "rows": rows, "totalRows": reader.metadata.num_rows,
+        }
+
+
 def export_feature_table(
     job_dir: Path,
     table: str,
@@ -247,6 +288,8 @@ def export_feature_table(
     columns: Sequence[str] | None = None,
     output_format: str = "both",
     batch_size: int = 8192,
+    cancel: Callable[[], bool] | None = None,
+    progress: Callable[[int, int], None] | None = None,
 ) -> dict[str, Any]:
     """Export all rows, with literal columns in the caller's requested order.
 
@@ -254,6 +297,7 @@ def export_feature_table(
     retains the new directory with failure.json and without manifest.json. The
     original session and job are only read. No original packagePath is followed.
     """
+    _check_cancel(cancel)
     if output_format not in _FORMATS:
         _fail("output_format must be csv, parquet, or both")
     if type(batch_size) is not int or batch_size < 1:
@@ -264,7 +308,7 @@ def export_feature_table(
     relatives = ["job_manifest.json", "params.json", "features/_schema.json", table]
     paths = {relative: _job_file(job, relative) for relative in relatives}
     documents = {relative: _read_document(paths[relative]) for relative in relatives[:3]}
-    inputs = {relative: _identity(path) for relative, path in paths.items()}
+    inputs = {relative: _identity(path, cancel=cancel) for relative, path in paths.items()}
     manifest = documents["job_manifest.json"][1]
     if (
         manifest.get("schemaId") != "capture.analysis_job/1"
@@ -371,6 +415,7 @@ def export_feature_table(
             } if output_format in {"csv", "both"} else None,
         }
         # Exclusive creation prevents overwriting another caller's result.
+        _check_cancel(cancel)
         output.mkdir()
         try:
             (output / "source").mkdir()
@@ -399,6 +444,7 @@ def export_feature_table(
                 # Read complete batches then select by index: names containing
                 # dots remain literal, rather than Parquet nested-field prefixes.
                 for batch in reader.iter_batches(batch_size=batch_size):
+                    _check_cancel(cancel)
                     projected = pa.RecordBatch.from_arrays(
                         [batch.column(index) for index in indices], schema=schema
                     )
@@ -407,10 +453,13 @@ def export_feature_table(
                     if csv_writer is not None:
                         csv_writer.write_batch(projected)
                     written_rows += batch.num_rows
+                    if progress is not None:
+                        progress(written_rows, rows)
+            _check_cancel(cancel)
             if written_rows != rows:
                 _fail("retained table row count changed while exporting")
             for relative, identity in inputs.items():
-                if _identity(_job_file(job, relative)) != identity:
+                if _identity(_job_file(job, relative), cancel=cancel) != identity:
                     _fail(f"retained-job input changed while exporting: {relative}")
             exported = data_files + ["_schema.json", *copies.values()]
             result = {
@@ -432,7 +481,7 @@ def export_feature_table(
                               "rowPolicy": "all-in-original-order"},
                 "format": output_format,
                 "outputs": [
-                    {"relativePath": relative, **_identity(output / relative)}
+                    {"relativePath": relative, **_identity(output / relative, cancel=cancel)}
                     for relative in exported
                 ],
             }

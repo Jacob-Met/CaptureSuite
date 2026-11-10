@@ -6,7 +6,7 @@ from __future__ import annotations
 from pathlib import Path
 
 from PySide6.QtCore import Signal
-from PySide6.QtWidgets import QHBoxLayout, QLabel, QVBoxLayout, QWidget
+from PySide6.QtWidgets import QHBoxLayout, QLabel, QPushButton, QVBoxLayout, QWidget
 
 from . import theme
 from .state import CaptureState
@@ -32,6 +32,7 @@ class SessionHeader(QWidget):
         self._visible = False
         self.package_path = ""
         self.is_sealed = False
+        self._compact = False
         outer = QVBoxLayout(self)
         outer.setContentsMargins(12, 6, 12, 6)
         outer.setSpacing(4)
@@ -52,6 +53,12 @@ class SessionHeader(QWidget):
         row.addStretch(1)
         row.addWidget(self._cursor)
         row.addWidget(self._scope)
+        self._expand = QPushButton("Timeline and scope")
+        self._expand.setCheckable(True)
+        self._expand.setObjectName("analysisTimelineToggle")
+        self._expand.toggled.connect(self._sync_expanded)
+        self._expand.hide()
+        row.addWidget(self._expand)
         outer.addLayout(row)
 
         self._timeline = SessionTimelineWidget()
@@ -61,6 +68,17 @@ class SessionHeader(QWidget):
         self._scope_picker.selection_changed.connect(self._on_scope_changed)
         outer.addWidget(self._scope_picker)
         self.setVisible(False)
+
+    def set_compact(self, compact: bool) -> None:
+        self._compact = compact
+        self._sync_expanded()
+
+    def _sync_expanded(self, *_args) -> None:
+        expanded = not self._compact or self._expand.isChecked()
+        self._expand.setVisible(self._compact and self.is_sealed)
+        self._timeline.setVisible(expanded)
+        self._scope_picker.setVisible(self.is_sealed and expanded)
+        self._cursor.setVisible(expanded)
 
     def refresh_live(self, state: CaptureState) -> None:
         self.is_sealed = False
@@ -115,6 +133,7 @@ class SessionHeader(QWidget):
         self._scope_picker.show()
         self._scope_picker.set_summary(summary, selection)
         self._on_scrubbed(playhead)
+        self._sync_expanded()
 
     def _on_scope_changed(self, selection: ScopeSelection | None) -> None:
         self._scope.setText("Scope: " + (selection.describe() if selection else "invalid bounds"))

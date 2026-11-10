@@ -9,8 +9,11 @@ from pathlib import Path
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import (
+    QHBoxLayout,
     QLabel,
+    QPushButton,
     QScrollArea,
+    QSizePolicy,
     QTabWidget,
     QVBoxLayout,
     QWidget,
@@ -140,6 +143,63 @@ class SyncDashboardView(QWidget):
         return True
 
 
+class FigureView(QScrollArea):
+    """Show the entire saved figure first; preserve actual pixels on request."""
+
+    def __init__(self, path: Path, parent: QWidget | None = None) -> None:
+        super().__init__(parent)
+        self._original = QPixmap(str(path))
+        self._image = QLabel()
+        self._image.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        self._image.setSizePolicy(QSizePolicy.Policy.Ignored, QSizePolicy.Policy.Ignored)
+        self.setWidget(self._image)
+        self.setWidgetResizable(True)
+        self.setViewportMargins(0, 34, 0, 0)
+        self._tools = QWidget(self)
+        bar = QHBoxLayout(self._tools)
+        bar.setContentsMargins(8, 2, 8, 2)
+        self._scale = QLabel()
+        self._scale.setObjectName("Dim")
+        self._actual = QPushButton("Actual size")
+        self._actual.setCheckable(True)
+        self._actual.setAccessibleName("Switch between fitted figure and actual size")
+        self._actual.toggled.connect(self._render)
+        bar.addWidget(self._scale, 1)
+        bar.addWidget(self._actual)
+        if self._original.isNull():
+            self._image.setText(f"Could not load {path.name}")
+            self._actual.setEnabled(False)
+        self._render()
+
+    def _render(self, *_args) -> None:
+        if self._original.isNull():
+            return
+        actual = self._actual.isChecked()
+        self.setWidgetResizable(not actual)
+        if actual:
+            self._image.setPixmap(self._original)
+            self._image.resize(self._original.size())
+            self._scale.setText("100% · scroll to inspect")
+            self._actual.setText("Fit figure")
+        else:
+            size = self.viewport().size()
+            if size.width() <= 8 or size.height() <= 8:
+                return
+            pixmap = self._original.scaled(
+                size.width() - 8, size.height() - 8,
+                Qt.AspectRatioMode.KeepAspectRatio,
+                Qt.TransformationMode.SmoothTransformation,
+            )
+            self._image.setPixmap(pixmap)
+            self._scale.setText(f"{pixmap.width() / self._original.width():.0%} · entire figure")
+            self._actual.setText("Actual size")
+
+    def resizeEvent(self, event) -> None:
+        super().resizeEvent(event)
+        self._tools.setGeometry(0, 0, self.width(), 34)
+        self._render()
+
+
 class FigureGallery(QWidget):
     """Tabs for sync dashboard + static PNG figures from a job directory."""
 
@@ -161,7 +221,9 @@ class FigureGallery(QWidget):
     def clear(self) -> None:
         self._figure_export.clear()
         while self._tabs.count() > 1:
+            page = self._tabs.widget(1)
             self._tabs.removeTab(1)
+            page.deleteLater()
         self._sync.clear()
 
     def load_job_dir(self, job_dir: Path) -> None:
@@ -173,20 +235,40 @@ class FigureGallery(QWidget):
         figures_dir = job_dir / "figures"
         if not figures_dir.is_dir():
             return
-        for png in sorted(figures_dir.glob("*.png")):
-            if png.name == "sync_dashboard.png":
+        try:
+            figures_root = figures_dir.resolve(strict=True)
+        except (OSError, RuntimeError):
+            return
+        for png in sorted(figures_dir.rglob("*.png")):
+            relative = png.relative_to(figures_dir)
+            if relative == Path("sync_dashboard.png"):
                 continue
-            scroll = QScrollArea()
-            scroll.setWidgetResizable(True)
-            img = QLabel()
-            img.setAlignment(Qt.AlignmentFlag.AlignCenter)
-            pix = QPixmap(str(png))
-            if not pix.isNull():
-                img.setPixmap(pix)
-            else:
-                img.setText(f"Could not load {png.name}")
-            scroll.setWidget(img)
-            self._tabs.addTab(scroll, png.stem.replace("_", " ")[:24])
+            try:
+                if not png.is_file() or not png.resolve(strict=True).is_relative_to(figures_root):
+                    continue
+            except (OSError, RuntimeError):
+                continue
+            parts = list(relative.with_suffix("").parts)
+            parts[-1] = parts[-1].replace("_", " ")
+            if (
+                len(parts) == 4
+                and parts[0] == "numeric"
+                and parts[1].startswith("source-")
+                and parts[2].startswith("stream-")
+            ):
+                try:
+                    source = bytes.fromhex(parts[1][7:]).decode("utf-8")
+                    stream = bytes.fromhex(parts[2][7:]).decode("utf-8")
+                except (ValueError, UnicodeError):
+                    pass
+                else:
+                    parts = [source, stream, parts[-1]]
+            title = " / ".join(parts)
+            if len(relative.parts) == 1:
+                title = title[:24]
+            scroll = FigureView(png)
+            index = self._tabs.addTab(scroll, title)
+            self._tabs.setTabToolTip(index, relative.as_posix())
 
 
 class JobInspector(QWidget):
