@@ -136,9 +136,19 @@
         "archiveMember": "pyside-setup-everywhere-src-6.12.0/sources/shiboken6_generator/ApiExtractor/COPYING"
       },
       {
-        "path": "pyside/tools/license_check.py",
+        "path": "pyside/tools/license_check.py.txt",
         "sha256": "60a8f466a365c20acaf3e5947f3db596956e4a8ccac951d3143b09c385228fbb",
         "archiveMember": "pyside-setup-everywhere-src-6.12.0/tools/license_check.py"
+      },
+      {
+        "path": "pyside/create_wheels.py.txt",
+        "archiveMember": "pyside-setup-everywhere-src-6.12.0/create_wheels.py",
+        "sha256": "c177d635390d3dca9a17b18dc9c4c0e5a13a078f46dd263aeb055cfc6b1dd6d1"
+      },
+      {
+        "path": "pyside/sources/pyside6/.cmake.conf",
+        "archiveMember": "pyside-setup-everywhere-src-6.12.0/sources/pyside6/.cmake.conf",
+        "sha256": "11adc8623fd3b22c24b3d2d569e6e4e255f320fc6bb6e63453fe29dc07699b81"
       }
     ],
     "qtbase": [
@@ -2261,5 +2271,6 @@
       }
     ]
   },
-  "icuEvidence": "PySide6_Essentials6.12.0 manylinux_2_34_x86_64 actual u_getVersion_73 returned73.2.0.0 on build201. Collector checks binary version before assigning ICU73.2 notices."
+  "icuEvidence": "PySide6_Essentials6.12.0 manylinux_2_34_x86_64 actual u_getVersion_73 returned73.2.0.0 on build201. Collector checks binary version before assigning ICU73.2 notices.",
+  "pdfVersionEvidence": "Official PySide6.12.0 create_wheels.py appends pyside_CHROMIUM_VERSION140 from sources/pyside6/.cmake.conf for Pdf. Wheel6.12.0.140 bundles QtPdf6.140.0; retained generated QtPdf attribution pages explicitly title6.140.0. Binding source remains PySide6.12.0."
 }
