@@ -573,3 +573,31 @@ def test_fail_gap_policy_is_enforced_by_cli_without_samples_in_gap(
     else:
         assert list(job.rglob("*.csv"))
     assert hash_sources_tree(package) == before
+
+
+@pytest.mark.parametrize("include_valid", [False, True])
+def test_unknown_source_selection_refuses_before_writing(tmp_path: Path, include_valid: bool) -> None:
+    from capture_analysis.jobs import JobParams, run
+    from capture_session.package_reader import load_review_summary
+
+    package = _write_emg_imu_package(tmp_path / "selection.mmsession")
+    known = load_review_summary(package).source_ids
+    selected = [*known, "mistyped-source"] if include_valid else ["mistyped-source"]
+    before = {p.relative_to(package): p.read_bytes() for p in package.rglob("*") if p.is_file()}
+    with pytest.raises(ValueError, match="Unknown requested source IDs.*mistyped-source") as error:
+        run(package, JobParams(command="features", sources=selected))
+    assert known[0] in str(error.value)
+    assert not (package / "processing/jobs").exists()
+    assert before == {p.relative_to(package): p.read_bytes() for p in package.rglob("*") if p.is_file()}
+
+
+def test_known_source_selection_produces_only_selected_table(tmp_path: Path) -> None:
+    from capture_analysis.jobs import JobParams, run
+    from capture_session.package_reader import load_review_summary
+
+    package = _write_emg_imu_package(tmp_path / "selection.mmsession")
+    source = load_review_summary(package).source_ids[0]
+    result = run(package, JobParams(command="features", sources=[source]))
+    tables = json.loads((result.job_dir / "features/_schema.json").read_text())["tables"]
+    assert tables
+    assert list(tables) == [f"features/emg/{source}/windows.parquet"]

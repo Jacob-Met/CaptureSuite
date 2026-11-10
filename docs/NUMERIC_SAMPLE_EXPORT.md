@@ -4,7 +4,11 @@ Use this when an external notebook, statistics package or spreadsheet needs the
 recorded channel values, rather than the derived feature table.
 
 In the desktop, open a sealed session, choose **Export**, select **Numeric samples**,
-and choose a new or empty destination. Or use the standalone Linux executable:
+and choose a new or empty destination. The dialog selects discovered recorded data
+by default and lists its source identities, stream count and indexed message count.
+A message can contain many samples; counts are not a quality or sample-count claim.
+Unavailable formats are summarized. If an index cannot be read or classified,
+choices remain available with an explicit incomplete-metadata note. Or use the standalone Linux executable:
 
 ```sh
 ./capturesuite-analysis export-session recording.mmsession exported-samples --modalities numeric --verify
@@ -63,3 +67,31 @@ exit status without a successful export manifest. Partial CSV files may remain
 for diagnosis; choose a new empty destination after fixing the problem.
 `--verify` checks that a finalized package yielded data; it does not certify
 instrument accuracy, calibration or a complete recording.
+
+
+## Long exports in the native desktop
+
+The native session export runs outside the UI event loop. Its progress window
+shows activity and the destination while the normal desktop remains responsive;
+it does not invent a percentage or a remaining-time estimate. A second export
+request returns to the active progress window.
+
+**Cancel export** stops the exporter. Closing the main window during export
+requests the same stop, then waits asynchronously for the worker to finish
+before closing. Original recording files are not modified. An interrupted
+destination can contain partial files; choose a new or empty folder when
+retrying. Cancellation never displays the completed-export message or writes
+the optional provenance sidecar.
+
+Producer checks on Linux used the actual MainWindow with automatically operated
+widgets and genuine, generated MCAP data: 250,000 frames, eight channels and
+two million exported values. The successful CSV was byte-identical to the
+previous synchronous route. Cancellation and closing during the write stopped
+the child and retained source hashes. A separate Linux process-tree course
+stopped an active ffmpeg child. These are engineering checks, not hardware
+validation or independent audience acceptance. Windows process-tree cleanup
+has not yet been exercised on a Windows host.
+
+An unsuccessful native export shows its actionable error in a visible dialog;
+expand Details for the captured exporter output. A nonempty destination is
+refused before writing, so choose a new or empty folder for a fresh attempt.

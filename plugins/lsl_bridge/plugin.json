@@ -1,6 +1,6 @@
 {
   "plugin_id": "lsl.bridge",
-  "plugin_version": "0.1.1",
+  "plugin_version": "0.1.2",
   "family": "numeric",
   "display_name": "Lab Streaming Layer (LSL)",
   "executable": "run_worker.cmd",

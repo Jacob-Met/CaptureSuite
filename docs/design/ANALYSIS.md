@@ -55,6 +55,57 @@ The retained table is version 2 with column ID `emg.windowed.v2`; earlier saved
 jobs are unchanged. Nominal rate and interpolated EMG timestamps remain
 provisional until measured on the actual device.
 
+## Native saved analysis workspace
+
+This workspace serves researchers returning to an existing recording: find the
+right saved result, inspect its measurements, and hand a deliberate selection to
+another analysis tool without rerunning the feature job. The design reference is
+the data-first review/export workflow in
+[Dewesoft](https://manual.dewesoft.com/x/analyse/exportdata), with channels, units,
+selection and destination visible together. That is a usability target, not a
+claim of acquisition breadth or instrument validation.
+
+Use Python 3.12 and the local package dependencies:
+
+~~~bash
+python -m pip install ./libs/python/capture_protocol ./libs/python/capture_session \
+  './libs/python/capture_analysis[analysis]' './desktop[analysis]'
+python -m capture_desktop --analysis /path/to/recording.mmsession
+~~~
+
+1. **Open recording** and select a saved result by command, UTC time and output
+   counts. **Open saved result** changes the viewed result; selecting or
+   refreshing history does not run analysis.
+2. **Figures** starts with the entire saved image visible. **Actual size**
+   restores its original pixels with scrolling. Exporting figures still uses
+   the original saved files.
+3. **Tables** reads a bounded preview from the retained Parquet data. Check the
+   required columns and use **Up/Down** to arrange their export order. Units and
+   calibration status stay beside each column.
+4. Choose a parent directory outside the recording, a new folder name and
+   CSV/Parquet format. Export carries schema, warnings and provenance alongside
+   the selected values. Existing destinations are not overwritten.
+5. **Details** holds job parameters, comparisons and the output inventory.
+   The timeline and analysis scope can be expanded when needed.
+
+The offline shell does not start daemon connections or show acquisition controls.
+Windows keeps its existing live mode unless `--analysis` is requested. Closing
+the window requests cancellation and waits for active analysis/export workers;
+a cancelled export retains failure information and does not acquire a successful
+manifest. Changing recordings or jobs clears the previous table/result context.
+
+Current open gaps, in priority order:
+
+- A cumulative packaged desktop must include the reviewed source workflow,
+  interval controls and session review; a source run is not a downloadable GUI.
+- Interactive sync traces need their own explicit per-lane gap/time contract and
+  scientific review. A correct static figure does not establish correct native
+  trace behavior.
+- Multi-hour recordings, physical device timing and calibration remain
+  unmeasured. Current receiving uses synthetic values in genuine MCAP, so it
+  establishes data-handling behavior only.
+
+
 ## Package layout
 
 ```text

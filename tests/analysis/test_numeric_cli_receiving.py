@@ -441,6 +441,14 @@ class NumericCliReceiving(unittest.TestCase):
         self.assertEqual(set(tables), {
             ("sampler.a", "A"), ("sampler.a", "a"), ("sampler.b", "temperature")
         })
+        dashboard = json.loads((job / "figures/sync_dashboard_series.json").read_text())
+        self.assertEqual(dashboard["schemaId"], "capture.sync_dashboard_series/2")
+        lanes = {row["label"]: row for row in dashboard["series"]}
+        affected_lane = next(row for name, row in lanes.items() if "sampler.a/A" in name)
+        healthy_lane = next(row for name, row in lanes.items() if "sampler.a/a" in name)
+        self.assertEqual(len(affected_lane["gaps"]), 1)
+        self.assertEqual(healthy_lane["gaps"], [])
+        self.assertEqual(affected_lane["ylabel"], "V")
         affected_path, affected = tables[("sampler.a", "A")]
         healthy_path, healthy = tables[("sampler.a", "a")]
         self.assertNotEqual(affected_path.casefold(), healthy_path.casefold())

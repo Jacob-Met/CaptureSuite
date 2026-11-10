@@ -108,7 +108,7 @@ def test_real_outlets_record_and_stop_independently(tmp_path: Path) -> None:
             worker_pb2.StopReply,
         )
         for index, source_id in enumerate(source_ids):
-            files = list((package / "streams" / source_id).rglob("*.mcap"))
+            files = list((package / "sources" / source_id / "streams").rglob("*.mcap"))
             assert len(files) == 1
             values = []
             with files[0].open("rb") as stream:

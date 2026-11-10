@@ -235,6 +235,14 @@ def run(
     tick("start", 0.0)
     qc_dict: dict[str, Any] = {}
     summary = load_review_summary(root)
+    unknown_sources = sorted(set(params.sources) - set(summary.source_ids))
+    if unknown_sources:
+        raise ValueError(
+            f"Unknown requested source IDs: {', '.join(unknown_sources)}. "
+            f"Available source IDs: {', '.join(sorted(summary.source_ids)) or '(none)'}. "
+            "Use exact source IDs with --sources, or omit --sources to select all. "
+            "No analysis job was created."
+        )
     tick("qc", 0.15)
     qc_report: QcReport = collect_qc(
         root,
@@ -243,7 +251,6 @@ def run(
         sources=params.sources if params.command == "qc" else None,
     )
     qc_dict = qc_report.to_dict()
-
     job_id = _job_id(params)
     processing, job_dir = _job_destination(root, job_id)
     processing.mkdir(parents=True, exist_ok=True)

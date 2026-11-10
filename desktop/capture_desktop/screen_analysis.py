@@ -8,7 +8,8 @@ import threading
 from pathlib import Path
 from typing import Any
 
-from PySide6.QtCore import QEvent, QObject, Qt, QThread, Signal, Slot
+from PySide6.QtCore import QEvent, QObject, Qt, QThread, QUrl, Signal, Slot
+from PySide6.QtGui import QDesktopServices
 from PySide6.QtWidgets import (
     QComboBox,
     QFileDialog,
@@ -20,19 +21,23 @@ from PySide6.QtWidgets import (
     QPushButton,
     QScrollArea,
     QSplitter,
+    QTabWidget,
     QTextEdit,
     QVBoxLayout,
     QWidget,
 )
 
 from . import theme
+from .analysis_history import SavedJobDetails, job_belongs_to_package, load_saved_job
 from .persistence import DesktopPersistence
 from .state import CaptureState, fmt_time
+from .widgets_analysis_history import AnalysisHistory
 from .widgets_analysis_jobs import AnalysisJobExtras, peek_ml_bundle_summary
 from .widgets_analysis_plots import FigureGallery, JobInspector
 from .widgets_analysis_scope import WINDOW_COMMANDS, ScopeSelection
 from .widgets_analysis_sources import SOURCE_COMMANDS, AnalysisSourcePicker
-from .widgets_mappings import AnatomicalMappingPanel
+from .widgets_feature_tables import FeatureTableView
+from .widgets_mappings import MappingPresetAccess
 
 
 class _AnalysisWorker(QObject):
@@ -114,14 +119,11 @@ class AnalysisScreen(QWidget):
         self._last_job_dir = ""
         self._thread: QThread | None = None
         self._worker: _AnalysisWorker | None = None
+        self._tables = FeatureTableView(self)
 
         root = QVBoxLayout(self)
         root.setContentsMargins(12, 10, 12, 10)
         root.setSpacing(8)
-
-        title = QLabel("Analysis")
-        title.setFont(theme.ui(14, bold=True))
-        root.addWidget(title)
 
         self._banner = QLabel(
             "Offline jobs write under processing/jobs/. Raw streams are never modified."
@@ -132,19 +134,25 @@ class AnalysisScreen(QWidget):
         self._scope_note = QLabel("Scope: full session")
         self._scope_note.setWordWrap(True)
         self._scope_note.setObjectName("Dim")
-        root.addWidget(self._scope_note)
+
+        self._history = AnalysisHistory()
+        self._history.job_loaded.connect(self._show_saved_job)
+        self._history.view_cleared.connect(self._clear_result_view)
+        root.addWidget(self._history)
 
         splitter = QSplitter()
         splitter.setChildrenCollapsible(False)
         root.addWidget(splitter, 1)
 
         left = QWidget()
-        left.setMinimumWidth(300)
+        left.setMinimumWidth(280)
         left_layout = QVBoxLayout(left)
         left_layout.setContentsMargins(0, 0, 8, 0)
         left_layout.setSpacing(8)
         self._build_controls(left_layout)
-        self._mappings = AnatomicalMappingPanel(persistence)
+        root.insertWidget(0, self._path_bar)
+        left_layout.insertWidget(0, self._scope_note)
+        self._mappings = MappingPresetAccess(persistence)
         left_layout.addWidget(self._mappings)
         controls_scroll = QScrollArea()
         controls_scroll.setObjectName("AnalysisControlsScroll")
@@ -157,16 +165,35 @@ class AnalysisScreen(QWidget):
         splitter.addWidget(controls_scroll)
 
         self._gallery = FigureGallery()
-        splitter.addWidget(self._gallery)
+        self._results = QTabWidget()
+        self._results.setDocumentMode(True)
+        self._results.addTab(self._gallery, "Figures")
+        self._results.addTab(self._tables, "Tables")
+        splitter.addWidget(self._results)
+        self._tables.busy_changed.connect(self._sync_enabled)
 
         self._inspector = JobInspector()
         self._inspector.setMinimumWidth(240)
-        splitter.addWidget(self._inspector)
+        self._results.addTab(self._inspector, "Details")
         splitter.setStretchFactor(0, 0)
         splitter.setStretchFactor(1, 3)
-        splitter.setStretchFactor(2, 1)
+        splitter.setSizes([310, 1100])
         self.package_loaded.connect(self._sources.load_package)
         self._sources.changed.connect(self._sync_enabled)
+
+    def shutdown(self) -> None:
+        self._tables.shutdown()
+        if self._worker is not None:
+            self._worker.request_cancel()
+        if self._thread is not None:
+            # closeEvent blocks the GUI event loop, so request the worker event
+            # loop to quit directly instead of relying on its queued signal.
+            self._thread.quit()
+            self._thread.wait()
+
+    def closeEvent(self, event) -> None:
+        self.shutdown()
+        super().closeEvent(event)
 
     def event(self, event: QEvent) -> bool:
         if (
@@ -187,18 +214,20 @@ class AnalysisScreen(QWidget):
         return super().event(event)
 
     def _build_controls(self, root: QVBoxLayout) -> None:
-        path_row = QHBoxLayout()
-        self._path = QLabel("No package selected")
+        self._path_bar = QWidget()
+        path_row = QHBoxLayout(self._path_bar)
+        path_row.setContentsMargins(0, 0, 0, 0)
+        self._path = QLabel("No recording open")
         self._path.setObjectName("Dim")
         self._path.setWordWrap(True)
-        self._btn_browse = QPushButton("Browse…")
+        self._btn_browse = QPushButton("Open recording…")
         self._btn_browse.clicked.connect(self._browse)
         self._btn_use_open = QPushButton("Use open session")
         self._btn_use_open.clicked.connect(self._use_open_session)
         path_row.addWidget(self._path, 1)
         path_row.addWidget(self._btn_use_open)
         path_row.addWidget(self._btn_browse)
-        root.addLayout(path_row)
+        root.addWidget(self._path_bar)
 
         cards = QHBoxLayout()
         self._card_session = QLabel("—")
@@ -338,7 +367,10 @@ class AnalysisScreen(QWidget):
         if resolved != self._package:
             self._scope = ScopeSelection()
         self._package = resolved
-        self._path.setText(resolved)
+        self._path.setText(Path(resolved).name)
+        self._path.setToolTip(resolved)
+        self._path.setTextInteractionFlags(Qt.TextInteractionFlag.TextSelectableByMouse)
+        self._history.set_package(resolved)
         self._extras.set_package(resolved)
         self._refresh_summary()
         self._sync_enabled()
@@ -361,7 +393,7 @@ class AnalysisScreen(QWidget):
         return self._sources.error_for(str(self._command.currentData() or "qc"))
 
     def _sync_enabled(self) -> None:
-        busy = self._thread is not None
+        busy = self._thread is not None or self._tables.busy
         self._extras.set_eval_busy(busy)
         locked = self._recording_locked()
         has_pkg = self._summary is not None
@@ -374,15 +406,19 @@ class AnalysisScreen(QWidget):
         self._scope_note.setText(
             scope_error or f"Scope: {self._scope.describe()}. QC reports cover the full package."
         )
-        self._btn_cancel.setEnabled(busy)
+        self._btn_cancel.setEnabled(self._thread is not None)
         self._btn_browse.setEnabled(not busy)
         self._btn_use_open.setEnabled(not busy and bool(self._state.package_path))
         self._command.setEnabled(not busy)
         self._gap_policy.setEnabled(not busy)
+        self._history.set_busy(busy)
         if locked:
             self._banner.setText(
                 "Analysis is disabled while the session is arming or recording."
             )
+            self._banner.show()
+        elif self._summary is not None:
+            self._banner.hide()
 
     def _refresh_summary(self) -> None:
         try:
@@ -396,6 +432,7 @@ class AnalysisScreen(QWidget):
             ):
                 card.setText("—")
             self._banner.setText(f"Could not load package: {exc}")
+            self._banner.show()
             return
         self._summary = summary
         self._banner.setText(
@@ -452,8 +489,7 @@ class AnalysisScreen(QWidget):
             return
         extra = self._extras.build_extra(command)
         self._log.clear()
-        self._gallery.clear()
-        self._inspector.clear()
+        self._clear_result_view()
         self._append_log(f"Starting {command} on {self._package}")
         self._append_log(f"scope={self._scope.describe()}")
         self._append_log(f"sources={sources or 'All recorded sources'}")
@@ -500,18 +536,50 @@ class AnalysisScreen(QWidget):
         job_dir = str(getattr(result, "job_dir", "") or "")
         status = str(getattr(result, "status", "") or "")
         job_id = str(getattr(result, "job_id", "") or "")
-        self._last_job_dir = job_dir
-        self._progress.setValue(100)
         self._append_log(f"Done status={status} job_id={job_id}")
         self._append_log(f"dir={job_dir}")
+        if not job_belongs_to_package(self._package, job_dir):
+            self._append_log(
+                "Result saved for the previous package; select that package to inspect it."
+            )
+            return
+        self._progress.setValue(100)
+        self._history.refresh(preferred_job_id=job_id)
+        try:
+            details = load_saved_job(self._package, Path(job_dir).name)
+        except (OSError, ValueError, UnicodeError) as exc:
+            self._append_log(f"Result saved, but the viewer could not load it: {exc}")
+            return
+        self._show_saved_job(details)
+
+    def _clear_result_view(self) -> None:
+        self._last_job_dir = ""
+        self._btn_open_job.setEnabled(False)
+        self._btn_open_report.setEnabled(False)
+        self._gallery.clear()
+        self._tables.clear()
+        self._inspector.clear()
+        self._history.clear_loaded()
+
+    @Slot(object)
+    def _show_saved_job(self, details: SavedJobDetails) -> None:
+        if not job_belongs_to_package(self._package, details.job.directory):
+            return
+        job_dir = str(details.job.directory)
+        self._last_job_dir = job_dir
+        self._history.show_loaded(details)
         self._btn_open_job.setEnabled(bool(job_dir))
         report = Path(job_dir) / "reports" / "qc.html" if job_dir else Path()
         self._btn_open_report.setEnabled(report.is_file())
         if job_dir:
             path = Path(job_dir)
             self._gallery.load_job_dir(path)
+            self._tables.load_job_dir(path)
             self._inspector.load_job_dir(path)
-            self._append_log("Figures loaded in-app (sync dashboard + gallery tabs).")
+            self._append_log(
+                f"Opened saved result {details.job.job_id}: "
+                f"{details.job.table_count} tables, {details.job.figure_count} figures."
+            )
             ml_summary = peek_ml_bundle_summary(path)
             if ml_summary:
                 self._append_log(ml_summary)
@@ -523,6 +591,7 @@ class AnalysisScreen(QWidget):
     @Slot(str)
     def _on_failed(self, message: str) -> None:
         self._append_log(f"FAIL: {message}")
+        self._history.refresh()
         if message.split("\n", 1)[0] != "cancelled":
             QMessageBox.warning(self, "Analysis failed", message)
 
@@ -533,9 +602,9 @@ class AnalysisScreen(QWidget):
 
     def _open_job_folder(self) -> None:
         if self._last_job_dir and Path(self._last_job_dir).is_dir():
-            os.startfile(self._last_job_dir)  # noqa: S606 — explorer only
+            QDesktopServices.openUrl(QUrl.fromLocalFile(self._last_job_dir))
 
     def _open_report(self) -> None:
         path = Path(self._last_job_dir) / "reports" / "qc.html"
         if path.is_file():
-            os.startfile(str(path))  # noqa: S606 — HTML QC external per workbench spec
+            QDesktopServices.openUrl(QUrl.fromLocalFile(str(path)))

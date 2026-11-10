@@ -8,13 +8,15 @@ hardware validation.
 ## Get started
 
 Download the experimental **Linux x86-64** archive from this repository's
-GitHub Releases page. Verify its published SHA-256 before extracting. After extraction,
+GitHub Releases page. Verify its published SHA-256 before extracting. In the command
+below, use the exact downloaded filename; `tar -xf` accepts both `.tar.xz` and
+`.tar.gz` archives. After extraction,
 `./capturesuite-analysis/capturesuite-analysis --version` prints the exact
 source commit shipped in the bundle. On a
 compatible Linux system, from a terminal:
 
 ```bash
-tar -xzf capturesuite-analysis-linux-x86_64.tar.gz
+tar -xf capturesuite-analysis-linux-x86_64.tar.xz
 cd capturesuite-analysis
 ./capturesuite-analysis qc "/data/my experiment.mmsession" --inspect-payloads --strict-warnings
 ```
@@ -25,7 +27,7 @@ the exact generated job directory. Open the HTML with a browser. The original
 sealed recording is **read only**; derived analysis jobs appear under
 `processing/jobs` in that same package.
 
-To compute provisional EMG/IMU features, create Parquet/CSV tables and
+To compute provisional numeric, EMG and IMU features, create Parquet/CSV tables and
 figures with the bundled offline analysis pipeline:
 
 ```bash
@@ -87,7 +89,10 @@ using an integer column with recorded `ns` units. The start is inclusive and end
 exclusive. Window rows are selected by their recorded start; windows are never
 clipped or recomputed. Exact bounds and row counts are preserved in the export.
 CSV and Parquet are written by
-default, with types, units, original warnings and job provenance beside them.
+default. Open the exported `README.html` for units, original warnings, selection
+scope and recorded method details. New numeric jobs also carry aligned original
+window intervals and sample counts in `row_context.csv`, even when those columns
+were omitted from the selected measurement table.
 See the bundled [feature export guide](FEATURE_TABLE_EXPORT.md) for typed CSV
 import, format options and failure behavior.
 
@@ -170,6 +175,10 @@ dependency constraints, including capture-protocol's protobuf range.
 Ubuntu builds require dpkg-query metadata and /usr/share/doc package copyright
 files for native libraries copied into the bundle; absent attribution fails the
 build. Their exact package versions and library basenames are in the same manifest.
+
+All four analysis commands (`qc`, `features`, `plots`, `all`) reject unknown
+`--sources` IDs before creating or replacing a saved job. The error lists exact
+recorded IDs; correct the selection or omit `--sources` to use all sources.
 
 For QC, `--sources SOURCE_ID ...` limits decoded streams, source lights and gap details/counts to those recorded sources. Unknown IDs fail rather than producing an empty success. The report explicitly labels its selected-source scope; package provenance, duration and recovery metadata still describe the whole recording. Feature job QC inventories retain their existing whole-package scope.
 

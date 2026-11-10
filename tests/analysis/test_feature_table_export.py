@@ -568,3 +568,82 @@ def test_invalid_time_selection_creates_no_destination(tmp_path: Path, selection
     with pytest.raises(FeatureTableExportError):
         export_feature_table(job, TABLE, output, **selection)
     assert not output.exists()
+
+
+def test_preview_uses_retained_values_names_and_units(tmp_path: Path) -> None:
+    from capture_analysis.feature_table_export import preview_feature_table
+
+    job, table = make_job(tmp_path)
+    before = inventory(job.parents[2])
+    preview = preview_feature_table(job, TABLE, limit=3)
+    assert preview["columns"] == table.column_names
+    assert preview["units"] == ["ns", "a.u.", "a.u.", "a.u.", "a.u."]
+    assert preview["rows"] == [
+        [row[name] for name in table.column_names] for row in table.slice(0, 3).to_pylist()
+    ]
+    assert preview["totalRows"] == table.num_rows
+    assert inventory(job.parents[2]) == before
+
+
+def test_cancel_before_admission_creates_no_export(tmp_path: Path) -> None:
+    job, _ = make_job(tmp_path)
+    output = tmp_path / "cancelled"
+    with pytest.raises(InterruptedError, match="cancelled"):
+        export_feature_table(job, TABLE, output, cancel=lambda: True)
+    assert not output.exists()
+
+
+def test_cancel_during_export_retains_failure_without_success(tmp_path: Path) -> None:
+    import threading
+
+    job, _ = make_job(tmp_path)
+    before = inventory(job.parents[2])
+    output = tmp_path / "cancelled"
+    cancel = threading.Event()
+    progress = []
+
+    def on_progress(done, total):
+        progress.append((done, total))
+        cancel.set()
+
+    with pytest.raises(InterruptedError, match="cancelled"):
+        export_feature_table(
+            job, TABLE, output, batch_size=2,
+            cancel=cancel.is_set, progress=on_progress,
+        )
+    assert progress == [(2, 8)]
+    assert (output / "failure.json").is_file()
+    assert not (output / "manifest.json").exists()
+    assert inventory(job.parents[2]) == before
+
+
+def test_export_reports_real_row_progress(tmp_path: Path) -> None:
+    job, table = make_job(tmp_path)
+    progress = []
+    export_feature_table(
+        job, TABLE, tmp_path / "progress", batch_size=3,
+        progress=lambda done, total: progress.append((done, total)),
+    )
+    assert progress[-1] == (table.num_rows, table.num_rows)
+    assert [done for done, _ in progress] == sorted(done for done, _ in progress)
+
+
+def test_scoped_export_progress_counts_scanned_rows_and_can_cancel(tmp_path: Path) -> None:
+    job, _ = make_job(tmp_path)
+    updates = []
+    result = export_feature_table(
+        job, TABLE, tmp_path / "scoped-progress", batch_size=2,
+        time_column="t_ns", start_ns=0, end_ns=2,
+        progress=lambda done, total: updates.append((done, total)),
+    )
+    assert updates == [(2, 8), (4, 8), (6, 8), (8, 8)]
+    assert result["selection"]["rows"] == 2
+    stop = []
+    output = tmp_path / "scoped-cancelled"
+    with pytest.raises(InterruptedError):
+        export_feature_table(
+            job, TABLE, output, batch_size=2, time_column="t_ns", start_ns=0, end_ns=2,
+            cancel=lambda: bool(stop), progress=lambda *_: stop.append(True),
+        )
+    assert not (output / "manifest.json").exists()
+    assert json.loads((output / "failure.json").read_bytes())["status"] == "failed"

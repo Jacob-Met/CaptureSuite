@@ -3,9 +3,9 @@
 Windows-first multimodal research capture platform: a daemon, versioned worker
 plugins, sealed session packages, and a PySide6 operator UI.
 
-> **Platform:** Windows 10 21H2+ x64 only for v1.0. The plugin contract is
-> process + named-pipe based so other OSes can be added later without breaking
-> plugins.
+> **Live acquisition:** Windows 10 21H2+ x64 for v1.0. The plugin contract is
+> process + named-pipe based. Offline analysis also runs on Linux; it does not
+> connect to the capture daemon.
 
 Linux developers can build and test the portable core/storage libraries and
 `session_doctor`; see [Building on Linux](docs/BUILDING-LINUX.md) for the exact
@@ -64,8 +64,11 @@ not establish hardware performance, clinical validity, or full product readiness
 Tests: `tests/analysis/test_offline_demo.py`.
 
 For the pre-release **Linux x86-64 standalone offline analysis executable**
-(no Python installation required), see
-[Offline Analysis Linux](docs/OFFLINE_ANALYSIS_LINUX.md).
+(no Python installation required), [download version 0.1.5](https://github.com/Jacob-Met/CaptureSuite/releases/tag/offline-analysis-v0.1.5-measurement-context)
+and follow [Offline Analysis Linux](docs/OFFLINE_ANALYSIS_LINUX.md).
+Selected numeric exports retain readable method and sample-support context;
+mistyped source IDs fail before replacing saved analysis. The release includes
+real handoff screenshots and a short screen recording.
 
 ## Validate recorded MCAP bytes in a sealed session
 
@@ -124,6 +127,42 @@ Use `capturesuite-analysis export-table JOB_DIR --list` in the Linux offline
 release, or `python tools/export_feature_table.py JOB_DIR --list` from source, to
 find saved tables and columns. Export a selection to CSV/Parquet with its types,
 units, original warnings and job provenance. See [feature table export](docs/FEATURE_TABLE_EXPORT.md).
+
+## Reopen saved analysis in the native desktop
+
+The Analysis workspace opens an existing recording and its saved jobs. Choose a
+result by its purpose, time and output counts, inspect complete figures, preview
+the actual saved measurements, and export chosen columns in a deliberate order.
+CSV and Parquet retain the saved values, types, units and source warnings.
+
+From an installed Python 3.12 desktop analysis environment:
+
+~~~bash
+python -m capture_desktop --analysis /path/to/recording.mmsession
+~~~
+
+On Linux this offline workspace is the default. On Windows the explicit
+`--analysis` option opens it without a live capture connection. See
+[native saved analysis](docs/design/ANALYSIS.md#native-saved-analysis-workspace)
+for setup, workflow and current limits. The separately published Linux
+`capturesuite-analysis` executable is a command-line application.
+
+## Export recorded numeric samples
+
+The [experimental Linux numeric-export release](https://github.com/Jacob-Met/CaptureSuite/releases/tag/numeric-samples-2026-11-10)
+contains a standalone executable; no Python installation is required:
+
+```sh
+./capturesuite-analysis export-session recording.mmsession exported-samples --modalities numeric --verify
+```
+
+This preserves every recorded numeric channel value, exact native timestamps,
+separate MCAP clocks and copied gap provenance. Missing native clocks remain
+unknown. The maintained desktop's Export dialog offers the same numeric choice;
+the downloadable archive contains the Linux CLI, not a packaged desktop.
+See [numeric sample export](docs/NUMERIC_SAMPLE_EXPORT.md) for import instructions
+and timing limits. Independent actual-release receiving accepted exact data and
+malformed-input refusal on generated recordings, not physical instruments.
 
 ## Simulation walkthrough (after build prerequisites)
 
@@ -190,3 +229,11 @@ and product direction. Independent research software (not an official product of
 any university lab unless separately stated).
 
 Payload QC warns when an IMU sensor sample has an all-zero quaternion: orientation is unavailable for that sample, although finite acceleration and gyro values can still be decoded. This exact observation is not a hardware accuracy assessment or a non-unit quaternion tolerance policy.
+
+## Experimental offline native desktop
+
+Inspect finalized recordings, recorded notes/checkpoints/gaps and retained video
+without a capture daemon. On Linux with Python 3.12, run
+`./scripts/run-desktop-offline.sh --review /path/to/recording.mmsession`.
+See [offline desktop review](docs/operator/OFFLINE_DESKTOP_REVIEW.md) for setup,
+exact-time semantics and platform limits. Live acquisition remains Windows-only.

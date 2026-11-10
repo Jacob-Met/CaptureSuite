@@ -260,7 +260,11 @@ def collect_qc(
     known = set(summary.source_ids) | {r.source_id for r in refs}
     unknown = set(selected) - known
     if unknown:
-        raise ValueError(f"unknown QC source IDs: {', '.join(sorted(unknown))}")
+        raise ValueError(
+            f"unknown QC source IDs: {', '.join(sorted(unknown))}. "
+            f"Available source IDs: {', '.join(sorted(known)) or '(none)'}. "
+            "Use exact source IDs with --sources, or omit --sources to select all."
+        )
     streams = [
         _stream_qc(r, inspect_payloads=inspect_payloads)
         for r in refs
