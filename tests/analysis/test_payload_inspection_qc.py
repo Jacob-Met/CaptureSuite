@@ -111,15 +111,13 @@ def _write_batched_mcap(
             schema_id=schema_id,
         )
         for i, times in enumerate(batches):
+            frame_count = max(len(times), 1) if i in untimed_batch_indices else len(times)
             pb = numeric_batch_pb2.NumericBatch(
                 channel_count=2,
                 channel_names=["left", "right"],
                 units="N",
                 dtype="f64",
-                samples=[
-                    float(j) for j in range(2 * (max(len(times), 1)
-                    if i in untimed_batch_indices else len(times)))
-                ],
+                samples=[float(j) for j in range(2 * frame_count)],
                 device_time_ns=[] if i in untimed_batch_indices else times,
             )
             writer.add_message(
