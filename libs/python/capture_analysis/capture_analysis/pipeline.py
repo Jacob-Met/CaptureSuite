@@ -139,6 +139,7 @@ def run_features_and_plots(
             "series": [
                 {
                     "label": item["label"],
+                    "ylabel": item.get("ylabel", "value"),
                     "t_ns": [int(x) for x in np.asarray(item["t_ns"]).tolist()],
                     "y": [float(x) for x in np.asarray(item["y"]).tolist()],
                     "color": item.get("color", "#3d8bfd"),
