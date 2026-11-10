@@ -13,9 +13,9 @@ hardware capture, signal quality, or clinical accuracy.
 
 ## Open and inspect
 
-1. Start the Offline Analysis desktop with the extracted package:
+1. From the extracted native Linux desktop folder, open the sample in Analysis:
 
-       ./RUN.sh /path/to/synthetic-force.mmsession
+       ./capturesuite-desktop --analysis /path/to/synthetic-force.mmsession
 
    In an already open desktop, choose the Analysis workspace and use Browse
    to select that directory.
@@ -83,5 +83,5 @@ engine and refuses to replace an existing example. It creates an explicitly
 synthetic finalized package; it does not reproduce the daemon's acquisition
 journal. The ZIP is the ready-to-open example, so recipients need no Python setup.
 
-The guide and sample are produced by astra-ibis-57c90e21. Independent desktop
-receiving is recorded on task `capturesuite-saved-example-ibis57c9`.
+The guide and sample are produced by astra-ibis-57c90e21. Production and independent desktop
+receiving are tracked on task `capturesuite-saved-example-ibis57c9`.
