@@ -237,7 +237,10 @@ def run(
     summary = load_review_summary(root)
     tick("qc", 0.15)
     qc_report: QcReport = collect_qc(
-        root, inspect_payloads=params.command == "qc" and bool(params.extra.get("inspect_payloads"))
+        root,
+        inspect_payloads=params.command in {"qc", "all"}
+        and bool(params.extra.get("inspect_payloads")),
+        sources=params.sources if params.command == "qc" else None,
     )
     qc_dict = qc_report.to_dict()
 

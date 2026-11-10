@@ -184,3 +184,38 @@ cannot accept even a failure record, stderr still identifies the incomplete
 directory. A directory without a valid completed manifest is not a successful
 export. Pick a different new destination after fixing the cause; the exporter
 does not overwrite or resume an incomplete result.
+
+
+## Select a recorded time region
+
+Use the saved table's exact integer nanosecond column to export only measurements
+whose recorded time falls within an explicit interval:
+
+```bash
+capturesuite-analysis export-table SESSION/processing/jobs/JOB_ID \
+  --table features/numeric/SOURCE/STREAM/windows.parquet \
+  --time-column t_start_ns --start-ns 1000000000 --end-ns 3000000000 \
+  --column t_start_ns --column mean --output selected-region
+```
+
+First run `export-table JOB_DIR --list` for the actual table path, column names and
+units. The example names are placeholders. All three time flags are required
+together. Bounds are integer nanoseconds in the saved column's timebase, with an
+inclusive start and exclusive end: `[start, end)`. Integer comparison preserves
+nanoseconds beyond floating-point precision. The time column must have an integer
+Arrow type and recorded `ns` units; an arbitrary measurement or float column is
+rejected before creating the destination.
+
+This selects existing feature rows, not raw samples. For a window-start column,
+a row is included when its start lies in the interval; the saved window is not
+clipped or recomputed, and its end may extend beyond the chosen interval. No
+sorting, interpolation, gap filling or timebase conversion is performed. Null
+timestamps are excluded. The time column can be omitted from selected output
+columns, but retaining it is useful when interpreting the exported values.
+
+Both the export manifest and schema record the exact bounds as decimal strings,
+time column, interval convention, null policy, original row count and selected row
+count. A region with no matching rows produces a typed empty table and reports
+`rows=0`; it never silently exports the full table. Source warnings, the original
+feature metadata and original job provenance remain available. Without time flags,
+all rows are exported as before.

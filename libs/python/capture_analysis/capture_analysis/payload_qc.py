@@ -13,6 +13,9 @@ from typing import Any
 
 from capture_analysis.types import StreamRef
 
+_PREVIEW_FRAMES = 256
+_PREVIEW_CHANNELS = 6
+
 _SCHEMAS = {
     "generic.numeric_batch/1": {"capture.v1.data.NumericBatch", "generic.numeric_batch/1"},
     "emg.batch/1": {"capture.v1.data.EmgBatch", "emg.batch/1"},
@@ -20,7 +23,7 @@ _SCHEMAS = {
 }
 
 
-def _decode_emg(payload: bytes) -> tuple[int, list[str], list[tuple[float, float]]]:
+def _decode_emg(payload: bytes) -> tuple[int, int, list[str], list[tuple[float, float]]]:
     import numpy as np
     from capture_protocol.generated.capture.v1.data import emg_batch_pb2
 
@@ -38,7 +41,7 @@ def _decode_emg(payload: bytes) -> tuple[int, list[str], list[tuple[float, float
     if not bool(np.isfinite(values).all()):
         raise ValueError("EMG samples contain NaN or infinity")
     limits = [(float(row.min()), float(row.max())) for row in values]
-    return n, ids, limits
+    return n, int(msg.first_sample_index), ids, limits
 
 
 def _decode_imu(payload: bytes) -> tuple[list[str], list[str]]:
@@ -90,6 +93,8 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
     schema_id = ref.data_schema_id
     expected = _SCHEMAS.get(schema_id)
     frames = 0
+    preview_batches: list[dict[str, Any]] = []
+    preview_frames = 0
     layout: list[str] | None = None
     last_device_time: int | None = None
     frames_without_native_time = 0
@@ -98,6 +103,14 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
     sensor_frame_counts: dict[str, int] = {}
     zero_quaternions = 0
     zero_by_sensor: dict[str, int] = {}
+    next_emg_index: int | None = None
+    emg_continuity: dict[str, Any] = {
+        "batchesChecked": 0,
+        "transitionsChecked": 0,
+        "forwardJumpCount": 0,
+        "overlapOrResetCount": 0,
+        "examples": [],
+    }
     try:
         from mcap.reader import make_reader
 
@@ -150,9 +163,50 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
                             frames_without_native_time += n
                         if not all(math.isfinite(value) for value in samples):
                             raise ValueError("numeric samples contain NaN or infinity")
+                        # Exact leading samples only: QC still checks every later frame.
+                        # A fixed channel/frame cap bounds retained report data regardless
+                        # of recording length; batch boundaries and native clocks survive.
+                        take = min(n, _PREVIEW_FRAMES - preview_frames)
+                        if take > 0:
+                            preview_batches.append(
+                                {
+                                    "firstFrame": frames,
+                                    "segment": path.name,
+                                    "messageIndex": per_segment - 1,
+                                    "sessionTimeNs": str(message.log_time),
+                                    "nativeTimeNs": [str(t) for t in device_times[:take]],
+                                    "values": [
+                                        samples[
+                                            i * channels : i * channels
+                                            + min(channels, _PREVIEW_CHANNELS)
+                                        ]
+                                        for i in range(take)
+                                    ],
+                                }
+                            )
+                            preview_frames += take
                         frames += n
                     elif schema_id == "emg.batch/1":
-                        n, ids, limits = _decode_emg(message.data)
+                        n, first_index, ids, limits = _decode_emg(message.data)
+                        emg_continuity["batchesChecked"] += 1
+                        if next_emg_index is not None:
+                            emg_continuity["transitionsChecked"] += 1
+                            if first_index != next_emg_index:
+                                forward = first_index > next_emg_index
+                                key = "forwardJumpCount" if forward else "overlapOrResetCount"
+                                emg_continuity[key] += 1
+                                if len(emg_continuity["examples"]) < 10:
+                                    emg_continuity["examples"].append({
+                                        "segment": path.name,
+                                        "messageInSegment": per_segment,
+                                        "kind": "forward_jump" if forward else "overlap_or_reset",
+                                        # Strings retain int64 precision in JSON consumers.
+                                        "expectedFirstSampleIndex": str(next_emg_index),
+                                        "actualFirstSampleIndex": str(first_index),
+                                    })
+                        # Re-anchor after every batch, including an index reset.
+                        # No origin is assumed for the first recorded batch.
+                        next_emg_index = first_index + n
                         if layout is None:
                             layout = ids
                         elif layout != ids:
@@ -200,6 +254,18 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
                 detail="Decoded all declared-schema messages; checked shape and finite values",
             )
             if schema_id == "generic.numeric_batch/1":
+                result["numericPreview"] = {
+                    "schemaId": "capture.numeric_qc_preview/1",
+                    "selection": "first_recorded_frames",
+                    "framesShown": preview_frames,
+                    "framesChecked": frames,
+                    "frameLimit": _PREVIEW_FRAMES,
+                    "channelLimit": _PREVIEW_CHANNELS,
+                    "channelIds": (layout or [])[:_PREVIEW_CHANNELS],
+                    "totalChannels": len(layout or []),
+                    "units": ref.units,
+                    "batches": preview_batches,
+                }
                 result["framesWithoutNativeTimestamps"] = frames_without_native_time
                 result["detail"] = (
                     "Decoded NumericBatch values and ordered native timestamps across "
@@ -209,6 +275,7 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
             if layout:
                 result["channelIds"] = layout
             if schema_id == "emg.batch/1":
+                result["sampleIndexContinuity"] = emg_continuity
                 # Exact flatline observations, not an electrode-condition diagnosis.
                 result["constantChannels"] = sorted(
                     name for name, (low, high) in extrema.items() if low == high and frames >= 2
