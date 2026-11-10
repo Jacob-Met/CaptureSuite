@@ -1470,3 +1470,11 @@ Linden reproduced fabricated waveform length and zero crossings when valid sampl
 ### EMG follow-up: declared gaps without stored samples
 
 Two encoded MCAP batches at 0/1ms and 4/5ms reproduced a remaining false WL2/ZC1 across a declared 2–3ms disconnect. Pair adjacency now excludes any declared gap intersecting the pair interval, including gaps with no stored sample. Added real MCAP loader regression and undeclared-gap control; no heuristic sampling-rate gap threshold is introduced.
+## 2026-11-10 — Linux analysis distribution notices
+
+Packaging now derives third-party notice files and exact installed versions from
+the actual frozen module inventory, preserves project Apache contracts and
+Python/PyInstaller terms, and fails missing notice text. Source build instructions
+install the maintained local package dependencies (protobuf >=4.25,<5), with
+pip check before freezing. MCAP1.6.0 upstream license is pinned because its wheel
+and sdist omit the text. Fleet build and independent receiving follow.
