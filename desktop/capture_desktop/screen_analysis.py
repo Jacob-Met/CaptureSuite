@@ -466,12 +466,17 @@ class AnalysisScreen(QWidget):
             self._package, command, gap_policy, extra, scope=self._scope, sources=sources
         )
         worker.moveToThread(thread)
-        thread.started.connect(worker.run)
+        # Run only after the worker thread's event loop starts. A quick QC job
+        # can finish before QThread.exec() if started is connected directly,
+        # leaving quit() ineffective and the Analysis screen permanently busy.
+        thread.started.connect(worker.run, Qt.ConnectionType.QueuedConnection)
         worker.progress.connect(self._on_progress)
         worker.finished.connect(self._on_finished)
         worker.failed.connect(self._on_failed)
-        worker.finished.connect(thread.quit)
-        worker.failed.connect(thread.quit)
+        # QThread.quit() is thread-safe. Invoke it directly on completion so
+        # a fast job cannot leave its quit request waiting in the UI queue.
+        worker.finished.connect(thread.quit, Qt.ConnectionType.DirectConnection)
+        worker.failed.connect(thread.quit, Qt.ConnectionType.DirectConnection)
         thread.finished.connect(worker.deleteLater)
         thread.finished.connect(thread.deleteLater)
         thread.finished.connect(self._on_thread_finished)
