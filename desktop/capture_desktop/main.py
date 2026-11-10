@@ -8,6 +8,7 @@ Requires a running capture daemon (instance.json under LOCALAPPDATA/CaptureSuite
 
 from __future__ import annotations
 
+import argparse
 import sys
 from pathlib import Path
 
@@ -28,6 +29,14 @@ def _ensure_path() -> None:
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description="CaptureSuite recording and analysis workbench")
+    parser.add_argument(
+        "--offline", action="store_true", help="Open without connecting to a capture daemon",
+    )
+    parser.add_argument(
+        "--review", metavar="PACKAGE", help="Open a finalized session for offline review",
+    )
+    args = parser.parse_args()
     _ensure_path()
     from capture_protocol.structured_log import get_logger
 
@@ -35,7 +44,7 @@ def main() -> int:
 
     log = get_logger("desktop")
     log.info("desktop_started", "CaptureSuite desktop launching")
-    return run_app(auto_connect=True)
+    return run_app(auto_connect=not (args.offline or args.review), review_package=args.review)
 
 
 if __name__ == "__main__":

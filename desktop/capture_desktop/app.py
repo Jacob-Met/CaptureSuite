@@ -357,6 +357,7 @@ class MainWindow(QMainWindow):
         self.capture.alert_show_source.connect(self._on_focus)
         self.capture.radar_array_edit_requested.connect(self._edit_radar_array)
         self.review.export_requested.connect(self._on_review_export)
+        self.review.package_loaded.connect(self._on_review_package_loaded)
         self._session_header.scope_changed.connect(self.analysis.set_scope)
         self.analysis.package_loaded.connect(self._on_analysis_package_loaded)
 
@@ -673,6 +674,10 @@ class MainWindow(QMainWindow):
             self._session_header.clear()
         else:
             self._session_header.refresh_sealed(summary, selection=self.analysis.scope)
+
+    def _on_review_package_loaded(self, summary) -> None:
+        if self.tabs.currentWidget() is self.review:
+            self._refresh_session_context()
 
     # -- transport actions ---------------------------------------------------
 
@@ -1116,6 +1121,12 @@ class MainWindow(QMainWindow):
             elif (not self._session_header.is_sealed
                   or self._session_header.package_path != self.analysis.package_path):
                 self._session_header.refresh_sealed(summary, selection=self.analysis.scope)
+        elif self.tabs.currentWidget() is self.review:
+            summary = self.review.summary
+            if summary is None:
+                self._session_header.clear()
+            else:
+                self._session_header.refresh_sealed(summary)
         elif self.state.review_mode and self.state.package_path:
             path = str(Path(self.state.package_path).resolve())
             if not self._session_header.is_sealed or self._session_header.package_path != path:
@@ -1140,7 +1151,7 @@ class MainWindow(QMainWindow):
             self._session_header.refresh_live(self.state)
 
 
-def run_app(*, auto_connect: bool = True) -> int:
+def run_app(*, auto_connect: bool = True, review_package: str | None = None) -> int:
     import sys
 
     from capture_session.settings_store import SettingsStore
@@ -1151,6 +1162,9 @@ def run_app(*, auto_connect: bool = True) -> int:
     settings.load()
     theme.apply_theme(app, setting=str(settings.get("theme") or "system"))
     window = MainWindow(auto_connect=auto_connect)
+    if review_package is not None:
+        window.tabs.setCurrentWidget(window.review)
+        window.review.load_package(review_package)
     window.show()
     return app.exec()
 

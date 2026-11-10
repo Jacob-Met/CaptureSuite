@@ -180,3 +180,11 @@ and product direction. Independent research software (not an official product of
 any university lab unless separately stated).
 
 Payload QC warns when an IMU sensor sample has an all-zero quaternion: orientation is unavailable for that sample, although finite acceleration and gyro values can still be decoded. This exact observation is not a hardware accuracy assessment or a non-unit quaternion tolerance policy.
+
+## Experimental offline native desktop
+
+Inspect finalized recordings, recorded notes/checkpoints/gaps and retained video
+without a capture daemon. On Linux with Python 3.12, run
+`./scripts/run-desktop-offline.sh --review /path/to/recording.mmsession`.
+See [offline desktop review](docs/operator/OFFLINE_DESKTOP_REVIEW.md) for setup,
+exact-time semantics and platform limits. Live acquisition remains Windows-only.
