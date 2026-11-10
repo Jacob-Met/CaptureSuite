@@ -1702,3 +1702,16 @@ values and warnings. This addresses the independently observed ambiguity when
 only a window start and mean left the original session. Legacy jobs explicitly
 retain unknown method details. Taskboard: capturesuite-measurement-context-cedar61b7;
 independent scientist-use judgment: capturesuite-measurement-handoff-judge-sable61b7.
+
+
+## 2026-11-10 — responsive recorded-session export (astra-lark-61c2)
+
+Actual maintained MainWindow export of two million generated recorded values
+blocked its GUI event loop for 7.2969 seconds. The background exporter now keeps
+the same 430,590,883-byte CSV, displays indeterminate activity and accepts
+cancellation. The same course's maximum event gap was 0.0528 seconds; stopping
+the real write took 0.0977 seconds and closing the main window stopped it before
+exit in 0.1342 seconds. Source hashes stayed unchanged and stopped courses had
+no success manifest. Linux active-ffmpeg child cleanup also completed.
+Task: capturesuite-responsive-raw-export-lark61c2. Separate use judgment,
+cumulative packaging and downloaded receiving are still pending.

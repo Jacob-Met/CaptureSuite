@@ -5,11 +5,15 @@ from __future__ import annotations
 
 import json
 import os
+import signal
 import subprocess
 import sys
+from collections.abc import Callable
 from dataclasses import dataclass
 from pathlib import Path
+from threading import Event
 
+from PySide6.QtCore import QThread, Signal
 from PySide6.QtWidgets import (
     QCheckBox,
     QDialog,
@@ -237,10 +241,96 @@ class ExportWizard(QDialog):
         self.accept()
 
 
+class SessionExportWorker(QThread):
+    """Run the maintained exporter without occupying the desktop event loop."""
+
+    completed = Signal(int, str)
+
+    def __init__(self, package_path: str, options: ExportOptions, parent=None) -> None:
+        super().__init__(parent)
+        self.package_path = package_path
+        self.options = options
+        self._cancel = Event()
+
+    def request_cancel(self) -> None:
+        self._cancel.set()
+
+    def run(self) -> None:
+        try:
+            code, message = run_export(
+                self.package_path, self.options, cancel=self._cancel.is_set
+            )
+        except Exception as exc:
+            code, message = 1, str(exc)
+        self.completed.emit(code, message)
+
+
+def _cancel_process(process: subprocess.Popen) -> tuple[str, str]:
+    """Stop this export's process tree, including an active video rewrap."""
+    if os.name == "nt":
+        try:
+            subprocess.run(
+                ["taskkill", "/PID", str(process.pid), "/T", "/F"],
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL,
+                timeout=5,
+                check=False,
+                creationflags=subprocess.CREATE_NO_WINDOW,
+            )
+        except (OSError, subprocess.TimeoutExpired):
+            process.kill()
+    else:
+        try:
+            os.killpg(process.pid, signal.SIGTERM)
+        except ProcessLookupError:
+            pass
+    try:
+        return process.communicate(timeout=2)
+    except subprocess.TimeoutExpired:
+        if os.name == "nt":
+            process.kill()
+        else:
+            try:
+                os.killpg(process.pid, signal.SIGKILL)
+            except ProcessLookupError:
+                pass
+        return process.communicate(timeout=2)
+
+
+def _run_export_process(
+    command: list[str], root: Path, cancel: Callable[[], bool] | None
+) -> subprocess.CompletedProcess:
+    if cancel is None:
+        return subprocess.run(command, capture_output=True, text=True, cwd=str(root))
+    if cancel():
+        return subprocess.CompletedProcess(command, 130, "", "Export cancelled before starting.")
+    group_options = (
+        {"creationflags": subprocess.CREATE_NEW_PROCESS_GROUP | subprocess.CREATE_NO_WINDOW}
+        if os.name == "nt" else {"start_new_session": True}
+    )
+    process = subprocess.Popen(
+        command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True,
+        cwd=str(root), **group_options,
+    )
+    while True:
+        try:
+            stdout, stderr = process.communicate(timeout=0.1)
+            return subprocess.CompletedProcess(command, process.returncode, stdout, stderr)
+        except subprocess.TimeoutExpired:
+            if cancel():
+                stdout, stderr = _cancel_process(process)
+                return subprocess.CompletedProcess(
+                    command, 130, stdout,
+                    "Export cancelled. Partial files may remain in the destination. "
+                    "Use a new or empty folder for another export.",
+                )
+
+
 def run_export(
-    package_path: str, options: ExportOptions, *, repo_root: Path | None = None
+    package_path: str, options: ExportOptions, *, repo_root: Path | None = None,
+    cancel: Callable[[], bool] | None = None,
 ) -> tuple[int, str]:
-    """Run tools/export_session.py; return (exit_code, combined_output_tail)."""
+    """Run the maintained exporter; return (exit_code, combined_output_tail)."""
     root = repo_root or Path(__file__).resolve().parents[2]
     py = (
         Path(os.environ.get("LOCALAPPDATA", ""))
@@ -255,7 +345,7 @@ def run_export(
     if options.verify:
         cmd.append("--verify")
     cmd += _build_modalities_args(options)
-    proc = subprocess.run(cmd, capture_output=True, text=True, cwd=str(root))
+    proc = _run_export_process(cmd, root, cancel)
     tail = (proc.stderr or proc.stdout)[-800:]
     if proc.returncode == 0 and options.write_sidecar:
         sidecar = Path(options.out_dir) / "provenance_sidecar.json"

@@ -99,6 +99,9 @@ class MainWindow(QMainWindow):
     ) -> None:
         super().__init__()
         self._analysis_only = analysis_only
+        self._export_worker = None
+        self._export_progress = None
+        self._close_after_export = False
         self.setWindowTitle("CaptureSuite — Analysis" if analysis_only else "CaptureSuite")
         self.setMinimumSize(1100, 700)
 
@@ -407,6 +410,11 @@ class MainWindow(QMainWindow):
         self.persistence.save_window(self, index)
 
     def closeEvent(self, event) -> None:  # noqa: N802
+        self._close_after_export = True
+        if self._export_worker is not None and self._export_worker.isRunning():
+            self._cancel_session_export()
+            event.ignore()
+            return
         self.analysis.shutdown()
         self.persistence.save_window(self, self.capture.view_mode())
         self.persistence.close()
@@ -717,10 +725,15 @@ class MainWindow(QMainWindow):
     # -- transport actions ---------------------------------------------------
 
     def _on_review_export(self, package_path: str) -> None:
-        from PySide6.QtWidgets import QMessageBox
+        from PySide6.QtWidgets import QProgressDialog
 
-        from .export_wizard import ExportWizard, run_export
+        from .export_wizard import ExportWizard, SessionExportWorker
 
+        if self._export_worker is not None:
+            if self._export_progress is not None:
+                self._export_progress.show()
+                self._export_progress.raise_()
+            return
         default = self.persistence.settings.get("last_export_path") or str(
             Path(package_path) / "exports"
         )
@@ -729,19 +742,61 @@ class MainWindow(QMainWindow):
             return
         opts = dlg.options
         self.persistence.settings.set("last_export_path", opts.out_dir)
-        self._set_busy("Exporting session…")
-        code, tail = run_export(package_path, opts)
+        self._set_busy("Exporting recorded data…")
+        progress = QProgressDialog(
+            "Exporting recorded data…\n" + opts.out_dir,
+            "Cancel export", 0, 0, self,
+        )
+        progress.setWindowTitle("Export session")
+        progress.setWindowModality(Qt.WindowModality.NonModal)
+        progress.setMinimumDuration(0)
+        progress.setAutoClose(False)
+        progress.setAutoReset(False)
+        progress.canceled.connect(self._cancel_session_export)
+        self._export_progress = progress
+        worker = SessionExportWorker(package_path, opts, self)
+        self._export_worker = worker
+        worker.completed.connect(
+            lambda code, tail: self._on_session_export_completed(code, tail, opts)
+        )
+        worker.finished.connect(self._on_session_export_finished)
+        worker.finished.connect(worker.deleteLater)
+        progress.show()
+        worker.start()
+
+    def _cancel_session_export(self) -> None:
+        if self._export_worker is not None:
+            self._export_worker.request_cancel()
+            self.state.status_line = "Stopping export… Partial files may remain."
+            self._status.setText(self.state.status_line)
+
+    def _on_session_export_completed(self, code: int, tail: str, opts) -> None:
+        if self._export_progress is not None:
+            self._export_progress.close()
+            self._export_progress.deleteLater()
+            self._export_progress = None
+        if code == 130:
+            self.state.status_line = (
+                "Export cancelled. Use a new destination; "
+                f"partial files may remain in {opts.out_dir}"
+            )
+            self._status.setText(self.state.status_line)
+            return
         if code != 0:
-            self._on_error(f"export failed: {tail}")
+            self._on_error(f"Export failed: {tail}")
             return
         self.state.status_line = f"Export complete → {opts.out_dir}"
         self._status.setText(self.state.status_line)
-        QMessageBox.information(
-            self,
-            "Export",
-            f"Wrote export_manifest.json under:\n{opts.out_dir}\n\n"
-            f"Provenance sidecar: provenance_sidecar.json",
-        )
+        if not self._close_after_export:
+            message = f"Wrote export_manifest.json under:\n{opts.out_dir}"
+            if opts.write_sidecar:
+                message += "\n\nProvenance sidecar: provenance_sidecar.json"
+            QMessageBox.information(self, "Export", message)
+
+    def _on_session_export_finished(self) -> None:
+        self._export_worker = None
+        if self._close_after_export:
+            self.close()
 
     def _on_create_session(self) -> None:
         if not self.state.connected:
