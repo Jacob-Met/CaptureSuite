@@ -1594,3 +1594,16 @@ Actual frozen EMG figures omitted supplied mV units; standalone figures lost mea
 ## 2026-11-10: smaller standalone offline analysis packaging
 
 The repository-owned PyInstaller hook keeps local Arrow/Parquet functionality while excluding optional remote transports from module, data and native-library collection. Versioned shared libraries and the Flight helper's extension classification required explicit handling. Original frozen artifacts remain retained. Independent same-source CLI/output comparisons cover qc, features, plots and all; final candidate judgment and current-main rebuild are recorded separately before any release claim. Normal GitHub release writes currently return403; no public release is claimed. Added reproducible xz packaging instructions without removing application contents.
+
+
+### 2026-11-10 — EMG envelope missing-support correction (astra-birch-82b5)
+
+Independent use of frozen e34e20a found a false pre-disconnect RMS rise despite
+correct static raw traces: the prior convolution joined concatenated observed
+samples across missing time. Added support-aware centered RMS, boundary
+normalization and retained missing separators; JSON uses null for unknown
+derived points. Full source analysis: 486 passed, 1 skipped, 28 subtests; focused Ruff clean.
+Actual held-out CLI plot now shows pre-gap RMS 1.18–1.26 mV (previously about
+2.5 mV), with original raw readings 1.0–1.4 mV; post-gap 7.39–7.45 mV.
+All-masked support creates no empty sync lane. Independent astra-larch-7c2f
+review remains required before acceptance. No hardware claim.

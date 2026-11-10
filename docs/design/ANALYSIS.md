@@ -584,3 +584,16 @@ and does not describe an individual sensor. A feature job with incomplete sensor
 support records a warning, so strict CLI mode exits 2 and selected exports retain
 that warning in their copied source manifest. Select support columns alongside
 measurements when exporting a table; the column metadata defines the denominator.
+
+## EMG display envelope across missing support
+
+The sync dashboard first-channel RMS preview uses a centered nominal 50 ms
+kernel within each contiguous observed run. Recorded gaps, invalid samples and
+timestamp jumps above 1.5 nominal sample periods break support before smoothing.
+Each boundary kernel normalizes by observed samples; absent samples are never
+replaced with zeros or taken from the other side of a disconnect. Each run is
+thinned separately to roughly 20 Hz, retaining its first and last sample.
+Timestamps remain original session timestamps. The saved sync-series JSON uses
+null for missing derived values, including explicit breaks between runs. This
+is a provisional visual envelope, not a calibrated feature or resampled raw
+recording; the raw MCAP and separately exported feature tables are unchanged.

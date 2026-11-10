@@ -141,7 +141,10 @@ def run_features_and_plots(
                     "label": item["label"],
                     "ylabel": item.get("ylabel", "value"),
                     "t_ns": [int(x) for x in np.asarray(item["t_ns"]).tolist()],
-                    "y": [float(x) for x in np.asarray(item["y"]).tolist()],
+                    "y": [
+                        float(x) if np.isfinite(x) else None
+                        for x in np.asarray(item["y"]).tolist()
+                    ],
                     "color": item.get("color", "#3d8bfd"),
                 }
                 for item in sync_series[:4]
