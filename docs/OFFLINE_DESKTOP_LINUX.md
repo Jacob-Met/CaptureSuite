@@ -16,6 +16,9 @@ Windows daemon and hardware plug-ins.
 tar -xzf capturesuite-desktop-linux-x86_64.tar.gz
 cd capturesuite-desktop
 ./capturesuite-desktop
+# Or open a recording directly:
+./capturesuite-desktop --review /path/to/recording.mmsession
+./capturesuite-desktop --analysis /path/to/recording.mmsession
 ```
 
 Keep the executable and its `_internal` directory together. You can move the
@@ -31,8 +34,12 @@ features, plots or combined analysis. Generated jobs stay under the recording's
 `processing/jobs/` folder. Original streams remain unchanged.
 
 Reopen a retained job to inspect its figures and measurement tables. Export the
-selected measurements when another analysis tool needs them. Keep warnings and
-units with the data: simulated inputs and provisional feature methods do not
+selected measurements as CSV or Parquet when another analysis tool needs them.
+Keep their column order, units and provenance together. The native table view
+also supports an exact half-open interval in the recording clock: the start is
+included and the end excluded; saved measurements are selected without
+recomputing their original windows. The original preview stays labelled.
+Keep warnings and units with the data: simulated inputs and provisional feature methods do not
 establish instrument accuracy or clinical validity.
 
 The session export dialog uses the bundled exporter. It does not need an
@@ -43,8 +50,8 @@ codec availability and damaged recordings can still limit playback.
 
 Real pose-model packages, model weights and hardware drivers are not included.
 Do not infer working physical capture or model inference from this offline
-release. The bundled repository mini-session includes placeholder MCAP files;
-use a genuine recording for payload analysis.
+release. The repository's older mini-session fixture contains placeholder MCAP files;
+use a genuine recording for payload analysis. It is not part of this bundle.
 
 ## Build from source
 
@@ -68,7 +75,7 @@ python3.12 -m venv .venv-desktop-release
 . .venv-desktop-release/bin/activate
 python -m pip install ./libs/python/capture_protocol \
   ./libs/python/capture_session './libs/python/capture_analysis[analysis]' \
-  './desktop[analysis]' 'mcap>=1.6,<2' pyinstaller
+  './desktop[analysis]' 'mcap>=1.6,<2' 'PySide6==6.12.0' pyinstaller
 python -m pip check
 PYTHON="$VIRTUAL_ENV/bin/python" bash scripts/build-desktop-linux.sh
 ```

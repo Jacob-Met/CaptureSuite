@@ -40,6 +40,7 @@ mkdir -p "$out"
     --paths "$repo/libs/python/capture_analysis" \
     --paths "$repo/libs/python/capture_session" \
     --paths "$repo/libs/python/capture_protocol" \
+    --additional-hooks-dir "$repo/scripts/pyinstaller-hooks" \
     --collect-submodules capture_desktop \
     --collect-submodules capture_analysis \
     --collect-submodules capture_protocol \
@@ -60,6 +61,7 @@ test -x "$bundle/capturesuite-desktop"
 cp "$repo/NOTICE" "$repo/LICENSE" "$repo/LICENSING.md" "$bundle/"
 cp "$repo/docs/OFFLINE_DESKTOP_LINUX.md" "$bundle/README.md"
 cp "$repo/docs/FEATURE_TABLE_EXPORT.md" "$bundle/FEATURE_TABLE_EXPORT.md"
+cp "$repo/docs/NUMERIC_SAMPLE_EXPORT.md" "$bundle/NUMERIC_SAMPLE_EXPORT.md"
 "$py" "$repo/tools/collect_analysis_notices.py" \
     "$out/work/capturesuite-desktop/Analysis-00.toc" "$bundle"
 git rev-parse HEAD > "$bundle/SOURCE_COMMIT"
