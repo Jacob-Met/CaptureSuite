@@ -1581,3 +1581,7 @@ Independent scoped use found that analysts must manually locate saved job/table 
 ### 2026-11-10: enforce fail gap policy before feature output
 
 Frozen CLI accepted a known disconnect containing no stored samples and wrote CSV despite --gap-policy fail. Declared overlaps now fail before any selected handler output, independently of stored-sample masks; unselected sources and out-of-window gaps remain permitted. End-to-end CLI regression covers those scopes.
+
+### 2026-11-10: units in exported research figures
+
+Actual frozen EMG figures omitted supplied mV units; standalone figures lost measurement interpretation. EMG/IMU plots and sync dashboard now show loaded units, full channel/source identity, and persist dashboard axis labels for downstream export. Missing unit strings remain explicitly unspecified. This is display provenance, not calibration verification.
