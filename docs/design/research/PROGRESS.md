@@ -1594,3 +1594,8 @@ Actual frozen EMG figures omitted supplied mV units; standalone figures lost mea
 ## 2026-11-10: smaller standalone offline analysis packaging
 
 The repository-owned PyInstaller hook keeps local Arrow/Parquet functionality while excluding optional remote transports from module, data and native-library collection. Versioned shared libraries and the Flight helper's extension classification required explicit handling. Original frozen artifacts remain retained. Independent same-source CLI/output comparisons cover qc, features, plots and all; final candidate judgment and current-main rebuild are recorded separately before any release claim. Normal GitHub release writes currently return403; no public release is claimed. Added reproducible xz packaging instructions without removing application contents.
+
+
+## 2026-11-10 — Refuse unknown analysis source selections
+
+A real packaged features run with a mistyped source ID returned completed with zero warnings and no table. Analysis now validates every requested ID against retained package source identities before QC/output creation, lists available identities, and refuses mixed valid/unknown selections rather than silently dropping part of the request. Valid source filtering remains unchanged.
