@@ -4,6 +4,11 @@
 set -euo pipefail
 repo="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$repo"
+source_commit="$(git rev-parse HEAD)"
+if [[ -n "$(git status --porcelain)" ]]; then
+    echo "Build from a clean checkout so SOURCE_COMMIT identifies the actual inputs" >&2
+    exit 2
+fi
 if [[ "$(uname -s)" != Linux || "$(uname -m)" != x86_64 ]]; then
     echo "Only Linux x86_64 desktop bundles are supported by this script" >&2
     exit 2
@@ -64,7 +69,11 @@ cp "$repo/docs/FEATURE_TABLE_EXPORT.md" "$bundle/FEATURE_TABLE_EXPORT.md"
 cp "$repo/docs/NUMERIC_SAMPLE_EXPORT.md" "$bundle/NUMERIC_SAMPLE_EXPORT.md"
 "$py" "$repo/tools/collect_analysis_notices.py" \
     "$out/work/capturesuite-desktop/Analysis-00.toc" "$bundle"
-git rev-parse HEAD > "$bundle/SOURCE_COMMIT"
+if [[ "$(git rev-parse HEAD)" != "$source_commit" || -n "$(git status --porcelain)" ]]; then
+    echo "Source changed during build; refusing to stamp the bundle" >&2
+    exit 2
+fi
+printf '%s\n' "$source_commit" > "$bundle/SOURCE_COMMIT"
 "$bundle/capturesuite-desktop" --version
 "$bundle/capturesuite-desktop" --export-session --help >/dev/null
 echo "CAPTURESUITE_LINUX_DESKTOP_BUNDLE=$bundle"

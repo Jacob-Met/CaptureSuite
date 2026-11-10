@@ -1750,3 +1750,7 @@ Installing desktop[analysis] therefore brings its actual recording reader along;
 no manual hidden prerequisite or change to decoding/provenance is introduced.
 The base metadata-only session library remains unchanged. Producer:
 astra-lark-7b494126, same cumulative native desktop delivery.
+
+### 2026-11-10 — maintained experimental native release flow
+
+The actual b520 delivery used a fleet-built folder and the existing publisher-to-build-worker Tailscale SSH route. Added tools/release_desktop.py to prepare exact-source archives, transfer explicit reviewed assets with checksums, and inspect/resume matching GitHub draft uploads before exposing a complete prerelease. Conflicting source/bytes/notes stop without replacement; auth stays command-scoped outside the tool. The builder now rejects dirty or changing source before stamping SOURCE_COMMIT. Focused tests cover a lost response after a successful upload, matching retry, mismatched bytes/tag, and exact source archival. Actual use on the independently judged column-identity build remains pending.
