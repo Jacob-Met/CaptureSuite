@@ -10,26 +10,32 @@ The daemon creates the pipe and is the server; the worker connects with
 from __future__ import annotations
 
 import ctypes
-import msvcrt
+import sys
 import time
 from ctypes import wintypes
 from typing import Any, Protocol
 
 from capture_protocol.framing import Frame, FrameDecoder, encode_frame
 
-_kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
-_kernel32.PeekNamedPipe.argtypes = [
-    wintypes.HANDLE,
-    wintypes.LPVOID,
-    wintypes.DWORD,
-    ctypes.POINTER(wintypes.DWORD),
-    ctypes.POINTER(wintypes.DWORD),
-    ctypes.POINTER(wintypes.DWORD),
-]
-_kernel32.PeekNamedPipe.restype = wintypes.BOOL
+_kernel32: Any = None
 
 
 def _peek_available(fd: int) -> int:
+    # Keep the portable worker/MemoryTransport usable without loading Win32.
+    import msvcrt
+
+    global _kernel32
+    if _kernel32 is None:
+        _kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
+        _kernel32.PeekNamedPipe.argtypes = [
+            wintypes.HANDLE,
+            wintypes.LPVOID,
+            wintypes.DWORD,
+            ctypes.POINTER(wintypes.DWORD),
+            ctypes.POINTER(wintypes.DWORD),
+            ctypes.POINTER(wintypes.DWORD),
+        ]
+        _kernel32.PeekNamedPipe.restype = wintypes.BOOL
     handle = msvcrt.get_osfhandle(fd)
     avail = wintypes.DWORD(0)
     ok = _kernel32.PeekNamedPipe(handle, None, 0, None, ctypes.byref(avail), None)
@@ -64,6 +70,8 @@ class WorkerPipeTransport:
         self._pending: list[Frame] = []
 
     def connect(self) -> None:
+        if sys.platform != "win32":
+            raise OSError("Worker named-pipe transport requires Windows")
         deadline = time.monotonic() + self.timeout_s
         last_err: Exception | None = None
         while time.monotonic() < deadline:

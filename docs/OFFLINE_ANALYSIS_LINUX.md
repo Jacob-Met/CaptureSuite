@@ -29,13 +29,13 @@ To compute provisional EMG/IMU features, create Parquet/CSV tables and
 figures with the bundled offline analysis pipeline:
 
 ```bash
-./capturesuite-analysis all "/data/my experiment.mmsession"
+./capturesuite-analysis all "/data/my experiment.mmsession" --inspect-payloads
 ```
 
-Six commands are supported in this experimental bundle: `qc`, `features`,
-`plots`, `all`, `export-table` and `review`. Run `./capturesuite-analysis qc --help` for options,
+Seven commands are supported in this experimental bundle: `qc`, `features`,
+`plots`, `all`, `jobs`, `export-table` and `review`. Run `./capturesuite-analysis qc --help` for options,
 including `--overwrite-job-id`, `--start-ns`, `--end-ns`, gap handling and
-the `--inspect-payloads` switch (the latter is only for `qc`). Exit code 0
+the `--inspect-payloads` switch (available for `qc`, `all` and `review`). Exit code 0
 means a job completed, 2 means strict warnings triggered or an unsupported
 bundled command was requested, and 1 means a job failed to run.
 
@@ -47,6 +47,25 @@ selected timestamp consistency. It can report constant EMG channels and zero
 IMU quaternions as observations. **Passing is not proof of sensor calibration,
 electrode contact, noise floor, sampling-rate truth or medical validity.**
 Metadata-only QC (without the switch) cannot validate payloads.
+
+## Find previous analysis
+
+```bash
+./capturesuite-analysis jobs "/data/my experiment.mmsession" --columns
+```
+
+This read-only command shows the newest 20 saved jobs with their recorded status,
+warnings/errors, source/stream feature tables, row counts, exact column names and
+units, and a quoted command to inspect each job for export. Use `--limit 0` for all
+jobs or `--json` for structured output. It works after moving the package and does
+not require the original raw sources. It never reruns an analysis.
+
+A completed status is the saved job's original status, not a new integrity check.
+Feature metadata is checked against its recorded hash; table payload validation
+happens during export. Missing/corrupt metadata is reported as UNREADABLE beside
+healthy entries, with exit code 2. A historical failed job remains visible with
+its recorded errors. Internal attempt/backup directories are counted separately.
+No retained files are changed. An empty history prints a clear no-results state.
 
 ## Export selected saved features
 
@@ -62,7 +81,12 @@ tables and export a column selection without rerunning analysis:
 
 Use the exact path and column names shown by `--list`; `--list --json` is available
 for scripts. The destination must be a new directory outside the session package.
-Every retained row stays in its original order. CSV and Parquet are written by
+By default, every retained row stays in its original order. To select an existing
+row region, add `--time-column t_start_ns --start-ns 1000000000 --end-ns 3000000000`
+using an integer column with recorded `ns` units. The start is inclusive and end
+exclusive. Window rows are selected by their recorded start; windows are never
+clipped or recomputed. Exact bounds and row counts are preserved in the export.
+CSV and Parquet are written by
 default, with types, units, original warnings and job provenance beside them.
 See the bundled [feature export guide](FEATURE_TABLE_EXPORT.md) for typed CSV
 import, format options and failure behavior.
@@ -124,6 +148,7 @@ and figure files.
 
 The project is GPL-3.0-only; see the bundled `LICENSE` and `LICENSING.md`.
 
+`all --inspect-payloads --strict-warnings` combines decoded-sample QC, features and plots in one job. Without the flag, QC remains metadata-only. Inspection warnings propagate to strict exit 2; feature calculation does not turn a QC warning into a calibration claim.
 The build copies actual bundled third-party license/notice texts into
 `THIRD_PARTY_NOTICES/`, including the Python runtime, PyInstaller bootloader
 and CaptureSuite Apache-licensed contracts. `manifest.json` records notice hashes;
