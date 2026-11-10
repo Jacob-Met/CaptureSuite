@@ -6,7 +6,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from PySide6.QtCore import Qt
+from PySide6.QtCore import Qt, QTimer
 from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import (
     QHBoxLayout,
@@ -64,6 +64,22 @@ class SyncDashboardView(QWidget):
         self._scroll.setWidget(self._plot_host)
         layout.addWidget(self._scroll, 1)
         self._linked: list = []
+        self._support_range = None
+        self._fit_timer = QTimer(self)
+        self._fit_timer.setSingleShot(True)
+        self._fit_timer.timeout.connect(self._fit_support)
+
+    def _fit_support(self) -> None:
+        if self._linked and self._support_range is not None:
+            self._linked[0].setXRange(*self._support_range, padding=0)
+
+    def resizeEvent(self, event) -> None:
+        super().resizeEvent(event)
+        self._fit_timer.start(0)
+
+    def showEvent(self, event) -> None:
+        super().showEvent(event)
+        self._fit_timer.start(0)
 
     def clear(self) -> None:
         self._placeholder.setVisible(True)
@@ -176,7 +192,9 @@ class SyncDashboardView(QWidget):
                 )
             if prev_plot is not None:
                 plot.setXLink(prev_plot)
-            plot.setXRange(max(start_ns, first) / 1e9, min(end_ns, last) / 1e9, padding=0)
+            self._support_range = (max(start_ns, first) / 1e9, min(end_ns, last) / 1e9)
+            plot.setXRange(*self._support_range, padding=0)
+            self._fit_timer.start(0)
             prev_plot = plot
             self._linked.append(plot)
             self._plot_layout.addWidget(plot, 1)
