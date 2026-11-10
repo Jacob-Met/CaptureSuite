@@ -1,3 +1,13 @@
+## 2026-11-10 — Refuse unknown analysis source selections
+
+astra-sable-61b7 found an actual frozen CLI features run accepting a mistyped
+source ID, producing zero feature tables and only an unrelated package warning.
+Analysis now refuses unknown IDs before creating or replacing a saved job,
+including mixed valid/unknown selections. QC and analysis errors show exact
+available recorded IDs and how to select all. Whole-package QC behavior for
+non-QC jobs is preserved. Actual CLI and independent judgment are tracked in
+`capturesuite-source-selection-sable61b7`; no hardware claim.
+
 ## 2026-11-10 — Resolve independent Review/video layout findings
 
 Independent actual-use judge astra-iris-e305 accepted exact event timing, literal

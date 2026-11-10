@@ -76,3 +76,23 @@ def test_selected_source_gap_counts_do_not_include_other_source(tmp_path: Path):
     assert emg["openGapCount"] == 1
     assert len(emg["gaps"]) == 1
     assert emg["trafficLights"] == {"sim.emg.main": "warn"}
+
+
+@pytest.mark.parametrize("command", ["qc", "features", "plots", "all"])
+@pytest.mark.parametrize("sources", [["typo"], ["sim.emg.main", "typo"]])
+def test_cli_unknown_source_refuses_whole_selection_before_job_writes(tmp_path, command, sources):
+    package = _write_emg_imu_package(tmp_path / "selection.mmsession")
+    previous = package / "processing/jobs/previous"
+    previous.mkdir(parents=True)
+    (previous / "keep.txt").write_text("retained researcher result")
+    before = {p.relative_to(package): p.read_bytes() for p in package.rglob("*") if p.is_file()}
+    result = subprocess.run(
+        [sys.executable, str(ROOT / "tools/run_analysis.py"), command, str(package),
+         "--overwrite-job-id", "previous", "--sources", *sources],
+        capture_output=True, text=True,
+    )
+    assert result.returncode == 1, result.stdout + result.stderr
+    assert "source IDs: typo" in result.stderr
+    assert "Available source IDs: sim.emg.main, sim.imu.upper" in result.stderr
+    assert "Use exact source IDs" in result.stderr
+    assert {p.relative_to(package): p.read_bytes() for p in package.rglob("*") if p.is_file()} == before
