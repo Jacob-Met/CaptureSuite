@@ -46,6 +46,15 @@ def extract_emg_features(
         v = valid[i0:i1]
         if not np.any(v):
             continue
+        pairs = v[:-1] & v[1:]
+        times = t[i0:i1]
+        for gap in gap_mask.overlaps_window():
+            end = gap.end_session_ns
+            if end is None:
+                end = gap_mask.window.end_session_ns
+            # A declared missing interval can contain no stored samples at all.
+            pairs &= ~((times[:-1] <= end) & (times[1:] >= gap.start_session_ns))
+        triples = pairs[:-1] & pairs[1:]
         seg = x[:, i0:i1][:, v]
         t_mid = int(np.median(t[i0:i1][v]))
         row: dict = {
@@ -56,14 +65,15 @@ def extract_emg_features(
             s = seg[c].astype(np.float64, copy=False)
             if s.size == 0:
                 continue
-            diff = np.diff(s)
-            zc = int(np.sum((s[:-1] * s[1:]) < 0)) if s.size > 1 else 0
-            ssc = (
-                int(np.sum((diff[:-1] * diff[1:]) < 0)) if diff.size > 1 else 0
-            )
+            # Temporal features require adjacent observed samples. Filtering first
+            # would join opposite sides of a gap and invent transitions.
+            full = x[c, i0:i1].astype(np.float64, copy=False)
+            diff = np.diff(full)
+            zc = int(np.sum(((full[:-1] * full[1:]) < 0) & pairs))
+            ssc = int(np.sum(((diff[:-1] * diff[1:]) < 0) & triples))
             row[f"{ch}_rms"] = float(np.sqrt(np.mean(s * s)))
             row[f"{ch}_mav"] = float(np.mean(np.abs(s)))
-            row[f"{ch}_wl"] = float(np.sum(np.abs(diff))) if diff.size else 0.0
+            row[f"{ch}_wl"] = float(np.sum(np.abs(diff[pairs]))) if diff.size else 0.0
             row[f"{ch}_zc"] = zc
             row[f"{ch}_ssc"] = ssc
         rows.append(row)

@@ -32,8 +32,8 @@ figures with the bundled offline analysis pipeline:
 ./capturesuite-analysis all "/data/my experiment.mmsession"
 ```
 
-Four commands are supported in this experimental bundle: `qc`, `features`,
-`plots` and `all`. Run `./capturesuite-analysis qc --help` for options,
+Five commands are supported in this experimental bundle: `qc`, `features`,
+`plots`, `all` and `export-table`. Run `./capturesuite-analysis qc --help` for options,
 including `--overwrite-job-id`, `--start-ns`, `--end-ns`, gap handling and
 the `--inspect-payloads` switch (the latter is only for `qc`). Exit code 0
 means a job completed, 2 means strict warnings triggered or an unsupported
@@ -47,6 +47,25 @@ selected timestamp consistency. It can report constant EMG channels and zero
 IMU quaternions as observations. **Passing is not proof of sensor calibration,
 electrode contact, noise floor, sampling-rate truth or medical validity.**
 Metadata-only QC (without the switch) cannot validate payloads.
+
+## Export selected saved features
+
+Start from the job directory printed by `features` or `all`. You can inspect its
+tables and export a column selection without rerunning analysis:
+
+```bash
+./capturesuite-analysis export-table "/data/my experiment.mmsession/processing/jobs/JOB_ID" --list
+./capturesuite-analysis export-table "/data/my experiment.mmsession/processing/jobs/JOB_ID" \
+  --table TABLE_PATH_FROM_LIST --column t_start_ns --column "input 1_mean" \
+  --output "/data/selected-features"
+```
+
+Use the exact path and column names shown by `--list`; `--list --json` is available
+for scripts. The destination must be a new directory outside the session package.
+Every retained row stays in its original order. CSV and Parquet are written by
+default, with types, units, original warnings and job provenance beside them.
+See the bundled [feature export guide](FEATURE_TABLE_EXPORT.md) for typed CSV
+import, format options and failure behavior.
 
 ## Supported and unsupported
 
