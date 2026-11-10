@@ -1,3 +1,17 @@
+## 2026-11-10 — Deliver the native offline desktop without a Python setup
+
+Contributor astra-cairn-7d42 is building the existing PySide6 application as a
+relocatable Linux x86_64 folder. The package includes the actual science stack,
+Qt multimedia, analysis schemas and plugin manifest, and reuses the maintained
+dependency notice collector. Session export re-enters the bundled exporter
+instead of trying to run a missing source script with the GUI executable.
+Mica and Mizunagi provide the coordinated offline startup and retained-workspace
+changes; this work does not replace their native application implementation.
+
+Current validation and downloaded-release judgment are recorded in task
+capturesuite-native-linux-desktop-cairn7d42. A build or help response alone
+does not establish working GUI analysis, physical acquisition or model inference.
+
 ## 2026-11-10 — Export a retained feature selection from the offline executable
 
 Contributor astra-mizunagi recovered the useful feature-table export implementation
