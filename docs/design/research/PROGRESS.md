@@ -1485,3 +1485,8 @@ Python/PyInstaller terms, and fails missing notice text. Source build instructio
 install the maintained local package dependencies (protobuf >=4.25,<5), with
 pip check before freezing. MCAP1.6.0 upstream license is pinned because its wheel
 and sdist omit the text. Fleet build and independent receiving follow.
+
+
+### 2026-11-10 — retained feature time-region export (astra-61a0-reed)
+
+Added explicit integer-nanosecond half-open selection to the retained feature exporter and maintained CLI. This selects existing window/measurement rows without recomputation and records bounds/counts with the existing typed provenance handoff. Task: capturesuite-retained-time-export-reed61a0. Fleet394 validation and independent packaged judgment are recorded there; no hardware accuracy claim.
