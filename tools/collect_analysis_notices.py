@@ -314,7 +314,9 @@ def collect(toc: Path, bundle: Path) -> dict:
         "scope": (
             "Frozen Python distributions and runtime; bundled wheel notices include "
             "their vendored dependencies. Copied system libraries include installed "
-            "Debian/Ubuntu package copyrights."
+            "Debian/Ubuntu package copyrights. Qt/PySide notices absent from these "
+            "wheels come from pinned upstream sources selected by bundled modules; "
+            "that conservative module-level coverage is not an exact third-party SBOM."
         ),
     }
     (destination / "manifest.json").write_text(json.dumps(report, indent=2) + "\n")
