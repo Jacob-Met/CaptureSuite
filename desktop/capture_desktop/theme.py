@@ -86,6 +86,10 @@ QPushButton#Primary {{
     font-weight: 600;
 }}
 QPushButton#Primary:hover {{ background: {primary_hover}; }}
+QPushButton#Primary:disabled {{
+    background: {t.PANEL.name()}; border-color: {t.BORDER.name()};
+    color: {t.TEXT_FAINT.name()};
+}}
 QPushButton#Danger {{
     background: {t.RED.name()};
     border: 1px solid {t.RED.name()};

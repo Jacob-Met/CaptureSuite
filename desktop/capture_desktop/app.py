@@ -158,6 +158,7 @@ class MainWindow(QMainWindow):
         if analysis_only:
             self.tabs.setTabVisible(self.tabs.indexOf(self.capture), False)
             self.tabs.setTabVisible(self.tabs.indexOf(self.setup), False)
+            self.analysis._btn_use_open.hide()
             self.tabs.setCurrentWidget(self.analysis)
             self.state.status_line = "Offline analysis · Open a recording to review saved results."
             if package_path:
@@ -406,6 +407,7 @@ class MainWindow(QMainWindow):
         self.persistence.save_window(self, index)
 
     def closeEvent(self, event) -> None:  # noqa: N802
+        self.analysis.shutdown()
         self.persistence.save_window(self, self.capture.view_mode())
         self.persistence.close()
         self.link.stop()
@@ -672,6 +674,7 @@ class MainWindow(QMainWindow):
 
     def _on_tab_changed(self, index: int) -> None:
         widget = self.tabs.widget(index)
+        self._session_header.set_compact(widget is self.analysis)
         if widget is self.setup:
             sid = self.setup.current_source_id()
             if not sid and self.state.sources:
