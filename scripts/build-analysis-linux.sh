@@ -10,6 +10,7 @@ if [[ "$(uname -s)" != Linux || "$(uname -m)" != x86_64 ]]; then
 fi
 py="${PYTHON:-python3}"
 export PYTHONPATH="$repo/libs/python/capture_analysis:$repo/libs/python/capture_session:$repo/libs/python/capture_protocol${PYTHONPATH:+:$PYTHONPATH}"
+"$py" -m pip check
 "$py" -c 'import PyInstaller, capture_analysis, capture_session, capture_protocol, mcap, yaml, jsonschema'
 out="${OUTPUT_ROOT:-$repo/build/analysis-linux-release}"
 mkdir -p "$out"
@@ -38,10 +39,13 @@ fi
 "$out/dist/capturesuite-analysis/capturesuite-analysis" --help >/dev/null
 "$out/dist/capturesuite-analysis/capturesuite-analysis" qc --help >/dev/null
 "$out/dist/capturesuite-analysis/capturesuite-analysis" export-table --help >/dev/null
+cp "$repo/NOTICE" "$out/dist/capturesuite-analysis/NOTICE"
 cp "$repo/LICENSE" "$out/dist/capturesuite-analysis/LICENSE"
 cp "$repo/LICENSING.md" "$out/dist/capturesuite-analysis/LICENSING.md"
 cp "$repo/docs/OFFLINE_ANALYSIS_LINUX.md" "$out/dist/capturesuite-analysis/README.md"
 cp "$repo/docs/FEATURE_TABLE_EXPORT.md" "$out/dist/capturesuite-analysis/FEATURE_TABLE_EXPORT.md"
+"$py" "$repo/tools/collect_analysis_notices.py" \
+    "$out/work/capturesuite-analysis/Analysis-00.toc" "$out/dist/capturesuite-analysis"
 git rev-parse HEAD > "$out/dist/capturesuite-analysis/SOURCE_COMMIT"
 "$out/dist/capturesuite-analysis/capturesuite-analysis" --version
 echo "CAPTURESUITE_LINUX_ANALYSIS_BUNDLE_OK=$out/dist/capturesuite-analysis"

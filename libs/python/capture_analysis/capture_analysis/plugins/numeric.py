@@ -46,8 +46,8 @@ def handle_numeric(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext) -> No
             path = ctx.work / "figures" / "numeric" / component / f"channel_{index}.png"
             plot_series(
                 path,
-                loaded.t_sample_ns[::step],
-                loaded.X[index, ::step],
+                loaded.t_sample_ns,
+                loaded.X[index],
                 window=ctx.window,
                 gaps=gap_mask.gaps,
                 ylabel=loaded.units,
@@ -55,7 +55,6 @@ def handle_numeric(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext) -> No
                     f"Numeric {ref.source_id}/{ref.stream_id} · {channel} (provisional)\n"
                     f"First retained session_time_ns={int(loaded.t_sample_ns[0])}"
                 ),
-                xlabel="Time since first retained sample (s)",
             )
             ctx.outputs.append(
                 {
@@ -67,6 +66,7 @@ def handle_numeric(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext) -> No
             )
         ctx.sync_series.append(
             {
+                "gaps": gap_mask.gaps,
                 "label": f"Numeric {ref.source_id}/{ref.stream_id} · {loaded.channel_ids[0]}",
                 "t_ns": loaded.t_sample_ns[::step],
                 "y": loaded.X[0, ::step],

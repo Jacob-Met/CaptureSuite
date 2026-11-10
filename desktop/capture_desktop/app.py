@@ -1160,8 +1160,10 @@ class MainWindow(QMainWindow):
             summary = self.review.summary
             if summary is None:
                 self._session_header.clear()
-            elif (not self._session_header.is_sealed
-                  or self._session_header.package_path != str(Path(summary.package_path).resolve())):
+            elif (
+                not self._session_header.is_sealed
+                or self._session_header.package_path != str(Path(summary.package_path).resolve())
+            ):
                 self._session_header.refresh_sealed(summary)
         elif self.state.review_mode and self.state.package_path:
             path = str(Path(self.state.package_path).resolve())

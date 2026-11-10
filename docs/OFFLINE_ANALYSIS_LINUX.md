@@ -62,7 +62,12 @@ tables and export a column selection without rerunning analysis:
 
 Use the exact path and column names shown by `--list`; `--list --json` is available
 for scripts. The destination must be a new directory outside the session package.
-Every retained row stays in its original order. CSV and Parquet are written by
+By default, every retained row stays in its original order. To select an existing
+row region, add `--time-column t_start_ns --start-ns 1000000000 --end-ns 3000000000`
+using an integer column with recorded `ns` units. The start is inclusive and end
+exclusive. Window rows are selected by their recorded start; windows are never
+clipped or recomputed. Exact bounds and row counts are preserved in the export.
+CSV and Parquet are written by
 default, with types, units, original warnings and job provenance beside them.
 See the bundled [feature export guide](FEATURE_TABLE_EXPORT.md) for typed CSV
 import, format options and failure behavior.
@@ -95,8 +100,9 @@ From the exact release commit:
 
 ```bash
 python3.12 -m venv .venv-analysis
-.venv-analysis/bin/python -m pip install pyinstaller mcap protobuf numpy scipy pandas \
-    pyarrow matplotlib jsonschema pyyaml
+.venv-analysis/bin/python -m pip install ./libs/python/capture_protocol \
+    ./libs/python/capture_session './libs/python/capture_analysis[analysis]' pyinstaller mcap
+.venv-analysis/bin/python -m pip check
 PYTHON=.venv-analysis/bin/python scripts/build-analysis-linux.sh
 ```
 
@@ -109,3 +115,14 @@ MCAP data and corrupted inputs, then open `qc.html` and inspect feature CSV
 and figure files.
 
 The project is GPL-3.0-only; see the bundled `LICENSE` and `LICENSING.md`.
+
+The build copies actual bundled third-party license/notice texts into
+`THIRD_PARTY_NOTICES/`, including the Python runtime, PyInstaller bootloader
+and CaptureSuite Apache-licensed contracts. `manifest.json` records notice hashes;
+`DEPENDENCY_VERSIONS.txt` records exact installed versions. Missing distribution
+notices fail the build. The local package install above respects each package's
+dependency constraints, including capture-protocol's protobuf range.
+
+Ubuntu builds require dpkg-query metadata and /usr/share/doc package copyright
+files for native libraries copied into the bundle; absent attribution fails the
+build. Their exact package versions and library basenames are in the same manifest.
