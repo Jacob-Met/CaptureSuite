@@ -46,3 +46,13 @@ def media_time(milliseconds: int) -> str:
     minutes, seconds = divmod(seconds, 60)
     hours, minutes = divmod(minutes, 60)
     return f"{hours:02d}:{minutes:02d}:{seconds:02d}.{fraction:03d}"
+
+
+def frame_time(microseconds: int) -> str:
+    """Format an available frame presentation timestamp without losing precision."""
+    if microseconds < 0:
+        raise ValueError("Frame presentation timestamp is unavailable.")
+    seconds, fraction = divmod(int(microseconds), 1_000_000)
+    minutes, seconds = divmod(seconds, 60)
+    hours, minutes = divmod(minutes, 60)
+    return f"{hours:02d}:{minutes:02d}:{seconds:02d}.{fraction:06d}"

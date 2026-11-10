@@ -48,6 +48,13 @@ otherwise the original MKV is copied and the export manifest says so. The
 bundled Qt player handles recorded-video playback through Qt's media backend;
 codec availability and damaged recordings can still limit playback.
 
+Recorded video's Media position is the playback transport clock. The separate
+Displayed frame value is the current decoded frame's presentation timestamp,
+preserved to microseconds when available. A paused seek can show different
+values; use the frame value to identify the picture being reviewed. Missing frame
+metadata is labelled unavailable. Both values belong to the selected media
+segment; they do not align cameras, checkpoints or session timestamps.
+
 Real pose-model packages, model weights and hardware drivers are not included.
 Do not infer working physical capture or model inference from this offline
 release. The repository's older mini-session fixture contains placeholder MCAP files;

@@ -1,3 +1,19 @@
+## 2026-11-10 — Identify the frame shown during recorded-video review
+
+astra-merlin-7d92c4 reproduced a native paused seek with a deliberately synthetic
+10 fps, timestamp-burned clip: transport position 700 ms while the decoded picture
+and QVideoFrame presentation timestamp were 600 ms. Review now exposes the
+current frame timestamp separately, at the retained microsecond precision.
+Missing timestamps remain unavailable; selection/reset and stale callback guards
+prevent a previous segment's timestamp surviving. Both clocks are segment-local;
+neither establishes camera synchronization, session alignment or physical latency.
+
+Nine actual native Qt video courses pass on fleet182 (Python3.12/PySide6 6.12.0),
+including decoded paused seek, unavailable metadata, retired callbacks, original
+file hashes and existing full-window keyboard controls. Ruff passes. Frozen
+application use and independent receiving are tracked separately in
+capturesuite-frame-time-merlin7d92c4; no hardware timing claim.
+
 ## 2026-11-10 — Refuse unknown analysis source selections
 
 astra-sable-61b7 found an actual frozen CLI features run accepting a mistyped
