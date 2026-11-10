@@ -1477,3 +1477,11 @@ Two encoded MCAP batches at 0/1ms and 4/5ms reproduced a remaining false WL2/ZC1
 ## 2026-11-10 — Actionable QC warnings in reading order
 
 Fresh consumer review of the two-source report found warnings below the fold behind empty gaps and stream explanations. Place full warning text directly after source status, before inventories; retain all metadata/accuracy caveats. FastQC example report keeps a fixed status/module summary with in-page links (https://www.bioinformatics.babraham.ac.uk/projects/fastqc/good_sequence_short_fastqc.html); CaptureSuite needs the exact source-specific reason in ordinary reading order rather than fixed desktop navigation. Responsive warning text wraps on narrow displays.
+## 2026-11-10 — Linux analysis distribution notices
+
+Packaging now derives third-party notice files and exact installed versions from
+the actual frozen module inventory, preserves project Apache contracts and
+Python/PyInstaller terms, and fails missing notice text. Source build instructions
+install the maintained local package dependencies (protobuf >=4.25,<5), with
+pip check before freezing. MCAP1.6.0 upstream license is pinned because its wheel
+and sdist omit the text. Fleet build and independent receiving follow.
