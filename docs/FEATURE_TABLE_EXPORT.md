@@ -4,10 +4,11 @@ Analysis jobs already retain full Parquet tables, CSV mirrors and a column schem
 Use this exporter when another analysis tool needs one retained table with a
 specific set of columns, in a specific order, together with its original job records.
 
-The exporter reads an explicitly selected completed job. It keeps every row in its
-original order and does not run analysis again. Column names are literal, including
-spaces, Unicode and dots. Units, provisional/calibrated flags and other feature
-metadata come from the retained job.
+The exporter reads an explicitly selected completed job. By default it keeps
+every row; an optional recorded-time filter selects a subset. Retained rows stay
+in their original order, and analysis is not run again. Column names are literal,
+including spaces, Unicode and dots. Units, provisional/calibrated flags and other
+feature metadata come from the retained job.
 
 ## Use the standalone analysis executable
 
@@ -78,6 +79,8 @@ written to the completed export's `manifest.json`.
 
 | Export file | Meaning |
 |---|---|
+| `README.html` | Readable measurement identity, units, warnings and recorded method/support context. |
+| `row_context.csv` | Aligned original intervals and sample support for numeric jobs that recorded this context. |
 | `table.csv` | Selected values, when CSV is requested. |
 | `table.parquet` | Selected Arrow fields and values, when Parquet is requested. |
 | `_schema.json` | Versioned selected-column schema, metadata and CSV reader settings. |
@@ -173,8 +176,9 @@ job's four input files are hashed again after reading to reject a concurrent cha
 Reads and writes use Arrow batches. To keep names such as `a.b` literal even
 beside a nested `a` field, complete source batches are read before selection by
 column index. Batch size limits rows per batch, not total decoder memory or bytes;
-very wide/large row groups can still require substantial memory. No time filter,
-resampling, interpolation, normalization or feature recalculation occurs.
+very wide/large row groups can still require substantial memory. An optional
+recorded-time filter selects rows without resampling, interpolation,
+normalization or feature recalculation.
 
 Admission failures create no destination. A later read/write failure retains the
 new directory, attempts to record `failure.json` with `status: "failed"`, and
@@ -219,3 +223,45 @@ count. A region with no matching rows produces a typed empty table and reports
 `rows=0`; it never silently exports the full table. Source warnings, the original
 feature metadata and original job provenance remain available. Without time flags,
 all rows are exported as before.
+
+
+## Interpreting projected window measurements
+
+Open the exported **README.html** before using the values. It identifies the
+session and source, selected columns and units, original warnings, analysis scope,
+and any row-start filter. This is a local file with no network or script dependency.
+
+New numeric feature jobs write table schema version 2 with
+`measurementContext.schemaId = capture.numeric_measurement_context/1`.
+The numeric mean/RMS algorithm remains `numeric.basic.v1`: equal weight per
+valid retained sample, not a time-weighted average. The context records requested
+window/hop seconds, the actual rounded sample-slot counts, the rate used,
+nominal durations, masking policy and interval definition. It is described by
+`schemas/session/jsonschema/analysis_numeric_measurement_context.schema.json`.
+
+Numeric tables also retain `sample_count` and `valid_sample_count`. The first
+counts all retained slots in a window, including masked slots; the second counts
+values actually used after declared-gap exclusion. The interval from
+`t_start_ns` to `t_end_ns` brackets the retained slots, ending one nominal period
+after the last timestamp. It does not certify continuous measured coverage.
+Irregular device timestamps may make its elapsed span differ from the nominal
+window duration. Split runs restart window placement; adjacent windows can overlap.
+
+For these jobs, the exporter writes **row_context.csv** even when support columns
+are omitted from the selected measurement table. It contains the exact start/end
+timestamps, rate, slot/used counts and masked fraction, aligned to the same filtered
+rows and order. Its `export_row` is one-based in the exported table, not the source
+table's original row number. A start-time filter does not crop a row's interval:
+a selected window may end after the filter bound. The first eight support rows
+are readable in README.html; the entire support table remains available.
+
+`_schema.json.rowContext` contains the support column definitions and typed Arrow
+schema; read nanosecond timestamps as int64, not floating point. Both the support
+CSV and the readable companion are hashed in the export manifest. They do not
+change the requested column order or values in `table.csv` / `table.parquet`.
+
+Older retained jobs are still exportable. Their readable handoff explicitly says
+that method/support details were not recorded; no default window, used count or
+coverage is inferred retrospectively. Other modalities keep their existing
+metadata and receive the same honest unknown-method notice until their producers
+record a supported context.

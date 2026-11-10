@@ -24,7 +24,7 @@ from .review_video import local_video_path, media_time, recorded_video_segments
 class RecordedVideoReview(QWidget):
     """A local-media clock, deliberately separate from session timestamps."""
 
-    def __init__(self, parent: QWidget | None = None) -> None:
+    def __init__(self, parent: QWidget | None = None, *, collapsible: bool = True) -> None:
         super().__init__(parent)
         self._package = ""
         self._segments = ()
@@ -45,7 +45,7 @@ class RecordedVideoReview(QWidget):
         body = QVBoxLayout(self._body)
         body.setContentsMargins(0, 0, 0, 0)
         body.setSpacing(6)
-        root.addWidget(self._body)
+        root.addWidget(self._body, 1)
         self._body.hide()
         self._toggle.toggled.connect(self._expand)
         note = self._label(
@@ -76,7 +76,7 @@ class RecordedVideoReview(QWidget):
         self._placeholder.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self._placeholder.setMinimumHeight(180)
         self._viewport.addWidget(self._placeholder)
-        body.addLayout(self._viewport)
+        body.addLayout(self._viewport, 1)
         controls = QHBoxLayout()
         self._play = QPushButton("Play")
         self._play.setAccessibleName("Play or pause selected video")
@@ -99,6 +99,9 @@ class RecordedVideoReview(QWidget):
         for button in (self._play, self._reload, self._toggle):
             button.installEventFilter(self)
         self.reset()
+        if not collapsible:
+            self._toggle.setChecked(True)
+            self._toggle.hide()
 
     def eventFilter(self, watched, event) -> bool:  # noqa: N802
         # The application's checkpoint Space shortcut must not consume a focused

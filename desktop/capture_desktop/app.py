@@ -93,9 +93,13 @@ class PreflightDialog(QDialog):
 
 
 class MainWindow(QMainWindow):
-    def __init__(self, *, auto_connect: bool = True) -> None:
+    def __init__(
+        self, *, auto_connect: bool = True, analysis_only: bool = False,
+        package_path: str = "",
+    ) -> None:
         super().__init__()
-        self.setWindowTitle("CaptureSuite")
+        self._analysis_only = analysis_only
+        self.setWindowTitle("CaptureSuite — Analysis" if analysis_only else "CaptureSuite")
         self.setMinimumSize(1100, 700)
 
         self.state = CaptureState()
@@ -124,7 +128,9 @@ class MainWindow(QMainWindow):
         layout.setSpacing(0)
 
         layout.addWidget(self._build_banner())
-        layout.addWidget(self._build_transport())
+        self._transport = self._build_transport()
+        layout.addWidget(self._transport)
+        self._transport.setVisible(not analysis_only)
         self._session_header = SessionHeader()
         layout.addWidget(self._session_header)
 
@@ -149,7 +155,15 @@ class MainWindow(QMainWindow):
         self._build_menu()
         self._sync_buttons()
 
-        if auto_connect:
+        if analysis_only:
+            self.tabs.setTabVisible(self.tabs.indexOf(self.capture), False)
+            self.tabs.setTabVisible(self.tabs.indexOf(self.setup), False)
+            self.analysis._btn_use_open.hide()
+            self.tabs.setCurrentWidget(self.analysis)
+            self.state.status_line = "Offline analysis · Open a recording to review saved results."
+            if package_path:
+                QTimer.singleShot(0, lambda: self.analysis.set_package(package_path))
+        elif auto_connect:
             QTimer.singleShot(0, self._begin_startup)
 
     def _build_banner(self) -> QWidget:
@@ -162,7 +176,9 @@ class MainWindow(QMainWindow):
         row.setContentsMargins(12, 6, 12, 6)
         brand = QLabel("CaptureSuite")
         brand.setFont(theme.ui(11, bold=True))
-        tagline = QLabel("Multimodal research capture")
+        tagline = QLabel(
+            "Offline analysis" if self._analysis_only else "Multimodal research capture"
+        )
         tagline.setObjectName("Dim")
         tagline.setFont(theme.ui(8))
         row.addWidget(brand)
@@ -357,6 +373,8 @@ class MainWindow(QMainWindow):
         self.capture.alert_show_source.connect(self._on_focus)
         self.capture.radar_array_edit_requested.connect(self._edit_radar_array)
         self.review.export_requested.connect(self._on_review_export)
+        self.review.package_loaded.connect(self._on_review_package_loaded)
+        self.review.analysis_requested.connect(self._on_review_analysis)
         self._session_header.scope_changed.connect(self.analysis.set_scope)
         self.analysis.package_loaded.connect(self._on_analysis_package_loaded)
 
@@ -389,6 +407,7 @@ class MainWindow(QMainWindow):
         self.persistence.save_window(self, index)
 
     def closeEvent(self, event) -> None:  # noqa: N802
+        self.analysis.shutdown()
         self.persistence.save_window(self, self.capture.view_mode())
         self.persistence.close()
         self.link.stop()
@@ -655,6 +674,7 @@ class MainWindow(QMainWindow):
 
     def _on_tab_changed(self, index: int) -> None:
         widget = self.tabs.widget(index)
+        self._session_header.set_compact(widget is self.analysis)
         if widget is self.setup:
             sid = self.setup.current_source_id()
             if not sid and self.state.sources:
@@ -667,12 +687,32 @@ class MainWindow(QMainWindow):
         self._refresh_session_context()
 
     def _on_analysis_package_loaded(self, summary) -> None:
+        if self._analysis_only:
+            self.state.status_line = (
+                "Offline analysis · Original streams are unchanged."
+                if summary else "Could not open this recording."
+            )
+            if summary is not None:
+                self.review.load_package(self.analysis.package_path)
         if self.tabs.currentWidget() is not self.analysis:
             return
         if summary is None:
             self._session_header.clear()
         else:
             self._session_header.refresh_sealed(summary, selection=self.analysis.scope)
+
+    def _on_review_analysis(self, package_path: str) -> None:
+        self.tabs.setCurrentWidget(self.analysis)
+        self.analysis.set_package(package_path)
+
+    def _on_review_package_loaded(self, summary) -> None:
+        if self.tabs.currentWidget() is self.review:
+            if self._analysis_only:
+                self.state.status_line = (
+                    "Offline review · Original streams are unchanged."
+                    if summary else "Open a finalized recording to review."
+                )
+            self._refresh_session_context()
 
     # -- transport actions ---------------------------------------------------
 
@@ -1098,6 +1138,17 @@ class MainWindow(QMainWindow):
             self.btn_rehearse.setEnabled(False)
 
     def _refresh_ui(self) -> None:
+        if self._analysis_only:
+            active_screen = (
+                self.review if self.tabs.currentWidget() is self.review else self.analysis
+            )
+            summary = active_screen.summary
+            self._status.setText(self.state.status_line)
+            self._session_label.setText(
+                f"{summary.session_id} · {summary.state}" if summary else "No recording open"
+            )
+            self._refresh_session_context()
+            return
         self._timer_label.setText(fmt_time(self.state.elapsed_s))
         self._status.setText(self.state.status_line)
         path = self.state.package_path or "—"
@@ -1116,6 +1167,15 @@ class MainWindow(QMainWindow):
             elif (not self._session_header.is_sealed
                   or self._session_header.package_path != self.analysis.package_path):
                 self._session_header.refresh_sealed(summary, selection=self.analysis.scope)
+        elif self.tabs.currentWidget() is self.review:
+            summary = self.review.summary
+            if summary is None:
+                self._session_header.clear()
+            elif (
+                not self._session_header.is_sealed
+                or self._session_header.package_path != str(Path(summary.package_path).resolve())
+            ):
+                self._session_header.refresh_sealed(summary)
         elif self.state.review_mode and self.state.package_path:
             path = str(Path(self.state.package_path).resolve())
             if not self._session_header.is_sealed or self._session_header.package_path != path:
@@ -1140,7 +1200,10 @@ class MainWindow(QMainWindow):
             self._session_header.refresh_live(self.state)
 
 
-def run_app(*, auto_connect: bool = True) -> int:
+def run_app(
+    *, auto_connect: bool = True, analysis_only: bool = False, package_path: str = "",
+    review_package: str = "",
+) -> int:
     import sys
 
     from capture_session.settings_store import SettingsStore
@@ -1150,7 +1213,12 @@ def run_app(*, auto_connect: bool = True) -> int:
     settings = SettingsStore()
     settings.load()
     theme.apply_theme(app, setting=str(settings.get("theme") or "system"))
-    window = MainWindow(auto_connect=auto_connect)
+    window = MainWindow(
+        auto_connect=auto_connect, analysis_only=analysis_only, package_path=package_path,
+    )
+    if review_package:
+        window.tabs.setCurrentWidget(window.review)
+        window.review.load_package(review_package)
     window.show()
     return app.exec()
 

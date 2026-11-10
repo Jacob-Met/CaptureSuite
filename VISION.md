@@ -21,8 +21,8 @@ Two real benchmarks for the current handoff work:
 - [LabChart Lightning's export flow](https://www.adinstruments.com/support/knowledge-base/how-do-i-import-and-export-labchart-lightning)
   exposes recordings, regions and table exports through explicit commands.
   CaptureSuite should make finding and selecting recorded features comparably
-  direct. Its current CLI discovery is useful, but it still lacks a desktop
-  column chooser connected to the same exporter.
+  direct. Its native saved-table chooser now connects to the same typed exporter;
+  distribution and whole-workflow use still need their own evidence.
 - [LabRecorder's retained timing information](https://labstreaminglayer.readthedocs.io/info/time_synchronization.html)
   supports later synchronization choices. CaptureSuite must keep its original
   timing, gap and source records interpretable through derived workflows.
@@ -32,15 +32,49 @@ These are capability and usability benchmarks, not a claim of measured superiori
 The broader product specification remains in [docs/spec](docs/spec) and
 [design decisions](docs/design/README.md).
 
+## Latest numeric export verdict
+
+Independent astra-tern-93ab accepted PR190's recorded numeric handoff through the
+actual native Export dialog and the downloaded
+[numeric-samples-2026-11-10 Linux release](https://github.com/Jacob-Met/CaptureSuite/releases/tag/numeric-samples-2026-11-10)
+(source f6e525ae). Exact clocks above 2^53, Unicode channel labels, clock resets,
+missing clocks, nonfinite values, declared gaps and malformed-input refusal
+survived the external CSV workflow. This is generated-recording evidence,
+not physical-instrument validation.
+
+The next export usability gap is contextual selection: the dialog presents
+unavailable modalities and does not summarize discovered data or the timing
+basis before export. Its actual values remain reusable. Full native desktop
+navigation/distribution and real-instrument judgment remain separate gaps.
+Producing task `capturesuite-numeric-sample-export-lark61c2`; separate use verdict
+`capturesuite-numeric-export-use-tern93ab`.
+
+## Current independent findings
+
+The native saved-result workflow was independently used at 1440×900 and 1280×800.
+Complete figures now fit, job labels reveal their purpose, and table selection,
+units, preview and destination remain visible together. A second contributor
+reimported actual CSV/Parquet exports with exact values, types, order and units,
+then checked unchanged original files and cleared state when switching jobs.
+These are scoped source-application improvements, not packaged-GUI or instrument
+acceptance.
+
+The immediate scientific gap is the interactive sync view: existing saved JSON
+does not carry per-lane gap ownership, while the viewer used first-sample-relative
+coordinates labelled as session time. Static-figure correctness does not repair
+this native path. Its producer contract and renderer are being corrected together;
+legacy results must not acquire invented masks.
+
 ## Ranked gaps
 
 1. **Prove the complete researcher workflow with real recordings.** Existing
    portable checks use synthetic values in real MCAP files. Independent operator
    judging and real-device validation remain separate from those checks.
-2. **Bring retained results into the maintained desktop.** Saved-history,
-   nested-figure and selected-feature handoffs should be reachable in the actual
-   Analysis workspace. PRs 71, 80, 81 and 94 contain earlier work; inspect current
-   main and integrate useful parts rather than restarting them.
+2. **Deliver the coherent native workbench.** Saved history, nested figures and
+   selected typed-table handoff are now connected in source. Ship and independently
+   use the cumulative desktop with interval controls, recorded-session review,
+   scientifically correct sync traces and raw sample export. Preserve the
+   useful earlier PR 71/80/81/94 work rather than starting a parallel interface.
 3. **Make distribution practical across supported workflows.** The Linux offline
    executable is experimental. Windows capture, native desktop delivery and
    sustained acquisition/recovery need current runnable releases and direct use.
@@ -52,18 +86,24 @@ Independent judging findings belong above these standing gaps when they reveal a
 more immediate user problem. Track current work and verdicts on the taskboard;
 keep [README.md](README.md) and the release notes accurate about what runs.
 
-## Current improvement
+## Current build and improvement
 
-Selected-feature export from the existing PR 81 is connected to the
-maintained offline executable in this source. It adds table/column discovery and external
-CSV/Parquet handoff while preserving source warnings, row order and job metadata.
-The taskboard record is `capturesuite-retained-feature-export-mizunagi`;
-a merge, runnable release and separate analyst judgment must be recorded before
-this is described as shipped.
+The [cumulative Linux CLI release](https://github.com/Jacob-Met/CaptureSuite/releases/tag/offline-analysis-v0.1.4-reed61a0)
+at source `b5b979dd335bfe14aed8fc9ebc07a10cd24e9619` provides retained-job discovery,
+selected-column CSV/Parquet export and exact saved-time interval selection.
+The published archive was independently downloaded and run without Python on
+PATH against a moved saved result with no raw sources present. It retained the
+requested two rows, column order and original input bytes. That establishes
+runnable offline data handoff; all receiving measurements remain synthetic.
 
-Recorded numeric sample export now complements derived-feature handoff:
-the existing Export dialog and offline `export-session` command preserve
-channel values, original native/MCAP clocks and copied gaps. Missing native
-clocks remain unknown; within-batch session estimates are explicitly
-uncalibrated. Producing task: `capturesuite-numeric-sample-export-lark61c2`;
-separate analyst judgment and actual distribution evidence remain required.
+The native source adds descriptive history, whole-figure fitting, actual table
+previews, deliberate column order, cancellation and a compact result-focused
+workspace. [PR194](https://github.com/Jacob-Met/CaptureSuite/pull/194) composes this
+with current Review and analysis work. See
+[native workflow](docs/design/ANALYSIS.md#native-saved-analysis-workspace).
+A downloadable native GUI remains a separate delivery milestone.
+
+Current taskboard home: `product-capturesuite` under `m-products`; the existing
+native outcome is `capturesuite-desktop-results-kestrelb1821b84`. Older archived
+mandate/task records retain history and are not recreated. No real-user adoption
+or physical-device validation is claimed by the synthetic courses.

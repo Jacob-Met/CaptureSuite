@@ -11,15 +11,12 @@ through a write queue, and inbound data is read only after PeekNamedPipe.
 
 from __future__ import annotations
 
-import ctypes
 import json
-import msvcrt
 import os
 import queue
 import threading
 import time
 from collections.abc import Callable
-from ctypes import wintypes
 from pathlib import Path
 from typing import Any
 
@@ -33,25 +30,13 @@ from capture_protocol.generated.capture.v1 import (
 from capture_protocol.generated.capture.v1.common_pb2 import MessageType
 from capture_protocol.handshake import build_ui_hello
 
-_kernel32 = ctypes.WinDLL("kernel32", use_last_error=True)
-_kernel32.PeekNamedPipe.argtypes = [
-    wintypes.HANDLE,
-    wintypes.LPVOID,
-    wintypes.DWORD,
-    ctypes.POINTER(wintypes.DWORD),
-    ctypes.POINTER(wintypes.DWORD),
-    ctypes.POINTER(wintypes.DWORD),
-]
-_kernel32.PeekNamedPipe.restype = wintypes.BOOL
-
 
 def _peek_available(fd: int) -> int:
-    handle = msvcrt.get_osfhandle(fd)
-    avail = wintypes.DWORD(0)
-    ok = _kernel32.PeekNamedPipe(handle, None, 0, None, ctypes.byref(avail), None)
-    if not ok:
-        raise OSError(ctypes.get_last_error(), "PeekNamedPipe failed")
-    return int(avail.value)
+    # Offline analysis imports this module on Linux too. Load the Windows pipe
+    # adapter only when an actual capture connection reads from its pipe.
+    from capture_protocol.windows_pipe import peek_available
+
+    return peek_available(fd)
 
 
 class ControlClientError(RuntimeError):
@@ -97,6 +82,10 @@ class ControlClient:
             return None
 
     def connect(self) -> common_pb2.HelloAck:
+        if os.name != "nt":
+            raise ControlClientError(
+                "Live capture uses Windows named pipes. Use offline analysis on this platform."
+            )
         deadline = time.time() + self.timeout_s
         last_err: Exception | None = None
         while time.time() < deadline:

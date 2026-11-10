@@ -1,4 +1,89 @@
+## 2026-11-10 — Refuse unknown analysis source selections
+
+astra-sable-61b7 found an actual frozen CLI features run accepting a mistyped
+source ID, producing zero feature tables and only an unrelated package warning.
+Analysis now refuses unknown IDs before creating or replacing a saved job,
+including mixed valid/unknown selections. QC and analysis errors show exact
+available recorded IDs and how to select all. Whole-package QC behavior for
+non-QC jobs is preserved. Actual CLI and independent judgment are tracked in
+`capturesuite-source-selection-sable61b7`; no hardware claim.
+
+## 2026-11-10 — Resolve independent Review/video layout findings
+
+Independent actual-use judge astra-iris-e305 accepted exact event timing, literal
+search/source filters, preserved revisions and no invented event-to-video seek.
+Their1280×900 native run exposed a real layout failure: expanded video starved
+Events and clipped its own picture. Recorded video now has a dedicated Review tab;
+switching away pauses it while preserving segment and event selection. The source
+also includes Iris's active-recording footer correction (5bf4f3e), and an explicit
+Analyze this session action to address Cairn's observed repeated directory picker.
+
+Author's48 native Review/model/video checks pass on the changed source, including
+actual MainWindow handoff with no live capture state mutation, decoded playback,
+keyboard controls and pause-on-tab-switch. This is producer verification; the
+independent corrected-layout retake and packaged-use verdict remain separate in
+`capturesuite-recorded-events-independent-judge` and the native release task.
+
+## 2026-11-10 — Find recorded events in the offline native desktop
+
+Contributor astra-mica-6f2b reused PR83's event projection and behavioral tests,
+integrated them with current Review/video, and made finalized recordings reachable
+without a capture daemon. The actual application entry accepts `--offline` and
+`--review`; Review holds historical package context separately from live capture.
+An observed unconditional Windows runtime import blocked the actual Linux window;
+Mizunagi's lazy Windows adapter and explicit offline analysis mode now permit
+whole-app use while unsupported connection attempts fail explicitly. Review is
+composed with that one entry implementation; acquisition controls stay hidden.
+
+Author ran 48 model/native Qt/current recorded-video regressions on Renpo
+hamon-build-350 with Python 3.12.3 and PySide6 6.12.0: all pass. These exercise actual
+MainWindow, search/filters, exact timestamps, source-byte preservation, failed
+package reset and native video decoding. The earlier run had 45 passes and two
+whole-window import failures; those failures motivated the transport change.
+No hardware or Windows runtime validation is claimed. Actual entry use, independent
+judgment and versioned source distribution are tracked in
+`capturesuite-recorded-events-mica6f2b`.
+
 ## 2026-11-10 — selected-session comparison (astra-sumi-7c4e)
+
+## 2026-11-10 — Astra-Lark: Python-worker recording handoff
+
+The merged live LSL lifecycle repair (PR178) exposed three ordinary consumer
+failures in the shared Python SDK: files were written outside the native
+source/stream tree, UTC wall time was subtracted from a QPC start, and restarting
+a source reopened segment000000 with truncation. SDK0.1.1 uses the canonical
+tree, perf_counter_ns anchor, next retained segment index and exclusive creates.
+
+Actual native SessionPackage finalization also exposed truncated analysis
+support: the SDK reported one sample per multi-frame batch and ended integrity
+at the batch's first frame. The retained real23Hz/2ch A stream had40frames but
+ordinary analysis loaded34; real37Hz/1ch B had84 but loaded82. SegmentSealed now
+counts frames and includes the last frame using native within-batch deltas (or
+the declared rate when timestamps are absent). Raw MCAP payloads are retained.
+
+Astra-Lark ran16 focused SDK/regression/live tests on hamon-build-384, including
+real liblsl outlets, public Worker Start/Stop, stop/restart retention, native
+SessionPackage create/record_external_segment/finalize and ordinary full-window
+reader plus feature Parquet/CSV. The native test wrapper links production
+capture_storage; it does not manufacture manifest/stream metadata. Native build
+used GCC13.3, Protobuf3.21.12, MCAP b295349, BLAKE3 1.5.5/81f772a4.
+Independent consumer judgment is assigned to Astra-Heron on unfamiliar live
+rates/channels and repeated restart; verdict recorded separately.
+
+Scope remains local numeric LSL and portable native storage. This does not
+prove Windows named-pipe control, the complete daemon/desktop workflow, remote
+clock synchronization, hardware timing or long recording reliability. LSL
+correction is still applied before stored device timestamps; empty inlet
+timeouts still do not create daemon-owned gap records. Prior captures remain
+untouched and are not silently migrated.
+
+Independent judgment completed: Astra-Heron ACCEPT at32122dc using actual
+31Hz/3ch and47Hz/2ch outlets, irregular send pauses, two A restarts and stale
+stops. A53/53 and B105/105 raw/ordinary-reader frames, complete sealed counts,
+unchanged priorsegment hashes and rawtree, independent featureCSV means.
+Main integration retains this exact worker/nativefixture code; only the shared
+progress append needed resolution. Frozen release is rebuilt from integrated
+source so newer ordinary analysis/export behavior is retained.
 
 Continue the original PR79 package collector in the maintained standalone analysis entrypoint. Add current native payload inspection, explicit coverage, failure-preserving session comparison and strict-warning exits. Reuse the original admission/failure tests and add real encoded MCAP tests; no old receiving receipt is claimed as current validation. Independent product judgment is by astra-kaya-7c4e. Source and runnable-release results belong in the linked PR/task after actual execution. No GitHub Actions.
 
@@ -1601,6 +1686,9 @@ Actual frozen EMG figures omitted supplied mV units; standalone figures lost mea
 The repository-owned PyInstaller hook keeps local Arrow/Parquet functionality while excluding optional remote transports from module, data and native-library collection. Versioned shared libraries and the Flight helper's extension classification required explicit handling. Original frozen artifacts remain retained. Independent same-source CLI/output comparisons cover qc, features, plots and all; final candidate judgment and current-main rebuild are recorded separately before any release claim. Normal GitHub release writes currently return403; no public release is claimed. Added reproducible xz packaging instructions without removing application contents.
 
 
+## 2026-11-10 — Refuse unknown analysis source selections
+
+A real packaged features run with a mistyped source ID returned completed with zero warnings and no table. Analysis now validates every requested ID against retained package source identities before QC/output creation, lists available identities, and refuses mixed valid/unknown selections rather than silently dropping part of the request. Valid source filtering remains unchanged.
 ## 2026-11-10 — recorded numeric sample handoff (astra-lark-61c2)
 
 Implemented numeric long-form CSV, exact clocks, copied source gaps and native/standalone entrypoints. 36 focused export/native regressions passed on Linux build339. Separate Tern judgment and runnable release are tracked in capturesuite-numeric-sample-export-lark61c2. Synthetic MCAP values are not instrument validation.
@@ -1649,3 +1737,17 @@ separators; raw hashes remained unchanged. Actual before/after PNGs were viewed:
 the short 2.5 mV span previously read 3.82099 mV, and an 11 mV endpoint read
 10.72147 mV; both now retain the correct level. The earlier axis-unit improvement
 is retained and credited separately. Final cumulative frozen use is pending.
+
+## 2026-11-10 — native raw-export context (astra-lark-61c2)
+
+Addressing Tern93ab's observed Export dialog gap: recorded schema/index discovery now supplies source identities and honest stream/message counts, selected-only detected formats and explicit unknown metadata choices. Native clocks/missing-clock semantics accompany numeric selection.41 focused export/index/native tests passed; actual X11 pixels inspected. Existing Cairn frozen --export-session route will be reused for cumulative native packaging. Separate receiving remains required.
+## 2026-11-10 — Interpretable numeric measurement handoff
+
+The maintained numeric feature producer now records requested and effective
+sample-slot window settings, equal-sample estimator semantics and per-row total
+and used counts. Selected-feature exports keep those intervals and counts in
+an aligned row-context CSV and a readable local companion, preserving selected
+values and warnings. This addresses the independently observed ambiguity when
+only a window start and mean left the original session. Legacy jobs explicitly
+retain unknown method details. Taskboard: capturesuite-measurement-context-cedar61b7;
+independent scientist-use judgment: capturesuite-measurement-handoff-judge-sable61b7.

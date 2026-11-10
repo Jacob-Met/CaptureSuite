@@ -4,7 +4,11 @@ Use this when an external notebook, statistics package or spreadsheet needs the
 recorded channel values, rather than the derived feature table.
 
 In the desktop, open a sealed session, choose **Export**, select **Numeric samples**,
-and choose a new or empty destination. Or use the standalone Linux executable:
+and choose a new or empty destination. The dialog selects discovered recorded data
+by default and lists its source identities, stream count and indexed message count.
+A message can contain many samples; counts are not a quality or sample-count claim.
+Unavailable formats are summarized. If an index cannot be read or classified,
+choices remain available with an explicit incomplete-metadata note. Or use the standalone Linux executable:
 
 ```sh
 ./capturesuite-analysis export-session recording.mmsession exported-samples --modalities numeric --verify
