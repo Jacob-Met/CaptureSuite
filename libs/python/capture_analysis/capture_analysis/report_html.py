@@ -6,6 +6,8 @@ from __future__ import annotations
 from html import escape
 from typing import Any
 
+from capture_analysis.report_numeric_preview import numeric_previews_html
+
 
 def _seconds(value: str | int | None) -> str:
     if value is None:
@@ -124,6 +126,25 @@ th {{ background: #f4f4f4; }}
 .table-scroll {{ overflow-x: auto; }}
 .warnings {{ padding-left: 1.4rem; overflow-wrap: anywhere; }}
 .warnings li {{ margin-bottom: 0.6rem; }}
+.preview {{ margin: 24px 0; border-top: 2px solid #c8d0da; padding-top: 12px; }}
+.preview h3 {{ margin: 0 0 8px; font-size: 1rem; overflow-wrap: anywhere; }}
+.preview p {{ max-width: 90ch; line-height: 1.45; }}
+.trace {{ margin: 12px 0; }}
+.trace figcaption {{ font-weight: 600; overflow-wrap: anywhere; }}
+.trace-chart {{ display: grid; grid-template-columns: 64px minmax(0, 1fr); max-width: 1100px; }}
+.trace svg {{ display: block; width: 100%; height: 140px; }}
+.trace-y {{ display: flex; flex-direction: column; justify-content: space-between;
+  padding: 13px 8px 13px 0; text-align: right; }}
+.trace-y, .trace-x, .trace-axis {{ font: 12px Consolas, ui-monospace, monospace; color: #5a6573; }}
+.trace-x {{ grid-column: 2; display: flex; justify-content: space-between; }}
+.trace-axis {{ margin: 8px 0 0 64px; text-align: center; max-width: 1036px; }}
+.trace .batch {{ stroke: #8d9aab; stroke-width: 1; stroke-dasharray: 4 4; }}
+.trace text {{ font: 12px Consolas, ui-monospace, monospace; fill: #5a6573; }}
+.trace .signal {{ stroke: #2563eb; stroke-width: 1.5; fill: none; }}
+.trace .point {{ fill: #2563eb; }}
+.trace .grid {{ stroke: #c8d0da; stroke-width: 1; }}
+.preview summary {{ cursor: pointer; padding: 8px 0; }}
+.preview .meta {{ overflow-wrap: anywhere; }}
 @media (max-width: 600px) {{ body {{ margin: 12px; }} }}
 .gaps td:nth-child(n+5) {{ font-family: Consolas, ui-monospace, monospace; }}
 </style>
@@ -179,6 +200,7 @@ None of these statuses establishes calibrated sensor accuracy.</p>
 {stream_rows or "<tr><td colspan='9'>(none)</td></tr>"}
 </table>
 </div>
+{numeric_previews_html(qc.get("streams") or [])}
 
 </body>
 </html>
