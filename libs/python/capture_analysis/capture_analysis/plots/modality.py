@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from textwrap import fill
 
 import numpy as np
 from capture_analysis.plots.style import (
@@ -26,7 +27,7 @@ def plot_emg_channels(
     if loaded.X.size == 0:
         return
     n = min(max_channels, len(loaded.channel_ids))
-    fig, axes = new_fig(n, height=1.8)
+    fig, axes = new_fig(n, height=2.2)
     for i in range(n):
         plot_recorded_series(
             axes[i],
@@ -37,7 +38,8 @@ def plot_emg_channels(
             linewidth=0.6,
             color="#35c46b",
         )
-        axes[i].set_ylabel(loaded.channel_ids[i][:12])
+        axes[i].set_title(fill(loaded.channel_ids[i], width=80), loc="left", fontsize=9)
+        axes[i].set_ylabel(loaded.units or "units unspecified")
         shade_recorded_gaps(axes[i], gaps, window, loaded.t_sample_ns)
     axes[-1].set_xlabel("session time (s)")
     fig.suptitle("EMG channels", fontsize=11)
@@ -68,7 +70,7 @@ def plot_imu_accel(
         )
     shade_recorded_gaps(ax, gaps, window, loaded.t_frame_ns)
     ax.legend(loc="upper right", fontsize=8)
-    ax.set_ylabel("|a|")
+    ax.set_ylabel(f"|a| ({loaded.units or 'units unspecified'})")
     ax.set_xlabel("session time (s)")
     fig.suptitle("IMU acceleration magnitude", fontsize=11)
     save_fig(fig, path)

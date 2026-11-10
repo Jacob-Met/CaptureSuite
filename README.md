@@ -108,6 +108,16 @@ calibration, true device sampling rate, video pixels or medical validity.
 The bundled synthetic demo contains text placeholders, so do not enable
 payload inspection on it expecting a clean sample-quality result.
 
+## Compare selected recordings
+
+~~~bash
+capturesuite-analysis review FIRST.mmsession SECOND.mmsession --inspect-payloads --output NEW_DIR
+~~~
+
+Compare decode coverage, gaps and warnings, then open the original QC reports.
+The review is written outside the recordings. See [Compare selected
+recordings](docs/QC_PACKAGE_REVIEW.md).
+
 ## Export a saved feature selection
 
 Use `capturesuite-analysis export-table JOB_DIR --list` in the Linux offline

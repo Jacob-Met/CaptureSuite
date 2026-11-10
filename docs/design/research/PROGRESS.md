@@ -34,6 +34,10 @@ No hardware or Windows runtime validation is claimed. Actual entry use, independ
 judgment and versioned source distribution are tracked in
 `capturesuite-recorded-events-mica6f2b`.
 
+## 2026-11-10 — selected-session comparison (astra-sumi-7c4e)
+
+Continue the original PR79 package collector in the maintained standalone analysis entrypoint. Add current native payload inspection, explicit coverage, failure-preserving session comparison and strict-warning exits. Reuse the original admission/failure tests and add real encoded MCAP tests; no old receiving receipt is claimed as current validation. Independent product judgment is by astra-kaya-7c4e. Source and runnable-release results belong in the linked PR/task after actual execution. No GitHub Actions.
+
 ## 2026-11-10 — Inspect exact numeric samples in the offline QC report
 
 Astra-Lumen recovered the unfinished numeric trace outcome in the existing
@@ -1528,6 +1532,9 @@ Linden reproduced fabricated waveform length and zero crossings when valid sampl
 
 Two encoded MCAP batches at 0/1ms and 4/5ms reproduced a remaining false WL2/ZC1 across a declared 2–3ms disconnect. Pair adjacency now excludes any declared gap intersecting the pair interval, including gaps with no stored sample. Added real MCAP loader regression and undeclared-gap control; no heuristic sampling-rate gap threshold is introduced.
 
+## 2026-11-10 — Combined analysis with decoded-sample QC
+
+The maintained CLI now accepts all --inspect-payloads, forwarding the opt-in to the existing QC decoder before generating features/plots. Defaults and signal mathematics stay unchanged. Real EMG/IMU consumer tests exercise qc and all; native package receiving remains separate.
 ### 2026-11-10 — EMG recorded index continuity (astra-larch-91e)
 
 Reproduced decoded EMG QC reporting `ok` for valid protobuf MCAP with a forward
@@ -1602,3 +1609,24 @@ Separate judgment and downloadable component distribution are tracked in
 claim. Existing corrected-versus-native timestamp retention, wall-clock/QPC
 anchor mismatch and worker/package path integration are explicit follow-ups in
 the plugin README. No analysis/QC/plot code changed.
+
+## 2026-11-10 — QC selected-source scope
+
+Actual released CLI accepted EMG-only QC selection but returned IMU warnings and two streams. QC now filters before decode and gap evaluation, reports selection explicitly, and rejects unknown IDs. Unfiltered QC and feature-job package inventory behavior are preserved. Real sealed MCAP CLI controls and raw hashes tested, plus excluded-source open-gap case.
+
+### 2026-11-10 — discover retained jobs from the offline executable (astra-61a0-reed)
+
+Independent scoped use found that analysts must manually locate saved job/table paths before export. The maintained `jobs PACKAGE` command exposes recorded statuses, warnings, errors, source/stream tables and exact follow-up paths without original raw sources or recomputation. Corrupt saved metadata remains visible beside healthy jobs. Task capturesuite-saved-job-discovery-reed61a0 records fleet tests and fresh packaged judgment.
+
+### 2026-11-10: enforce fail gap policy before feature output
+
+Frozen CLI accepted a known disconnect containing no stored samples and wrote CSV despite --gap-policy fail. Declared overlaps now fail before any selected handler output, independently of stored-sample masks; unselected sources and out-of-window gaps remain permitted. End-to-end CLI regression covers those scopes.
+
+### 2026-11-10: units in exported research figures
+
+Actual frozen EMG figures omitted supplied mV units; standalone figures lost measurement interpretation. EMG/IMU plots and sync dashboard now show loaded units, full channel/source identity, and persist dashboard axis labels for downstream export. Missing unit strings remain explicitly unspecified. This is display provenance, not calibration verification.
+
+
+## 2026-11-10: smaller standalone offline analysis packaging
+
+The repository-owned PyInstaller hook keeps local Arrow/Parquet functionality while excluding optional remote transports from module, data and native-library collection. Versioned shared libraries and the Flight helper's extension classification required explicit handling. Original frozen artifacts remain retained. Independent same-source CLI/output comparisons cover qc, features, plots and all; final candidate judgment and current-main rebuild are recorded separately before any release claim. Normal GitHub release writes currently return403; no public release is claimed. Added reproducible xz packaging instructions without removing application contents.
