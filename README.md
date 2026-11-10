@@ -64,8 +64,11 @@ not establish hardware performance, clinical validity, or full product readiness
 Tests: `tests/analysis/test_offline_demo.py`.
 
 For the pre-release **Linux x86-64 standalone offline analysis executable**
-(no Python installation required), see
-[Offline Analysis Linux](docs/OFFLINE_ANALYSIS_LINUX.md).
+(no Python installation required), [download version 0.1.5](https://github.com/Jacob-Met/CaptureSuite/releases/tag/offline-analysis-v0.1.5-measurement-context)
+and follow [Offline Analysis Linux](docs/OFFLINE_ANALYSIS_LINUX.md).
+Selected numeric exports retain readable method and sample-support context;
+mistyped source IDs fail before replacing saved analysis. The release includes
+real handoff screenshots and a short screen recording.
 
 ## Validate recorded MCAP bytes in a sealed session
 

@@ -95,13 +95,18 @@ keep [README.md](README.md) and the release notes accurate about what runs.
 
 ## Current build and improvement
 
-The [cumulative Linux CLI release](https://github.com/Jacob-Met/CaptureSuite/releases/tag/offline-analysis-v0.1.4-reed61a0)
-at source `b5b979dd335bfe14aed8fc9ebc07a10cd24e9619` provides retained-job discovery,
-selected-column CSV/Parquet export and exact saved-time interval selection.
-The published archive was independently downloaded and run without Python on
-PATH against a moved saved result with no raw sources present. It retained the
-requested two rows, column order and original input bytes. That establishes
-runnable offline data handoff; all receiving measurements remain synthetic.
+The [current experimental Linux CLI release](https://github.com/Jacob-Met/CaptureSuite/releases/tag/offline-analysis-v0.1.5-measurement-context)
+ships source `4bc3552f1c673c69de3540678d7dcbccec17e0c3`. Selected numeric
+measurements now carry readable method, window and sample-support context;
+unknown source IDs fail before replacing a useful saved job.
+
+Independent Sable downloaded the public archive and ran four-row gapped/native-time
+and 9,375-row handoffs without Python on PATH. Values and aligned support matched
+the accepted expectations. Cedar independently exercised the downloaded
+source-selection repair: refusal retained the earlier result, then corrected
+two-source analysis produced usable tables and figures. The release includes
+actual desktop/phone views and a short real screen recording. These are controlled
+MCAP engineering results, not physical-device or real-user adoption evidence.
 
 The native source adds descriptive history, whole-figure fitting, actual table
 previews, deliberate column order, cancellation and a compact result-focused

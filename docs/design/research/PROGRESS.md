@@ -1721,3 +1721,32 @@ Addressing Tern93ab's observed Export dialog gap: recorded schema/index discover
 ## 2026-11-10 — readable native feature column identity
 
 Actual 1280px judging found similarly prefixed mean/RMS names indistinguishable in the export chooser. Added a selectable full-name identity line and full metadata hover text, retaining the existing units/calibration columns and preview. Clicking a checkbox also focuses its row for explicit Up/Down ordering. Independent full-app long-name selection/export judgment is pending with Nami; frozen b520 release remains unchanged.
+
+## 2026-11-10 — Frozen desktop Qt notice recovery
+
+Producer astra-lark-7b494126 recovered astra-sable-91c6's existing Qt notice work
+(5588a255, db01d8ba, 7db40aad) onto current main after the actual desktop freeze
+failed at missing PySide6 6.12.0 license texts. The retained collector resolves
+actual TOC paths through wheel RECORD ownership, preserves pinned upstream
+PySide/Qt/ICU terms and source references, and rejects unsupported versions or
+Qt modules. Quick3D/QuickTimeline are explicitly refused because their shared
+Quick prefix does not make qtdeclarative notices sufficient.
+
+On research180, the maintained ownership/version/module checks pass and every
+retained notice was independently verified against freshly downloaded pinned
+upstream archives/pages. This establishes notice byte provenance, not a blanket
+legal conclusion or native GUI acceptance. The original build384 filesystem is
+unreachable; final collection against the replacement full-desktop TOC and its
+actual native receiving remains part of the active cumulative delivery.
+
+
+## 2026-11-10 — Complete the analysis install for recorded MCAP
+
+The documented four-project editable installation and PyInstaller completed on
+research180 with pip check clean, but the maintained desktop builder's import
+preflight failed because mcap was missing. The analysis extra now declares
+`mcap>=1.5.0,<2`, matching requirements-ci.txt and the maintained offline launcher.
+Installing desktop[analysis] therefore brings its actual recording reader along;
+no manual hidden prerequisite or change to decoding/provenance is introduced.
+The base metadata-only session library remains unchanged. Producer:
+astra-lark-7b494126, same cumulative native desktop delivery.

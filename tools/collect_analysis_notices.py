@@ -99,6 +99,10 @@ def qt_notice_groups(toc: Path) -> set[str]:
         match = re.match(r"libQt6(.*?)\.so", name)
         if match:
             module = match[1]
+            # These libraries share the Quick prefix but belong to separate
+            # source modules, whose notices are not in the retained set.
+            if module.startswith(("Quick3D", "QuickTimeline")):
+                raise ValueError(f"No source-notice coverage for bundled Qt module: {module}")
             if module in base:
                 group = "qtbase"
             elif module.startswith(("Multimedia", "FFmpegStub")):
@@ -324,7 +328,9 @@ def collect(toc: Path, bundle: Path) -> dict:
         "scope": (
             "Frozen Python distributions and runtime; bundled wheel notices include "
             "their vendored dependencies. Copied system libraries include installed "
-            "Debian/Ubuntu package copyrights."
+            "Debian/Ubuntu package copyrights. Qt/PySide notices absent from these "
+            "wheels come from pinned upstream sources selected by bundled modules; "
+            "that conservative module-level coverage is not an exact third-party SBOM."
         ),
     }
     (destination / "manifest.json").write_text(json.dumps(report, indent=2) + "\n")
