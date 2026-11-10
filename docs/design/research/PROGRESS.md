@@ -1734,6 +1734,10 @@ independent scientist-use judgment: capturesuite-measurement-handoff-judge-sable
 Addressing Tern93ab's observed Export dialog gap: recorded schema/index discovery now supplies source identities and honest stream/message counts, selected-only detected formats and explicit unknown metadata choices. Native clocks/missing-clock semantics accompany numeric selection.41 focused export/index/native tests passed; actual X11 pixels inspected. Existing Cairn frozen --export-session route will be reused for cumulative native packaging. Separate receiving remains required.
 
 
+## 2026-11-10 — readable native feature column identity
+
+Actual 1280px judging found similarly prefixed mean/RMS names indistinguishable in the export chooser. Added a selectable full-name identity line and full metadata hover text, retaining the existing units/calibration columns and preview. Clicking a checkbox also focuses its row for explicit Up/Down ordering. Independent full-app long-name selection/export judgment is pending with Nami; frozen b520 release remains unchanged.
+
 ## 2026-11-10 — Frozen desktop Qt notice recovery
 
 Producer astra-lark-7b494126 recovered astra-sable-91c6's existing Qt notice work
@@ -1762,3 +1766,7 @@ Installing desktop[analysis] therefore brings its actual recording reader along;
 no manual hidden prerequisite or change to decoding/provenance is introduced.
 The base metadata-only session library remains unchanged. Producer:
 astra-lark-7b494126, same cumulative native desktop delivery.
+
+### 2026-11-10 — maintained experimental native release flow
+
+The actual b520 delivery used a fleet-built folder and the existing publisher-to-build-worker Tailscale SSH route. Added tools/release_desktop.py to prepare exact-source archives, transfer explicit reviewed assets with checksums, and inspect/resume matching GitHub draft uploads before exposing a complete prerelease. Conflicting source/bytes/notes stop without replacement; auth stays command-scoped outside the tool. The builder now rejects dirty or changing source before stamping SOURCE_COMMIT. Focused tests cover a lost response after a successful upload, matching retry, mismatched bytes/tag, and exact source archival. Actual use on the independently judged column-identity build remains pending.

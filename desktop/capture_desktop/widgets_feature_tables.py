@@ -92,6 +92,15 @@ class FeatureTableView(QWidget):
         self._warning.setObjectName("Dim")
         root.addWidget(self._warning)
 
+        self._column_identity = _label()
+        self._column_identity.setObjectName("analysisColumnIdentity")
+        self._column_identity.setAccessibleName("Full feature column identity")
+        self._column_identity.setTextInteractionFlags(
+            Qt.TextInteractionFlag.TextSelectableByMouse
+            | Qt.TextInteractionFlag.TextSelectableByKeyboard
+        )
+        root.addWidget(self._column_identity)
+
         split = QSplitter()
         split.setChildrenCollapsible(False)
         selection = QWidget()
@@ -188,6 +197,10 @@ class FeatureTableView(QWidget):
         self._time_selection.selection_changed.connect(self._sync)
         self._tables.currentIndexChanged.connect(self._select_table)
         self._columns.itemChanged.connect(self._sync)
+        self._columns.currentItemChanged.connect(self._show_column_identity)
+        self._columns.itemClicked.connect(
+            lambda item, _column: self._columns.setCurrentItem(item)
+        )
         self._parent_path.textChanged.connect(self._sync)
         self._folder_name.textChanged.connect(self._sync)
         self._all.clicked.connect(lambda: self._set_checks(Qt.CheckState.Checked))
@@ -312,6 +325,12 @@ class FeatureTableView(QWidget):
                 "Calibrated" if column.get("calibrated") else "Not calibrated",
             ])
             item.setData(0, Qt.ItemDataRole.UserRole, column["name"])
+            identity = (
+                f"{column['name']}\nUnit: {column['units'] or 'not specified'}"
+                f"\n{item.text(2)}"
+            )
+            for section in range(3):
+                item.setToolTip(section, identity)
             item.setFlags(item.flags() | Qt.ItemFlag.ItemIsUserCheckable)
             item.setCheckState(0, Qt.CheckState.Checked)
             self._columns.addTopLevelItem(item)
@@ -356,6 +375,15 @@ class FeatureTableView(QWidget):
             "Choose columns in export order, then a new folder outside the recording."
         )
         self._sync()
+
+    def _show_column_identity(self, item, _previous=None) -> None:
+        if item is None:
+            self._column_identity.clear()
+            return
+        self._column_identity.setText(
+            f"Column: {item.data(0, Qt.ItemDataRole.UserRole)}"
+            f" · Unit: {item.text(1) or 'not specified'} · {item.text(2)}"
+        )
 
     def selected_columns(self) -> tuple[str, ...]:
         return tuple(
