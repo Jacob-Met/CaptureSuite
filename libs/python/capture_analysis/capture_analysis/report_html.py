@@ -94,7 +94,10 @@ def _inspection_cell(stream: dict[str, Any]) -> str:
     zero_quaternions = inspection.get("zeroQuaternionSensorSamples")
     if zero_quaternions:
         notes.append(f"zero quaternion sensor samples: {int(zero_quaternions)}")
-    detail = "<div class='meta'>" + escape("; ".join(notes)) + "</div>" if notes else ""
+    detail = (
+        "<div class='meta'>" + "<br/>".join(escape(note) for note in notes) + "</div>"
+        if notes else ""
+    )
     return escape(status) + detail
 
 
@@ -136,7 +139,7 @@ th {{ background: #f4f4f4; }}
 .ok {{ color: #1a7f37; font-weight: 600; }}
 .warn {{ color: #9a6700; font-weight: 600; }}
 .fail {{ color: #cf222e; font-weight: 600; }}
-.meta {{ color: #555; font-size: 0.85rem; }}
+.meta {{ color: #555; font-size: 0.85rem; overflow-wrap: anywhere; line-height: 1.4; }}
 .table-scroll {{ overflow-x: auto; }}
 .gaps td:nth-child(n+5) {{ font-family: Consolas, ui-monospace, monospace; }}
 </style>
@@ -179,12 +182,14 @@ A green light does not establish signal quality. Payload inspection is optional:
 "numeric_samples_checked", "emg_samples_checked", and "imu_frames_checked"
 confirm decoded measurements and checked frame counts.
 None of these statuses establishes calibrated sensor accuracy.</p>
+<div class="table-scroll">
 <table>
 <tr><th>source</th><th>stream</th><th>modality</th><th>schema</th>
 <th>rate Hz</th><th>units</th><th>mcap/mkv</th>
 <th>payload inspection</th><th>sample frames checked</th></tr>
 {stream_rows or "<tr><td colspan='9'>(none)</td></tr>"}
 </table>
+</div>
 
 <h2>Warnings</h2>
 <ul>{warn_items}</ul>
