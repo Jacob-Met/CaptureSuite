@@ -257,6 +257,8 @@ def run(
     warnings = list(qc_dict.get("warnings") or [])
     qc_warning_count = len(warnings)
     schema_warnings: list[str] = []
+    report_time_range: dict[str, Any] | None = None
+    sources: list[str] | None = None
     feature_tables: list[dict[str, Any]] = []
     previous: Path | None = None
     log_lines = [
@@ -276,6 +278,9 @@ def run(
             "analysisWarnings": list(warnings[qc_warning_count:analysis_end]),
             "validationWarnings": list(schema_warnings),
             "errors": list(errors),
+            "timeRange": dict(report_time_range) if report_time_range is not None else None,
+            "sourcesSelected": list(sources) if sources is not None else None,
+            "checkpointSection": params.checkpoint_section,
         }
         html = render_qc_html(qc_dict, job=context).encode("utf-8")
         # The output inventory must describe only the final report bytes.
@@ -296,6 +301,16 @@ def run(
             end_ns=params.end_session_ns,
             checkpoint_section=params.checkpoint_section,
         )
+
+        report_time_range = {
+            "mode": window.label,
+            "startSessionNs": window.start_session_ns,
+            "endSessionNs": window.end_session_ns,
+            "checkpointIds": ([params.checkpoint_section] if params.checkpoint_section else []),
+        }
+        sources = sorted({s["sourceId"] for s in qc_dict["streams"]})
+        if params.sources:
+            sources = [s for s in sources if s in params.sources]
 
         fp_extra: dict[str, Any] = {}
         do_features = params.command in ("features", "all")
@@ -393,9 +408,6 @@ def run(
         digest = _params_digest(params)
         status = "completed_with_warnings" if warnings else "completed"
         modalities = sorted({s["modality"] for s in qc_dict["streams"] if s.get("modality")})
-        sources = sorted({s["sourceId"] for s in qc_dict["streams"]})
-        if params.sources:
-            sources = [s for s in sources if s in params.sources]
 
         try:
             import matplotlib
@@ -427,12 +439,7 @@ def run(
             "sessionId": qc_dict["sessionId"],
             "packageState": qc_dict["packageState"],
             "manifestSha256": qc_dict["manifestSha256"],
-            "timeRange": {
-                "mode": window.label,
-                "startSessionNs": window.start_session_ns,
-                "endSessionNs": window.end_session_ns,
-                "checkpointIds": ([params.checkpoint_section] if params.checkpoint_section else []),
-            },
+            "timeRange": report_time_range,
             "sourcesSelected": sources,
             "modalities": modalities,
             "gapPolicy": params.gap_policy,
