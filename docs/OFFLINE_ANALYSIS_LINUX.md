@@ -29,13 +29,13 @@ To compute provisional EMG/IMU features, create Parquet/CSV tables and
 figures with the bundled offline analysis pipeline:
 
 ```bash
-./capturesuite-analysis all "/data/my experiment.mmsession"
+./capturesuite-analysis all "/data/my experiment.mmsession" --inspect-payloads
 ```
 
 Five commands are supported in this experimental bundle: `qc`, `features`,
 `plots`, `all` and `export-table`. Run `./capturesuite-analysis qc --help` for options,
 including `--overwrite-job-id`, `--start-ns`, `--end-ns`, gap handling and
-the `--inspect-payloads` switch (the latter is only for `qc`). Exit code 0
+the `--inspect-payloads` switch (available for `qc` and `all`). Exit code 0
 means a job completed, 2 means strict warnings triggered or an unsupported
 bundled command was requested, and 1 means a job failed to run.
 
@@ -116,6 +116,7 @@ and figure files.
 
 The project is GPL-3.0-only; see the bundled `LICENSE` and `LICENSING.md`.
 
+`all --inspect-payloads --strict-warnings` combines decoded-sample QC, features and plots in one job. Without the flag, QC remains metadata-only. Inspection warnings propagate to strict exit 2; feature calculation does not turn a QC warning into a calibration claim.
 The build copies actual bundled third-party license/notice texts into
 `THIRD_PARTY_NOTICES/`, including the Python runtime, PyInstaller bootloader
 and CaptureSuite Apache-licensed contracts. `manifest.json` records notice hashes;
