@@ -91,6 +91,8 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
     expected = _SCHEMAS.get(schema_id)
     frames = 0
     layout: list[str] | None = None
+    last_device_time: int | None = None
+    frames_without_native_time = 0
     extrema: dict[str, tuple[float, float]] = {}
     observed_sensors: set[str] = set()
     zero_quaternions = 0
@@ -134,6 +136,16 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
                             raise ValueError("numeric timestamps must match the frame count")
                         if any(b < a for a, b in zip(device_times, device_times[1:], strict=False)):
                             raise ValueError("numeric timestamps move backward within a batch")
+                        if device_times:
+                            if last_device_time is not None and device_times[0] < last_device_time:
+                                raise ValueError(
+                                    "numeric timestamps move backward between batches or segments "
+                                    f"(previous {last_device_time}, next {device_times[0]})"
+                                )
+                            last_device_time = device_times[-1]
+                        else:
+                            # A nominal-rate clock is not proof of native timing continuity.
+                            frames_without_native_time += n
                         if not all(math.isfinite(value) for value in samples):
                             raise ValueError("numeric samples contain NaN or infinity")
                         frames += n
@@ -179,6 +191,13 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
                 sampleFramesChecked=frames,
                 detail="Decoded all declared-schema messages; checked shape and finite values",
             )
+            if schema_id == "generic.numeric_batch/1":
+                result["framesWithoutNativeTimestamps"] = frames_without_native_time
+                result["detail"] = (
+                    "Decoded NumericBatch values and ordered native timestamps across "
+                    "batches and segments where present; "
+                    f"{frames_without_native_time} frame(s) have no native timestamps"
+                )
             if layout:
                 result["channelIds"] = layout
             if schema_id == "emg.batch/1":
