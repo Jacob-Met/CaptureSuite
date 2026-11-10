@@ -1734,3 +1734,15 @@ upstream archives/pages. This establishes notice byte provenance, not a blanket
 legal conclusion or native GUI acceptance. The original build384 filesystem is
 unreachable; final collection against the replacement full-desktop TOC and its
 actual native receiving remains part of the active cumulative delivery.
+
+
+## 2026-11-10 — Complete the analysis install for recorded MCAP
+
+The documented four-project editable installation and PyInstaller completed on
+research180 with pip check clean, but the maintained desktop builder's import
+preflight failed because mcap was missing. The analysis extra now declares
+`mcap>=1.5.0,<2`, matching requirements-ci.txt and the maintained offline launcher.
+Installing desktop[analysis] therefore brings its actual recording reader along;
+no manual hidden prerequisite or change to decoding/provenance is introduced.
+The base metadata-only session library remains unchanged. Producer:
+astra-lark-7b494126, same cumulative native desktop delivery.
