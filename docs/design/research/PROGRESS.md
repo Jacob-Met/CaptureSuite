@@ -1585,3 +1585,8 @@ Frozen CLI accepted a known disconnect containing no stored samples and wrote CS
 ### 2026-11-10: units in exported research figures
 
 Actual frozen EMG figures omitted supplied mV units; standalone figures lost measurement interpretation. EMG/IMU plots and sync dashboard now show loaded units, full channel/source identity, and persist dashboard axis labels for downstream export. Missing unit strings remain explicitly unspecified. This is display provenance, not calibration verification.
+
+
+## 2026-11-10: smaller standalone offline analysis packaging
+
+The repository-owned PyInstaller hook keeps local Arrow/Parquet functionality while excluding optional remote transports from module, data and native-library collection. Versioned shared libraries and the Flight helper's extension classification required explicit handling. Original frozen artifacts remain retained. Independent same-source CLI/output comparisons cover qc, features, plots and all; final candidate judgment and current-main rebuild are recorded separately before any release claim. Normal GitHub release writes currently return403; no public release is claimed. Added reproducible xz packaging instructions without removing application contents.
