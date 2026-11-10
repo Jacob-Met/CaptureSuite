@@ -13,6 +13,9 @@ from typing import Any
 
 from capture_analysis.types import StreamRef
 
+_PREVIEW_FRAMES = 256
+_PREVIEW_CHANNELS = 6
+
 _SCHEMAS = {
     "generic.numeric_batch/1": {"capture.v1.data.NumericBatch", "generic.numeric_batch/1"},
     "emg.batch/1": {"capture.v1.data.EmgBatch", "emg.batch/1"},
@@ -90,6 +93,8 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
     schema_id = ref.data_schema_id
     expected = _SCHEMAS.get(schema_id)
     frames = 0
+    preview_batches: list[dict[str, Any]] = []
+    preview_frames = 0
     layout: list[str] | None = None
     last_device_time: int | None = None
     frames_without_native_time = 0
@@ -150,6 +155,28 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
                             frames_without_native_time += n
                         if not all(math.isfinite(value) for value in samples):
                             raise ValueError("numeric samples contain NaN or infinity")
+                        # Exact leading samples only: QC still checks every later frame.
+                        # A fixed channel/frame cap bounds retained report data regardless
+                        # of recording length; batch boundaries and native clocks survive.
+                        take = min(n, _PREVIEW_FRAMES - preview_frames)
+                        if take > 0:
+                            preview_batches.append(
+                                {
+                                    "firstFrame": frames,
+                                    "segment": path.name,
+                                    "messageIndex": per_segment - 1,
+                                    "sessionTimeNs": str(message.log_time),
+                                    "nativeTimeNs": [str(t) for t in device_times[:take]],
+                                    "values": [
+                                        samples[
+                                            i * channels : i * channels
+                                            + min(channels, _PREVIEW_CHANNELS)
+                                        ]
+                                        for i in range(take)
+                                    ],
+                                }
+                            )
+                            preview_frames += take
                         frames += n
                     elif schema_id == "emg.batch/1":
                         n, ids, limits = _decode_emg(message.data)
@@ -200,6 +227,18 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
                 detail="Decoded all declared-schema messages; checked shape and finite values",
             )
             if schema_id == "generic.numeric_batch/1":
+                result["numericPreview"] = {
+                    "schemaId": "capture.numeric_qc_preview/1",
+                    "selection": "first_recorded_frames",
+                    "framesShown": preview_frames,
+                    "framesChecked": frames,
+                    "frameLimit": _PREVIEW_FRAMES,
+                    "channelLimit": _PREVIEW_CHANNELS,
+                    "channelIds": (layout or [])[:_PREVIEW_CHANNELS],
+                    "totalChannels": len(layout or []),
+                    "units": ref.units,
+                    "batches": preview_batches,
+                }
                 result["framesWithoutNativeTimestamps"] = frames_without_native_time
                 result["detail"] = (
                     "Decoded NumericBatch values and ordered native timestamps across "
