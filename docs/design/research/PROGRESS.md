@@ -1,5 +1,44 @@
 ## 2026-11-10 — selected-session comparison (astra-sumi-7c4e)
 
+## 2026-11-10 — Astra-Lark: Python-worker recording handoff
+
+The merged live LSL lifecycle repair (PR178) exposed three ordinary consumer
+failures in the shared Python SDK: files were written outside the native
+source/stream tree, UTC wall time was subtracted from a QPC start, and restarting
+a source reopened segment000000 with truncation. SDK0.1.1 uses the canonical
+tree, perf_counter_ns anchor, next retained segment index and exclusive creates.
+
+Actual native SessionPackage finalization also exposed truncated analysis
+support: the SDK reported one sample per multi-frame batch and ended integrity
+at the batch's first frame. The retained real23Hz/2ch A stream had40frames but
+ordinary analysis loaded34; real37Hz/1ch B had84 but loaded82. SegmentSealed now
+counts frames and includes the last frame using native within-batch deltas (or
+the declared rate when timestamps are absent). Raw MCAP payloads are retained.
+
+Astra-Lark ran16 focused SDK/regression/live tests on hamon-build-384, including
+real liblsl outlets, public Worker Start/Stop, stop/restart retention, native
+SessionPackage create/record_external_segment/finalize and ordinary full-window
+reader plus feature Parquet/CSV. The native test wrapper links production
+capture_storage; it does not manufacture manifest/stream metadata. Native build
+used GCC13.3, Protobuf3.21.12, MCAP b295349, BLAKE3 1.5.5/81f772a4.
+Independent consumer judgment is assigned to Astra-Heron on unfamiliar live
+rates/channels and repeated restart; verdict recorded separately.
+
+Scope remains local numeric LSL and portable native storage. This does not
+prove Windows named-pipe control, the complete daemon/desktop workflow, remote
+clock synchronization, hardware timing or long recording reliability. LSL
+correction is still applied before stored device timestamps; empty inlet
+timeouts still do not create daemon-owned gap records. Prior captures remain
+untouched and are not silently migrated.
+
+Independent judgment completed: Astra-Heron ACCEPT at32122dc using actual
+31Hz/3ch and47Hz/2ch outlets, irregular send pauses, two A restarts and stale
+stops. A53/53 and B105/105 raw/ordinary-reader frames, complete sealed counts,
+unchanged priorsegment hashes and rawtree, independent featureCSV means.
+Main integration retains this exact worker/nativefixture code; only the shared
+progress append needed resolution. Frozen release is rebuilt from integrated
+source so newer ordinary analysis/export behavior is retained.
+
 Continue the original PR79 package collector in the maintained standalone analysis entrypoint. Add current native payload inspection, explicit coverage, failure-preserving session comparison and strict-warning exits. Reuse the original admission/failure tests and add real encoded MCAP tests; no old receiving receipt is claimed as current validation. Independent product judgment is by astra-kaya-7c4e. Source and runnable-release results belong in the linked PR/task after actual execution. No GitHub Actions.
 
 ## 2026-11-10 — Inspect exact numeric samples in the offline QC report
@@ -1595,41 +1634,7 @@ Actual frozen EMG figures omitted supplied mV units; standalone figures lost mea
 
 The repository-owned PyInstaller hook keeps local Arrow/Parquet functionality while excluding optional remote transports from module, data and native-library collection. Versioned shared libraries and the Flight helper's extension classification required explicit handling. Original frozen artifacts remain retained. Independent same-source CLI/output comparisons cover qc, features, plots and all; final candidate judgment and current-main rebuild are recorded separately before any release claim. Normal GitHub release writes currently return403; no public release is claimed. Added reproducible xz packaging instructions without removing application contents.
 
-## 2026-11-10 — Astra-Lark: Python-worker recording handoff
 
-The merged live LSL lifecycle repair (PR178) exposed three ordinary consumer
-failures in the shared Python SDK: files were written outside the native
-source/stream tree, UTC wall time was subtracted from a QPC start, and restarting
-a source reopened segment000000 with truncation. SDK0.1.1 uses the canonical
-tree, perf_counter_ns anchor, next retained segment index and exclusive creates.
+## 2026-11-10 — recorded numeric sample handoff (astra-lark-61c2)
 
-Actual native SessionPackage finalization also exposed truncated analysis
-support: the SDK reported one sample per multi-frame batch and ended integrity
-at the batch's first frame. The retained real23Hz/2ch A stream had40frames but
-ordinary analysis loaded34; real37Hz/1ch B had84 but loaded82. SegmentSealed now
-counts frames and includes the last frame using native within-batch deltas (or
-the declared rate when timestamps are absent). Raw MCAP payloads are retained.
-
-Astra-Lark ran16 focused SDK/regression/live tests on hamon-build-384, including
-real liblsl outlets, public Worker Start/Stop, stop/restart retention, native
-SessionPackage create/record_external_segment/finalize and ordinary full-window
-reader plus feature Parquet/CSV. The native test wrapper links production
-capture_storage; it does not manufacture manifest/stream metadata. Native build
-used GCC13.3, Protobuf3.21.12, MCAP b295349, BLAKE3 1.5.5/81f772a4.
-Independent consumer judgment is assigned to Astra-Heron on unfamiliar live
-rates/channels and repeated restart; verdict recorded separately.
-
-Scope remains local numeric LSL and portable native storage. This does not
-prove Windows named-pipe control, the complete daemon/desktop workflow, remote
-clock synchronization, hardware timing or long recording reliability. LSL
-correction is still applied before stored device timestamps; empty inlet
-timeouts still do not create daemon-owned gap records. Prior captures remain
-untouched and are not silently migrated.
-
-Independent judgment completed: Astra-Heron ACCEPT at32122dc using actual
-31Hz/3ch and47Hz/2ch outlets, irregular send pauses, two A restarts and stale
-stops. A53/53 and B105/105 raw/ordinary-reader frames, complete sealed counts,
-unchanged priorsegment hashes and rawtree, independent featureCSV means.
-Main integration retains this exact worker/nativefixture code; only the shared
-progress append needed resolution. Frozen release is rebuilt from integrated
-source so newer ordinary analysis/export behavior is retained.
+Implemented numeric long-form CSV, exact clocks, copied source gaps and native/standalone entrypoints. 36 focused export/native regressions passed on Linux build339. Separate Tern judgment and runnable release are tracked in capturesuite-numeric-sample-export-lark61c2. Synthetic MCAP values are not instrument validation.
