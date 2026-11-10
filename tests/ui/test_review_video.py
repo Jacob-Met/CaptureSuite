@@ -35,7 +35,7 @@ def _screen(qapp, tmp_path):
     screen.load_package(str(package))
     screen.show()
     video = screen._recorded_video
-    QTest.mouseClick(video._toggle, Qt.MouseButton.LeftButton)
+    screen._review_tabs.setCurrentWidget(video)
     qapp.processEvents()
     return screen, video, package
 
@@ -170,13 +170,13 @@ def test_hiding_and_keyboard_controls_do_not_autoplay(qapp, tmp_path):
     video._play.setFocus()
     QTest.keyClick(video._play, Qt.Key.Key_Space)
     _wait(qapp, lambda: _color(video, 0), "keyboard-started red frame")
-    QTest.mouseClick(video._toggle, Qt.MouseButton.LeftButton)
+    screen._review_tabs.setCurrentWidget(screen._events)
     _wait(
         qapp,
         lambda: video._player.playbackState() == QMediaPlayer.PlaybackState.PausedState,
-        "collapse pauses media",
+        "leaving video pauses media",
     )
-    QTest.mouseClick(video._toggle, Qt.MouseButton.LeftButton)
+    screen._review_tabs.setCurrentWidget(video)
     assert video._player.playbackState() == QMediaPlayer.PlaybackState.PausedState
     screen.hide()
     qapp.processEvents()
@@ -212,8 +212,7 @@ def test_actual_main_window_video_buttons_keep_space_activation(qapp, tmp_path, 
         window.activateWindow()
         qapp.setActiveWindow(window)
         video = window.review._recorded_video
-        video._toggle.setFocus()
-        QTest.keyClick(video._toggle, Qt.Key.Key_Space)
+        window.review._review_tabs.setCurrentWidget(video)
         assert video._body.isVisible()
         video._choice.setCurrentIndex(1)
         _wait(qapp, lambda: video._ready, "application segment ready")
@@ -235,11 +234,10 @@ def test_actual_main_window_video_buttons_keep_space_activation(qapp, tmp_path, 
         video._play.setFocus()
         QTest.keyClick(video._play, Qt.Key.Key_Space)
         _wait(qapp, lambda: _color(video, 0), "application restarted video")
-        video._toggle.setFocus()
-        QTest.keyClick(video._toggle, Qt.Key.Key_Space)
-        assert not video._body.isVisible()
+        window.review._review_tabs.setCurrentWidget(window.review._events)
+        assert not video.isVisible()
         assert video._player.playbackState() == QMediaPlayer.PlaybackState.PausedState
-        QTest.keyClick(video._toggle, Qt.Key.Key_Space)
+        window.review._review_tabs.setCurrentWidget(video)
         assert video._body.isVisible()
         assert video._player.playbackState() == QMediaPlayer.PlaybackState.PausedState
         assert checkpoint_hits == []
@@ -251,6 +249,7 @@ def test_actual_main_window_video_buttons_keep_space_activation(qapp, tmp_path, 
         QTest.keyClick(video._play, Qt.Key.Key_Space, Qt.KeyboardModifier.ControlModifier)
         assert modified_hits == ["modified"]
         assert checkpoint_hits == ["checkpoint"]
+        window.review._review_tabs.setCurrentIndex(0)
         window.review._streams.setFocus()
         QTest.keyClick(window.review._streams, Qt.Key.Key_Space)
         assert checkpoint_hits == ["checkpoint", "checkpoint"]

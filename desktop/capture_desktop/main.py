@@ -31,12 +31,16 @@ def _ensure_path() -> None:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="CaptureSuite desktop")
-    parser.add_argument(
-        "--analysis", nargs="?", const="", metavar="PACKAGE",
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument(
+        "--analysis", "--offline", nargs="?", const="", metavar="PACKAGE",
         help="Open offline analysis, optionally with a .mmsession recording.",
     )
+    group.add_argument(
+        "--review", metavar="PACKAGE", help="Open a finalized session in offline Review.",
+    )
     args = parser.parse_args()
-    analysis_only = args.analysis is not None or os.name != "nt"
+    analysis_only = args.analysis is not None or args.review is not None or os.name != "nt"
     _ensure_path()
     from capture_protocol.structured_log import get_logger
 
@@ -48,6 +52,7 @@ def main() -> int:
         auto_connect=not analysis_only,
         analysis_only=analysis_only,
         package_path=args.analysis or "",
+        review_package=args.review or "",
     )
 
 

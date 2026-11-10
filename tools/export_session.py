@@ -7,6 +7,7 @@ Produces:
   <out>/radar/<source_id>/stream.json  (copy of config snapshot)
   <out>/video/<source_id>/*.mp4        (ffmpeg rewrap of MKV segments when available)
   <out>/imu/<source_id>/frames.jsonl   (decoded ImuFrame summaries when mcap available)
+  <out>/numeric/<source_id>/samples-*.csv (recorded samples and native clocks)
   <out>/emg/<source_id>/batches.jsonl  (decoded EmgBatch summaries when mcap available)
 
 Usage:
@@ -34,7 +35,7 @@ except ImportError:  # pragma: no cover
     np = None  # type: ignore
 
 
-ALL_MODALITIES = ("radar", "video", "emg", "imu")
+ALL_MODALITIES = ("radar", "video", "emg", "imu", "numeric")
 
 
 class ExportOutputError(OSError):
@@ -364,8 +365,8 @@ def main(argv: list[str] | None = None) -> int:
         "--modalities",
         default=None,
         metavar="LIST",
-        help="comma-separated subset of radar,video,emg,imu to export "
-        "(default: all four; an explicitly empty selection is rejected)",
+        help="comma-separated subset of radar,video,emg,imu,numeric to export "
+        "(default: all five; an explicitly empty selection is rejected)",
     )
     args = ap.parse_args(argv)
 
@@ -398,6 +399,7 @@ def main(argv: list[str] | None = None) -> int:
         "video": [],
         "imu": [],
         "emg": [],
+        "numeric": [],
         "integrity": None,
         "arrays": None,
         "events": {},
@@ -434,6 +436,15 @@ def main(argv: list[str] | None = None) -> int:
             print(f"FAIL export: {exc}", file=sys.stderr)
             return 1
 
+    if "numeric" in modalities:
+        try:
+            from export_numeric_samples import export_numeric_samples
+
+            export_numeric_samples(root, out, manifest)
+        except Exception as exc:
+            print(f"FAIL numeric export: {exc}", file=sys.stderr)
+            return 1
+
     man_path = out / "export_manifest.json"
     man_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
     print("wrote", man_path)
@@ -446,6 +457,8 @@ def main(argv: list[str] | None = None) -> int:
         len(manifest["imu"]),
         "emg",
         len(manifest["emg"]),
+        "numeric",
+        len(manifest["numeric"]),
     )
     if args.verify:
         stream_count = (
@@ -453,6 +466,7 @@ def main(argv: list[str] | None = None) -> int:
             + len(manifest["video"])
             + len(manifest["imu"])
             + len(manifest["emg"])
+            + len(manifest["numeric"])
         )
         state = ""
         try:
@@ -468,10 +482,11 @@ def main(argv: list[str] | None = None) -> int:
         )
         imu_msgs = sum(int(e.get("message_count") or 0) for e in manifest["imu"])
         emg_msgs = sum(int(e.get("message_count") or 0) for e in manifest["emg"])
+        numeric_msgs = sum(int(e.get("message_count") or 0) for e in manifest["numeric"])
         if (
             state.startswith("finalized")
             and (manifest["radar"] or manifest["imu"] or manifest["emg"])
-            and (radar_msgs + imu_msgs + emg_msgs) == 0
+            and (radar_msgs + imu_msgs + emg_msgs + numeric_msgs) == 0
             and not manifest["video"]
         ):
             print("FAIL --verify: no decoded messages in exported streams")

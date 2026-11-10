@@ -32,8 +32,8 @@ figures with the bundled offline analysis pipeline:
 ./capturesuite-analysis all "/data/my experiment.mmsession" --inspect-payloads
 ```
 
-Seven commands are supported in this experimental bundle: `qc`, `features`,
-`plots`, `all`, `jobs`, `export-table` and `review`. Run `./capturesuite-analysis qc --help` for options,
+Eight commands are supported in this experimental bundle: `qc`, `features`,
+`plots`, `all`, `jobs`, `export-table`, `review` and `export-session`. Run `./capturesuite-analysis qc --help` for options,
 including `--overwrite-job-id`, `--start-ns`, `--end-ns`, gap handling and
 the `--inspect-payloads` switch (available for `qc`, `all` and `review`). Exit code 0
 means a job completed, 2 means strict warnings triggered or an unsupported
@@ -103,6 +103,17 @@ The comparison shows decode coverage, gaps, native warnings and collection
 failures. Source packages and their saved jobs remain unchanged. See
 [Compare selected recordings](QC_PACKAGE_REVIEW.md) for strict warning exits,
 partial failures and the machine-readable report.
+
+## Export recorded numeric values
+
+```bash
+./capturesuite-analysis export-session "/data/my experiment.mmsession"   "/data/recorded-samples" --modalities numeric --verify
+```
+
+This writes the recorded numeric channel values and exact native timestamps to
+CSV, with separate MCAP clocks and copied gap/stream provenance. Missing native
+clocks remain unknown. See [numeric sample export](NUMERIC_SAMPLE_EXPORT.md) for
+the table layout, safe integer import and uncalibrated timing limits.
 
 ## Supported and unsupported
 

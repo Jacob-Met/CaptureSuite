@@ -33,6 +33,7 @@ class ExportOptions:
     include_video: bool = True
     include_emg: bool = True
     include_imu: bool = True
+    include_numeric: bool = True
     verify: bool = True
     write_sidecar: bool = True
 
@@ -42,6 +43,7 @@ _MODALITY_FLAGS = (
     ("video", "include_video"),
     ("emg", "include_emg"),
     ("imu", "include_imu"),
+    ("numeric", "include_numeric"),
 )
 
 
@@ -102,11 +104,23 @@ class ExportWizard(QDialog):
         self._emg.setChecked(True)
         self._imu = QCheckBox("IMU frame summaries")
         self._imu.setChecked(True)
+        self._numeric = QCheckBox(
+            "Numeric samples (CSV values, channel labels and original clocks)"
+        )
+        self._numeric.setChecked(True)
         self._verify = QCheckBox("Verify export (--verify)")
         self._verify.setChecked(True)
         self._sidecar = QCheckBox("Write provenance sidecar (export_manifest.json)")
         self._sidecar.setChecked(True)
-        for box in (self._radar, self._video, self._emg, self._imu, self._verify, self._sidecar):
+        for box in (
+            self._radar,
+            self._video,
+            self._emg,
+            self._imu,
+            self._numeric,
+            self._verify,
+            self._sidecar,
+        ):
             root.addWidget(box)
 
         pkg = QLabel(package_path)
@@ -138,6 +152,7 @@ class ExportWizard(QDialog):
             include_video=self._video.isChecked(),
             include_emg=self._emg.isChecked(),
             include_imu=self._imu.isChecked(),
+            include_numeric=self._numeric.isChecked(),
             verify=self._verify.isChecked(),
             write_sidecar=self._sidecar.isChecked(),
         )
@@ -171,7 +186,7 @@ def run_export(
             doc = json.loads(manifest_path.read_text(encoding="utf-8"))
             # Requested inclusion is not the same as actual output: record what
             # the exporter really emitted (non-empty manifest stream arrays).
-            actual = {m: bool(doc.get(m)) for m in ("radar", "video", "emg", "imu")}
+            actual = {m: bool(doc.get(m)) for m in ("radar", "video", "emg", "imu", "numeric")}
             sidecar.write_text(
                 json.dumps(
                     {
@@ -183,6 +198,7 @@ def run_export(
                             "video": options.include_video,
                             "emg": options.include_emg,
                             "imu": options.include_imu,
+                            "numeric": options.include_numeric,
                         },
                         "actualStreams": actual,
                     },
