@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from textwrap import fill
 from typing import Any
 
 import numpy as np
@@ -41,7 +42,8 @@ def plot_sync_dashboard(
             color=item.get("color", "#3d8bfd"),
             linewidth=1.0,
         )
-        ax.set_ylabel(item["label"])
+        ax.set_title(fill(str(item["label"]), width=100), loc="left", fontsize=9, pad=7)
+        ax.set_ylabel(item.get("ylabel", "value"))
         shade_recorded_gaps(ax, lane_gaps, window, t)
         ax.grid(True, alpha=0.25)
     axes[-1].set_xlabel("session time (s)")

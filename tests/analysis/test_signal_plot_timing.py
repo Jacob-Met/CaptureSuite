@@ -93,7 +93,7 @@ def captures(snapshot):
                     (line.get_xdata().copy(), line.get_ydata().copy()) for line in ax.get_lines()
                 ],
                 "bands": len(ax.patches),
-                "label": ax.get_ylabel(),
+                "label": ax.get_title(loc="left") or ax.get_ylabel(),
                 "xlabel": ax.get_xlabel(),
             }
             for ax in fig.axes
