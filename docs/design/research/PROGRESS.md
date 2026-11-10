@@ -1489,6 +1489,11 @@ dashboard v1 JSON and native interactive viewer remain unchanged; see
 accuracy claim. Runnable bundle/independent judgment recorded in task
 capturesuite-signal-plots-mizu-7c4e.
 
+
+## 2026-11-10 — Actionable QC warnings in reading order
+
+Fresh consumer review of the two-source report found warnings below the fold behind empty gaps and stream explanations. Place full warning text directly after source status, before inventories; retain all metadata/accuracy caveats. FastQC example report keeps a fixed status/module summary with in-page links (https://www.bioinformatics.babraham.ac.uk/projects/fastqc/good_sequence_short_fastqc.html); CaptureSuite needs the exact source-specific reason in ordinary reading order rather than fixed desktop navigation. Responsive warning text wraps on narrow displays.
+
 ## 2026-11-10 — Linux analysis distribution notices
 
 Packaging now derives third-party notice files and exact installed versions from
