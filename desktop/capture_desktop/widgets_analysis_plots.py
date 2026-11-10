@@ -65,13 +65,18 @@ class SyncDashboardView(QWidget):
         layout.addWidget(self._scroll, 1)
         self._linked: list = []
         self._support_range = None
+        self._navigation_range = None
         self._fit_timer = QTimer(self)
         self._fit_timer.setSingleShot(True)
         self._fit_timer.timeout.connect(self._fit_support)
 
     def _fit_support(self) -> None:
         if self._linked and self._support_range is not None:
-            self._linked[0].setXRange(*self._support_range, padding=0)
+            target = self._navigation_range or self._support_range
+            self._linked[0].setXRange(*target, padding=0)
+
+    def _remember_navigation(self, plot) -> None:
+        self._navigation_range = tuple(plot.viewRange()[0])
 
     def resizeEvent(self, event) -> None:
         super().resizeEvent(event)
@@ -90,6 +95,7 @@ class SyncDashboardView(QWidget):
             if w is not None:
                 w.deleteLater()
         self._linked.clear()
+        self._navigation_range = None
 
     def load_json_path(self, path: Path) -> bool:
         if not path.is_file():
@@ -146,6 +152,10 @@ class SyncDashboardView(QWidget):
             plot = pg.PlotWidget()
             plot.setMinimumHeight(115)
             plot.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Ignored)
+            plot.enableAutoRange(axis="x", enable=False)
+            plot.getViewBox().sigRangeChangedManually.connect(
+                lambda _axes, p=plot: self._remember_navigation(p)
+            )
             plot.setBackground(theme.PANEL_DEEP.name())
             plot.showGrid(x=True, y=True, alpha=0.25)
             plot.setLabel("left", str(row.get("ylabel") or "units unspecified"))
