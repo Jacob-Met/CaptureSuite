@@ -496,3 +496,41 @@ def test_emg_temporal_features_do_not_bridge_masked_gap() -> None:
     assert row["ch_rms"] == 1
     assert row["ch_mav"] == 1
     assert row["valid_fraction"] == pytest.approx(4 / 6)
+
+
+@pytest.mark.parametrize("declared_gap,expected_wl,expected_zc", [(True, 0, 0), (False, 2, 1)])
+def test_emg_declared_gap_between_mcap_batches(
+    tmp_path: Path, declared_gap: bool, expected_wl: float, expected_zc: int
+) -> None:
+    from capture_analysis.features.emg import extract_emg_features
+    from capture_analysis.loaders.emg import load_emg
+    from capture_analysis.types import GapInterval, GapMask, StreamRef, TimeWindow
+    from capture_protocol.generated.capture.v1.data.emg_batch_pb2 import EmgBatch
+    from mcap.writer import Writer
+
+    path = tmp_path / "separated.mcap"
+    with path.open("wb") as fh:
+        writer = Writer(fh)
+        writer.start()
+        sid = writer.register_schema(name="emg.batch/1", encoding="protobuf", data=b"")
+        cid = writer.register_channel(topic="emg", message_encoding="protobuf", schema_id=sid)
+        for start, value in [(0, 1), (4_000_000, -1)]:
+            msg = EmgBatch()
+            msg.timing.session_time_ns = start
+            msg.sample_count = 2
+            msg.channel_ids.append("ch")
+            msg.samples_f32_le = np.array([value, value], dtype="<f4").tobytes()
+            writer.add_message(
+                channel_id=cid, log_time=start, publish_time=start, data=msg.SerializeToString()
+            )
+        writer.finish()
+    stream = StreamRef("s", "st", "emg", "emg.batch/1", 1000, "mV", mcap_paths=(path,))
+    window = TimeWindow(0, 5_000_000)
+    loaded = load_emg(stream, window, max_ram_bytes=100_000_000)
+    assert loaded.t_sample_ns.tolist() == [0, 1_000_000, 4_000_000, 5_000_000]
+    gaps = [GapInterval("s", "st", "disconnect", 2_000_000, 3_000_000, True)]
+    mask = GapMask(stream, window, gaps if declared_gap else [])
+    df, _, _ = extract_emg_features(loaded, mask, window_s=.006, hop_s=.006)
+    assert df.iloc[0]["ch_wl"] == expected_wl
+    assert df.iloc[0]["ch_zc"] == expected_zc
+    assert df.iloc[0]["ch_rms"] == 1
