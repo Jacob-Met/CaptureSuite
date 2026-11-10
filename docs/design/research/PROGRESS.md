@@ -1702,3 +1702,16 @@ values and warnings. This addresses the independently observed ambiguity when
 only a window start and mean left the original session. Legacy jobs explicitly
 retain unknown method details. Taskboard: capturesuite-measurement-context-cedar61b7;
 independent scientist-use judgment: capturesuite-measurement-handoff-judge-sable61b7.
+
+
+## 2026-11-10 — complete raw EMG channel figures (astra-birch-82b5)
+
+Actual eight-channel, 30-minute packaged analysis retained all feature columns
+but exposed only the first four raw waveforms. Added bounded four-channel
+figure pages covering all recorded channels, with source/range titles and
+normal manifest inventory so the existing saved-results gallery can open
+later channels. First-page naming, raw bytes, session-axis/gap behavior and
+feature schemas are preserved. Separate independent use and publication remain
+pending; no claim of hardware validation or acceptance from the producer.
+
+Validation: seven focused real-MCAP plot tests pass; current-main full analysis gives 507 passed, 28 subtests passed, two skips, and eight unrelated pre-existing source-selection error-text expectation failures (test expects unquoted typo; current CLI reports a quoted list). Focused Ruff and git diff --check pass. Actual CLI plots on a nine-channel recording writes three raw pages plus sync; viewed pages expose channel-eight saturation and channel-nine pulses with session origin/gap retained. Original raw hashes unchanged. Independent review and packaged delivery still pending.

@@ -75,6 +75,22 @@ Current open gaps, in priority order:
   unmeasured. Current receiving uses synthetic values in genuine MCAP, so it
   establishes data-handling behavior only.
 
+## Complete EMG channel figures
+
+Raw EMG figures cover every recorded channel in pages of at most four traces.
+Each page names its source and channel range out of the full recorded count;
+individual traces retain the recorded channel IDs, units, session time and gap
+breaks. The first page keeps `emg_<source>_channels.png`; later pages append their
+one-based range, for example `emg_<source>_channels_005-008.png`. Every page is a
+normal hashed `figure` output in the job manifest and appears in the saved
+figure gallery. Open the next page to inspect later channels; an eight-channel
+recording no longer stops visually at channel four.
+
+The sync dashboard remains a representative first-channel envelope per EMG
+source. It does not replace the raw channel pages or imply that other channels
+have identical waveforms. This is display access, not a raw-data or feature
+schema change.
+
 ## Package layout
 
 ```text

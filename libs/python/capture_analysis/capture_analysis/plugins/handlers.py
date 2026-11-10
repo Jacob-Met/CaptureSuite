@@ -69,16 +69,28 @@ def handle_emg(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext) -> None:
                 {"relativePath": rel, "featureSchemaVersion": 1, "rows": int(len(df))}
             )
     if ctx.do_plots and loaded.X.size:
-        path = ctx.work / "figures" / f"emg_{ref.source_id}_channels.png"
-        plot_emg_channels(path, loaded, window=ctx.window, gaps=gap_mask.gaps)
-        ctx.outputs.append(
-            {
-                "relativePath": path.relative_to(ctx.work).as_posix(),
-                "bytes": path.stat().st_size,
-                "sha256": _hash_file(path),
-                "kind": "figure",
-            }
-        )
+        # Keep readable, bounded pages while retaining access to every channel.
+        # The first filename stays compatible with existing saved-result consumers.
+        for channel_start in range(0, len(loaded.channel_ids), 4):
+            channel_end = min(channel_start + 4, len(loaded.channel_ids))
+            suffix = "" if channel_start == 0 else f"_{channel_start + 1:03d}-{channel_end:03d}"
+            path = ctx.work / "figures" / f"emg_{ref.source_id}_channels{suffix}.png"
+            plot_emg_channels(
+                path,
+                loaded,
+                window=ctx.window,
+                gaps=gap_mask.gaps,
+                channel_start=channel_start,
+                source_label=ref.source_id,
+            )
+            ctx.outputs.append(
+                {
+                    "relativePath": path.relative_to(ctx.work).as_posix(),
+                    "bytes": path.stat().st_size,
+                    "sha256": _hash_file(path),
+                    "kind": "figure",
+                }
+            )
         ch0 = loaded.X[0].astype(np.float64)
         step = max(1, int(loaded.fs_hz // 20))
         env = np.sqrt(np.convolve(ch0 * ch0, np.ones(step) / step, mode="same"))

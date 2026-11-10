@@ -23,14 +23,19 @@ def plot_emg_channels(
     window: TimeWindow,
     gaps: list[GapInterval],
     max_channels: int = 4,
+    channel_start: int = 0,
+    source_label: str = "",
 ) -> None:
     if loaded.X.size == 0:
         return
-    n = min(max_channels, len(loaded.channel_ids))
-    fig, axes = new_fig(n, height=2.2)
-    for i in range(n):
+    channel_end = min(channel_start + max_channels, len(loaded.channel_ids))
+    indices = range(channel_start, channel_end)
+    if not indices:
+        return
+    fig, axes = new_fig(len(indices), height=2.2)
+    for axis, i in zip(axes, indices, strict=True):
         plot_recorded_series(
-            axes[i],
+            axis,
             loaded.t_sample_ns,
             loaded.X[i],
             window=window,
@@ -38,11 +43,16 @@ def plot_emg_channels(
             linewidth=0.6,
             color="#35c46b",
         )
-        axes[i].set_title(fill(loaded.channel_ids[i], width=80), loc="left", fontsize=9)
-        axes[i].set_ylabel(loaded.units or "units unspecified")
-        shade_recorded_gaps(axes[i], gaps, window, loaded.t_sample_ns)
+        axis.set_title(fill(loaded.channel_ids[i], width=80), loc="left", fontsize=9)
+        axis.set_ylabel(loaded.units or "units unspecified")
+        shade_recorded_gaps(axis, gaps, window, loaded.t_sample_ns)
     axes[-1].set_xlabel("session time (s)")
-    fig.suptitle("EMG channels", fontsize=11)
+    source = f" · {source_label}" if source_label else ""
+    fig.suptitle(
+        f"EMG{source} · channels {channel_start + 1}–{channel_end}"
+        f" of {len(loaded.channel_ids)}",
+        fontsize=11,
+    )
     save_fig(fig, path)
 
 
