@@ -71,6 +71,10 @@ def test_projection_keeps_exact_row_support_after_time_selection(tmp_path, outpu
         assert data.column_names == ["input 1_mean"]
         assert data["input 1_mean"].to_pylist() == pytest.approx([1.45, 1.45])
     html = (output / "README.html").read_text()
+    assert detail["measurementContext"]["methodId"] == "numeric.basic.v2"
+    assert "Elapsed window" in html
+    assert "expected_sample_count" in html
+    assert "Retained slots" not in html
     assert "not time-weighted" in html
     assert "do not crop or recompute" in html
     assert "Windows overlap" in html

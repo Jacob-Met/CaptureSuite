@@ -122,7 +122,32 @@ def render_feature_export_readme(
         )
     else:
         analysis_scope = "Full session requested"
-    if known:
+    if known and context.get("methodId") == "numeric.basic.v2":
+        method_html = (
+            "<p><strong>Means and RMS use equal weights for valid retained samples.</strong> "
+            "These are sample averages, not time-weighted averages.</p>"
+            "<p>Elapsed window: <strong>" + _number(context["requestedWindowSeconds"])
+            + " s</strong>; step: <strong>" + _number(context["requestedHopSeconds"])
+            + " s</strong>. Bounds are rounded to nanoseconds. "
+            "<code>t_start_ns</code> is inclusive; <code>t_end_ns</code> is exclusive. "
+            "These time bounds do not prove continuous acquisition.</p>"
+            "<p>Nominal rate: " + _number(context["sampleRateHz"]) + " Hz. "
+            "<code>expected_sample_count</code> estimates nominal positions in each window; "
+            "it is not clock calibration. <code>sample_count</code> counts retained samples, "
+            "including masked ones; <code>valid_sample_count</code> counts samples used. "
+            "<code>valid_fraction</code> divides used samples by the larger of nominal and "
+            "retained counts. <code>gap_fraction</code> is one minus that fraction, "
+            "including missing nominal positions. No samples are interpolated.</p>"
+            "<p>Gap policy: <strong>" + _e(context["gapPolicy"]) + "</strong>. "
+            "Mask keeps a fixed elapsed grid. Split restarts after declared gaps and "
+            "retains short spans with their actual bounds. Empty windows are omitted.</p>"
+        )
+        if context["requestedWindowSeconds"] > context["requestedHopSeconds"]:
+            method_html += (
+                "<p><strong>Windows overlap.</strong> Adjacent rows can reuse samples; "
+                "do not assume they are independent observations.</p>"
+            )
+    elif known:
         method_html = (
             "<p><strong>Means and RMS use equal weights for valid retained samples.</strong> "
             "These are sample averages, not time-weighted averages.</p>"

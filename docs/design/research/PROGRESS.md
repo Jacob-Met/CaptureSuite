@@ -1626,6 +1626,11 @@ package checks and separate judgment; merge, publication and observed use are
 reported independently there.
 
 
+### 2026-11-10 — elapsed-time EMG rows (astra-larch-7c2f)
+
+Independent astra-birch-82b5 actual MCAP/CLI use reproduced two contractions around a dropout becoming one 100%-valid averaged row under mask, split and fail. Work changes the existing feature pipeline to time-bounded rows, explicit availability/counts, real split spans and fail-policy propagation. Task capturesuite-time-windows-larch7c2f; separate judging capturesuite-timing-judge-birch82b5. No hardware or release claim from this source note; final checks and delivery recorded in those tasks.
+
+
 ## 2026-11-10 — Recorded time and gap continuity in static signal figures
 
 Producer astra-mizu-7c4e reproduced four failures on main afa83a5: nonzero
@@ -1717,6 +1722,56 @@ A real packaged features run with a mistyped source ID returned completed with z
 ## 2026-11-10 — recorded numeric sample handoff (astra-lark-61c2)
 
 Implemented numeric long-form CSV, exact clocks, copied source gaps and native/standalone entrypoints. 36 focused export/native regressions passed on Linux build339. Separate Tern judgment and runnable release are tracked in capturesuite-numeric-sample-export-lark61c2. Synthetic MCAP values are not instrument validation.
+
+
+## 2026-11-10 — Imported sensor windows through disconnects (astra-larch-7c2f)
+
+Actual packaged generic numeric analysis reproduced a nominal one-second row
+spanning 0.6–3.6 seconds through a declared disconnect, combining 2V and 9V into
+5.5V with gap_fraction zero. The input is synthetic values in genuine protobuf
+MCAP, with original timestamps and a complete integrity duration; no physical
+hardware validation is claimed. The initial durationless probe was clipped by
+its last gap boundary, so the complete-span probe is the reproduction evidence.
+
+The maintained numeric feature extractor now reuses elapsed-time windows,
+reports nominal support counts, and versions its schema to numeric.basic.v2.
+A split row can be complete while recording-level availability remains partial.
+Original magnitude-safe reductions are preserved. Production and tests are by
+astra-larch-7c2f; independent judging and release are still pending.
+
+The full analysis course exposed two older receiving expectations that depended
+on the same retained-count behavior: nominal one-second rows actually spanned
+5.08–6.70s and 5.0–6.55s. The original irregular native-clock recordings and
+loader assertions are unchanged. Receiving now checks exact one-second bounds
+and independently computed scalar reductions for each actual member set; the
+old means and spans remain in comments as the historical counterexamples.
+
+### 2026-11-10 — EMG envelope missing-support correction (astra-birch-82b5)
+
+Independent use of frozen e34e20a found a false pre-disconnect RMS rise despite
+correct static raw traces: the prior convolution joined concatenated observed
+samples across missing time. Added support-aware centered RMS, boundary
+normalization and retained missing separators; JSON uses null for unknown
+derived points. Full source analysis: 486 passed, 1 skipped, 28 subtests; focused Ruff clean.
+Actual held-out CLI plot now shows pre-gap RMS 1.18–1.26 mV (previously about
+2.5 mV), with original raw readings 1.0–1.4 mV; post-gap 7.39–7.45 mV.
+All-masked support creates no empty sync lane. Independent astra-larch-7c2f
+review remains required before acceptance. No hardware claim.
+
+Independent envelope source judgment by astra-larch-7c2f accepted exact
+6ca8168892554af015cb01525fdffc3dd2c355f0. Six actual CLI jobs compared identical
+fresh recordings before/after: short 400 Hz contractions, a nonconstant 333 Hz
+unreported timestamp break, and all-masked input. A separate scalar oracle
+checked 17 finite preview points, supported RMS, original endpoints and null
+separators; raw hashes remained unchanged. Actual before/after PNGs were viewed:
+the short 2.5 mV span previously read 3.82099 mV, and an 11 mV endpoint read
+10.72147 mV; both now retain the correct level. The earlier axis-unit improvement
+is retained and credited separately. Final cumulative frozen use is pending.
+
+## 2026-11-10 — native raw-export context (astra-lark-61c2)
+
+Addressing Tern93ab's observed Export dialog gap: recorded schema/index discovery now supplies source identities and honest stream/message counts, selected-only detected formats and explicit unknown metadata choices. Native clocks/missing-clock semantics accompany numeric selection.41 focused export/index/native tests passed; actual X11 pixels inspected. Existing Cairn frozen --export-session route will be reused for cumulative native packaging. Separate receiving remains required.
+
 
 ## 2026-11-10 — Interpretable numeric measurement handoff
 

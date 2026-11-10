@@ -25,6 +25,36 @@ Pinned companion to the product notes in
 8. Pose overlays (Milestone 12) land under `processing/…/pose/` only; source
    MKV is never rewritten.
 
+
+### EMG elapsed-time feature windows (table version 2)
+
+EMG feature rows use half-open elapsed session-time bounds `t_start_ns` and
+`t_end_ns`, anchored at the first retained sample. The default is 100 ms with
+50 ms hops. A disconnect cannot be removed by concatenating the samples on its
+opposite sides. No raw values or timestamps are resampled.
+The job manifest preserves per-source validity values instead of inventing a
+cross-modality average; uncomputed total masked duration is null, not zero.
+
+With `mask`, fixed time windows retain the observed, unmasked samples; windows
+with no valid samples produce no row. With `split`, the grid restarts after each
+declared gap, and a shorter contiguous span is retained with its actual bounds.
+With `fail`, any declared gap overlapping the selected stream/window fails the
+feature job, including intervals with no stored samples. The CLI returns 1 and
+retains failure details rather than exporting a completed table.
+
+Each row reports observed `sample_count`, `valid_sample_count`, and
+`expected_sample_count` (nominal sample positions on the window grid, using the
+same rounded nanosecond period as the EMG loader). `valid_fraction` is the valid count divided by the larger of
+the observed and expected counts. It describes sample availability within that
+row, not sensor accuracy. The returned stream coverage uses the same definition
+across its observed first-to-last sample span. `t_mid_ns` remains the median of
+valid retained timestamps. Temporal WL/ZC/SSC calculations continue to exclude
+pairs and triples that cross declared gaps.
+
+The retained table is version 2 with column ID `emg.windowed.v2`; earlier saved
+jobs are unchanged. Nominal rate and interpolated EMG timestamps remain
+provisional until measured on the actual device.
+
 ## Native saved analysis workspace
 
 This workspace serves researchers returning to an existing recording: find the
@@ -74,6 +104,7 @@ Current open gaps, in priority order:
 - Multi-hour recordings, physical device timing and calibration remain
   unmeasured. Current receiving uses synthetic values in genuine MCAP, so it
   establishes data-handling behavior only.
+
 
 ## Package layout
 
@@ -634,3 +665,33 @@ and does not describe an individual sensor. A feature job with incomplete sensor
 support records a warning, so strict CLI mode exits 2 and selected exports retain
 that warning in their copied source manifest. Select support columns alongside
 measurements when exporting a table; the column metadata defines the denominator.
+
+
+### Generic numeric feature windows
+
+`numeric.basic.v2` uses elapsed session time for the default one-second window
+and half-second hop. A missing interval cannot stretch a window or join distant
+sensor episodes. Mask keeps the fixed time grid and omits empty windows; split
+restarts in each declared gap-free span, retaining a short span with its actual
+bounds. Recorded timestamps and values are retained without resampling.
+
+Tables expose retained, valid, and nominal expected sample counts, `valid_fraction`,
+and its complement `gap_fraction`. Per-source availability uses the nominal
+positions across the retained recording's observed time span, including absent
+samples; a fully covered split row does not make the entire recording complete.
+These fractions are nominal-rate estimates, remain explicitly uncalibrated, and
+do not claim device-clock accuracy. Existing overflow-safe RMS/mean reductions,
+channel names, source/stream identity, and warning provenance are retained.
+
+## EMG display envelope across missing support
+
+The sync dashboard first-channel RMS preview uses a centered nominal 50 ms
+kernel within each contiguous observed run. Recorded gaps, invalid samples and
+timestamp jumps above 1.5 nominal sample periods break support before smoothing.
+Each boundary kernel normalizes by observed samples; absent samples are never
+replaced with zeros or taken from the other side of a disconnect. Each run is
+thinned separately to roughly 20 Hz, retaining its first and last sample.
+Timestamps remain original session timestamps. The saved sync-series JSON uses
+null for missing derived values, including explicit breaks between runs. This
+is a provisional visual envelope, not a calibrated feature or resampled raw
+recording; the raw MCAP and separately exported feature tables are unchanged.

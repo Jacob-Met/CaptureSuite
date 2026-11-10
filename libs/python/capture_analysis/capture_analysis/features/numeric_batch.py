@@ -8,8 +8,13 @@ import math
 import numpy as np
 import pandas as pd
 
+from capture_analysis.sample_windows import (
+    elapsed_sample_windows,
+    expected_samples,
+    sample_coverage,
+)
 from capture_analysis.types import GapMask, LoadedEmg
-from capture_analysis.windows import enforce_gap_policy, valid_fraction, validity_mask
+from capture_analysis.windows import enforce_gap_policy, validity_mask
 
 DEFAULT_WINDOW_S = 1.0
 DEFAULT_HOP_S = 0.5
@@ -26,27 +31,27 @@ def numeric_measurement_context(
     window_s: float = DEFAULT_WINDOW_S,
     hop_s: float = DEFAULT_HOP_S,
 ) -> dict:
-    """Record the estimator's actual slot settings, without inferring coverage."""
+    """Record elapsed bounds and nominal support without claiming calibration."""
     win, hop = _window_sizes(loaded.fs_hz, window_s, hop_s)
     return {
         "schemaId": "capture.numeric_measurement_context/1",
-        "methodId": "numeric.basic.v1",
+        "methodId": "numeric.basic.v2",
         "sampleRateHz": float(loaded.fs_hz),
         "requestedWindowSeconds": float(window_s),
         "requestedHopSeconds": float(hop_s),
         "windowSampleSlots": win,
         "hopSampleSlots": hop,
-        "nominalWindowSeconds": win / loaded.fs_hz,
-        "nominalHopSeconds": hop / loaded.fs_hz,
-        "rounding": "nearest-integer-ties-to-even-minimum-one",
-        "windowPlacement": "retained-sample-slots-within-each-split-run",
+        "nominalWindowSeconds": float(window_s),
+        "nominalHopSeconds": float(hop_s),
+        "rounding": "elapsed bounds rounded to nearest nanosecond; nominal sample slots are estimates",
+        "windowPlacement": "elapsed-session-time; split restarts after declared gaps",
         "interval": {
             "startColumn": "t_start_ns",
             "endColumn": "t_end_ns",
             "timebase": "session nanoseconds",
-            "start": "first retained sample timestamp in the window",
-            "end": "last retained sample timestamp plus rounded nominal sample period",
-            "coverage": "bounds of retained sample slots, not continuous measured coverage",
+            "start": "inclusive elapsed window boundary",
+            "end": "exclusive elapsed window boundary",
+            "coverage": "elapsed bounds, not continuous measured coverage",
         },
         "gapPolicy": gap_mask.policy,
         "sampleWeighting": "equal weight per valid retained sample; not time weighted",
@@ -59,6 +64,8 @@ def numeric_measurement_context(
             "rate_hz",
             "sample_count",
             "valid_sample_count",
+            "expected_sample_count",
+            "valid_fraction",
             "gap_fraction",
         ],
     }
@@ -87,69 +94,67 @@ def extract_numeric_batch_features(
 
     valid = validity_mask(loaded.t_sample_ns, gap_mask)
     enforce_gap_policy(gap_mask, valid)
-    vf = valid_fraction(valid)
+    vf = sample_coverage(t, valid, loaded.fs_hz)
 
     fs = loaded.fs_hz
-    win, hop = _window_sizes(fs, window_s, hop_s)
-    n = x_tc.shape[0]
     rows: list[dict] = []
-    boundaries = {0, n}
-    if gap_mask.policy == "split":
-        # Split even when a recorded gap contains no sample: validity alone
-        # cannot detect the discontinuity between adjacent retained samples.
-        for gap in gap_mask.overlaps_window():
-            end = gap.end_session_ns
-            if end is None:
-                end = gap_mask.window.end_session_ns
-            boundaries.add(int(np.searchsorted(t, gap.start_session_ns, side="left")))
-            boundaries.add(int(np.searchsorted(t, end, side="right")))
-    ordered = sorted(boundaries)
-    for run_start, run_end in zip(ordered, ordered[1:], strict=False):
-        for start in range(run_start, run_end - win + 1, hop):
-            end = start + win
-            vchunk = valid[start:end]
-            if not vchunk.any():
-                continue
-            good = x_tc[start:end][vchunk]
-            row = {
-                "t_start_ns": int(t[start]),
-                "t_end_ns": int(t[end - 1]) + round(1e9 / fs),
-                "rate_hz": float(fs),
-                "sample_count": win,
-                "valid_sample_count": int(vchunk.sum()),
-                "gap_fraction": float(1.0 - vchunk.mean()),
-            }
-            for i, name in enumerate(loaded.channel_ids):
-                col = good[:, i].astype(np.float64, copy=False)
-                scale = float(np.max(np.abs(col)))
-                # Scaling prevents overflow/underflow in squares and sums for
-                # finite float64 recordings without discarding their magnitude.
-                normalized = col / scale if scale else col
-                row[f"{name}_rms"] = scale * float(np.sqrt(np.mean(normalized * normalized)))
-                row[f"{name}_mean"] = scale * float(np.mean(normalized))
-            rows.append(row)
+    for window in elapsed_sample_windows(
+        t, valid, gap_mask, rate_hz=fs, window_s=window_s, hop_s=hop_s
+    ):
+        first, stop = window.first, window.stop
+        vchunk = valid[first:stop]
+        good = x_tc[first:stop][vchunk]
+        expected = expected_samples(
+            window.start_ns, window.end_ns, fs, origin_ns=window.grid_origin_ns
+        )
+        valid_count = int(np.count_nonzero(vchunk))
+        coverage = valid_count / max(expected, stop - first)
+        row = {
+            "t_start_ns": window.start_ns,
+            "t_end_ns": window.end_ns,
+            "rate_hz": float(fs),
+            "sample_count": stop - first,
+            "valid_sample_count": valid_count,
+            "expected_sample_count": expected,
+            "valid_fraction": coverage,
+            "gap_fraction": 1.0 - coverage,
+        }
+        for i, name in enumerate(loaded.channel_ids):
+            col = good[:, i].astype(np.float64, copy=False)
+            scale = float(np.max(np.abs(col)))
+            # Scaling preserves the magnitude of finite float64 recordings.
+            normalized = col / scale if scale else col
+            row[f"{name}_rms"] = scale * float(np.sqrt(np.mean(normalized * normalized)))
+            row[f"{name}_mean"] = scale * float(np.mean(normalized))
+        rows.append(row)
+
 
     meta = []
     columns = [
         ("t_start_ns", "ns"),
         ("t_end_ns", "ns"),
         ("rate_hz", "Hz"),
-        ("sample_count", "samples"),
-        ("valid_sample_count", "samples"),
+        ("sample_count", "count"),
+        ("valid_sample_count", "count"),
+        ("expected_sample_count", "count"),
+        ("valid_fraction", "1"),
+
         ("gap_fraction", "1"),
     ]
     for name in loaded.channel_ids:
         columns.extend([(f"{name}_rms", loaded.units), (f"{name}_mean", loaded.units)])
     descriptions = {
-        "t_start_ns": "First retained sample timestamp in the window, in session nanoseconds.",
+        "t_start_ns": "Inclusive elapsed window boundary in session nanoseconds.",
         "t_end_ns": (
-            "Last retained sample timestamp plus the rounded nominal sample period; "
+            "Exclusive elapsed window boundary; "
             "this interval is not a claim of continuous measured coverage."
         ),
-        "rate_hz": "Stream sample rate used to choose sample slots, not measured coverage.",
+        "rate_hz": "Nominal stream rate used to estimate support, not measured coverage.",
         "sample_count": "Retained sample slots in this window, including masked slots.",
         "valid_sample_count": "Samples actually used in the mean and RMS after gap masking.",
-        "gap_fraction": "Fraction of retained sample slots excluded by declared gaps.",
+        "expected_sample_count": "Nominal positions in the elapsed window, not clock calibration.",
+        "valid_fraction": "Valid samples divided by the larger of nominal and retained counts.",
+        "gap_fraction": "One minus valid_fraction, including missing nominal positions.",
     }
     for name, units in columns:
         description = descriptions.get(name)
@@ -164,7 +169,12 @@ def extract_numeric_batch_features(
                 "name": name,
                 "units": units,
                 "description": description,
-                "id": "numeric.basic.v1",
+                "id": "numeric.basic.v2",
+                "windowSemantics": "elapsed_session_time",
+                "windowNs": int(round(window_s * 1e9)),
+                "hopNs": int(round(hop_s * 1e9)),
+                "coverageMethod": "valid-retained/nominal-rate-positions",
+
                 "provisional": True,
                 "calibrated": False,
                 "timestampMethod": "mcap-first-datum+device-delta-or-nominal-rate",

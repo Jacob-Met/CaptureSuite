@@ -144,12 +144,16 @@ def valid_fraction(valid: np.ndarray) -> float:
     return float(np.count_nonzero(valid) / valid.size)
 
 
+class GapPolicyError(RuntimeError):
+    """An explicitly requested fail policy found a declared recording gap."""
+
+
 def enforce_gap_policy(gap_mask: GapMask, valid: np.ndarray | None = None) -> None:
     """Enforce declared overlap; valid remains accepted for existing callers."""
     if gap_mask.policy != "fail":
         return
     if gap_mask.overlaps_window():
-        raise RuntimeError(
+        raise GapPolicyError(
             f"gap_policy=fail: gaps overlap {gap_mask.stream.source_id}/{gap_mask.stream.stream_id}"
         )
 

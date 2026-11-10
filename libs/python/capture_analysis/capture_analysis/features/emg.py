@@ -6,19 +6,13 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 
+from capture_analysis.sample_windows import (
+    elapsed_sample_windows,
+    expected_samples,
+    sample_coverage,
+)
 from capture_analysis.types import GapMask, LoadedEmg
-from capture_analysis.windows import enforce_gap_policy, valid_fraction, validity_mask
-
-
-def _window_indices(n: int, win: int, hop: int) -> list[tuple[int, int]]:
-    if n < win or win <= 0:
-        return [(0, n)] if n > 0 else []
-    out: list[tuple[int, int]] = []
-    start = 0
-    while start + win <= n:
-        out.append((start, start + win))
-        start += hop
-    return out
+from capture_analysis.windows import enforce_gap_policy, validity_mask
 
 
 def extract_emg_features(
@@ -28,24 +22,27 @@ def extract_emg_features(
     window_s: float = 0.100,
     hop_s: float = 0.050,
 ) -> tuple[pd.DataFrame, list[dict], float]:
+    valid = validity_mask(loaded.t_sample_ns, gap_mask)
+    enforce_gap_policy(gap_mask, valid)
     if loaded.X.size == 0 or not loaded.channel_ids:
         return pd.DataFrame(), [], 0.0
 
-    valid = validity_mask(loaded.t_sample_ns, gap_mask)
-    enforce_gap_policy(gap_mask, valid)
-    vf = valid_fraction(valid)
-
     fs = loaded.fs_hz
-    win = max(1, int(round(window_s * fs)))
-    hop = max(1, int(round(hop_s * fs)))
     rows: list[dict] = []
     x = loaded.X
-    t = loaded.t_sample_ns
+    t = np.asarray(loaded.t_sample_ns, dtype=np.int64)
+    vf = sample_coverage(t, valid, fs)
 
-    for i0, i1 in _window_indices(x.shape[1], win, hop):
+    for window in elapsed_sample_windows(
+        t,
+        valid,
+        gap_mask,
+        rate_hz=fs,
+        window_s=window_s,
+        hop_s=hop_s,
+    ):
+        i0, i1 = window.first, window.stop
         v = valid[i0:i1]
-        if not np.any(v):
-            continue
         pairs = v[:-1] & v[1:]
         times = t[i0:i1]
         for gap in gap_mask.overlaps_window():
@@ -56,15 +53,24 @@ def extract_emg_features(
             pairs &= ~((times[:-1] <= end) & (times[1:] >= gap.start_session_ns))
         triples = pairs[:-1] & pairs[1:]
         seg = x[:, i0:i1][:, v]
-        t_mid = int(np.median(t[i0:i1][v]))
+        expected = expected_samples(
+            window.start_ns,
+            window.end_ns,
+            fs,
+            origin_ns=window.grid_origin_ns,
+        )
+        valid_count = int(np.count_nonzero(v))
         row: dict = {
-            "t_mid_ns": t_mid,
-            "valid_fraction": float(np.mean(v)),
+            "t_start_ns": window.start_ns,
+            "t_end_ns": window.end_ns,
+            "t_mid_ns": int(np.median(times[v])),
+            "sample_count": i1 - i0,
+            "valid_sample_count": valid_count,
+            "expected_sample_count": expected,
+            "valid_fraction": valid_count / max(expected, i1 - i0),
         }
         for c, ch in enumerate(loaded.channel_ids):
             s = seg[c].astype(np.float64, copy=False)
-            if s.size == 0:
-                continue
             # Temporal features require adjacent observed samples. Filtering first
             # would join opposite sides of a gap and invent transitions.
             full = x[c, i0:i1].astype(np.float64, copy=False)
@@ -80,8 +86,16 @@ def extract_emg_features(
 
     df = pd.DataFrame(rows)
     meta: list[dict] = [
-        {"name": "t_mid_ns", "units": "ns", "calibrated": True},
-        {"name": "valid_fraction", "units": "1", "calibrated": True},
+        {"name": name, "units": units, "calibrated": calibrated}
+        for name, units, calibrated in (
+            ("t_start_ns", "ns", True),
+            ("t_end_ns", "ns", True),
+            ("t_mid_ns", "ns", True),
+            ("sample_count", "count", True),
+            ("valid_sample_count", "count", True),
+            ("expected_sample_count", "count", False),
+            ("valid_fraction", "1", False),
+        )
     ]
     units = loaded.units or "mV"
     for ch in loaded.channel_ids:
@@ -92,13 +106,16 @@ def extract_emg_features(
             ("zc", "count", True),
             ("ssc", "count", True),
         ):
-            meta.append(
-                {
-                    "name": f"{ch}_{suffix}",
-                    "units": u,
-                    "calibrated": cal,
-                }
-            )
+            meta.append({"name": f"{ch}_{suffix}", "units": u, "calibrated": cal})
+    for column in meta:
+        column.update(
+            {
+                "id": "emg.windowed.v2",
+                "windowSemantics": "elapsed_session_time",
+                "windowNs": int(round(window_s * 1e9)),
+                "hopNs": int(round(hop_s * 1e9)),
+            }
+        )
     return df, meta, vf
 
 

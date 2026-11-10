@@ -27,9 +27,6 @@
     "schemaId": {
       "const": "capture.numeric_measurement_context/1"
     },
-    "methodId": {
-      "const": "numeric.basic.v1"
-    },
     "sampleRateHz": {
       "type": "number",
       "exclusiveMinimum": 0
@@ -57,12 +54,6 @@
     "nominalHopSeconds": {
       "type": "number",
       "exclusiveMinimum": 0
-    },
-    "rounding": {
-      "const": "nearest-integer-ties-to-even-minimum-one"
-    },
-    "windowPlacement": {
-      "const": "retained-sample-slots-within-each-split-run"
     },
     "interval": {
       "type": "object",
@@ -114,17 +105,57 @@
     },
     "missingData": {
       "type": "string"
-    },
-    "rowContextColumns": {
-      "const": [
-        "t_start_ns",
-        "t_end_ns",
-        "rate_hz",
-        "sample_count",
-        "valid_sample_count",
-        "gap_fraction"
-      ]
     }
   },
-  "additionalProperties": true
+  "additionalProperties": true,
+  "oneOf": [
+    {
+      "properties": {
+        "methodId": {
+          "const": "numeric.basic.v1"
+        },
+        "rounding": {
+          "const": "nearest-integer-ties-to-even-minimum-one"
+        },
+        "windowPlacement": {
+          "const": "retained-sample-slots-within-each-split-run"
+        },
+        "rowContextColumns": {
+          "const": [
+            "t_start_ns",
+            "t_end_ns",
+            "rate_hz",
+            "sample_count",
+            "valid_sample_count",
+            "gap_fraction"
+          ]
+        }
+      }
+    },
+    {
+      "properties": {
+        "methodId": {
+          "const": "numeric.basic.v2"
+        },
+        "rounding": {
+          "const": "elapsed bounds rounded to nearest nanosecond; nominal sample slots are estimates"
+        },
+        "windowPlacement": {
+          "const": "elapsed-session-time; split restarts after declared gaps"
+        },
+        "rowContextColumns": {
+          "const": [
+            "t_start_ns",
+            "t_end_ns",
+            "rate_hz",
+            "sample_count",
+            "valid_sample_count",
+            "expected_sample_count",
+            "valid_fraction",
+            "gap_fraction"
+          ]
+        }
+      }
+    }
+  ]
 }
