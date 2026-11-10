@@ -6,8 +6,6 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from PySide6.QtCore import Qt
-from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import (
     QLabel,
     QScrollArea,
@@ -20,6 +18,7 @@ from . import theme
 from .analysis_job_comparison import JobParameterError, read_job_manifest
 from .widgets_analysis_comparison import JobParameterBar
 from .widgets_figure_export import FigureExportBar
+from .widgets_recorded_figure import RecordedFigureView
 
 try:
     import numpy as np
@@ -176,17 +175,8 @@ class FigureGallery(QWidget):
         for png in sorted(figures_dir.glob("*.png")):
             if png.name == "sync_dashboard.png":
                 continue
-            scroll = QScrollArea()
-            scroll.setWidgetResizable(True)
-            img = QLabel()
-            img.setAlignment(Qt.AlignmentFlag.AlignCenter)
-            pix = QPixmap(str(png))
-            if not pix.isNull():
-                img.setPixmap(pix)
-            else:
-                img.setText(f"Could not load {png.name}")
-            scroll.setWidget(img)
-            self._tabs.addTab(scroll, png.stem.replace("_", " ")[:24])
+            figure = RecordedFigureView(png)
+            self._tabs.addTab(figure, png.stem.replace("_", " ")[:24])
 
 
 class JobInspector(QWidget):
