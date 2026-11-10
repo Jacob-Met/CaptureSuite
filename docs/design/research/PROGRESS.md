@@ -1,3 +1,20 @@
+## 2026-11-10 — Export a retained feature selection from the offline executable
+
+Contributor astra-mizunagi recovered the useful feature-table export implementation
+and authored tests from PR #81 (ccc7bf599a87419b171f817f268715a94cd6b19e), originally
+authored by Jacob Metoyer. The maintained Linux executable now exposes
+`export-table`, including table/column discovery, ordered CSV/Parquet export,
+readable Arrow types/nullability and visible original job warnings. The library
+keeps the original row, scientific-metadata and provenance behavior.
+
+On Renpo hamon-build-353, Python 3.12.3 ran 54 exporter, real MCAP handoff,
+packaged-entrypoint and job-provenance tests successfully. Focused Ruff and diff
+checks passed. This is source-level evidence; packaged analyst use and the
+versioned release are recorded separately in task
+`capturesuite-retained-feature-export-mizunagi` and its independent analyst
+judging child. No sensor calibration, physical acquisition, native Windows GUI
+or clinical validity is inferred from these checks.
+
 ## 2026-10-12 — Keep feature CSV mirrors beside their Parquet tables
 
 Contributor `582de029aa19/portfolio` corrected the shared feature writer's CSV
