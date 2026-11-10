@@ -205,6 +205,13 @@ def _stream_qc(ref: StreamRef, *, inspect_payloads: bool = False) -> StreamQc:
                 "device timestamps; clock continuity is not fully verified"
             )
 
+        if inspection["status"] != "failed" and inspection.get("zeroQuaternionSensorSamples", 0):
+            warnings.append(
+                "IMU orientation unavailable: "
+                f"{inspection['zeroQuaternionSensorSamples']} sensor sample(s) have an "
+                "all-zero quaternion; decoded acceleration/gyro values remain available"
+            )
+
     return StreamQc(
         source_id=ref.source_id,
         stream_id=ref.stream_id,

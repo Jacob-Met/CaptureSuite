@@ -171,3 +171,5 @@ tagged release.
 **[Jacob Metoyer](https://jacobmetoyer.com/)** ([@Jacob-Met](https://github.com/Jacob-Met)) — architecture
 and product direction. Independent research software (not an official product of
 any university lab unless separately stated).
+
+Payload QC warns when an IMU sensor sample has an all-zero quaternion: orientation is unavailable for that sample, although finite acceleration and gyro values can still be decoded. This exact observation is not a hardware accuracy assessment or a non-unit quaternion tolerance policy.

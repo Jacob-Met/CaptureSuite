@@ -427,3 +427,53 @@ def test_native_qc_cli_shows_real_emg_imu_payloads_without_changing_sources(
     assert "channels: ch0, ch1" in page
     assert "sensors: pelvis" in page
     assert hash_sources_tree(package) == before
+
+
+@pytest.mark.parametrize(
+    "qw,expected_light,expected_exit", [(0.0, "warn", 2), (1.0, "ok", 0), (-1.0, "ok", 0)]
+)
+def test_zero_orientation_warns_in_saved_report_and_cli(
+    tmp_path: Path, qw: float, expected_light: str, expected_exit: int
+) -> None:
+    import subprocess
+    import sys
+
+    from capture_analysis import collect_qc, hash_sources_tree
+    from capture_protocol.generated.capture.v1.data import imu_frame_pb2
+
+    package = _write_emg_imu_package(tmp_path / "orientation.mmsession")
+    frame = imu_frame_pb2.ImuFrame()
+    frame.sensors.add(sensor_id="pelvis", qw=qw, accel_z=9.81)
+    _replace_payload_segment(
+        package,
+        source_id="sim.imu.upper",
+        stream_id="sim.imu.upper.frames",
+        schema_name="imu.frame/1",
+        message=frame,
+    )
+    before = hash_sources_tree(package)
+    report = collect_qc(package, inspect_payloads=True).to_dict()
+    assert report["trafficLights"]["sim.imu.upper"] == expected_light
+    imu = next(s for s in report["streams"] if s["modality"] == "imu")
+    assert imu["payloadInspection"]["status"] == "imu_frames_checked"
+    assert imu["payloadInspection"]["zeroQuaternionSensorSamples"] == int(qw == 0)
+    result = subprocess.run(
+        [
+            sys.executable,
+            str(ROOT / "tools/run_analysis.py"),
+            "qc",
+            str(package),
+            "--inspect-payloads",
+            "--strict-warnings",
+            "--overwrite-job-id",
+            "orientation-cli",
+        ],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == expected_exit, result.stdout + result.stderr
+    reports = package / "processing/jobs/orientation-cli/reports"
+    html = (reports / "qc.html").read_text()
+    assert ("IMU orientation unavailable" in html) == (qw == 0)
+    assert hash_sources_tree(package) == before
