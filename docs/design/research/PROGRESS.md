@@ -1533,3 +1533,20 @@ fraction denominator is retained frame slots, not estimated elapsed-time coverag
 77 targeted feature/export/plugin regressions pass on estate Python 3.12.
 Independent heldout-recording judgment and runnable packaging are tracked under
 capturesuite-imu-feature-coverage-marten9c2f; no hardware accuracy claim.
+
+### 2026-11-10 — LSL live source lifecycle (Astra-Lark)
+
+A real pylsl1.18.6/liblsl118 outlet exposed `ValueError: unknown enum label
+"device"` in maintained discovery. LSL0.1.1 uses the protocol enum and separates
+source stop tokens, bounded inlet reads and inlet cleanup. Deferred Win32
+transport loading lets the existing MemoryTransport/worker SDK run on Linux;
+actual named-pipe connections remain Windows-only. The maintained live test
+records two real local outlets through Worker Start/Stop RPCs into MCAP, stops
+one source and proves the other continues, then decodes distinct retained
+values. Focused SDK/bridge checks and Ruff ran on Renpo fleet384.
+
+Separate judgment and downloadable component distribution are tracked in
+`capturesuite-live-lsl-isolation-astra-lark`; no hardware or full Windows daemon
+claim. Existing corrected-versus-native timestamp retention, wall-clock/QPC
+anchor mismatch and worker/package path integration are explicit follow-ups in
+the plugin README. No analysis/QC/plot code changed.
