@@ -89,7 +89,10 @@ these states:
   observed constant channels without diagnosing electrode condition.
 - `imu_frames_checked`: decoded `imu.frame/1` frames verified for sensor
   identity and finite acceleration, gyroscope and quaternion values. Exposes
-  sensor IDs and zero-quaternion observations without asserting calibration.
+  sensor IDs, per-observed-sensor frame presence and zero-quaternion observations
+  without asserting calibration. A sensor appearing in only some decoded frames
+  now generates a QC warning and makes `--strict-warnings` exit nonzero; sensors
+  absent from every frame cannot be inferred from the recording alone.
 - `mcap_messages_checked`: MCAP structure/messages parsed for another schema;
   sample values **not** decoded or validated.
 - `failed`: unreadable, empty or inconsistent MCAP content; source light

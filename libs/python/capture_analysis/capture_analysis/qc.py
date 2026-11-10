@@ -189,6 +189,16 @@ def _stream_qc(ref: StreamRef, *, inspect_payloads: bool = False) -> StreamQc:
         inspection = inspect_stream_payloads(ref)
         if inspection["status"] == "failed":
             warnings.append(f"payload inspection failed: {inspection['detail']}")
+        elif inspection.get("partiallyPresentSensorIds"):
+            counts = inspection["sensorFramePresence"]
+            missing = ", ".join(
+                f"{sid} {counts[sid]['framesPresent']}/{counts[sid]['totalFrames']}"
+                for sid in inspection["partiallyPresentSensorIds"]
+            )
+            warnings.append(
+                f"IMU sensor presence incomplete across decoded frames: {missing} "
+                "(only sensor IDs observed at least once can be checked)"
+            )
         elif inspection.get("framesWithoutNativeTimestamps", 0):
             warnings.append(
                 f"{inspection['framesWithoutNativeTimestamps']} numeric frame(s) lack native "
