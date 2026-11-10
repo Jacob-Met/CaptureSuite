@@ -118,7 +118,7 @@ def run_features_and_plots(
             }
         )
         series_doc = {
-            "schemaId": "capture.sync_dashboard_series/1",
+            "schemaId": "capture.sync_dashboard_series/2",
             "title": f"{summary.session_id} · gap_policy={gap_policy}",
             "window": {
                 "startSessionNs": window.start_session_ns,
@@ -141,7 +141,20 @@ def run_features_and_plots(
                     "label": item["label"],
                     "ylabel": item.get("ylabel", "value"),
                     "t_ns": [int(x) for x in np.asarray(item["t_ns"]).tolist()],
-                    "y": [float(x) for x in np.asarray(item["y"]).tolist()],
+                    "y": [
+                        float(x) if np.isfinite(x) else None for x in np.asarray(item["y"]).tolist()
+                    ],
+                    "gaps": [
+                        {
+                            "startSessionNs": g.start_session_ns,
+                            "endSessionNs": g.end_session_ns,
+                            "sourceId": g.source_id,
+                            "streamId": g.stream_id,
+                            "cause": g.cause,
+                            "closed": g.closed,
+                        }
+                        for g in item.get("gaps", [])
+                    ],
                     "color": item.get("color", "#3d8bfd"),
                 }
                 for item in sync_series[:4]

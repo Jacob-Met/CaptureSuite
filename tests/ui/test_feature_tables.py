@@ -72,3 +72,27 @@ def test_clearing_during_preview_cannot_reopen_the_old_result(qtbot, tmp_path):
     assert view._preview.rowCount() == 0
     assert not view._export.isEnabled()
     view.close()
+
+
+def test_native_exact_trial_controls_reach_written_rows(qtbot, tmp_path):
+    job, _ = samples.make_job(tmp_path)
+    view = FeatureTableView()
+    qtbot.addWidget(view)
+    view.load_job_dir(job)
+    qtbot.waitUntil(lambda: view._preview_ready, timeout=15000)
+    picker = view._time_selection
+    picker._mode.setCurrentIndex(picker._mode.findData("time"))
+    picker._start.setText("9007199.254740993")
+    picker._end.setText("9007199.254740993")
+    assert not view._export.isEnabled()
+    picker._end.setText("9007199.254740995")
+    view._parent_path.setText(str(tmp_path))
+    view._folder_name.setText("exact-trial")
+    view._start_export()
+    assert not picker.isEnabled()
+    qtbot.waitUntil(lambda: not view.busy, timeout=15000)
+    output = tmp_path / "exact-trial"
+    assert parquet.read_table(output / "table.parquet")["t_ns"].to_pylist() == [9007199254740993]
+    assert samples.read_csv(output)["t_ns"].to_pylist() == [9007199254740993]
+    assert "Exported 1 rows" in view._status.text()
+    view.close()
