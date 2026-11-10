@@ -84,6 +84,11 @@ def _inspection_cell(stream: dict[str, Any]) -> str:
 
 
 def render_qc_html(qc: dict[str, Any]) -> str:
+    selected = qc.get("selectedSources") or []
+    scope = (
+        "Selected sources: " + ", ".join(str(s) for s in selected)
+        if selected else "All sources"
+    )
     lights = qc.get("trafficLights") or {}
     light_rows = "".join(
         f"<tr><td>{escape(sid)}</td><td class='{escape(level)}'>{escape(level)}</td></tr>"
@@ -161,6 +166,8 @@ checkpoints {int(qc.get("checkpointCount") or 0)}
 <p class="meta">package: {escape(str(qc.get("packagePath", "")))}</p>
 <p class="meta">manifest sha256: {escape(str(qc.get("manifestSha256", "")))}</p>
 
+<p class="meta">QC scope: {escape(scope)}.
+Package provenance and recovery metadata describe the whole recording.</p>
 <h2>Sources</h2>
 <table>
 <tr><th>source</th><th>light</th></tr>
