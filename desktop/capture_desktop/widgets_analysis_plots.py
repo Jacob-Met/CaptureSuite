@@ -59,7 +59,10 @@ class SyncDashboardView(QWidget):
         self._plot_layout = QVBoxLayout(self._plot_host)
         self._plot_layout.setContentsMargins(0, 0, 0, 0)
         self._plot_layout.setSpacing(4)
-        layout.addWidget(self._plot_host, 1)
+        self._scroll = QScrollArea()
+        self._scroll.setWidgetResizable(True)
+        self._scroll.setWidget(self._plot_host)
+        layout.addWidget(self._scroll, 1)
         self._linked: list = []
 
     def clear(self) -> None:
@@ -125,6 +128,8 @@ class SyncDashboardView(QWidget):
             heading.setFont(theme.ui(9, bold=True))
             self._plot_layout.addWidget(heading)
             plot = pg.PlotWidget()
+            plot.setMinimumHeight(115)
+            plot.setSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Ignored)
             plot.setBackground(theme.PANEL_DEEP.name())
             plot.showGrid(x=True, y=True, alpha=0.25)
             plot.setLabel("left", str(row.get("ylabel") or "units unspecified"))
@@ -171,7 +176,7 @@ class SyncDashboardView(QWidget):
                 )
             if prev_plot is not None:
                 plot.setXLink(prev_plot)
-            plot.setXRange(start_ns / 1e9, end_ns / 1e9, padding=0)
+            plot.setXRange(max(start_ns, first) / 1e9, min(end_ns, last) / 1e9, padding=0)
             prev_plot = plot
             self._linked.append(plot)
             self._plot_layout.addWidget(plot, 1)

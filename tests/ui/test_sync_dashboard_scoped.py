@@ -47,7 +47,13 @@ def test_native_lane_clock_gap_and_labels(qapp, qtbot):
     assert first.getAxis("left").labelText == "mV"
     assert second.getAxis("left").labelText == "N"
     assert any(x.text() == "Delayed forearm / channel one" for x in view.findChildren(QLabel))
-    assert first.viewRange()[0] == [31, 36]
+    view.resize(1000, 600)
+    view.show()
+    qapp.processEvents()
+    first.setXRange(31, 36, padding=0)
+    qapp.processEvents()
+    assert first.viewRange()[0] == pytest.approx([31, 36])
+    assert view._scroll.verticalScrollBar().maximum() == 0
     view.close()
 
 
