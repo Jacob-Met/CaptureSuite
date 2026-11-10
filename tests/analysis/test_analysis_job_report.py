@@ -160,16 +160,17 @@ def test_report_selection_matches_resolved_job_while_qc_stays_full(
 
     monkeypatch.setattr(jobs, "render_qc_html", record_context)
     params = JobParams(
-        command="features", overwrite_job_id="selected",
-        sources=["sim.imu.upper"],
+        command="all", overwrite_job_id="selected",
+        sources=["sim.imu.upper"], extra={"inspect_payloads": True},
         start_session_ns=2_000_000_000 if selection == "custom" else None,
         end_session_ns=5_000_000_000 if selection == "custom" else None,
         checkpoint_section="Reach – 左" if selection == "checkpoint" else None,
     )
     result = run(package, params)
     manifest, qc, page = _saved(result.job_dir)
-    assert qc == collect_qc(package).to_dict()
+    assert qc == collect_qc(package, inspect_payloads=True).to_dict()
     assert qc["streamCount"] == 2
+    assert [row["payloadInspection"]["sampleFramesChecked"] for row in qc["streams"]] == [81, 81]
     assert set(qc["trafficLights"]) == {"sim.imu.upper", "sim.imu.reference"}
     assert manifest["timeRange"]["startSessionNs"] == 2_000_000_000
     assert manifest["timeRange"]["endSessionNs"] == 5_000_000_000
@@ -188,3 +189,17 @@ def test_report_selection_matches_resolved_job_while_qc_stays_full(
     assert not data.empty
     assert data["t_mid_ns"].between(2_000_000_000, 5_000_000_000).all()
     assert hash_sources_tree(package) == before
+
+
+def test_qc_only_job_preserves_intentional_source_selection(tmp_path: Path) -> None:
+    package = _write_emg_imu_package(tmp_path / "qc-selected.mmsession")
+    result = run(
+        package, JobParams(command="qc", sources=["sim.imu.upper"],
+                           extra={"inspect_payloads": True}, overwrite_job_id="qc-selected")
+    )
+    manifest, qc, page = _saved(result.job_dir)
+    assert qc["streamCount"] == 1
+    assert set(qc["trafficLights"]) == {"sim.imu.upper"}
+    assert qc["streams"][0]["payloadInspection"]["sampleFramesChecked"] == 30
+    assert manifest["sourcesSelected"] == ["sim.imu.upper"]
+    assert _JobSection(page).state == result.status
