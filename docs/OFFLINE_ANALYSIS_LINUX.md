@@ -32,8 +32,8 @@ figures with the bundled offline analysis pipeline:
 ./capturesuite-analysis all "/data/my experiment.mmsession"
 ```
 
-Five commands are supported in this experimental bundle: `qc`, `features`,
-`plots`, `all` and `export-table`. Run `./capturesuite-analysis qc --help` for options,
+Six commands are supported in this experimental bundle: `qc`, `features`,
+`plots`, `all`, `jobs` and `export-table`. Run `./capturesuite-analysis qc --help` for options,
 including `--overwrite-job-id`, `--start-ns`, `--end-ns`, gap handling and
 the `--inspect-payloads` switch (the latter is only for `qc`). Exit code 0
 means a job completed, 2 means strict warnings triggered or an unsupported
@@ -47,6 +47,25 @@ selected timestamp consistency. It can report constant EMG channels and zero
 IMU quaternions as observations. **Passing is not proof of sensor calibration,
 electrode contact, noise floor, sampling-rate truth or medical validity.**
 Metadata-only QC (without the switch) cannot validate payloads.
+
+## Find previous analysis
+
+```bash
+./capturesuite-analysis jobs "/data/my experiment.mmsession" --columns
+```
+
+This read-only command shows the newest 20 saved jobs with their recorded status,
+warnings/errors, source/stream feature tables, row counts, exact column names and
+units, and a quoted command to inspect each job for export. Use `--limit 0` for all
+jobs or `--json` for structured output. It works after moving the package and does
+not require the original raw sources. It never reruns an analysis.
+
+A completed status is the saved job's original status, not a new integrity check.
+Feature metadata is checked against its recorded hash; table payload validation
+happens during export. Missing/corrupt metadata is reported as UNREADABLE beside
+healthy entries, with exit code 2. A historical failed job remains visible with
+its recorded errors. Internal attempt/backup directories are counted separately.
+No retained files are changed. An empty history prints a clear no-results state.
 
 ## Export selected saved features
 
