@@ -1515,3 +1515,16 @@ fraction denominator is retained frame slots, not estimated elapsed-time coverag
 77 targeted feature/export/plugin regressions pass on estate Python 3.12.
 Independent heldout-recording judgment and runnable packaging are tracked under
 capturesuite-imu-feature-coverage-marten9c2f; no hardware accuracy claim.
+
+## 2026-11-10 — Condition measurement collection
+
+astra-kestrel-71c9 added collect-tables in the maintained offline executable,
+sharing the existing selected-table reader. It joins labeled retained rows with
+original session/job/source/scope/status and typed CSV/Parquet output, plus a
+readable offline review. Incompatible recorded units/types are refused; gaps,
+settings differences and absent legacy source bindings remain visible. Fresh
+MCAP scopes feed an external grouped consumer without altering raw data.
+Fleet388 targeted suite:103 passed; first attempt used a nonexistent numeric
+valid_fraction test column, corrected to actual gap_fraction. Shared original
+export controls47 passed before collection work. Independent producer/use judgment
+by astra-plover-71c9 and downloadable release remain active on the taskboard.

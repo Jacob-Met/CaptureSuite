@@ -74,10 +74,22 @@ def run_features_and_plots(
         if handler is None:
             continue
         gap_mask = build_gap_mask(ref, window, all_gaps, policy=gap_policy)
+        first_table = len(feature_tables)
         try:
             handler(ref, gap_mask, ctx)
         except Exception as exc:  # noqa: BLE001
             warnings.append(f"{ref.source_id}/{ref.stream_id}: {exc}")
+        # A collected table must identify its source without parsing filenames
+        # or guessing from the job's (possibly multiple) selected sources.
+        for produced in feature_tables[first_table:]:
+            metadata = schema_doc["tables"].get(produced["relativePath"])
+            if metadata is not None:
+                metadata.update(
+                    sourceId=ref.source_id,
+                    streamId=ref.stream_id,
+                    dataSchemaId=ref.data_schema_id,
+                    modality=ref.modality,
+                )
 
     if do_features and schema_doc["tables"]:
         schema_path = work / "features" / "_schema.json"

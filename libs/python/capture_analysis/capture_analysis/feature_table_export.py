@@ -8,7 +8,8 @@ import hashlib
 import json
 import re
 from collections.abc import Sequence
-from contextlib import ExitStack
+from contextlib import ExitStack, contextmanager
+from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path, PureWindowsPath
 from typing import Any
@@ -110,7 +111,8 @@ def _declared_output(
     if not isinstance(outputs, list):
         _fail("job manifest has no output inventory")
     entries = [
-        entry for entry in outputs
+        entry
+        for entry in outputs
         if isinstance(entry, dict) and entry.get("relativePath") == relative
     ]
     if len(entries) != 1 or entries[0].get("kind") != kind:
@@ -170,7 +172,6 @@ def _json_bytes(document: dict[str, Any]) -> bytes:
     return (json.dumps(document, ensure_ascii=False, indent=2, sort_keys=True) + "\n").encode()
 
 
-
 def list_feature_tables(job_dir: Path) -> dict[str, Any]:
     """Describe the saved job's table inventory without decoding its payloads.
 
@@ -189,8 +190,7 @@ def list_feature_tables(job_dir: Path) -> dict[str, Any]:
     if not isinstance(outputs, list):
         _fail("job manifest has no output inventory")
     if not any(
-        isinstance(output, dict) and output.get("kind") == "feature_parquet"
-        for output in outputs
+        isinstance(output, dict) and output.get("kind") == "feature_parquet" for output in outputs
     ):
         return {"jobId": manifest["jobId"], "jobStatus": manifest["status"], "tables": []}
     schema_data, schema_document = _read_document(_job_file(job, "features/_schema.json"))
@@ -226,40 +226,55 @@ def list_feature_tables(job_dir: Path) -> dict[str, Any]:
             for column in columns
         ):
             _fail(f"invalid feature column metadata: {relative}")
-        summaries.append({
-            "relativePath": relative,
-            "rows": metadata.get("rows"),
-            "sourceId": metadata.get("sourceId"),
-            "streamId": metadata.get("streamId"),
-            "columns": columns,
-        })
+        summaries.append(
+            {
+                "relativePath": relative,
+                "rows": metadata.get("rows"),
+                "sourceId": metadata.get("sourceId"),
+                "streamId": metadata.get("streamId"),
+                "columns": columns,
+            }
+        )
     return {
         "jobId": manifest["jobId"],
         "jobStatus": manifest["status"],
         "tables": summaries,
     }
 
-def export_feature_table(
+
+@dataclass
+class SelectedFeatureTable:
+    """A validated open saved table shared by single and collected exports."""
+
+    package: Path
+    job: Path
+    reader: Any
+    schema: pa.Schema
+    schema_record: dict[str, Any]
+    inputs: dict[str, dict[str, Any]]
+    documents: dict[str, tuple[bytes, dict[str, Any]]]
+    indices: list[int]
+    rows: int
+    selected: list[str]
+
+    def revalidate(self) -> None:
+        for relative, identity in self.inputs.items():
+            if _identity(_job_file(self.job, relative)) != identity:
+                _fail(f"retained-job input changed while exporting: {relative}")
+
+
+@contextmanager
+def open_feature_table(
     job_dir: Path,
     table: str,
-    output_dir: Path,
     *,
     columns: Sequence[str] | None = None,
     output_format: str = "both",
-    batch_size: int = 8192,
-) -> dict[str, Any]:
-    """Export all rows, with literal columns in the caller's requested order.
-
-    Admission failures create no destination. A write/read failure after admission
-    retains the new directory with failure.json and without manifest.json. The
-    original session and job are only read. No original packagePath is followed.
-    """
+):
+    """Open one verified selection without creating or altering any files."""
     if output_format not in _FORMATS:
         _fail("output_format must be csv, parquet, or both")
-    if type(batch_size) is not int or batch_size < 1:
-        _fail("batch_size must be a positive integer")
     package, job = _job_root(Path(job_dir))
-    output = _destination(Path(output_dir), package)
     selected_path = _job_file(job, table)
     relatives = ["job_manifest.json", "params.json", "features/_schema.json", table]
     paths = {relative: _job_file(job, relative) for relative in relatives}
@@ -329,14 +344,13 @@ def export_feature_table(
             _fail("columns must be a nonempty, unique selection of exact retained column names")
         rows = reader.metadata.num_rows
         declared_rows = table_metadata.get("rows")
-        if declared_rows is not None and (
-            type(declared_rows) is not int or declared_rows != rows
-        ):
+        if declared_rows is not None and (type(declared_rows) is not int or declared_rows != rows):
             _fail("feature schema row count does not match the retained Parquet table")
         # Pandas metadata describes the original frame/index, not this projection.
         # Its exact original bytes remain in sourceArrowSchemaBase64 below.
-        metadata = {key: value for key, value in (source_schema.metadata or {}).items()
-                    if key != b"pandas"}
+        metadata = {
+            key: value for key, value in (source_schema.metadata or {}).items() if key != b"pandas"
+        }
         schema = pa.schema([source_schema.field(name) for name in selected], metadata=metadata)
         if output_format in {"csv", "both"}:
             unsupported = [field.name for field in schema if not _csv_supported(field.type)]
@@ -368,8 +382,55 @@ def export_feature_table(
                 "quotedStringsCanBeNull": False,
                 "columnTypes": "arrowSchemaBase64",
                 "floatNaNPayloadBitsPreserved": False,
-            } if output_format in {"csv", "both"} else None,
+            }
+            if output_format in {"csv", "both"}
+            else None,
         }
+        yield SelectedFeatureTable(
+            package,
+            job,
+            reader,
+            schema,
+            schema_record,
+            inputs,
+            documents,
+            indices,
+            rows,
+            selected,
+        )
+
+
+def export_feature_table(
+    job_dir: Path,
+    table: str,
+    output_dir: Path,
+    *,
+    columns: Sequence[str] | None = None,
+    output_format: str = "both",
+    batch_size: int = 8192,
+) -> dict[str, Any]:
+    """Export all rows, with literal columns in the caller's requested order.
+
+    Admission failures create no destination. A write/read failure after admission
+    retains the new directory with failure.json and without manifest.json. The
+    original session and job are only read. No original packagePath is followed.
+    """
+    if output_format not in _FORMATS:
+        _fail("output_format must be csv, parquet, or both")
+    if type(batch_size) is not int or batch_size < 1:
+        _fail("batch_size must be a positive integer")
+    with open_feature_table(
+        job_dir,
+        table,
+        columns=columns,
+        output_format=output_format,
+    ) as prepared:
+        output = _destination(Path(output_dir), prepared.package)
+        job, reader, schema = prepared.job, prepared.reader, prepared.schema
+        schema_record, inputs = prepared.schema_record, prepared.inputs
+        documents, indices = prepared.documents, prepared.indices
+        rows, selected = prepared.rows, prepared.selected
+        manifest = documents["job_manifest.json"][1]
         # Exclusive creation prevents overwriting another caller's result.
         output.mkdir()
         try:
@@ -428,8 +489,11 @@ def export_feature_table(
                         for relative, identity in inputs.items()
                     ],
                 },
-                "selection": {"columns": selected, "rows": written_rows,
-                              "rowPolicy": "all-in-original-order"},
+                "selection": {
+                    "columns": selected,
+                    "rows": written_rows,
+                    "rowPolicy": "all-in-original-order",
+                },
                 "format": output_format,
                 "outputs": [
                     {"relativePath": relative, **_identity(output / relative)}

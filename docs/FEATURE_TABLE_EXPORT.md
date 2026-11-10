@@ -37,6 +37,13 @@ The command prints the original job status as well as the export result. A sourc
 job completed with warnings remains visibly marked; successful export does not
 clear its warnings or change the scientific status of its features.
 
+## Compare conditions or recordings
+
+Use [collected measurement export](FEATURE_COLLECTION.md) to take two or more saved
+tables into one typed CSV/Parquet with explicit condition, session, source, scope
+and warning context. The standalone command is collect-tables; selected units
+and recorded column definitions must be compatible.
+
 ## Source command
 
 Run from the repository with its Python 3.12 analysis environment:

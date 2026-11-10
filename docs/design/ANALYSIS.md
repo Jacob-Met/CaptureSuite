@@ -560,3 +560,15 @@ and does not describe an individual sensor. A feature job with incomplete sensor
 support records a warning, so strict CLI mode exits 2 and selected exports retain
 that warning in their copied source manifest. Select support columns alongside
 measurements when exporting a table; the column metadata defines the denominator.
+
+## Decision 2026-11-10: collected measurement handoff
+
+Researchers can already analyze individual full, checkpoint and explicit ranges.
+The next handoff combines explicitly labeled saved tables through the existing
+validated feature reader, preserving row values and session clocks. Common
+recorded column metadata and Arrow fields must agree. This is a typed external
+analysis handoff, not a new estimator or statistical test. New feature tables
+record the source/stream directly rather than requiring path inference; older
+missing bindings stay null. The derived export is versioned as
+capture.feature_collection/1 and documented in [FEATURE_COLLECTION.md](../FEATURE_COLLECTION.md).
+No acquisition, raw data, checkpoint boundary or existing job semantics change.

@@ -39,11 +39,13 @@ fi
 "$out/dist/capturesuite-analysis/capturesuite-analysis" --help >/dev/null
 "$out/dist/capturesuite-analysis/capturesuite-analysis" qc --help >/dev/null
 "$out/dist/capturesuite-analysis/capturesuite-analysis" export-table --help >/dev/null
+"$out/dist/capturesuite-analysis/capturesuite-analysis" collect-tables --help >/dev/null
 cp "$repo/NOTICE" "$out/dist/capturesuite-analysis/NOTICE"
 cp "$repo/LICENSE" "$out/dist/capturesuite-analysis/LICENSE"
 cp "$repo/LICENSING.md" "$out/dist/capturesuite-analysis/LICENSING.md"
 cp "$repo/docs/OFFLINE_ANALYSIS_LINUX.md" "$out/dist/capturesuite-analysis/README.md"
 cp "$repo/docs/FEATURE_TABLE_EXPORT.md" "$out/dist/capturesuite-analysis/FEATURE_TABLE_EXPORT.md"
+cp "$repo/docs/FEATURE_COLLECTION.md" "$out/dist/capturesuite-analysis/FEATURE_COLLECTION.md"
 "$py" "$repo/tools/collect_analysis_notices.py" \
     "$out/work/capturesuite-analysis/Analysis-00.toc" "$out/dist/capturesuite-analysis"
 git rev-parse HEAD > "$out/dist/capturesuite-analysis/SOURCE_COMMIT"
