@@ -208,3 +208,159 @@ def test_square_wave_zero_crossings() -> None:
     zc = int(df.iloc[0]["ch0_zc"])
     expected = int(2 * f0 * T)
     assert abs(zc - expected) <= 2
+
+
+def _replace_payload_segment(
+    package: Path,
+    *,
+    source_id: str,
+    stream_id: str,
+    schema_name: str,
+    message: object,
+) -> None:
+    """Replace only a copied fixture MCAP, with a genuine protobuf MCAP."""
+    from mcap.writer import Writer
+
+    target = package / "sources" / source_id / "streams" / stream_id / "segments" / "000000.mcap"
+    with target.open("wb") as fh:
+        writer = Writer(fh)
+        writer.start(profile="", library="sample-qc-negative-control")
+        sid = writer.register_schema(name=schema_name, encoding="protobuf", data=b"")
+        cid = writer.register_channel(topic=source_id, message_encoding="protobuf", schema_id=sid)
+        writer.add_message(
+            channel_id=cid,
+            log_time=0,
+            publish_time=0,
+            data=message.SerializeToString(),
+        )
+        writer.finish()
+
+
+def test_real_emg_and_imu_payload_qc_reports_decoded_measurements(tmp_path: Path) -> None:
+    from capture_analysis import collect_qc
+
+    package = _write_emg_imu_package(tmp_path / "real-sensor.mmsession")
+    report = collect_qc(package, inspect_payloads=True).to_dict()
+    rows = {r["modality"]: r["payloadInspection"] for r in report["streams"]}
+    assert rows["emg"]["status"] == "emg_samples_checked"
+    assert rows["emg"]["sampleFramesChecked"] == 400
+    assert rows["emg"]["channelIds"] == ["ch0", "ch1"]
+    assert rows["emg"]["constantChannels"] == []
+    assert rows["imu"]["status"] == "imu_frames_checked"
+    assert rows["imu"]["sampleFramesChecked"] == 30
+    assert rows["imu"]["sensorIds"] == ["pelvis"]
+    assert rows["imu"]["zeroQuaternionSensorSamples"] == 0
+    assert set(report["trafficLights"].values()) == {"ok"}
+
+
+@pytest.mark.parametrize("case", ["nan", "bad_length", "flatline"])
+def test_emg_payload_quality_is_derived_from_actual_float_bytes(tmp_path: Path, case: str) -> None:
+    from capture_analysis import collect_qc
+    from capture_protocol.generated.capture.v1.data import emg_batch_pb2
+
+    package = _write_emg_imu_package(tmp_path / "emg.mmsession")
+    emg = emg_batch_pb2.EmgBatch()
+    emg.timing.session_time_ns = 0
+    emg.channel_ids.extend(["ch0", "ch1"])
+    emg.sample_count = 2
+    if case == "nan":
+        emg.samples_f32_le = np.asarray([1.0, float("nan"), 2.0, 3.0], dtype="<f4").tobytes()
+    elif case == "bad_length":
+        emg.samples_f32_le = np.asarray([1.0, 2.0, 3.0], dtype="<f4").tobytes()
+    else:
+        emg.samples_f32_le = np.zeros(4, dtype="<f4").tobytes()
+    _replace_payload_segment(
+        package,
+        source_id="sim.emg.main",
+        stream_id="sim.emg.main.batch",
+        schema_name="emg.batch/1",
+        message=emg,
+    )
+
+    report = collect_qc(package, inspect_payloads=True).to_dict()
+    record = next(x for x in report["streams"] if x["modality"] == "emg")
+    inspection = record["payloadInspection"]
+    if case == "flatline":
+        assert inspection["status"] == "emg_samples_checked"
+        assert inspection["sampleFramesChecked"] == 2
+        assert inspection["constantChannels"] == ["ch0", "ch1"]
+        assert report["trafficLights"]["sim.emg.main"] == "ok"
+    else:
+        assert inspection["status"] == "failed"
+        assert inspection["sampleFramesChecked"] is None
+        assert "EMG" in inspection["detail"]
+        assert report["trafficLights"]["sim.emg.main"] == "fail"
+
+
+@pytest.mark.parametrize("case", ["nonfinite", "duplicate_sensor", "wrong_schema"])
+def test_imu_payload_qc_rejects_real_protocol_failures(tmp_path: Path, case: str) -> None:
+    from capture_analysis import collect_qc
+    from capture_protocol.generated.capture.v1.data import emg_batch_pb2, imu_frame_pb2
+
+    package = _write_emg_imu_package(tmp_path / "imu.mmsession")
+    frame = imu_frame_pb2.ImuFrame()
+    first = frame.sensors.add()
+    first.sensor_id = "pelvis"
+    first.accel_z = 9.81
+    first.qw = 1.0
+    if case == "nonfinite":
+        first.gyro_x = float("inf")
+    elif case == "duplicate_sensor":
+        second = frame.sensors.add()
+        second.sensor_id = "pelvis"
+    if case == "wrong_schema":
+        msg = emg_batch_pb2.EmgBatch(sample_count=1)
+        msg.channel_ids.append("ch0")
+        msg.samples_f32_le = np.asarray([1.0], dtype="<f4").tobytes()
+        schema_name = "emg.batch/1"
+    else:
+        msg = frame
+        schema_name = "imu.frame/1"
+    _replace_payload_segment(
+        package,
+        source_id="sim.imu.upper",
+        stream_id="sim.imu.upper.frames",
+        schema_name=schema_name,
+        message=msg,
+    )
+
+    report = collect_qc(package, inspect_payloads=True).to_dict()
+    record = next(x for x in report["streams"] if x["modality"] == "imu")
+    inspection = record["payloadInspection"]
+    assert inspection["status"] == "failed"
+    assert inspection["sampleFramesChecked"] is None
+    assert report["trafficLights"]["sim.imu.upper"] == "fail"
+
+
+def test_native_qc_cli_shows_real_emg_imu_payloads_without_changing_sources(
+    tmp_path: Path,
+) -> None:
+    import subprocess
+    import sys
+
+    from capture_analysis import hash_sources_tree
+
+    package = _write_emg_imu_package(tmp_path / "operator.mmsession")
+    before = hash_sources_tree(package)
+    cli = [
+        sys.executable,
+        str(ROOT / "tools/run_analysis.py"),
+        "qc",
+        str(package),
+        "--inspect-payloads",
+        "--strict-warnings",
+        "--overwrite-job-id",
+        "native-emg-imu",
+    ]
+    result = subprocess.run(cli, cwd=ROOT, capture_output=True, text=True, check=False)
+    assert result.returncode == 0, result.stdout + result.stderr
+    report_dir = package / "processing/jobs/native-emg-imu/reports"
+    report = json.loads((report_dir / "qc.json").read_text(encoding="utf-8"))
+    statuses = {s["modality"]: s["payloadInspection"]["status"] for s in report["streams"]}
+    assert statuses == {"emg": "emg_samples_checked", "imu": "imu_frames_checked"}
+    page = (report_dir / "qc.html").read_text(encoding="utf-8")
+    assert "emg_samples_checked" in page
+    assert "imu_frames_checked" in page
+    assert "channels: ch0, ch1" in page
+    assert "sensors: pelvis" in page
+    assert hash_sources_tree(package) == before
