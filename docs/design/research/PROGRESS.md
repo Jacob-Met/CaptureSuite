@@ -1550,3 +1550,34 @@ Separate judgment and downloadable component distribution are tracked in
 claim. Existing corrected-versus-native timestamp retention, wall-clock/QPC
 anchor mismatch and worker/package path integration are explicit follow-ups in
 the plugin README. No analysis/QC/plot code changed.
+
+## 2026-11-10 — Astra-Lark: Python-worker recording handoff
+
+The merged live LSL lifecycle repair (PR178) exposed three ordinary consumer
+failures in the shared Python SDK: files were written outside the native
+source/stream tree, UTC wall time was subtracted from a QPC start, and restarting
+a source reopened segment000000 with truncation. SDK0.1.1 uses the canonical
+tree, perf_counter_ns anchor, next retained segment index and exclusive creates.
+
+Actual native SessionPackage finalization also exposed truncated analysis
+support: the SDK reported one sample per multi-frame batch and ended integrity
+at the batch's first frame. The retained real23Hz/2ch A stream had40frames but
+ordinary analysis loaded34; real37Hz/1ch B had84 but loaded82. SegmentSealed now
+counts frames and includes the last frame using native within-batch deltas (or
+the declared rate when timestamps are absent). Raw MCAP payloads are retained.
+
+Astra-Lark ran16 focused SDK/regression/live tests on hamon-build-384, including
+real liblsl outlets, public Worker Start/Stop, stop/restart retention, native
+SessionPackage create/record_external_segment/finalize and ordinary full-window
+reader plus feature Parquet/CSV. The native test wrapper links production
+capture_storage; it does not manufacture manifest/stream metadata. Native build
+used GCC13.3, Protobuf3.21.12, MCAP b295349, BLAKE3 1.5.5/81f772a4.
+Independent consumer judgment is assigned to Astra-Heron on unfamiliar live
+rates/channels and repeated restart; verdict recorded separately.
+
+Scope remains local numeric LSL and portable native storage. This does not
+prove Windows named-pipe control, the complete daemon/desktop workflow, remote
+clock synchronization, hardware timing or long recording reliability. LSL
+correction is still applied before stored device timestamps; empty inlet
+timeouts still do not create daemon-owned gap records. Prior captures remain
+untouched and are not silently migrated.

@@ -110,3 +110,8 @@ if(CMAKE_SYSTEM_NAME STREQUAL "Linux")
   add_test(NAME capture_atomic_file_posix_identity
            COMMAND capture_atomic_file_posix_identity_tests)
 endif()
+
+# Opt-in Python/live-LSL integration uses native package metadata/finalization.
+add_executable(capture_python_worker_package_fixture python_worker_package_fixture.cpp)
+target_link_libraries(capture_python_worker_package_fixture PRIVATE capture_storage)
+capture_set_warnings(capture_python_worker_package_fixture)

@@ -68,7 +68,7 @@ class McapSegmentWriter:
         self.on_sealed = on_sealed
 
         self._segments_dir = (
-            self.package_root / "streams" / source_id / stream_id / "segments"
+            self.package_root / "sources" / source_id / "streams" / stream_id / "segments"
         )
         self._segments_dir.mkdir(parents=True, exist_ok=True)
 
@@ -82,7 +82,21 @@ class McapSegmentWriter:
         self._end_ns = -1
         self._total = 0
 
-    def open(self, initial_segment_index: int = 0) -> None:
+    def open(self, initial_segment_index: int | None = None) -> None:
+        """Append after retained segments unless the caller chooses an index.
+
+        Opening a resumed source must never overwrite its earlier raw capture.
+        Exclusive creation also refuses an explicit occupied index or collision.
+        """
+        if initial_segment_index is None:
+            retained = [
+                int(path.stem)
+                for path in self._segments_dir.glob("*.mcap")
+                if path.stem.isdecimal()
+            ]
+            initial_segment_index = max(retained, default=-1) + 1
+        if initial_segment_index < 0:
+            raise ValueError("segment index must be nonnegative")
         self._segment_index = initial_segment_index
         self._open_segment()
 
@@ -92,6 +106,8 @@ class McapSegmentWriter:
         *,
         log_time_ns: int,
         publish_time_ns: int | None = None,
+        end_time_ns: int | None = None,
+        sample_count: int = 1,
     ) -> None:
         if self._writer is None:
             raise RuntimeError("writer not open")
@@ -104,11 +120,11 @@ class McapSegmentWriter:
             publish_time=publish_time_ns,
         )
         self._approx_bytes += len(payload) + 64
-        self._count += 1
-        self._total += 1
+        self._count += sample_count
+        self._total += sample_count
         if self._start_ns < 0:
             self._start_ns = log_time_ns
-        self._end_ns = log_time_ns
+        self._end_ns = max(self._end_ns, log_time_ns if end_time_ns is None else end_time_ns)
         if self._approx_bytes >= self.rotate_bytes:
             self._rotate()
 
@@ -142,7 +158,7 @@ class McapSegmentWriter:
 
     def _open_segment(self) -> None:
         path = self._segment_path()
-        self._file = path.open("wb")
+        self._file = path.open("xb")
         self._writer = Writer(self._file)
         self._writer.start(profile="", library="capture_worker")
         schema_id = self._writer.register_schema(

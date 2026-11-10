@@ -2,8 +2,8 @@
 
 Records numeric [Lab Streaming Layer](https://labstreaminglayer.org/) outlets
 through the existing CaptureSuite Python worker into `generic.numeric_batch/1`
-MCAP segments. Version 0.1.1 repairs live outlet discovery and makes stopping
-one source independent of other outlets in this shared worker.
+MCAP segments. Version 0.1.2 includes independent outlet lifecycle and the
+Python SDK 0.1.1 handoff to ordinary native-created session packages.
 
 ## Use with CaptureSuite on Windows
 
@@ -62,18 +62,47 @@ with the installed Python 3.12. The default test suite skips the live socket tes
 The SDK's named-pipe connection remains Windows-only and fails explicitly when
 requested on another OS; portable import does not enable a Linux capture daemon.
 
+## Reopen a native-created recording
+
+The Python SDK writes to the canonical
+`sources/<source>/streams/<stream>/segments` directory. Restarting a source
+chooses the next segment index; an explicit occupied index is refused. Existing
+sealed bytes are preserved. The default sample anchor uses the monotonic QPC
+clock from StartRequest. SegmentSealed counts sample frames and includes the
+last frame of a numeric batch, using retained device-time deltas or the
+descriptor's nominal rate. This keeps the native package's analysis window from
+silently dropping a batch tail.
+
+The opt-in integration test creates the package through the maintained native
+SessionPackage API, feeds it actual Worker SegmentSealed events, and finalizes
+it before running ordinary discovery, full-window loading and feature CSV
+output. It uses two real unequal-rate LSL outlets and restarts one while the
+other continues. It does not construct reader metadata or relocate raw files.
+
+After installing the Linux build dependencies in docs/BUILDING-LINUX.md:
+
+```bash
+scripts/build-linux.sh
+python -m pip install -e libs/python/capture_session -e 'libs/python/capture_analysis[analysis]'
+CAPTURE_RUN_LSL_TESTS=1 \
+CAPTURE_NATIVE_PACKAGE_FIXTURE="$PWD/build/linux-debug/tests/cpp/capture_python_worker_package_fixture" \
+python -m pytest -q tests/analysis/test_python_worker_native_live.py
+```
+
+The C++ fixture is a test driver for native storage, not a replacement capture
+daemon. Real retained values, source-isolated restarts, raw-file preservation
+and ordinary analysis handoff are tested; physical synchronization is not.
+
 ## Current limits
 
 This change proves live discovery, independent source stopping and retained
 numeric values on local LSL transport. It does not establish Windows named-pipe
 operation, remote-clock synchronization, hardware accuracy, long recording
-reliability or complete sealed-session integration.
+reliability or the full native daemon/desktop workflow.
 
-Existing timing and packaging limitations remain: the bridge stores timestamps
-after adding its latest LSL clock correction, and the generic SDK's default
-session-time anchor uses wall clock with a QPC start field. The SDK writes worker
-segments beneath `streams/<source>/<stream>`; native daemon/package integration
-needs separate validation. Do not interpret these files as a validated
-synchronized recording. Inlet timeouts currently skip empty chunks; they do not
+The bridge still stores timestamps after adding its latest LSL clock
+correction. The default SDK anchor is acquisition arrival time and does not fit
+remote device drift or establish physical synchronization. The native storage
+test uses the SDK's MemoryTransport rather than Windows named pipes. Inlet timeouts currently skip empty chunks; they do not
 produce the daemon-owned capture gap records. The earlier README's claims of
 raw timestamp preservation and logged gaps did not match this implementation.
