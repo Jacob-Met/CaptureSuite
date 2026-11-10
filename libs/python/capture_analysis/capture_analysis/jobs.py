@@ -240,6 +240,7 @@ def run(
         root,
         inspect_payloads=params.command in {"qc", "all"}
         and bool(params.extra.get("inspect_payloads")),
+        sources=params.sources if params.command == "qc" else None,
     )
     qc_dict = qc_report.to_dict()
 

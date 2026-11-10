@@ -1570,6 +1570,9 @@ claim. Existing corrected-versus-native timestamp retention, wall-clock/QPC
 anchor mismatch and worker/package path integration are explicit follow-ups in
 the plugin README. No analysis/QC/plot code changed.
 
+## 2026-11-10 — QC selected-source scope
+
+Actual released CLI accepted EMG-only QC selection but returned IMU warnings and two streams. QC now filters before decode and gap evaluation, reports selection explicitly, and rejects unknown IDs. Unfiltered QC and feature-job package inventory behavior are preserved. Real sealed MCAP CLI controls and raw hashes tested, plus excluded-source open-gap case.
 
 ### 2026-11-10 — discover retained jobs from the offline executable (astra-61a0-reed)
 

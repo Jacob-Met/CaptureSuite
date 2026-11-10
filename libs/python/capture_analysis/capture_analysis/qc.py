@@ -115,10 +115,12 @@ class QcReport:
     warnings: list[str] = field(default_factory=list)
     traffic_lights: dict[str, str] = field(default_factory=dict)  # source_id -> ok|warn|fail
     gaps: list[GapQc] = field(default_factory=list)
+    selected_sources: list[str] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
         return {
             "schemaId": "capture.analysis_qc/2",
+            "selectedSources": list(self.selected_sources),
             "packagePath": self.package_path,
             "sessionId": self.session_id,
             "packageState": self.package_state,
@@ -245,20 +247,35 @@ def _stream_qc(ref: StreamRef, *, inspect_payloads: bool = False) -> StreamQc:
     )
 
 
-def collect_qc(package_root: str | Path, *, inspect_payloads: bool = False) -> QcReport:
+def collect_qc(
+    package_root: str | Path, *, inspect_payloads: bool = False, sources: list[str] | None = None
+) -> QcReport:
     root = Path(package_root)
     summary: ReviewSummary = load_review_summary(root)
     manifest_path = root / "manifest.json"
     manifest_sha = _sha256_file(manifest_path) if manifest_path.is_file() else ""
 
-    streams = [_stream_qc(r, inspect_payloads=inspect_payloads) for r in discover_streams(root)]
+    refs = discover_streams(root)
+    selected = sorted(set(sources or []))
+    known = set(summary.source_ids) | {r.source_id for r in refs}
+    unknown = set(selected) - known
+    if unknown:
+        raise ValueError(f"unknown QC source IDs: {', '.join(sorted(unknown))}")
+    streams = [
+        _stream_qc(r, inspect_payloads=inspect_payloads)
+        for r in refs
+        if not selected or r.source_id in selected
+    ]
+    scoped_gaps = [g for g in summary.gaps if not selected or g.source_id in selected]
+    open_count = sum(not g.closed for g in scoped_gaps)
+    closed_count = sum(g.closed for g in scoped_gaps)
     warnings: list[str] = []
     if summary.state not in ("finalized", "finalized_recovered", ""):
         warnings.append(f"package state is {summary.state!r} (prefer finalized)")
     if summary.recovery_reports:
         warnings.append(f"recovery reports present: {', '.join(summary.recovery_reports)}")
-    if summary.open_gap_count:
-        warnings.append(f"{summary.open_gap_count} open gap(s) still listed")
+    if open_count:
+        warnings.append(f"{open_count} open gap(s) still listed")
     if summary.duration_ns <= 1:
         warnings.append(
             "package duration_ns is unknown/zero — analysis uses an open time window "
@@ -282,7 +299,7 @@ def collect_qc(package_root: str | Path, *, inspect_payloads: bool = False) -> Q
     for s in streams:
         warnings.extend(f"{s.source_id}/{s.stream_id}: {w}" for w in s.warnings)
 
-    gaps = [_gap_qc(gap) for gap in summary.gaps]
+    gaps = [_gap_qc(gap) for gap in scoped_gaps]
     for source_id, count in sorted(Counter(gap.source_id for gap in gaps).items()):
         # A listed gap needs coverage review, including an unknown cause. It does
         # not establish a new device-failure classification or replace a failure.
@@ -296,10 +313,10 @@ def collect_qc(package_root: str | Path, *, inspect_payloads: bool = False) -> Q
         package_state=summary.state,
         duration_ns=summary.duration_ns,
         manifest_sha256=manifest_sha,
-        source_count=len(summary.source_ids),
+        source_count=len(selected) if selected else len(summary.source_ids),
         stream_count=len(streams),
-        open_gap_count=summary.open_gap_count,
-        closed_gap_count=summary.closed_gap_count,
+        open_gap_count=open_count,
+        closed_gap_count=closed_count,
         checkpoint_count=len(summary.checkpoints),
         annotation_count=len(summary.annotations),
         sync_anchor_count=len(summary.sync_anchors),
@@ -309,4 +326,5 @@ def collect_qc(package_root: str | Path, *, inspect_payloads: bool = False) -> Q
         warnings=warnings,
         traffic_lights=traffic,
         gaps=gaps,
+        selected_sources=selected,
     )

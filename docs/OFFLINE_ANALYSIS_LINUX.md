@@ -146,3 +146,5 @@ dependency constraints, including capture-protocol's protobuf range.
 Ubuntu builds require dpkg-query metadata and /usr/share/doc package copyright
 files for native libraries copied into the bundle; absent attribution fails the
 build. Their exact package versions and library basenames are in the same manifest.
+
+For QC, `--sources SOURCE_ID ...` limits decoded streams, source lights and gap details/counts to those recorded sources. Unknown IDs fail rather than producing an empty success. The report explicitly labels its selected-source scope; package provenance, duration and recovery metadata still describe the whole recording. Feature job QC inventories retain their existing whole-package scope.
