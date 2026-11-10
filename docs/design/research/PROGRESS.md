@@ -1440,3 +1440,7 @@ pending at this draft source checkpoint; its eventual receipt will name exact
 source/platform boundaries. No installed desktop, hardware or clinical result
 is inferred. The Python renderer/comparator, inherited tests, workflows and all
 other owners remain untouched. This entry only appends to prior session history.
+
+## 2026-11-10 — IMU unavailable orientation warning
+
+Exact all-zero quaternion observations now contribute a QC warning and strict CLI exit 2. Identity and negative-identity controls remain OK. Synthetic sealed protobuf MCAP exercises the actual report path; raw-source hashes remain unchanged. No hardware or accuracy claim.
