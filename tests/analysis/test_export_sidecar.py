@@ -22,7 +22,7 @@ def test_export_writes_manifest_and_sidecar(tmp_path: Path) -> None:
     out.mkdir()
     code, _tail = run_export(
         str(FIXTURE),
-        ExportOptions(out_dir=str(out), verify=False),
+        ExportOptions(out_dir=str(out), verify=False, include_numeric=False),
         repo_root=ROOT,
     )
     assert code == 0
@@ -126,7 +126,7 @@ def _read_manifest(out: Path) -> dict:
 
 def test_parse_modalities_defaults_to_all() -> None:
     es = _load_export_session()
-    assert es._parse_modalities(None) == frozenset({"radar", "video", "emg", "imu"})
+    assert es._parse_modalities(None) == frozenset({"radar", "video", "emg", "imu", "numeric"})
 
 
 def test_parse_modalities_subset() -> None:
@@ -191,7 +191,7 @@ def test_main_no_flag_exports_all_modalities(tmp_path: Path) -> None:
     out = tmp_path / "out"
     assert es.main([str(pkg), str(out)]) == 0
     doc = _read_manifest(out)
-    assert doc["modalities"] == ["emg", "imu", "radar", "video"]
+    assert doc["modalities"] == ["emg", "imu", "numeric", "radar", "video"]
     assert len(doc["radar"]) == 1
 
 
@@ -240,11 +240,12 @@ def test_wizard_builds_modalities_flag() -> None:
         include_video=False,
         include_emg=True,
         include_imu=False,
+        include_numeric=False,
     )
     assert wiz._build_modalities_args(opts) == ["--modalities", "radar,emg"]
     assert wiz._build_modalities_args(wiz.ExportOptions(out_dir="/tmp/x")) == [
         "--modalities",
-        "radar,video,emg,imu",
+        "radar,video,emg,imu,numeric",
     ]
     none = wiz.ExportOptions(
         out_dir="/tmp/x",
@@ -252,6 +253,7 @@ def test_wizard_builds_modalities_flag() -> None:
         include_video=False,
         include_emg=False,
         include_imu=False,
+        include_numeric=False,
     )
     assert wiz._build_modalities_args(none) == ["--modalities", ""]
 
@@ -295,6 +297,7 @@ def test_wizard_run_export_propagates_selection_and_sidecar(
         include_video=False,
         include_emg=False,
         include_imu=False,
+        include_numeric=False,
         verify=False,
         write_sidecar=True,
     )
@@ -309,6 +312,7 @@ def test_wizard_run_export_propagates_selection_and_sidecar(
         "video": False,
         "emg": False,
         "imu": False,
+        "numeric": False,
     }
     # ...and actual output is recorded separately (requested != actual).
     assert sidecar["actualStreams"] == {
@@ -316,4 +320,5 @@ def test_wizard_run_export_propagates_selection_and_sidecar(
         "video": False,
         "emg": False,
         "imu": False,
+        "numeric": False,
     }

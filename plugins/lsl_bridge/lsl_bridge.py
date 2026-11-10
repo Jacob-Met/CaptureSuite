@@ -27,7 +27,7 @@ def _try_import_pylsl():
 
 
 class LslBridgeWorker(Worker):
-    plugin_version = "0.1.1"
+    plugin_version = "0.1.2"
 
     def __init__(
         self,

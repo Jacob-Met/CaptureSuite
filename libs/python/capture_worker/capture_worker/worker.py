@@ -193,14 +193,29 @@ class Worker(ABC):
         if device_time_ns:
             batch.device_time_ns.extend(int(t) for t in device_time_ns)
 
-        now_ns = time.time_ns()
+        # StartRequest carries QPC nanoseconds, not a UTC wall-clock anchor.
+        now_ns = time.perf_counter_ns()
         if session_time_ns is None:
             t0 = self._session_t0_qpc_ns.get(source_id, 0)
             session_time_ns = max(0, now_ns - t0) if t0 else now_ns
 
         writer = self._writers.get(source_id)
         if writer is not None:
-            writer.append(batch.SerializeToString(), log_time_ns=int(session_time_ns))
+            frame_count = len(batch.samples) // channel_count
+            span_ns = 0
+            if frame_count > 1:
+                if len(batch.device_time_ns) == frame_count:
+                    span_ns = batch.device_time_ns[-1] - batch.device_time_ns[0]
+                elif src and src.streams and src.streams[0].nominal_rate_hz > 0:
+                    span_ns = round((frame_count - 1) * 1e9 / src.streams[0].nominal_rate_hz)
+            # The package integrity range must include every frame, not only
+            # each batch's first sample; ordinary analysis uses it as its window.
+            writer.append(
+                batch.SerializeToString(),
+                log_time_ns=int(session_time_ns),
+                end_time_ns=int(session_time_ns) + max(0, span_ns),
+                sample_count=frame_count,
+            )
         self._sample_seq[source_id] = self._sample_seq.get(source_id, 0) + 1
 
     def emit_preview(self, frame: preview_pb2.PreviewFrame | Message) -> None:

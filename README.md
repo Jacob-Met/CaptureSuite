@@ -125,6 +125,23 @@ release, or `python tools/export_feature_table.py JOB_DIR --list` from source, t
 find saved tables and columns. Export a selection to CSV/Parquet with its types,
 units, original warnings and job provenance. See [feature table export](docs/FEATURE_TABLE_EXPORT.md).
 
+## Export recorded numeric samples
+
+The [experimental Linux numeric-export release](https://github.com/Jacob-Met/CaptureSuite/releases/tag/numeric-samples-2026-11-10)
+contains a standalone executable; no Python installation is required:
+
+```sh
+./capturesuite-analysis export-session recording.mmsession exported-samples --modalities numeric --verify
+```
+
+This preserves every recorded numeric channel value, exact native timestamps,
+separate MCAP clocks and copied gap provenance. Missing native clocks remain
+unknown. The maintained desktop's Export dialog offers the same numeric choice;
+the downloadable archive contains the Linux CLI, not a packaged desktop.
+See [numeric sample export](docs/NUMERIC_SAMPLE_EXPORT.md) for import instructions
+and timing limits. Independent actual-release receiving accepted exact data and
+malformed-input refusal on generated recordings, not physical instruments.
+
 ## Simulation walkthrough (after build prerequisites)
 
 ```powershell
@@ -190,3 +207,11 @@ and product direction. Independent research software (not an official product of
 any university lab unless separately stated).
 
 Payload QC warns when an IMU sensor sample has an all-zero quaternion: orientation is unavailable for that sample, although finite acceleration and gyro values can still be decoded. This exact observation is not a hardware accuracy assessment or a non-unit quaternion tolerance policy.
+
+## Experimental offline native desktop
+
+Inspect finalized recordings, recorded notes/checkpoints/gaps and retained video
+without a capture daemon. On Linux with Python 3.12, run
+`./scripts/run-desktop-offline.sh --review /path/to/recording.mmsession`.
+See [offline desktop review](docs/operator/OFFLINE_DESKTOP_REVIEW.md) for setup,
+exact-time semantics and platform limits. Live acquisition remains Windows-only.
