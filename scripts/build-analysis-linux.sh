@@ -39,6 +39,7 @@ fi
 "$out/dist/capturesuite-analysis/capturesuite-analysis" --help >/dev/null
 "$out/dist/capturesuite-analysis/capturesuite-analysis" qc --help >/dev/null
 "$out/dist/capturesuite-analysis/capturesuite-analysis" export-table --help >/dev/null
+"$out/dist/capturesuite-analysis/capturesuite-analysis" jobs --help >/dev/null
 cp "$repo/NOTICE" "$out/dist/capturesuite-analysis/NOTICE"
 cp "$repo/LICENSE" "$out/dist/capturesuite-analysis/LICENSE"
 cp "$repo/LICENSING.md" "$out/dist/capturesuite-analysis/LICENSING.md"
