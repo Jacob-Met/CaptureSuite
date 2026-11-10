@@ -395,8 +395,9 @@ def test_imu_partial_sensor_presence_is_visible_in_qc_and_strict_cli(
     assert hash_sources_tree(package) == before
 
 
+@pytest.mark.parametrize("command", ["qc", "all"])
 def test_native_qc_cli_shows_real_emg_imu_payloads_without_changing_sources(
-    tmp_path: Path,
+    tmp_path: Path, command: str,
 ) -> None:
     import subprocess
     import sys
@@ -408,7 +409,7 @@ def test_native_qc_cli_shows_real_emg_imu_payloads_without_changing_sources(
     cli = [
         sys.executable,
         str(ROOT / "tools/run_analysis.py"),
-        "qc",
+        command,
         str(package),
         "--inspect-payloads",
         "--strict-warnings",
