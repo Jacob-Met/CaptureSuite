@@ -6,6 +6,7 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 
+from capture_analysis.sample_windows import elapsed_sample_windows, expected_samples
 from capture_analysis.types import GapMask, LoadedImu
 from capture_analysis.windows import enforce_gap_policy, valid_fraction, validity_mask
 
@@ -25,21 +26,28 @@ def extract_imu_features(
     enforce_gap_policy(gap_mask, valid)
     vf = valid_fraction(valid)
 
-    fs = max(nominal_rate_hz, 1.0)
-    win = max(1, int(round(window_s * fs)))
-    hop = max(1, int(round(hop_s * fs)))
-    n = loaded.t_frame_ns.size
     rows: list[dict] = []
-
-    starts = list(range(0, max(n - win + 1, 1), hop)) if n >= win else ([0] if n else [])
-    for i0 in starts:
-        i1 = min(i0 + win, n) if n >= win else n
+    for window in elapsed_sample_windows(
+        loaded.t_frame_ns,
+        valid,
+        gap_mask,
+        rate_hz=nominal_rate_hz,
+        window_s=window_s,
+        hop_s=hop_s,
+    ):
+        i0, i1 = window.first, window.stop
         v = valid[i0:i1]
         if not np.any(v):
             continue
         t_mid = int(np.median(loaded.t_frame_ns[i0:i1][v]))
         row: dict = {
+            "t_start_ns": window.start_ns,
+            "t_end_ns": window.end_ns,
             "t_mid_ns": t_mid,
+            "expected_frame_count": expected_samples(
+                window.start_ns, window.end_ns, nominal_rate_hz,
+                origin_ns=window.grid_origin_ns,
+            ),
             "valid_fraction": float(np.mean(v)),
             "window_frame_count": int(i1 - i0),
         }
@@ -73,6 +81,12 @@ def extract_imu_features(
 
     df = pd.DataFrame(rows)
     meta = [
+        {"name": "t_start_ns", "units": "ns", "calibrated": True,
+         "description": "Inclusive elapsed-session-time window start."},
+        {"name": "t_end_ns", "units": "ns", "calibrated": True,
+         "description": "Exclusive elapsed-session-time window end."},
+        {"name": "expected_frame_count", "units": "count", "calibrated": False,
+         "description": "Nominal frame positions in the elapsed window; not clock calibration."},
         {"name": "t_mid_ns", "units": "ns", "calibrated": True},
         {
             "name": "valid_fraction", "units": "1", "calibrated": True,
