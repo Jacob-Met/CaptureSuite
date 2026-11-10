@@ -85,7 +85,8 @@ def handle_emg(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext) -> None:
         ctx.sync_series.append(
             {
                 "gaps": gap_mask.gaps,
-                "label": f"EMG {ref.source_id[:16]}",
+                "label": f"EMG {ref.source_id} · {loaded.channel_ids[0]}",
+                "ylabel": f"RMS ({loaded.units or 'units unspecified'})",
                 "t_ns": loaded.t_sample_ns[::step],
                 "y": env[::step],
                 "color": "#35c46b",
@@ -143,7 +144,8 @@ def handle_imu(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext) -> None:
         ctx.sync_series.append(
             {
                 "gaps": gap_mask.gaps,
-                "label": f"IMU {ref.source_id[:16]}",
+                "label": f"IMU {ref.source_id} · {loaded.sensor_ids[0]}",
+                "ylabel": f"|a| ({loaded.units or 'units unspecified'})",
                 "t_ns": loaded.t_frame_ns,
                 "y": mag,
                 "color": "#3d8bfd",

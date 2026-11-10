@@ -148,7 +148,8 @@ class GapPolicyError(RuntimeError):
     """An explicitly requested fail policy found a declared recording gap."""
 
 
-def enforce_gap_policy(gap_mask: GapMask, valid: np.ndarray) -> None:
+def enforce_gap_policy(gap_mask: GapMask, valid: np.ndarray | None = None) -> None:
+    """Enforce declared overlap; valid remains accepted for existing callers."""
     if gap_mask.policy != "fail":
         return
     if gap_mask.overlaps_window():

@@ -23,6 +23,7 @@ mkdir -p "$out"
     --paths "$repo/libs/python/capture_analysis" \
     --paths "$repo/libs/python/capture_session" \
     --paths "$repo/libs/python/capture_protocol" \
+    --additional-hooks-dir "$repo/scripts/pyinstaller-hooks" \
     --collect-submodules capture_analysis \
     --collect-submodules capture_protocol \
     --collect-submodules mcap \
@@ -39,13 +40,19 @@ fi
 "$out/dist/capturesuite-analysis/capturesuite-analysis" --help >/dev/null
 "$out/dist/capturesuite-analysis/capturesuite-analysis" qc --help >/dev/null
 "$out/dist/capturesuite-analysis/capturesuite-analysis" export-table --help >/dev/null
+"$out/dist/capturesuite-analysis/capturesuite-analysis" export-session --help >/dev/null
+"$out/dist/capturesuite-analysis/capturesuite-analysis" review --help >/dev/null
+
+"$out/dist/capturesuite-analysis/capturesuite-analysis" jobs --help >/dev/null
 cp "$repo/NOTICE" "$out/dist/capturesuite-analysis/NOTICE"
 cp "$repo/LICENSE" "$out/dist/capturesuite-analysis/LICENSE"
 cp "$repo/LICENSING.md" "$out/dist/capturesuite-analysis/LICENSING.md"
 cp "$repo/docs/OFFLINE_ANALYSIS_LINUX.md" "$out/dist/capturesuite-analysis/README.md"
 cp "$repo/docs/FEATURE_TABLE_EXPORT.md" "$out/dist/capturesuite-analysis/FEATURE_TABLE_EXPORT.md"
+cp "$repo/docs/QC_PACKAGE_REVIEW.md" "$out/dist/capturesuite-analysis/QC_PACKAGE_REVIEW.md"
 "$py" "$repo/tools/collect_analysis_notices.py" \
     "$out/work/capturesuite-analysis/Analysis-00.toc" "$out/dist/capturesuite-analysis"
+cp "$repo/docs/NUMERIC_SAMPLE_EXPORT.md" "$out/dist/capturesuite-analysis/NUMERIC_SAMPLE_EXPORT.md"
 git rev-parse HEAD > "$out/dist/capturesuite-analysis/SOURCE_COMMIT"
 "$out/dist/capturesuite-analysis/capturesuite-analysis" --version
 echo "CAPTURESUITE_LINUX_ANALYSIS_BUNDLE_OK=$out/dist/capturesuite-analysis"

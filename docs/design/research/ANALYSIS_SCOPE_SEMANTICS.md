@@ -42,7 +42,12 @@ other checkpoint's bounds under the selected section's name.
 Resolution through `section=<name>` tags or protocol presets remains a future
 extension; the desktop does not reinterpret those tags as checkpoint IDs.
 
-If section incomplete: warn in QC; `gap_policy=fail` fails job if gap overlaps section > threshold.
+For feature and plot jobs, `gap_policy=fail` rejects any declared gap overlapping
+the selected time window of a selected supported stream before stream handlers
+write derived outputs. This includes missing intervals containing no stored
+samples. Closed endpoints count as overlap; no duration threshold is implemented.
+Gaps outside the selected window or belonging only to unselected sources do not
+reject the job. Metadata QC remains available to inspect the gap.
 
 ---
 
