@@ -129,6 +129,7 @@ def render_qc_html(qc: dict[str, Any]) -> str:
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>QC — {escape(str(qc.get("sessionId", "")))}</title>
 <style>
 body {{ font-family: Segoe UI, sans-serif; margin: 24px; color: #222; }}
@@ -141,6 +142,9 @@ th {{ background: #f4f4f4; }}
 .fail {{ color: #cf222e; font-weight: 600; }}
 .meta {{ color: #555; font-size: 0.85rem; overflow-wrap: anywhere; line-height: 1.4; }}
 .table-scroll {{ overflow-x: auto; }}
+.warnings {{ padding-left: 1.4rem; overflow-wrap: anywhere; }}
+.warnings li {{ margin-bottom: 0.6rem; }}
+@media (max-width: 600px) {{ body {{ margin: 12px; }} }}
 .gaps td:nth-child(n+5) {{ font-family: Consolas, ui-monospace, monospace; }}
 </style>
 </head>
@@ -161,6 +165,11 @@ checkpoints {int(qc.get("checkpointCount") or 0)}
 <tr><th>source</th><th>light</th></tr>
 {light_rows or "<tr><td colspan='2'>(none)</td></tr>"}
 </table>
+
+<section aria-labelledby="warnings-title">
+<h2 id="warnings-title">Warnings</h2>
+<ul class="warnings">{warn_items}</ul>
+</section>
 
 <h2>Recorded gaps</h2>
 <p class="meta">Times are seconds relative to session T0, with nanosecond precision.
@@ -191,8 +200,6 @@ None of these statuses establishes calibrated sensor accuracy.</p>
 </table>
 </div>
 
-<h2>Warnings</h2>
-<ul>{warn_items}</ul>
 </body>
 </html>
 """
