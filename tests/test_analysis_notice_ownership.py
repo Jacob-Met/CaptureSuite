@@ -106,6 +106,17 @@ class NoticeOwnershipTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "WebEngineCore"):
                 notices.qt_notice_groups(toc)
 
+    def test_quick_prefix_does_not_cover_separate_source_modules(self):
+        with tempfile.TemporaryDirectory() as temp:
+            toc = Path(temp) / "Analysis.toc"
+            for module in ("Quick3D", "Quick3DUtils", "QuickTimeline"):
+                with self.subTest(module=module):
+                    toc.write_text(repr([
+                        (module, f"/venv/PySide6/Qt/lib/libQt6{module}.so.6", "BINARY")
+                    ]))
+                    with self.assertRaisesRegex(ValueError, module):
+                        notices.qt_notice_groups(toc)
+
     def test_indirect_native_modules_are_covered(self):
         with tempfile.TemporaryDirectory() as temp:
             toc = Path(temp) / "Analysis.toc"

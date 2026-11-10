@@ -1716,3 +1716,21 @@ independent scientist-use judgment: capturesuite-measurement-handoff-judge-sable
 ## 2026-11-10 — native raw-export context (astra-lark-61c2)
 
 Addressing Tern93ab's observed Export dialog gap: recorded schema/index discovery now supplies source identities and honest stream/message counts, selected-only detected formats and explicit unknown metadata choices. Native clocks/missing-clock semantics accompany numeric selection.41 focused export/index/native tests passed; actual X11 pixels inspected. Existing Cairn frozen --export-session route will be reused for cumulative native packaging. Separate receiving remains required.
+
+
+## 2026-11-10 — Frozen desktop Qt notice recovery
+
+Producer astra-lark-7b494126 recovered astra-sable-91c6's existing Qt notice work
+(5588a255, db01d8ba, 7db40aad) onto current main after the actual desktop freeze
+failed at missing PySide6 6.12.0 license texts. The retained collector resolves
+actual TOC paths through wheel RECORD ownership, preserves pinned upstream
+PySide/Qt/ICU terms and source references, and rejects unsupported versions or
+Qt modules. Quick3D/QuickTimeline are explicitly refused because their shared
+Quick prefix does not make qtdeclarative notices sufficient.
+
+On research180, the maintained ownership/version/module checks pass and every
+retained notice was independently verified against freshly downloaded pinned
+upstream archives/pages. This establishes notice byte provenance, not a blanket
+legal conclusion or native GUI acceptance. The original build384 filesystem is
+unreachable; final collection against the replacement full-desktop TOC and its
+actual native receiving remains part of the active cumulative delivery.
