@@ -122,6 +122,19 @@ def collect(toc: Path, bundle: Path) -> dict:
                 visit_native(child)
 
     visit_native(ast.literal_eval(toc.read_text()))
+    # Debian copyright files refer to shared full license texts by absolute path.
+    # Keep those texts beside the attribution, without retaining host paths.
+    for entry in native.values():
+        copyright_text = (destination / entry["notices"][0]["path"]).read_text()
+        for license_name in sorted(
+            set(re.findall(r"/usr/share/common-licenses/([A-Za-z0-9.+-]+)", copyright_text))
+        ):
+            license_file = Path("/usr/share/common-licenses") / license_name.rstrip(".")
+            if not license_file.is_file():
+                raise ValueError(f"Missing shared license text: {license_name}")
+            entry["notices"].append(
+                copy(license_file, Path("native/common-licenses") / license_file.name)
+            )
     packages.extend(native[key] for key in sorted(native))
     python_license = Path(sysconfig.get_path("stdlib")) / "LICENSE.txt"
     if not python_license.is_file():
