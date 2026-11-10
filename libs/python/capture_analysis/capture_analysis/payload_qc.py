@@ -13,6 +13,9 @@ from typing import Any
 
 from capture_analysis.types import StreamRef
 
+_PREVIEW_FRAMES = 256
+_PREVIEW_CHANNELS = 6
+
 _SCHEMAS = {
     "generic.numeric_batch/1": {"capture.v1.data.NumericBatch", "generic.numeric_batch/1"},
     "emg.batch/1": {"capture.v1.data.EmgBatch", "emg.batch/1"},
@@ -41,7 +44,7 @@ def _decode_emg(payload: bytes) -> tuple[int, list[str], list[tuple[float, float
     return n, ids, limits
 
 
-def _decode_imu(payload: bytes) -> tuple[list[str], int]:
+def _decode_imu(payload: bytes) -> tuple[list[str], list[str]]:
     from capture_protocol.generated.capture.v1.data import imu_frame_pb2
 
     from capture_analysis.loaders.mcap_iter import decode_protobuf
@@ -50,7 +53,7 @@ def _decode_imu(payload: bytes) -> tuple[list[str], int]:
     ids = [sensor.sensor_id for sensor in msg.sensors]
     if not ids or not all(ids) or len(set(ids)) != len(ids):
         raise ValueError("IMU frame requires unique, nonempty sensor IDs")
-    zero_quaternions = 0
+    zero_sensor_ids: list[str] = []
     for sensor in msg.sensors:
         values = (
             sensor.accel_x,
@@ -67,8 +70,8 @@ def _decode_imu(payload: bytes) -> tuple[list[str], int]:
         if not all(math.isfinite(v) for v in values):
             raise ValueError(f"IMU sensor {sensor.sensor_id!r} contains NaN or infinity")
         if sensor.qw == sensor.qx == sensor.qy == sensor.qz == 0:
-            zero_quaternions += 1
-    return ids, zero_quaternions
+            zero_sensor_ids.append(sensor.sensor_id)
+    return ids, zero_sensor_ids
 
 
 def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
@@ -90,6 +93,8 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
     schema_id = ref.data_schema_id
     expected = _SCHEMAS.get(schema_id)
     frames = 0
+    preview_batches: list[dict[str, Any]] = []
+    preview_frames = 0
     layout: list[str] | None = None
     last_device_time: int | None = None
     frames_without_native_time = 0
@@ -97,6 +102,7 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
     observed_sensors: set[str] = set()
     sensor_frame_counts: dict[str, int] = {}
     zero_quaternions = 0
+    zero_by_sensor: dict[str, int] = {}
     try:
         from mcap.reader import make_reader
 
@@ -149,6 +155,28 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
                             frames_without_native_time += n
                         if not all(math.isfinite(value) for value in samples):
                             raise ValueError("numeric samples contain NaN or infinity")
+                        # Exact leading samples only: QC still checks every later frame.
+                        # A fixed channel/frame cap bounds retained report data regardless
+                        # of recording length; batch boundaries and native clocks survive.
+                        take = min(n, _PREVIEW_FRAMES - preview_frames)
+                        if take > 0:
+                            preview_batches.append(
+                                {
+                                    "firstFrame": frames,
+                                    "segment": path.name,
+                                    "messageIndex": per_segment - 1,
+                                    "sessionTimeNs": str(message.log_time),
+                                    "nativeTimeNs": [str(t) for t in device_times[:take]],
+                                    "values": [
+                                        samples[
+                                            i * channels : i * channels
+                                            + min(channels, _PREVIEW_CHANNELS)
+                                        ]
+                                        for i in range(take)
+                                    ],
+                                }
+                            )
+                            preview_frames += take
                         frames += n
                     elif schema_id == "emg.batch/1":
                         n, ids, limits = _decode_emg(message.data)
@@ -170,7 +198,9 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
                             sensor_frame_counts[sensor_id] = (
                                 sensor_frame_counts.get(sensor_id, 0) + 1
                             )
-                        zero_quaternions += zero
+                        zero_quaternions += len(zero)
+                        for sensor_id in zero:
+                            zero_by_sensor[sensor_id] = zero_by_sensor.get(sensor_id, 0) + 1
                         frames += 1
             result["segmentsChecked"] += 1
             if not per_segment:
@@ -197,6 +227,18 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
                 detail="Decoded all declared-schema messages; checked shape and finite values",
             )
             if schema_id == "generic.numeric_batch/1":
+                result["numericPreview"] = {
+                    "schemaId": "capture.numeric_qc_preview/1",
+                    "selection": "first_recorded_frames",
+                    "framesShown": preview_frames,
+                    "framesChecked": frames,
+                    "frameLimit": _PREVIEW_FRAMES,
+                    "channelLimit": _PREVIEW_CHANNELS,
+                    "channelIds": (layout or [])[:_PREVIEW_CHANNELS],
+                    "totalChannels": len(layout or []),
+                    "units": ref.units,
+                    "batches": preview_batches,
+                }
                 result["framesWithoutNativeTimestamps"] = frames_without_native_time
                 result["detail"] = (
                     "Decoded NumericBatch values and ordered native timestamps across "
@@ -223,6 +265,7 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
                     sensor_id for sensor_id, count in sensor_frame_counts.items() if count < frames
                 )
                 result["zeroQuaternionSensorSamples"] = zero_quaternions
+                result["zeroQuaternionSamplesBySensor"] = dict(sorted(zero_by_sensor.items()))
     except Exception as exc:  # noqa: BLE001 - malformed MCAP/codec errors are report data
         result.update(
             status="failed",

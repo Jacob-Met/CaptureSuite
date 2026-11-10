@@ -125,7 +125,7 @@ def main(argv: list[str] | None = None) -> int:
             f"streams={result.qc.get('streamCount')} "
             f"gaps_open={result.qc.get('openGapCount')} "
             f"gaps_closed={result.qc.get('closedGapCount')} "
-            f"warnings={len(result.qc.get('warnings') or [])}"
+            f"warnings={len(result.manifest.get('warnings') or [])}"
         )
     if result.status == "failed":
         return 1
