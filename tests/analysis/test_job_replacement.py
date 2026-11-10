@@ -114,7 +114,7 @@ def assert_failed_attempt(
 def test_partial_qc_failure_preserves_previous_results(
     package: Path, previous_job, monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    def fail_html(_report):
+    def fail_html(_report, *, job=None):
         raise RuntimeError("injected HTML report failure")
 
     with monkeypatch.context() as patch:
@@ -286,7 +286,7 @@ def test_post_commit_cleanup_failure_keeps_successful_replacement(
 def test_new_failed_job_remains_recorded(package: Path, monkeypatch: pytest.MonkeyPatch) -> None:
     raw_tree = tree_bytes(package / "sources")
 
-    def fail_html(_report):
+    def fail_html(_report, *, job=None):
         raise RuntimeError("injected new-job report failure")
 
     with monkeypatch.context() as patch:

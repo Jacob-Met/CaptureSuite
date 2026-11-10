@@ -255,6 +255,8 @@ def run(
     outputs: list[dict[str, Any]] = []
     errors: list[str] = []
     warnings = list(qc_dict.get("warnings") or [])
+    qc_warning_count = len(warnings)
+    schema_warnings: list[str] = []
     feature_tables: list[dict[str, Any]] = []
     previous: Path | None = None
     log_lines = [
@@ -263,14 +265,30 @@ def run(
         f"job_id={job_id}",
     ]
 
+    def write_report(report_status: str, report_job_id: str = job_id) -> None:
+        # QC describes the recorded package. Later stages append their own
+        # findings; preserve that provenance instead of changing source lights.
+        analysis_end = len(warnings) - len(schema_warnings)
+        context = {
+            "jobId": report_job_id,
+            "command": params.command,
+            "status": report_status,
+            "analysisWarnings": list(warnings[qc_warning_count:analysis_end]),
+            "validationWarnings": list(schema_warnings),
+            "errors": list(errors),
+        }
+        html = render_qc_html(qc_dict, job=context).encode("utf-8")
+        # The output inventory must describe only the final report bytes.
+        outputs[:] = [item for item in outputs if item["relativePath"] != "reports/qc.html"]
+        _write_output(work, "reports/qc.html", html, "qc_html", outputs)
+
     try:
         params_bytes = json.dumps(params.to_dict(), indent=2, sort_keys=True).encode("utf-8")
         _write_output(work, "params.json", params_bytes, "params", outputs)
         tick("write_qc", 0.25)
         qc_bytes = json.dumps(qc_dict, indent=2, sort_keys=True).encode("utf-8")
         _write_output(work, "reports/qc.json", qc_bytes, "qc_json", outputs)
-        html = render_qc_html(qc_dict).encode("utf-8")
-        _write_output(work, "reports/qc.html", html, "qc_html", outputs)
+        write_report("running")
 
         window = resolve_window(
             summary,
@@ -455,6 +473,7 @@ def run(
             status = "completed_with_warnings"
             manifest["status"] = status
 
+        write_report(status)
         log_lines.append(f"status={status}")
         log_lines.append(f"feature_tables={len(feature_tables)}")
         _write_output(
@@ -486,6 +505,12 @@ def run(
             item for item in outputs
             if item["relativePath"] not in {"params.json", "job_manifest.json", "logs/job.log"}
         ]
+        try:
+            write_report("failed", failed_job_id)
+        except Exception as report_exc:
+            # Preserve the original processing/cancellation error even when
+            # rendering or writing the explanatory report also fails.
+            exc.add_note(f"Could not update the failed analysis report: {report_exc}")
         fail_manifest = {
             "schemaId": "capture.analysis_job/1",
             "jobId": failed_job_id,
