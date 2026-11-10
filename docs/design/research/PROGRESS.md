@@ -1488,3 +1488,12 @@ dashboard v1 JSON and native interactive viewer remain unchanged; see
 [static figure scope](../../SIGNAL_PLOT_REVIEW.md). No hardware or timing
 accuracy claim. Runnable bundle/independent judgment recorded in task
 capturesuite-signal-plots-mizu-7c4e.
+
+## 2026-11-10 — Linux analysis distribution notices
+
+Packaging now derives third-party notice files and exact installed versions from
+the actual frozen module inventory, preserves project Apache contracts and
+Python/PyInstaller terms, and fails missing notice text. Source build instructions
+install the maintained local package dependencies (protobuf >=4.25,<5), with
+pip check before freezing. MCAP1.6.0 upstream license is pinned because its wheel
+and sdist omit the text. Fleet build and independent receiving follow.
