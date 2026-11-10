@@ -9,6 +9,8 @@ import uuid
 from capture_session.registry import PRESET_TYPES
 from PySide6.QtWidgets import (
     QComboBox,
+    QDialog,
+    QDialogButtonBox,
     QFormLayout,
     QGroupBox,
     QHBoxLayout,
@@ -105,3 +107,55 @@ class AnatomicalMappingPanel(QWidget):
             return
         QMessageBox.information(self, "Mappings", f"Saved {ptype} preset “{name}”.")
         self._name.clear()
+
+
+class MappingPresetAccess(QWidget):
+    """Keep future-capture preset editing separate from the current analysis job."""
+
+    def __init__(
+        self,
+        persistence: DesktopPersistence | None = None,
+        parent: QWidget | None = None,
+    ) -> None:
+        super().__init__(parent)
+        self._persistence = persistence
+        self._dialog: QDialog | None = None
+        root = QVBoxLayout(self)
+        root.setContentsMargins(0, 0, 0, 0)
+        self._open = QPushButton("Mapping presets…")
+        self._open.setToolTip("Edit anatomical and spatial presets for future captures")
+        self._open.clicked.connect(self._show_presets)
+        root.addWidget(self._open)
+
+    def _show_presets(self) -> None:
+        # Retain an unfinished draft when closing and reopening the editor.
+        if self._dialog is None:
+            dialog = QDialog(self)
+            dialog.setWindowTitle("Mapping presets for future captures")
+            dialog.resize(560, 460)
+            layout = QVBoxLayout(dialog)
+            scope = QLabel(
+                "These presets label muscles, segments and spatial layouts in Focus. "
+                "A recording keeps the mappings captured when it started; editing a preset "
+                "does not change this recording or its analysis results."
+            )
+            scope.setWordWrap(True)
+            layout.addWidget(scope)
+            panel = AnatomicalMappingPanel(self._persistence, dialog)
+            layout.addWidget(panel)
+            if self._persistence is None or self._persistence.registry_open.read_only:
+                panel.setEnabled(False)
+                unavailable = QLabel(
+                    "The preset registry is unavailable in this session."
+                    if self._persistence is None
+                    else "The preset registry is read-only in this session."
+                )
+                unavailable.setWordWrap(True)
+                layout.addWidget(unavailable)
+            buttons = QDialogButtonBox(QDialogButtonBox.StandardButton.Close)
+            buttons.rejected.connect(dialog.reject)
+            layout.addWidget(buttons)
+            self._dialog = dialog
+        self._dialog.show()
+        self._dialog.raise_()
+        self._dialog.activateWindow()
