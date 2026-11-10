@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: GPL-3.0-only
 """Verify retained notice bytes; --fetch also verifies their upstream sources."""
+
 import argparse
 import hashlib
 import json
@@ -11,8 +12,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent / "licenses/qt-6.12.0"
 
+
 def digest(data):
     return hashlib.sha256(data).hexdigest()
+
 
 def verify(fetch=False):
     manifest = json.loads((ROOT / "manifest.json").read_text())
@@ -47,6 +50,7 @@ def verify(fetch=False):
                 archive.close()
     print(f"Verified {count} retained source notice files")
     return count
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
