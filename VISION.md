@@ -42,10 +42,11 @@ missing clocks, nonfinite values, declared gaps and malformed-input refusal
 survived the external CSV workflow. This is generated-recording evidence,
 not physical-instrument validation.
 
-The next export usability gap is contextual selection: the dialog presents
-unavailable modalities and does not summarize discovered data or the timing
-basis before export. Its actual values remain reusable. Full native desktop
-navigation/distribution and real-instrument judgment remain separate gaps.
+The native export dialog now presents detected stream identities and indexed
+message counts, distinguishes messages from samples, and explains the original
+numeric clock basis. Unknown metadata keeps choices available. Independent native
+and frozen-executable use covers both numeric data and canonical EMG/IMU streams;
+the downloadable native package and real-instrument judgment remain separate gaps.
 Producing task `capturesuite-numeric-sample-export-lark61c2`; separate use verdict
 `capturesuite-numeric-export-use-tern93ab`.
 
@@ -59,11 +60,17 @@ then checked unchanged original files and cleared state when switching jobs.
 These are scoped source-application improvements, not packaged-GUI or instrument
 acceptance.
 
-The immediate scientific gap is the interactive sync view: existing saved JSON
-does not carry per-lane gap ownership, while the viewer used first-sample-relative
-coordinates labelled as session time. Static-figure correctness does not repair
-this native path. Its producer contract and renderer are being corrected together;
-legacy results must not acquire invented masks.
+Independent use of the merged Sync workspace now covers absolute session time,
+per-lane gap ownership, visible units and preserved manual zoom/pan across window
+resizing. Legacy results explicitly disclose unavailable gap scope instead of
+inventing masks. The same reviewer used exact native trial selection to export
+the requested CSV/Parquet rows, order and original timestamps.
+
+A separate reviewer reproduced the raw-export failure on canonical EMG/IMU MCAP
+schema names, then used the repaired whole application and its frozen executable
+to recover the expected rows and values. Numeric exports retained original clocks,
+units and distinct channel identities. These remain generated-recording courses;
+the final native archive and independent downloaded use are still being completed.
 
 ## Ranked gaps
 
