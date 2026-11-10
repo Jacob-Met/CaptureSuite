@@ -95,6 +95,7 @@ def test_mcap_support_is_saved_and_exported_with_source_warning(tmp_path: Path) 
     job = package / "processing/jobs/support"
     manifest = json.loads((job / "job_manifest.json").read_text())
     assert manifest["status"] == "completed_with_warnings"
+    assert f"warnings={len(manifest["warnings"])}" in proc.stdout
     assert any("IMU feature support incomplete" in w and "sternum acc" in w
                for w in manifest["warnings"])
     tables = list_feature_tables(job)["tables"]
