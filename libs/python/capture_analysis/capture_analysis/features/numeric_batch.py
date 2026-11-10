@@ -8,8 +8,13 @@ import math
 import numpy as np
 import pandas as pd
 
+from capture_analysis.sample_windows import (
+    elapsed_sample_windows,
+    expected_samples,
+    sample_coverage,
+)
 from capture_analysis.types import GapMask, LoadedEmg
-from capture_analysis.windows import enforce_gap_policy, valid_fraction, validity_mask
+from capture_analysis.windows import enforce_gap_policy, validity_mask
 
 
 def extract_numeric_batch_features(
@@ -35,52 +40,49 @@ def extract_numeric_batch_features(
 
     valid = validity_mask(loaded.t_sample_ns, gap_mask)
     enforce_gap_policy(gap_mask, valid)
-    vf = valid_fraction(valid)
+    vf = sample_coverage(t, valid, loaded.fs_hz)
 
     fs = loaded.fs_hz
-    win = max(1, int(round(window_s * fs)))
-    hop = max(1, int(round(hop_s * fs)))
-    n = x_tc.shape[0]
     rows: list[dict] = []
-    boundaries = {0, n}
-    if gap_mask.policy == "split":
-        # Split even when a recorded gap contains no sample: validity alone
-        # cannot detect the discontinuity between adjacent retained samples.
-        for gap in gap_mask.overlaps_window():
-            end = gap.end_session_ns
-            if end is None:
-                end = gap_mask.window.end_session_ns
-            boundaries.add(int(np.searchsorted(t, gap.start_session_ns, side="left")))
-            boundaries.add(int(np.searchsorted(t, end, side="right")))
-    ordered = sorted(boundaries)
-    for run_start, run_end in zip(ordered, ordered[1:], strict=False):
-        for start in range(run_start, run_end - win + 1, hop):
-            end = start + win
-            vchunk = valid[start:end]
-            if not vchunk.any():
-                continue
-            good = x_tc[start:end][vchunk]
-            row = {
-                "t_start_ns": int(t[start]),
-                "t_end_ns": int(t[end - 1]) + round(1e9 / fs),
-                "rate_hz": float(fs),
-                "gap_fraction": float(1.0 - vchunk.mean()),
-            }
-            for i, name in enumerate(loaded.channel_ids):
-                col = good[:, i].astype(np.float64, copy=False)
-                scale = float(np.max(np.abs(col)))
-                # Scaling prevents overflow/underflow in squares and sums for
-                # finite float64 recordings without discarding their magnitude.
-                normalized = col / scale if scale else col
-                row[f"{name}_rms"] = scale * float(np.sqrt(np.mean(normalized * normalized)))
-                row[f"{name}_mean"] = scale * float(np.mean(normalized))
-            rows.append(row)
+    for window in elapsed_sample_windows(
+        t, valid, gap_mask, rate_hz=fs, window_s=window_s, hop_s=hop_s
+    ):
+        first, stop = window.first, window.stop
+        vchunk = valid[first:stop]
+        good = x_tc[first:stop][vchunk]
+        expected = expected_samples(
+            window.start_ns, window.end_ns, fs, origin_ns=window.grid_origin_ns
+        )
+        valid_count = int(np.count_nonzero(vchunk))
+        coverage = valid_count / max(expected, stop - first)
+        row = {
+            "t_start_ns": window.start_ns,
+            "t_end_ns": window.end_ns,
+            "rate_hz": float(fs),
+            "sample_count": stop - first,
+            "valid_sample_count": valid_count,
+            "expected_sample_count": expected,
+            "valid_fraction": coverage,
+            "gap_fraction": 1.0 - coverage,
+        }
+        for i, name in enumerate(loaded.channel_ids):
+            col = good[:, i].astype(np.float64, copy=False)
+            scale = float(np.max(np.abs(col)))
+            # Scaling preserves the magnitude of finite float64 recordings.
+            normalized = col / scale if scale else col
+            row[f"{name}_rms"] = scale * float(np.sqrt(np.mean(normalized * normalized)))
+            row[f"{name}_mean"] = scale * float(np.mean(normalized))
+        rows.append(row)
 
     meta = []
     columns = [
         ("t_start_ns", "ns"),
         ("t_end_ns", "ns"),
         ("rate_hz", "Hz"),
+        ("sample_count", "count"),
+        ("valid_sample_count", "count"),
+        ("expected_sample_count", "count"),
+        ("valid_fraction", "1"),
         ("gap_fraction", "1"),
     ]
     for name in loaded.channel_ids:
@@ -90,7 +92,11 @@ def extract_numeric_batch_features(
             {
                 "name": name,
                 "units": units,
-                "id": "numeric.basic.v1",
+                "id": "numeric.basic.v2",
+                "windowSemantics": "elapsed_session_time",
+                "windowNs": int(round(window_s * 1e9)),
+                "hopNs": int(round(hop_s * 1e9)),
+                "coverageMethod": "valid-retained/nominal-rate-positions",
                 "provisional": True,
                 "calibrated": False,
                 "timestampMethod": "mcap-first-datum+device-delta-or-nominal-rate",
