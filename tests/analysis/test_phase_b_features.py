@@ -477,3 +477,22 @@ def test_zero_orientation_warns_in_saved_report_and_cli(
     html = (reports / "qc.html").read_text()
     assert ("IMU orientation unavailable" in html) == (qw == 0)
     assert hash_sources_tree(package) == before
+
+def test_emg_temporal_features_do_not_bridge_masked_gap() -> None:
+    from capture_analysis.features.emg import extract_emg_features
+    from capture_analysis.types import GapInterval, GapMask, LoadedEmg, StreamRef, TimeWindow
+
+    stream = StreamRef("s", "st", "emg", "emg.batch/1", 1000, "mV")
+    times = np.arange(6, dtype=np.int64) * 1_000_000
+    samples = np.array([[1, 1, 99, 99, -1, -1]], dtype=np.float32)
+    loaded = LoadedEmg(["ch"], times, samples, 1000, "mV")
+    gaps = [GapInterval("s", "st", "disconnect", 2_000_000, 3_000_000, True)]
+    mask = GapMask(stream, TimeWindow(0, 5_000_000), gaps)
+    df, _, _ = extract_emg_features(loaded, mask, window_s=.006, hop_s=.006)
+    row = df.iloc[0]
+    assert row["ch_wl"] == 0
+    assert row["ch_zc"] == 0
+    assert row["ch_ssc"] == 0
+    assert row["ch_rms"] == 1
+    assert row["ch_mav"] == 1
+    assert row["valid_fraction"] == pytest.approx(4 / 6)

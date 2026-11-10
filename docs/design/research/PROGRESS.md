@@ -1444,3 +1444,7 @@ other owners remain untouched. This entry only appends to prior session history.
 ## 2026-11-10 — IMU unavailable orientation warning
 
 Exact all-zero quaternion observations now contribute a QC warning and strict CLI exit 2. Identity and negative-identity controls remain OK. Synthetic sealed protobuf MCAP exercises the actual report path; raw-source hashes remain unchanged. No hardware or accuracy claim.
+
+## 2026-11-10: EMG temporal features across masked gaps
+
+Linden reproduced fabricated waveform length and zero crossings when valid samples on opposite sides of a masked gap were concatenated. Temporal pair/triple metrics now require adjacent valid samples; RMS/MAV and valid fraction retain their existing semantics. Fleet targeted feature suite: 16 passed. Independent judgment delegated to Juniper before release; physical hardware validation remains unclaimed.
