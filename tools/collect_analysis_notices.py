@@ -57,8 +57,17 @@ def bundled_distribution_files(toc: Path) -> dict[str, list[str]]:
             path = os.path.abspath(dist.locate_file(item))
             if path in sources:
                 owned.append(str(item))
-        if owned:
-            result[dist.metadata["Name"]] = sorted(set(owned))
+        name = dist.metadata["Name"]
+        # Split PySide wheels repeat the shared namespace initializer in RECORD.
+        # That one file alone is not evidence that an optional Qt runtime shipped.
+        # Keep its attribution with distributions that own actual bundled modules,
+        # libraries or data; a real WebEngine file still requires its own notices.
+        only_shared_pyside_init = (
+            name.lower().replace("-", "_").startswith("pyside6_")
+            and set(owned) == {"PySide6/__init__.py"}
+        )
+        if owned and not only_shared_pyside_init:
+            result[name] = sorted(set(owned))
     result.setdefault("pyinstaller", [])  # included bootloader
     return result
 
