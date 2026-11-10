@@ -5,8 +5,9 @@ integrated them with current Review/video, and made finalized recordings reachab
 without a capture daemon. The actual application entry accepts `--offline` and
 `--review`; Review holds historical package context separately from live capture.
 An observed unconditional Windows runtime import blocked the actual Linux window;
-platform-conditional transport initialization now permits offline use while
-unsupported connection attempts fail explicitly.
+Mizunagi's lazy Windows adapter and explicit offline analysis mode now permit
+whole-app use while unsupported connection attempts fail explicitly. Review is
+composed with that one entry implementation; acquisition controls stay hidden.
 
 Author ran 48 model/native Qt/current recorded-video regressions on Renpo
 hamon-build-350 with Python 3.12.3 and PySide6 6.12.0: all pass. These exercise actual

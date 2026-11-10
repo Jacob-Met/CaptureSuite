@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: GPL-3.0-only
 """Entry point for CaptureSuite desktop UI.
 
-Requires a running capture daemon (instance.json under LOCALAPPDATA/CaptureSuite).
+Live capture uses the Windows daemon; --analysis [PACKAGE] opens offline results.
 
     py -3.12 -m capture_desktop
 """
@@ -9,6 +9,7 @@ Requires a running capture daemon (instance.json under LOCALAPPDATA/CaptureSuite
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 from pathlib import Path
 
@@ -29,14 +30,17 @@ def _ensure_path() -> None:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="CaptureSuite recording and analysis workbench")
-    parser.add_argument(
-        "--offline", action="store_true", help="Open without connecting to a capture daemon",
+    parser = argparse.ArgumentParser(description="CaptureSuite desktop")
+    group = parser.add_mutually_exclusive_group()
+    group.add_argument(
+        "--analysis", "--offline", nargs="?", const="", metavar="PACKAGE",
+        help="Open offline analysis, optionally with a .mmsession recording.",
     )
-    parser.add_argument(
-        "--review", metavar="PACKAGE", help="Open a finalized session for offline review",
+    group.add_argument(
+        "--review", metavar="PACKAGE", help="Open a finalized session in offline Review.",
     )
     args = parser.parse_args()
+    analysis_only = args.analysis is not None or args.review is not None or os.name != "nt"
     _ensure_path()
     from capture_protocol.structured_log import get_logger
 
@@ -44,7 +48,12 @@ def main() -> int:
 
     log = get_logger("desktop")
     log.info("desktop_started", "CaptureSuite desktop launching")
-    return run_app(auto_connect=not (args.offline or args.review), review_package=args.review)
+    return run_app(
+        auto_connect=not analysis_only,
+        analysis_only=analysis_only,
+        package_path=args.analysis or "",
+        review_package=args.review or "",
+    )
 
 
 if __name__ == "__main__":

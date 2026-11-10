@@ -109,7 +109,7 @@ class ReviewEventBrowser(QWidget):
         self._count.setWordWrap(True)
         root.addWidget(self._count)
 
-        splitter = QSplitter(Qt.Orientation.Vertical)
+        splitter = QSplitter(Qt.Orientation.Horizontal)
         self._table = QTableView()
         self._table.setObjectName("ReviewEventTable")
         self._table.setAccessibleName("Recorded events")
@@ -123,7 +123,7 @@ class ReviewEventBrowser(QWidget):
         header = self._table.horizontalHeader()
         for column in range(4):
             header.setSectionResizeMode(column, QHeaderView.ResizeMode.Interactive)
-        for column, width in enumerate((190, 100, 190, 150)):
+        for column, width in enumerate((155, 90, 145, 100)):
             self._table.setColumnWidth(column, width)
         header.setStretchLastSection(True)
         splitter.addWidget(self._table)
@@ -135,13 +135,13 @@ class ReviewEventBrowser(QWidget):
         self._details.setFont(theme.mono(9))
         self._details.setPlaceholderText("Select an event to inspect its complete loaded details.")
         splitter.addWidget(self._details)
-        splitter.setSizes([240, 180])
+        splitter.setSizes([800, 480])
         root.addWidget(splitter, 1)
 
         note = QLabel(
             "Times are exact session nanoseconds; unavailable times appear last. "
-            "Filters affect only this list. Loaded records do not establish "
-            "complete capture coverage."
+            "Filtering or selecting a row does not seek recorded video. "
+            "Event records do not establish complete capture coverage."
         )
         note.setObjectName("Faint")
         note.setWordWrap(True)

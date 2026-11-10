@@ -304,7 +304,7 @@ def test_actual_mainwindow_opens_review_without_capture_connection(
     from capture_desktop.app import MainWindow
     from PySide6.QtWidgets import QFileDialog
 
-    window = MainWindow(auto_connect=False)
+    window = MainWindow(auto_connect=False, analysis_only=True)
     window.show()
     try:
         window.tabs.setCurrentWidget(window.review)
@@ -314,6 +314,8 @@ def test_actual_mainwindow_opens_review_without_capture_connection(
         QTest.mouseClick(window.review._btn_open, Qt.MouseButton.LeftButton)
         qapp.processEvents()
         assert window.review.summary.session_id == "authored-review"
+        assert not window._transport.isVisible()
+        assert not window.tabs.isTabVisible(window.tabs.indexOf(window.capture))
         assert not window.state.connected
         assert window.state.package_path == ""
         assert window._session_header.is_sealed
@@ -353,5 +355,5 @@ def test_non_windows_transport_failure_is_actionable_without_touching_files():
 
     if os.name == "nt":
         pytest.skip("Windows named-pipe transport remains supported")
-    with pytest.raises(ControlClientError, match="require Windows"):
-        ControlClient("/not/a/pipe")
+    with pytest.raises(ControlClientError, match="Windows named pipes"):
+        ControlClient("/not/a/pipe").connect()

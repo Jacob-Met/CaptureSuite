@@ -84,7 +84,7 @@ class ReviewScreen(QWidget):
             col.addWidget(head)
             col.addWidget(widget)
             cards.addWidget(box, 1)
-        root.addLayout(cards)
+
 
         lists = QHBoxLayout()
         self._streams = QListWidget()
@@ -102,7 +102,10 @@ class ReviewScreen(QWidget):
             col.addWidget(widget, 1)
             lists.addLayout(col, 1)
         overview = QWidget()
-        overview.setLayout(lists)
+        overview_layout = QVBoxLayout(overview)
+        overview_layout.setContentsMargins(0, 0, 0, 0)
+        overview_layout.addLayout(cards)
+        overview_layout.addLayout(lists, 1)
         self._review_tabs = QTabWidget()
         self._review_tabs.setObjectName("ReviewViews")
         self._review_tabs.addTab(overview, "Overview")

@@ -20,4 +20,4 @@ fi
 if [[ "${1:-}" == --setup-only ]]; then
     exit 0
 fi
-exec "$cs_venv/bin/python" -m capture_desktop --offline "$@"
+exec "$cs_venv/bin/python" -m capture_desktop "$@"

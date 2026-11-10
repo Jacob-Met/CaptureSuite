@@ -5,6 +5,13 @@ capture daemon. This is an experimental Linux source distribution; acquisition a
 Windows named-pipe daemon connections remain Windows-only. Python 3.12, a graphical
 desktop and internet access for the first dependency install are required.
 
+On a minimal Ubuntu desktop, Qt's X11 plugin also requires these system libraries:
+
+```sh
+sudo apt-get install libxkbcommon-x11-0 libxcb-cursor0 libxcb-icccm4 libxcb-image0 \
+  libxcb-keysyms1 libxcb-render-util0 libxcb-xkb1
+```
+
 From the extracted release directory:
 
 ```sh
@@ -35,7 +42,9 @@ The source install uses the repository's declared package dependencies. Set
 `./scripts/run-desktop-offline.sh --setup-only` to refresh it after replacing the
 source. The supported invocation for an existing installation is
 `python -m capture_desktop --offline` or `python -m capture_desktop --review PATH`.
-No live connection is attempted by either offline entry.
+Linux defaults to the existing offline Analysis/Review workspace; acquisition
+controls are hidden. `--analysis [PATH]` opens Analysis directly. No live
+connection is attempted by these offline entries.
 
 ## Scope of current evidence
 
