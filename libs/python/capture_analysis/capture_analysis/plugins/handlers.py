@@ -11,6 +11,7 @@ from typing import Any
 import numpy as np
 from capture_session.package_reader import ReviewSummary
 
+from capture_analysis.emg_envelope import emg_rms_envelope
 from capture_analysis.features.emg import extract_emg_features
 from capture_analysis.features.imu import extract_imu_features
 from capture_analysis.features.io import write_feature_table
@@ -79,19 +80,18 @@ def handle_emg(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext) -> None:
                 "kind": "figure",
             }
         )
-        ch0 = loaded.X[0].astype(np.float64)
-        step = max(1, int(loaded.fs_hz // 20))
-        env = np.sqrt(np.convolve(ch0 * ch0, np.ones(step) / step, mode="same"))
-        ctx.sync_series.append(
-            {
-                "gaps": gap_mask.gaps,
-                "label": f"EMG {ref.source_id} · {loaded.channel_ids[0]}",
-                "ylabel": f"RMS ({loaded.units or 'units unspecified'})",
-                "t_ns": loaded.t_sample_ns[::step],
-                "y": env[::step],
-                "color": "#35c46b",
-            }
-        )
+        envelope_times, env = emg_rms_envelope(loaded, gap_mask)
+        if envelope_times.size:
+            ctx.sync_series.append(
+                {
+                    "gaps": gap_mask.gaps,
+                    "label": f"EMG {ref.source_id} · {loaded.channel_ids[0]}",
+                    "ylabel": f"RMS ({loaded.units or 'units unspecified'})",
+                    "t_ns": envelope_times,
+                    "y": env,
+                    "color": "#35c46b",
+                }
+            )
 
 
 def handle_imu(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext) -> None:

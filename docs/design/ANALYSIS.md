@@ -631,3 +631,16 @@ samples; a fully covered split row does not make the entire recording complete.
 These fractions are nominal-rate estimates, remain explicitly uncalibrated, and
 do not claim device-clock accuracy. Existing overflow-safe RMS/mean reductions,
 channel names, source/stream identity, and warning provenance are retained.
+
+## EMG display envelope across missing support
+
+The sync dashboard first-channel RMS preview uses a centered nominal 50 ms
+kernel within each contiguous observed run. Recorded gaps, invalid samples and
+timestamp jumps above 1.5 nominal sample periods break support before smoothing.
+Each boundary kernel normalizes by observed samples; absent samples are never
+replaced with zeros or taken from the other side of a disconnect. Each run is
+thinned separately to roughly 20 Hz, retaining its first and last sample.
+Timestamps remain original session timestamps. The saved sync-series JSON uses
+null for missing derived values, including explicit breaks between runs. This
+is a provisional visual envelope, not a calibrated feature or resampled raw
+recording; the raw MCAP and separately exported feature tables are unchanged.

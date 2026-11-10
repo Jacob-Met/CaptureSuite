@@ -1627,3 +1627,25 @@ on the same retained-count behavior: nominal one-second rows actually spanned
 loader assertions are unchanged. Receiving now checks exact one-second bounds
 and independently computed scalar reductions for each actual member set; the
 old means and spans remain in comments as the historical counterexamples.
+
+### 2026-11-10 — EMG envelope missing-support correction (astra-birch-82b5)
+
+Independent use of frozen e34e20a found a false pre-disconnect RMS rise despite
+correct static raw traces: the prior convolution joined concatenated observed
+samples across missing time. Added support-aware centered RMS, boundary
+normalization and retained missing separators; JSON uses null for unknown
+derived points. Full source analysis: 486 passed, 1 skipped, 28 subtests; focused Ruff clean.
+Actual held-out CLI plot now shows pre-gap RMS 1.18–1.26 mV (previously about
+2.5 mV), with original raw readings 1.0–1.4 mV; post-gap 7.39–7.45 mV.
+All-masked support creates no empty sync lane. Independent astra-larch-7c2f
+review remains required before acceptance. No hardware claim.
+
+Independent envelope source judgment by astra-larch-7c2f accepted exact
+6ca8168892554af015cb01525fdffc3dd2c355f0. Six actual CLI jobs compared identical
+fresh recordings before/after: short 400 Hz contractions, a nonconstant 333 Hz
+unreported timestamp break, and all-masked input. A separate scalar oracle
+checked 17 finite preview points, supported RMS, original endpoints and null
+separators; raw hashes remained unchanged. Actual before/after PNGs were viewed:
+the short 2.5 mV span previously read 3.82099 mV, and an 11 mV endpoint read
+10.72147 mV; both now retain the correct level. The earlier axis-unit improvement
+is retained and credited separately. Final cumulative frozen use is pending.
