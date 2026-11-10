@@ -62,7 +62,12 @@ tables and export a column selection without rerunning analysis:
 
 Use the exact path and column names shown by `--list`; `--list --json` is available
 for scripts. The destination must be a new directory outside the session package.
-Every retained row stays in its original order. CSV and Parquet are written by
+By default, every retained row stays in its original order. To select an existing
+row region, add `--time-column t_start_ns --start-ns 1000000000 --end-ns 3000000000`
+using an integer column with recorded `ns` units. The start is inclusive and end
+exclusive. Window rows are selected by their recorded start; windows are never
+clipped or recomputed. Exact bounds and row counts are preserved in the export.
+CSV and Parquet are written by
 default, with types, units, original warnings and job provenance beside them.
 See the bundled [feature export guide](FEATURE_TABLE_EXPORT.md) for typed CSV
 import, format options and failure behavior.

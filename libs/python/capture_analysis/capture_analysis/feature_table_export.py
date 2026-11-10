@@ -14,6 +14,7 @@ from pathlib import Path, PureWindowsPath
 from typing import Any
 
 import pyarrow as pa
+import pyarrow.compute as pc
 import pyarrow.csv as arrow_csv
 import pyarrow.parquet as parquet
 
@@ -247,8 +248,13 @@ def export_feature_table(
     columns: Sequence[str] | None = None,
     output_format: str = "both",
     batch_size: int = 8192,
+    time_column: str | None = None,
+    start_ns: int | None = None,
+    end_ns: int | None = None,
 ) -> dict[str, Any]:
-    """Export all rows, with literal columns in the caller's requested order.
+    """Export retained rows, optionally selected by exact recorded nanosecond time.
+
+    Bounds select by the chosen column, never clip or recalculate feature windows.
 
     Admission failures create no destination. A write/read failure after admission
     retains the new directory with failure.json and without manifest.json. The
@@ -258,6 +264,13 @@ def export_feature_table(
         _fail("output_format must be csv, parquet, or both")
     if type(batch_size) is not int or batch_size < 1:
         _fail("batch_size must be a positive integer")
+    scoped = any(value is not None for value in (time_column, start_ns, end_ns))
+    if scoped and (
+        not isinstance(time_column, str) or not time_column
+        or type(start_ns) is not int or type(end_ns) is not int
+        or start_ns >= end_ns
+    ):
+        _fail("time selection requires a column and integer start_ns < end_ns")
     package, job = _job_root(Path(job_dir))
     output = _destination(Path(output_dir), package)
     selected_path = _job_file(job, table)
@@ -327,6 +340,21 @@ def export_feature_table(
             or any(name not in names for name in selected)
         ):
             _fail("columns must be a nonempty, unique selection of exact retained column names")
+        time_index = None
+        if scoped:
+            if time_column not in names:
+                _fail(f"time column is absent from retained table: {time_column}")
+            time_type = source_schema.field(time_column).type
+            if not pa.types.is_integer(time_type) or metadata_by_name[time_column]["units"] != "ns":
+                _fail("time selection requires an integer column with recorded units ns")
+            try:
+                lower = pa.scalar(start_ns, type=time_type)
+                upper = pa.scalar(end_ns, type=time_type)
+            except (ValueError, OverflowError, pa.ArrowException) as exc:
+                raise FeatureTableExportError(
+                    "time bounds do not fit the recorded time column"
+                ) from exc
+            time_index = names.index(time_column)
         rows = reader.metadata.num_rows
         declared_rows = table_metadata.get("rows")
         if declared_rows is not None and (
@@ -381,8 +409,8 @@ def export_feature_table(
             }
             for relative, copied in copies.items():
                 (output / copied).write_bytes(documents[relative][0])
-            (output / "_schema.json").write_bytes(_json_bytes(schema_record))
             written_rows = 0
+            read_rows = 0
             data_files: list[str] = []
             with ExitStack() as stack:
                 parquet_writer = csv_writer = None
@@ -399,6 +427,12 @@ def export_feature_table(
                 # Read complete batches then select by index: names containing
                 # dots remain literal, rather than Parquet nested-field prefixes.
                 for batch in reader.iter_batches(batch_size=batch_size):
+                    read_rows += batch.num_rows
+                    if time_index is not None:
+                        times = batch.column(time_index)
+                        batch = batch.filter(pc.and_(
+                            pc.greater_equal(times, lower), pc.less(times, upper)
+                        ))
                     projected = pa.RecordBatch.from_arrays(
                         [batch.column(index) for index in indices], schema=schema
                     )
@@ -407,11 +441,19 @@ def export_feature_table(
                     if csv_writer is not None:
                         csv_writer.write_batch(projected)
                     written_rows += batch.num_rows
-            if written_rows != rows:
+            if read_rows != rows:
                 _fail("retained table row count changed while exporting")
             for relative, identity in inputs.items():
                 if _identity(_job_file(job, relative)) != identity:
                     _fail(f"retained-job input changed while exporting: {relative}")
+            schema_record["tableMetadata"]["rows"] = written_rows
+            if scoped:
+                schema_record["timeSelection"] = {
+                    "column": time_column, "startNs": str(start_ns), "endNs": str(end_ns),
+                    "interval": "[start,end)", "nullTimePolicy": "exclude",
+                    "sourceRows": rows,
+                }
+            (output / "_schema.json").write_bytes(_json_bytes(schema_record))
             exported = data_files + ["_schema.json", *copies.values()]
             result = {
                 "schemaId": "capture.feature_table_export/1",
@@ -428,14 +470,19 @@ def export_feature_table(
                         for relative, identity in inputs.items()
                     ],
                 },
-                "selection": {"columns": selected, "rows": written_rows,
-                              "rowPolicy": "all-in-original-order"},
+                "selection": {
+                    "columns": selected, "rows": written_rows,
+                    "rowPolicy": ("time-region-in-original-order" if scoped
+                                  else "all-in-original-order"),
+                },
                 "format": output_format,
                 "outputs": [
                     {"relativePath": relative, **_identity(output / relative)}
                     for relative in exported
                 ],
             }
+            if scoped:
+                result["selection"]["timeSelection"] = schema_record["timeSelection"]
             pending = output / "manifest.pending.json"
             with pending.open("xb") as stream:
                 stream.write(_json_bytes(result))
