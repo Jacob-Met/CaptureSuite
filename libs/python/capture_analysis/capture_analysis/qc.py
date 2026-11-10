@@ -205,6 +205,18 @@ def _stream_qc(ref: StreamRef, *, inspect_payloads: bool = False) -> StreamQc:
                 "device timestamps; clock continuity is not fully verified"
             )
 
+        continuity = inspection.get("sampleIndexContinuity")
+        if continuity and (
+            continuity["forwardJumpCount"] or continuity["overlapOrResetCount"]
+        ):
+            warnings.append(
+                "EMG sample-index discontinuities: "
+                f"{continuity['forwardJumpCount']} forward jump(s), "
+                f"{continuity['overlapOrResetCount']} overlap/reset(s) across "
+                f"{continuity['transitionsChecked']} decoded batch transition(s); "
+                "review recorded coverage and restarts before using derived features"
+            )
+
         if inspection["status"] != "failed" and inspection.get("zeroQuaternionSensorSamples", 0):
             affected = ", ".join(
                 f"{sensor_id}: {count}"

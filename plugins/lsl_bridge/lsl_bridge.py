@@ -27,7 +27,7 @@ def _try_import_pylsl():
 
 
 class LslBridgeWorker(Worker):
-    plugin_version = "0.1.0"
+    plugin_version = "0.1.1"
 
     def __init__(
         self,
@@ -42,7 +42,7 @@ class LslBridgeWorker(Worker):
         self._chunk = 32
         self._timeout = 1.0
         self._threads: dict[str, threading.Thread] = {}
-        self._stop = threading.Event()
+        self._stops: dict[str, threading.Event] = {}
 
     def discover(self) -> list[source_pb2.SourceInstance]:
         pylsl = _try_import_pylsl()
@@ -93,7 +93,7 @@ class LslBridgeWorker(Worker):
             stream.nominal_rate_hz = float(info.nominal_srate() or 0.0)
             stream.units = "a.u."
             stream.stream_class = source_pb2.STREAM_CLASS_SAMPLED
-            stream.timestamp_source = "device"
+            stream.timestamp_source = source_pb2.TIMESTAMP_SOURCE_DEVICE
             sources.append(src)
         return sources
 
@@ -126,42 +126,69 @@ class LslBridgeWorker(Worker):
         )
 
     def start(self, source_id: str, start_req: worker_pb2.StartRequest) -> None:
-        self._stop.clear()
-        t = threading.Thread(target=self._pump, args=(source_id,), daemon=True)
-        self._threads[source_id] = t
-        t.start()
+        previous = self._threads.get(source_id)
+        if previous is not None and previous.is_alive():
+            raise RuntimeError(f"LSL source already running: {source_id}")
+        stop = threading.Event()
+        self._stops[source_id] = stop
+        thread = threading.Thread(
+            target=self._pump,
+            args=(source_id, stop, self._chunk, self._timeout),
+            daemon=True,
+        )
+        self._threads[source_id] = thread
+        thread.start()
 
     def stop(self, source_id: str) -> None:
-        self._stop.set()
-        th = self._threads.pop(source_id, None)
-        if th is not None:
-            th.join(timeout=3.0)
+        stop = self._stops.get(source_id)
+        if stop is None:
+            return
+        stop.set()
+        thread = self._threads.get(source_id)
+        if thread is not None:
+            thread.join(timeout=3.0)
+            if thread.is_alive():
+                raise RuntimeError(f"LSL source did not stop: {source_id}")
+        self._threads.pop(source_id, None)
+        self._stops.pop(source_id, None)
 
-    def _pump(self, source_id: str) -> None:
+    def _pump(
+        self, source_id: str, stop: threading.Event, chunk: int, timeout: float
+    ) -> None:
         pylsl = _try_import_pylsl()
         if pylsl is None:
             return
         uid = source_id.removeprefix("lsl.")
-        streams = pylsl.resolve_byprop("source_id", uid, timeout=self._timeout)
+        streams = pylsl.resolve_byprop("source_id", uid, timeout=min(timeout, 1.0))
         if not streams:
-            streams = pylsl.resolve_streams(wait_time=self._timeout)
+            streams = pylsl.resolve_streams(wait_time=min(timeout, 1.0))
             streams = [s for s in streams if (s.source_id() or s.uid()) == uid]
         if not streams:
             log.warning("no LSL stream for %s", source_id)
             return
-        inlet = pylsl.StreamInlet(streams[0], max_chunklen=self._chunk)
-        ch = inlet.info().channel_count()
+        inlet = pylsl.StreamInlet(streams[0], max_chunklen=chunk)
+        try:
+            self._read_inlet(source_id, inlet, stop, chunk, timeout)
+        finally:
+            inlet.close_stream()
+
+    def _read_inlet(
+        self, source_id: str, inlet: Any, stop: threading.Event, chunk: int, timeout: float
+    ) -> None:
+        ch = inlet.info(timeout=min(timeout, 1.0)).channel_count()
         names = [f"ch{i}" for i in range(ch)]
         seq = 0
-        while not self._stop.is_set():
+        while not stop.is_set():
             samples, timestamps = inlet.pull_chunk(
-                timeout=self._timeout, max_samples=self._chunk
+                timeout=min(timeout, 0.1), max_samples=chunk
             )
+            if stop.is_set():
+                break
             if not samples:
                 continue
             correction = 0.0
             try:
-                correction = float(inlet.time_correction())
+                correction = float(inlet.time_correction(timeout=min(timeout, 0.25)))
             except Exception:  # noqa: BLE001
                 correction = 0.0
             device_times = [

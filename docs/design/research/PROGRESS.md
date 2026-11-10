@@ -1495,6 +1495,17 @@ Two encoded MCAP batches at 0/1ms and 4/5ms reproduced a remaining false WL2/ZC1
 ## 2026-11-10 — Combined analysis with decoded-sample QC
 
 The maintained CLI now accepts all --inspect-payloads, forwarding the opt-in to the existing QC decoder before generating features/plots. Defaults and signal mathematics stay unchanged. Real EMG/IMU consumer tests exercise qc and all; native package receiving remains separate.
+### 2026-11-10 — EMG recorded index continuity (astra-larch-91e)
+
+Reproduced decoded EMG QC reporting `ok` for valid protobuf MCAP with a forward
+index jump and for repeated/overlapping batches. QC now retains counts and
+exact examples of forward jumps and overlap/reset transitions across batches
+and segments, raises the existing operator warning, and leaves raw captures
+unchanged. This is protocol-generated recording evidence, not physical-device
+validation. Task `capturesuite-emg-continuity-larch91e` tracks current runnable
+package checks and separate judgment; merge, publication and observed use are
+reported independently there.
+
 
 ## 2026-11-10 — Recorded time and gap continuity in static signal figures
 
@@ -1524,6 +1535,11 @@ install the maintained local package dependencies (protobuf >=4.25,<5), with
 pip check before freezing. MCAP1.6.0 upstream license is pinned because its wheel
 and sdist omit the text. Fleet build and independent receiving follow.
 
+
+### 2026-11-10 — retained feature time-region export (astra-61a0-reed)
+
+Added explicit integer-nanosecond half-open selection to the retained feature exporter and maintained CLI. This selects existing window/measurement rows without recomputation and records bounds/counts with the existing typed provenance handoff. Task: capturesuite-retained-time-export-reed61a0. Fleet394 validation and independent packaged judgment are recorded there; no hardware accuracy claim.
+
 ## 2026-11-10 — IMU measurement support in saved feature tables
 
 A genuine protobuf MCAP consumer case with a sensor present in 15/30 frames
@@ -1536,3 +1552,20 @@ fraction denominator is retained frame slots, not estimated elapsed-time coverag
 77 targeted feature/export/plugin regressions pass on estate Python 3.12.
 Independent heldout-recording judgment and runnable packaging are tracked under
 capturesuite-imu-feature-coverage-marten9c2f; no hardware accuracy claim.
+
+### 2026-11-10 — LSL live source lifecycle (Astra-Lark)
+
+A real pylsl1.18.6/liblsl118 outlet exposed `ValueError: unknown enum label
+"device"` in maintained discovery. LSL0.1.1 uses the protocol enum and separates
+source stop tokens, bounded inlet reads and inlet cleanup. Deferred Win32
+transport loading lets the existing MemoryTransport/worker SDK run on Linux;
+actual named-pipe connections remain Windows-only. The maintained live test
+records two real local outlets through Worker Start/Stop RPCs into MCAP, stops
+one source and proves the other continues, then decodes distinct retained
+values. Focused SDK/bridge checks and Ruff ran on Renpo fleet384.
+
+Separate judgment and downloadable component distribution are tracked in
+`capturesuite-live-lsl-isolation-astra-lark`; no hardware or full Windows daemon
+claim. Existing corrected-versus-native timestamp retention, wall-clock/QPC
+anchor mismatch and worker/package path integration are explicit follow-ups in
+the plugin README. No analysis/QC/plot code changed.
