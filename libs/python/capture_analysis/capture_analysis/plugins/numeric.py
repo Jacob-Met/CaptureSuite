@@ -67,6 +67,7 @@ def handle_numeric(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext) -> No
         ctx.sync_series.append(
             {
                 "gaps": gap_mask.gaps,
+                "ylabel": loaded.units or "units unspecified",
                 "label": f"Numeric {ref.source_id}/{ref.stream_id} · {loaded.channel_ids[0]}",
                 "t_ns": loaded.t_sample_ns[::step],
                 "y": loaded.X[0, ::step],
