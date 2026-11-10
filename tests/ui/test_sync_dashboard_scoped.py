@@ -79,3 +79,20 @@ def test_null_break_and_no_samples(qapp, qtbot):
     assert [list(x.getData()[0]) for x in view._linked[0].listDataItems()] == [[32], [35, 36]]
     assert not view.load_document({"series": [{"t_ns": [], "y": []}]})
     view.close()
+
+
+def test_manual_navigation_survives_window_resize(qapp, qtbot):
+    view = SyncDashboardView()
+    qtbot.addWidget(view)
+    view.resize(1000, 600)
+    view.load_document(document())
+    view.show()
+    qapp.processEvents()
+    first = view._linked[0]
+    first.setXRange(33, 35, padding=0)
+    first.getViewBox().sigRangeChangedManually.emit([True, False])
+    view.resize(800, 500)
+    qapp.processEvents()
+    qapp.processEvents()
+    assert first.viewRange()[0] == pytest.approx([33, 35])
+    assert all(not plot.getViewBox().state["autoRange"][0] for plot in view._linked)
