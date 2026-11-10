@@ -35,12 +35,13 @@ if getattr(sys, "frozen", False):
         raise RuntimeError("QC binary is missing bundled plugin manifest/schema")
 
 from export_feature_table import main as export_main  # noqa: E402
+from review_qc_packages import main as review_main  # noqa: E402
 from run_analysis import main  # noqa: E402
 
 
 def entrypoint() -> int:
     """Restrict experimental release claims to exercised native workflows."""
-    supported = {"qc", "features", "plots", "all", "export-table"}
+    supported = {"qc", "features", "plots", "all", "export-table", "review"}
     command = sys.argv[1] if len(sys.argv) > 1 else ""
     if command in {"--version", "-V"}:
         source_pin = Path(sys.executable).resolve().parent / "SOURCE_COMMIT"
@@ -52,8 +53,9 @@ def entrypoint() -> int:
         print(
             "CaptureSuite Offline Analysis (experimental Linux x86_64)\n"
             "Usage: capturesuite-analysis COMMAND PACKAGE [options]\n"
-            "Available commands: qc, features, plots, all, export-table\n"
+            "Available commands: qc, features, plots, all, export-table, review\n"
             "Export: capturesuite-analysis export-table JOB_DIR --list\n"
+            "Compare: capturesuite-analysis review PACKAGE... --output NEW_DIR --inspect-payloads\n"
             "Try 'capturesuite-analysis qc --help' for command flags.\n"
             "For pose, kinematics, ML bundle or evaluation, use full CaptureSuite."
         )
@@ -65,6 +67,8 @@ def entrypoint() -> int:
             file=sys.stderr,
         )
         return 2
+    if command == "review":
+        return review_main(sys.argv[2:], prog=f"{Path(sys.argv[0]).name} review")
     if command == "export-table":
         return export_main(sys.argv[2:], prog=f"{Path(sys.argv[0]).name} export-table")
     return main()

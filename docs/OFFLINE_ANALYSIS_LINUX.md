@@ -32,8 +32,8 @@ figures with the bundled offline analysis pipeline:
 ./capturesuite-analysis all "/data/my experiment.mmsession"
 ```
 
-Five commands are supported in this experimental bundle: `qc`, `features`,
-`plots`, `all` and `export-table`. Run `./capturesuite-analysis qc --help` for options,
+Six commands are supported in this experimental bundle: `qc`, `features`,
+`plots`, `all`, `export-table` and `review`. Run `./capturesuite-analysis qc --help` for options,
 including `--overwrite-job-id`, `--start-ns`, `--end-ns`, gap handling and
 the `--inspect-payloads` switch (the latter is only for `qc`). Exit code 0
 means a job completed, 2 means strict warnings triggered or an unsupported
@@ -66,6 +66,19 @@ Every retained row stays in its original order. CSV and Parquet are written by
 default, with types, units, original warnings and job provenance beside them.
 See the bundled [feature export guide](FEATURE_TABLE_EXPORT.md) for typed CSV
 import, format options and failure behavior.
+
+## Compare recordings before choosing an analysis
+
+Use the review command to compare selected recordings in one external table:
+
+~~~bash
+./capturesuite-analysis review FIRST.mmsession SECOND.mmsession --inspect-payloads --output ../review
+~~~
+
+The comparison shows decode coverage, gaps, native warnings and collection
+failures. Source packages and their saved jobs remain unchanged. See
+[Compare selected recordings](QC_PACKAGE_REVIEW.md) for strict warning exits,
+partial failures and the machine-readable report.
 
 ## Supported and unsupported
 

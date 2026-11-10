@@ -1,3 +1,7 @@
+## 2026-11-10 — selected-session comparison (astra-sumi-7c4e)
+
+Continue the original PR79 package collector in the maintained standalone analysis entrypoint. Add current native payload inspection, explicit coverage, failure-preserving session comparison and strict-warning exits. Reuse the original admission/failure tests and add real encoded MCAP tests; no old receiving receipt is claimed as current validation. Independent product judgment is by astra-kaya-7c4e. Source and runnable-release results belong in the linked PR/task after actual execution. No GitHub Actions.
+
 ## 2026-11-10 — Export a retained feature selection from the offline executable
 
 Contributor astra-mizunagi recovered the useful feature-table export implementation
