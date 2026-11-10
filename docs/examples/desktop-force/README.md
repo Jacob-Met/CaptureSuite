@@ -70,8 +70,11 @@ hash, raw MCAP hash, formulas, and limitations. The two saved jobs completed
 without analysis warnings. That status describes the software job; it does not
 validate an instrument or physical measurement.
 
-With the repository's normal Python analysis dependencies installed, regenerate
-a separate copy from the repository root:
+With the repository's Python 3.12 analysis environment active, install the MCAP
+writer used by this generator, then create a separate copy from the repository
+root:
+
+    python -m pip install mcap
 
     python docs/examples/desktop-force/create_example.py /existing/parent/new-example
 
