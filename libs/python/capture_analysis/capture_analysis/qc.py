@@ -150,7 +150,12 @@ def _sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
-def _stream_qc(ref: StreamRef, *, inspect_payloads: bool = False) -> StreamQc:
+def _stream_qc(
+    ref: StreamRef,
+    *,
+    inspect_payloads: bool = False,
+    preview_window: tuple[int | None, int | None] | None = None,
+) -> StreamQc:
     warnings: list[str] = []
     rate_ok = ref.nominal_rate_hz > 0
     if not rate_ok:
@@ -188,7 +193,7 @@ def _stream_qc(ref: StreamRef, *, inspect_payloads: bool = False) -> StreamQc:
     if inspect_payloads:
         from capture_analysis.payload_qc import inspect_stream_payloads
 
-        inspection = inspect_stream_payloads(ref)
+        inspection = inspect_stream_payloads(ref, preview_window=preview_window)
         if inspection["status"] == "failed":
             warnings.append(f"payload inspection failed: {inspection['detail']}")
         elif inspection.get("partiallyPresentSensorIds"):
@@ -208,9 +213,7 @@ def _stream_qc(ref: StreamRef, *, inspect_payloads: bool = False) -> StreamQc:
             )
 
         continuity = inspection.get("sampleIndexContinuity")
-        if continuity and (
-            continuity["forwardJumpCount"] or continuity["overlapOrResetCount"]
-        ):
+        if continuity and (continuity["forwardJumpCount"] or continuity["overlapOrResetCount"]):
             warnings.append(
                 "EMG sample-index discontinuities: "
                 f"{continuity['forwardJumpCount']} forward jump(s), "
@@ -248,8 +251,16 @@ def _stream_qc(ref: StreamRef, *, inspect_payloads: bool = False) -> StreamQc:
 
 
 def collect_qc(
-    package_root: str | Path, *, inspect_payloads: bool = False, sources: list[str] | None = None
+    package_root: str | Path,
+    *,
+    inspect_payloads: bool = False,
+    sources: list[str] | None = None,
+    preview_window: tuple[int | None, int | None] | None = None,
 ) -> QcReport:
+    if preview_window is not None:
+        start, end = preview_window
+        if start is not None and end is not None and end < start:
+            raise ValueError("numeric excerpt interval end precedes start")
     root = Path(package_root)
     summary: ReviewSummary = load_review_summary(root)
     manifest_path = root / "manifest.json"
@@ -262,7 +273,7 @@ def collect_qc(
     if unknown:
         raise ValueError(f"unknown QC source IDs: {', '.join(sorted(unknown))}")
     streams = [
-        _stream_qc(r, inspect_payloads=inspect_payloads)
+        _stream_qc(r, inspect_payloads=inspect_payloads, preview_window=preview_window)
         for r in refs
         if not selected or r.source_id in selected
     ]

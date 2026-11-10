@@ -74,7 +74,9 @@ def _decode_imu(payload: bytes) -> tuple[list[str], list[str]]:
     return ids, zero_sensor_ids
 
 
-def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
+def inspect_stream_payloads(
+    ref: StreamRef, *, preview_window: tuple[int | None, int | None] | None = None
+) -> dict[str, Any]:
     """Read actual MCAP bytes and report checks completed or exact failures.
 
     Each segment is streamed. Supported schemas are all-or-nothing: a segment
@@ -95,6 +97,8 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
     frames = 0
     preview_batches: list[dict[str, Any]] = []
     preview_frames = 0
+    matching_frames = 0
+    untimed_frames = 0
     layout: list[str] | None = None
     last_device_time: int | None = None
     frames_without_native_time = 0
@@ -163,28 +167,54 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
                             frames_without_native_time += n
                         if not all(math.isfinite(value) for value in samples):
                             raise ValueError("numeric samples contain NaN or infinity")
-                        # Exact leading samples only: QC still checks every later frame.
-                        # A fixed channel/frame cap bounds retained report data regardless
-                        # of recording length; batch boundaries and native clocks survive.
-                        take = min(n, _PREVIEW_FRAMES - preview_frames)
-                        if take > 0:
+                        # All samples remain QC-checked; only the displayed excerpt is scoped.
+                        keep: list[int] = []
+                        if preview_window is None:
+                            matching_frames += n
+                            keep = list(range(min(n, _PREVIEW_FRAMES - preview_frames)))
+                        elif not device_times:
+                            untimed_frames += n
+                        else:
+                            start, end = preview_window
+                            for i, native in enumerate(device_times):
+                                session = int(message.log_time) + native - device_times[0]
+                                if (start is None or session >= start) and (
+                                    end is None or session <= end
+                                ):
+                                    matching_frames += 1
+                                    if len(keep) < _PREVIEW_FRAMES - preview_frames:
+                                        keep.append(i)
+                        if keep:
                             preview_batches.append(
                                 {
-                                    "firstFrame": frames,
+                                    "firstFrame": frames + keep[0],
+                                    "displayFirstFrame": preview_frames,
                                     "segment": path.name,
                                     "messageIndex": per_segment - 1,
                                     "sessionTimeNs": str(message.log_time),
-                                    "nativeTimeNs": [str(t) for t in device_times[:take]],
+                                    "nativeTimeNs": [str(device_times[i]) for i in keep]
+                                    if device_times
+                                    else [],
+                                    "mappedSessionTimeNs": [
+                                        str(
+                                            int(message.log_time)
+                                            + device_times[i]
+                                            - device_times[0]
+                                        )
+                                        for i in keep
+                                    ]
+                                    if device_times
+                                    else [],
                                     "values": [
                                         samples[
                                             i * channels : i * channels
                                             + min(channels, _PREVIEW_CHANNELS)
                                         ]
-                                        for i in range(take)
+                                        for i in keep
                                     ],
                                 }
                             )
-                            preview_frames += take
+                            preview_frames += len(keep)
                         frames += n
                     elif schema_id == "emg.batch/1":
                         n, first_index, ids, limits = _decode_emg(message.data)
@@ -256,7 +286,15 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
             if schema_id == "generic.numeric_batch/1":
                 result["numericPreview"] = {
                     "schemaId": "capture.numeric_qc_preview/1",
-                    "selection": "first_recorded_frames",
+                    "selection": "session_interval" if preview_window else "first_recorded_frames",
+                    "intervalStartNs": str(preview_window[0])
+                    if preview_window and preview_window[0] is not None
+                    else None,
+                    "intervalEndNs": str(preview_window[1])
+                    if preview_window and preview_window[1] is not None
+                    else None,
+                    "matchingFrames": matching_frames,
+                    "untimedFramesExcluded": untimed_frames,
                     "framesShown": preview_frames,
                     "framesChecked": frames,
                     "frameLimit": _PREVIEW_FRAMES,

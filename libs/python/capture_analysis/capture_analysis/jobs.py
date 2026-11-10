@@ -241,6 +241,9 @@ def run(
         inspect_payloads=params.command in {"qc", "all"}
         and bool(params.extra.get("inspect_payloads")),
         sources=params.sources if params.command == "qc" else None,
+        preview_window=(params.start_session_ns, params.end_session_ns)
+        if params.start_session_ns is not None or params.end_session_ns is not None
+        else None,
     )
     qc_dict = qc_report.to_dict()
 
