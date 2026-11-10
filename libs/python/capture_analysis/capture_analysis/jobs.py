@@ -243,6 +243,18 @@ def run(
         sources=params.sources if params.command == "qc" else None,
     )
     qc_dict = qc_report.to_dict()
+    # Non-QC jobs retain whole-package QC, but their requested analysis sources
+    # must still exist. Refuse the entire selection before creating/replacing a job.
+    known_sources = set(summary.source_ids) | {
+        stream["sourceId"] for stream in qc_dict.get("streams", [])
+    }
+    unknown_sources = set(params.sources) - known_sources
+    if unknown_sources:
+        raise ValueError(
+            f"unknown analysis source IDs: {', '.join(sorted(unknown_sources))}. "
+            f"Available source IDs: {', '.join(sorted(known_sources)) or '(none)'}. "
+            "Use exact source IDs with --sources, or omit --sources to select all."
+        )
 
     job_id = _job_id(params)
     processing, job_dir = _job_destination(root, job_id)
