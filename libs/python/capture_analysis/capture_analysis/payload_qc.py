@@ -167,7 +167,9 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
                         ids, zero = _decode_imu(message.data)
                         observed_sensors.update(ids)
                         for sensor_id in ids:
-                            sensor_frame_counts[sensor_id] = sensor_frame_counts.get(sensor_id, 0) + 1
+                            sensor_frame_counts[sensor_id] = (
+                                sensor_frame_counts.get(sensor_id, 0) + 1
+                            )
                         zero_quaternions += zero
                         frames += 1
             result["segmentsChecked"] += 1
@@ -211,7 +213,10 @@ def inspect_stream_payloads(ref: StreamRef) -> dict[str, Any]:
             if schema_id == "imu.frame/1":
                 result["sensorIds"] = sorted(observed_sensors)
                 result["sensorFramePresence"] = {
-                    sensor_id: {"framesPresent": sensor_frame_counts[sensor_id], "totalFrames": frames}
+                    sensor_id: {
+                        "framesPresent": sensor_frame_counts[sensor_id],
+                        "totalFrames": frames,
+                    }
                     for sensor_id in sorted(observed_sensors)
                 }
                 result["partiallyPresentSensorIds"] = sorted(
