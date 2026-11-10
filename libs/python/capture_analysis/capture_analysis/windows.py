@@ -144,10 +144,11 @@ def valid_fraction(valid: np.ndarray) -> float:
     return float(np.count_nonzero(valid) / valid.size)
 
 
-def enforce_gap_policy(gap_mask: GapMask, valid: np.ndarray) -> None:
+def enforce_gap_policy(gap_mask: GapMask, valid: np.ndarray | None = None) -> None:
+    """Enforce declared overlap; valid remains accepted for existing callers."""
     if gap_mask.policy != "fail":
         return
-    if gap_mask.overlaps_window() and valid.size and not bool(np.all(valid)):
+    if gap_mask.overlaps_window():
         raise RuntimeError(
             f"gap_policy=fail: gaps overlap {gap_mask.stream.source_id}/{gap_mask.stream.stream_id}"
         )

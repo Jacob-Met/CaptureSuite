@@ -53,6 +53,11 @@ def main(argv: list[str] | None = None) -> int:
     ):
         p = sub.add_parser(name, help=help_)
         add_common(p)
+        if name == "all":
+            p.add_argument(
+                "--inspect-payloads", action="store_true",
+                help="decode MCAP samples for QC alongside features and plots",
+            )
 
     p_kin = sub.add_parser("kinematics", help="Tier A kinematics from pose job (Phase D2)")
     add_common(p_kin)
@@ -77,7 +82,7 @@ def main(argv: list[str] | None = None) -> int:
 
     args = ap.parse_args(argv)
     extra: dict = {}
-    if args.command == "qc" and args.inspect_payloads:
+    if args.command in {"qc", "all"} and args.inspect_payloads:
         extra["inspect_payloads"] = True
     if args.command == "kinematics":
         extra["pose_job_id"] = args.pose_job
@@ -120,7 +125,7 @@ def main(argv: list[str] | None = None) -> int:
             f"streams={result.qc.get('streamCount')} "
             f"gaps_open={result.qc.get('openGapCount')} "
             f"gaps_closed={result.qc.get('closedGapCount')} "
-            f"warnings={len(result.qc.get('warnings') or [])}"
+            f"warnings={len(result.manifest.get('warnings') or [])}"
         )
     if result.status == "failed":
         return 1

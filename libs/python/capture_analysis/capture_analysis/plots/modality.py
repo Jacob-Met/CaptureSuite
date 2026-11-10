@@ -4,9 +4,15 @@
 from __future__ import annotations
 
 from pathlib import Path
+from textwrap import fill
 
 import numpy as np
-from capture_analysis.plots.style import new_fig, save_fig, shade_gaps, to_seconds
+from capture_analysis.plots.style import (
+    new_fig,
+    plot_recorded_series,
+    save_fig,
+    shade_recorded_gaps,
+)
 from capture_analysis.types import GapInterval, LoadedEmg, LoadedImu, TimeWindow
 
 
@@ -21,15 +27,20 @@ def plot_emg_channels(
     if loaded.X.size == 0:
         return
     n = min(max_channels, len(loaded.channel_ids))
-    fig, axes = new_fig(n, height=1.8)
-    t0 = int(loaded.t_sample_ns[0])
-    t = to_seconds(loaded.t_sample_ns, t0)
-    # Downsample for plotting if huge
-    step = max(1, t.size // 20000)
+    fig, axes = new_fig(n, height=2.2)
     for i in range(n):
-        axes[i].plot(t[::step], loaded.X[i, ::step], linewidth=0.6, color="#35c46b")
-        axes[i].set_ylabel(loaded.channel_ids[i][:12])
-        shade_gaps(axes[i], gaps, window, t0_ns=t0)
+        plot_recorded_series(
+            axes[i],
+            loaded.t_sample_ns,
+            loaded.X[i],
+            window=window,
+            gaps=gaps,
+            linewidth=0.6,
+            color="#35c46b",
+        )
+        axes[i].set_title(fill(loaded.channel_ids[i], width=80), loc="left", fontsize=9)
+        axes[i].set_ylabel(loaded.units or "units unspecified")
+        shade_recorded_gaps(axes[i], gaps, window, loaded.t_sample_ns)
     axes[-1].set_xlabel("session time (s)")
     fig.suptitle("EMG channels", fontsize=11)
     save_fig(fig, path)
@@ -46,14 +57,20 @@ def plot_imu_accel(
         return
     fig, axes = new_fig(1, height=3.0)
     ax = axes[0]
-    t0 = int(loaded.t_frame_ns[0])
-    t = to_seconds(loaded.t_frame_ns, t0)
     for s, sid in enumerate(loaded.sensor_ids[:3]):
         mag = np.linalg.norm(loaded.accel[:, s], axis=1)
-        ax.plot(t, mag, label=sid, linewidth=1.0)
-    shade_gaps(ax, gaps, window, t0_ns=t0)
+        plot_recorded_series(
+            ax,
+            loaded.t_frame_ns,
+            mag,
+            window=window,
+            gaps=gaps,
+            label=sid,
+            linewidth=1.0,
+        )
+    shade_recorded_gaps(ax, gaps, window, loaded.t_frame_ns)
     ax.legend(loc="upper right", fontsize=8)
-    ax.set_ylabel("|a|")
+    ax.set_ylabel(f"|a| ({loaded.units or 'units unspecified'})")
     ax.set_xlabel("session time (s)")
     fig.suptitle("IMU acceleration magnitude", fontsize=11)
     save_fig(fig, path)
@@ -75,9 +92,16 @@ def plot_series(
         return
     fig, axes = new_fig(1, height=2.8)
     ax = axes[0]
-    t0 = int(np.min(t_ns))
-    ax.plot(to_seconds(t_ns, t0), y, color=color, linewidth=1.0)
-    shade_gaps(ax, gaps, window, t0_ns=t0)
+    plot_recorded_series(
+        ax,
+        t_ns,
+        y,
+        window=window,
+        gaps=gaps,
+        color=color,
+        linewidth=1.0,
+    )
+    shade_recorded_gaps(ax, gaps, window, t_ns)
     ax.set_ylabel(ylabel)
     ax.set_xlabel(xlabel)
     fig.suptitle(title, fontsize=11)

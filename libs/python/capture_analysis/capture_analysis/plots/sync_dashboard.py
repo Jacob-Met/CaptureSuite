@@ -4,10 +4,16 @@
 from __future__ import annotations
 
 from pathlib import Path
+from textwrap import fill
 from typing import Any
 
 import numpy as np
-from capture_analysis.plots.style import new_fig, save_fig, shade_gaps, to_seconds
+from capture_analysis.plots.style import (
+    new_fig,
+    plot_recorded_series,
+    save_fig,
+    shade_recorded_gaps,
+)
 from capture_analysis.types import GapInterval, TimeWindow
 
 
@@ -19,17 +25,26 @@ def plot_sync_dashboard(
     series: list[dict[str, Any]],
     title: str,
 ) -> None:
-    """series items: {label, t_ns, y, color?}"""
+    """series items: {label, t_ns, y, color?, gaps?}; gaps are stream-scoped."""
     if not series:
         return
-    t0 = min(int(np.min(np.asarray(item["t_ns"]))) for item in series)
     fig, axes = new_fig(len(series), height=2.0)
     for ax, item in zip(axes, series, strict=True):
-        t = to_seconds(np.asarray(item["t_ns"]), t0)
+        t = np.asarray(item["t_ns"])
         y = np.asarray(item["y"], dtype=np.float64)
-        ax.plot(t, y, color=item.get("color", "#3d8bfd"), linewidth=1.0)
-        ax.set_ylabel(item["label"])
-        shade_gaps(ax, gaps, window, t0_ns=t0)
+        lane_gaps = item.get("gaps", gaps)
+        plot_recorded_series(
+            ax,
+            t,
+            y,
+            window=window,
+            gaps=lane_gaps,
+            color=item.get("color", "#3d8bfd"),
+            linewidth=1.0,
+        )
+        ax.set_title(fill(str(item["label"]), width=100), loc="left", fontsize=9, pad=7)
+        ax.set_ylabel(item.get("ylabel", "value"))
+        shade_recorded_gaps(ax, lane_gaps, window, t)
         ax.grid(True, alpha=0.25)
     axes[-1].set_xlabel("session time (s)")
     fig.suptitle(title, fontsize=11)

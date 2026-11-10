@@ -395,8 +395,9 @@ def test_imu_partial_sensor_presence_is_visible_in_qc_and_strict_cli(
     assert hash_sources_tree(package) == before
 
 
+@pytest.mark.parametrize("command", ["qc", "all"])
 def test_native_qc_cli_shows_real_emg_imu_payloads_without_changing_sources(
-    tmp_path: Path,
+    tmp_path: Path, command: str,
 ) -> None:
     import subprocess
     import sys
@@ -408,7 +409,7 @@ def test_native_qc_cli_shows_real_emg_imu_payloads_without_changing_sources(
     cli = [
         sys.executable,
         str(ROOT / "tools/run_analysis.py"),
-        "qc",
+        command,
         str(package),
         "--inspect-payloads",
         "--strict-warnings",
@@ -457,6 +458,9 @@ def test_zero_orientation_warns_in_saved_report_and_cli(
     imu = next(s for s in report["streams"] if s["modality"] == "imu")
     assert imu["payloadInspection"]["status"] == "imu_frames_checked"
     assert imu["payloadInspection"]["zeroQuaternionSensorSamples"] == int(qw == 0)
+    assert imu["payloadInspection"]["zeroQuaternionSamplesBySensor"] == (
+        {"pelvis": 1} if qw == 0 else {}
+    )
     result = subprocess.run(
         [
             sys.executable,
@@ -476,6 +480,7 @@ def test_zero_orientation_warns_in_saved_report_and_cli(
     reports = package / "processing/jobs/orientation-cli/reports"
     html = (reports / "qc.html").read_text()
     assert ("IMU orientation unavailable" in html) == (qw == 0)
+    assert ("(pelvis: 1)" in html) == (qw == 0)
     assert hash_sources_tree(package) == before
 
 def test_emg_temporal_features_do_not_bridge_masked_gap() -> None:
@@ -534,3 +539,37 @@ def test_emg_declared_gap_between_mcap_batches(
     assert df.iloc[0]["ch_wl"] == expected_wl
     assert df.iloc[0]["ch_zc"] == expected_zc
     assert df.iloc[0]["ch_rms"] == 1
+
+
+@pytest.mark.parametrize("scope,expected_exit", [("full", 1), ("before", 0), ("other", 0)])
+def test_fail_gap_policy_is_enforced_by_cli_without_samples_in_gap(
+    tmp_path: Path, scope: str, expected_exit: int
+) -> None:
+    import subprocess
+    import sys
+
+    from capture_analysis import hash_sources_tree
+
+    package = _write_emg_imu_package(tmp_path / "declared-gap.mmsession")
+    gaps = package / "sources/sim.emg.main/health/gaps.jsonl"
+    gaps.parent.mkdir(exist_ok=True)
+    gaps.write_text(json.dumps({
+        "sourceId": "sim.emg.main", "streamId": "sim.emg.main.batch",
+        "startSessionTimeNs": 250_000_000, "endSessionTimeNs": 300_000_000,
+        "cause": "disconnect", "closed": True,
+    }) + "\n")
+    before = hash_sources_tree(package)
+    source = "sim.imu.upper" if scope == "other" else "sim.emg.main"
+    args = [sys.executable, str(ROOT / "tools/run_analysis.py"), "features", str(package),
+            "--gap-policy", "fail", "--sources", source, "--overwrite-job-id", "fail-policy"]
+    if scope == "before":
+        args += ["--end-ns", "100000000"]
+    result = subprocess.run(args, cwd=ROOT, capture_output=True, text=True)
+    assert result.returncode == expected_exit, result.stdout + result.stderr
+    job = package / "processing/jobs/fail-policy"
+    if expected_exit:
+        assert "gap_policy=fail" in result.stdout + result.stderr
+        assert not list(job.rglob("*.csv"))
+    else:
+        assert list(job.rglob("*.csv"))
+    assert hash_sources_tree(package) == before

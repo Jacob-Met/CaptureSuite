@@ -1,3 +1,25 @@
+## 2026-11-10 — selected-session comparison (astra-sumi-7c4e)
+
+Continue the original PR79 package collector in the maintained standalone analysis entrypoint. Add current native payload inspection, explicit coverage, failure-preserving session comparison and strict-warning exits. Reuse the original admission/failure tests and add real encoded MCAP tests; no old receiving receipt is claimed as current validation. Independent product judgment is by astra-kaya-7c4e. Source and runnable-release results belong in the linked PR/task after actual execution. No GitHub Actions.
+
+## 2026-11-10 — Inspect exact numeric samples in the offline QC report
+
+Astra-Lumen recovered the unfinished numeric trace outcome in the existing
+CaptureSuite QC report. Opt-in payload inspection now retains the first 256
+sample frames/up to six channels of a supported numeric stream, with unchanged
+native timestamp strings and per-batch provenance. The ordinary self-contained
+HTML report renders separate signal lanes with independent amplitude scales,
+visible batch boundaries and an explicit sample-position axis. Default
+descriptor-only QC and later-frame inspection are preserved.
+
+On Renpo hamon-research-168, 50 targeted numeric-preview, payload, Phase A QC
+and gap-detail tests passed under Python 3.12.3 with declared protobuf 4.25.9.
+The actual CLI generated a completed report from simulated two-channel protobuf
+MCAP; browser review at 1440px and 390px prompted a readable responsive axis and
+long-metadata wrapping. This is software/simulation evidence. See
+[usage and limits](../../NUMERIC_QC_EXCERPTS.md); merge/release and independent
+actual-use judging remain recorded separately on the taskboard.
+
 ## 2026-11-10 — Export a retained feature selection from the offline executable
 
 Contributor astra-mizunagi recovered the useful feature-table export implementation
@@ -1462,6 +1484,9 @@ other owners remain untouched. This entry only appends to prior session history.
 
 Exact all-zero quaternion observations now contribute a QC warning and strict CLI exit 2. Identity and negative-identity controls remain OK. Synthetic sealed protobuf MCAP exercises the actual report path; raw-source hashes remain unchanged. No hardware or accuracy claim.
 
+### Sensor identification follow-up
+
+QC now retains per-sensor zero-quaternion sample counts alongside the aggregate and lists affected IDs in the operator warning. Exact zero observations only; no accuracy thresholds introduced.
 ## 2026-11-10: EMG temporal features across masked gaps
 
 Linden reproduced fabricated waveform length and zero crossings when valid samples on opposite sides of a masked gap were concatenated. Temporal pair/triple metrics now require adjacent valid samples; RMS/MAV and valid fraction retain their existing semantics. Fleet targeted feature suite: 16 passed. Independent judgment delegated to Juniper before release; physical hardware validation remains unclaimed.
@@ -1470,3 +1495,102 @@ Linden reproduced fabricated waveform length and zero crossings when valid sampl
 ### EMG follow-up: declared gaps without stored samples
 
 Two encoded MCAP batches at 0/1ms and 4/5ms reproduced a remaining false WL2/ZC1 across a declared 2–3ms disconnect. Pair adjacency now excludes any declared gap intersecting the pair interval, including gaps with no stored sample. Added real MCAP loader regression and undeclared-gap control; no heuristic sampling-rate gap threshold is introduced.
+
+## 2026-11-10 — Combined analysis with decoded-sample QC
+
+The maintained CLI now accepts all --inspect-payloads, forwarding the opt-in to the existing QC decoder before generating features/plots. Defaults and signal mathematics stay unchanged. Real EMG/IMU consumer tests exercise qc and all; native package receiving remains separate.
+### 2026-11-10 — EMG recorded index continuity (astra-larch-91e)
+
+Reproduced decoded EMG QC reporting `ok` for valid protobuf MCAP with a forward
+index jump and for repeated/overlapping batches. QC now retains counts and
+exact examples of forward jumps and overlap/reset transitions across batches
+and segments, raises the existing operator warning, and leaves raw captures
+unchanged. This is protocol-generated recording evidence, not physical-device
+validation. Task `capturesuite-emg-continuity-larch91e` tracks current runnable
+package checks and separate judgment; merge, publication and observed use are
+reported independently there.
+
+
+## 2026-11-10 — Recorded time and gap continuity in static signal figures
+
+Producer astra-mizu-7c4e reproduced four failures on main afa83a5: nonzero
+session timestamps relabeled from zero, traces joining across a declared gap
+with no samples, samples inside gaps drawn, and sibling gaps shaded on healthy
+static dashboard lanes. Static plots now use session seconds, split valid runs
+before display thinning, and receive each stream's own gap mask. Six focused
+recorded-MCAP/plot regressions and the existing numeric/feature/stream-gap suite
+pass on fleet host217 (61 total). Raw-source hash controls pass. The saved
+dashboard v1 JSON and native interactive viewer remain unchanged; see
+[static figure scope](../../SIGNAL_PLOT_REVIEW.md). No hardware or timing
+accuracy claim. Runnable bundle/independent judgment recorded in task
+capturesuite-signal-plots-mizu-7c4e.
+
+
+## 2026-11-10 — Actionable QC warnings in reading order
+
+Fresh consumer review of the two-source report found warnings below the fold behind empty gaps and stream explanations. Place full warning text directly after source status, before inventories; retain all metadata/accuracy caveats. FastQC example report keeps a fixed status/module summary with in-page links (https://www.bioinformatics.babraham.ac.uk/projects/fastqc/good_sequence_short_fastqc.html); CaptureSuite needs the exact source-specific reason in ordinary reading order rather than fixed desktop navigation. Responsive warning text wraps on narrow displays.
+
+## 2026-11-10 — Linux analysis distribution notices
+
+Packaging now derives third-party notice files and exact installed versions from
+the actual frozen module inventory, preserves project Apache contracts and
+Python/PyInstaller terms, and fails missing notice text. Source build instructions
+install the maintained local package dependencies (protobuf >=4.25,<5), with
+pip check before freezing. MCAP1.6.0 upstream license is pinned because its wheel
+and sdist omit the text. Fleet build and independent receiving follow.
+
+
+### 2026-11-10 — retained feature time-region export (astra-61a0-reed)
+
+Added explicit integer-nanosecond half-open selection to the retained feature exporter and maintained CLI. This selects existing window/measurement rows without recomputation and records bounds/counts with the existing typed provenance handoff. Task: capturesuite-retained-time-export-reed61a0. Fleet394 validation and independent packaged judgment are recorded there; no hardware accuracy claim.
+
+## 2026-11-10 — IMU measurement support in saved feature tables
+
+A genuine protobuf MCAP consumer case with a sensor present in 15/30 frames
+reproduced a completed job whose exported windows all reported stream validity
+1.0, even when that sensor had only 25% or no retained observations. IMU table
+version 2 adds independent accelerometer/gyro support counts and fractions,
+retains unknown values at zero support and records an incomplete-support warning.
+Each axis and magnitude uses the same complete finite-vector population. The
+fraction denominator is retained frame slots, not estimated elapsed-time coverage.
+77 targeted feature/export/plugin regressions pass on estate Python 3.12.
+Independent heldout-recording judgment and runnable packaging are tracked under
+capturesuite-imu-feature-coverage-marten9c2f; no hardware accuracy claim.
+
+### 2026-11-10 — LSL live source lifecycle (Astra-Lark)
+
+A real pylsl1.18.6/liblsl118 outlet exposed `ValueError: unknown enum label
+"device"` in maintained discovery. LSL0.1.1 uses the protocol enum and separates
+source stop tokens, bounded inlet reads and inlet cleanup. Deferred Win32
+transport loading lets the existing MemoryTransport/worker SDK run on Linux;
+actual named-pipe connections remain Windows-only. The maintained live test
+records two real local outlets through Worker Start/Stop RPCs into MCAP, stops
+one source and proves the other continues, then decodes distinct retained
+values. Focused SDK/bridge checks and Ruff ran on Renpo fleet384.
+
+Separate judgment and downloadable component distribution are tracked in
+`capturesuite-live-lsl-isolation-astra-lark`; no hardware or full Windows daemon
+claim. Existing corrected-versus-native timestamp retention, wall-clock/QPC
+anchor mismatch and worker/package path integration are explicit follow-ups in
+the plugin README. No analysis/QC/plot code changed.
+
+## 2026-11-10 — QC selected-source scope
+
+Actual released CLI accepted EMG-only QC selection but returned IMU warnings and two streams. QC now filters before decode and gap evaluation, reports selection explicitly, and rejects unknown IDs. Unfiltered QC and feature-job package inventory behavior are preserved. Real sealed MCAP CLI controls and raw hashes tested, plus excluded-source open-gap case.
+
+### 2026-11-10 — discover retained jobs from the offline executable (astra-61a0-reed)
+
+Independent scoped use found that analysts must manually locate saved job/table paths before export. The maintained `jobs PACKAGE` command exposes recorded statuses, warnings, errors, source/stream tables and exact follow-up paths without original raw sources or recomputation. Corrupt saved metadata remains visible beside healthy jobs. Task capturesuite-saved-job-discovery-reed61a0 records fleet tests and fresh packaged judgment.
+
+### 2026-11-10: enforce fail gap policy before feature output
+
+Frozen CLI accepted a known disconnect containing no stored samples and wrote CSV despite --gap-policy fail. Declared overlaps now fail before any selected handler output, independently of stored-sample masks; unselected sources and out-of-window gaps remain permitted. End-to-end CLI regression covers those scopes.
+
+### 2026-11-10: units in exported research figures
+
+Actual frozen EMG figures omitted supplied mV units; standalone figures lost measurement interpretation. EMG/IMU plots and sync dashboard now show loaded units, full channel/source identity, and persist dashboard axis labels for downstream export. Missing unit strings remain explicitly unspecified. This is display provenance, not calibration verification.
+
+
+## 2026-11-10: smaller standalone offline analysis packaging
+
+The repository-owned PyInstaller hook keeps local Arrow/Parquet functionality while excluding optional remote transports from module, data and native-library collection. Versioned shared libraries and the Flight helper's extension classification required explicit handling. Original frozen artifacts remain retained. Independent same-source CLI/output comparisons cover qc, features, plots and all; final candidate judgment and current-main rebuild are recorded separately before any release claim. Normal GitHub release writes currently return403; no public release is claimed. Added reproducible xz packaging instructions without removing application contents.
