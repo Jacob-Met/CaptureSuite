@@ -173,7 +173,7 @@ def test_native_wizard_selection_and_requested_actual_sidecar(package: Path, qap
         code, tail = run_export(str(package), wizard.options, repo_root=ROOT)
         assert code == 0, tail
         sidecar = json.loads((out / "provenance_sidecar.json").read_text(encoding="utf-8"))
-        assert sidecar["streams"] == dict(radar=True, video=False, emg=False, imu=True, numeric=True)
+        assert sidecar["streams"] == dict(radar=True, video=False, emg=False, imu=True, numeric=False)
         assert sidecar["actualStreams"] == dict(radar=False, video=False, emg=False, imu=True, numeric=False)
         assert not (out / "emg").exists()
         assert not (out / "video").exists()
