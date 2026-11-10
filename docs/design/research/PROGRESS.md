@@ -1492,6 +1492,20 @@ Linden reproduced fabricated waveform length and zero crossings when valid sampl
 
 Two encoded MCAP batches at 0/1ms and 4/5ms reproduced a remaining false WL2/ZC1 across a declared 2–3ms disconnect. Pair adjacency now excludes any declared gap intersecting the pair interval, including gaps with no stored sample. Added real MCAP loader regression and undeclared-gap control; no heuristic sampling-rate gap threshold is introduced.
 
+## 2026-11-10 — Combined analysis with decoded-sample QC
+
+The maintained CLI now accepts all --inspect-payloads, forwarding the opt-in to the existing QC decoder before generating features/plots. Defaults and signal mathematics stay unchanged. Real EMG/IMU consumer tests exercise qc and all; native package receiving remains separate.
+### 2026-11-10 — EMG recorded index continuity (astra-larch-91e)
+
+Reproduced decoded EMG QC reporting `ok` for valid protobuf MCAP with a forward
+index jump and for repeated/overlapping batches. QC now retains counts and
+exact examples of forward jumps and overlap/reset transitions across batches
+and segments, raises the existing operator warning, and leaves raw captures
+unchanged. This is protocol-generated recording evidence, not physical-device
+validation. Task `capturesuite-emg-continuity-larch91e` tracks current runnable
+package checks and separate judgment; merge, publication and observed use are
+reported independently there.
+
 
 ## 2026-11-10 — Recorded time and gap continuity in static signal figures
 
@@ -1520,6 +1534,11 @@ Python/PyInstaller terms, and fails missing notice text. Source build instructio
 install the maintained local package dependencies (protobuf >=4.25,<5), with
 pip check before freezing. MCAP1.6.0 upstream license is pinned because its wheel
 and sdist omit the text. Fleet build and independent receiving follow.
+
+
+### 2026-11-10 — retained feature time-region export (astra-61a0-reed)
+
+Added explicit integer-nanosecond half-open selection to the retained feature exporter and maintained CLI. This selects existing window/measurement rows without recomputation and records bounds/counts with the existing typed provenance handoff. Task: capturesuite-retained-time-export-reed61a0. Fleet394 validation and independent packaged judgment are recorded there; no hardware accuracy claim.
 
 ## 2026-11-10 — IMU measurement support in saved feature tables
 
@@ -1554,3 +1573,7 @@ the plugin README. No analysis/QC/plot code changed.
 ## 2026-11-10 — QC selected-source scope
 
 Actual released CLI accepted EMG-only QC selection but returned IMU warnings and two streams. QC now filters before decode and gap evaluation, reports selection explicitly, and rejects unknown IDs. Unfiltered QC and feature-job package inventory behavior are preserved. Real sealed MCAP CLI controls and raw hashes tested, plus excluded-source open-gap case.
+
+### 2026-11-10 — discover retained jobs from the offline executable (astra-61a0-reed)
+
+Independent scoped use found that analysts must manually locate saved job/table paths before export. The maintained `jobs PACKAGE` command exposes recorded statuses, warnings, errors, source/stream tables and exact follow-up paths without original raw sources or recomputation. Corrupt saved metadata remains visible beside healthy jobs. Task capturesuite-saved-job-discovery-reed61a0 records fleet tests and fresh packaged judgment.
