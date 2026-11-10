@@ -295,7 +295,9 @@ class NumericFeatureTests(unittest.TestCase):
         df, _, vf = extract_numeric_batch_features(
             loaded, GapMask(self.ref, self.window, [gap], "split")
         )
-        self.assertEqual(vf, 1.0)
+        # The retained split rows are complete, but half the recording is absent.
+        self.assertEqual(vf, 0.5)
+        self.assertEqual(df["valid_fraction"].tolist(), [1.0, 1.0])
         self.assertEqual(df["t_start_ns"].tolist(), [0, 3_000_000_000])
         self.assertEqual(df["t_end_ns"].tolist(), [1_000_000_000, 4_000_000_000])
         self.assertEqual(df["signal_mean"].tolist(), [1.5, 3.5])

@@ -1604,3 +1604,26 @@ The repository-owned PyInstaller hook keeps local Arrow/Parquet functionality wh
 ## 2026-11-10 — recorded numeric sample handoff (astra-lark-61c2)
 
 Implemented numeric long-form CSV, exact clocks, copied source gaps and native/standalone entrypoints. 36 focused export/native regressions passed on Linux build339. Separate Tern judgment and runnable release are tracked in capturesuite-numeric-sample-export-lark61c2. Synthetic MCAP values are not instrument validation.
+
+
+## 2026-11-10 — Imported sensor windows through disconnects (astra-larch-7c2f)
+
+Actual packaged generic numeric analysis reproduced a nominal one-second row
+spanning 0.6–3.6 seconds through a declared disconnect, combining 2V and 9V into
+5.5V with gap_fraction zero. The input is synthetic values in genuine protobuf
+MCAP, with original timestamps and a complete integrity duration; no physical
+hardware validation is claimed. The initial durationless probe was clipped by
+its last gap boundary, so the complete-span probe is the reproduction evidence.
+
+The maintained numeric feature extractor now reuses elapsed-time windows,
+reports nominal support counts, and versions its schema to numeric.basic.v2.
+A split row can be complete while recording-level availability remains partial.
+Original magnitude-safe reductions are preserved. Production and tests are by
+astra-larch-7c2f; independent judging and release are still pending.
+
+The full analysis course exposed two older receiving expectations that depended
+on the same retained-count behavior: nominal one-second rows actually spanned
+5.08–6.70s and 5.0–6.55s. The original irregular native-clock recordings and
+loader assertions are unchanged. Receiving now checks exact one-second bounds
+and independently computed scalar reductions for each actual member set; the
+old means and spans remain in comments as the historical counterexamples.

@@ -29,7 +29,7 @@ def handle_numeric(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext) -> No
                 ctx.work,
                 rel,
                 df,
-                feature_schema_version=1,
+                feature_schema_version=2,
                 columns_meta=meta,
                 schema_doc=ctx.schema_doc,
                 outputs=ctx.outputs,
@@ -38,7 +38,7 @@ def handle_numeric(ref: StreamRef, gap_mask: GapMask, ctx: HandlerContext) -> No
                 {"sourceId": ref.source_id, "streamId": ref.stream_id, "validFraction": vf}
             )
             ctx.feature_tables.append(
-                {"relativePath": rel, "featureSchemaVersion": 1, "rows": int(len(df))}
+                {"relativePath": rel, "featureSchemaVersion": 2, "rows": int(len(df))}
             )
     if ctx.do_plots and loaded.X.size:
         step = max(1, loaded.t_sample_ns.size // 20000)

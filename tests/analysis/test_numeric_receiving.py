@@ -220,22 +220,31 @@ class NumericReceiving(unittest.TestCase):
             JobParams(command="features", checkpoint_section="rest", max_ram_bytes=8 * MIB),
         )
         frame, relative = self.assert_feature_table(result)
-        self.assertEqual(len(frame), 1)
-        row = frame.iloc[0]
-        self.assertEqual(int(row["t_start_ns"]), 5_080_000_000)
-        self.assertEqual(int(row["t_end_ns"]), 6_700_000_000)
-        self.assertAlmostEqual(row["force_x_mean"], 65.0)
-        self.assertAlmostEqual(row["force_x_rms"], math.sqrt(5050.0))
-        self.assertAlmostEqual(row["force_y_mean"], 650.0)
-        self.assertAlmostEqual(row["force_y_rms"], 10 * math.sqrt(5050.0))
-        self.assertEqual(row["gap_fraction"], 0.0)
-        self.assertEqual(row["rate_hz"], 10.0)
+        # Keep the original irregular native-clock recording. The old single
+        # row spanned 5.08..6.70s and reduced all ten retained values (mean65),
+        # despite a requested one-second window. Check elapsed membership with
+        # independent scalar reductions, without the window implementation.
+        self.assertEqual(frame["t_start_ns"].tolist(), [5_080_000_000, 5_580_000_000])
+        self.assertEqual(frame["t_end_ns"].tolist(), [6_080_000_000, 6_580_000_000])
+        for row, values in zip(
+            frame.to_dict("records"), [[20, 30, 40, 50, 60, 70], [70, 80, 90, 100]], strict=True
+        ):
+            mean = sum(values) / len(values)
+            rms = math.sqrt(sum(value * value for value in values) / len(values))
+            self.assertAlmostEqual(row["force_x_mean"], mean)
+            self.assertAlmostEqual(row["force_x_rms"], rms)
+            self.assertAlmostEqual(row["force_y_mean"], 10 * mean)
+            self.assertAlmostEqual(row["force_y_rms"], 10 * rms)
+            self.assertEqual(row["sample_count"], len(values))
+            self.assertEqual(row["expected_sample_count"], 10)
+            self.assertAlmostEqual(row["gap_fraction"], 1.0 - len(values) / 10)
+            self.assertEqual(row["rate_hz"], 10.0)
         metadata = json.loads((result.job_dir / "features" / "_schema.json").read_text())
         columns = {item["name"]: item for item in metadata["tables"][relative]["columns"]}
         self.assertEqual(set(columns), set(frame.columns))
         for name in ["force_x_mean", "force_x_rms", "force_y_mean", "force_y_rms"]:
             self.assertEqual(columns[name]["units"], "N")
-            self.assertEqual(columns[name]["id"], "numeric.basic.v1")
+            self.assertEqual(columns[name]["id"], "numeric.basic.v2")
             self.assertIs(columns[name]["provisional"], True)
             self.assertIs(columns[name]["calibrated"], False)
             self.assertIs(columns[name]["interpolatedTimestamps"], False)
@@ -247,10 +256,13 @@ class NumericReceiving(unittest.TestCase):
         raw_before = hash_sources_tree(self.root)
         result = run(self.root, JobParams(command="features", max_ram_bytes=8 * MIB))
         frame, _relative = self.assert_feature_table(result)
-        self.assertEqual(len(frame), 1)
-        self.assertEqual(int(frame.iloc[0]["t_start_ns"]), 5_000_000_000)
-        self.assertEqual(int(frame.iloc[0]["t_end_ns"]), 6_550_000_000)
-        self.assertAlmostEqual(frame.iloc[0]["force_x_mean"], 55.0)
+        # Same unchanged native samples: the former 5.0..6.55s row (mean55)
+        # is replaced by two bounded one-second windows with honest support.
+        self.assertEqual(frame["t_start_ns"].tolist(), [5_000_000_000, 5_500_000_000])
+        self.assertEqual(frame["t_end_ns"].tolist(), [6_000_000_000, 6_500_000_000])
+        self.assertEqual(frame["force_x_mean"].tolist(), [35.0, 80.0])
+        self.assertEqual(frame["sample_count"].tolist(), [6, 5])
+        self.assertEqual(frame["valid_fraction"].tolist(), [0.6, 0.5])
         self.assertTrue(any("duration" in warning for warning in result.manifest["warnings"]))
         self.assertFalse(any("max-ram-bytes" in w for w in result.manifest["warnings"]))
         self.assertEqual(hash_sources_tree(self.root), raw_before)

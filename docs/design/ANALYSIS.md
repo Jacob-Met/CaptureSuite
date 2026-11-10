@@ -614,3 +614,20 @@ and does not describe an individual sensor. A feature job with incomplete sensor
 support records a warning, so strict CLI mode exits 2 and selected exports retain
 that warning in their copied source manifest. Select support columns alongside
 measurements when exporting a table; the column metadata defines the denominator.
+
+
+### Generic numeric feature windows
+
+`numeric.basic.v2` uses elapsed session time for the default one-second window
+and half-second hop. A missing interval cannot stretch a window or join distant
+sensor episodes. Mask keeps the fixed time grid and omits empty windows; split
+restarts in each declared gap-free span, retaining a short span with its actual
+bounds. Recorded timestamps and values are retained without resampling.
+
+Tables expose retained, valid, and nominal expected sample counts, `valid_fraction`,
+and its complement `gap_fraction`. Per-source availability uses the nominal
+positions across the retained recording's observed time span, including absent
+samples; a fully covered split row does not make the entire recording complete.
+These fractions are nominal-rate estimates, remain explicitly uncalibrated, and
+do not claim device-clock accuracy. Existing overflow-safe RMS/mean reductions,
+channel names, source/stream identity, and warning provenance are retained.
