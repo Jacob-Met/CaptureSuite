@@ -89,6 +89,7 @@ def main(argv: list[str] | None = None, *, prog: str | None = None) -> int:
     print(f"dir={args.output.resolve()}")
     print(f"rows={result['selection']['rows']}")
     print(f"columns={len(result['selection']['columns'])}")
+    print(f"readme={args.output.resolve() / 'README.html'}")
     if "timeSelection" in result["selection"]:
         scope = result["selection"]["timeSelection"]
         print(f"time_region={scope['column']} [{scope['startNs']}, {scope['endNs']}) ns")
