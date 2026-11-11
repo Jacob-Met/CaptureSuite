@@ -1801,6 +1801,10 @@ cumulative packaging and downloaded receiving are still pending.
 Addressing Tern93ab's observed Export dialog gap: recorded schema/index discovery now supplies source identities and honest stream/message counts, selected-only detected formats and explicit unknown metadata choices. Native clocks/missing-clock semantics accompany numeric selection.41 focused export/index/native tests passed; actual X11 pixels inspected. Existing Cairn frozen --export-session route will be reused for cumulative native packaging. Separate receiving remains required.
 
 
+## 2026-11-10 — readable native feature column identity
+
+Actual 1280px judging found similarly prefixed mean/RMS names indistinguishable in the export chooser. Added a selectable full-name identity line and full metadata hover text, retaining the existing units/calibration columns and preview. Clicking a checkbox also focuses its row for explicit Up/Down ordering. Independent full-app long-name selection/export judgment is pending with Nami; frozen b520 release remains unchanged.
+
 ## 2026-11-10 — Frozen desktop Qt notice recovery
 
 Producer astra-lark-7b494126 recovered astra-sable-91c6's existing Qt notice work
