@@ -19,6 +19,7 @@ from typing import Any
 
 from capture_session.package_reader import load_review_summary
 
+from capture_analysis.discover import discover_streams
 from capture_analysis.pipeline import run_features_and_plots
 from capture_analysis.qc import QcReport, collect_qc
 from capture_analysis.report_html import render_qc_html
@@ -235,11 +236,17 @@ def run(
     tick("start", 0.0)
     qc_dict: dict[str, Any] = {}
     summary = load_review_summary(root)
-    unknown_sources = sorted(set(params.sources) - set(summary.source_ids))
+    # Folder names are not necessarily the source IDs recorded in stream
+    # descriptors. Accept both, as QC and the source picker already do.
+    # An unfiltered job needs no additional source discovery.
+    available_sources = set(summary.source_ids)
+    if params.sources:
+        available_sources.update(ref.source_id for ref in discover_streams(root))
+    unknown_sources = sorted(set(params.sources) - available_sources)
     if unknown_sources:
         raise ValueError(
             f"Unknown requested source IDs: {', '.join(unknown_sources)}. "
-            f"Available source IDs: {', '.join(sorted(summary.source_ids)) or '(none)'}. "
+            f"Available source IDs: {', '.join(sorted(available_sources)) or '(none)'}. "
             "Use exact source IDs with --sources, or omit --sources to select all. "
             "No analysis job was created."
         )
