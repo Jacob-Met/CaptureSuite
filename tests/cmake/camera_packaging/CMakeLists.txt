@@ -4,6 +4,9 @@ project(CameraPackagingProbe LANGUAGES CXX)
 
 # This fixture substitutes compilation dependencies, then executes the unchanged
 # production camera CMakeLists.txt. It tests packaging, not GStreamer or capture.
+# This native packaging probe uses C++20 without modules. Avoid requiring
+# clang-scan-deps on Linux toolchains that lack the optional module scanner.
+set(CMAKE_CXX_SCAN_FOR_MODULES OFF)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)

@@ -212,5 +212,5 @@ def test_job_writes_sync_series_json(tmp_path: Path) -> None:
     series = result.job_dir / "figures" / "sync_dashboard_series.json"
     assert series.is_file(), "pipeline must emit sync series JSON for in-app viewer"
     doc = json.loads(series.read_text(encoding="utf-8"))
-    assert doc.get("schemaId") == "capture.sync_dashboard_series/1"
+    assert doc.get("schemaId") == "capture.sync_dashboard_series/2"
     assert doc.get("series")
