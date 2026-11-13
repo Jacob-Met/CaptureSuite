@@ -79,18 +79,18 @@ vcpkg. `windows-2022` retains the documented VS 2022 toolchain rather than allow
 From the repository root, in a fresh CPython 3.12 environment:
 
 ```powershell
-python -m pip install -r requirements-ci.txt
-python -m pip check
-python tools/check_ci_contract.py --check-environment
+uv sync --all-packages --extra dev --extra analysis
+uv pip check --python .venv
+uv run --all-packages --extra dev --extra analysis python tools/check_ci_contract.py --check-environment
 $env:QT_QPA_PLATFORM = "offscreen"
-python -m pytest tests -q -ra --ignore=tests/kill_tests
+uv run --all-packages --extra dev --extra analysis python -m pytest tests -q -ra --ignore=tests/kill_tests
 ```
 
 The normal Python suite selects up to four local workers (bounded by available
 CPUs), keeps a test module on one worker and retains the ordinary test reports.
 Pass `-n 0` for a serial debugging run.
 
-The requirements install all five local workspace members together, including the
+The workspace sync installs all five local workspace members together, including the
 analysis and desktop extras. CI explicitly imports those dependencies before tests
 so an absent optional library cannot make its test coverage disappear silently.
 Six daemon integration cases still require a built Windows executable; skipped
