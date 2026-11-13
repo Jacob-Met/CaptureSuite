@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: GPL-3.0-only
-"""Check the repository's CI dependency contract before expensive builds.
+"""Check the developer build, test and Python environment contract.
 
-Checks the current CaptureSuite workflow format, not arbitrary YAML or GitHub
-Actions security. A matching SHA establishes consistency, not upstream trust.
+The maintained entries are local uv and CMake commands. Deleted GitHub Actions
+workflow files have no authority over the supported developer environment.
 """
 
 from __future__ import annotations
@@ -12,10 +12,11 @@ import argparse
 import importlib
 import json
 import re
+import shlex
+import tomllib
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-PIN = re.compile(r"^\s*vcpkgGitCommitId:\s*[\"\']?([\w.-]+)[\"\']?\s*(?:#.*)?$", re.M)
 MEMBERS = (
     "libs/python/capture_protocol",
     "libs/python/capture_session",
@@ -23,6 +24,36 @@ MEMBERS = (
     "libs/python/capture_worker",
     "desktop[analysis]",
 )
+WORKSPACE_SOURCES = (
+    "capture-protocol",
+    "capture-session",
+    "capture-analysis",
+    "capture-worker",
+    "capture-desktop",
+)
+REQUIRED_EXTRAS = {
+    "dev": {"pytest", "pytest-cov", "pytest-xdist", "pytest-qt", "ruff"},
+    "analysis": {"numpy", "scipy", "pandas", "pyarrow", "matplotlib"},
+}
+DEV_COMMANDS = (
+    "cmake --preset windows-release",
+    "cmake --build build/windows-release --target capture_daemon session_doctor",
+    "uv sync --all-packages --extra dev --extra analysis",
+    "uv run --all-packages --extra dev --extra analysis "
+    "python tools/check_ci_contract.py --check-environment",
+    "uv run --all-packages --extra dev --extra analysis python -m pytest tests -q",
+    "ctest --test-dir build/windows-release --output-on-failure --no-tests=error",
+    '$env:CAPTURE_TEST_BUILD_DIR = "build/windows-release"',
+    "uv run --all-packages --extra dev --extra analysis python tools/run_native_ci_tests.py",
+)
+NATIVE_RUNNER_MARKERS = (
+    "CAPTURE_TEST_BUILD_DIR",
+    "capture_daemon.exe",
+    "session_doctor.exe",
+    "NATIVE_TESTS",
+    "Native integration tests were skipped",
+)
+
 ENVIRONMENT = (
     "capture_protocol",
     "capture_session",
@@ -44,6 +75,14 @@ ENVIRONMENT = (
 )
 
 
+def dependency_names(entries: list[str]) -> set[str]:
+    names = set()
+    for entry in entries:
+        if isinstance(entry, str) and (match := re.match(r"[A-Za-z0-9_-]+", entry)):
+            names.add(match.group().lower().replace("_", "-"))
+    return names
+
+
 def check(root: Path) -> list[str]:
     errors = []
     try:
@@ -52,35 +91,64 @@ def check(root: Path) -> list[str]:
             errors.append("builtin-baseline must be a full 40-character lowercase commit SHA")
     except (OSError, ValueError, KeyError, TypeError) as exc:
         errors.append(f"Cannot read builtin-baseline: {type(exc).__name__}")
-        baseline = None
-    for name in ("ci.yml", "release.yml"):
-        try:
-            text = (root / ".github" / "workflows" / name).read_text(encoding="utf-8")
-        except OSError:
-            errors.append(f"Cannot read workflow {name}")
-            continue
-        pins = PIN.findall(text)
-        if len(pins) != 1 or pins[0] != baseline:
-            errors.append(f"{name}: one vcpkg commit pin must match builtin-baseline")
-        if name == "ci.yml":
-            if "python -m pip install -r requirements-ci.txt" not in text:
-                errors.append("ci.yml must install the complete requirements-ci.txt environment")
-            if "--check-environment" not in text:
-                errors.append(
-                    "ci.yml must check imports instead of silently skipping optional tests"
-                )
-            if "--no-tests=error" not in text:
-                errors.append("ci.yml CTest must reject an empty test discovery")
-            if "session_doctor -j 4" not in text:
-                errors.append("ci.yml must build session_doctor before recovery integration")
-            if "python -m pip install -r requirements-native-ci.txt" not in text:
-                errors.append("ci.yml must install the native integration environment")
-            if "CAPTURE_TEST_BUILD_DIR: build/windows-release" not in text:
-                errors.append("ci.yml must bind native tests to the exact hosted build")
-            if "python tools/run_native_ci_tests.py" not in text:
-                errors.append("ci.yml must execute the zero-skip native integration runner")
-            if "build/evidence/native-*/" not in text:
-                errors.append("ci.yml must preserve native integration receipts")
+
+    # CaptureSuite uses uv's workspace, not the removed GitHub Actions workflows.
+    try:
+        project = tomllib.loads((root / "pyproject.toml").read_text(encoding="utf-8"))
+        uv = project["tool"]["uv"]
+        members = uv["workspace"]["members"]
+        for member in MEMBERS:
+            if member.split("[", 1)[0] not in members:
+                errors.append(f"Missing uv workspace member: {member}")
+        for source in WORKSPACE_SOURCES:
+            if uv.get("sources", {}).get(source) != {"workspace": True}:
+                errors.append(f"Missing local uv workspace source: {source}")
+        extras = project["project"]["optional-dependencies"]
+        for group, required in REQUIRED_EXTRAS.items():
+            missing = required - dependency_names(extras.get(group, []))
+            for name in sorted(missing):
+                errors.append(f"Missing uv {group} dependency: {name}")
+        pytest_options = project["tool"]["pytest"]["ini_options"]
+        if "tests" not in pytest_options.get("testpaths", []):
+            errors.append("Pytest must discover the real tests directory")
+        options = shlex.split(pytest_options.get("addopts", ""))
+        if "--maxprocesses=4" not in options or "--dist" not in options:
+            errors.append("Pytest must retain the configured four-worker module gate")
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        errors.append(f"Cannot read uv developer workspace: {type(exc).__name__}")
+
+    try:
+        commands = {
+            line.strip()
+            for line in (root / "CONTRIBUTING.md").read_text(encoding="utf-8").splitlines()
+        }
+        for command in DEV_COMMANDS:
+            if command not in commands:
+                errors.append(f"Missing supported developer command: {command}")
+    except OSError:
+        errors.append("Cannot read supported developer commands")
+
+    try:
+        presets = json.loads((root / "CMakePresets.json").read_text(encoding="utf-8"))
+        configure = {p["name"]: p for p in presets["configurePresets"]}
+        builds = {p["name"]: p for p in presets["buildPresets"]}
+        if configure.get("windows-release", {}).get("binaryDir") != (
+            "${sourceDir}/build/windows-release"
+        ):
+            errors.append("Windows release preset must retain its native build directory")
+        if builds.get("windows-release", {}).get("configurePreset") != "windows-release":
+            errors.append("Windows release build must use the configured preset")
+    except (OSError, ValueError, KeyError, TypeError) as exc:
+        errors.append(f"Cannot read active CMake presets: {type(exc).__name__}")
+
+    try:
+        runner = (root / "tools/run_native_ci_tests.py").read_text(encoding="utf-8")
+        for marker in NATIVE_RUNNER_MARKERS:
+            if marker not in runner:
+                errors.append(f"Native integration runner lost required behavior: {marker}")
+    except OSError:
+        errors.append("Cannot read native integration runner")
+
     try:
         lines = (root / "requirements-ci.txt").read_text(encoding="utf-8").splitlines()
         entries = {line.strip() for line in lines if line.strip() and not line.startswith("#")}
@@ -99,10 +167,7 @@ def check(root: Path) -> list[str]:
         native_entries = {
             line.strip() for line in native_lines if line.strip() and not line.startswith("#")
         }
-        for entry in (
-            "-e ./libs/python/capture_protocol",
-            "-e ./libs/python/capture_session",
-        ):
+        for entry in ("-e ./libs/python/capture_protocol", "-e ./libs/python/capture_session"):
             if entry not in native_entries:
                 errors.append(f"Missing native CI dependency: {entry}")
         if not any(entry.startswith("pytest") for entry in native_entries):
