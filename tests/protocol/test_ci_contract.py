@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: GPL-3.0-only
 import json
+import shutil
 from pathlib import Path
 
 import check_ci_contract as contract
@@ -11,20 +12,15 @@ SHA = "b322364f06308bdd24823f9d8f03fe0cc86fd46f"
 @pytest.fixture
 def configured(tmp_path: Path) -> Path:
     (tmp_path / "vcpkg.json").write_text(json.dumps({"builtin-baseline": SHA}))
-    folder = tmp_path / ".github/workflows"
-    folder.mkdir(parents=True)
-    for name in ("ci.yml", "release.yml"):
-        (folder / name).write_text(
-            f'vcpkgGitCommitId: "{SHA}" # version pin\n'
-            "python -m pip install -r requirements-ci.txt\n"
-            "python tools/check_ci_contract.py --check-environment\n"
-            "ctest --no-tests=error\n"
-            "cmake --build x --target session_doctor -j 4\n"
-            "python -m pip install -r requirements-native-ci.txt\n"
-            "CAPTURE_TEST_BUILD_DIR: build/windows-release\n"
-            "python tools/run_native_ci_tests.py\n"
-            "build/evidence/native-*/\n"
-        )
+    for source in (
+        "pyproject.toml",
+        "CMakePresets.json",
+        "CONTRIBUTING.md",
+        "tools/run_native_ci_tests.py",
+    ):
+        target = tmp_path / source
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(contract.ROOT / source, target)
     (tmp_path / "requirements-ci.txt").write_text("\n".join(f"-e ./{m}" for m in contract.MEMBERS))
     (tmp_path / "requirements-native-ci.txt").write_text(
         "-e ./libs/python/capture_protocol\n-e ./libs/python/capture_session\npytest>=8\n"
@@ -50,11 +46,13 @@ def test_invalid_registry_pin_is_rejected(configured, bad):
     assert contract.check(configured)
 
 
-@pytest.mark.parametrize("name", ["ci.yml", "release.yml"])
-def test_divergent_workflow_pin_is_rejected(configured, name):
-    p = configured / ".github/workflows" / name
-    p.write_text(p.read_text().replace(SHA, "a" * 40))
-    assert any(name in e for e in contract.check(configured))
+@pytest.mark.parametrize("section", ["configurePresets", "buildPresets"])
+def test_missing_windows_preset_is_rejected(configured, section):
+    p = configured / "CMakePresets.json"
+    presets = json.loads(p.read_text())
+    presets[section] = [item for item in presets[section] if item["name"] != "windows-release"]
+    p.write_text(json.dumps(presets))
+    assert any("Windows release" in error for error in contract.check(configured))
 
 
 def test_missing_manifest_is_a_diagnostic(configured):
@@ -68,27 +66,59 @@ def test_optional_dependencies_cannot_be_omitted(configured):
     assert any("desktop[analysis]" in e for e in contract.check(configured))
 
 
-@pytest.mark.parametrize("gate", ["--check-environment", "--no-tests=error"])
-def test_missing_runtime_gates_are_rejected(configured, gate):
-    p = configured / ".github/workflows/ci.yml"
-    p.write_text(p.read_text().replace(gate, ""))
-    assert contract.check(configured)
-
-
 @pytest.mark.parametrize(
-    "gate",
+    "command",
     [
-        "session_doctor -j 4",
-        "python -m pip install -r requirements-native-ci.txt",
-        "CAPTURE_TEST_BUILD_DIR: build/windows-release",
-        "python tools/run_native_ci_tests.py",
-        "build/evidence/native-*/",
+        "cmake --preset windows-release",
+        "cmake --build build/windows-release --target capture_daemon session_doctor",
+        "uv sync --all-packages --extra dev --extra analysis",
+        "uv run --all-packages --extra dev --extra analysis "
+        "python tools/check_ci_contract.py --check-environment",
+        "uv run --all-packages --extra dev --extra analysis python -m pytest tests -q",
+        "ctest --test-dir build/windows-release --output-on-failure --no-tests=error",
+        '$env:CAPTURE_TEST_BUILD_DIR = "build/windows-release"',
+        "uv run --all-packages --extra dev --extra analysis python tools/run_native_ci_tests.py",
     ],
 )
-def test_missing_native_integration_gate_is_rejected(configured, gate):
-    p = configured / ".github/workflows/ci.yml"
-    p.write_text(p.read_text().replace(gate, ""))
-    assert contract.check(configured)
+def test_missing_supported_developer_step_is_rejected(configured, command):
+    p = configured / "CONTRIBUTING.md"
+    text = p.read_text()
+    assert command in text
+    p.write_text(text.replace(command, "# removed", 1))
+    assert any(command in error for error in contract.check(configured))
+
+
+@pytest.mark.parametrize("marker", contract.NATIVE_RUNNER_MARKERS)
+def test_native_runner_cannot_lose_critical_behavior(configured, marker):
+    p = configured / "tools/run_native_ci_tests.py"
+    text = p.read_text()
+    assert marker in text
+    p.write_text(text.replace(marker, "disabled-placeholder"))
+    assert any(marker in error for error in contract.check(configured))
+
+
+def test_uv_workspace_sources_are_required(configured):
+    p = configured / "pyproject.toml"
+    text = p.read_text()
+    assert "capture-analysis = { workspace = true }" in text
+    p.write_text(text.replace("capture-analysis = { workspace = true }", ""))
+    assert any("capture-analysis" in error for error in contract.check(configured))
+
+
+def test_uv_dev_dependencies_are_required(configured):
+    p = configured / "pyproject.toml"
+    text = p.read_text()
+    assert "pytest-xdist>=3.8,<4" in text
+    p.write_text(text.replace("pytest-xdist>=3.8,<4", "unrelated>=3.8,<4"))
+    assert any("pytest-xdist" in error for error in contract.check(configured))
+
+
+def test_uv_pytest_parallel_gate_is_required(configured):
+    p = configured / "pyproject.toml"
+    text = p.read_text()
+    assert "--maxprocesses=4" in text
+    p.write_text(text.replace("--maxprocesses=4", "--maxprocesses=1"))
+    assert any("four-worker" in error for error in contract.check(configured))
 
 
 def test_native_dependency_file_cannot_drop_capture_session(configured):
@@ -163,22 +193,18 @@ def test_port_paths_cannot_escape_registry(registry_case):
     assert contract.check_registry(root, registry) == ["Invalid direct port name"]
 
 
-def test_each_native_ci_check_fails_its_own_step():
-    import yaml
-
-    workflow = yaml.safe_load((contract.ROOT / ".github/workflows/ci.yml").read_text())
-    for job in workflow["jobs"].values():
-        for step in job["steps"]:
-            if "run" not in step:
-                continue
-            commands = [
-                line.strip()
-                for line in step["run"].splitlines()
-                if line.strip() and not line.lstrip().startswith("#")
-            ]
-            assert len(commands) == 1, (
-                f"Native command failures must not be masked by a later command: {step['name']}"
-            )
+def test_local_native_commands_each_fail_separately():
+    lines = (contract.ROOT / "CONTRIBUTING.md").read_text().splitlines()
+    ctest = "ctest --test-dir build/windows-release --output-on-failure --no-tests=error"
+    build = "cmake --build build/windows-release --target capture_daemon session_doctor"
+    native = (
+        "uv run --all-packages --extra dev --extra analysis python tools/run_native_ci_tests.py"
+    )
+    assert lines.index(build) < lines.index(ctest) < lines.index(native)
+    assert lines[lines.index(native) - 1] == (
+        '$env:CAPTURE_TEST_BUILD_DIR = "build/windows-release"'
+    )
+    assert all(";" not in line and "&&" not in line for line in (build, ctest, native))
 
 
 def test_only_generated_proto_headers_are_external():
@@ -189,8 +215,9 @@ def test_only_generated_proto_headers_are_external():
     )
     warnings = (root / "cmake/CompilerWarnings.cmake").read_text()
     assert "/W4" in warnings and "/WX" in warnings and "CAPTURE_WERROR" in warnings
-    workflow = (root / ".github/workflows/ci.yml").read_text()
-    assert "python tools/check_cpp_warning_boundary.py" in workflow
+    warning_gate = (root / "tools/check_cpp_warning_boundary.py").read_text()
+    assert '"C4267" in output' in warning_gate
+    assert '"owned_conversion"' in warning_gate
     assert (
         "target_include_directories(capture_storage PUBLIC"
         in (root / "libs/cpp/capture_storage/CMakeLists.txt").read_text()

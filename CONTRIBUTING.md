@@ -16,7 +16,7 @@ schema changes, and [LICENSING.md](LICENSING.md) before adding files.
 ```powershell
 . .\scripts\dev-env.ps1
 cmake --preset windows-release
-cmake --build build/windows-release --target capture_daemon
+cmake --build build/windows-release --target capture_daemon session_doctor
 ```
 
 For camera/radar plugins, copy `CMakeUserPresets.example.json` →
@@ -27,8 +27,11 @@ For camera/radar plugins, copy `CMakeUserPresets.example.json` →
 ```powershell
 uv sync --all-packages --extra dev --extra analysis
 $env:QT_QPA_PLATFORM = "offscreen"
+uv run --all-packages --extra dev --extra analysis python tools/check_ci_contract.py --check-environment
 uv run --all-packages --extra dev --extra analysis python -m pytest tests -q
-ctest --test-dir build/windows-release --output-on-failure
+ctest --test-dir build/windows-release --output-on-failure --no-tests=error
+$env:CAPTURE_TEST_BUILD_DIR = "build/windows-release"
+uv run --all-packages --extra dev --extra analysis python tools/run_native_ci_tests.py
 ```
 
 The Python suite uses at most four local workers by default, keeping each test
