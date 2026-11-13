@@ -6,7 +6,7 @@
 -e ./libs/python/capture_worker
 -e ./desktop[analysis]
 grpcio-tools>=1.62,<1.63
-mcap>=1.5.0,<2
+mcap>=1.6.0,<2
 pytest>=8
 pytest-xdist>=3.8,<4
 pytest-qt>=4.5,<5
