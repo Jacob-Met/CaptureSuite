@@ -32,19 +32,26 @@ def test_gen_protos_is_idempotent() -> None:
 def test_session_schemas_match_regeneration() -> None:
     schema_dir = REPO / "schemas" / "session" / "jsonschema"
     with tempfile.TemporaryDirectory() as tmp:
-        tmp_path = Path(tmp)
-        # Copy current schemas, regenerate, compare
-        snapshot = tmp_path / "before"
-        shutil.copytree(schema_dir, snapshot)
+        # The complete test suite can run across processes. Run the generator in
+        # a scratch tree so concurrent analysis/tests never see deleted schemas.
+        root = Path(tmp)
+        staged = root / "schemas" / "session" / "jsonschema"
+        shutil.copytree(schema_dir, staged)
+        script = root / "tools" / "gen_session_schemas.py"
+        script.parent.mkdir(parents=True)
+        shutil.copy2(REPO / "tools" / script.name, script)
+        descriptor = root / "build" / "generated" / "capture_v1.desc"
+        descriptor.parent.mkdir(parents=True)
+        shutil.copy2(REPO / "build" / "generated" / descriptor.name, descriptor)
         result = subprocess.run(
-            [sys.executable, str(REPO / "tools" / "gen_session_schemas.py")],
-            cwd=REPO,
+            [sys.executable, str(script)],
+            cwd=root,
             capture_output=True,
             text=True,
         )
         assert result.returncode == 0, result.stderr
-        after_files = sorted(p.name for p in schema_dir.glob("*"))
-        before_files = sorted(p.name for p in snapshot.glob("*"))
+        before_files = sorted(p.name for p in schema_dir.glob("*"))
+        after_files = sorted(p.name for p in staged.glob("*"))
         assert after_files == before_files
-        for name in after_files:
-            assert filecmp.cmp(snapshot / name, schema_dir / name, shallow=False), name
+        for name in before_files:
+            assert filecmp.cmp(schema_dir / name, staged / name, shallow=False), name

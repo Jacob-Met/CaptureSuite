@@ -86,6 +86,10 @@ $env:QT_QPA_PLATFORM = "offscreen"
 python -m pytest tests -q -ra --ignore=tests/kill_tests
 ```
 
+The normal Python suite selects up to four local workers (bounded by available
+CPUs), keeps a test module on one worker and retains the ordinary test reports.
+Pass `-n 0` for a serial debugging run.
+
 The requirements install all five local workspace members together, including the
 analysis and desktop extras. CI explicitly imports those dependencies before tests
 so an absent optional library cannot make its test coverage disappear silently.

@@ -29,6 +29,9 @@ For camera/radar plugins, copy `CMakeUserPresets.example.json` →
 ctest --test-dir build/windows-release --output-on-failure
 ```
 
+The Python suite uses at most four local workers by default, keeping each test
+module on one worker. Use `-n 0` for a serial debugging run.
+
 ## Pull requests
 
 1. Keep changes focused; prefer the plugin registry over editing daemon core.
