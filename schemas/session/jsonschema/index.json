@@ -24,6 +24,7 @@
   "files": [
     "analysis_feature_schema.schema.json",
     "analysis_job.schema.json",
+    "analysis_numeric_measurement_context.schema.json",
     "annotation.schema.json",
     "checkpoint.schema.json",
     "clock_mapping.schema.json",
@@ -46,6 +47,7 @@
   ],
   "hand_maintained": [
     "analysis_feature_schema.schema.json",
-    "analysis_job.schema.json"
+    "analysis_job.schema.json",
+    "analysis_numeric_measurement_context.schema.json"
   ]
 }

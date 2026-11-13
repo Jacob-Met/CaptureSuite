@@ -24,6 +24,7 @@ PRESERVE_SCHEMAS = frozenset(
     {
         "analysis_feature_schema.schema.json",
         "analysis_job.schema.json",
+        "analysis_numeric_measurement_context.schema.json",
     }
 )
 

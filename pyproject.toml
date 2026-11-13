@@ -14,6 +14,8 @@ dependencies = [
 dev = [
   "pytest>=8.0",
   "pytest-cov>=5.0",
+  "pytest-xdist>=3.8,<4",
+  "pytest-qt>=4.5,<5",
   "ruff>=0.6",
 ]
 analysis = [
@@ -34,6 +36,7 @@ members = [
 ]
 
 [tool.pytest.ini_options]
+addopts = "-n auto --maxprocesses=4 --dist loadfile"
 testpaths = ["tests"]
 pythonpath = [
   "libs/python/capture_protocol",
