@@ -35,6 +35,13 @@ members = [
   "desktop",
 ]
 
+[tool.uv.sources]
+capture-protocol = { workspace = true }
+capture-session = { workspace = true }
+capture-analysis = { workspace = true }
+capture-worker = { workspace = true }
+capture-desktop = { workspace = true }
+
 [tool.pytest.ini_options]
 addopts = "-n auto --maxprocesses=4 --dist loadfile"
 testpaths = ["tests"]
@@ -60,6 +67,9 @@ extend-exclude = [
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP", "B"]
+
+[tool.setuptools]
+packages = []
 
 [build-system]
 requires = ["setuptools>=68"]

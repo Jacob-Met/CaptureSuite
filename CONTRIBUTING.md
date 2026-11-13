@@ -8,7 +8,7 @@ schema changes, and [LICENSING.md](LICENSING.md) before adding files.
 
 - Windows 10 21H2+ x64
 - Visual Studio 2022 (v143), CMake ≥ 3.28, Ninja, vcpkg
-- CPython 3.12.x
+- CPython 3.12.x and [uv](https://docs.astral.sh/uv/)
 - Optional: GStreamer 1.24+ (camera plugin), Infineon Radar SDK (radar plugin)
 
 ## Build (sim-only)
@@ -25,7 +25,9 @@ For camera/radar plugins, copy `CMakeUserPresets.example.json` →
 ## Tests
 
 ```powershell
-& "$env:LOCALAPPDATA\Programs\Python\Python312\python.exe" -m pytest tests -q
+uv sync --all-packages --extra dev --extra analysis
+$env:QT_QPA_PLATFORM = "offscreen"
+uv run --all-packages --extra dev --extra analysis python -m pytest tests -q
 ctest --test-dir build/windows-release --output-on-failure
 ```
 
