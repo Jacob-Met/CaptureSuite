@@ -15,10 +15,7 @@ from capture_session.package_reader import ReviewSummary
 from capture_analysis.kinematics.job import resolve_job_dir
 
 ML_BUNDLE_SCHEMA = (
-    Path(__file__).resolve().parents[5]
-    / "schemas"
-    / "ml_bundle"
-    / "ml_bundle.manifest.schema.json"
+    Path(__file__).resolve().parents[5] / "schemas" / "ml_bundle" / "ml_bundle.manifest.schema.json"
 )
 
 DEFAULT_TARGET_COLUMNS = [
@@ -118,6 +115,78 @@ def _nearest_indices(query_ns: np.ndarray, series_ns: np.ndarray) -> np.ndarray:
     return idx
 
 
+def _window_target_medians(
+    kin_df: Any,
+    kin_t: np.ndarray,
+    centers: list[int],
+    half_window_ns: int,
+    y_cols: list[str],
+) -> tuple[np.ndarray, np.ndarray]:
+    """Inclusive time-window medians and validity without per-window frame scans.
+
+    Sort time and aligned columns once for non-monotone imported recordings.
+    Keep each window's original skip-null median and both validity flags,
+    including duplicate timestamps and gaps.
+    """
+    import bisect
+    import warnings as runtime_warnings
+
+    order = np.argsort(kin_t, kind="stable") if np.any(kin_t[1:] < kin_t[:-1]) else None
+    ordered_time = kin_t if order is None else kin_t[order]
+    center_times = np.asarray(centers, dtype=np.int64)
+    limits = np.iinfo(np.int64)
+    if (
+        int(center_times.min()) - half_window_ns >= limits.min
+        and int(center_times.max()) + half_window_ns <= limits.max
+    ):
+        starts = np.searchsorted(ordered_time, center_times - half_window_ns, side="left")
+        ends = np.searchsorted(ordered_time, center_times + half_window_ns, side="right")
+    else:
+        # Python comparisons preserve inclusive bounds near int64 limits.
+        starts = np.fromiter(
+            (bisect.bisect_left(ordered_time, int(t) - half_window_ns) for t in centers),
+            dtype=np.intp,
+            count=len(centers),
+        )
+        ends = np.fromiter(
+            (bisect.bisect_right(ordered_time, int(t) + half_window_ns) for t in centers),
+            dtype=np.intp,
+            count=len(centers),
+        )
+
+    present = ends > starts
+    left_valid = kin_df["valid_elbow_L"].fillna(True).to_numpy(dtype=np.bool_)
+    right_valid = kin_df["valid_elbow_R"].fillna(True).to_numpy(dtype=np.bool_)
+    invalid = ~(left_valid & right_valid)
+    if order is not None:
+        invalid = invalid[order]
+    bad_prefix = np.concatenate((np.zeros(1, dtype=np.int64), np.cumsum(invalid, dtype=np.int64)))
+    valid = present & (bad_prefix[starts] == bad_prefix[ends])
+
+    values = kin_df[y_cols].to_numpy(dtype=np.float64, na_value=np.nan)
+    if order is not None:
+        values = values[order]
+    medians = np.full((len(centers), len(y_cols)), np.nan, dtype=np.float64)
+    widths = ends - starts
+    for width in np.unique(widths[present]):
+        group = np.flatnonzero(widths == width)
+        # Cap each gather even on dense/duplicate-timestamp recordings.
+        chunk_size = max(1, min(2048, 1_000_000 // (int(width) * len(y_cols))))
+        offsets = np.arange(width, dtype=np.intp)
+        for offset in range(0, len(group), chunk_size):
+            chosen = group[offset : offset + chunk_size]
+            indexes = starts[chosen, None] + offsets[None, :]
+            with runtime_warnings.catch_warnings():
+                runtime_warnings.filterwarnings(
+                    "ignore", message="All-NaN slice encountered", category=RuntimeWarning
+                )
+                runtime_warnings.filterwarnings(
+                    "ignore", message="Mean of empty slice", category=RuntimeWarning
+                )
+                medians[chosen] = np.nanmedian(values[indexes], axis=1)
+    return valid, medians
+
+
 def _validate_manifest(doc: dict[str, Any]) -> list[str]:
     if not ML_BUNDLE_SCHEMA.is_file():
         return []
@@ -183,28 +252,20 @@ def run_ml_bundle_job(
 
     kin_t = kin_df["session_time_ns"].to_numpy(dtype=np.int64)
     feat_idx = _nearest_indices(np.asarray(centers, dtype=np.int64), feat_t)
+    valid_windows, target_windows = _window_target_medians(
+        kin_df, kin_t, centers, win_ns // 2, y_cols
+    )
 
     rows: list[dict[str, Any]] = []
     for wi, center_ns in enumerate(centers):
-        lo = center_ns - win_ns // 2
-        hi = center_ns + win_ns // 2
-        mask = (kin_t >= lo) & (kin_t <= hi)
-        if not mask.any():
-            valid = False
-            y_row = {c: float("nan") for c in y_cols}
-        else:
-            sub = kin_df.loc[mask]
-            valid = bool(sub["valid_elbow_L"].all() and sub["valid_elbow_R"].all())
-            y_row = {c: float(sub[c].median()) for c in y_cols}
-
         row: dict[str, Any] = {
             "window_id": f"w{wi:05d}",
             "session_time_ns": int(center_ns),
-            "valid_mask": valid,
+            "valid_mask": bool(valid_windows[wi]),
             "motion_energy": float(feat_v[feat_idx[wi]]),
             "feature_stream_id": feat_stream,
         }
-        row.update(y_row)
+        row.update({c: float(target_windows[wi, ci]) for ci, c in enumerate(y_cols)})
         rows.append(row)
 
     win_df = pd.DataFrame(rows)
@@ -240,9 +301,7 @@ def run_ml_bundle_job(
                     "windowBounds": "inclusive",
                     "rateBasis": "configured_integer_hop",
                     "centerPolicy": (
-                        "median_fallback"
-                        if 2 * (win_ns // 2) > t1 - t0
-                        else "regular_hop"
+                        "median_fallback" if 2 * (win_ns // 2) > t1 - t0 else "regular_hop"
                     ),
                     "featureKind": "motion_energy",
                 },
