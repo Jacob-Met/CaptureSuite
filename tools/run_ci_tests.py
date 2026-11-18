@@ -76,6 +76,18 @@ def _include_subtests(root: ET.Element, path: Path, xml_sha256: str) -> tuple[st
         children = [child for child in parent if child.tag in ("error", "failure", "skipped")]
         if [child.tag for child in children] != [outcome for outcome in outcomes if outcome]:
             raise ValueError("JUnit and recorded subtest outcomes disagree")
+        # Same-status siblings and a failed parent must retain their own native traceback.
+        expected_failures = [
+            event["failure_sha256"] for event in events if event["outcome"] == "failed"
+        ]
+        if group["parent_outcome"] == "failed":
+            expected_failures.append(group["parent_failure_sha256"])
+        actual_failures = [
+            hashlib.sha256((child.text or "").encode("utf-8")).hexdigest()
+            for child in children if child.tag == "failure"
+        ]
+        if expected_failures != actual_failures:
+            raise ValueError("Recorded failure tracebacks disagree with native JUnit")
         children = iter(children)
         for index, (event, outcome) in enumerate(zip(events, outcomes[:-1], strict=True), 1):
             if type(event["ordinal"]) is not int or event["ordinal"] != index:

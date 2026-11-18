@@ -15,6 +15,14 @@ def pytest_configure(config):
         config.pluginmanager.register(SubtestRecorder(Path(path), config.getoption("junitprefix")))
 
 
+def failure_sha256(report):
+    if not report.failed:
+        return None
+    # Match XML 1.0 end-of-line normalization when reading pytest's traceback text.
+    text = bin_xml_escape(str(report.longrepr)).replace("\r\n", "\n").replace("\r", "\n")
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
 class SubtestRecorder:
     def __init__(self, xml, prefix):
         self.xml = xml
@@ -46,10 +54,12 @@ class SubtestRecorder:
                     "ordinal": len(events) + 1,
                     "description": report.head_line,
                     "outcome": report.outcome,
+                    "failure_sha256": failure_sha256(report),
                 }
             )
         elif report.nodeid in self.parents:
             self.parents[report.nodeid]["parent_outcome"] = report.outcome
+            self.parents[report.nodeid]["parent_failure_sha256"] = failure_sha256(report)
 
     @pytest.hookimpl(trylast=True)
     def pytest_sessionfinish(self):

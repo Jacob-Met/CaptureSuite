@@ -105,6 +105,15 @@ def test_mixed(subtests):
             "failures": 2,
         }
     data = json.loads(evidence.read_bytes())
+    group = data["parents"][0]
+    child = group["events"][1]
+    assert child["failure_sha256"] != group["parent_failure_sha256"]
+    child["failure_sha256"], group["parent_failure_sha256"] = (
+        group["parent_failure_sha256"],
+        child["failure_sha256"],
+    )
+    evidence.write_text(json.dumps(data))
+    assert summarize(xml, 0, subtests=evidence)["counts"] is None
     data["parents"][0]["events"][1]["outcome"] = "passed"
     evidence.write_text(json.dumps(data))
     assert not summarize(xml, 0, subtests=evidence)["accepted"]
