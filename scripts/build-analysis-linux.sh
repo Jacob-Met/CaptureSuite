@@ -53,6 +53,7 @@ cp "$repo/docs/QC_PACKAGE_REVIEW.md" "$out/dist/capturesuite-analysis/QC_PACKAGE
 "$py" "$repo/tools/collect_analysis_notices.py" \
     "$out/work/capturesuite-analysis/Analysis-00.toc" "$out/dist/capturesuite-analysis"
 cp "$repo/docs/NUMERIC_SAMPLE_EXPORT.md" "$out/dist/capturesuite-analysis/NUMERIC_SAMPLE_EXPORT.md"
+cp "$repo/docs/NUMERIC_QC_EXCERPTS.md" "$out/dist/capturesuite-analysis/NUMERIC_QC_EXCERPTS.md"
 git rev-parse HEAD > "$out/dist/capturesuite-analysis/SOURCE_COMMIT"
 "$out/dist/capturesuite-analysis/capturesuite-analysis" --version
 echo "CAPTURESUITE_LINUX_ANALYSIS_BUNDLE_OK=$out/dist/capturesuite-analysis"
