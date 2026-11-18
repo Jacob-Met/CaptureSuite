@@ -39,7 +39,12 @@ focus on native warnings, source failures, missing streams and collection errors
 Search includes recording names, session/source IDs, paths and warning text.
 
 Expand a recording to see its warning list, each stream's inspection state,
-source indicators and paths. **Open full QC report** exposes the native report;
+source indicators and paths. Each inspected stream shows the counts its native report
+provides: sample frames checked, MCAP messages read, segments checked and frames without
+native timestamps. Zero is shown when observed; unavailable counts are omitted. For a
+failed inspection, message and segment counts describe work completed before the failure.
+The recording duration is separate from these per-stream observations. A frame count does
+not establish how much elapsed time was continuously measured. **Open full QC report** exposes the native report;
 **QC JSON** preserves its complete machine-readable observations.
 
 | What is shown | What was observed |
