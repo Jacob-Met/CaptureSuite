@@ -40,7 +40,60 @@ def github_context(env: dict[str, str] | None = None) -> dict[str, str]:
     return {key: source[key] for key in GITHUB_CONTEXT_KEYS if source.get(key)}
 
 
-def summarize(junit: Path, process_exit: int | None) -> dict:
+def _include_subtests(root: ET.Element, path: Path, xml_sha256: str) -> tuple[str, dict[str, int]]:
+    """Expand folded cases in memory using independently observed pytest events."""
+    with path.open("rb") as stream:
+        raw = stream.read(MAX_XML_BYTES + 1)
+    if len(raw) > MAX_XML_BYTES:
+        raise ValueError("Subtest evidence exceeds the supported size limit")
+    evidence = json.loads(raw)
+    if (evidence["schema"] != "capturesuite.pytest-subtests.v1"
+            or evidence["junit_sha256"] != xml_sha256
+            or not isinstance(evidence["parents"], list)):
+        raise ValueError("Unrecognized or mismatched subtest evidence")
+    sha256 = hashlib.sha256(raw).hexdigest()
+    observed = dict(passed=0, failed=0, skipped=0)
+    if not evidence["parents"]:
+        return sha256, observed
+    suites = [root] if root.tag == "testsuite" else root.findall("testsuite")
+    if len(suites) != 1:
+        raise ValueError("Expected one pytest suite for subtest evidence")
+    suite = suites[0]
+    parents = {}
+    for case in suite.findall("testcase"):
+        key = (case.get("classname"), case.get("name"))
+        parents.setdefault(key, []).append(case)
+    tags = {"passed": None, "failed": "failure", "skipped": "skipped"}
+    for group in evidence["parents"]:
+        key = (group["classname"], group["name"])
+        matches = parents.pop(key, [])
+        events = group["events"]
+        if len(matches) != 1 or not isinstance(events, list) or not events:
+            raise ValueError("Missing or ambiguous JUnit parent for subtest events")
+        parent = matches[0]
+        # Pytest appends failing/skipped subtests in event order, then the parent's outcome.
+        outcomes = [tags[event["outcome"]] for event in events] + [tags[group["parent_outcome"]]]
+        children = [child for child in parent if child.tag in ("error", "failure", "skipped")]
+        if [child.tag for child in children] != [outcome for outcome in outcomes if outcome]:
+            raise ValueError("JUnit and recorded subtest outcomes disagree")
+        children = iter(children)
+        for index, (event, outcome) in enumerate(zip(events, outcomes[:-1], strict=True), 1):
+            if type(event["ordinal"]) is not int or event["ordinal"] != index:
+                raise ValueError("Missing or duplicate subtest event ordinal")
+            if not isinstance(event["description"], str):
+                raise ValueError("Missing subtest description")
+            case = ET.SubElement(suite, "testcase", {
+                "classname": key[0], "name": f"{key[1]} [subtest {index}]",
+            })
+            observed[event["outcome"]] += 1
+            if outcome:
+                child = next(children)
+                parent.remove(child)
+                case.append(child)
+    return sha256, observed
+
+
+def summarize(junit: Path, process_exit: int | None, *, subtests: Path | None = None) -> dict:
     report = {
         "schema": "capturesuite.test-receipt.v1",
         "accepted": False,
@@ -63,6 +116,10 @@ def summarize(junit: Path, process_exit: int | None) -> dict:
         if "<!DOCTYPE" in text.upper() or "<!ENTITY" in text.upper():
             raise ValueError("DTD/entity declarations are not supported")
         root = ET.fromstring(text)
+        if subtests is not None:
+            report["subtests_sha256"], report["subtest_counts"] = _include_subtests(
+                root, subtests, report["junit_sha256"]
+            )
         if root.tag == "testsuite":
             suites = [root]
         elif root.tag == "testsuites":
@@ -99,7 +156,7 @@ def summarize(junit: Path, process_exit: int | None) -> dict:
             problems.append("No executed passing test cases")
         if totals["failures"] or totals["errors"]:
             problems.append("JUnit contains failing or errored cases")
-    except (OSError, ET.ParseError, ValueError, TypeError) as exc:
+    except (OSError, ET.ParseError, ValueError, TypeError, KeyError) as exc:
         problems.append(f"JUnit unavailable or invalid: {type(exc).__name__}")
     report["accepted"] = not problems
     return report
@@ -150,6 +207,8 @@ def main() -> int:
         sys.executable,
         "-m",
         "pytest",
+        "-p",
+        "tools.ci_subtest_evidence",
         "tests",
         "-vv",
         "--durations=20",
@@ -166,7 +225,7 @@ def main() -> int:
         except subprocess.TimeoutExpired:
             code = None
     print((out / "pytest.log").read_text(encoding="utf-8", errors="replace"))
-    report = summarize(junit, code)
+    report = summarize(junit, code, subtests=junit.with_suffix(".subtests.json"))
     report["seconds"] = time.perf_counter() - started
     report["created_at"] = datetime.now(UTC).isoformat()
     report["run_directory"] = out.relative_to(ROOT).as_posix()
