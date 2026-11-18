@@ -2,8 +2,9 @@
 
 Records numeric [Lab Streaming Layer](https://labstreaminglayer.org/) outlets
 through the existing CaptureSuite Python worker into `generic.numeric_batch/1`
-MCAP segments. Version 0.1.2 includes independent outlet lifecycle and the
-Python SDK 0.1.1 handoff to ordinary native-created session packages.
+MCAP segments. Version 0.1.3 records each outlet timestamp in integer nanoseconds. The Python SDK records
+the acquisition-arrival session anchor separately. Existing 0.1.2 recordings retain their
+original bytes and may contain timestamps adjusted by the LSL clock correction.
 
 ## Use with CaptureSuite on Windows
 
@@ -29,7 +30,7 @@ back to `python` on PATH.
   `TIMESTAMP_SOURCE_DEVICE` protocol enum.
 - Every source has its own stop token and inlet. Stopping or restarting one
   source never clears or sets another source's stop token.
-- Inlet polling and initial time-correction waits are bounded. Stop waits for the
+- Inlet polling is bounded. Stop waits for the
   source pump to finish before the SDK seals its writer. If it does not finish
   within three seconds, Stop fails explicitly instead of sealing a writer that
   might still be receiving samples.
@@ -54,7 +55,7 @@ MemoryTransport, so this check also runs on Linux without a Windows daemon.
 ```bash
 python3.12 -m venv .venv-lsl
 .venv-lsl/bin/python -m pip install -e libs/python/capture_protocol -e libs/python/capture_worker pylsl pytest
-CAPTURE_RUN_LSL_TESTS=1 .venv-lsl/bin/python -m pytest -q tests/protocol/test_lsl_bridge_live.py
+CAPTURE_RUN_LSL_TESTS=1 .venv-lsl/bin/python -m pytest -q tests/protocol/test_lsl_bridge_live.py tests/protocol/test_lsl_native_timestamps.py
 ```
 
 On PowerShell, set `$env:CAPTURE_RUN_LSL_TESTS="1"` and run the same pytest command
@@ -100,9 +101,8 @@ numeric values on local LSL transport. It does not establish Windows named-pipe
 operation, remote-clock synchronization, hardware accuracy, long recording
 reliability or the full native daemon/desktop workflow.
 
-The bridge still stores timestamps after adding its latest LSL clock
-correction. The default SDK anchor is acquisition arrival time and does not fit
-remote device drift or establish physical synchronization. The native storage
+The default SDK anchor is acquisition arrival time. No remote-clock drift fit or
+physical synchronization measurement is performed. The native storage
 test uses the SDK's MemoryTransport rather than Windows named pipes. Inlet timeouts currently skip empty chunks; they do not
 produce the daemon-owned capture gap records. The earlier README's claims of
 raw timestamp preservation and logged gaps did not match this implementation.

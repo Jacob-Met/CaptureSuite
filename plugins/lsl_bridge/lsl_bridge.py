@@ -27,7 +27,7 @@ def _try_import_pylsl():
 
 
 class LslBridgeWorker(Worker):
-    plugin_version = "0.1.2"
+    plugin_version = "0.1.3"
 
     def __init__(
         self,
@@ -186,14 +186,8 @@ class LslBridgeWorker(Worker):
                 break
             if not samples:
                 continue
-            correction = 0.0
-            try:
-                correction = float(inlet.time_correction(timeout=min(timeout, 0.25)))
-            except Exception:  # noqa: BLE001
-                correction = 0.0
-            device_times = [
-                int((float(ts) + correction) * 1e9) for ts in (timestamps or [])
-            ]
+            # Device time belongs to the outlet. The SDK records the session anchor separately.
+            device_times = [int(ts * 1_000_000_000) for ts in timestamps or []]
             flat: list[float] = []
             for row in samples:
                 flat.extend(float(x) for x in row)
