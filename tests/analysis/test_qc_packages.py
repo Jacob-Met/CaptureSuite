@@ -64,3 +64,45 @@ def test_unreadable_manifest_text_does_not_discard_later_native_report(tmp_path:
     assert review["packages"][0]["error"]["type"] == "UnicodeDecodeError"
     assert review["packages"][1]["qc"] == collect_qc(good).to_dict()
     assert before == {str(package): _inventory(package) for package in (bad, good)}
+
+
+def test_recording_labels_distinguish_folders_without_merging_selections(tmp_path):
+    from html.parser import HTMLParser
+    from capture_analysis.qc_packages import create_qc_package_review
+
+    class RecordingNames(HTMLParser):
+        def __init__(self):
+            super().__init__()
+            self.headings = []
+            self.inside = False
+
+        def handle_starttag(self, tag, attrs):
+            if tag == "th" and dict(attrs).get("class") == "recording-name":
+                self.inside = True
+                self.headings.append([])
+
+        def handle_endtag(self, tag):
+            if tag == "th":
+                self.inside = False
+
+        def handle_data(self, data):
+            if self.inside:
+                self.headings[-1].append(data)
+
+    first = tmp_path / "site<&" / "day1" / "record.mmsession"
+    second = tmp_path / "site-b" / "day1" / "record.mmsession"
+    other = tmp_path / "day7" / "record.mmsession"
+    unique = tmp_path / "unique.mmsession"
+    out = tmp_path / "review"
+    create_qc_package_review([first, second, other, first, unique], out)
+    html = (out / "index.html").read_text()
+    names = RecordingNames()
+    names.feed(html)
+    assert len(names.headings) == 5
+    expected = [first.parent.relative_to(tmp_path), second.parent.relative_to(tmp_path),
+                other.parent.name, first.parent.relative_to(tmp_path)]
+    for label, folder in zip(names.headings[:4], expected, strict=True):
+        assert label[:2] == ["record.mmsession", f"Folder: {folder}"]
+    assert names.headings[0] == names.headings[3]
+    assert names.headings[4] == ["unique.mmsession", "Could not collect this recording"]
+    assert "site&lt;&amp;" in html

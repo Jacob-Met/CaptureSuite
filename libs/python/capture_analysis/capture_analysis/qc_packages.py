@@ -208,11 +208,34 @@ def _details_html(entry: dict[str, Any]) -> str:
     )
 
 
-def _package_html(entry: dict[str, Any]) -> str:
+def _distinct_parent_labels(entries: list[dict[str, Any]]) -> dict[Path, str]:
+    """Give colliding package names the shortest parent suffix that identifies each folder."""
+    groups: dict[str, set[Path]] = {}
+    for entry in entries:
+        path = Path(entry["packagePath"])
+        groups.setdefault(path.name, set()).add(path.parent)
+
+    labels = {}
+    for name, parents in groups.items():
+        if len(parents) < 2:
+            continue
+        for parent in parents:
+            parts = parent.parts
+            suffix = parts
+            for depth in range(1, len(parts) + 1):
+                suffix = parts[-depth:]
+                if all(other.parts[-depth:] != suffix for other in parents if other != parent):
+                    break
+            labels[parent / name] = str(Path(*suffix))
+    return labels
+
+
+def _package_html(entry: dict[str, Any], parent_label: str | None = None) -> str:
     ordinal = entry["ordinal"]
     qc = entry["qc"]
     summary = summarize_entry(entry)
     label = Path(entry["packagePath"]).name or entry["inputPath"]
+    folder = f"<small>Folder: {_text(parent_label)}</small>" if parent_label else ""
     if qc is None:
         findings = '<strong class="error">Unavailable</strong>'
         findings += f'<small>{_text(entry["error"]["message"])}</small>'
@@ -244,7 +267,7 @@ def _package_html(entry: dict[str, Any]) -> str:
         f'data-attention="{str(summary["attention"]).lower()}">'
         '<tr class="recording-row">'
         f'<td class="ordinal" data-label="Number">{ordinal:02d}</td>'
-        f'<th scope="row" class="recording-name">{_text(label)}'
+        f'<th scope="row" class="recording-name">{_text(label)}{folder}'
         f'<small>{_text(name_detail)}</small></th>'
         f'<td data-label="Duration">{duration}</td>'
         f'<td data-label="Inspection">{inspection}</td>'
@@ -401,7 +424,11 @@ _SCRIPT = """
 
 def render_qc_package_review_html(review: dict[str, Any]) -> str:
     """Put comparable evidence first, while keeping each complete native report."""
-    packages = "\n".join(_package_html(entry) for entry in review["packages"])
+    labels = _distinct_parent_labels(review["packages"])
+    packages = "\n".join(
+        _package_html(entry, labels.get(Path(entry["packagePath"])))
+        for entry in review["packages"]
+    )
     attention = sum(summarize_entry(entry)["attention"] for entry in review["packages"])
     scope = (
         "Recorded payloads inspected where supported. The table shows how many streams "
