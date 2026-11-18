@@ -136,6 +136,25 @@ def _duration(nanoseconds: int) -> str:
     return f"{int(minutes)}m {remainder:g}s"
 
 
+def _observed_counts_html(inspection: dict[str, Any]) -> str:
+    status = inspection.get("status")
+    if status not in _DECODED_STATES and status not in ("mcap_messages_checked", "failed"):
+        return ""
+    counts = []
+    for field, label in (
+        ("sampleFramesChecked", "Sample frames checked"),
+        ("messagesChecked", "MCAP messages read"),
+        ("segmentsChecked", "Segments checked"),
+        ("framesWithoutNativeTimestamps", "Frames without native timestamps"),
+    ):
+        value = inspection.get(field)
+        if type(value) is int and value >= 0:
+            counts.append(f"<dt>{label}</dt><dd>{value:,}</dd>")
+    if not counts:
+        return ""
+    return '<dl class="observed-counts">' + "".join(counts) + "</dl>"
+
+
 def _details_html(entry: dict[str, Any]) -> str:
     qc = entry["qc"]
     paths = (
@@ -166,6 +185,7 @@ def _details_html(entry: dict[str, Any]) -> str:
             f'<td>{_text(stream["modality"])}</td>'
             f'<td>{_text(label)}'
             + (f'<small>{_text(detail)}</small>' if detail else "")
+            + _observed_counts_html(inspection)
             + "</td></tr>"
         )
     stream_table = (
@@ -296,6 +316,11 @@ details[open] > summary { margin-bottom:8px; }
   border-bottom:1px solid var(--rule); overflow-wrap:anywhere; }
 .streams th { font-size:11px; }
 .streams small { font-size:11px; }
+.streams th:last-child { width:48%; }
+.observed-counts { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:3px 6px;
+  margin:6px 0 0; }
+.observed-counts dt { overflow-wrap:anywhere; }
+.observed-counts dd { margin:0; text-align:right; font-variant-numeric:tabular-nums; }
 .paths { margin:14px 0 0; }
 .paths dt { font-size:11px; color:var(--muted); margin-top:10px; }
 .paths dd { margin:3px 0 0; font:12px/1.6 ui-monospace,monospace; overflow-wrap:anywhere;
