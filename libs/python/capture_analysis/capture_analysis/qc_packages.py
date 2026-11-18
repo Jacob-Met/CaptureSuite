@@ -155,6 +155,23 @@ def _observed_counts_html(inspection: dict[str, Any]) -> str:
     return '<dl class="observed-counts">' + "".join(counts) + "</dl>"
 
 
+def _inspection_detail(inspection: dict[str, Any]) -> str:
+    detail = inspection.get("detail", "")
+    missing = inspection.get("framesWithoutNativeTimestamps")
+    checked = inspection.get("sampleFramesChecked")
+    if (inspection.get("status") != "numeric_samples_checked"
+            or type(missing) is not int or type(checked) is not int
+            or not 0 <= missing <= checked or checked == 0):
+        return detail
+
+    # Keep the collector's evidence intact in review.json. Its existing count-only
+    # suffix would duplicate the stream-specific proportion in the HTML.
+    prefix = detail.removesuffix(f"{missing} frame(s) have no native timestamps").rstrip("; .")
+    unit = "frame" if checked == 1 else "frames"
+    summary = f"Native timestamps missing from {missing:,} of {checked:,} checked {unit}."
+    return f"{prefix}. {summary}" if prefix else summary
+
+
 def _details_html(entry: dict[str, Any]) -> str:
     qc = entry["qc"]
     paths = (
@@ -178,7 +195,7 @@ def _details_html(entry: dict[str, Any]) -> str:
         inspection = stream.get("payloadInspection") or {"status": "not_requested"}
         status = inspection.get("status", "not_requested")
         label = _INSPECTION_LABELS.get(status, str(status))
-        detail = inspection.get("detail", "")
+        detail = _inspection_detail(inspection)
         stream_rows.append(
             "<tr>"
             f'<td>{_text(stream["sourceId"])}<small>{_text(stream["streamId"])}</small></td>'
