@@ -74,8 +74,8 @@ def inspect_binaries(build: Path | None) -> tuple[list[dict], list[str]]:
     return records, errors
 
 
-def evaluate(junit: Path, process_exit: int | None) -> dict:
-    report = summarize(junit, process_exit)
+def evaluate(junit: Path, process_exit: int | None, *, subtests: Path | None = None) -> dict:
+    report = summarize(junit, process_exit, subtests=subtests)
     counts = report.get("counts") or {}
     if counts.get("skipped", 0):
         report["problems"].append("Native integration tests were skipped")
@@ -102,6 +102,8 @@ def main() -> int:
             sys.executable,
             "-m",
             "pytest",
+            "-p",
+            "tools.ci_subtest_evidence",
             *NATIVE_TESTS,
             "-q",
             "-ra",
@@ -122,7 +124,7 @@ def main() -> int:
                 code = None
     else:
         log_path.write_text("\n".join(errors) + "\n", encoding="utf-8")
-    report = evaluate(junit, code)
+    report = evaluate(junit, code, subtests=junit.with_suffix(".subtests.json"))
     report["schema"] = "capturesuite.native-test-receipt.v1"
     report["seconds"] = time.perf_counter() - started
     report["created_at"] = datetime.now(UTC).isoformat()
