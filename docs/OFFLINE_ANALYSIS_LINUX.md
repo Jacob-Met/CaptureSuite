@@ -27,6 +27,17 @@ the exact generated job directory. Open the HTML with a browser. The original
 sealed recording is **read only**; derived analysis jobs appear under
 `processing/jobs` in that same package.
 
+To inspect a later numeric signal, select an inclusive session-time interval in nanoseconds:
+
+```bash
+./capturesuite-analysis qc "/data/my experiment.mmsession" --inspect-payloads \
+    --start-ns 44900000000 --end-ns 45100000000
+```
+
+The report shows up to 256 matching frames and counts frames without native timestamps.
+QC still checks every recorded frame. See the bundled [numeric excerpt guide](NUMERIC_QC_EXCERPTS.md)
+for the mapping from each recorded MCAP batch anchor to the native frame timestamps.
+
 To compute provisional numeric, EMG and IMU features, create Parquet/CSV tables and
 figures with the bundled offline analysis pipeline:
 
